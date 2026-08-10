@@ -80,7 +80,7 @@ function PlateNotFound() {
 
 function PlateDetail() {
   const { plate } = Route.useLoaderData();
-  const [selected, setSelected] = useState(licenses[0].id);
+  const [selected, setSelected] = useState(licenses[0]!.id);
   const active = licenses.find((l) => l.id === selected)!;
 
   return (
