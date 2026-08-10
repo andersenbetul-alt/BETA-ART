@@ -10,11 +10,35 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as LicenseTermsRouteImport } from './routes/license-terms'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RefundsRouteImport } from './routes/refunds'
 import { Route as PlatesSlugRouteImport } from './routes/plates.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LicenseTermsRoute = LicenseTermsRouteImport.update({
+  id: '/license-terms',
+  path: '/license-terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundsRoute = RefundsRouteImport.update({
+  id: '/refunds',
+  path: '/refunds',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlatesSlugRoute = PlatesSlugRouteImport.update({
@@ -25,27 +49,62 @@ const PlatesSlugRoute = PlatesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/license-terms': typeof LicenseTermsRoute
+  '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
   '/plates/$slug': typeof PlatesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/license-terms': typeof LicenseTermsRoute
+  '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
   '/plates/$slug': typeof PlatesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/license-terms': typeof LicenseTermsRoute
+  '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
   '/plates/$slug': typeof PlatesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/plates/$slug'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/license-terms'
+    | '/privacy'
+    | '/refunds'
+    | '/plates/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/plates/$slug'
-  id: '__root__' | '/' | '/plates/$slug'
+  to:
+    | '/'
+    | '/contact'
+    | '/license-terms'
+    | '/privacy'
+    | '/refunds'
+    | '/plates/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/license-terms'
+    | '/privacy'
+    | '/refunds'
+    | '/plates/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  LicenseTermsRoute: typeof LicenseTermsRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RefundsRoute: typeof RefundsRoute
   PlatesSlugRoute: typeof PlatesSlugRoute
 }
 
@@ -56,6 +115,34 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/license-terms': {
+      id: '/license-terms'
+      path: '/license-terms'
+      fullPath: '/license-terms'
+      preLoaderRoute: typeof LicenseTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refunds': {
+      id: '/refunds'
+      path: '/refunds'
+      fullPath: '/refunds'
+      preLoaderRoute: typeof RefundsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/plates/$slug': {
@@ -70,6 +157,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  LicenseTermsRoute: LicenseTermsRoute,
+  PrivacyRoute: PrivacyRoute,
+  RefundsRoute: RefundsRoute,
   PlatesSlugRoute: PlatesSlugRoute,
 }
 export const routeTree = rootRouteImport
