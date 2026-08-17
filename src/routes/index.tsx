@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { TrustStrip } from "@/components/TrustStrip";
 import { LicenseRequestForm } from "@/components/LicenseRequestForm";
-import { canonicalUrl, robotsContent, siteConfig } from "@/config/site";
+import { canonicalUrl, PRICE_STATUS_NOTE, robotsContent, siteConfig } from "@/config/site";
 import { plates, licenses, faqs, orderingSteps } from "@/data/collection";
 
 const TITLE = "Beta Art — Human Photography Archive & Licensing";
@@ -220,7 +220,9 @@ function Home() {
                         <p className="min-w-0 truncate text-sm text-muted-foreground">
                           {plate.verification.status}
                         </p>
-                        <p className="label shrink-0 text-foreground">from kr {plate.price}</p>
+                        <p className="label shrink-0 text-foreground">
+                          from kr {plate.price} (draft)
+                        </p>
                       </div>
                     </Link>
                   </article>
@@ -323,6 +325,11 @@ function Home() {
               </p>
             </div>
 
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+              {PRICE_STATUS_NOTE} Personal is for private, non-commercial use only; Commercial and
+              Extended cover business use.
+            </p>
+
             <div className="mt-10">
               <TrustStrip />
             </div>
@@ -331,7 +338,9 @@ function Home() {
               {licenses.map((l) => (
                 <li key={l.id} className="flex flex-col bg-background p-6 sm:p-8">
                   <h3 className="display text-2xl">{l.name}</h3>
+                  <p className="label mt-2">{l.audience}</p>
                   <p className="label mt-3 text-foreground">{l.price}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">Draft price — indicative only</p>
                   <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{l.summary}</p>
                   <p className="label rule-top mt-6 pt-6">Permitted</p>
                   <ul className="mt-3 space-y-3 text-sm text-muted-foreground">

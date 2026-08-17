@@ -6,7 +6,7 @@ import { CaptureTable, ProvenancePanel } from "@/components/ProvenancePanel";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustStrip } from "@/components/TrustStrip";
-import { siteConfig } from "@/config/site";
+import { canonicalUrl, PRICE_STATUS_NOTE, robotsContent, siteConfig } from "@/config/site";
 import { deliveryInfo, getPlate, licenses, orderingSteps } from "@/data/collection";
 
 export const Route = createFileRoute("/plates/$slug")({
@@ -22,7 +22,8 @@ export const Route = createFileRoute("/plates/$slug")({
     const { plate } = loaderData;
     const title = `${plate.title} (${plate.catalogue}) — Beta Art`;
     const description = `License ${plate.title}, catalogue ${plate.catalogue}, from the Beta Art human photography archive. Provenance panel, capture record and licence options.`;
-    const url = `${siteConfig.url}plates/${params.slug}`;
+    /* No URL is claimed while the production domain is unconfirmed. */
+    const url = canonicalUrl ? `${canonicalUrl}plates/${params.slug}` : null;
 
     /* Structured data lists only known values: title, catalogue number and price. */
     const jsonLd = {
@@ -31,12 +32,12 @@ export const Route = createFileRoute("/plates/$slug")({
       name: plate.title,
       sku: plate.catalogue,
       category: "Photography licence",
-      url,
+      ...(url ? { url } : {}),
       offers: {
         "@type": "Offer",
         price: plate.price,
         priceCurrency: plate.currency,
-        url,
+        ...(url ? { url } : {}),
       },
     };
 
@@ -47,14 +48,19 @@ export const Route = createFileRoute("/plates/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "product" },
-        { property: "og:url", content: url },
-        { property: "og:image", content: siteConfig.ogImage },
+        ...(url
+          ? [
+              { property: "og:url", content: url },
+              { property: "og:image", content: siteConfig.ogImage },
+              { name: "twitter:image", content: siteConfig.ogImage },
+            ]
+          : []),
+        { name: "robots", content: robotsContent },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
-        { name: "twitter:image", content: siteConfig.ogImage },
       ],
-      links: [{ rel: "canonical", href: url }],
+      ...(url ? { links: [{ rel: "canonical", href: url }] } : {}),
       scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
     };
   },
@@ -117,6 +123,7 @@ function PlateDetail() {
               <p className="label mt-4 text-foreground">
                 from kr {plate.price} · {plate.currency}
               </p>
+              <p className="mt-1 text-xs text-muted-foreground">{PRICE_STATUS_NOTE}</p>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
                 {plate.description}
               </p>
@@ -164,7 +171,11 @@ function PlateDetail() {
                       />
                       <span className="display text-xl">{l.name}</span>
                     </span>
+                    <span className="label mt-2 block">{l.audience}</span>
                     <span className="label mt-3 block text-foreground">{l.price}</span>
+                    <span className="mt-1 block text-xs text-muted-foreground">
+                      Draft price — indicative only
+                    </span>
                     <span className="mt-4 block text-sm leading-relaxed text-muted-foreground">
                       {l.summary}
                     </span>
