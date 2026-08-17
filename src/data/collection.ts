@@ -103,6 +103,8 @@ export function getPlate(slug: string): Plate | undefined {
 export type License = {
   id: string;
   name: string;
+  /** Private (non-commercial) vs business use — these categories never merge. */
+  audience: "Private, non-commercial use only" | "Business use";
   price: string;
   summary: string;
   permitted: string[];
@@ -113,8 +115,10 @@ export const licenses: License[] = [
   {
     id: "personal",
     name: "Personal",
+    audience: "Private, non-commercial use only",
     price: "from kr 190",
-    summary: "For private, non-commercial use — prints for your own walls and personal digital use.",
+    summary:
+      "For private individuals only: prints for your own walls and personal digital use. This licence never covers business, brand, freelance or other commercial activity — those need Commercial or Extended.",
     permitted: [
       "Print one copy for a private space",
       "Use on a personal, non-monetised website or profile",
@@ -125,6 +129,7 @@ export const licenses: License[] = [
   {
     id: "commercial",
     name: "Commercial",
+    audience: "Business use",
     price: "from kr 1 200",
     summary: "For one organisation to use the image in its own marketing and editorial material.",
     permitted: [
@@ -137,6 +142,7 @@ export const licenses: License[] = [
   {
     id: "extended",
     name: "Extended",
+    audience: "Business use",
     price: "from kr 4 500",
     summary: "For wide distribution, including physical products where the image is part of the goods.",
     permitted: [
@@ -149,6 +155,7 @@ export const licenses: License[] = [
   {
     id: "custom",
     name: "Custom & Exclusive",
+    audience: "Business use",
     price: "On request",
     summary: "For exclusivity, buy-outs, archive removal or commissioned capture. Terms drafted per project.",
     permitted: [
@@ -214,7 +221,7 @@ export const faqs = [
   },
   {
     q: "Which licence do I need?",
-    a: "Personal covers private prints. Commercial covers marketing for one organisation. Extended covers packaging and wide distribution. If none of those fit, a custom or exclusive agreement is drafted for you.",
+    a: "Personal is for private, non-commercial use only and never covers business activity. Commercial covers marketing for one organisation. Extended covers packaging and wide distribution. If none of those fit, a custom or exclusive agreement is drafted for you.",
   },
   {
     q: "How is the licence delivered?",
