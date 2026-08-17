@@ -5,41 +5,36 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { TrustStrip } from "@/components/TrustStrip";
 import { LicenseRequestForm } from "@/components/LicenseRequestForm";
-import { siteConfig } from "@/config/site";
+import { canonicalUrl, robotsContent, siteConfig } from "@/config/site";
 import { plates, licenses, faqs, orderingSteps } from "@/data/collection";
 
 const TITLE = "Beta Art — Human Photography Archive & Licensing";
 const DESCRIPTION = siteConfig.description;
-const CANONICAL = siteConfig.url;
+/**
+ * No canonical URL is emitted while the production domain is unconfirmed.
+ * Flip siteConfig.productionUrlConfirmed to restore it from config.
+ */
+const CANONICAL = canonicalUrl;
 /* REPLACEMENT POINT: real 1200×630 social card — see src/config/site.ts */
-const OG_IMAGE = siteConfig.ogImage;
+const OG_IMAGE = CANONICAL ? siteConfig.ogImage : null;
 
 /**
- * Structured data intentionally omits creator name, capture date and location:
- * those values are not known yet and must never be invented.
+ * Structured data intentionally omits creator name, capture date, location and
+ * any site URL while the production domain is unconfirmed: those values are not
+ * known yet and must never be invented.
  */
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
-      "@id": `${CANONICAL}#organization`,
-      name: siteConfig.name,
-      url: CANONICAL,
-      description: DESCRIPTION,
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${CANONICAL}#website`,
-      url: CANONICAL,
+      ...(CANONICAL ? { "@id": `${CANONICAL}#organization`, url: CANONICAL } : {}),
       name: siteConfig.name,
       description: DESCRIPTION,
-      publisher: { "@id": `${CANONICAL}#organization` },
-      inLanguage: "en",
     },
     {
       "@type": "FAQPage",
-      "@id": `${CANONICAL}#faq`,
+      ...(CANONICAL ? { "@id": `${CANONICAL}#faq` } : {}),
       mainEntity: faqs.map((f) => ({
         "@type": "Question",
         name: f.q,
@@ -55,23 +50,31 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
-      { name: "robots", content: "index,follow" },
+      { name: "robots", content: robotsContent },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: CANONICAL },
+      ...(CANONICAL ? [{ property: "og:url", content: CANONICAL }] : []),
       { property: "og:site_name", content: siteConfig.name },
-      { property: "og:image", content: OG_IMAGE },
-      { property: "og:image:alt", content: "Beta Art — human photography archive (placeholder card)" },
+      ...(OG_IMAGE
+        ? [
+            { property: "og:image", content: OG_IMAGE },
+            {
+              property: "og:image:alt",
+              content: "Beta Art — human photography archive (placeholder card)",
+            },
+            { name: "twitter:image", content: OG_IMAGE },
+          ]
+        : []),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
-      { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    ...(CANONICAL ? { links: [{ rel: "canonical", href: CANONICAL }] } : {}),
     scripts: [{ type: "application/ld+json", children: JSON.stringify(structuredData) }],
   }),
 });
+
 
 const methods = [
   {
