@@ -5,41 +5,36 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { TrustStrip } from "@/components/TrustStrip";
 import { LicenseRequestForm } from "@/components/LicenseRequestForm";
-import { siteConfig } from "@/config/site";
+import { canonicalUrl, PRICE_STATUS_NOTE, robotsContent, siteConfig } from "@/config/site";
 import { plates, licenses, faqs, orderingSteps } from "@/data/collection";
 
 const TITLE = "Beta Art — Human Photography Archive & Licensing";
 const DESCRIPTION = siteConfig.description;
-const CANONICAL = siteConfig.url;
+/**
+ * No canonical URL is emitted while the production domain is unconfirmed.
+ * Flip siteConfig.productionUrlConfirmed to restore it from config.
+ */
+const CANONICAL = canonicalUrl;
 /* REPLACEMENT POINT: real 1200×630 social card — see src/config/site.ts */
-const OG_IMAGE = siteConfig.ogImage;
+const OG_IMAGE = CANONICAL ? siteConfig.ogImage : null;
 
 /**
- * Structured data intentionally omits creator name, capture date and location:
- * those values are not known yet and must never be invented.
+ * Structured data intentionally omits creator name, capture date, location and
+ * any site URL while the production domain is unconfirmed: those values are not
+ * known yet and must never be invented.
  */
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
-      "@id": `${CANONICAL}#organization`,
-      name: siteConfig.name,
-      url: CANONICAL,
-      description: DESCRIPTION,
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${CANONICAL}#website`,
-      url: CANONICAL,
+      ...(CANONICAL ? { "@id": `${CANONICAL}#organization`, url: CANONICAL } : {}),
       name: siteConfig.name,
       description: DESCRIPTION,
-      publisher: { "@id": `${CANONICAL}#organization` },
-      inLanguage: "en",
     },
     {
       "@type": "FAQPage",
-      "@id": `${CANONICAL}#faq`,
+      ...(CANONICAL ? { "@id": `${CANONICAL}#faq` } : {}),
       mainEntity: faqs.map((f) => ({
         "@type": "Question",
         name: f.q,
@@ -55,20 +50,27 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
-      { name: "robots", content: "index,follow" },
+      { name: "robots", content: robotsContent },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: CANONICAL },
+      ...(CANONICAL ? [{ property: "og:url", content: CANONICAL }] : []),
       { property: "og:site_name", content: siteConfig.name },
-      { property: "og:image", content: OG_IMAGE },
-      { property: "og:image:alt", content: "Beta Art — human photography archive (placeholder card)" },
+      ...(OG_IMAGE
+        ? [
+            { property: "og:image", content: OG_IMAGE },
+            {
+              property: "og:image:alt",
+              content: "Beta Art — human photography archive (placeholder card)",
+            },
+            { name: "twitter:image", content: OG_IMAGE },
+          ]
+        : []),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
-      { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    ...(CANONICAL ? { links: [{ rel: "canonical", href: CANONICAL }] } : {}),
     scripts: [{ type: "application/ld+json", children: JSON.stringify(structuredData) }],
   }),
 });
@@ -116,9 +118,10 @@ function Home() {
                   Photography
                 </h1>
                 <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                  Beta Art licenses original human-made photography. Every verified plate is captured
-                  by a person with a physical camera, kept with its RAW original and capture record,
-                  and licensed directly by the photographer — no intermediaries, no synthetic imagery.
+                  Beta Art licenses original human-made photography. Every verified plate is
+                  captured by a person with a physical camera, kept with its RAW original and
+                  capture record, and licensed directly by the photographer — no intermediaries, no
+                  synthetic imagery.
                 </p>
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
                   The images shown on this preview are placeholders and are not part of the archive.
@@ -145,14 +148,20 @@ function Home() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <figcaption className="label mt-3">Placeholder imagery — awaiting verified original</figcaption>
+                <figcaption className="label mt-3">
+                  Placeholder imagery — awaiting verified original
+                </figcaption>
               </figure>
             </div>
           </div>
         </section>
 
         {/* Verification */}
-        <section id="verification" className="border-b border-border" aria-labelledby="verification-title">
+        <section
+          id="verification"
+          className="border-b border-border"
+          aria-labelledby="verification-title"
+        >
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-16">
               <div>
@@ -175,7 +184,11 @@ function Home() {
         </section>
 
         {/* Collection */}
-        <section id="collection" className="border-b border-border" aria-labelledby="collection-title">
+        <section
+          id="collection"
+          className="border-b border-border"
+          aria-labelledby="collection-title"
+        >
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="max-w-2xl">
               <p className="label">Collection</p>
@@ -183,8 +196,8 @@ function Home() {
                 Twelve plates from the archive
               </h2>
               <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-                Each record below is a placeholder awaiting its verified original. Open a plate to see
-                its provenance panel, capture metadata and licensing options.
+                Each record below is a placeholder awaiting its verified original. Open a plate to
+                see its provenance panel, capture metadata and licensing options.
               </p>
             </div>
 
@@ -217,7 +230,9 @@ function Home() {
                         <p className="min-w-0 truncate text-sm text-muted-foreground">
                           {plate.verification.status}
                         </p>
-                        <p className="label shrink-0 text-foreground">from kr {plate.price}</p>
+                        <p className="label shrink-0 text-foreground">
+                          from kr {plate.price} (draft)
+                        </p>
                       </div>
                     </Link>
                   </article>
@@ -253,7 +268,11 @@ function Home() {
         </section>
 
         {/* Photographer */}
-        <section id="photographer" className="border-b border-border" aria-labelledby="photographer-title">
+        <section
+          id="photographer"
+          className="border-b border-border"
+          aria-labelledby="photographer-title"
+        >
           <div className="mx-auto grid max-w-[92rem] gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-20">
             <figure className="min-w-0">
               {/* REPLACEMENT POINT: photographer portrait */}
@@ -268,7 +287,9 @@ function Home() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <figcaption className="label mt-3">Placeholder portrait — awaiting real image</figcaption>
+              <figcaption className="label mt-3">
+                Placeholder portrait — awaiting real image
+              </figcaption>
             </figure>
             <div className="min-w-0 lg:pt-6">
               <p className="label">Photographer</p>
@@ -307,7 +328,11 @@ function Home() {
         </section>
 
         {/* Licensing */}
-        <section id="licensing" className="border-b border-border" aria-labelledby="licensing-title">
+        <section
+          id="licensing"
+          className="border-b border-border"
+          aria-labelledby="licensing-title"
+        >
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="max-w-2xl">
               <p className="label">Licensing</p>
@@ -320,6 +345,11 @@ function Home() {
               </p>
             </div>
 
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+              {PRICE_STATUS_NOTE} Personal is for private, non-commercial use only; Commercial and
+              Extended cover business use.
+            </p>
+
             <div className="mt-10">
               <TrustStrip />
             </div>
@@ -328,7 +358,11 @@ function Home() {
               {licenses.map((l) => (
                 <li key={l.id} className="flex flex-col bg-background p-6 sm:p-8">
                   <h3 className="display text-2xl">{l.name}</h3>
+                  <p className="label mt-2">{l.audience}</p>
                   <p className="label mt-3 text-foreground">{l.price}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Draft price — indicative only
+                  </p>
                   <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{l.summary}</p>
                   <p className="label rule-top mt-6 pt-6">Permitted</p>
                   <ul className="mt-3 space-y-3 text-sm text-muted-foreground">
@@ -350,7 +384,10 @@ function Home() {
                       </li>
                     ))}
                   </ul>
-                  <a href="#request" className="link-underline focus-ring mt-8 self-start rounded-sm text-sm">
+                  <a
+                    href="#request"
+                    className="link-underline focus-ring mt-8 self-start rounded-sm text-sm"
+                  >
                     Request {l.name.toLowerCase()} terms
                   </a>
                 </li>

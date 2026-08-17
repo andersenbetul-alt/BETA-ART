@@ -74,14 +74,38 @@ type Seed = { title: string; slug: string; catalogue: string; price: number; src
 
 const seeds: Seed[] = [
   { title: "First Light", slug: "first-light", catalogue: "BA-001", price: 190, src: plate01 },
-  { title: "Into the Pines", slug: "into-the-pines", catalogue: "BA-002", price: 190, src: plate01 },
+  {
+    title: "Into the Pines",
+    slug: "into-the-pines",
+    catalogue: "BA-002",
+    price: 190,
+    src: plate01,
+  },
   { title: "Sea of Fog", slug: "sea-of-fog", catalogue: "BA-003", price: 190, src: plate02 },
   { title: "Still Water", slug: "still-water", catalogue: "BA-004", price: 190, src: plate03 },
   { title: "PALM", slug: "palm", catalogue: "BA-005", price: 190, src: plate04 },
-  { title: "Blue Hour Grid", slug: "blue-hour-grid", catalogue: "BA-006", price: 190, src: plate03 },
-  { title: "Night Crossing", slug: "night-crossing", catalogue: "BA-007", price: 190, src: plate05 },
+  {
+    title: "Blue Hour Grid",
+    slug: "blue-hour-grid",
+    catalogue: "BA-006",
+    price: 190,
+    src: plate03,
+  },
+  {
+    title: "Night Crossing",
+    slug: "night-crossing",
+    catalogue: "BA-007",
+    price: 190,
+    src: plate05,
+  },
   { title: "Golden Hour", slug: "golden-hour", catalogue: "BA-008", price: 190, src: plate06 },
-  { title: "Portrait in Amber", slug: "portrait-in-amber", catalogue: "BA-009", price: 240, src: plate06 },
+  {
+    title: "Portrait in Amber",
+    slug: "portrait-in-amber",
+    catalogue: "BA-009",
+    price: 240,
+    src: plate06,
+  },
   { title: "The Maker", slug: "the-maker", catalogue: "BA-010", price: 240, src: plate05 },
   { title: "Slow Morning", slug: "slow-morning", catalogue: "BA-011", price: 190, src: plate04 },
   { title: "Low Tide", slug: "low-tide", catalogue: "BA-012", price: 190, src: plate02 },
@@ -103,6 +127,8 @@ export function getPlate(slug: string): Plate | undefined {
 export type License = {
   id: string;
   name: string;
+  /** Private (non-commercial) vs business use — these categories never merge. */
+  audience: "Private, non-commercial use only" | "Business use";
   price: string;
   summary: string;
   permitted: string[];
@@ -113,8 +139,10 @@ export const licenses: License[] = [
   {
     id: "personal",
     name: "Personal",
+    audience: "Private, non-commercial use only",
     price: "from kr 190",
-    summary: "For private, non-commercial use — prints for your own walls and personal digital use.",
+    summary:
+      "For private individuals only: prints for your own walls and personal digital use. This licence never covers business, brand, freelance or other commercial activity — those need Commercial or Extended.",
     permitted: [
       "Print one copy for a private space",
       "Use on a personal, non-monetised website or profile",
@@ -125,6 +153,7 @@ export const licenses: License[] = [
   {
     id: "commercial",
     name: "Commercial",
+    audience: "Business use",
     price: "from kr 1 200",
     summary: "For one organisation to use the image in its own marketing and editorial material.",
     permitted: [
@@ -137,8 +166,10 @@ export const licenses: License[] = [
   {
     id: "extended",
     name: "Extended",
+    audience: "Business use",
     price: "from kr 4 500",
-    summary: "For wide distribution, including physical products where the image is part of the goods.",
+    summary:
+      "For wide distribution, including physical products where the image is part of the goods.",
     permitted: [
       "Packaging, merchandise and product surfaces",
       "Worldwide territory across all media",
@@ -149,8 +180,10 @@ export const licenses: License[] = [
   {
     id: "custom",
     name: "Custom & Exclusive",
+    audience: "Business use",
     price: "On request",
-    summary: "For exclusivity, buy-outs, archive removal or commissioned capture. Terms drafted per project.",
+    summary:
+      "For exclusivity, buy-outs, archive removal or commissioned capture. Terms drafted per project.",
     permitted: [
       "Category or full exclusivity",
       "Archive removal on request",
@@ -167,7 +200,8 @@ export const deliveryInfo = [
   },
   {
     term: "Delivery method",
-    detail: "Download link issued after the licence is signed. Delivery timing confirmed per request.",
+    detail:
+      "Download link issued after the licence is signed. Delivery timing confirmed per request.",
   },
   {
     term: "Licence document",
@@ -214,7 +248,7 @@ export const faqs = [
   },
   {
     q: "Which licence do I need?",
-    a: "Personal covers private prints. Commercial covers marketing for one organisation. Extended covers packaging and wide distribution. If none of those fit, a custom or exclusive agreement is drafted for you.",
+    a: "Personal is for private, non-commercial use only and never covers business activity. Commercial covers marketing for one organisation. Extended covers packaging and wide distribution. If none of those fit, a custom or exclusive agreement is drafted for you.",
   },
   {
     q: "How is the licence delivered?",

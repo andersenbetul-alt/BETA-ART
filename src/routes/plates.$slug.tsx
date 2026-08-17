@@ -6,7 +6,7 @@ import { CaptureTable, ProvenancePanel } from "@/components/ProvenancePanel";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustStrip } from "@/components/TrustStrip";
-import { siteConfig } from "@/config/site";
+import { canonicalUrl, PRICE_STATUS_NOTE, robotsContent, siteConfig } from "@/config/site";
 import { deliveryInfo, getPlate, licenses, orderingSteps } from "@/data/collection";
 
 export const Route = createFileRoute("/plates/$slug")({
@@ -17,12 +17,15 @@ export const Route = createFileRoute("/plates/$slug")({
   },
   head: ({ params, loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Plate not found — Beta Art" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Plate not found — Beta Art" }, { name: "robots", content: "noindex" }],
+      };
     }
     const { plate } = loaderData;
     const title = `${plate.title} (${plate.catalogue}) — Beta Art`;
     const description = `License ${plate.title}, catalogue ${plate.catalogue}, from the Beta Art human photography archive. Provenance panel, capture record and licence options.`;
-    const url = `${siteConfig.url}plates/${params.slug}`;
+    /* No URL is claimed while the production domain is unconfirmed. */
+    const url = canonicalUrl ? `${canonicalUrl}plates/${params.slug}` : null;
 
     /* Structured data lists only known values: title, catalogue number and price. */
     const jsonLd = {
@@ -31,12 +34,12 @@ export const Route = createFileRoute("/plates/$slug")({
       name: plate.title,
       sku: plate.catalogue,
       category: "Photography licence",
-      url,
+      ...(url ? { url } : {}),
       offers: {
         "@type": "Offer",
         price: plate.price,
         priceCurrency: plate.currency,
-        url,
+        ...(url ? { url } : {}),
       },
     };
 
@@ -47,14 +50,19 @@ export const Route = createFileRoute("/plates/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "product" },
-        { property: "og:url", content: url },
-        { property: "og:image", content: siteConfig.ogImage },
+        ...(url
+          ? [
+              { property: "og:url", content: url },
+              { property: "og:image", content: siteConfig.ogImage },
+              { name: "twitter:image", content: siteConfig.ogImage },
+            ]
+          : []),
+        { name: "robots", content: robotsContent },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
-        { name: "twitter:image", content: siteConfig.ogImage },
       ],
-      links: [{ rel: "canonical", href: url }],
+      ...(url ? { links: [{ rel: "canonical", href: url }] } : {}),
       scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
     };
   },
@@ -85,7 +93,10 @@ function PlateDetail() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+      >
         Skip to content
       </a>
       <SiteHeader />
@@ -117,6 +128,7 @@ function PlateDetail() {
               <p className="label mt-4 text-foreground">
                 from kr {plate.price} · {plate.currency}
               </p>
+              <p className="mt-1 text-xs text-muted-foreground">{PRICE_STATUS_NOTE}</p>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
                 {plate.description}
               </p>
@@ -164,7 +176,11 @@ function PlateDetail() {
                       />
                       <span className="display text-xl">{l.name}</span>
                     </span>
+                    <span className="label mt-2 block">{l.audience}</span>
                     <span className="label mt-3 block text-foreground">{l.price}</span>
+                    <span className="mt-1 block text-xs text-muted-foreground">
+                      Draft price — indicative only
+                    </span>
                     <span className="mt-4 block text-sm leading-relaxed text-muted-foreground">
                       {l.summary}
                     </span>
@@ -179,7 +195,9 @@ function PlateDetail() {
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                   {active.permitted.map((p) => (
                     <li key={p} className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
-                      <span aria-hidden="true" className="text-accent">+</span>
+                      <span aria-hidden="true" className="text-accent">
+                        +
+                      </span>
                       <span>{p}</span>
                     </li>
                   ))}
@@ -199,7 +217,10 @@ function PlateDetail() {
                 <h3 className="display text-2xl">Delivery</h3>
                 <dl className="rule-top mt-6 grid gap-4 pt-6">
                   {deliveryInfo.map((d) => (
-                    <div key={d.term} className="grid gap-1 sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] sm:gap-4">
+                    <div
+                      key={d.term}
+                      className="grid gap-1 sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] sm:gap-4"
+                    >
                       <dt className="label">{d.term}</dt>
                       <dd className="text-sm text-muted-foreground">{d.detail}</dd>
                     </div>
