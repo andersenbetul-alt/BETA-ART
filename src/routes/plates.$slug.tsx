@@ -17,7 +17,9 @@ export const Route = createFileRoute("/plates/$slug")({
   },
   head: ({ params, loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Plate not found — Beta Art" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Plate not found — Beta Art" }, { name: "robots", content: "noindex" }],
+      };
     }
     const { plate } = loaderData;
     const title = `${plate.title} (${plate.catalogue}) — Beta Art`;
@@ -91,7 +93,10 @@ function PlateDetail() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+      >
         Skip to content
       </a>
       <SiteHeader />
@@ -190,7 +195,9 @@ function PlateDetail() {
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                   {active.permitted.map((p) => (
                     <li key={p} className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
-                      <span aria-hidden="true" className="text-accent">+</span>
+                      <span aria-hidden="true" className="text-accent">
+                        +
+                      </span>
                       <span>{p}</span>
                     </li>
                   ))}
@@ -210,7 +217,10 @@ function PlateDetail() {
                 <h3 className="display text-2xl">Delivery</h3>
                 <dl className="rule-top mt-6 grid gap-4 pt-6">
                   {deliveryInfo.map((d) => (
-                    <div key={d.term} className="grid gap-1 sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] sm:gap-4">
+                    <div
+                      key={d.term}
+                      className="grid gap-1 sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] sm:gap-4"
+                    >
                       <dt className="label">{d.term}</dt>
                       <dd className="text-sm text-muted-foreground">{d.detail}</dd>
                     </div>

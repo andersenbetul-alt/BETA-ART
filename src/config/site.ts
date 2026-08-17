@@ -76,9 +76,7 @@ export const canonicalUrl: string | null = siteConfig.productionUrlConfirmed
 export const robotsContent = siteConfig.developmentMode ? "noindex,nofollow" : "index,follow";
 
 /** Prefix used wherever a numeric price is shown while pricing is not confirmed. */
-export const PRICE_STATUS_NOTE =
-  "Draft pricing — indicative only, not confirmed licence terms.";
-
+export const PRICE_STATUS_NOTE = "Draft pricing — indicative only, not confirmed licence terms.";
 
 export const legalPages = [
   { to: "/privacy", label: "Privacy Policy" },

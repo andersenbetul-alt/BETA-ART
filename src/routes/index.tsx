@@ -75,7 +75,6 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-
 const methods = [
   {
     index: "01",
@@ -119,9 +118,10 @@ function Home() {
                   Photography
                 </h1>
                 <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                  Beta Art licenses original human-made photography. Every verified plate is captured
-                  by a person with a physical camera, kept with its RAW original and capture record,
-                  and licensed directly by the photographer — no intermediaries, no synthetic imagery.
+                  Beta Art licenses original human-made photography. Every verified plate is
+                  captured by a person with a physical camera, kept with its RAW original and
+                  capture record, and licensed directly by the photographer — no intermediaries, no
+                  synthetic imagery.
                 </p>
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
                   The images shown on this preview are placeholders and are not part of the archive.
@@ -148,14 +148,20 @@ function Home() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <figcaption className="label mt-3">Placeholder imagery — awaiting verified original</figcaption>
+                <figcaption className="label mt-3">
+                  Placeholder imagery — awaiting verified original
+                </figcaption>
               </figure>
             </div>
           </div>
         </section>
 
         {/* Verification */}
-        <section id="verification" className="border-b border-border" aria-labelledby="verification-title">
+        <section
+          id="verification"
+          className="border-b border-border"
+          aria-labelledby="verification-title"
+        >
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:gap-16">
               <div>
@@ -178,7 +184,11 @@ function Home() {
         </section>
 
         {/* Collection */}
-        <section id="collection" className="border-b border-border" aria-labelledby="collection-title">
+        <section
+          id="collection"
+          className="border-b border-border"
+          aria-labelledby="collection-title"
+        >
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="max-w-2xl">
               <p className="label">Collection</p>
@@ -186,8 +196,8 @@ function Home() {
                 Twelve plates from the archive
               </h2>
               <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-                Each record below is a placeholder awaiting its verified original. Open a plate to see
-                its provenance panel, capture metadata and licensing options.
+                Each record below is a placeholder awaiting its verified original. Open a plate to
+                see its provenance panel, capture metadata and licensing options.
               </p>
             </div>
 
@@ -258,7 +268,11 @@ function Home() {
         </section>
 
         {/* Photographer */}
-        <section id="photographer" className="border-b border-border" aria-labelledby="photographer-title">
+        <section
+          id="photographer"
+          className="border-b border-border"
+          aria-labelledby="photographer-title"
+        >
           <div className="mx-auto grid max-w-[92rem] gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-20">
             <figure className="min-w-0">
               {/* REPLACEMENT POINT: photographer portrait */}
@@ -273,7 +287,9 @@ function Home() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <figcaption className="label mt-3">Placeholder portrait — awaiting real image</figcaption>
+              <figcaption className="label mt-3">
+                Placeholder portrait — awaiting real image
+              </figcaption>
             </figure>
             <div className="min-w-0 lg:pt-6">
               <p className="label">Photographer</p>
@@ -312,7 +328,11 @@ function Home() {
         </section>
 
         {/* Licensing */}
-        <section id="licensing" className="border-b border-border" aria-labelledby="licensing-title">
+        <section
+          id="licensing"
+          className="border-b border-border"
+          aria-labelledby="licensing-title"
+        >
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="max-w-2xl">
               <p className="label">Licensing</p>
@@ -340,7 +360,9 @@ function Home() {
                   <h3 className="display text-2xl">{l.name}</h3>
                   <p className="label mt-2">{l.audience}</p>
                   <p className="label mt-3 text-foreground">{l.price}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">Draft price — indicative only</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Draft price — indicative only
+                  </p>
                   <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{l.summary}</p>
                   <p className="label rule-top mt-6 pt-6">Permitted</p>
                   <ul className="mt-3 space-y-3 text-sm text-muted-foreground">
@@ -362,7 +384,10 @@ function Home() {
                       </li>
                     ))}
                   </ul>
-                  <a href="#request" className="link-underline focus-ring mt-8 self-start rounded-sm text-sm">
+                  <a
+                    href="#request"
+                    className="link-underline focus-ring mt-8 self-start rounded-sm text-sm"
+                  >
                     Request {l.name.toLowerCase()} terms
                   </a>
                 </li>
