@@ -62,6 +62,7 @@ const PRODUCT_FIELDS = `
       sku
       quantityAvailable
       availableForSale
+      price { amount currencyCode }
     }
   }
 `;
@@ -75,7 +76,13 @@ type ShopifyProductNode = {
   featuredImage: { url: string; altText: string | null } | null;
   priceRange: { minVariantPrice: { amount: string; currencyCode: string } };
   variants: {
-    nodes: { id: string; sku: string | null; quantityAvailable: number | null; availableForSale: boolean }[];
+    nodes: {
+      id: string;
+      sku: string | null;
+      quantityAvailable: number | null;
+      availableForSale: boolean;
+      price: { amount: string; currencyCode: string };
+    }[];
   };
 };
 
@@ -84,17 +91,26 @@ const CATEGORY_TAGS: CategoryId[] = ['hjem', 'klaer', 'skjonnhet', 'gaver'];
 function toView(node: ShopifyProductNode): ProductView {
   const variant = node.variants.nodes[0];
   const category = CATEGORY_TAGS.find((c) => node.tags.includes(c)) ?? 'gaver';
-  // quantityAvailable yalnızca stok takibi açıkken dolu gelir; null ise
-  // availableForSale'a düşeriz, aksi halde takipsiz ürünler "tükendi" görünür.
-  const stock =
-    variant?.quantityAvailable ?? (variant?.availableForSale || node.availableForSale ? 1 : 0);
+
+  // Satılabilirliği availableForSale belirler: stok takibi kapalıysa ya da
+  // "stok bitince satmaya devam et" açıksa quantityAvailable 0/null gelir ama
+  // ürün satılmaya devam eder.
+  const available = variant?.availableForSale ?? node.availableForSale;
+  // Kalan adet yalnızca stok takibi açıkken bilinir; bilinmiyorsa null —
+  // 1 varsayarsak takipsiz ürünlerde müşteri tek adetle sınırlanır.
+  const stock = typeof variant?.quantityAvailable === 'number' ? variant.quantityAvailable : null;
+
+  // Fiyat, sepete eklenecek varyantın kendi fiyatı olmalı; minVariantPrice
+  // çok varyantlı üründe gösterilen ile tahsil edilen tutarı ayırır.
+  const price = variant?.price ?? node.priceRange.minVariantPrice;
 
   return {
     slug: node.handle,
     sku: variant?.sku ?? node.handle,
     category,
-    price: Math.round(Number(node.priceRange.minVariantPrice.amount)),
-    currency: node.priceRange.minVariantPrice.currencyCode,
+    price: Number(price.amount),
+    currency: price.currencyCode,
+    available,
     stock,
     hsCode: '',
     originCountry: '',
@@ -110,16 +126,36 @@ function toView(node: ShopifyProductNode): ProductView {
   };
 }
 
+/** Tek seferde çekilecek en fazla sayfa — kaçak döngüye karşı emniyet. */
+const MAX_PRODUCT_PAGES = 10;
+
 export async function fetchProducts(locale: Locale): Promise<ProductView[]> {
   const { language, country } = contextByLocale[locale];
-  const data = await storefront<{ products: { nodes: ShopifyProductNode[] } }>(
-    `query Products($language: LanguageCode!, $country: CountryCode!)
+  const query = `query Products($language: LanguageCode!, $country: CountryCode!, $after: String)
      @inContext(language: $language, country: $country) {
-       products(first: 100, sortKey: BEST_SELLING) { nodes { ${PRODUCT_FIELDS} } }
-     }`,
-    { language, country },
-  );
-  return data.products.nodes.map(toView);
+       products(first: 100, sortKey: BEST_SELLING, after: $after) {
+         nodes { ${PRODUCT_FIELDS} }
+         pageInfo { hasNextPage endCursor }
+       }
+     }`;
+
+  const all: ProductView[] = [];
+  let after: string | null = null;
+
+  // 100'den fazla ürünü olan mağazada sayfalamayı takip et; aksi halde vitrin,
+  // sitemap ve checkout katalogları sessizce kırpılır.
+  for (let page = 0; page < MAX_PRODUCT_PAGES; page++) {
+    const data: {
+      products: { nodes: ShopifyProductNode[]; pageInfo: { hasNextPage: boolean; endCursor: string | null } };
+    } = await storefront(query, { language, country, after });
+
+    all.push(...data.products.nodes.map(toView));
+    if (!data.products.pageInfo.hasNextPage) break;
+    after = data.products.pageInfo.endCursor;
+    if (!after) break;
+  }
+
+  return all;
 }
 
 export async function fetchProduct(locale: Locale, handle: string): Promise<ProductView | null> {

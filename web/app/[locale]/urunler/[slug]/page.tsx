@@ -47,7 +47,7 @@ export default async function ProductPage({
   const product = await getProduct(locale, slug);
   if (!product) notFound();
 
-  const soldOut = product.stock === 0;
+  const soldOut = !product.available;
 
   return (
     <div className="wrap">
@@ -69,7 +69,7 @@ export default async function ProductPage({
 
         <div>
           <h1>{product.name}</h1>
-          <p className="price" style={{ fontSize: '1.5rem' }}>{formatPrice(product.price, locale)}</p>
+          <p className="price" style={{ fontSize: '1.5rem' }}>{formatPrice(product.price, locale, product.currency)}</p>
           <p className={soldOut ? 'stock-no' : 'stock-ok'}>
             {soldOut ? t(locale, 'product.outOfStock') : t(locale, 'product.inStock')}
           </p>

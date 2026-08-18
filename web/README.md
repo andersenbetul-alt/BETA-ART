@@ -68,7 +68,10 @@ Gereken Storefront API izinleri:
 
 ```
 sayfa → lib/catalog.ts ─┬─ Shopify yapılandırılmışsa → lib/shopify.ts (Storefront API)
-                        └─ değilse veya hata varsa   → lib/products.ts (yerel katalog)
+                        └─ değilse veya API hata verirse → lib/products.ts (yerel katalog)
+
+Shopify sorgusu başarılı olup ürün bulamazsa yerel kataloğa DÜŞÜLMEZ — sayfa 404
+döner, aksi halde mağazadan silinmiş ürün satın alınamaz bir sayfa olarak kalır.
 
 sepet → POST /api/checkout → varyant + fiyat sunucuda doğrulanır
                            → cartCreate → checkoutUrl → yönlendirme
@@ -84,7 +87,7 @@ yalnızca slug ve adedi kabul eder, geri kalanını sunucudaki kataloglardan oku
 - [ ] Yasal metinlerin tam hâlini `docs/sozlesmeler/` klasöründen sayfalara taşı.
 - [ ] Analytics 4 / Meta Pixel — **yalnızca rıza sonrası** yüklensin
       (`window.addEventListener('cobban:consent', ...)` olayını dinle).
-- [ ] `NEXT_PUBLIC_SITE_URL`'i gerçek alan adına ayarla (sitemap ve JSON-LD kullanıyor).
+- [ ] `NEXT_PUBLIC_SITE_URL`'i gerçek alan adına ayarla (sitemap, robots, canonical ve JSON-LD kullanıyor).
 
 ## Hazır olanlar
 

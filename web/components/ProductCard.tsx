@@ -3,7 +3,7 @@ import { formatPrice, t, type Locale } from '@/lib/i18n';
 import type { ProductView } from '@/lib/types';
 
 export default function ProductCard({ product, locale }: { product: ProductView; locale: Locale }) {
-  const soldOut = product.stock === 0;
+  const soldOut = !product.available;
   return (
     <Link href={`/${locale}/urunler/${product.slug}`} className="card">
       <div className="thumb" style={{ background: product.swatch }}>
@@ -17,7 +17,7 @@ export default function ProductCard({ product, locale }: { product: ProductView;
         {soldOut && <em className="badge">{t(locale, 'product.outOfStock')}</em>}
       </div>
       <p className="card-title">{product.name}</p>
-      <p className="price">{formatPrice(product.price, locale)}</p>
+      <p className="price">{formatPrice(product.price, locale, product.currency)}</p>
     </Link>
   );
 }

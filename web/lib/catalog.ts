@@ -12,6 +12,7 @@ function localize(product: Product, locale: Locale): ProductView {
     category: product.category,
     price: product.price[locale],
     currency: currencyByLocale[locale].code,
+    available: product.stock > 0,
     stock: product.stock,
     hsCode: product.hsCode,
     originCountry: product.originCountry,
@@ -48,8 +49,9 @@ export async function getProducts(locale: Locale, category?: CategoryId): Promis
 export async function getProduct(locale: Locale, slug: string): Promise<ProductView | null> {
   if (isShopifyConfigured()) {
     try {
-      const found = await fetchProduct(locale, slug);
-      if (found) return found;
+      // Sorgu başarılıysa "bulunamadı" gerçekten 404 demektir — yerel demo
+      // kataloğa düşersek silinmiş ürün satın alınamaz bir sayfa olarak yaşar.
+      return await fetchProduct(locale, slug);
     } catch (error) {
       console.error('[catalog] Shopify erişilemedi, yerel kataloğa düşüldü:', error);
     }

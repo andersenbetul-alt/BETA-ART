@@ -10,7 +10,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   if (!isLocale(locale)) notFound();
 
   const all = await getProducts(locale);
-  const featured = all.filter((p) => p.stock > 0).slice(0, 4);
+  const featured = all.filter((p) => p.available).slice(0, 4);
 
   return (
     <div className="wrap">

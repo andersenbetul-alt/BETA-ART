@@ -3,8 +3,13 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { formatPrice, t, type Locale } from '@/lib/i18n';
-import type { ProductView } from '@/lib/types';
+import { MAX_LINE_QTY, type ProductView } from '@/lib/types';
 import { useCart } from './CartContext';
+
+/** Satır başına izin verilen en yüksek adet — sunucudaki doğrulamayla aynı sınır. */
+function maxQty(product: ProductView): number {
+  return product.stock === null ? MAX_LINE_QTY : Math.min(product.stock, MAX_LINE_QTY);
+}
 
 export default function CartView({
   locale,
@@ -42,6 +47,9 @@ export default function CartView({
 
   const subtotal = rows.reduce((sum, r) => sum + r.product.price * r.line.qty, 0);
   const shippingCost = subtotal >= shipping.freeOver ? 0 : shipping.fee;
+  // Katalog Shopify'dan geliyorsa fiyatlar mağazanın para biriminde olabilir;
+  // pazarın varsayılanını varsaymak yerine ürünün kendi birimini kullan.
+  const currency = rows[0].product.currency;
 
   async function checkout() {
     setBusy(true);
@@ -52,8 +60,17 @@ export default function CartView({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ locale, lines }),
       });
-      const data: { checkoutUrl?: string; error?: string } = await res.json();
-      if (!res.ok || !data.checkoutUrl) throw new Error(data.error ?? `HTTP ${res.status}`);
+      const data: { checkoutUrl?: string; error?: string; unavailable?: string[] } = await res.json();
+      if (!res.ok || !data.checkoutUrl) {
+        if (data.unavailable?.length) {
+          const names = data.unavailable
+            .map((slug) => catalog.find((p) => p.slug === slug)?.name ?? slug)
+            .filter(Boolean)
+            .join(', ');
+          throw new Error(`${t(locale, 'cart.itemsUnavailable')} ${names}`);
+        }
+        throw new Error(data.error ?? `HTTP ${res.status}`);
+      }
       window.location.href = data.checkoutUrl;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Bilinmeyen hata');
@@ -73,9 +90,9 @@ export default function CartView({
               <button onClick={() => setQty(line.slug, line.qty - 1)} aria-label="−">−</button>
               <span aria-live="polite">{line.qty}</span>
               <button
-                onClick={() => setQty(line.slug, line.qty + 1)}
+                onClick={() => setQty(line.slug, Math.min(line.qty + 1, maxQty(product)))}
                 aria-label="+"
-                disabled={product.stock > 0 && line.qty >= product.stock}
+                disabled={!product.available || line.qty >= maxQty(product)}
               >
                 +
               </button>
@@ -87,24 +104,24 @@ export default function CartView({
               </button>
             </div>
           </div>
-          <div className="price">{formatPrice(product.price * line.qty, locale)}</div>
+          <div className="price">{formatPrice(product.price * line.qty, locale, product.currency)}</div>
         </div>
       ))}
 
       <div className="totals">
         <div>
           <span>{t(locale, 'cart.subtotal')}</span>
-          <span className="price">{formatPrice(subtotal, locale)}</span>
+          <span className="price">{formatPrice(subtotal, locale, currency)}</span>
         </div>
         <div>
           <span>{t(locale, 'cart.shipping')}</span>
           <span className="price">
-            {shippingCost === 0 ? t(locale, 'cart.freeShipping') : formatPrice(shippingCost, locale)}
+            {shippingCost === 0 ? t(locale, 'cart.freeShipping') : formatPrice(shippingCost, locale, currency)}
           </span>
         </div>
         <div className="grand">
           <span>{t(locale, 'cart.total')}</span>
-          <span className="price">{formatPrice(subtotal + shippingCost, locale)}</span>
+          <span className="price">{formatPrice(subtotal + shippingCost, locale, currency)}</span>
         </div>
         <p className="small muted">{t(locale, 'cart.vatIncluded')}</p>
 

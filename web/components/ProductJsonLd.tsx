@@ -1,10 +1,9 @@
 import { currencyByLocale, type Locale } from '@/lib/i18n';
+import { SITE_URL } from '@/lib/site';
 import type { ProductView } from '@/lib/types';
 
 /** Google Merchant Center ve zengin sonuçlar için schema.org Product işaretlemesi. */
 export default function ProductJsonLd({ product, locale }: { product: ProductView; locale: Locale }) {
-  const site = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cobban.com';
-
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -16,11 +15,12 @@ export default function ProductJsonLd({ product, locale }: { product: ProductVie
     ...(product.material ? { material: product.material } : {}),
     offers: {
       '@type': 'Offer',
-      url: `${site}/${locale}/urunler/${product.slug}`,
+      url: `${SITE_URL}/${locale}/urunler/${product.slug}`,
       price: product.price,
       priceCurrency: product.currency || currencyByLocale[locale].code,
-      availability:
-        product.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+      availability: product.available
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/OutOfStock',
       itemCondition: 'https://schema.org/NewCondition',
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',

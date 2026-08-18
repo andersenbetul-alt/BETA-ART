@@ -19,13 +19,20 @@ export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
 
-export function formatPrice(amount: number, locale: Locale): string {
-  const { code } = currencyByLocale[locale];
+/**
+ * `currency` verilmezse pazarın varsayılan birimi kullanılır. Shopify fiyatları
+ * kendi para birimiyle gelir — o birim her zaman çağrı sırasında geçilmelidir,
+ * aksi halde tutar doğru ama sembol yanlış olur.
+ */
+export function formatPrice(amount: number, locale: Locale, currency?: string): string {
+  const code = currency || currencyByLocale[locale].code;
   const intlLocale = locale === 'no' ? 'nb-NO' : locale === 'tr' ? 'tr-TR' : 'en-IE';
   return new Intl.NumberFormat(intlLocale, {
     style: 'currency',
     currency: code,
-    maximumFractionDigits: 0,
+    // Yerel katalog tam sayı kullanır; Shopify 349,90 gibi kuruşlu fiyat dönebilir.
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
   }).format(amount);
 }
 
@@ -65,6 +72,7 @@ export const dictionaries: Record<Locale, Dict> = {
     'cart.remove': 'Fjern',
     'cart.continue': 'Fortsett å handle',
     'cart.checkoutUnavailable': 'Kassen er ikke koblet til ennå. Se web/.env.example.',
+    'cart.itemsUnavailable': 'Disse varene kan ikke kjøpes nå og må fjernes:',
     'footer.legal': 'Vilkår og personvern',
     'footer.terms': 'Salgsbetingelser',
     'footer.privacy': 'Personvernerklæring',
@@ -107,6 +115,7 @@ export const dictionaries: Record<Locale, Dict> = {
     'cart.remove': 'Remove',
     'cart.continue': 'Continue shopping',
     'cart.checkoutUnavailable': 'Checkout is not connected yet. See web/.env.example.',
+    'cart.itemsUnavailable': 'These items cannot be purchased right now and must be removed:',
     'footer.legal': 'Terms and privacy',
     'footer.terms': 'Terms of sale',
     'footer.privacy': 'Privacy policy',
@@ -149,6 +158,7 @@ export const dictionaries: Record<Locale, Dict> = {
     'cart.remove': 'Kaldır',
     'cart.continue': 'Alışverişe devam et',
     'cart.checkoutUnavailable': 'Ödeme henüz bağlanmadı. Bkz. web/.env.example.',
+    'cart.itemsUnavailable': 'Şu ürünler şu anda satın alınamıyor, sepetten çıkarılmalı:',
     'footer.legal': 'Sözleşmeler ve gizlilik',
     'footer.terms': 'Mesafeli satış sözleşmesi',
     'footer.privacy': 'KVKK aydınlatma metni',

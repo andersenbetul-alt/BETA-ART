@@ -32,6 +32,7 @@ BETA-ART/
 | Shopify mağaza kurulumu | [docs/08](docs/08-shopify-kurulum.md) |
 | 90 günlük lansman planı | [docs/09](docs/09-lansman-plani-90-gun.md) |
 | Kontrol listesi | [docs/10](docs/10-kontrol-listesi.md) |
+| **Geliştirme planı (yaşayan backlog)** | [docs/11](docs/11-gelistirme-plani.md) |
 | Yasal metinler (mesafeli satış, KVKK/GDPR, iade, çerez) | [docs/sozlesmeler/](docs/sozlesmeler/) |
 
 ## Web sitesi
