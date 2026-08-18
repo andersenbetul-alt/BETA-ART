@@ -24,7 +24,7 @@ export function ApproachView({ locale }: { locale: Locale }) {
               className="grid gap-6 rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-9 lg:grid-cols-[0.8fr_1.2fr]"
             >
               <div>
-                <span className="font-display text-4xl text-accent-500">
+                <span className="font-display text-4xl text-accent-600">
                   {phase.step}
                 </span>
                 <h2 className="mt-3 font-display text-2xl text-ink-900">

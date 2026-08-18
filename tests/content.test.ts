@@ -181,6 +181,16 @@ describe("içgörü yazıları", () => {
   });
 });
 
+describe("erişilebilirlik metinleri", () => {
+  // Atlama bağlantısı #main'e gider; etiketi "ana sayfaya dön" olmamalı.
+  it("atlama bağlantısı içeriğe atlamayı anlatır", () => {
+    for (const [locale, dict] of dicts) {
+      expect(dict.actions.skipToContent, locale).toBeTruthy();
+      expect(dict.actions.skipToContent, locale).not.toBe(dict.actions.backHome);
+    }
+  });
+});
+
 describe("dil etiketleri", () => {
   it("html lang değeri dil koduyla eşleşir", () => {
     for (const [locale, dict] of dicts) {

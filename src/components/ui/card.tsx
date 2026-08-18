@@ -28,7 +28,7 @@ export function FeatureCard({
   return (
     <Card className="h-full">
       {index ? (
-        <span className="font-display text-sm text-accent-600">{index}</span>
+        <span className="font-display text-sm text-accent-700">{index}</span>
       ) : null}
       <h3 className="mt-2 font-display text-xl text-ink-900">{title}</h3>
       <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-800/75">

@@ -10,7 +10,7 @@ function Check() {
     <svg
       aria-hidden="true"
       viewBox="0 0 16 16"
-      className="mt-1 size-4 shrink-0 text-accent-600"
+      className="mt-1 size-4 shrink-0 text-accent-700"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"

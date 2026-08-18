@@ -24,6 +24,7 @@ export const en: Dictionary = {
     approach: "How we work",
     readMore: "Learn more",
     backHome: "Back to home",
+    skipToContent: "Skip to content",
   },
   home: {
     hero: {
@@ -95,6 +96,13 @@ export const en: Dictionary = {
             "No off-the-shelf templates. Every solution is shaped around your scale, culture and pace.",
         },
       ],
+    },
+    insights: {
+      eyebrow: "Insights",
+      title: "What we see on the ground",
+      description:
+        "We write about the problems we meet again and again in client work, and the approaches we have seen actually hold up.",
+      all: "All articles",
     },
     cta: {
       title: "Let's talk about your priority",

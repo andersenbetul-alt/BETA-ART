@@ -4,11 +4,15 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink, Arrow } from "@/components/ui/button";
 import { Card, FeatureCard } from "@/components/ui/card";
 import { getDictionary } from "@/content";
+import { articleIds, articleMeta } from "@/content/articles";
+import { formatDate } from "./insights";
 import { path, type Locale } from "@/lib/i18n";
 
 export function HomeView({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const { hero, pillars, practices, approach, why, cta } = dict.home;
+  const { hero, pillars, practices, approach, why, insights, cta } = dict.home;
+  // Ana sayfada en yeni üç yazı gösterilir; sıra articleIds dizisinden gelir.
+  const latestArticles = articleIds.slice(0, 3);
 
   return (
     <>
@@ -186,8 +190,58 @@ export function HomeView({ locale }: { locale: Locale }) {
         </div>
       </Section>
 
-      {/* Kapanış çağrısı */}
+      {/* Son yazılar */}
       <Section tone="sand">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHeading
+            eyebrow={insights.eyebrow}
+            title={insights.title}
+            description={insights.description}
+          />
+          <Link
+            href={path("insights", locale)}
+            className="inline-flex items-center gap-2 pb-1 text-sm font-semibold text-ink-900 underline-offset-4 hover:underline"
+          >
+            {insights.all}
+            <Arrow />
+          </Link>
+        </div>
+        <ul className="mt-12 grid gap-6 md:grid-cols-3">
+          {latestArticles.map((id) => {
+            const article = dict.insights.articles[id];
+            const meta = articleMeta[id];
+            return (
+              <li key={id}>
+                <Link
+                  href={`${path("insights", locale)}/${id}`}
+                  className="group flex h-full flex-col rounded-2xl border border-ink-900/10 bg-white p-6 transition-colors hover:border-accent-500/60"
+                >
+                  <time
+                    dateTime={meta.publishedAt}
+                    className="text-xs font-medium uppercase tracking-wider text-ink-800/70"
+                  >
+                    {formatDate(meta.publishedAt, locale)}
+                  </time>
+                  <h3 className="mt-3 font-display text-lg leading-snug text-ink-900">
+                    {article.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-[0.92rem] leading-relaxed text-ink-800/75">
+                    {article.excerpt}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ink-900">
+                    <span className="transition-transform group-hover:translate-x-1">
+                      <Arrow />
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </Section>
+
+      {/* Kapanış çağrısı */}
+      <Section tone="light">
         <div className="rounded-3xl bg-ink-900 px-8 py-14 text-center sm:px-14">
           <h2 className="font-display text-3xl text-white sm:text-4xl">
             {cta.title}

@@ -17,7 +17,12 @@ npm run build        # production derlemesi (rota tablosunu da gösterir)
 npm run check        # tip + lint + test — değişiklikten sonra bunu çalıştır
 npm test             # yalnızca testler
 npm run test:watch   # izleme modunda
+npm run audit:a11y   # erişilebilirlik (önce npm run build; tarayıcı gerekir)
 ```
+
+`audit:a11y` `npm run check` içinde **değildir** — tarayıcı gerektirir. Arayüzde
+renk veya işaretleme değiştiren her değişiklikten sonra ayrıca çalıştır.
+Ortamda hazır Chromium varsa `PLAYWRIGHT_CHROMIUM_EXECUTABLE` ile yolunu ver.
 
 Tek bir test dosyası veya tek bir test:
 
@@ -100,6 +105,13 @@ yalnızca form gönderilince ortaya çıkar.
 üst segmentten gelen `params`'a güvenmez. Yalnızca kendi dilinin adreslerini
 döndürdüğü için `/en/kariyer/...` gibi karışık kombinasyonlar 404 olur.
 
+## Renk ve kontrast
+
+Açık zeminlerde metin opaklığı **`/70`'in altına inmemeli** — `ink-800/65` ve
+altı WCAG AA eşiğinin (4.5:1) altında kalıyor. Küçük metinde vurgu rengi olarak
+`accent-700` kullan; `accent-600` yalnızca büyük metin ve ikonlar için yeterli.
+Bu değerler `sand-100` (en koyu açık zemin) üzerinde hesaplanmıştır.
+
 ## Testler
 
 `tests/` altında Vitest. Kapsam bilinçli olarak kırılgan mantığa odaklı:
@@ -108,6 +120,8 @@ döndürdüğü için `/en/kariyer/...` gibi karışık kombinasyonlar 404 olur.
 - `content.test.ts` — iki sözlüğün ayrışmaması, boş metin olmaması, ilan ve yazı bütünlüğü
 - `contact.test.ts` — doğrulama, bot tuzağı, e-posta yükü, gönderim hatası
 - `seo.test.ts` — sitemap kapsamı, canonical/hreflang, Open Graph
+
+Kontrast ve işaretleme hataları testlerle değil `npm run audit:a11y` ile yakalanır.
 
 Bileşen render testi yoktur; görsel doğrulama tarayıcıda yapılır.
 

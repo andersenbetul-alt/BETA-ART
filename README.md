@@ -29,7 +29,14 @@ npm start          # derlenmiş siteyi çalıştırır
 npm run check      # tip kontrolü + lint + testler (değişiklikten sonra bunu çalıştırın)
 npm test           # yalnızca testler
 npm run test:watch # testleri izleme modunda
+npm run audit:a11y # erişilebilirlik denetimi (önce npm run build gerekir)
 ```
+
+`audit:a11y` derlenmiş siteyi ayağa kaldırır ve 15 sayfayı mobil + masaüstü
+görünümde axe-core ile tarar. Tarayıcı gerektirdiği için `npm run check`
+içinde değildir; arayüzde renk veya işaretleme değiştiren her değişiklikten
+sonra çalıştırın. Ortamda hazır bir Chromium varsa yolunu
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE` ile verebilirsiniz.
 
 Tek bir test dosyası ya da tek bir test:
 
@@ -239,7 +246,7 @@ Böyle bir araç eklenirse metnin güncellenmesi gerekir.
 
 ## Testler
 
-`tests/` altında Vitest ile çalışan 59 test var. Kapsam bilinçli olarak
+`tests/` altında Vitest ile çalışan 61 test var. Kapsam bilinçli olarak
 kırılgan mantığa odaklıdır; bileşen render testi yoktur.
 
 | Dosya | Neyi korur |
@@ -251,13 +258,16 @@ kırılgan mantığa odaklıdır; bileşen render testi yoktur.
 
 ## Erişilebilirlik ve SEO
 
-- Klavye ile gezinme için "içeriğe atla" bağlantısı ve görünür odak halkası
+- Sekme sırasındaki ilk öğe "içeriğe atla" bağlantısıdır; görünür odak halkası vardır
 - Form alanlarında `aria-invalid` / `aria-describedby` ile hata bildirimi
 - Aktif menü bağlantısında `aria-current="page"`
 - `prefers-reduced-motion` desteği
+- Tüm metinler WCAG AA kontrast eşiğini (4.5:1) geçer; `npm run audit:a11y`
+  ile doğrulanır
 - Sayfa başına canonical, hreflang, Open Graph ve `ProfessionalService` JSON-LD
-- Dile özel sosyal paylaşım görselleri (`public/og-tr.png`, `public/og-en.png`)
-  ve markalı favicon (`src/app/icon.svg`)
+- Dile özel sosyal paylaşım görselleri (`public/og-tr.png`, `public/og-en.png`),
+  markalı favicon (`src/app/icon.svg`) ve iOS ana ekran ikonu (`src/app/apple-icon.png`)
+- Her dil için RSS beslemesi (`/tr/rss.xml`, `/en/rss.xml`), sayfa başlığında bağlı
 
 ## Yayınlama
 

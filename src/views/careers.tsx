@@ -45,7 +45,7 @@ export function CareersView({ locale }: { locale: Locale }) {
                     <p className="mt-2 text-sm leading-relaxed text-ink-800/70">
                       {job.summary}
                     </p>
-                    <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs font-medium uppercase tracking-wider text-ink-800/55">
+                    <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs font-medium uppercase tracking-wider text-ink-800/70">
                       <span>{job.team}</span>
                       <span>{job.type}</span>
                       <span>{job.location}</span>

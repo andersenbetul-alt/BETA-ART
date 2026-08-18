@@ -75,6 +75,7 @@ export type Dictionary = {
     approach: string;
     readMore: string;
     backHome: string;
+    skipToContent: string;
   };
   home: {
     hero: {
@@ -87,6 +88,7 @@ export type Dictionary = {
     practices: { eyebrow: string; title: string; description: string };
     approach: { eyebrow: string; title: string; description: string };
     why: { eyebrow: string; title: string; items: Feature[] };
+    insights: { eyebrow: string; title: string; description: string; all: string };
     cta: { title: string; description: string };
   };
   services: {

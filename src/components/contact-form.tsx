@@ -24,7 +24,7 @@ function SubmitButton({ label, pending }: { label: string; pending: string }) {
 }
 
 const fieldClass =
-  "mt-2 w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3 text-[0.95rem] text-ink-900 transition-colors placeholder:text-ink-800/40 hover:border-ink-900/30 focus:border-accent-500";
+  "mt-2 w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3 text-[0.95rem] text-ink-900 transition-colors placeholder:text-ink-800/60 hover:border-ink-900/30 focus:border-accent-500";
 
 export function ContactForm({
   locale,
@@ -166,7 +166,7 @@ export function ContactForm({
             className="text-sm font-medium text-ink-900"
           >
             {form.phone}{" "}
-            <span className="font-normal text-ink-800/50">
+            <span className="font-normal text-ink-800/70">
               ({form.phoneOptional})
             </span>
           </label>
@@ -235,7 +235,7 @@ export function ContactForm({
         </p>
       ) : null}
 
-      <p className="mt-7 text-xs leading-relaxed text-ink-800/60">
+      <p className="mt-7 text-xs leading-relaxed text-ink-800/70">
         {form.consent}{" "}
         <Link
           href={path("privacy", locale)}

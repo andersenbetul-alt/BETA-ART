@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
@@ -27,6 +27,11 @@ const displaySerif = Source_Serif_4({
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
+
+/** Mobil tarayıcı çubuğunu marka lacivertiyle boyar. */
+export const viewport: Viewport = {
+  themeColor: "#0a1f33",
+};
 
 /** Sadece tanımlı diller derlenir; /fr gibi adresler 404 döner. */
 export const dynamicParams = false;
@@ -57,6 +62,11 @@ export async function generateMetadata({
         tr: path("home", "tr"),
         en: path("home", "en"),
         "x-default": path("home", "tr"),
+      },
+      types: {
+        "application/rss+xml": [
+          { url: `/${locale}/rss.xml`, title: dict.insights.hero.title },
+        ],
       },
     },
     openGraph: {
@@ -118,7 +128,7 @@ export default async function LocaleLayout({
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink-900 focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
         >
-          {dict.actions.backHome}
+          {dict.actions.skipToContent}
         </a>
         <SiteHeader locale={typedLocale} dict={dict} />
         <main id="main" className="flex-1">

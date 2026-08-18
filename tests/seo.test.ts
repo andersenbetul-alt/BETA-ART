@@ -115,3 +115,12 @@ describe("sayfa metadatası", () => {
     ]);
   });
 });
+
+describe("RSS beslemesi", () => {
+  it("her dil için ayrı besleme adresi vardır", () => {
+    // Route handler adresleri sitemap'e girmez; head bağlantısı üzerinden bulunur.
+    for (const locale of locales) {
+      expect(`/${locale}/rss.xml`).toMatch(/^\/(tr|en)\/rss\.xml$/);
+    }
+  });
+});

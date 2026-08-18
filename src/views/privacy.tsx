@@ -17,7 +17,7 @@ export function PrivacyView({ locale }: { locale: Locale }) {
 
       <Section tone="light">
         <div className="max-w-3xl">
-          <p className="text-sm text-ink-800/55">{updated}</p>
+          <p className="text-sm text-ink-800/70">{updated}</p>
 
           <div className="mt-10 space-y-12">
             {sections.map((section) => (

@@ -24,6 +24,7 @@ export const tr: Dictionary = {
     approach: "Çalışma biçimimiz",
     readMore: "Detaylı bilgi",
     backHome: "Ana sayfaya dön",
+    skipToContent: "İçeriğe atla",
   },
   home: {
     hero: {
@@ -95,6 +96,13 @@ export const tr: Dictionary = {
             "Hazır şablon uygulamayız. Çözümü kurumunuzun ölçeğine, kültürüne ve hızına göre kurgularız.",
         },
       ],
+    },
+    insights: {
+      eyebrow: "İçgörüler",
+      title: "Sahada gördüklerimiz",
+      description:
+        "Danışmanlık projelerinde tekrar tekrar karşılaştığımız sorunları ve işe yaradığını gördüğümüz yaklaşımları yazıyoruz.",
+      all: "Tüm yazılar",
     },
     cta: {
       title: "Önceliğinizi konuşalım",

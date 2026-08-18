@@ -40,7 +40,7 @@ export function InsightsView({ locale }: { locale: Locale }) {
                   href={`${path("insights", locale)}/${id}`}
                   className="group flex h-full flex-col rounded-2xl border border-ink-900/10 bg-white p-7 transition-colors hover:border-accent-500/60"
                 >
-                  <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-wider text-ink-800/55">
+                  <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-wider text-ink-800/70">
                     <span className="text-accent-700">{practice?.title}</span>
                     <span aria-hidden="true">·</span>
                     <time dateTime={meta.publishedAt}>
@@ -54,7 +54,7 @@ export function InsightsView({ locale }: { locale: Locale }) {
                     {article.excerpt}
                   </p>
                   <span className="mt-6 flex items-center justify-between gap-4 text-sm font-semibold text-ink-900">
-                    <span className="font-normal text-ink-800/55">
+                    <span className="font-normal text-ink-800/70">
                       {meta.readingMinutes} {labels.readingTime}
                     </span>
                     <span className="transition-transform group-hover:translate-x-1">
