@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/content";
-import { absoluteUrl, path, type Locale, type RouteKey } from "./i18n";
+import { absoluteUrl, ogImage, path, type Locale, type RouteKey } from "./i18n";
 
 /** Sayfa başına canonical + hreflang alternatiflerini üretir. */
 export function pageMetadata({
@@ -34,6 +34,13 @@ export function pageMetadata({
       title: `${title} | ${dict.meta.siteName}`,
       description,
       url: absoluteUrl(path(key, locale)),
+      images: [ogImage(locale)],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | ${dict.meta.siteName}`,
+      description,
+      images: [ogImage(locale).url],
     },
   };
 }

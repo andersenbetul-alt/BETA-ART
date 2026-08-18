@@ -38,9 +38,15 @@ npx tsc --noEmit # tip kontrolü
 cp .env.example .env.local
 ```
 
-| Değişken | Açıklama |
-| --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical adresler, `sitemap.xml` ve Open Graph bağlantıları bu değerden üretilir. Canlıya çıkmadan önce gerçek alan adıyla değiştirin. |
+| Değişken | Zorunlu | Açıklama |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | evet | Canonical adresler, `sitemap.xml` ve Open Graph bağlantıları bu değerden üretilir. Canlıya çıkmadan önce gerçek alan adıyla değiştirin. |
+| `RESEND_API_KEY` | hayır | [Resend](https://resend.com) API anahtarı. Tanımlıysa görüşme talepleri e-posta ile iletilir. |
+| `CONTACT_INBOX` | hayır | Taleplerin düşeceği e-posta adresi. |
+| `CONTACT_FROM` | hayır | Gönderen adres. Resend'de doğrulanmış bir alan adına ait olmalıdır. |
+
+Son üçü birlikte tanımlanmalıdır; biri eksikse e-posta gönderimi devre dışı kalır
+ve talep yalnızca sunucu günlüğüne yazılır.
 
 ## Çok dillilik
 
@@ -101,6 +107,9 @@ Güncellenmesi gereken firma bilgileri (şu an yer tutucu):
 - `contact.details` → e-posta, telefon, adres, çalışma saatleri
 - `NEXT_PUBLIC_SITE_URL` → alan adı
 
+Sosyal paylaşım görsellerindeki metin değişirse `public/og-tr.png` ve
+`public/og-en.png` dosyalarının da yenilenmesi gerekir.
+
 ## Yeni sayfa ekleme
 
 1. `src/lib/i18n.ts` içindeki `routes` tablosuna anahtarı ve iki dildeki slug'ı ekleyin.
@@ -120,9 +129,19 @@ Form, `src/lib/actions.ts` içindeki `submitContactForm` server action'ı ile ç
 Sunucu tarafında ad, e-posta ve mesaj doğrulanır; gizli bir alan ile basit bot
 koruması yapılır.
 
-> **Canlıya çıkmadan önce:** Talep şu anda yalnızca sunucu günlüğüne yazılıyor.
-> `src/lib/actions.ts` içindeki `deliverRequest` fonksiyonunu bir e-posta servisine
-> (Resend, SendGrid, Postmark vb.) veya CRM entegrasyonuna bağlayın.
+Talep `deliverRequest` fonksiyonu ile iletilir:
+
+- **Ortam değişkenleri tanımlıysa** Resend API'si üzerinden e-posta gönderilir.
+  Gönderen kutusunda *yanıtla* dediğinizde doğrudan başvurana yanıt verilir
+  (`reply_to` başvuranın adresine ayarlanır).
+- **Tanımlı değilse** talep kaybolmasın diye sunucu günlüğüne yazılır ve
+  konsola bir uyarı düşer.
+- **Gönderim başarısız olursa** kullanıcıya sahte bir onay gösterilmez; hata
+  mesajı görünür ve gerçek sebep sunucu günlüğüne yazılır.
+
+Başka bir sağlayıcıya (SendGrid, Postmark, CRM vb.) geçmek için yalnızca
+`deliverRequest` fonksiyonunun gövdesini değiştirmeniz yeterlidir; doğrulama ve
+hata yönetimi çağıran tarafta durur.
 
 > **Not:** `src/lib/actions.ts` dosyası `"use server"` işaretlidir ve yalnızca async
 > fonksiyon dışa aktarabilir. Formun paylaşılan tipleri bu yüzden `src/lib/contact.ts`
@@ -135,6 +154,8 @@ koruması yapılır.
 - Aktif menü bağlantısında `aria-current="page"`
 - `prefers-reduced-motion` desteği
 - Sayfa başına canonical, hreflang, Open Graph ve `ProfessionalService` JSON-LD
+- Dile özel sosyal paylaşım görselleri (`public/og-tr.png`, `public/og-en.png`)
+  ve markalı favicon (`src/app/icon.svg`)
 
 ## Yayınlama
 

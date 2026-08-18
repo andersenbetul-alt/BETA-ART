@@ -12,11 +12,10 @@ function readField(formData: FormData, name: string): string {
 }
 
 /**
- * İletişim formunu doğrular ve talebi kaydeder.
+ * İletişim formunu doğrular ve talebi ilgili adrese iletir.
  *
- * NOT: Şu an talep yalnızca sunucu günlüğüne yazılıyor. Canlıya çıkmadan önce
- * `deliverRequest` içindeki bölümü bir e-posta servisine (Resend, SendGrid,
- * Postmark vb.) veya CRM entegrasyonuna bağlayın.
+ * Gönderim `deliverRequest` içinde yapılır; ortam değişkenleri tanımlıysa
+ * e-posta gönderilir, tanımlı değilse talep sunucu günlüğüne yazılır.
  */
 export async function submitContactForm(
   _prevState: ContactState,
@@ -69,10 +68,63 @@ type ContactPayload = {
   locale: Locale;
 };
 
+/**
+ * Talebi iletir.
+ *
+ * `RESEND_API_KEY`, `CONTACT_INBOX` ve `CONTACT_FROM` tanımlıysa Resend API'si
+ * üzerinden e-posta gönderilir. Başka bir sağlayıcı kullanmak isterseniz yalnızca
+ * bu fonksiyonun gövdesini değiştirmeniz yeterlidir; doğrulama ve hata yönetimi
+ * çağıran tarafta durur.
+ *
+ * Ortam değişkenleri tanımlı değilse talep kaybolmasın diye sunucu günlüğüne
+ * yazılır ve kullanıcıya yine de onay gösterilir.
+ */
 async function deliverRequest(payload: ContactPayload): Promise<void> {
-  // TODO: Buraya e-posta gönderimi veya CRM kaydı eklenecek.
-  console.info("[contact] yeni talep", {
-    ...payload,
-    receivedAt: new Date().toISOString(),
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.CONTACT_INBOX;
+  const from = process.env.CONTACT_FROM;
+
+  const receivedAt = new Date().toISOString();
+
+  if (!apiKey || !to || !from) {
+    console.warn(
+      "[contact] E-posta gönderimi yapılandırılmamış " +
+        "(RESEND_API_KEY / CONTACT_INBOX / CONTACT_FROM). Talep yalnızca günlüğe yazıldı.",
+      { ...payload, receivedAt },
+    );
+    return;
+  }
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      reply_to: payload.email,
+      subject: `NAVIAR — yeni görüşme talebi: ${payload.name}`,
+      text: [
+        `Ad soyad : ${payload.name}`,
+        `E-posta  : ${payload.email}`,
+        `Kurum    : ${payload.company || "-"}`,
+        `Telefon  : ${payload.phone || "-"}`,
+        `Konu     : ${payload.topic || "-"}`,
+        `Dil      : ${payload.locale}`,
+        `Tarih    : ${receivedAt}`,
+        "",
+        "Mesaj:",
+        payload.message,
+      ].join("\n"),
+    }),
   });
+
+  if (!response.ok) {
+    const detail = await response.text().catch(() => "");
+    throw new Error(
+      `Resend ${response.status} yanıtı döndü: ${detail.slice(0, 300)}`,
+    );
+  }
 }

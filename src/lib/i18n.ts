@@ -55,3 +55,13 @@ export const siteUrl = (
 export function absoluteUrl(pathname: string): string {
   return `${siteUrl}${pathname}`;
 }
+
+/** Dile göre sosyal paylaşım görseli (public/ altında). */
+export function ogImage(locale: Locale) {
+  return {
+    url: `/og-${locale}.png`,
+    width: 1200,
+    height: 630,
+    alt: "NAVIAR",
+  };
+}

@@ -10,6 +10,7 @@ import {
   locales,
   path,
   routeKeys,
+  ogImage,
   siteUrl,
   type Locale,
 } from "@/lib/i18n";
@@ -65,11 +66,13 @@ export async function generateMetadata({
       title: `${dict.meta.siteName} — ${dict.meta.tagline}`,
       description: dict.meta.description,
       url: absoluteUrl(path("home", locale)),
+      images: [ogImage(locale)],
     },
     twitter: {
       card: "summary_large_image",
       title: `${dict.meta.siteName} — ${dict.meta.tagline}`,
       description: dict.meta.description,
+      images: [ogImage(locale).url],
     },
   };
 }
