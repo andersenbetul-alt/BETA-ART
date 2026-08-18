@@ -1,10 +1,131 @@
 {
   "product": "BETA WORK",
   "line": "AI Workforce",
+  "headline": "AI çalışanlar şirketiniz için 24/7 çalışsın.",
   "promise": "Şirketinizde tekrar eden işleri analiz ediyoruz ve bunları AI çalışanlarıyla otomatikleştiriyoruz.",
   "locale": "tr-TR",
   "updated": "2026-08-18",
-
+  "always_on": [
+    {
+      "title": "Gece gelen talep sabahı beklemez",
+      "text": "Mesai dışında, hafta sonunda ve tatilde gelen her temas karşılanır; yanıtlanır, kaydedilir ve sıraya alınır."
+    },
+    {
+      "title": "İzin, hastalık, yoğunluk fark etmez",
+      "text": "AI çalışanı devamsızlık yapmaz. İş yükü arttığında hız düşmez, işe alım gerekmez."
+    },
+    {
+      "title": "Her seferinde aynı kalite",
+      "text": "Aynı ton, aynı bilgi, aynı takip disiplini. Yorgunluğa veya kişiye göre değişmez."
+    },
+    {
+      "title": "Sabah tek sayfa özet",
+      "text": "Gece ne geldi, ne yanıtlandı, ne bekliyor, kim aranacak — güne hazır bir listeyle başlanır."
+    }
+  ],
+  "roles": [
+    {
+      "id": "receptionist",
+      "name": "AI Receptionist",
+      "tr": "AI Resepsiyonist",
+      "icon": "☎",
+      "promise": "Şirketinizin ilk teması hiç cevapsız kalmaz.",
+      "role": "Telefon, WhatsApp, web sitesi ve e-postadan gelen her temas 24/7 karşılanır; soru yanıtlanır, randevu alınır, doğru kişiye yönlendirilir.",
+      "does": [
+        "Gelen arama, mesaj ve e-postaları karşılar; kim, ne istiyor kaydeder",
+        "Çalışma saati, adres, hizmet kapsamı ve fiyat aralığı gibi sık soruları anında yanıtlar",
+        "Randevu ve toplantı ayarlar, takvime yazar, hatırlatma gönderir",
+        "Acil konuyu ilgili kişiye yönlendirir, kalanını özetleyip sıraya alır"
+      ],
+      "night": "Gece 02:00'de gelen talep karşılanır ve randevusu alınır; sabah masanızda özeti olur.",
+      "modules": [
+        "email",
+        "customer-service",
+        "meeting"
+      ],
+      "integrations": [
+        "Telefon / WhatsApp",
+        "Web sitesi canlı destek",
+        "E-posta",
+        "Takvim"
+      ],
+      "kpi": [
+        "Cevapsız kalan temas sayısı",
+        "İlk yanıt süresi",
+        "Alınan randevu sayısı"
+      ],
+      "handoff": "Şikâyet, iade ve fiyat pazarlığı içeren temaslar insana devredilir.",
+      "setup": "5-7 gün"
+    },
+    {
+      "id": "sales-assistant",
+      "name": "AI Sales Assistant",
+      "tr": "AI Satış Asistanı",
+      "icon": "◈",
+      "promise": "Gelen her talep nitelenir, takip edilir ve teklife dönüşür.",
+      "role": "Fırsatların soğumasını engeller: talebi niteler, takip mesajını zamanında gönderir, teklif taslağını hazırlar, CRM'i güncel tutar.",
+      "does": [
+        "Gelen talebi niteler: ihtiyaç, bütçe, aciliyet",
+        "İlk temas ve takip serisini hazırlar, zamanında gönderir",
+        "Teklif taslağını geçmiş tekliflerden üretir",
+        "Görüşme öncesi müşteri ve rakip araştırması yapar, brief hazırlar",
+        "CRM kaydını günceller, sonraki adımı düşer"
+      ],
+      "night": "Mesai dışında gelen talep bekletilmez; niteleme ve ilk yanıt anında yapılır, satışçı sabaha sıcak fırsatla başlar.",
+      "modules": [
+        "sales",
+        "research"
+      ],
+      "integrations": [
+        "CRM",
+        "E-posta",
+        "Takvim",
+        "Web formu"
+      ],
+      "kpi": [
+        "Nitelikli fırsat sayısı",
+        "Takip edilen fırsat oranı",
+        "Teklif hazırlama süresi"
+      ],
+      "handoff": "İndirim, özel şart ve sözleşme görüşmeleri insana devredilir.",
+      "setup": "7-10 gün"
+    },
+    {
+      "id": "office-assistant",
+      "name": "AI Office Assistant",
+      "tr": "AI Ofis Asistanı",
+      "icon": "▤",
+      "promise": "Arka ofisin tekrar eden işleri kendi kendine yürür.",
+      "role": "Evrak, son tarih, veri girişi ve toplantı takibi gibi görünmeyen ama zaman yiyen işleri devralır.",
+      "does": [
+        "Fatura, sözleşme ve belgeleri düzenler, adlandırır, arşivler",
+        "Ödeme, yenileme ve resmî son tarihleri takip eder, hatırlatır",
+        "Toplantı özetini ve aksiyon listesini çıkarır, takibini yapar",
+        "Verileri tablolara işler, tutarsızlıkları bildirir",
+        "Düzenli içerik ve duyuruları hazırlar"
+      ],
+      "night": "Gün içinde biriken evrak ve notlar gece işlenir; sabah düzenli klasör ve güncel takip listesi hazırdır.",
+      "modules": [
+        "admin",
+        "meeting",
+        "content"
+      ],
+      "integrations": [
+        "Dosya deposu",
+        "Tablolar",
+        "Muhasebe yazılımı",
+        "Takvim",
+        "Sosyal medya / bülten"
+      ],
+      "kpi": [
+        "Zamanında yakalanan son tarih oranı",
+        "Manuel veri girişi süresi",
+        "Kapanan aksiyon oranı"
+      ],
+      "handoff": "Ödeme yapma, resmî beyan ve imza gerektiren işlemler insan onayıyla yürür.",
+      "setup": "5-7 gün"
+    }
+  ],
   "process": [
     {
       "step": "01",
@@ -42,8 +163,7 @@
       "output": "Aylık performans raporu"
     }
   ],
-
-  "agents": [
+  "modules": [
     {
       "id": "email",
       "name": "Email Agent",
@@ -56,9 +176,21 @@
         "Yanıt bekleyen ve cevapsız kalan konuları hatırlatır",
         "Uzun yazışmaları özetleyip aksiyon çıkarır"
       ],
-      "inputs": ["E-posta kutusu", "Sık sorulan sorular", "Yanıt şablonları ve ton rehberi"],
-      "integrations": ["E-posta (Gmail / Outlook)", "Takvim", "CRM"],
-      "kpi": ["Yanıt süresi", "Günlük işlenen e-posta", "Cevapsız kalan konu sayısı"],
+      "inputs": [
+        "E-posta kutusu",
+        "Sık sorulan sorular",
+        "Yanıt şablonları ve ton rehberi"
+      ],
+      "integrations": [
+        "E-posta (Gmail / Outlook)",
+        "Takvim",
+        "CRM"
+      ],
+      "kpi": [
+        "Yanıt süresi",
+        "Günlük işlenen e-posta",
+        "Cevapsız kalan konu sayısı"
+      ],
       "handoff": "Fiyat taahhüdü, sözleşme ve şikâyet içeren e-postalar insana devredilir.",
       "setup": "1-3 gün"
     },
@@ -74,9 +206,22 @@
         "Talepleri kayıt altına alır ve etiketler",
         "Çözemediği konuyu özetleyerek ilgili kişiye aktarır"
       ],
-      "inputs": ["Ürün/hizmet bilgisi", "SSS ve politikalar", "Geçmiş destek kayıtları"],
-      "integrations": ["Web sitesi / canlı destek", "WhatsApp", "E-posta", "Destek sistemi"],
-      "kpi": ["İlk temasta çözüm oranı", "Ortalama yanıt süresi", "Devredilen talep oranı"],
+      "inputs": [
+        "Ürün/hizmet bilgisi",
+        "SSS ve politikalar",
+        "Geçmiş destek kayıtları"
+      ],
+      "integrations": [
+        "Web sitesi / canlı destek",
+        "WhatsApp",
+        "E-posta",
+        "Destek sistemi"
+      ],
+      "kpi": [
+        "İlk temasta çözüm oranı",
+        "Ortalama yanıt süresi",
+        "Devredilen talep oranı"
+      ],
       "handoff": "İade, ödeme itirazı ve memnuniyetsizlik sinyali olan konular insana devredilir.",
       "setup": "3-5 gün"
     },
@@ -92,9 +237,22 @@
         "Teklif taslağını geçmiş tekliflerden üretir",
         "CRM kaydını günceller, sonraki adımı düşer"
       ],
-      "inputs": ["Ürün ve fiyat listesi", "Geçmiş teklifler", "Hedef müşteri tanımı"],
-      "integrations": ["CRM", "E-posta", "Takvim", "Form / web sitesi"],
-      "kpi": ["Nitelikli fırsat sayısı", "Takip edilen fırsat oranı", "Teklif hazırlama süresi"],
+      "inputs": [
+        "Ürün ve fiyat listesi",
+        "Geçmiş teklifler",
+        "Hedef müşteri tanımı"
+      ],
+      "integrations": [
+        "CRM",
+        "E-posta",
+        "Takvim",
+        "Form / web sitesi"
+      ],
+      "kpi": [
+        "Nitelikli fırsat sayısı",
+        "Takip edilen fırsat oranı",
+        "Teklif hazırlama süresi"
+      ],
       "handoff": "İndirim, özel şart ve sözleşme görüşmeleri insana devredilir.",
       "setup": "5-7 gün"
     },
@@ -110,9 +268,21 @@
         "Uzun kaynakları özetler ve kaynak gösterir",
         "Düzenli aralıklarla takip raporu üretir"
       ],
-      "inputs": ["Araştırma soruları", "Takip edilecek rakip ve kaynak listesi", "Rapor formatı"],
-      "integrations": ["Web", "Doküman deposu", "Tablo / rapor aracı"],
-      "kpi": ["Rapor başına harcanan süre", "Kullanılan rapor oranı", "Kaynak doğruluğu"],
+      "inputs": [
+        "Araştırma soruları",
+        "Takip edilecek rakip ve kaynak listesi",
+        "Rapor formatı"
+      ],
+      "integrations": [
+        "Web",
+        "Doküman deposu",
+        "Tablo / rapor aracı"
+      ],
+      "kpi": [
+        "Rapor başına harcanan süre",
+        "Kullanılan rapor oranı",
+        "Kaynak doğruluğu"
+      ],
       "handoff": "Doğrulanamayan veya tek kaynağa dayanan bulgular işaretlenir, karar insana bırakılır.",
       "setup": "2-4 gün"
     },
@@ -128,9 +298,21 @@
         "Tek içeriği farklı kanallara uyarlar",
         "Yayın sonrası performansı toplar"
       ],
-      "inputs": ["Marka tonu ve mesajlar", "Geçmiş içerikler", "Kanal listesi"],
-      "integrations": ["Sosyal medya hesapları", "Blog / CMS", "E-posta pazarlama"],
-      "kpi": ["Yayınlanan içerik sayısı", "Üretim süresi", "Etkileşim"],
+      "inputs": [
+        "Marka tonu ve mesajlar",
+        "Geçmiş içerikler",
+        "Kanal listesi"
+      ],
+      "integrations": [
+        "Sosyal medya hesapları",
+        "Blog / CMS",
+        "E-posta pazarlama"
+      ],
+      "kpi": [
+        "Yayınlanan içerik sayısı",
+        "Üretim süresi",
+        "Etkileşim"
+      ],
       "handoff": "Kurumsal duyuru, kriz iletişimi ve hukuki içerik insan onayından geçer.",
       "setup": "3-5 gün"
     },
@@ -146,9 +328,21 @@
         "Aksiyonları sorumlusuna ve tarihine bağlar",
         "Bir sonraki toplantıda açık maddeleri hatırlatır"
       ],
-      "inputs": ["Takvim erişimi", "Toplantı kaydı veya notu", "Aksiyon takip formatı"],
-      "integrations": ["Takvim", "Online toplantı aracı", "Görev / not aracı"],
-      "kpi": ["Özet çıkarma süresi", "Kapanan aksiyon oranı", "Toplantı sonrası netlik"],
+      "inputs": [
+        "Takvim erişimi",
+        "Toplantı kaydı veya notu",
+        "Aksiyon takip formatı"
+      ],
+      "integrations": [
+        "Takvim",
+        "Online toplantı aracı",
+        "Görev / not aracı"
+      ],
+      "kpi": [
+        "Özet çıkarma süresi",
+        "Kapanan aksiyon oranı",
+        "Toplantı sonrası netlik"
+      ],
       "handoff": "Personel ve performans konuşmaları kaydedilmez, özetlenmez.",
       "setup": "2-3 gün"
     },
@@ -164,38 +358,64 @@
         "Verileri tablolara işler, tutarsızlıkları bildirir",
         "Tedarikçi ve resmî yazışmalarda taslak hazırlar"
       ],
-      "inputs": ["Belge klasörleri", "Takip edilecek tarihler", "Şirket bilgileri"],
-      "integrations": ["Dosya deposu", "Tablolar", "Muhasebe yazılımı", "Takvim"],
-      "kpi": ["Zamanında yakalanan son tarih oranı", "Manuel veri girişi süresi", "Hatalı kayıt sayısı"],
+      "inputs": [
+        "Belge klasörleri",
+        "Takip edilecek tarihler",
+        "Şirket bilgileri"
+      ],
+      "integrations": [
+        "Dosya deposu",
+        "Tablolar",
+        "Muhasebe yazılımı",
+        "Takvim"
+      ],
+      "kpi": [
+        "Zamanında yakalanan son tarih oranı",
+        "Manuel veri girişi süresi",
+        "Hatalı kayıt sayısı"
+      ],
       "handoff": "Ödeme yapma, resmî beyan ve imza gerektiren işlemler insan onayıyla yürür.",
       "setup": "3-5 gün"
     }
   ],
-
   "packages": [
     {
       "id": "start",
       "name": "Başlangıç",
-      "for": "Tek bir darboğazı olan küçük işletme",
-      "includes": ["Analiz raporu", "1 AI çalışanı", "2 hafta gözetimli devreye alma", "Aylık rapor"],
-      "agents": 1
+      "for": "Tek bir darboğazı olan işletme — genelde cevapsız kalan telefon ve mesajlar",
+      "includes": [
+        "Analiz raporu",
+        "1 AI çalışanı (genelde AI Receptionist)",
+        "2 hafta gözetimli devreye alma",
+        "Aylık rapor"
+      ],
+      "roles": 1
     },
     {
       "id": "core",
       "name": "Çekirdek",
-      "for": "Müşteri iletişimi ve satışı birlikte yürüten işletme",
-      "includes": ["Analiz raporu", "3 AI çalışanı", "Araç entegrasyonları", "Aylık rapor ve iyileştirme"],
-      "agents": 3
+      "for": "Gelen talebi satışa çevirmek isteyen işletme",
+      "includes": [
+        "Analiz raporu",
+        "AI Receptionist + AI Sales Assistant",
+        "Araç entegrasyonları",
+        "Aylık rapor ve iyileştirme"
+      ],
+      "roles": 2
     },
     {
       "id": "workforce",
       "name": "Tam Ekip",
-      "for": "Arka ofisi de otomatikleştirmek isteyen işletme",
-      "includes": ["Analiz raporu", "7 AI çalışanı", "Tüm entegrasyonlar", "Süreç sahipliği ve sürekli bakım"],
-      "agents": 7
+      "for": "Ön ofisi ve arka ofisi birlikte devretmek isteyen işletme",
+      "includes": [
+        "Analiz raporu",
+        "3 AI çalışanı",
+        "Tüm entegrasyonlar",
+        "Süreç sahipliği ve sürekli bakım"
+      ],
+      "roles": 3
     }
   ],
-
   "guarantees": [
     "Her AI çalışanı önce gözetimli modda çalışır: hazırlar, insan onaylar.",
     "Yetki devri kademelidir; doğruluk ölçülmeden otomatik gönderim açılmaz.",

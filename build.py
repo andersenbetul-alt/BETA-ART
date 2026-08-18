@@ -141,6 +141,33 @@ section { padding: 56px 0 0; }
   content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 13px;
 }
 
+.card__night {
+  margin: 16px 0 0; padding: 12px 14px; border-radius: 10px;
+  background: var(--accent-soft); color: var(--text);
+  font-size: 13.5px; line-height: 1.5;
+}
+.mods { display: grid; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.mod {
+  display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr) minmax(120px, auto);
+  gap: 14px; align-items: baseline;
+  padding: 14px 18px; background: var(--surface); font-size: 14px;
+}
+.mod + .mod { border-top: 1px solid var(--border); }
+.mod b { font-weight: 600; font-size: 14.5px; }
+.mod span { color: var(--muted); }
+.mod em {
+  font-style: normal; font-size: 12px; color: var(--accent);
+  letter-spacing: .04em; text-align: right;
+}
+@media (max-width: 640px) {
+  .mod { grid-template-columns: 1fr; gap: 4px; }
+  .mod em { text-align: left; }
+}
+.tiles { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.tile { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 20px 18px; }
+.tile h3 { margin: 0 0 8px; font-size: 15.5px; font-weight: 600; }
+.tile p { margin: 0; font-size: 14px; color: var(--muted); }
+
 footer {
   margin-top: 72px; padding: 28px 0 48px; border-top: 1px solid var(--border);
   font-size: 14px; color: var(--muted);
@@ -245,50 +272,83 @@ def build_index() -> None:
 
 def build_work() -> None:
     data = load("workforce")
+    by_id = {m["id"]: m for m in data["modules"]}
+    role_of = {m: r["name"] for r in data["roles"] for m in r["modules"]}
+
+    roles = "\n".join(f"""        <article class="card" id="{esc(r['id'])}">
+          <div class="card__icon" aria-hidden="true">{esc(r['icon'])}</div>
+          <h3 class="card__name">{esc(r['name'])}</h3>
+          <p class="card__tagline">{esc(r['tr'])} · kurulum {esc(r['setup'])}</p>
+          <p class="card__desc"><b>{esc(r['promise'])}</b><br>{esc(r['role'])}</p>
+          <ul class="card__list">
+{li(r['does'])}
+          </ul>
+          <p class="card__night">🌙 {esc(r['night'])}</p>
+          <div class="card__meta">
+            <p><b>Bağlandığı araçlar:</b> {esc(', '.join(r['integrations']))}</p>
+            <p><b>Ölçülen:</b> {esc(', '.join(r['kpi']))}</p>
+            <p><b>İnsana devir:</b> {esc(r['handoff'])}</p>
+          </div>
+        </article>""" for r in data["roles"])
+
+    tiles = "\n".join(f"""        <div class="tile">
+          <h3>{esc(t['title'])}</h3>
+          <p>{esc(t['text'])}</p>
+        </div>""" for t in data["always_on"])
 
     steps = "\n".join(f"""        <div class="step">
-          <div class="step__no">{esc(s['step'])}</div>
-          <div class="step__name">{esc(s['name'])}</div>
-          <div class="step__dur">{esc(s['duration'])}</div>
-          <p class="step__sum">{esc(s['summary'])}</p>
-          <p class="step__out">→ {esc(s['output'])}</p>
-        </div>""" for s in data["process"])
+          <div class="step__no">{esc(s_['step'])}</div>
+          <div class="step__name">{esc(s_['name'])}</div>
+          <div class="step__dur">{esc(s_['duration'])}</div>
+          <p class="step__sum">{esc(s_['summary'])}</p>
+          <p class="step__out">→ {esc(s_['output'])}</p>
+        </div>""" for s_ in data["process"])
 
-    agents = "\n".join(f"""        <article class="card" id="{esc(a['id'])}">
-          <div class="card__icon" aria-hidden="true">{esc(a['icon'])}</div>
-          <h3 class="card__name">{esc(a['name'])}</h3>
-          <p class="card__tagline">{esc(a['tr'])} · kurulum {esc(a['setup'])}</p>
-          <p class="card__desc">{esc(a['role'])}</p>
-          <ul class="card__list">
-{li(a['does'])}
-          </ul>
-          <div class="card__meta">
-            <p><b>Bağlandığı araçlar:</b> {esc(', '.join(a['integrations']))}</p>
-            <p><b>Ölçülen:</b> {esc(', '.join(a['kpi']))}</p>
-            <p><b>İnsana devir:</b> {esc(a['handoff'])}</p>
-          </div>
-        </article>""" for a in data["agents"])
+    mods = "\n".join(f"""        <div class="mod" id="{esc(m['id'])}">
+          <b>{esc(m['name'])}</b>
+          <span>{esc(m['role'])}</span>
+          <em>{esc(role_of[m['id']])}</em>
+        </div>""" for m in data["modules"])
 
     packages = "\n".join(f"""        <article class="card">
-          <div class="card__icon" aria-hidden="true">{p['agents']}</div>
-          <h3 class="card__name">{esc(p['name'])}</h3>
-          <p class="card__tagline">{esc(p['agents'])} AI çalışanı</p>
-          <p class="card__desc">{esc(p['for'])}</p>
+          <div class="card__icon" aria-hidden="true">{p_['roles']}</div>
+          <h3 class="card__name">{esc(p_['name'])}</h3>
+          <p class="card__tagline">{esc(p_['roles'])} AI çalışanı</p>
+          <p class="card__desc">{esc(p_['for'])}</p>
           <ul class="card__list">
-{li(p['includes'])}
+{li(p_['includes'])}
           </ul>
-        </article>""" for p in data["packages"])
+        </article>""" for p_ in data["packages"])
 
     body = f"""<header>
   <div class="wrap">
-    <div class="brand"><span class="dot"></span>BETA WORK</div>
-    <h1>AI Workforce</h1>
-    <p class="quote">“{esc(data['promise'])}”</p>
-    <p class="lede">Yeni yazılım öğrenmeye gerek yok. Şirketin bugün kullandığı araçların içinde çalışan, {len(data['agents'])} göreve özel AI çalışanı kuruyoruz — önce gözetimli, sonra devredilmiş.</p>
+    <div class="brand"><span class="dot"></span>BETA WORK · AI Workforce</div>
+    <h1>{esc(data['headline'])}</h1>
+    <p class="lede">Şirketinizde tekrar eden işleri analiz ediyor, bunları göreve özel AI çalışanlarıyla otomatikleştiriyoruz. Yeni yazılım öğrenmenize gerek yok — AI çalışanları bugün kullandığınız araçların içinde çalışır.</p>
   </div>
 </header>
 
 <main>
+  <section>
+    <div class="wrap">
+      <p class="section-label">Ekip</p>
+      <h2 class="section-title">Üç AI çalışanı</h2>
+      <div class="grid">
+{roles}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">24/7</p>
+      <h2 class="section-title">Mesai bitince iş durmaz</h2>
+      <div class="tiles">
+{tiles}
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <p class="section-label">Nasıl çalışır</p>
@@ -301,10 +361,10 @@ def build_work() -> None:
 
   <section>
     <div class="wrap">
-      <p class="section-label">Ekip</p>
-      <h2 class="section-title">Kurduğumuz {len(data['agents'])} AI çalışanı</h2>
-      <div class="grid">
-{agents}
+      <p class="section-label">Kapsam</p>
+      <h2 class="section-title">Devralınan {len(data['modules'])} iş alanı</h2>
+      <div class="mods">
+{mods}
       </div>
     </div>
   </section>
@@ -333,7 +393,7 @@ def build_work() -> None:
   </section>
 </main>"""
     write("work.html", "BETA WORK — AI Workforce",
-          data["promise"], body, data["updated"])
+          data["headline"] + " " + data["promise"], body, data["updated"])
 
 
 if __name__ == "__main__":

@@ -134,6 +134,33 @@ section { padding: 56px 0 0; }
   content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 13px;
 }
 
+.card__night {
+  margin: 16px 0 0; padding: 12px 14px; border-radius: 10px;
+  background: var(--accent-soft); color: var(--text);
+  font-size: 13.5px; line-height: 1.5;
+}
+.mods { display: grid; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.mod {
+  display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr) minmax(120px, auto);
+  gap: 14px; align-items: baseline;
+  padding: 14px 18px; background: var(--surface); font-size: 14px;
+}
+.mod + .mod { border-top: 1px solid var(--border); }
+.mod b { font-weight: 600; font-size: 14.5px; }
+.mod span { color: var(--muted); }
+.mod em {
+  font-style: normal; font-size: 12px; color: var(--accent);
+  letter-spacing: .04em; text-align: right;
+}
+@media (max-width: 640px) {
+  .mod { grid-template-columns: 1fr; gap: 4px; }
+  .mod em { text-align: left; }
+}
+.tiles { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.tile { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 20px 18px; }
+.tile h3 { margin: 0 0 8px; font-size: 15.5px; font-weight: 600; }
+.tile p { margin: 0; font-size: 14px; color: var(--muted); }
+
 footer {
   margin-top: 72px; padding: 28px 0 48px; border-top: 1px solid var(--border);
   font-size: 14px; color: var(--muted);
@@ -160,11 +187,11 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space
         <div class="card__icon" aria-hidden="true">◆</div>
         <h2 class="card__name">BETA WORK</h2>
         <p class="card__tagline">AI çalışanları</p>
-        <p class="card__desc">İşletmelerin tekrar eden operasyonel işlerini üstlenen, göreve özel kurgulanmış AI çalışanları. Satış, destek, operasyon ve back-office süreçleri için ekibe eklenen dijital birimler.</p>
+        <p class="card__desc">İşletmelerin tekrar eden işlerini devralan AI çalışanları. AI Receptionist, AI Sales Assistant ve AI Office Assistant şirketin kendi araçları içinde 24/7 çalışır.</p>
         <ul class="card__list">
-      <li>Göreve özel AI çalışan kurulumu</li>
-      <li>Mevcut araç ve süreçlerle entegrasyon</li>
-      <li>Çıktı takibi ve sürekli iyileştirme</li>
+      <li>AI Receptionist — gelen her temas karşılanır</li>
+      <li>AI Sales Assistant — talep nitelenir, teklife dönüşür</li>
+      <li>AI Office Assistant — evrak, son tarih ve takip yürür</li>
         </ul>
       </article>
       <article class="card" id="beta-business">

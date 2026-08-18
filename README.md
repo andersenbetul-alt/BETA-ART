@@ -17,12 +17,21 @@ tanımı, satış sayfası ve kurulum playbook'u.
 
 ## İlk ürün: AI Workforce
 
+> **AI çalışanlar şirketiniz için 24/7 çalışsın.**
+>
 > "Şirketinizde tekrar eden işleri analiz ediyoruz ve bunları AI çalışanlarıyla
 > otomatikleştiriyoruz."
 
-Küçük işletmeye kurulan yedi AI çalışanı: Email, Customer Service, Sales,
-Research, Content, Meeting ve Admin Agent. Beş adımlı akış — analiz, seçim,
-kurulum, devreye alma, ölçüm — ile teslim edilir.
+Küçük işletmeye kurulan üç AI çalışanı:
+
+- **AI Receptionist** — gelen her temas karşılanır: telefon, WhatsApp, web,
+  e-posta, randevu
+- **AI Sales Assistant** — talep nitelenir, takip edilir, teklife dönüşür
+- **AI Office Assistant** — evrak, son tarih, veri girişi, toplantı takibi
+
+Bu üç rolün altında yedi iş alanı yer alır (Email, Customer Service, Sales,
+Research, Content, Meeting, Admin). Teslimat beş adımlı akışla yapılır: analiz,
+seçim, kurulum, devreye alma, ölçüm.
 
 - Satış sayfası: `work.html`
 - Ürün tanımı: `data/workforce.json`
@@ -32,7 +41,7 @@ kurulum, devreye alma, ölçüm — ile teslim edilir.
 
 ```
 data/categories.json            Kategorilerin tek kaynağı
-data/workforce.json             AI Workforce ürün tanımı (ajanlar, süreç, paketler)
+data/workforce.json             AI Workforce ürün tanımı (roller, iş alanları, süreç, paketler)
 docs/ai-workforce-playbook.md   Satış akışı, analiz şablonu, kurulum kontrol listesi
 build.py                        JSON'lardan index.html ve work.html üretir
 index.html                      Kategori sayfası (üretilen)

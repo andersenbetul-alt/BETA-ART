@@ -3,12 +3,22 @@
 BETA WORK'ün ilk ürünü. Bu doküman ürünün nasıl satılacağını ve bir müşteride
 nasıl kurulacağını adım adım tarif eder.
 
-**Müşteriye verilen söz:** "Şirketinizde tekrar eden işleri analiz ediyoruz ve
+**Başlık vaadi:** "AI çalışanlar şirketiniz için 24/7 çalışsın."
+
+**Müşteriye anlatılan iş:** "Şirketinizde tekrar eden işleri analiz ediyoruz ve
 bunları AI çalışanlarıyla otomatikleştiriyoruz."
 
 **Satılan şey:** yazılım lisansı değil, **kurulmuş ve çalışır durumda AI
-çalışanları**. Müşteri yeni bir araç öğrenmez; kendi e-postası, CRM'i ve
-dosyaları içinde çalışan bir ekip devralır.
+çalışanları**. Müşteri yeni bir araç öğrenmez; kendi telefonu, e-postası, CRM'i
+ve dosyaları içinde çalışan üç asistan devralır:
+
+| Rol | Devraldığı alan | Kurulum |
+| --- | --- | --- |
+| **AI Receptionist** | Gelen her temas: telefon, WhatsApp, web, e-posta, randevu | 5-7 gün |
+| **AI Sales Assistant** | Talep niteleme, takip, teklif, araştırma | 7-10 gün |
+| **AI Office Assistant** | Evrak, son tarih, veri girişi, toplantı takibi, içerik | 5-7 gün |
+
+Detaylı tanımlar ve bu rollerin altındaki yedi iş alanı: `data/workforce.json`.
 
 ---
 
@@ -74,34 +84,54 @@ Analiz raporunda müşteriye üç sayı verilir:
 
 ---
 
-## 4. Kurulacak AI çalışanları
+## 4. Üç rol, yedi iş alanı
 
-Tam ekip yedi çalışandan oluşur. Detaylı tanımlar: `data/workforce.json`.
+Satış üç rol üzerinden yapılır; her rol arkasında birden fazla iş alanı vardır.
+Müşteriye yedi ayrı ajan sayılmaz — üç işe alım anlatılır.
 
-| Çalışan | Devraldığı iş | Kurulum |
-| --- | --- | --- |
-| Email Agent | Gelen kutusu, taslak yanıt, takip | 1-3 gün |
-| Customer Service Agent | Müşteri soruları, durum sorguları | 3-5 gün |
-| Sales Agent | Talep niteleme, takip, teklif taslağı | 5-7 gün |
-| Research Agent | Pazar, rakip, müşteri araştırması | 2-4 gün |
-| Content Agent | Sosyal medya, blog, bülten | 3-5 gün |
-| Meeting Agent | Gündem, özet, aksiyon takibi | 2-3 gün |
-| Admin Agent | Evrak, son tarihler, veri girişi | 3-5 gün |
+**AI Receptionist** — gelen kutusu ve e-posta trafiği, müşteri soruları, randevu
+ve toplantı ayarlama.
+→ *Gece 02:00'de gelen talep karşılanır ve randevusu alınır; sabah özeti masada olur.*
 
-**Küçük işletmede önerilen ilk üçlü:** Email + Customer Service + Sales.
-Bu üçü doğrudan gelire ve müşteri memnuniyetine dokunur; kazanç ilk haftada
-görünür. Admin Agent ikinci fazda, arka ofis düzene girince eklenir.
+**AI Sales Assistant** — talep niteleme, takip serisi, teklif taslağı, müşteri ve
+rakip araştırması.
+→ *Mesai dışında gelen talep bekletilmez; satışçı sabaha sıcak fırsatla başlar.*
+
+**AI Office Assistant** — evrak ve arşiv düzeni, ödeme ve yenileme son tarihleri,
+veri girişi, toplantı özeti ve aksiyon takibi, düzenli içerik.
+→ *Gün içinde biriken evrak gece işlenir; sabah klasör düzenli, takip listesi güncel.*
+
+**Önerilen başlangıç: AI Receptionist.** Kaybı en görünür olan iş budur —
+cevapsız kalan telefon ve mesaj doğrudan kaçan müşteri demektir. İlk ay içinde
+"kaç temas kurtarıldı" sayısı satışın kendisini finanse eder. Sales Assistant
+ikinci, Office Assistant üçüncü fazda gelir.
 
 ---
 
-## 5. Kurulum kontrol listesi
+## 5. 24/7 vaadi nasıl tutulur
+
+Başlıkta 24/7 varsa, gece davranışı yazılı olmak zorundur. Kurulumda şu dört
+madde müşteriyle birlikte netleştirilir:
+
+- **Gece hangi işler yapılır?** Yanıtlama, kayıt, randevu, niteleme, sıraya alma.
+  Gece **gönderilmeyecek** olanlar (fiyat taahhüdü, sözleşme, ödeme) sabaha kalır.
+- **Gece acil ne demek?** Acil tanımı müşteriye özeldir (arıza, iptal, VIP müşteri).
+  Acil vakada kim, hangi kanaldan aranır — telefon numarası ve saat aralığı yazılır.
+- **Gece tonu.** Yanıtta saat farkı belirtilir: "Mesajınızı aldım, ekip sabah
+  09:00'da dönüş yapacak" — insanmış gibi davranılmaz.
+- **Sabah özeti.** Tek sayfa: gece ne geldi, ne yanıtlandı, ne bekliyor, kim aranacak.
+  Bu özet ürünün her gün görünen kanıtıdır; aksatılmaz.
+
+---
+
+## 6. Kurulum kontrol listesi
 
 Her AI çalışanı için aynı altı adım uygulanır:
 
 - [ ] **Kapsam yazılır.** Bu çalışan neyi yapar, neyi yapmaz — tek sayfa.
 - [ ] **Kaynak bağlanır.** Erişim izinleri (e-posta, CRM, klasör) müşteri tarafından verilir.
 - [ ] **Bilgi yüklenir.** SSS, fiyat listesi, şablonlar, ton rehberi, geçmiş örnekler.
-- [ ] **Devir kuralı tanımlanır.** Hangi durumda insana aktarır. (Bkz. bölüm 6)
+- [ ] **Devir kuralı tanımlanır.** Hangi durumda insana aktarır. (Bkz. bölüm 7)
 - [ ] **Test edilir.** Geçmiş 20 gerçek vaka üzerinde çalıştırılır, çıktı karşılaştırılır.
 - [ ] **Gözetimli moda alınır.** İki hafta boyunca hazırlar, insan onaylar.
 
@@ -110,7 +140,7 @@ Kurulum, çıktı doğruluğu **iki hafta üst üste hedefin üzerinde** kalmada
 
 ---
 
-## 6. Yetki seviyeleri
+## 7. Yetki seviyeleri
 
 Hiçbir AI çalışanı ilk günden serbest çalışmaz. Yetki üç kademede açılır:
 
@@ -126,7 +156,7 @@ beyan ve imza, personel konuları.
 
 ---
 
-## 7. Fiyatlama yapısı
+## 8. Fiyatlama yapısı
 
 İki kalemden oluşur:
 
@@ -136,9 +166,9 @@ beyan ve imza, personel konuları.
 
 | Paket | Çalışan | Kimin için |
 | --- | --- | --- |
-| Başlangıç | 1 | Tek bir darboğazı olan işletme |
-| Çekirdek | 3 | Müşteri iletişimi + satış |
-| Tam Ekip | 7 | Arka ofis dahil tüm operasyon |
+| Başlangıç | 1 | Cevapsız kalan temasları kurtarmak isteyen işletme |
+| Çekirdek | 2 | Receptionist + Sales Assistant: gelen talebi satışa çevirme |
+| Tam Ekip | 3 | Ön ofis ve arka ofisin birlikte devri |
 
 Rakam yerine **kazanılan saat** üzerinden konuşulur: "Ayda 40 saat geri
 kazandırıyoruz, bunun size maliyeti şu" — teklif bu karşılaştırmayla sunulur.
@@ -146,7 +176,7 @@ Fiyat rakamları müşteri segmentine göre belirlenir ve bu dokümanda tutulmaz
 
 ---
 
-## 8. Aylık rapor
+## 9. Aylık rapor
 
 Her ay müşteriye tek sayfa gider:
 
@@ -161,7 +191,7 @@ aracıdır.
 
 ---
 
-## 9. Riskler ve sınırlar
+## 10. Riskler ve sınırlar
 
 - **Veri.** Şirket verisi yalnızca kurulan çalışanın işi için kullanılır;
   erişim kapsamı yazılı olarak sınırlandırılır ve iş bitiminde kaldırılır.
