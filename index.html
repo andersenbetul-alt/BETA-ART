@@ -26,6 +26,10 @@
 <link rel="alternate" hreflang="tr" href="https://hximusic.com/?lang=tr">
 <link rel="alternate" hreflang="x-default" href="https://hximusic.com/">
 <meta name="theme-color" content="#08080f">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Everything the page needs is local; the only third parties are the two players,
+     and neither is contacted until the visitor asks for them. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://open.spotify.com; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta property="og:title" content="HXI — Norwegian Phonk Producer">
 <meta property="og:description" content="43M+ Spotify streams. Fast &amp; Furious sync. BODYCAM OST. NCS Artist. Oslo, Norway.">
 <meta property="og:type" content="music.musician">
@@ -43,9 +47,9 @@
 <meta name="twitter:image" content="https://hximusic.com/assets/og-image.png">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;900&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&display=swap">
+<link rel="preload" href="assets/fonts/barlow-condensed-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <noscript><style>
   /* Without JS the burger cannot open the menu and the switcher has no options. */
@@ -131,7 +135,7 @@
   <!-- LATEST -->
   <section class="section" id="news">
     <div class="wrap">
-      <p class="label accent" data-i18n="news_label">Latest</p>
+      <h2 class="label accent" data-i18n="news_label">Latest</h2>
 
       <div class="grid-3">
         <article class="card">
@@ -303,11 +307,11 @@
           <p data-i18n="ind_p">HXI is signed to Scar Scheme Records. He owns his masters and handles distribution, licensing and every technical aspect of his releases in-house. Major labels capture roughly seventy percent of streaming revenue on average — HXI keeps his.</p>
         </div>
 
-        <aside class="side">
+        <div class="side">
           <div class="figure-big"><b>43.4M</b><span>Streams · Zero paid promotion</span></div>
           <div class="figure-big"><b>251K</b><span>Monthly listeners</span></div>
           <div class="figure-big"><b>69%</b><span>Music revenue = streaming</span></div>
-        </aside>
+        </div>
       </div>
     </div>
   </section>

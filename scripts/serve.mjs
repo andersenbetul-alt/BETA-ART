@@ -4,6 +4,7 @@
 
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
+import { gzipSync } from 'node:zlib';
 import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
@@ -31,7 +32,18 @@ createServer(async (req, res) => {
   }
   try {
     const body = await readFile(file);
-    res.writeHead(200, { 'content-type': TYPES[extname(file)] || 'application/octet-stream' });
+    const type = TYPES[extname(file)] || 'application/octet-stream';
+    const headers = { 'content-type': type };
+    // Match what a real static host does, so local Lighthouse numbers mean something.
+    headers['cache-control'] = extname(file) === '.html' ? 'no-cache' : 'public, max-age=31536000';
+    const compressible = /^(text|application\/(javascript|json|xml))/.test(type);
+    if (compressible && /\bgzip\b/.test(req.headers['accept-encoding'] || '')) {
+      const zipped = gzipSync(body);
+      res.writeHead(200, { ...headers, 'content-encoding': 'gzip', 'content-length': zipped.length });
+      res.end(zipped);
+      return;
+    }
+    res.writeHead(200, headers);
     res.end(body);
   } catch {
     res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' }).end('Not found');

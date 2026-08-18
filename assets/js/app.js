@@ -76,10 +76,20 @@
       var open = menu.classList.toggle('open');
       burger.setAttribute('aria-expanded', String(open));
     });
+    function close() {
+      if (!menu.classList.contains('open')) return;
+      menu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+
     menu.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') {
-        menu.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
+      if (e.target.tagName === 'A') close();
+    });
+    // Escape is the expected way out of an open menu, and it returns focus to the button.
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('open')) {
+        close();
+        burger.focus();
       }
     });
 
