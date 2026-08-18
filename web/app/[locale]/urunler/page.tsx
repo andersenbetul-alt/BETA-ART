@@ -68,7 +68,7 @@ export default async function ProductsPage({
   }
 
   return (
-    <div className="wrap" style={{ padding: '2.5rem 0 4rem' }}>
+    <div className="wrap" style={{ paddingBlock: '2.5rem 4rem' }}>
       <h1>{heading}</h1>
 
       <ProductFilters locale={locale} query={q} sort={sort} category={active} />

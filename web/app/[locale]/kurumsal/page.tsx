@@ -14,7 +14,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   if (!isLocale(locale)) notFound();
 
   return (
-    <div className="wrap" style={{ padding: '2.5rem 0 4rem', maxWidth: 760 }}>
+    <div className="wrap" style={{ paddingBlock: '2.5rem 4rem', maxWidth: 760 }}>
       <h1>{t(locale, 'about.title')}</h1>
       <p style={{ fontSize: '1.125rem' }}>{intro[locale]}</p>
 

@@ -15,7 +15,7 @@ export default async function CartPage({ params }: { params: Promise<{ locale: s
   const catalog = await getProducts(locale);
 
   return (
-    <div className="wrap" style={{ padding: '2.5rem 0 4rem', maxWidth: 820 }}>
+    <div className="wrap" style={{ paddingBlock: '2.5rem 4rem', maxWidth: 820 }}>
       <h1>{t(locale, 'cart.title')}</h1>
       <CartView
         locale={locale}
