@@ -68,7 +68,6 @@ window.HXI_I18N.en = {
   ncs_p: "HXI is an official NoCopyrightSounds artist — the channel sits at the centre of the creator ecosystem with more than 50 million subscribers. Two HXI releases are out there.",
   ncs_listen: "Listen →",
 
-
   about_label: "About",
   about_title: "From Norway. 43 million streams.",
   about_p1: "HXI is the recording name of Christoffer Andersen, a producer, sound designer and mix engineer from Norway. His 2022 single “help urself” spread through the anime and gaming edit communities on TikTok and YouTube, driven entirely by the audience that found it.",
@@ -182,7 +181,6 @@ window.HXI_I18N.zh = {
   ncs_title: "5000 万订阅者的平台。",
   ncs_p: "HXI 是 NoCopyrightSounds 的官方签约艺人；这个拥有 5000 万以上订阅者的频道处于创作者生态的中心。HXI 已有两首作品在那里上线。",
   ncs_listen: "收听 →",
-
 
   about_label: "关于",
   about_title: "来自挪威，4300 万次播放。",
@@ -298,7 +296,6 @@ window.HXI_I18N.es = {
   ncs_p: "HXI es artista oficial de NoCopyrightSounds, un canal que ocupa el centro del ecosistema de creadores con más de 50 millones de suscriptores. Allí hay dos lanzamientos suyos.",
   ncs_listen: "Escuchar →",
 
-
   about_label: "Perfil",
   about_title: "Desde Noruega. 43 millones de reproducciones.",
   about_p1: "HXI es el nombre artístico de Christoffer Andersen, productor, diseñador de sonido e ingeniero de mezcla noruego. Su single de 2022 «help urself» se difundió a través de las comunidades de edits de anime y gaming en TikTok y YouTube, impulsado por completo por el público que lo descubrió.",
@@ -412,7 +409,6 @@ window.HXI_I18N.hi = {
   ncs_title: "5 करोड़ सब्सक्राइबर।",
   ncs_p: "HXI आधिकारिक NoCopyrightSounds कलाकार हैं — 5 करोड़ से अधिक सब्सक्राइबर वाला यह चैनल क्रिएटर इकोसिस्टम के केंद्र में है। वहाँ HXI की दो रिलीज़ मौजूद हैं।",
   ncs_listen: "सुनें →",
-
 
   about_label: "परिचय",
   about_title: "नॉर्वे से। 4.3 करोड़ स्ट्रीम।",
@@ -528,7 +524,6 @@ window.HXI_I18N.ar = {
   ncs_p: "HXI فنان رسمي لدى NoCopyrightSounds؛ قناة تقع في قلب منظومة صنّاع المحتوى ولديها أكثر من 50 مليون مشترك. صدر له عملان هناك.",
   ncs_listen: "استمع →",
 
-
   about_label: "نبذة",
   about_title: "من النرويج. 43 مليون استماع.",
   about_p1: "HXI هو الاسم الفني لكريستوفر أندرسن، المنتج ومصمم الصوت ومهندس المكساج النرويجي. انتشرت أغنيته المنفردة «help urself» الصادرة عام 2022 عبر مجتمعات مونتاج الأنمي والألعاب على تيك توك ويوتيوب، بدفع كامل من الجمهور الذي اكتشفها بنفسه.",
@@ -642,7 +637,6 @@ window.HXI_I18N.fr = {
   ncs_title: "50 millions d’abonnés.",
   ncs_p: "HXI est artiste officiel NoCopyrightSounds, une chaîne au cœur de l’écosystème des créateurs avec plus de 50 millions d’abonnés. Deux de ses titres y sont sortis.",
   ncs_listen: "Écouter →",
-
 
   about_label: "À propos",
   about_title: "Depuis la Norvège. 43 millions d’écoutes.",
@@ -758,7 +752,6 @@ window.HXI_I18N.pt = {
   ncs_p: "HXI é artista oficial da NoCopyrightSounds, um canal no centro do ecossistema de criadores, com mais de 50 milhões de inscritos. Dois lançamentos dele estão lá.",
   ncs_listen: "Ouvir →",
 
-
   about_label: "Sobre",
   about_title: "Da Noruega. 43 milhões de streams.",
   about_p1: "HXI é o nome artístico de Christoffer Andersen, produtor, sound designer e engenheiro de mixagem da Noruega. Seu single de 2022 “help urself” se espalhou pelas comunidades de edits de anime e gaming no TikTok e no YouTube, impulsionado inteiramente pelo público que o encontrou.",
@@ -872,7 +865,6 @@ window.HXI_I18N.bn = {
   ncs_title: "৫ কোটি সাবস্ক্রাইবার।",
   ncs_p: "HXI একজন অফিসিয়াল NoCopyrightSounds শিল্পী — ৫ কোটির বেশি সাবস্ক্রাইবার নিয়ে এই চ্যানেল ক্রিয়েটর ইকোসিস্টেমের কেন্দ্রে। সেখানে HXI-এর দুটি রিলিজ রয়েছে।",
   ncs_listen: "শুনুন →",
-
 
   about_label: "পরিচিতি",
   about_title: "নরওয়ে থেকে। ৪.৩ কোটি স্ট্রিম।",
@@ -988,7 +980,6 @@ window.HXI_I18N.ru = {
   ncs_p: "HXI — официальный артист NoCopyrightSounds: у канала больше 50 миллионов подписчиков, и он находится в центре креаторской экосистемы. Там вышли два его релиза.",
   ncs_listen: "Слушать →",
 
-
   about_label: "О проекте",
   about_title: "Из Норвегии. 43 миллиона прослушиваний.",
   about_p1: "HXI — сценический псевдоним Кристоффера Андерсена, продюсера, саунд-дизайнера и сведёнщика из Норвегии. Его сингл 2022 года «help urself» разошёлся через аниме- и гейминг-эдиты в TikTok и YouTube — исключительно усилиями слушателей, которые сами его нашли.",
@@ -1102,7 +1093,6 @@ window.HXI_I18N.ur = {
   ncs_title: "5 کروڑ سبسکرائبرز۔",
   ncs_p: "HXI سرکاری طور پر NoCopyrightSounds کے فنکار ہیں — پانچ کروڑ سے زائد سبسکرائبرز کے ساتھ یہ چینل تخلیق کاروں کے ماحول کے مرکز میں ہے۔ وہاں ان کی دو ریلیزیں موجود ہیں۔",
   ncs_listen: "سنیں →",
-
 
   about_label: "تعارف",
   about_title: "ناروے سے۔ 4.3 کروڑ اسٹریمز۔",
@@ -1218,7 +1208,6 @@ window.HXI_I18N.no = {
   ncs_p: "HXI er offisiell NoCopyrightSounds-artist — kanalen har over 50 millioner abonnenter og står midt i skaperøkonomien. To HXI-utgivelser ligger ute der.",
   ncs_listen: "Hør →",
 
-
   about_label: "Om",
   about_title: "Fra Norge. 43 millioner strømminger.",
   about_p1: "HXI er artistnavnet til Christoffer Andersen, produsent, lyddesigner og mikstekniker fra Norge. Singelen «help urself» fra 2022 spredte seg gjennom anime- og gaming-redigeringsmiljøene på TikTok og YouTube, drevet utelukkende av publikummet som fant den.",
@@ -1332,7 +1321,6 @@ window.HXI_I18N.tr = {
   ncs_title: "50 milyon abone.",
   ncs_p: "HXI resmi bir NoCopyrightSounds sanatçısı — 50 milyonu aşkın aboneli bu kanal, içerik üretici ekosisteminin merkezinde. HXI’nın iki çıkışı orada yayında.",
   ncs_listen: "Dinle →",
-
 
   about_label: "Hakkında",
   about_title: "Norveç’ten. 43 milyon dinlenme.",
