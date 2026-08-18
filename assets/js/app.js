@@ -210,6 +210,10 @@
     };
   }
 
+  /* FAQPage: Google 7 Mayıs 2026'da FAQ zengin sonuçlarını kaldırdı — bu blok
+     artık arama sonucunda açılır soru göstermez. Yine de tutuyoruz: yapılandırılmış
+     veri, yapay zekâ arama motorlarının sayfayı ayrıştırmasına yarıyor ve maliyeti
+     birkaç yüz bayt. Zengin sonuç beklemeyin. */
   function faqSchema() {
     var qa = [['wq1', 'wa1'], ['wq2', 'wa2'], ['wq3', 'wa3'], ['wq4', 'wa4']];
     return {

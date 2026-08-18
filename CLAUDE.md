@@ -29,6 +29,14 @@ assets/js/i18n.js   Dil listesi (QB_LANGS) + 10 dilde metinler (QB_I18N)
 assets/js/posts.js  Blog içeriği (QB_POSTS): her yazı 10 dilde
 assets/js/app.js    Dil, tema, liste/arama/filtre, yazı sayfası, sekmeler, formlar
 scripts/check.mjs   Proje sağlık kontrolü
+
+engine/             Curiosity Engine (site değil, üretim hattı)
+  schema.sql        Sinyal → konu → makale tabloları
+  schema-billing.sql Ödeme: hesap, ürün, abonelik, kredi defteri, yetki, webhook
+  billing.mjs       Kredi bakiyesi, yetki, webhook tekilliği, para biçimi
+  visibility.mjs    16 maddelik görünürlük kuralının çalışan denetimi
+  run.mjs           Topla → kümele → puanla → kuyruğa al
+  write.mjs         Araştırma → makale → SEO → gelir → kalite + görünürlük kapısı
 ```
 
 ## Değişmez kurallar
@@ -87,5 +95,10 @@ sözlüğünü İngilizcedeki tüm anahtarlarla doldurun, yazılara aynı kodu e
   **`assets/js/config.js`** içinde — yayına almak için başka dosyaya dokunmak gerekmez.
 - Bülten kaydı yalnızca tarayıcıda tutulur (`initForm`); e-posta servisine bağlanmalı.
 - Depoya push izni yok (git ve GitHub App 403 döndürüyor); iş yerelde commit'leniyor.
+- FAQPage şeması duruyor ama Google 7 Mayıs 2026'da FAQ zengin sonuçlarını kaldırdı.
+  Yapay zekâ aramaları için tutuluyor; zengin sonuç beklemeyin.
+- Stripe Norveç ücreti: yurt içi kart %1,5 + 1,80 kr (yurt dışı +%3,25, döviz +%2).
+  Fiyatlandırma bu rakamla yapılmalı; stripe.com bu ortamda engelli, karar öncesi
+  kaynağı kendiniz doğrulayın.
 
 Öncelik sırası ve iş listesi için `ROADMAP.md`.
