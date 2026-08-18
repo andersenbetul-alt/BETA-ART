@@ -8,7 +8,7 @@
  * hattı durdurmaz.
  */
 
-const UA = 'QBLOGG-CuriosityEngine/0.1 (+https://qblogg.no)';
+const UA = 'QBLOGG-CuriosityEngine/0.1 (+https://qblogg.com)';
 
 async function fetchText(url, timeoutMs = 15000) {
   const ctrl = new AbortController();

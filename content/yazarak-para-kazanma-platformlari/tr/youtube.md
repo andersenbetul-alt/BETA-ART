@@ -37,7 +37,7 @@ Bölümler:
 17:00 Hangi sırayla başlamalı
 19:30 Üç yaygın hata
 
-Yazının tamamı ve kaynaklar: qblogg.no
+Yazının tamamı ve kaynaklar: qblogg.com
 
 **Etiketler:** serbest yazarlık, freelance writing, upwork, medium partner program,
 substack, içerik yazarlığı, yazarak para kazanma, ndash, problogger, contently,

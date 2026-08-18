@@ -5,10 +5,10 @@
  */
 window.QB_CONFIG = {
   /* Formların gideceği adres ve altbilgide görünen e-posta */
-  mailTo: 'hello@qblogg.no',
+  mailTo: 'hello@qblogg.com',
 
   /* Yayına alınacak alan adı — paylaşım bağlantıları ve şemalar bunu kullanır */
-  siteUrl: 'https://qblogg.no',
+  siteUrl: 'https://qblogg.com',
 
   /* Sosyal hesaplar. Boş bırakılan altbilgide gösterilmez (ölü bağlantı olmaz). */
   social: {
