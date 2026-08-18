@@ -509,3 +509,14 @@ strong, b { font-weight: 600; }
 .bar-inner nav a, footer nav a, .legal-index a, .toc a, .pager a, .card-go, .read-on {
   padding-block: .5rem;
 }
+
+@media (max-width: 560px) {
+  /* Same crowding as the business bar: wordmark, language picker and burger
+     together overflow a 320px screen. The seal identifies the site. */
+  .wordmark-text { display: none; }
+  .masthead-actions { gap: .3rem; }
+  .lang-select { padding: .45rem 1.5rem .45rem .5rem; letter-spacing: .06em; }
+}
+@media (max-width: 400px) {
+  .wrap { width: min(100% - 2rem, 1240px); }
+}

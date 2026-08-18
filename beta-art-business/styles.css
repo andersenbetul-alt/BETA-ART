@@ -456,7 +456,7 @@ a { color: inherit; }
 .tier-label{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--seal-bright)}
 .tier-head h3{margin:0;font-size:1.3rem}
 .tier-count{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;color:var(--muted);margin-left:auto}
-.industry-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 2rem}
+.industry-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:0 2rem}
 .industry-list li{padding:.7rem 0;border-bottom:1px solid var(--edge-soft)}
 .industry-list strong{display:block;font-size:.95rem;font-weight:500}
 .industry-list span{font-size:.85rem;color:var(--muted)}
@@ -737,4 +737,18 @@ strong, b { font-weight: 600; }
 .nav a, .footer nav a, .social a, .crumbs a, .colophon nav a,
 .bar-inner nav a, footer nav a, .legal-index a, .toc a, .pager a, .card-go, .read-on {
   padding-block: .5rem;
+}
+
+@media (max-width: 560px) {
+  /* The bar carried a wordmark, a language picker, a quote button and a
+     burger: 430px of content in a 360px viewport, so every business page
+     scrolled sideways. The seal alone identifies the site at this width. */
+  .mark-text { display: none; }
+  .bar-actions { gap: .3rem; }
+  .bar-actions .btn-sm { padding: .5rem .6rem; letter-spacing: .06em; }
+  .lang-select { padding: .45rem 1.5rem .45rem .5rem; letter-spacing: .06em; }
+}
+@media (max-width: 400px) {
+  /* 3rem of side gutter is a tenth of a 320px screen */
+  .wrap { width: min(100% - 2rem, 1240px); }
 }

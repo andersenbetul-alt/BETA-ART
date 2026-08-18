@@ -409,3 +409,7 @@ strong, b { font-weight: 600; }
 .bar-inner nav a, footer nav a, .legal-index a, .toc a, .pager a, .card-go, .read-on {
   padding-block: .5rem;
 }
+
+@media (max-width: 400px) {
+  .wrap { width: min(100% - 2rem, 1160px); }
+}

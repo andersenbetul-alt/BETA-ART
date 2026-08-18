@@ -325,12 +325,16 @@ def check_css():
             note("css", "%s: %d class(es) used in the HTML with no rule anywhere: %s"
                  % (prop or ".", len(orphan), ", ".join(orphan[:8])))
 
-        for sel, n in sorted(defaultdict(int, {
-                s.strip(): [x.strip() for x in re.findall(r"([^{}]+)\{", body)].count(s.strip())
-                for s in re.findall(r"([^{}]+)\{", body)}).items()):
+        # A selector repeated inside media queries is a responsive override,
+        # which is the point of media queries. Only count the top level, where
+        # a repeat really does mean one rule silently beating another.
+        top = re.sub(r"@media[^{]*\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}", "", body, flags=re.S)
+        sels = [x.strip() for x in re.findall(r"([^{}]+)\{", top)]
+        for sel in sorted(set(sels)):
+            n = sels.count(sel)
             if n > 2 and not sel.startswith("@") and "," not in sel and len(sel) < 40:
-                note("css", "%s defines %s %d times — later rules silently win"
-                     % (rel(path), sel, n))
+                note("css", "%s defines %s %d times outside any media query — "
+                     "later rules silently win" % (rel(path), sel, n))
 
 
 # ---------------------------------------------------------------- content
