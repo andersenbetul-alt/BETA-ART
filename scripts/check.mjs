@@ -61,8 +61,12 @@ const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
       if (!p.t?.[code]?.trim()) { fail(`posts [${p.slug}]: ${code} başlığı eksik`); bad++; }
       if (!p.e?.[code]?.trim()) { fail(`posts [${p.slug}]: ${code} özeti eksik`); bad++; }
       const body = p.b?.[code];
-      if (!Array.isArray(body) || !body.length || body.some((x) => !String(x).trim())) {
+      const blockText = (x) => typeof x === 'string' ? x : (x.h || x.note || (x.ul || []).join(' ') || '');
+      if (!Array.isArray(body) || !body.length || body.some((x) => !blockText(x).trim())) {
         fail(`posts [${p.slug}]: ${code} gövdesi eksik`); bad++;
+      } else {
+        const words = body.map(blockText).join(' ').trim().split(/\s+/).length;
+        if (words < 600) warn(`posts [${p.slug}]: ${code} gövdesi kısa (${words} kelime) — hedef 1.200+`);
       }
     }
   }

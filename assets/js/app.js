@@ -178,7 +178,7 @@
       '@type': 'BlogPosting',
       headline: pick(post.t),
       description: pick(post.e),
-      articleBody: (pick(post.b) || []).join('\n\n'),
+      articleBody: (pick(post.b) || []).map(blockText).join('\n\n'),
       datePublished: post.date,
       inLanguage: currentLang,
       articleSection: t('cat.' + post.category),
@@ -227,8 +227,24 @@
   }
   // Okuma süresi metnin kendisinden hesaplanır (dakikada ~200 kelime).
   // Elle girilen bir sayı, metin değişince yanlış kalıyordu.
+  function blockText(block) {
+    if (typeof block === 'string') return block;
+    if (block.h) return block.h;
+    if (block.note) return block.note;
+    if (block.ul) return block.ul.join(' ');
+    return '';
+  }
+
+  function blockHTML(block) {
+    if (typeof block === 'string') return '<p>' + esc(block) + '</p>';
+    if (block.h) return '<h2>' + esc(block.h) + '</h2>';
+    if (block.note) return '<p class="article-note">' + esc(block.note) + '</p>';
+    if (block.ul) return '<ul>' + block.ul.map(function (li) { return '<li>' + esc(li) + '</li>'; }).join('') + '</ul>';
+    return '';
+  }
+
   function readTime(post) {
-    var text = (pick(post.b) || []).join(' ');
+    var text = (pick(post.b) || []).map(blockText).join(' ');
     var words = text.trim() ? text.trim().split(/\s+/).length : 0;
     return Math.max(1, Math.round(words / 200));
   }
@@ -261,7 +277,8 @@
     var list = sorted().filter(function (p) {
       if (blogState.cat !== 'all' && p.category !== blogState.cat) return false;
       if (!q) return true;
-      return (pick(p.t) + ' ' + pick(p.e) + ' ' + (pick(p.b) || []).join(' ')).toLowerCase().indexOf(q) > -1;
+      var hay = pick(p.t) + ' ' + pick(p.e) + ' ' + (pick(p.b) || []).map(blockText).join(' ');
+      return hay.toLowerCase().indexOf(q) > -1;
     });
     box.innerHTML = list.length ? list.map(cardHTML).join('')
       : '<p class="empty">' + esc(t('posts.empty')) + '</p>';
@@ -295,7 +312,7 @@
       return;
     }
     var c = ACCENTS[post.accent] || ACCENTS[1];
-    var body = (pick(post.b) || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    var body = (pick(post.b) || []).map(blockHTML).join('');
     var related = sorted().filter(function (p) { return p.slug !== post.slug && p.category === post.category; }).slice(0, 2);
     if (related.length < 2) {
       related = related.concat(sorted().filter(function (p) {

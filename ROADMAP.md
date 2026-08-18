@@ -36,7 +36,7 @@ maliyet.
 | 8 | Hakkımızda bölümü (kim yazıyor, hangi deneyim) | Bekliyor | Anonim stüdyo dönüşümü düşürür |
 | 9 | Gizlilik ve koşullar sayfaları | Bekliyor | Altbilgideki bağlantılar şu an boş |
 | 10 | Örnek teslimat (bir makale + türetilmiş 5 içerik) PDF'i | Bekliyor | Brief formunda "örnek gör" olarak kullanılabilir |
-| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | Bekliyor | Yazılar ~120 kelime; site 1.200–2.000 kelime satıyor. En büyük güven açığı |
+| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 1/6 bitti: platform karşılaştırması TR 1.030 / EN 1.313 kelime, kaynaklı. Kalan 5 yazı + bu yazının 8 dili |
 | 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
 ### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)
@@ -95,6 +95,9 @@ stüdyosu. Sıradaki adaylar — hepsi ticari niyeti olan, aramada karşılığ�
   statik yazılamıyor; ön-render adımı (iş #11) gelince statiğe dönecek.
 - **Drop-cap yalnızca Latin/Kiril yazılarda.** Arapça bitişik yazıldığı için ilk harfi
   büyütmek kelimeyi bozuyordu; Çince ve Devanagari'de de yanlış duruyor.
+- **Yazı gövdeleri blok yapısında.** Düz metin dizisi yerine `{h:}`, `{ul:[]}`, `{note:}`
+  blokları da kabul ediliyor; kısa sürümler bozulmadan uzun yazılar yazılabiliyor.
+- **check.mjs 600 kelimenin altını uyarı olarak işaretliyor.** İçerik borcu görünür kalsın diye.
 - **Yazı tipi kendi sunucumuzda.** Google Fonts CDN'i ziyaretçinin IP'sini Google'a
   gönderiyor; Münih Bölge Mahkemesi kararı (3 O 17493/20) sonrası AB'de riskli sayılıyor.
   Inter değişken sürümü yerelde (4 dosya, 188 KB); Arapça/Çince/Devanagari sistem

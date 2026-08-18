@@ -411,3 +411,13 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 .post-cta h3 { margin-bottom: .35em; }
 .post-cta p { color: var(--text-muted); margin: 0 0 18px; font-size: .95rem; }
 .post-cta-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* Uzun yazılar: ara başlık, liste ve not blokları */
+.article-body h2 { font-size: 1.45rem; margin-top: 1.9em; margin-bottom: .6em; }
+.article-body ul { margin: 0 0 1.4em; padding-inline-start: 1.3em; display: grid; gap: .5em; }
+.article-body li { padding-inline-start: .2em; }
+.article-body .article-note {
+  border-inline-start: 3px solid var(--brand); padding: 2px 0 2px 16px;
+  padding-inline-start: 16px; padding-inline-end: 0;
+  color: var(--text-muted); font-size: .95rem;
+}
