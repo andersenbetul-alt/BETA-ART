@@ -10,14 +10,15 @@ sosyal içerik, newsletter ve çok dilli yayın satan bir hizmet işi.
 
 ```
 index.html          Tanıtım sayfası: hero, hizmetler, içerik akışı, paketler, son yazılar, bülten
+work.html           Bizimle çalışın: müşteri briefi + yazar başvurusu, süreç, SSS
 blog.html           Tüm yazılar + arama + kategori filtresi
 post.html           Yazı detayı (?slug=... ile çalışır)
 assets/css/main.css Tema (açık/koyu), düzen, RTL uyumlu bileşenler
-assets/js/i18n.js   10 dilde arayüz metinleri (111 anahtar) + dil listesi
+assets/js/i18n.js   10 dilde arayüz metinleri (178 anahtar) + dil listesi
 assets/js/posts.js  Blog yazıları: her yazının başlığı/özeti/gövdesi 10 dilde
-assets/js/app.js    Dil, tema, liste/arama/filtre, yazı sayfası, bülten formu
+assets/js/app.js    Dil, tema, liste/arama/filtre, yazı sayfası, sekmeler, formlar
 robots.txt          Arama motoru yönergesi
-sitemap.xml         8 URL × 10 dil hreflang alternatifleriyle
+sitemap.xml         9 URL × 10 dil hreflang alternatifleriyle
 ```
 
 ## Çalıştırma
@@ -70,6 +71,17 @@ const I=globalThis.QB_I18N, base=Object.keys(I.en);
 globalThis.QB_LANGS.forEach(l=>{const k=Object.keys(I[l.code]||{});
 console.log(l.code, k.length, base.filter(x=>!k.includes(x)).join(',')||'ok');});"
 ```
+
+## Başvuru formları (work.html)
+
+`work.html` iki sekme içerir: **marka briefi** ve **yazar başvurusu**. Statik site olduğu için
+gönderim, doldurulan alanları ziyaretçinin e-posta uygulamasında hazır bir taslağa çevirir
+(`mailto:`) ve aynı metni panoya kopyalar. Alıcı adresi `assets/js/app.js` içindeki
+`MAIL_TO` sabitidir — kendi adresinizle değiştirin.
+
+Sunucu tarafı bir forma geçmek isterseniz (Formspree, Netlify Forms, kendi API'niz),
+`composeMail` fonksiyonundaki `mailto:` bloğunu bir `fetch` çağrısıyla değiştirin;
+alan etiketleri `data-field` özniteliğinden okunduğu için gövde oluşturma mantığı aynı kalır.
 
 ## Bülten formu
 

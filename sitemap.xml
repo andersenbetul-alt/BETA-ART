@@ -14,6 +14,19 @@
     <xhtml:link rel="alternate" hreflang="no" href="https://qblogg.com/index.html?lang=no"/>
   </url>
   <url>
+    <loc>https://qblogg.com/work.html</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://qblogg.com/work.html?lang=tr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://qblogg.com/work.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://qblogg.com/work.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://qblogg.com/work.html?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://qblogg.com/work.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://qblogg.com/work.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://qblogg.com/work.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://qblogg.com/work.html?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://qblogg.com/work.html?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://qblogg.com/work.html?lang=no"/>
+  </url>
+  <url>
     <loc>https://qblogg.com/blog.html</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://qblogg.com/blog.html?lang=tr"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://qblogg.com/blog.html?lang=en"/>

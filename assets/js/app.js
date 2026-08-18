@@ -273,7 +273,7 @@
       var msg = $('#formMsg');
       var val = (input.value || '').trim();
       var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
-      msg.textContent = ok ? t('cta.success') : t('cta.invalid');
+      say(msg, ok ? 'cta.success' : 'cta.invalid');
       if (ok) {
         // Statik site: kayıt tarayıcıda tutulur. Gerçek listeye bağlarken
         // buradaki bloğu e-posta servisinizin API çağrısıyla değiştirin.
@@ -284,6 +284,84 @@
         } catch (err) { /* yoksay */ }
         form.reset();
       }
+    });
+  }
+
+
+  /* ---------- sayfa: bizimle çalışın ---------- */
+  var MAIL_TO = 'hello@qblogg.com';
+
+  function initTabs() {
+    var tabs = $$('.tab[data-tab]');
+    if (!tabs.length) return;
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t2) {
+          var on = t2 === tab;
+          t2.setAttribute('aria-selected', String(on));
+          var panel = document.getElementById('panel-' + t2.dataset.tab);
+          if (panel) panel.hidden = !on;
+        });
+      });
+    });
+  }
+
+  // Durum mesajını data-i18n ile işaretler ki dil değişince kendini güncellesin.
+  function say(el, key) {
+    if (!el) return;
+    el.setAttribute('data-i18n', key);
+    el.textContent = t(key);
+  }
+
+  function composeMail(form, subject, msgEl, successKey) {
+    var lines = [];
+    $$('[data-field]', form).forEach(function (el) {
+      if (el.type === 'checkbox') return;
+      var val = (el.value || '').trim();
+      if (!val) return;
+      if (el.tagName === 'SELECT' && el.selectedOptions.length) val = el.selectedOptions[0].textContent.trim();
+      lines.push(t(el.getAttribute('data-field')) + ': ' + val);
+    });
+    var checked = $$('input[type="checkbox"]', form).filter(function (c) { return c.checked; })
+      .map(function (c) { return t(c.getAttribute('data-field')); });
+    if (checked.length) lines.push(t('wc.services') + ': ' + checked.join(', '));
+
+    var body = lines.join('\n');
+    // Statik site: gönderim, ziyaretçinin kendi e-posta uygulamasında hazır bir taslak olarak açılır.
+    // Sunucu tarafı bir forma (Formspree, Netlify Forms) bağlarken burayı fetch çağrısıyla değiştirin.
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(body).catch(function () {});
+    window.location.href = 'mailto:' + MAIL_TO +
+      '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    say(msgEl, successKey);
+  }
+
+  function initWorkForms() {
+    var client = $('#clientForm');
+    if (client) client.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var msg = $('#clientMsg');
+      var name = $('#cName').value.trim();
+      var mail = $('#cEmail').value.trim();
+      var text = $('#cMsg').value.trim();
+      if (!name || !text || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) {
+        say(msg, 'wc.invalid');
+        return;
+      }
+      composeMail(client, 'QBLOGG — ' + t('wc.title') + ' · ' + name, msg, 'wc.success');
+    });
+
+    var writer = $('#writerForm');
+    if (writer) writer.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var msg = $('#writerMsg');
+      var name = $('#wName').value.trim();
+      var mail = $('#wEmail').value.trim();
+      var text = $('#wMsg').value.trim();
+      if (!name || !text || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) {
+        say(msg, 'wc.invalid');
+        return;
+      }
+      composeMail(writer, 'QBLOGG — ' + t('ww.title') + ' · ' + name, msg, 'ww.success');
     });
   }
 
@@ -323,6 +401,8 @@
     initNav();
     initBlog();
     initForm();
+    initTabs();
+    initWorkForms();
     applyLang(currentLang, false);
     revealInit();
   });
