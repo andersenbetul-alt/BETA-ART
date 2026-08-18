@@ -245,7 +245,8 @@
       '<div class="post-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + p.icon + '</div>' +
       '<div class="post-body">' +
         '<div class="post-meta"><span class="tag">' + esc(t('cat.' + p.category)) + '</span>' +
-        '<span>' + esc(fmtDate(p.date)) + '</span><span>· ' + readTime(p) + ' ' + esc(t('posts.min')) + '</span></div>' +
+        '<span class="meta-when">' + esc(fmtDate(p.date)) +
+          '<span class="dot">' + readTime(p) + ' ' + esc(t('posts.min')) + '</span></span></div>' +
         '<h3>' + esc(pick(p.t)) + '</h3><p>' + esc(pick(p.e)) + '</p>' +
         '<span class="read-more">' + esc(t('posts.readMore')) + ' →</span>' +
       '</div></a>';
@@ -377,7 +378,7 @@
       '<div class="article-head">' +
         '<div class="post-meta" style="justify-content:center"><span class="tag">' + esc(t('cat.' + post.category)) + '</span>' +
         '<span>' + esc(t('posts.published')) + ': ' + esc(fmtDate(post.date)) + '</span>' +
-        '<span>· ' + readTime(post) + ' ' + esc(t('posts.min')) + '</span></div>' +
+        '<span class="meta-when">' + readTime(post) + ' ' + esc(t('posts.min')) + '</span></div>' +
         '<h1>' + esc(pick(post.t)) + '</h1>' +
         '<p class="muted">' + esc(pick(post.e)) + '</p>' +
       '</div>' +
