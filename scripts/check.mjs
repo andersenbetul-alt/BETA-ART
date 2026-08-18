@@ -73,6 +73,14 @@ const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
           if (typeof x === 'object' && x && x.see && !POSTS.some((q) => q.slug === x.see)) {
             fail(`posts [${p.slug}]: ${code} içinde olmayan yazıya bağlantı — "${x.see}"`); bad++;
           }
+          // Ortaklık bağlantısı: adres geçerli olmalı, gerekçe zorunlu.
+          // Gerekçesiz öneri reklamdır ve okur bunu anlar.
+          if (typeof x === 'object' && x && x.aff) {
+            const a = x.aff;
+            if (!a.t?.trim() || !a.u?.trim()) { fail(`posts [${p.slug}]: ${code} ortaklık bağlantısı eksik (t/u)`); bad++; }
+            else if (!/^https?:\/\//.test(a.u)) { fail(`posts [${p.slug}]: ${code} ortaklık adresi geçersiz — ${a.u}`); bad++; }
+            if (!a.why?.trim()) warn(`posts [${p.slug}]: ${code} "${(a.t||'').slice(0,30)}" ortaklık önerisinin gerekçesi yazılmamış`);
+          }
         }
       }
     }

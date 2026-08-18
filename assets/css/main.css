@@ -445,6 +445,22 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 .article-body .article-see span { color: var(--text-muted); font-weight: 700; }
 .article-body .article-see a { color: var(--brand); font-weight: 600; }
 
+/* Ortaklık bildirimi: yazının başında, gözden kaçmayacak ama bağırmayacak */
+.article-body .article-disclosure {
+  margin: 0 0 1.8em; padding: 10px 14px; border-radius: 10px;
+  background: var(--bg-soft, var(--bg-card)); border: 1px solid var(--border);
+  color: var(--text-muted); font-size: .86rem; line-height: 1.5;
+}
+
+/* Ortaklık bağlantısı: gerekçesiyle birlikte, reklam kutusu gibi değil */
+.article-body .article-aff {
+  margin: 1.4em 0; padding: 14px 16px; border-radius: 12px;
+  border: 1px solid var(--border); border-inline-start: 3px solid var(--brand);
+  display: grid; gap: 4px;
+}
+.article-body .article-aff a { color: var(--brand); font-weight: 600; }
+.article-body .article-aff-why { color: var(--text-muted); font-size: .9rem; }
+
 /* Kaynaklar: iddia varsa kaynak da görünür olsun */
 .article-sources { margin-top: 2.6em; padding-top: 1.4em; border-top: 1px solid var(--border); }
 .article-sources h2 { font-size: 1.15rem; margin-top: 0; }

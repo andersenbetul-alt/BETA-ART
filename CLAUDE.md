@@ -110,7 +110,11 @@ sözlüğünü İngilizcedeki tüm anahtarlarla doldurun, yazılara aynı kodu e
 - Formlar `mailto:` taslağı üretir (sunucu yok). Gerçek forma geçiş noktası: `app.js`
   içindeki `composeMail`. Alıcı adres, alan adı, fiyatlar ve sosyal hesaplar
   **`assets/js/config.js`** içinde — yayına almak için başka dosyaya dokunmak gerekmez.
-- Bülten kaydı yalnızca tarayıcıda tutulur (`initForm`); e-posta servisine bağlanmalı.
+- Bülten kaydı `config.js → newsletterEndpoint` boşken yalnızca tarayıcıda tutulur
+  ve konsola uyarı düşer. Adres girilince gerçek servise POST ediliyor.
+- Ortaklık bağlantısı `{aff:{t,u,why}}` bloğuyla eklenir; bildirim kutusu,
+  `rel="sponsored nofollow noopener"` ve gerekçe denetimi kendiliğinden çalışır.
+  Gelir katmanlarının tamamı için `docs/gelir-sistemi.md`.
 - Depoya push izni yok. İki ayrı sorun: (1) uzak depo tamamen boş — hiç commit yok;
   (2) GitHub App'in yazma izni yok, yazma çağrıları "Resource not accessible by
   integration" döndürüyor. Okuma çalışıyor. İş yerelde commit'leniyor.

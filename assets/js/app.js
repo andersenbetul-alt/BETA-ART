@@ -259,6 +259,7 @@
     if (block.note) return block.note;
     if (block.ul) return block.ul.join(' ');
     if (block.see) return '';
+    if (block.aff) return [block.aff.t, block.aff.why].filter(Boolean).join(' ');
     return '';
   }
 
@@ -272,12 +273,34 @@
       '<a href="post.html?slug=' + encodeURIComponent(slug) + '">' + esc(pick(target.t)) + '</a></p>';
   }
 
+  // {aff:{t,u,why}} — ortaklık bağlantısı. Google ortaklık bağlantılarında
+  // rel="sponsored" bekliyor; kullanıcıya da neden önerdiğimizi söylüyoruz.
+  // Öneri gerekçesi (why) zorunlu tutuluyor: gerekçesiz öneri reklamdır.
+  function affHTML(a) {
+    if (!a || !a.t || !a.u) return '';
+    return '<p class="article-aff">' +
+      '<a href="' + esc(a.u) + '" rel="sponsored nofollow noopener" target="_blank">' + esc(a.t) + '</a>' +
+      (a.why ? '<span class="article-aff-why">' + esc(a.why) + '</span>' : '') +
+      '</p>';
+  }
+
+  // Ortaklık bildirimi: bağlantı içeren yazının başında görünür.
+  function affDisclosureHTML(post) {
+    var cfg = (CFG.affiliate || {});
+    if (cfg.disclosure === false) return '';
+    var blocks = pick(post.b) || [];
+    var has = blocks.some(function (b) { return b && typeof b === 'object' && b.aff; });
+    if (!has) return '';
+    return '<p class="article-disclosure">' + esc(t('posts.affDisclosure')) + '</p>';
+  }
+
   function blockHTML(block) {
     if (typeof block === 'string') return '<p>' + esc(block) + '</p>';
     if (block.h) return '<h2>' + esc(block.h) + '</h2>';
     if (block.note) return '<p class="article-note">' + esc(block.note) + '</p>';
     if (block.ul) return '<ul>' + block.ul.map(function (li) { return '<li>' + esc(li) + '</li>'; }).join('') + '</ul>';
     if (block.see) return seeHTML(block.see);
+    if (block.aff) return affHTML(block.aff);
     return '';
   }
 
@@ -383,7 +406,7 @@
         '<p class="muted">' + esc(pick(post.e)) + '</p>' +
       '</div>' +
       '<div class="article-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + post.icon + '</div>' +
-      '<div class="article-body">' + body + sourcesHTML(post) + '</div>' +
+      '<div class="article-body">' + affDisclosureHTML(post) + body + sourcesHTML(post) + '</div>' +
       '<div class="article-foot">' +
         '<a class="btn btn--ghost" href="blog.html">← ' + esc(t('posts.back')) + '</a>' +
         '<div class="share-row">' +
@@ -465,17 +488,36 @@
       var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
       say(msg, ok ? 'cta.success' : 'cta.invalid');
       if (ok) {
-        // Statik site: kayıt tarayıcıda tutulur. Gerçek listeye bağlarken
-        // buradaki bloğu e-posta servisinizin API çağrısıyla değiştirin.
-        try {
-          var list = JSON.parse(localStorage.getItem('qb_subs') || '[]');
-          if (list.indexOf(val) === -1) list.push(val);
-          localStorage.setItem('qb_subs', JSON.stringify(list));
-        } catch (err) { /* yoksay */ }
-        form.reset();
-        // Kayıt karşılığı: kontrol listesi indirme bağlantısı görünür olur.
-        var gift = $('#magnetLink');
-        if (gift) gift.hidden = false;
+        var done = function () {
+          form.reset();
+          // Kayıt karşılığı: kontrol listesi indirme bağlantısı görünür olur.
+          var gift = $('#magnetLink');
+          if (gift) gift.hidden = false;
+        };
+        var endpoint = CFG.newsletterEndpoint;
+        if (endpoint) {
+          // Gerçek liste. Servisler genelde form-encoded bekler ve CORS'a
+          // izin vermez; no-cors ile gönderiyoruz — yanıtı okuyamayız ama
+          // kayıt düşer. Servis JSON API sunuyorsa burayı ona göre değiştirin.
+          var body = encodeURIComponent(CFG.newsletterField || 'email') + '=' + encodeURIComponent(val);
+          fetch(endpoint, {
+            method: 'POST', mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body
+          }).then(done, function () { say(msg, 'cta.error'); });
+        } else {
+          // Servis bağlanmamış: kayıt yalnızca bu tarayıcıda kalır, yani
+          // liste gerçekte oluşmuyor. config.js → newsletterEndpoint.
+          try {
+            var list = JSON.parse(localStorage.getItem('qb_subs') || '[]');
+            if (list.indexOf(val) === -1) list.push(val);
+            localStorage.setItem('qb_subs', JSON.stringify(list));
+          } catch (err) { /* yoksay */ }
+          if (window.console && console.warn) {
+            console.warn('QBLOGG: newsletterEndpoint boş — kayıt yalnızca bu tarayıcıda tutuldu, listeye düşmedi.');
+          }
+          done();
+        }
       }
     });
   }

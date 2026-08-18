@@ -29,5 +29,27 @@ window.QB_CONFIG = {
   },
 
   /* Bültene kayıt karşılığında verilen indirilebilir dosya (lead magnet) */
-  leadMagnet: 'assets/downloads/otomasyon-kesif-listesi.html'
+  leadMagnet: 'assets/downloads/otomasyon-kesif-listesi.html',
+
+  /* E-posta listesi. Boş bırakılırsa kayıt yalnızca tarayıcıda tutulur —
+     yani liste aslında oluşmaz. Site tek varlığını (e-posta listesi) burası
+     doldurulana kadar biriktiremez.
+
+     Buraya e-posta servisinizin form/API adresini yazın. Çoğu servis
+     (Mailchimp, ConvertKit, Buttondown, MailerLite, beehiiv) bir "form action"
+     adresi verir; POST edilen alan adı genelde 'email'.
+
+     Örnek: 'https://buttondown.com/api/emails/embed-subscribe/qblogg'   */
+  newsletterEndpoint: '',
+  newsletterField: 'email',
+
+  /* Ortaklık (affiliate) bağlantıları.
+     disclosure: true ise, ortaklık bağlantısı içeren her yazının başında
+     otomatik bir bildirim kutusu çıkar. Bunu kapatmayın: AB tüketici
+     mevzuatı ticari ilişkinin açıkça belirtilmesini istiyor ve Google
+     ortaklık bağlantılarında rel="sponsored" bekliyor (ikisini de kod
+     kendiliğinden uyguluyor). */
+  affiliate: {
+    disclosure: true
+  }
 };

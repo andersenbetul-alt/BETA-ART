@@ -40,6 +40,9 @@ maliyet.
 | 42 | Kendimizi ilk vaka çalışması yapmak | **Bitti** 18.08 | `ai-icerik-studyosu` yazısı: kendi hattımızın ölçülmüş rakamları, TR 1.045 / EN 1.358 |
 | 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 3/7 bitti (platform karşılaştırması, içerik stüdyosu vakası, AI resepsiyonist). Kalan 4 yazı + üçünün 8 dili. Durum: `npm run gorunurluk` |
 | 51 | P19 AI Receptionist pillar sayfası | **Bitti** 18.08 | İlk dalganın 1 numarası. TR 1.160 / EN 1.533 kelime, 5 kaynak, görünürlük denetimi geçti |
+| 52 | Gelir sistemi haritası + huni matematiği | **Bitti** 18.08 | `docs/gelir-sistemi.md`; beş katman, gerçekçi oranlar, kurulum sırası |
+| 53 | Ortaklık altyapısı | **Bitti** 18.08 | `{aff:}` bloğu, otomatik bildirim (10 dil), `rel="sponsored"`, gerekçe zorunluluğu |
+| 54 | **E-posta servisini bağla** | **Kritik** | `config.js → newsletterEndpoint`. Bağlanana kadar liste oluşmuyor; diğer dört katman bunun üstünde |
 | 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
 ### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)
