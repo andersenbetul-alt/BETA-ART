@@ -114,6 +114,8 @@ ul,ol,dl{margin:0;padding:0;list-style:none}
 .meta{display:block;margin-bottom:14px;letter-spacing:.1em}
 .embed{width:100%;margin-bottom:14px}
 .tracklist li{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border)}
+.news-title{margin:6px 0 10px;font-size:clamp(19px,2.4vw,26px);text-transform:none;letter-spacing:0}
+.news-text{color:#c9c9d4;font-size:14px}
 .card-links{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
 .card-links a{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:8px 14px}
 .card-links a:hover{background:var(--accent);color:#fff}

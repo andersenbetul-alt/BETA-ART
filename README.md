@@ -7,8 +7,9 @@ Saf HTML + CSS + JavaScript — build adımı, paket kurulumu, framework yok.
 ## Dosya yapısı
 
 ```
-index.html                  Tüm sayfa (bölümler: hero, künye şeridi, müzik, videolar, NCS,
-                            hakkında, "HXI ile çalışın", bülten + topluluk, basın/EPK, booking)
+index.html                  Tüm sayfa (bölümler: hero, künye şeridi, son gelişmeler, müzik,
+                            videolar, NCS, hakkında, "HXI ile çalışın", bülten + topluluk,
+                            basın/EPK, booking)
 assets/css/style.css        Tasarım: siyah zemin, tek kırmızı vurgu (#ef2b2d), condensed başlıklar
 assets/js/i18n.js           12 dilin çevirileri (100 anahtar × 12 dil)
 assets/js/app.js            Dil değiştirme, mobil menü, video oynatıcı, scroll animasyonu, form
@@ -92,7 +93,9 @@ gereken sayılar) `CLAUDE.md` dosyasında.
 
 Statik olduğu için her yerde çalışır:
 
-- **GitHub Pages** — Settings → Pages → Source: `main` (veya bu branch) / root.
+- **GitHub Pages (otomatik)** — repoda `.github/workflows/deploy.yml` hazır. GitHub'da
+  Settings → Pages → Source olarak **GitHub Actions**'ı seçin; bundan sonra `main`'e her
+  push kontrolleri çalıştırıp siteyi kendiliğinden yayına alır.
 - **Vercel / Netlify** — repoyu bağlayın, build komutu yok, output dizini kök.
 - **Kendi hosting'iniz** — dosyaları FTP ile atın.
 

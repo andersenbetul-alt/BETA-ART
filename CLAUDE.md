@@ -11,7 +11,7 @@ setup, and it is what lets the site be deployed by dragging a folder anywhere.
 
 | Path | What lives there |
 | --- | --- |
-| `index.html` | The whole page. Sections in order: hero, credits strip, music, videos, NCS, about, collab, newsletter + community, press, booking. |
+| `index.html` | The whole page. Sections in order: hero, credits strip, latest, music, videos, NCS, about, collab, newsletter + community, press, booking. |
 | `assets/css/style.css` | All styling. Design tokens at the top of `:root`. |
 | `assets/js/i18n.js` | `HXI_LANGS` (switcher order) and `HXI_I18N` (one dictionary per language). |
 | `assets/js/app.js` | Language switching, mobile nav, YouTube facades, scroll reveal, signup. |
@@ -68,5 +68,10 @@ matching key in all twelve dictionaries. Current figures: 43,394,947 streams on
 
 ## Deployment
 
-Static hosting, no build: GitHub Pages, Netlify drop, Vercel, or plain FTP. The
-`og:` tags, `sitemap.xml` and `hreflang` links all point at `https://hximusic.com`.
+`.github/workflows/deploy.yml` publishes to GitHub Pages on every push to `main`,
+but only after `npm run check` passes. Any other static host works too — Netlify
+drop, Vercel, plain FTP — since there is nothing to build. The `og:` tags,
+`sitemap.xml` and `hreflang` links all point at `https://hximusic.com`.
+
+The "Latest" section is the one that dates fastest: when a release lands, add a card
+there and update `music_mh_*` if it becomes the newest release.
