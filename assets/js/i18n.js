@@ -1273,3 +1273,58 @@ Object.assign(window.QB_I18N.no, {
   'w.privacy': 'Opplysningene dine brukes bare til denne samtalen og deles aldri med tredjeparter.',
   'w.mailNote': 'Skjemaet gjør svarene dine om til et ferdig e-postutkast — sendingen er opp til deg.'
 });
+
+/* ---------------------------------------------------------------
+ * Yazı sonu teklif köprüsü (post.html). İçerikten hizmete geçiş.
+ * --------------------------------------------------------------- */
+
+Object.assign(window.QB_I18N.tr, {
+  'cta2.title': 'Bu işi sizin için biz yapalım mı?',
+  'cta2.sub': 'Aynı araştırmadan blog yazısı, LinkedIn serisi, sosyal içerik ve newsletter çıkarıyoruz — on dilde.',
+  'cta2.btn': 'Brief gönder', 'cta2.alt': 'Paketlere bak'
+});
+Object.assign(window.QB_I18N.en, {
+  'cta2.title': 'Want us to do this for you?',
+  'cta2.sub': 'We turn one research pass into a blog post, a LinkedIn series, social content and a newsletter — in ten languages.',
+  'cta2.btn': 'Send a brief', 'cta2.alt': 'See the packages'
+});
+Object.assign(window.QB_I18N.zh, {
+  'cta2.title': '要不要交给我们来做？',
+  'cta2.sub': '我们把一次研究变成博客文章、LinkedIn 系列、社交内容和邮件通讯——覆盖十种语言。',
+  'cta2.btn': '提交需求', 'cta2.alt': '查看套餐'
+});
+Object.assign(window.QB_I18N.hi, {
+  'cta2.title': 'क्या यह काम हम आपके लिए करें?',
+  'cta2.sub': 'हम एक ही शोध से ब्लॉग लेख, LinkedIn सीरीज़, सोशल कंटेंट और न्यूज़लेटर बनाते हैं — दस भाषाओं में।',
+  'cta2.btn': 'ब्रीफ़ भेजें', 'cta2.alt': 'पैकेज देखें'
+});
+Object.assign(window.QB_I18N.es, {
+  'cta2.title': '¿Quieres que lo hagamos por ti?',
+  'cta2.sub': 'Convertimos una sola investigación en un artículo, una serie de LinkedIn, contenido social y una newsletter, en diez idiomas.',
+  'cta2.btn': 'Enviar un briefing', 'cta2.alt': 'Ver los paquetes'
+});
+Object.assign(window.QB_I18N.ar, {
+  'cta2.title': 'هل نقوم بهذا العمل نيابةً عنك؟',
+  'cta2.sub': 'نحوّل بحثًا واحدًا إلى مقال مدونة وسلسلة LinkedIn ومحتوى اجتماعي ونشرة بريدية، بعشر لغات.',
+  'cta2.btn': 'أرسل موجزًا', 'cta2.alt': 'اطّلع على الباقات'
+});
+Object.assign(window.QB_I18N.fr, {
+  'cta2.title': 'On s’en charge pour vous ?',
+  'cta2.sub': 'Une seule recherche devient un article, une série LinkedIn, du contenu social et une newsletter — en dix langues.',
+  'cta2.btn': 'Envoyer un brief', 'cta2.alt': 'Voir les forfaits'
+});
+Object.assign(window.QB_I18N.pt, {
+  'cta2.title': 'Quer que a gente faça isso por você?',
+  'cta2.sub': 'Transformamos uma pesquisa em texto de blog, série de LinkedIn, conteúdo social e newsletter — em dez idiomas.',
+  'cta2.btn': 'Enviar um briefing', 'cta2.alt': 'Ver os pacotes'
+});
+Object.assign(window.QB_I18N.ru, {
+  'cta2.title': 'Сделать это за вас?',
+  'cta2.sub': 'Из одного исследования мы делаем статью, серию постов в LinkedIn, контент для соцсетей и рассылку — на десяти языках.',
+  'cta2.btn': 'Отправить бриф', 'cta2.alt': 'Посмотреть пакеты'
+});
+Object.assign(window.QB_I18N.no, {
+  'cta2.title': 'Skal vi gjøre dette for deg?',
+  'cta2.sub': 'Vi gjør én research om til en bloggartikkel, en LinkedIn-serie, sosialt innhold og et nyhetsbrev — på ti språk.',
+  'cta2.btn': 'Send en brief', 'cta2.alt': 'Se pakkene'
+});

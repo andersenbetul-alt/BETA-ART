@@ -42,9 +42,9 @@ maliyet.
 | # | İş | Durum | Not |
 |---|---|---|---|
 | 11 | Her dili ayrı URL'de üreten ön-render adımı | Bekliyor | Çok dilli SEO'nun asıl kilidi |
-| 12 | Blog yazılarına yapılandırılmış veri (Article/FAQ şeması) | Bekliyor | |
+| 12 | Blog yazılarına yapılandırılmış veri (Article/FAQ şeması) | **Bitti** 18.08 | BlogPosting + FAQPage + Organization/WebSite/Service; dil değişince şema da güncelleniyor |
 | 13 | Ayda 2 yeni yazı (10 dilde) | Sürekli | Konu havuzu aşağıda |
-| 14 | Her yazının sonuna ilgili pakete bağlantı | Bekliyor | İçerikten teklife köprü |
+| 14 | Her yazının sonuna ilgili pakete bağlantı | **Bitti** 18.08 | Yazı sonunda brief + paket köprüsü, 10 dilde |
 | 15 | Analitik (gizlilik dostu) ve dönüşüm ölçümü | Bekliyor | Hangi yazı brief getiriyor? |
 
 ### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
@@ -87,3 +87,9 @@ stüdyosu. Sıradaki adaylar — hepsi ticari niyeti olan, aramada karşılığ�
 - **Formlar mailto ile.** Sunucusuz çalışsın diye; gerçek forma geçiş noktası hazır (iş #5).
 - **AI kullanımı sayfada açıkça anlatılıyor.** Gizlemek yerine süreci göstermek
   (ilk taslak AI, doğrulama ve editörlük insan) güven kazandırıyor.
+- **Yazı sayfasının hreflang'i JavaScript ile kuruluyor.** Slug'a bağlı olduğu için
+  statik yazılamıyor; ön-render adımı (iş #11) gelince statiğe dönecek.
+- **Drop-cap yalnızca Latin/Kiril yazılarda.** Arapça bitişik yazıldığı için ilk harfi
+  büyütmek kelimeyi bozuyordu; Çince ve Devanagari'de de yanlış duruyor.
+- **Mobil menü eşiği 1180px.** Rusça ve Norveççe menü etiketleri uzun; daha düşük eşikte
+  menü ya iki satıra kırılıyor ya da sayfayı yatay taşırıyordu.

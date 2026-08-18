@@ -153,6 +153,21 @@ const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
   if (!bad) pass('html: her sayfa gerekli stil ve betikleri yüklüyor');
 }
 
+/* --- 8. Sayfalardaki JSON-LD blokları geçerli mi --- */
+{
+  let bad = 0;
+  let found = 0;
+  for (const file of HTML_FILES) {
+    const html = read(file);
+    for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+      found++;
+      try { JSON.parse(m[1]); }
+      catch (e) { fail(`${file}: bozuk JSON-LD → ${e.message}`); bad++; }
+    }
+  }
+  if (!bad) pass(`json-ld: ${found} statik blok geçerli`);
+}
+
 /* --- Sonuç --- */
 const line = '─'.repeat(58);
 console.log(line);

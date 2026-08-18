@@ -140,6 +140,75 @@
     });
   }
 
+
+  /* ---------- yapılandırılmış veri (JSON-LD) ve hreflang ---------- */
+  var SITE_URL = 'https://qblogg.com';
+
+  function setJsonLd(id, data) {
+    var el = document.getElementById(id);
+    if (!el) {
+      el = document.createElement('script');
+      el.type = 'application/ld+json';
+      el.id = id;
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(data);
+  }
+
+  // Yazı sayfası tek URL'de on dil sunduğu için dil alternatiflerini
+  // ?lang= parametresiyle bildiriyoruz (bkz. ROADMAP #11: ön-render).
+  function setPostAlternates(slug) {
+    $$('link[data-qb-alt]').forEach(function (l) { l.remove(); });
+    var base = SITE_URL + '/post.html?slug=' + encodeURIComponent(slug);
+    LANGS.concat([{ code: 'x-default' }]).forEach(function (l) {
+      var link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = l.code;
+      link.href = l.code === 'x-default' ? base : base + '&lang=' + l.code;
+      link.setAttribute('data-qb-alt', '');
+      document.head.appendChild(link);
+    });
+    var canon = $('link[rel="canonical"]');
+    if (canon) canon.href = base;
+  }
+
+  function articleSchema(post) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: pick(post.t),
+      description: pick(post.e),
+      articleBody: (pick(post.b) || []).join('\n\n'),
+      datePublished: post.date,
+      inLanguage: currentLang,
+      articleSection: t('cat.' + post.category),
+      timeRequired: 'PT' + post.read + 'M',
+      mainEntityOfPage: SITE_URL + '/post.html?slug=' + encodeURIComponent(post.slug),
+      author: { '@type': 'Organization', name: 'QBLOGG', url: SITE_URL },
+      publisher: { '@type': 'Organization', name: 'QBLOGG', url: SITE_URL }
+    };
+  }
+
+  function faqSchema() {
+    var qa = [['wq1', 'wa1'], ['wq2', 'wa2'], ['wq3', 'wa3'], ['wq4', 'wa4']];
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      inLanguage: currentLang,
+      mainEntity: qa.map(function (pair) {
+        return {
+          '@type': 'Question',
+          name: t(pair[0]),
+          acceptedAnswer: { '@type': 'Answer', text: t(pair[1]) }
+        };
+      })
+    };
+  }
+
+  function renderSchema() {
+    if ($('#panel-client')) setJsonLd('qb-faq-schema', faqSchema());
+  }
+
   /* ---------- blog kartları ---------- */
   function fmtDate(iso) {
     try { return new Date(iso).toLocaleDateString(currentLang, { year: 'numeric', month: 'short', day: 'numeric' }); }
@@ -226,6 +295,10 @@
       }).slice(0, 2 - related.length));
     }
     document.title = pick(post.t) + ' — QBLOGG';
+    var metaDesc = $('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', pick(post.e));
+    setJsonLd('qb-article-schema', articleSchema(post));
+    setPostAlternates(post.slug);
     host.innerHTML =
       '<div class="article-head">' +
         '<div class="post-meta" style="justify-content:center"><span class="tag">' + esc(t('cat.' + post.category)) + '</span>' +
@@ -240,6 +313,14 @@
         '<a class="btn btn--ghost" href="blog.html">← ' + esc(t('posts.back')) + '</a>' +
         '<button type="button" class="btn btn--ghost" id="shareBtn">' + esc(t('posts.share')) + '</button>' +
       '</div>' +
+      '<aside class="post-cta reveal">' +
+        '<h3>' + esc(t('cta2.title')) + '</h3>' +
+        '<p>' + esc(t('cta2.sub')) + '</p>' +
+        '<div class="post-cta-actions">' +
+          '<a class="btn btn--primary" href="work.html">' + esc(t('cta2.btn')) + '</a>' +
+          '<a class="btn btn--ghost" href="index.html#packages">' + esc(t('cta2.alt')) + '</a>' +
+        '</div>' +
+      '</aside>' +
       '<h2 style="margin-top:52px">' + esc(t('posts.related')) + '</h2>' +
       '<div class="posts">' + related.map(cardHTML).join('') + '</div>';
 
@@ -392,7 +473,7 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  function renderAll() { renderHome(); renderBlog(); renderPost(); }
+  function renderAll() { renderHome(); renderBlog(); renderPost(); renderSchema(); }
   window.QB_RENDER = renderAll; // tek dosyalık önizleme için dışa açıldı
 
   document.addEventListener('DOMContentLoaded', function () {
