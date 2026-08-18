@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curiosity Engine — Live Curiosity</title>
+<style>
+  :root {
+    --bg:#f6f7fb; --card:#fff; --text:#14161c; --muted:#5b6172; --border:#e4e7f0;
+    --brand:#4b3cf7; --hot:#e8590c; --go:#0d9f6e; --draft:#c77700; --idea:#6b7280; --skip:#9ca3af;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#0c0e14; --card:#151823; --text:#eef0f6; --muted:#9aa1b5; --border:#242838;
+      --brand:#8b7dff; --hot:#ff8a4c; --go:#2ee0c9; --draft:#e3a008; --idea:#9aa1b5; --skip:#4b5563;
+    }
+  }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif }
+  .wrap { max-width:1180px; margin:0 auto; padding:28px 20px 60px }
+  header { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px }
+  h1 { font-size:1.5rem; margin:0; letter-spacing:-.02em }
+  .meta { color:var(--muted); font-size:.85rem }
+  .grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin:22px 0 26px }
+  .stat { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px }
+  .stat b { display:block; font-size:1.6rem; letter-spacing:-.02em }
+  .stat span { color:var(--muted); font-size:.8rem }
+  h2 { font-size:1.05rem; margin:26px 0 10px }
+  table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden }
+  th, td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); font-variant-numeric:tabular-nums }
+  th { font-size:.75rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:600 }
+  tr:last-child td { border-bottom:0 }
+  tr:hover td { background:color-mix(in srgb, var(--brand) 5%, transparent) }
+  .num { text-align:right; width:76px }
+  .bar { position:relative; height:6px; border-radius:99px; background:var(--border); margin-top:5px }
+  .bar i { position:absolute; inset:0 auto 0 0; border-radius:99px; background:var(--brand) }
+  .pill { display:inline-block; padding:3px 9px; border-radius:99px; font-size:.72rem; font-weight:700; letter-spacing:.02em }
+  .hot{background:color-mix(in srgb,var(--hot) 18%,transparent);color:var(--hot)}
+  .publish{background:color-mix(in srgb,var(--go) 18%,transparent);color:var(--go)}
+  .draft{background:color-mix(in srgb,var(--draft) 20%,transparent);color:var(--draft)}
+  .idea{background:color-mix(in srgb,var(--idea) 18%,transparent);color:var(--idea)}
+  .skip{color:var(--skip)}
+  .tag { font-size:.72rem; color:var(--muted); border:1px solid var(--border); border-radius:6px; padding:1px 6px }
+  .cols { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); margin-top:10px }
+  .col { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:12px 14px; min-height:110px }
+  .col h3 { margin:0 0 8px; font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted) }
+  .col li { font-size:.86rem; margin-bottom:6px }
+  .col ul { margin:0; padding-inline-start:16px }
+  .empty { color:var(--muted); font-size:.85rem }
+  code { background:var(--bg); border:1px solid var(--border); border-radius:5px; padding:1px 5px; font-size:.85em }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🔥 Live Curiosity</h1>
+    <span class="meta" id="meta">yükleniyor…</span>
+  </header>
+  <p class="meta">Veri kaynağı: <code>engine/data/board.json</code> — <code>node engine/run.mjs --demo</code> veya <code>--live</code> ile üretilir.</p>
+
+  <div class="grid" id="stats"></div>
+
+  <h2>Trending Now</h2>
+  <table id="board">
+    <thead><tr>
+      <th>Konu</th><th>Sütun</th><th>Kaynak</th>
+      <th class="num">Trend</th><th class="num">Fırsat</th><th class="num">Para</th>
+      <th class="num">Final</th><th>Karar</th><th>Tip</th><th>Gelir yolu</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Üretim hattı</h2>
+  <div class="cols" id="pipeline"></div>
+</div>
+
+<script>
+const DECISION = { hot:'🔥 HOT', publish:'🟢 Yayınla', draft:'🟠 Taslak', idea:'🟡 Fikir', skip:'❌ Geç' };
+const SPEED = { breaking:'⚡ Breaking', rising:'📈 Rising', evergreen:'🌲 Evergreen' };
+
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function render(data) {
+  const rows = data.rows || [];
+  document.getElementById('meta').textContent =
+    `${new Date(data.generatedAt).toLocaleString('tr')} · ${data.signals} sinyal → ${rows.length} konu · mod: ${data.mode}`;
+
+  const count = (d) => rows.filter(r => r.decision === d).length;
+  const stats = [
+    ['konu', rows.length], ['🔥 hot', count('hot')], ['yayına aday', count('publish')],
+    ['taslak', count('draft')], ['fikir bankası', count('idea')],
+    ['ort. final', rows.length ? (rows.reduce((a,r)=>a+r.finalScore,0)/rows.length).toFixed(1) : 0]
+  ];
+  document.getElementById('stats').innerHTML = stats.map(([l,v]) =>
+    `<div class="stat"><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join('');
+
+  document.querySelector('#board tbody').innerHTML = rows.slice(0, 15).map(r => `
+    <tr>
+      <td>${esc(r.title)}<div class="bar"><i style="width:${Math.round(r.finalScore)}%"></i></div></td>
+      <td><span class="tag">${esc(r.pillar || '—')}</span></td>
+      <td>${esc(r.signals)}</td>
+      <td class="num">${r.trendScore}</td>
+      <td class="num">${r.opportunity}</td>
+      <td class="num">${r.money}</td>
+      <td class="num"><b>${r.finalScore}</b></td>
+      <td><span class="pill ${esc(r.decision)}">${DECISION[r.decision] || r.decision}</span></td>
+      <td>${SPEED[r.speed] || ''}</td>
+      <td>${esc(r.moneyPath || '—')}</td>
+    </tr>`).join('');
+
+  const stages = [
+    ['Kuyrukta', rows.filter(r => r.status === 'queued' || ['hot','publish','draft'].includes(r.decision))],
+    ['Araştırma', rows.filter(r => r.status === 'researching')],
+    ['Taslak', rows.filter(r => r.status === 'drafted')],
+    ['İnceleme', rows.filter(r => r.status === 'review')],
+    ['Yayında', rows.filter(r => r.status === 'published')]
+  ];
+  document.getElementById('pipeline').innerHTML = stages.map(([name, items]) => `
+    <div class="col"><h3>${esc(name)} (${items.length})</h3>
+      ${items.length ? '<ul>' + items.slice(0,6).map(i => `<li>${esc(i.title)}</li>`).join('') + '</ul>'
+                     : '<p class="empty">—</p>'}
+    </div>`).join('');
+}
+
+fetch('./data/board.json')
+  .then(r => r.ok ? r.json() : Promise.reject(new Error('board.json bulunamadı')))
+  .then(render)
+  .catch(err => {
+    document.getElementById('meta').textContent = err.message;
+    document.querySelector('#board tbody').innerHTML =
+      '<tr><td colspan="10" class="empty">Önce <code>node engine/run.mjs --demo</code> çalıştırın.</td></tr>';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "note": "Ağ erişimi olmadan hattı uçtan uca denemek için gerçekçi fikstür. Canlı modda bu dosya kullanılmaz.",
+  "signals": [
+    { "source": "reddit", "externalId": "r1", "title": "Can one person run a company with AI agents?", "rawScore": 1840, "hoursAgo": 4 },
+    { "source": "reddit", "externalId": "r2", "title": "How much does an AI receptionist cost for a small business?", "rawScore": 920, "hoursAgo": 7 },
+    { "source": "google_news", "externalId": "n1", "title": "AI agents for small business: what actually works in 2026", "hoursAgo": 9 },
+    { "source": "hn", "externalId": "h1", "title": "Show HN: I replaced my front desk with an AI agent", "rawScore": 640, "hoursAgo": 11 },
+    { "source": "google_trends", "externalId": "t1", "title": "ai receptionist", "rawScore": 20000, "hoursAgo": 5 },
+
+    { "source": "google_trends", "externalId": "t2", "title": "jobs ai will replace", "rawScore": 50000, "hoursAgo": 3 },
+    { "source": "google_news", "externalId": "n2", "title": "Which jobs will AI replace by 2030? New report", "hoursAgo": 6 },
+    { "source": "google_news", "externalId": "n3", "title": "Jobs AI will replace: the full list", "hoursAgo": 14 },
+    { "source": "google_news", "externalId": "n4", "title": "Report: jobs most exposed to AI automation", "hoursAgo": 20 },
+    { "source": "reddit", "externalId": "r3", "title": "Will AI take my job in the next 5 years?", "rawScore": 2400, "hoursAgo": 12 },
+
+    { "source": "reddit", "externalId": "r4", "title": "Best side hustles for people over 50 in 2026", "rawScore": 1120, "hoursAgo": 16 },
+    { "source": "google_news", "externalId": "n5", "title": "Side hustles after 50: what pays in 2026", "hoursAgo": 30 },
+
+    { "source": "reddit", "externalId": "r5", "title": "How do I detect AI scams and deepfake calls?", "rawScore": 780, "hoursAgo": 8 },
+    { "source": "google_news", "externalId": "n6", "title": "Deepfake scam losses climb, banks warn customers", "hoursAgo": 5 },
+    { "source": "google_trends", "externalId": "t3", "title": "ai voice scam", "rawScore": 12000, "hoursAgo": 6 },
+
+    { "source": "hn", "externalId": "h2", "title": "ChatGPT vs Claude vs Gemini for research work", "rawScore": 420, "hoursAgo": 26 },
+    { "source": "google_news", "externalId": "n7", "title": "ChatGPT vs Claude: which is better in 2026", "hoursAgo": 40 },
+    { "source": "google_news", "externalId": "n8", "title": "Gemini vs ChatGPT vs Claude benchmark update", "hoursAgo": 44 },
+    { "source": "google_news", "externalId": "n9", "title": "Best AI chatbot 2026: full comparison", "hoursAgo": 50 },
+    { "source": "google_news", "externalId": "n10", "title": "We compared ChatGPT, Claude and Gemini for a week", "hoursAgo": 55 },
+
+    { "source": "reddit", "externalId": "r6", "title": "Passive income with AI: what actually worked for you?", "rawScore": 1560, "hoursAgo": 18 },
+    { "source": "google_news", "externalId": "n11", "title": "Passive income ideas using AI tools", "hoursAgo": 36 },
+
+    { "source": "hn", "externalId": "h3", "title": "What will humans do when AI does most jobs?", "rawScore": 890, "hoursAgo": 22 },
+
+    { "source": "reddit", "externalId": "r7", "title": "How to start an AI automation agency with no clients?", "rawScore": 1330, "hoursAgo": 10 },
+    { "source": "google_news", "externalId": "n12", "title": "AI automation agencies are the new dropshipping", "hoursAgo": 28 },
+
+    { "source": "google_trends", "externalId": "t4", "title": "chatgpt prompts", "rawScore": 45000, "hoursAgo": 2 },
+    { "source": "google_news", "externalId": "n13", "title": "50 ChatGPT prompts you should try", "hoursAgo": 4 },
+    { "source": "google_news", "externalId": "n14", "title": "Best ChatGPT prompts for work", "hoursAgo": 9 },
+    { "source": "google_news", "externalId": "n15", "title": "ChatGPT prompt guide updated", "hoursAgo": 13 },
+    { "source": "google_news", "externalId": "n16", "title": "Prompt engineering tips for beginners", "hoursAgo": 17 }
+  ]
+}

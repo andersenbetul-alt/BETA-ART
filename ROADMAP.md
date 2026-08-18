@@ -63,6 +63,21 @@ maliyet.
 | 29 | AI Workforce için site sayfası (10 dilde) | Bekliyor | Konumlandırma kararından sonra |
 | 30 | İlk pilot: Research veya Meeting Agent referansı | Bekliyor | En düşük riskli giriş |
 
+### 3.6. Curiosity Engine (içerik motoru — bkz. `engine/README.md`)
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 31 | Veri şeması + SQLite katmanı | **Bitti** 18.08 | 8 tablo, bağımlılıksız (node:sqlite) |
+| 32 | Anahtarsız kaynaklar (News, Trends RSS, HN, Reddit) + GSC CSV | **Bitti** 18.08 | Her kaynak ayrı hata verir, hattı durdurmaz |
+| 33 | Kümeleme + sütun sınıflandırma | **Bitti** 18.08 | AI'sız çalışır; eş anlamlılarda sınırlı |
+| 34 | Puanlama motoru (trend/fırsat/para) + testler | **Bitti** 18.08 | Ağırlıklar ve eşikler belgeli |
+| 35 | Live Curiosity paneli | **Bitti** 18.08 | Trending Now + üretim hattı sütunları |
+| 36 | Altı Claude ajanı (soru, araştırma, yazar, SEO, para, kalite) | **Bitti** 18.08 | Web arama aracıyla kaynaklı araştırma |
+| 37 | Canlı veriyle ilk gerçek çalıştırma | **Engelli** | Bu ortamda ağ kapalı; senin makinende çalışır |
+| 38 | Google Trends API (alpha) erişimi | Bekliyor | Erişim gelince yeni kaynak dosyası |
+| 39 | SERP verisi ile gerçek rekabet skoru | Bekliyor | Şu an vekil tahmin |
+| 40 | V2: CMS'e yayın + SEO otomasyonu | Bekliyor | |
+
 ### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
 
 | # | İş | Durum | Not |

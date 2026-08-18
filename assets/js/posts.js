@@ -7,7 +7,7 @@
 window.QB_POSTS = [
 {
   slug: 'yazarak-para-kazanma-platformlari',
-  category: 'platform', date: '2026-08-16', accent: 1, icon: '💸', featured: true,
+  category: 'money', date: '2026-08-16', accent: 1, icon: '💸', featured: true,
   t: {
     tr: '2026’da yazarak para kazanmanın 7 platformu',
     en: 'Seven platforms for earning from writing in 2026',
@@ -179,7 +179,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'upwork-blog-yazarligi',
-  category: 'freelance', date: '2026-08-09', accent: 2, icon: '🧭',
+  category: 'jobs', date: '2026-08-09', accent: 2, icon: '🧭',
   t: {
     tr: 'Upwork’te ilk blog yazarlığı işini almak',
     en: 'Landing your first blog-writing job on Upwork',
@@ -239,7 +239,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'ndash-makale-fikri-sunmak',
-  category: 'freelance', date: '2026-08-02', accent: 3, icon: '💡',
+  category: 'jobs', date: '2026-08-02', accent: 3, icon: '💡',
   t: {
     tr: 'nDash: fikir sunarak makale başına 150–450 dolar',
     en: 'nDash: pitching ideas at $150–$450 per article',
@@ -299,7 +299,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'medium-partner-program-2026',
-  category: 'platform', date: '2026-07-26', accent: 4, icon: '📈',
+  category: 'money', date: '2026-07-26', accent: 4, icon: '📈',
   t: {
     tr: 'Medium Partner Program: 2026 şartları ve gerçekçi beklenti',
     en: 'The Medium Partner Program: 2026 requirements and realistic expectations',
@@ -359,7 +359,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'substack-abonelik-matematigi',
-  category: 'newsletter', date: '2026-07-19', accent: 5, icon: '✉️',
+  category: 'business', date: '2026-07-19', accent: 5, icon: '✉️',
   t: {
     tr: 'Substack’te ücretli abonelik matematiği',
     en: 'The maths of paid subscriptions on Substack',

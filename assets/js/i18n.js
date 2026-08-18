@@ -1340,3 +1340,99 @@ Object.assign(window.QB_I18N.fr, { 'share.on': 'Partager' });
 Object.assign(window.QB_I18N.pt, { 'share.on': 'Compartilhar' });
 Object.assign(window.QB_I18N.ru, { 'share.on': 'Поделиться' });
 Object.assign(window.QB_I18N.no, { 'share.on': 'Del' });
+
+/* ---------------------------------------------------------------
+ * Blog sütunları — Future Human menüsü.
+ * Yedi sütun: AI · Make Money · Future Jobs · Business · Future Life · 50+ · AI Safety
+ * Bkz. docs/icerik-stratejisi.md ve docs/icerik-mimarisi.md
+ * --------------------------------------------------------------- */
+Object.assign(window.QB_I18N.tr, {
+  'cat.ai': 'AI', 'cat.ai.d': 'AI araçları ve ajanlar',
+  'cat.money': 'Para Kazan', 'cat.money.d': 'AI çağında gelir modelleri',
+  'cat.jobs': 'Geleceğin Meslekleri', 'cat.jobs.d': 'AI hangi işleri değiştiriyor',
+  'cat.business': 'İş Kurma', 'cat.business.d': 'Tek kişilik şirket ve yeni iş modelleri',
+  'cat.life': 'Gelecek Hayat', 'cat.life.d': '2030–2040 insan hayatı',
+  'cat.senior': '50+', 'cat.senior.d': '50+ yeni ekonomi',
+  'cat.safety': 'AI Güvenliği', 'cat.safety.d': 'Dolandırıcılık, gizlilik, doğrulama'
+});
+Object.assign(window.QB_I18N.en, {
+  'cat.ai': 'AI', 'cat.ai.d': 'AI tools and agents',
+  'cat.money': 'Make Money', 'cat.money.d': 'Income models in the age of AI',
+  'cat.jobs': 'Future Jobs', 'cat.jobs.d': 'Which jobs AI is changing',
+  'cat.business': 'Business', 'cat.business.d': 'One-person companies and new models',
+  'cat.life': 'Future Life', 'cat.life.d': 'Human life in 2030–2040',
+  'cat.senior': '50+', 'cat.senior.d': 'The 50+ economy',
+  'cat.safety': 'AI Safety', 'cat.safety.d': 'Scams, privacy, verification'
+});
+Object.assign(window.QB_I18N.zh, {
+  'cat.ai': 'AI', 'cat.ai.d': 'AI 工具与智能体',
+  'cat.money': '赚钱', 'cat.money.d': 'AI 时代的收入模式',
+  'cat.jobs': '未来职业', 'cat.jobs.d': 'AI 正在改变哪些工作',
+  'cat.business': '创业', 'cat.business.d': '一人公司与新商业模式',
+  'cat.life': '未来生活', 'cat.life.d': '2030–2040 年的生活',
+  'cat.senior': '50+', 'cat.senior.d': '50+ 新经济',
+  'cat.safety': 'AI 安全', 'cat.safety.d': '诈骗、隐私与核实'
+});
+Object.assign(window.QB_I18N.hi, {
+  'cat.ai': 'AI', 'cat.ai.d': 'AI टूल्स और एजेंट',
+  'cat.money': 'कमाई', 'cat.money.d': 'AI युग के आय मॉडल',
+  'cat.jobs': 'भविष्य के काम', 'cat.jobs.d': 'AI किन कामों को बदल रहा है',
+  'cat.business': 'बिज़नेस', 'cat.business.d': 'एक-व्यक्ति कंपनी और नए मॉडल',
+  'cat.life': 'भविष्य का जीवन', 'cat.life.d': '2030–2040 का जीवन',
+  'cat.senior': '50+', 'cat.senior.d': '50+ की नई अर्थव्यवस्था',
+  'cat.safety': 'AI सुरक्षा', 'cat.safety.d': 'धोखाधड़ी, निजता, सत्यापन'
+});
+Object.assign(window.QB_I18N.es, {
+  'cat.ai': 'IA', 'cat.ai.d': 'Herramientas y agentes de IA',
+  'cat.money': 'Ganar dinero', 'cat.money.d': 'Modelos de ingresos en la era de la IA',
+  'cat.jobs': 'Empleos del futuro', 'cat.jobs.d': 'Qué empleos está cambiando la IA',
+  'cat.business': 'Negocios', 'cat.business.d': 'Empresas de una persona y nuevos modelos',
+  'cat.life': 'Vida futura', 'cat.life.d': 'La vida entre 2030 y 2040',
+  'cat.senior': '50+', 'cat.senior.d': 'La economía de los 50+',
+  'cat.safety': 'Seguridad IA', 'cat.safety.d': 'Estafas, privacidad, verificación'
+});
+Object.assign(window.QB_I18N.ar, {
+  'cat.ai': 'الذكاء الاصطناعي', 'cat.ai.d': 'أدوات الذكاء الاصطناعي ووكلاؤه',
+  'cat.money': 'كسب المال', 'cat.money.d': 'نماذج الدخل في عصر الذكاء الاصطناعي',
+  'cat.jobs': 'وظائف المستقبل', 'cat.jobs.d': 'ما الوظائف التي يغيّرها الذكاء الاصطناعي',
+  'cat.business': 'ريادة الأعمال', 'cat.business.d': 'شركات الفرد الواحد ونماذج جديدة',
+  'cat.life': 'حياة المستقبل', 'cat.life.d': 'الحياة بين 2030 و2040',
+  'cat.senior': '+50', 'cat.senior.d': 'اقتصاد ما بعد الخمسين',
+  'cat.safety': 'أمان الذكاء الاصطناعي', 'cat.safety.d': 'الاحتيال والخصوصية والتحقق'
+});
+Object.assign(window.QB_I18N.fr, {
+  'cat.ai': 'IA', 'cat.ai.d': 'Outils et agents IA',
+  'cat.money': 'Gagner de l’argent', 'cat.money.d': 'Modèles de revenus à l’ère de l’IA',
+  'cat.jobs': 'Métiers de demain', 'cat.jobs.d': 'Quels métiers l’IA transforme',
+  'cat.business': 'Entreprendre', 'cat.business.d': 'Entreprises solo et nouveaux modèles',
+  'cat.life': 'Vie future', 'cat.life.d': 'La vie en 2030–2040',
+  'cat.senior': '50+', 'cat.senior.d': 'L’économie des 50 ans et plus',
+  'cat.safety': 'Sécurité IA', 'cat.safety.d': 'Arnaques, vie privée, vérification'
+});
+Object.assign(window.QB_I18N.pt, {
+  'cat.ai': 'IA', 'cat.ai.d': 'Ferramentas e agentes de IA',
+  'cat.money': 'Ganhar dinheiro', 'cat.money.d': 'Modelos de renda na era da IA',
+  'cat.jobs': 'Empregos do futuro', 'cat.jobs.d': 'Quais empregos a IA está mudando',
+  'cat.business': 'Negócios', 'cat.business.d': 'Empresas de uma pessoa e novos modelos',
+  'cat.life': 'Vida futura', 'cat.life.d': 'A vida em 2030–2040',
+  'cat.senior': '50+', 'cat.senior.d': 'A economia dos 50+',
+  'cat.safety': 'Segurança da IA', 'cat.safety.d': 'Golpes, privacidade, verificação'
+});
+Object.assign(window.QB_I18N.ru, {
+  'cat.ai': 'ИИ', 'cat.ai.d': 'ИИ-инструменты и агенты',
+  'cat.money': 'Заработок', 'cat.money.d': 'Модели дохода в эпоху ИИ',
+  'cat.jobs': 'Профессии будущего', 'cat.jobs.d': 'Какие профессии меняет ИИ',
+  'cat.business': 'Бизнес', 'cat.business.d': 'Компании одного человека и новые модели',
+  'cat.life': 'Будущая жизнь', 'cat.life.d': 'Жизнь в 2030–2040 годах',
+  'cat.senior': '50+', 'cat.senior.d': 'Экономика 50+',
+  'cat.safety': 'Безопасность ИИ', 'cat.safety.d': 'Мошенничество, приватность, проверка'
+});
+Object.assign(window.QB_I18N.no, {
+  'cat.ai': 'KI', 'cat.ai.d': 'KI-verktøy og agenter',
+  'cat.money': 'Tjene penger', 'cat.money.d': 'Inntektsmodeller i KI-alderen',
+  'cat.jobs': 'Framtidas jobber', 'cat.jobs.d': 'Hvilke jobber KI endrer',
+  'cat.business': 'Business', 'cat.business.d': 'Enpersonsselskap og nye modeller',
+  'cat.life': 'Framtidas liv', 'cat.life.d': 'Livet i 2030–2040',
+  'cat.senior': '50+', 'cat.senior.d': '50+-økonomien',
+  'cat.safety': 'KI-sikkerhet', 'cat.safety.d': 'Svindel, personvern, verifisering'
+});
