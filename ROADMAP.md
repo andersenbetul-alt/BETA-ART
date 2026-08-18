@@ -51,6 +51,18 @@ maliyet.
 | 22 | Sayfa ağırlığını böl | Bekliyor | 236 KB'ın 183 KB'ı i18n+posts; ziyaretçi on dilin tamamını indiriyor |
 | 23 | Sosyal paylaşım görseli (og:image) ve 404 sayfası | Bekliyor | Paylaşılan bağlantı şu an önizlemesiz görünüyor |
 
+### 3.5. AI Workforce (yeni ürün hattı — bkz. `docs/ai-workforce/`)
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 24 | Ürün tanımı, rol kataloğu, fiyat merdiveni | **Bitti** 18.08 | Üç satılabilir rol: AI Receptionist, Sales Assistant, Office Assistant |
+| 25 | İçerik türetme hattı (`scripts/repurpose.mjs`) | **Bitti** 18.08 | Opus 5 + yapılandırılmış çıktı; API anahtarı ile çalışır |
+| 26 | Yazı sayfasında paylaşım satırı + sosyal yapılandırma | **Bitti** 18.08 | 5 kanal, dile duyarlı; ölü bağlantı kalmadı |
+| 27 | Keşif formu ve ROI hesabı dokümanı | Bekliyor | `docs/ai-workforce/kesif-formu.md` yazılacak |
+| 28 | Teknik mimari dokümanı (model, entegrasyon, güvenlik, maliyet) | Bekliyor | `docs/ai-workforce/teknik-mimari.md` |
+| 29 | AI Workforce için site sayfası (10 dilde) | Bekliyor | Konumlandırma kararından sonra |
+| 30 | İlk pilot: Research veya Meeting Agent referansı | Bekliyor | En düşük riskli giriş |
+
 ### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
 
 | # | İş | Durum | Not |

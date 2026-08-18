@@ -6,6 +6,11 @@
   "scripts": {
     "check": "node scripts/check.mjs",
     "test": "node scripts/check.mjs",
-    "dev": "python3 -m http.server 8000"
+    "dev": "python3 -m http.server 8000",
+    "repurpose": "node scripts/repurpose.mjs"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.70.0",
+    "zod": "^3.25.0"
   }
 }

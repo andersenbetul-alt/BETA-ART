@@ -144,6 +144,16 @@
   /* ---------- yapılandırılmış veri (JSON-LD) ve hreflang ---------- */
   var SITE_URL = 'https://qblogg.com';
 
+  // Sosyal hesaplar tek yerden yönetilir; altbilgi bağlantıları buradan doldurulur.
+  // Hesap açtıkça adresleri buraya yazın — boş bırakılan bağlantı gizlenir.
+  var SOCIAL = {
+    linkedin: '',
+    x: '',
+    medium: '',
+    substack: '',
+    youtube: ''
+  };
+
   function setJsonLd(id, data) {
     var el = document.getElementById(id);
     if (!el) {
@@ -336,7 +346,11 @@
       '<div class="article-body">' + body + '</div>' +
       '<div class="article-foot">' +
         '<a class="btn btn--ghost" href="blog.html">← ' + esc(t('posts.back')) + '</a>' +
-        '<button type="button" class="btn btn--ghost" id="shareBtn">' + esc(t('posts.share')) + '</button>' +
+        '<div class="share-row">' +
+          '<span class="share-label">' + esc(t('share.on')) + '</span>' +
+          shareLinks(post) +
+          '<button type="button" class="share-btn" id="shareBtn" title="' + esc(t('posts.share')) + '" aria-label="' + esc(t('posts.share')) + '">🔗</button>' +
+        '</div>' +
       '</div>' +
       '<aside class="post-cta reveal">' +
         '<h3>' + esc(t('cta2.title')) + '</h3>' +
@@ -358,6 +372,36 @@
       } else { window.prompt('URL', url); }
     });
     revealInit();
+  }
+
+  // Yazı yayına girdiğinde paylaşım kanalları hazır olsun: her bağlantı
+  // yazının kendi başlığı ve adresiyle önceden doldurulur.
+  function shareLinks(post) {
+    var url = SITE_URL + '/post.html?slug=' + encodeURIComponent(post.slug) + '&lang=' + currentLang;
+    var title = pick(post.t);
+    var u = encodeURIComponent(url);
+    var tt = encodeURIComponent(title);
+    var targets = [
+      { id: 'linkedin', label: 'in', href: 'https://www.linkedin.com/sharing/share-offsite/?url=' + u },
+      { id: 'x', label: '𝕏', href: 'https://twitter.com/intent/tweet?text=' + tt + '&url=' + u },
+      { id: 'facebook', label: 'f', href: 'https://www.facebook.com/sharer/sharer.php?u=' + u },
+      { id: 'whatsapp', label: '✆', href: 'https://wa.me/?text=' + tt + '%20' + u },
+      { id: 'mail', label: '✉', href: 'mailto:?subject=' + tt + '&body=' + u }
+    ];
+    return targets.map(function (s) {
+      return '<a class="share-btn" href="' + s.href + '" target="_blank" rel="noopener noreferrer" ' +
+             'title="' + esc(s.id) + '" aria-label="' + esc(s.id) + '">' + s.label + '</a>';
+    }).join('');
+  }
+
+  // Altbilgideki sosyal bağlantılar: adresi girilmemiş hesap gösterilmez.
+  function applySocial() {
+    $$('[data-social]').forEach(function (el) {
+      var url = SOCIAL[el.getAttribute('data-social')];
+      var li = el.closest('li') || el;
+      if (url) { el.href = url; li.hidden = false; }
+      else { li.hidden = true; }
+    });
   }
 
   function toast(msg) {
@@ -498,7 +542,7 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  function renderAll() { renderHome(); renderBlog(); renderPost(); renderSchema(); }
+  function renderAll() { renderHome(); renderBlog(); renderPost(); renderSchema(); applySocial(); }
   window.QB_RENDER = renderAll; // tek dosyalık önizleme için dışa açıldı
 
   document.addEventListener('DOMContentLoaded', function () {

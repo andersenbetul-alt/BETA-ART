@@ -1328,3 +1328,15 @@ Object.assign(window.QB_I18N.no, {
   'cta2.sub': 'Vi gjør én research om til en bloggartikkel, en LinkedIn-serie, sosialt innhold og et nyhetsbrev — på ti språk.',
   'cta2.btn': 'Send en brief', 'cta2.alt': 'Se pakkene'
 });
+
+/* Paylaşım satırı (yazı sayfası) */
+Object.assign(window.QB_I18N.tr, { 'share.on': 'Paylaş' });
+Object.assign(window.QB_I18N.en, { 'share.on': 'Share' });
+Object.assign(window.QB_I18N.zh, { 'share.on': '分享' });
+Object.assign(window.QB_I18N.hi, { 'share.on': 'साझा करें' });
+Object.assign(window.QB_I18N.es, { 'share.on': 'Compartir' });
+Object.assign(window.QB_I18N.ar, { 'share.on': 'شارك' });
+Object.assign(window.QB_I18N.fr, { 'share.on': 'Partager' });
+Object.assign(window.QB_I18N.pt, { 'share.on': 'Compartilhar' });
+Object.assign(window.QB_I18N.ru, { 'share.on': 'Поделиться' });
+Object.assign(window.QB_I18N.no, { 'share.on': 'Del' });
