@@ -1,0 +1,94 @@
+:root {
+  --ink:#141A1F; --fog:#F4F1EC; --clay:#A85835; --moss:#3F5B4C;
+  --sand:#D8CBB8; --steel:#5C6B75; --surface:#FFFFFF; --border:#E4DED4;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fog:#0F1418; --ink:#F4F1EC; --steel:#9AA7AF; --surface:#171E23; --border:#2A343B;
+  }
+}
+*,*::before,*::after { box-sizing: border-box; }
+body {
+  margin:0; background:var(--fog); color:var(--ink);
+  font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a { color:inherit; }
+button { font:inherit; cursor:pointer; }
+h1 { font-size:1.6rem; line-height:1.2; margin:0 0 .4rem; letter-spacing:-.02em; }
+h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
+.muted { color:var(--steel); }
+.small { font-size:.875rem; }
+
+/* Mahsur kalmış turist telefonda ve aceleci — tek sütun, büyük hedefler */
+.wrap { max-width:560px; margin:0 auto; padding:1.25rem 1rem 3rem; }
+
+.brand { display:flex; align-items:baseline; gap:.6rem; margin-bottom:1.5rem; }
+.brand b { font-size:1.05rem; letter-spacing:.22em; font-weight:600; }
+.brand span { font-size:.8rem; }
+
+/* Sorun seçimi: her biri parmakla rahat basılacak kadar büyük */
+.problems { display:grid; gap:.7rem; }
+.problem {
+  display:flex; align-items:center; gap:.9rem; width:100%; text-align:left;
+  min-height:64px; padding:.9rem 1rem; text-decoration:none;
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+}
+.problem:hover { border-color:var(--ink); }
+.problem:focus-visible { outline:2px solid var(--clay); outline-offset:2px; }
+.problem .icon { font-size:1.5rem; line-height:1; width:1.7rem; text-align:center; }
+.problem .label { font-weight:600; }
+.problem .hint { display:block; font-weight:400; font-size:.85rem; color:var(--steel); }
+
+.back { display:inline-block; margin-bottom:1rem; font-size:.875rem; color:var(--steel); }
+
+/* Cevap kartı — "DONE" hissi veren kısım */
+.answer {
+  background:var(--surface); border:1px solid var(--border);
+  border-left:4px solid var(--moss); border-radius:var(--radius);
+  padding:1rem 1.1rem; margin-bottom:1.25rem;
+}
+.answer strong { display:block; font-size:1.05rem; margin-bottom:.25rem; }
+
+.option {
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:.9rem 1rem; margin-bottom:.7rem;
+}
+.option-head { display:flex; align-items:baseline; gap:.6rem; margin-bottom:.5rem; }
+.time { font-size:1.25rem; font-weight:700; font-variant-numeric:tabular-nums; }
+.dur { font-size:.85rem; color:var(--steel); margin-left:auto; }
+.leg { display:flex; gap:.55rem; align-items:baseline; font-size:.875rem; padding:.2rem 0; }
+.pill {
+  font-size:.7rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  padding:.12rem .45rem; border-radius:4px; background:var(--sand); color:var(--ink);
+  white-space:nowrap;
+}
+.pill.live { background:var(--moss); color:#fff; }
+.pill.cancelled { background:var(--clay); color:#fff; }
+
+.chips { display:flex; flex-wrap:wrap; gap:.5rem; margin:.2rem 0 1.4rem; }
+.chip {
+  padding:.5rem .9rem; border:1px solid var(--border); border-radius:999px;
+  background:var(--surface); text-decoration:none; font-size:.9rem;
+}
+.chip[aria-current="true"] { background:var(--ink); color:var(--fog); border-color:var(--ink); }
+
+.place { display:flex; gap:.8rem; padding:.75rem 0; border-bottom:1px solid var(--border); }
+.place:last-child { border-bottom:0; }
+.place .walk {
+  min-width:3.2rem; font-weight:700; font-variant-numeric:tabular-nums; font-size:.95rem;
+}
+.place .walk small { display:block; font-weight:400; font-size:.7rem; color:var(--steel); }
+
+.note {
+  font-size:.8rem; color:var(--steel); border-top:1px solid var(--border);
+  margin-top:2rem; padding-top:1rem;
+}
+.demo {
+  background:#FFF4E5; color:#5C3A00; border:1px solid #F0D6AC;
+  border-radius:var(--radius); padding:.7rem .9rem; margin-bottom:1.25rem; font-size:.85rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .demo { background:#2A2113; color:#F0D6AC; border-color:#4A3A1C; }
+}

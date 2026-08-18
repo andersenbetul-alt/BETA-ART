@@ -1,7 +1,15 @@
 # COBBAN — proje notu
 
-Çok kategorili online satış markası. **Norveç'te satış, Türkiye'de tedarik.**
-Diller: Norveççe (ana) · İngilizce · Türkçe. Para birimleri: NOK / EUR / TRY.
+**Norway is complicated. COBBAN makes it simple.**
+
+Norveç'te seyahat aksaklığı yaşayan turiste tek ekranda çözüm veren asistan.
+`Problem → COBBAN → DONE`
+
+> **Yön değişikliği (Ağu 2026):** COBBAN önce çok kategorili bir e-ticaret
+> markasıydı. Mağaza vitrini `177a485` commit'inde duruyor
+> (`git checkout 177a485 -- web/`). `docs/` altındaki şirket kurulum, vergi ve
+> yasal metin dokümanları hâlâ geçerli; mağazaya özgü olanlar (06, 07, 08, 09)
+> eski konumlandırmayı anlatıyor.
 
 ## Depo yapısı
 
