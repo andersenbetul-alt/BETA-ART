@@ -11,8 +11,9 @@ setup, and it is what lets the site be deployed by dragging a folder anywhere.
 
 | Path | What lives there |
 | --- | --- |
-| `index.html` | The whole page. Sections in order: hero, credits strip, latest, music, videos, NCS, about, collab, newsletter + community, press, booking. |
+| `index.html` | The whole page. Sections in order: hero, credits strip, latest, music, videos, NCS, about, collab, store, newsletter + community, press, booking. |
 | `assets/css/style.css` | All styling. Design tokens at the top of `:root`. |
+| `assets/js/shop.js` | The store catalogue. One object per product; empty `checkout` renders as "coming soon". |
 | `assets/js/i18n.js` | `HXI_LANGS` (switcher order) and `HXI_I18N` (one dictionary per language). |
 | `assets/js/app.js` | Language switching, mobile nav, YouTube facades, scroll reveal, signup. |
 | `scripts/check.mjs` | Project checks. Run before every commit. |
@@ -32,9 +33,10 @@ classes) — those are hints, not failures.
 
 ## Conventions
 
-**Scope.** This is an artist page: music, story, collaboration, contact. It is not a
-licensing storefront — price tiers and B2B sync packages were deliberately removed.
-Do not reintroduce them.
+**Scope.** This is an artist page: music, story, collaboration, contact, and a store for the
+artist's own products. It is not a **licensing** storefront — B2B sync price tiers were
+deliberately removed and must not come back. Merch and digital packs are a different thing
+and are in scope; see `docs/SHOP.md`.
 
 **Translations.** Every visible string goes through `data-i18n` and must exist in all
 twelve dictionaries. Missing keys fall back to English at runtime, but `npm run check`

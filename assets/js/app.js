@@ -51,6 +51,9 @@
     if (select) select.value = code;
 
     try { localStorage.setItem(STORE_KEY, code); } catch (e) { /* ignore */ }
+
+    // Mağaza kartları JS ile çizildiği için dil değişince yeniden çizilmeli.
+    if (typeof shop === 'function') run(shop);
   }
 
   function buildSwitcher() {
@@ -178,6 +181,67 @@
     });
   }
 
+  /* ---------- shop ---------- */
+
+  function shop() {
+    var grid = document.getElementById('shop-grid');
+    var items = window.HXI_SHOP;
+    if (!grid || !items || !items.length) return;
+
+    var dict = T[document.documentElement.lang] || T.en;
+    var t = function (key) { return (dict && dict[key]) || T.en[key] || ''; };
+
+    grid.textContent = '';
+    items.forEach(function (item) {
+      var card = document.createElement('article');
+      card.className = 'card product';
+
+      var tag = document.createElement('p');
+      tag.className = 'tag';
+      tag.textContent = t(item.kind === 'digital' ? 'shop_digital' : 'shop_physical');
+      card.appendChild(tag);
+
+      var name = document.createElement('h3');
+      name.className = 'h3 product-name';
+      name.textContent = item.name;   // ürün adları çevrilmez
+      card.appendChild(name);
+
+      var desc = document.createElement('p');
+      desc.className = 'news-text';
+      desc.textContent = t(item.desc);
+      card.appendChild(desc);
+
+      var price = document.createElement('p');
+      price.className = 'meta';
+      price.textContent = item.free ? t('shop_free')
+        : item.price ? item.price.amount + ' ' + item.price.currency
+        : t('shop_soon');
+      card.appendChild(price);
+
+      var links = document.createElement('p');
+      links.className = 'card-links';
+      if (item.checkout) {
+        // Barındırılmış ödeme sayfası: kart bilgisi bu siteye hiç uğramaz.
+        links.appendChild(link(item.checkout, t('shop_buy'), true));
+      } else {
+        links.appendChild(link('#drop', t(item.signup ? 'shop_get' : 'shop_notify'), false));
+      }
+      card.appendChild(links);
+      grid.appendChild(card);
+    });
+
+    function link(href, text, external) {
+      var a = document.createElement('a');
+      a.href = href;
+      a.textContent = text;
+      if (external) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+      return a;
+    }
+  }
+
   /* ---------- newsletter ---------- */
 
   function signup() {
@@ -208,6 +272,7 @@
     run(function () { apply(detect()); });
     run(nav);
     run(videos);
+    run(shop);
     run(signup);
     run(reveal);
     run(function () {

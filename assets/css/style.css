@@ -232,3 +232,8 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
   border-color:transparent transparent transparent #fff;margin-inline-start:4px;
 }
 .video-note{margin-top:16px}
+
+/* ---------- store ---------- */
+.product-name{margin:6px 0 10px;font-size:clamp(18px,2.2vw,24px);text-transform:none;letter-spacing:0}
+.product .meta{margin-bottom:0}
+.product .card-links{margin-top:18px}

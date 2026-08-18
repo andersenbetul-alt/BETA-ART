@@ -41,7 +41,15 @@ const DICTS = sandbox.window.HXI_I18N || {};
 const usedKeys = [...new Set([...html.matchAll(/data-i18n="([a-z0-9_]+)"/g)].map((m) => m[1]))];
 // form_email is applied from JS as the signup placeholder, not via a data-i18n attribute.
 const runtimeKeys = [...new Set([...appJs.matchAll(/dict\.([a-z0-9_]+)/g)].map((m) => m[1]))];
-const required = [...new Set([...usedKeys, ...runtimeKeys])];
+// The store renders from assets/js/shop.js, so its description keys and the labels the
+// renderer asks for by name never appear as data-i18n attributes.
+const shopJs = existsSync(join(root, 'assets/js/shop.js')) ? read('assets/js/shop.js') : '';
+const shopKeys = [
+  ...[...shopJs.matchAll(/desc:\s*'([a-z0-9_]+)'/g)].map((m) => m[1]),
+  // every 'shop_*' literal the renderer asks for, including the ones inside ternaries
+  ...[...(appJs + shopJs).matchAll(/'(shop_[a-z0-9_]+)'/g)].map((m) => m[1]),
+];
+const required = [...new Set([...usedKeys, ...runtimeKeys, ...shopKeys])];
 
 const codes = LANGS.map((l) => l.code);
 if (!codes.length) fail('HXI_LANGS is empty — the language switcher would render nothing.');
