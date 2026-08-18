@@ -37,8 +37,8 @@ maliyet.
 | 9 | Gizlilik ve koşullar sayfaları | Bekliyor | Altbilgideki bağlantılar şu an boş |
 | 10 | Örnek teslimat (bir makale + türetilmiş 5 içerik) PDF'i | Bekliyor | Brief formunda "örnek gör" olarak kullanılabilir |
 | 41 | **Lead magnet: Otomasyon Keşif Kontrol Listesi** | **Bitti** 18.08 | Bülten kaydı karşılığı indirilir; PDF'e yazdırılabilir |
-| 42 | Kendimizi ilk vaka çalışması yapmak | Bekliyor | "Kendi içerik hattımızı AI ile kurduk" — en hızlı kanıt |
-| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 1/6 bitti: platform karşılaştırması TR 1.030 / EN 1.313 kelime, kaynaklı. Kalan 5 yazı + bu yazının 8 dili |
+| 42 | Kendimizi ilk vaka çalışması yapmak | **Bitti** 18.08 | `ai-icerik-studyosu` yazısı: kendi hattımızın ölçülmüş rakamları, TR 1.045 / EN 1.358 |
+| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 2/6 bitti (platform karşılaştırması, içerik stüdyosu vakası). Kalan 4 yazı + ikisinin 8 dili. Durum: `npm run gorunurluk` |
 | 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
 ### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)
@@ -84,6 +84,8 @@ maliyet.
 | 45 | İçerik mimarisi: 30 temel sayfa + 300 destek | **Bitti** 18.08 | `docs/icerik-mimarisi.md`; ilk dalga 10 pillar + 40 destek |
 | 46 | Vipps/Stripe canlı entegrasyonu (webhook uçları) | Bekliyor | Şema hazır; anahtar ve alan adı gerekiyor |
 | 47 | SEO + AI görünürlük izleme işi | **Karar bekliyor** | Sıklık onayı gerekiyor (öneri: haftalık) |
+| 48 | Görünürlük denetimini siteye uygula | **Bitti** 18.08 | `npm run gorunurluk`; yazı modeline `src` ve `orig` eklendi |
+| 49 | Kaynak adreslerini doldur | Bekliyor | `check.mjs` adresi eksik kaynakları listeliyor; ortamda dış erişim kapalı |
 
 ### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
 
