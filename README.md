@@ -72,6 +72,7 @@ Site iki dilde yayınlanır ve **her dilin kendi URL'leri** vardır:
 | Ana sayfa | `/tr` | `/en` |
 | Hizmetler | `/tr/hizmetler` | `/en/services` |
 | Yaklaşımımız | `/tr/yaklasim` | `/en/approach` |
+| AI Workforce | `/tr/ai-workforce` | `/en/ai-workforce` |
 | İçgörüler | `/tr/icgoruler` | `/en/insights` |
 | Yazı detayı | `/tr/icgoruler/<yazi>` | `/en/insights/<yazi>` |
 | Hakkımızda | `/tr/hakkimizda` | `/en/about` |
@@ -178,6 +179,26 @@ hata yönetimi çağıran tarafta durur.
 > **Not:** `src/lib/actions.ts` dosyası `"use server"` işaretlidir ve yalnızca async
 > fonksiyon dışa aktarabilir. Formun paylaşılan tipleri bu yüzden `src/lib/contact.ts`
 > dosyasında durur.
+
+## AI Workforce — ilk ürün
+
+Şirketlerdeki tekrar eden işleri analiz edip devredilebilenleri AI ajanlarıyla
+otomatikleştiren ürün teklifi. Sayfa `/tr/ai-workforce` adresinde ve sekiz rolü
+tanıtır: Resepsiyonist, E-posta Asistanı, Müşteri Temsilcisi, Satış Asistanı,
+Araştırmacı, İçerik Editörü, Toplantı Asistanı, Ofis Asistanı.
+
+Roller `src/content/agents.ts` içinde tanımlıdır; her rolün bağlandığı sistemler
+ve kurulum zorluğu orada, metinleri ise iki dilde sözlüklerdedir.
+
+Sayfa bilinçli olarak **ne olmadığıyla** ve **nerede önermediğimizle** başlar.
+Bu kategoride aşırı vaat en büyük itibar riski; o bölümleri zayıflatmayın.
+
+### Yeni rol ekleme
+
+1. `agentIds` dizisine kimliği, `agentMeta` kaydına sistemleri ve kurulum
+   zorluğunu ekleyin.
+2. `tr.ts` ve `en.ts` içindeki `aiWorkforce.agents.items` kayıtlarını doldurun —
+   biri eksikse derleme hata verir.
 
 ## İçgörüler
 

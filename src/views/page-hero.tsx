@@ -18,10 +18,10 @@ export function PageHero({
       <Container className="relative">
         <div className="max-w-3xl py-20 sm:py-24">
           <p className="eyebrow text-accent-300">{eyebrow}</p>
-          <h1 className="mt-6 font-display text-4xl leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-6 font-display text-4xl leading-[1.06] tracking-[-0.02em] sm:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-ink-100/85">
+          <p className="mt-7 max-w-[34rem] text-lg leading-relaxed text-ink-100/85 sm:text-xl">
             {description}
           </p>
         </div>

@@ -12,6 +12,7 @@ export const tr: Dictionary = {
   },
   nav: {
     services: "Hizmetler",
+    aiWorkforce: "AI Workforce",
     approach: "Yaklaşımımız",
     insights: "İçgörüler",
     about: "Hakkımızda",
@@ -25,6 +26,8 @@ export const tr: Dictionary = {
     readMore: "Detaylı bilgi",
     backHome: "Ana sayfaya dön",
     skipToContent: "İçeriğe atla",
+    openMenu: "Menüyü aç",
+    closeMenu: "Menüyü kapat",
   },
   home: {
     hero: {
@@ -96,6 +99,18 @@ export const tr: Dictionary = {
             "Hazır şablon uygulamayız. Çözümü kurumunuzun ölçeğine, kültürüne ve hızına göre kurgularız.",
         },
       ],
+    },
+    aiWorkforce: {
+      eyebrow: "Yeni ürün",
+      title: "AI çalışanlar şirketiniz için 24/7 çalışsın",
+      description:
+        "Şirketinizde tekrar eden işleri analiz ediyor, devredilebilenleri görev tanımı yazılı AI ajanlarına kuruyoruz. Dört haftada ilk AI çalışan sahada.",
+      points: [
+        "Önce ölçeriz: ekibin zamanı nereye gidiyor",
+        "Tek bir ajanla başlarız, işe yaradığında büyütürüz",
+        "Kurulum sizin olur — biz olmadan da yürür",
+      ],
+      action: "AI Workforce'u inceleyin",
     },
     insights: {
       eyebrow: "İçgörüler",
@@ -567,6 +582,273 @@ export const tr: Dictionary = {
         takeaway:
           "Bir sonraki eğitim programınızda tek bir şey değiştirecekseniz, ölçümü eğitimin sonundan üç ay sonrasına taşıyın ve soruyu katılımcının çevresine sorun.",
       },
+    },
+  },
+  aiWorkforce: {
+    hero: {
+      eyebrow: "Ürün · AI Workforce",
+      title: "AI çalışanlar şirketiniz için 24/7 çalışsın",
+      description:
+        "Şirketinizde tekrar eden işleri analiz ediyor, hangilerinin yapay zekâya devredilebileceğini ölçüyor ve devredilebilenleri çalışan gibi görev tanımı olan AI ajanlarına kuruyoruz. Ekibinizi işten çıkarmak için değil, ekibinizin zamanını geri vermek için.",
+    },
+    definition: {
+      title: "Ne olduğu ve ne olmadığı",
+      is: [
+        "Tekrar eden, kuralı belli işleri devralan, görev tanımı yazılı yazılım ajanları",
+        "Kurumun kendi sistemlerine (e-posta, CRM, takvim, dosyalar) bağlı çalışan bir kurulum",
+        "Her ajanın çıktısının ölçüldüğü ve gerektiğinde kapatılabildiği bir yapı",
+        "Kurulumdan sonra ekibinize devredilen, sizin sahip olduğunuz bir sistem",
+      ],
+      isNot: [
+        "İnsan çalışanın birebir yerine geçen bir şey — kararı insan verir",
+        "Kurulur kurulmaz kendi kendine öğrenen sihirli bir kutu",
+        "Yanılmaz: her ajanın hata payı vardır, bu yüzden kontrol noktaları tasarlanır",
+        "Tek seferlik bir kurulum — izlenmesi ve düzeltilmesi gereken bir sistem",
+      ],
+    },
+    process: {
+      eyebrow: "Nasıl kuruluyor",
+      title: "Dört haftada ilk AI çalışan sahada",
+      description:
+        "Her şeyi aynı anda otomatikleştirmeyi önermiyoruz. Önce ölçüyoruz, sonra en çok zaman yiyen tek işi seçip onu sahada çalışır hâle getiriyoruz. İlk ajan işe yaradığında ikincisini konuşuyoruz.",
+      steps: [
+        {
+          step: "01",
+          title: "İş envanteri",
+          description:
+            "Bir hafta boyunca ekibin zamanının nereye gittiğini çıkarırız. Amaç, sezgiyle değil kayıtla konuşmak.",
+          activities: [
+            "Rol bazında tekrar eden işlerin listelenmesi",
+            "Her iş için haftalık tekrar sayısı ve süre tahmini",
+            "Girdi ve çıktısı belli olan işlerin ayrıştırılması",
+            "Hangi sistemlere erişim gerektiğinin çıkarılması",
+          ],
+        },
+        {
+          step: "02",
+          title: "Devredilebilirlik değerlendirmesi",
+          description:
+            "Her işi dört ölçütle tartarız: kuralı ne kadar belli, hatanın maliyeti ne, veriye erişim var mı, kazanç ne kadar.",
+          activities: [
+            "Otomasyona uygun işlerin puanlanması ve sıralanması",
+            "Devredilmemesi gerekenlerin gerekçesiyle işaretlenmesi",
+            "Beklenen kazancın saat ve maliyet olarak hesaplanması",
+            "Pilot için tek bir ajanın seçilmesi",
+          ],
+        },
+        {
+          step: "03",
+          title: "Kurulum ve pilot",
+          description:
+            "Seçilen ajanın görev tanımını yazar, sistemlerinize bağlar ve iki hafta gözetim altında çalıştırırız.",
+          activities: [
+            "Ajanın görev tanımı, sınırları ve devretme kurallarının yazılması",
+            "Sistem bağlantıları ve yetki kapsamının kurulması",
+            "Önce insan onaylı, sonra kademeli olarak otonom çalıştırma",
+            "Hata örneklerinin toplanması ve düzeltilmesi",
+          ],
+        },
+        {
+          step: "04",
+          title: "Ölçüm ve devir",
+          description:
+            "Kazancı ölçer, ajanı ekibinize devrederiz. Sistem sizin olur; biz kalmadan da yürür.",
+          activities: [
+            "Kazanılan saatin ve hata oranının raporlanması",
+            "İç sahibin eğitilmesi ve yönetim panelinin devri",
+            "Ajanın nasıl durdurulacağı ve güncelleneceğinin yazılı hâle getirilmesi",
+            "Sonraki ajan için önceliklendirme",
+          ],
+        },
+      ],
+    },
+    agents: {
+      eyebrow: "AI çalışanlar",
+      title: "Kurabileceğimiz roller",
+      description:
+        "Her rolün yazılı bir görev tanımı, erişebildiği sistemler ve insanın devreye girdiği bir kontrol noktası vardır. Hepsini birden kurmanızı önermiyoruz — ilk pilotu birlikte seçeriz.",
+      systemsLabel: "Bağlandığı sistemler",
+      humanLabel: "İnsan kontrolü",
+      items: {
+        receptionist: {
+          title: "AI Resepsiyonist",
+          summary:
+            "Gelen aramayı ve mesajı ilk karşılayan, randevu açan ve doğru kişiye yönlendiren rol. Kimse telefonu yanıtsız bırakmaz.",
+          does: [
+            "Çalışma saatleri dışında gelen aramaları karşılar ve not alır",
+            "Randevu takvimine uygun saat önerir ve kaydı açar",
+            "Sık sorulan soruları (adres, saat, fiyat aralığı) yanıtlar",
+            "Aciliyet taşıyan konuyu belirleyip ilgili kişiye iletir",
+          ],
+          humanReview:
+            "Randevu iptali, fiyat pazarlığı ve şikâyet konuları her zaman bir kişiye aktarılır.",
+        },
+        email: {
+          title: "AI E-posta Asistanı",
+          summary:
+            "Gelen kutusunu sınıflandıran, taslak yanıt hazırlayan ve hiçbir e-postanın gözden kaçmamasını sağlayan rol.",
+          does: [
+            "Gelen e-postaları konu ve aciliyete göre sınıflandırır",
+            "Tekrar eden sorulara taslak yanıt hazırlar",
+            "Yanıtlanmamış e-postaları gün sonunda hatırlatır",
+            "Ekteki belgeleri özetleyip ilgili klasöre kaydeder",
+          ],
+          humanReview:
+            "Taslaklar ilk dönemde gönderilmeden önce onaylanır; güven oluştukça hangi kategorilerin otomatik gideceğine siz karar verirsiniz.",
+        },
+        "customer-service": {
+          title: "AI Müşteri Temsilcisi",
+          summary:
+            "Müşteri sorularını yanıtlayan, sipariş ve talep durumunu takip eden, çözemediğini ekibe devreden rol.",
+          does: [
+            "Ürün, teslimat ve iade sorularını yanıtlar",
+            "Talep kaydı açar ve durumunu müşteriye bildirir",
+            "Yanıtı bilinmeyen konuyu gerekçesiyle ekibe aktarır",
+            "Tekrar eden şikâyet konularını raporlar",
+          ],
+          humanReview:
+            "Para iadesi, istisna kararı ve memnuniyetsiz müşteri her zaman insana gider.",
+        },
+        sales: {
+          title: "AI Satış Asistanı",
+          summary:
+            "Gelen talepleri niteleyen, CRM'i güncel tutan ve satışçının unuttuğu takipleri hatırlatan rol.",
+          does: [
+            "Gelen talebi önceden belirlenmiş ölçütlerle niteler",
+            "CRM kaydını açar ve görüşme notlarını işler",
+            "Takibi gecikmiş fırsatları listeler ve hatırlatır",
+            "Görüşme öncesi müşteri hakkında kısa brifing hazırlar",
+          ],
+          humanReview:
+            "Teklif, fiyat ve müzakere insana aittir; ajan yalnızca hazırlık yapar.",
+        },
+        research: {
+          title: "AI Araştırmacı",
+          summary:
+            "Pazar, rakip ve aday araştırmalarını yapan, bulduğunu kaynaklarıyla özetleyen rol.",
+          does: [
+            "Rakip fiyat, ürün ve iletişim değişikliklerini takip eder",
+            "Sektör haberlerini haftalık özet hâlinde derler",
+            "Potansiyel müşteri veya tedarikçi listesi çıkarır",
+            "Uzun belgeleri kaynak göstererek özetler",
+          ],
+          humanReview:
+            "Özetler kaynak bağlantılarıyla gelir; karara esas olacak bilgi kaynağından doğrulanır.",
+        },
+        content: {
+          title: "AI İçerik Editörü",
+          summary:
+            "Kurumun sesini öğrenip taslak üreten, yayın takvimini besleyen rol. Yayın kararı sizde kalır.",
+          does: [
+            "Blog, bülten ve sosyal medya taslakları yazar",
+            "Mevcut içeriği farklı kanallar için uyarlar",
+            "Yayın takvimini takip eder ve boşlukları bildirir",
+            "Kurum diline uygunluk için mevcut metinleri düzenler",
+          ],
+          humanReview:
+            "Hiçbir içerik onaysız yayınlanmaz; ajan yazar, yayın kararını insan verir.",
+        },
+        meeting: {
+          title: "AI Toplantı Asistanı",
+          summary:
+            "Toplantıyı not alan, kararları ve görevleri çıkaran, kimsenin unutmadığından emin olan rol.",
+          does: [
+            "Toplantı kaydını yazıya döker ve özetler",
+            "Alınan kararları ve kime ait olduğunu listeler",
+            "Görevleri takip sistemine aktarır",
+            "Bir sonraki toplantı öncesi açık maddeleri hatırlatır",
+          ],
+          humanReview:
+            "Özet ve görev listesi toplantı sahibine onaya gider; kayıt için katılımcı bilgilendirmesi zorunludur.",
+        },
+        admin: {
+          title: "AI Ofis Asistanı",
+          summary:
+            "Fatura, evrak ve takvim gibi idari işleri yürüten rol. En çok zaman kazandıran ama en dikkatli kurulması gereken ajan.",
+          does: [
+            "Gelen faturaları okur, kontrol eder ve muhasebeye iletir",
+            "Belgeleri adlandırıp doğru klasöre arşivler",
+            "Takvim çakışmalarını çözer ve toplantı ayarlar",
+            "Tekrar eden raporları hazırlar",
+          ],
+          humanReview:
+            "Ödeme, imza ve resmî bildirim gerektiren hiçbir adım ajan tarafından tamamlanmaz — yalnızca hazırlanır.",
+        },
+      },
+    },
+    requirements: {
+      title: "Sizden gereken üç şey",
+      description:
+        "Kurulumun başarısı büyük ölçüde bunlara bağlı. Üçü de yoksa projeyi başlatmamanızı öneririz.",
+      items: [
+        {
+          title: "Bir iç sahip",
+          description:
+            "Haftada birkaç saat ayırabilen, ajanın çıktısını gözden geçirecek ve kurulumdan sonra sistemi sahiplenecek bir kişi.",
+        },
+        {
+          title: "Sistemlere erişim",
+          description:
+            "Ajanın bağlanacağı e-posta, CRM, takvim veya dosya sistemine yetki verilmesi. Erişim kapsamı en dar hâliyle tanımlanır.",
+        },
+        {
+          title: "Hata payına tolerans",
+          description:
+            "İlk haftalarda ajan hata yapar ve düzeltilir. Sıfır hata bekleniyorsa o iş otomasyona uygun değildir.",
+        },
+      ],
+    },
+    limits: {
+      title: "Nerede AI çalışan önermiyoruz",
+      description:
+        "Bu listeyi baştan paylaşıyoruz, çünkü yanlış işi otomatikleştirmek zaman kazandırmaz, yeni bir sorun üretir.",
+      items: [
+        "Hatanın geri alınamadığı işler — ödeme, resmî bildirim, sözleşme imzası",
+        "Ayda birkaç kez yapılan işler — kurulum maliyeti kazancı geçer",
+        "Kuralı yazıya dökülemeyen, tamamen sezgiye dayalı kararlar",
+        "Çalışanın işinin tamamı — bir rolü değil, o rolün tekrar eden parçalarını devralırız",
+        "Verisi dağınık ve güvenilmez olan süreçler — önce veriyi düzeltmek gerekir",
+      ],
+    },
+    dataProtection: {
+      title: "Veri güvenliği ve KVKK",
+      paragraphs: [
+        "AI çalışanları kurmak, kurumunuzun verisinin bir kısmının bir yapay zekâ sağlayıcısından geçmesi demektir. Bunu projenin başında, teknik detaylarıyla ve yazılı olarak konuşuruz.",
+        "Her ajan yalnızca işini yapmak için gereken en dar erişimle kurulur. Hangi verinin nereye gittiği, ne kadar süre saklandığı ve kimlerin eriştiği kurulum dokümanında açıkça yazılır.",
+        "Kişisel veri işleyen her ajan için KVKK uyumu ayrıca değerlendirilir; gerekli olduğunda aydınlatma metinleriniz ve veri işleme envanteriniz güncellenir. Bu değerlendirme olmadan kurulumu başlatmayız.",
+      ],
+    },
+    engagement: {
+      title: "Çalışma modeli",
+      description:
+        "Küçük ve orta ölçekli işletmeler için tasarlandı. Kapsam ve süre baştan bellidir.",
+      models: [
+        {
+          title: "İş envanteri",
+          description:
+            "1 haftalık analiz. Ekibin zamanının nereye gittiğini ve hangi işlerin devredilebileceğini puanlanmış bir listeyle çıkarır.",
+        },
+        {
+          title: "Tek ajan pilotu",
+          description:
+            "4 hafta. Bir AI çalışanın kurulumu, gözetimli çalıştırılması, ölçümü ve devri. En sık başlangıç noktası.",
+        },
+        {
+          title: "AI Workforce kurulumu",
+          description:
+            "3–6 ay. Birbirine bağlı birden fazla ajanın kademeli kurulumu, ortak yönetim paneli ve iç ekibin yetkinleştirilmesi.",
+        },
+        {
+          title: "Bakım ve gözetim",
+          description:
+            "Aylık. Kurulan ajanların izlenmesi, hata düzeltmeleri ve yeni ihtiyaçlara göre güncellenmesi.",
+        },
+      ],
+    },
+    cta: {
+      title: "Hangi işinizi devredebileceğinizi konuşalım",
+      description:
+        "30 dakikalık ilk görüşmede şirketinizde tekrar eden işleri birlikte gözden geçirir, hangisinin pilot için uygun olduğunu ücretsiz değerlendiririz.",
     },
   },
   careers: {

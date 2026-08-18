@@ -23,9 +23,11 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display-serif), ui-serif, Georgia, serif;
 
-  --text-display: 3.25rem;
-  --text-display--line-height: 1.08;
-  --text-display--letter-spacing: -0.02em;
+  /* clamp: dar ekranda kolon daralirken baslik da kucululur.
+     Sabit 4.5rem, lg kiriliminda kolon 520px'e dustugu icin 5 satira bolunuyordu. */
+  --text-display: clamp(3.25rem, 5.2vw, 4.5rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.025em;
 }
 
 @layer base {
@@ -56,6 +58,9 @@
     outline: 2px solid var(--color-accent-600);
     outline-offset: 3px;
     border-radius: 2px;
+    /* transition-colors outline-color'ı da kapsıyor; halka ilk karede
+       metin renginde beliriyordu. */
+    transition: none;
   }
 }
 
@@ -76,7 +81,7 @@
     content: "";
     inline-size: 1.75rem;
     block-size: 1px;
-    background-color: var(--color-accent-500);
+    background-color: var(--color-accent-700);
   }
 }
 

@@ -24,7 +24,7 @@ function SubmitButton({ label, pending }: { label: string; pending: string }) {
 }
 
 const fieldClass =
-  "mt-2 w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3 text-[0.95rem] text-ink-900 transition-colors placeholder:text-ink-800/60 hover:border-ink-900/30 focus:border-accent-500";
+  "mt-2 w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3 text-base text-ink-900 sm:text-[0.95rem] transition-colors placeholder:text-ink-800/60 hover:border-ink-900/30 focus:border-accent-500";
 
 export function ContactForm({
   locale,
@@ -40,6 +40,7 @@ export function ContactForm({
   );
   const formRef = useRef<HTMLFormElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
+  const alertRef = useRef<HTMLParagraphElement>(null);
   const ids = useId();
 
   const fieldId = (name: string) => `${ids}-${name}`;
@@ -49,8 +50,18 @@ export function ContactForm({
     if (state.status === "success") {
       formRef.current?.reset();
       statusRef.current?.focus();
+      return;
     }
-  }, [state.status]);
+
+    // Hata durumunda odak kayboluyordu; klavye kullanıcısı formu baştan
+    // dolaşmak zorunda kalmasın diye ilk sorunlu alana taşınır.
+    if (state.status === "error") {
+      const firstInvalid = formRef.current?.querySelector<HTMLElement>(
+        "[aria-invalid='true']",
+      );
+      (firstInvalid ?? alertRef.current)?.focus();
+    }
+  }, [state]);
 
   if (state.status === "success") {
     return (
@@ -112,7 +123,7 @@ export function ContactForm({
             className={fieldClass}
           />
           {state.fieldErrors?.name ? (
-            <p id={errorId("name")} className="mt-2 text-sm text-red-700">
+            <p id={errorId("name")} role="alert" className="mt-2 text-sm text-red-700">
               {state.fieldErrors.name}
             </p>
           ) : null}
@@ -154,7 +165,7 @@ export function ContactForm({
             className={fieldClass}
           />
           {state.fieldErrors?.email ? (
-            <p id={errorId("email")} className="mt-2 text-sm text-red-700">
+            <p id={errorId("email")} role="alert" className="mt-2 text-sm text-red-700">
               {state.fieldErrors.email}
             </p>
           ) : null}
@@ -222,7 +233,7 @@ export function ContactForm({
             className={`${fieldClass} resize-y`}
           />
           {state.fieldErrors?.message ? (
-            <p id={errorId("message")} className="mt-2 text-sm text-red-700">
+            <p id={errorId("message")} role="alert" className="mt-2 text-sm text-red-700">
               {state.fieldErrors.message}
             </p>
           ) : null}
@@ -230,7 +241,12 @@ export function ContactForm({
       </div>
 
       {state.status === "error" && state.message ? (
-        <p role="alert" className="mt-6 text-sm text-red-700">
+        <p
+          ref={alertRef}
+          role="alert"
+          tabIndex={-1}
+          className="mt-6 text-sm text-red-700"
+        >
           {state.message}
         </p>
       ) : null}

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Logo } from "./logo";
 import { Container } from "./ui/container";
 import { Arrow } from "./ui/button";
@@ -24,13 +24,46 @@ export function SiteHeader({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
   const activeKey = routeKeyFromPathname(pathname);
   const otherLocale: Locale = locale === "tr" ? "en" : "tr";
 
   const closeMenu = () => setOpen(false);
 
+  // Menü açıkken: Escape kapatsın, arkadaki sayfa kaymasın, geniş ekrana
+  // geçildiğinde durum kendiliğinden sıfırlansın.
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    const wide = window.matchMedia("(min-width: 80rem)");
+    const onWiden = () => setOpen(false);
+
+    document.addEventListener("keydown", onKeyDown);
+    wide.addEventListener("change", onWiden);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      wide.removeEventListener("change", onWiden);
+    };
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-ink-900/10 bg-sand-50/85 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-50 border-b border-ink-900/10 ${
+        open ? "bg-sand-50" : "bg-sand-50/85 backdrop-blur-md"
+      }`}
+    >
       <Container>
         <div className="flex h-18 items-center justify-between gap-6 py-4">
           <Link href={path("home", locale)} aria-label={dict.meta.siteName}>
@@ -39,7 +72,7 @@ export function SiteHeader({
 
           <nav
             aria-label={dict.footer.navTitle}
-            className="hidden items-center gap-8 lg:flex"
+            className="hidden items-center gap-8 xl:flex"
           >
             {navKeys.map((key) => (
               <Link
@@ -57,7 +90,7 @@ export function SiteHeader({
             ))}
           </nav>
 
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden items-center gap-4 xl:flex">
             <Link
               href={alternatePath(pathname, otherLocale)}
               hrefLang={otherLocale}
@@ -75,13 +108,16 @@ export function SiteHeader({
           </div>
 
           <button
+            ref={toggleRef}
             type="button"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="inline-flex size-10 items-center justify-center rounded-full border border-ink-900/15 text-ink-900 lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-ink-900/15 text-ink-900 xl:hidden"
           >
-            <span className="sr-only">{dict.footer.navTitle}</span>
+            <span className="sr-only">
+              {open ? dict.actions.closeMenu : dict.actions.openMenu}
+            </span>
             <svg
               viewBox="0 0 20 20"
               className="size-5"
@@ -103,7 +139,10 @@ export function SiteHeader({
       {open ? (
         <div
           id="mobile-nav"
-          className="border-t border-ink-900/10 bg-sand-50 lg:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label={dict.footer.navTitle}
+          className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-ink-900/10 bg-sand-50 xl:hidden"
         >
           <Container>
             <nav className="flex flex-col gap-1 py-5">

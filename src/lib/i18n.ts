@@ -16,6 +16,7 @@ export function isLocale(value: string): value is Locale {
 export const routes = {
   home: { tr: "", en: "" },
   services: { tr: "hizmetler", en: "services" },
+  aiWorkforce: { tr: "ai-workforce", en: "ai-workforce" },
   approach: { tr: "yaklasim", en: "approach" },
   insights: { tr: "icgoruler", en: "insights" },
   about: { tr: "hakkimizda", en: "about" },
@@ -38,6 +39,7 @@ export const routeKeys = Object.keys(routes) as RouteKey[];
  */
 export const navKeys = [
   "services",
+  "aiWorkforce",
   "approach",
   "insights",
   "about",

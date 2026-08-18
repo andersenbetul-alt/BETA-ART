@@ -1,6 +1,7 @@
 import type { JobId } from "./jobs";
 import type { PracticeId } from "./practices";
 import type { ArticleId } from "./articles";
+import type { AgentId } from "./agents";
 
 export type Link = { label: string; href: string };
 
@@ -12,6 +13,16 @@ export type Article = {
   sections: TextSection[];
   /** Kapanış cümlesi — okuyucuya ne yapması gerektiğini söyler */
   takeaway: string;
+};
+
+export type Agent = {
+  title: string;
+  /** Tek cümlede ne yaptığı */
+  summary: string;
+  /** Somut görevler */
+  does: string[];
+  /** İnsanın kontrolü nerede elinde tutuyor */
+  humanReview: string;
 };
 
 export type Job = {
@@ -66,7 +77,13 @@ export type Dictionary = {
     htmlLang: string;
   };
   nav: Record<
-    "services" | "approach" | "insights" | "about" | "careers" | "contact",
+    | "services"
+    | "aiWorkforce"
+    | "approach"
+    | "insights"
+    | "about"
+    | "careers"
+    | "contact",
     string
   >;
   actions: {
@@ -76,6 +93,8 @@ export type Dictionary = {
     readMore: string;
     backHome: string;
     skipToContent: string;
+    openMenu: string;
+    closeMenu: string;
   };
   home: {
     hero: {
@@ -88,6 +107,13 @@ export type Dictionary = {
     practices: { eyebrow: string; title: string; description: string };
     approach: { eyebrow: string; title: string; description: string };
     why: { eyebrow: string; title: string; items: Feature[] };
+    aiWorkforce: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      points: string[];
+      action: string;
+    };
     insights: { eyebrow: string; title: string; description: string; all: string };
     cta: { title: string; description: string };
   };
@@ -148,6 +174,25 @@ export type Dictionary = {
         tooMany: string;
       };
     };
+  };
+  aiWorkforce: {
+    hero: { eyebrow: string; title: string; description: string };
+    /** Ürünün ne olduğu ve ne olmadığı */
+    definition: { title: string; is: string[]; isNot: string[] };
+    process: { eyebrow: string; title: string; description: string; steps: Phase[] };
+    agents: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      systemsLabel: string;
+      humanLabel: string;
+      items: Record<AgentId, Agent>;
+    };
+    requirements: { title: string; description: string; items: Feature[] };
+    limits: { title: string; description: string; items: string[] };
+    dataProtection: { title: string; paragraphs: string[] };
+    engagement: { title: string; description: string; models: Feature[] };
+    cta: { title: string; description: string };
   };
   insights: {
     hero: { eyebrow: string; title: string; description: string };

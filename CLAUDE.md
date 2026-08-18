@@ -116,7 +116,30 @@ yalnızca form gönderilince ortaya çıkar.
 üst segmentten gelen `params`'a güvenmez. Yalnızca kendi dilinin adreslerini
 döndürdüğü için `/en/kariyer/...` gibi karışık kombinasyonlar 404 olur.
 
+### Artımlı derleme bayat HTML bırakabiliyor
+
+Turbopack artımlı derlemesi, CSS chunk adı değiştiğinde önceden üretilmiş HTML'i
+yenilemeyebiliyor; sayfa var olmayan bir stil dosyası isteyip stilsiz açılıyor.
+Bu oturumda iki kez yaşandı. Görsel bir değişikliği doğrulamadan önce
+`rm -rf .next && npm run build` yap. Vercel her dağıtımda temiz derlediği için
+üretimi etkilemiyor.
+
+## Ürün: AI Workforce
+
+`/tr/ai-workforce` ve `/en/ai-workforce` (slug iki dilde de aynı, tek rota
+dosyası her ikisini karşılıyor). Ajan kimlikleri `src/content/agents.ts`
+içinde sabit birleşim tipi; bağlandıkları sistemler ürün adı olduğu için
+sözlükte değil orada durur. Sözlükler `Record<AgentId, Agent>` tuttuğu için
+bir ajanı tek dilde tanımlamak derlemeyi kırar.
+
+Sayfanın yapısı bilinçli: **önce ne olmadığı**, sonra kurulum süreci, sonra
+roller, sonra sizden gerekenler, sonra nerede önermediğimiz. Bu ürün aşırı
+vaade en açık kategori; "nerede önermiyoruz" bölümünü zayıflatma.
+
 ## Renk ve kontrast
+
+Masaüstü menü eşiği `xl` (1280px) — yedi başlık 1024px'te sığmıyordu.
+Menüye yeni başlık eklerken taşmayı ölç.
 
 Açık zeminlerde metin opaklığı **`/70`'in altına inmemeli** — `ink-800/65` ve
 altı WCAG AA eşiğinin (4.5:1) altında kalıyor. Küçük metinde vurgu rengi olarak

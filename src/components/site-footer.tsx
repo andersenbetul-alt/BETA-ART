@@ -29,7 +29,7 @@ export function SiteFooter({
             <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-300">
               {dict.footer.navTitle}
             </h2>
-            <ul className="mt-5 space-y-3 text-sm">
+            <ul className="mt-4 text-sm [&_a]:inline-block [&_a]:py-1.5">
               {navKeys.map((key) => (
                 <li key={key}>
                   <Link
@@ -47,7 +47,7 @@ export function SiteFooter({
             <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-300">
               {dict.footer.contactTitle}
             </h2>
-            <ul className="mt-5 space-y-3 text-sm text-ink-100/75">
+            <ul className="mt-4 space-y-1 text-sm text-ink-100/75 [&_a]:inline-block [&_a]:py-1.5">
               <li>
                 <a
                   href={`mailto:${details.email.value}`}

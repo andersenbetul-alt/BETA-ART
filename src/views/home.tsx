@@ -10,7 +10,8 @@ import { path, type Locale } from "@/lib/i18n";
 
 export function HomeView({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const { hero, pillars, practices, approach, why, insights, cta } = dict.home;
+  const { hero, pillars, practices, approach, why, aiWorkforce, insights, cta } =
+    dict.home;
   // Ana sayfada en yeni üç yazı gösterilir; sıra articleIds dizisinden gelir.
   const latestArticles = articleIds.slice(0, 3);
 
@@ -27,7 +28,7 @@ export function HomeView({ locale }: { locale: Locale }) {
           className="pointer-events-none absolute -bottom-48 -left-24 size-[26rem] rounded-full bg-accent-700/20 blur-3xl"
         />
         <Container className="relative">
-          <div className="grid gap-14 py-24 sm:py-32 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div className="grid gap-14 py-24 sm:py-32 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
             <div>
               <p className="eyebrow text-accent-300">{hero.eyebrow}</p>
               <h1 className="mt-6 font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-display">
@@ -187,6 +188,39 @@ export function HomeView({ locale }: { locale: Locale }) {
               </p>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* Yeni ürün — AI Workforce */}
+      <Section tone="light">
+        <div className="overflow-hidden rounded-3xl bg-ink-900">
+          <div className="grid gap-10 p-9 sm:p-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <p className="eyebrow text-accent-300">{aiWorkforce.eyebrow}</p>
+              <h2 className="mt-5 font-display text-3xl leading-tight text-white sm:text-4xl">
+                {aiWorkforce.title}
+              </h2>
+              <p className="mt-5 max-w-xl leading-relaxed text-ink-100/80">
+                {aiWorkforce.description}
+              </p>
+              <div className="mt-8">
+                <ButtonLink href={path("aiWorkforce", locale)}>
+                  {aiWorkforce.action}
+                </ButtonLink>
+              </div>
+            </div>
+            <ul className="space-y-4 border-t border-white/12 pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+              {aiWorkforce.points.map((point) => (
+                <li key={point} className="flex gap-3 leading-relaxed text-ink-100/85">
+                  <span
+                    aria-hidden="true"
+                    className="mt-2 size-1.5 shrink-0 rounded-full bg-accent-300"
+                  />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Section>
 

@@ -27,6 +27,7 @@ const BASE = `http://127.0.0.1:${PORT}`;
 const PATHS = [
   "/tr",
   "/tr/hizmetler",
+  "/tr/ai-workforce",
   "/tr/yaklasim",
   "/tr/icgoruler",
   "/tr/icgoruler/strateji-neden-rafta-kalir",
@@ -37,6 +38,7 @@ const PATHS = [
   "/tr/gizlilik",
   "/en",
   "/en/services",
+  "/en/ai-workforce",
   "/en/insights/strateji-neden-rafta-kalir",
   "/en/careers/danismanlik-stajyeri",
   "/en/contact",

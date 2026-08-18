@@ -16,7 +16,7 @@ export function ApproachView({ locale }: { locale: Locale }) {
         description={hero.description}
       />
 
-      <Section tone="light">
+      <Section tone="sand">
         <ol className="space-y-6">
           {phases.map((phase) => (
             <li
@@ -50,7 +50,7 @@ export function ApproachView({ locale }: { locale: Locale }) {
         </ol>
       </Section>
 
-      <Section tone="sand">
+      <Section tone="light">
         <SectionHeading title={principles.title} />
         <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2">
           {principles.items.map((item) => (

@@ -12,6 +12,7 @@ export const en: Dictionary = {
   },
   nav: {
     services: "Services",
+    aiWorkforce: "AI Workforce",
     approach: "Our approach",
     insights: "Insights",
     about: "About",
@@ -25,6 +26,8 @@ export const en: Dictionary = {
     readMore: "Learn more",
     backHome: "Back to home",
     skipToContent: "Skip to content",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
   },
   home: {
     hero: {
@@ -96,6 +99,18 @@ export const en: Dictionary = {
             "No off-the-shelf templates. Every solution is shaped around your scale, culture and pace.",
         },
       ],
+    },
+    aiWorkforce: {
+      eyebrow: "New product",
+      title: "Let AI workers run your business around the clock",
+      description:
+        "We analyse the repetitive work inside your company and set up whatever can be handed over as AI agents with written job descriptions. The first AI worker is live in four weeks.",
+      points: [
+        "We measure first: where the team's time actually goes",
+        "We start with one agent and grow once it proves itself",
+        "The setup becomes yours — it runs without us",
+      ],
+      action: "Explore AI Workforce",
     },
     insights: {
       eyebrow: "Insights",
@@ -567,6 +582,273 @@ export const en: Dictionary = {
         takeaway:
           "If you change one thing about your next programme, move the measurement from the end of the training to three months later, and ask the people around the participant.",
       },
+    },
+  },
+  aiWorkforce: {
+    hero: {
+      eyebrow: "Product · AI Workforce",
+      title: "Let AI workers run your business around the clock",
+      description:
+        "We analyse the repetitive work inside your company, measure which of it can be handed over to AI, and set up the parts that can as agents with a written job description. Not to remove your team, but to give their time back.",
+    },
+    definition: {
+      title: "What it is, and what it is not",
+      is: [
+        "Software agents with written job descriptions that take over repetitive, rule-bound work",
+        "A setup wired into your own systems — email, CRM, calendar, files",
+        "A structure where each agent's output is measured and can be switched off",
+        "A system handed over to your team after setup, owned by you",
+      ],
+      isNot: [
+        "A one-for-one replacement for a human — people still make the decisions",
+        "A magic box that teaches itself the moment it is installed",
+        "Infallible: every agent has an error rate, which is why checkpoints are designed in",
+        "A one-off installation — it is a system that needs monitoring and correction",
+      ],
+    },
+    process: {
+      eyebrow: "How it is built",
+      title: "The first AI worker live in four weeks",
+      description:
+        "We do not recommend automating everything at once. First we measure, then we pick the single task eating the most time and get it working in the field. Once the first agent proves itself, we talk about the second.",
+      steps: [
+        {
+          step: "01",
+          title: "Work inventory",
+          description:
+            "For one week we map where the team's time actually goes. The point is to argue from records, not instinct.",
+          activities: [
+            "Listing repetitive work by role",
+            "Weekly frequency and time estimate for each task",
+            "Separating out the tasks with clear inputs and outputs",
+            "Identifying which systems access is needed to",
+          ],
+        },
+        {
+          step: "02",
+          title: "Handover assessment",
+          description:
+            "We weigh each task on four criteria: how clear the rules are, the cost of an error, whether the data is reachable, and the size of the gain.",
+          activities: [
+            "Scoring and ranking the tasks suitable for automation",
+            "Flagging what should not be handed over, with reasons",
+            "Calculating the expected gain in hours and cost",
+            "Selecting a single agent for the pilot",
+          ],
+        },
+        {
+          step: "03",
+          title: "Build and pilot",
+          description:
+            "We write the chosen agent's job description, connect it to your systems and run it under supervision for two weeks.",
+          activities: [
+            "Writing the agent's remit, limits and escalation rules",
+            "Setting up system connections and the scope of access",
+            "Running with human approval first, then gradually autonomous",
+            "Collecting error cases and correcting them",
+          ],
+        },
+        {
+          step: "04",
+          title: "Measure and hand over",
+          description:
+            "We measure the gain and hand the agent to your team. The system becomes yours; it runs without us.",
+          activities: [
+            "Reporting the hours saved and the error rate",
+            "Training the internal owner and handing over the control panel",
+            "Documenting how to stop and how to update the agent",
+            "Prioritising the next agent",
+          ],
+        },
+      ],
+    },
+    agents: {
+      eyebrow: "AI workers",
+      title: "Roles we can set up",
+      description:
+        "Each role has a written job description, a defined set of systems it can reach, and a checkpoint where a person steps in. We do not recommend setting all of them up at once — we choose the first pilot together.",
+      systemsLabel: "Connects to",
+      humanLabel: "Human control",
+      items: {
+        receptionist: {
+          title: "AI Receptionist",
+          summary:
+            "The role that answers the call or message first, books appointments and routes people to the right person. Nobody's call goes unanswered.",
+          does: [
+            "Answers calls outside working hours and takes a message",
+            "Offers times that fit the calendar and books the appointment",
+            "Answers frequently asked questions — address, hours, price range",
+            "Identifies anything urgent and passes it to the right person",
+          ],
+          humanReview:
+            "Cancellations, price negotiations and complaints are always handed to a person.",
+        },
+        email: {
+          title: "AI Email Assistant",
+          summary:
+            "The role that sorts the inbox, drafts replies and makes sure no message slips through.",
+          does: [
+            "Classifies incoming mail by subject and urgency",
+            "Drafts replies to recurring questions",
+            "Flags unanswered mail at the end of the day",
+            "Summarises attachments and files them in the right folder",
+          ],
+          humanReview:
+            "Drafts are approved before sending at first; as trust builds, you decide which categories go out automatically.",
+        },
+        "customer-service": {
+          title: "AI Customer Service Agent",
+          summary:
+            "The role that answers customer questions, tracks orders and requests, and escalates whatever it cannot resolve.",
+          does: [
+            "Answers product, delivery and returns questions",
+            "Opens a ticket and keeps the customer informed of its status",
+            "Escalates anything it cannot answer, with its reasoning",
+            "Reports recurring complaint themes",
+          ],
+          humanReview:
+            "Refunds, exceptions and unhappy customers always go to a person.",
+        },
+        sales: {
+          title: "AI Sales Assistant",
+          summary:
+            "The role that qualifies inbound enquiries, keeps the CRM current and chases the follow-ups the salesperson forgot.",
+          does: [
+            "Qualifies enquiries against criteria agreed in advance",
+            "Creates the CRM record and writes up call notes",
+            "Lists and reminds on opportunities that have gone quiet",
+            "Prepares a short briefing on the client before a meeting",
+          ],
+          humanReview:
+            "Proposals, pricing and negotiation belong to a person; the agent only prepares the ground.",
+        },
+        research: {
+          title: "AI Researcher",
+          summary:
+            "The role that runs market, competitor and candidate research and summarises what it finds, with sources.",
+          does: [
+            "Tracks competitor pricing, product and messaging changes",
+            "Compiles sector news into a weekly digest",
+            "Builds lists of prospective clients or suppliers",
+            "Summarises long documents with citations",
+          ],
+          humanReview:
+            "Summaries arrive with source links; anything that will inform a decision is verified at the source.",
+        },
+        content: {
+          title: "AI Content Editor",
+          summary:
+            "The role that learns your house voice, produces drafts and keeps the publishing calendar fed. Publishing stays your decision.",
+          does: [
+            "Writes blog, newsletter and social drafts",
+            "Adapts existing content for different channels",
+            "Tracks the publishing calendar and flags the gaps",
+            "Edits existing copy for consistency with your voice",
+          ],
+          humanReview:
+            "Nothing is published without approval; the agent writes, a person decides to publish.",
+        },
+        meeting: {
+          title: "AI Meeting Assistant",
+          summary:
+            "The role that takes the notes, extracts decisions and actions, and makes sure nothing is forgotten.",
+          does: [
+            "Transcribes and summarises the meeting",
+            "Lists the decisions taken and who owns each",
+            "Pushes actions into your tracking system",
+            "Reminds on open items before the next meeting",
+          ],
+          humanReview:
+            "The summary and action list go to the meeting owner for approval; participants must be informed that the meeting is recorded.",
+        },
+        admin: {
+          title: "AI Office Assistant",
+          summary:
+            "The role that handles invoices, documents and calendars. The biggest time saver, and the one that needs the most careful setup.",
+          does: [
+            "Reads incoming invoices, checks them and passes them to accounting",
+            "Names documents and files them in the right place",
+            "Resolves calendar clashes and arranges meetings",
+            "Prepares recurring reports",
+          ],
+          humanReview:
+            "No step requiring payment, signature or an official filing is completed by the agent — only prepared.",
+        },
+      },
+    },
+    requirements: {
+      title: "Three things we need from you",
+      description:
+        "Success depends largely on these. If none of the three is in place, we recommend not starting the project.",
+      items: [
+        {
+          title: "An internal owner",
+          description:
+            "Someone who can give a few hours a week, review the agent's output, and own the system after handover.",
+        },
+        {
+          title: "Access to systems",
+          description:
+            "Permission for the agent to reach the email, CRM, calendar or file system it needs. Access is scoped as narrowly as possible.",
+        },
+        {
+          title: "Tolerance for error",
+          description:
+            "In the first weeks the agent will make mistakes and be corrected. If zero errors are required, that task is not suitable for automation.",
+        },
+      ],
+    },
+    limits: {
+      title: "Where we do not recommend an AI worker",
+      description:
+        "We share this list up front, because automating the wrong task does not save time — it creates a new problem.",
+      items: [
+        "Work where a mistake cannot be undone — payments, official filings, signing contracts",
+        "Work done a few times a month — the setup cost exceeds the gain",
+        "Decisions whose rules cannot be written down and rest entirely on judgement",
+        "An employee's whole job — we take over the repetitive parts of a role, not the role",
+        "Processes whose data is scattered and unreliable — the data has to be fixed first",
+      ],
+    },
+    dataProtection: {
+      title: "Data security and KVKK",
+      paragraphs: [
+        "Setting up AI workers means part of your company's data passes through an AI provider. We discuss this at the start of the project, in technical detail and in writing.",
+        "Every agent is set up with the narrowest access it needs to do its job. Which data goes where, how long it is retained and who can reach it is written explicitly into the setup document.",
+        "For every agent that processes personal data, compliance with Turkish data protection law is assessed separately; where required, your privacy notices and data processing inventory are updated. We do not begin a setup without that assessment.",
+      ],
+    },
+    engagement: {
+      title: "How we engage",
+      description:
+        "Designed for small and mid-sized businesses. Scope and duration are clear from the start.",
+      models: [
+        {
+          title: "Work inventory",
+          description:
+            "A one-week analysis. Produces a scored list of where the team's time goes and which work can be handed over.",
+        },
+        {
+          title: "Single-agent pilot",
+          description:
+            "Four weeks. Setting up one AI worker, running it under supervision, measuring it and handing it over. The most common starting point.",
+        },
+        {
+          title: "AI Workforce build",
+          description:
+            "Three to six months. Phased setup of several connected agents, a shared control panel, and building your internal team's capability.",
+        },
+        {
+          title: "Maintenance and oversight",
+          description:
+            "Monthly. Monitoring the agents in place, correcting errors and updating them as needs change.",
+        },
+      ],
+    },
+    cta: {
+      title: "Let's talk about which work you could hand over",
+      description:
+        "In a 30-minute introductory call we review the repetitive work in your company together and assess, at no cost, which of it is a suitable pilot.",
     },
   },
   careers: {
