@@ -79,6 +79,11 @@ maliyet.
 | 38 | Google Trends API (alpha) erişimi | Bekliyor | Erişim gelince yeni kaynak dosyası |
 | 39 | SERP verisi ile gerçek rekabet skoru | Bekliyor | Şu an vekil tahmin |
 | 40 | V2: CMS'e yayın + SEO otomasyonu | Bekliyor | |
+| 43 | Ödeme altyapısı: şema + kredi defteri + yetki | **Bitti** 18.08 | `engine/schema-billing.sql`, `billing.mjs`; sağlayıcıdan bağımsız |
+| 44 | 16 maddelik görünürlük kuralı → çalışan denetim | **Bitti** 18.08 | `engine/visibility.mjs`, `write.mjs` kapısına bağlı |
+| 45 | İçerik mimarisi: 30 temel sayfa + 300 destek | **Bitti** 18.08 | `docs/icerik-mimarisi.md`; ilk dalga 10 pillar + 40 destek |
+| 46 | Vipps/Stripe canlı entegrasyonu (webhook uçları) | Bekliyor | Şema hazır; anahtar ve alan adı gerekiyor |
+| 47 | SEO + AI görünürlük izleme işi | **Karar bekliyor** | Sıklık onayı gerekiyor (öneri: haftalık) |
 
 ### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
 

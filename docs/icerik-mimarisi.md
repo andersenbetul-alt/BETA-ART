@@ -299,3 +299,292 @@ P14'ün ikizi; birlikte okunur, birbirine bağlanır.
 8. AI ile başvuru: işveren fark ediyor mu
 9. Ne zaman AI kullanmamalı
 10. 30 günlük iş arama sistemi
+
+---
+
+## Sütun: Business (5 temel sayfa)
+
+Bu sütun en az trafiği getirir, en çok parayı getirir. Okuyucusu "fikir arayan" değil,
+**bütçesi olan** kişidir. Her sayfanın sonunda ücretsiz içerik değil, **keşif görüşmesi**
+teklifi durur. Huni burada kısadır: blog → keşif formu.
+
+### P18 — How to Use AI in Your Small Business: A Practical Playbook
+**KW:** ai for small business · **Niyet:** bilgi → işlem · **Gelir:** hizmet satışı
+(otomasyon keşfi €900, AI Workforce kurulumu) · **Huni:** blog → keşif formu
+Sütunun giriş kapısı. "AI iş yerinizi dönüştürür" cümlesi kurulmayacak. Her bölüm tek
+bir işi ele alacak: bu iş şu anda kaç saat sürüyor, AI ile kaç saat sürer, kurulum kaç
+para, geri dönüş kaç ayda. Kendi rakamlarımızı da vereceğiz — kanıt yoksa iddia yok.
+
+1. AI'a başlamadan önce ölçülmesi gereken 5 şey
+2. Hangi işi otomatikleştirmemelisiniz
+3. KOBİ için gerçekçi AI bütçesi
+4. Çalışan direncini yönetmek
+5. Veri hazırlığı: AI'ın çalışması için gereken minimum
+6. Kurulum sonrası ilk 30 gün
+7. AI kurulumunun gizli maliyetleri
+8. Kendin yap mı, ajans mı, danışman mı
+9. Geri dönüşü nasıl ölçersiniz
+10. Bizim kendi hattımız: ne otomatikleştirdik, ne etmedik
+
+### P19 — AI Receptionist: What It Costs and What It Actually Does
+**KW:** ai receptionist · **Niyet:** işlem · **Gelir:** doğrudan ürün (€3.500 kurulum
++ €900/ay) · **Huni:** blog → demo → keşif formu
+Curiosity Engine'in demo çalıştırmasında en yüksek ikinci puanı alan konu (62,6).
+Arayan kişi çözüm arıyor, fikir aramıyor. Sayfa satış sayfası gibi değil, **fiyat
+karşılaştırma** sayfası gibi yazılacak — kendi ürünümüz de tabloda, rakiplerle yan yana.
+
+1. AI resepsiyonist ne yapar, ne yapamaz
+2. Gerçek maliyet: kurulum + aylık + gizli kalemler
+3. İnsan resepsiyonist maliyetiyle karşılaştırma
+4. Hangi sektörlerde işe yarar, hangilerinde yaramaz
+5. Randevu sistemine bağlama
+6. Norveççe ve çok dilli çağrı yönetimi
+7. Müşteri "robot" olduğunu anlarsa
+8. Çağrı devri: ne zaman insana aktarmalı
+9. GDPR ve çağrı kaydı
+10. 14 günlük kurulum planı
+
+### P20 — How to Automate Customer Service With AI (Without Angering Customers)
+**KW:** ai customer service automation · **Niyet:** bilgi → işlem · **Gelir:** hizmet
+satışı · **Huni:** blog → vaka çalışması → keşif formu
+Başlıktaki parantez kasıtlı: bu aramayı yapan kişi zaten bir kere denemiş ve
+yanmış olabilir. Sayfanın ilk paragrafı otomasyonun **nerede müşteri kaybettirdiğini**
+söyleyecek; güven bu şekilde kurulur.
+
+1. Otomatikleştirilebilir 8 talep tipi
+2. Asla otomatikleştirilmemesi gereken 5 durum
+3. İnsana devretme kuralı nasıl yazılır
+4. Bilgi tabanı hazırlama: gerçek iş burada
+5. Yanıt kalitesini ölçme
+6. Çok dilli destek maliyeti
+7. Chatbot mu, e-posta ajanı mı, ikisi mi
+8. Müşteri memnuniyeti düşerse geri alma planı
+9. Mevcut sisteme bağlama (Zendesk, Freshdesk, e-posta)
+10. 90 günlük kademeli geçiş
+
+### P21 — Content Marketing With AI: A System, Not a Prompt
+**KW:** ai content marketing · **Niyet:** bilgi → işlem · **Gelir:** içerik stüdyosu
+paketleri (€150 / €900 ay / €2.500 ay) · **Huni:** blog → örnek çıktı → keşif formu
+Bu sayfa aynı zamanda **kendi vaka çalışmamız**. Bu sitenin nasıl üretildiğini —
+Curiosity Engine, görünürlük kuralları, kalite kapısı — açıkça anlatacağız. Sattığımız
+şeyin kendi üzerimizde çalıştığını göstermek, en ucuz ve en ikna edici kanıttır.
+
+1. Tek makaleden 7 içerik: gerçek iş akışı
+2. AI içeriği Google'da neden düşer (ölçekli içerik politikası)
+3. Kalite kapısı nasıl kurulur
+4. Marka sesi bir prompt'a nasıl yazılır
+5. İçerik takvimi: haftada kaç yazı sürdürülebilir
+6. Çok dilli yayın: çeviri değil, yerelleştirme
+7. İç bağlantı mimarisi
+8. Ölçüm: hangi metrik yalan söyler
+9. Editör rolü kaybolmaz, değişir
+10. Bizim hattımızın rakamları: süre, maliyet, çıktı
+
+### P22 — AI Sales Assistant: Lead Follow-up Without Hiring
+**KW:** ai sales assistant · **Niyet:** işlem · **Gelir:** doğrudan ürün ·
+**Huni:** blog → demo → keşif formu
+Satış ekibi olmayan KOBİ'nin en pahalı kaybı, gelen talebe 48 saat sonra dönmektir.
+Sayfa bu tek kaybı ölçer ve fiyatlandırır.
+
+1. Yanıt süresi ve dönüşüm ilişkisi: veriye bakalım
+2. AI satış asistanı ne yapar, ne satmaz
+3. CRM'e bağlama
+4. Takip dizisi yazma: kaç mesaj, hangi aralık
+5. Nitelendirme soruları
+6. Sıcak talebi insana aktarma eşiği
+7. Spam sınırı: nerede rahatsız etmeye başlar
+8. E-posta teslim edilebilirliği
+9. Ölçüm: hangi rakam gerçekten geliri gösterir
+10. Kurulum: 10 günlük plan
+
+---
+
+## Sütun: Future Life (3 temel sayfa)
+
+Geniş trafik, düşük satın alma niyeti. Bu sütunun işi para kazanmak değil, **liste
+büyütmek** ve markayı tanıtmaktır. Affiliate bağlantısı ölçülü kullanılır; bu sayfalara
+hizmet teklifi konmaz — konursa güven düşer.
+
+### P23 — AI in Everyday Life: What Actually Changed in 2026
+**KW:** how ai is changing daily life · **Niyet:** bilgi · **Gelir:** bülten kaydı +
+sınırlı affiliate · **Huni:** blog → newsletter
+Abartısız envanter yazısı. Her başlıkta "önce nasıldı / şimdi nasıl / gerçekten daha mı
+iyi" üçlüsü. En az üç yerde "burada bir şey değişmedi" diyeceğiz — bu, sayfanın
+güvenilirliğini taşıyan kısım.
+
+1. Telefonundaki AI: ne kadarını fark ediyorsun
+2. Arama alışkanlığı nasıl değişti
+3. AI ile öğrenme: neyi iyi yapar
+4. Fotoğraf ve hatıralar
+5. Ulaşım ve navigasyon
+6. Alışverişte öneri sistemleri
+7. Sağlık uygulamaları: sınır nerede
+8. Yazışma ve dil engeli
+9. Değişmeyen şeyler
+10. Önümüzdeki 24 ay: makul beklenti
+
+### P24 — AI and Your Money: Budgeting, Investing, and the Scams
+**KW:** ai personal finance · **Niyet:** bilgi · **Gelir:** bülten + finans aracı
+affiliate · **Huni:** blog → newsletter
+**YMYL uyarısı:** Bu sayfa para tavsiyesi vermez, **araç** tanıtır. Yatırım önerisi
+yasak; her bölümde kaynak zorunlu; görünürlük kuralı 15 (en az 3 kaynak) bu sayfada
+sıkı uygulanacak. Yazar adı ve güncelleme tarihi görünür olacak.
+
+1. AI bütçe uygulamaları: gerçekten yardım eder mi
+2. Harcama analizi ve gizli abonelikler
+3. AI'ın yatırım tavsiyesi neden tehlikeli
+4. Vergi hazırlığında AI: nereye kadar
+5. Fatura ve sözleşme okuma
+6. Sahte yatırım botları: nasıl anlaşılır
+7. Kredi ve sigorta karşılaştırması
+8. Verinizi kime veriyorsunuz
+9. Ücretsiz araçların iş modeli
+10. Kontrol listesi: bir finans aracına güvenmeden önce
+
+### P25 — AI at Home: Learning, Health, and Family
+**KW:** ai for families · **Niyet:** bilgi · **Gelir:** bülten + araç affiliate ·
+**Huni:** blog → newsletter
+Sağlık kısmı teşhis değil **yönlendirme** anlatır. Çocuk ve AI bölümünde yaş sınırı,
+veri toplama ve ekran süresi açıkça ele alınır.
+
+1. Ödevde AI: yardım mı, yerine yapmak mı
+2. Çocuklar için yaş uygun kullanım
+3. Dil öğrenmede AI
+4. Sağlık sorularında AI: ne zaman doktora
+5. Yaşlı ebeveyne teknoloji desteği
+6. Ev bütçesi ve alışveriş planı
+7. Aile takvimi ve organizasyon
+8. Mahremiyet: evdeki mikrofonlar
+9. Ekran süresi tartışması
+10. Aile için AI kullanım anlaşması (indirilebilir şablon)
+
+---
+
+## Sütun: 50+ (3 temel sayfa)
+
+En az rekabet, en yüksek sadakat. Bu kitle abone olur, okur ve **tavsiye eder**. Yazım
+kuralı farklıdır: kısaltma yok, jargon yok, adım adım, ekran görüntülü. Küçültücü ton
+en büyük hata olur — okuyucu yeni değil, sadece bu araca yeni.
+
+### P26 — AI for People Over 50: A Plain-Language Start
+**KW:** ai for seniors · **Niyet:** bilgi · **Gelir:** bülten + kurs (ileride) ·
+**Huni:** blog → newsletter
+Sütunun giriş sayfası. Hiçbir adım "kolayca" diye geçilmeyecek. Her bölümün sonunda
+tek cümlelik özet, en sonda yazdırılabilir tek sayfalık başlangıç kılavuzu.
+
+1. AI nedir: 200 kelimeyle, benzetmesiz
+2. İlk sohbet: adım adım ekran görüntülü
+3. Ne sorabilirsiniz, ne soramazsınız
+4. Yanlış cevap verdiğini nasıl anlarsınız
+5. Ücretsiz ve ücretli sürüm farkı
+6. Telefonda mı bilgisayarda mı
+7. Sesli kullanım
+8. Verileriniz nereye gidiyor
+9. Sık yapılan 7 hata
+10. 7 günlük alıştırma planı
+
+### P27 — Making Money After 50 With AI Skills
+**KW:** make money after 50 · **Niyet:** bilgi → işlem · **Gelir:** kurs + affiliate ·
+**Huni:** blog → newsletter → ürün
+Bu kitlenin avantajı yaş değil, **30 yıllık sektör bilgisi**. Sayfanın tezi bu: AI o
+bilgiyi satılabilir hale getirir. Yaş engeli edebiyatı yapılmayacak; iş modeli anlatılacak.
+
+1. Deneyiminizi ürüne çevirmek
+2. Danışmanlık: ilk müşteriyi bulmak
+3. Yazarak gelir: gerçekçi rakamlar
+4. Eğitim ve mentorluk satmak
+5. Yarı zamanlı uzaktan işler
+6. Emeklilik geliriyle birlikte çalışmanın vergi tarafı (ülkeye göre değişir — doğrulayın)
+7. Portföy ve profil kurma
+8. Fiyat belirleme: ucuza çalışmayın
+9. Yaş ayrımcılığıyla karşılaşınca
+10. 90 günlük başlangıç planı
+
+### P28 — How to Spot AI Scams: Voice Clones, Fake Calls, and Deepfakes
+**KW:** ai scams how to spot · **Niyet:** bilgi · **Gelir:** bülten (yüksek paylaşım
+oranı) · **Huni:** blog → newsletter
+Sütunun en çok paylaşılacak sayfası ve en yüksek sorumluluk taşıyanı. Her iddia
+kaynaklı olacak; korku pazarlaması yapılmayacak. Aile içi **parola sistemi** bölümü
+sayfanın özgün katkısı — indirilebilir tek sayfa olarak da verilecek.
+
+1. Ses klonlama dolandırıcılığı nasıl işliyor
+2. "Torunum aradı" senaryosu: adım adım
+3. Aile parolası kurma (indirilebilir şablon)
+4. Sahte video görüşme belirtileri
+5. AI yazılmış oltalama e-postaları
+6. Sahte yatırım ve kripto botları
+7. Sahte müşteri hizmetleri numaraları
+8. Şüphelendiğinizde ilk 10 dakika
+9. Nereye şikâyet edilir (Norveç, AB, Türkiye)
+10. Yakınlarınıza nasıl anlatırsınız
+
+---
+
+## Sütun: AI Safety (2 temel sayfa)
+
+Küçük ama stratejik sütun. Trafiği düşük, **otoritesi yüksek**: bu iki sayfa diğer 28
+sayfanın güvenilirliğini taşır. AI satan bir sitenin AI'ın sınırlarını dürüstçe yazması,
+satış sayfasından daha ikna edicidir.
+
+### P29 — Is AI Safe? What the Risks Actually Are (and Aren't)
+**KW:** is ai safe · **Niyet:** bilgi · **Gelir:** dolaylı (otorite) ·
+**Huni:** blog → newsletter
+Ne felaket senaryosu ne de rahatlatma. Riskleri üç kovaya ayırıp her birine kanıt
+düzeyi vereceğiz: **bugün olan / olması muhtemel / spekülasyon**. Bu ayrım sayfanın
+özgün katkısı.
+
+1. Bugün gerçekten olan zararlar
+2. Veri mahremiyeti: somut riskler
+3. Yanlış bilgi ve uydurma (hallucination)
+4. İş kaybı: kanıt ne diyor
+5. Önyargı ve ayrımcılık
+6. Güvenlik açıkları ve kötüye kullanım
+7. Spekülasyon ile kanıt arasındaki çizgi
+8. Kim düzenliyor, kim denetliyor
+9. Şirket olarak riski nasıl azaltırsınız
+10. Bireysel kullanıcı için 10 kural
+
+### P30 — AI Rules for Small Business: What EU Law Requires of You
+**KW:** eu ai act small business · **Niyet:** bilgi → işlem · **Gelir:** uyum
+danışmanlığı + hizmet satışı · **Huni:** blog → kontrol listesi → keşif formu
+**Doğrulama zorunlu:** AI Act'in yürürlük takvimi değişkenlik gösterdi ve erteleme
+tartışması sürüyor. Bu sayfa **tarih iddiası yayınlamadan önce** birincil kaynaktan
+(EUR-Lex ve ulusal düzenleyici) teyit edilecek. Yanlış tarih vermek, bu sütunun
+taşıdığı otoriteyi tek seferde bitirir.
+
+1. AI Act sizi kapsıyor mu: 5 soruluk test
+2. Risk sınıfları sade anlatım
+3. Şeffaflık yükümlülüğü: müşteriye ne söylemelisiniz
+4. Chatbot kullanıyorsanız gereken bildirim
+5. GDPR ile kesişim
+6. Tedarikçi sorumluluğu: AI'ı siz yapmadıysanız
+7. Kayıt ve belgeleme
+8. Norveç'in konumu (AEA üyesi — uygulama farkı var, doğrulayın)
+9. Ceza riski ve gerçekçi denetim ihtimali
+10. Uyum kontrol listesi (indirilebilir)
+
+---
+
+## İlk dalga: 6 ayda 50 makale
+
+330 makale bir harita; plan bu. Sıralama ölçütü **gelire yakınlık × üretim maliyeti**.
+
+| Sıra | Temel sayfa | Neden önce | Beklenen ilk gelir |
+|---|---|---|---|
+| 1 | P19 AI Receptionist | Ürünümüz hazır, niyet en yüksek | Doğrudan satış |
+| 2 | P21 Content Marketing With AI | Kendi vaka çalışmamız, kanıt bedava | Paket satışı |
+| 3 | P18 AI for Small Business | Business sütununun kapısı | Keşif görüşmesi |
+| 4 | P01 How to Make Money With AI | En geniş trafik, huni başı | Affiliate + liste |
+| 5 | P13 Will AI Take My Job | Yüksek hacim, düşük rekabet | Liste |
+| 6 | P07 Best AI Tools for Small Business | Affiliate omurgası | Affiliate |
+| 7 | P28 How to Spot AI Scams | En yüksek paylaşım, otorite | Liste |
+| 8 | P22 AI Sales Assistant | İkinci ürün | Doğrudan satış |
+| 9 | P26 AI for People Over 50 | Rekabetsiz alan, sadık kitle | Liste |
+| 10 | P29 Is AI Safe | Diğer dokuzun güvenilirliğini taşır | Dolaylı |
+
+Her temel sayfaya **4 destek makalesi** (10 değil) yazılır: listedeki ilk dördü.
+10 temel + 40 destek = 50 makale. Haftada 1 uzun + 2 kısa tempoda ~6 ay.
+
+**Durdurma kuralı:** 3. ayın sonunda ilk 5 temel sayfa hiç arama trafiği almıyorsa
+plan devam etmez, **anahtar kelime seçimi yeniden yapılır**. Altı ay boyunca ölçmeden
+yazmak, bu listedeki en pahalı hatadır.
