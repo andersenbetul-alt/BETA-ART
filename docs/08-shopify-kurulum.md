@@ -144,3 +144,42 @@ Shopify'ın otomatik şablonlarını **kullanma** — genel ve eksikler.
 - [ ] Üç dilde de checkout denendi
 - [ ] Şifre koruması kaldırıldı (Online Store > Preferences)
 - [ ] Google Search Console + Analytics 4 + Meta Pixel bağlandı
+
+---
+
+## ✅ Bu oturumda mağazaya uygulananlar
+
+| Yapıldı | Detay |
+|---|---|
+| **4 akıllı koleksiyon** | `Hjem & interiør` · `Klær & tilbehør` · `Skjønnhet` · `Gaver` — etiket kuralıyla otomatik dolar (`hjem`, `klaer`, `skjonnhet`, `gaver`) |
+| **8 örnek ürün** | Hepsi **DRAFT** (taslak) — NOK fiyat, SKU, ürün tipi, etiket, stok takibi açık, açıklamada malzeme/ölçü/HS kodu tablosu |
+| **Diller** | `en` (İngilizce) ve `tr` (Türkçe) eklendi. Ana dil `nb` (Norsk bokmål) olarak kaldı |
+
+### Eklenen ürünler
+| SKU | Ürün | Fiyat |
+|---|---|---|
+| CB-HOME-CER-001 | Stentøy kaffekopp – matt sand | 349 kr |
+| CB-HOME-TEX-002 | Linservietter – 4 stk | 499 kr |
+| CB-CLTH-WOL-003 | Merinoullskjerf – mose | 899 kr |
+| CB-CLTH-LEA-004 | Kortholder i skinn – leire | 649 kr |
+| CB-BEAU-OIL-005 | Ansiktsolje – damascener-rose | 449 kr |
+| CB-BEAU-SOA-006 | Olivensåpe – sett med 3 | 299 kr |
+| CB-GIFT-BOX-007 | Gaveeske «Verten» | 799 kr |
+| CB-GIFT-CAN-008 | Kronelys i bivoks – 3 stk | 249 kr |
+
+### ⚠️ API ile yapılamayanlar — Shopify admin'den elle yap
+
+1. **Mağaza adı hâlâ "Min butikk".** Shopify Admin API'de mağaza adını değiştiren
+   bir mutation yok. Elle: *Settings → Store details → Store name* → `COBBAN`.
+2. **Yasal sayfalar (policies) yazılmadı.** Metinler `docs/sozlesmeler/` altında hazır
+   ama içlerinde `{{ORG_NR}}`, `{{ADRES_NO}}` gibi doldurulmamış alanlar var.
+   Eksik yasal metin, hiç olmamasından daha risklidir — önce alanları doldur,
+   sonra *Settings → Policies*'e yapıştır.
+3. **`en` ve `tr` dilleri eklendi ama yayınlanmadı** (`published: false`).
+   Bu doğru sıra: önce **Translate & Adapt** ile çevirileri tamamla,
+   sonra dilleri yayına al. Boş çeviriyle yayınlarsan müşteri Norveççe metin görür.
+4. **Ürün görselleri yok.** Shopify API yalnızca herkese açık HTTPS URL kabul ediyor,
+   yerel dosya yüklenemiyor. Gerçek fotoğrafları admin'den yükle.
+5. **Stok miktarları 0.** Stok takibi açık; gerçek adetleri
+   *Products → Inventory* ekranından gir.
+6. **Ürünler DRAFT.** Fotoğraf + stok + fiyat kontrolünden sonra ACTIVE yap.
