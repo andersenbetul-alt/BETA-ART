@@ -124,3 +124,20 @@ describe("RSS beslemesi", () => {
     }
   });
 });
+
+describe("yapılandırılmış veri kaçışı", () => {
+  it("script etiketinden çıkılmasını engeller", async () => {
+    const { jsonLd } = await import("@/lib/json-ld");
+    const out = jsonLd({ title: "</script><img src=x onerror=alert(1)>" });
+    expect(out).not.toContain("</script>");
+    expect(out).not.toContain("<img");
+    // Kaçırılmış hâli aynı değeri geri vermeli
+    expect(JSON.parse(out).title).toBe("</script><img src=x onerror=alert(1)>");
+  });
+
+  it("normal metni bozmaz", async () => {
+    const { jsonLd } = await import("@/lib/json-ld");
+    const value = { t: "Strateji & yaklaşım — 5 < 6" };
+    expect(JSON.parse(jsonLd(value))).toEqual(value);
+  });
+});

@@ -4,6 +4,7 @@ import { Inter, Source_Serif_4 } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getDictionary } from "@/content";
+import { jsonLd } from "@/lib/json-ld";
 import {
   absoluteUrl,
   isLocale,
@@ -138,7 +139,7 @@ export default async function LocaleLayout({
         <script
           type="application/ld+json"
           suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(organizationSchema) }}
         />
       </body>
     </html>

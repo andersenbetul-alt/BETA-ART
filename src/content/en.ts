@@ -424,6 +424,8 @@ export const en: Dictionary = {
         email: "Please enter a valid email address.",
         message: "Please write a message of at least 20 characters.",
         generic: "Your request could not be sent. Please try again.",
+        tooMany:
+          "Too many requests were sent in a short time. Please try again in a few minutes.",
       },
     },
   },
@@ -875,6 +877,12 @@ export const en: Dictionary = {
     title: "We couldn't find that page",
     description:
       "The link may have changed or the page may have been removed. You can continue from the home page.",
+  },
+  error: {
+    title: "Something went wrong",
+    description:
+      "An unexpected error occurred while loading this page. If trying again does not help, please get in touch.",
+    retry: "Try again",
   },
   footer: {
     about:

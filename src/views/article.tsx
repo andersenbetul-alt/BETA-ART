@@ -6,6 +6,7 @@ import { formatDate } from "./insights";
 import { getDictionary } from "@/content";
 import { articleMeta, type ArticleId } from "@/content/articles";
 import { absoluteUrl, path, type Locale } from "@/lib/i18n";
+import { jsonLd } from "@/lib/json-ld";
 
 export function ArticleView({
   locale,
@@ -146,7 +147,7 @@ export function ArticleView({
       <script
         type="application/ld+json"
         suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }}
       />
     </>
   );

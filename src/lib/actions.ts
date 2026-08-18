@@ -1,10 +1,50 @@
 "use server";
 
+import { headers } from "next/headers";
 import { getDictionary } from "@/content";
 import { defaultLocale, isLocale, type Locale } from "./i18n";
 import type { ContactFieldErrors, ContactState } from "./contact";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+/**
+ * Basit hız sınırı: aynı adresten bir dakika içinde en fazla üç talep.
+ *
+ * Bellekte tutulur; sunucu yeniden başladığında ya da birden fazla örnek
+ * çalıştığında sıfırlanır. Amaç kararlı bir saldırıyı durdurmak değil, formun
+ * kazara veya kabaca kötüye kullanılmasını ucuza engellemek. Gerçek bir kötüye
+ * kullanım sorunu çıkarsa kalıcı bir depoya (Vercel KV, Upstash vb.) taşıyın.
+ */
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX_REQUESTS = 3;
+
+const recentSubmissions = new Map<string, number[]>();
+
+function pruneExpired(now: number): void {
+  for (const [key, times] of recentSubmissions) {
+    const fresh = times.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+    if (fresh.length === 0) recentSubmissions.delete(key);
+    else recentSubmissions.set(key, fresh);
+  }
+}
+
+async function isRateLimited(): Promise<boolean> {
+  const headerStore = await headers();
+  // Vercel ve benzeri vekiller gerçek adresi bu başlıkta taşır.
+  const client =
+    headerStore.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    headerStore.get("x-real-ip") ||
+    "bilinmeyen";
+
+  const now = Date.now();
+  pruneExpired(now);
+
+  const times = recentSubmissions.get(client) ?? [];
+  if (times.length >= RATE_LIMIT_MAX_REQUESTS) return true;
+
+  recentSubmissions.set(client, [...times, now]);
+  return false;
+}
 
 function readField(formData: FormData, name: string): string {
   const value = formData.get(name);
@@ -47,6 +87,12 @@ export async function submitContactForm(
 
   if (Object.keys(fieldErrors).length > 0) {
     return { status: "error", fieldErrors };
+  }
+
+  // Sınır bilinçli olarak doğrulamadan sonra: korunan şey e-posta gönderimi.
+  // Aksi hâlde formu düzelte düzelte dolduran bir kullanıcı kilitlenirdi.
+  if (await isRateLimited()) {
+    return { status: "error", message: errors.tooMany };
   }
 
   try {

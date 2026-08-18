@@ -145,6 +145,7 @@ export type Dictionary = {
         email: string;
         message: string;
         generic: string;
+        tooMany: string;
       };
     };
   };
@@ -199,6 +200,11 @@ export type Dictionary = {
   notFound: {
     title: string;
     description: string;
+  };
+  error: {
+    title: string;
+    description: string;
+    retry: string;
   };
   footer: {
     about: string;

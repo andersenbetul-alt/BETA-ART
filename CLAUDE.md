@@ -92,6 +92,17 @@ ilan detayında aynı ilanda kalabiliyor (`alternatePath` bölümü çevirir, al
 segmentleri korur). Bu tercihi bozma — ilan slug'ını dile göre değiştirirsen dil
 değiştirici listeye düşer.
 
+### Güvenlik notları
+
+`<script type="application/ld+json">` içine gömülen her şey `src/lib/json-ld.ts`
+içindeki `jsonLd()` ile kaçırılır — `JSON.stringify` doğrudan kullanılırsa
+sözlüğe girecek bir `</script>` dizisi etiketi kapatır.
+
+İletişim formunda dakikada üç talep sınırı vardır ve **doğrulamadan sonra**
+çalışır; korunan şey e-posta gönderimidir, formu düzelte düzelte dolduran
+kullanıcı kilitlenmemelidir. Sınır bellekte tutulur, yani sunucu örneği başına
+geçerlidir; ciddi bir kötüye kullanım olursa kalıcı bir depoya taşınmalı.
+
 ### `"use server"` dosyaları yalnızca async fonksiyon dışa aktarabilir
 
 `src/lib/actions.ts` bu yüzden yalnızca `submitContactForm` dışa aktarır.
@@ -118,7 +129,7 @@ Bu değerler `sand-100` (en koyu açık zemin) üzerinde hesaplanmıştır.
 
 - `i18n.test.ts` — adres üretimi, dil eşleme, gidiş-dönüş tutarlılığı
 - `content.test.ts` — iki sözlüğün ayrışmaması, boş metin olmaması, ilan ve yazı bütünlüğü
-- `contact.test.ts` — doğrulama, bot tuzağı, e-posta yükü, gönderim hatası
+- `contact.test.ts` — doğrulama, bot tuzağı, hız sınırı, e-posta yükü, gönderim hatası
 - `seo.test.ts` — sitemap kapsamı, canonical/hreflang, Open Graph
 
 Kontrast ve işaretleme hataları testlerle değil `npm run audit:a11y` ile yakalanır.

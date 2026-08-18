@@ -5,6 +5,7 @@ import { Arrow, buttonClass } from "@/components/ui/button";
 import { getDictionary } from "@/content";
 import { jobMeta, type JobId } from "@/content/jobs";
 import { absoluteUrl, path, type Locale } from "@/lib/i18n";
+import { jsonLd } from "@/lib/json-ld";
 
 function List({ title, items }: { title: string; items: string[] }) {
   if (items.length === 0) return null;
@@ -151,7 +152,7 @@ export function JobView({ locale, jobId }: { locale: Locale; jobId: JobId }) {
       <script
         type="application/ld+json"
         suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(jobSchema) }}
       />
     </>
   );

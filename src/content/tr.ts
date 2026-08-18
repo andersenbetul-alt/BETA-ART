@@ -424,6 +424,8 @@ export const tr: Dictionary = {
         email: "Lütfen geçerli bir e-posta adresi girin.",
         message: "Lütfen en az 20 karakterlik bir mesaj yazın.",
         generic: "Talebiniz gönderilemedi. Lütfen tekrar deneyin.",
+        tooMany:
+          "Kısa sürede çok fazla talep gönderildi. Lütfen birkaç dakika sonra tekrar deneyin.",
       },
     },
   },
@@ -878,6 +880,12 @@ export const tr: Dictionary = {
     title: "Aradığınız sayfayı bulamadık",
     description:
       "Bağlantı değişmiş ya da sayfa kaldırılmış olabilir. Ana sayfadan devam edebilirsiniz.",
+  },
+  error: {
+    title: "Bir şeyler ters gitti",
+    description:
+      "Sayfa yüklenirken beklenmedik bir hata oluştu. Tekrar denemek sorunu çözmezse bize ulaşabilirsiniz.",
+    retry: "Tekrar dene",
   },
   footer: {
     about:

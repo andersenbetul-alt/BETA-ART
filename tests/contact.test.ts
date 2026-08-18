@@ -1,6 +1,13 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { submitContactForm } from "@/lib/actions";
 import { initialContactState } from "@/lib/contact";
+
+// Server action `headers()` çağırıyor; test ortamında istek bağlamı yok.
+// Her testin kendi istemci adresini vermesi için değiştirilebilir tutuluyor.
+let clientIp = "10.0.0.1";
+vi.mock("next/headers", () => ({
+  headers: async () => new Map([["x-forwarded-for", clientIp]]),
+}));
 
 function form(fields: Record<string, string>) {
   const data = new FormData();
@@ -15,6 +22,13 @@ const valid = {
   company: "Örnek A.Ş.",
   message: "Organizasyon yapımızı yeniden kurgulamak istiyoruz, görüşebilir miyiz?",
 };
+
+let ipCounter = 0;
+
+beforeEach(() => {
+  // Her test taze bir adresle başlasın ki hız sınırı testler arasında sızmasın.
+  clientIp = `10.0.${++ipCounter}.1`;
+});
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -86,6 +100,43 @@ describe("bot koruması", () => {
 
     expect(state.status).toBe("success");
     expect(fetchSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe("hız sınırı", () => {
+  it("dakikada üç talepten sonrasını reddeder", async () => {
+    for (let i = 0; i < 3; i++) {
+      const state = await submitContactForm(initialContactState, form(valid));
+      expect(state.status, `${i + 1}. talep`).toBe("success");
+    }
+
+    const blocked = await submitContactForm(initialContactState, form(valid));
+    expect(blocked.status).toBe("error");
+    expect(blocked.message).toMatch(/çok fazla talep/i);
+    expect(blocked.fieldErrors).toBeUndefined();
+  });
+
+  it("farklı adresleri birbirinden etkilemez", async () => {
+    for (let i = 0; i < 3; i++) {
+      await submitContactForm(initialContactState, form(valid));
+    }
+    clientIp = "203.0.113.7";
+    const other = await submitContactForm(initialContactState, form(valid));
+    expect(other.status).toBe("success");
+  });
+
+  // Bot tuzağına takılan istek e-posta göndermediği için sayaca girmemeli mi
+  // sorusu tasarım kararı: tuzak sınırdan önce çalışır, yani sayaca girmez.
+  it("bot tuzağı hız sınırından önce çalışır", async () => {
+    for (let i = 0; i < 5; i++) {
+      const state = await submitContactForm(
+        initialContactState,
+        form({ ...valid, website: "spam" }),
+      );
+      expect(state.status).toBe("success");
+    }
+    const real = await submitContactForm(initialContactState, form(valid));
+    expect(real.status).toBe("success");
   });
 });
 

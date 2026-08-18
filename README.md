@@ -166,6 +166,10 @@ Talep `deliverRequest` fonksiyonu ile iletilir:
   konsola bir uyarı düşer.
 - **Gönderim başarısız olursa** kullanıcıya sahte bir onay gösterilmez; hata
   mesajı görünür ve gerçek sebep sunucu günlüğüne yazılır.
+- **Aynı adresten dakikada en fazla üç talep** iletilir. Sınır doğrulamadan
+  sonra çalışır, yani form hatalarını düzelten kullanıcı kilitlenmez. Sayaç
+  bellekte tutulduğu için sunucu örneği başına geçerlidir; yoğun kötüye kullanım
+  durumunda kalıcı bir depoya (Vercel KV, Upstash) taşınmalıdır.
 
 Başka bir sağlayıcıya (SendGrid, Postmark, CRM vb.) geçmek için yalnızca
 `deliverRequest` fonksiyonunun gövdesini değiştirmeniz yeterlidir; doğrulama ve
@@ -246,7 +250,7 @@ Böyle bir araç eklenirse metnin güncellenmesi gerekir.
 
 ## Testler
 
-`tests/` altında Vitest ile çalışan 61 test var. Kapsam bilinçli olarak
+`tests/` altında Vitest ile çalışan 66 test var. Kapsam bilinçli olarak
 kırılgan mantığa odaklıdır; bileşen render testi yoktur.
 
 | Dosya | Neyi korur |
@@ -255,6 +259,13 @@ kırılgan mantığa odaklıdır; bileşen render testi yoktur.
 | `content.test.ts` | İki sözlüğün içerik olarak ayrışmaması, boş metin kalmaması, ilan ve yazı bütünlüğü |
 | `contact.test.ts` | Form doğrulaması, bot tuzağı, e-posta yükü, gönderim hatasında sahte onay verilmemesi |
 | `seo.test.ts` | Sitemap kapsamı, canonical/hreflang eşlemesi, Open Graph görselleri |
+
+## Hata sayfaları
+
+`src/app/[locale]/error.tsx` sayfa gövdesindeki hataları yakalar; header ve
+footer korunur, kullanıcıya "tekrar dene" düğmesi sunulur.
+`src/app/global-error.tsx` kök layout'un kendisi çökerse devreye girer ve kendi
+`<html>` gövdesini taşır. Her iki durumda da hata sunucu günlüğüne yazılır.
 
 ## Erişilebilirlik ve SEO
 
