@@ -83,9 +83,12 @@ a { color: inherit; }
 .mark-text { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .24em; color: var(--muted); }
 .mark-text strong { color: var(--text); font-weight: 500; }
 
-.nav { margin-left: auto; display: flex; gap: 1.7rem; }
+.nav { margin-left: auto; display: flex; gap: 1.15rem; }
 .nav a {
-  font-family: var(--f-mono); font-size: .64rem; letter-spacing: .16em; text-transform: uppercase;
+  /* nine items plus a language picker and a button: a label that breaks
+     mid-word reads as a bug, so each stays on one line */
+  white-space: nowrap;
+  font-family: var(--f-mono); font-size: .62rem; letter-spacing: .11em; text-transform: uppercase;
   text-decoration: none; color: var(--muted); padding-bottom: 3px; border-bottom: 1px solid transparent;
   transition: color .18s var(--ease), border-color .18s var(--ease);
 }
@@ -116,7 +119,7 @@ a { color: inherit; }
 .btn-seal:hover { background: var(--seal-bright); border-color: var(--seal-bright); }
 .btn-line { border-color: var(--edge); color: var(--text); }
 .btn-line:hover { border-color: var(--seal-bright); color: var(--seal-bright); }
-.btn-sm { padding: .6rem 1.1rem; font-size: .62rem; }
+.btn-sm { padding: .6rem 1.1rem; font-size: .62rem; white-space: nowrap; }
 .btn-block { display: block; width: 100%; text-align: center; }
 
 /* ---------- Hero ---------- */
