@@ -520,3 +520,13 @@ strong, b { font-weight: 600; }
 @media (max-width: 400px) {
   .wrap { width: min(100% - 2rem, 1240px); }
 }
+
+/* 404 — the page has no navigation of its own on purpose: the one thing a
+   lost visitor needs is a way back, not a second chance to get lost. */
+.notfound { padding: clamp(4rem, 14vw, 9rem) 0; }
+.not-found-code { letter-spacing: .24em; }
+.notfound h1 { max-width: 18ch; }
+.not-found-links { display: flex; flex-wrap: wrap; gap: 1.4rem; margin: 2rem 0 3rem;
+  padding-top: 1.6rem; border-top: 1px solid var(--rule, var(--edge)); }
+.not-found-links a { font-family: var(--f-mono); font-size: .66rem; letter-spacing: .14em;
+  text-transform: uppercase; text-decoration: none; padding-block: .5rem; }

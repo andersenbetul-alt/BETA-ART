@@ -38,7 +38,10 @@ def canonical(path):
 
 def build(sub):
     base = os.path.join(ROOT, sub)
-    pages = sorted(f for f in os.listdir(base) if f.endswith(".html"))
+    # a 404 is reachable by accident, never by crawl — it is noindex and
+    # must not be advertised
+    pages = sorted(f for f in os.listdir(base)
+                   if f.endswith(".html") and f != "404.html")
     if not pages:
         return None
     # the home page settles the host; every other page hangs off it
