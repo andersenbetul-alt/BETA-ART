@@ -1,0 +1,98 @@
+{
+  "brand": "BETA",
+  "locale": "tr-TR",
+  "updated": "2026-08-18",
+  "categories": [
+    {
+      "id": "work",
+      "slug": "beta-work",
+      "name": "BETA WORK",
+      "tagline": "AI çalışanları",
+      "icon": "◆",
+      "description": "İşletmelerin tekrar eden operasyonel işlerini üstlenen, göreve özel kurgulanmış AI çalışanları. Satış, destek, operasyon ve back-office süreçleri için ekibe eklenen dijital birimler.",
+      "highlights": [
+        "Göreve özel AI çalışan kurulumu",
+        "Mevcut araç ve süreçlerle entegrasyon",
+        "Çıktı takibi ve sürekli iyileştirme"
+      ]
+    },
+    {
+      "id": "business",
+      "slug": "beta-business",
+      "name": "BETA BUSINESS",
+      "tagline": "şirket kurma",
+      "icon": "▲",
+      "description": "Fikirden faaliyete geçen şirket kurma yolculuğu. Kuruluş adımları, yapı seçimi, temel operasyon kurgusu ve ilk müşteriye kadar olan süreç tek bir akışta.",
+      "highlights": [
+        "Kuruluş adımlarının planlanması",
+        "Operasyon ve süreç altyapısı",
+        "İlk müşteriye giden yol haritası"
+      ]
+    },
+    {
+      "id": "career",
+      "slug": "beta-career",
+      "name": "BETA CAREER",
+      "tagline": "yeni kariyer",
+      "icon": "●",
+      "description": "Kariyer değiştirmek ya da yeni bir alana geçmek isteyenler için yön belirleme ve geçiş programı. Mevcut deneyimi yeni alana taşıyan pratik bir plan.",
+      "highlights": [
+        "Yön ve alan belirleme",
+        "Beceri açığının kapatılması",
+        "Başvuru ve görüşme hazırlığı"
+      ]
+    },
+    {
+      "id": "learn",
+      "slug": "beta-learn",
+      "name": "BETA LEARN",
+      "tagline": "AI eğitimi",
+      "icon": "■",
+      "description": "Sıfırdan başlayanlar ve iş hayatında AI kullanmak isteyenler için uygulamalı eğitim. Teoriden çok, günlük işlerde doğrudan kullanılabilen yetkinlikler.",
+      "highlights": [
+        "Uygulamalı ders akışı",
+        "Seviyeye göre ilerleme",
+        "Gerçek iş senaryoları"
+      ]
+    },
+    {
+      "id": "creator",
+      "slug": "beta-creator",
+      "name": "BETA CREATOR",
+      "tagline": "içerik ve kişisel marka",
+      "icon": "✦",
+      "description": "İçerik üretimini ve kişisel markayı sürdürülebilir bir sisteme dönüştürme. Konumlandırma, içerik planı ve üretim akışı bir arada.",
+      "highlights": [
+        "Konumlandırma ve mesaj netliği",
+        "İçerik planı ve üretim akışı",
+        "Yayın sonrası ölçüm ve iyileştirme"
+      ]
+    },
+    {
+      "id": "senior",
+      "slug": "beta-senior",
+      "name": "BETA SENIOR",
+      "tagline": "yaşlılara dijital destek",
+      "icon": "❋",
+      "description": "Yaşlı kullanıcılar için sade ve güvenli dijital destek. Günlük teknoloji ihtiyaçlarında sabırlı, adım adım ve anlaşılır rehberlik.",
+      "highlights": [
+        "Sade ve adım adım anlatım",
+        "Güvenli kullanım ve dolandırıcılığa karşı farkındalık",
+        "Günlük dijital işlerde destek"
+      ]
+    },
+    {
+      "id": "life",
+      "slug": "beta-life",
+      "name": "BETA LIFE",
+      "tagline": "kişisel AI",
+      "icon": "◇",
+      "description": "Günlük hayatı düzenleyen kişisel AI. Planlama, hatırlatma, araştırma ve karar desteği gibi kişisel ihtiyaçlar için tek bir asistan.",
+      "highlights": [
+        "Günlük planlama ve hatırlatmalar",
+        "Araştırma ve karar desteği",
+        "Kişisel tercihlere göre uyarlanma"
+      ]
+    }
+  ]
+}
