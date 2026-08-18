@@ -7,16 +7,21 @@ Saf HTML + CSS + JavaScript — build adımı, paket kurulumu, framework yok.
 ## Dosya yapısı
 
 ```
-index.html               Tüm sayfa (bölümler: hero, müzik, video, NCS, sync, hakkında,
-                         bülten + topluluk, basın/EPK, booking, footer)
-assets/css/style.css     Tasarım: siyah zemin, tek kırmızı vurgu (#ef2b2d), condensed başlık tipografisi
-assets/js/i18n.js        12 dilin çevirileri (97 anahtar × 12 dil)
-assets/js/app.js         Dil değiştirme, mobil menü, scroll animasyonu, bülten formu
-assets/favicon.svg       Sekme ikonu
-robots.txt               Arama motorları + yapay zekâ tarayıcı engeli (TDM opt-out)
-sitemap.xml              Tek sayfalık site haritası
-.well-known/tdmrep.json  Metin ve veri madenciliği rezervasyonu (EU DSM Direktifi 2019/790 Md. 4)
+index.html                  Tüm sayfa (bölümler: hero, künye şeridi, müzik, videolar, NCS,
+                            hakkında, "HXI ile çalışın", bülten + topluluk, basın/EPK, booking)
+assets/css/style.css        Tasarım: siyah zemin, tek kırmızı vurgu (#ef2b2d), condensed başlıklar
+assets/js/i18n.js           12 dilin çevirileri (100 anahtar × 12 dil)
+assets/js/app.js            Dil değiştirme, mobil menü, video oynatıcı, scroll animasyonu, form
+assets/favicon.svg          Sekme ikonu
+assets/apple-touch-icon.png iOS ana ekran ikonu
+assets/og-image.png         Sosyal medyada paylaşım görseli (1200×630)
+robots.txt                  Arama motorları + yapay zekâ tarayıcı engeli (TDM opt-out)
+sitemap.xml                 Tek sayfalık site haritası
+.well-known/tdmrep.json     Metin ve veri madenciliği rezervasyonu (EU DSM Direktifi 2019/790 Md. 4)
 ```
+
+Sayfa bir **sanatçı tanıtım sayfası**: müzik, videolar, hikâye, iş birliği daveti ve
+iletişim. Lisans satışı / fiyat listesi gibi B2B içerik bilinçli olarak yok.
 
 ## Diller
 
@@ -31,7 +36,7 @@ sitemap.xml              Tek sayfalık site haritası
 | `ar` | العربية | `ur` | اردو |
 
 Bunlara ek olarak **Norveççe (`no`)** — HXI'nın kendi pazarı, eski sitede de vardı — ve
-**Türkçe (`tr`)** eklendi. Toplam 12 dil. İstemezseniz `assets/js/i18n.js` içindeki
+**Türkçe (`tr`)** eklendi. Toplam 12 dil, dil başına 100 metin. İstemezseniz `assets/js/i18n.js` içindeki
 `HXI_LANGS` listesinden ilgili satırı silmek yeterli.
 
 Dil nasıl seçilir:
@@ -91,16 +96,36 @@ Scar Scheme Records, TONO · GRAMO · NCB.
 Yayına almadan önce gözden geçirmeniz iyi olur:
 
 - Aylık dinleyici ve dinlenme sayıları (zamanla değişiyor).
-- Lisans fiyatları (€49 / €299) hâlâ geçerli mi.
 - `discord.gg/hximusic` daveti aktif mi (eski sitede “yakında” notu vardı).
+- İş birliği ve genel mesajlar `hello@hximusic.com` adresine gidiyor; başka bir
+  adres isterseniz `index.html` içindeki `mailto:` bağlantılarını değiştirin.
 - Basın/EPK bağlantıları şu an e-posta talebi olarak çalışıyor; dosya linki
-  verilecekse `index.html` içindeki `mailto:` adreslerini değiştirin.
+  verilecekse yine aynı `mailto:` adreslerini değiştirmeniz yeterli.
+
+## Gizlilik ve performans
+
+- **YouTube videoları tıklanana kadar yüklenmez.** Sayfa açıldığında Google'a hiçbir
+  istek gitmez; ziyaretçi oynat'a bastığında video `youtube-nocookie.com` üzerinden
+  yüklenir. Hem sayfa ağırlığı hem de GDPR açısından doğru olan davranış bu.
+- Spotify gömüsü `loading="lazy"` ile yükleniyor (tek parça, 152 piksel).
+- `robots.txt` + `.well-known/tdmrep.json` yapay zekâ eğitimi için veri toplanmasına
+  itiraz kaydını taşıyor.
+
+## Erişilebilirlik
+
+- Tüm metinler en az 10 piksel; gri tonlar WCAG AA kontrastını sağlayacak şekilde açıldı.
+- Klavye ile gezilebilir: "içeriğe geç" bağlantısı, görünür odak halkası, `aria-expanded`
+  ile çalışan mobil menü.
+- `prefers-reduced-motion` açıksa animasyonlar kapanır.
+- JavaScript kapalıysa menü ve içerik yine erişilebilir kalır (`<noscript>` yedeği).
 
 ## Bilinen sınırlar
 
 - Bülten formunun sunucusu yok: gönderilen adres, ziyaretçinin e-posta uygulamasında
   `hello@hximusic.com`'a giden bir taslak olarak açılır. Gerçek bir liste isterseniz
   Mailchimp/Resend gibi bir servisin form `action`'ı ile değiştirilebilir.
-- Spotify ve YouTube gömüleri dış servislerden yüklenir; çevrimdışıyken boş görünür.
+- `i18n.js` 12 dilin tamamını tek dosyada taşıyor (~90 KB, gzip'te ~20 KB). Statik
+  hosting için sadeliği kazanç sayıldı; dil başına dosyaya bölmek isterseniz
+  `HXI_I18N` nesnesini parçalayıp `app.js` içinde seçili dili `fetch` etmek yeterli.
 - Başlık fontu Google Fonts'tan gelir (Barlow Condensed / Space Mono / Inter);
   erişilemezse sistem fontlarına düşer.

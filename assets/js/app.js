@@ -44,7 +44,8 @@
     html.setAttribute('dir', RTL[code] ? 'rtl' : 'ltr');
 
     var email = document.getElementById('signup-email');
-    if (email && dict.form_email) email.setAttribute('placeholder', dict.form_email);
+    var placeholder = dict.form_email || fallback.form_email;
+    if (email && placeholder) email.setAttribute('placeholder', placeholder);
 
     var select = document.getElementById('lang-select');
     if (select) select.value = code;
@@ -102,18 +103,68 @@
   /* ---------- scroll reveal ---------- */
 
   function reveal() {
-    var targets = document.querySelectorAll('.section .wrap > *, .hero-inner > *');
     if (!('IntersectionObserver' in window)) return;
-    var io = new IntersectionObserver(function (entries, obs) {
+    var targets = [].slice.call(document.querySelectorAll('.section .wrap > *, .hero-inner > *'));
+    var pending = targets.length;
+
+    function show(el) {
+      if (el.classList.contains('in')) return;
+      el.classList.add('in');
+      pending--;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add('in');
-        obs.unobserve(entry.target);
+        show(entry.target);
+        io.unobserve(entry.target);
       });
     }, { rootMargin: '0px 0px -8% 0px' });
+
     targets.forEach(function (el) {
       el.classList.add('reveal');
       io.observe(el);
+    });
+
+    // Safety net: a fast scroll can move an element out of view before the observer
+    // callback runs, which would leave it stuck at opacity 0. Sweep on scroll instead.
+    var ticking = false;
+    function sweep() {
+      ticking = false;
+      var limit = window.innerHeight;
+      targets.forEach(function (el) {
+        if (!el.classList.contains('in') && el.getBoundingClientRect().top < limit) show(el);
+      });
+      if (pending <= 0) {
+        window.removeEventListener('scroll', queue);
+        window.removeEventListener('resize', queue);
+      }
+    }
+    function queue() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(sweep);
+    }
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+  }
+
+  /* ---------- video ---------- */
+
+  function videos() {
+    document.querySelectorAll('.yt-facade').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var frame = document.createElement('iframe');
+        // nocookie host, and only ever requested once the visitor asks for the video
+        frame.src = 'https://www.youtube-nocookie.com/embed/' + button.dataset.yt +
+          '?autoplay=1&rel=0';
+        frame.title = button.dataset.title || 'YouTube video';
+        frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        frame.allowFullscreen = true;
+        frame.setAttribute('frameborder', '0');
+        button.parentNode.replaceChild(frame, button);
+        frame.focus();
+      });
     });
   }
 
@@ -137,13 +188,21 @@
 
   /* ---------- init ---------- */
 
+  function run(step) {
+    // one failing enhancement must not take the rest of the page down with it
+    try { step(); } catch (e) { if (window.console) console.error(e); }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
-    buildSwitcher();
-    apply(detect());
-    nav();
-    reveal();
-    signup();
-    var year = document.getElementById('year');
-    if (year) year.textContent = String(new Date().getFullYear());
+    run(buildSwitcher);
+    run(function () { apply(detect()); });
+    run(nav);
+    run(videos);
+    run(signup);
+    run(reveal);
+    run(function () {
+      var year = document.getElementById('year');
+      if (year) year.textContent = String(new Date().getFullYear());
+    });
   });
 })();

@@ -12,6 +12,19 @@
 <meta name="tdm-reservation" content="1">
 <meta name="tdm-policy" content="https://hximusic.com/.well-known/tdmrep.json">
 <link rel="canonical" href="https://hximusic.com">
+<link rel="alternate" hreflang="en" href="https://hximusic.com/?lang=en">
+<link rel="alternate" hreflang="zh" href="https://hximusic.com/?lang=zh">
+<link rel="alternate" hreflang="hi" href="https://hximusic.com/?lang=hi">
+<link rel="alternate" hreflang="es" href="https://hximusic.com/?lang=es">
+<link rel="alternate" hreflang="ar" href="https://hximusic.com/?lang=ar">
+<link rel="alternate" hreflang="fr" href="https://hximusic.com/?lang=fr">
+<link rel="alternate" hreflang="bn" href="https://hximusic.com/?lang=bn">
+<link rel="alternate" hreflang="pt" href="https://hximusic.com/?lang=pt">
+<link rel="alternate" hreflang="ru" href="https://hximusic.com/?lang=ru">
+<link rel="alternate" hreflang="ur" href="https://hximusic.com/?lang=ur">
+<link rel="alternate" hreflang="no" href="https://hximusic.com/?lang=no">
+<link rel="alternate" hreflang="tr" href="https://hximusic.com/?lang=tr">
+<link rel="alternate" hreflang="x-default" href="https://hximusic.com/">
 <meta name="theme-color" content="#08080f">
 <meta property="og:title" content="HXI — Norwegian Phonk Producer">
 <meta property="og:description" content="43M+ Spotify streams. Fast &amp; Furious sync. BODYCAM OST. NCS Artist. Oslo, Norway.">
@@ -23,11 +36,23 @@
 <meta name="twitter:title" content="HXI — Norwegian Phonk Producer">
 <meta name="twitter:description" content="43M+ Spotify streams. Fast &amp; Furious sync. BODYCAM OST. NCS Artist.">
 <meta name="twitter:site" content="@HXIMusic">
+<meta property="og:image" content="https://hximusic.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HXI — Nordic Phonk">
+<meta name="twitter:image" content="https://hximusic.com/assets/og-image.png">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;900&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;700&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
+<noscript><style>
+  /* Without JS the burger cannot open the menu and the switcher has no options. */
+  .nav{display:flex!important;position:static;flex-direction:row;flex-wrap:wrap;background:none;border:0}
+  .nav a{border-top:0;padding:15px 0}
+  .burger,.lang{display:none!important}
+</style></noscript>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"MusicGroup","name":"HXI","alternateName":"Christoffer Andersen","description":"Norwegian phonk producer, DJ and sound designer from Oslo. 43M+ Spotify streams.","email":"booking@hximusic.com","foundingDate":"2021","foundingLocation":{"@type":"Place","name":"Oslo, Norway"},"genre":["Phonk","Drift Phonk","Electronic","Bass House"],"recordLabel":{"@type":"Organization","name":"Scar Scheme Records"},"url":"https://hximusic.com","sameAs":["https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU","https://instagram.com/prod.hxi","https://tiktok.com/@hximusic","https://youtube.com/@hximusic","https://x.com/HXIMusic","https://soundcloud.com/hximusic","https://ncs.io/artist/1169/hxi"]}
 </script>
@@ -41,8 +66,9 @@
 
     <nav class="nav" id="nav" aria-label="Main">
       <a href="#music" data-i18n="nav_music">Music</a>
-      <a href="#sync" data-i18n="nav_sync">Sync</a>
+      <a href="#videos" data-i18n="nav_videos">Videos</a>
       <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#collab" data-i18n="nav_collab">Collab</a>
       <a href="#press" data-i18n="nav_press">Press</a>
       <a href="#booking" data-i18n="nav_book">Booking</a>
     </nav>
@@ -50,7 +76,7 @@
     <div class="header-actions">
       <label class="lang">
         <span class="sr-only" data-i18n="lang_label">Language</span>
-        <select id="lang-select" aria-label="Language"></select>
+        <select id="lang-select"></select>
       </label>
       <a class="btn btn-solid book-btn" href="mailto:booking@hximusic.com?subject=Booking%20Request" data-i18n="btn_book">Book Now →</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
@@ -60,7 +86,7 @@
   </div>
 </header>
 
-<main id="main">
+<main id="main" tabindex="-1">
 
   <!-- HERO -->
   <section class="hero" id="top">
@@ -163,18 +189,34 @@
 
       <div class="grid-3">
         <figure class="video">
-          <div class="ratio"><iframe src="https://www.youtube.com/embed/S0VKL7VZmcM" title="HXI - Lock n' Load (NCS)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="ratio">
+            <button class="yt-facade" type="button" data-yt="S0VKL7VZmcM" data-title="HXI — Lock n&#39; Load (NCS)">
+              <span class="yt-play" aria-hidden="true"></span>
+              <span class="sr-only">HXI — Lock n&#39; Load (NCS)</span>
+            </button>
+          </div>
           <figcaption><b>Lock n' Load</b><span>NCS Release · Sep 2024</span></figcaption>
         </figure>
         <figure class="video">
-          <div class="ratio"><iframe src="https://www.youtube.com/embed/35GzN5QEztQ" title="HXI - help urself" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="ratio">
+            <button class="yt-facade" type="button" data-yt="35GzN5QEztQ" data-title="HXI — help urself">
+              <span class="yt-play" aria-hidden="true"></span>
+              <span class="sr-only">HXI — help urself</span>
+            </button>
+          </div>
           <figcaption><b>help urself</b><span>43M+ streams · 2022</span></figcaption>
         </figure>
         <figure class="video">
-          <div class="ratio"><iframe src="https://www.youtube.com/embed/B-ynyUmfo58" title="HXI - help urself funk" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="ratio">
+            <button class="yt-facade" type="button" data-yt="B-ynyUmfo58" data-title="HXI — help urself funk">
+              <span class="yt-play" aria-hidden="true"></span>
+              <span class="sr-only">HXI — help urself funk</span>
+            </button>
+          </div>
           <figcaption><b>help urself funk</b><span>Official Music Video · 2025</span></figcaption>
         </figure>
       </div>
+      <p class="note video-note" data-i18n="video_consent">Videos load from YouTube only after you press play.</p>
     </div>
   </section>
 
@@ -183,58 +225,24 @@
     <div class="wrap split">
       <div>
         <p class="label accent" data-i18n="ncs_label">NCS Artist</p>
-        <h2 class="h2" data-i18n="ncs_title">50 million subscribers. Your content.</h2>
-        <p class="lead" data-i18n="ncs_p">HXI is an official NoCopyrightSounds artist. Any of the 200M+ global content creators can use HXI's NCS tracks legally — for free. Two releases live. Sync licensing contributes 20–35% of total income for active sync artists.</p>
+        <h2 class="h2" data-i18n="ncs_title">50 million subscribers.</h2>
+        <p class="lead" data-i18n="ncs_p">HXI is an official NoCopyrightSounds artist — the channel sits at the centre of the creator ecosystem with more than 50 million subscribers. Two HXI releases are out there.</p>
       </div>
       <ul class="rows">
         <li>
           <div><b>Lock n' Load</b><span>NCS Release · September 2024</span></div>
-          <a href="https://ncs.io/LockNLoad" target="_blank" rel="noopener noreferrer" data-i18n="ncs_free">Use free →</a>
+          <a href="https://ncs.io/LockNLoad" target="_blank" rel="noopener noreferrer" data-i18n="ncs_listen">Listen →</a>
         </li>
         <li>
           <div><b>Round Around feat. Nateki</b><span>NCS Release · September 2025</span></div>
-          <a href="https://open.spotify.com/album/0HuNuJEQ6sRYNzVZ0p0bBn" target="_blank" rel="noopener noreferrer" data-i18n="ncs_free">Use free →</a>
+          <a href="https://open.spotify.com/album/0HuNuJEQ6sRYNzVZ0p0bBn" target="_blank" rel="noopener noreferrer" data-i18n="ncs_listen">Listen →</a>
         </li>
       </ul>
-    </div>
-  </section>
-
-  <!-- SYNC -->
-  <section class="section" id="sync">
-    <div class="wrap">
-      <p class="label accent" data-i18n="sync_label">Sync &amp; Licensing</p>
-      <h2 class="h2" data-i18n="sync_title">Music that moves culture</h2>
-      <p class="lead" data-i18n="sync_p">Sync-proven across film, gaming, and the creator economy. All territories. Master and sync rights independently controlled.</p>
-
-      <ul class="figures">
-        <li><b>$9.73B</b><span>Global sync market 2026</span></li>
-        <li><b>$1.91B</b><span>Video game music 2026</span></li>
-        <li><b>+8.8%</b><span>Sync market CAGR</span></li>
-        <li><b>$5K–50K</b><span>TV sync per track</span></li>
-      </ul>
-
-      <div class="panel">
-        <div class="panel-head">
-          <p class="label" data-i18n="sync_tiers">License Tiers</p>
-          <p class="note" data-i18n="sync_tiers_note">Indie game avg: $500–2,000/track · TV sync: $5K–50K/track</p>
-        </div>
-        <ul class="tiers">
-          <li><div><b>Creator License</b><span>YouTube / TikTok / Instagram</span></div><em>€49 / track</em></li>
-          <li><div><b>Sync Standard</b><span data-i18n="sync_t2">Indie film, short film, web series</span></div><em>€299 / track</em></li>
-          <li class="hot"><div><b>Game Sync</b><span data-i18n="sync_t3">Game soundtrack, trailer, in-game</span></div><em data-i18n="sync_on_request">On request</em></li>
-          <li><div><b>Sync Pro</b><span>Netflix, Amazon, major streaming</span></div><em data-i18n="sync_on_request">On request</em></li>
-          <li><div><b>Advertising</b><span data-i18n="sync_t5">TV / online / brand content</span></div><em data-i18n="sync_on_request">On request</em></li>
-        </ul>
-      </div>
-
-      <p class="section-cta">
-        <a class="btn btn-solid" href="mailto:sync@hximusic.com?subject=License%20Inquiry" data-i18n="sync_cta">Request a license →</a>
-      </p>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section class="section alt" id="about">
+  <section class="section" id="about">
     <div class="wrap">
       <p class="label accent" data-i18n="about_label">About</p>
       <h2 class="h2" data-i18n="about_title">From Norway. 43 million streams.</h2>
@@ -265,6 +273,26 @@
           <div class="figure-big"><b>69%</b><span>Music revenue = streaming</span></div>
         </aside>
       </div>
+    </div>
+  </section>
+
+  <!-- WORK WITH HXI -->
+  <section class="section alt" id="collab">
+    <div class="wrap split">
+      <div>
+        <p class="label accent" data-i18n="collab_label">Collaboration</p>
+        <h2 class="h2" data-i18n="collab_title">Work with HXI</h2>
+        <p class="lead" data-i18n="collab_p">Open to features, remixes, production and creator work. Send the track, the idea or the brief — messages go straight to HXI, not to a management inbox.</p>
+        <p class="section-cta">
+          <a class="btn btn-solid" href="mailto:hello@hximusic.com?subject=Collab" data-i18n="collab_cta">Send a message →</a>
+        </p>
+      </div>
+      <ul class="rows">
+        <li><div><b data-i18n="collab_1t">Features &amp; collabs</b><span data-i18n="collab_1d">Send a demo or an idea</span></div></li>
+        <li><div><b data-i18n="collab_2t">Remixes</b><span data-i18n="collab_2d">Your track, HXI&#39;s sound</span></div></li>
+        <li><div><b data-i18n="collab_3t">Production &amp; sound design</b><span data-i18n="collab_3d">Beats, mixing, mastering</span></div></li>
+        <li><div><b data-i18n="collab_4t">Creators &amp; edits</b><span data-i18n="collab_4d">Free NCS tracks for your videos</span></div></li>
+      </ul>
     </div>
   </section>
 
@@ -310,7 +338,7 @@
           <div><dt data-i18n="fact_artist">Artist</dt><dd>HXI (say "Hoi")</dd></div>
           <div><dt data-i18n="fact_name">Name</dt><dd>Christoffer Andersen</dd></div>
           <div><dt data-i18n="fact_from">From</dt><dd>Oslo, Norway</dd></div>
-          <div><dt data-i18n="fact_active">Active</dt><dd>2021–</dd></div>
+          <div><dt data-i18n="fact_active">Active</dt><dd>2021+</dd></div>
           <div><dt data-i18n="fact_genre">Genre</dt><dd>Dark Phonk · Drift · Sound Design</dd></div>
           <div><dt data-i18n="fact_streams">Streams</dt><dd>43M+ (help urself)</dd></div>
           <div><dt data-i18n="fact_listeners">Monthly listeners</dt><dd>251,000</dd></div>
@@ -330,9 +358,8 @@
 
       <ul class="contacts">
         <li><span data-i18n="c_booking">Booking</span><a href="mailto:booking@hximusic.com">booking@hximusic.com</a></li>
-        <li><span data-i18n="c_sync">Sync &amp; licensing</span><a href="mailto:sync@hximusic.com">sync@hximusic.com</a></li>
-        <li><span data-i18n="c_legal">Legal &amp; copyright</span><a href="mailto:legal@hximusic.com">legal@hximusic.com</a></li>
         <li><span data-i18n="c_press">Press</span><a href="mailto:press@hximusic.com">press@hximusic.com</a></li>
+        <li><span data-i18n="c_general">General</span><a href="mailto:hello@hximusic.com">hello@hximusic.com</a></li>
       </ul>
 
       <ul class="socials">
