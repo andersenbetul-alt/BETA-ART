@@ -402,3 +402,10 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
 /* No file requests a 700 weight, so a default <strong> was being
    synthesised by the browser. 600 is loaded; use the real cut. */
 strong, b { font-weight: 600; }
+
+/* WCAG 2.2 AA, 2.5.8: a target needs 24x24. Navigation, footer and social
+   links were 16-21px tall — the text height and nothing else. */
+.nav a, .footer nav a, .social a, .crumbs a, .colophon nav a,
+.bar-inner nav a, footer nav a, .legal-index a, .toc a, .pager a, .card-go, .read-on {
+  padding-block: .5rem;
+}

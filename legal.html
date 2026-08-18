@@ -91,6 +91,13 @@ footer p{margin:0 0 .5rem;font-family:var(--f-mono);font-size:.62rem;letter-spac
   }
   /* Arabic letters join; extra tracking would break the word apart. */
   [lang="ar"] .human-mark { letter-spacing: 0; }
+
+/* WCAG 2.2 AA, 2.5.8: a target needs 24x24. Navigation, footer and social
+   links were 16-21px tall — the text height and nothing else. */
+.nav a, .footer nav a, .social a, .crumbs a, .colophon nav a,
+.bar-inner nav a, footer nav a, .legal-index a, .toc a, .pager a, .card-go, .read-on {
+  padding-block: .5rem;
+}
 </style>
 </head>
 <body>

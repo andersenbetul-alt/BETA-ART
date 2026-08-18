@@ -502,3 +502,10 @@ strong, b { font-weight: 600; }
   /* the global animation kill snapped this to its midpoint; park it */
   .ticker-track { animation: none; transform: none; }
 }
+
+/* WCAG 2.2 AA, 2.5.8: a target needs 24x24. Navigation, footer and social
+   links were 16-21px tall — the text height and nothing else. */
+.nav a, .footer nav a, .social a, .crumbs a, .colophon nav a,
+.bar-inner nav a, footer nav a, .legal-index a, .toc a, .pager a, .card-go, .read-on {
+  padding-block: .5rem;
+}

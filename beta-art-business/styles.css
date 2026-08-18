@@ -109,7 +109,8 @@ a { color: inherit; }
 .btn {
   display: inline-block; padding: 1rem 1.8rem; text-decoration: none; cursor: pointer;
   font-family: var(--f-mono); font-size: .66rem; letter-spacing: .18em; text-transform: uppercase;
-  border: 1px solid transparent; transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+  border: 1px solid transparent; background: transparent; color: var(--text);
+  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
 }
 .btn-seal { background: var(--seal); color: var(--on-seal); border-color: var(--seal); }
 .btn-seal:hover { background: var(--seal-bright); border-color: var(--seal-bright); }
@@ -727,3 +728,10 @@ strong, b { font-weight: 600; }
 .staff-escalate strong { color: var(--text); }
 .staff-file .footnote { margin: 0; }
 .staff-file .footnote a { margin-right: .6rem; }
+
+/* WCAG 2.2 AA, 2.5.8: a target needs 24x24. Navigation, footer and social
+   links were 16-21px tall — the text height and nothing else. */
+.nav a, .footer nav a, .social a, .crumbs a, .colophon nav a,
+.bar-inner nav a, footer nav a, .legal-index a, .toc a, .pager a, .card-go, .read-on {
+  padding-block: .5rem;
+}
