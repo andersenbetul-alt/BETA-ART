@@ -326,7 +326,7 @@ para, geri dönüş kaç ayda. Kendi rakamlarımızı da vereceğiz — kanıt y
 9. Geri dönüşü nasıl ölçersiniz
 10. Bizim kendi hattımız: ne otomatikleştirdik, ne etmedik
 
-### P19 — AI Receptionist: What It Costs and What It Actually Does
+### P19 — AI Receptionist: What It Costs and What It Actually Does  ✅ yayında
 **KW:** ai receptionist · **Niyet:** işlem · **Gelir:** doğrudan ürün (€3.500 kurulum
 + €900/ay) · **Huni:** blog → demo → keşif formu
 Curiosity Engine'in demo çalıştırmasında en yüksek ikinci puanı alan konu (62,6).

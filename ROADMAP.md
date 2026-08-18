@@ -38,7 +38,8 @@ maliyet.
 | 10 | Örnek teslimat (bir makale + türetilmiş 5 içerik) PDF'i | Bekliyor | Brief formunda "örnek gör" olarak kullanılabilir |
 | 41 | **Lead magnet: Otomasyon Keşif Kontrol Listesi** | **Bitti** 18.08 | Bülten kaydı karşılığı indirilir; PDF'e yazdırılabilir |
 | 42 | Kendimizi ilk vaka çalışması yapmak | **Bitti** 18.08 | `ai-icerik-studyosu` yazısı: kendi hattımızın ölçülmüş rakamları, TR 1.045 / EN 1.358 |
-| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 2/6 bitti (platform karşılaştırması, içerik stüdyosu vakası). Kalan 4 yazı + ikisinin 8 dili. Durum: `npm run gorunurluk` |
+| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 3/7 bitti (platform karşılaştırması, içerik stüdyosu vakası, AI resepsiyonist). Kalan 4 yazı + üçünün 8 dili. Durum: `npm run gorunurluk` |
+| 51 | P19 AI Receptionist pillar sayfası | **Bitti** 18.08 | İlk dalganın 1 numarası. TR 1.160 / EN 1.533 kelime, 5 kaynak, görünürlük denetimi geçti |
 | 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
 ### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)
