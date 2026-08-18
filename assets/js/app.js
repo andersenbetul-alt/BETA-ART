@@ -315,6 +315,7 @@
   }
 
   function renderAll() { renderHome(); renderBlog(); renderPost(); }
+  window.QB_RENDER = renderAll; // tek dosyalık önizleme için dışa açıldı
 
   document.addEventListener('DOMContentLoaded', function () {
     initTheme();
