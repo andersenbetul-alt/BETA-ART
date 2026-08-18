@@ -57,7 +57,10 @@ Gerekçe:
 
 ## 4. MVA (KDV) kaydı — en kritik adım
 
-- **Eşik: son 12 ayda 50.000 NOK MVA'ya tabi ciro.**
+- **Eşik: son 12 ayda 50.000 NOK MVA'ya tabi ciro.** ✅ *Skatteetaten, Ağu 2026'da teyit edildi*
+- **Takvim yılı değil, kayan 12 aylık dönem.** Mart–Şubat arası 50.000'i geçtiysen eşik aşılmıştır.
+- **Net ciro** esas alınır — yani MVA hariç tutar.
+- Her MVA mükellefi için **tek bir eşik** vardır (şirket başına, faaliyet başına değil).
 - Eşiği aştığın **anda** (aşan faturayı kestiğin gün) `Merverdiavgiftsregisteret`'e kayıt olmalısın.
 - Kayıt: Altinn → *Samordnet registermelding* → MVA bölümü.
 - Kayıttan **önceki** satışlarda MVA tahsil edemezsin ve alışlarındaki MVA'yı da geri alamazsın

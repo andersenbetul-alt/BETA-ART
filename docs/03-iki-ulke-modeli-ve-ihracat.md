@@ -35,11 +35,24 @@ En çok satan 20 ürün Norveç deposunda, uzun kuyruk Türkiye'den doğrudan.
 | Konu | Detay |
 |---|---|
 | Kimler | Kargo/posta ile yurt dışına mal gönderen tüm firmalar |
-| Sınır | Gönderi başına değer ve ağırlık sınırı var (**güncel limitleri gümrük müşavirinden teyit et** — sık değişir) |
+| **Sınır** | **Gönderi başına brüt 600 kg ve KDV hariç 30.000 EUR** |
 | Nasıl | PTT, DHL, UPS, FedEx, Shipentegra gibi yetkili operatörler ETGB'yi senin adına düzenler |
 | Gümrük müşaviri | Mikro ihracatta **gerekmez** — operatör hallediyor |
 | Fatura | İhracat faturası, **KDV %0**, döviz cinsinden düzenlenir |
 | Avantaj | ETGB, ihracat sayıldığı için **KDV iadesi** hakkı doğurur |
+
+> **📈 Limitler 4 Aralık 2025'te ikiye katlandı.** Yıllarca uygulanan
+> *300 kg / 15.000 EUR* sınırı **600 kg / 30.000 EUR**'ya çıkarıldı.
+> Eski rakamlarla plan yapan kaynaklar hâlâ dolaşımda — dikkat.
+> *(Ağu 2026'da teyit edildi)*
+
+**Sınırların işleyişi**
+- Limitler **gönderi başına** uygulanır; aylık veya yıllık toplam ihracata değil.
+  Yani ayda 20 ayrı gönderi yapabilirsin, her biri kendi içinde sınırın altında olsun yeter.
+- İki sınırdan **biri** aşılırsa gönderi mikro ihracat kapsamından çıkar ve
+  klasik ihracat prosedürüne tabi olur — gümrük müşaviri gerekir, süreç uzar.
+- COBBAN için pratik anlamı: tek seferde büyük stok sevkiyatı yaparken
+  **600 kg'ı bölmek** çoğu zaman daha ucuz ve hızlı.
 
 ### KDV İadesi (Türkiye)
 - Yurt dışına sattığın malın **alışında ödediğin KDV'yi geri alabilirsin.**
@@ -72,10 +85,21 @@ En çok satan 20 ürün Norveç deposunda, uzun kuyruk Türkiye'den doğrudan.
 ### VOEC (VAT On E-Commerce) — dikkat!
 - Norveç dışından Norveç'teki **tüketiciye** doğrudan satılan, değeri **3.000 NOK altındaki** mallar için
   satıcı VOEC'e kayıt olup satış anında %25 MVA tahsil eder.
+- ⚠️ **Sınır ürün başınadır, gönderi başına değil.** Müşteri tek pakette istediği kadar
+  ürün alabilir; önemli olan **her bir ürünün** 3.000 NOK'un altında olması.
+  Bu, sepet ortalamasını yükseltmek için ciddi bir avantaj — ürün fiyatlarını
+  3.000 NOK altında tutarsan paket değeri ne olursa olsun VOEC işler.
+  *(Tolletaten / Skatteetaten, Ağu 2026'da teyit edildi)*
 - **Model B'yi (TR'den doğrudan Norveçli müşteriye) kullanıyorsan bu seni ilgilendirir.**
 - VOEC olmadan gönderirsen paket gümrükte takılır, müşteri kapıda MVA + ~150 NOK gümrükleme ücreti öder
   → **iade ve şikâyet patlaması.** Bu, Norveç'e satan Türk mağazalarının 1 numaralı hatasıdır.
-- Gıda, alkol, tütün VOEC kapsamı dışında.
+- **VOEC kapsamı dışındakiler** (bunlar için normal gümrük süreci işler):
+  - *Næringsmidler* — gıda, içecek, **gıda takviyesi, vitamin**
+  - Kısıtlı ürünler — ilaç, silah, alkol, tütün
+  - Özel vergiye tabi ürünler — şeker, **içecek ambalajı**, madeni yağlar,
+    sera gazı içeren beyaz eşya
+  > Kozmetik ve cilt bakımı VOEC kapsamındadır; **gıda takviyesi/vitamin değildir.**
+  > COBBAN çok kategorili olduğu için bu ayrım önemli — kategori açarken kontrol et.
 - Kayıt: `skatteetaten.no/voec`
 
 > **Pratik kural:** Norveçli müşteriye satıyorsan ya **Norveç'ten (yerel stok)** gönder,

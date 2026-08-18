@@ -43,4 +43,10 @@ sepet (iki üründe ücretsiz kargo eşiği), dil değiştirici, çerez bandı.
 - `SHOPIFY_STOREFRONT_ACCESS_TOKEN` yoksa site yerel katalogla çalışır, ödeme kapalıdır.
 - GitHub push bu ortamdan 403 veriyor; çıktılar zip/bundle olarak veriliyor.
 
+## Bilgi tazeleme
+
+Vergi oranı, eşik, limit gibi her rakam `docs/12-kaynak-takibi.md`'de tarihiyle
+kayıtlı. Bir rakamı kullanmadan veya güncellemeden önce oraya bak; "tekrar bak"
+tarihi geçmişse kaynaktan doğrula ve kaydı güncelle. Eski değeri silme.
+
 Sıradaki işler: `docs/11-gelistirme-plani.md`

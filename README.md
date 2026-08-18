@@ -33,6 +33,7 @@ BETA-ART/
 | 90 günlük lansman planı | [docs/09](docs/09-lansman-plani-90-gun.md) |
 | Kontrol listesi | [docs/10](docs/10-kontrol-listesi.md) |
 | **Geliştirme planı (yaşayan backlog)** | [docs/11](docs/11-gelistirme-plani.md) |
+| **Kaynak takibi — rakamlar ne zaman doğrulandı** | [docs/12](docs/12-kaynak-takibi.md) |
 | Yasal metinler (mesafeli satış, KVKK/GDPR, iade, çerez) | [docs/sozlesmeler/](docs/sozlesmeler/) |
 
 ## Web sitesi
@@ -56,6 +57,6 @@ Detay: [web/README.md](web/README.md)
 ---
 
 > ⚠️ Bu depodaki dokümanlar bilgilendirme amaçlıdır; hukuki veya mali müşavirlik
-> hizmeti değildir. Tutar, oran ve eşikler her yıl değişir. Uygulamaya geçmeden önce
+> hizmeti değildir. Rakamların ne zaman doğrulandığı [docs/12](docs/12-kaynak-takibi.md)'de. Tutar, oran ve eşikler her yıl değişir. Uygulamaya geçmeden önce
 > Norveç'te bir *regnskapsfører*, Türkiye'de bir SMMM ile teyit et; yasal metinleri
 > bir avukata okut.

@@ -9,6 +9,7 @@
 | Kuruluş süresi | 1–2 gün | 3–7 gün |
 | Kuruluş maliyeti | ~3.000–6.000 TL | ~15.000–25.000 TL |
 | Sermaye | Yok | **50.000 TL** (¼'ü 24 ayda ödenir) |
+| *(Anonim şirket için)* | — | *250.000 TL* |
 | Sorumluluk | Sınırsız (kişisel malvarlığı) | Sermaye ile sınırlı — **ancak vergi/SGK borcunda ortak şahsen sorumlu** |
 | Vergi | **Gelir vergisi %15–40 (artan oranlı)** | **Kurumlar vergisi %25** + temettü stopajı %15 |
 | Muhasebe | İşletme defteri (basit) | Bilanço esası (ağır) |
@@ -22,9 +23,20 @@
 - Yıllık kâr ~1.500.000 TL'yi geçtiğinde limitede geçmek vergisel olarak avantajlı hale gelir
   (gelir vergisinin üst dilimi %40 vs kurumlar %25 + %15 stopaj).
 - **Genç Girişimci İstisnası:** 29 yaş altındaysan ve ilk defa mükellef oluyorsan
-  3 yıl boyunca yıllık belirli bir tutara kadar **gelir vergisi istisnası** + 1 yıl Bağ-Kur primi
-  Hazine tarafından karşılanır. Şahıs firmasında geçerli — ciddi avantaj.
+  3 vergilendirme dönemi boyunca kazancının **yıllık 400.000 TL'ye kadar olan kısmı
+  gelir vergisinden istisnadır** *(2026 tutarı; her yıl yeniden belirlenir)*.
+  Şahıs firmasında geçerli — ciddi avantaj. Başvuru: Dijital Vergi Dairesi.
+- ⚠️ **Bağ-Kur teşviki kaldırıldı.** 2018'den beri uygulanan "ilk yıl Bağ-Kur primini
+  Hazine karşılar" desteği **31 Aralık 2025 itibarıyla yürürlükten kalktı.**
+  2026'da firma kuranlar gelir vergisi istisnasından yararlanmaya devam eder,
+  ancak Bağ-Kur primini kendisi öder. *(Ağu 2026'da teyit edildi)*
 - **İhracat istisnası:** Yurt dışına mal satışında KDV %0 ve KDV iadesi alınabilir (bkz. doküman 03).
+
+> **2026 sermaye uyarısı:** Asgari sermaye tutarları limited için 10.000 → **50.000 TL**,
+> anonim için 50.000 → **250.000 TL** olarak artırıldı. Bu tutarların altında kalan
+> **mevcut** şirketler **31.12.2026 tarihine kadar** sermayelerini yükseltmek zorunda;
+> aksi hâlde münfesih (sona ermiş) sayılıyor. Yeni kuruluşlarda zaten yeni tutarlar geçerli.
+> *(Ticaret Bakanlığı / TÜRMOB, Ağu 2026'da teyit edildi)*
 
 ## 2. Şahıs firması kurulum adımları
 

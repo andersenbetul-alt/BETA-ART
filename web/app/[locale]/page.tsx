@@ -4,6 +4,7 @@ import { isLocale, t } from '@/lib/i18n';
 import { getProducts } from '@/lib/catalog';
 import { categories } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
+import OrganizationJsonLd from '@/components/OrganizationJsonLd';
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -14,6 +15,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <div className="wrap">
+      <OrganizationJsonLd locale={locale} />
+
       <section className="hero">
         <h1>{t(locale, 'hero.title')}</h1>
         <p>{t(locale, 'hero.body')}</p>

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
-import { locales, isLocale, type Locale } from '@/lib/i18n';
+import { locales, isLocale, t, type Locale } from '@/lib/i18n';
 import { CartProvider } from '@/components/CartContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -36,8 +36,9 @@ export default async function LocaleLayout({
       </head>
       <body>
         <CartProvider>
+          <a href="#innhold" className="skip">{t(locale, 'a11y.skip')}</a>
           <Header locale={locale} />
-          <main>{children}</main>
+          <main id="innhold">{children}</main>
           <Footer locale={locale} />
           <CookieBanner locale={locale} />
           <Analytics />
