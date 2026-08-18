@@ -78,7 +78,9 @@ p { margin: 0 0 1em; }
 /* ---------- Header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  /* %88 saydamlıkta, altından kayan metin okunabiliyordu; backdrop-filter'a
+     güvenmek yeterli değil (Firefox'ta ve eski Android'de desteklenmeyebiliyor). */
+  background: color-mix(in srgb, var(--bg) 97%, transparent);
   backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--border);
 }
