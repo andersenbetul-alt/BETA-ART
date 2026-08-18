@@ -52,36 +52,37 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+a { color: inherit; }
 
-header { padding: 80px 0 56px; border-bottom: 1px solid var(--border); }
+header { padding: 72px 0 52px; border-bottom: 1px solid var(--border); }
 .brand {
   display: inline-flex; align-items: center; gap: 10px;
   font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 28px;
+  color: var(--muted); margin-bottom: 26px;
 }
 .brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 h1 {
   margin: 0 0 18px;
-  font-size: clamp(34px, 6vw, 58px);
+  font-size: clamp(32px, 5.6vw, 56px);
   line-height: 1.1; letter-spacing: -.02em; font-weight: 600;
 }
-.lede { margin: 0; max-width: 56ch; font-size: clamp(16px, 2.2vw, 19px); color: var(--muted); }
+.lede { margin: 0; max-width: 58ch; font-size: clamp(16px, 2.2vw, 19px); color: var(--muted); }
+.quote {
+  margin: 0 0 20px; padding-left: 18px; border-left: 3px solid var(--accent);
+  font-size: clamp(17px, 2.4vw, 21px); max-width: 58ch;
+}
 
-main { padding: 56px 0 0; }
+section { padding: 56px 0 0; }
 .section-label {
   font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--muted); margin: 0 0 24px;
+  color: var(--muted); margin: 0 0 8px;
 }
-.grid {
-  display: grid; gap: 18px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
+.section-title { margin: 0 0 26px; font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
+
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 26px 24px 24px;
-  box-shadow: var(--shadow);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 26px 24px 24px; box-shadow: var(--shadow);
   display: flex; flex-direction: column;
 }
 .card__icon {
@@ -89,32 +90,55 @@ main { padding: 56px 0 0; }
   background: var(--accent-soft); color: var(--accent);
   display: grid; place-items: center; font-size: 17px; margin-bottom: 18px;
 }
-.card__name {
-  margin: 0 0 4px; font-size: 18px; font-weight: 600; letter-spacing: -.01em;
-}
-.card__tagline {
-  margin: 0 0 14px; font-size: 14px; color: var(--accent); font-weight: 500;
-}
+.card__name { margin: 0 0 4px; font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+.card__tagline { margin: 0 0 14px; font-size: 14px; color: var(--accent); font-weight: 500; }
 .card__desc { margin: 0 0 18px; font-size: 15px; color: var(--muted); }
-.card__list {
-  margin: auto 0 0; padding: 16px 0 0; list-style: none;
-  border-top: 1px solid var(--border);
-}
-.card__list li {
-  position: relative; padding-left: 18px; font-size: 14px; color: var(--muted);
-}
+.card__list { margin: auto 0 0; padding: 16px 0 0; list-style: none; border-top: 1px solid var(--border); }
+.card__list li { position: relative; padding-left: 18px; font-size: 14px; color: var(--muted); }
 .card__list li + li { margin-top: 7px; }
 .card__list li::before {
   content: ""; position: absolute; left: 0; top: 9px;
   width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: .55;
 }
+.card__meta {
+  margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--border);
+  font-size: 13px; color: var(--muted);
+}
+.card__meta b { color: var(--text); font-weight: 500; }
+.card__meta p { margin: 0 0 6px; }
+.card__meta p:last-child { margin-bottom: 0; }
+
+.steps { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.step {
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px 18px;
+}
+.step__no { font-size: 12px; letter-spacing: .12em; color: var(--accent); font-weight: 600; }
+.step__name { margin: 8px 0 4px; font-size: 16px; font-weight: 600; }
+.step__dur { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.step__sum { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+.step__out { margin: 12px 0 0; font-size: 13px; color: var(--accent); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tags li {
+  font-size: 12px; color: var(--muted);
+  border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px;
+}
+
+.notes { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.notes li {
+  position: relative; padding-left: 24px; font-size: 15px; color: var(--muted);
+  max-width: 76ch;
+}
+.notes li::before {
+  content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 13px;
+}
 
 footer {
-  margin-top: 72px; padding: 28px 0 48px;
-  border-top: 1px solid var(--border);
+  margin-top: 72px; padding: 28px 0 48px; border-top: 1px solid var(--border);
   font-size: 14px; color: var(--muted);
-  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
 }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
 </style>
 </head>
 <body>
@@ -127,18 +151,20 @@ footer {
 </header>
 
 <main>
-  <div class="wrap">
-    <p class="section-label">Kategoriler</p>
-    <div class="grid">
+  <section>
+    <div class="wrap">
+      <p class="section-label">Kategoriler</p>
+      <h2 class="section-title">Yedi ürün, yedi ihtiyaç</h2>
+      <div class="grid">
       <article class="card" id="beta-work">
         <div class="card__icon" aria-hidden="true">◆</div>
         <h2 class="card__name">BETA WORK</h2>
         <p class="card__tagline">AI çalışanları</p>
         <p class="card__desc">İşletmelerin tekrar eden operasyonel işlerini üstlenen, göreve özel kurgulanmış AI çalışanları. Satış, destek, operasyon ve back-office süreçleri için ekibe eklenen dijital birimler.</p>
         <ul class="card__list">
-          <li>Göreve özel AI çalışan kurulumu</li>
-          <li>Mevcut araç ve süreçlerle entegrasyon</li>
-          <li>Çıktı takibi ve sürekli iyileştirme</li>
+      <li>Göreve özel AI çalışan kurulumu</li>
+      <li>Mevcut araç ve süreçlerle entegrasyon</li>
+      <li>Çıktı takibi ve sürekli iyileştirme</li>
         </ul>
       </article>
       <article class="card" id="beta-business">
@@ -147,9 +173,9 @@ footer {
         <p class="card__tagline">şirket kurma</p>
         <p class="card__desc">Fikirden faaliyete geçen şirket kurma yolculuğu. Kuruluş adımları, yapı seçimi, temel operasyon kurgusu ve ilk müşteriye kadar olan süreç tek bir akışta.</p>
         <ul class="card__list">
-          <li>Kuruluş adımlarının planlanması</li>
-          <li>Operasyon ve süreç altyapısı</li>
-          <li>İlk müşteriye giden yol haritası</li>
+      <li>Kuruluş adımlarının planlanması</li>
+      <li>Operasyon ve süreç altyapısı</li>
+      <li>İlk müşteriye giden yol haritası</li>
         </ul>
       </article>
       <article class="card" id="beta-career">
@@ -158,9 +184,9 @@ footer {
         <p class="card__tagline">yeni kariyer</p>
         <p class="card__desc">Kariyer değiştirmek ya da yeni bir alana geçmek isteyenler için yön belirleme ve geçiş programı. Mevcut deneyimi yeni alana taşıyan pratik bir plan.</p>
         <ul class="card__list">
-          <li>Yön ve alan belirleme</li>
-          <li>Beceri açığının kapatılması</li>
-          <li>Başvuru ve görüşme hazırlığı</li>
+      <li>Yön ve alan belirleme</li>
+      <li>Beceri açığının kapatılması</li>
+      <li>Başvuru ve görüşme hazırlığı</li>
         </ul>
       </article>
       <article class="card" id="beta-learn">
@@ -169,9 +195,9 @@ footer {
         <p class="card__tagline">AI eğitimi</p>
         <p class="card__desc">Sıfırdan başlayanlar ve iş hayatında AI kullanmak isteyenler için uygulamalı eğitim. Teoriden çok, günlük işlerde doğrudan kullanılabilen yetkinlikler.</p>
         <ul class="card__list">
-          <li>Uygulamalı ders akışı</li>
-          <li>Seviyeye göre ilerleme</li>
-          <li>Gerçek iş senaryoları</li>
+      <li>Uygulamalı ders akışı</li>
+      <li>Seviyeye göre ilerleme</li>
+      <li>Gerçek iş senaryoları</li>
         </ul>
       </article>
       <article class="card" id="beta-creator">
@@ -180,9 +206,9 @@ footer {
         <p class="card__tagline">içerik ve kişisel marka</p>
         <p class="card__desc">İçerik üretimini ve kişisel markayı sürdürülebilir bir sisteme dönüştürme. Konumlandırma, içerik planı ve üretim akışı bir arada.</p>
         <ul class="card__list">
-          <li>Konumlandırma ve mesaj netliği</li>
-          <li>İçerik planı ve üretim akışı</li>
-          <li>Yayın sonrası ölçüm ve iyileştirme</li>
+      <li>Konumlandırma ve mesaj netliği</li>
+      <li>İçerik planı ve üretim akışı</li>
+      <li>Yayın sonrası ölçüm ve iyileştirme</li>
         </ul>
       </article>
       <article class="card" id="beta-senior">
@@ -191,9 +217,9 @@ footer {
         <p class="card__tagline">yaşlılara dijital destek</p>
         <p class="card__desc">Yaşlı kullanıcılar için sade ve güvenli dijital destek. Günlük teknoloji ihtiyaçlarında sabırlı, adım adım ve anlaşılır rehberlik.</p>
         <ul class="card__list">
-          <li>Sade ve adım adım anlatım</li>
-          <li>Güvenli kullanım ve dolandırıcılığa karşı farkındalık</li>
-          <li>Günlük dijital işlerde destek</li>
+      <li>Sade ve adım adım anlatım</li>
+      <li>Güvenli kullanım ve dolandırıcılığa karşı farkındalık</li>
+      <li>Günlük dijital işlerde destek</li>
         </ul>
       </article>
       <article class="card" id="beta-life">
@@ -202,17 +228,20 @@ footer {
         <p class="card__tagline">kişisel AI</p>
         <p class="card__desc">Günlük hayatı düzenleyen kişisel AI. Planlama, hatırlatma, araştırma ve karar desteği gibi kişisel ihtiyaçlar için tek bir asistan.</p>
         <ul class="card__list">
-          <li>Günlük planlama ve hatırlatmalar</li>
-          <li>Araştırma ve karar desteği</li>
-          <li>Kişisel tercihlere göre uyarlanma</li>
+      <li>Günlük planlama ve hatırlatmalar</li>
+      <li>Araştırma ve karar desteği</li>
+      <li>Kişisel tercihlere göre uyarlanma</li>
         </ul>
       </article>
+      </div>
+      <p style="margin-top:28px;font-size:15px;color:var(--muted)">
+        İlk ürün: <a href="work.html"><b>BETA WORK — AI Workforce</b></a>
+      </p>
     </div>
-  </div>
+  </section>
 </main>
-
 <footer>
-  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;width:100%">
+  <div class="wrap">
     <span>BETA</span>
     <span>Güncelleme: 2026-08-18</span>
   </div>

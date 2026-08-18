@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BETA WORK — AI Workforce</title>
+<meta name="description" content="Şirketinizde tekrar eden işleri analiz ediyoruz ve bunları AI çalışanlarıyla otomatikleştiriyoruz.">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f6f6f4;
+  --surface: #ffffff;
+  --border: #e4e3df;
+  --text: #16150f;
+  --muted: #6b6a63;
+  --accent: #c8552a;
+  --accent-soft: #f5e7e0;
+  --shadow: 0 1px 2px rgba(22,21,15,.05), 0 8px 24px rgba(22,21,15,.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14140f;
+    --bg-soft: #1b1b15;
+    --surface: #1e1e17;
+    --border: #33322a;
+    --text: #f2f1ea;
+    --muted: #a5a396;
+    --accent: #e8825a;
+    --accent-soft: #33231b;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14140f;
+  --bg-soft: #1b1b15;
+  --surface: #1e1e17;
+  --border: #33322a;
+  --text: #f2f1ea;
+  --muted: #a5a396;
+  --accent: #e8825a;
+  --accent-soft: #33231b;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+a { color: inherit; }
+
+header { padding: 72px 0 52px; border-bottom: 1px solid var(--border); }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 26px;
+}
+.brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(32px, 5.6vw, 56px);
+  line-height: 1.1; letter-spacing: -.02em; font-weight: 600;
+}
+.lede { margin: 0; max-width: 58ch; font-size: clamp(16px, 2.2vw, 19px); color: var(--muted); }
+.quote {
+  margin: 0 0 20px; padding-left: 18px; border-left: 3px solid var(--accent);
+  font-size: clamp(17px, 2.4vw, 21px); max-width: 58ch;
+}
+
+section { padding: 56px 0 0; }
+.section-label {
+  font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 8px;
+}
+.section-title { margin: 0 0 26px; font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
+
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 26px 24px 24px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
+}
+.card__icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--accent-soft); color: var(--accent);
+  display: grid; place-items: center; font-size: 17px; margin-bottom: 18px;
+}
+.card__name { margin: 0 0 4px; font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+.card__tagline { margin: 0 0 14px; font-size: 14px; color: var(--accent); font-weight: 500; }
+.card__desc { margin: 0 0 18px; font-size: 15px; color: var(--muted); }
+.card__list { margin: auto 0 0; padding: 16px 0 0; list-style: none; border-top: 1px solid var(--border); }
+.card__list li { position: relative; padding-left: 18px; font-size: 14px; color: var(--muted); }
+.card__list li + li { margin-top: 7px; }
+.card__list li::before {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: .55;
+}
+.card__meta {
+  margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--border);
+  font-size: 13px; color: var(--muted);
+}
+.card__meta b { color: var(--text); font-weight: 500; }
+.card__meta p { margin: 0 0 6px; }
+.card__meta p:last-child { margin-bottom: 0; }
+
+.steps { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.step {
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px 18px;
+}
+.step__no { font-size: 12px; letter-spacing: .12em; color: var(--accent); font-weight: 600; }
+.step__name { margin: 8px 0 4px; font-size: 16px; font-weight: 600; }
+.step__dur { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.step__sum { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+.step__out { margin: 12px 0 0; font-size: 13px; color: var(--accent); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tags li {
+  font-size: 12px; color: var(--muted);
+  border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px;
+}
+
+.notes { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.notes li {
+  position: relative; padding-left: 24px; font-size: 15px; color: var(--muted);
+  max-width: 76ch;
+}
+.notes li::before {
+  content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 13px;
+}
+
+footer {
+  margin-top: 72px; padding: 28px 0 48px; border-top: 1px solid var(--border);
+  font-size: 14px; color: var(--muted);
+}
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>BETA WORK</div>
+    <h1>AI Workforce</h1>
+    <p class="quote">“Şirketinizde tekrar eden işleri analiz ediyoruz ve bunları AI çalışanlarıyla otomatikleştiriyoruz.”</p>
+    <p class="lede">Yeni yazılım öğrenmeye gerek yok. Şirketin bugün kullandığı araçların içinde çalışan, 7 göreve özel AI çalışanı kuruyoruz — önce gözetimli, sonra devredilmiş.</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <p class="section-label">Nasıl çalışır</p>
+      <h2 class="section-title">Analizden devreye almaya</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step__no">01</div>
+          <div class="step__name">Analiz</div>
+          <div class="step__dur">3-5 gün</div>
+          <p class="step__sum">Şirketteki tekrar eden işleri çıkarıyoruz. Kim, hangi işi, günde kaç kez, ne kadar sürede yapıyor?</p>
+          <p class="step__out">→ İş envanteri ve otomasyona uygunluk skoru</p>
+        </div>
+        <div class="step">
+          <div class="step__no">02</div>
+          <div class="step__name">Seçim</div>
+          <div class="step__dur">1-2 gün</div>
+          <p class="step__sum">En çok zaman yiyen ve en az riskli işler önceliklendirilir. İlk fazda devreye alınacak AI çalışanları belirlenir.</p>
+          <p class="step__out">→ Öncelik listesi ve devreye alma planı</p>
+        </div>
+        <div class="step">
+          <div class="step__no">03</div>
+          <div class="step__name">Kurulum</div>
+          <div class="step__dur">1-3 hafta</div>
+          <p class="step__sum">Seçilen AI çalışanları şirketin kendi verisi, tonu ve kurallarıyla kurulur; mevcut araçlara bağlanır.</p>
+          <p class="step__out">→ Çalışır durumda AI çalışanları</p>
+        </div>
+        <div class="step">
+          <div class="step__no">04</div>
+          <div class="step__name">Devreye alma</div>
+          <div class="step__dur">2 hafta</div>
+          <p class="step__sum">Önce gözetimli mod: AI hazırlar, insan onaylar. Doğruluk hedefe ulaştıkça yetki kademeli genişletilir.</p>
+          <p class="step__out">→ Onay akışı ve yetki seviyeleri</p>
+        </div>
+        <div class="step">
+          <div class="step__no">05</div>
+          <div class="step__name">Ölçüm ve bakım</div>
+          <div class="step__dur">sürekli</div>
+          <p class="step__sum">Kazanılan saat, doğruluk ve hata oranları izlenir. AI çalışanları geri bildirimle iyileştirilir.</p>
+          <p class="step__out">→ Aylık performans raporu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Ekip</p>
+      <h2 class="section-title">Kurduğumuz 7 AI çalışanı</h2>
+      <div class="grid">
+        <article class="card" id="email">
+          <div class="card__icon" aria-hidden="true">✉</div>
+          <h3 class="card__name">Email Agent</h3>
+          <p class="card__tagline">E-posta Çalışanı · kurulum 1-3 gün</p>
+          <p class="card__desc">Gelen kutusunu yönetir; e-postaları sınıflandırır, taslak yanıt hazırlar, takibi düşmez.</p>
+          <ul class="card__list">
+      <li>Gelen e-postaları konu ve aciliyete göre sınıflandırır</li>
+      <li>Sık gelen taleplere şirket tonunda taslak yanıt hazırlar</li>
+      <li>Yanıt bekleyen ve cevapsız kalan konuları hatırlatır</li>
+      <li>Uzun yazışmaları özetleyip aksiyon çıkarır</li>
+          </ul>
+          <div class="card__meta">
+            <p><b>Bağlandığı araçlar:</b> E-posta (Gmail / Outlook), Takvim, CRM</p>
+            <p><b>Ölçülen:</b> Yanıt süresi, Günlük işlenen e-posta, Cevapsız kalan konu sayısı</p>
+            <p><b>İnsana devir:</b> Fiyat taahhüdü, sözleşme ve şikâyet içeren e-postalar insana devredilir.</p>
+          </div>
+        </article>
+        <article class="card" id="customer-service">
+          <div class="card__icon" aria-hidden="true">☎</div>
+          <h3 class="card__name">Customer Service Agent</h3>
+          <p class="card__tagline">Müşteri Hizmetleri Çalışanı · kurulum 3-5 gün</p>
+          <p class="card__desc">Müşteri sorularını karşılar, bilinen konuları çözer, çözemediğini doğru kişiye aktarır.</p>
+          <ul class="card__list">
+      <li>Sık sorulan sorulara anında ve tutarlı yanıt verir</li>
+      <li>Sipariş, randevu ve durum sorgularını yanıtlar</li>
+      <li>Talepleri kayıt altına alır ve etiketler</li>
+      <li>Çözemediği konuyu özetleyerek ilgili kişiye aktarır</li>
+          </ul>
+          <div class="card__meta">
+            <p><b>Bağlandığı araçlar:</b> Web sitesi / canlı destek, WhatsApp, E-posta, Destek sistemi</p>
+            <p><b>Ölçülen:</b> İlk temasta çözüm oranı, Ortalama yanıt süresi, Devredilen talep oranı</p>
+            <p><b>İnsana devir:</b> İade, ödeme itirazı ve memnuniyetsizlik sinyali olan konular insana devredilir.</p>
+          </div>
+        </article>
+        <article class="card" id="sales">
+          <div class="card__icon" aria-hidden="true">◈</div>
+          <h3 class="card__name">Sales Agent</h3>
+          <p class="card__tagline">Satış Çalışanı · kurulum 5-7 gün</p>
+          <p class="card__desc">Gelen talepleri niteler, teklif sürecini hazırlar, hiçbir fırsatın soğumasına izin vermez.</p>
+          <ul class="card__list">
+      <li>Gelen talepleri niteler ve önceliklendirir</li>
+      <li>İlk temas mesajını ve takip serisini hazırlar</li>
+      <li>Teklif taslağını geçmiş tekliflerden üretir</li>
+      <li>CRM kaydını günceller, sonraki adımı düşer</li>
+          </ul>
+          <div class="card__meta">
+            <p><b>Bağlandığı araçlar:</b> CRM, E-posta, Takvim, Form / web sitesi</p>
+            <p><b>Ölçülen:</b> Nitelikli fırsat sayısı, Takip edilen fırsat oranı, Teklif hazırlama süresi</p>
+            <p><b>İnsana devir:</b> İndirim, özel şart ve sözleşme görüşmeleri insana devredilir.</p>
+          </div>
+        </article>
+        <article class="card" id="research">
+          <div class="card__icon" aria-hidden="true">◎</div>
+          <h3 class="card__name">Research Agent</h3>
+          <p class="card__tagline">Araştırma Çalışanı · kurulum 2-4 gün</p>
+          <p class="card__desc">Karar öncesi bilgi toplar; pazar, rakip ve müşteri araştırmasını raporlanabilir hale getirir.</p>
+          <ul class="card__list">
+      <li>Potansiyel müşteri ve rakip araştırması yapar</li>
+      <li>Sektör ve fiyat karşılaştırması çıkarır</li>
+      <li>Uzun kaynakları özetler ve kaynak gösterir</li>
+      <li>Düzenli aralıklarla takip raporu üretir</li>
+          </ul>
+          <div class="card__meta">
+            <p><b>Bağlandığı araçlar:</b> Web, Doküman deposu, Tablo / rapor aracı</p>
+            <p><b>Ölçülen:</b> Rapor başına harcanan süre, Kullanılan rapor oranı, Kaynak doğruluğu</p>
+            <p><b>İnsana devir:</b> Doğrulanamayan veya tek kaynağa dayanan bulgular işaretlenir, karar insana bırakılır.</p>
+          </div>
+        </article>
+        <article class="card" id="content">
+          <div class="card__icon" aria-hidden="true">✦</div>
+          <h3 class="card__name">Content Agent</h3>
+          <p class="card__tagline">İçerik Çalışanı · kurulum 3-5 gün</p>
+          <p class="card__desc">Şirketin sesiyle düzenli içerik üretir; sosyal medya, blog ve bülteni akışa bağlar.</p>
+          <ul class="card__list">
+      <li>İçerik takvimi oluşturur ve doldurur</li>
+      <li>Sosyal medya, blog ve bülten metinlerini yazar</li>
+      <li>Tek içeriği farklı kanallara uyarlar</li>
+      <li>Yayın sonrası performansı toplar</li>
+          </ul>
+          <div class="card__meta">
+            <p><b>Bağlandığı araçlar:</b> Sosyal medya hesapları, Blog / CMS, E-posta pazarlama</p>
+            <p><b>Ölçülen:</b> Yayınlanan içerik sayısı, Üretim süresi, Etkileşim</p>
+            <p><b>İnsana devir:</b> Kurumsal duyuru, kriz iletişimi ve hukuki içerik insan onayından geçer.</p>
+          </div>
+        </article>
+        <article class="card" id="meeting">
+          <div class="card__icon" aria-hidden="true">◐</div>
+          <h3 class="card__name">Meeting Agent</h3>
+          <p class="card__tagline">Toplantı Çalışanı · kurulum 2-3 gün</p>
+          <p class="card__desc">Toplantıyı hazırlar, kaydeder, özetler ve kararların takibini yapar.</p>
+          <ul class="card__list">
+      <li>Toplantı öncesi gündem ve arka plan notu hazırlar</li>
+      <li>Toplantıyı özetler, kararları ve aksiyonları çıkarır</li>
+      <li>Aksiyonları sorumlusuna ve tarihine bağlar</li>
+      <li>Bir sonraki toplantıda açık maddeleri hatırlatır</li>
+          </ul>
+          <div class="card__meta">
+            <p><b>Bağlandığı araçlar:</b> Takvim, Online toplantı aracı, Görev / not aracı</p>
+            <p><b>Ölçülen:</b> Özet çıkarma süresi, Kapanan aksiyon oranı, Toplantı sonrası netlik</p>
+            <p><b>İnsana devir:</b> Personel ve performans konuşmaları kaydedilmez, özetlenmez.</p>
+          </div>
+        </article>
+        <article class="card" id="admin">
+          <div class="card__icon" aria-hidden="true">▤</div>
+          <h3 class="card__name">Admin Agent</h3>
+          <p class="card__tagline">Ofis / İdari Çalışan · kurulum 3-5 gün</p>
+          <p class="card__desc">Arka ofisin tekrar eden işlerini yürütür: kayıt, takip, hatırlatma, evrak düzeni.</p>
+          <ul class="card__list">
+      <li>Fatura, sözleşme ve belgeleri düzenler ve isimlendirir</li>
+      <li>Ödeme, yenileme ve son tarihleri hatırlatır</li>
+      <li>Verileri tablolara işler, tutarsızlıkları bildirir</li>
+      <li>Tedarikçi ve resmî yazışmalarda taslak hazırlar</li>
+          </ul>
+          <div class="card__meta">
+            <p><b>Bağlandığı araçlar:</b> Dosya deposu, Tablolar, Muhasebe yazılımı, Takvim</p>
+            <p><b>Ölçülen:</b> Zamanında yakalanan son tarih oranı, Manuel veri girişi süresi, Hatalı kayıt sayısı</p>
+            <p><b>İnsana devir:</b> Ödeme yapma, resmî beyan ve imza gerektiren işlemler insan onayıyla yürür.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Paketler</p>
+      <h2 class="section-title">Kaç çalışanla başlanır?</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">1</div>
+          <h3 class="card__name">Başlangıç</h3>
+          <p class="card__tagline">1 AI çalışanı</p>
+          <p class="card__desc">Tek bir darboğazı olan küçük işletme</p>
+          <ul class="card__list">
+      <li>Analiz raporu</li>
+      <li>1 AI çalışanı</li>
+      <li>2 hafta gözetimli devreye alma</li>
+      <li>Aylık rapor</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">3</div>
+          <h3 class="card__name">Çekirdek</h3>
+          <p class="card__tagline">3 AI çalışanı</p>
+          <p class="card__desc">Müşteri iletişimi ve satışı birlikte yürüten işletme</p>
+          <ul class="card__list">
+      <li>Analiz raporu</li>
+      <li>3 AI çalışanı</li>
+      <li>Araç entegrasyonları</li>
+      <li>Aylık rapor ve iyileştirme</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card__icon" aria-hidden="true">7</div>
+          <h3 class="card__name">Tam Ekip</h3>
+          <p class="card__tagline">7 AI çalışanı</p>
+          <p class="card__desc">Arka ofisi de otomatikleştirmek isteyen işletme</p>
+          <ul class="card__list">
+      <li>Analiz raporu</li>
+      <li>7 AI çalışanı</li>
+      <li>Tüm entegrasyonlar</li>
+      <li>Süreç sahipliği ve sürekli bakım</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Çalışma ilkeleri</p>
+      <h2 class="section-title">Kontrol her zaman şirkette</h2>
+      <ul class="notes">
+      <li>Her AI çalışanı önce gözetimli modda çalışır: hazırlar, insan onaylar.</li>
+      <li>Yetki devri kademelidir; doğruluk ölçülmeden otomatik gönderim açılmaz.</li>
+      <li>Kritik kararlar (ödeme, sözleşme, şikâyet) her zaman insana devredilir.</li>
+      <li>Şirket verisi yalnızca kurulan çalışanların işi için kullanılır.</li>
+      </ul>
+      <p style="margin-top:28px;font-size:15px;color:var(--muted)">
+        <a href="index.html">← Tüm BETA ürünleri</a>
+      </p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>BETA</span>
+    <span>Güncelleme: 2026-08-18</span>
+  </div>
+</footer>
+</body>
+</html>
