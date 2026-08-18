@@ -22,6 +22,7 @@ Yeni bağımlılık eklemeden önce bunun gerçekten gerekli olduğunu doğrulay
 index.html          Tanıtım: hero, hizmetler, içerik akışı, paketler, son yazılar, bülten
 work.html           Bizimle çalışın: marka briefi + yazar başvurusu, süreç, SSS
 blog.html           Yazı listesi: arama + kategori filtresi
+gizlilik.html       Gizlilik ve veri koruma metni (TR + EN)
 post.html           Yazı detayı (?slug=... ile)
 assets/js/config.js Yayın ayarları: e-posta, alan adı, sosyal hesaplar, fiyatlar, lead magnet
 assets/css/main.css Tek stil dosyası; tüm renkler :root değişkenlerinden gelir
@@ -30,6 +31,7 @@ assets/js/posts.js  Blog içeriği (QB_POSTS): her yazı 10 dilde
 assets/js/app.js    Dil, tema, liste/arama/filtre, yazı sayfası, sekmeler, formlar
 scripts/check.mjs   Proje sağlık kontrolü
 scripts/gorunurluk.mjs Yayınlanmış yazıları görünürlük kurallarına karşı denetler
+scripts/guvenlik.mjs   Güvenlik ve veri koruma denetimi
 
 engine/             Curiosity Engine (site değil, üretim hattı)
   schema.sql        Sinyal → konu → makale tabloları
@@ -52,8 +54,8 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    yalnızca JavaScript kapalıyken görünen yedeklerdir.
 4. **Renkler değişkenlerden gelir.** Doğrudan hex yazmayın; `var(--brand)`, `var(--text)`
    gibi değişkenleri kullanın ki koyu tema kendiliğinden çalışsın.
-5. **Sayfa iskeleti dört dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
-   dördünü birden güncelleyin (`index`, `work`, `blog`, `post`). `check.mjs` çiftlenen
+5. **Sayfa iskeleti beş dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
+   beşini birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`). `check.mjs` çiftlenen
    id ve script'leri yakalar ama eksik menü bağlantısını yakalamaz.
 6. **Rakamlar örnek olarak işaretlenir.** Paket fiyatları ve blog yazılarındaki ücret
    bilgileri araştırma/örnek veridir. Kesin vaat gibi sunmayın; abartılı iddia bu işte
@@ -70,6 +72,12 @@ npm run check    # zorunlu: commit öncesi çalıştırın
 denetler (tek yazı: `node scripts/gorunurluk.mjs <slug>`). Motorun taslaklara uyguladığı
 ölçütü sitenin kendi yazılarına da uygular — kendi kuralımıza uymayan bir hattı
 kimseye satamayız.
+
+`npm run guvenlik` üçüncü bir soruyu sorar: site ziyaretçiye zarar verebilir mi,
+topladığı veriyi hukuka uygun işliyor mu? XSS, JSON-LD kaçışı, tabnabbing,
+localStorage'daki kişisel veri, gizlilik metni, canonical–hreflang tutarlılığı,
+mailto enjeksiyonu, karışık içerik, `rel="sponsored"` ve güvenlik başlıkları.
+Yüksek seviyeli bulgu varsa çıkış kodu 1.
 
 `scripts/check.mjs` şunları doğrular: 10 dilde anahtar eşitliği ve boş değer olmaması,
 her yazının her dilde başlık/özet/gövdesi, çiftlenen id ve script, HTML'de kullanılan

@@ -43,6 +43,10 @@ maliyet.
 | 52 | Gelir sistemi haritası + huni matematiği | **Bitti** 18.08 | `docs/gelir-sistemi.md`; beş katman, gerçekçi oranlar, kurulum sırası |
 | 53 | Ortaklık altyapısı | **Bitti** 18.08 | `{aff:}` bloğu, otomatik bildirim (10 dil), `rel="sponsored"`, gerekçe zorunluluğu |
 | 54 | **E-posta servisini bağla** | **Kritik** | `config.js → newsletterEndpoint`. Bağlanana kadar liste oluşmuyor; diğer dört katman bunun üstünde |
+| 55 | Güvenlik ve veri koruma denetimi | **Bitti** 18.08 | `npm run guvenlik`; 13 kontrol. XSS, JSON-LD kaçışı, tabnabbing, canonical–hreflang, mailto, başlıklar |
+| 56 | Gizlilik metni | **Bitti** 18.08 | `gizlilik.html` (TR+EN). Yasal kimlik ve e-posta servisi alanları `[DOLDURULACAK]` işaretli |
+| 57 | canonical–hreflang tutarlılığı | **Bitti** 18.08 | `syncCanonical`; kalıcı çözüm ön-render (madde 58) |
+| 58 | Ön-render: her dil ayrı adreste | Bekliyor | Çok dilli SEO'dan tam verim için tek gerçek çözüm |
 | 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
 ### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)

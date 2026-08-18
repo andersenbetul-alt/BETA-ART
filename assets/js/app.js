@@ -134,7 +134,7 @@
     var btn = $('#langBtn');
     if (!menu || !btn) return;
     menu.innerHTML = LANGS.map(function (l) {
-      return '<button type="button" role="option" data-lang="' + l.code + '" aria-selected="false">' +
+      return '<button type="button" role="option" data-lang="' + esc(l.code) + '" aria-selected="false">' +
              '<span>' + esc(l.native) + '</span><small>' + esc(l.code) + '</small></button>';
     }).join('');
     menu.addEventListener('click', function (e) {
@@ -178,6 +178,23 @@
 
   // Yazı sayfası tek URL'de on dil sunduğu için dil alternatiflerini
   // ?lang= parametresiyle bildiriyoruz (bkz. ROADMAP #11: ön-render).
+  // hreflang kümesindeki her adres kendine canonical vermeli. Sayfalarda
+  // canonical parametresiz yazılıydı, alternatifler ise ?lang=xx idi: arama
+  // motoru bu tutarsızlıkta hreflang'ı bütünüyle yok sayıyor — yani on dilin
+  // SEO karşılığı sıfırlanıyordu. Şimdi canonical, açık olan dil adresini
+  // gösteriyor. (Asıl çözüm her dili ayrı adreste üreten ön-render adımıdır;
+  // bu, o gelene kadar geçerli olan doğru işaretleme.)
+  function syncCanonical() {
+    var canon = $('link[rel="canonical"]');
+    if (!canon) return;
+    var fromUrl = param('lang');
+    if (!fromUrl || !langInfo(fromUrl)) return;      // parametresiz adres x-default'tur
+    var here = window.location.pathname.split('/').pop() || 'index.html';
+    var slug = param('slug');
+    canon.setAttribute('href', './' + here +
+      (slug ? '?slug=' + encodeURIComponent(slug) + '&lang=' : '?lang=') + fromUrl);
+  }
+
   function setPostAlternates(slug) {
     $$('link[data-qb-alt]').forEach(function (l) { l.remove(); });
     var base = SITE_URL + '/post.html?slug=' + encodeURIComponent(slug);
@@ -190,7 +207,7 @@
       document.head.appendChild(link);
     });
     var canon = $('link[rel="canonical"]');
-    if (canon) canon.href = base;
+    if (canon) canon.href = param('lang') && langInfo(param('lang')) ? base + '&lang=' + param('lang') : base;
   }
 
   function articleSchema(post) {
@@ -342,7 +359,7 @@
     if (chips) {
       var cats = ['all'].concat(POSTS.map(function (p) { return p.category; }).filter(function (v, i, a) { return a.indexOf(v) === i; }));
       chips.innerHTML = cats.map(function (c) {
-        return '<button type="button" class="chip" data-cat="' + c + '" aria-pressed="' + (blogState.cat === c) + '">' +
+        return '<button type="button" class="chip" data-cat="' + esc(c) + '" aria-pressed="' + (blogState.cat === c) + '">' +
                esc(c === 'all' ? t('posts.all') : t('cat.' + c)) + '</button>';
       }).join('');
     }
@@ -640,6 +657,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     initYear();
+    syncCanonical();
     initTheme();
     initLangMenu();
     initNav();

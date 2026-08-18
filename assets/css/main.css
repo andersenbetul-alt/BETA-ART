@@ -297,6 +297,12 @@ html[lang="zh"] .article-body p:first-of-type::first-letter,
 html[lang="hi"] .article-body p:first-of-type::first-letter {
   font-size: inherit; font-weight: inherit;
 }
+/* Hukuki ve bilgilendirme metinlerinde süslü ilk harf yersiz duruyor. */
+.article-body--plain p:first-of-type::first-letter { font-size: inherit; font-weight: inherit; }
+.article-body--plain h3 { font-size: 1.1rem; margin-top: 1.6em; margin-bottom: .4em; }
+.article-body--plain code { font-size: .92em; background: var(--bg-soft, var(--bg-card)); padding: 1px 5px; border-radius: 5px; }
+.article-body--plain hr { margin: 2.6em 0; border: 0; border-top: 1px solid var(--border); }
+
 .article-foot { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--border); }
 .toast {
   position: fixed; inset-block-end: 24px; inset-inline-start: 50%; transform: translateX(-50%) translateY(20px);
