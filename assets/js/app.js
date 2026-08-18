@@ -588,7 +588,16 @@
   function renderAll() { renderHome(); renderBlog(); renderPost(); renderSchema(); applySocial(); }
   window.QB_RENDER = renderAll; // tek dosyalık önizleme için dışa açıldı
 
+  // Altbilgideki telif yılı. Daha önce her sayfada satır içi <script> ile
+  // yazılıyordu; katı CSP (script-src 'self') altında satır içi script
+  // çalışmıyor, yıl sabit kalıyordu.
+  function initYear() {
+    var el = $('#year');
+    if (el) el.textContent = String(new Date().getFullYear());
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    initYear();
     initTheme();
     initLangMenu();
     initNav();

@@ -1,0 +1,12 @@
+# Yayına çıkmayacaklar: motor, betikler, dokümanlar, türev içerik kaynakları.
+# Site saf statik; bunların hiçbiri tarayıcıya gitmiyor.
+engine/
+scripts/
+docs/
+content/
+node_modules/
+*.md
+!assets/**/*.md
+package.json
+package-lock.json
+.github/
