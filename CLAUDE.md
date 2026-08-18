@@ -29,6 +29,7 @@ assets/js/i18n.js   Dil listesi (QB_LANGS) + 10 dilde metinler (QB_I18N)
 assets/js/posts.js  Blog içeriği (QB_POSTS): her yazı 10 dilde
 assets/js/app.js    Dil, tema, liste/arama/filtre, yazı sayfası, sekmeler, formlar
 scripts/check.mjs   Proje sağlık kontrolü
+scripts/gorunurluk.mjs Yayınlanmış yazıları görünürlük kurallarına karşı denetler
 
 engine/             Curiosity Engine (site değil, üretim hattı)
   schema.sql        Sinyal → konu → makale tabloları
@@ -65,6 +66,11 @@ npm run dev      # http://localhost:8000
 npm run check    # zorunlu: commit öncesi çalıştırın
 ```
 
+`npm run gorunurluk` yayınlanmış yazıları `engine/visibility.mjs` kurallarına karşı
+denetler (tek yazı: `node scripts/gorunurluk.mjs <slug>`). Motorun taslaklara uyguladığı
+ölçütü sitenin kendi yazılarına da uygular — kendi kuralımıza uymayan bir hattı
+kimseye satamayız.
+
 `scripts/check.mjs` şunları doğrular: 10 dilde anahtar eşitliği ve boş değer olmaması,
 her yazının her dilde başlık/özet/gövdesi, çiftlenen id ve script, HTML'de kullanılan
 ama sözlükte olmayan anahtarlar, kırık yerel bağlantılar, sitemap ile gerçek sayfa/slug
@@ -76,8 +82,19 @@ Tarayıcı testi gerektiğinde Playwright, Chromium ile kullanılabilir
 ## Sık yapılan işler
 
 **Yeni blog yazısı:** `assets/js/posts.js` dizisine nesne ekleyin — `slug`, `category`
-(sözlükte `cat.<ad>` olmalı), `date` (YYYY-AA-GG), `read`, `accent` (1–6), `icon`, sonra
+(sözlükte `cat.<ad>` olmalı), `date` (YYYY-AA-GG), `accent` (1–6), `icon`, sonra
 `t` / `e` / `b` alanlarını on dilde doldurun. `sitemap.xml`'e de ekleyin.
+
+Gövde blokları: düz dize (paragraf), `{h:'…'}` (ara başlık), `{ul:[…]}` (liste),
+`{note:'…'}` (uyarı kutusu), `{see:'slug'}` (metin içi yazı bağlantısı — küme
+bağlantısı sayılır, `check.mjs` olmayan slug'ı yakalar).
+
+Ayrıca iki alan görünürlük kuralı gereği doldurulur:
+- `orig` — bu sayfanın özgün katkısı tek cümleyle (kendi verisi, testi, tablosu).
+  Yoksa `gorunurluk.mjs` yazıyı `yayinlanamaz` işaretler.
+- `src` — kaynak listesi, `[{t:'başlık', u:'https://…'}]`. `u` isteğe bağlıdır:
+  adresi doğrulanmamış bir kaynağı uydurma bağlantıyla yayınlamayın, adıyla yazın.
+  En az üç kaynak; para/kariyer konularında bu bir kural, öneri değil.
 
 **Yeni bölüm/sayfa:** metinleri önce `i18n.js`'e on dilde ekleyin, sonra HTML'i
 `data-i18n` ile yazın. Dört sayfanın menüsünü ve altbilgisini güncelleyin.

@@ -257,7 +257,18 @@
     if (block.h) return block.h;
     if (block.note) return block.note;
     if (block.ul) return block.ul.join(' ');
+    if (block.see) return '';
     return '';
+  }
+
+  // {see:'slug'} — metnin içinden başka bir yazıya bağlantı. Alttaki "benzer
+  // yazılar" şeridinden farkı: bağlam içinde duruyor, o yüzden hem okunuyor
+  // hem de kümeyi arama motoruna gösteriyor.
+  function seeHTML(slug) {
+    var target = POSTS.filter(function (p) { return p.slug === slug; })[0];
+    if (!target) return '';
+    return '<p class="article-see"><span>' + esc(t('posts.see')) + ':</span> ' +
+      '<a href="post.html?slug=' + encodeURIComponent(slug) + '">' + esc(pick(target.t)) + '</a></p>';
   }
 
   function blockHTML(block) {
@@ -265,7 +276,20 @@
     if (block.h) return '<h2>' + esc(block.h) + '</h2>';
     if (block.note) return '<p class="article-note">' + esc(block.note) + '</p>';
     if (block.ul) return '<ul>' + block.ul.map(function (li) { return '<li>' + esc(li) + '</li>'; }).join('') + '</ul>';
+    if (block.see) return seeHTML(block.see);
     return '';
+  }
+
+  // Kaynak listesi. u (adres) isteğe bağlı: adresi doğrulanmamış bir kaynağı
+  // uydurma bağlantıyla yayınlamaktansa adıyla yazmayı tercih ediyoruz.
+  function sourcesHTML(post) {
+    var list = post.src || [];
+    if (!list.length) return '';
+    return '<section class="article-sources"><h2>' + esc(t('posts.sources')) + '</h2><ol>' +
+      list.map(function (s) {
+        var label = esc(s.t);
+        return '<li>' + (s.u ? '<a href="' + esc(s.u) + '" rel="nofollow noopener" target="_blank">' + label + '</a>' : label) + '</li>';
+      }).join('') + '</ol></section>';
   }
 
   function readTime(post) {
@@ -358,7 +382,7 @@
         '<p class="muted">' + esc(pick(post.e)) + '</p>' +
       '</div>' +
       '<div class="article-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + post.icon + '</div>' +
-      '<div class="article-body">' + body + '</div>' +
+      '<div class="article-body">' + body + sourcesHTML(post) + '</div>' +
       '<div class="article-foot">' +
         '<a class="btn btn--ghost" href="blog.html">← ' + esc(t('posts.back')) + '</a>' +
         '<div class="share-row">' +

@@ -61,13 +61,32 @@ const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
       if (!p.t?.[code]?.trim()) { fail(`posts [${p.slug}]: ${code} başlığı eksik`); bad++; }
       if (!p.e?.[code]?.trim()) { fail(`posts [${p.slug}]: ${code} özeti eksik`); bad++; }
       const body = p.b?.[code];
+      // {see:'slug'} bloğu metin taşımaz, bağlantı taşır: boş sayılmamalı.
       const blockText = (x) => typeof x === 'string' ? x : (x.h || x.note || (x.ul || []).join(' ') || '');
-      if (!Array.isArray(body) || !body.length || body.some((x) => !blockText(x).trim())) {
+      const isEmpty = (x) => (typeof x === 'object' && x && x.see) ? !x.see : !blockText(x).trim();
+      if (!Array.isArray(body) || !body.length || body.some(isEmpty)) {
         fail(`posts [${p.slug}]: ${code} gövdesi eksik`); bad++;
       } else {
         const words = body.map(blockText).join(' ').trim().split(/\s+/).length;
         if (words < 600) warn(`posts [${p.slug}]: ${code} gövdesi kısa (${words} kelime) — hedef 1.200+`);
+        for (const x of body) {
+          if (typeof x === 'object' && x && x.see && !POSTS.some((q) => q.slug === x.see)) {
+            fail(`posts [${p.slug}]: ${code} içinde olmayan yazıya bağlantı — "${x.see}"`); bad++;
+          }
+        }
       }
+    }
+  }
+  // Görünürlük kuralı 5 ve 15: her yazının özgün katkısı ve kaynağı olmalı.
+  // Burada hata değil uyarı veriyoruz — tam denetim: node scripts/gorunurluk.mjs
+  for (const p of POSTS) {
+    if (!p.orig?.trim()) warn(`posts [${p.slug}]: özgün katkı (orig) yazılmamış`);
+    const src = p.src || [];
+    if (src.length < 3) warn(`posts [${p.slug}]: ${src.length} kaynak — en az 3 gerekiyor`);
+    for (const s of src) {
+      if (!s?.t?.trim()) { fail(`posts [${p.slug}]: kaynak başlığı boş`); bad++; }
+      else if (!s.u) warn(`posts [${p.slug}]: "${s.t.slice(0, 40)}…" kaynağının adresi girilmemiş`);
+      else if (!/^https?:\/\//.test(s.u)) { fail(`posts [${p.slug}]: kaynak adresi geçersiz — ${s.u}`); bad++; }
     }
   }
   if (!bad) pass(`posts: ${POSTS.length} yazı × ${LANGS.length} dil eksiksiz`);

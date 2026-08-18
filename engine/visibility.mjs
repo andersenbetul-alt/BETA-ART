@@ -44,7 +44,7 @@ export function checkVisibility(draft, context = {}) {
     : fw > 120 ? warn('2-cevap', `İlk paragraf ${fw} kelime — doğrudan cevap 40–80 kelime olmalı`)
     : ok('2-cevap', `${fw} kelimelik doğrudan cevap`));
 
-  const hasTakeaways = /key takeaways|önemli çıkarımlar|temel sonuçlar/i.test(md);
+  const hasTakeaways = /key takeaways|takeaways|kısa çıkarımlar|önemli çıkarımlar|çıkarımlar|temel sonuçlar/i.test(md);
   r.push(hasTakeaways ? ok('2-cikarim', 'Çıkarımlar bölümü var')
                       : warn('2-cikarim', 'Kısa çıkarım listesi yok'));
 
