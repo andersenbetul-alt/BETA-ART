@@ -162,7 +162,7 @@
   /* ---------- yapılandırılmış veri (JSON-LD) ve hreflang ---------- */
   // Tüm yayın ayarları assets/js/config.js içinde; burada yalnızca okunur.
   var CFG = window.QB_CONFIG || {};
-  var SITE_URL = CFG.siteUrl || 'https://qblogg.com';
+  var SITE_URL = CFG.siteUrl || 'https://qblogg.no';
   var SOCIAL = CFG.social || {};
 
   function setJsonLd(id, data) {
@@ -482,7 +482,7 @@
 
 
   /* ---------- sayfa: bizimle çalışın ---------- */
-  var MAIL_TO = (window.QB_CONFIG && window.QB_CONFIG.mailTo) || 'hello@qblogg.com';
+  var MAIL_TO = (window.QB_CONFIG && window.QB_CONFIG.mailTo) || 'hello@qblogg.no';
 
   function initTabs() {
     var tabs = $$('.tab[data-tab]');

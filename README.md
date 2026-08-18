@@ -35,7 +35,7 @@ python3 -m http.server 8000
 GitHub Pages: repo ayarlarından Pages → Branch olarak bu dalı ve kök (`/`) klasörünü seçin.
 Netlify/Vercel: derleme komutu boş, yayın klasörü kök.
 
-Yayına almadan önce `robots.txt` ve `sitemap.xml` içindeki `https://qblogg.com` adresini
+Yayına almadan önce `robots.txt` ve `sitemap.xml` içindeki `https://qblogg.no` adresini
 kendi alan adınızla değiştirin.
 
 ## Yeni blog yazısı eklemek

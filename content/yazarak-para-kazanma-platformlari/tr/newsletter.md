@@ -42,4 +42,4 @@ ve Medium gibi kanallardan gelen okuyucuyu önce e-posta listenize taşıyın.
 ve son üç ayda kaç yeni müşteri geldiği. Rakamı görmeden fiyat artırmak tahmin olur.
 
 Yedi platformun tamamı, giriş koşulları ve hangi sırayla başlanacağı yazının içinde:
-qblogg.com/post.html?slug=yazarak-para-kazanma-platformlari
+qblogg.no/post.html?slug=yazarak-para-kazanma-platformlari
