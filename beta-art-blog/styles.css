@@ -325,3 +325,13 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+
+/* ---------- Colophon: rights, social, legal ---------- */
+.colophon-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;align-items:start}
+.colophon-main p{max-width:52ch}
+.colophon nav{display:flex;flex-direction:column;gap:.45rem}
+.colophon nav a{width:fit-content}
+.social{list-style:none;padding:0;margin:1rem 0 0;display:flex;flex-wrap:wrap;gap:.9rem}
+.social a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+@media (max-width:880px){.colophon-inner{grid-template-columns:1fr}}
