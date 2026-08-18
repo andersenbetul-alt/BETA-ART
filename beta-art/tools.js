@@ -121,7 +121,7 @@
     ctx.textAlign = "right";
     ctx.fillStyle = "#FBFAF7";
     ctx.font = "400 22px 'JetBrains Mono', monospace";
-    ctx.fillText("© Beta Art · betaart.no", W - 44, H - 44);
+    ctx.fillText("© Beta Art · beta-art.com", W - 44, H - 44);
 
     return canvas;
   }
@@ -266,7 +266,7 @@
       ".terms{margin-top:32px;font-size:11px;color:#85817A;line-height:1.7;border-top:1px solid #E4E0D8;padding-top:16px;}" +
       "</style></head><body>" +
       "<h1>Beta Art</h1><p class=\"sub\">Proforma invoice · " + number + " · issued " + issued + "</p>" +
-      '<div class="party"><div><strong>From</strong><br>Beta Art<br>Norway<br>licensing@betaart.no</div>' +
+      '<div class="party"><div><strong>From</strong><br>Beta Art — Betül Öner<br>Norway<br>hallo@beta-art.com</div>' +
       "<div><strong>To</strong><br>" + (buyer.org || "—") + "<br>" + (buyer.name || "") + "<br>" +
       (buyer.address || "") + "<br>" + (buyer.email || "") + "<br>" +
       (buyer.vatNo ? "VAT/Org. no. " + buyer.vatNo : "") + "</div></div>" +
@@ -322,7 +322,7 @@
         if (!basket.length) return;
         var lines = basket.map(function (i) { return i.id + " — " + i.title + " — " + money(i.amount); }).join("%0D%0A");
         var net = basket.reduce(function (s, i) { return s + i.amount; }, 0);
-        window.location.href = "mailto:licensing@betaart.no?subject=" +
+        window.location.href = "mailto:hallo@beta-art.com?subject=" +
           encodeURIComponent("Licence request — " + basket.length + " plate(s)") +
           "&body=" + lines + "%0D%0A%0D%0ANet:%20" + money(net) + "%0D%0A%0D%0AIntended%20use:%20";
       });
