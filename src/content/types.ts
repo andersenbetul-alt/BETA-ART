@@ -16,6 +16,13 @@ export type Practice = {
   outcomes: string[];
 };
 
+export type TextSection = {
+  title: string;
+  paragraphs: string[];
+  /** İsteğe bağlı madde listesi */
+  bullets?: string[];
+};
+
 export type Phase = {
   step: string;
   title: string;
@@ -100,6 +107,7 @@ export type Dictionary = {
       submit: string;
       submitting: string;
       consent: string;
+      privacyLinkLabel: string;
       success: string;
       errors: {
         name: string;
@@ -108,6 +116,12 @@ export type Dictionary = {
         generic: string;
       };
     };
+  };
+  privacy: {
+    hero: { eyebrow: string; title: string; description: string };
+    updated: string;
+    sections: TextSection[];
+    disclaimer: string;
   };
   notFound: {
     title: string;
@@ -118,6 +132,7 @@ export type Dictionary = {
     navTitle: string;
     contactTitle: string;
     legal: string;
+    privacyLink: string;
     rights: string;
   };
 };

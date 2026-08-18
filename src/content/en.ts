@@ -405,7 +405,8 @@ export const en: Dictionary = {
       submit: "Send request",
       submitting: "Sending...",
       consent:
-        "By submitting this form you agree that the information you share may be processed in order to assess your request.",
+        "By submitting this form you agree that the information you share may be processed in order to assess your request. For details:",
+      privacyLinkLabel: "Privacy notice and data protection",
       success:
         "Thank you — your request has reached us. We will be in touch within two business days.",
       errors: {
@@ -415,6 +416,88 @@ export const en: Dictionary = {
         generic: "Your request could not be sent. Please try again.",
       },
     },
+  },
+  privacy: {
+    hero: {
+      eyebrow: "Privacy",
+      title: "Privacy notice and personal data protection",
+      description:
+        "This notice explains what personal data NAVIAR processes when you contact us through this site, who we share it with, and what rights you have.",
+    },
+    updated: "Last updated: 18 August 2026",
+    sections: [
+      {
+        title: "1. Data controller",
+        paragraphs: [
+          "NAVIAR is the data controller for the processing described in this notice, under Turkish Law No. 6698 on the Protection of Personal Data (KVKK). You can reach us with any question or request about this notice through the channels below.",
+        ],
+        bullets: ["Email: info@naviar.com", "Address: Istanbul, Türkiye"],
+      },
+      {
+        title: "2. Personal data we process",
+        paragraphs: [
+          "We only process the data you choose to share through the contact form. If you do not submit the form, we collect no personal data from you.",
+        ],
+        bullets: [
+          "Identity and contact details: full name, email address, phone number (optional)",
+          "Professional details: the name of your organisation (optional)",
+          "Request content: the topic you select and the message you write",
+        ],
+      },
+      {
+        title: "3. Purpose and legal basis",
+        paragraphs: [
+          "We process your data solely to assess your request, respond to you and hold the preliminary conversation about a possible consulting engagement. This processing relies on Article 5(2)(c) of the KVKK, as it is directly related to the formation of a contract, and Article 5(2)(f), our legitimate interest.",
+          "Your data is not used for marketing purposes, is never sold to third parties, and will not be added to newsletters or similar mailings without your separate explicit consent.",
+        ],
+      },
+      {
+        title: "4. Transfers and service providers",
+        paragraphs: [
+          "We rely on a small number of service providers to receive your request. They access your data only to the extent needed to deliver their service and are bound by confidentiality agreements.",
+        ],
+        bullets: [
+          "The infrastructure provider hosting this site",
+          "The email service provider used to deliver form submissions",
+        ],
+      },
+      {
+        title: "5. Cookies",
+        paragraphs: [
+          "This site uses no advertising or tracking cookies, and there are no third-party analytics tools observing your visit. Should such a tool be added in future, this notice will be updated and your consent requested where required.",
+        ],
+      },
+      {
+        title: "6. Retention",
+        paragraphs: [
+          "We keep your request and our correspondence until the conversation concludes, and afterwards for as long as legal obligations require. At the end of that period your data is deleted or anonymised. You may ask us to delete it sooner.",
+        ],
+      },
+      {
+        title: "7. Your rights",
+        paragraphs: [
+          "Under Article 11 of the KVKK you have the following rights regarding your personal data:",
+        ],
+        bullets: [
+          "To learn whether your personal data is being processed and to request information about it",
+          "To learn the purpose of processing and whether the data is used accordingly",
+          "To know the third parties to whom the data has been transferred",
+          "To request correction of incomplete or inaccurate data",
+          "To request erasure or destruction of the data within the conditions set by law",
+          "To request that such actions be notified to third parties the data was transferred to",
+          "To object to a result against you arising from analysis carried out solely by automated systems",
+          "To claim compensation if you suffer damage due to unlawful processing",
+        ],
+      },
+      {
+        title: "8. Making a request",
+        paragraphs: [
+          "To exercise these rights, send your request to the email address above. We will respond within thirty days at the latest. If you find our response insufficient, you retain the right to lodge a complaint with the Turkish Personal Data Protection Board.",
+        ],
+      },
+    ],
+    disclaimer:
+      "This notice is provided for information purposes and does not constitute legal advice. Before going live, update it with your registered company name, address and actual service providers, and have it reviewed by a legal advisor.",
   },
   notFound: {
     title: "We couldn't find that page",
@@ -427,6 +510,7 @@ export const en: Dictionary = {
     navTitle: "Pages",
     contactTitle: "Contact",
     legal: "The content on this site is provided for information purposes.",
+    privacyLink: "Privacy",
     rights: "All rights reserved.",
   },
 };

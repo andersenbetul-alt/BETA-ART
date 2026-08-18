@@ -59,11 +59,14 @@ Site iki dilde yayınlanır ve **her dilin kendi URL'leri** vardır:
 | Yaklaşımımız | `/tr/yaklasim` | `/en/approach` |
 | Hakkımızda | `/tr/hakkimizda` | `/en/about` |
 | İletişim | `/tr/iletisim` | `/en/contact` |
+| Gizlilik / KVKK | `/tr/gizlilik` | `/en/privacy` |
 
 - `/` adresi, tarayıcının `Accept-Language` başlığına göre `/tr` veya `/en` adresine
   yönlendirilir (`src/proxy.ts`). Desteklenmeyen bir dil gelirse varsayılan Türkçedir.
 - Yanlış dilde açılan bir slug (örneğin `/en/hizmetler`) bilinçli olarak 404 döner;
   böylece her içeriğin tek bir canonical adresi olur.
+- Gizlilik sayfası ana menüde değil, altbilgide ve iletişim formunun onay
+  metninde bağlıdır.
 - Dil değiştirici, bulunduğunuz sayfanın diğer dildeki karşılığına gider —
   ana sayfaya değil.
 - Her sayfa `canonical` ve `hreflang` (`tr`, `en`, `x-default`) etiketlerini,
@@ -81,6 +84,7 @@ src/
 │   │   ├── yaklasim/   approach/
 │   │   ├── hakkimizda/ about/
 │   │   ├── iletisim/   contact/
+│   │   ├── gizlilik/   privacy/
 │   │   └── not-found.tsx
 │   ├── globals.css          # Tailwind teması ve temel stiller
 │   ├── not-found.tsx        # Dil segmenti olmayan adresler için 404
@@ -146,6 +150,20 @@ hata yönetimi çağıran tarafta durur.
 > **Not:** `src/lib/actions.ts` dosyası `"use server"` işaretlidir ve yalnızca async
 > fonksiyon dışa aktarabilir. Formun paylaşılan tipleri bu yüzden `src/lib/contact.ts`
 > dosyasında durur.
+
+## Gizlilik ve KVKK
+
+İletişim formu kişisel veri topladığı için sitede bir KVKK aydınlatma metni
+bulunur (`/tr/gizlilik`, `/en/privacy`). Metin; veri sorumlusu, işlenen veriler,
+işleme amacı ve hukuki sebep, aktarım, çerezler, saklama süresi ve KVKK'nın
+11. maddesindeki haklar başlıklarını kapsar.
+
+Site reklam veya analiz çerezi kullanmaz; üçüncü taraf takip aracı yoktur.
+Böyle bir araç eklenirse metnin güncellenmesi gerekir.
+
+> **Yayına almadan önce:** Metindeki ticari unvan, adres ve hizmet sağlayıcı
+> bilgilerini gerçek değerlerle güncelleyin ve bir hukuk danışmanına inceletin.
+> İçerik `src/content/tr.ts` ve `en.ts` dosyalarındaki `privacy` alanındadır.
 
 ## Erişilebilirlik ve SEO
 

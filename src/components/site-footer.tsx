@@ -74,7 +74,15 @@ export function SiteFooter({
           <p>
             © {year} {dict.meta.siteName}. {dict.footer.rights}
           </p>
-          <p>{dict.footer.legal}</p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            <p>{dict.footer.legal}</p>
+            <Link
+              href={path("privacy", locale)}
+              className="text-ink-100/75 underline-offset-4 transition-colors hover:text-white hover:underline"
+            >
+              {dict.footer.privacyLink}
+            </Link>
+          </div>
         </div>
       </Container>
     </footer>

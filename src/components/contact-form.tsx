@@ -1,12 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState, useEffect, useId, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { submitContactForm } from "@/lib/actions";
 import { initialContactState, type ContactState } from "@/lib/contact";
 import { buttonClass, Arrow } from "./ui/button";
 import type { Dictionary } from "@/content";
-import type { Locale } from "@/lib/i18n";
+import { path, type Locale } from "@/lib/i18n";
 
 function SubmitButton({ label, pending }: { label: string; pending: string }) {
   const { pending: isPending } = useFormStatus();
@@ -235,7 +236,13 @@ export function ContactForm({
       ) : null}
 
       <p className="mt-7 text-xs leading-relaxed text-ink-800/60">
-        {form.consent}
+        {form.consent}{" "}
+        <Link
+          href={path("privacy", locale)}
+          className="text-ink-800/80 underline underline-offset-2 hover:text-ink-900"
+        >
+          {form.privacyLinkLabel}
+        </Link>
       </p>
 
       <div className="mt-6">

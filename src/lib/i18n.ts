@@ -19,16 +19,29 @@ export const routes = {
   approach: { tr: "yaklasim", en: "approach" },
   about: { tr: "hakkimizda", en: "about" },
   contact: { tr: "iletisim", en: "contact" },
+  privacy: { tr: "gizlilik", en: "privacy" },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type RouteKey = keyof typeof routes;
 
 export const routeKeys = Object.keys(routes) as RouteKey[];
 
-/** Menüde görünen sayfalar (ana sayfa logoya bağlı olduğu için hariç). */
-export type NavKey = Exclude<RouteKey, "home">;
+/**
+ * Menüde görünen sayfalar. Ana sayfa logoya, gizlilik sayfası altbilgiye
+ * bağlı olduğu için burada yer almaz.
+ *
+ * `satisfies` her girdinin geçerli bir route anahtarı olmasını garanti eder;
+ * `NavKey` de doğrudan bu diziden türetildiği için içerik sözlüğündeki `nav`
+ * alanıyla her zaman aynı kalır.
+ */
+export const navKeys = [
+  "services",
+  "approach",
+  "about",
+  "contact",
+] as const satisfies readonly RouteKey[];
 
-export const navKeys: NavKey[] = ["services", "approach", "about", "contact"];
+export type NavKey = (typeof navKeys)[number];
 
 export function path(key: RouteKey, locale: Locale): string {
   const segment = routes[key][locale];

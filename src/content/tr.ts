@@ -405,7 +405,8 @@ export const tr: Dictionary = {
       submit: "Talebi gönder",
       submitting: "Gönderiliyor...",
       consent:
-        "Formu göndererek, paylaştığınız bilgilerin talebinizi değerlendirmek amacıyla işlenmesini kabul etmiş olursunuz.",
+        "Formu göndererek, paylaştığınız bilgilerin talebinizi değerlendirmek amacıyla işlenmesini kabul etmiş olursunuz. Ayrıntılar için:",
+      privacyLinkLabel: "Gizlilik ve KVKK aydınlatma metni",
       success:
         "Teşekkürler, talebiniz bize ulaştı. İki iş günü içinde sizinle iletişime geçeceğiz.",
       errors: {
@@ -415,6 +416,91 @@ export const tr: Dictionary = {
         generic: "Talebiniz gönderilemedi. Lütfen tekrar deneyin.",
       },
     },
+  },
+  privacy: {
+    hero: {
+      eyebrow: "Gizlilik",
+      title: "Kişisel verilerin korunması hakkında aydınlatma metni",
+      description:
+        "Bu metin, NAVIAR olarak sitemiz üzerinden ilettiğiniz kişisel verileri hangi amaçla işlediğimizi, kimlerle paylaştığımızı ve bu konudaki haklarınızı açıklar.",
+    },
+    updated: "Son güncelleme: 18 Ağustos 2026",
+    sections: [
+      {
+        title: "1. Veri sorumlusu",
+        paragraphs: [
+          "6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca veri sorumlusu NAVIAR'dır. Bu metinde açıklanan işleme faaliyetleriyle ilgili her türlü soru ve talebinizi aşağıdaki iletişim kanallarından bize iletebilirsiniz.",
+        ],
+        bullets: [
+          "E-posta: info@naviar.com",
+          "Adres: İstanbul, Türkiye",
+        ],
+      },
+      {
+        title: "2. İşlediğimiz kişisel veriler",
+        paragraphs: [
+          "Sitemizde yalnızca iletişim formu üzerinden kendi isteğinizle paylaştığınız verileri işleriz. Formu doldurmadığınız sürece sizden herhangi bir kişisel veri toplanmaz.",
+        ],
+        bullets: [
+          "Kimlik ve iletişim bilgisi: ad soyad, e-posta adresi, telefon numarası (isteğe bağlı)",
+          "Mesleki bilgi: çalıştığınız kurumun adı (isteğe bağlı)",
+          "Talep içeriği: seçtiğiniz konu başlığı ve yazdığınız mesaj",
+        ],
+      },
+      {
+        title: "3. İşleme amacı ve hukuki sebep",
+        paragraphs: [
+          "Paylaştığınız veriler yalnızca talebinizi değerlendirmek, size geri dönüş yapmak ve olası bir danışmanlık ilişkisinin ön görüşmesini yürütmek amacıyla işlenir. Bu işleme, KVKK'nın 5. maddesinin ikinci fıkrasının (c) bendi kapsamında bir sözleşmenin kurulmasıyla doğrudan ilgili olması ve (f) bendi kapsamında meşru menfaatimiz hukuki sebeplerine dayanır.",
+          "Verileriniz pazarlama amacıyla kullanılmaz, üçüncü kişilere satılmaz ve sizden ayrıca açık rıza almadan bülten benzeri gönderimlere dahil edilmez.",
+        ],
+      },
+      {
+        title: "4. Aktarım ve hizmet sağlayıcılar",
+        paragraphs: [
+          "Talebinizi teslim alabilmek için sınırlı sayıda hizmet sağlayıcıdan yararlanırız. Bu sağlayıcılar verilerinize yalnızca hizmeti sunmak için gereken ölçüde erişir ve sözleşme ile gizliliğe bağlıdır.",
+        ],
+        bullets: [
+          "Sitenin barındırıldığı altyapı sağlayıcısı",
+          "Form taleplerinin iletilmesinde kullanılan e-posta servis sağlayıcısı",
+        ],
+      },
+      {
+        title: "5. Çerezler",
+        paragraphs: [
+          "Bu sitede reklam veya takip amaçlı çerez kullanılmaz. Ziyaretinizi izleyen üçüncü taraf analiz araçları bulunmamaktadır. İleride böyle bir araç eklenmesi hâlinde bu metin güncellenir ve gerekli olduğu durumda onayınız istenir.",
+        ],
+      },
+      {
+        title: "6. Saklama süresi",
+        paragraphs: [
+          "Talebinizi ve yazışmamızı, görüşme süreci sonuçlanana kadar ve sonrasında hukuki zorunlulukların gerektirdiği süre boyunca saklarız. Bu sürenin sonunda verileriniz silinir veya anonim hâle getirilir. Daha erken silinmesini talep edebilirsiniz.",
+        ],
+      },
+      {
+        title: "7. Haklarınız",
+        paragraphs: [
+          "KVKK'nın 11. maddesi uyarınca kişisel verilerinizle ilgili aşağıdaki haklara sahipsiniz:",
+        ],
+        bullets: [
+          "Kişisel verinizin işlenip işlenmediğini öğrenme ve işlenmişse buna ilişkin bilgi talep etme",
+          "İşlenme amacını ve amaca uygun kullanılıp kullanılmadığını öğrenme",
+          "Verilerin aktarıldığı üçüncü kişileri bilme",
+          "Eksik veya yanlış işlenmiş verilerin düzeltilmesini isteme",
+          "Kanundaki şartlar çerçevesinde silinmesini veya yok edilmesini isteme",
+          "Yapılan işlemlerin verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme",
+          "İşlenen verilerin münhasıran otomatik sistemlerle analiz edilmesi sonucu aleyhinize bir sonucun ortaya çıkmasına itiraz etme",
+          "Verilerin hukuka aykırı işlenmesi sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme",
+        ],
+      },
+      {
+        title: "8. Başvuru",
+        paragraphs: [
+          "Haklarınızı kullanmak için taleplerinizi yukarıda belirtilen e-posta adresine iletebilirsiniz. Başvurunuz en geç otuz gün içinde sonuçlandırılır. Talebinize verilen yanıtı yeterli bulmazsanız Kişisel Verileri Koruma Kurulu'na şikâyette bulunma hakkınız saklıdır.",
+        ],
+      },
+    ],
+    disclaimer:
+      "Bu metin bilgilendirme amacıyla hazırlanmıştır ve hukuki danışmanlık yerine geçmez. Yayına almadan önce firmanızın ticari unvanı, adresi ve kullandığınız hizmet sağlayıcılarla güncelleyip bir hukuk danışmanına inceletmenizi öneririz.",
   },
   notFound: {
     title: "Aradığınız sayfayı bulamadık",
@@ -427,6 +513,7 @@ export const tr: Dictionary = {
     navTitle: "Sayfalar",
     contactTitle: "İletişim",
     legal: "Bu sitede yer alan içerikler bilgilendirme amaçlıdır.",
+    privacyLink: "Gizlilik ve KVKK",
     rights: "Tüm hakları saklıdır.",
   },
 };
