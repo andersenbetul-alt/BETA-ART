@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-label="COBBAN">
+  <title>COBBAN — Nordic simplicity, handpicked quality</title>
+  <circle cx="160" cy="60" r="46" fill="#141A1F"/>
+  <path d="M177 44a23 23 0 1 0 0 32" fill="none" stroke="#F4F1EC" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="160" cy="60" r="5.5" fill="#C4714B"/>
+  <text x="160" y="158" text-anchor="middle" fill="#141A1F"
+        font-family="Fraunces, Georgia, serif" font-size="40" font-weight="500" letter-spacing="9">COBBAN</text>
+  <text x="160" y="186" text-anchor="middle" fill="#6B7A84"
+        font-family="Inter, system-ui, sans-serif" font-size="12" letter-spacing="3">NORDISK ENKELHET</text>
+</svg>

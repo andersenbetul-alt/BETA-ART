@@ -1,0 +1,16 @@
+Kalem,Formul,Ornek NOK,Aciklama
+Satis fiyati (MVA dahil),girdi,349,Musteriye gorunen fiyat
+MVA orani,girdi,0.25,Norvec genel oran
+Net satis,B2/(1+B3),279,MVA haric gelir
+Urun maliyeti FOB,girdi,29,Tedarikciden alis
+Ic lojistik + gumruk,girdi,6,Depoya kadar
+Ambalaj,girdi,4,Kutu + dolgu + sticker
+COGS toplam,B5+B6+B7,39,Toplam urun maliyeti
+Brut kar,B4-B8,240,
+Brut marj,B9/B4,0.86,Hedef >0.60
+Odeme komisyonu,B2*0.029,10,Shopify Payments / Vipps
+Kargo maliyeti (ort),girdi,52,Subvansiyon dahil
+Iade payi,B4*0.08,22,Iade orani x net satis
+Reklam (CAC),girdi,90,Pazarlama gideri / siparis
+Katkı payi,B9-B11-B12-B13-B14,66,Siparis basina kalan
+Katkı marji,B15/B4,0.24,Hedef >0.25

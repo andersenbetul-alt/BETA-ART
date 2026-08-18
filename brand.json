@@ -1,0 +1,32 @@
+{
+  "name": "COBBAN",
+  "legalNameNO": "Cobban AS",
+  "legalNameTR": "Cobban Ticaret Limited Şirketi",
+  "tagline": {
+    "no": "Nordisk enkelhet, håndplukket kvalitet.",
+    "en": "Nordic simplicity, handpicked quality.",
+    "tr": "İskandinav sadeliği, özenle seçilmiş kalite."
+  },
+  "domains": {
+    "primary": "cobban.com",
+    "alternatives": ["cobban.no", "cobban.com.tr", "cobban.shop", "cobbanstore.com"]
+  },
+  "markets": ["NO", "TR", "EU", "GLOBAL"],
+  "locales": ["no", "en", "tr"],
+  "defaultLocale": "no",
+  "currencies": { "no": "NOK", "tr": "TRY", "en": "EUR" },
+  "colors": {
+    "ink": "#141A1F",
+    "fog": "#F4F1EC",
+    "clay": "#C4714B",
+    "moss": "#3F5B4C",
+    "sand": "#D8CBB8",
+    "steel": "#6B7A84"
+  },
+  "fonts": { "display": "Fraunces", "body": "Inter" },
+  "contact": {
+    "email": "hei@cobban.com",
+    "supportEmail": "support@cobban.com",
+    "instagram": "@cobban"
+  }
+}
