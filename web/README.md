@@ -48,18 +48,51 @@ lib/
   pazaryeri beslemesi için gerekli.
 - Renkler `brand/tokens.css` ile aynı; açık/koyu tema desteklenir.
 
+## Shopify bağlantısı
+
+`.env.example` dosyasını `.env.local` olarak kopyala ve Storefront API token'ını gir:
+
+```bash
+cp .env.example .env.local
+```
+
+Token yoksa site **yerel katalogla** çalışmaya devam eder, sadece ödeme devre dışı kalır.
+Token varsa ürünler, fiyatlar, stok ve çeviriler Shopify'dan gelir; ödeme
+`cartCreate` ile oluşturulan gerçek Shopify checkout adresine yönlenir.
+
+Gereken Storefront API izinleri:
+`unauthenticated_read_product_listings`, `unauthenticated_write_checkouts`,
+`unauthenticated_read_checkouts`.
+
+### Veri akışı
+
+```
+sayfa → lib/catalog.ts ─┬─ Shopify yapılandırılmışsa → lib/shopify.ts (Storefront API)
+                        └─ değilse veya hata varsa   → lib/products.ts (yerel katalog)
+
+sepet → POST /api/checkout → varyant + fiyat sunucuda doğrulanır
+                           → cartCreate → checkoutUrl → yönlendirme
+```
+
+Fiyat ve varyant kimliği **hiçbir zaman istemciden alınmaz** — `/api/checkout`
+yalnızca slug ve adedi kabul eder, geri kalanını sunucudaki kataloglardan okur.
+
 ## Yapılacaklar (lansman öncesi)
 
-- [ ] **Shopify Storefront API bağlantısı** — ürün ve stok Shopify'dan gelsin,
-      `lib/products.ts` yerini `lib/shopify.ts` alsın.
-      Gerekli env: `SHOPIFY_STORE_DOMAIN`, `SHOPIFY_STOREFRONT_ACCESS_TOKEN`.
-- [ ] **Checkout** — Shopify Cart API ile `checkoutUrl`'e yönlendir
-      (`CartView.tsx` içindeki devre dışı buton).
-- [ ] Gerçek ürün fotoğrafları (`public/products/`), şu an renk bloğu placeholder.
-- [ ] Çerez rıza banner'ı (reddet butonu kabul ile eşit görünürlükte — GDPR).
+- [ ] Gerçek ürün fotoğrafları — Shopify'a yüklenince otomatik gelir,
+      yoksa renk bloğu placeholder gösterilir.
 - [ ] Yasal metinlerin tam hâlini `docs/sozlesmeler/` klasöründen sayfalara taşı.
-- [ ] `sitemap.xml` + `robots.txt` + JSON-LD `Product` şeması.
-- [ ] Analytics 4 / Meta Pixel (yalnızca rıza sonrası yüklensin).
+- [ ] Analytics 4 / Meta Pixel — **yalnızca rıza sonrası** yüklensin
+      (`window.addEventListener('cobban:consent', ...)` olayını dinle).
+- [ ] `NEXT_PUBLIC_SITE_URL`'i gerçek alan adına ayarla (sitemap ve JSON-LD kullanıyor).
+
+## Hazır olanlar
+
+- ✅ Shopify Storefront API bağlantısı + yerel kataloğa otomatik düşme
+- ✅ Gerçek checkout (`/api/checkout` → Shopify `cartCreate`)
+- ✅ GDPR/KVKK uyumlu çerez rıza bandı — reddet butonu kabul ile eşit ağırlıkta
+- ✅ `sitemap.xml`, `robots.txt`, schema.org `Product` JSON-LD (iade politikası dahil)
+- ✅ `hreflang` alternatifleri ve canonical adresler
 
 ## Shopify ile ilişki
 

@@ -140,3 +140,18 @@ h3 { font-size: 1.125rem; font-family: var(--cb-font-body); font-weight: 600; }
   background: var(--cb-surface); border: 1px solid var(--cb-border);
   border-left: 3px solid var(--cb-clay); padding: 1rem 1.25rem; border-radius: var(--cb-radius); margin: 1.5rem 0;
 }
+
+/* Çerez rıza bandı */
+.consent {
+  position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 50;
+  max-width: 560px; margin-inline: auto;
+  background: var(--cb-surface); color: var(--cb-fg);
+  border: 1px solid var(--cb-border); border-radius: var(--cb-radius);
+  padding: 1.1rem 1.25rem; box-shadow: 0 8px 32px rgb(0 0 0 / .16);
+}
+.consent p { margin: 0 0 .9rem; }
+.consent-actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+/* Reddet ve kabul aynı görsel ağırlıkta olmalı — GDPR/KVKK. */
+.consent-actions .btn { flex: 1 1 160px; text-align: center; padding: .6rem 1rem; font-size: .9375rem; }
+
+.thumb img { width: 100%; height: 100%; object-fit: cover; }

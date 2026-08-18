@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { isLocale, t } from '@/lib/i18n';
-import { categories, products } from '@/lib/products';
+import { getProducts } from '@/lib/catalog';
+import { categories } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  const featured = products.filter((p) => p.stock > 0).slice(0, 4);
+  const all = await getProducts(locale);
+  const featured = all.filter((p) => p.stock > 0).slice(0, 4);
 
   return (
     <div className="wrap">

@@ -4,6 +4,7 @@ import { locales, isLocale, type Locale } from '@/lib/i18n';
 import { CartProvider } from '@/components/CartContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import CookieBanner from '@/components/CookieBanner';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -37,6 +38,7 @@ export default async function LocaleLayout({
           <Header locale={locale} />
           <main>{children}</main>
           <Footer locale={locale} />
+          <CookieBanner locale={locale} />
         </CartProvider>
       </body>
     </html>

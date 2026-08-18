@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { isLocale, t } from '@/lib/i18n';
-import { categories, productsByCategory, type CategoryId } from '@/lib/products';
+import { getProducts } from '@/lib/catalog';
+import { categories, type CategoryId } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
 
 export default async function ProductsPage({
@@ -16,7 +17,7 @@ export default async function ProductsPage({
 
   const { kategori } = await searchParams;
   const active = categories.find((c) => c.id === kategori)?.id as CategoryId | undefined;
-  const list = productsByCategory(active);
+  const list = await getProducts(locale, active);
 
   return (
     <div className="wrap" style={{ padding: '2.5rem 0 4rem' }}>
