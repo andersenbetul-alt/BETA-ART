@@ -1,0 +1,7 @@
+[
+  {
+    "location": "/",
+    "tdm-reservation": 1,
+    "tdm-policy": "https://hximusic.com/.well-known/tdmrep.json"
+  }
+]
