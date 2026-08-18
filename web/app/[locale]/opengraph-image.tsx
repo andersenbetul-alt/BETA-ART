@@ -28,7 +28,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
         <div style={{ fontSize: 64, lineHeight: 1.15, maxWidth: 900 }}>
           {t(active, 'hero.title')}
         </div>
-        <div style={{ display: 'flex', marginTop: 'auto', fontSize: 26, color: '#6B7A84' }}>
+        <div style={{ display: 'flex', marginTop: 'auto', fontSize: 26, color: '#5C6B75' }}>
           {t(active, 'usp.shipping')} · {t(active, 'usp.returns')}
         </div>
       </div>

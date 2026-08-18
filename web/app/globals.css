@@ -1,6 +1,9 @@
 :root {
   --cb-ink:#141A1F; --cb-fog:#F4F1EC; --cb-clay:#C4714B; --cb-moss:#3F5B4C;
-  --cb-sand:#D8CBB8; --cb-steel:#6B7A84;
+  --cb-sand:#D8CBB8; --cb-steel:#5C6B75;
+  /* clay dekoratiftir (çizgi, vurgu). Üzerine yazı gelen her yerde
+     clay-strong kullanılır: beyaz metinle 5.11:1, WCAG AA'yı geçer. */
+  --cb-clay-strong:#A85835;
   --cb-bg:var(--cb-fog); --cb-fg:var(--cb-ink); --cb-muted:var(--cb-steel);
   --cb-surface:#FFFFFF; --cb-border:#E4DED4;
   --cb-font-display:"Fraunces",Georgia,"Times New Roman",serif;
@@ -94,7 +97,7 @@ h3 { font-size: 1.125rem; font-family: var(--cb-font-body); font-weight: 600; }
 .hero { padding: clamp(3rem, 8vw, 6rem) 0; max-width: 46ch; }
 .hero p { font-size: 1.125rem; color: var(--cb-muted); }
 .btn {
-  display: inline-block; background: var(--cb-clay); color: #fff;
+  display: inline-block; background: var(--cb-clay-strong); color: #fff;
   padding: .8rem 1.6rem; border: 0; border-radius: var(--cb-radius);
   font-weight: 600; font-size: 1rem;
 }
@@ -118,11 +121,26 @@ h3 { font-size: 1.125rem; font-family: var(--cb-font-body); font-weight: 600; }
   aspect-ratio: 1; border-radius: var(--cb-radius); border: 1px solid var(--cb-border);
   display: grid; place-items: center; position: relative; overflow: hidden;
 }
-.thumb span { font-family: var(--cb-font-display); font-size: 2.5rem; opacity: .22; }
+/*
+ * Ürün fotoğrafı yokken gösterilen yer tutucu. Metin değil, dekoratif desen:
+ * metin olsaydı WCAG kontrast kuralına takılırdı ve ekran okuyucuya
+ * anlamsız bir "CB" okunurdu.
+ */
+.thumb::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(135deg,
+      rgb(255 255 255 / .10) 0 12px,
+      rgb(0 0 0 / .04) 12px 24px);
+}
+.thumb:has(img)::after { content: none; }
 .badge {
   position: absolute; top: .5rem; left: .5rem; background: var(--cb-ink); color: var(--cb-fog);
   font-size: .6875rem; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .5rem;
   border-radius: 2px;
+  /* Yer tutucu deseni (.thumb::after) sonra boyandığı için rozet üste alınır */
+  z-index: 1;
 }
 .card-title { margin: .75rem 0 .2rem; font-weight: 500; }
 
@@ -195,7 +213,7 @@ h3 { font-size: 1.125rem; font-family: var(--cb-font-body); font-weight: 600; }
   background: var(--cb-surface); border: 1px solid var(--cb-border);
   border-radius: var(--cb-radius); padding: .55rem .8rem;
 }
-.toolbar input[type="search"]:focus-visible { outline: 2px solid var(--cb-clay); outline-offset: 1px; }
+.toolbar input[type="search"]:focus-visible { outline: 2px solid var(--cb-clay-strong); outline-offset: 1px; }
 .toolbar .btn { padding: .55rem 1.1rem; }
 .sort { display: flex; align-items: center; gap: .5rem; margin-left: auto; }
 .sort select {
@@ -226,7 +244,7 @@ h3 { font-size: 1.125rem; font-family: var(--cb-font-body); font-weight: 600; }
 
 /* Odak görünürlüğü — klavye ve ekran okuyucu kullanıcıları için */
 a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
-  outline: 2px solid var(--cb-clay);
+  outline: 2px solid var(--cb-clay-strong);
   outline-offset: 2px;
   border-radius: 2px;
 }

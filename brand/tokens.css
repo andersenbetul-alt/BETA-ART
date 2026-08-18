@@ -4,14 +4,15 @@
   --cb-ink:   #141A1F;
   --cb-fog:   #F4F1EC;
   --cb-clay:  #C4714B;
+  --cb-clay-strong: #A85835; /* üzerine yazı gelen her yer */
   --cb-moss:  #3F5B4C;
   --cb-sand:  #D8CBB8;
-  --cb-steel: #6B7A84;
+  --cb-steel: #5C6B75;
 
   --cb-bg:        var(--cb-fog);
   --cb-fg:        var(--cb-ink);
   --cb-muted:     var(--cb-steel);
-  --cb-accent:    var(--cb-clay);
+  --cb-accent:    var(--cb-clay-strong);
   --cb-surface:   #FFFFFF;
   --cb-border:    #E4DED4;
 

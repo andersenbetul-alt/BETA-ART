@@ -1,7 +1,7 @@
 import 'server-only';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { marked } from 'marked';
+import { Marked } from 'marked';
 import type { Locale } from './i18n';
 
 /**
@@ -38,7 +38,67 @@ const pagesByLocale: Record<Locale, LegalPage[]> = {
   ],
 };
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/** Yalnızca güvenli protokoller; javascript: ve data: bağlantıları etkisizleşir. */
+function safeHref(href: string): string {
+  const value = href.trim();
+  return /^(https?:|mailto:|tel:|[#/])/i.test(value) ? value : '#';
+}
+
+/**
+ * Yasal metinler markdown olarak yazılır ve çıktı `dangerouslySetInnerHTML`
+ * ile basılır. Bu belgeleri avukat veya ekip düzenleyecek, metin çoğu zaman
+ * Word'den ya da webden yapıştırılacak. İki koruma var:
+ *
+ * 1. Ham HTML **silinmez, kaçırılır** — görünür metne dönüşür. Silmek,
+ *    yapıştırılan bir maddenin sözleşmeden sessizce düşmesi demekti;
+ *    eksik bir sözleşme, çirkin görünen bir sözleşmeden çok daha kötüdür.
+ * 2. Bağlantı ve görsel adresleri protokol denetiminden geçer, böylece
+ *    `[tık](javascript:...)` çalışan koda dönüşmez.
+ */
+const md = new Marked({ gfm: true, breaks: false });
+md.use({
+  renderer: {
+    html: ({ text }) => escapeHtml(text),
+    link({ href, title, tokens }) {
+      const text = this.parser.parseInline(tokens);
+      const attrs = title ? ` title="${escapeHtml(title)}"` : '';
+      return `<a href="${escapeHtml(safeHref(href))}"${attrs}>${text}</a>`;
+    },
+    image({ href, title, text }) {
+      const attrs = title ? ` title="${escapeHtml(title)}"` : '';
+      return `<img src="${escapeHtml(safeHref(href))}" alt="${escapeHtml(text)}"${attrs} />`;
+    },
+  },
+});
+
 const DOCS_DIR = path.join(process.cwd(), '..', 'docs', 'sozlesmeler');
+
+/**
+ * Bir dilde olmayan sayfanın o dildeki karşılığı.
+ *
+ * Türkçede iade ve ön bilgilendirme ayrı belgelerdir; Norveççe ve İngilizcede
+ * ikisi de satış koşullarının içindedir. Dil değiştirici yolu koruduğu için
+ * /tr/kurumsal/iade sayfasından NO'ya geçiş /no/kurumsal/iade üretiyordu ve
+ * 404 veriyordu. Bu eşleme onu doğru belgeye yönlendirir.
+ */
+const aliases: Record<Locale, Record<string, LegalSlug>> = {
+  no: { iade: 'satis', 'on-bilgilendirme': 'satis' },
+  en: { iade: 'satis', 'on-bilgilendirme': 'satis' },
+  tr: {},
+};
+
+/** Bu dilde ayrı sayfası olmayan slug için hedef sayfa yönlendiriliyorsa onun slug'ı. */
+export function getLegalAlias(locale: Locale, slug: string): LegalSlug | null {
+  return aliases[locale][slug] ?? null;
+}
 
 export function legalPages(locale: Locale): LegalPage[] {
   return pagesByLocale[locale];
@@ -73,7 +133,7 @@ export async function getLegalDocument(
 
   return {
     title: page.title,
-    html: await marked.parse(body, { gfm: true, breaks: false }),
+    html: await md.parse(body),
     placeholders,
   };
 }

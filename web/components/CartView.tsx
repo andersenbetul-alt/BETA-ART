@@ -138,7 +138,7 @@ export default function CartView({
           </p>
         )}
         {error && (
-          <p className="small" style={{ marginTop: '.75rem', color: 'var(--cb-clay)' }} role="alert">
+          <p className="small" style={{ marginTop: '.75rem', color: 'var(--cb-clay-strong)' }} role="alert">
             {error}
           </p>
         )}

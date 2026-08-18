@@ -35,16 +35,23 @@
 
 ## 3. Renk paleti
 
-| İsim | HEX | Kullanım | Kontrast (beyaz üstü) |
-|---|---|---|---|
-| **Ink** | `#141A1F` | Ana metin, logo | 16.2:1 ✅ |
-| **Fog** | `#F4F1EC` | Sayfa arka planı | — |
-| **Clay** | `#C4714B` | Vurgu, CTA butonu, indirim | 3.5:1 (⚠️ sadece büyük metin/buton) |
-| **Moss** | `#3F5B4C` | İkincil vurgu, "stokta var" | 7.1:1 ✅ |
-| **Sand** | `#D8CBB8` | Kart arka planı, ayraç | — |
-| **Steel** | `#6B7A84` | İkincil metin, meta bilgi | 4.6:1 ✅ |
+| İsim | HEX | Kullanım | Fog üstü | Beyaz üstü |
+|---|---|---|---|---|
+| **Ink** | `#141A1F` | Ana metin, logo | 15.6:1 ✅ | 17.5:1 ✅ |
+| **Fog** | `#F4F1EC` | Sayfa arka planı | — | — |
+| **Clay** | `#C4714B` | **Yalnızca dekoratif** — çizgi, ayraç, vurgu bloğu | 3.2:1 | 3.6:1 |
+| **Clay Strong** | `#A85835` | **Üzerine yazı gelen her yer** — CTA butonu, odak halkası | — | beyaz metinle **5.1:1** ✅ |
+| **Moss** | `#3F5B4C` | İkincil vurgu, "stokta var" | 6.6:1 ✅ | 7.5:1 ✅ |
+| **Sand** | `#D8CBB8` | Kart arka planı, ayraç | — | — |
+| **Steel** | `#5C6B75` | İkincil metin, meta bilgi | 4.9:1 ✅ | 5.5:1 ✅ |
 
-> CTA butonlarında `clay` zemin + `#FFFFFF` metin kullan (buton metni ≥16px bold → AA uyumlu).
+> ⚠️ **Düzeltme (Ağu 2026):** Bu tablonun ilk hâlindeki değerler yanlıştı.
+> axe-core denetimi iki WCAG AA ihlali buldu ve ölçüm yapıldı:
+> - `steel` eski değeri `#6B7A84` fog üzerinde **3.93:1** idi (4.5 gerekli) → `#5C6B75` oldu.
+> - `clay` üzerine beyaz metin **3.61:1** idi (16 px kalın metin için 4.5 gerekli)
+>   → butonlar `clay-strong` (#A85835) kullanıyor, `clay` dekoratif role çekildi.
+>
+> Palet değiştiğinde kontrastı yeniden ölç; "göze normal geliyor" yeterli değil.
 
 ## 4. Tipografi
 

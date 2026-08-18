@@ -19,9 +19,10 @@
     "ink": "#141A1F",
     "fog": "#F4F1EC",
     "clay": "#C4714B",
+    "clayStrong": "#A85835",
     "moss": "#3F5B4C",
     "sand": "#D8CBB8",
-    "steel": "#6B7A84"
+    "steel": "#5C6B75"
   },
   "fonts": { "display": "Fraunces", "body": "Inter" },
   "contact": {

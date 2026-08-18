@@ -62,9 +62,7 @@ export default async function ProductPage({
           {product.imageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={product.imageUrl} alt={product.imageAlt ?? product.name} />
-          ) : (
-            <span aria-hidden="true">COBBAN</span>
-          )}
+          ) : null}
         </div>
 
         <div>

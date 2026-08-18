@@ -14,6 +14,33 @@ bitenleri işaretle, yeni çıkanları ekle.
 | 5 | `cobban.com` domainini al | Domain sağlayıcı | Sonra Shopify'a bağla |
 | 6 | Marka benzerlik araştırması + tescil | Patentstyret, TÜRKPATENT | "Çoban" çakışma riski var |
 
+## Kalite denetiminden çıkan açık işler
+
+UX incelemesi (Ağu 2026) — dönüşümü en çok etkileyenler:
+
+- [ ] **Ücretsiz kargo eşiği kullanılmıyor.** Sepette "Fri frakt için 300 kr kaldı"
+      çubuğu yok. AOV hedefi 600 kr, eşik 799 kr — kullanılmayan en büyük kaldıraç
+- [ ] **Dil değişince pazar da sessizce değişiyor.** NO→EN geçişinde 1.248 kr sepet
+      123 € oluyor, kargo eşiği 799 kr'dan 199 €'ya kayıyor. Dil ile pazarı ayır
+      ya da para birimi değişimini kullanıcıya bildir
+- [ ] **Ürün sayfasında teslimat ve ödeme bloğu yok** — kargo süresi, ücreti,
+      iade koşulu ve Vipps/Klarna ödeme rozetleri yalnızca anasayfada
+- [ ] **Sepette birim fiyat yok**, yalnızca satır toplamı; adet butonları 30 px
+      (dokunmatik hedef 44 px olmalı)
+- [ ] **Sepete ekleme geri bildirimi zayıf** — 1,8 sn'lik ✓ dışında bir şey yok;
+      mini sepet ve "ödemeye geç" kısayolu gerekli
+- [ ] **HS kodu ürün sayfasında görünüyor** — gümrük verisi, müşteriye anlamsız.
+      Menşe "TR" yerine "Türkiye" yazılmalı
+- [ ] **Arama alt dizeye bakıyor**: "ull" araması "Bomullsveke" yüzünden mum getiriyor
+- [ ] **Footer'da `{{ORG_NR}}` görünüyor** — Norveçli müşteri org.nr'yi doğrular;
+      şirket kurulunca doldurulacak
+
+Bilinen ve bilerek ertelenen:
+
+- [ ] **Google Fonts rıza öncesi yükleniyor.** GDPR açısından sorunlu (IP adresi
+      Google'a gidiyor). Doğru çözüm yazı tiplerini kendi sunucumuzdan sunmak;
+      bu ortamda fonts.gstatic.com engelli olduğu için indirilemedi
+
 ## Web — sıradaki geliştirmeler
 
 - [ ] **Ürün görselleri** — Shopify'a yüklenince otomatik gelir; şu an renk bloğu

@@ -11,9 +11,7 @@ export default function ProductCard({ product, locale }: { product: ProductView;
           // Shopify CDN görselleri; next/image yerine <img> — CDN zaten optimize ediyor.
           // eslint-disable-next-line @next/next/no-img-element
           <img src={product.imageUrl} alt={product.imageAlt ?? product.name} loading="lazy" />
-        ) : (
-          <span aria-hidden="true">CB</span>
-        )}
+        ) : null}
         {soldOut && <em className="badge">{t(locale, 'product.outOfStock')}</em>}
       </div>
       <p className="card-title">{product.name}</p>

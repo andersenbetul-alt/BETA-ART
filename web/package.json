@@ -2,7 +2,7 @@
   "name": "cobban-storefront",
   "version": "0.1.0",
   "private": true,
-  "description": "COBBAN — çok dilli (NO/EN/TR) online mağaza vitrini",
+  "description": "COBBAN \u2014 \u00e7ok dilli (NO/EN/TR) online ma\u011faza vitrini",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +10,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
-    "check": "npm run typecheck && npm run test && npm run build"
+    "check": "npm run typecheck && npm run i18n && npm run test && npm run build",
+    "i18n": "node tests/i18n-parity.mjs",
+    "qa": "CHROMIUM_PATH=${PLAYWRIGHT_CHROMIUM:-/opt/pw-browsers/chromium} node tests/qa-audit.mjs"
   },
   "dependencies": {
     "marked": "^18.0.10",
@@ -22,6 +24,8 @@
     "@types/node": "^22.15.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
+    "axe-core": "^4.13.0",
+    "playwright": "^1.62.1",
     "typescript": "^5.8.3"
   }
 }

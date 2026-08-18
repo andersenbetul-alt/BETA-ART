@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { isLocale, locales, t } from '@/lib/i18n';
-import { getLegalDocument, legalPages } from '@/lib/legal';
+import { getLegalAlias, getLegalDocument, legalPages } from '@/lib/legal';
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -36,7 +36,12 @@ export default async function LegalPage({
   if (!isLocale(locale)) notFound();
 
   const doc = await getLegalDocument(locale, sayfa);
-  if (!doc) notFound();
+  if (!doc) {
+    // Bu dilde ayrı sayfa yoksa içeriği barındıran belgeye götür — 404 verme.
+    const alias = getLegalAlias(locale, sayfa);
+    if (alias) redirect(`/${locale}/kurumsal/${alias}`);
+    notFound();
+  }
 
   return (
     <div className="wrap legal">
