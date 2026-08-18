@@ -701,3 +701,29 @@ strong, b { font-weight: 600; }
   /* the global animation kill snapped this to its midpoint; park it */
   .ticker-track { animation: none; transform: none; }
 }
+
+/* Our own AI employees — the operating document, not a case study.
+   Each entry is a personnel file: scope, permissions, prohibitions, escalation. */
+.staff-files { list-style: none; padding: 0; margin: 2.4rem 0 0; display: grid; gap: 1px;
+  background: var(--edge); border: 1px solid var(--edge); }
+.staff-file { background: var(--surface); padding: 2rem 1.8rem; }
+.staff-file-head { border-bottom: 1px solid var(--edge); padding-bottom: 1.1rem; margin-bottom: 1.3rem; }
+.staff-file h3 { font-family: var(--f-display); font-weight: 400; font-size: 1.5rem; margin: 0 0 .5rem; }
+.staff-file h3 a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--edge); }
+.staff-file h3 a:hover { color: var(--seal-bright); border-bottom-color: var(--seal-bright); }
+.staff-status { font-family: var(--f-mono); font-size: .62rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); margin: 0; }
+.staff-here { font-size: .95rem; color: var(--text-2); margin: 0 0 1.6rem; max-width: 68ch; }
+.staff-rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 1.6rem 2.4rem; margin-bottom: 1.5rem; }
+/* the prohibitions get a bar rather than a tick — they read as a different kind of list */
+.bar-list { list-style: none; padding: 0; margin: .7rem 0 0; }
+.bar-list li { position: relative; padding-left: 1.4rem; margin-bottom: .55rem;
+  font-size: .88rem; color: var(--text-2); }
+.bar-list li::before { content: ""; position: absolute; left: 0; top: .62em;
+  width: 9px; height: 1px; background: var(--seal-bright); }
+.staff-escalate { font-size: .9rem; color: var(--text-2); border-left: 2px solid var(--seal-bright);
+  padding-left: 1rem; margin: 0 0 1.2rem; max-width: 68ch; }
+.staff-escalate strong { color: var(--text); }
+.staff-file .footnote { margin: 0; }
+.staff-file .footnote a { margin-right: .6rem; }
