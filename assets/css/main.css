@@ -11,6 +11,7 @@
   --brand: #4b3cf7;
   --brand-2: #00b3a4;
   --brand-soft: rgba(75, 60, 247, .09);
+  --on-brand: #ffffff;            /* marka rengi üzerindeki metin */
   --shadow: 0 1px 2px rgba(16, 20, 40, .04), 0 12px 32px rgba(16, 20, 40, .07);
   --shadow-lg: 0 2px 4px rgba(16, 20, 40, .05), 0 24px 60px rgba(16, 20, 40, .12);
   --radius: 16px;
@@ -30,6 +31,8 @@ html[data-theme="dark"] {
   --brand: #8b7dff;
   --brand-2: #2ee0c9;
   --brand-soft: rgba(139, 125, 255, .14);
+  /* Koyu temada marka rengi açık; beyaz metin 3.2:1'de kalıyordu (WCAG AA = 4.5:1) */
+  --on-brand: #12141c;
   --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .35);
   --shadow-lg: 0 2px 4px rgba(0, 0, 0, .45), 0 24px 60px rgba(0, 0, 0, .5);
 }
@@ -84,7 +87,7 @@ p { margin: 0 0 1em; }
 .logo-mark {
   width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color: #fff; font-size: .85rem; font-weight: 800;
+  color: var(--on-brand); font-size: .85rem; font-weight: 800;
 }
 .nav-links { display: flex; gap: 4px; margin-inline-start: 18px; min-width: 0; overflow: hidden; }
 .nav-links a {
@@ -130,7 +133,7 @@ p { margin: 0 0 1em; }
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
 }
 .btn:hover { transform: translateY(-1px); }
-.btn--primary { background: var(--brand); color: #fff; box-shadow: 0 8px 20px var(--brand-soft); }
+.btn--primary { background: var(--brand); color: var(--on-brand); box-shadow: 0 8px 20px var(--brand-soft); }
 .btn--primary:hover { box-shadow: 0 12px 26px var(--brand-soft); }
 .btn--ghost { background: transparent; color: var(--text); border-color: var(--border); }
 .btn--ghost:hover { background: var(--bg-soft); }
@@ -198,7 +201,7 @@ p { margin: 0 0 1em; }
 /* ---------- Akış (repurposing) ---------- */
 .flow { display: grid; gap: 20px; grid-template-columns: minmax(220px, 300px) 1fr; align-items: center; }
 .flow-source {
-  background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: var(--on-brand);
   border-radius: var(--radius); padding: 30px 26px; box-shadow: var(--shadow-lg);
 }
 .flow-source b { display: block; font-size: 1.25rem; }
@@ -242,7 +245,7 @@ p { margin: 0 0 1em; }
   color: var(--text-muted); font: inherit; font-size: .85rem; font-weight: 600; cursor: pointer;
 }
 .chip:hover { color: var(--text); }
-.chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+.chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
 
 .posts { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .post-card {
@@ -290,10 +293,10 @@ html[lang="hi"] .article-body p:first-of-type::first-letter {
 
 /* ---------- Newsletter ---------- */
 .cta-box {
-  background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: var(--on-brand);
   border-radius: 24px; padding: clamp(34px, 5vw, 60px); text-align: center; box-shadow: var(--shadow-lg);
 }
-.cta-box h2 { color: #fff; }
+.cta-box h2 { color: var(--on-brand); }
 .cta-box p { opacity: .92; max-width: 520px; margin-inline: auto; }
 .subscribe { display: flex; gap: 10px; max-width: 460px; margin: 26px auto 12px; flex-wrap: wrap; }
 .subscribe input {
@@ -301,7 +304,7 @@ html[lang="hi"] .article-body p:first-of-type::first-letter {
   background: rgba(255, 255, 255, .95); color: #14161c;
 }
 .subscribe .btn { background: #14161c; color: #fff; }
-html[data-theme="dark"] .subscribe .btn { background: #fff; color: #14161c; }
+html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 .form-msg { font-size: .88rem; min-height: 1.2em; opacity: .95; }
 .cta-note { font-size: .82rem; opacity: .8; }
 
@@ -354,7 +357,7 @@ html[data-theme="dark"] .subscribe .btn { background: #fff; color: #14161c; }
   color: var(--text-muted); font: inherit; font-size: .93rem; font-weight: 600; cursor: pointer;
 }
 .tab:hover { color: var(--text); }
-.tab[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+.tab[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
 
 .form-card { max-width: 720px; margin-inline: auto; }
 .form-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }

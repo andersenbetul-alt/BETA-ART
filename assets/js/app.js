@@ -182,7 +182,7 @@
       datePublished: post.date,
       inLanguage: currentLang,
       articleSection: t('cat.' + post.category),
-      timeRequired: 'PT' + post.read + 'M',
+      timeRequired: 'PT' + readTime(post) + 'M',
       mainEntityOfPage: SITE_URL + '/post.html?slug=' + encodeURIComponent(post.slug),
       author: { '@type': 'Organization', name: 'QBLOGG', url: SITE_URL },
       publisher: { '@type': 'Organization', name: 'QBLOGG', url: SITE_URL }
@@ -220,11 +220,19 @@
       '<div class="post-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + p.icon + '</div>' +
       '<div class="post-body">' +
         '<div class="post-meta"><span class="tag">' + esc(t('cat.' + p.category)) + '</span>' +
-        '<span>' + esc(fmtDate(p.date)) + '</span><span>· ' + p.read + ' ' + esc(t('posts.min')) + '</span></div>' +
+        '<span>' + esc(fmtDate(p.date)) + '</span><span>· ' + readTime(p) + ' ' + esc(t('posts.min')) + '</span></div>' +
         '<h3>' + esc(pick(p.t)) + '</h3><p>' + esc(pick(p.e)) + '</p>' +
         '<span class="read-more">' + esc(t('posts.readMore')) + ' →</span>' +
       '</div></a>';
   }
+  // Okuma süresi metnin kendisinden hesaplanır (dakikada ~200 kelime).
+  // Elle girilen bir sayı, metin değişince yanlış kalıyordu.
+  function readTime(post) {
+    var text = (pick(post.b) || []).join(' ');
+    var words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    return Math.max(1, Math.round(words / 200));
+  }
+
   function sorted() {
     return POSTS.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
   }
@@ -303,7 +311,7 @@
       '<div class="article-head">' +
         '<div class="post-meta" style="justify-content:center"><span class="tag">' + esc(t('cat.' + post.category)) + '</span>' +
         '<span>' + esc(t('posts.published')) + ': ' + esc(fmtDate(post.date)) + '</span>' +
-        '<span>· ' + post.read + ' ' + esc(t('posts.min')) + '</span></div>' +
+        '<span>· ' + readTime(post) + ' ' + esc(t('posts.min')) + '</span></div>' +
         '<h1>' + esc(pick(post.t)) + '</h1>' +
         '<p class="muted">' + esc(pick(post.e)) + '</p>' +
       '</div>' +

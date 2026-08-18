@@ -36,6 +36,8 @@ maliyet.
 | 8 | Hakkımızda bölümü (kim yazıyor, hangi deneyim) | Bekliyor | Anonim stüdyo dönüşümü düşürür |
 | 9 | Gizlilik ve koşullar sayfaları | Bekliyor | Altbilgideki bağlantılar şu an boş |
 | 10 | Örnek teslimat (bir makale + türetilmiş 5 içerik) PDF'i | Bekliyor | Brief formunda "örnek gör" olarak kullanılabilir |
+| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | Bekliyor | Yazılar ~120 kelime; site 1.200–2.000 kelime satıyor. En büyük güven açığı |
+| 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
 ### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)
 
@@ -46,6 +48,8 @@ maliyet.
 | 13 | Ayda 2 yeni yazı (10 dilde) | Sürekli | Konu havuzu aşağıda |
 | 14 | Her yazının sonuna ilgili pakete bağlantı | **Bitti** 18.08 | Yazı sonunda brief + paket köprüsü, 10 dilde |
 | 15 | Analitik (gizlilik dostu) ve dönüşüm ölçümü | Bekliyor | Hangi yazı brief getiriyor? |
+| 22 | Sayfa ağırlığını böl | Bekliyor | 236 KB'ın 183 KB'ı i18n+posts; ziyaretçi on dilin tamamını indiriyor |
+| 23 | Sosyal paylaşım görseli (og:image) ve 404 sayfası | Bekliyor | Paylaşılan bağlantı şu an önizlemesiz görünüyor |
 
 ### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
 
@@ -91,5 +95,13 @@ stüdyosu. Sıradaki adaylar — hepsi ticari niyeti olan, aramada karşılığ�
   statik yazılamıyor; ön-render adımı (iş #11) gelince statiğe dönecek.
 - **Drop-cap yalnızca Latin/Kiril yazılarda.** Arapça bitişik yazıldığı için ilk harfi
   büyütmek kelimeyi bozuyordu; Çince ve Devanagari'de de yanlış duruyor.
+- **Yazı tipi kendi sunucumuzda.** Google Fonts CDN'i ziyaretçinin IP'sini Google'a
+  gönderiyor; Münih Bölge Mahkemesi kararı (3 O 17493/20) sonrası AB'de riskli sayılıyor.
+  Inter değişken sürümü yerelde (4 dosya, 188 KB); Arapça/Çince/Devanagari sistem
+  yazı tiplerine düşüyor. Site artık hiçbir dış istek yapmıyor.
+- **Koyu temada marka rengi üzerindeki metin koyu.** Beyaz metin 3.2:1 kontrastta
+  kalıyordu (WCAG AA eşiği 4.5:1); `--on-brand` değişkeni eklendi.
+- **Okuma süresi metinden hesaplanıyor.** Elle girilen değer yanlış kalıyordu
+  (124 kelimelik yazı "8 dk okuma" diyordu).
 - **Mobil menü eşiği 1180px.** Rusça ve Norveççe menü etiketleri uzun; daha düşük eşikte
   menü ya iki satıra kırılıyor ya da sayfayı yatay taşırıyordu.
