@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  /* Marka paleti — derin lacivert + sıcak kum tonu */
+  --color-ink-950: #061422;
+  --color-ink-900: #0a1f33;
+  --color-ink-800: #10304c;
+  --color-ink-700: #1a4467;
+  --color-ink-600: #2a5c86;
+  --color-ink-100: #dbe6ef;
+  --color-ink-50: #f1f6fa;
+
+  --color-sand-50: #fbf9f5;
+  --color-sand-100: #f4efe5;
+  --color-sand-200: #e7dcc7;
+
+  --color-accent-700: #8f6416;
+  --color-accent-600: #a97a1e;
+  --color-accent-500: #c08a2e;
+  --color-accent-300: #ddb96e;
+  --color-accent-100: #f0e2c6;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-serif), ui-serif, Georgia, serif;
+
+  --text-display: 3.25rem;
+  --text-display--line-height: 1.08;
+  --text-display--letter-spacing: -0.02em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-sand-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-100);
+    color: var(--color-ink-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-600);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* Bölüm başlıklarının üstündeki küçük etiket */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent-700);
+  }
+
+  .eyebrow::before {
+    content: "";
+    inline-size: 1.75rem;
+    block-size: 1px;
+    background-color: var(--color-accent-500);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
