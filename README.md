@@ -24,10 +24,18 @@ npm run dev      # http://localhost:3000
 Diğer komutlar:
 
 ```bash
-npm run build    # production derlemesi
-npm start        # derlenmiş siteyi çalıştırır
-npm run lint     # ESLint
-npx tsc --noEmit # tip kontrolü
+npm run build      # production derlemesi
+npm start          # derlenmiş siteyi çalıştırır
+npm run check      # tip kontrolü + lint + testler (değişiklikten sonra bunu çalıştırın)
+npm test           # yalnızca testler
+npm run test:watch # testleri izleme modunda
+```
+
+Tek bir test dosyası ya da tek bir test:
+
+```bash
+npx vitest run tests/i18n.test.ts
+npx vitest run -t "ilan detayında aynı ilanda kalır"
 ```
 
 ### Ortam değişkenleri
@@ -200,6 +208,18 @@ Böyle bir araç eklenirse metnin güncellenmesi gerekir.
 > **Yayına almadan önce:** Metindeki ticari unvan, adres ve hizmet sağlayıcı
 > bilgilerini gerçek değerlerle güncelleyin ve bir hukuk danışmanına inceletin.
 > İçerik `src/content/tr.ts` ve `en.ts` dosyalarındaki `privacy` alanındadır.
+
+## Testler
+
+`tests/` altında Vitest ile çalışan 50 test var. Kapsam bilinçli olarak
+kırılgan mantığa odaklıdır; bileşen render testi yoktur.
+
+| Dosya | Neyi korur |
+| --- | --- |
+| `i18n.test.ts` | Adres üretimi, dil eşleme, dil değiştiricinin ilan detayında aynı ilanda kalması |
+| `content.test.ts` | İki sözlüğün içerik olarak ayrışmaması, boş metin kalmaması, ilan bütünlüğü |
+| `contact.test.ts` | Form doğrulaması, bot tuzağı, e-posta yükü, gönderim hatasında sahte onay verilmemesi |
+| `seo.test.ts` | Sitemap kapsamı, canonical/hreflang eşlemesi, Open Graph görselleri |
 
 ## Erişilebilirlik ve SEO
 

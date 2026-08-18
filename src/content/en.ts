@@ -110,7 +110,7 @@ export const en: Dictionary = {
     },
     practices: [
       {
-        id: "management-strategy",
+        id: "yonetim-strateji",
         eyebrow: "Practice area 01",
         title: "Management & Strategy Consulting",
         summary:
@@ -145,7 +145,7 @@ export const en: Dictionary = {
         ],
       },
       {
-        id: "hr-learning",
+        id: "ik-egitim",
         eyebrow: "Practice area 02",
         title: "Human Resources & Corporate Learning",
         summary:

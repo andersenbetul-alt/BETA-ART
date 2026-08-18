@@ -1,4 +1,5 @@
 import type { JobId } from "./jobs";
+import type { PracticeId } from "./practices";
 
 export type Link = { label: string; href: string };
 
@@ -20,7 +21,7 @@ export type Feature = {
 };
 
 export type Practice = {
-  id: string;
+  id: PracticeId;
   eyebrow: string;
   title: string;
   summary: string;
