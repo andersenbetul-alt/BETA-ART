@@ -65,14 +65,28 @@ adları (TONO, GRAMO, NCB, Berne, DMCA) kasıtlı olarak çevrilmez.
 
 ## Yerelde çalıştırma
 
-En basiti: `index.html` dosyasına çift tıklayın.
-`?lang=` parametresini denemek veya yerel sunucu istemek için:
+En basiti: `index.html` dosyasına çift tıklayın. Yerel sunucu isterseniz (Node 18+):
 
 ```bash
-python3 -m http.server 8000
+npm run dev
 # http://localhost:8000        (varsayılan dil)
-# http://localhost:8000/?lang=ar
+# http://localhost:8000/?lang=ar   (sağdan sola bir dili denemek için)
 ```
+
+## Değişiklikten sonra kontrol
+
+```bash
+npm run check
+```
+
+Bağımlılık gerektirmez. Şunları yakalar: bir dilde eksik kalan çeviri anahtarı,
+hiçbir yerde kullanılmayan anahtar, olmayan bir bölüme giden bağlantı, repoda
+bulunmayan bir dosyaya referans, eksik `hreflang`, RTL listesine eklenmemiş
+sağdan sola dil ve söz dizimi hatası. GitHub'a her push'ta aynı kontrol
+Actions üzerinde de çalışır (`.github/workflows/ci.yml`).
+
+Projenin çalışma kuralları (yeni dil ekleme, yeni bölüm ekleme, güncellenmesi
+gereken sayılar) `CLAUDE.md` dosyasında.
 
 ## Yayına alma
 
