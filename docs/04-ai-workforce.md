@@ -15,11 +15,20 @@ goes out. These never talk to a client and never touch the live site.
 
 ## 1. Front of house — the three published roles
 
-Status: **in supervised operation**. Each runs a two-week supervised period —
-every conversation read daily, every answer corrected — before it works
-unattended. Nothing on this list is a claim about volume or results; when
-there are figures worth publishing they go on the site with the date they were
-measured, and not before.
+Status: **in setup — none of the three is answering yet.** The rules are
+written and the access boundaries are in place; the two-week supervised period
+begins when each one is switched on.
+
+This was a decision, not an oversight. The concept is *verified at the source*,
+and the page argues that a buyer should ask any supplier for exactly this
+document. Writing *in operation* would have gone unchallenged and would have
+made the whole argument worthless. The status line changes on the day it
+changes, with the date, and the note explaining why stays on the page so the
+difference between a status and a slogan stays visible.
+
+Nothing on the page is a claim about volume or results either. When there are
+figures worth publishing they go up with the date they were measured, and not
+before.
 
 | Role | Scope at Beta Art | Page |
 |---|---|---|
