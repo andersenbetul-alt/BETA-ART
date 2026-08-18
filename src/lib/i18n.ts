@@ -17,6 +17,7 @@ export const routes = {
   home: { tr: "", en: "" },
   services: { tr: "hizmetler", en: "services" },
   approach: { tr: "yaklasim", en: "approach" },
+  insights: { tr: "icgoruler", en: "insights" },
   about: { tr: "hakkimizda", en: "about" },
   careers: { tr: "kariyer", en: "careers" },
   contact: { tr: "iletisim", en: "contact" },
@@ -38,6 +39,7 @@ export const routeKeys = Object.keys(routes) as RouteKey[];
 export const navKeys = [
   "services",
   "approach",
+  "insights",
   "about",
   "careers",
   "contact",

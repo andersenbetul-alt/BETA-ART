@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import robots from "@/app/robots";
 import { pageMetadata } from "@/lib/metadata";
+import { articleIds } from "@/content/articles";
 import { jobIds } from "@/content/jobs";
 import { locales, path, routeKeys, siteUrl } from "@/lib/i18n";
 
@@ -21,6 +22,15 @@ describe("sitemap", () => {
     for (const locale of locales) {
       for (const id of jobIds) {
         const url = `${siteUrl}${path("careers", locale)}/${id}`;
+        expect(entries.some((e) => e.url === url), url).toBe(true);
+      }
+    }
+  });
+
+  it("her yazıyı her dilde içerir", () => {
+    for (const locale of locales) {
+      for (const id of articleIds) {
+        const url = `${siteUrl}${path("insights", locale)}/${id}`;
         expect(entries.some((e) => e.url === url), url).toBe(true);
       }
     }

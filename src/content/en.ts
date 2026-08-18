@@ -13,6 +13,7 @@ export const en: Dictionary = {
   nav: {
     services: "Services",
     approach: "Our approach",
+    insights: "Insights",
     about: "About",
     careers: "Careers",
     contact: "Contact",
@@ -415,6 +416,146 @@ export const en: Dictionary = {
         email: "Please enter a valid email address.",
         message: "Please write a message of at least 20 characters.",
         generic: "Your request could not be sent. Please try again.",
+      },
+    },
+  },
+  insights: {
+    hero: {
+      eyebrow: "Insights",
+      title: "What we see on the ground",
+      description:
+        "We write about the problems we meet again and again in client work, and the approaches we have seen actually hold up. Not general advice — we try to keep it concrete enough to act on.",
+    },
+    labels: {
+      readingTime: "minute read",
+      published: "Published",
+      backToList: "All articles",
+      related: "This article relates to",
+      cta: {
+        title: "Let's discuss this in your organisation",
+        description:
+          "If the situation described here feels familiar, we can look at your own picture together in a 30-minute introductory call.",
+      },
+    },
+    articles: {
+      "strateji-neden-rafta-kalir": {
+        title: "Why strategies stay on the shelf",
+        excerpt:
+          "In most organisations the problem is not the absence of a strategy, but the absence of the structure to carry it. Four traits shared by shelved plans, and what each one looks like in practice.",
+        sections: [
+          {
+            title: "The strategy itself is rarely the problem",
+            paragraphs: [
+              "Finding out whether an organisation has a strategy is easy: you ask, and a deck usually appears. The hard part is finding out whether the decisions in that deck have any bearing on daily operations six months later.",
+              "Working with shelved plans, we have almost never seen a genuinely bad strategy. What we have seen is sound decisions taken before the structure to carry them existed.",
+            ],
+          },
+          {
+            title: "Trait one: nothing was prioritised",
+            paragraphs: [
+              "Fourteen strategic priorities means zero priorities. If every item on a list is equally important, then when resources collide it is unclear who gives way, and the decision defaults to the loudest executive in the room.",
+              "An agenda you can act on rarely holds more than three to five items. Everything else is not discarded but sequenced: writing down what belongs to this year and what belongs to the next.",
+            ],
+          },
+          {
+            title: "Trait two: decision rights were left undefined",
+            paragraphs: [
+              "Strategy documents almost always write down what will be done and almost never who decides. The result is that every decision escalates to the leadership team, and management meetings turn into operations meetings.",
+              "This is not an org chart problem; the chart usually exists. What is missing is a table showing at which level each type of decision is settled. Writing it takes an afternoon and its effect is felt for months.",
+            ],
+          },
+          {
+            title: "Trait three: the measure tracks activity, not outcome",
+            paragraphs: [
+              "\"The digital transformation programme is sixty percent complete\" is an activity measure and tells you nothing. \"Order closing time fell from nine days to five\" is an outcome measure.",
+              "Activity measures are comforting because they always show progress. Outcome measures are uncomfortable because they sometimes stall — which is precisely why they, and not the others, belong in the management meeting.",
+            ],
+          },
+          {
+            title: "Trait four: the people side was left until later",
+            paragraphs: [
+              "The strategy work finishes, and then someone says \"let's pass this to HR\". But new priorities usually demand new capabilities, a different definition of performance, and sometimes a different team.",
+              "Leaving the people side until later delays execution by about six months. Discussed at the same table, the strategy itself often changes — because what is actually feasible becomes visible.",
+            ],
+          },
+        ],
+        takeaway:
+          "If you have a plan sitting on a shelf, check these four before rewriting it: how many priorities you have, who decides, what you measure, and when the people side came to the table.",
+      },
+      "yetkinlik-modeli-oncesi-uc-soru": {
+        title: "Three questions before you build a competency model",
+        excerpt:
+          "Competency models are the HR instrument organisations invest in most and use least. What separates the ones that get used from the ones that gather dust is the questions asked before building them.",
+        sections: [
+          {
+            title: "Why most models go unused",
+            paragraphs: [
+              "Building a competency model takes a few months, ends in a handsome document, and is often opened exactly once a year at review time. The problem is not the quality of the model but that nobody defined which decision it would feed.",
+              "What the models in active use have in common is not their level of sophistication — it is that each is attached to a decision.",
+            ],
+          },
+          {
+            title: "Question one: which decision will this feed?",
+            paragraphs: [
+              "Promotion decisions, hiring interviews, allocation of the training budget, salary bands? If the answer is \"all of them\", the model will probably be used in none of them.",
+              "A model built around a single decision genuinely gets used within six months, and matures through use. A model trying to serve everything is adopted by no decision owner.",
+            ],
+          },
+          {
+            title: "Question two: can it be written as behaviour?",
+            paragraphs: [
+              "\"Analytical thinking\" is the name of a competency, not its definition. Two managers assessing the same person under that heading will measure different things.",
+              "A usable definition has to be observable: something like \"can state separately the data and the assumption behind a decision\". A sentence of that kind measures the same thing in an interview and in a performance conversation.",
+              "This makes the model longer and tedious to write. That is the price of it being usable.",
+            ],
+          },
+          {
+            title: "Question three: how many levels are genuinely different?",
+            paragraphs: [
+              "Most organisations define five levels while three distinct jobs are actually being done. The artificial levels in between turn promotion into a reward mechanism and, over time, produce title inflation.",
+              "Derive the number of levels from the work itself: where does responsibility, decision scope and impact genuinely change? Usually in fewer places than you think.",
+            ],
+          },
+        ],
+        takeaway:
+          "If you cannot answer these three clearly, postpone building the model. Once the answers are sharp, the model is already half written.",
+      },
+      "egitimi-davranisla-olcmek": {
+        title: "Measuring training by behaviour, not attendance",
+        excerpt:
+          "Attendance rates and satisfaction scores say nothing about whether training worked. Measuring behaviour change does not require an expensive system — it requires three habits.",
+        sections: [
+          {
+            title: "Comforting but empty indicators",
+            paragraphs: [
+              "Most corporate learning reports contain two numbers: how many people attended and what the satisfaction score was. Both come out high, because both measure the training itself — not what happened afterwards.",
+              "A satisfaction score mostly measures the trainer's presentation skills. A badly designed programme with a good trainer scores well too.",
+            ],
+          },
+          {
+            title: "Start measuring before the training",
+            paragraphs: [
+              "Measuring behaviour change requires writing down the expected behaviour before the training. Not \"giving feedback\", but something like \"managers hold a one-to-one with each team member at least monthly, and the conversation is grounded in a specific example\".",
+              "If you cannot write that sentence, it is not yet clear what the training is meant to change. That is a design problem before it is a measurement problem.",
+            ],
+          },
+          {
+            title: "Ask three months later, not immediately after",
+            paragraphs: [
+              "A survey handed out as people leave the room measures enthusiasm. The real question should be asked three months later — and not to the participant, but to the people around them: did team members notice any change in how often one-to-ones happen?",
+              "This measurement needs no expensive system. A five-question pulse check, asked at the right time and of the right people, is enough.",
+            ],
+          },
+          {
+            title: "Bring the manager into the process",
+            paragraphs: [
+              "The strongest predictor of behaviour change is not the quality of the training but whether the participant's manager expects that behaviour.",
+              "Write the manager's part into the programme design: a five-minute expectation conversation before, and a follow-up conversation after, roughly doubles the effect of most programmes.",
+            ],
+          },
+        ],
+        takeaway:
+          "If you change one thing about your next programme, move the measurement from the end of the training to three months later, and ask the people around the participant.",
       },
     },
   },

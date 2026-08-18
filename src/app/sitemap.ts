@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { articleIds } from "@/content/articles";
 import { jobIds } from "@/content/jobs";
 import { absoluteUrl, locales, path, routeKeys } from "@/lib/i18n";
 
@@ -34,5 +35,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  return [...pages, ...jobPages];
+  // İçgörü yazıları
+  const articlePages = locales.flatMap((locale) =>
+    articleIds.map((slug) => ({
+      url: absoluteUrl(`${path("insights", locale)}/${slug}`),
+      lastModified,
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((alt) => [alt, absoluteUrl(`${path("insights", alt)}/${slug}`)]),
+        ),
+      },
+    })),
+  );
+
+  return [...pages, ...jobPages, ...articlePages];
 }

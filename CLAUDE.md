@@ -75,7 +75,11 @@ URL'de veya bağlantı çıpasında görünen kimlikler **iki dilde de aynıdır
 paylaşılan modüllerde sabit birleşim tipi olarak tanımlanır:
 
 - `src/content/jobs.ts` → `jobIds` (ilan adresleri: `/tr/kariyer/<id>`)
+- `src/content/articles.ts` → `articleIds` (yazı adresleri: `/tr/icgoruler/<id>`)
 - `src/content/practices.ts` → `practiceIds` (çıpa: `/tr/hizmetler#<id>`)
+
+`articleIds` dizisinin **sırası listeleme sırasıdır** — en yeni yazı başa
+eklenir; bir test bu sıranın tarihlerle tutarlı kalmasını doğrular.
 
 Sözlükler bunları `Record<JobId, ...>` olarak tutar, yani bir ilanı tek dilde
 tanımlamak derlemeyi kırar. Kimlikler dilden bağımsız olduğu için dil değiştirici
@@ -101,7 +105,7 @@ döndürdüğü için `/en/kariyer/...` gibi karışık kombinasyonlar 404 olur.
 `tests/` altında Vitest. Kapsam bilinçli olarak kırılgan mantığa odaklı:
 
 - `i18n.test.ts` — adres üretimi, dil eşleme, gidiş-dönüş tutarlılığı
-- `content.test.ts` — iki sözlüğün ayrışmaması, boş metin olmaması, ilan bütünlüğü
+- `content.test.ts` — iki sözlüğün ayrışmaması, boş metin olmaması, ilan ve yazı bütünlüğü
 - `contact.test.ts` — doğrulama, bot tuzağı, e-posta yükü, gönderim hatası
 - `seo.test.ts` — sitemap kapsamı, canonical/hreflang, Open Graph
 
@@ -120,6 +124,7 @@ günlüğüne yazılır ve kullanıcıya yine onay gösterilir.
 - `NEXT_PUBLIC_SITE_URL`
 - `src/content/jobs.ts` içindeki ilan tarihleri (JobPosting verisine gider)
 - Kariyer sayfasındaki dört ilan örnek içeriktir
+- `src/content/articles.ts` içindeki yayın tarihleri (Article verisine gider)
 - Gizlilik/KVKK metni hukuki incelemeden geçmemiştir
 
 ## Dil

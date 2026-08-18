@@ -1,7 +1,18 @@
 import type { JobId } from "./jobs";
 import type { PracticeId } from "./practices";
+import type { ArticleId } from "./articles";
 
 export type Link = { label: string; href: string };
+
+export type Article = {
+  title: string;
+  /** Listede ve meta açıklamasında kullanılır */
+  excerpt: string;
+  /** Yazının gövdesi */
+  sections: TextSection[];
+  /** Kapanış cümlesi — okuyucuya ne yapması gerektiğini söyler */
+  takeaway: string;
+};
 
 export type Job = {
   title: string;
@@ -55,7 +66,7 @@ export type Dictionary = {
     htmlLang: string;
   };
   nav: Record<
-    "services" | "approach" | "about" | "careers" | "contact",
+    "services" | "approach" | "insights" | "about" | "careers" | "contact",
     string
   >;
   actions: {
@@ -134,6 +145,18 @@ export type Dictionary = {
         generic: string;
       };
     };
+  };
+  insights: {
+    hero: { eyebrow: string; title: string; description: string };
+    labels: {
+      readingTime: string;
+      published: string;
+      backToList: string;
+      related: string;
+      cta: { title: string; description: string };
+    };
+    /** Her yazı iki dilde de tanımlanmak zorundadır */
+    articles: Record<ArticleId, Article>;
   };
   careers: {
     hero: { eyebrow: string; title: string; description: string };

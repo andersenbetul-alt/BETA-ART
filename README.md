@@ -65,6 +65,8 @@ Site iki dilde yayınlanır ve **her dilin kendi URL'leri** vardır:
 | Ana sayfa | `/tr` | `/en` |
 | Hizmetler | `/tr/hizmetler` | `/en/services` |
 | Yaklaşımımız | `/tr/yaklasim` | `/en/approach` |
+| İçgörüler | `/tr/icgoruler` | `/en/insights` |
+| Yazı detayı | `/tr/icgoruler/<yazi>` | `/en/insights/<yazi>` |
 | Hakkımızda | `/tr/hakkimizda` | `/en/about` |
 | Kariyer | `/tr/kariyer` | `/en/careers` |
 | İlan detayı | `/tr/kariyer/<ilan>` | `/en/careers/<ilan>` |
@@ -94,6 +96,7 @@ src/
 │   │   ├── yaklasim/   approach/
 │   │   ├── hakkimizda/ about/
 │   │   ├── iletisim/   contact/
+│   │   ├── icgoruler/  insights/     # liste + [slug] yazı detayı
 │   │   ├── kariyer/    careers/      # liste + [slug] ilan detayı
 │   │   ├── gizlilik/   privacy/
 │   │   └── not-found.tsx
@@ -103,7 +106,9 @@ src/
 │   └── sitemap.ts
 ├── components/              # Header, footer, logo, iletişim formu, UI parçaları
 ├── content/                 # Tüm site metinleri (tr.ts / en.ts)
-│   └── jobs.ts              # İlan kimlikleri ve dilden bağımsız bilgileri
+│   ├── articles.ts          # Yazı kimlikleri, yayın tarihi, okuma süresi
+│   ├── jobs.ts              # İlan kimlikleri ve dilden bağımsız bilgileri
+│   └── practices.ts         # Uzmanlık alanı kimlikleri (çıpa olarak kullanılır)
 ├── lib/                     # i18n yönlendirme tablosu, metadata, server action
 ├── views/                   # Sayfa gövdeleri (dil parametresi alır)
 └── proxy.ts                 # Dil yönlendirmesi
@@ -163,6 +168,29 @@ hata yönetimi çağıran tarafta durur.
 > fonksiyon dışa aktarabilir. Formun paylaşılan tipleri bu yüzden `src/lib/contact.ts`
 > dosyasında durur.
 
+## İçgörüler
+
+Yazılar `/tr/icgoruler` ve `/en/insights` altında listelenir; her yazının kendi
+detay sayfası ve `Article` yapılandırılmış verisi vardır. Yeni bir danışmanlık
+firmasının vaka çalışması olmadığı için organik görünürlüğün ana kaynağı budur.
+
+### Yeni yazı ekleme
+
+1. `src/content/articles.ts` içindeki `articleIds` dizisinin **başına** kimliği
+   ekleyin — dizi sırası listeleme sırasıdır, en yeni yazı başta olmalıdır.
+2. Aynı dosyadaki `articleMeta` kaydına yayın tarihini, okuma süresini ve
+   yazının bağlı olduğu uzmanlık alanını yazın.
+3. `tr.ts` ve `en.ts` içindeki `insights.articles` kayıtlarına yazıyı iki dilde
+   de ekleyin.
+
+Yazı gövdesi `TextSection` dizisidir: her bölümün başlığı, paragrafları ve
+isteğe bağlı madde listesi vardır. `takeaway` alanı yazıyı okuyucuya somut bir
+eylemle kapatır.
+
+> **Not:** Sitedeki üç yazı NAVIAR'ın uzmanlık alanlarına göre yazılmış başlangıç
+> içeriğidir. Yayın tarihleri yapılandırılmış veriye gider; gerçek tarihlerle
+> güncellenmeleri gerekir.
+
 ## İş ilanları
 
 Açık pozisyonlar `/tr/kariyer` ve `/en/careers` sayfalarında listelenir; her
@@ -211,13 +239,13 @@ Böyle bir araç eklenirse metnin güncellenmesi gerekir.
 
 ## Testler
 
-`tests/` altında Vitest ile çalışan 50 test var. Kapsam bilinçli olarak
+`tests/` altında Vitest ile çalışan 59 test var. Kapsam bilinçli olarak
 kırılgan mantığa odaklıdır; bileşen render testi yoktur.
 
 | Dosya | Neyi korur |
 | --- | --- |
 | `i18n.test.ts` | Adres üretimi, dil eşleme, dil değiştiricinin ilan detayında aynı ilanda kalması |
-| `content.test.ts` | İki sözlüğün içerik olarak ayrışmaması, boş metin kalmaması, ilan bütünlüğü |
+| `content.test.ts` | İki sözlüğün içerik olarak ayrışmaması, boş metin kalmaması, ilan ve yazı bütünlüğü |
 | `contact.test.ts` | Form doğrulaması, bot tuzağı, e-posta yükü, gönderim hatasında sahte onay verilmemesi |
 | `seo.test.ts` | Sitemap kapsamı, canonical/hreflang eşlemesi, Open Graph görselleri |
 

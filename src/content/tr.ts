@@ -13,6 +13,7 @@ export const tr: Dictionary = {
   nav: {
     services: "Hizmetler",
     approach: "Yaklaşımımız",
+    insights: "İçgörüler",
     about: "Hakkımızda",
     careers: "Kariyer",
     contact: "İletişim",
@@ -415,6 +416,146 @@ export const tr: Dictionary = {
         email: "Lütfen geçerli bir e-posta adresi girin.",
         message: "Lütfen en az 20 karakterlik bir mesaj yazın.",
         generic: "Talebiniz gönderilemedi. Lütfen tekrar deneyin.",
+      },
+    },
+  },
+  insights: {
+    hero: {
+      eyebrow: "İçgörüler",
+      title: "Sahada gördüklerimiz",
+      description:
+        "Danışmanlık projelerinde tekrar tekrar karşılaştığımız sorunları ve işe yaradığını gördüğümüz yaklaşımları yazıyoruz. Genel geçer tavsiye değil; uygulanabilir olması için yeterince somut olmasına çalışıyoruz.",
+    },
+    labels: {
+      readingTime: "dakikalık okuma",
+      published: "Yayın",
+      backToList: "Tüm yazılar",
+      related: "Bu yazı şu alanla ilgili",
+      cta: {
+        title: "Bu konuyu kurumunuzda konuşalım",
+        description:
+          "Yazıda anlatılan durum size tanıdık geldiyse, 30 dakikalık ilk görüşmede kendi tablonuzu birlikte değerlendirebiliriz.",
+      },
+    },
+    articles: {
+      "strateji-neden-rafta-kalir": {
+        title: "Strateji neden rafta kalır?",
+        excerpt:
+          "Çoğu kurumda sorun stratejinin yokluğu değil, stratejiyi taşıyacak yapının kurulmamış olmasıdır. Rafta kalan planların dört ortak özelliği ve her birinin somut karşılığı.",
+        sections: [
+          {
+            title: "Sorun stratejinin kendisi değil",
+            paragraphs: [
+              "Bir kurumun stratejisi olup olmadığını anlamak kolaydır: sorarsınız, çoğu zaman bir sunum çıkar. Zor olan, o sunumdaki kararların altı ay sonra günlük işleyişte karşılığı olup olmadığını anlamaktır.",
+              "Rafta kalan planlarla çalıştığımızda neredeyse hiç 'kötü strateji' görmedik. Gördüğümüz şey, doğru kararların onları taşıyacak yapı kurulmadan alınmış olmasıydı.",
+            ],
+          },
+          {
+            title: "Birinci özellik: önceliklendirilmemiş olması",
+            paragraphs: [
+              "On dört stratejik öncelik, sıfır öncelik demektir. Bir listedeki her madde aynı derecede önemliyse, kaynak çatıştığında kimin geri adım atacağı belirsiz kalır ve karar en yüksek sesli yöneticiye devrolur.",
+              "Uygulanabilir bir gündem nadiren üç-beş başlığı geçer. Geri kalanı yok saymak değil, sıraya koymaktır: neyin bu yıl, neyin gelecek yıl olduğunu yazmak.",
+            ],
+          },
+          {
+            title: "İkinci özellik: karar haklarının tanımsız olması",
+            paragraphs: [
+              "Strateji belgeleri neredeyse her zaman 'ne yapılacağını' yazar, 'kimin karar vereceğini' yazmaz. Sonuç, her kararın üst yönetime çıkması ve yönetim toplantılarının operasyon toplantısına dönüşmesidir.",
+              "Bu, bir organizasyon şeması sorunu değildir; şema çoğu zaman vardır. Eksik olan, belirli karar tiplerinin hangi seviyede sonuçlandığını gösteren bir tablodur. Bunu yazmak bir öğleden sonra sürer ve etkisi aylarca hissedilir.",
+            ],
+          },
+          {
+            title: "Üçüncü özellik: ölçünün sonuçta değil faaliyette olması",
+            paragraphs: [
+              "'Dijital dönüşüm projesinin yüzde altmışı tamamlandı' cümlesi bir faaliyet ölçüsüdür ve hiçbir şey söylemez. 'Sipariş kapama süresi dokuz günden beş güne indi' bir sonuç ölçüsüdür.",
+              "Faaliyet ölçüleri rahatlatıcıdır çünkü her zaman ilerleme gösterir. Sonuç ölçüleri rahatsız edicidir çünkü bazen yerinde sayar — ve tam bu yüzden yönetim toplantısına ait olan onlardır.",
+            ],
+          },
+          {
+            title: "Dördüncü özellik: insan tarafının sonraya bırakılması",
+            paragraphs: [
+              "Strateji çalışması biter, ardından 'bunu İK'ya iletelim' denir. Oysa yeni öncelikler çoğu zaman yeni yetkinlikler, farklı bir performans tanımı ve bazen farklı bir kadro gerektirir.",
+              "İnsan tarafını sonraya bırakmak, kararın uygulanmasını altı ay geciktirir. Aynı masada konuşulduğunda ise strateji çoğu zaman değişir — çünkü neyin gerçekten yapılabilir olduğu ortaya çıkar.",
+            ],
+          },
+        ],
+        takeaway:
+          "Elinizde rafta duran bir plan varsa, onu yeniden yazmadan önce şu dördünü kontrol edin: kaç önceliğiniz var, kim karar veriyor, neyi ölçüyorsunuz ve insan tarafı ne zaman masaya geldi.",
+      },
+      "yetkinlik-modeli-oncesi-uc-soru": {
+        title: "Yetkinlik modeli kurmadan önce cevaplamanız gereken üç soru",
+        excerpt:
+          "Yetkinlik modelleri kurumların en çok yatırım yapıp en az kullandığı İK aracıdır. Kullanılan modellerle raflarda kalanları ayıran şey, kurulmadan önce sorulan sorular.",
+        sections: [
+          {
+            title: "Neden çoğu model kullanılmıyor",
+            paragraphs: [
+              "Bir yetkinlik modeli hazırlamak birkaç ay sürer, güzel bir dokümanla biter ve çoğu zaman yalnızca yıl sonu değerlendirmesinde bir kez açılır. Sorun modelin kalitesi değildir; hangi kararı besleyeceğinin baştan tanımlanmamış olmasıdır.",
+              "Kullanılan modellerde ortak olan şey karmaşıklık düzeyi değil, bir karara bağlı olmalarıdır.",
+            ],
+          },
+          {
+            title: "Birinci soru: bu model hangi kararı besleyecek?",
+            paragraphs: [
+              "Terfi kararı mı, işe alım mülakatı mı, eğitim bütçesinin dağıtımı mı, ücret bandı mı? Cevap 'hepsi' ise model muhtemelen hiçbirinde kullanılmayacaktır.",
+              "Tek bir karara odaklanan bir model, altı ay içinde gerçekten kullanılır ve kullanıldıkça olgunlaşır. Her şeye hizmet etmeye çalışan model, hiçbir kararın sahibi tarafından benimsenmez.",
+            ],
+          },
+          {
+            title: "İkinci soru: davranış olarak yazılabiliyor mu?",
+            paragraphs: [
+              "'Analitik düşünme' bir yetkinlik adıdır, tanımı değildir. İki yönetici aynı çalışanı bu başlıkta değerlendirdiğinde farklı şeyler ölçer.",
+              "Kullanılabilir bir tanım gözlemlenebilir olmalıdır: 'kararını dayandırdığı veriyi ve varsayımı ayrı ayrı söyleyebilir' gibi. Bu tür bir cümle mülakatta da performans görüşmesinde de aynı şeyi ölçer.",
+              "Bu, modeli uzatır ve yazması sıkıcıdır. Kullanılır olmasının bedeli budur.",
+            ],
+          },
+          {
+            title: "Üçüncü soru: kaç kademe gerçekten farklı?",
+            paragraphs: [
+              "Çoğu kurum beş kademe tanımlar ama gerçekte üç farklı iş yapılır. Aradaki yapay kademeler terfiyi ödül aracına dönüştürür ve zamanla unvan enflasyonu yaratır.",
+              "Kademe sayısını işin kendisinden çıkarın: sorumluluğun, karar alanının ve etkisinin gerçekten değiştiği yerler nerede? Genellikle sandığınızdan azdır.",
+            ],
+          },
+        ],
+        takeaway:
+          "Bu üç soruya net cevabınız yoksa modeli kurmayı erteleyin. Cevaplar netleştiğinde model zaten yarı yarıya yazılmış olur.",
+      },
+      "egitimi-davranisla-olcmek": {
+        title: "Eğitimi katılımla değil davranışla ölçmek",
+        excerpt:
+          "Katılım oranı ve memnuniyet puanı, eğitimin işe yarayıp yaramadığı hakkında hiçbir şey söylemez. Davranış değişimini ölçmek için pahalı bir sistem değil, üç basit alışkanlık gerekir.",
+        sections: [
+          {
+            title: "Rahatlatıcı ama boş göstergeler",
+            paragraphs: [
+              "Kurumsal eğitim raporlarının çoğu iki sayı içerir: kaç kişi katıldı ve memnuniyet puanı kaç. İkisi de yüksek çıkar, çünkü ikisi de eğitimin kendisini ölçer — sonrasında ne olduğunu değil.",
+              "Memnuniyet puanı en çok eğitmenin sunum becerisini ölçer. İyi bir eğitmenle kötü tasarlanmış bir program da yüksek puan alır.",
+            ],
+          },
+          {
+            title: "Ölçmeye eğitimden önce başlayın",
+            paragraphs: [
+              "Davranış değişimini ölçmenin ön şartı, değişmesi beklenen davranışı eğitimden önce yazmaktır. 'Geri bildirim verme' değil; 'yöneticiler ekip üyeleriyle ayda en az bir kez birebir görüşme yapar ve görüşmede somut bir örnek üzerinden konuşur' gibi.",
+              "Bu cümleyi yazamıyorsanız, eğitimin neyi değiştireceği henüz belli değil demektir. Bu, ölçüm sorunundan önce bir tasarım sorunudur.",
+            ],
+          },
+          {
+            title: "Üç ay sonra sorun, hemen sonra değil",
+            paragraphs: [
+              "Eğitim çıkışında yapılan anket heyecanı ölçer. Asıl soru üç ay sonra sorulmalıdır ve katılımcıya değil, çevresine: ekip üyeleri birebir görüşmelerin sıklığında bir değişiklik fark etti mi?",
+              "Bu ölçüm pahalı bir sistem gerektirmez. Beş kısa soruluk bir nabız ölçümü, doğru zamanda ve doğru kişiye sorulduğunda yeterlidir.",
+            ],
+          },
+          {
+            title: "Yöneticiyi sürece dahil edin",
+            paragraphs: [
+              "Davranış değişiminin en güçlü belirleyicisi eğitimin kalitesi değil, katılımcının yöneticisinin o davranışı bekleyip beklemediğidir.",
+              "Program tasarımına yöneticinin ne yapacağını da yazın: eğitim öncesi beş dakikalık bir beklenti konuşması ve sonrasında bir takip görüşmesi, çoğu programın etkisini ikiye katlar.",
+            ],
+          },
+        ],
+        takeaway:
+          "Bir sonraki eğitim programınızda tek bir şey değiştirecekseniz, ölçümü eğitimin sonundan üç ay sonrasına taşıyın ve soruyu katılımcının çevresine sorun.",
       },
     },
   },

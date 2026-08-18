@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { getDictionary } from "@/content";
+import { articleIds, articleMeta } from "@/content/articles";
 import { jobIds, jobMeta } from "@/content/jobs";
+import { practiceIds } from "@/content/practices";
 import { locales, navKeys, type Locale } from "@/lib/i18n";
 
 const dicts = locales.map((locale) => [locale, getDictionary(locale)] as const);
@@ -109,6 +111,73 @@ describe("iş ilanları", () => {
         `${id}: bitiş tarihi yayın tarihinden sonra olmalı`,
       ).toBeGreaterThan(new Date(meta.postedAt).getTime());
     }
+  });
+});
+
+describe("içgörü yazıları", () => {
+  it("her yazı iki dilde de tanımlıdır", () => {
+    for (const [locale, dict] of dicts) {
+      for (const id of articleIds) {
+        expect(dict.insights.articles[id], `${locale}.insights.${id}`).toBeDefined();
+      }
+    }
+  });
+
+  it("yazı sözlüğünde fazladan kayıt yoktur", () => {
+    for (const [, dict] of dicts) {
+      expect(Object.keys(dict.insights.articles).sort()).toEqual(
+        [...articleIds].sort(),
+      );
+    }
+  });
+
+  it("her yazının gövdesi ve kapanışı doludur", () => {
+    for (const [locale, dict] of dicts) {
+      for (const id of articleIds) {
+        const article = dict.insights.articles[id];
+        expect(article.sections.length, `${locale}/${id}`).toBeGreaterThan(2);
+        expect(article.takeaway.length, `${locale}/${id}`).toBeGreaterThan(40);
+        for (const section of article.sections) {
+          expect(section.paragraphs.length, `${locale}/${id}`).toBeGreaterThan(0);
+        }
+      }
+    }
+  });
+
+  it("bölüm başlıkları iki dilde aynı sayıdadır", () => {
+    for (const id of articleIds) {
+      const counts = dicts.map(
+        ([, dict]) => dict.insights.articles[id].sections.length,
+      );
+      expect(new Set(counts).size, id).toBe(1);
+    }
+  });
+
+  it("yazı kimlikleri URL'de kullanılabilir", () => {
+    for (const id of articleIds) {
+      expect(id).toMatch(/^[a-z0-9-]+$/);
+    }
+  });
+
+  // Yazı, hizmetler sayfasındaki bir bölüme çıpayla bağlanır.
+  it("her yazı geçerli bir uzmanlık alanına bağlıdır", () => {
+    for (const id of articleIds) {
+      expect(practiceIds).toContain(articleMeta[id].practice);
+    }
+  });
+
+  it("yayın tarihleri geçerlidir", () => {
+    for (const id of articleIds) {
+      expect(articleMeta[id].publishedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(Number.isNaN(new Date(articleMeta[id].publishedAt).getTime())).toBe(false);
+    }
+  });
+
+  it("yazılar en yeniden eskiye sıralıdır", () => {
+    const dates = articleIds.map((id) =>
+      new Date(articleMeta[id].publishedAt).getTime(),
+    );
+    expect([...dates].sort((a, b) => b - a)).toEqual(dates);
   });
 });
 
