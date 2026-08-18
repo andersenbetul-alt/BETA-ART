@@ -25,7 +25,7 @@ for (const locale of ['no', 'en', 'tr']) {
 }
 
 const used = new Set(
-  execSync(`grep -rhoE "t\\([a-zA-Z]+, '[a-zA-Z0-9.]+'\\)" app components`)
+  execSync(`grep -rhoE "\\btf?\\([a-zA-Z]+, '[a-zA-Z0-9.]+'" app components`)
     .toString().split('\n').filter(Boolean).map((m) => m.match(/'([\w.]+)'/)[1]),
 );
 const undefinedKeys = [...used].filter((k) => !all.has(k));

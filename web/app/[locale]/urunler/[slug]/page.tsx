@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { formatPrice, isLocale, locales, t } from '@/lib/i18n';
+import { countryName, formatPrice, isLocale, locales, t, tf } from '@/lib/i18n';
 import { getProduct } from '@/lib/catalog';
-import { products } from '@/lib/products';
+import { products, shipping } from '@/lib/products';
 import AddToCart from '@/components/AddToCart';
 import ProductJsonLd from '@/components/ProductJsonLd';
 
@@ -94,14 +94,36 @@ export default async function ProductPage({
               {product.originCountry && (
                 <tr>
                   <th>{t(locale, 'product.origin')}</th>
-                  <td>{product.originCountry}{product.hsCode && ` · HS ${product.hsCode}`}</td>
+                  {/* HS kodu gümrük verisidir; müşteriye gösterilmez. */}
+                  <td>{countryName(product.originCountry, locale)}</td>
                 </tr>
               )}
               <tr><th>{t(locale, 'product.sku')}</th><td>{product.sku}</td></tr>
             </tbody>
           </table>
 
-          <p className="small muted">{t(locale, 'usp.shipping')} · {t(locale, 'usp.returns')}</p>
+          {/*
+            Teslimat, iade ve ödeme bilgisi ürün sayfasında olmalı: sepeti terk
+            etmenin en yaygın iki sebebi "ne zaman gelir" ve "nasıl öderim"
+            sorularının cevapsız kalmasıdır.
+          */}
+          <dl className="assurance">
+            <dt>{t(locale, 'product.delivery')}</dt>
+            <dd>
+              {t(locale, 'product.deliveryTime')}
+              <br />
+              <span className="muted">
+                {tf(locale, 'product.shippingCost', {
+                  fee: formatPrice(shipping[locale].fee, locale),
+                  threshold: formatPrice(shipping[locale].freeOver, locale),
+                })}
+              </span>
+            </dd>
+            <dt>{t(locale, 'footer.legal')}</dt>
+            <dd>{t(locale, 'product.returnsLine')}</dd>
+            <dt>{t(locale, 'cart.checkout')}</dt>
+            <dd>{t(locale, 'product.paymentLine')}</dd>
+          </dl>
         </div>
       </div>
     </div>

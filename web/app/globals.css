@@ -248,3 +248,29 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+/* Ücretsiz kargo ilerlemesi — eşiğe kalan tutarı göstermek sepet ortalamasını yükseltir */
+.freeship {
+  background: var(--cb-surface); border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius); padding: .85rem 1rem; margin-bottom: 1.5rem;
+}
+.freeship p { margin: 0 0 .6rem; }
+.freeship-track { height: 6px; background: var(--cb-sand); border-radius: 999px; overflow: hidden; }
+.freeship-fill { height: 100%; background: var(--cb-moss); transition: width .3s ease; }
+
+/* Ürün sayfası teslimat/iade/ödeme bloğu */
+.assurance {
+  display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.25rem;
+  margin: 2rem 0 0; padding: 1.1rem 1.25rem;
+  background: var(--cb-surface); border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius); font-size: .875rem;
+}
+.assurance dt { font-weight: 600; }
+.assurance dd { margin: 0; }
+
+/* Dokunmatik hedefler en az 44 px olmalı (WCAG 2.5.8) */
+.qty button {
+  min-width: 44px; min-height: 44px; width: auto; height: auto;
+  font-size: 1.125rem; line-height: 1;
+}
+.qty button:last-child { min-width: 0; min-height: 44px; padding-inline: .5rem; }

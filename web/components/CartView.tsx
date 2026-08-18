@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { formatPrice, t, type Locale } from '@/lib/i18n';
+import { formatPrice, t, tf, type Locale } from '@/lib/i18n';
 import type { ProductView } from '@/lib/types';
 import { MAX_LINE_QTY } from '@/lib/checkout';
 import { useCart } from './CartContext';
@@ -79,14 +79,32 @@ export default function CartView({
     }
   }
 
+  const remaining = Math.max(0, shipping.freeOver - subtotal);
+  const progress = Math.min(100, Math.round((subtotal / shipping.freeOver) * 100));
+
   return (
     <>
+      <div className="freeship" role="status">
+        <p className="small">
+          {remaining > 0
+            ? tf(locale, 'cart.freeShippingLeft', {
+                amount: formatPrice(remaining, locale, rows[0].product.currency),
+              })
+            : t(locale, 'cart.freeShippingReached')}
+        </p>
+        <div className="freeship-track">
+          <div className="freeship-fill" style={{ width: `${progress}%` }} />
+        </div>
+      </div>
+
       {rows.map(({ line, product }) => (
         <div className="cart-row" key={line.slug}>
           <div className="thumb" style={{ background: product.swatch }} />
           <div>
             <Link href={`/${locale}/urunler/${product.slug}`}>{product.name}</Link>
-            <div className="small muted">{product.sku}</div>
+            <div className="small muted">
+              {formatPrice(product.price, locale, product.currency)} {t(locale, 'cart.each')}
+            </div>
             <div className="qty" style={{ marginTop: '.5rem' }}>
               <button onClick={() => setQty(line.slug, line.qty - 1)} aria-label="−">−</button>
               <span aria-live="polite">{line.qty}</span>

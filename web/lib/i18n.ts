@@ -69,6 +69,14 @@ export const dictionaries: Record<Locale, Dict> = {
     'cart.total': 'Totalt',
     'cart.vatIncluded': 'Alle priser inkl. 25 % mva.',
     'cart.shippingNote': 'Frakt er et estimat. Endelig fraktpris beregnes i kassen.',
+    'cart.freeShippingLeft': 'Legg til {amount} for fri frakt',
+    'cart.freeShippingReached': 'Du har fri frakt',
+    'cart.each': 'per stk',
+    'product.delivery': 'Levering',
+    'product.deliveryTime': '1–3 virkedager med Posten/Bring',
+    'product.shippingCost': 'Frakt {fee} · fri frakt over {threshold}',
+    'product.returnsLine': '30 dagers åpent kjøp · første retur er gratis',
+    'product.paymentLine': 'Visa · Mastercard · Vipps · Klarna',
     'cart.checkout': 'Til kassen',
     'cart.remove': 'Fjern',
     'cart.continue': 'Fortsett å handle',
@@ -122,6 +130,14 @@ export const dictionaries: Record<Locale, Dict> = {
     'cart.total': 'Total',
     'cart.vatIncluded': 'Prices include Norwegian VAT where applicable.',
     'cart.shippingNote': 'Shipping is an estimate. The final rate is calculated at checkout.',
+    'cart.freeShippingLeft': 'Add {amount} for free shipping',
+    'cart.freeShippingReached': 'You have free shipping',
+    'cart.each': 'each',
+    'product.delivery': 'Delivery',
+    'product.deliveryTime': '4–8 business days',
+    'product.shippingCost': 'Shipping {fee} · free over {threshold}',
+    'product.returnsLine': '30-day returns · first return is free',
+    'product.paymentLine': 'Visa · Mastercard · Vipps · Klarna · PayPal',
     'cart.checkout': 'Checkout',
     'cart.remove': 'Remove',
     'cart.continue': 'Continue shopping',
@@ -175,6 +191,14 @@ export const dictionaries: Record<Locale, Dict> = {
     'cart.total': 'Toplam',
     'cart.vatIncluded': 'Tüm fiyatlara KDV dahildir.',
     'cart.shippingNote': 'Kargo tutarı tahminidir. Kesin tutar ödeme adımında hesaplanır.',
+    'cart.freeShippingLeft': 'Ücretsiz kargo için {amount} ekle',
+    'cart.freeShippingReached': 'Kargo bedava',
+    'cart.each': 'adedi',
+    'product.delivery': 'Teslimat',
+    'product.deliveryTime': '2–4 iş günü',
+    'product.shippingCost': 'Kargo {fee} · {threshold} üzeri ücretsiz',
+    'product.returnsLine': '30 gün koşulsuz iade · ilk iade ücretsiz',
+    'product.paymentLine': 'Kredi kartı · Taksit · Havale/EFT',
     'cart.checkout': 'Ödemeye geç',
     'cart.remove': 'Kaldır',
     'cart.continue': 'Alışverişe devam et',
@@ -202,4 +226,22 @@ export const dictionaries: Record<Locale, Dict> = {
 
 export function t(locale: Locale, key: string): string {
   return dictionaries[locale][key] ?? dictionaries[defaultLocale][key] ?? key;
+}
+
+/** `t()` metnindeki {alan} yer tutucularını doldurur. */
+export function tf(locale: Locale, key: string, values: Record<string, string>): string {
+  return Object.entries(values).reduce(
+    (text, [name, value]) => text.replaceAll(`{${name}}`, value),
+    t(locale, key),
+  );
+}
+
+const countryNames: Record<string, Record<Locale, string>> = {
+  TR: { no: 'Tyrkia', en: 'Türkiye', tr: 'Türkiye' },
+  NO: { no: 'Norge', en: 'Norway', tr: 'Norveç' },
+};
+
+/** ISO ülke kodunu okunur ada çevirir; bilinmiyorsa kodu döndürür. */
+export function countryName(code: string, locale: Locale): string {
+  return countryNames[code]?.[locale] ?? code;
 }
