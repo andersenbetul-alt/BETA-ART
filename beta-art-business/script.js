@@ -236,7 +236,19 @@
     }
   };
 
-  var toolOutput = document.getElementById("tool-output");
+  TOOLS.apply = {
+  title: "Application letter",
+  text: "APPLICATION LETTER \u2014 Beta Art\n\n[Your name]\n[City] \u00b7 [email] \u00b7 [phone]\n\n[Company]\n[Role], reference [number]\n[Date]\n\nOPENING \u2014 one sentence\nWhy this role at this company, specifically. Not \"I am writing to apply\".\nName the thing about them you actually noticed.\n\nPARAGRAPH 1 \u2014 the match\nThe two requirements in the advert you meet most strongly, each with one\npiece of evidence. A number if you have one.\n\nPARAGRAPH 2 \u2014 the proof\nOne short story: a situation, what you did, what came of it. Three sentences.\nThis is the paragraph they remember.\n\nPARAGRAPH 3 \u2014 the gap, if there is one\nName it before they find it. \"I have not worked in [x]; I have done [nearest\nthing] and here is why it transfers.\" Confidence, not apology.\n\nCLOSE \u2014 one sentence\nWhat you want to happen next. Ask for the conversation.\n\n[Name]\n\nCHECKLIST\n\u00b7 One page. Always.\n\u00b7 Their words from the advert, not your usual vocabulary.\n\u00b7 No sentence that would fit any other application.\n\u00b7 File name: firstname-lastname-application-[company].pdf\n"
+};
+TOOLS.idea = {
+  title: "Business idea test",
+  text: "BUSINESS IDEA \u2014 Beta Art test sheet\n\nAnswer these before building anything. An idea that survives all eight is\nworth a month of your time. One that fails 3 or 6 is worth a conversation,\nnot a company.\n\n1. THE IDEA, IN ONE SENTENCE\nI sell [what] to [whom] so they can [outcome].\n\n2. THE BUYER\nName three real people or companies who would buy it. Actual names.\nIf you cannot name three, you have a market theory, not a market.\n\n3. WHAT THEY DO TODAY INSTEAD\nEvery buyer already solves this somehow \u2014 badly, expensively, or by\nignoring it. What is the incumbent? \"Nothing\" is usually wrong.\n\n4. WHY THEY WOULD SWITCH\nThe switch has a cost: learning, risk, explaining it to a colleague.\nWhat makes it worth paying?\n\n5. PRICE\nUnit price. Cost to deliver. Margin. Cheapest realistic competitor.\nIf margin is under 30%, say why that is survivable.\n\n6. FIRST TEN CUSTOMERS\nBy name or by channel. Not \"social media\". Where exactly, and who reaches out?\n\n7. WHAT BREAKS FIRST AT SCALE\nAt 10 customers, at 100. Usually it is you.\n\n8. THE CHEAPEST TEST\nWhat is the smallest thing that would tell you this is wrong?\nDo that first, this week, before anything is built.\n\nVERDICT\nStrongest answer: ______  Weakest answer: ______\nNext action, dated: ______\n"
+};
+TOOLS.outline = {
+  title: "Blog outline",
+  text: "BLOG OUTLINE \u2014 Beta Art\n\nWORKING TITLE\nThe question a reader would actually type, phrased as a statement.\n\nTHE ONE QUESTION THIS ANSWERS\nIf you cannot write it in a single line, the piece is two pieces.\n\nWHO IS READING\nWhat they already know. What they are afraid of. What they will do next\nif this is any good.\n\nTHE ARGUMENT IN ONE SENTENCE\nWrite it now. If the piece drifts, this is what you come back to.\n\nSTRUCTURE\n1. Opening \u2014 the situation the reader recognises. No throat-clearing.\n2. Section \u2014 [claim]  \u00b7 evidence: [what makes it true]\n3. Section \u2014 [claim]  \u00b7 evidence:\n4. Section \u2014 [claim]  \u00b7 evidence:\n5. The uncomfortable part \u2014 where your own advice does not apply.\n   Include this. It is why the rest gets believed.\n6. Close \u2014 what to do on Monday.\n\nEVIDENCE I ACTUALLY HAVE\n\u00b7\n\u00b7\n\nWHAT I AM LEAVING OUT\nList it. Half of editing is deciding what belongs in the next piece.\n\nSEARCH\nTitle under 60 characters:\nDescription, 140\u2013160 characters:\nThe question in the first paragraph: yes / no\nInternal links to my own commercial pages:\n"
+};
+var toolOutput = document.getElementById("tool-output");
   var toolBody = document.getElementById("tool-body");
 
   document.querySelectorAll(".tool").forEach(function (btn) {
