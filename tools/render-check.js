@@ -127,7 +127,8 @@ const PROBE = `(() => {
     if (el.offsetParent === null) continue;
     const r = el.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) continue;
-    if (el.tagName === "A" && el.closest("p,li.inline-link")) continue; // inline prose links are exempt
+    // WCAG 2.5.8 exempts a link sitting inside a sentence or a block of text
+    if (el.tagName === "A" && el.closest("p,label,h1,h2,h3,h4,dd,blockquote,figcaption")) continue;
     if (r.width < 24 || r.height < 24) {
       out.targets.push({
         tag: el.tagName.toLowerCase(),

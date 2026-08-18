@@ -759,6 +759,15 @@ strong, b { font-weight: 600; }
 .not-found-code { letter-spacing: .24em; }
 .notfound h1 { max-width: 18ch; }
 .not-found-links { display: flex; flex-wrap: wrap; gap: 1.4rem; margin: 2rem 0 3rem;
-  padding-top: 1.6rem; border-top: 1px solid var(--rule, var(--edge)); }
+  padding-top: 1.6rem; border-top: 1px solid var(--edge); }
+.not-found-back { margin: 2rem 0 0; }
 .not-found-links a { font-family: var(--f-mono); font-size: .66rem; letter-spacing: .14em;
   text-transform: uppercase; text-decoration: none; padding-block: .5rem; }
+
+/* Remaining 2.5.8 gaps the browser found: a 13px checkbox, short navigation
+   labels narrower than 24px, and link lists with no vertical padding. */
+.consent input[type="checkbox"], .field input[type="checkbox"] {
+  width: 24px; height: 24px; flex: none;
+}
+.nav a { min-width: 24px; text-align: center; }
+.contact-list a, .side-list a, .dir-list a, .legal-index a { padding-block: .35rem; }

@@ -461,10 +461,13 @@ def check_head():
             note("head", "%s does not declare a charset" % r)
         if 'name="viewport"' not in src:
             note("head", "%s has no viewport meta — it will not scale on a phone" % r)
-        if 'property="og:title"' not in src:
-            note("head", "%s has no og:title — shared links show a bare URL" % r)
-        if 'property="og:image"' not in src:
-            note("head", "%s has no og:image — shared links show no picture" % r)
+        # a 404 is never shared on purpose and is noindex; a share card on it
+        # would be a card for a page that does not exist
+        if os.path.basename(path) != "404.html":
+            if 'property="og:title"' not in src:
+                note("head", "%s has no og:title — shared links show a bare URL" % r)
+            if 'property="og:image"' not in src:
+                note("head", "%s has no og:image — shared links show no picture" % r)
         if not re.search(r'name="theme-color"', src):
             note("head", "%s sets no theme-color" % r)
 
@@ -487,6 +490,8 @@ def check_sitemaps():
             if not os.path.exists(os.path.join(base, name)):
                 note("sitemap", "%s/sitemap.xml lists %s, which does not exist" % (label, name))
         for f in sorted(os.listdir(base)):
+            if f == "404.html":
+                continue        # deliberately not advertised
             if f.endswith(".html") and f not in listed:
                 note("sitemap", "%s/sitemap.xml omits %s — it may never be crawled" % (label, f))
         rb = os.path.join(base, "robots.txt")
