@@ -9,3 +9,7 @@ dist/
 .vercel
 .turbo
 *.tsbuildinfo
+
+# Geçici denetim/ekran görüntüsü betikleri (tests/ altındakiler kalıcıdır)
+_shot*.mjs
+*-tmp.mjs
