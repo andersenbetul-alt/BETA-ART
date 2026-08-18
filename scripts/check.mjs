@@ -74,21 +74,38 @@ for (const code of codes.filter((c) => c !== 'en')) {
   if (same.length) notes.push(`[${code}] same as English (check): ${same.join(', ')}`);
 }
 
-/* ---------- 3. Internal links resolve ---------- */
+/* ---------- 3. The markup's fallback text matches the English dictionary ----------
+   Whatever sits between the tags is what a crawler reads and what a visitor with JS off
+   sees. It drifted once already: the dictionary was corrected after research and the
+   markup was not, leaving the retracted credit in the HTML. */
+
+const fallbackRe = /<([a-z0-9]+)([^>]*?)data-i18n="([a-z0-9_]+)"([^>]*?)>([^<]*)<\/\1>/g;
+const unescape = (s) => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'");
+for (const [, , , key, , text] of html.matchAll(fallbackRe)) {
+  const expected = DICTS.en?.[key];
+  if (expected === undefined) continue;
+  if (unescape(text) !== expected) {
+    fail(`fallback text for "${key}" does not match the en dictionary:\n` +
+         `      markup: ${unescape(text)}\n` +
+         `      en:     ${expected}`);
+  }
+}
+
+/* ---------- 4. Internal links resolve ---------- */
 
 const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
 for (const [, href] of html.matchAll(/href="#([^"]+)"/g)) {
   if (!ids.has(href)) fail(`Link points at #${href}, but no element has that id.`);
 }
 
-/* ---------- 4. Referenced local files exist ---------- */
+/* ---------- 5. Referenced local files exist ---------- */
 
 const refs = [...html.matchAll(/(?:href|src)="((?!https?:|mailto:|#|data:)[^"]+)"/g)].map((m) => m[1]);
 for (const ref of [...new Set(refs)]) {
   if (!existsSync(join(root, ref))) fail(`index.html references ${ref}, which is not in the repo.`);
 }
 
-/* ---------- 5. RTL languages are declared in both places ---------- */
+/* ---------- 6. RTL languages are declared in both places ---------- */
 
 const rtlInApp = [...appJs.matchAll(/RTL = \{([^}]*)\}/g)][0];
 const rtlCodes = rtlInApp ? [...rtlInApp[1].matchAll(/([a-z]{2}):/g)].map((m) => m[1]) : [];
@@ -98,7 +115,7 @@ for (const code of ['ar', 'ur']) {
   }
 }
 
-/* ---------- 6. Head essentials ---------- */
+/* ---------- 7. Head essentials ---------- */
 
 for (const [label, re] of [
   ['<title>', /<title>[^<]+<\/title>/],
@@ -116,7 +133,7 @@ for (const code of codes) {
   }
 }
 
-/* ---------- 7. CSS classes used in the markup exist ---------- */
+/* ---------- 8. CSS classes used in the markup exist ---------- */
 
 const cssClasses = new Set([...css.matchAll(/\.([a-zA-Z][\w-]*)/g)].map((m) => m[1]));
 const htmlClasses = new Set(
