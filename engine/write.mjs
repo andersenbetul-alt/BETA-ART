@@ -12,6 +12,7 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as db from './db.mjs';
+import { checkVisibility, printReport } from './visibility.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -54,7 +55,7 @@ async function main() {
     console.log('  3. writerAgent    → şablona göre makale');
     console.log('  4. seoAgent       → başlık, meta, iç bağlantı, SSS');
     console.log('  5. moneyAgent     → gelir yolu ve yerleşim');
-    console.log('  6. qualityGate    → yayın kapısı (insan onayı hâlâ zorunlu)');
+    console.log('  6. qualityGate + checkVisibility → yayın kapısı (insan onayı hâlâ zorunlu)');
     return;
   }
 
@@ -85,7 +86,8 @@ async function main() {
 
   console.log('4/6 SEO…');
   const existing = conn.prepare('SELECT slug FROM articles WHERE status = ?').all('published').map((r) => r.slug);
-  save('seo.json', await agents.seoAgent(article, existing));
+  const seo = await agents.seoAgent(article, existing);
+  save('seo.json', seo);
 
   console.log('5/6 gelir yolu…');
   save('money.json', await agents.moneyAgent(article, OFFERINGS));
@@ -94,12 +96,37 @@ async function main() {
   const quality = await agents.qualityGate(article, research);
   save('quality.json', quality);
 
+  /* Görünürlük kuralları: model yorumu değil, ölçülebilir denetim. */
+  const publishedTitles = conn.prepare('SELECT title FROM articles WHERE status IN (?, ?)')
+    .all('published', 'review').map((r) => r.title).filter(Boolean);
+  const visibility = checkVisibility({
+    title: seo.baslik || questions.canonicalTitle,
+    metaDescription: seo.meta,
+    slug: row.slug,
+    markdown: article,
+    clusterLinks: seo.icBaglantilar || [],
+    images: seo.gorseller || [],
+    sources: research.kaynaklar || research.sources || [],
+    originalValue: research.ozgunKatki,
+    schema: seo.schema,
+    author: process.env.QB_AUTHOR || 'QBLOGG',
+    updatedAt: new Date().toISOString().slice(0, 10)
+  }, { publishedTitles });
+  save('visibility.json', visibility);
+
   conn.prepare("UPDATE articles SET status = 'review', draft_path = ? WHERE id = ?")
       .run(join('engine/output', row.slug, 'article.md'), row.id);
 
   console.log(`\nKalite kararı: ${quality.karar}`);
   if (quality.sorunlar?.length) quality.sorunlar.forEach((s) => console.log('  ! ' + s));
-  console.log('\nDurum: review — yayın için insan onayı gerekiyor.');
+  console.log('\nGörünürlük raporu:');
+  printReport(visibility);
+
+  if (visibility.decision === 'yayinlanamaz') {
+    console.log('\nDurum: review — görünürlük kuralları kaldı, düzeltilmeden yayınlanamaz.');
+  } else {
+    console.log('\nDurum: review — yayın için insan onayı gerekiyor.');
+  }
 }
 
 main().catch((e) => { console.error('\nHata:', e.message); process.exit(1); });
