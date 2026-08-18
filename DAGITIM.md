@@ -73,7 +73,13 @@ iki adreste görür.
 
 `vercel.json` şunları ayarlıyor:
 
-- **cleanUrls** — `/blog.html` yerine `/blog` çalışır
+- **`cleanUrls` kapalı — bilinçli.** Vercel'in `cleanUrls` özelliği `/blog.html`
+  adresini `/blog`'a **yönlendirir**. Bizde `/blog → /blog.html` yönlendirmesi
+  olduğu için ikisi birlikte sonsuz döngü yapardı. Ayrıca sitemap, canonical ve
+  bütün iç bağlantılar `.html` uzantılı; cleanUrls hepsini gereksiz bir
+  yönlendirme adımına sokar ve canonical'ın yönlendirilen bir adresi
+  göstermesine yol açardı. Kısa adresler (`/blog`, `/work`) yönlendirmeyle
+  zaten çalışıyor
 - **Önbellek** — yazı tipleri bir yıl değişmez damgalı; CSS ve JS her istekte
   doğrulanır (derleme adımı olmadığı için dosya adında sürüm damgası yok)
 - **Güvenlik başlıkları** — HSTS, nosniff, referrer politikası, çerçeveleme
