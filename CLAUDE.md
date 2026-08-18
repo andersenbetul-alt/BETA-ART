@@ -59,6 +59,14 @@ figures need `unicode-bidi: plaintext` so they survive Arabic and Urdu.
 compliant, and a click-to-load facade is what makes that true. Same rule for anything
 new: no third-party request before the visitor asks for it.
 
+## Facts and sources
+
+`docs/RESEARCH.md` is the trail behind every claim on the page: what was verified, against
+what, and when — plus the claims that are still unconfirmed and the releases not yet added.
+Check it before changing a number or a credit, and add to it in the same commit. Anything
+the page states as fact should have a line in there; anything that does not is either
+unverified or waiting to be checked.
+
 ## Content that goes stale
 
 Stream counts, monthly listeners and release dates are baked into `index.html` and the
