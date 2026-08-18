@@ -335,3 +335,7 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
 .social{list-style:none;padding:0;margin:1rem 0 0;display:flex;flex-wrap:wrap;gap:.9rem}
 .social a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
 @media (max-width:880px){.colophon-inner{grid-template-columns:1fr}}
+
+.essay-body code{font-family:var(--f-mono);font-size:.82em;background:var(--paper-2);padding:.1em .35em}
+.social a{color:var(--muted)}
+.social a:hover{color:var(--seal)}

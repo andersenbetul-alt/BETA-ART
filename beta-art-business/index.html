@@ -42,7 +42,8 @@
       <a href="#private">Private</a>
       <a href="#business">Business</a>
       <a href="#finder">Find your service</a>
-      <a href="#process">How it works</a>
+      <a href="#industries">Industries</a>
+<a href="#process">How it works</a>
       <a href="#pricing">Pricing</a>
       <a href="#studio">AI Studio</a>
       <a href="#faq">FAQ</a>
@@ -209,7 +210,114 @@
   </section>
 
   <!-- ============ PROCESS ============ -->
-  <section class="section" id="process">
+  <section class="section" id="industries">
+  <div class="wrap">
+    <div class="head split-head">
+      <div>
+        <p class="tag">Market map · Norway</p>
+        <h2>Thirty industries that buy this work.</h2>
+        <p class="lead">Beta Art sells into a market we have actually mapped. Every industry below is
+          ranked by buying volume and by fit with what the studio and the archive produce &mdash; from
+          daily high-volume buyers to the digital segments growing fastest.</p>
+      </div>
+      <div class="toggle" role="group" aria-label="Market view">
+        <button class="market-btn is-active" type="button" data-market="tiers" aria-pressed="true">All tiers</button>
+        <button class="market-btn" type="button" data-market="priority" aria-pressed="false">Top 10 priority</button>
+      </div>
+    </div>
+
+    <div class="market-view" id="market-tiers">
+      <section class="tier-group">
+        <header class="tier-head">
+          <span class="tier-label">Tier 1</span>
+          <h3>Highest buying volume</h3>
+          <span class="tier-count">5 industries</span>
+        </header>
+        <ul class="industry-list">
+          <li><strong>01 · Advertising &amp; communication agencies</strong><span>Campaigns, ads, social — buy everything, and often</span></li>
+          <li><strong>02 · E-commerce &amp; online stores</strong><span>Product shots, lifestyle, models — a daily need</span></li>
+          <li><strong>03 · Media &amp; newspapers</strong><span>News, portrait, editorial — NTB/Scanpix dominate, a gap for local work</span></li>
+          <li><strong>04 · In-house marketing departments</strong><span>Websites, decks, campaigns — every Norwegian company</span></li>
+          <li><strong>05 · Design &amp; PR agencies</strong><span>Brand building, pitch material, annual reports</span></li>
+        </ul>
+      </section>
+
+      <section class="tier-group">
+        <header class="tier-head">
+          <span class="tier-label">Tier 2</span>
+          <h3>High, stable demand</h3>
+          <span class="tier-count">8 industries</span>
+        </header>
+        <ul class="industry-list">
+          <li><strong>06 · Property &amp; estate agents</strong><span>Interiors, neighbourhoods, lifestyle — high local relevance</span></li>
+          <li><strong>07 · Health &amp; hospitals</strong><span>Patients, staff, wellness — strict authenticity requirements</span></li>
+          <li><strong>08 · Education &amp; schools</strong><span>Children, classrooms, learning — publishers, apps, municipalities</span></li>
+          <li><strong>09 · Travel &amp; hotels</strong><span>Destinations, experiences, food — Visit Norway and private operators</span></li>
+          <li><strong>10 · Restaurants &amp; food</strong><span>Dishes, produce, atmosphere — social media and menus</span></li>
+          <li><strong>11 · Finance &amp; insurance</strong><span>Trust, family, office life — conservative but stable</span></li>
+          <li><strong>12 · Technology &amp; startups</strong><span>Teams, products, innovation — the Oslo scene is growing fast</span></li>
+          <li><strong>13 · Public sector &amp; state</strong><span>Campaigns, information, annual reports — large and steady</span></li>
+        </ul>
+      </section>
+
+      <section class="tier-group is-exclusive">
+        <header class="tier-head">
+          <span class="tier-label">Tier 3</span>
+          <h3>Norway-specific buyers</h3>
+          <span class="tier-count">8 industries</span>
+        </header>
+        <ul class="industry-list">
+          <li><strong>14 · Oil &amp; offshore energy</strong><span>Platforms, workers, safety — big budgets, high image value</span></li>
+          <li><strong>15 · Maritime &amp; fisheries</strong><span>Boats, harbours, seafood — Norway's most iconic export industry</span></li>
+          <li><strong>16 · Sports federations &amp; clubs</strong><span>Action, training, events — NIF and commercial sponsors</span></li>
+          <li><strong>17 · Tourism &amp; Visit Norway</strong><span>Nature, culture, experience — a vast appetite for local content</span></li>
+          <li><strong>18 · Political parties &amp; NGOs</strong><span>People, society, environment — elections and campaigns</span></li>
+          <li><strong>19 · Publishers &amp; book trade</strong><span>Portrait, nature, illustration — covers and interiors</span></li>
+          <li><strong>20 · Architects &amp; interior designers</strong><span>Buildings, materials, rooms — project documentation and PR</span></li>
+          <li><strong>21 · Fashion &amp; clothing brands</strong><span>Lifestyle, portrait, season — Norwegian labels and e-commerce</span></li>
+        </ul>
+      </section>
+
+      <section class="tier-group">
+        <header class="tier-head">
+          <span class="tier-label">Tier 4</span>
+          <h3>Growing digital buyers</h3>
+          <span class="tier-count">5 industries</span>
+        </header>
+        <ul class="industry-list">
+          <li><strong>22 · Social media agencies</strong><span>Vertical, authentic, fast turnaround — Instagram, TikTok, LinkedIn</span></li>
+          <li><strong>23 · Podcast &amp; YouTube producers</strong><span>Thumbnails, banners, profile art — a growing segment</span></li>
+          <li><strong>24 · Bloggers &amp; content creators</strong><span>Lifestyle, food, travel — the creator economy, still compounding</span></li>
+          <li><strong>25 · App developers</strong><span>UI illustration, icon imagery — local content is regularly requested</span></li>
+          <li><strong>26 · Recruitment agencies</strong><span>Working life, teams, offices — employer branding</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="market-view" id="market-priority" hidden>
+      <p class="footnote">Part 2 — the prioritised sales list. Ranked by revenue potential and fit,
+      with the concrete next action for each segment.</p>
+      <ol class="priority">
+        <li><h3>Advertising &amp; communication agencies</h3><p><strong>Why.</strong> They buy across every category, every week — the highest volume and the highest willingness to pay.</p><p class="tag">Action · Direct sales to agencies in Oslo, Bergen, Stavanger</p></li>
+        <li><h3>E-commerce &amp; online stores</h3><p><strong>Why.</strong> Constant need for product and lifestyle imagery. A subscription model fits this segment exactly.</p><p class="tag">Action · Package offers for Norwegian online stores</p></li>
+        <li><h3>Oil &amp; offshore energy</h3><p><strong>Why.</strong> Large budgets and almost no competition on authentic Norwegian content. High image value.</p><p class="tag">Action · B2B sales to operators and the supplier industry</p></li>
+        <li><h3>Public sector &amp; state</h3><p><strong>Why.</strong> A large, stable buyer. Municipalities, ministries and agencies consume a great deal of imagery.</p><p class="tag">Action · Framework agreements with municipalities and agencies</p></li>
+        <li><h3>Media &amp; newspapers</h3><p><strong>Why.</strong> High frequency. Norwegian media lack locally sourced, authentic material.</p><p class="tag">Action · Editorial agreements with national newsrooms</p></li>
+        <li><h3>Travel &amp; hotels</h3><p><strong>Why.</strong> Visit Norway and private operators have an enormous appetite for Norwegian nature content.</p><p class="tag">Action · Partnerships with tourism boards and operators</p></li>
+        <li><h3>Property &amp; estate agents</h3><p><strong>Why.</strong> Local imagery is the core need. Neighbourhood, lifestyle and architecture are in constant demand.</p><p class="tag">Action · Packages for the national estate-agency chains</p></li>
+        <li><h3>Technology &amp; startups</h3><p><strong>Why.</strong> The Oslo scene is growing. Startups need authentic team and product imagery, quickly.</p><p class="tag">Action · Monthly subscription, fast delivery, startup pricing</p></li>
+        <li><h3>Maritime &amp; fisheries</h3><p><strong>Why.</strong> Norway's most iconic industry — and almost no authentic photographic coverage exists.</p><p class="tag">Action · Industry bodies in seafood and shipping</p></li>
+        <li><h3>Health &amp; hospitals</h3><p><strong>Why.</strong> Strict requirements on authenticity and representation. A serious buyer of verified content.</p><p class="tag">Action · Health trusts, private clinics, health technology</p></li>
+      </ol>
+    </div>
+
+    <p class="footnote">Ready to license? Every category in the archive is available &mdash; single plates,
+    packages or commissioned work. <a href="https://beta-art-archive-bet-art.vercel.app/#categories">See the 35 categories</a>
+    or <a href="#quote">ask for a quote</a>.</p>
+  </div>
+</section>
+
+<section class="section" id="process">
     <div class="wrap">
       <div class="head">
         <p class="tag">How it works</p>
@@ -280,7 +388,7 @@
       </div>
       <p class="footnote">All prices in NOK excluding VAT (25% is added for customers in Norway). Payment: card, Vipps or invoice, 14 days net.
         50% on approval for projects above kr 50 000. Full terms in the
-        <a href="legal.html#terms">legal notice</a>.</p>
+        <a href="https://beta-art-bet-art.vercel.app/legal.html#terms">legal notice</a>.</p>
     </div>
   </section>
 
@@ -405,7 +513,7 @@
           <div class="field"><label for="deadline">Needed by</label><input id="deadline" name="deadline" type="text" placeholder="e.g. before 1 October"></div>
         </div>
         <div class="field"><label for="brief">What is the problem?</label><textarea id="brief" name="brief" rows="4" required placeholder="Describe the situation rather than the solution — we will suggest the solution."></textarea><p class="error" data-error="brief" role="alert" hidden></p></div>
-        <label class="consent"><input type="checkbox" id="consent" name="consent" required><span>Beta Art may process these details to prepare a quote. See the <a href="legal.html#privacy">privacy notice</a>.</span></label>
+        <label class="consent"><input type="checkbox" id="consent" name="consent" required><span>Beta Art may process these details to prepare a quote. See the <a href="https://beta-art-bet-art.vercel.app/legal.html#privacy">privacy notice</a>.</span></label>
         <p class="error" data-error="consent" role="alert" hidden></p>
         <div class="quote-actions">
           <button class="btn btn-seal" type="submit">Send request</button>
@@ -426,9 +534,9 @@
         <details><summary>How many revisions do I get?</summary><p>Two rounds in Starter, unlimited within the agreed term on Professional and Premium. Additional rounds are quoted before they begin.</p></details>
         <details><summary>How long does it take?</summary><p>Starter deliverables in 5–10 working days. A full website is typically 4–8 weeks depending on content. The date is written into the scope, not estimated afterwards.</p></details>
         <details><summary>Are my files safe?</summary><p>Project material is kept in access-controlled storage, never sold, never passed to advertisers, and never used to train models. You can ask for deletion at any time after handover.</p></details>
-        <details><summary>Can I cancel?</summary><p>Yes. Before work starts, at no cost. Once started, you pay for the stage that has been completed and receive everything produced up to that point. Consumers in Norway and the EEA also have a 14-day right of withdrawal &mdash; see the <a href="legal.html#refunds">refunds section</a>.</p></details>
+        <details><summary>Can I cancel?</summary><p>Yes. Before work starts, at no cost. Once started, you pay for the stage that has been completed and receive everything produced up to that point. Consumers in Norway and the EEA also have a 14-day right of withdrawal &mdash; see the <a href="https://beta-art-bet-art.vercel.app/legal.html#refunds">refunds section</a>.</p></details>
         <details><summary>What is the difference between Private and Business?</summary><p>Private serves one person and their career or personal presence. Business serves an organisation and includes commercial rights, invoicing to a company and, where needed, a framework agreement.</p></details>
-<details><summary>Which privacy laws do you follow?</summary><p>All of them that can apply to us: the GDPR and the Norwegian personopplysningsloven first, and then the UK GDPR, Swiss FADP, Turkish KVKK, CCPA/CPRA, LGPD, PIPEDA and Qu&eacute;bec Law 25, POPIA, PDPA, APPI, PIPA, PIPL, India’s DPDP Act and the Australian Privacy Act. The full list and your rights under each are in the <a href="legal.html#privacy">privacy section</a>.</p></details>
+<details><summary>Which privacy laws do you follow?</summary><p>All of them that can apply to us: the GDPR and the Norwegian personopplysningsloven first, and then the UK GDPR, Swiss FADP, Turkish KVKK, CCPA/CPRA, LGPD, PIPEDA and Qu&eacute;bec Law 25, POPIA, PDPA, APPI, PIPA, PIPL, India’s DPDP Act and the Australian Privacy Act. The full list and your rights under each are in the <a href="https://beta-art-bet-art.vercel.app/legal.html#privacy">privacy section</a>.</p></details>
       </div>
     </div>
   </section>
@@ -450,7 +558,7 @@
       </ul>
     </div>
     <nav aria-label="Services"><p class="tag">Services</p><a href="#private">Private</a><a href="#business">Business</a><a href="#studio">AI Studio</a><a href="#pricing">Pricing</a><a href="#cases">Cases</a></nav>
-    <nav aria-label="Legal"><p class="tag">Legal</p><a href="legal.html#terms">Terms</a><a href="legal.html#privacy">Privacy</a><a href="legal.html#refunds">Refunds</a><a href="legal.html#ai">AI &amp; data</a><a href="legal.html#accessibility">Accessibility</a><a href="mailto:hallo@beta-art.com">Contact</a></nav>
+    <nav aria-label="Legal"><p class="tag">Legal</p><a href="https://beta-art-bet-art.vercel.app/legal.html#terms">Terms</a><a href="https://beta-art-bet-art.vercel.app/legal.html#privacy">Privacy</a><a href="https://beta-art-bet-art.vercel.app/legal.html#refunds">Refunds</a><a href="https://beta-art-bet-art.vercel.app/legal.html#ai">AI &amp; data</a><a href="https://beta-art-bet-art.vercel.app/legal.html#accessibility">Accessibility</a><a href="mailto:hallo@beta-art.com">Contact</a></nav>
   </div>
   <div class="wrap footer-base">
     <p class="footnote">© <span id="year">2026</span> Beta Art — Betül Öner. All rights reserved worldwide

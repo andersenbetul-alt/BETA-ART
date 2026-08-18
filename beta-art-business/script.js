@@ -192,6 +192,23 @@
 
   /* ---------- AI Studio: browser-only document builders ---------- */
 
+  /* ---------- Market map view toggle ---------- */
+  var marketButtons = document.querySelectorAll(".market-btn");
+  marketButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var view = btn.getAttribute("data-market");
+      marketButtons.forEach(function (b) {
+        var active = b === btn;
+        b.classList.toggle("is-active", active);
+        b.setAttribute("aria-pressed", String(active));
+      });
+      var tiers = document.getElementById("market-tiers");
+      var priority = document.getElementById("market-priority");
+      if (tiers) tiers.hidden = view !== "tiers";
+      if (priority) priority.hidden = view !== "priority";
+    });
+  });
+
   var TOOLS = {
     brief: {
       title: "Website brief",
