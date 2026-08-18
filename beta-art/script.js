@@ -169,14 +169,20 @@
       setError("usage", usage.length >= 15 ? "" : "Describe the intended use in a sentence or two.");
       if (usage.length < 15) firstInvalid = firstInvalid || form.elements.usage;
 
+      if (form.elements.terms) {
+        var accepted = form.elements.terms.checked;
+        setError("terms", accepted ? "" : "Please confirm you have read the licence terms.");
+        if (!accepted) firstInvalid = firstInvalid || form.elements.terms;
+      }
+
       if (firstInvalid) {
         if (status) status.textContent = "";
         firstInvalid.focus();
         return;
       }
 
-      // No backend here: connect a form endpoint or licensing inbox before launch.
-      if (status) status.textContent = "Request received. We answer licence enquiries within 48 hours.";
+      // No backend here: connect a form endpoint or the licensing inbox before launch.
+      if (status) status.textContent = "Request received. Licence enquiries are answered within 48 hours, at hallo@beta-art.com.";
       form.reset();
     });
   }

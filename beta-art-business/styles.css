@@ -345,3 +345,110 @@ a { color: inherit; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   Platform additions: audience split, smart finder, process,
+   AI Studio tools, pricing tracks, social, language picker.
+   ============================================================ */
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+.lang-select {
+  appearance: none; -webkit-appearance: none;
+  font-family: var(--f-mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text); background: transparent; border: 1px solid var(--edge);
+  padding: .5rem 1.9rem .5rem .8rem; border-radius: 0; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 14px) 52%, calc(100% - 9px) 52%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
+}
+.lang-select:hover { border-color: var(--seal-bright); }
+.lang-select option { background: var(--surface); color: var(--text); }
+
+/* Audience split card */
+.split-card { display: grid; border: 1px solid var(--edge); background: var(--surface); }
+.split-half { padding: 1.8rem 1.6rem; border-bottom: 1px solid var(--edge); }
+.split-half:last-child { border-bottom: 0; }
+.split-half.is-business { background: var(--surface-2); }
+.split-half h2 { font-size: 1.6rem; margin-bottom: .5rem; }
+.split-half p { color: var(--text-2); font-size: .92rem; }
+.btn-block.btn-sm { padding: .7rem 1rem; }
+
+/* Smart finder */
+.finder { border: 1px solid var(--edge); background: var(--surface); padding: clamp(1.4rem, 3vw, 2rem); }
+.finder-step { border: 0; padding: 0; margin: 0; }
+.finder-step legend { font-family: var(--f-mono); font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--text); margin-bottom: 1.2rem; display: flex; align-items: center; gap: .7rem; }
+.step-mark { color: var(--seal-bright); }
+.option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .6rem; }
+.option {
+  text-align: left; padding: 1rem 1.1rem; cursor: pointer;
+  background: var(--void); border: 1px solid var(--edge); color: var(--text);
+  font: inherit; font-size: .93rem; transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.option:hover { border-color: var(--seal-bright); }
+.option.is-chosen { border-color: var(--seal-bright); background: var(--surface-2); box-shadow: inset 3px 0 0 var(--seal); }
+
+.finder-result { margin-top: 1.8rem; padding-top: 1.6rem; border-top: 1px solid var(--edge); }
+.finder-result h3 { font-size: 1.4rem; }
+.finder-result > p { color: var(--text-2); max-width: var(--measure); }
+.finder-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.4rem 0; padding: 1.2rem 0; border-block: 1px solid var(--edge); }
+.finder-meta dt { font-family: var(--f-mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.finder-meta dd { margin: .3rem 0 0; font-size: .95rem; }
+.finder-list { list-style: none; padding: 0; margin: 0 0 1.4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: .3rem 1.5rem; }
+.finder-list li { position: relative; padding: .4rem 0 .4rem 1.2rem; font-size: .9rem; color: var(--text-2); }
+.finder-list li::before { content: "+"; position: absolute; left: 0; color: var(--seal-bright); }
+
+/* Service cards with price */
+.card-price { font-family: var(--f-mono); font-size: .68rem; letter-spacing: .1em; color: var(--seal-bright); margin: 1rem 0 0 !important; padding-top: .8rem; border-top: 1px solid var(--edge); }
+
+/* Process */
+.process { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--edge); border: 1px solid var(--edge); }
+.process li { background: var(--void); padding: 1.6rem 1.5rem; }
+.step-no { font-family: var(--f-mono); font-size: .64rem; letter-spacing: .18em; color: var(--seal-bright); display: block; margin-bottom: .9rem; }
+.process h3 { font-size: 1.1rem; margin-bottom: .4rem; }
+.process p { color: var(--text-2); font-size: .9rem; margin: 0; }
+
+/* Pricing track toggle */
+.track-btn {
+  background: transparent; border: 0; cursor: pointer; color: var(--muted);
+  font-family: var(--f-mono); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
+  padding: .7rem 1.2rem; transition: background .2s var(--ease), color .2s var(--ease);
+}
+.track-btn.is-active { background: var(--seal); color: #fff; }
+
+/* AI Studio */
+.sub-head { font-size: 1.15rem; margin-bottom: 1rem; }
+.studio-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .5rem; margin: 1.2rem 0; }
+.tool {
+  padding: .8rem 1rem; cursor: pointer; text-align: left;
+  background: var(--surface); border: 1px solid var(--edge); color: var(--text);
+  font-family: var(--f-mono); font-size: .68rem; letter-spacing: .08em;
+  transition: border-color .2s var(--ease);
+}
+.tool:hover { border-color: var(--seal-bright); }
+.tool.is-chosen { border-color: var(--seal-bright); background: var(--surface-2); }
+.tool-output { border: 1px solid var(--edge); background: var(--surface); padding: 1.2rem; margin-top: 1rem; }
+.tool-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .8rem; }
+.tool-head h4 { margin: 0; font-family: var(--f-display); font-size: 1.05rem; font-weight: 400; }
+.tool-output textarea {
+  width: 100%; background: var(--void); color: var(--text); border: 1px solid var(--edge);
+  padding: 1rem; font-family: var(--f-mono); font-size: .78rem; line-height: 1.7; resize: vertical; border-radius: 0;
+}
+.tool-output textarea:focus { border-color: var(--seal-bright); outline: none; }
+.btn-mini {
+  font-family: var(--f-mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+  padding: .5rem .9rem; border: 1px solid var(--edge); background: transparent; color: var(--text); cursor: pointer;
+}
+.btn-mini:hover { border-color: var(--seal-bright); color: var(--seal-bright); }
+
+/* Cases with inline strong labels */
+.case p strong { color: var(--text); }
+
+/* Social links */
+.social { list-style: none; padding: 0; margin: 1.2rem 0 0; display: flex; flex-wrap: wrap; gap: 1rem; }
+.social a { font-family: var(--f-mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+.social a:hover { color: var(--seal-bright); }
+
+.quote-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: .5rem; }
+
+@media (min-width: 720px) { .split-card { grid-template-columns: 1fr 1fr; } .split-half { border-bottom: 0; border-right: 1px solid var(--edge); } .split-half:last-child { border-right: 0; } }
+@media (max-width: 980px) { .bar-actions { gap: .4rem; } .bar-actions .btn-sm { display: none; } }
