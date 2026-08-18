@@ -1,0 +1,89 @@
+# QBLOGG — yol haritası
+
+Proje durumu tek yerde. Bir iş bittiğinde satırı **Bitti**'ye çekin ve tarih düşün;
+yeni iş çıktığında uygun aşamaya ekleyin. Öncelik sırası: gelire yakınlık → hıza etkisi →
+maliyet.
+
+## İş modeli
+
+| | |
+|---|---|
+| **Hedef** | Yazılı içerikten hem proje bazlı hem tekrarlayan gelir üretmek |
+| **Müşteri** | İçerik ekibi olmayan KOBİ ve SaaS şirketleri; ikincil: stüdyoya katılacak yazarlar |
+| **Teklif** | Tek araştırmadan beş çıktı: blog + LinkedIn + sosyal + newsletter + SEO makalesi |
+| **Gelir** | Tek makale (€150) · Büyüme (€900/ay) · Stüdyo (€2.500/ay) — hepsi örnek başlangıç fiyatı |
+| **Kanallar** | Kendi sitesi · Upwork/nDash/ProBlogger · Medium · Substack |
+| **Sahip olunan varlık** | Site + e-posta listesi. Platformlar dağıtım kanalıdır, iş değil. |
+
+## Aşamalar
+
+### 1. Yayına alma (öncelik: yüksek — bunlar bitmeden site gelir üretemez)
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 1 | Depoya yazma izni ver, dalı push et | **Engelli** | git ve GitHub App 403; izin kullanıcıda |
+| 2 | Alan adı bağla, GitHub Pages / Netlify yayını | Bekliyor | `robots.txt` + `sitemap.xml` içindeki `qblogg.com` güncellenecek |
+| 3 | `MAIL_TO` ve altbilgideki e-postayı gerçek adresle değiştir | Bekliyor | `assets/js/app.js` |
+| 4 | Paket fiyatlarını gerçek rakamlarla güncelle | Bekliyor | `i18n.js` → `p1/p2/p3.price` |
+| 5 | Formu Formspree/Netlify Forms'a bağla | Bekliyor | `composeMail` içindeki `mailto` bloğu |
+| 6 | Bülten kaydını e-posta servisine bağla | Bekliyor | `initForm`; Substack veya Buttondown |
+
+### 2. Güvenilirlik (öncelik: yüksek — teklif almanın önündeki engel)
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 7 | 2–3 gerçek örnek iş / vaka çalışması ekle | Bekliyor | Yoksa kendi blog yazılarımız portföy olarak kullanılır |
+| 8 | Hakkımızda bölümü (kim yazıyor, hangi deneyim) | Bekliyor | Anonim stüdyo dönüşümü düşürür |
+| 9 | Gizlilik ve koşullar sayfaları | Bekliyor | Altbilgideki bağlantılar şu an boş |
+| 10 | Örnek teslimat (bir makale + türetilmiş 5 içerik) PDF'i | Bekliyor | Brief formunda "örnek gör" olarak kullanılabilir |
+
+### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 11 | Her dili ayrı URL'de üreten ön-render adımı | Bekliyor | Çok dilli SEO'nun asıl kilidi |
+| 12 | Blog yazılarına yapılandırılmış veri (Article/FAQ şeması) | Bekliyor | |
+| 13 | Ayda 2 yeni yazı (10 dilde) | Sürekli | Konu havuzu aşağıda |
+| 14 | Her yazının sonuna ilgili pakete bağlantı | Bekliyor | İçerikten teklife köprü |
+| 15 | Analitik (gizlilik dostu) ve dönüşüm ölçümü | Bekliyor | Hangi yazı brief getiriyor? |
+
+### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 16 | Yazar ağı: başvuruları değerlendirme akışı | Bekliyor | `work.html` başvuruları geliyor |
+| 17 | Fiyatlandırma sayfasında paket karşılaştırma tablosu | Bekliyor | |
+| 18 | Müşteri paneli / teslim takibi | Fikir | Erken; önce 3 düzenli müşteri |
+| 19 | Ücretli bülten katmanı (Substack) | Fikir | Kitle oluşmadan açılmaz |
+
+## Konu havuzu (blog)
+
+Yayınlanan 6 yazı: platform karşılaştırması, Upwork, nDash, Medium, Substack, AI içerik
+stüdyosu. Sıradaki adaylar — hepsi ticari niyeti olan, aramada karşılığı olan konular:
+
+- Şirketler içerik yazarına ne ödüyor: 2026 ücret aralıkları
+- İçerik briefi nasıl yazılır (şablonla)
+- AI ile yazılan içerik Google'da cezalandırılır mı?
+- Bir blogun ilk 1.000 ziyaretçisi nereden gelir
+- LinkedIn'de kurucu sesiyle yazmak
+- KOBİ'ler için 90 günlük içerik takvimi
+- Çok dilli içerikte hreflang hataları (mevcut SEO yazısının devamı)
+
+## Başarı ölçütleri
+
+| Ölçüt | Nasıl bakılır | Hedef |
+|---|---|---|
+| Brief formu gönderimi | Form/e-posta sayısı | Ayda 5 |
+| Brief → teklif → müşteri | Elle takip | Ayda 1 yeni müşteri |
+| Tekrarlayan gelir | Aylık paketler | 3 müşteri × €900 |
+| Organik trafik | Analitik | 3 ayda 1.000 ziyaret/ay |
+| Bülten listesi | Servis paneli | 3 ayda 200 abone |
+
+## Karar günlüğü
+
+- **Saf HTML/CSS/JS seçildi.** Site içerik ağırlıklı ve derleme adımı olmadan her yere
+  yüklenebiliyor; çatı eklemenin maliyeti faydasından yüksek.
+- **10 dil, istemci tarafında.** Hızlı kurulum için; SEO bedeli biliniyor (iş #11).
+- **Formlar mailto ile.** Sunucusuz çalışsın diye; gerçek forma geçiş noktası hazır (iş #5).
+- **AI kullanımı sayfada açıkça anlatılıyor.** Gizlemek yerine süreci göstermek
+  (ilk taslak AI, doğrulama ve editörlük insan) güven kazandırıyor.
