@@ -237,3 +237,36 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
 .product-name{margin:6px 0 10px;font-size:clamp(18px,2.2vw,24px);text-transform:none;letter-spacing:0}
 .product .meta{margin-bottom:0}
 .product .card-links{margin-top:18px}
+
+/* ---------- spotify facade ----------
+   Same contract as the video facades: nothing reaches Spotify until the visitor presses play. */
+.embed-slot{margin-bottom:14px}
+.sp-facade{
+  width:100%;height:152px;display:flex;align-items:center;gap:14px;
+  background:var(--panel);border:1px solid var(--border);cursor:pointer;
+  padding:0 20px;text-align:start;transition:border-color .18s;
+}
+.sp-facade:hover,.sp-facade:focus-visible{border-color:var(--accent)}
+.sp-play{
+  width:44px;height:44px;flex:0 0 auto;border:1px solid var(--accent);border-radius:50%;
+  display:grid;place-items:center;transition:background .18s;
+}
+.sp-facade:hover .sp-play{background:var(--accent)}
+.sp-play::before{
+  content:"";border-style:solid;border-width:7px 0 7px 11px;
+  border-color:transparent transparent transparent #fff;margin-inline-start:3px;
+}
+.sp-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text)}
+
+/* ---------- follow row ---------- */
+.follow-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--muted);margin:38px 0 12px;
+}
+.follow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.follow a{
+  display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none;color:var(--text);
+  border:1px solid var(--border);padding:11px 18px;transition:border-color .18s,color .18s;
+}
+.follow a:hover{border-color:var(--accent);color:var(--accent)}

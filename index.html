@@ -116,6 +116,14 @@
         <li><b>NCS</b><span data-i18n="stat_ncs">50M Ecosystem</span></li>
         <li><b>5</b><span data-i18n="stat_years">Years Active</span></li>
       </ul>
+      <p class="follow-label" data-i18n="follow_label">Follow</p>
+      <ul class="follow">
+        <li><a href="https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU" target="_blank" rel="noopener noreferrer">Spotify</a></li>
+        <li><a href="https://youtube.com/@hximusic" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+        <li><a href="https://instagram.com/prod.hxi" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://tiktok.com/@hximusic" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+        <li><a href="https://soundcloud.com/hximusic" target="_blank" rel="noopener noreferrer">SoundCloud</a></li>
+      </ul>
     </div>
     <p class="scroll-hint" aria-hidden="true"><span data-i18n="scroll">Scroll</span> ↓</p>
   </section>
@@ -180,7 +188,12 @@
           <p class="tag accent" data-i18n="music_tag_breakout">Breakout · 2022</p>
           <h3 class="release">help<br>urself</h3>
           <p class="meta" data-i18n="music_help_streams">43,394,947 Spotify streams</p>
-          <iframe class="embed" src="https://open.spotify.com/embed/track/54ggxbEopZwQ20zurJiHSD?utm_source=generator&amp;theme=0" height="152" loading="lazy" title="HXI — help urself" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <div class="embed-slot">
+            <button class="sp-facade" type="button" data-sp="track/54ggxbEopZwQ20zurJiHSD" data-title="help urself">
+              <span class="sp-play" aria-hidden="true"></span>
+              <span class="sp-label" data-i18n="play_preview">Play preview</span>
+            </button>
+          </div>
           <p class="card-links">
             <a href="https://open.spotify.com/track/54ggxbEopZwQ20zurJiHSD" target="_blank" rel="noopener noreferrer">Spotify</a>
             <a href="#drop" data-i18n="music_free_stems">◈ Free stems</a>
@@ -191,10 +204,12 @@
           <p class="tag" data-i18n="music_xp_tag">2M+ streams · 2024</p>
           <h3 class="release">X-PIRATA</h3>
           <p class="meta" data-i18n="music_xp_sub">2,616,334 streams + 622K (Slowed)</p>
-          <ul class="tracklist">
-            <li>▸ ORIGINAL VERSION</li>
-            <li>▸ SLOWED VERSION</li>
-          </ul>
+          <div class="embed-slot">
+            <button class="sp-facade" type="button" data-sp="album/22MoHoUlDDJrcLiVn9PNby" data-title="X-PIRATA">
+              <span class="sp-play" aria-hidden="true"></span>
+              <span class="sp-label" data-i18n="play_preview">Play preview</span>
+            </button>
+          </div>
           <p class="card-links">
             <a href="https://open.spotify.com/album/22MoHoUlDDJrcLiVn9PNby" target="_blank" rel="noopener noreferrer">Spotify</a>
           </p>
@@ -204,15 +219,24 @@
           <p class="tag" data-i18n="music_mh_tag">Latest · June 2026</p>
           <h3 class="release">MONTAGEM<br>HYSTERIA</h3>
           <p class="meta" data-i18n="music_mh_sub">EP · 5 tracks · with -Prey, pvppet, ToufG</p>
-          <ul class="tracklist">
-            <li>▸ Lock n' Load — NCS · 2024</li>
-            <li>▸ Round Around feat. Nateki — NCS · 2025</li>
-          </ul>
+          <div class="embed-slot">
+            <button class="sp-facade" type="button" data-sp="album/75LA9jdzqga964J5tMaStu" data-title="MONTAGEM HYSTERIA">
+              <span class="sp-play" aria-hidden="true"></span>
+              <span class="sp-label" data-i18n="play_preview">Play preview</span>
+            </button>
+          </div>
           <p class="card-links">
             <a href="https://open.spotify.com/album/75LA9jdzqga964J5tMaStu" target="_blank" rel="noopener noreferrer">Spotify</a>
             <a href="https://ncs.io/artist/1169/hxi" target="_blank" rel="noopener noreferrer">NCS</a>
           </p>
         </article>
+      </div>
+
+      <!-- Filled from assets/data/spotify.json when the weekly sync has run; hidden otherwise. -->
+      <div id="releases" hidden>
+        <p class="label" data-i18n="releases_all">All releases</p>
+        <ul class="rows" id="releases-list"></ul>
+        <p class="note" id="releases-synced"></p>
       </div>
 
       <p class="section-cta">

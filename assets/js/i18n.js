@@ -42,6 +42,8 @@ window.HXI_I18N.en = {
   stat_ncs: "50M Ecosystem",
   stat_years: "Years Active",
   scroll: "Scroll",
+  play_preview: "Play preview",
+  follow_label: "Follow",
 
   credits_label: "Sync & Collab Credits",
   credit_ff: "Drift Tape/Phonk Vol 1 · with TWISTED",
@@ -69,6 +71,7 @@ window.HXI_I18N.en = {
   music_mh_sub: "EP · 5 tracks · with -Prey, pvppet, ToufG",
   music_free_stems: "◈ Free stems",
   music_catalog: "Full catalog on Spotify →",
+  releases_all: "All releases",
 
   video_label: "Edit Culture",
   video_title: "43M streams. Built by the community.",
@@ -184,6 +187,8 @@ window.HXI_I18N.zh = {
   stat_ncs: "5000 万订阅生态",
   stat_years: "活跃年数",
   scroll: "向下滚动",
+  play_preview: "试听",
+  follow_label: "关注",
 
   credits_label: "影视授权与合作",
   credit_ff: "Drift Tape/Phonk Vol 1 · 与 TWISTED",
@@ -211,6 +216,7 @@ window.HXI_I18N.zh = {
   music_mh_sub: "EP · 5 首 · 与 -Prey、pvppet、ToufG",
   music_free_stems: "◈ 免费分轨",
   music_catalog: "在 Spotify 收听全部作品 →",
+  releases_all: "全部作品",
 
   video_label: "剪辑文化",
   video_title: "4300 万播放，由社区推动。",
@@ -326,6 +332,8 @@ window.HXI_I18N.es = {
   stat_ncs: "Ecosistema de 50 M",
   stat_years: "Años en activo",
   scroll: "Desliza",
+  play_preview: "Escuchar",
+  follow_label: "Sigue a HXI",
 
   credits_label: "Créditos de sync y colaboración",
   credit_ff: "Drift Tape/Phonk Vol 1 · con TWISTED",
@@ -353,6 +361,7 @@ window.HXI_I18N.es = {
   music_mh_sub: "EP · 5 temas · con -Prey, pvppet, ToufG",
   music_free_stems: "◈ Stems gratis",
   music_catalog: "Catálogo completo en Spotify →",
+  releases_all: "Todos los lanzamientos",
 
   video_label: "Cultura del edit",
   video_title: "43 M de reproducciones. Construidas por la comunidad.",
@@ -468,6 +477,8 @@ window.HXI_I18N.hi = {
   stat_ncs: "5 करोड़ का नेटवर्क",
   stat_years: "सक्रिय वर्ष",
   scroll: "स्क्रॉल करें",
+  play_preview: "झलक सुनें",
+  follow_label: "फ़ॉलो करें",
 
   credits_label: "सिंक व सहयोग क्रेडिट",
   credit_ff: "Drift Tape/Phonk Vol 1 · TWISTED के साथ",
@@ -495,6 +506,7 @@ window.HXI_I18N.hi = {
   music_mh_sub: "ईपी · 5 ट्रैक · -Prey, pvppet, ToufG के साथ",
   music_free_stems: "◈ मुफ़्त स्टेम",
   music_catalog: "स्पॉटिफ़ाई पर पूरा कैटलॉग →",
+  releases_all: "सभी रिलीज़",
 
   video_label: "एडिट कल्चर",
   video_title: "4.3 करोड़ स्ट्रीम। समुदाय ने बनाए।",
@@ -610,6 +622,8 @@ window.HXI_I18N.ar = {
   stat_ncs: "منظومة 50 مليون",
   stat_years: "سنوات النشاط",
   scroll: "مرِّر",
+  play_preview: "استمع لمقتطف",
+  follow_label: "تابِع",
 
   credits_label: "أعمال ترخيص وتعاون",
   credit_ff: "Drift Tape/Phonk Vol 1 · مع TWISTED",
@@ -637,6 +651,7 @@ window.HXI_I18N.ar = {
   music_mh_sub: "أسطوانة قصيرة · 5 مقطوعات · مع -Prey وpvppet وToufG",
   music_free_stems: "◈ ستِمز مجانية",
   music_catalog: "كل الأعمال على سبوتيفاي →",
+  releases_all: "كل الإصدارات",
 
   video_label: "ثقافة المونتاج",
   video_title: "43 مليون استماع صنعها الجمهور.",
@@ -752,6 +767,8 @@ window.HXI_I18N.fr = {
   stat_ncs: "Écosystème de 50 M",
   stat_years: "Années d’activité",
   scroll: "Défiler",
+  play_preview: "Écouter un extrait",
+  follow_label: "Suivre",
 
   credits_label: "Crédits sync et collabs",
   credit_ff: "Drift Tape/Phonk Vol 1 · avec TWISTED",
@@ -779,6 +796,7 @@ window.HXI_I18N.fr = {
   music_mh_sub: "EP · 5 titres · avec -Prey, pvppet, ToufG",
   music_free_stems: "◈ Stems gratuits",
   music_catalog: "Catalogue complet sur Spotify →",
+  releases_all: "Toutes les sorties",
 
   video_label: "Culture de l’edit",
   video_title: "43 M d’écoutes. Portées par la communauté.",
@@ -894,6 +912,8 @@ window.HXI_I18N.pt = {
   stat_ncs: "Ecossistema de 50 mi",
   stat_years: "Anos de carreira",
   scroll: "Role",
+  play_preview: "Ouvir prévia",
+  follow_label: "Seguir",
 
   credits_label: "Créditos de sync e colabs",
   credit_ff: "Drift Tape/Phonk Vol 1 · com TWISTED",
@@ -921,6 +941,7 @@ window.HXI_I18N.pt = {
   music_mh_sub: "EP · 5 faixas · com -Prey, pvppet, ToufG",
   music_free_stems: "◈ Stems grátis",
   music_catalog: "Catálogo completo no Spotify →",
+  releases_all: "Todos os lançamentos",
 
   video_label: "Cultura do edit",
   video_title: "43 mi de streams. Construídos pela comunidade.",
@@ -1036,6 +1057,8 @@ window.HXI_I18N.bn = {
   stat_ncs: "৫ কোটির নেটওয়ার্ক",
   stat_years: "সক্রিয় বছর",
   scroll: "স্ক্রল করুন",
+  play_preview: "প্রিভিউ শুনুন",
+  follow_label: "ফলো করুন",
 
   credits_label: "সিঙ্ক ও কোলাব ক্রেডিট",
   credit_ff: "Drift Tape/Phonk Vol 1 · TWISTED-এর সঙ্গে",
@@ -1063,6 +1086,7 @@ window.HXI_I18N.bn = {
   music_mh_sub: "ইপি · ৫টি ট্র্যাক · -Prey, pvppet, ToufG-এর সঙ্গে",
   music_free_stems: "◈ ফ্রি স্টেম",
   music_catalog: "স্পটিফাইয়ে পূর্ণ ক্যাটালগ →",
+  releases_all: "সব রিলিজ",
 
   video_label: "এডিট কালচার",
   video_title: "৪.৩ কোটি স্ট্রিম। গড়েছে কমিউনিটি।",
@@ -1178,6 +1202,8 @@ window.HXI_I18N.ru = {
   stat_ncs: "Экосистема 50 млн",
   stat_years: "Лет в деле",
   scroll: "Листайте",
+  play_preview: "Послушать",
+  follow_label: "Подписаться",
 
   credits_label: "Синки и коллаборации",
   credit_ff: "Drift Tape/Phonk Vol 1 · вместе с TWISTED",
@@ -1205,6 +1231,7 @@ window.HXI_I18N.ru = {
   music_mh_sub: "EP · 5 треков · вместе с -Prey, pvppet, ToufG",
   music_free_stems: "◈ Бесплатные стемы",
   music_catalog: "Весь каталог в Spotify →",
+  releases_all: "Все релизы",
 
   video_label: "Культура эдитов",
   video_title: "43 млн прослушиваний. Их сделало сообщество.",
@@ -1320,6 +1347,8 @@ window.HXI_I18N.ur = {
   stat_ncs: "5 کروڑ کا نیٹ ورک",
   stat_years: "سرگرمی کے سال",
   scroll: "اسکرول کریں",
+  play_preview: "جھلک سنیں",
+  follow_label: "فالو کریں",
 
   credits_label: "سنک اور اشتراک کے کریڈٹ",
   credit_ff: "Drift Tape/Phonk Vol 1 · TWISTED کے ساتھ",
@@ -1347,6 +1376,7 @@ window.HXI_I18N.ur = {
   music_mh_sub: "ای پی · 5 ٹریک · -Prey، pvppet، ToufG کے ساتھ",
   music_free_stems: "◈ مفت اسٹیمز",
   music_catalog: "اسپاٹیفائی پر مکمل کیٹلاگ →",
+  releases_all: "تمام ریلیزیں",
 
   video_label: "ایڈٹ کلچر",
   video_title: "4.3 کروڑ اسٹریمز، جو کمیونٹی نے بنائے۔",
@@ -1462,6 +1492,8 @@ window.HXI_I18N.no = {
   stat_ncs: "50M-økosystem",
   stat_years: "År aktiv",
   scroll: "Bla",
+  play_preview: "Hør smakebit",
+  follow_label: "Følg",
 
   credits_label: "Sync- og samarbeidskreditter",
   credit_ff: "Drift Tape/Phonk Vol 1 · med TWISTED",
@@ -1489,6 +1521,7 @@ window.HXI_I18N.no = {
   music_mh_sub: "EP · 5 spor · med -Prey, pvppet, ToufG",
   music_free_stems: "◈ Gratis stems",
   music_catalog: "Hele katalogen på Spotify →",
+  releases_all: "Alle utgivelser",
 
   video_label: "Edit-kultur",
   video_title: "43 mill. strømminger. Bygget av publikum.",
@@ -1604,6 +1637,8 @@ window.HXI_I18N.tr = {
   stat_ncs: "50M’lik ekosistem",
   stat_years: "Yıldır aktif",
   scroll: "Kaydır",
+  play_preview: "Önizlemeyi çal",
+  follow_label: "Takip et",
 
   credits_label: "Sync ve iş birliği künyesi",
   credit_ff: "Drift Tape/Phonk Vol 1 · TWISTED ile",
@@ -1631,6 +1666,7 @@ window.HXI_I18N.tr = {
   music_mh_sub: "EP · 5 parça · -Prey, pvppet, ToufG ile",
   music_free_stems: "◈ Ücretsiz stem",
   music_catalog: "Spotify’da tüm katalog →",
+  releases_all: "Tüm çıkışlar",
 
   video_label: "Edit kültürü",
   video_title: "43 milyon dinlenme. Topluluğun eseri.",

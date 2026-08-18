@@ -52,8 +52,9 @@
 
     try { localStorage.setItem(STORE_KEY, code); } catch (e) { /* ignore */ }
 
-    // Mağaza kartları JS ile çizildiği için dil değişince yeniden çizilmeli.
+    // Mağaza kartları ve çıkış listesi JS ile çizildiği için dil değişince yenilenmeli.
     if (typeof shop === 'function') run(shop);
+    if (typeof renderReleases === 'function') run(renderReleases);
   }
 
   function buildSwitcher() {
@@ -181,6 +182,89 @@
     });
   }
 
+  /* ---------- spotify ---------- */
+
+  function spotify() {
+    document.querySelectorAll('.sp-facade').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var frame = document.createElement('iframe');
+        // Only requested once the visitor presses play — same rule as the video facades.
+        frame.src = 'https://open.spotify.com/embed/' + button.dataset.sp +
+          '?utm_source=generator&theme=0';
+        frame.title = button.dataset.title || 'Spotify';
+        frame.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+        frame.loading = 'lazy';
+        frame.className = 'embed';
+        frame.height = '152';
+        button.parentNode.replaceChild(frame, button);
+        frame.focus();
+      });
+    });
+  }
+
+  /* ---------- release list, synced from spotify ---------- */
+
+  var spotifyData = null;
+
+  function renderReleases() {
+    var box = document.getElementById('releases');
+    var list = document.getElementById('releases-list');
+    if (!box || !list || !spotifyData || !spotifyData.releases || !spotifyData.releases.length) return;
+
+    var lang = document.documentElement.lang || 'en';
+    // A release date can be a year, a month or a full date — format only what Spotify gave us.
+    var fmt = function (value) {
+      var parts = value.split('-');
+      var date = new Date(value.length === 4 ? value + '-01-01' : value);
+      if (isNaN(date)) return value;
+      var options = parts.length === 1 ? { year: 'numeric' }
+        : parts.length === 2 ? { year: 'numeric', month: 'long' }
+        : { year: 'numeric', month: 'long', day: 'numeric' };
+      try { return new Intl.DateTimeFormat(lang, options).format(date); }
+      catch (e) { return value; }
+    };
+
+    list.textContent = '';
+    spotifyData.releases.forEach(function (release) {
+      var li = document.createElement('li');
+      var left = document.createElement('div');
+      var name = document.createElement('b');
+      name.textContent = release.name;
+      var meta = document.createElement('span');
+      meta.textContent = fmt(release.releaseDate) + ' · ' + release.type +
+        (release.tracks > 1 ? ' · ' + release.tracks : '');
+      left.appendChild(name);
+      left.appendChild(meta);
+
+      var link = document.createElement('a');
+      link.href = release.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Spotify →';
+
+      li.appendChild(left);
+      li.appendChild(link);
+      list.appendChild(li);
+    });
+
+    var synced = document.getElementById('releases-synced');
+    if (synced) synced.textContent = 'Spotify · ' + spotifyData.syncedAt;
+    box.hidden = false;
+  }
+
+  function releases() {
+    // Same-origin file written by the weekly sync. Absent until the sync has credentials —
+    // the section simply stays hidden, and the hand-written cards above carry the page.
+    fetch('assets/data/spotify.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data) return;
+        spotifyData = data;
+        renderReleases();
+      })
+      .catch(function () { /* offline, or opened straight from the filesystem */ });
+  }
+
   /* ---------- shop ---------- */
 
   function shop() {
@@ -272,6 +356,8 @@
     run(function () { apply(detect()); });
     run(nav);
     run(videos);
+    run(spotify);
+    run(releases);
     run(shop);
     run(signup);
     run(reveal);
