@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/section";
 import { Arrow, ButtonLink } from "@/components/ui/button";
 import { formatDate } from "./insights";
 import { getDictionary } from "@/content";
-import { articleMeta, type ArticleId } from "@/content/articles";
+import { articleIds, articleMeta, type ArticleId } from "@/content/articles";
 import { absoluteUrl, path, type Locale } from "@/lib/i18n";
 import { jsonLd } from "@/lib/json-ld";
 
@@ -86,8 +86,8 @@ export function ArticleView({
 
       <Section tone="light">
         {/* Okuma genişliği bilinçli olarak dar tutuldu */}
-        <article className="max-w-[68ch]">
-          <p className="text-xl leading-relaxed text-ink-900">
+        <article className="mx-auto max-w-[38rem]">
+          <p className="text-[1.25rem] leading-relaxed text-ink-900">
             {article.excerpt}
           </p>
 
@@ -97,7 +97,7 @@ export function ArticleView({
                 <h2 className="font-display text-2xl leading-snug text-ink-900">
                   {section.title}
                 </h2>
-                <div className="mt-4 space-y-4 leading-relaxed text-ink-800/85">
+                <div className="mt-4 space-y-4 text-[1.0625rem] leading-[1.75] text-ink-900/85">
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph.slice(0, 40)}>{paragraph}</p>
                   ))}
@@ -125,7 +125,36 @@ export function ArticleView({
         </article>
       </Section>
 
-      <Section tone="sand">
+      {/* Yazıyı bitiren okuyucunun tek çıkışı listeye dönmek olmasın */}
+      <Section tone="sand" space="tight">
+        <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-700">
+          {labels.readNext}
+        </h2>
+        <ul className="mt-6 divide-y divide-ink-900/10 border-y border-ink-900/10">
+          {articleIds
+            .filter((id) => id !== articleId)
+            .map((id) => (
+              <li key={id}>
+                <Link
+                  href={`${path("insights", locale)}/${id}`}
+                  className="group flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
+                >
+                  <span className="font-display text-xl leading-snug text-ink-900">
+                    {articles[id].title}
+                  </span>
+                  <span className="flex shrink-0 items-center gap-3 text-sm text-ink-800/70">
+                    {articleMeta[id].readingMinutes} {labels.readingTime}
+                    <span className="text-accent-700 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1">
+                      <Arrow />
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+        </ul>
+      </Section>
+
+      <Section tone="light">
         <div className="rounded-3xl bg-ink-900 px-8 py-12 sm:px-12">
           <h2 className="font-display text-2xl text-white sm:text-3xl">
             {labels.cta.title}

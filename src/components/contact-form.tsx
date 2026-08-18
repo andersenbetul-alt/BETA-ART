@@ -24,7 +24,7 @@ function SubmitButton({ label, pending }: { label: string; pending: string }) {
 }
 
 const fieldClass =
-  "mt-2 w-full rounded-xl border border-ink-900/15 bg-white px-4 py-3 text-base text-ink-900 sm:text-[0.95rem] transition-colors placeholder:text-ink-800/60 hover:border-ink-900/30 focus:border-accent-500";
+  "mt-2 w-full rounded-xl border border-ink-900/25 bg-white px-4 py-3 text-base text-ink-900 sm:text-[0.95rem] transition-colors placeholder:text-ink-800/60 hover:border-ink-900/30 focus:border-accent-600";
 
 export function ContactForm({
   locale,

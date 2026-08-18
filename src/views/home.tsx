@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink, Arrow } from "@/components/ui/button";
-import { Card, FeatureCard } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { getDictionary } from "@/content";
 import { articleIds, articleMeta } from "@/content/articles";
 import { formatDate } from "./insights";
@@ -10,8 +10,7 @@ import { path, type Locale } from "@/lib/i18n";
 
 export function HomeView({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const { hero, pillars, practices, approach, why, aiWorkforce, insights, cta } =
-    dict.home;
+  const { hero, practices, approach, why, aiWorkforce, insights, cta } = dict.home;
   // Ana sayfada en yeni üç yazı gösterilir; sıra articleIds dizisinden gelir.
   const latestArticles = articleIds.slice(0, 3);
 
@@ -81,23 +80,8 @@ export function HomeView({ locale }: { locale: Locale }) {
         </Container>
       </section>
 
-      {/* Odak alanları */}
-      <Section tone="light">
-        <SectionHeading title={pillars.title} />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {pillars.items.map((item, index) => (
-            <FeatureCard
-              key={item.title}
-              index={String(index + 1).padStart(2, "0")}
-              title={item.title}
-              description={item.description}
-            />
-          ))}
-        </div>
-      </Section>
-
       {/* Uzmanlık alanları */}
-      <Section tone="sand">
+      <Section tone="sand" space="feature">
         <SectionHeading
           eyebrow={practices.eyebrow}
           title={practices.title}
@@ -263,7 +247,8 @@ export function HomeView({ locale }: { locale: Locale }) {
                     {article.excerpt}
                   </p>
                   <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ink-900">
-                    <span className="transition-transform group-hover:translate-x-1">
+                    {articleMeta[id].readingMinutes} {dict.insights.labels.readingTime}
+                    <span className="transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1">
                       <Arrow />
                     </span>
                   </span>

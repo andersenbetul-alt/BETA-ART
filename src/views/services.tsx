@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { ButtonLink } from "@/components/ui/button";
+import { ButtonLink, Arrow } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { PageHero } from "./page-hero";
 import { getDictionary } from "@/content";
+import { articleIds, articleMeta } from "@/content/articles";
 import { path, type Locale } from "@/lib/i18n";
 
 function Check() {
@@ -24,7 +26,8 @@ function Check() {
 
 export function ServicesView({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const { hero, practices, outcomesLabel, engagement } = dict.services;
+  const { hero, practices, outcomesLabel, practiceCta, relatedArticles, engagement } =
+    dict.services;
 
   return (
     <>
@@ -64,19 +67,60 @@ export function ServicesView({ locale }: { locale: Locale }) {
                   ))}
                 </ul>
               </div>
+
+              {/* Okuyan kişi ikna olduğunda altı ekran kaydırmak zorunda kalmasın */}
+              <Link
+                href={path("contact", locale)}
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink-900 underline-offset-4 hover:underline"
+              >
+                {practiceCta}
+                <Arrow />
+              </Link>
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
               {practice.offerings.map((offering) => (
                 <Card key={offering.title} className="h-full">
-                  <h3 className="font-display text-lg leading-snug text-ink-900">
+                  <h3 className="font-display text-lg font-semibold leading-snug text-ink-900">
                     {offering.title}
                   </h3>
-                  <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-800/75">
+                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-800/75">
                     {offering.description}
                   </p>
                 </Card>
               ))}
+
+              {/* Bu alana bağlı yazılar — articleMeta.practice eşlemesi zaten var */}
+              {(() => {
+                const linked = articleIds.filter(
+                  (id) => articleMeta[id].practice === practice.id,
+                );
+                if (linked.length === 0) return null;
+                return (
+                  <div className="sm:col-span-2">
+                    <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-700">
+                      {relatedArticles}
+                    </h3>
+                    <ul className="mt-4 divide-y divide-ink-900/10 border-y border-ink-900/10">
+                      {linked.map((id) => (
+                        <li key={id}>
+                          <Link
+                            href={`${path("insights", locale)}/${id}`}
+                            className="group flex items-center justify-between gap-6 py-4 text-ink-900"
+                          >
+                            <span className="font-display text-lg leading-snug">
+                              {dict.insights.articles[id].title}
+                            </span>
+                            <span className="shrink-0 text-accent-700 transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1">
+                              <Arrow />
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })()}
             </div>
           </div>
         </Section>

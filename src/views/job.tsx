@@ -136,15 +136,40 @@ export function JobView({ locale, jobId }: { locale: Locale; jobId: JobId }) {
               {labels.applyDescription}
             </p>
             <a href={applyHref} className={`${buttonClass("primary")} mt-6 w-full`}>
-              {labels.applyEmail}
+              {labels.apply}
               <Arrow />
             </a>
+            <p className="mt-3 text-center text-xs text-ink-800/70">
+              {labels.applyEmail}
+            </p>
             <Link
               href={path("careers", locale)}
               className="mt-4 inline-flex w-full items-center justify-center gap-2 text-sm font-medium text-ink-800/70 underline-offset-4 hover:text-ink-900 hover:underline"
             >
               {labels.backToList}
             </Link>
+
+            {/* İlana Google'dan doğrudan inen aday firmayı da görebilsin */}
+            <div className="mt-7 border-t border-ink-900/10 pt-6">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-700">
+                {dict.careers.process.title}
+              </h3>
+              <ol className="mt-4 space-y-2 text-sm text-ink-800/80">
+                {dict.careers.process.steps.map((step) => (
+                  <li key={step.step} className="flex gap-3">
+                    <span className="tabular-nums text-ink-800/70">{step.step}</span>
+                    {step.title}
+                  </li>
+                ))}
+              </ol>
+              <Link
+                href={path("careers", locale)}
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-ink-900 underline-offset-4 hover:underline"
+              >
+                {dict.careers.culture.title}
+                <Arrow />
+              </Link>
+            </div>
           </aside>
         </div>
       </Section>

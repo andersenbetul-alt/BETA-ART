@@ -16,7 +16,7 @@ export function PrivacyView({ locale }: { locale: Locale }) {
       />
 
       <Section tone="light">
-        <div className="max-w-3xl">
+        <div className="max-w-[42rem]">
           <p className="text-sm text-ink-800/70">{updated}</p>
 
           <div className="mt-10 space-y-12">

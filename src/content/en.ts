@@ -37,31 +37,6 @@ export const en: Dictionary = {
       description:
         "NAVIAR turns decisions that stall in the boardroom into systems that run on the ground. By bringing management consulting and human resources expertise into a single team, we make sure every decision lands at every layer of your organisation.",
     },
-    pillars: {
-      title: "Where we focus",
-      items: [
-        {
-          title: "Strategy and growth",
-          description:
-            "We test your ambitions against market reality and translate growth into a measurable roadmap.",
-        },
-        {
-          title: "Organisation and process",
-          description:
-            "We simplify roles, decision rights and workflows to create real operational efficiency.",
-        },
-        {
-          title: "People and talent",
-          description:
-            "We build HR systems that work in practice, from hiring through to career architecture.",
-        },
-        {
-          title: "Learning and development",
-          description:
-            "We design leadership and capability programmes around measurable behaviour change.",
-        },
-      ],
-    },
     practices: {
       eyebrow: "Practice areas",
       title: "Two disciplines, one integrated approach",
@@ -76,7 +51,7 @@ export const en: Dictionary = {
     },
     why: {
       eyebrow: "Why NAVIAR",
-      title: "We structure consulting differently",
+      title: "Four things that set us apart from other consultants",
       items: [
         {
           title: "An integrated view",
@@ -116,7 +91,7 @@ export const en: Dictionary = {
       eyebrow: "Insights",
       title: "What we see on the ground",
       description:
-        "We write about the problems we meet again and again in client work, and the approaches we have seen actually hold up.",
+        "We write about the problems our founders have met again and again in the field, and the approaches they have seen hold up.",
       all: "All articles",
     },
     cta: {
@@ -205,6 +180,8 @@ export const en: Dictionary = {
       },
     ],
     outcomesLabel: "What you walk away with",
+    practiceCta: "Book a conversation about this area",
+    relatedArticles: "Our writing on this area",
     engagement: {
       title: "How we engage",
       description:
@@ -339,7 +316,7 @@ export const en: Dictionary = {
     vision: {
       title: "Our vision",
       description:
-        "To be the first consulting partner organisations call when they face a structural decision about their growth.",
+        "To be the first team companies call when they decide to professionalise — and to leave behind not a report, but a system the organisation runs itself.",
     },
     values: {
       title: "Our values",
@@ -449,12 +426,13 @@ export const en: Dictionary = {
       eyebrow: "Insights",
       title: "What we see on the ground",
       description:
-        "We write about the problems we meet again and again in client work, and the approaches we have seen actually hold up. Not general advice — we try to keep it concrete enough to act on.",
+        "We write about the problems our founders have met again and again across consulting and corporate HR work, and the approaches they have seen hold up. Not general advice — we try to keep it concrete enough to act on.",
     },
     labels: {
       readingTime: "minute read",
       published: "Published",
       backToList: "All articles",
+      readNext: "Read next",
       related: "This article relates to",
       cta: {
         title: "Let's discuss this in your organisation",
@@ -472,7 +450,7 @@ export const en: Dictionary = {
             title: "The strategy itself is rarely the problem",
             paragraphs: [
               "Finding out whether an organisation has a strategy is easy: you ask, and a deck usually appears. The hard part is finding out whether the decisions in that deck have any bearing on daily operations six months later.",
-              "Working with shelved plans, we have almost never seen a genuinely bad strategy. What we have seen is sound decisions taken before the structure to carry them existed.",
+              "Looking closely at shelved plans, we have almost never seen a genuinely bad strategy. What we have seen is sound decisions taken before the structure to carry them existed.",
             ],
           },
           {
@@ -575,7 +553,7 @@ export const en: Dictionary = {
             title: "Bring the manager into the process",
             paragraphs: [
               "The strongest predictor of behaviour change is not the quality of the training but whether the participant's manager expects that behaviour.",
-              "Write the manager's part into the programme design: a five-minute expectation conversation before, and a follow-up conversation after, roughly doubles the effect of most programmes.",
+              "Write the manager's part into the programme design: a five-minute expectation conversation before, and a follow-up conversation after, is the single strongest predictor of behaviour change in most programmes.",
             ],
           },
         ],
@@ -886,7 +864,7 @@ export const en: Dictionary = {
         {
           title: "A transparent career path",
           description:
-            "Level definitions and promotion criteria are written down. We built for ourselves the system we build for clients.",
+            "Level definitions and promotion criteria were written down from day one. We built for ourselves the system we recommend to clients, before hiring our first employee.",
         },
         {
           title: "Small team, close feedback",
@@ -918,7 +896,7 @@ export const en: Dictionary = {
           step: "03",
           title: "Case discussion",
           description:
-            "We work through a simplified version of a real project together. It is not an exam — it is a chance to think alongside each other.",
+            "We work through an anonymised case from our founders' past projects. It is not an exam — it is a chance to think alongside each other.",
           activities: [],
         },
         {

@@ -57,7 +57,7 @@ export function InsightsView({ locale }: { locale: Locale }) {
                     <span className="font-normal text-ink-800/70">
                       {meta.readingMinutes} {labels.readingTime}
                     </span>
-                    <span className="transition-transform group-hover:translate-x-1">
+                    <span className="transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1">
                       <Arrow />
                     </span>
                   </span>

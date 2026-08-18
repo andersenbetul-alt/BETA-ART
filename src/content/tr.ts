@@ -37,31 +37,6 @@ export const tr: Dictionary = {
       description:
         "NAVIAR, strateji masasında kalan kararları sahada işleyen sistemlere dönüştürür. Yönetim danışmanlığı ile insan kaynakları uzmanlığını tek bir ekipte buluşturarak, aldığınız kararın organizasyonun her katmanında karşılık bulmasını sağlarız.",
     },
-    pillars: {
-      title: "Odak alanlarımız",
-      items: [
-        {
-          title: "Strateji ve büyüme",
-          description:
-            "Hedeflerinizi pazar gerçekleriyle sınar, büyümeyi ölçülebilir bir yol haritasına bağlarız.",
-        },
-        {
-          title: "Organizasyon ve süreç",
-          description:
-            "Rolleri, karar mekanizmalarını ve iş akışlarını sadeleştirerek operasyonel verimlilik yaratırız.",
-        },
-        {
-          title: "İnsan ve yetenek",
-          description:
-            "İşe alımdan kariyer mimarisine kadar insan kaynakları sistemlerini kurar ve işler hale getiririz.",
-        },
-        {
-          title: "Gelişim ve öğrenme",
-          description:
-            "Liderlik ve yetkinlik programlarını, davranış değişimini ölçen bir tasarımla kurgularız.",
-        },
-      ],
-    },
     practices: {
       eyebrow: "Uzmanlık alanları",
       title: "İki alan, tek bütünleşik yaklaşım",
@@ -76,7 +51,7 @@ export const tr: Dictionary = {
     },
     why: {
       eyebrow: "Neden NAVIAR",
-      title: "Danışmanlığı farklı kurguluyoruz",
+      title: "Diğer danışmanlardan dört noktada ayrılıyoruz",
       items: [
         {
           title: "Bütünleşik bakış",
@@ -116,7 +91,7 @@ export const tr: Dictionary = {
       eyebrow: "İçgörüler",
       title: "Sahada gördüklerimiz",
       description:
-        "Danışmanlık projelerinde tekrar tekrar karşılaştığımız sorunları ve işe yaradığını gördüğümüz yaklaşımları yazıyoruz.",
+        "Kurucularımızın saha deneyiminde tekrar tekrar karşılaştığı sorunları ve işe yaradığını gördüğü yaklaşımları yazıyoruz.",
       all: "Tüm yazılar",
     },
     cta: {
@@ -205,6 +180,8 @@ export const tr: Dictionary = {
       },
     ],
     outcomesLabel: "Elde ettiğiniz çıktılar",
+    practiceCta: "Bu alan için görüşme planlayın",
+    relatedArticles: "Bu alandaki yazılarımız",
     engagement: {
       title: "Çalışma modellerimiz",
       description:
@@ -339,7 +316,7 @@ export const tr: Dictionary = {
     vision: {
       title: "Vizyonumuz",
       description:
-        "Büyümek isteyen kurumların, yapısal bir karar alacakları anda ilk aradıkları danışmanlık ortağı olmak.",
+        "Kurumsallaşma kararı alan şirketlerin ilk aradığı ekip olmak — ve her projeden geriye rapor değil, kurumun kendi yürüttüğü bir sistem bırakmak.",
     },
     values: {
       title: "Değerlerimiz",
@@ -449,12 +426,13 @@ export const tr: Dictionary = {
       eyebrow: "İçgörüler",
       title: "Sahada gördüklerimiz",
       description:
-        "Danışmanlık projelerinde tekrar tekrar karşılaştığımız sorunları ve işe yaradığını gördüğümüz yaklaşımları yazıyoruz. Genel geçer tavsiye değil; uygulanabilir olması için yeterince somut olmasına çalışıyoruz.",
+        "Kurucularımızın danışmanlık ve kurumsal İK deneyiminde tekrar tekrar karşılaştığı sorunları ve işe yaradığını gördüğü yaklaşımları yazıyoruz. Genel geçer tavsiye değil; uygulanabilir olması için yeterince somut olmasına çalışıyoruz.",
     },
     labels: {
       readingTime: "dakikalık okuma",
       published: "Yayın",
       backToList: "Tüm yazılar",
+      readNext: "Sırada okunacaklar",
       related: "Bu yazı şu alanla ilgili",
       cta: {
         title: "Bu konuyu kurumunuzda konuşalım",
@@ -472,7 +450,7 @@ export const tr: Dictionary = {
             title: "Sorun stratejinin kendisi değil",
             paragraphs: [
               "Bir kurumun stratejisi olup olmadığını anlamak kolaydır: sorarsınız, çoğu zaman bir sunum çıkar. Zor olan, o sunumdaki kararların altı ay sonra günlük işleyişte karşılığı olup olmadığını anlamaktır.",
-              "Rafta kalan planlarla çalıştığımızda neredeyse hiç 'kötü strateji' görmedik. Gördüğümüz şey, doğru kararların onları taşıyacak yapı kurulmadan alınmış olmasıydı.",
+              "Rafta kalan planlara yakından baktığımızda neredeyse hiç 'kötü strateji' görmedik. Gördüğümüz şey, doğru kararların onları taşıyacak yapı kurulmadan alınmış olmasıydı.",
             ],
           },
           {
@@ -575,7 +553,7 @@ export const tr: Dictionary = {
             title: "Yöneticiyi sürece dahil edin",
             paragraphs: [
               "Davranış değişiminin en güçlü belirleyicisi eğitimin kalitesi değil, katılımcının yöneticisinin o davranışı bekleyip beklemediğidir.",
-              "Program tasarımına yöneticinin ne yapacağını da yazın: eğitim öncesi beş dakikalık bir beklenti konuşması ve sonrasında bir takip görüşmesi, çoğu programın etkisini ikiye katlar.",
+              "Program tasarımına yöneticinin ne yapacağını da yazın: eğitim öncesi beş dakikalık bir beklenti konuşması ve sonrasında bir takip görüşmesi, çoğu programda davranış değişiminin en güçlü tek belirleyicisidir.",
             ],
           },
         ],
@@ -886,7 +864,7 @@ export const tr: Dictionary = {
         {
           title: "Şeffaf kariyer yolu",
           description:
-            "Kademe tanımları ve terfi kriterleri yazılıdır. Müşterilerimize kurduğumuz sistemi kendimize de kurduk.",
+            "Kademe tanımları ve terfi kriterleri ilk günden yazılıydı. Müşterilerimize kurmayı önerdiğimiz sistemi, ilk çalışanımızı işe almadan önce kendimize kurduk.",
         },
         {
           title: "Küçük ekip, yakın geri bildirim",
@@ -918,7 +896,7 @@ export const tr: Dictionary = {
           step: "03",
           title: "Vaka çalışması",
           description:
-            "Gerçek bir projeden sadeleştirilmiş bir vaka üzerinde birlikte çalışırız. Sınav değil, birlikte düşünme denemesidir.",
+            "Kurucularımızın geçmiş projelerinden anonimleştirilmiş bir vaka üzerinde birlikte çalışırız. Sınav değil, birlikte düşünme denemesidir.",
           activities: [],
         },
         {

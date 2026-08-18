@@ -103,7 +103,6 @@ export type Dictionary = {
       highlight: string;
       description: string;
     };
-    pillars: { title: string; items: Feature[] };
     practices: { eyebrow: string; title: string; description: string };
     approach: { eyebrow: string; title: string; description: string };
     why: { eyebrow: string; title: string; items: Feature[] };
@@ -121,6 +120,10 @@ export type Dictionary = {
     hero: { eyebrow: string; title: string; description: string };
     practices: Practice[];
     outcomesLabel: string;
+    /** Uzmanlık alanı bloğunun altındaki alana özel çağrı */
+    practiceCta: string;
+    /** O alana bağlı yazıların başlığı */
+    relatedArticles: string;
     engagement: {
       title: string;
       description: string;
@@ -201,6 +204,7 @@ export type Dictionary = {
       published: string;
       backToList: string;
       related: string;
+      readNext: string;
       cta: { title: string; description: string };
     };
     /** Her yazı iki dilde de tanımlanmak zorundadır */

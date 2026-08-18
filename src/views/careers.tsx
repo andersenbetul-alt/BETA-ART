@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ButtonLink, Arrow } from "@/components/ui/button";
-import { Card, FeatureCard } from "@/components/ui/card";
+import { FeatureCard } from "@/components/ui/card";
 import { PageHero } from "./page-hero";
 import { getDictionary } from "@/content";
 import { jobIds } from "@/content/jobs";
@@ -36,13 +36,13 @@ export function CareersView({ locale }: { locale: Locale }) {
               <li key={id}>
                 <Link
                   href={`${path("careers", locale)}/${id}`}
-                  className="group flex flex-col gap-5 rounded-2xl border border-ink-900/10 bg-white p-7 transition-colors hover:border-accent-500/60 sm:flex-row sm:items-center sm:justify-between"
+                  className="group flex flex-col gap-5 rounded-2xl border border-ink-900/10 bg-white p-7 transition-colors hover:border-accent-500/60 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-10"
                 >
-                  <div className="max-w-2xl">
+                  <div className="max-w-[46ch]">
                     <h3 className="font-display text-xl text-ink-900">
                       {job.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-800/70">
+                    <p className="mt-2 text-[0.9375rem] leading-[1.6] text-ink-800/75">
                       {job.summary}
                     </p>
                     <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs font-medium uppercase tracking-wider text-ink-800/70">
@@ -54,7 +54,7 @@ export function CareersView({ locale }: { locale: Locale }) {
                   </div>
                   <span className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-ink-900">
                     {openings.viewJob}
-                    <span className="transition-transform group-hover:translate-x-1">
+                    <span className="transition-transform group-hover:translate-x-1 group-focus-visible:translate-x-1">
                       <Arrow />
                     </span>
                   </span>
@@ -65,21 +65,22 @@ export function CareersView({ locale }: { locale: Locale }) {
         </ul>
 
         {/* Açık başvuru */}
-        <Card className="mt-8 border-dashed bg-sand-50">
-          <h3 className="font-display text-xl text-ink-900">
+        {/* Card kullanılmıyor: onun bg-white'ı koyu zemini eziyordu */}
+        <div className="mt-8 rounded-2xl bg-ink-900 p-7">
+          <h3 className="font-display text-xl text-white">
             {openApplication.title}
           </h3>
-          <p className="mt-3 max-w-2xl leading-relaxed text-ink-800/75">
+          <p className="mt-3 max-w-[46ch] leading-relaxed text-ink-100/85">
             {openApplication.description}
           </p>
           <a
             href={applyHref}
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink-900 underline-offset-4 hover:underline"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent-300 underline-offset-4 hover:underline"
           >
             {openApplication.action}
             <Arrow />
           </a>
-        </Card>
+        </div>
       </Section>
 
       {/* Kültür */}
