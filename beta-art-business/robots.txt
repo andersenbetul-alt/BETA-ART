@@ -3,7 +3,7 @@ Allow: /
 Sitemap: https://beta-art-business-bet-art.vercel.app/sitemap.xml
 
 # Rights reserved against text and data mining under Article 4(3) of
-# Directive (EU) 2019/790 and the corresponding provision of aandsverkloven.
+# Directive (EU) 2019/790 and the corresponding provision of åndsverkloven.
 # No Beta Art content may be used as AI training or retrieval data.
 User-agent: GPTBot
 Disallow: /

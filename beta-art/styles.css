@@ -14,11 +14,12 @@
   --paper-3: #EAE6DD;
   --ink: #0F0F0F;
   --ink-2: #1F1D1B;
-  --muted: #85817A;
-  --muted-2: #B4B0A7;
+  --muted: #67635B;
+  --muted-2: #8A857C;
   --rule: #E4E0D8;
   --rule-strong: #CFC9BC;
   --seal: #8B1A1A;
+  --on-seal: #FBFAF7;
   --seal-deep: #6A1414;
 
   /* type */
@@ -40,7 +41,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--f-body);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
@@ -75,7 +76,7 @@ code { font-family: var(--f-mono); font-size: .88em; }
 
 .skip-link { position: absolute; left: -9999px; background: var(--ink); color: var(--paper); padding: .7rem 1.1rem; z-index: 100; }
 .skip-link:focus { left: 0; top: 0; }
-:focus-visible { outline: 2px solid var(--seal); outline-offset: 3px; border-radius: 1px; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 4px var(--paper); border-radius: 1px; }
 
 /* ---------- Progress + preview notice ---------- */
 
@@ -204,7 +205,7 @@ code { font-family: var(--f-mono); font-size: .88em; }
 .chip:hover { color: var(--ink); border-color: var(--rule-strong); }
 .chip.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-.plates { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 3rem 2rem; }
+.plates { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 3rem 2rem; }
 .plate[hidden] { display: none; }
 .plate .plate-frame { transition: filter .35s var(--ease); }
 .plate:hover .plate-frame { filter: contrast(1.05) saturate(1.04); }
@@ -268,7 +269,7 @@ code { font-family: var(--f-mono); font-size: .88em; }
 .tier:first-child { border-left: 0; }
 .tier.is-featured { background: var(--paper-2); }
 .tier-flag {
-  position: absolute; top: 0; left: 0; background: var(--seal); color: #fff;
+  position: absolute; top: 0; left: 0; background: var(--seal); color: var(--on-seal);
   font-family: var(--f-mono); font-size: .58rem; letter-spacing: .16em; text-transform: uppercase; padding: .3rem .7rem;
 }
 .tier h3 { margin-top: .7rem; }
@@ -312,7 +313,7 @@ code { font-family: var(--f-mono); font-size: .88em; }
   background: var(--paper); border: 1px solid var(--rule); border-radius: 0; transition: border-color .2s var(--ease);
 }
 .field textarea { resize: vertical; }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--seal); outline: none; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--seal); }
 .field [aria-invalid="true"] { border-color: var(--seal); background: #fdf6f6; }
 .error { color: var(--seal-deep); font-family: var(--f-mono); font-size: .66rem; letter-spacing: .06em; margin: .35rem 0 0; }
 .form-status { font-family: var(--f-mono); font-size: .68rem; letter-spacing: .1em; margin: 1rem 0 0; text-align: center; color: var(--seal); }
@@ -325,13 +326,11 @@ code { font-family: var(--f-mono); font-size: .88em; }
 .footer nav a { font-size: .88rem; text-decoration: none; color: var(--ink-2); width: fit-content; border-bottom: 1px solid transparent; }
 .footer nav a:hover { border-bottom-color: var(--seal); }
 .footer-base { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
-.to-top { background: transparent; border: 0; cursor: pointer; color: var(--muted); font-family: var(--f-mono); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
+.to-top { background: transparent; border: 0; cursor: pointer; padding: .55rem .7rem; color: var(--muted); font-family: var(--f-mono); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
 .to-top:hover { color: var(--seal); }
 
 /* ---------- Reveal ---------- */
 
-.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-.reveal.is-visible { opacity: 1; transform: none; }
 
 /* ---------- Responsive ---------- */
 
@@ -349,6 +348,7 @@ code { font-family: var(--f-mono); font-size: .88em; }
   .menu-btn { display: grid; }
   .nav {
     position: fixed; inset: 84px 0 auto; flex-direction: column; gap: 0; margin: 0;
+    max-height: calc(100dvh - 84px); overflow-y: auto; overscroll-behavior: contain;
     background: var(--paper); border-bottom: 1px solid var(--rule); padding: 0 1.5rem 1.5rem;
     transform: translateY(-135%); transition: transform .3s var(--ease);
   }
@@ -360,8 +360,7 @@ code { font-family: var(--f-mono); font-size: .88em; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-  .reveal { opacity: 1; transform: none; }
-}
+  }
 
 /* ============================================================
    Additions: language picker, plate actions, quote & invoicing,
@@ -408,7 +407,7 @@ code { font-family: var(--f-mono); font-size: .88em; }
 /* Quote and proforma invoice */
 .count-badge {
   font-family: var(--f-mono); font-size: .72rem; letter-spacing: .08em; vertical-align: middle;
-  background: var(--seal); color: #fff; padding: .15rem .55rem; margin-left: .5rem;
+  background: var(--seal); color: var(--on-seal); padding: .15rem .55rem; margin-left: .5rem;
 }
 .quote-panel { border: 1px solid var(--rule); background: var(--paper-2); padding: clamp(1.4rem, 3vw, 2rem); }
 .quote-lines { border-top: 1px solid var(--rule); }
@@ -418,7 +417,7 @@ code { font-family: var(--f-mono); font-size: .88em; }
 }
 .quote-id, .quote-amount { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .08em; }
 .quote-amount { text-align: right; }
-.quote-remove { background: transparent; border: 0; color: var(--muted); font-size: 1.1rem; cursor: pointer; line-height: 1; }
+.quote-remove { background: transparent; border: 0; padding: .3rem .6rem; min-height: 24px; color: var(--muted); font-size: 1.1rem; cursor: pointer; line-height: 1; }
 .quote-remove:hover { color: var(--seal); }
 .quote-totals { margin: 1.4rem 0 0; margin-left: auto; max-width: 320px; }
 .quote-totals > div { display: flex; justify-content: space-between; padding: .4rem 0; font-size: .9rem; }
@@ -475,4 +474,31 @@ code { font-family: var(--f-mono); font-size: .88em; }
   .quote-id { grid-area: id; } .quote-title { grid-area: title; } .quote-amount { grid-area: amount; text-align: left; } .quote-remove { grid-area: remove; }
   .field-row { grid-template-columns: 1fr; }
   .masthead-actions { gap: .5rem; }
+}
+
+/* The mark: a person looked at this page and approved it. Not decoration —
+     it is the promise the whole archive rests on, so it says so in words too. */
+  .human-mark {
+    display: inline-flex; align-items: center; gap: .55rem;
+    margin: 0 0 .55rem; padding: .4rem .8rem;
+    border: 1px solid var(--seal); color: var(--seal);
+    font-family: var(--f-mono); font-size: .6rem; letter-spacing: .2em;
+    text-transform: uppercase; line-height: 1;
+  }
+  .human-mark svg { flex: none; }
+  .human-mark-note {
+    margin: 0 0 .9rem; max-width: 62ch;
+    font-family: var(--f-body); font-size: .78rem; letter-spacing: 0;
+    text-transform: none; color: var(--muted);
+  }
+  /* Arabic letters join; extra tracking would break the word apart. */
+  [lang="ar"] .human-mark { letter-spacing: 0; }
+
+/* No file requests a 700 weight, so a default <strong> was being
+   synthesised by the browser. 600 is loaded; use the real cut. */
+strong, b { font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* the global animation kill snapped this to its midpoint; park it */
+  .ticker-track { animation: none; transform: none; }
 }

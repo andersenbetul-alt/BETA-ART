@@ -11,10 +11,11 @@
   --paper-3: #EAE6DD;
   --ink: #0F0F0F;
   --ink-2: #1F1D1B;
-  --muted: #85817A;
+  --muted: #67635B;
   --rule: #E4E0D8;
   --rule-strong: #CFC9BC;
   --seal: #8B1A1A;
+  --on-seal: #FBFAF7;
   --seal-deep: #6A1414;
 
   --f-display: "Fraunces", Georgia, "Times New Roman", serif;
@@ -36,9 +37,30 @@ html[data-theme="dark"] {
   --muted: #9C968A;
   --rule: #322E28;
   --rule-strong: #443F37;
-  --seal: #C4453A;
+  --seal: #E4685C;
+  --on-seal: #14130F;
   --seal-deep: #E0685A;
 }
+
+/* First paint. The script sets data-theme, but it runs after the page has
+   already been drawn, so without this a dark-mode reader gets a flash of
+   paper white on every navigation. An explicit light choice still wins. */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --paper: #14130F;
+    --paper-2: #1C1A16;
+    --paper-3: #24211C;
+    --ink: #F3F0E9;
+    --ink-2: #D8D3C8;
+    --muted: #9C968A;
+    --rule: #322E28;
+    --rule-strong: #443F37;
+    --seal: #E4685C;
+    --on-seal: #14130F;
+    --seal-deep: #E0685A;
+  }
+}
+
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -48,7 +70,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--f-sans);
-  font-size: 16.5px;
+  font-size: 1rem;
   line-height: 1.68;
   -webkit-font-smoothing: antialiased;
 }
@@ -67,9 +89,9 @@ a { color: inherit; }
   clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
 }
 
-.skip-link { position: absolute; left: -9999px; background: var(--seal); color: #fff; padding: .7rem 1.1rem; z-index: 100; }
+.skip-link { position: absolute; left: -9999px; background: var(--seal); color: var(--on-seal); padding: .7rem 1.1rem; z-index: 100; }
 .skip-link:focus { left: 0; top: 0; }
-:focus-visible { outline: 2px solid var(--seal); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; box-shadow: 0 0 0 4px var(--paper); }
 
 .kicker {
   font-family: var(--f-mono); font-size: .64rem; letter-spacing: .2em; text-transform: uppercase;
@@ -173,7 +195,7 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
   width: min(100%, 260px); padding: .6rem .9rem; font: inherit; font-size: .9rem;
   background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 0;
 }
-.search input:focus { border-color: var(--seal); outline: none; }
+.search input:focus { border-color: var(--seal); }
 
 .topics { display: flex; flex-wrap: wrap; gap: .4rem; }
 .tag-btn {
@@ -182,7 +204,7 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
   cursor: pointer; transition: all .2s var(--ease);
 }
 .tag-btn:hover { color: var(--ink); border-color: var(--rule-strong); }
-.tag-btn.is-active { background: var(--seal); color: #fff; border-color: var(--seal); }
+.tag-btn.is-active { background: var(--seal); color: var(--on-seal); border-color: var(--seal); }
 
 .entry-list { list-style: none; counter-reset: entry; padding: 0; margin: 0; }
 .entry { counter-increment: entry; position: relative; padding: 1.8rem 0 1.8rem 3.6rem; border-bottom: 1px solid var(--rule); }
@@ -233,10 +255,10 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
   flex: 1 1 220px; padding: .8rem 1rem; font: inherit; font-size: .93rem;
   background: var(--paper); color: var(--ink); border: 1px solid var(--rule); border-radius: 0;
 }
-.subscribe-form input:focus { border-color: var(--seal); outline: none; }
+.subscribe-form input:focus { border-color: var(--seal); }
 .subscribe-form input[aria-invalid="true"] { border-color: var(--seal); }
 .btn {
-  padding: .8rem 1.6rem; border: 1px solid var(--seal); background: var(--seal); color: #fff;
+  padding: .8rem 1.6rem; border: 1px solid var(--seal); background: var(--seal); color: var(--on-seal);
   font-family: var(--f-mono); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase;
   cursor: pointer; transition: background .2s var(--ease);
 }
@@ -271,7 +293,7 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
 .author { display: flex; gap: 1.2rem; align-items: center; padding: 1.4rem 0; border-block: 1px solid var(--rule); }
 .author-initials {
   width: 52px; height: 52px; flex: none; border-radius: 50%; display: grid; place-items: center;
-  background: var(--seal); color: #fff; font-family: var(--f-mono); font-size: .78rem; letter-spacing: .08em;
+  background: var(--seal); color: var(--on-seal); font-family: var(--f-mono); font-size: .78rem; letter-spacing: .08em;
 }
 .author-name { margin: 0; font-weight: 600; font-family: var(--f-sans); }
 .author-bio { margin: 0; font-size: .87rem; color: var(--muted); font-family: var(--f-sans); }
@@ -288,7 +310,6 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
 /* ---------- Colophon ---------- */
 
 .colophon { border-top: 1px solid var(--rule); padding: 1.6rem 0; background: var(--paper-2); }
-.colophon-inner { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
 .colophon p { margin: 0; font-family: var(--f-mono); font-size: .66rem; letter-spacing: .06em; color: var(--muted); }
 .colophon nav { display: flex; flex-wrap: wrap; gap: 1.3rem; }
 .colophon nav a { font-family: var(--f-mono); font-size: .66rem; letter-spacing: .1em; color: var(--muted); text-decoration: none; }
@@ -311,6 +332,7 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
   .masthead-nav { flex-wrap: nowrap; }
   .nav {
     position: fixed; inset: 0 0 auto; flex-direction: column; gap: 0; margin: 0;
+    max-height: 100dvh; overflow-y: auto; overscroll-behavior: contain;
     background: var(--paper); border-bottom: 3px double var(--rule-strong);
     padding: 4.8rem 1.5rem 1.5rem; transform: translateY(-135%); transition: transform .3s var(--ease); z-index: 55;
   }
@@ -358,3 +380,25 @@ html[data-theme="dark"] .theme-dot { width: 16px; height: 16px; box-shadow: inse
   padding: .5rem .7rem .5rem 1.8rem;
   background-position: 13px 52%, 8px 52%;
 }
+
+/* The mark: a person looked at this page and approved it. Not decoration —
+     it is the promise the whole archive rests on, so it says so in words too. */
+  .human-mark {
+    display: inline-flex; align-items: center; gap: .55rem;
+    margin: 0 0 .55rem; padding: .4rem .8rem;
+    border: 1px solid var(--seal); color: var(--seal);
+    font-family: var(--f-mono); font-size: .6rem; letter-spacing: .2em;
+    text-transform: uppercase; line-height: 1;
+  }
+  .human-mark svg { flex: none; }
+  .human-mark-note {
+    margin: 0 0 .9rem; max-width: 62ch;
+    font-family: var(--f-body); font-size: .78rem; letter-spacing: 0;
+    text-transform: none; color: var(--muted);
+  }
+  /* Arabic letters join; extra tracking would break the word apart. */
+  [lang="ar"] .human-mark { letter-spacing: 0; }
+
+/* No file requests a 700 weight, so a default <strong> was being
+   synthesised by the browser. 600 is loaded; use the real cut. */
+strong, b { font-weight: 600; }

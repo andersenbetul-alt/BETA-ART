@@ -7,7 +7,7 @@
   </url>
   <url>
     <loc>https://beta-art-bet-art.vercel.app/legal.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
