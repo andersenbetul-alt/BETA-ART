@@ -86,8 +86,26 @@
       b.setAttribute('aria-selected', String(b.dataset.lang === code));
     });
 
+    applyConfig();
     renderAll();
     document.dispatchEvent(new CustomEvent('qb:lang', { detail: { lang: code } }));
+  }
+
+  /* Yapılandırmadaki değerleri sayfaya uygular: fiyatlar, e-posta, indirme bağlantısı.
+     Dil değiştiğinde sözlük metinleri yeniden yazıldığı için tekrar çağrılır. */
+  function applyConfig() {
+    var cfg = window.QB_CONFIG || {};
+    var prices = cfg.prices || {};
+    ['p1', 'p2', 'p3'].forEach(function (k) {
+      if (!prices[k]) return;
+      var el = $('[data-i18n="' + k + '.price"]');
+      if (el) el.textContent = prices[k];
+    });
+    if (cfg.mailTo) $$('[data-mailto]').forEach(function (el) {
+      el.textContent = cfg.mailTo;
+      if (el.tagName === 'A') el.href = 'mailto:' + cfg.mailTo;
+    });
+    if (cfg.leadMagnet) $$('[data-magnet]').forEach(function (el) { el.href = cfg.leadMagnet; });
   }
 
   /* ---------- tema ---------- */
@@ -142,17 +160,10 @@
 
 
   /* ---------- yapılandırılmış veri (JSON-LD) ve hreflang ---------- */
-  var SITE_URL = 'https://qblogg.com';
-
-  // Sosyal hesaplar tek yerden yönetilir; altbilgi bağlantıları buradan doldurulur.
-  // Hesap açtıkça adresleri buraya yazın — boş bırakılan bağlantı gizlenir.
-  var SOCIAL = {
-    linkedin: '',
-    x: '',
-    medium: '',
-    substack: '',
-    youtube: ''
-  };
+  // Tüm yayın ayarları assets/js/config.js içinde; burada yalnızca okunur.
+  var CFG = window.QB_CONFIG || {};
+  var SITE_URL = CFG.siteUrl || 'https://qblogg.com';
+  var SOCIAL = CFG.social || {};
 
   function setJsonLd(id, data) {
     var el = document.getElementById(id);
@@ -433,13 +444,16 @@
           localStorage.setItem('qb_subs', JSON.stringify(list));
         } catch (err) { /* yoksay */ }
         form.reset();
+        // Kayıt karşılığı: kontrol listesi indirme bağlantısı görünür olur.
+        var gift = $('#magnetLink');
+        if (gift) gift.hidden = false;
       }
     });
   }
 
 
   /* ---------- sayfa: bizimle çalışın ---------- */
-  var MAIL_TO = 'hello@qblogg.com';
+  var MAIL_TO = (window.QB_CONFIG && window.QB_CONFIG.mailTo) || 'hello@qblogg.com';
 
   function initTabs() {
     var tabs = $$('.tab[data-tab]');

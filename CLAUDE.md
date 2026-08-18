@@ -23,6 +23,7 @@ index.html          Tanıtım: hero, hizmetler, içerik akışı, paketler, son 
 work.html           Bizimle çalışın: marka briefi + yazar başvurusu, süreç, SSS
 blog.html           Yazı listesi: arama + kategori filtresi
 post.html           Yazı detayı (?slug=... ile)
+assets/js/config.js Yayın ayarları: e-posta, alan adı, sosyal hesaplar, fiyatlar, lead magnet
 assets/css/main.css Tek stil dosyası; tüm renkler :root değişkenlerinden gelir
 assets/js/i18n.js   Dil listesi (QB_LANGS) + 10 dilde metinler (QB_I18N)
 assets/js/posts.js  Blog içeriği (QB_POSTS): her yazı 10 dilde
@@ -82,7 +83,8 @@ sözlüğünü İngilizcedeki tüm anahtarlarla doldurun, yazılara aynı kodu e
 - Dil değişimi istemci tarafında; arama motoru tek HTML görür. Çok dilli SEO'dan tam
   verim için her dili ayrı URL'de üreten bir ön-render adımı gerekir.
 - Formlar `mailto:` taslağı üretir (sunucu yok). Gerçek forma geçiş noktası: `app.js`
-  içindeki `composeMail`. Alıcı adres `MAIL_TO` sabiti.
+  içindeki `composeMail`. Alıcı adres, alan adı, fiyatlar ve sosyal hesaplar
+  **`assets/js/config.js`** içinde — yayına almak için başka dosyaya dokunmak gerekmez.
 - Bülten kaydı yalnızca tarayıcıda tutulur (`initForm`); e-posta servisine bağlanmalı.
 - Depoya push izni yok (git ve GitHub App 403 döndürüyor); iş yerelde commit'leniyor.
 

@@ -53,12 +53,13 @@
     <div class="wrap">
       <div class="cta-box reveal">
         <h2 data-i18n="cta.title">Bültene katıl</h2>
-        <p data-i18n="cta.sub"></p>
+        <p data-i18n="cta.magnet">Kayıt olun, Otomasyon Keşif Kontrol Listesi’ni indirin.</p>
         <form class="subscribe" id="subscribeForm" novalidate>
           <input type="email" id="subscribeEmail" required data-i18n-attr="placeholder:cta.placeholder,aria-label:cta.placeholder" placeholder="E-posta adresin">
           <button class="btn" type="submit" data-i18n="cta.button">Abone ol</button>
         </form>
         <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+        <p><a class="btn btn--ghost magnet-link" id="magnetLink" data-magnet href="assets/downloads/otomasyon-kesif-listesi.html" target="_blank" rel="noopener" data-i18n="cta.download" hidden>↓ Kontrol listesini indir</a></p>
         <p class="cta-note" data-i18n="cta.note"></p>
       </div>
     </div>
@@ -102,7 +103,7 @@
     </div>
     <div class="footer-bottom">
       <span>© <span id="year">2026</span> QBLOGG. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span></span>
-      <span>hello@qblogg.com</span>
+      <a data-mailto href="mailto:hello@qblogg.com">hello@qblogg.com</a>
     </div>
   </div>
 </footer>
@@ -110,6 +111,7 @@
 <button class="to-top" id="toTop" data-i18n-attr="aria-label:ui.top" aria-label="Yukarı çık">↑</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="assets/js/config.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/posts.js"></script>
 <script src="assets/js/app.js"></script>

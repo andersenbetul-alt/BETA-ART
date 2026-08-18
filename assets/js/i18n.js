@@ -1436,3 +1436,35 @@ Object.assign(window.QB_I18N.no, {
   'cat.senior': '50+', 'cat.senior.d': '50+-økonomien',
   'cat.safety': 'KI-sikkerhet', 'cat.safety.d': 'Svindel, personvern, verifisering'
 });
+
+/* Bülten teklifi (lead magnet) */
+Object.assign(window.QB_I18N.tr, {
+  'cta.magnet': 'Kayıt olun, Otomasyon Keşif Kontrol Listesi’ni indirin — şirketinizde hangi işin otomatikleştirilmeye değdiğini bir haftada ölçün.',
+  'cta.download': '↓ Kontrol listesini indir' });
+Object.assign(window.QB_I18N.en, {
+  'cta.magnet': 'Subscribe and get the Automation Discovery Checklist — measure which task in your company is worth automating, in one week.',
+  'cta.download': '↓ Download the checklist' });
+Object.assign(window.QB_I18N.zh, {
+  'cta.magnet': '订阅即可获取《自动化诊断清单》——用一周时间测出公司里哪项工作值得自动化。',
+  'cta.download': '↓ 下载清单' });
+Object.assign(window.QB_I18N.hi, {
+  'cta.magnet': 'सब्सक्राइब करें और ऑटोमेशन डिस्कवरी चेकलिस्ट पाएँ — एक हफ़्ते में मापिए कि आपकी कंपनी में कौन सा काम ऑटोमेट करने लायक है।',
+  'cta.download': '↓ चेकलिस्ट डाउनलोड करें' });
+Object.assign(window.QB_I18N.es, {
+  'cta.magnet': 'Suscríbete y descarga la Lista de Diagnóstico de Automatización: mide en una semana qué tarea de tu empresa merece automatizarse.',
+  'cta.download': '↓ Descargar la lista' });
+Object.assign(window.QB_I18N.ar, {
+  'cta.magnet': 'اشترك واحصل على قائمة تشخيص الأتمتة — قِس في أسبوع واحد أي مهمة في شركتك تستحق الأتمتة.',
+  'cta.download': '↓ نزّل القائمة' });
+Object.assign(window.QB_I18N.fr, {
+  'cta.magnet': 'Abonnez-vous et recevez la Check-list de diagnostic d’automatisation : mesurez en une semaine quelle tâche mérite d’être automatisée.',
+  'cta.download': '↓ Télécharger la check-list' });
+Object.assign(window.QB_I18N.pt, {
+  'cta.magnet': 'Assine e baixe o Checklist de Diagnóstico de Automação — meça em uma semana qual tarefa da sua empresa vale automatizar.',
+  'cta.download': '↓ Baixar o checklist' });
+Object.assign(window.QB_I18N.ru, {
+  'cta.magnet': 'Подпишитесь и получите «Чек-лист диагностики автоматизации» — за неделю измерьте, какую задачу в компании стоит автоматизировать.',
+  'cta.download': '↓ Скачать чек-лист' });
+Object.assign(window.QB_I18N.no, {
+  'cta.magnet': 'Abonner og få Sjekklisten for automatiseringsdiagnose — mål på én uke hvilken oppgave i bedriften som er verdt å automatisere.',
+  'cta.download': '↓ Last ned sjekklisten' });

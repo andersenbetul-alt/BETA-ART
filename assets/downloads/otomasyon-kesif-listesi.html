@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Otomasyon Keşif Kontrol Listesi — QBLOGG</title>
+<style>
+  @page { margin: 18mm; }
+  body { max-width: 760px; margin: 0 auto; padding: 32px 22px 60px; color: #14161c;
+         font: 15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  h1 { font-size: 1.7rem; letter-spacing: -.02em; margin: 0 0 6px; }
+  h2 { font-size: 1.1rem; margin: 32px 0 10px; padding-top: 14px; border-top: 1px solid #e4e7f0; }
+  .lede { color: #5b6172; margin: 0 0 26px; }
+  ol, ul { padding-left: 20px; }
+  li { margin-bottom: 7px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 6px; font-size: .9rem; }
+  th, td { border: 1px solid #e4e7f0; padding: 7px 9px; text-align: left; }
+  th { background: #f6f7fb; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: #5b6172; }
+  td { height: 30px; }
+  .note { background: #f4f2ff; border-left: 3px solid #4b3cf7; padding: 12px 16px; margin: 16px 0; font-size: .93rem; }
+  .formula { background: #f6f7fb; border: 1px solid #e4e7f0; border-radius: 8px; padding: 14px 16px;
+             font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85rem; white-space: pre-wrap; }
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e4e7f0; color: #5b6172; font-size: .85rem; }
+  a { color: #4b3cf7; }
+  .print { position: fixed; top: 16px; right: 16px; background: #4b3cf7; color: #fff; border: 0;
+           padding: 9px 16px; border-radius: 9px; font: inherit; font-size: .9rem; cursor: pointer; }
+  @media print { .print { display: none; } body { padding: 0; } }
+</style>
+</head>
+<body>
+<button class="print" onclick="window.print()">PDF olarak kaydet</button>
+
+<h1>Otomasyon Keşif Kontrol Listesi</h1>
+<p class="lede">Şirketinizde hangi işin otomatikleştirilmeye değdiğini bir haftada, tahminle değil
+ölçümle bulmanız için. Doldurulduğunda elinizde satın alma kararı verebileceğiniz bir tablo olur —
+bizden bir şey almasanız bile.</p>
+
+<h2>1. Önce şu beş soruyu yanıtlayın</h2>
+<ol>
+  <li>Kaç kişisiniz? Kaçı idari işlerde çalışıyor?</li>
+  <li>Bu kararı kim veriyor, kim uygulayacak?</li>
+  <li>Daha önce bir otomasyon denediniz mi? Ne oldu?</li>
+  <li>Hangi işi "keşke birisi benim yerime yapsa" diye düşünüyorsunuz?</li>
+  <li><strong>Üç ay sonra "işe yaradı" diyebilmeniz için ne olmalı?</strong></li>
+</ol>
+<div class="note">Beşinci sorunun cevabı "bilmiyorum" ise henüz otomasyon zamanı değil.
+Önce başarının tanımını yazın; yoksa hangi sonucun iyi olduğunu kimse bilemez.</div>
+
+<h2>2. Bir hafta boyunca kaydedin</h2>
+<p>Hafızadan doldurmayın. Bir hafta boyunca gerçek kayıt tutun — sonuç neredeyse her
+zaman tahminden farklı çıkar.</p>
+<table>
+  <thead><tr><th>İş</th><th>Kim yapıyor</th><th>Haftada kaç kez</th><th>Kaç dakika</th><th>Hata maliyeti</th><th>Kural yazılı mı</th></tr></thead>
+  <tbody>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+<p style="font-size:.9rem;color:#5b6172">Doldurmayı kolaylaştıran sorular: Sabah ilk yaptığınız üç şey ne?
+Ay sonunda hangi iş yığılıyor? Aynı bilgiyi hangi işte iki yere yazıyorsunuz?
+Bir çalışan ayrılsa hangi bilgi onunla giderdi?</p>
+
+<h2>3. Sistemleri ve sınırları yazın</h2>
+<ul>
+  <li>Hangi araçları kullanıyorsunuz? (e-posta, CRM, muhasebe, takvim, depolama)</li>
+  <li>Bu araçlar birbirine bağlı mı? Müşteri verisi nerede duruyor?</li>
+  <li>Kişisel veri işliyor musunuz? (KVKK / GDPR kapsamı)</li>
+  <li>Hangi işlerde hata <strong>kabul edilemez</strong>? (ödeme, sözleşme, tıbbi/hukuki bilgi)</li>
+  <li>Hangi işlerde bir insan mutlaka onay vermeli?</li>
+</ul>
+
+<h2>4. ROI'yi hesaplayın</h2>
+<div class="formula">Aylık süre     = (haftada kaç kez) × (kaç dakika) × 4,3 ÷ 60      → saat/ay
+Aylık maliyet  = aylık süre × o kişinin işverene saatlik maliyeti
+Otomasyon payı = %40–80  (ilk sürümde %50 varsayın, sonra ölçüp düzeltin)
+Aylık kazanç   = aylık maliyet × otomasyon payı
+Geri ödeme     = kurulum bedeli ÷ (aylık kazanç − aylık işletme bedeli)</div>
+
+<p><strong>Örnek:</strong> Günde 40 e-posta × 3 dakika × 21 iş günü = 42 saat/ay.
+Saatlik maliyet 25 € ise aylık 1.050 €. Otomasyon payı %50 → aylık 525 € kazanç.
+Kurulum 3.500 € + aylık 900 € ise geri ödeme <em>negatif</em> — bu iş tek başına
+otomasyonu haklı çıkarmıyor.</p>
+
+<p>Aynı müşteride üç iş birden otomatikleşirse (e-posta 525 € + teklif hazırlama 700 €
++ fatura girişi 400 € = 1.625 €/ay), geri ödeme 4,8 aya iner ve karar değişir.</p>
+
+<div class="note"><strong>Kural:</strong> geri ödeme 6 ayı geçiyorsa o işi otomatikleştirmeyin.
+Müşteri altıncı ayda faydayı görmezse yenilemez, keser.</div>
+
+<h2>5. Karar tablosu</h2>
+<table>
+  <thead><tr><th>İş</th><th>Aylık saat</th><th>Aylık maliyet</th><th>Beklenen kazanç</th><th>Geri ödeme (ay)</th><th>Karar</th></tr></thead>
+  <tbody>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<footer>
+  <p>Bu listeyi doldurup bize gönderirseniz, ilk üç otomasyon adayını ROI sırasıyla
+  değerlendirip geri yazarız — ücretsiz. Detaylı keşif (bir hafta, süreç haritası ve
+  90 günlük plan) ayrı bir hizmettir ve devam edilirse ilk faturadan düşülür.</p>
+  <p>QBLOGG · <a href="../../work.html">qblogg.com/work.html</a></p>
+</footer>
+</body>
+</html>

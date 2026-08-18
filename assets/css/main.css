@@ -39,6 +39,10 @@ html[data-theme="dark"] {
 
 * { box-sizing: border-box; }
 
+/* hidden özniteliği her zaman kazanmalı: .btn gibi display tanımlayan sınıflar
+   tarayıcının [hidden] kuralını eziyor ve gizli öğe görünür kalıyordu. */
+[hidden] { display: none !important; }
+
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -434,3 +438,7 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
   transition: border-color .15s ease, color .15s ease, transform .15s ease;
 }
 .share-btn:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-1px); }
+
+/* Bülten karşılığı indirme bağlantısı */
+.magnet-link { margin-top: 4px; background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.5); color: #fff; }
+.magnet-link:hover { background: rgba(255,255,255,.26); }

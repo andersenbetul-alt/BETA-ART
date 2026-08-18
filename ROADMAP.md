@@ -23,8 +23,8 @@ maliyet.
 |---|---|---|---|
 | 1 | Depoya yazma izni ver, dalı push et | **Engelli** | git ve GitHub App 403; izin kullanıcıda |
 | 2 | Alan adı bağla, GitHub Pages / Netlify yayını | Bekliyor | `robots.txt` + `sitemap.xml` içindeki `qblogg.com` güncellenecek |
-| 3 | `MAIL_TO` ve altbilgideki e-postayı gerçek adresle değiştir | Bekliyor | `assets/js/app.js` |
-| 4 | Paket fiyatlarını gerçek rakamlarla güncelle | Bekliyor | `i18n.js` → `p1/p2/p3.price` |
+| 3 | Gerçek e-posta, alan adı ve fiyatlar | **Hazır — senden veri bekliyor** | Hepsi tek dosyada: `assets/js/config.js` |
+| 4 | ~~Paket fiyatlarını güncelle~~ | Birleşti → #3 | Fiyat da config.js'ten geliyor (NOK yazılabilir) |
 | 5 | Formu Formspree/Netlify Forms'a bağla | Bekliyor | `composeMail` içindeki `mailto` bloğu |
 | 6 | Bülten kaydını e-posta servisine bağla | Bekliyor | `initForm`; Substack veya Buttondown |
 
@@ -36,6 +36,8 @@ maliyet.
 | 8 | Hakkımızda bölümü (kim yazıyor, hangi deneyim) | Bekliyor | Anonim stüdyo dönüşümü düşürür |
 | 9 | Gizlilik ve koşullar sayfaları | Bekliyor | Altbilgideki bağlantılar şu an boş |
 | 10 | Örnek teslimat (bir makale + türetilmiş 5 içerik) PDF'i | Bekliyor | Brief formunda "örnek gör" olarak kullanılabilir |
+| 41 | **Lead magnet: Otomasyon Keşif Kontrol Listesi** | **Bitti** 18.08 | Bülten kaydı karşılığı indirilir; PDF'e yazdırılabilir |
+| 42 | Kendimizi ilk vaka çalışması yapmak | Bekliyor | "Kendi içerik hattımızı AI ile kurduk" — en hızlı kanıt |
 | 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 1/6 bitti: platform karşılaştırması TR 1.030 / EN 1.313 kelime, kaynaklı. Kalan 5 yazı + bu yazının 8 dili |
 | 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
@@ -58,7 +60,7 @@ maliyet.
 | 24 | Ürün tanımı, rol kataloğu, fiyat merdiveni | **Bitti** 18.08 | Üç satılabilir rol: AI Receptionist, Sales Assistant, Office Assistant |
 | 25 | İçerik türetme hattı (`scripts/repurpose.mjs`) | **Bitti** 18.08 | Opus 5 + yapılandırılmış çıktı; API anahtarı ile çalışır |
 | 26 | Yazı sayfasında paylaşım satırı + sosyal yapılandırma | **Bitti** 18.08 | 5 kanal, dile duyarlı; ölü bağlantı kalmadı |
-| 27 | Keşif formu ve ROI hesabı dokümanı | Bekliyor | `docs/ai-workforce/kesif-formu.md` yazılacak |
+| 27 | Keşif formu ve ROI hesabı | **Bitti** 18.08 | Hem satışın ilk adımı hem sitenin lead magnet'i |
 | 28 | Teknik mimari dokümanı (model, entegrasyon, güvenlik, maliyet) | Bekliyor | `docs/ai-workforce/teknik-mimari.md` |
 | 29 | AI Workforce için site sayfası (10 dilde) | Bekliyor | Konumlandırma kararından sonra |
 | 30 | İlk pilot: Research veya Meeting Agent referansı | Bekliyor | En düşük riskli giriş |
