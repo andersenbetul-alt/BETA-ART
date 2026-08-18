@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jeg trenger hjelp – PårørendePilot</title>
+<meta name="description" content="Be om praktisk hjelp hjemme. Velg når og hva du trenger, se prisen på forhånd, og få en verifisert hjelper i nærheten.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/senior.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+</head>
+<body class="senior">
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="senior-header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true">🧭</span> PårørendePilot</a>
+    <a class="senior-help" href="tel:+4740000000">📞 Ring oss: 400 00 000</a>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <h1>Hva trenger du hjelp til?</h1>
+    <p class="lead-big">Velg med store knapper, eller si det med stemmen din. Du ser prisen før du bestiller.</p>
+
+    <!-- ====== NØDVARSEL (vises ved akutt-ord) ====== -->
+    <div class="nod-varsel" id="nod-varsel" hidden role="alert">
+      <h2>Dette høres akutt ut</h2>
+      <p>Ved brann, alvorlig sykdom, fall med skade eller fare for liv skal du ringe nødetatene – ikke bestille et oppdrag her.</p>
+      <p class="nod-nummer">113 medisinsk nød · 110 brann · 112 politi</p>
+      <p><button class="btn btn-secondary" type="button" id="nod-lukk">Det er ikke akutt – fortsett bestillingen</button></p>
+    </div>
+
+    <!-- ====== STEG 1: NÅR ====== -->
+    <section class="senior-panel" data-panel="1">
+      <span class="steg-nr">Steg 1 av 4</span>
+      <h2>Når trenger du hjelp?</h2>
+      <div class="big-choices" role="group" aria-label="Når">
+        <button class="big-choice" type="button" data-nar="na" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">⚡</span>
+          <span>Nå<small>Vi finner noen som kan komme innen ca. 90 minutter</small></span>
+        </button>
+        <button class="big-choice" type="button" data-nar="idag" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">🕐</span>
+          <span>I dag<small>En gang i løpet av dagen. Litt rimeligere.</small></span>
+        </button>
+        <button class="big-choice" type="button" data-nar="planlagt" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">📅</span>
+          <span>På et bestemt tidspunkt<small>Velg dag og klokkeslett</small></span>
+        </button>
+        <button class="big-choice" type="button" data-nar="fast" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">🔁</span>
+          <span>Fast avtale<small>For eksempel hver tirsdag klokka 14</small></span>
+        </button>
+      </div>
+
+      <div id="tidspunkt-felt" hidden style="margin-top:22px">
+        <label for="dato" style="display:block;font-weight:600;margin-bottom:8px">Dag og klokkeslett</label>
+        <div class="row-2">
+          <input type="date" id="dato" name="dato">
+          <input type="time" id="klokkeslett" name="klokkeslett" value="14:00">
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== STEG 2: HVA ====== -->
+    <section class="senior-panel" data-panel="2" hidden>
+      <span class="steg-nr">Steg 2 av 4</span>
+      <h2>Hva trenger du hjelp til?</h2>
+      <div class="big-choices" role="group" aria-label="Type hjelp">
+        <button class="big-choice" type="button" data-oppgave="handling" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">🛒</span><span>Handle<small>Dagligvarer, apotek, post</small></span>
+        </button>
+        <button class="big-choice" type="button" data-oppgave="folge" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">🤝</span><span>Noen som følger meg<small>Lege, tannlege, frisør, butikk</small></span>
+        </button>
+        <button class="big-choice" type="button" data-oppgave="samvaer" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">☕</span><span>Selskap og prat<small>Kaffe, tur, høytlesing, kortspill</small></span>
+        </button>
+        <button class="big-choice" type="button" data-oppgave="aktivitet" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">🎭</span><span>Bli med på noe<small>Konsert, museum, kino, gudstjeneste</small></span>
+        </button>
+        <button class="big-choice" type="button" data-oppgave="hjemme" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">🏠</span><span>Hjelp hjemme<small>Lyspære, rydding, søppel, bære</small></span>
+        </button>
+        <button class="big-choice" type="button" data-oppgave="digital" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">📱</span><span>Hjelp med telefon eller TV<small>Nettbrett, videosamtale, innstillinger</small></span>
+        </button>
+        <button class="big-choice" type="button" data-oppgave="dyr" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">🐕</span><span>Hjelp med kjæledyr<small>Lufte hunden, hente fôr</small></span>
+        </button>
+        <button class="big-choice" type="button" data-oppgave="annet" aria-pressed="false">
+          <span class="ikon" aria-hidden="true">💬</span><span>Noe annet<small>Fortell med egne ord</small></span>
+        </button>
+      </div>
+
+      <div class="stemme-boks">
+        <p style="margin-bottom:14px"><strong>Eller si det med stemmen din</strong></p>
+        <button class="stemme-knapp" type="button" id="stemme-knapp" aria-pressed="false" aria-label="Trykk for å snakke">🎤</button>
+        <p class="stemme-tekst" id="stemme-tekst">Trykk på mikrofonen og fortell hva du trenger.</p>
+      </div>
+
+      <div style="margin-top:22px">
+        <label for="beskrivelse" style="display:block;font-weight:600;margin-bottom:8px">Vil du legge til noe? <span class="optional">(valgfritt)</span></label>
+        <textarea id="beskrivelse" placeholder="For eksempel: «Jeg bruker rullator og trenger hjelp med å bære posene opp.»"></textarea>
+        <p class="muted" style="margin-top:8px">Skriv gjerne hva som er praktisk å vite. Du trenger ikke skrive noe om sykdom eller medisiner.</p>
+      </div>
+    </section>
+
+    <!-- ====== STEG 3: HVOR LENGE ====== -->
+    <section class="senior-panel" data-panel="3" hidden>
+      <span class="steg-nr">Steg 3 av 4</span>
+      <h2>Hvor lang tid tror du det tar?</h2>
+      <p class="muted" style="font-size:1rem">Du betaler for tiden som faktisk brukes. Dette er bare et anslag.</p>
+      <div class="big-choices" role="group" aria-label="Varighet">
+        <button class="big-choice" type="button" data-timer="1" aria-pressed="false"><span class="ikon" aria-hidden="true">⏱️</span><span>Omtrent 1 time</span></button>
+        <button class="big-choice" type="button" data-timer="1.5" aria-pressed="false"><span class="ikon" aria-hidden="true">⏱️</span><span>Halvannen time</span></button>
+        <button class="big-choice" type="button" data-timer="2" aria-pressed="false"><span class="ikon" aria-hidden="true">⏱️</span><span>Omtrent 2 timer</span></button>
+        <button class="big-choice" type="button" data-timer="3" aria-pressed="false"><span class="ikon" aria-hidden="true">⏱️</span><span>3 timer eller mer</span></button>
+      </div>
+
+      <div style="margin-top:26px">
+        <label for="sprakonske" style="display:block;font-weight:600;margin-bottom:8px">Ønsker du en hjelper som snakker et bestemt språk?</label>
+        <select id="sprakonske">
+          <option value="">Det spiller ingen rolle</option>
+          <option value="norsk">Norsk</option>
+          <option value="engelsk">Engelsk</option>
+          <option value="tyrkisk">Tyrkisk</option>
+          <option value="polsk">Polsk</option>
+          <option value="arabisk">Arabisk</option>
+          <option value="somali">Somali</option>
+          <option value="urdu">Urdu</option>
+        </select>
+      </div>
+
+      <div style="margin-top:22px">
+        <label class="consent" style="font-size:1.02rem">
+          <input type="checkbox" id="fast-hjelper" checked>
+          <span>Spør favoritthjelperen min først
+            <small>Vi spør Sofia før vi spør andre. Er hun opptatt, går forespørselen videre.</small>
+          </span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ====== STEG 4: PRIS OG BEKREFT ====== -->
+    <section class="senior-panel" data-panel="4" hidden>
+      <span class="steg-nr">Steg 4 av 4</span>
+      <h2>Dette koster oppdraget</h2>
+      <p class="muted" style="font-size:1rem">Prisen vises før du bestiller. Du betaler først når oppdraget er bekreftet utført.</p>
+
+      <div class="pris-boks" id="pris-boks">
+        <div id="pris-linjer"></div>
+        <div class="pris-sum"><span>Å betale</span><span id="pris-total">–</span></div>
+        <p class="pris-note">
+          Beløpet reserveres på kortet ditt når hjelperen takker ja, og trekkes først når oppdraget er
+          bekreftet fullført. Blir oppdraget kortere enn anslått, betaler du for den faktiske tiden.
+        </p>
+      </div>
+
+      <div class="notice notice-info" style="margin-top:22px;font-size:1rem">
+        <p style="margin:0">
+          <strong>Aldri kontanter.</strong> Hjelperen skal aldri be om penger, bankkort, PIN-kode eller BankID.
+          All betaling skjer gjennom PårørendePilot.
+        </p>
+      </div>
+
+      <div style="margin-top:24px">
+        <label class="consent" style="font-size:1.02rem">
+          <input type="checkbox" id="varsle-familie" checked>
+          <span>Gi beskjed til familien min
+            <small>Anne (datter) får melding når hjelperen er på vei, når hun kommer, og når oppdraget er ferdig.</small>
+          </span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ====== SØKER ETTER HJELPER ====== -->
+    <section class="senior-panel" data-panel="5" hidden aria-live="polite">
+      <div class="soker">
+        <div class="soker-ring" aria-hidden="true"></div>
+        <h2>Vi leter etter en hjelper</h2>
+        <p class="soker-status" id="soker-status">Spør favoritthjelperen din …</p>
+      </div>
+    </section>
+
+    <!-- ====== HJELPER FUNNET ====== -->
+    <section class="senior-panel" data-panel="6" hidden aria-live="polite">
+      <h2>Sofia kan hjelpe deg</h2>
+      <div class="hjelper-kort">
+        <div class="hjelper-foto" aria-hidden="true">S</div>
+        <div>
+          <p class="hjelper-navn">Sofia H.</p>
+          <p style="margin:0;font-size:1.05rem;color:var(--ink-soft)">
+            ⭐ 4,9 · 87 fullførte oppdrag · snakker norsk og engelsk
+          </p>
+          <ul class="hjelper-merker">
+            <li class="badge">✅ Identitet bekreftet</li>
+            <li class="badge">✅ Referanser sjekket</li>
+            <li class="badge">✅ Sikkerhetskurs</li>
+            <li class="badge neutral">❤️ Din faste hjelper</li>
+          </ul>
+          <p style="margin:0;font-size:1.05rem"><strong id="ankomst">Er hos deg om ca. 14 minutter</strong> · 1,2 km unna</p>
+        </div>
+      </div>
+
+      <div class="notice notice-privacy" style="margin-top:22px;font-size:1rem">
+        <p style="margin:0">
+          Sofia har fått adressen din nå som hun har tatt oppdraget. Når hun kommer, oppgir du koden
+          <strong id="oppmote-kode">4821</strong> så hun kan starte oppdraget.
+        </p>
+      </div>
+
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:14px">
+        <button class="btn btn-primary btn-lg" type="button" id="bekreft-hjelper">Ja, det passer fint</button>
+        <button class="btn btn-secondary" type="button" id="annen-hjelper">Jeg vil ha en annen</button>
+      </div>
+    </section>
+
+    <!-- ====== BEKREFTET ====== -->
+    <section class="senior-panel" data-panel="7" hidden aria-live="polite">
+      <h2>Alt er avtalt</h2>
+      <p style="font-size:1.15rem">Sofia er på vei. Du trenger ikke gjøre noe mer nå.</p>
+      <ul class="tidslinje">
+        <li><span class="tid">Nå</span><span>Sofia har tatt oppdraget og er på vei.</span></li>
+        <li><span class="tid">Snart</span><span>Når hun ringer på, sier du koden <strong>4821</strong>.</span></li>
+        <li><span class="tid">Etterpå</span><span>Du bekrefter at oppdraget er utført. Da får Sofia betalt.</span></li>
+        <li><span class="tid">Beskjed</span><span>Anne (datter) får melding underveis og når oppdraget er ferdig.</span></li>
+      </ul>
+      <p style="margin-top:26px">
+        <a class="btn btn-secondary" href="index.html">Til forsiden</a>
+      </p>
+    </section>
+
+    <!-- ====== NAVIGASJON ====== -->
+    <div id="senior-nav" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:10px">
+      <button class="btn btn-secondary" type="button" id="senior-tilbake" hidden>← Tilbake</button>
+      <button class="btn btn-primary btn-lg" type="button" id="senior-neste" disabled>Fortsett</button>
+      <button class="btn btn-primary btn-lg" type="button" id="senior-bestill" hidden>Bestill hjelp</button>
+    </div>
+
+    <p class="muted" style="margin-top:26px;font-size:1rem">
+      Trenger du hjelp til å bestille? Ring oss på <a href="tel:+4740000000">400 00 000</a>, så gjør vi det sammen.
+      Pårørende kan også bestille på dine vegne fra <a href="familie.html">familiesiden</a>.
+    </p>
+
+  </div>
+</main>
+
+<footer class="senior-footer">
+  <div class="wrap">
+    <p style="margin:0">
+      © <span data-year>2026</span> PårørendePilot ·
+      <a href="personvern.html">Personvern</a> ·
+      <a href="trygghet.html">Trygghet</a> ·
+      Demoversjon: ingen ekte bestilling opprettes.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/pris.js" defer></script>
+<script src="assets/js/bestilling.js" defer></script>
+</body>
+</html>

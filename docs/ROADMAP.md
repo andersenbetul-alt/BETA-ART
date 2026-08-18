@@ -3,9 +3,12 @@
 Fase 1 er levert i dette repoet. Fasene videre gjør nettstedet om fra registreringsflate
 til en fungerende markedsplass.
 
-## Fase 1 – Nettsted og registrering ✅ (dette repoet)
+## Fase 1 – Nettsted, bestilling og registrering ✅ (dette repoet)
 
-- Forside «Finn oppdrag nær deg»
+- Forside med tre innganger: eldre, pårørende, hjelper
+- Senior Mode: bestilling med store knapper, taleinput og akuttfilter
+- Pårørendepanel: status, Care Circle, varsler, bestilling på vegne av
+- Prismodell med synlig pris før bestilling (`assets/js/pris.js`)
 - Registreringsflyt for hjelpere i seks steg med validering
 - SMS-verifisering av mobilnummer (demomodus i frontend)
 - Frivillig posisjonsdeling med eget samtykke og mulighet for å slette
@@ -31,6 +34,7 @@ til en fungerende markedsplass.
 
 ## Fase 4 – Oppdrag og kart
 
+- Bestillingsflyten kobles til ekte oppdrag i backend
 - Familier oppretter oppdrag med strukturerte felt (ikke fritekst som standard)
 - Oppdragskart som viser bydel og omtrentlig avstand, aldri adresse før tildeling
 - «Jeg er tilgjengelig»-bryter som styrer all posisjonsbruk
@@ -52,8 +56,15 @@ til en fungerende markedsplass.
 - Forsikringsordning på plass
 - Ferdigstilt DPIA og databehandleravtaler før posisjonsfunksjoner i produksjon
 
+## Fase 7 – Europeisk utrulling
+
+- Landlag for valuta, språk, eID og lokale regler (`docs/EUROPA.md`)
+- By for by, ikke land for land: tetthet av hjelpere før geografisk bredde
+- Åpenhet i matchingen og menneskelig gjennomgang av kontostenging
+
 ## Rekkefølgekrav
 
 1. DPIA ferdigstilles før posisjonsfunksjoner settes i drift
 2. Verifiseringskjeden er komplett før første reelle oppdrag formidles
 3. Betalingsflyt gjennom leverandør før penger utveksles
+4. Akuttfilteret skal aldri kunne omgås av en oppdragsmal

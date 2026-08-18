@@ -32,6 +32,10 @@
 
 * { box-sizing: border-box; }
 
+/* hidden-attributtet må slå gjennom mot klasser som setter display
+   (.btn er inline-flex, .site-nav er flex osv.) */
+[hidden] { display: none !important; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -81,6 +85,11 @@ a  { color: var(--brand-dark); }
 }
 .site-nav a:hover { background: var(--bg-soft); color: var(--ink); }
 .site-nav a[aria-current="page"] { color: var(--brand-dark); background: var(--brand-light); }
+
+/* Knapper i menyen må beholde sin egen tekstfarge (.site-nav a er mer spesifikk enn .btn-*) */
+.site-nav a.btn-primary { color: #fff; background: var(--brand); }
+.site-nav a.btn-primary:hover { background: var(--brand-dark); color: #fff; }
+.site-nav a.btn-secondary { color: var(--ink); }
 
 .nav-toggle {
   display: none; margin-left: auto; background: none; border: 1px solid var(--line);
