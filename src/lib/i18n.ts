@@ -18,6 +18,7 @@ export const routes = {
   services: { tr: "hizmetler", en: "services" },
   approach: { tr: "yaklasim", en: "approach" },
   about: { tr: "hakkimizda", en: "about" },
+  careers: { tr: "kariyer", en: "careers" },
   contact: { tr: "iletisim", en: "contact" },
   privacy: { tr: "gizlilik", en: "privacy" },
 } as const satisfies Record<string, Record<Locale, string>>;
@@ -38,6 +39,7 @@ export const navKeys = [
   "services",
   "approach",
   "about",
+  "careers",
   "contact",
 ] as const satisfies readonly RouteKey[];
 
@@ -56,9 +58,16 @@ export function routeKeyFromPathname(pathname: string): RouteKey {
   return match ?? "home";
 }
 
-/** Aynı sayfanın diğer dildeki adresi. */
+/**
+ * Aynı sayfanın diğer dildeki adresi.
+ *
+ * Bölüm adı çevrilir, altındaki segmentler korunur; böylece
+ * `/tr/kariyer/<ilan>` adresi `/en/careers/<ilan>` adresine eşlenir.
+ */
 export function alternatePath(pathname: string, target: Locale): string {
-  return path(routeKeyFromPathname(pathname), target);
+  const [, , , ...rest] = pathname.split("/");
+  const base = path(routeKeyFromPathname(pathname), target);
+  return rest.length > 0 ? `${base}/${rest.join("/")}` : base;
 }
 
 export const siteUrl = (

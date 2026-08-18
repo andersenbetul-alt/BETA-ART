@@ -58,6 +58,8 @@ Site iki dilde yayınlanır ve **her dilin kendi URL'leri** vardır:
 | Hizmetler | `/tr/hizmetler` | `/en/services` |
 | Yaklaşımımız | `/tr/yaklasim` | `/en/approach` |
 | Hakkımızda | `/tr/hakkimizda` | `/en/about` |
+| Kariyer | `/tr/kariyer` | `/en/careers` |
+| İlan detayı | `/tr/kariyer/<ilan>` | `/en/careers/<ilan>` |
 | İletişim | `/tr/iletisim` | `/en/contact` |
 | Gizlilik / KVKK | `/tr/gizlilik` | `/en/privacy` |
 
@@ -84,6 +86,7 @@ src/
 │   │   ├── yaklasim/   approach/
 │   │   ├── hakkimizda/ about/
 │   │   ├── iletisim/   contact/
+│   │   ├── kariyer/    careers/      # liste + [slug] ilan detayı
 │   │   ├── gizlilik/   privacy/
 │   │   └── not-found.tsx
 │   ├── globals.css          # Tailwind teması ve temel stiller
@@ -92,6 +95,7 @@ src/
 │   └── sitemap.ts
 ├── components/              # Header, footer, logo, iletişim formu, UI parçaları
 ├── content/                 # Tüm site metinleri (tr.ts / en.ts)
+│   └── jobs.ts              # İlan kimlikleri ve dilden bağımsız bilgileri
 ├── lib/                     # i18n yönlendirme tablosu, metadata, server action
 ├── views/                   # Sayfa gövdeleri (dil parametresi alır)
 └── proxy.ts                 # Dil yönlendirmesi
@@ -150,6 +154,38 @@ hata yönetimi çağıran tarafta durur.
 > **Not:** `src/lib/actions.ts` dosyası `"use server"` işaretlidir ve yalnızca async
 > fonksiyon dışa aktarabilir. Formun paylaşılan tipleri bu yüzden `src/lib/contact.ts`
 > dosyasında durur.
+
+## İş ilanları
+
+Açık pozisyonlar `/tr/kariyer` ve `/en/careers` sayfalarında listelenir; her
+ilanın kendi detay sayfası vardır. Bu sayede ilan tek başına paylaşılabilir ve
+arama motorlarında ayrı ayrı dizinlenir.
+
+Her ilan sayfası `JobPosting` yapılandırılmış verisi yayınlar; bu, Google
+Jobs'ta görünmenin ön şartıdır.
+
+### Yeni ilan ekleme
+
+1. `src/content/jobs.ts` içindeki `jobIds` dizisine bir kimlik ekleyin.
+   Bu kimlik aynı zamanda URL parçasıdır ve **dilden bağımsızdır** — dil
+   değiştiricinin ilan detayında da doğru çalışması için böyle tasarlandı.
+2. Aynı dosyadaki `jobMeta` kaydına istihdam türünü, yayın ve bitiş tarihini
+   yazın. Bu tarihler yapılandırılmış veriye gider; gerçek değerlerle
+   güncellenmeleri gerekir.
+3. `src/content/tr.ts` ve `en.ts` içindeki `careers.jobs` kayıtlarına ilanı iki
+   dilde de ekleyin. Birini unutursanız `npx tsc --noEmit` hata verir.
+
+Liste, sitemap ve statik sayfa üretimi `jobIds` dizisinden beslendiği için ayrıca
+güncellenmeleri gerekmez.
+
+### İlan kapatma
+
+`jobIds` dizisinden kimliği çıkarın ve iki dildeki `careers.jobs` kayıtlarını
+silin. Sayfa bir sonraki derlemede 404 dönmeye başlar.
+
+> **Not:** Sitedeki dört ilan örnek içeriktir. Yayına almadan önce gerçek
+> pozisyonlarınızla değiştirin ve `kariyer@naviar.com` adresini kendi adresinizle
+> güncelleyin (`careers.labels.applyEmail`).
 
 ## Gizlilik ve KVKK
 

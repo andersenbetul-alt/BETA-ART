@@ -1,4 +1,18 @@
+import type { JobId } from "./jobs";
+
 export type Link = { label: string; href: string };
+
+export type Job = {
+  title: string;
+  team: string;
+  type: string;
+  location: string;
+  experience: string;
+  summary: string;
+  responsibilities: string[];
+  requirements: string[];
+  bonus: string[];
+};
 
 export type Feature = {
   title: string;
@@ -39,7 +53,10 @@ export type Dictionary = {
     switchLabel: string;
     htmlLang: string;
   };
-  nav: Record<"services" | "approach" | "about" | "contact", string>;
+  nav: Record<
+    "services" | "approach" | "about" | "careers" | "contact",
+    string
+  >;
   actions: {
     contact: string;
     services: string;
@@ -116,6 +133,36 @@ export type Dictionary = {
         generic: string;
       };
     };
+  };
+  careers: {
+    hero: { eyebrow: string; title: string; description: string };
+    culture: { title: string; description: string; items: Feature[] };
+    process: { title: string; description: string; steps: Phase[] };
+    openings: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      viewJob: string;
+    };
+    /** İlan detay sayfasındaki etiketler */
+    labels: {
+      team: string;
+      type: string;
+      location: string;
+      experience: string;
+      responsibilities: string;
+      requirements: string;
+      bonus: string;
+      backToList: string;
+      apply: string;
+      applyDescription: string;
+      applyEmail: string;
+      /** E-posta konu satırında ilan başlığından sonra gelen ek */
+      applySubjectSuffix: string;
+    };
+    /** Her ilan iki dilde de tanımlanmak zorundadır */
+    jobs: Record<JobId, Job>;
+    openApplication: { title: string; description: string; action: string };
   };
   privacy: {
     hero: { eyebrow: string; title: string; description: string };

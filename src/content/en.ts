@@ -14,6 +14,7 @@ export const en: Dictionary = {
     services: "Services",
     approach: "Our approach",
     about: "About",
+    careers: "Careers",
     contact: "Contact",
   },
   actions: {
@@ -415,6 +416,228 @@ export const en: Dictionary = {
         message: "Please write a message of at least 20 characters.",
         generic: "Your request could not be sent. Please try again.",
       },
+    },
+  },
+  careers: {
+    hero: {
+      eyebrow: "Careers",
+      title: "Would you work with us?",
+      description:
+        "NAVIAR is a newly founded consulting firm. That means joining us is less about slotting into an established order and more about building it together. We want to work with people who are curious, comfortable taking responsibility, and keen to see their work hold up on the ground.",
+    },
+    culture: {
+      title: "What it is like to work here",
+      description:
+        "We know what working conditions in consulting can look like. We deliberately made different choices when setting this firm up.",
+      items: [
+        {
+          title: "Real responsibility, early",
+          description:
+            "Whatever your seniority, you sit at the same table as the client. You do not spend years building slides and waiting.",
+        },
+        {
+          title: "A sustainable pace",
+          description:
+            "There are intense stretches, but midnight work is not a badge of honour here — it is a planning failure.",
+        },
+        {
+          title: "A learning budget, and the time to use it",
+          description:
+            "Every consultant has an annual training and certification budget, plus protected time in the calendar to spend it.",
+        },
+        {
+          title: "Hybrid working",
+          description:
+            "On days you are not at a client site, where you work is your call.",
+        },
+        {
+          title: "A transparent career path",
+          description:
+            "Level definitions and promotion criteria are written down. We built for ourselves the system we build for clients.",
+        },
+        {
+          title: "Small team, close feedback",
+          description:
+            "You work alongside a senior consultant on every project and get feedback within the week, not at year end.",
+        },
+      ],
+    },
+    process: {
+      title: "Our hiring process",
+      description:
+        "The process takes about three weeks. You will always hear back at the end of each stage, whether the answer is yes or no.",
+      steps: [
+        {
+          step: "01",
+          title: "Application",
+          description:
+            "Send us your CV and a short cover note. Reading why you want this work matters more to us than the CV itself.",
+          activities: [],
+        },
+        {
+          step: "02",
+          title: "Introductory call",
+          description:
+            "A 45-minute conversation about your experience, with time set aside for your questions about us.",
+          activities: [],
+        },
+        {
+          step: "03",
+          title: "Case discussion",
+          description:
+            "We work through a simplified version of a real project together. It is not an exam — it is a chance to think alongside each other.",
+          activities: [],
+        },
+        {
+          step: "04",
+          title: "Offer",
+          description:
+            "A decision and an offer within a week at the latest. We share the salary range at the start of the process, not the end.",
+          activities: [],
+        },
+      ],
+    },
+    openings: {
+      eyebrow: "Open positions",
+      title: "Who we are looking for right now",
+      description:
+        "If one of the roles below fits you, apply directly. If none is quite right, our open application channel is always available.",
+      viewJob: "View the role",
+    },
+    labels: {
+      team: "Team",
+      type: "Contract",
+      location: "Location",
+      experience: "Experience",
+      responsibilities: "What you will do",
+      requirements: "What we are looking for",
+      bonus: "Nice to have",
+      backToList: "All positions",
+      apply: "Apply for this role",
+      applyDescription:
+        "Send your CV and a short cover note by email. We confirm receipt of your application within two business days.",
+      applyEmail: "kariyer@naviar.com",
+      applySubjectSuffix: "application",
+    },
+    jobs: {
+      "kidemli-yonetim-danismani": {
+        title: "Senior Management Consultant",
+        team: "Management & Strategy",
+        type: "Full time",
+        location: "Istanbul · Hybrid",
+        experience: "5+ years",
+        summary:
+          "We are looking for a consultant to run strategy and organisation engagements end to end, working directly with client leadership teams. A role that carries a project from analysis through to execution while developing more junior consultants along the way.",
+        responsibilities: [
+          "Running strategy, organisation design and process improvement engagements end to end",
+          "Working directly with the client's leadership team and standing behind your findings",
+          "Framing the analytical approach and turning data into findings and recommendations",
+          "Designing and facilitating co-design workshops",
+          "Mentoring consultants on the project team and giving them feedback",
+          "Contributing to proposals and scoping conversations",
+        ],
+        requirements: [
+          "At least 5 years in management consulting or corporate strategy",
+          "Analytical thinking, and the ability to reduce a complex problem to a clear narrative",
+          "Persuasive presentation and negotiation skills at executive level",
+          "Advanced command of spreadsheet and presentation tools",
+          "Fluent professional communication in Turkish and English",
+          "Willingness to travel within Istanbul and occasionally further for client work",
+        ],
+        bonus: [
+          "Having led organisation design or performance management engagements",
+          "Depth in a particular sector (manufacturing, retail, financial services, technology)",
+          "A postgraduate degree in business or engineering",
+        ],
+      },
+      "insan-kaynaklari-danismani": {
+        title: "Human Resources Consultant",
+        team: "HR & Corporate Learning",
+        type: "Full time",
+        location: "Istanbul · Hybrid",
+        experience: "3+ years",
+        summary:
+          "We are looking for a consultant who builds competency models, career architectures and performance systems — and who does not stop at the design, but makes them genuinely work inside the client organisation.",
+        responsibilities: [
+          "Designing competency models, level structures and career architectures",
+          "Building performance management and goal-setting systems",
+          "Structuring hiring processes and writing interview guides",
+          "Running employee pulse surveys and the analysis behind them",
+          "Supporting the client's HR team through rollout of the design",
+        ],
+        requirements: [
+          "At least 3 years in human resources, ideally in consulting or corporate HR",
+          "Hands-on knowledge of competency-based systems",
+          "A working grasp of Turkish labour law and how data protection rules affect HR processes",
+          "Comfort working with data and explaining findings to managers",
+          "Fluent professional communication in Turkish and English",
+        ],
+        bonus: [
+          "Experience structuring compensation and benefits",
+          "Having taken part in an HRIS implementation or migration",
+          "Certification in assessment instruments",
+        ],
+      },
+      "kurumsal-egitim-tasarimcisi": {
+        title: "Corporate Learning Designer",
+        team: "HR & Corporate Learning",
+        type: "Full time",
+        location: "Istanbul · Hybrid",
+        experience: "3+ years",
+        summary:
+          "We are looking for a designer to build leadership and capability development programmes, certify internal trainers, and make sure programmes are measured on behaviour change rather than attendance.",
+        responsibilities: [
+          "Running training needs analysis and designing the programme architecture",
+          "Writing case studies, simulations and workshop content",
+          "Delivering programmes yourself and certifying internal trainers",
+          "Designing impact measurement and reporting the results",
+          "Managing production of digital learning content",
+        ],
+        requirements: [
+          "At least 3 years in corporate learning or instructional design",
+          "A firm grasp of adult learning principles and the ability to design around them",
+          "Experience facilitating in front of a group",
+          "A practical approach to measuring programme impact",
+          "Fluent professional communication in Turkish and English",
+        ],
+        bonus: [
+          "Having designed a leadership development programme",
+          "A coaching certification",
+          "Production experience with digital learning tools",
+        ],
+      },
+      "danismanlik-stajyeri": {
+        title: "Consulting Intern",
+        team: "Management & Strategy",
+        type: "Part-time internship · 6 months",
+        location: "Istanbul · Hybrid",
+        experience: "Student or recent graduate",
+        summary:
+          "We are looking for a student or recent graduate who wants to find out what consulting actually involves. Not photocopying — you will carry real analysis and research responsibility on live projects. The internship is paid.",
+        responsibilities: [
+          "Conducting market, competitor and sector research",
+          "Gathering, cleaning and preparing data for analysis",
+          "Structuring interview notes and drafting findings",
+          "Contributing to presentations and reports",
+        ],
+        requirements: [
+          "Final-year student or recent graduate in business, economics, engineering or a related field",
+          "Comfortable working in spreadsheet and presentation tools",
+          "Clear, well-organised written communication",
+          "Availability at least three days a week",
+          "English reading comprehension at working level",
+        ],
+        bonus: [
+          "Experience in a student society or case competition",
+          "Familiarity with data visualisation tools",
+        ],
+      },
+    },
+    openApplication: {
+      title: "None of the open roles quite fit?",
+      description:
+        "We do not wait for a vacancy when we meet the right person. A short email telling us what you do and what you would want to do at NAVIAR is enough. When a suitable opening appears, you will hear from us first.",
+      action: "Send an open application",
     },
   },
   privacy: {

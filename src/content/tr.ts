@@ -14,6 +14,7 @@ export const tr: Dictionary = {
     services: "Hizmetler",
     approach: "Yaklaşımımız",
     about: "Hakkımızda",
+    careers: "Kariyer",
     contact: "İletişim",
   },
   actions: {
@@ -415,6 +416,228 @@ export const tr: Dictionary = {
         message: "Lütfen en az 20 karakterlik bir mesaj yazın.",
         generic: "Talebiniz gönderilemedi. Lütfen tekrar deneyin.",
       },
+    },
+  },
+  careers: {
+    hero: {
+      eyebrow: "Kariyer",
+      title: "Bizimle çalışır mısınız?",
+      description:
+        "NAVIAR yeni kurulan bir danışmanlık firması. Bu, kurulmuş bir düzene katılmak yerine düzeni birlikte kuracağınız anlamına geliyor. Merak eden, sorumluluk almaktan çekinmeyen ve işin sahada karşılığını görmek isteyen insanlarla çalışmak istiyoruz.",
+    },
+    culture: {
+      title: "Burada çalışmak nasıl?",
+      description:
+        "Danışmanlıkta çalışma koşullarının nasıl olabileceğini biliyoruz. Kurarken bilinçli olarak farklı tercihler yaptık.",
+      items: [
+        {
+          title: "Gerçek sorumluluk, erken",
+          description:
+            "Kıdeminiz ne olursa olsun müşteriyle aynı masada oturursunuz. Yıllarca slayt hazırlayıp beklemezsiniz.",
+        },
+        {
+          title: "Sürdürülebilir tempo",
+          description:
+            "Yoğun dönemler olur, ama gece yarısı mesaisi bizde başarı göstergesi değil, planlama hatasıdır.",
+        },
+        {
+          title: "Öğrenme bütçesi ve zamanı",
+          description:
+            "Her danışman için yıllık eğitim ve sertifikasyon bütçesi ile bunu kullanacak takvim ayrılır.",
+        },
+        {
+          title: "Hibrit çalışma",
+          description:
+            "Müşteri sahasında olmadığınız günlerde nereden çalışacağınıza siz karar verirsiniz.",
+        },
+        {
+          title: "Şeffaf kariyer yolu",
+          description:
+            "Kademe tanımları ve terfi kriterleri yazılıdır. Müşterilerimize kurduğumuz sistemi kendimize de kurduk.",
+        },
+        {
+          title: "Küçük ekip, yakın geri bildirim",
+          description:
+            "Her projede kıdemli bir danışmanla birlikte çalışır, geri bildirimi yıl sonunda değil hafta içinde alırsınız.",
+        },
+      ],
+    },
+    process: {
+      title: "İşe alım süreci",
+      description:
+        "Süreç ortalama üç hafta sürer. Her aşamanın sonunda, olumlu ya da olumsuz, mutlaka geri dönüş yaparız.",
+      steps: [
+        {
+          step: "01",
+          title: "Başvuru",
+          description:
+            "Özgeçmişinizi ve kısa bir ön yazıyı iletirsiniz. Ön yazıda neden bu işi istediğinizi okumak bizim için özgeçmişten daha değerli.",
+          activities: [],
+        },
+        {
+          step: "02",
+          title: "Tanışma görüşmesi",
+          description:
+            "45 dakikalık bir görüşme. Deneyiminizi konuşur, sizin de bize soru sorabilmeniz için zaman ayırırız.",
+          activities: [],
+        },
+        {
+          step: "03",
+          title: "Vaka çalışması",
+          description:
+            "Gerçek bir projeden sadeleştirilmiş bir vaka üzerinde birlikte çalışırız. Sınav değil, birlikte düşünme denemesidir.",
+          activities: [],
+        },
+        {
+          step: "04",
+          title: "Teklif",
+          description:
+            "Karar ve teklif en geç bir hafta içinde iletilir. Ücret aralığını görüşmenin başında paylaşırız.",
+          activities: [],
+        },
+      ],
+    },
+    openings: {
+      eyebrow: "Açık pozisyonlar",
+      title: "Şu anda aradığımız arkadaşlar",
+      description:
+        "Aşağıdaki başlıklardan biri size uyuyorsa doğrudan başvurabilirsiniz. Tam olarak uymuyorsa da açık başvuru kanalımız her zaman açık.",
+      viewJob: "İlanı görüntüle",
+    },
+    labels: {
+      team: "Ekip",
+      type: "Çalışma şekli",
+      location: "Konum",
+      experience: "Deneyim",
+      responsibilities: "Bu rolde ne yapacaksınız",
+      requirements: "Sizden beklediklerimiz",
+      bonus: "Artı olur",
+      backToList: "Tüm pozisyonlar",
+      apply: "Bu pozisyona başvurun",
+      applyDescription:
+        "Özgeçmişinizi ve kısa bir ön yazıyı e-posta ile gönderin. Başvurunuzu aldığımıza dair teyidi iki iş günü içinde iletiriz.",
+      applyEmail: "kariyer@naviar.com",
+      applySubjectSuffix: "başvurusu",
+    },
+    jobs: {
+      "kidemli-yonetim-danismani": {
+        title: "Kıdemli Yönetim Danışmanı",
+        team: "Yönetim & Strateji",
+        type: "Tam zamanlı",
+        location: "İstanbul · Hibrit",
+        experience: "5+ yıl",
+        summary:
+          "Strateji ve organizasyon projelerini uçtan uca yürütecek, müşteri yönetim ekibiyle doğrudan çalışacak bir danışman arıyoruz. Projeyi analizden uygulamaya taşıyan ve bu sırada daha genç danışmanları geliştiren bir rol.",
+        responsibilities: [
+          "Strateji, organizasyon tasarımı ve süreç iyileştirme projelerini uçtan uca yürütmek",
+          "Müşterinin yönetim ekibiyle doğrudan iletişim kurmak ve bulguları savunmak",
+          "Analiz yaklaşımını kurgulamak, veriyi bulguya ve öneriye dönüştürmek",
+          "Ortak çalışma atölyelerini tasarlamak ve yönetmek",
+          "Proje ekibindeki danışmanlara mentorluk yapmak ve geri bildirim vermek",
+          "Teklif hazırlığı ve kapsam belirleme çalışmalarına katkı vermek",
+        ],
+        requirements: [
+          "Yönetim danışmanlığı veya kurumsal strateji alanında en az 5 yıl deneyim",
+          "Analitik düşünme ve karmaşık bir sorunu sade bir anlatıya indirgeyebilme",
+          "Üst yönetim seviyesinde ikna edici sunum ve müzakere becerisi",
+          "Excel ve sunum araçlarında ileri düzey yetkinlik",
+          "Türkçe ve İngilizce iş ortamında akıcı iletişim",
+          "Proje gereği İstanbul içi ve zaman zaman şehir dışı seyahate açık olmak",
+        ],
+        bonus: [
+          "Organizasyon tasarımı veya performans yönetimi projelerinde birincil sorumluluk almış olmak",
+          "Belirli bir sektörde (üretim, perakende, finans, teknoloji) derinleşmiş olmak",
+          "İşletme veya mühendislik alanında yüksek lisans",
+        ],
+      },
+      "insan-kaynaklari-danismani": {
+        title: "İnsan Kaynakları Danışmanı",
+        team: "İK & Kurumsal Eğitim",
+        type: "Tam zamanlı",
+        location: "İstanbul · Hibrit",
+        experience: "3+ yıl",
+        summary:
+          "Yetkinlik modeli, kariyer mimarisi ve performans sistemleri kuran; bunları tasarlamakla kalmayıp müşteri kurumda gerçekten işler hale getiren bir danışman arıyoruz.",
+        responsibilities: [
+          "Yetkinlik modeli, kademe yapısı ve kariyer mimarisi tasarlamak",
+          "Performans yönetimi ve hedef belirleme sistemlerini kurmak",
+          "İşe alım süreçlerini yapılandırmak, mülakat rehberleri hazırlamak",
+          "Çalışan nabız ölçümü ve analiz çalışmalarını yürütmek",
+          "Tasarlanan sistemin devreye alınmasında müşteri İK ekibine eşlik etmek",
+        ],
+        requirements: [
+          "İnsan kaynakları alanında en az 3 yıl deneyim; tercihen danışmanlık veya kurumsal İK",
+          "Yetkinlik bazlı sistemler konusunda uygulamalı bilgi",
+          "İş kanunu ve KVKK'nın İK süreçlerine yansımaları hakkında temel hâkimiyet",
+          "Veriyle çalışma ve bulgularını yöneticilere anlatabilme",
+          "Türkçe ve İngilizce iş ortamında akıcı iletişim",
+        ],
+        bonus: [
+          "Ücret ve yan haklar yapılandırması deneyimi",
+          "İK bilgi sistemi (HRIS) kurulum veya geçiş projesinde yer almış olmak",
+          "Ölçme değerlendirme araçlarında sertifikasyon",
+        ],
+      },
+      "kurumsal-egitim-tasarimcisi": {
+        title: "Kurumsal Eğitim Tasarımcısı",
+        team: "İK & Kurumsal Eğitim",
+        type: "Tam zamanlı",
+        location: "İstanbul · Hibrit",
+        experience: "3+ yıl",
+        summary:
+          "Liderlik ve yetkinlik gelişim programlarını tasarlayacak, iç eğitmenleri yetiştirecek ve programın katılım değil davranış değişimi üzerinden ölçülmesini sağlayacak bir tasarımcı arıyoruz.",
+        responsibilities: [
+          "Eğitim ihtiyaç analizi yapmak ve program mimarisini kurgulamak",
+          "Vaka, simülasyon ve atölye içeriklerini yazmak",
+          "Programları bizzat yürütmek ve iç eğitmenleri yetiştirmek",
+          "Etki ölçüm tasarımını kurmak ve sonuçları raporlamak",
+          "Dijital öğrenme içeriklerinin üretimini yönetmek",
+        ],
+        requirements: [
+          "Kurumsal eğitim veya öğrenme tasarımı alanında en az 3 yıl deneyim",
+          "Yetişkin öğrenmesi ilkelerine hâkimiyet ve bunu tasarıma yansıtabilme",
+          "Grup önünde kolaylaştırıcılık deneyimi",
+          "Program etkisini ölçme konusunda uygulamalı yaklaşım",
+          "Türkçe ve İngilizce iş ortamında akıcı iletişim",
+        ],
+        bonus: [
+          "Liderlik gelişim programı tasarlamış olmak",
+          "Koçluk sertifikasyonu",
+          "Dijital öğrenme araçlarında üretim deneyimi",
+        ],
+      },
+      "danismanlik-stajyeri": {
+        title: "Danışmanlık Stajyeri",
+        team: "Yönetim & Strateji",
+        type: "Yarı zamanlı staj · 6 ay",
+        location: "İstanbul · Hibrit",
+        experience: "Öğrenci veya yeni mezun",
+        summary:
+          "Danışmanlığın gerçekte ne olduğunu öğrenmek isteyen bir öğrenci ya da yeni mezun arıyoruz. Fotokopi işi değil; gerçek projelerde analiz ve araştırma sorumluluğu alacaksınız. Staj ücretlidir.",
+        responsibilities: [
+          "Pazar, rakip ve sektör araştırmaları yapmak",
+          "Veri derlemek, temizlemek ve analiz için hazırlamak",
+          "Görüşme notlarını yapılandırmak ve bulgu taslakları hazırlamak",
+          "Sunum ve rapor hazırlığına katkı vermek",
+        ],
+        requirements: [
+          "İşletme, ekonomi, mühendislik veya ilgili bir bölümde son sınıf öğrencisi ya da yeni mezun",
+          "Excel ve sunum araçlarında rahat çalışabilme",
+          "Yazılı anlatımda düzen ve açıklık",
+          "Haftada en az üç gün ayırabilme",
+          "İngilizce okuduğunu anlama düzeyinde yeterlilik",
+        ],
+        bonus: [
+          "Öğrenci kulübü veya vaka yarışması deneyimi",
+          "Veri görselleştirme araçlarına aşinalık",
+        ],
+      },
+    },
+    openApplication: {
+      title: "Açık pozisyonlar arasında size uyan yok mu?",
+      description:
+        "İyi insanlar için ilan beklemeyiz. Ne yaptığınızı ve NAVIAR'da neyi yapmak istediğinizi anlatan kısa bir e-posta yeterli. Uygun bir açık doğduğunda ilk size döneriz.",
+      action: "Açık başvuru gönderin",
     },
   },
   privacy: {
