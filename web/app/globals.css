@@ -155,3 +155,43 @@ h3 { font-size: 1.125rem; font-family: var(--cb-font-body); font-weight: 600; }
 .consent-actions .btn { flex: 1 1 160px; text-align: center; padding: .6rem 1rem; font-size: .9375rem; }
 
 .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Araç çubuğu: arama + sıralama */
+.toolbar {
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+  margin: 1.5rem 0 .5rem;
+}
+.toolbar form { display: flex; gap: .5rem; flex: 1 1 260px; }
+.toolbar input[type="search"] {
+  flex: 1; min-width: 0; font: inherit; color: inherit;
+  background: var(--cb-surface); border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius); padding: .55rem .8rem;
+}
+.toolbar input[type="search"]:focus-visible { outline: 2px solid var(--cb-clay); outline-offset: 1px; }
+.toolbar .btn { padding: .55rem 1.1rem; }
+.sort { display: flex; align-items: center; gap: .5rem; margin-left: auto; }
+.sort select {
+  font: inherit; color: inherit; background: var(--cb-surface);
+  border: 1px solid var(--cb-border); border-radius: var(--cb-radius); padding: .5rem .6rem;
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Yasal metin sayfaları */
+.legal { max-width: 760px; padding-bottom: 4rem; }
+.legal article { font-size: .9375rem; }
+.legal article h2 { font-size: 1.25rem; margin-top: 2.25rem; }
+.legal article h3 { margin-top: 1.75rem; }
+.legal article table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; display: block; overflow-x: auto; }
+.legal article th, .legal article td {
+  text-align: left; padding: .5rem .75rem; border: 1px solid var(--cb-border); vertical-align: top;
+}
+.legal article th { background: var(--cb-surface); font-weight: 600; }
+.legal article code { background: var(--cb-surface); padding: .1rem .35rem; border-radius: 3px; font-size: .875em; }
+.legal article hr { border: 0; border-top: 1px solid var(--cb-border); margin: 2rem 0; }
+.legal article blockquote {
+  margin: 1.25rem 0; padding-left: 1rem; border-left: 3px solid var(--cb-sand); color: var(--cb-muted);
+}

@@ -17,21 +17,14 @@ bitenleri işaretle, yeni çıkanları ekle.
 ## Web — sıradaki geliştirmeler
 
 - [ ] **Ürün görselleri** — Shopify'a yüklenince otomatik gelir; şu an renk bloğu
-- [ ] **Kargo tutarını Shopify'dan al** — sepetteki kargo satırı hâlâ yerel tablodan
-      geliyor (`lib/products.ts` → `shipping`), checkout'ta farklı çıkabilir.
-      Çözüm: `cartCreate` sonrası `cart.cost.totalAmount` oku ya da satırı
-      "tahmini kargo" olarak etiketle
-- [ ] **Arama** — Storefront API `products(query:)` ile
-- [ ] **Filtre/sıralama** — fiyat, yenilik, stok durumu
+- [ ] **Kargo tutarını Shopify'dan al** — satır şimdilik "tahminidir" diye
+      etiketlendi; kesin çözüm `cartCreate` sonrası `cart.cost` okumak
 - [ ] **Ürün varyantları** — şu an ilk varyant kullanılıyor; beden/renk seçimi yok
 - [ ] **Yorumlar** — Judge.me veya Shopify metafield
 - [ ] **Sepet Shopify'da tutulsun** — şu an localStorage; `cartId` saklanırsa
       cihazlar arası ve terkedilmiş sepet e-postası mümkün olur
-- [ ] **Yasal sayfaların tam metni** — `docs/sozlesmeler/` içerikleri sayfalara taşınacak
-- [ ] **Analytics** — GA4 + Meta Pixel, yalnızca `cobban:consent` sonrası
 - [ ] **E-posta yakalama** — ücretsiz kargo karşılığı pop-up, Klaviyo
 - [ ] **Görsel optimizasyonu** — `next/image` + Shopify CDN loader
-- [ ] **Test** — en azından `/api/checkout` doğrulama mantığı için birim testleri
 
 ## İçerik ve pazarlama
 
@@ -57,3 +50,8 @@ Norveç ENK kaydı → banka → MVA takibi → Türkiye şahıs firması → ET
 - [x] GDPR/KVKK uyumlu çerez rıza bandı
 - [x] `sitemap.xml`, `robots.txt`, schema.org `Product` JSON-LD, hreflang
 - [x] Shopify'da 4 koleksiyon, 8 taslak ürün, `en`+`tr` dilleri
+- [x] Arama ve sıralama (durum URL'de)
+- [x] Yasal metinler `docs/sozlesmeler/`'den siteye bağlandı; eksik alan varsa
+      "taslak" uyarısı + `noindex`
+- [x] GA4 yalnızca rıza sonrası yükleniyor
+- [x] Ödeme doğrulaması için 12 birim testi (`npm test`)

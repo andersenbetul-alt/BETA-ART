@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { t, type Locale } from '@/lib/i18n';
 import { categories } from '@/lib/products';
+import { legalPages } from '@/lib/legal';
 
 export default function Footer({ locale }: { locale: Locale }) {
   return (
@@ -24,10 +25,11 @@ export default function Footer({ locale }: { locale: Locale }) {
           <div>
             <h3>{t(locale, 'footer.legal')}</h3>
             <ul>
-              <li><Link href={`/${locale}/kurumsal#satis`}>{t(locale, 'footer.terms')}</Link></li>
-              <li><Link href={`/${locale}/kurumsal#gizlilik`}>{t(locale, 'footer.privacy')}</Link></li>
-              <li><Link href={`/${locale}/kurumsal#iade`}>{t(locale, 'footer.returns')}</Link></li>
-              <li><Link href={`/${locale}/kurumsal#cerez`}>{t(locale, 'footer.cookies')}</Link></li>
+              {legalPages(locale).map((page) => (
+                <li key={page.slug}>
+                  <Link href={`/${locale}/kurumsal/${page.slug}`}>{page.title}</Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

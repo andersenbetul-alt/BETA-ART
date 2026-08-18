@@ -11,6 +11,8 @@ npm install
 npm run dev      # http://localhost:3000 → /no adresine yönlenir
 npm run build    # üretim derlemesi
 npm run typecheck
+npm test          # ödeme doğrulama testleri
+npm run check     # typecheck + test + build
 ```
 
 ## Yapı
@@ -22,17 +24,29 @@ app/
   [locale]/
     layout.tsx                     dil doğrulama, <html lang>, font, header/footer
     page.tsx                       anasayfa (hero, USP, öne çıkan ürünler)
-    urunler/page.tsx               ürün listesi + kategori filtresi (?kategori=)
+    urunler/page.tsx               ürün listesi + kategori/arama/sıralama
     urunler/[slug]/page.tsx        ürün detay (SSG, hreflang alternates)
     sepet/page.tsx                 sepet
-    kurumsal/page.tsx              hakkımızda + yasal metin başlıkları
+    kurumsal/page.tsx              hakkımızda + yasal sayfa dizini
+    kurumsal/[sayfa]/page.tsx      yasal metinler (docs/sozlesmeler'den okunur)
+  api/checkout/route.ts            Shopify sepeti oluşturur, sunucuda doğrular
 components/
   CartContext.tsx                  sepet state'i (localStorage, client-only)
   Header.tsx / Footer.tsx          navigasyon, dil değiştirici (aynı sayfada kalır)
   ProductCard.tsx / AddToCart.tsx / CartView.tsx
+components/
+  ProductFilters.tsx               arama kutusu + sıralama (durum URL'de)
+  Analytics.tsx                    GA4 — yalnızca rıza sonrası yüklenir
 lib/
   i18n.ts                          diller, sözlükler, para birimi, formatPrice
-  products.ts                      ürün kataloğu, kategoriler, kargo eşikleri
+  products.ts                      yerel ürün kataloğu (Shopify yoksa yedek)
+  catalog.ts                       Shopify → yerel katalog geçişi
+  shopify.ts                       Storefront API istemcisi
+  checkout.ts                      sepet doğrulama (saf fonksiyon, testli)
+  legal.ts                         docs/sozlesmeler markdown'larını okur
+  site.ts                          mutlak adres tek kaynağı
+tests/
+  checkout.test.ts                 ödeme doğrulama testleri (node --test)
 ```
 
 ## Tasarım kararları
@@ -96,6 +110,11 @@ yalnızca slug ve adedi kabul eder, geri kalanını sunucudaki kataloglardan oku
 - ✅ GDPR/KVKK uyumlu çerez rıza bandı — reddet butonu kabul ile eşit ağırlıkta
 - ✅ `sitemap.xml`, `robots.txt`, schema.org `Product` JSON-LD (iade politikası dahil)
 - ✅ `hreflang` alternatifleri ve canonical adresler
+- ✅ Arama ve sıralama (durum URL'de — paylaşılabilir, geri tuşu çalışır)
+- ✅ Yasal metinler `docs/sozlesmeler/`'den okunuyor; doldurulmamış `{{...}}`
+     alanı varsa sayfa "taslak" uyarısı gösterir ve `noindex` olur
+- ✅ GA4 yalnızca rıza sonrası yüklenir (`NEXT_PUBLIC_GA_MEASUREMENT_ID`)
+- ✅ Ödeme doğrulaması için 12 birim testi
 
 ## Shopify ile ilişki
 

@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { formatPrice, t, type Locale } from '@/lib/i18n';
-import { MAX_LINE_QTY, type ProductView } from '@/lib/types';
+import type { ProductView } from '@/lib/types';
+import { MAX_LINE_QTY } from '@/lib/checkout';
 import { useCart } from './CartContext';
 
 /** Satır başına izin verilen en yüksek adet — sunucudaki doğrulamayla aynı sınır. */
@@ -123,7 +124,9 @@ export default function CartView({
           <span>{t(locale, 'cart.total')}</span>
           <span className="price">{formatPrice(subtotal + shippingCost, locale, currency)}</span>
         </div>
-        <p className="small muted">{t(locale, 'cart.vatIncluded')}</p>
+        <p className="small muted">
+          {t(locale, 'cart.vatIncluded')} {t(locale, 'cart.shippingNote')}
+        </p>
 
         <button className="btn" style={{ width: '100%' }} onClick={checkout} disabled={busy || !checkoutEnabled}>
           {busy ? '…' : t(locale, 'cart.checkout')}

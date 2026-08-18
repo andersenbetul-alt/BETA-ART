@@ -5,6 +5,7 @@ import { CartProvider } from '@/components/CartContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
+import Analytics from '@/components/Analytics';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -39,6 +40,7 @@ export default async function LocaleLayout({
           <main>{children}</main>
           <Footer locale={locale} />
           <CookieBanner locale={locale} />
+          <Analytics />
         </CartProvider>
       </body>
     </html>

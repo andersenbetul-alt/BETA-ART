@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { isLocale } from '@/lib/i18n';
 import { getProducts } from '@/lib/catalog';
 import { createCheckout, isShopifyConfigured } from '@/lib/shopify';
-import { MAX_LINE_QTY } from '@/lib/types';
+import { planCheckout } from '@/lib/checkout';
 
 type Body = { locale?: string; lines?: { slug?: unknown; qty?: unknown }[] };
 
@@ -33,44 +33,16 @@ export async function POST(request: Request) {
   // slug ve adet dışındaki hiçbir veriye güvenilmez.
   const catalog = await getProducts(locale);
 
-  const checkoutLines = [];
-  // Karşılanamayan satırı sessizce atlamak müşteriyi eksik bir siparişe
-  // yönlendirir; hepsini topla ve isteği reddet.
-  const unavailable: string[] = [];
-
-  for (const line of lines) {
-    if (typeof line?.slug !== 'string') {
-      unavailable.push('');
-      continue;
-    }
-
-    const qty = Number(line.qty);
-    const product = catalog.find((p) => p.slug === line.slug);
-
-    if (
-      !Number.isInteger(qty) ||
-      qty < 1 ||
-      qty > MAX_LINE_QTY ||
-      !product?.variantId ||
-      !product.available ||
-      (product.stock !== null && qty > product.stock)
-    ) {
-      unavailable.push(line.slug);
-      continue;
-    }
-
-    checkoutLines.push({ variantId: product.variantId, quantity: qty });
-  }
-
-  if (unavailable.length > 0 || checkoutLines.length === 0) {
+  const plan = planCheckout(catalog, lines);
+  if (!plan.ok) {
     return NextResponse.json(
-      { error: 'Sepetteki ürünler satın alınamıyor', unavailable },
+      { error: 'Sepetteki ürünler satın alınamıyor', unavailable: plan.unavailable },
       { status: 409 },
     );
   }
 
   try {
-    const checkoutUrl = await createCheckout(locale, checkoutLines);
+    const checkoutUrl = await createCheckout(locale, plan.lines);
     return NextResponse.json({ checkoutUrl });
   } catch (error) {
     console.error('[checkout] Shopify sepet oluşturulamadı:', error);

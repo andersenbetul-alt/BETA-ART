@@ -30,6 +30,3 @@ export type ProductView = {
   /** Shopify varyant GID'i — checkout için gerekli, yerel katalogda yok. */
   variantId?: string;
 };
-
-/** İstemci ve sunucunun paylaştığı adet üst sınırı — satır başına. */
-export const MAX_LINE_QTY = 99;
