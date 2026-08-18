@@ -83,9 +83,10 @@ maliyet.
 | 44 | 16 maddelik görünürlük kuralı → çalışan denetim | **Bitti** 18.08 | `engine/visibility.mjs`, `write.mjs` kapısına bağlı |
 | 45 | İçerik mimarisi: 30 temel sayfa + 300 destek | **Bitti** 18.08 | `docs/icerik-mimarisi.md`; ilk dalga 10 pillar + 40 destek |
 | 46 | Vipps/Stripe canlı entegrasyonu (webhook uçları) | Bekliyor | Şema hazır; anahtar ve alan adı gerekiyor |
-| 47 | SEO + AI görünürlük izleme işi | **Karar bekliyor** | Sıklık onayı gerekiyor (öneri: haftalık) |
+| 47 | SEO + AI görünürlük izleme işi | **Bitti** 18.08 | Haftalık, pazartesi 07:00 (Norveç saati). Her hafta `check` + `gorunurluk` çalıştırıp politika değişimi tarar; kural değiştiyse `visibility.mjs`'i günceller |
 | 48 | Görünürlük denetimini siteye uygula | **Bitti** 18.08 | `npm run gorunurluk`; yazı modeline `src` ve `orig` eklendi |
 | 49 | Kaynak adreslerini doldur | Bekliyor | `check.mjs` adresi eksik kaynakları listeliyor; ortamda dış erişim kapalı |
+| 50 | Depoya ilk push | **Engelli** | Depo boş (hiç commit yok) + GitHub App'in yazma izni yok: "Resource not accessible by integration" |
 
 ### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
 

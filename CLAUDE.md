@@ -111,7 +111,10 @@ sözlüğünü İngilizcedeki tüm anahtarlarla doldurun, yazılara aynı kodu e
   içindeki `composeMail`. Alıcı adres, alan adı, fiyatlar ve sosyal hesaplar
   **`assets/js/config.js`** içinde — yayına almak için başka dosyaya dokunmak gerekmez.
 - Bülten kaydı yalnızca tarayıcıda tutulur (`initForm`); e-posta servisine bağlanmalı.
-- Depoya push izni yok (git ve GitHub App 403 döndürüyor); iş yerelde commit'leniyor.
+- Depoya push izni yok. İki ayrı sorun: (1) uzak depo tamamen boş — hiç commit yok;
+  (2) GitHub App'in yazma izni yok, yazma çağrıları "Resource not accessible by
+  integration" döndürüyor. Okuma çalışıyor. İş yerelde commit'leniyor.
+- Haftalık SEO/AI görünürlük izlemesi kurulu: pazartesi 07:00 (Norveç saati).
 - FAQPage şeması duruyor ama Google 7 Mayıs 2026'da FAQ zengin sonuçlarını kaldırdı.
   Yapay zekâ aramaları için tutuluyor; zengin sonuç beklemeyin.
 - Stripe Norveç ücreti: yurt içi kart %1,5 + 1,80 kr (yurt dışı +%3,25, döviz +%2).
