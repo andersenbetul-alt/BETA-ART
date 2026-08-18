@@ -1,82 +1,73 @@
-# BETA ART — three web properties
+# BETA ART
 
-One brand, three separate concepts, three independently designed static sites.
-No build step, no framework, no dependency beyond the brand's three webfonts.
+Three web properties plus a hub, built as static HTML, CSS and JavaScript.
+No build step, no framework. The only external dependency is Google Fonts.
+
+| Directory | Property | Live |
+|---|---|---|
+| `/` | Hub and the single legal notice | https://beta-art-bet-art.vercel.app/ |
+| `beta-art/` | The verified photography archive | https://beta-art-archive-bet-art.vercel.app/ |
+| `beta-art-business/` | Beta Art Business, the digital studio | https://beta-art-business-bet-art.vercel.app/ |
+| `beta-art-blog/` | Field Notes, the journal | https://beta-art-journal-bet-art.vercel.app/ |
+
+## Structure of the Business property
+
+Every service has its own page rather than a card on a list. Each one answers
+the same six questions in the same order — who it is for, what usually goes
+wrong, what we do instead, how the work runs, what you receive, what it costs.
 
 ```
-index.html                 Entry hub linking the three properties
-beta-art/                  Project 01 — the public archive
-beta-art-business/         Project 02 — the B2B rights desk
-beta-art-blog/             Project 03 — Field Notes, the journal
-docs/                      Phase reports per project
+index.html            home: hero, service finder, market map, packages, AI Studio
+services.html         all 22 services, split into Private and Business
+s-<slug>.html         one page per service (9 Private + 13 Business)
+quote.html            six-step guided brief; quote.js drives it
+about.html            why Beta Art exists, and what it is not
+cases.html            four case notes: problem, work, result
+resources.html        templates and checklists, no email wall
 ```
 
-Open `index.html` in a browser, or serve the folder:
+`quote.html?service=<slug>` preselects a service, which is how every service
+page links into the brief.
 
-```bash
-python3 -m http.server 8000     # then visit http://localhost:8000
+## Languages
+
+Each property ships a twelve-language switcher in its own `i18n.js`: English,
+Norwegian, Turkish, Spanish, French, German, Portuguese, Russian, Arabic,
+Chinese, Japanese and Hindi. The dictionary is a `K` key array plus a `V` map of
+per-language value arrays indexed by `K`, so a missing translation is a length
+mismatch rather than a silent gap. Arabic sets `dir="rtl"` on the document.
+
+One legal notice at `/legal.html` governs all three sites. It is published in
+English, and says so: translations are provided for understanding, and the
+English text is the governing version.
+
+## Audit
+
+```
+python3 tools/audit.py
 ```
 
-## Brand system (shared across all three)
+Walks every HTML file and reports broken anchors and links, duplicate ids,
+missing alt text, `aria-*` attributes pointing at ids that do not exist,
+unlabelled fields, heading-level jumps, invalid JSON-LD, metadata problems and
+`getElementById` calls no page satisfies. Exits non-zero on any finding, so it
+can gate a commit or a deploy.
 
-Taken from the existing Beta Art identity files, so the three sites read as one company.
+## Deploying
 
-| Token | Value | Use |
-| --- | --- | --- |
-| `--paper` | `#FBFAF7` | Gallery ground (archive, journal) |
-| `--paper-2` | `#F3F0E9` | Secondary surfaces |
-| `--ink` | `#0F0F0F` | Type; the ground for Business |
-| `--muted` | `#85817A` | Labels, secondary type |
-| `--rule` | `#E4E0D8` | Hairline rules |
-| `--seal` | `#8B1A1A` | Wax-seal red — verification and decisions only |
+Each directory is its own Vercel project. A deployment replaces the entire file
+tree, so every deploy must carry every file — a partial deploy deletes whatever
+it omits. Put `robots.txt` last in the file list and fetch it afterwards: a 200
+proves nothing was truncated.
 
-- **Display type** — Fraunces (300/400/500)
-- **Body type** — Inter
-- **Records type** — JetBrains Mono, used for every label, catalogue number and price
-- **Mark** — an aperture that is also a seal; the red dot is applied only where a work passed all three tests
-- **Signature elements** — the blind-emboss stage (archive hero) and the **accession label** that appears with every plate
+The Business property is now past 450 KB, which is more than can be sent in a
+single inline deployment. Connecting the repository to Vercel over git removes
+that ceiling and makes every push deploy itself.
 
-Fonts load from Google Fonts with full local fallbacks (Georgia / system sans / system mono), so
-the pages render correctly offline — only the typefaces change.
+## Rights
 
-## The three concepts
-
-### Project 01 — `beta-art/` · The archive
-Museum standard: bone paper, hairline rules, editorial serif. Fourteen launch plates across five
-tiers, each with an accession label; the three verification tests; the 35-category directory in
-five sections; licence tiers kr 190 / kr 890 / kr 2 900 / custom.
-
-### Project 02 — `beta-art-business/` · The rights desk
-The same brand with the gallery lights off: ink ground, grid field, mono data rows. Built on the
-Norwegian market map — 30+ buying industries in four tiers, ten priority segments — plus packages,
-framework agreements (rammeavtale), an audit-answer block and an enquiry form.
-
-### Project 03 — `beta-art-blog/` · Field Notes
-A periodical: centred masthead, double rules, numbered entry list, two-column page, dark reading
-mode and a reading-progress bar on the essay page. Content comes from the working method — the
-three tests, shot planning, light this far north, licence pricing.
-
-## Shared behaviour
-
-Each site ships its own `script.js` (vanilla, IIFE, no dependencies) implementing only what that
-concept needs: sticky header state, active-section nav, reveal-on-scroll (disabled under
-`prefers-reduced-motion`), animated figures, filters, form validation with inline errors and ARIA
-live status, plus a theme toggle (journal) and a notice banner (business).
-
-Accessibility: skip links, visible focus rings, `aria-pressed` / `aria-expanded` on controls,
-`role="alert"` errors, `aria-live` status, reduced-motion support, and semantic landmarks with a
-single `<h1>` per page.
-
-SEO: per-page title and description, canonical, Open Graph and Twitter cards, and JSON-LD
-(`WebSite` + `Store` + `ImageObject`, `Organization` + `Service`, `Blog` + `Article`).
-
-## Before launch
-
-1. Replace every `.plate-frame` / `.frame` placeholder with the verified original `<img>` (each one
-   is marked with a *replacement point* comment) and write real `alt` text.
-2. Connect the three forms to a real endpoint — they validate client-side and then stop.
-3. Confirm prices and licence terms, then remove the development-preview notice bars.
-4. Point canonicals and OG URLs at the live hosts and add real `og-cover.jpg` images.
-5. Add `robots.txt` and a sitemap once the URLs are final.
-
-Phase-by-phase reports for each project are in [`docs/`](docs/).
+© 2026 Beta Art — Betül Öner. All rights reserved worldwide. The name, mark,
+concept, service structure, page design and every photographic work are
+protected. No content here may be used as AI training data; the reservation is
+machine-readable in each `robots.txt` and in the `noai, noimageai` directive on
+every page.
