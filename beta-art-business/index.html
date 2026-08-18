@@ -4,12 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BETA ART BUSINESS — Turn an idea into a working digital solution</title>
-<meta name="description" content="Beta Art Business builds websites, brands, content and AI automations for people and companies. Tell us the problem; we route you to the right service, quote it, and deliver it.">
+<meta name="description" content="Websites, branding, content and AI automation for people and companies in Norway. Tell us the problem — we route you to the right service, quote it, and deliver.">
 <meta name="author" content="Betül Öner">
 <meta name="copyright" content="© 2026 Beta Art — Betül Öner. All rights reserved worldwide.">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index,follow,noai,noimageai">
 <meta name="rights" content="All rights reserved. No reproduction of copy, page design, service structure or concept without written permission.">
-<meta name="robots" content="noai, noimageai">
 <link rel="canonical" href="https://beta-art-business-bet-art.vercel.app/">
 <meta name="theme-color" content="#0F0F0F">
 <meta property="og:url" content="https://beta-art-business-bet-art.vercel.app/">
@@ -41,18 +40,19 @@
     </a>
 
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="#private">Private</a>
-      <a href="#business">Business</a>
-      <a href="#finder">Find your service</a>
-      <a href="#industries">Industries</a>
-<a href="#process">How it works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#studio">AI Studio</a>
-      <a href="#faq">FAQ</a>
+      <a href="#private" data-i18n="nav.private">Private</a>
+      <a href="#business" data-i18n="nav.business">Business</a>
+      <a href="#finder" data-i18n="nav.finder">Find your service</a>
+      <a href="#industries" data-i18n="nav.industries">Industries</a>
+      <a href="#process" data-i18n="nav.process">How it works</a>
+      <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+      <a href="#studio" data-i18n="nav.studio">AI Studio</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
     </nav>
 
     <div class="bar-actions">
-            <a class="btn btn-seal btn-sm" href="#quote">Get a quote</a>
+      <div class="lang-slot" id="lang-slot"></div>
+      <a class="btn btn-seal btn-sm" href="#quote" data-i18n="cta.quote">Get a quote</a>
       <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
         <span class="burger" aria-hidden="true"></span>
       </button>
@@ -66,15 +66,15 @@
     <div class="grid-bg" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="tag">Digital studio · Private &amp; Business</p>
-        <h1>Turn your idea into a <span class="seal-text">working</span> digital solution.</h1>
-        <p class="lead">Beta Art Business builds the practical things people and companies actually need —
+        <p class="tag" data-i18n="hero.tag">Digital studio · Private &amp; Business</p>
+        <h1><span data-i18n="hero.title.a">Turn your idea into a</span> <span class="seal-text" data-i18n="hero.title.em">working</span> <span data-i18n="hero.title.b">digital solution.</span></h1>
+        <p class="lead" data-i18n="hero.lead">Beta Art Business builds the practical things people and companies actually need —
           a website that sells, a brand that holds together, content that keeps arriving, and automation
           that removes the repetitive work. One studio, a fixed process, a written price.</p>
         <div class="actions">
-          <a class="btn btn-seal" href="#finder">Start here</a>
-          <a class="btn btn-line" href="#private">See services</a>
-          <a class="btn btn-line" href="#quote">Get a quote</a>
+          <a class="btn btn-seal" href="#finder" data-i18n="hero.cta1">Start here</a>
+          <a class="btn btn-line" href="#private" data-i18n="hero.cta2">See services</a>
+          <a class="btn btn-line" href="#quote" data-i18n="cta.quote">Get a quote</a>
         </div>
         <ul class="quickstats">
           <li><strong>48 h</strong><span>Quote turnaround</span></li>
@@ -86,18 +86,18 @@
 
       <aside class="split-card" aria-label="Who is this for">
         <div class="split-half">
-          <p class="tag">For people</p>
-          <h2>Private</h2>
-          <p>CV and applications, LinkedIn, a personal site, portfolio, social content, photo editing,
+          <p class="tag" data-i18n="split.p.tag">For people</p>
+          <h2 data-i18n="split.p.title">Private</h2>
+          <p data-i18n="split.p.body">CV and applications, LinkedIn, a personal site, portfolio, social content, photo editing,
             and help getting the next job.</p>
-          <a class="btn btn-line btn-block btn-sm" href="#private">Private services →</a>
+          <a class="btn btn-line btn-block btn-sm" href="#private" data-i18n="split.p.cta">Private services →</a>
         </div>
         <div class="split-half is-business">
-          <p class="tag">For companies</p>
-          <h2>Business</h2>
-          <p>Websites, landing pages, e-commerce, branding, SEO, content, chatbots, CRM flows,
+          <p class="tag" data-i18n="split.b.tag">For companies</p>
+          <h2 data-i18n="split.b.title">Business</h2>
+          <p data-i18n="split.b.body">Websites, landing pages, e-commerce, branding, SEO, content, chatbots, CRM flows,
             automation and reporting.</p>
-          <a class="btn btn-seal btn-block btn-sm" href="#business">Business services →</a>
+          <a class="btn btn-seal btn-block btn-sm" href="#business" data-i18n="split.b.cta">Business services →</a>
         </div>
       </aside>
     </div>
@@ -114,8 +114,8 @@
   <section class="section" id="finder">
     <div class="wrap">
       <div class="head">
-        <p class="tag">Smart service finder</p>
-        <h2>Tell us the problem, not the product.</h2>
+        <p class="tag" data-i18n="finder.tag">Smart service finder</p>
+        <h2 data-i18n="finder.title">Tell us the problem, not the product.</h2>
         <p class="lead">Most people do not arrive knowing whether they need a landing page, a funnel or
           a chatbot. Pick what is actually going on and this points at the service, the package and the
           realistic budget.</p>
@@ -216,8 +216,8 @@
   <div class="wrap">
     <div class="head split-head">
       <div>
-        <p class="tag">Market map · Norway</p>
-        <h2>Thirty industries that buy this work.</h2>
+        <p class="tag" data-i18n="industries.tag">Market map · Norway</p>
+        <h2 data-i18n="industries.title">Thirty industries that buy this work.</h2>
         <p class="lead">Beta Art sells into a market we have actually mapped. Every industry below is
           ranked by buying volume and by fit with what the studio and the archive produce &mdash; from
           daily high-volume buyers to the digital segments growing fastest.</p>
@@ -322,8 +322,8 @@
 <section class="section" id="process">
     <div class="wrap">
       <div class="head">
-        <p class="tag">How it works</p>
-        <h2>Seven steps, no mystery.</h2>
+        <p class="tag" data-i18n="process.tag">How it works</p>
+        <h2 data-i18n="process.title">Seven steps, no mystery.</h2>
         <p class="lead">The same sequence for a CV and for a hundred-page website. You always know which
           step you are on and what happens next.</p>
       </div>
@@ -345,8 +345,8 @@
     <div class="wrap">
       <div class="head split-head">
         <div>
-          <p class="tag">Packages</p>
-          <h2>Four sizes, one price list.</h2>
+          <p class="tag" data-i18n="pricing.tag">Packages</p>
+          <h2 data-i18n="pricing.title">Four sizes, one price list.</h2>
         </div>
         <div class="toggle" role="group" aria-label="Track">
           <button class="track-btn is-active" type="button" data-track="business" aria-pressed="true">Business</button>
@@ -398,8 +398,8 @@
   <section class="section" id="studio">
     <div class="wrap">
       <div class="head">
-        <p class="tag">AI services &amp; Studio</p>
-        <h2>Where the machine does the boring part.</h2>
+        <p class="tag" data-i18n="studio.tag">AI services &amp; Studio</p>
+        <h2 data-i18n="studio.title">Where the machine does the boring part.</h2>
         <p class="lead">Two things live here: AI systems we build into your business, and small tools you
           can use yourself right now, in the browser, without an account.</p>
       </div>
@@ -491,8 +491,8 @@
   <section class="enquiry" id="quote">
     <div class="wrap enquiry-grid">
       <div>
-        <p class="tag">Get a quote</p>
-        <h2>Six questions, then a written price.</h2>
+        <p class="tag" data-i18n="quote.tag">Get a quote</p>
+        <h2 data-i18n="quote.title">Six questions, then a written price.</h2>
         <p>Answer what you can. Anything left blank we will ask about in the first reply — and if we are
           not the right studio for the job, we will say so instead of quoting anyway.</p>
         <ul class="contact-list">
@@ -529,7 +529,7 @@
   <!-- ============ FAQ ============ -->
   <section class="section" id="faq">
     <div class="wrap narrow">
-      <div class="head"><p class="tag">FAQ</p><h2>Questions people ask first.</h2></div>
+      <div class="head"><p class="tag" data-i18n="nav.faq">FAQ</p><h2 data-i18n="faq.title">Questions people ask first.</h2></div>
       <div class="faq">
         <details><summary>How does it actually work?</summary><p>You describe the problem, we send a written scope with a fixed price and a date, and on approval we build it. Seven steps, listed above, the same for every project.</p></details>
         <details><summary>Is the work done by AI or by a person?</summary><p>A person is responsible for every delivery and signs off on it. AI is used where it genuinely helps — drafting, sorting, research — and never as a substitute for judgement. We will tell you which parts were machine-assisted if you ask.</p></details>
@@ -563,9 +563,7 @@
     <nav aria-label="Legal"><p class="tag">Legal</p><a href="https://beta-art-bet-art.vercel.app/legal.html#terms">Terms</a><a href="https://beta-art-bet-art.vercel.app/legal.html#privacy">Privacy</a><a href="https://beta-art-bet-art.vercel.app/legal.html#refunds">Refunds</a><a href="https://beta-art-bet-art.vercel.app/legal.html#ai">AI &amp; data</a><a href="https://beta-art-bet-art.vercel.app/legal.html#accessibility">Accessibility</a><a href="mailto:hallo@beta-art.com">Contact</a></nav>
   </div>
   <div class="wrap footer-base">
-    <p class="footnote">© <span id="year">2026</span> Beta Art — Betül Öner. All rights reserved worldwide
-      to the fullest extent permitted by applicable law. The Beta Art name, mark, service structure
-      and page design are protected works.</p>
+    <p class="footnote" data-i18n="legal.copyright">© 2026 Beta Art — Betül Öner. All rights reserved worldwide to the fullest extent permitted by applicable law. The Beta Art name, mark, service structure and page design are protected works.</p>
     <button class="to-top" id="to-top" type="button">Back to top ↑</button>
   </div>
 </footer>
@@ -604,6 +602,7 @@
 }
 </script>
 
+<script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

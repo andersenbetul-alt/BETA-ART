@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Field Notes — The Beta Art Journal</title>
-<meta name="description" content="Field Notes is the Beta Art journal: how a verified photography archive is built — provenance, the three tests, shot planning, light in Norway, and the economics of licensing.">
-<meta name="robots" content="index,follow">
+<meta name="description" content="The Beta Art journal on building a verified photography archive: provenance, the three tests, shot planning, Norwegian light and the economics of licensing.">
+<meta name="robots" content="index,follow,noai,noimageai">
 <link rel="canonical" href="https://beta-art-journal-bet-art.vercel.app/">
 <meta name="theme-color" content="#FBFAF7">
 <meta property="og:type" content="website">
@@ -20,7 +20,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <meta name="copyright" content="© 2026 Beta Art — Betül Öner. All rights reserved worldwide.">
 <meta name="rights" content="All rights reserved. No reproduction of essays, imagery or page design without written permission.">
-<meta name="robots" content="noai, noimageai">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -35,19 +34,20 @@
 
   <div class="wrap masthead-name">
     <h1 class="journal-name"><a href="index.html">Field Notes</a></h1>
-    <p class="strapline">How a verified photography archive gets built</p>
+    <p class="strapline" data-i18n="mast.strapline">How a verified photography archive gets built</p>
   </div>
 
   <div class="wrap masthead-nav">
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="#entries">Entries</a>
-      <a href="#topics">Topics</a>
-      <a href="#shotlist">Shot list</a>
-      <a href="#subscribe">Newsletter</a>
-      <a href="https://beta-art-archive-bet-art.vercel.app/">The archive</a>
-      <a href="https://beta-art-business-bet-art.vercel.app/">Business</a>
+      <a href="#entries" data-i18n="nav.entries">Entries</a>
+      <a href="#topics" data-i18n="nav.topics">Topics</a>
+      <a href="#shotlist" data-i18n="nav.shotlist">Shot list</a>
+      <a href="#subscribe" data-i18n="nav.newsletter">Newsletter</a>
+      <a href="https://beta-art-archive-bet-art.vercel.app/" data-i18n="nav.archive">The archive</a>
+      <a href="https://beta-art-business-bet-art.vercel.app/" data-i18n="nav.business">Business</a>
     </nav>
     <div class="masthead-actions">
+      <div class="lang-slot" id="lang-slot"></div>
       <button class="icon-btn" id="theme-btn" type="button" aria-pressed="false" aria-label="Switch to dark reading mode">
         <span class="theme-dot" aria-hidden="true"></span>
       </button>
@@ -63,12 +63,11 @@
   <section class="lead-story">
     <div class="wrap lead-grid">
       <article class="lead-copy reveal">
-        <p class="kicker">Essay · Provenance</p>
+        <p class="kicker" data-i18n="lead.kicker">Essay · Provenance</p>
         <h2 class="lead-title"><a href="post.html">The picture is not the proof. The paperwork is.</a></h2>
-        <p class="standfirst">For a century a photograph argued for itself. That arrangement has quietly
-          ended — and the cost of proving otherwise falls on the people still going outside with a camera.</p>
+        <p class="standfirst" data-i18n="lead.standfirst">For a century a photograph argued for itself. That arrangement has quietly ended — and the cost of proving otherwise falls on the people still going outside with a camera.</p>
         <p class="byline">By <strong>the archivist</strong> · 28 July 2026 · 9 min read</p>
-        <a class="read-on" href="post.html">Read the essay →</a>
+        <a class="read-on" href="post.html" data-i18n="lead.readon">Read the essay →</a>
       </article>
 
       <figure class="lead-figure reveal">
@@ -86,16 +85,16 @@
     <section class="entries" id="entries">
       <div class="tools reveal">
         <div class="search">
-          <label class="visually-hidden" for="search">Search entries</label>
-          <input id="search" type="search" placeholder="Search entries…" autocomplete="off">
+          <label class="visually-hidden" for="search" data-i18n="search.label">Search entries</label>
+          <input id="search" type="search" placeholder="Search entries…" autocomplete="off" data-i18n-attr="placeholder:search.ph">
         </div>
         <div class="topics" id="topics" role="group" aria-label="Filter by topic">
-          <button class="tag-btn is-active" type="button" data-topic="all" aria-pressed="true">All</button>
-          <button class="tag-btn" type="button" data-topic="provenance" aria-pressed="false">Provenance</button>
-          <button class="tag-btn" type="button" data-topic="method" aria-pressed="false">Method</button>
-          <button class="tag-btn" type="button" data-topic="light" aria-pressed="false">Light</button>
-          <button class="tag-btn" type="button" data-topic="trade" aria-pressed="false">Trade</button>
-          <button class="tag-btn" type="button" data-topic="market" aria-pressed="false">Market</button>
+          <button class="tag-btn is-active" type="button" data-topic="all" aria-pressed="true" data-i18n="topic.all">All</button>
+          <button class="tag-btn" type="button" data-topic="provenance" aria-pressed="false" data-i18n="topic.provenance">Provenance</button>
+          <button class="tag-btn" type="button" data-topic="method" aria-pressed="false" data-i18n="topic.method">Method</button>
+          <button class="tag-btn" type="button" data-topic="light" aria-pressed="false" data-i18n="topic.light">Light</button>
+          <button class="tag-btn" type="button" data-topic="trade" aria-pressed="false" data-i18n="topic.trade">Trade</button>
+          <button class="tag-btn" type="button" data-topic="market" aria-pressed="false" data-i18n="topic.market">Market</button>
         </div>
       </div>
 
@@ -178,14 +177,13 @@
 
     <aside class="sidebar">
       <section class="side-block reveal">
-        <h2 class="side-title">About this journal</h2>
-        <p>Field Notes is written from inside the Beta Art archive: one photographer, one filing
-          system, and a licensing desk that has to answer for every frame it sells.</p>
-        <p>Two or three entries a month. No sponsored posts, ever.</p>
+        <h2 class="side-title" data-i18n="side.about">About this journal</h2>
+        <p data-i18n="side.about.p1">Field Notes is written from inside the Beta Art archive: one photographer, one filing system, and a licensing desk that has to answer for every frame it sells.</p>
+        <p data-i18n="side.about.p2">Two or three entries a month. No sponsored posts, ever.</p>
       </section>
 
       <section class="side-block reveal" id="shotlist">
-        <h2 class="side-title">The launch shot list</h2>
+        <h2 class="side-title" data-i18n="side.shotlist">The launch shot list</h2>
         <p class="side-note">Fourteen plates across five tiers. Published so readers can see what a
           working list looks like — and hold us to it.</p>
         <ol class="tier-index">
@@ -199,7 +197,7 @@
       </section>
 
       <section class="side-block reveal">
-        <h2 class="side-title">Who buys the work</h2>
+        <h2 class="side-title" data-i18n="side.buyers">Who buys the work</h2>
         <p class="side-note">The Norwegian market in four tiers &mdash; the same map the licensing desk sells against.</p>
         <ol class="tier-index">
           <li><span>Tier 1</span>Advertising, e-commerce, media, marketing, PR</li>
@@ -211,7 +209,7 @@
       </section>
 
       <section class="side-block reveal">
-        <h2 class="side-title">Most read</h2>
+        <h2 class="side-title" data-i18n="side.mostread">Most read</h2>
         <ol class="ranked">
           <li><a href="post.html">The picture is not the proof</a><span>9 min</span></li>
           <li><a href="post.html">Who buys photography in Norway</a><span>11 min</span></li>
@@ -221,7 +219,7 @@
       </section>
 
       <section class="side-block plate-block reveal">
-        <h2 class="side-title">Plate of the month</h2>
+        <h2 class="side-title" data-i18n="side.plate">Plate of the month</h2>
         <div class="frame frame-3" role="img" aria-label="Placeholder — a known landmark in February fog"></div>
         <p class="caption"><span class="seal-dot" aria-hidden="true"></span>BA-C1-008 · <em>Preikestolen, February, 06:47</em> · weather record attached</p>
       </section>
@@ -231,14 +229,13 @@
   <section class="subscribe" id="subscribe">
     <div class="wrap subscribe-inner reveal">
       <div>
-        <h2>Two letters a month</h2>
-        <p>New entries, the next plates going onto the list, and a short note from the field.
-          Unsubscribe in one click; the list is never passed on.</p>
+        <h2 data-i18n="sub.title">Two letters a month</h2>
+        <p data-i18n="sub.lead">New entries, the next plates going onto the list, and a short note from the field. Unsubscribe in one click; the list is never passed on.</p>
       </div>
       <form class="subscribe-form" id="subscribe-form" novalidate>
-        <label class="visually-hidden" for="subscribe-email">Your email address</label>
+        <label class="visually-hidden" for="subscribe-email" data-i18n="sub.label">Your email address</label>
         <input id="subscribe-email" name="email" type="email" placeholder="your email address" required>
-        <button class="btn" type="submit">Subscribe</button>
+        <button class="btn" type="submit" data-i18n="sub.cta">Subscribe</button>
         <p class="form-status" id="subscribe-status" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -248,9 +245,7 @@
 <footer class="colophon">
   <div class="wrap colophon-inner">
     <div class="colophon-main">
-      <p>&copy; <span id="year">2026</span> Beta Art &mdash; Bet&uuml;l &Ouml;ner. All rights reserved worldwide.
-      Every essay, photograph, catalogue record and page design on this site is a protected work.
-      No text or image here may be used as AI training data.</p>
+      <p data-i18n="legal.copyright">&copy; 2026 Beta Art &mdash; Bet&uuml;l &Ouml;ner. All rights reserved worldwide. Every essay, photograph, catalogue record and page design on this site is a protected work. No text or image here may be used as AI training data.</p>
       <ul class="social" aria-label="Beta Art on social media">
         <li><a href="https://www.instagram.com/betaart.no" rel="me noopener">Instagram</a></li>
         <li><a href="https://www.linkedin.com/company/beta-art" rel="me noopener">LinkedIn</a></li>
@@ -288,6 +283,7 @@
 }
 </script>
 
+<script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

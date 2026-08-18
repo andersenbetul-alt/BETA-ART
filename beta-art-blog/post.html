@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The picture is not the proof. The paperwork is. — Field Notes</title>
 <meta name="description" content="Photographs no longer carry their own credibility. Provenance does — the RAW original, the capture record and a licence signed by the maker.">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index,follow,noai,noimageai">
 <link rel="canonical" href="https://beta-art-journal-bet-art.vercel.app/post.html">
 <meta name="theme-color" content="#FBFAF7">
 <meta property="og:type" content="article">
@@ -19,7 +19,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <meta name="copyright" content="© 2026 Beta Art — Betül Öner. All rights reserved worldwide.">
 <meta name="rights" content="All rights reserved. No reproduction of essays, imagery or page design without written permission.">
-<meta name="robots" content="noai, noimageai">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="reading">
@@ -31,13 +30,14 @@
   <div class="wrap masthead-nav">
     <a class="journal-mark" href="index.html">Field Notes</a>
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="index.html#entries">Entries</a>
-      <a href="index.html#topics">Topics</a>
-      <a href="index.html#subscribe">Newsletter</a>
-      <a href="https://beta-art-archive-bet-art.vercel.app/">The archive</a>
-      <a href="https://beta-art-business-bet-art.vercel.app/">Business</a>
+      <a href="index.html#entries" data-i18n="nav.entries">Entries</a>
+      <a href="index.html#topics" data-i18n="nav.topics">Topics</a>
+      <a href="index.html#subscribe" data-i18n="nav.newsletter">Newsletter</a>
+      <a href="https://beta-art-archive-bet-art.vercel.app/" data-i18n="nav.archive">The archive</a>
+      <a href="https://beta-art-business-bet-art.vercel.app/" data-i18n="nav.business">Business</a>
     </nav>
     <div class="masthead-actions">
+      <div class="lang-slot" id="lang-slot"></div>
       <button class="icon-btn" id="theme-btn" type="button" aria-pressed="false" aria-label="Switch to dark reading mode">
         <span class="theme-dot" aria-hidden="true"></span>
       </button>
@@ -159,9 +159,7 @@
 <footer class="colophon">
   <div class="wrap colophon-inner">
     <div class="colophon-main">
-      <p>&copy; <span id="year">2026</span> Beta Art &mdash; Bet&uuml;l &Ouml;ner. All rights reserved worldwide.
-      Every essay, photograph, catalogue record and page design on this site is a protected work.
-      No text or image here may be used as AI training data.</p>
+      <p data-i18n="legal.copyright">&copy; 2026 Beta Art &mdash; Bet&uuml;l &Ouml;ner. All rights reserved worldwide. Every essay, photograph, catalogue record and page design on this site is a protected work. No text or image here may be used as AI training data.</p>
       <ul class="social" aria-label="Beta Art on social media">
         <li><a href="https://www.instagram.com/betaart.no" rel="me noopener">Instagram</a></li>
         <li><a href="https://www.linkedin.com/company/beta-art" rel="me noopener">LinkedIn</a></li>
@@ -200,6 +198,7 @@
 }
 </script>
 
+<script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

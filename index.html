@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BETA ART — Three Properties</title>
 <meta name="description" content="Entry point to the three Beta Art web properties: the verified archive, the business rights desk, and the Field Notes journal.">
-<meta name="robots" content="index,follow">
-<meta name="robots" content="noai, noimageai">
+<meta name="robots" content="index,follow,noai,noimageai">
 <meta name="author" content="Betül Öner">
 <meta name="copyright" content="© 2026 Beta Art — Betül Öner. All rights reserved worldwide.">
 <link rel="canonical" href="https://beta-art-bet-art.vercel.app/">
@@ -57,6 +56,21 @@
   footer nav a { font-family: var(--f-mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
   footer nav a:hover { color: var(--seal); }
   a:focus-visible, .site:focus-visible { outline: 2px solid var(--seal); outline-offset: 3px; }
+
+  .mark-row { justify-content: space-between; }
+  .mark-id { display: flex; align-items: center; gap: .9rem; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .lang-select {
+    appearance: none; -webkit-appearance: none;
+    font-family: var(--f-mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink); background: transparent; border: 1px solid var(--rule);
+    padding: .5rem 1.8rem .5rem .7rem; border-radius: 0; cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position: calc(100% - 13px) 52%, calc(100% - 8px) 52%;
+    background-size: 5px 5px, 5px 5px; background-repeat: no-repeat;
+  }
+  .lang-select:hover, .lang-select:focus-visible { border-color: var(--seal); }
+  [dir="rtl"] .lang-select { padding: .5rem .7rem .5rem 1.8rem; background-position: 13px 52%, 8px 52%; }
 </style>
 </head>
 <body>
@@ -64,6 +78,7 @@
 <header>
   <div class="wrap">
     <div class="mark-row">
+      <div class="mark-id">
       <svg class="seal-mark" viewBox="0 0 100 100" aria-hidden="true">
         <g fill="none" stroke="currentColor" stroke-width="4">
           <circle cx="50" cy="50" r="46"/>
@@ -72,12 +87,12 @@
         <circle cx="50" cy="50" r="7" fill="#8B1A1A"/>
       </svg>
       <span class="wordmark">BETA ART</span>
+      </div>
+      <div class="lang-slot" id="lang-slot"></div>
     </div>
-    <p class="label">Three properties · one archive</p>
-    <h1>Made by a human. Verified at the source.</h1>
-    <p class="lead">Three separate concepts, each with its own design language, built as static
-      HTML, CSS and JavaScript — no build step, no framework, no external dependency beyond the
-      brand's three typefaces.</p>
+    <p class="label" data-i18n="label">Three properties · one archive</p>
+    <h1 data-i18n="h1">Made by a human. Verified at the source.</h1>
+    <p class="lead" data-i18n="lead">Three separate concepts, each with its own design language, built as static HTML, CSS and JavaScript — no build step, no framework, no external dependency beyond the brand's three typefaces.</p>
   </div>
 </header>
 
@@ -86,29 +101,26 @@
     <nav class="sites" aria-label="Beta Art sites">
       <a class="site" href="https://beta-art-archive-bet-art.vercel.app/">
         <span class="swatch swatch-archive" aria-hidden="true"></span>
-        <p class="role">Project 01 · Public archive</p>
+        <p class="role" data-i18n="p1.role">Project 01 · Public archive</p>
         <h2>Beta Art</h2>
-        <p>Fourteen launch plates with accession labels, the three verification tests, a 35-category
-          directory and licence tiers from kr 190. Museum paper, blind emboss, hairline rules.</p>
-        <span class="go">Enter the archive →</span>
+        <p data-i18n="p1.body">Twelve launch plates with accession labels, the three verification tests, a 35-category directory and licence tiers from kr 190. Museum paper, blind emboss, hairline rules.</p>
+        <span class="go" data-i18n="p1.go">Enter the archive →</span>
       </a>
 
       <a class="site" href="https://beta-art-business-bet-art.vercel.app/">
         <span class="swatch swatch-business" aria-hidden="true"></span>
-        <p class="role">Project 02 · Rights desk</p>
+        <p class="role" data-i18n="p2.role">Project 02 · Rights desk</p>
         <h2>Beta Art Business</h2>
-        <p>The digital studio: websites, branding, content, SEO and AI automation for people and
-          companies, with a smart service finder, four packages and a browser-only AI Studio.</p>
-        <span class="go">Open the desk →</span>
+        <p data-i18n="p2.body">The digital studio: websites, branding, content, SEO and AI automation for people and companies, with a smart service finder, four packages and a browser-only AI Studio.</p>
+        <span class="go" data-i18n="p2.go">Open the desk →</span>
       </a>
 
       <a class="site" href="https://beta-art-journal-bet-art.vercel.app/">
         <span class="swatch swatch-journal" aria-hidden="true"></span>
-        <p class="role">Project 03 · Journal</p>
+        <p class="role" data-i18n="p3.role">Project 03 · Journal</p>
         <h2>Field Notes</h2>
-        <p>How the archive gets built: provenance, the three tests, shot planning, light this far
-          north. Newsprint masthead, numbered entries, long-form reading with a dark mode.</p>
-        <span class="go">Open the journal →</span>
+        <p data-i18n="p3.body">How the archive gets built: provenance, the three tests, shot planning, light this far north. Newsprint masthead, numbered entries, long-form reading with a dark mode.</p>
+        <span class="go" data-i18n="p3.go">Open the journal →</span>
       </a>
     </nav>
   </div>
@@ -116,14 +128,12 @@
 
 <footer>
   <div class="wrap">
-    <p>&copy; 2026 Beta Art &mdash; Bet&uuml;l &Ouml;ner. All rights reserved worldwide. The Beta Art name,
-      mark, concept, page design and every photographic work are protected. Development preview &mdash;
-      placeholder imagery, draft pricing, no backend connected.</p>
+    <p data-i18n="foot.copy">&copy; 2026 Beta Art &mdash; Bet&uuml;l &Ouml;ner. All rights reserved worldwide. The Beta Art name, mark, concept, page design and every photographic work are protected. Development preview &mdash; placeholder imagery, draft pricing, no backend connected.</p>
     <nav aria-label="Legal and social">
-      <a href="legal.html">Legal notice</a>
-      <a href="legal.html#privacy">Privacy (worldwide)</a>
-      <a href="legal.html#ai">AI &amp; training data</a>
-      <a href="legal.html#licence">Licence terms</a>
+      <a href="legal.html" data-i18n="nav.legal">Legal notice</a>
+      <a href="legal.html#privacy" data-i18n="nav.privacy">Privacy (worldwide)</a>
+      <a href="legal.html#ai" data-i18n="nav.ai">AI &amp; training data</a>
+      <a href="legal.html#licence" data-i18n="nav.licence">Licence terms</a>
       <a href="https://www.instagram.com/betaart.no" rel="me noopener">Instagram</a>
       <a href="https://www.linkedin.com/company/beta-art" rel="me noopener">LinkedIn</a>
       <a href="mailto:hallo@beta-art.com">hallo@beta-art.com</a>
@@ -131,5 +141,54 @@
   </div>
 </footer>
 
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "@id": "https://beta-art-bet-art.vercel.app/#org",
+ "name": "Beta Art",
+ "url": "https://beta-art-bet-art.vercel.app/",
+ "description": "Beta Art is a verified-human photography archive, a digital studio and a journal, run by Betül Öner in Norway.",
+ "email": "hallo@beta-art.com",
+ "areaServed": "Worldwide",
+ "founder": {
+  "@type": "Person",
+  "name": "Betül Öner"
+ },
+ "address": {
+  "@type": "PostalAddress",
+  "addressCountry": "NO"
+ },
+ "sameAs": [
+  "https://www.instagram.com/betaart.no",
+  "https://www.linkedin.com/company/beta-art",
+  "https://www.behance.net/betaart",
+  "https://www.pinterest.com/betaart",
+  "https://www.facebook.com/betaart.no",
+  "https://www.youtube.com/@betaart"
+ ],
+ "subOrganization": [
+  {
+   "@type": "Organization",
+   "name": "Beta Art",
+   "url": "https://beta-art-archive-bet-art.vercel.app/",
+   "description": "The verified photography archive and licensing desk."
+  },
+  {
+   "@type": "Organization",
+   "name": "Beta Art Business",
+   "url": "https://beta-art-business-bet-art.vercel.app/",
+   "description": "The digital studio: websites, branding, content, SEO and AI automation."
+  },
+  {
+   "@type": "Organization",
+   "name": "Field Notes",
+   "url": "https://beta-art-journal-bet-art.vercel.app/",
+   "description": "The Beta Art journal on building a verified photography archive."
+  }
+ ]
+}
+</script>
+<script src="i18n.js"></script>
 </body>
 </html>

@@ -18,7 +18,10 @@ el.getAttribute("data-i18n-attr").split(",").forEach(function(pair){
 var p=pair.split(":");if(p.length!==2)return;
 var v=t[p[1].trim()];if(v!=null)el.setAttribute(p[0].trim(),v);});});
 try{localStorage.setItem(STORE,code);}catch(e){}
-var sel=document.getElementById("lang-picker");if(sel&&sel.value!==code)sel.value=code;}
+var sel=document.getElementById("lang-picker");
+if(sel){if(sel.value!==code)sel.value=code;
+if(t["lang.label"]){sel.setAttribute("aria-label",t["lang.label"]);
+var lab=document.querySelector('label[for="lang-picker"]');if(lab)lab.textContent=t["lang.label"];}}}
 function mount(){
 var slot=document.getElementById("lang-slot");if(!slot||document.getElementById("lang-picker"))return;
 var lab=document.createElement("label");lab.className="visually-hidden";lab.setAttribute("for","lang-picker");lab.textContent="Language";
