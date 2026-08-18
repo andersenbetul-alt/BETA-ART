@@ -37,12 +37,35 @@ seçim, kurulum, devreye alma, ölçüm.
 - Ürün tanımı: `data/workforce.json`
 - Kurulum ve satış playbook'u: [`docs/ai-workforce-playbook.md`](docs/ai-workforce-playbook.md)
 
+## Ödeme altyapısı
+
+Tüm ürünler (blog, Curiosity Engine, AI business) tek merkezi ödeme
+altyapısından satılır — ürün başına ayrı ödeme sistemi kurulmaz.
+
+- Mimari ve kararlar: [`docs/payment-architecture.md`](docs/payment-architecture.md)
+- Veritabanı şeması: `db/schema.sql` (20 tablo)
+- İş kuralları: `db/functions.sql` (kredi düşme, erişim kontrolü)
+- Testler: `db/test.sql`
+
+Temel ilke: Stripe ve Vipps tahsilat kanalıdır, muhasebe defteri değil.
+Erişim, abonelik ve kredi doğruluğunun tek kaynağı kendi veritabanımızdır.
+
+```bash
+# Şemayı ve testleri çalıştırma
+psql -f db/schema.sql -f db/seed.sql -f db/functions.sql -f db/test.sql
+```
+
 ## Yapı
 
 ```
 data/categories.json            Kategorilerin tek kaynağı
 data/workforce.json             AI Workforce ürün tanımı (roller, iş alanları, süreç, paketler)
 docs/ai-workforce-playbook.md   Satış akışı, analiz şablonu, kurulum kontrol listesi
+docs/payment-architecture.md    Ödeme mimarisi, kararlar, açık sorular
+db/schema.sql                   Ödeme veritabanı şeması
+db/seed.sql                     Ürün kataloğu ve kredi fiyatları
+db/functions.sql                consume_credits, has_entitlement, grant_period_credits
+db/test.sql                     Kredi ve erişim mantığı testleri
 build.py                        JSON'lardan index.html ve work.html üretir
 index.html                      Kategori sayfası (üretilen)
 work.html                       AI Workforce sayfası (üretilen)
