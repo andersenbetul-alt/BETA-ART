@@ -210,6 +210,36 @@ section { padding: 56px 0 0; }
 .wave__trigger { font-size: 12.5px; color: var(--accent); margin: 0 0 8px; }
 .wave__hires { margin: 0; font-size: 14px; color: var(--muted); }
 
+.cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 26px 0 12px; }
+.btn {
+  display: inline-block; padding: 13px 22px; border-radius: 10px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  background: var(--accent); color: #fff; border: 1px solid var(--accent);
+}
+.btn:hover { filter: brightness(1.06); }
+.btn--ghost { background: transparent; color: var(--text); border-color: var(--border); font-weight: 500; }
+.cta__support { margin: 0; font-size: 13.5px; color: var(--muted); }
+
+.qa { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.qa details { background: var(--surface); }
+.qa details + details { border-top: 1px solid var(--border); }
+.qa summary {
+  cursor: pointer; padding: 16px 18px; font-size: 15.5px; font-weight: 500;
+  list-style: none; display: flex; justify-content: space-between; gap: 16px; align-items: center;
+}
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary::after { content: "＋"; color: var(--accent); font-size: 18px; line-height: 1; }
+.qa details[open] summary::after { content: "−"; }
+.qa p { margin: 0; padding: 0 18px 18px; font-size: 14.5px; color: var(--muted); max-width: 72ch; }
+
+.close {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 14px;
+  padding: 32px 28px; margin-top: 8px;
+}
+.close h2 { margin: 0 0 12px; font-size: clamp(21px, 3vw, 27px); letter-spacing: -.01em; }
+.close p { margin: 0 0 8px; font-size: 15.5px; color: var(--muted); max-width: 62ch; }
+.close .cta { margin-bottom: 6px; }
+
 footer {
   margin-top: 72px; padding: 28px 0 48px; border-top: 1px solid var(--border);
   font-size: 14px; color: var(--muted);
@@ -352,6 +382,11 @@ def build_work() -> None:
           <em>{esc(role_of[m['id']])}</em>
         </div>""" for m in data["modules"])
 
+    qa = "\n".join(f"""        <details>
+          <summary>{esc(o['q'])}</summary>
+          <p>{esc(o['a'])}</p>
+        </details>""" for o in data["objections"])
+
     packages = "\n".join(f"""        <article class="card">
           <div class="card__icon" aria-hidden="true">{p_['roles']}</div>
           <h3 class="card__name">{esc(p_['name'])}</h3>
@@ -367,6 +402,12 @@ def build_work() -> None:
     <div class="brand"><span class="dot"></span>BETA WORK · AI Workforce</div>
     <h1>{esc(data['headline'])}</h1>
     <p class="lede">Şirketinizde tekrar eden işleri analiz ediyor, bunları göreve özel AI çalışanlarıyla otomatikleştiriyoruz. Yeni yazılım öğrenmenize gerek yok — AI çalışanları bugün kullandığınız araçların içinde çalışır.</p>
+    <!-- TODO: CTA hedefi bağlanmadı. Form, takvim linki veya mailto buraya. -->
+    <div class="cta">
+      <a class="btn" href="{esc(data['cta']['primary_href'])}">{esc(data['cta']['primary'])}</a>
+      <a class="btn btn--ghost" href="{esc(data['cta']['secondary_href'])}">{esc(data['cta']['secondary'])}</a>
+    </div>
+    <p class="cta__support">{esc(data['cta']['support'])}</p>
   </div>
 </header>
 
@@ -391,7 +432,7 @@ def build_work() -> None:
     </div>
   </section>
 
-  <section>
+  <section id="nasil-calisir">
     <div class="wrap">
       <p class="section-label">Nasıl çalışır</p>
       <h2 class="section-title">Analizden devreye almaya</h2>
@@ -428,6 +469,29 @@ def build_work() -> None:
       <ul class="notes">
 {li(data['guarantees'])}
       </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Sık sorulanlar</p>
+      <h2 class="section-title">Aklınızdaki soru muhtemelen bunlardan biri</h2>
+      <div class="qa">
+{qa}
+      </div>
+    </div>
+  </section>
+
+  <section id="iletisim">
+    <div class="wrap">
+      <div class="close">
+        <h2>{esc(data['cta']['closing_title'])}</h2>
+        <p>{esc(data['cta']['closing_body'])}</p>
+        <div class="cta">
+          <a class="btn" href="#iletisim">{esc(data['cta']['primary'])}</a>
+        </div>
+        <p class="cta__support">{esc(data['cta']['closing_note'])}</p>
+      </div>
       <p style="margin-top:28px;font-size:15px;color:var(--muted)">
         <a href="index.html">← Tüm BETA ürünleri</a>
       </p>

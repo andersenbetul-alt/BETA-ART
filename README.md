@@ -55,6 +55,15 @@ Erişim, abonelik ve kredi doğruluğunun tek kaynağı kendi veritabanımızdı
 psql -f db/schema.sql -f db/seed.sql -f db/functions.sql -f db/test.sql
 ```
 
+## Metin standardı
+
+Sayfalardaki bütün metinler Conversion Copy + UX Writing standardına göre
+yazılır: başlık sonuç söyler, her sayfada tek net CTA bulunur, en güçlü üç
+itiraz yazılıp cevaplanır, kanıt bölümüne uydurma ifade girmez.
+
+- Standart ve kontrol listesi: [`docs/copy-standards.md`](docs/copy-standards.md)
+- Arayüz mikro metinleri: `data/ux-copy.json`
+
 ## Ekip
 
 21 rol, 7 fonksiyon grubu ve tetikleyiciye bağlı 5 işe alım dalgası.
@@ -69,9 +78,11 @@ psql -f db/schema.sql -f db/seed.sql -f db/functions.sql -f db/test.sql
 data/categories.json            Kategorilerin tek kaynağı
 data/workforce.json             AI Workforce ürün tanımı (roller, iş alanları, süreç, paketler)
 data/team.json                  Ürün ve web ekibi: roller, gruplar, işe alım dalgaları
+data/ux-copy.json               Buton, form, hata, boş durum ve onay metinleri
 docs/ai-workforce-playbook.md   Satış akışı, analiz şablonu, kurulum kontrol listesi
 docs/payment-architecture.md    Ödeme mimarisi, kararlar, açık sorular
 docs/team-and-org.md            Organizasyon yapısı ve işe alım sırası
+docs/copy-standards.md          Metin standardı, yasak kalıplar, yayın kontrol listesi
 db/schema.sql                   Ödeme veritabanı şeması
 db/seed.sql                     Ürün kataloğu ve kredi fiyatları
 db/functions.sql                consume_credits, has_entitlement, grant_period_credits

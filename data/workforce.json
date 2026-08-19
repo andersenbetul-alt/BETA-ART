@@ -5,6 +5,17 @@
   "promise": "Şirketinizde tekrar eden işleri analiz ediyoruz ve bunları AI çalışanlarıyla otomatikleştiriyoruz.",
   "locale": "tr-TR",
   "updated": "2026-08-18",
+  "cta": {
+    "primary": "30 dakikalık keşif görüşmesi ayarlayın",
+    "primary_href": "#iletisim",
+    "secondary": "Önce nasıl çalıştığını görün",
+    "secondary_href": "#nasil-calisir",
+    "support": "Görüşmede şirketinizdeki tekrar eden işleri birlikte çıkarıyoruz. Bağlayıcı değil.",
+    "closing_title": "Hangi işin sizden en çok zaman aldığını biliyor musunuz?",
+    "closing_body": "Çoğu işletme sahibi bilmiyor — tahmin ediyor. Keşif görüşmesinde bunu birlikte ölçüyoruz: hangi iş, kim, günde kaç kez, kaç dakika. Çıkan sayı çoğu zaman beklenenin iki katı oluyor.",
+    "closing_note": "Analiz ücretlidir ve teklife mahsup edilir. Keşif görüşmesi ücretsizdir.",
+    "todo": "primary_href gerçek bir hedefe bağlanmalı: iletişim formu, takvim (Calendly vb.) veya mailto. Şu an sayfa içi çapa."
+  },
   "always_on": [
     {
       "title": "Gece gelen talep sabahı beklemez",
@@ -414,6 +425,32 @@
         "Süreç sahipliği ve sürekli bakım"
       ],
       "roles": 3
+    }
+  ],
+  "objections": [
+    {
+      "q": "AI müşterime yanlış bilgi verirse ne olur?",
+      "a": "İlk aşamada hiçbir çalışan tek başına mesaj göndermez: hazırlar, siz onaylarsınız. Fiyat, stok ve taahhüt bilgileri kendi bilgisinden üretilmez, sizin verdiğiniz kaynaktan okunur. Yetki ancak doğruluk iki hafta üst üste ölçülüp hedefin üzerinde kaldığında genişler."
+    },
+    {
+      "q": "Verilerim ne olacak?",
+      "a": "Erişim kapsamı yazılı olarak sınırlandırılır: her çalışan yalnızca kendi işi için gereken veriye erişir. İş bitiminde erişim kaldırılır. Şirket verisi başka bir müşteri için kullanılmaz."
+    },
+    {
+      "q": "Yeni bir yazılım öğrenmek zorunda mıyım?",
+      "a": "Hayır. AI çalışanları bugün kullandığınız araçların içinde çalışır — e-postanız, WhatsApp'ınız, takviminiz, CRM'iniz. Öğrenilecek yeni bir arayüz yok."
+    },
+    {
+      "q": "Çalışanlarımın yerine mi geçecek?",
+      "a": "Hayır. Devralınan şey tekrar eden iş: aynı sorulara aynı cevaplar, veri girişi, takip, evrak. İnsan karar gerektiren işe döner — pazarlık, ilişki, istisna yönetimi. Zaten bu işleri yapacak kişiyi bulamadığınız için buradasınız."
+    },
+    {
+      "q": "İşe yaramazsa ne olacak?",
+      "a": "Tek çalışanla başlıyoruz, yedi taneyle değil. İlk iki hafta gözetimli: çıktıyı görüyor, karşılaştırıyorsunuz. Doğruluk hedefe ulaşmadan kurulum tamamlanmış sayılmaz."
+    },
+    {
+      "q": "Ne kadar sürede sonuç görürüm?",
+      "a": "İlk AI çalışanı 1-3 hafta içinde çalışır durumda olur. Ama ilk somut çıktıyı analiz raporunda görürsünüz: tekrar eden işlere ayda kaç saat gidiyor ve bunun parasal karşılığı ne."
     }
   ],
   "guarantees": [

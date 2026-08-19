@@ -1,0 +1,76 @@
+{
+  "title": "Arayüz metinleri (UX Copy)",
+  "locale": "tr-TR",
+  "updated": "2026-08-19",
+  "note": "Hesap, ödeme ve kredi akışlarının mikro metinleri. Kaynak: docs/copy-standards.md §7. Arayüzde metin doğrudan buradan okunur; koda gömülmez.",
+
+  "buttons": {
+    "checkout_start": "Satın al",
+    "checkout_subscribe": "Aboneliği başlat",
+    "checkout_pay_vipps": "Vipps ile öde",
+    "checkout_pay_card": "Kartla öde",
+    "invoice_request": "Fatura ile öde",
+    "plan_upgrade": "Planı yükselt",
+    "plan_downgrade": "Planı düşür",
+    "plan_cancel": "Aboneliği iptal et",
+    "credits_buy": "1.000 kredi ekle",
+    "invoice_download": "Faturayı indir",
+    "payment_method_update": "Ödeme yöntemini güncelle",
+    "retry_payment": "Ödemeyi tekrar dene"
+  },
+
+  "forms": {
+    "email": { "label": "E-posta", "help": "Fatura ve erişim bilgileri buraya gönderilir." },
+    "company_name": { "label": "Şirket adı", "help": "Faturada görünecek isim." },
+    "org_number": { "label": "Organizasyon numarası", "help": "Fatura ile ödeme için gerekli." },
+    "vat_number": { "label": "VAT numarası", "help": "AB içi şirketler için. Doğrulanırsa KDV uygulanmaz." },
+    "billing_country": { "label": "Fatura ülkesi", "help": "Vergi hesabı ve ödeme yöntemleri buna göre belirlenir." }
+  },
+
+  "errors": {
+    "email_invalid": "E-posta adresi @ işareti içermeli.",
+    "payment_declined": "Bankanız ödemeyi onaylamadı. Kart bilgileri bizde saklanmaz; başka bir kartla veya Vipps ile deneyebilirsiniz.",
+    "payment_pending": "Ödeme henüz onaylanmadı. Bu birkaç dakika sürebilir — sayfayı kapatabilirsiniz, hazır olduğunda e-posta göndeririz.",
+    "insufficient_credits": "Bu işlem {n} kredi gerektiriyor, bakiyeniz {b} kredi. Kredi ekleyebilir veya planınızı yükseltebilirsiniz.",
+    "vat_unverified": "VAT numarası doğrulanamadı. Doğrulanana kadar KDV uygulanır; numarayı kontrol edip tekrar deneyin.",
+    "org_number_required": "Fatura ile ödeme için organizasyon numarası gerekli.",
+    "subscription_past_due": "Son ödemeniz alınamadı. Erişiminiz {days} gün daha açık kalacak.",
+    "generic": "İşlem tamamlanamadı. Hesabınızdan bir tahsilat yapılmadı — tekrar deneyebilirsiniz."
+  },
+
+  "empty_states": {
+    "no_invoices": { "title": "Henüz faturanız yok", "body": "İlk satın alma sonrası faturalarınız burada listelenir." },
+    "no_subscriptions": { "title": "Aktif aboneliğiniz yok", "body": "Planları inceleyin ve size uygun olanı seçin.", "action": "Planları gör" },
+    "no_usage": { "title": "Henüz kullanım yok", "body": "İlk analizi başlattığınızda kredi kullanımınız burada görünür.", "action": "İlk analizi başlat" },
+    "no_purchases": { "title": "Satın aldığınız ürün yok", "body": "Raporlar ve kurslar satın aldığınızda burada durur." }
+  },
+
+  "confirmations": {
+    "payment_success": { "title": "Ödeme alındı", "body": "Erişiminiz açıldı. Faturanız e-posta ile gönderildi." },
+    "subscription_started": { "title": "Aboneliğiniz başladı", "body": "{credits} krediniz hesabınıza tanımlandı. Sonraki yenileme: {date}." },
+    "credits_added": { "title": "Kredi eklendi", "body": "Yeni bakiyeniz: {balance} kredi. Satın alınan krediler dönem sonunda silinmez." },
+    "plan_changed": { "title": "Planınız güncellendi", "body": "Yeni plan {date} tarihinde geçerli olacak." }
+  },
+
+  "destructive": {
+    "cancel_subscription": {
+      "title": "Aboneliği iptal et",
+      "body": "Erişiminiz {date} tarihine kadar açık kalır. O tarihte planla gelen kullanılmamış krediler silinir; satın aldığınız krediler kalır.",
+      "confirm": "Aboneliği iptal et",
+      "cancel": "Vazgeç"
+    },
+    "downgrade": {
+      "title": "Planı düşür",
+      "body": "Yeni plan dönem sonunda ({date}) geçerli olur. O tarihe kadar mevcut planınızı kullanmaya devam edersiniz.",
+      "confirm": "Planı düşür",
+      "cancel": "Vazgeç"
+    }
+  },
+
+  "senior_variants": {
+    "note": "BETA SENIOR arayüzünde kullanılacak sade karşılıklar. Kural: kısa cümle, yabancı kelime yok, adım adım.",
+    "payment_declined": "Ödeme yapılamadı. Paranız çekilmedi. Başka bir kartla deneyebilir veya bize ulaşabilirsiniz.",
+    "subscription_past_due": "Ödeme alınamadı. Hizmetiniz {days} gün daha açık. Yardım için bizi arayabilirsiniz.",
+    "empty_no_usage": "Burada henüz bir şey yok. Başlamak için aşağıdaki düğmeye dokunun."
+  }
+}
