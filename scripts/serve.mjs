@@ -9,7 +9,8 @@ import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'node:path';
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+// Serves the repo root by default; ROOT=dist checks the pre-rendered build.
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..', process.env.ROOT || '.');
 const port = Number(process.env.PORT) || 8000;
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -24,7 +25,8 @@ const TYPES = {
 
 createServer(async (req, res) => {
   const path = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-  const rel = normalize(path === '/' ? '/index.html' : path).replace(/^(\.\.[/\\])+/, '');
+  // A directory URL means its index.html — /tr/ is a real page in the pre-rendered build.
+  const rel = normalize(path.endsWith('/') ? path + 'index.html' : path).replace(/^(\.\.[/\\])+/, '');
   const file = join(root, rel);
   if (!file.startsWith(root)) {
     res.writeHead(403).end('Forbidden');

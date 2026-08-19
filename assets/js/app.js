@@ -2,6 +2,14 @@
 (function () {
   'use strict';
 
+  // On a pre-rendered page the document lives in /tr/, /ar/ … while the assets stay at the
+  // root, so a bare relative fetch would 404. Derive the asset base from this script's own
+  // URL, which the build rewrites alongside everything else.
+  var thisScript = document.currentScript;
+  var ASSETS = thisScript && thisScript.src
+    ? thisScript.src.replace(/js\/app\.js(\?.*)?$/, '')
+    : 'assets/';
+
   var LANGS = window.HXI_LANGS || [];
   var T = window.HXI_I18N || {};
   var RTL = { ar: 1, ur: 1 };
@@ -282,7 +290,7 @@
   function releases() {
     // Same-origin file written by the weekly sync. Absent until the sync has credentials —
     // the section simply stays hidden, and the hand-written cards above carry the page.
-    fetch('assets/data/spotify.json', { cache: 'no-cache' })
+    fetch(ASSETS + 'data/spotify.json', { cache: 'no-cache' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
         if (!data) return;
