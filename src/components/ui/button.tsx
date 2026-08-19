@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { TrackedLink } from "@/components/track";
+import type { AnalyticsEvent, AnalyticsPayload } from "@/lib/analytics";
 
 type Variant = "primary" | "secondary" | "ghost";
 
@@ -19,14 +21,30 @@ export function ButtonLink({
   children,
   variant = "primary",
   className = "",
+  event,
+  payload,
 }: {
   href: string;
   children: ReactNode;
   variant?: Variant;
   className?: string;
+  /** Verilirse tıklama ölçülür; verilmezse bağlantı sunucu bileşeni kalır. */
+  event?: AnalyticsEvent;
+  payload?: AnalyticsPayload;
 }) {
+  const classes = `${base} ${variants[variant]} ${className}`;
+
+  if (event) {
+    return (
+      <TrackedLink href={href} event={event} payload={payload} className={classes}>
+        {children}
+        <Arrow />
+      </TrackedLink>
+    );
+  }
+
   return (
-    <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
+    <Link href={href} className={classes}>
       {children}
       <Arrow />
     </Link>

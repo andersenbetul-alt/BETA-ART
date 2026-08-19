@@ -1109,9 +1109,11 @@ export const tr: Dictionary = {
         ],
       },
       {
-        title: "5. Çerezler",
+        title: "5. Çerezler ve ölçüm",
         paragraphs: [
-          "Bu sitede reklam veya takip amaçlı çerez kullanılmaz. Ziyaretinizi izleyen üçüncü taraf analiz araçları bulunmamaktadır. İleride böyle bir araç eklenmesi hâlinde bu metin güncellenir ve gerekli olduğu durumda onayınız istenir.",
+          "Bu sitede reklam veya takip amaçlı çerez kullanılmaz.",
+          "Sitenin ölçümü, çerez kullanmadan ve kalıcı bir kimlik oluşturmadan çalışacak şekilde tasarlanmıştır. Ölçülen tek şey hangi sayfanın açıldığı ve hangi bağlantının tıklandığıdır; olay yükünde serbest metin alanı yoktur, dolayısıyla forma yazdığınız içerik ölçüme girmez. Ziyaretler birbirine bağlanmaz, sizi tanımlayan bir değer saklanmaz. Bu nedenle onay bandı gösterilmez.",
+          "Ölçüm sağlayıcısı yapılandırılmadığı sürece tarayıcınızdan hiçbir olay gönderilmez. Kullanılan sağlayıcı değiştiğinde bu metin güncellenir.",
         ],
       },
       {

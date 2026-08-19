@@ -7,6 +7,7 @@ import { getDictionary } from "@/content";
 import { articleIds, articleMeta, type ArticleId } from "@/content/articles";
 import { absoluteUrl, path, type Locale } from "@/lib/i18n";
 import { jsonLd } from "@/lib/json-ld";
+import { TrackView, TrackVisible } from "@/components/track";
 
 export function ArticleView({
   locale,
@@ -39,6 +40,10 @@ export function ArticleView({
 
   return (
     <>
+      <TrackView
+        event="article_opened"
+        payload={{ where: "article", id: articleId, locale }}
+      />
       <section className="relative overflow-hidden bg-ink-900 text-white">
         <div
           aria-hidden="true"
@@ -122,6 +127,12 @@ export function ArticleView({
           <p className="mt-12 border-l-2 border-accent-500 bg-sand-100 py-5 pl-6 pr-5 text-lg leading-relaxed text-ink-900">
             {article.takeaway}
           </p>
+
+          {/* Yazının sonu görününce "okundu" sinyali gider */}
+          <TrackVisible
+            event="article_completed"
+            payload={{ where: "article", id: articleId, locale }}
+          />
         </article>
       </Section>
 
@@ -163,7 +174,11 @@ export function ArticleView({
             {labels.cta.description}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href={path("contact", locale)}>
+            <ButtonLink
+              href={path("contact", locale)}
+              event="cta_contact_clicked"
+              payload={{ where: "article", locale }}
+            >
               {dict.actions.contact}
             </ButtonLink>
             <ButtonLink href={path("insights", locale)} variant="ghost">

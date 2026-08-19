@@ -5,6 +5,7 @@ import { PageHero } from "./page-hero";
 import { getDictionary } from "@/content";
 import { agentIds, agentMeta } from "@/content/agents";
 import { path, type Locale } from "@/lib/i18n";
+import { TrackView } from "@/components/track";
 
 function Check({ tone = "accent" }: { tone?: "accent" | "muted" }) {
   return (
@@ -57,6 +58,7 @@ export function AiWorkforceView({ locale }: { locale: Locale }) {
 
   return (
     <>
+      <TrackView event="ai_workforce_opened" payload={{ where: "ai-workforce", locale }} />
       <PageHero
         eyebrow={hero.eyebrow}
         title={hero.title}
@@ -260,7 +262,11 @@ export function AiWorkforceView({ locale }: { locale: Locale }) {
             {cta.description}
           </p>
           <div className="mt-9 flex justify-center">
-            <ButtonLink href={path("contact", locale)}>
+            <ButtonLink
+              href={path("contact", locale)}
+              event="cta_contact_clicked"
+              payload={{ where: "ai-workforce", locale }}
+            >
               {dict.actions.contact}
             </ButtonLink>
           </div>

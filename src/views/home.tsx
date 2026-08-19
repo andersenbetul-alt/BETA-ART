@@ -38,7 +38,11 @@ export function HomeView({ locale }: { locale: Locale }) {
                 {hero.description}
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <ButtonLink href={path("contact", locale)}>
+                <ButtonLink
+              href={path("contact", locale)}
+              event="cta_contact_clicked"
+              payload={{ where: "home", locale }}
+            >
                   {dict.actions.contact}
                 </ButtonLink>
                 <ButtonLink href={path("services", locale)} variant="ghost">
@@ -259,7 +263,11 @@ export function HomeView({ locale }: { locale: Locale }) {
             {cta.description}
           </p>
           <div className="mt-9 flex justify-center">
-            <ButtonLink href={path("contact", locale)}>
+            <ButtonLink
+              href={path("contact", locale)}
+              event="cta_contact_clicked"
+              payload={{ where: "home", locale }}
+            >
               {dict.actions.contact}
             </ButtonLink>
           </div>

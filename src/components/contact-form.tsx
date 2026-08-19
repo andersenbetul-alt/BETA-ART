@@ -8,6 +8,7 @@ import { initialContactState, type ContactState } from "@/lib/contact";
 import { buttonClass, Arrow } from "./ui/button";
 import type { Dictionary } from "@/content";
 import { path, type Locale } from "@/lib/i18n";
+import { track } from "@/lib/analytics";
 
 function SubmitButton({ label, pending }: { label: string; pending: string }) {
   const { pending: isPending } = useFormStatus();
@@ -42,12 +43,22 @@ export function ContactForm({
   const statusRef = useRef<HTMLDivElement>(null);
   const alertRef = useRef<HTMLParagraphElement>(null);
   const ids = useId();
+  const started = useRef(false);
+
+  // Formu açan ile doldurmaya başlayan aynı kişi değil; ikisinin arasındaki
+  // fark hangi alanın caydırdığını gösterir.
+  const onFirstInput = () => {
+    if (started.current) return;
+    started.current = true;
+    track("contact_form_started", { where: "contact", locale });
+  };
 
   const fieldId = (name: string) => `${ids}-${name}`;
   const errorId = (name: string) => `${ids}-${name}-error`;
 
   useEffect(() => {
     if (state.status === "success") {
+      track("contact_form_submitted", { where: "contact", locale });
       formRef.current?.reset();
       statusRef.current?.focus();
       return;
@@ -56,12 +67,13 @@ export function ContactForm({
     // Hata durumunda odak kayboluyordu; klavye kullanıcısı formu baştan
     // dolaşmak zorunda kalmasın diye ilk sorunlu alana taşınır.
     if (state.status === "error") {
+      track("contact_form_failed", { where: "contact", locale });
       const firstInvalid = formRef.current?.querySelector<HTMLElement>(
         "[aria-invalid='true']",
       );
       (firstInvalid ?? alertRef.current)?.focus();
     }
-  }, [state]);
+  }, [state, locale]);
 
   if (state.status === "success") {
     return (
@@ -81,6 +93,7 @@ export function ContactForm({
     <form
       ref={formRef}
       action={formAction}
+      onInput={onFirstInput}
       noValidate
       className="rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-9"
     >

@@ -79,7 +79,12 @@ export function AboutView({ locale }: { locale: Locale }) {
           ))}
         </div>
         <div className="mt-12">
-          <ButtonLink href={path("contact", locale)} variant="ghost">
+          <ButtonLink
+            href={path("contact", locale)}
+            variant="ghost"
+            event="cta_contact_clicked"
+            payload={{ where: "about", locale }}
+          >
             {dict.actions.contact}
           </ButtonLink>
         </div>

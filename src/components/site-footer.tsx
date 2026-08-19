@@ -3,6 +3,7 @@ import { Logo } from "./logo";
 import { Container } from "./ui/container";
 import { navKeys, path, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/content";
+import { TrackedAnchor } from "./track";
 
 export function SiteFooter({
   locale,
@@ -49,12 +50,14 @@ export function SiteFooter({
             </h2>
             <ul className="mt-4 space-y-1 text-sm text-ink-100/75 [&_a]:inline-block [&_a]:py-1.5">
               <li>
-                <a
+                <TrackedAnchor
                   href={`mailto:${details.email.value}`}
                   className="transition-colors hover:text-white"
+                  event="cta_contact_clicked"
+                  payload={{ where: "footer", locale }}
                 >
                   {details.email.value}
-                </a>
+                </TrackedAnchor>
               </li>
               <li>
                 <a

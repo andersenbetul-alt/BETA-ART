@@ -6,6 +6,7 @@ import { PageHero } from "./page-hero";
 import { getDictionary } from "@/content";
 import { jobIds } from "@/content/jobs";
 import { path, type Locale } from "@/lib/i18n";
+import { TrackedAnchor } from "@/components/track";
 
 export function CareersView({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
@@ -73,13 +74,15 @@ export function CareersView({ locale }: { locale: Locale }) {
           <p className="mt-3 max-w-[46ch] leading-relaxed text-ink-100/85">
             {openApplication.description}
           </p>
-          <a
+          <TrackedAnchor
             href={applyHref}
             className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent-300 underline-offset-4 hover:underline"
+            event="job_apply_clicked"
+            payload={{ where: "careers", locale }}
           >
             {openApplication.action}
             <Arrow />
-          </a>
+          </TrackedAnchor>
         </div>
       </Section>
 

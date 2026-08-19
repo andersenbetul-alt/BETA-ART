@@ -6,6 +6,7 @@ import { getDictionary } from "@/content";
 import { jobMeta, type JobId } from "@/content/jobs";
 import { absoluteUrl, path, type Locale } from "@/lib/i18n";
 import { jsonLd } from "@/lib/json-ld";
+import { TrackView, TrackedAnchor } from "@/components/track";
 
 function List({ title, items }: { title: string; items: string[] }) {
   if (items.length === 0) return null;
@@ -84,6 +85,7 @@ export function JobView({ locale, jobId }: { locale: Locale; jobId: JobId }) {
 
   return (
     <>
+      <TrackView event="job_opened" payload={{ where: "job", id: jobId, locale }} />
       <section className="relative overflow-hidden bg-ink-900 text-white">
         <div
           aria-hidden="true"
@@ -135,10 +137,15 @@ export function JobView({ locale, jobId }: { locale: Locale; jobId: JobId }) {
             <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-800/75">
               {labels.applyDescription}
             </p>
-            <a href={applyHref} className={`${buttonClass("primary")} mt-6 w-full`}>
+            <TrackedAnchor
+              href={applyHref}
+              className={`${buttonClass("primary")} mt-6 w-full`}
+              event="job_apply_clicked"
+              payload={{ where: "job", id: jobId, locale }}
+            >
               {labels.apply}
               <Arrow />
-            </a>
+            </TrackedAnchor>
             <p className="mt-3 text-center text-xs text-ink-800/70">
               {labels.applyEmail}
             </p>

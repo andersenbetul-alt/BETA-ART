@@ -63,7 +63,11 @@ export function ApproachView({ locale }: { locale: Locale }) {
           ))}
         </div>
         <div className="mt-14">
-          <ButtonLink href={path("contact", locale)}>
+          <ButtonLink
+              href={path("contact", locale)}
+              event="cta_contact_clicked"
+              payload={{ where: "approach", locale }}
+            >
             {dict.actions.contact}
           </ButtonLink>
         </div>

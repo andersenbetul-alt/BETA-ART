@@ -14,6 +14,7 @@ import {
   type Locale,
 } from "@/lib/i18n";
 import type { Dictionary } from "@/content";
+import { track } from "@/lib/analytics";
 
 export function SiteHeader({
   locale,
@@ -94,12 +95,14 @@ export function SiteHeader({
             <Link
               href={alternatePath(pathname, otherLocale)}
               hrefLang={otherLocale}
+              onClick={() => track("language_switched", { where: "header", locale: otherLocale })}
               className="rounded-full border border-ink-900/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-ink-800/80 transition-colors hover:border-ink-900/40 hover:text-ink-900"
             >
               {otherLocale}
             </Link>
             <Link
               href={path("contact", locale)}
+              onClick={() => track("cta_contact_clicked", { where: "header", locale })}
               className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-ink-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink-800"
             >
               {dict.actions.contact}
@@ -164,7 +167,10 @@ export function SiteHeader({
               <div className="mt-3 flex items-center gap-3 border-t border-ink-900/10 pt-4">
                 <Link
                   href={path("contact", locale)}
-                  onClick={closeMenu}
+                  onClick={() => {
+                    track("cta_contact_clicked", { where: "header", locale });
+                    closeMenu();
+                  }}
                   className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink-900 px-5 py-3 text-sm font-semibold text-white"
                 >
                   {dict.actions.contact}
@@ -173,7 +179,10 @@ export function SiteHeader({
                 <Link
                   href={alternatePath(pathname, otherLocale)}
                   hrefLang={otherLocale}
-                  onClick={closeMenu}
+                  onClick={() => {
+                    track("language_switched", { where: "header", locale: otherLocale });
+                    closeMenu();
+                  }}
                   className="rounded-full border border-ink-900/15 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-ink-800"
                 >
                   {otherLocale}

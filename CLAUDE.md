@@ -92,6 +92,29 @@ ilan detayında aynı ilanda kalabiliyor (`alternatePath` bölümü çevirir, al
 segmentleri korur). Bu tercihi bozma — ilan slug'ını dile göre değiştirirsen dil
 değiştirici listeye düşer.
 
+### Ölçüm — onay gerektirmeyecek şekilde tasarlandı
+
+`src/lib/analytics.ts` olay sözleşmesini tanımlar; `src/components/track.tsx`
+sunucu görünümleriyle tarayıcı arasındaki köprüdür (`TrackedLink`,
+`TrackedAnchor`, `TrackView`, `TrackVisible`).
+
+Yük tipi bilinçli olarak dar: `where` kapalı bir yüzey kümesi, `id` yalnızca
+`ArticleId | JobId`, `locale` iki değer. `id` alanı `string` olsaydı bir gün
+oraya kullanıcıdan gelen bir değer sızabilirdi — birleşim tipi bunu derleme
+zamanında engelliyor, `tests/analytics.test.ts` de çalışma zamanında doğruluyor.
+Çerez, kalıcı kimlik ve serbest metin olmadığı için onay bandına gerek yok;
+bant hem dönüşümü düşürür hem de kullanıcıdan gereksiz bir karar ister.
+
+`NEXT_PUBLIC_ANALYTICS` tanımlı değilse hiçbir olay gönderilmez. Sağlayıcı
+takıldığında yalnızca `resolveSink()` değişir; olay sözleşmesi aynı kalır.
+**Gizlilik metnindeki çerez bölümü bu tasarımı anlatıyor** — çerez kullanan
+veya kullanıcıyı oturumlar arası eşleştiren bir sağlayıcı seçilirse o metin de
+güncellenmek zorundadır (bir test bölümün varlığını kontrol eder, içeriğin
+doğruluğunu değil).
+
+`funnelQuestions` her olayın hangi soruya cevap verdiğini tutar. Soru
+yazılamayan olay eklenmez; sorusu olmayan ölçüm birikir ama karar üretmez.
+
 ### Güvenlik notları
 
 `<script type="application/ld+json">` içine gömülen her şey `src/lib/json-ld.ts`
@@ -175,6 +198,7 @@ Bu değerler `sand-100` (en koyu açık zemin) üzerinde hesaplanmıştır.
 - `i18n.test.ts` — adres üretimi, dil eşleme, gidiş-dönüş tutarlılığı
 - `content.test.ts` — iki sözlüğün ayrışmaması, boş metin olmaması, ilan ve yazı bütünlüğü
 - `contact.test.ts` — doğrulama, bot tuzağı, hız sınırı, e-posta yükü, gönderim hatası
+- `analytics.test.ts` — olay sözleşmesi, yükün kişisel veri taşımaması
 - `seo.test.ts` — sitemap kapsamı, canonical/hreflang, Open Graph
 - `copy-principles.test.ts` — metin ilkeleri (mutlak ifade, garanti dili,
   cümle sayısı, kanıt bloğu)
@@ -198,6 +222,7 @@ günlüğüne yazılır ve kullanıcıya yine onay gösterilir.
 - Kariyer sayfasındaki dört ilan örnek içeriktir
 - `src/content/articles.ts` içindeki yayın tarihleri (Article verisine gider)
 - Gizlilik/KVKK metni hukuki incelemeden geçmemiştir
+- `NEXT_PUBLIC_ANALYTICS` — sağlayıcı seçilmedi; site şu an ölçümsüz çalışıyor
 
 ## Dil
 

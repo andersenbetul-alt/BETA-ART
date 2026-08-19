@@ -1103,9 +1103,11 @@ export const en: Dictionary = {
         ],
       },
       {
-        title: "5. Cookies",
+        title: "5. Cookies and measurement",
         paragraphs: [
-          "This site uses no advertising or tracking cookies, and there are no third-party analytics tools observing your visit. Should such a tool be added in future, this notice will be updated and your consent requested where required.",
+          "This site uses no advertising or tracking cookies.",
+          "Measurement on this site is designed to work without cookies and without creating a persistent identifier. The only things recorded are which page was opened and which link was clicked; the event payload has no free-text field, so what you type into the form never reaches it. Visits are not linked to one another and no value identifying you is stored. That is why you are not shown a consent banner.",
+          "Unless a measurement provider is configured, no event is sent from your browser at all. This notice is updated whenever the provider in use changes.",
         ],
       },
       {

@@ -146,7 +146,11 @@ export function ServicesView({ locale }: { locale: Locale }) {
           ))}
         </div>
         <div className="mt-12">
-          <ButtonLink href={path("contact", locale)}>
+          <ButtonLink
+              href={path("contact", locale)}
+              event="cta_contact_clicked"
+              payload={{ where: "services", locale }}
+            >
             {dict.actions.contact}
           </ButtonLink>
         </div>
