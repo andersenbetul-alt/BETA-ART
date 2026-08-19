@@ -1,0 +1,18 @@
+{
+  "name": "paarorendepilot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plattform for praktisk hverdagshjelp til eldre som vil bo hjemme",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000",
+    "test": "node tests/kjor.js",
+    "test:enhet": "node tests/enhet.test.js",
+    "test:e2e": "node tests/e2e.test.js",
+    "sjekk": "node --check assets/js/app.js && node --check assets/js/api.js && node --check assets/js/registrering.js && node --check assets/js/pris.js && node --check assets/js/bestilling.js && node --check assets/js/matching.js && node --check assets/js/demodata.js && node --check assets/js/tavle.js && node --check assets/js/drift.js && node --check assets/js/driftdata.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}

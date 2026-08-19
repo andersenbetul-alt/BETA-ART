@@ -21,9 +21,25 @@ Tjenestedesignet for hele systemet ligger i [`docs/SERVICE-BLUEPRINT.md`](docs/S
 ## Kjør lokalt
 
 ```bash
-python3 -m http.server 8000
-# åpne http://localhost:8000
+npm start            # statisk server på http://localhost:8000
 ```
+
+## Tester
+
+```bash
+npm test             # enhetstester + nettlesertester
+npm run test:enhet   # bare enhetstester, ingen nettleser
+npm run sjekk        # syntakssjekk av alle skriptfiler
+```
+
+Enhetstestene dekker prismodellen, matchingmotorens absolutte krav og rangering,
+og at datamodellen holder gateadresser utenfor oppdragslisten. Nettlesertestene
+kjører hele bestillingsflyten, akuttfilteret, hjelperregistreringen, oppdragstavla
+med adressevern, driftskonsollen og mobilvisning av alle sider.
+
+Testene har ingen eksterne avhengigheter utover Playwright, som hentes lokalt om
+det er installert og ellers globalt. Mangler Playwright, hopper nettlesertestene
+over seg selv i stedet for å feile. Detaljer i [`docs/TESTING.md`](docs/TESTING.md).
 
 ## Innhold
 
@@ -34,6 +50,7 @@ python3 -m http.server 8000
 | `familie.html` | Pårørendepanel – status, Care Circle, varsler, bestilling på vegne av |
 | `bli-hjelper.html` | Registrering av hjelper i seks steg |
 | `oppdrag.html` | Oppdragstavla – tilgjengelighetsbryter, rangerte oppdrag, innsjekk |
+| `drift.html` | Driftskonsoll (internt) – hendelser, søknader, aktive oppdrag, betaling |
 | `trygghet.html` | Verifisering, tillitsnivåer, pengeregler, tillitsscore |
 | `personvern.html` | Personvernerklæring |
 | `assets/js/bestilling.js` | Bestillingsflyt, akuttfilter, taleinput, simulert matching |
@@ -41,10 +58,14 @@ python3 -m http.server 8000
 | `assets/js/matching.js` | Matchingmotor – absolutte krav, vekter og begrunnelser |
 | `assets/js/tavle.js` | Oppdragstavla: tilgjengelighet, posisjonsstyring, innsjekk/utsjekk |
 | `assets/js/demodata.js` | Testdata; adresser holdes atskilt fra oppdragslisten |
+| `assets/js/drift.js` | Driftskonsoll: køer, svarfrister, handlinger og handlingslogg |
+| `assets/js/driftdata.js` | Testdata for drift: alvorsgrader, saker, søknader |
 | `assets/js/registrering.js` | Skjemalogikk: validering, SMS-kode, posisjonssamtykke, kladd |
 | `assets/js/api.js` | API-adapter – byttes til ekte endepunkter i fase 2 |
 | `assets/js/app.js` | Meny, samtykke til informasjonskapsler |
 | `docs/SERVICE-BLUEPRINT.md` | Tjenestedesign: syv systemer, matching, pris, kvalitet |
+| `docs/DRIFT.md` | Driftsrutiner: roller, alvorsgrader, eskalering, avvik |
+| `docs/TESTING.md` | Testoppsett og hvilke løfter testene beskytter |
 | `docs/EUROPA.md` | Felles kjerne med lokale landlag |
 | `docs/GDPR.md` | Behandlingsprotokoll og personvernarkitektur |
 | `docs/DPIA.md` | Utkast til vurdering av personvernkonsekvenser |
@@ -113,6 +134,18 @@ Dette er verifisert i nettlesertest.
 - Informasjonskapsler er delt i nødvendige / analyse / markedsføring, med atskilte formål
 
 Detaljene ligger i [`docs/GDPR.md`](docs/GDPR.md).
+
+## Drift
+
+Operasjonssiden er beskrevet i [`docs/DRIFT.md`](docs/DRIFT.md) og speiles i
+driftskonsollen. Kjernen er fire alvorsgrader med hver sin svarfrist – P1 sikkerhet
+innen 15 minutter døgnet rundt, P2 oppdrag innen 1 time, P3 klage innen 1 virkedag,
+P4 søknad innen 3 virkedager. Oversittet frist skjules aldri; den vises i konsollen
+og eskaleres til driftsleder.
+
+Ved sikkerhetsmelding er rekkefølgen alltid den samme: fryse konto, sikre brukeren,
+utrede, konkludere, svare melderen. En konto stenges permanent av et menneske, aldri
+av en terskel i en algoritme.
 
 ## Forbehold
 

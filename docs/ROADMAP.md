@@ -12,6 +12,7 @@ til en fungerende markedsplass.
 - Oppdragstavla for hjelpere med tilgjengelighetsbryter som styrer posisjonsbruk
 - Matchingmotor med absolutte krav, vekter og begrunnelser (`assets/js/matching.js`)
 - Innsjekk med oppmøtekode, oppdragsnotat og utsjekk
+- Driftskonsoll med hendelseskø, svarfrister, søknadsbehandling og handlingslogg
 - Registreringsflyt for hjelpere i seks steg med validering
 - SMS-verifisering av mobilnummer (demomodus i frontend)
 - Frivillig posisjonsdeling med eget samtykke og mulighet for å slette
@@ -24,7 +25,7 @@ til en fungerende markedsplass.
 - Database med kryptering av sensitive felt; posisjon i egen tabell med kort levetid
 - Reell SMS-leverandør for engangskoder
 - Innlogging og økter
-- Administrasjonsflate for søknadsbehandling og referansesjekk
+- Driftskonsollen kobles til ekte saker, roller og tilgangsstyring
 - Personverninnstillinger: innsyn, retting, nedlasting, sletting
 
 ## Fase 3 – Verifisering

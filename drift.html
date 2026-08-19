@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Driftskonsoll – PårørendePilot</title>
+<meta name="description" content="Internt driftsverktøy: søknadskø, referansesjekk, hendelser med svarfrist, aktive oppdrag og betalingssaker.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+<style>
+  body { background: var(--bg-soft); }
+  .drift-topp { background:#14231f; color:#fff; padding:14px 0; }
+  .drift-topp .wrap { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .drift-topp .logo { color:#fff; font-size:1rem; }
+  .drift-topp .rolle { margin-left:auto; font-size:.88rem; color:#9fb3ac; }
+  .drift-topp .rolle strong { color:#fff; }
+
+  .kpi-rad { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin:24px 0 26px; }
+  @media (max-width:1000px){ .kpi-rad{ grid-template-columns:repeat(2,1fr);} }
+  .kpi { background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .kpi .tall { font-size:1.7rem; font-weight:700; line-height:1.1; }
+  .kpi .navn { font-size:.82rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.04em; margin-top:4px; }
+  .kpi.varsel .tall { color:var(--danger); }
+
+  .konsoll { display:grid; grid-template-columns:230px 1fr; gap:22px; align-items:start; }
+  .konsoll > * { min-width: 0; }
+  @media (max-width:940px){ .konsoll{ grid-template-columns:1fr; } }
+
+  .ko-meny { background:#fff; border:1px solid var(--line); border-radius:14px; padding:8px; position:sticky; top:16px; }
+  @media (max-width:940px){ .ko-meny{ position:static; display:flex; overflow-x:auto; } }
+  .ko-knapp { display:flex; align-items:center; gap:10px; width:100%; background:none; border:none; font:inherit;
+    padding:11px 13px; border-radius:9px; cursor:pointer; text-align:left; font-size:.95rem; color:var(--ink-soft); white-space:nowrap; }
+  .ko-knapp:hover { background:var(--bg-soft); }
+  .ko-knapp[aria-selected="true"] { background:var(--brand-light); color:var(--brand-dark); font-weight:600; }
+  .ko-knapp .antall { margin-left:auto; background:var(--bg-soft); border-radius:999px; padding:1px 9px; font-size:.8rem; font-weight:700; }
+  .ko-knapp[aria-selected="true"] .antall { background:var(--brand); color:#fff; }
+
+  .sak { background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px; }
+  .sak + .sak { margin-top:14px; }
+  .sak-topp { display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap; }
+  .sak-topp h3 { margin:0; font-size:1.05rem; }
+  .sak-id { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.82rem; color:var(--ink-faint); }
+  .frist { margin-left:auto; text-align:right; font-size:.84rem; }
+  .frist strong { display:block; font-size:.95rem; }
+  .frist.brutt strong { color:var(--danger); }
+  .frist.snart strong { color:var(--warn); }
+
+  .merke { display:inline-flex; align-items:center; gap:5px; font-size:.76rem; font-weight:700; padding:3px 9px; border-radius:999px; }
+  .merke.p1 { background:#fbeceb; color:#8d1a12; }
+  .merke.p2 { background:#fbeee0; color:#6f4310; }
+  .merke.p3 { background:#eef3f8; color:#28506e; }
+  .merke.p4 { background:var(--bg-soft); color:var(--ink-soft); }
+
+  .sjekkliste { display:grid; grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:8px; margin:14px 0; }
+  .sjekk { display:flex; gap:8px; align-items:center; font-size:.88rem; padding:8px 11px; border:1px solid var(--line); border-radius:9px; }
+  .sjekk.ok { background:#f0f8f4; border-color:#c3e2d3; color:#175446; }
+  .sjekk.mangler { background:#fdf6f5; border-color:#eccac6; color:#8d1a12; }
+
+  .ref { border-left:3px solid var(--line); padding:10px 0 10px 14px; margin:10px 0; font-size:.92rem; }
+  .ref.godkjent { border-left-color:var(--ok); }
+  .ref.avvist { border-left-color:var(--danger); }
+  .ref.venter { border-left-color:var(--warn); }
+  .ref .rolle { color:var(--ink-faint); font-size:.85rem; }
+  .ref blockquote { margin:6px 0 0; padding:0; color:var(--ink-soft); font-style:italic; }
+
+  .handlinger { display:flex; gap:9px; flex-wrap:wrap; margin-top:16px; padding-top:15px; border-top:1px solid var(--line); }
+  .handlinger .btn { font-size:.9rem; padding:9px 15px; }
+  .btn-fare { background:var(--danger); color:#fff; }
+  .btn-fare:hover { background:#8d1a12; }
+
+  .logg { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px; margin-top:22px; }
+  .logg ol { list-style:none; margin:0; padding:0; font-size:.88rem; }
+  .logg li { padding:8px 0; border-bottom:1px solid var(--line); display:flex; gap:12px; }
+  .logg li:last-child { border-bottom:none; }
+  .logg .klokke { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--ink-faint); flex:0 0 auto; }
+  .logg .tom { color:var(--ink-faint); padding:8px 0; }
+
+  .tabell-enkel { width:100%; border-collapse:collapse; font-size:.92rem; }
+  .tabell-enkel th { text-align:left; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-faint); padding:8px 10px; border-bottom:1px solid var(--line); }
+  .tabell-enkel td { padding:11px 10px; border-bottom:1px solid var(--line); }
+  .tabell-enkel tr:last-child td { border-bottom:none; }
+  .rad-varsel td { background:#fdf6f5; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="drift-topp">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true">🧭</span> PårørendePilot</a>
+    <span style="font-weight:600">Driftskonsoll</span>
+    <span class="rolle">Innlogget: <strong>Kari D.</strong> · rolle: saksbehandler · demodata</span>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap" style="padding:22px 20px 70px">
+
+    <div class="notice notice-warn" style="margin-bottom:4px">
+      <p style="margin:0">
+        <strong>Internt verktøy.</strong> Alle oppslag i saker logges. Rollen «saksbehandler» ser ikke
+        fødselsnummer, kontoopplysninger eller helseopplysninger – de behandles ikke i dette systemet.
+      </p>
+    </div>
+
+    <div class="kpi-rad" id="kpi-rad"></div>
+
+    <div class="konsoll">
+      <nav class="ko-meny" id="ko-meny" role="tablist" aria-label="Køer">
+        <button class="ko-knapp" role="tab" aria-selected="true" data-ko="hendelser">Hendelser <span class="antall" id="ant-hendelser">0</span></button>
+        <button class="ko-knapp" role="tab" aria-selected="false" data-ko="soknader">Søknader <span class="antall" id="ant-soknader">0</span></button>
+        <button class="ko-knapp" role="tab" aria-selected="false" data-ko="oppdrag">Aktive oppdrag <span class="antall" id="ant-oppdrag">0</span></button>
+        <button class="ko-knapp" role="tab" aria-selected="false" data-ko="betaling">Betalingssaker <span class="antall" id="ant-betaling">0</span></button>
+        <button class="ko-knapp" role="tab" aria-selected="false" data-ko="rutiner">Rutiner</button>
+      </nav>
+
+      <div>
+        <div id="ko-innhold" role="tabpanel" aria-live="polite"></div>
+
+        <section class="logg">
+          <h3 style="font-size:1rem;margin-bottom:10px">Handlingslogg</h3>
+          <ol id="logg-liste"><li class="tom">Ingen handlinger registrert i denne økten.</li></ol>
+        </section>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/driftdata.js" defer></script>
+<script src="assets/js/drift.js" defer></script>
+</body>
+</html>
