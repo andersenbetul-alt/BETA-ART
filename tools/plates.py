@@ -70,6 +70,29 @@ def main():
         if p.get("release") not in RELEASE:
             bad(acc, "release %r is not one of %s" % (p.get("release"), sorted(x or "null" for x in RELEASE)))
 
+        # The archive's written guarantee: "Nothing is generated, composited or
+        # enhanced by AI." It carries a refund obligation, so it is checked
+        # here rather than trusted. The Creative Cloud account holds around
+        # forty Firefly generative edits of real photographs — adding a
+        # reflection, removing background elements, adding depth of field.
+        # Those belong to Beta Art Business, which sells AI work openly. They
+        # can never be a plate.
+        if p.get("generative"):
+            if p.get("status") == "verified":
+                bad(acc, "is marked verified but records a generative-AI step. The "
+                         "archive guarantees no image is generated, composited or "
+                         "enhanced by AI, and that guarantee carries a refund. This "
+                         "plate cannot be published here.")
+            else:
+                bad(acc, "records a generative-AI step and does not belong in this "
+                         "archive at all, at any status.")
+
+        src = (p.get("source_file") or "").lower()
+        if src.endswith((".ffgenimg", ".ffgen")) or "firefly" in src:
+            bad(acc, "was exported from %s, which is a Firefly generation. Set "
+                     "generative to true and move it to the business side."
+                % p.get("source_file"))
+
         # the rule the whole archive rests on
         if p.get("people") and p.get("status") == "verified" and p.get("release") != "on-file":
             bad(acc, "shows a recognisable person and is offered as verified, but no "
@@ -97,11 +120,12 @@ def main():
                 % ", ".join(missing))
 
     if report:
-        print("%-11s %-20s %-11s %-8s %s" % ("ACCESSION", "TITLE", "STATUS", "RELEASE", "IMAGE"))
+        print("%-11s %-20s %-11s %-8s %-4s %s" % ("ACCESSION", "TITLE", "STATUS", "RELEASE", "GEN", "IMAGE"))
         for p in plates:
-            print("%-11s %-20s %-11s %-8s %s"
+            print("%-11s %-20s %-11s %-8s %-4s %s"
                   % (p.get("accession", "—"), (p.get("title") or "")[:20],
                      p.get("status", "—"), p.get("release") or "—",
+                     "AI!" if p.get("generative") else "no",
                      p.get("image") or "— placeholder"))
         print()
 

@@ -19,7 +19,9 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0143",
@@ -41,7 +43,9 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0144",
@@ -63,7 +67,9 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0145",
@@ -85,7 +91,9 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0146",
@@ -107,7 +115,9 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0147",
@@ -129,7 +139,9 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0148",
@@ -151,7 +163,9 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0149",
@@ -173,7 +187,9 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0150",
@@ -195,7 +211,9 @@
   "raw_on_record": false,
   "people": true,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0151",
@@ -217,7 +235,9 @@
   "raw_on_record": false,
   "people": true,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0152",
@@ -239,7 +259,9 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  },
  {
   "accession": "2026.0153",
@@ -261,6 +283,8 @@
   "raw_on_record": false,
   "people": false,
   "release": null,
-  "status": "awaiting-original"
+  "status": "awaiting-original",
+  "generative": false,
+  "source_file": null
  }
 ]

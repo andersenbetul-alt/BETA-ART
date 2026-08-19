@@ -130,3 +130,76 @@ Beta Art does exactly that. That is not a contradiction in law — you own them
 photographer, no intermediaries". Worth a sentence in the licence terms
 saying plainly which images are exclusive to the archive and which are not.
 Silence on it is the only version that becomes a problem after a sale.
+
+---
+
+## 6. Adobe Stock: you cannot get them back
+
+You asked about uploading the images from the contributor portfolio. That
+route does not exist, and it is worth knowing before you plan around it.
+
+Adobe Stock is not a file store. There is no way for a contributor to download
+their own published content, and licensing your own images from your portfolio
+breaches the Contributor terms and can close the account. Adobe's own position
+is that contributors keep their own archive of originals — not least as proof
+of ownership if anyone ever disputes it.
+
+So the originals have to come from where they already are:
+
+| Where | What is there | How it travels |
+|---|---|---|
+| **Lightroom** | 5 photographs | Export preset above → GitHub upload |
+| **Creative Cloud** | 57 assets, including `.psdc` Photoshop cloud documents | Open in Photoshop → Export As → GitHub upload |
+| **Your own drive or phone** | the true originals and RAWs | straight to the export step |
+
+I can see all of them through the Adobe connector and can write the catalogue
+entry from what I see. I cannot move the files: the Adobe transfer host is
+blocked from this environment. The file itself always travels through you.
+
+---
+
+## 7. The thing that has to be decided before any of it goes up
+
+The Creative Cloud account holds **57 assets, and around forty of them are
+Firefly generative-image files**. Their names are the prompts:
+
+> "Add a subtle, soft reflection of…" · "Remove distracting background
+> elements…" · "Add a shallow depth-of-field effect…" · "Enhance
+> micro-textures of materials…" · "Enhance lighting for realism…"
+
+I looked at three. They are real photographs of yours — a pink wall with a
+climbing plant, a child wading in shallow water — with generative content
+added or removed. They are yours, editing them is entirely your right, and
+selling them is your business.
+
+But the archive says this, in its own voice, on its own front page:
+
+> "Nothing is generated, composited or enhanced by AI. The RAW files are
+> archived and can be produced on request. **That is the whole point of Beta
+> Art.**"
+
+and in the licence terms it is a **warranty with a refund attached**: if a
+photograph turns out not to meet that standard, the licence is refunded in
+full and the plate is removed from sale.
+
+**So the line has to be drawn, and it is not a matter of taste:**
+
+| Property | Generative AI |
+|---|---|
+| **Beta Art archive** | **never.** Not one plate. Not "just a small fix." |
+| Beta Art Business | openly — it sells AI work and says so |
+| Field Notes | say so in the entry when used |
+
+`tools/plates.py` now enforces it. A plate with `generative: true`, or one
+exported from a `.ffgenimg` file, fails the check at any status — not only at
+publication. The guarantee is checked rather than trusted, because a guarantee
+nobody checks is the kind that gets discovered by a buyer.
+
+Two more things from the same look:
+
+- The child in the "remove distracting background elements" photograph is
+  recognisable. A release for a child needs a parent or guardian's signature,
+  and no commercial licence can be issued without it.
+- Adobe Stock requires generative content to be declared on submission. If any
+  of these went up, they need that flag. I have no way to see what was
+  declared — only you can check that in the contributor portal.
