@@ -113,6 +113,22 @@ for (const ref of [...new Set(refs)]) {
   if (!existsSync(join(root, ref))) fail(`index.html references ${ref}, which is not in the repo.`);
 }
 
+// A stylesheet's url(...) targets are just as much "referenced files", and a malformed one
+// is invisible: the browser drops the rule and silently falls back. That is how eighteen
+// url(url(...)) declarations shipped with the self-hosted fonts never loading.
+for (const sheet of refs.filter((r) => r.endsWith('.css'))) {
+  const dir = sheet.slice(0, sheet.lastIndexOf('/'));
+  for (const [, quote, target] of read(sheet).matchAll(/url\((['"]?)([^'")]*)\1\)/g)) {
+    if (target.startsWith('data:') || /^https?:/.test(target)) continue;
+    if (!target || /url\(|['"]/.test(target)) {
+      fail(`${sheet} has a malformed url(): ${target || '(empty)'}`);
+      continue;
+    }
+    const path = join(root, dir, target);
+    if (!existsSync(path)) fail(`${sheet} references ${target}, which is not in the repo.`);
+  }
+}
+
 /* ---------- 6. RTL languages are declared in both places ---------- */
 
 const rtlInApp = [...appJs.matchAll(/RTL = \{([^}]*)\}/g)][0];
