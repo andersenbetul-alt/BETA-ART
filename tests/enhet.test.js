@@ -5,6 +5,7 @@ var t = require('./hjelpere');
 
 globalThis.window = globalThis;
 require('../assets/js/pris.js');
+require('../assets/js/akutt.js');
 require('../assets/js/matching.js');
 require('../assets/js/demodata.js');
 
@@ -165,6 +166,83 @@ t.test('tilbudsbølger setter fast hjelper først', function () {
   t.erLik(bolger[0].navn, 'Fast hjelper');
   t.erLik(bolger[0].hjelpere[0].hjelper.id, 'fast');
   t.erLik(bolger[1].navn, 'Familiens krets');
+});
+
+/* ---------------- akuttvurdering ----------------
+   Disse testene finnes fordi feilene de dekker fantes i koden:
+   delstrengsøk ga «fall» i «avfallet» og «nød» i «nødvendig», mens
+   «kraftig blødning» og «vondt i brystet» slapp gjennom. */
+
+var A = window.PP_AKUTT;
+
+t.gruppe('Akutt – ord som ikke skal utløse alarm');
+
+[
+  ['Kan du bære ut avfallet?', 'fall i avfallet'],
+  ['Det er ikke nødvendig med bil', 'nød i nødvendig'],
+  ['Sjekke brannvarsleren', 'brann i brannvarsleren'],
+  ['Følge til blodprøve', 'blod i blodprøve'],
+  ['Jeg har et forslag', 'slag i forslag'],
+  ['Hjelp med skattemeldingen', 'ingen treff'],
+  ['Handle mat og bære posene inn', 'ingen treff']
+].forEach(function (rad) {
+  t.test(rad[0] + ' → ingen (' + rad[1] + ')', function () {
+    t.erLik(A.vurder(rad[0]).niva, 'ingen');
+  });
+});
+
+t.gruppe('Akutt – symptomer familier faktisk skriver');
+
+[
+  'kraftig blødning',
+  'vondt i brystet',
+  'hun besvimte',
+  'munnviken henger',
+  'pustar ikkje',
+  'hun våkner ikke',
+  'hun kommer ikke opp',
+  'Det brenner i kjøkkenet',
+  'hun puster ikke',
+  'ring ambulanse',
+  'hun ligger på gulvet'
+].forEach(function (tekst) {
+  t.test(tekst + ' → rødt', function () {
+    t.erLik(A.vurder(tekst).niva, 'rod');
+  });
+});
+
+t.gruppe('Akutt – gult spør, men stopper ikke');
+
+[
+  'Hun falt i går og er litt øm',
+  'Hun er svimmel i dag',
+  'Hun har feber'
+].forEach(function (tekst) {
+  t.test(tekst + ' → gult', function () {
+    t.erLik(A.vurder(tekst).niva, 'gul');
+  });
+});
+
+t.gruppe('Akutt – hasteport');
+
+t.test('hastegrad «nå» krever port, øvrige ikke', function () {
+  t.erSann(A.kreverHasteport('na'));
+  t.erUsann(A.kreverHasteport('idag'));
+  t.erUsann(A.kreverHasteport('planlagt'));
+  t.erUsann(A.kreverHasteport('fast'));
+});
+
+t.test('bare et uttrykkelig ja slipper gjennom', function () {
+  t.erUsann(A.hasteportStopper('ja'));
+  t.erSann(A.hasteportStopper('nei'));
+  t.erSann(A.hasteportStopper('vetikke'));
+  t.erSann(A.hasteportStopper(null), 'ubesvart skal stoppe');
+});
+
+t.test('tom tekst gir ingen vurdering', function () {
+  t.erLik(A.vurder('').niva, 'ingen');
+  t.erLik(A.vurder(null).niva, 'ingen');
+  t.erLik(A.vurder('   ').niva, 'ingen');
 });
 
 t.gruppe('Adressevern i datamodellen');

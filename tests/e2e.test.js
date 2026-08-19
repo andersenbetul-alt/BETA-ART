@@ -137,6 +137,77 @@ if (!pw) {
     t.erSann(fortsattPaSteg2, 'bestillingen skal ikke gå videre');
   });
 
+  /* Kjeden som tidligere slo av vernet: et falskt varsel avvises, og
+     alt som skrives etterpå slipper gjennom uten kontroll. */
+  await side.goto(BASE + 'trenger-hjelp.html', { waitUntil: 'domcontentloaded' });
+  await side.click('[data-nar="idag"]');
+  await side.click('#senior-neste');
+  await side.click('[data-oppgave="annet"]');
+
+  await side.fill('#beskrivelse', 'Kan du bære ut avfallet?');
+  await side.locator('#beskrivelse').blur();
+  await side.waitForTimeout(150);
+  var falskAlarm = await side.isVisible('#nod-varsel');
+  t.test('ufarlig tekst med ordet «avfallet» gir ingen alarm', function () {
+    t.erUsann(falskAlarm, 'ordgrenser skal hindre treff inne i ord');
+  });
+
+  await side.fill('#beskrivelse', 'Hun falt i går og er litt øm');
+  await side.locator('#beskrivelse').blur();
+  await side.waitForTimeout(150);
+  var gultVist = await side.isVisible('#gul-varsel');
+  await side.click('#senior-neste');
+  var slapUtVidere = await side.isVisible('[data-panel="3"]');
+  t.test('gult varsel spør, men stopper ikke bestillingen', function () {
+    t.erSann(gultVist, 'gult varsel skal vises');
+    t.erSann(slapUtVidere, 'brukeren skal komme videre');
+  });
+
+  await side.goto(BASE + 'trenger-hjelp.html', { waitUntil: 'domcontentloaded' });
+  await side.click('[data-nar="idag"]');
+  await side.click('#senior-neste');
+  await side.click('[data-oppgave="annet"]');
+  await side.fill('#beskrivelse', 'akutt behov');
+  await side.locator('#beskrivelse').blur();
+  await side.waitForSelector('#nod-varsel:not([hidden])');
+  await side.click('#nod-lukk');
+  await side.fill('#beskrivelse', 'Hun puster ikke ordentlig');
+  await side.locator('#beskrivelse').blur();
+  await side.waitForTimeout(150);
+  var vernetHolder = await side.isVisible('#nod-varsel');
+  t.test('avvist varsel slår ikke av vernet for ny tekst', function () {
+    t.erSann(vernetHolder, 'nytt akuttord etter avvisning skal varsle på nytt');
+  });
+
+  /* Hasteporten: ved «nå» spør vi om bevissthet og pust uansett tekst. */
+  await side.goto(BASE + 'trenger-hjelp.html', { waitUntil: 'domcontentloaded' });
+  await side.click('[data-nar="na"]');
+  await side.click('#senior-neste');
+  await side.click('[data-oppgave="handling"]');
+  await side.click('#senior-neste');
+  await side.click('[data-timer="1"]');
+  await side.click('#senior-neste');
+  var portVist = await side.isVisible('#hasteport');
+  t.test('hastegrad «nå» viser sikkerhetsspørsmålet', function () {
+    t.erSann(portVist);
+  });
+
+  await side.click('#senior-bestill');
+  var stoppetUbesvart = await side.isVisible('[data-panel="4"]');
+  t.test('ubesvart sikkerhetsspørsmål stopper bestillingen', function () {
+    t.erSann(stoppetUbesvart, 'skal ikke gå videre uten svar');
+  });
+
+  await side.click('[data-hasteport="vetikke"]');
+  await side.waitForTimeout(150);
+  var nodVedTvil = await side.isVisible('#nod-varsel');
+  t.test('«vet ikke» viser nødnumrene', function () { t.erSann(nodVedTvil); });
+
+  await side.click('[data-hasteport="ja"]');
+  await side.click('#senior-bestill');
+  await side.waitForSelector('[data-panel="5"]:not([hidden])', { timeout: 10000 });
+  t.test('«ja» slipper bestillingen gjennom', function () { t.erSann(true); });
+
   /* ---------------- registrering ---------------- */
 
   t.gruppe('Hjelperregistrering');

@@ -38,7 +38,7 @@
     nesteBtn.hidden = n >= SISTE_SPORSMAL;
     bestillBtn.hidden = n !== SISTE_SPORSMAL;
     nav.hidden = n > SISTE_SPORSMAL;
-    if (n === SISTE_SPORSMAL) visPris();
+    if (n === SISTE_SPORSMAL) { visPris(); oppdaterHasteport(); }
     oppdaterNeste();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -69,40 +69,101 @@
   knyttValg('nar', 'nar', function (v) {
     var felt = document.getElementById('tidspunkt-felt');
     felt.hidden = !(v === 'planlagt' || v === 'fast');
+    oppdaterHasteport();
   });
   knyttValg('oppgave', 'oppgave');
   knyttValg('timer', 'timer');
 
-  /* ---------- akutt-gjenkjenning ----------
-     Plattformen skal aldri formidle et oppdrag der nødetatene er riktig svar. */
+  var beskrivelse = document.getElementById('beskrivelse');
 
-  var AKUTTORD = [
-    'brann', 'brenner', 'hjerteinfarkt', 'hjerteattakk', 'slag', 'hjerneslag',
-    'puster ikke', 'får ikke puste', 'blør', 'blod', 'falt', 'fall', 'skadet',
-    'bevisstløs', 'ambulanse', 'akutt', 'nød', 'hjelp meg fort', 'brystsmerter',
-    'sterke smerter', 'kan ikke reise meg', 'ligger på gulvet'
-  ];
+  /* ---------- akutt-gjenkjenning ----------
+     Selve vurderingen ligger i assets/js/akutt.js, som er ren og testbar.
+     Her kobles den til flyten, i tre lag:
+
+       RØDT      stopper bestillingen og viser nødnumrene
+       GULT      stiller et spørsmål, men slipper brukeren videre
+       hasteport ved «nå» spør vi om bevissthet og pust uansett hva som er skrevet
+
+     Avvisningen av et varsel gjelder bare den teksten brukeren faktisk avviste.
+     Tidligere gjaldt den hele økten, slik at ett falskt varsel slo av vernet
+     for alt som ble skrevet etterpå. */
 
   var nodVarsel = document.getElementById('nod-varsel');
-  var nodOverstyrt = false;
+  var gulVarsel = document.getElementById('gul-varsel');
+  var avvistTekst = null;
 
+  function normaliser(t) {
+    return String(t == null ? '' : t).toLowerCase().replace(/\s+/g, ' ').trim();
+  }
+
+  function skjulVarsler() {
+    nodVarsel.hidden = true;
+    if (gulVarsel) gulVarsel.hidden = true;
+  }
+
+  /**
+   * @returns {boolean} true når bestillingen skal stoppes.
+   */
   function sjekkAkutt(tekst) {
-    if (nodOverstyrt || !tekst) return false;
-    var t = tekst.toLowerCase();
-    var treff = AKUTTORD.some(function (ord) { return t.indexOf(ord) !== -1; });
-    if (treff) {
-      nodVarsel.hidden = false;
-      nodVarsel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var vurdering = window.PP_AKUTT.vurder(tekst);
+
+    if (vurdering.niva === 'ingen') {
+      skjulVarsler();
+      return false;
     }
-    return treff;
+
+    if (vurdering.niva === 'gul') {
+      nodVarsel.hidden = true;
+      if (gulVarsel) gulVarsel.hidden = false;
+      return false;
+    }
+
+    // RØDT. Avvisning gjelder kun nøyaktig den teksten som ble avvist.
+    if (avvistTekst !== null && normaliser(tekst) === avvistTekst) {
+      nodVarsel.hidden = true;
+      return false;
+    }
+
+    if (gulVarsel) gulVarsel.hidden = true;
+    nodVarsel.hidden = false;
+    nodVarsel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return true;
   }
 
   document.getElementById('nod-lukk').addEventListener('click', function () {
-    nodOverstyrt = true;
+    avvistTekst = normaliser(beskrivelse.value);
     nodVarsel.hidden = true;
   });
 
-  var beskrivelse = document.getElementById('beskrivelse');
+  /* ---------- lag 3: hasteport ved «nå» ---------- */
+
+  var hasteport = document.getElementById('hasteport');
+  var hasteportSvar = null;
+
+  function oppdaterHasteport() {
+    if (!hasteport) return;
+    var kreves = window.PP_AKUTT.kreverHasteport(valg.nar);
+    hasteport.hidden = !kreves;
+    if (!kreves) hasteportSvar = null;
+  }
+
+  if (hasteport) {
+    hasteport.addEventListener('click', function (e) {
+      var knapp = e.target.closest('[data-hasteport]');
+      if (!knapp) return;
+      hasteportSvar = knapp.getAttribute('data-hasteport');
+      Array.prototype.forEach.call(hasteport.querySelectorAll('[data-hasteport]'), function (b) {
+        b.setAttribute('aria-pressed', String(b === knapp));
+      });
+      if (window.PP_AKUTT.hasteportStopper(hasteportSvar)) {
+        nodVarsel.hidden = false;
+        nodVarsel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        nodVarsel.hidden = true;
+      }
+    });
+  }
+
   beskrivelse.addEventListener('blur', function () {
     valg.beskrivelse = beskrivelse.value.trim();
     sjekkAkutt(valg.beskrivelse);
@@ -266,6 +327,24 @@
   }
 
   bestillBtn.addEventListener('click', function () {
+    // Teksten kan ha endret seg etter forrige kontroll, og den som har det
+    // travelt skriver ofte først på siste steg. Derfor kontrolleres den her igjen.
+    valg.beskrivelse = beskrivelse.value.trim();
+    if (sjekkAkutt(valg.beskrivelse)) return;
+
+    if (window.PP_AKUTT.kreverHasteport(valg.nar)) {
+      if (hasteportSvar === null) {
+        hasteport.hidden = false;
+        hasteport.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      if (window.PP_AKUTT.hasteportStopper(hasteportSvar)) {
+        nodVarsel.hidden = false;
+        nodVarsel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+    }
+
     valg.varsleFamilie = document.getElementById('varsle-familie').checked;
     visPanel(5);
     kjorSok(0);

@@ -36,6 +36,19 @@
       <p><button class="btn btn-secondary" type="button" id="nod-lukk">Det er ikke akutt – fortsett bestillingen</button></p>
     </div>
 
+    <!-- ====== GULT: vi spør, vi stopper ikke ====== -->
+    <div class="notice notice-warn" id="gul-varsel" hidden role="status" style="font-size:1.05rem">
+      <h4 style="font-size:1.2rem">Er du sikker på at dette kan vente?</h4>
+      <p>
+        Du har beskrevet noe som noen ganger trenger helsehjelp. Vi hjelper med praktiske oppgaver,
+        ikke med sykdom eller skade.
+      </p>
+      <p style="margin-bottom:0">
+        Er du i tvil, ring <strong>legevakt 116 117</strong>. Ved fare for liv, ring <strong>113</strong>.
+        Er det praktisk hjelp du trenger, kan du bare fortsette.
+      </p>
+    </div>
+
     <!-- ====== STEG 1: NÅR ====== -->
     <section class="senior-panel" data-panel="1">
       <span class="steg-nr">Steg 1 av 4</span>
@@ -151,6 +164,30 @@
     <!-- ====== STEG 4: PRIS OG BEKREFT ====== -->
     <section class="senior-panel" data-panel="4" hidden>
       <span class="steg-nr">Steg 4 av 4</span>
+
+      <!-- Lag 3: tekstuavhengig port ved hastegrad «nå».
+           Den som har det travelt, skriver minst – derfor spør vi uansett. -->
+      <div class="notice notice-warn" id="hasteport" hidden style="font-size:1.05rem">
+        <h4 style="font-size:1.2rem">Ett spørsmål før vi bestiller</h4>
+        <p>Du har valgt <strong>Nå</strong>. Da må vi vite én ting først:</p>
+        <p style="font-size:1.15rem;font-weight:600">Er personen ved bevissthet og puster normalt?</p>
+        <div class="big-choices" role="group" aria-label="Bevissthet og pust" style="margin-top:14px">
+          <button class="big-choice" type="button" data-hasteport="ja" aria-pressed="false">
+            <span class="ikon" aria-hidden="true">✅</span><span>Ja</span>
+          </button>
+          <button class="big-choice" type="button" data-hasteport="nei" aria-pressed="false">
+            <span class="ikon" aria-hidden="true">🚨</span><span>Nei</span>
+          </button>
+          <button class="big-choice" type="button" data-hasteport="vetikke" aria-pressed="false">
+            <span class="ikon" aria-hidden="true">❓</span><span>Vet ikke</span>
+          </button>
+        </div>
+        <p class="muted" style="margin:14px 0 0;font-size:.95rem">
+          Svarer du «Nei» eller «Vet ikke», viser vi nødnumrene i stedet. Det koster deg noen sekunder,
+          og det er verdt det.
+        </p>
+      </div>
+
       <h2>Dette koster oppdraget</h2>
       <p class="muted" style="font-size:1rem">Prisen vises før du bestiller. Du betaler først når oppdraget er bekreftet utført.</p>
 
@@ -264,6 +301,7 @@
 </footer>
 
 <script src="assets/js/app.js" defer></script>
+<script src="assets/js/akutt.js" defer></script>
 <script src="assets/js/pris.js" defer></script>
 <script src="assets/js/bestilling.js" defer></script>
 </body>
