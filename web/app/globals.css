@@ -92,3 +92,18 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .demo { background:#2A2113; color:#F0D6AC; border-color:#4A3A1C; }
 }
+
+/* Plana etki rozeti — turistin gerçekte baktığı bilgi */
+.impact {
+  font-size:.8rem; line-height:1.4; padding:.5rem .65rem; border-radius:6px;
+  margin:-.15rem 0 .7rem;
+}
+.impact strong { font-weight:700; }
+.impact-safe   { background:#E8F0EA; color:#24422F; }
+.impact-tight  { background:#FFF4E5; color:#5C3A00; }
+.impact-breaks { background:#FBE9E4; color:#6B2A14; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .impact-safe   { background:#1B2A20; color:#B9D9C4; }
+  :root:not([data-theme="light"]) .impact-tight  { background:#2A2113; color:#F0D6AC; }
+  :root:not([data-theme="light"]) .impact-breaks { background:#2E1710; color:#F3C4B4; }
+}

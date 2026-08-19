@@ -7,6 +7,8 @@ import { clock, duration, modeLabel, relativeMinutes } from '@/lib/format.ts';
 import { forecast } from '@/lib/met.ts';
 import { shouldGoIndoors } from '@/lib/weather.ts';
 import UseMyLocation from '@/components/UseMyLocation.tsx';
+import { rankByPlan, type Impact } from '@/lib/plan.ts';
+import { demoPlan } from '@/lib/demo-plan.ts';
 
 const KINDS = ['cancelled', 'missed', 'road', 'eat', 'rain'] as const;
 type Kind = (typeof KINDS)[number];
@@ -89,11 +91,15 @@ async function TransportAnswer({
   }
 
   const { trips, live } = await getTrips(origin.stopPlaceId, target.stopPlaceId);
-  // Kaçırılan bağlantıda en erken kalkan önce; aktarma sayısı eşitlik bozar.
-  const ordered = kind === 'missed'
-    ? [...trips].sort((a, b) =>
-        a.departure.localeCompare(b.departure) || a.legs.length - b.legs.length)
-    : trips;
+
+  /*
+   * Sıralama plana göre yapılır, hıza göre değil.
+   * 20 dakika erken varıp uçuşu kaçıran seçenek, 20 dakika geç varıp
+   * her şeyi kurtarandan kötüdür. Turistin istediği hız değil, kurtarılmış plan.
+   */
+  const ranked = rankByPlan(demoPlan, trips, { replacedItemId: 'ferry' });
+  const ordered = ranked.map((r) => r.option);
+  const impactOf = new Map(ranked.map((r) => [r.option.departure, r.impact]));
 
   return (
     <>
@@ -122,6 +128,7 @@ async function TransportAnswer({
 
       {ordered.map((trip) => (
         <div className="option" key={trip.departure}>
+          <PlanImpact impact={impactOf.get(trip.departure)} />
           <div className="option-head">
             <span className="time">{clock(trip.departure)}</span>
             <span className="muted">→ {clock(trip.arrival)}</span>
@@ -140,6 +147,17 @@ async function TransportAnswer({
         </div>
       ))}
     </>
+  );
+}
+
+/** Seçeneğin plana etkisi — asıl karar bilgisi bu, saatler değil. */
+function PlanImpact({ impact }: { impact?: Impact }) {
+  if (!impact) return null;
+  const label = { safe: 'Plan intact', tight: 'Tight', breaks: 'Breaks your plan' }[impact.level];
+  return (
+    <div className={`impact impact-${impact.level}`}>
+      <strong>{label}</strong> {impact.summary}
+    </div>
   );
 }
 
