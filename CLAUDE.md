@@ -61,6 +61,12 @@ figures need `unicode-bidi: plaintext` so they survive Arabic and Urdu.
 compliant, and a click-to-load facade is what makes that true. Same rule for anything
 new: no third-party request before the visitor asks for it.
 
+## Brand
+
+`docs/BRAND.md` is the standard: what HXI is, who the page speaks to, the voice rules, the
+claims allowed, the names and their casing, and the palette. Check copy against it before
+writing, and when it does not cover something, add the rule rather than inventing one.
+
 ## Facts and sources
 
 `docs/RESEARCH.md` is the trail behind every claim on the page: what was verified, against
