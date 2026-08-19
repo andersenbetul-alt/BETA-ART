@@ -27,7 +27,9 @@ the site and stays removed. A page that speaks to buyers stops speaking to liste
 
 Three rules and two nevers.
 
-1. **Say the number, not the adjective.** Not "one of the most-streamed"; "43,394,947 streams".
+1. **Say the number, not the adjective.** Not "one of the most-streamed phonk producers in
+   Northern Europe" — nothing ranks that — but "43,394,947 streams, more than every other
+   release combined".
    The fact does the praise.
 2. **The first sentence answers the question.** No throat-clearing, no "in today's landscape".
 3. **Short sentences carry the weight.** Long ones are allowed when the thought needs them —
