@@ -33,24 +33,54 @@ answers sixteen.
 
 ## Needs your decision
 
-**1. The domain. `betaart.com` is taken; the others are free.**
+**1. The domain — decided, and now one command away.**
 
-Checked against the registry:
+Checked against the registry: `betaart.no`, `beta-art.no` and `beta-art.com`
+are all free. **`betaart.com` is taken.**
 
-| Domain | Status | Where it appears |
-|---|---|---|
-| `betaart.no` | **available** | the master prompt, the QR plate labels, the checklist |
-| `beta-art.no` | available | nowhere yet |
-| `beta-art.com` | **available** | every canonical tag and email on the built site |
-| `betaart.com` | **taken** | — |
+The decision is `betaart.no`, with this mapping:
 
-The built site and your documents disagree, and neither domain is registered
-yet, so nothing is broken — but the QR plates printed on physical labels say
-`betaart.no`, and a printed label is the hardest thing on this list to change
-later. My recommendation is `betaart.no` as the primary, with `beta-art.com`
-registered as a redirect so the .com is not taken by someone else. Say the
-word and I change every canonical, every email and the structured data in one
-pass.
+| Property | Host |
+|---|---|
+| Archive | **`betaart.no`** — the apex |
+| Business | `business.betaart.no` |
+| Field Notes | `notater.betaart.no` |
+| Hub | `start.betaart.no` |
+
+The archive takes the apex because the QR plate labels are printed with
+`betaart.no` and each code has to resolve to a plate verification page. A
+flagship on a subdomain would make every printed label wrong, and a printed
+label is the one thing on this project that cannot be edited later.
+
+The host was hard-coded **1531 times across 98 files** — in every canonical
+tag, every `og:url`, every `hreflang`, every sitemap, every `robots.txt` and
+inside the JSON-LD. That is why this had stayed undecided: it was not a
+decision, it was a mass edit. `tools/domain.py` makes it one command:
+
+```
+python3 tools/domain.py --show              what the files say now
+python3 tools/domain.py --plan betaart.no   what a switch would touch
+python3 tools/domain.py --set betaart.no    make it
+python3 tools/domain.py --set vercel        go back
+```
+
+**It has deliberately not been run.** A canonical tag pointing at a host that
+does not resolve is worse than one pointing at a preview URL: a crawler
+follows it, finds nothing, and drops the page. The order has to be:
+
+1. Register `betaart.no` (and `beta-art.com` as a defensive redirect).
+2. Add all four hosts to the Vercel projects and point the DNS.
+3. Wait for the certificates.
+4. `python3 tools/domain.py --set betaart.no`
+5. `python3 tools/sitemap.py && python3 tools/audit.py`
+6. Submit the new sitemaps in Search Console.
+
+One thing the tool does not fix, and should be done at the same time: the
+legal notice lives on the hub, so after a switch it sits at
+`start.betaart.no/legal.html` and every property's terms depend on a fourth
+deployment staying alive. Moving `legal.html` into the archive at the apex is
+a file move plus a link rewrite, and worth doing before the switch rather
+than after.
 
 **2. The contact address.** The site uses `hallo@beta-art.com`; the documents
 use `hello@betaart.no`. Two differences at once — the spelling and the domain.
