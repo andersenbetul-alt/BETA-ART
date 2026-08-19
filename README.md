@@ -271,7 +271,7 @@ Böyle bir araç eklenirse metnin güncellenmesi gerekir.
 
 ## Testler
 
-`tests/` altında Vitest ile çalışan 66 test var. Kapsam bilinçli olarak
+`tests/` altında Vitest ile çalışan 73 test var. Kapsam bilinçli olarak
 kırılgan mantığa odaklıdır; bileşen render testi yoktur.
 
 | Dosya | Neyi korur |
@@ -280,6 +280,7 @@ kırılgan mantığa odaklıdır; bileşen render testi yoktur.
 | `content.test.ts` | İki sözlüğün içerik olarak ayrışmaması, boş metin kalmaması, ilan ve yazı bütünlüğü |
 | `contact.test.ts` | Form doğrulaması, bot tuzağı, e-posta yükü, gönderim hatasında sahte onay verilmemesi |
 | `seo.test.ts` | Sitemap kapsamı, canonical/hreflang eşlemesi, Open Graph görselleri |
+| `copy-principles.test.ts` | Metin ilkeleri: mutlak ifade ve garanti dili yokluğu, iddia metinlerinin iki cümleyi geçmemesi, hero kanıt bloğu |
 
 ## Hata sayfaları
 

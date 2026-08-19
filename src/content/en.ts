@@ -31,11 +31,18 @@ export const en: Dictionary = {
   },
   home: {
     hero: {
-      eyebrow: "Management & Strategy · HR & Corporate Learning",
-      title: "Let's design your organisation's",
-      highlight: "next chapter together",
+      eyebrow: "Management & Strategy · HR & Corporate Learning · AI Workforce",
+      title: "If your strategy stays in the deck",
+      highlight: "the strategy is not the problem",
       description:
-        "NAVIAR turns decisions that stall in the boardroom into systems that run on the ground. By bringing management consulting and human resources expertise into a single team, we make sure every decision lands at every layer of your organisation.",
+        "The decisions are usually sound; what is missing is the decision rights, processes and people systems to carry them. NAVIAR builds that structure and stays until your organisation runs it alone.",
+      promise:
+        "The first 30-minute conversation is free · We usually reply within two business days",
+      facts: [
+        { value: "2", label: "practice areas, one team" },
+        { value: "4", label: "phase working method" },
+        { value: "2–4", label: "week diagnostic review" },
+      ],
     },
     practices: {
       eyebrow: "Practice areas",
@@ -388,7 +395,7 @@ export const en: Dictionary = {
     form: {
       title: "Request a conversation",
       description:
-        "Share the details below and we will come back to you within two business days.",
+        "Share the details below; we usually reply within two business days.",
       name: "Full name",
       company: "Company",
       email: "Email",
@@ -410,7 +417,7 @@ export const en: Dictionary = {
         "By submitting this form you agree that the information you share may be processed in order to assess your request. For details:",
       privacyLinkLabel: "Privacy notice and data protection",
       success:
-        "Thank you — your request has reached us. We will be in touch within two business days.",
+        "Thank you — your request has reached us. We usually reply within two business days.",
       errors: {
         name: "Please enter your full name.",
         email: "Please enter a valid email address.",
@@ -876,7 +883,7 @@ export const en: Dictionary = {
     process: {
       title: "Our hiring process",
       description:
-        "The process takes about three weeks. You will always hear back at the end of each stage, whether the answer is yes or no.",
+        "The process takes about three weeks. You hear back at the end of each stage, whether the answer is yes or no.",
       steps: [
         {
           step: "01",
@@ -926,7 +933,7 @@ export const en: Dictionary = {
       backToList: "All positions",
       apply: "Apply for this role",
       applyDescription:
-        "Send your CV and a short cover note by email. We confirm receipt of your application within two business days.",
+        "Send your CV and a short cover note by email. We usually confirm receipt within two business days.",
       applyEmail: "kariyer@naviar.com",
       applySubjectSuffix: "application",
     },

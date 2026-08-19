@@ -136,6 +136,28 @@ Sayfanın yapısı bilinçli: **önce ne olmadığı**, sonra kurulum süreci, s
 roller, sonra sizden gerekenler, sonra nerede önermediğimiz. Bu ürün aşırı
 vaade en açık kategori; "nerede önermiyoruz" bölümünü zayıflatma.
 
+## Metin ilkeleri
+
+Site metinleri beş maddelik bir kontrolden geçer. Kurallar
+`tests/copy-principles.test.ts` içinde zorunlu kılınmıştır, çünkü belge olarak
+kalan bir ilke üçüncü düzenlemede unutulur.
+
+1. **Bir istisnayla yanlışlanabilecek mutlak ifade kullanma.** Ne olduğunu
+   yaz, ne olmadığını değil.
+2. **Olgu sıfattan önce gelir.** NAVIAR yeni bir firma; uydurulabilecek
+   müşteri sayısı yok. Bunun yerine doğrulanabilir yapısal olgular gösterilir
+   (`home.hero.facts`).
+3. **Mümkün olan en kısa hâl.** İddia metinleri iki cümleyi geçmez.
+4. **Gelecek hakkında garanti verilmez.** "İki iş günü içinde döneceğiz"
+   yerine "genellikle iki iş günü içinde". Süre bildiren her cümlede bir
+   koşul belirteci bulunmalıdır.
+5. **Doğrulanmamış iddia yazılmaz.** Deneyim firmaya değil kurucuya
+   atfedilir; belirsiz olan hiç yazılmaz.
+
+Testin kapsamı bilinçli olarak **kurumun kendi hakkındaki iddialarıdır**.
+İçgörü yazılarının ve ilanların gövde metni kapsam dışıdır — orada
+"her zaman" bir gözlemi anlatır, kurumsal taahhüdü değil.
+
 ## Renk ve kontrast
 
 Masaüstü menü eşiği `xl` (1280px) — yedi başlık 1024px'te sığmıyordu.
@@ -154,6 +176,8 @@ Bu değerler `sand-100` (en koyu açık zemin) üzerinde hesaplanmıştır.
 - `content.test.ts` — iki sözlüğün ayrışmaması, boş metin olmaması, ilan ve yazı bütünlüğü
 - `contact.test.ts` — doğrulama, bot tuzağı, hız sınırı, e-posta yükü, gönderim hatası
 - `seo.test.ts` — sitemap kapsamı, canonical/hreflang, Open Graph
+- `copy-principles.test.ts` — metin ilkeleri (mutlak ifade, garanti dili,
+  cümle sayısı, kanıt bloğu)
 
 Kontrast ve işaretleme hataları testlerle değil `npm run audit:a11y` ile yakalanır.
 

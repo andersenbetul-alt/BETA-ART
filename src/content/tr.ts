@@ -31,11 +31,21 @@ export const tr: Dictionary = {
   },
   home: {
     hero: {
-      eyebrow: "Yönetim & Strateji · İK & Kurumsal Eğitim",
-      title: "Kurumunuzun bir sonraki aşamasını",
-      highlight: "birlikte tasarlayalım",
+      eyebrow: "Yönetim & Strateji · İK & Kurumsal Eğitim · AI Workforce",
+      title: "Stratejiniz sunumda kalıyorsa",
+      highlight: "sorun strateji değil",
+      // İki cümle. Ne yaptığımızı ve kimin için yaptığımızı ilk ekranda söyler.
       description:
-        "NAVIAR, strateji masasında kalan kararları sahada işleyen sistemlere dönüştürür. Yönetim danışmanlığı ile insan kaynakları uzmanlığını tek bir ekipte buluşturarak, aldığınız kararın organizasyonun her katmanında karşılık bulmasını sağlarız.",
+        "Kararlar çoğu zaman doğrudur; onları taşıyacak karar hakları, süreçler ve İK sistemleri kurulmamıştır. NAVIAR bu yapıyı kurar ve kurum kendi başına yürütene kadar sahada kalır.",
+      promise:
+        "30 dakikalık ilk görüşme ücretsizdir · Yanıtı genellikle iki iş günü içinde veririz",
+      // Yeni bir firmanın uydurabileceği müşteri sayısı yok. Bunlar
+      // doğrulanabilir yapısal olgular; her biri sitenin bir yerinde açılıyor.
+      facts: [
+        { value: "2", label: "uzmanlık alanı, tek ekip" },
+        { value: "4", label: "aşamalı çalışma yöntemi" },
+        { value: "2–4", label: "haftalık teşhis çalışması" },
+      ],
     },
     practices: {
       eyebrow: "Uzmanlık alanları",
@@ -388,7 +398,7 @@ export const tr: Dictionary = {
     form: {
       title: "Görüşme talebi",
       description:
-        "Aşağıdaki bilgileri paylaşın, iki iş günü içinde size dönüş yapalım.",
+        "Aşağıdaki bilgileri paylaşın; yanıtı genellikle iki iş günü içinde veririz.",
       name: "Ad soyad",
       company: "Kurum",
       email: "E-posta",
@@ -410,7 +420,7 @@ export const tr: Dictionary = {
         "Formu göndererek, paylaştığınız bilgilerin talebinizi değerlendirmek amacıyla işlenmesini kabul etmiş olursunuz. Ayrıntılar için:",
       privacyLinkLabel: "Gizlilik ve KVKK aydınlatma metni",
       success:
-        "Teşekkürler, talebiniz bize ulaştı. İki iş günü içinde sizinle iletişime geçeceğiz.",
+        "Teşekkürler, talebiniz bize ulaştı. Genellikle iki iş günü içinde size döneriz.",
       errors: {
         name: "Lütfen adınızı ve soyadınızı yazın.",
         email: "Lütfen geçerli bir e-posta adresi girin.",
@@ -876,7 +886,7 @@ export const tr: Dictionary = {
     process: {
       title: "İşe alım süreci",
       description:
-        "Süreç ortalama üç hafta sürer. Her aşamanın sonunda, olumlu ya da olumsuz, mutlaka geri dönüş yaparız.",
+        "Süreç ortalama üç hafta sürer. Her aşamanın sonunda, olumlu ya da olumsuz, geri dönüş yaparız.",
       steps: [
         {
           step: "01",
@@ -926,7 +936,7 @@ export const tr: Dictionary = {
       backToList: "Tüm pozisyonlar",
       apply: "Bu pozisyona başvurun",
       applyDescription:
-        "Özgeçmişinizi ve kısa bir ön yazıyı e-posta ile gönderin. Başvurunuzu aldığımıza dair teyidi iki iş günü içinde iletiriz.",
+        "Özgeçmişinizi ve kısa bir ön yazıyı e-posta ile gönderin. Başvuru teyidini genellikle iki iş günü içinde iletiriz.",
       applyEmail: "kariyer@naviar.com",
       applySubjectSuffix: "başvurusu",
     },

@@ -45,37 +45,27 @@ export function HomeView({ locale }: { locale: Locale }) {
                   {dict.actions.services}
                 </ButtonLink>
               </div>
+              {/* Sitenin en iyi vaadi en altta duruyordu; ilk ekrana alındı */}
+              <p className="mt-5 text-sm text-ink-100/70">{hero.promise}</p>
             </div>
 
-            {/* Uzmanlık alanlarının kısa özeti */}
-            <div className="rounded-3xl border border-white/12 bg-white/[0.05] p-8 backdrop-blur-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-300">
-                {practices.eyebrow}
-              </p>
-              <ul className="mt-6 space-y-5">
-                {dict.services.practices.map((practice) => (
-                  <li key={practice.id}>
-                    <Link
-                      href={`${path("services", locale)}#${practice.id}`}
-                      className="group block rounded-xl border border-white/10 p-5 transition-colors hover:border-accent-300/60 hover:bg-white/[0.04]"
-                    >
-                      <span className="flex items-center justify-between gap-4 font-display text-lg text-white">
-                        {practice.title}
-                        <span className="text-accent-300 transition-transform group-hover:translate-x-1">
-                          <Arrow />
-                        </span>
-                      </span>
-                      <span className="mt-2 block text-sm leading-relaxed text-ink-100/70">
-                        {practice.offerings
-                          .slice(0, 2)
-                          .map((offering) => offering.title)
-                          .join(" · ")}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Kanıt bloğu.
+                Buradaki liste aşağıdaki "uzmanlık alanları" bölümünün
+                birebir tekrarıydı. Yeni bir firmanın gösterebileceği müşteri
+                sayısı yok; bunun yerine doğrulanabilir yapısal olgular. */}
+            <ul className="grid gap-px overflow-hidden rounded-3xl border border-white/12 bg-white/12">
+              {hero.facts.map((fact) => (
+                <li
+                  key={fact.label}
+                  className="flex items-baseline gap-5 bg-ink-900 px-7 py-7 sm:px-9"
+                >
+                  <span className="whitespace-nowrap font-display text-5xl tabular-nums leading-none text-accent-300">
+                    {fact.value}
+                  </span>
+                  <span className="text-ink-100/80">{fact.label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Container>
       </section>

@@ -79,7 +79,7 @@ export function SiteHeader({
                 key={key}
                 href={path(key, locale)}
                 aria-current={activeKey === key ? "page" : undefined}
-                className={`text-sm font-medium transition-colors ${
+                className={`whitespace-nowrap text-sm font-medium transition-colors ${
                   activeKey === key
                     ? "text-ink-900"
                     : "text-ink-800/70 hover:text-ink-900"
@@ -100,7 +100,7 @@ export function SiteHeader({
             </Link>
             <Link
               href={path("contact", locale)}
-              className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink-800"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-ink-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ink-800"
             >
               {dict.actions.contact}
               <Arrow />

@@ -102,6 +102,16 @@ export type Dictionary = {
       title: string;
       highlight: string;
       description: string;
+      /**
+       * CTA'nın altındaki tek satır. Ölçülebilir ve tutulabilir olmalı;
+       * garanti dili kullanılmaz (bkz. CLAUDE.md — metin ilkeleri).
+       */
+      promise: string;
+      /**
+       * Kanıt bloğu. Yeni bir firmanın uydurabileceği müşteri sayısı yok;
+       * bunun yerine doğrulanabilir yapısal olgular gösterilir.
+       */
+      facts: { value: string; label: string }[];
     };
     practices: { eyebrow: string; title: string; description: string };
     approach: { eyebrow: string; title: string; description: string };
