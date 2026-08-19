@@ -21,6 +21,10 @@ const ROOT = path.resolve(__dirname, "..");
 const WIDTHS = [
   { name: "phone", width: 360, height: 780 },
   { name: "tablet", width: 768, height: 1024 },
+  // 1024 is not decoration. The business header collapsed to a burger below
+  // 980 and the desktop nav needed about 1100 to fit, so every page on that
+  // property scrolled sideways in between — invisible to 360, 768 and 1280.
+  { name: "laptop", width: 1024, height: 800 },
   { name: "desktop", width: 1280, height: 900 },
 ];
 const AA_BODY = 4.5;
@@ -54,6 +58,17 @@ const PROBE = `(() => {
       if (r.right > w + 1 || r.left < -1) {
         const style = getComputedStyle(el);
         if (style.position === "fixed") continue;
+        // A skip link parked off the left edge cannot scroll anything.
+        if (r.right <= 0) continue;
+        // Nor can a marquee whose parent clips it. Report the culprit, not
+        // every child of it — an ancestor that scrolls or hides its overflow
+        // absorbs the width before it reaches the document.
+        let clipped = false;
+        for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+          const o = getComputedStyle(a).overflowX;
+          if (o === "hidden" || o === "clip" || o === "auto" || o === "scroll") { clipped = true; break; }
+        }
+        if (clipped) continue;
         out.overflow.push({
           tag: el.tagName.toLowerCase(),
           cls: (el.className && el.className.toString().slice(0, 40)) || "",
@@ -127,8 +142,20 @@ const PROBE = `(() => {
     if (el.offsetParent === null) continue;
     const r = el.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) continue;
-    // WCAG 2.5.8 exempts a link sitting inside a sentence or a block of text
-    if (el.tagName === "A" && el.closest("p,label,h1,h2,h3,h4,dd,blockquote,figcaption")) continue;
+    // WCAG 2.5.8 exempts a target "in a sentence or block of text". A fixed
+    // list of parent tags gets this wrong both ways: it excused nothing inside
+    // a list item of prose, and it would excuse a nav link that happened to sit
+    // in a <p>. Measure instead — if the surrounding block says a good deal
+    // more than the link does, the link is inside a sentence.
+    if (el.tagName === "A") {
+      const block = el.parentElement && el.parentElement.closest(
+        "p,li,dd,td,label,h1,h2,h3,h4,blockquote,figcaption,summary");
+      if (block) {
+        const around = block.textContent.trim().length;
+        const own = el.textContent.trim().length;
+        if (around >= own * 2 && around - own >= 40) continue;
+      }
+    }
     if (r.width < 24 || r.height < 24) {
       out.targets.push({
         tag: el.tagName.toLowerCase(),

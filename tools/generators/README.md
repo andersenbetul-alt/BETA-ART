@@ -47,7 +47,7 @@ The gates are not optional, and they are quick:
     python3 tools/copy.py        # conversion copy
     python3 tools/gaps.py        # what is still missing
     python3 tools/plates.py      # catalogue integrity
-    node  tools/render-check.js  # a real browser, three widths
+    node  tools/render-check.js  # a real browser, four widths
 
 `build_journal.py` is safe to re-run: it detects a previous run, does not
 duplicate metadata, and reports any index card it could not match instead of

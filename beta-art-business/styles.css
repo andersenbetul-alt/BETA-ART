@@ -787,3 +787,29 @@ strong, b { font-weight: 600; }
   text-transform: uppercase; color: var(--muted); text-decoration: none;
   padding: .4rem .55rem; border: 1px solid var(--edge); white-space: nowrap; }
 .lang-no:hover { color: var(--seal-bright); border-color: var(--seal-bright); }
+
+
+/* The header collapsed to a burger below 980px, but the desktop nav does not
+   fit until about 1180px — the homepage carries a visible Norsk link the other
+   pages do not. Between those two numbers every page on this property scrolled
+   sideways: 96px on an eight-item nav, 373px on the homepage. The gate never
+   saw it, because it tested 360, 768 and 1280 and the fault lives between. */
+@media (max-width: 1180px) {
+  .menu-btn { display: grid; }
+  .nav {
+    position: fixed; inset: 76px 0 auto; flex-direction: column; gap: 0; margin: 0;
+    max-height: calc(100dvh - 76px); overflow-y: auto; overscroll-behavior: contain;
+    background: var(--void); border-bottom: 1px solid var(--edge); padding: 0 1.5rem 1.5rem;
+    transform: translateY(-135%); transition: transform .3s var(--ease);
+  }
+  .nav.is-open { transform: none; }
+  .nav a { padding: 1rem 0; border-bottom: 1px solid var(--edge); }
+  .nav a:hover, .nav a.is-active { border-bottom-color: var(--edge); }
+  .bar-actions { gap: .4rem; }
+  .bar-actions .btn-sm { padding: .5rem .75rem; font-size: .58rem; letter-spacing: .1em; }
+}
+
+
+/* The hero's text column. A grid child defaults to min-width:auto, so a long
+   unbroken string in the copy can push the whole hero wider than the page. */
+.hero-copy { min-width: 0; max-width: 62ch; }

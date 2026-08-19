@@ -615,3 +615,39 @@ strong, b { font-weight: 600; }
 /* A short pointer out of a section, into the journal or the legal notice. */
 .note { margin-top: 2rem; max-width: 62ch; font-size: .95rem; color: var(--muted); }
 .note a { color: var(--seal); }
+
+/* ---------- Consent choices on the release form ----------
+   These two buttons carried a class no stylesheet defined, so they rendered as
+   browser default buttons 21px tall — below the 24px WCAG 2.2 AA target floor,
+   and visually unrelated to the rest of the form. */
+.option-grid { display: grid; gap: .6rem; margin-top: .4rem; }
+.option {
+  display: block; width: 100%; text-align: left;
+  padding: .85rem 1rem; min-height: 48px;
+  background: var(--paper); color: var(--ink);
+  border: 1px solid var(--rule); border-radius: 0;
+  font: inherit; font-size: .95rem; line-height: 1.4; cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.option:hover { border-color: var(--seal); }
+.option[aria-pressed="true"] { border-color: var(--seal); border-left-width: 4px; background: var(--paper-2); }
+.option:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; }
+@media (min-width: 640px) { .option-grid { grid-template-columns: 1fr 1fr; } }
+
+/* The archive's own chrome: a slot for the language picker, a hero column and
+   the previous-plate half of the pager. Each was used in the markup and never
+   declared, so they inherited nothing. */
+.lang-slot { display: flex; align-items: center; }
+.hero-copy { max-width: 62ch; }
+.pager-prev { text-align: left; }
+.measure { max-width: 68ch; }
+
+/* The release page borrows two shapes from the business property that the
+   archive never declared: the page-opening band, and the caveat block at the
+   foot of a legal document. */
+.svc-hero { padding: 2.6rem 0 1rem; border-bottom: 1px solid var(--rule); }
+.note-band {
+  border-left: 3px solid var(--seal); background: var(--paper-2);
+  padding: 1.2rem 1.4rem; margin: 1.5rem 0;
+}
+.note-band p:last-child { margin-bottom: 0; }
