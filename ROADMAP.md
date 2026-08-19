@@ -51,7 +51,8 @@ maliyet.
 | 60 | P01 AI ile para kazanma yolları | **Bitti** 19.08 | İlk dalganın 4 numarası, huninin en geniş girişi. Yollar kanıt kalitesine göre üçe ayrıldı; "25 yol" hedefi kaynaklanamadığı için kapsam daraltıldı (karar `docs/icerik-mimarisi.md`'de) |
 | 61 | Gövde metninde **vurgu** desteği | **Bitti** 19.08 | Üç yazıda düz yıldız basılıyordu. `rich()`: önce kaçır, sonra çevir; check.mjs eşleşmeyen yıldızı yakalıyor |
 | 62 | Dönüşüm metni geçişi (conversion copy) | **Bitti** 19.08 | 5 kusur düzeltildi, 2 taahhüt sınırlandı, hero'ya kanıt bağlantısı eklendi. 110 dize, 10 dil |
-| 63 | Hero başlığı "beş" mi "yedi" mi | **Karar bekliyor** | H1 "beş farklı içerik" diyor, kanıt sayfası yedi türev ölçtü. Marka sloganı olduğu için tek başıma değiştirmedim |
+| 63 | Hero başlığı "beş" → "yedi" | **Bitti** 19.08 | Slogan, akış şeması (5→7 satır), istatistik ve hero.sub aynı sayıya çekildi. LinkedIn postu sayısı olan 5'e dokunulmadı |
+| 64 | Paket özelliklerine video/YouTube eklensin mi | **Karar bekliyor** | Akış artık 7 çıktı gösteriyor ama p2/p3 özellik listeleri 4 kanal sayıyor. Kapsam kararı |
 | 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
 ### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)
