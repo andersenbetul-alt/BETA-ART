@@ -58,6 +58,7 @@
     // Mağaza kartları ve çıkış listesi JS ile çizildiği için dil değişince yenilenmeli.
     if (typeof shop === 'function') run(shop);
     if (typeof renderReleases === 'function') run(renderReleases);
+    if (typeof localiseArchive === 'function') run(localiseArchive);
   }
 
   function buildSwitcher() {
@@ -217,23 +218,35 @@
 
   var spotifyData = null;
 
+  // A release date can be a year, a month or a full date — format only what we were given.
+  function formatReleaseDate(value, lang) {
+    var parts = value.split('-');
+    var date = new Date(value.length === 4 ? value + '-01-01' : value);
+    if (isNaN(date)) return value;
+    var options = parts.length === 1 ? { year: 'numeric' }
+      : parts.length === 2 ? { year: 'numeric', month: 'long' }
+      : { year: 'numeric', month: 'long', day: 'numeric' };
+    try { return new Intl.DateTimeFormat(lang, options).format(date); }
+    catch (e) { return value; }
+  }
+
+  // The hand-maintained archive carries machine dates in <time datetime>; show them in
+  // the visitor's language. Re-runs on every language switch.
+  function localiseArchive() {
+    var lang = document.documentElement.lang || 'en';
+    var nodes = document.querySelectorAll('#archive-static time[datetime]');
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].textContent = formatReleaseDate(nodes[i].getAttribute('datetime'), lang);
+    }
+  }
+
   function renderReleases() {
     var box = document.getElementById('releases');
     var list = document.getElementById('releases-list');
     if (!box || !list || !spotifyData || !spotifyData.releases || !spotifyData.releases.length) return;
 
     var lang = document.documentElement.lang || 'en';
-    // A release date can be a year, a month or a full date — format only what Spotify gave us.
-    var fmt = function (value) {
-      var parts = value.split('-');
-      var date = new Date(value.length === 4 ? value + '-01-01' : value);
-      if (isNaN(date)) return value;
-      var options = parts.length === 1 ? { year: 'numeric' }
-        : parts.length === 2 ? { year: 'numeric', month: 'long' }
-        : { year: 'numeric', month: 'long', day: 'numeric' };
-      try { return new Intl.DateTimeFormat(lang, options).format(date); }
-      catch (e) { return value; }
-    };
+    var fmt = function (value) { return formatReleaseDate(value, lang); };
 
     list.textContent = '';
     spotifyData.releases.forEach(function (release) {
@@ -261,6 +274,9 @@
     var synced = document.getElementById('releases-synced');
     if (synced) synced.textContent = 'Spotify · ' + spotifyData.syncedAt;
     box.hidden = false;
+    // The live catalogue is more complete than the hand list, so it takes its place.
+    var stat = document.getElementById('archive-static');
+    if (stat) stat.hidden = true;
   }
 
   function releases() {

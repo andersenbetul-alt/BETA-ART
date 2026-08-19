@@ -134,6 +134,9 @@ h2.label,h3.label{font-weight:400;line-height:1.6}
 .rows b{display:block;font-family:var(--display);font-size:15px;letter-spacing:.05em;text-transform:uppercase}
 .rows span{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.06em}
 .rows a{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;white-space:nowrap}
+#archive-static{margin-top:36px}
+.archive-year{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--muted);margin:26px 0 10px;font-weight:400}
+.archive-year:first-of-type{margin-top:14px}
 
 
 .panel{border:1px solid var(--border);background:var(--panel);padding:clamp(20px,4vw,36px)}

@@ -32,15 +32,62 @@ from search results rather than fetched pages. Say so when that is all you have.
 - **Round Around linked to a Spotify album id.** It now links to ncs.io/roundaround, the
   canonical page, which is also the one creators need.
 
+## Confirmed August 2026 — BODYCAM, and the discography archive
+
+The BODYCAM credit was open for months. It is now confirmed, and it is two tracks, not one:
+
+- **Never Phased** — BODYCAM official soundtrack, credited **Lurk × HXI × Scythermane**.
+  Not a solo HXI track, which is how one of the brand documents had it.
+  `soundcloud.com/hximusic/nerverphased`, `open.spotify.com/track/29prw4vDd1QxC9CmWWtHMn`,
+  and the OST playlist on SoundCloud (`bigflubba/sets/bodycam-official-playlist-ost`).
+- **KRASH** — 1 March 2024, **-Prey × HXI**.
+  `open.spotify.com/track/7vGGTybAsQWQ3TyMVS79SL`, plus two YouTube uploads.
+
+Both are in the archive under 2024. The credits strip still says "BODYCAM OST · Official
+Game Soundtrack" — a summary line; the two titles are the detail, and they live in the archive.
+
+**The archive itself.** The Music section listed three releases against a catalogue of
+twenty-plus, which reads as one-hit. Every line in the new archive comes from a search-verified
+listing:
+
+| Release | Date | Credit |
+| --- | --- | --- |
+| MONTAGEM HYSTERIA | June 2026 | with -Prey, pvppet, ToufG |
+| help urself funk | 2026 | — |
+| DORIAN HIDE FUNK | 24 Nov 2025 | — |
+| RITMO DO MISTÉRIO | 24 Oct 2025 | — |
+| SENTA CORAÇAO | 17 Oct 2025 | album, 5 tracks |
+| The Hunt | 3 Oct 2025 | — |
+| Esse Sentimento | 26 Sep 2025 | — |
+| Round Around | 23 Sep 2025 | NCS, feat. Nateki |
+| lostdreams | 12 Sep 2025 | album, 2 tracks |
+| CORAZON | 29 Aug 2025 | — |
+| AURORA LOVE | 31 Jan 2025 | **xxephyrr, TWISTED & HXI** |
+| Lock n' Load | 12 Sep 2024 | NCS |
+| X-PIRATA / X-PIRATA (Slowed) | 2024 | with TWISTED; Slowed adds xxephyrr |
+| OCEANO | 2024 | — |
+| Never Phased | 2024 | BODYCAM OST, with Lurk & Scythermane |
+| KRASH | 1 Mar 2024 | BODYCAM OST, with -Prey |
+| Soak City (HXI Phonk Remix) | 2024 | 310babii |
+| Put you in a COFFIN! | 2023 | — |
+| help urself | Dec 2022 | — |
+| RECXVERY | 16 May 2022 | album, 7 tracks |
+
+**AURORA LOVE is not an HXI headline single.** Apple Music credits it to xxephyrr, TWISTED &
+HXI. A brand document listed it under "Albums / EPs" as HXI's own — the archive states the
+real credit.
+
+**HELLDRIFT 2** is credited HXI, HXELLPLAYA & $werve. Its date is not established, so it is
+not in the archive yet — that is the only reason it is missing.
+
 ## Unverified — do not present as fact until confirmed
 
-- **BODYCAM OST.** Searching turns up nothing tying HXI to the BODYCAM soundtrack. The
-  game is small enough that its credits may simply not be indexed, so this is "unconfirmed",
-  not "false". Ask HXI for the placement (label, release, date) or drop the credit.
-- **251,000 monthly listeners.** Spotify's artist page is blocked here and the figure moves
-  weekly. Only HXI (Spotify for Artists) can confirm the current number.
-- **"10+ sync & collab credits"** in the hero. Nothing enumerates them; either list them or
-  soften the claim.
+- **TRXPICAL.** Three of HXI's own brand documents say he also releases under this alias, and
+  a separate site draft exists for it. Nothing indexed ties the two names together, so it is
+  not on the page. It goes on when a release or a profile links them publicly.
+- **Monthly listeners and follower count.** The brand pack gives 251,063 listeners and 19,834
+  followers as of July 2026; the page rounds to 251K. Spotify's artist page is blocked from
+  here and the number moves weekly — only Spotify for Artists confirms the current one.
 - **discord.gg/hximusic.** The earlier build labelled the community "launching soon". The
   button now promises a live server. Confirm the invite resolves.
 - **help urself funk — video year.** The page dates the music video 2025, while listings
@@ -50,9 +97,25 @@ from search results rather than fetched pages. Say so when that is all you have.
 
 - **Dança Estrada** — EP, reported June 2026. Confirm artist credit and exact date, then add
   it to the Latest section and, if it is the newest, to the Music section.
+- **HELLDRIFT 2** — HXI, HXELLPLAYA & $werve. Named in HXI's Spotify bio as a hit; no date
+  or stream figure established. Add to the archive once the release date is confirmed.
+- **ASSASSINATO** — HXI & TWISTED, on Spotify. Date not established.
 - **help urself** has official Sped Up, Slowed and remix versions (freddy fazbear remix,
   "I Can't Stop" remix, and others) on Spotify. The catalogue only shows the original; a
   "versions" line on that card would reflect what is actually out there.
+
+## Where the August 2026 round came from
+
+HXI's own project archive — a brand brief, a data pack, a phase history and several site
+drafts — was handed over in one batch. It is the artist's own material, so it is a good
+source for intent (positioning, colours, merch plans) and a *starting point* for facts, not
+proof of them. Everything in the archive section above was checked against an indexed listing
+before it went on the page; two claims in that pack turned out to be wrong (Never Phased as a
+solo track, AURORA LOVE as an HXI headline release) and are corrected here.
+
+Two things in the pack are asserted but not independently checkable from here, and are
+recorded rather than published: the GramArt phone confirmation that HXI owns the "HXI" name
+and his masters (verbal only, per the artist's own note), and the TRXPICAL alias.
 
 ## How to refresh
 
