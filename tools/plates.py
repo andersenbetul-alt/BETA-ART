@@ -31,6 +31,7 @@ DATA = os.path.join(ROOT, "beta-art", "plates.json")
 IMAGES = os.path.join(ROOT, "beta-art", "img")
 
 STATUS = {"awaiting-original", "verified", "withdrawn"}
+PERMISSION = {None, "on-file", "not-required", "required", "pending"}
 RELEASE = {None, "on-file", "not-required", "pending"}
 
 problems = []
@@ -97,6 +98,36 @@ def main():
         if p.get("people") and p.get("status") == "verified" and p.get("release") != "on-file":
             bad(acc, "shows a recognisable person and is offered as verified, but no "
                      "release is on file. It may not be licensed.")
+
+        # Tier 2 of docs/09: publishable only with the document on file.
+        # A commercial licence is the point at which each of these stops being
+        # a nicety and becomes an indemnity.
+        sellable = p.get("status") == "verified" and not p.get("editorial_only")
+        for field, what in (("property_release", "recognisable private property"),
+                            ("artwork_permission", "an artwork, sculpture or mural in frame"),
+                            ("heritage_permission", "cultural heritage requiring authorisation")):
+            if p.get(field) == "required":
+                bad(acc, "shows %s and the permission is marked required but not "
+                         "obtained. It cannot be published." % what)
+
+        # Tier 3: worldwide licensing means the strictest territory governs.
+        if p.get("architecture") and sellable and p.get("artwork_permission") not in ("on-file", "not-required"):
+            bad(acc, "shows a recognisable building or monument and is offered "
+                     "commercially. France and Italy restrict commercial use of such "
+                     "images, and the licence has no territorial limit — record the "
+                     "architect's permission or set editorial_only.")
+
+        if p.get("drone") and not p.get("location"):
+            bad(acc, "is a drone photograph with no location recorded. Flight rules "
+                     "are territorial; without the place the flight cannot be shown "
+                     "to have been lawful.")
+
+        # Tier 1: a child may appear in the archive, but is not sold.
+        born = p.get("subject_born")
+        if p.get("people") and sellable and p.get("minor"):
+            bad(acc, "shows someone under 18 and is offered on a commercial tier. "
+                     "Policy: children appear in the archive with a release; they are "
+                     "not sold on the Commercial or Extended tiers.")
 
         if p.get("status") == "verified" and not p.get("raw_on_record"):
             bad(acc, "is marked verified while the RAW original is not recorded. "

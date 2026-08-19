@@ -21,7 +21,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0143",
@@ -45,7 +52,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0144",
@@ -69,7 +83,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0145",
@@ -93,7 +114,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0146",
@@ -117,7 +145,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0147",
@@ -141,7 +176,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0148",
@@ -165,7 +207,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0149",
@@ -189,7 +238,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0150",
@@ -213,7 +269,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0151",
@@ -237,7 +300,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0152",
@@ -261,7 +331,14 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  },
  {
   "accession": "2026.0153",
@@ -285,6 +362,13 @@
   "release": null,
   "status": "awaiting-original",
   "generative": false,
-  "source_file": null
+  "source_file": null,
+  "property_release": null,
+  "artwork_permission": null,
+  "heritage_permission": null,
+  "architecture": false,
+  "drone": false,
+  "editorial_only": false,
+  "minor": false
  }
 ]
