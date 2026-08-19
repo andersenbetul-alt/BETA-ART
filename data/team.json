@@ -1,0 +1,281 @@
+{
+  "title": "Ürün ve Web Ekibi",
+  "locale": "tr-TR",
+  "updated": "2026-08-19",
+  "principle": "Rol sayısı kişi sayısı demek değildir. Rol bir fonksiyondur; bir kişi birden fazla fonksiyon taşıyabilir, bazıları danışman olarak dışarıdan alınır. Aşağıdaki 21 rol, 7-9 kişilik bir çekirdek ekiple karşılanabilir.",
+  "groups": [
+    {
+      "id": "strategy",
+      "name": "Strateji",
+      "summary": "Ne yapacağımıza ve neden yapacağımıza karar verir."
+    },
+    {
+      "id": "ux",
+      "name": "UX / Service Design",
+      "summary": "Hizmetin baştan sona nasıl deneyimleneceğini tasarlar."
+    },
+    {
+      "id": "brand",
+      "name": "UI / Brand",
+      "summary": "Görsel dili, tasarım sistemini ve metinleri kurar."
+    },
+    {
+      "id": "dev",
+      "name": "Development",
+      "summary": "Ürünü inşa eder ve ayakta tutar."
+    },
+    {
+      "id": "safety",
+      "name": "Safety / Legal",
+      "summary": "Güvenlik, gizlilik, erişilebilirlik ve kullanıcı güvenliği."
+    },
+    {
+      "id": "growth",
+      "name": "Marketing / Growth",
+      "summary": "Kullanıcıyı getirir ve dönüşüme çevirir."
+    },
+    {
+      "id": "data",
+      "name": "Data & Improvement",
+      "summary": "Ne işe yaradığını ölçer, kararı veriye bağlar."
+    }
+  ],
+  "roles": [
+    {
+      "no": 1,
+      "name": "Product Manager / Proje Lideri",
+      "group": "strategy",
+      "responsibility": "Vizyonu, hedefleri, öncelikleri ve ekip koordinasyonunu yönetir.",
+      "mode": "founder",
+      "wave": 0,
+      "note": "Başlangıçta kurucunun kendisidir. Erken PM alımı kurucuyla çakışır."
+    },
+    {
+      "no": 2,
+      "name": "Business Strategist",
+      "group": "strategy",
+      "responsibility": "İş modeli, gelir modeli, hedef müşteri ve rakip analizi.",
+      "mode": "advisor",
+      "wave": 0,
+      "note": "Tam zamanlı değil; çeyreklik danışmanlık olarak yeterli."
+    },
+    {
+      "no": 3,
+      "name": "Service Designer",
+      "group": "ux",
+      "responsibility": "Müşterinin hizmeti baştan sona nasıl deneyimleyeceğini tasarlar.",
+      "mode": "core",
+      "wave": 1,
+      "note": "Yaşlı + aile + hizmet sağlayıcı üçgeninde en kritik rol. Ekran değil, hizmet tasarlar."
+    },
+    {
+      "no": 4,
+      "name": "UX Researcher",
+      "group": "ux",
+      "responsibility": "Kullanıcı ihtiyaçlarını, sorunlarını ve davranışlarını araştırır.",
+      "mode": "later",
+      "wave": 3,
+      "note": "Başta Service Designer yürütür. Yaşlı kullanıcıyla saha araştırması gerektiğinde ayrılır."
+    },
+    {
+      "no": 5,
+      "name": "UX Designer",
+      "group": "ux",
+      "responsibility": "Kullanıcı yolculuğu, site mimarisi, wireframe ve akışlar.",
+      "mode": "core",
+      "wave": 1,
+      "note": "Başlangıçta UI ile aynı kişi (UX/UI Designer)."
+    },
+    {
+      "no": 6,
+      "name": "UI Designer",
+      "group": "brand",
+      "responsibility": "Renk, tipografi, buton, kart ve ekranların görsel tasarımı.",
+      "mode": "core",
+      "wave": 1,
+      "note": "Ölçek büyüyene kadar UX Designer ile tek kişi."
+    },
+    {
+      "no": 7,
+      "name": "Brand Designer",
+      "group": "brand",
+      "responsibility": "Logo, marka kimliği, görsel dil ve tasarım sistemi.",
+      "mode": "contract",
+      "wave": 1,
+      "note": "Proje bazlı: kimlik bir kez kurulur, sonra ekip uygular."
+    },
+    {
+      "no": 8,
+      "name": "Copywriter / UX Writer",
+      "group": "brand",
+      "responsibility": "Metinleri sade, güvenilir ve ikna edici şekilde yazar.",
+      "mode": "core",
+      "wave": 1,
+      "note": "Yaşlı kullanıcıda metin, tasarımdan daha belirleyici. Erken alınmalı."
+    },
+    {
+      "no": 9,
+      "name": "Frontend Developer",
+      "group": "dev",
+      "responsibility": "Kullanıcının gördüğü arayüzü geliştirir.",
+      "mode": "later",
+      "wave": 3,
+      "note": "Başta Full-Stack karşılar; arayüz karmaşıklaşınca ayrılır."
+    },
+    {
+      "no": 10,
+      "name": "Backend Developer",
+      "group": "dev",
+      "responsibility": "Üyelik, ödeme, mesajlaşma, veritabanı ve iş mantığı.",
+      "mode": "core",
+      "wave": 2,
+      "note": "Ödeme ve kimlik altyapısı tek kişiye bırakılamayacak kadar kritik."
+    },
+    {
+      "no": 11,
+      "name": "Full-Stack / Technical Lead",
+      "group": "dev",
+      "responsibility": "Teknik mimariyi ve frontend-backend bütünlüğünü yönetir.",
+      "mode": "core",
+      "wave": 1,
+      "note": "İlk teknik işe alım. Mimari kararlar bu kişiyle birlikte verilir."
+    },
+    {
+      "no": 12,
+      "name": "Mobile Developer",
+      "group": "dev",
+      "responsibility": "iOS/Android uygulamasını geliştirir.",
+      "mode": "later",
+      "wave": 4,
+      "note": "Mobil uygulama gerçekten gerekli olduğu kanıtlanana kadar açılmaz."
+    },
+    {
+      "no": 13,
+      "name": "SEO Specialist",
+      "group": "growth",
+      "responsibility": "Bulunabilirlik, içerik yapısı ve teknik SEO.",
+      "mode": "core",
+      "wave": 2,
+      "note": "Blog huninin girişi olduğu için SEO ürünün parçası, pazarlama eki değil."
+    },
+    {
+      "no": 14,
+      "name": "Conversion / CRO Specialist",
+      "group": "growth",
+      "responsibility": "Kayıt, satın alma ve başvuru dönüşümünü optimize eder.",
+      "mode": "later",
+      "wave": 3,
+      "note": "Optimize edilecek anlamlı trafik oluşmadan alınması erken."
+    },
+    {
+      "no": 15,
+      "name": "Data Analyst",
+      "group": "data",
+      "responsibility": "Kullanıcı davranışı ve dönüşüm oranlarını analiz eder.",
+      "mode": "later",
+      "wave": 3,
+      "note": "Ama ölçüm altyapısı gün 0'da kurulur — analist sonra gelir, veri baştan toplanır."
+    },
+    {
+      "no": 16,
+      "name": "QA / Test Engineer",
+      "group": "dev",
+      "responsibility": "Farklı cihazlarda test eder, hataları bulur.",
+      "mode": "core",
+      "wave": 2,
+      "note": "Yaşlı kullanıcıda hata toleransı düşüktür; tek kötü deneyim güveni bitirir."
+    },
+    {
+      "no": 17,
+      "name": "Accessibility Specialist",
+      "group": "safety",
+      "responsibility": "Yaşlılar ve engelli kullanıcılar dahil herkes için erişilebilirlik.",
+      "mode": "advisor",
+      "wave": 1,
+      "note": "Sonradan denetim değil, gün 0 kısıtı. Norveç'te yasal yükümlülük de var."
+    },
+    {
+      "no": 18,
+      "name": "Cybersecurity Specialist",
+      "group": "safety",
+      "responsibility": "Hesap, kişisel bilgi ve ödeme güvenliği.",
+      "mode": "advisor",
+      "wave": 2,
+      "note": "Ödeme ve kimlik canlıya çıkmadan önce bir denetim şart."
+    },
+    {
+      "no": 19,
+      "name": "GDPR / Privacy Specialist",
+      "group": "safety",
+      "responsibility": "Avrupa veri koruma ve gizlilik gerekliliklerini kontrol eder.",
+      "mode": "advisor",
+      "wave": 1,
+      "note": "Veri modeli çizilirken masada olmalı. Sonradan uyum, şema değişikliği demektir."
+    },
+    {
+      "no": 20,
+      "name": "Growth / Digital Marketing",
+      "group": "growth",
+      "responsibility": "Kullanıcı kazanımı, reklam, sosyal medya ve büyüme.",
+      "mode": "core",
+      "wave": 2,
+      "note": "SEO ile aynı kişi olabilir (Growth/SEO)."
+    },
+    {
+      "no": 21,
+      "name": "Trust & Safety",
+      "group": "safety",
+      "responsibility": "Hizmet sağlayıcı doğrulama, kötüye kullanım ve dolandırıcılık önleme, olay müdahalesi.",
+      "mode": "core",
+      "wave": 2,
+      "added": true,
+      "note": "Listede yoktu ama yazınızda geçiyordu. Yaşlı kullanıcıyı hizmet sağlayıcıyla buluşturan bir platformda en yüksek riskli alan burasıdır — ayrı rol olarak yazılmalı."
+    }
+  ],
+  "core_team": {
+    "size": "7-9 kişi",
+    "members": [
+      "Product Manager (kurucu)",
+      "Service Designer",
+      "UX/UI Designer",
+      "UX Writer",
+      "Full-Stack / Technical Lead",
+      "Backend Developer",
+      "Growth / SEO",
+      "QA",
+      "Güvenlik · GDPR · Erişilebilirlik (danışman)"
+    ]
+  },
+  "waves": [
+    {
+      "wave": 0,
+      "name": "Kurucu + danışman",
+      "trigger": "Bugün",
+      "hires": "Kurucu PM rolünü taşır. Business Strategist çeyreklik danışman."
+    },
+    {
+      "wave": 1,
+      "name": "İnşa edebilir hale gel",
+      "trigger": "Ürün fikri doğrulandığında",
+      "hires": "Technical Lead · Service Designer · UX/UI Designer · UX Writer. GDPR ve erişilebilirlik danışmanı bu aşamada masaya oturur."
+    },
+    {
+      "wave": 2,
+      "name": "Canlıya çık ve para al",
+      "trigger": "İlk ürün satışa hazır olduğunda",
+      "hires": "Backend Developer · QA · Growth/SEO · Trust & Safety. Güvenlik denetimi ödeme canlıya çıkmadan yapılır."
+    },
+    {
+      "wave": 3,
+      "name": "Ölçek ve optimizasyon",
+      "trigger": "Aylık anlamlı trafik ve tekrar eden gelir oluştuğunda",
+      "hires": "Data Analyst · CRO · UX Researcher · Frontend Developer"
+    },
+    {
+      "wave": 4,
+      "name": "Genişleme",
+      "trigger": "Mobil ihtiyacı veriyle kanıtlandığında",
+      "hires": "Mobile Developer · ayrı Brand Designer · ikinci Backend"
+    }
+  ]
+}

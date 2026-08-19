@@ -168,6 +168,48 @@ section { padding: 56px 0 0; }
 .tile h3 { margin: 0 0 8px; font-size: 15.5px; font-weight: 600; }
 .tile p { margin: 0; font-size: 14px; color: var(--muted); }
 
+.groupbar { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin-bottom: 28px; }
+.groupbar div {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; font-size: 13px;
+}
+.groupbar b { display: block; font-size: 13.5px; margin-bottom: 4px; }
+.groupbar span { color: var(--muted); font-size: 12.5px; line-height: 1.45; }
+
+.roles { display: grid; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.role {
+  display: grid; grid-template-columns: 30px minmax(150px, 1.1fr) minmax(0, 2fr) auto;
+  gap: 14px; align-items: baseline; padding: 15px 18px; background: var(--surface);
+}
+.role + .role { border-top: 1px solid var(--border); }
+.role__no { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.role__name { font-weight: 600; font-size: 14.5px; }
+.role__body { font-size: 14px; color: var(--muted); }
+.role__body em { font-style: normal; display: block; margin-top: 5px; font-size: 13px; opacity: .95; }
+.tag {
+  font-size: 11px; letter-spacing: .04em; text-transform: uppercase;
+  border: 1px solid var(--border); border-radius: 999px; padding: 3px 9px; color: var(--muted);
+  white-space: nowrap;
+}
+.tag--core { border-color: var(--accent); color: var(--accent); }
+.tag--new { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--accent); }
+@media (max-width: 720px) {
+  .role { grid-template-columns: 1fr; gap: 6px; }
+}
+
+.waves { display: grid; gap: 12px; }
+.wave {
+  display: grid; grid-template-columns: 46px 1fr; gap: 16px;
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 18px;
+}
+.wave__no {
+  width: 34px; height: 34px; border-radius: 50%; background: var(--accent-soft);
+  color: var(--accent); display: grid; place-items: center; font-weight: 600; font-size: 14px;
+}
+.wave__name { font-weight: 600; font-size: 16px; margin: 0 0 2px; }
+.wave__trigger { font-size: 12.5px; color: var(--accent); margin: 0 0 8px; }
+.wave__hires { margin: 0; font-size: 14px; color: var(--muted); }
+
 footer {
   margin-top: 72px; padding: 28px 0 48px; border-top: 1px solid var(--border);
   font-size: 14px; color: var(--muted);
@@ -396,6 +438,105 @@ def build_work() -> None:
           data["headline"] + " " + data["promise"], body, data["updated"])
 
 
+
+# --- team.html --------------------------------------------------------------
+
+MODE_LABEL = {
+    "founder":  ("Kurucu", "core"),
+    "core":     ("Çekirdek", "core"),
+    "advisor":  ("Danışman", ""),
+    "contract": ("Proje bazlı", ""),
+    "later":    ("Sonraki dalga", ""),
+}
+
+
+def build_team() -> None:
+    data = load("team")
+    groups = {g["id"]: g["name"] for g in data["groups"]}
+
+    bar = "\n".join(f"""        <div><b>{esc(g['name'])}</b><span>{esc(g['summary'])}</span></div>"""
+                    for g in data["groups"])
+
+    rows = []
+    for r in data["roles"]:
+        label, cls = MODE_LABEL[r["mode"]]
+        tag_cls = f"tag tag--{cls}" if cls else "tag"
+        new = ' <span class="tag tag--new">eklendi</span>' if r.get("added") else ""
+        rows.append(f"""        <div class="role">
+          <span class="role__no">{r['no']}</span>
+          <span class="role__name">{esc(r['name'])}<br><span class="role__no">{esc(groups[r['group']])}</span></span>
+          <span class="role__body">{esc(r['responsibility'])}<em>{esc(r['note'])}</em></span>
+          <span class="{tag_cls}">{esc(label)}{new}</span>
+        </div>""")
+
+    waves = "\n".join(f"""        <div class="wave">
+          <div class="wave__no">{w['wave']}</div>
+          <div>
+            <p class="wave__name">{esc(w['name'])}</p>
+            <p class="wave__trigger">Tetikleyici: {esc(w['trigger'])}</p>
+            <p class="wave__hires">{esc(w['hires'])}</p>
+          </div>
+        </div>""" for w in data["waves"])
+
+    core = "\n".join(f"      <li>{esc(m)}</li>" for m in data["core_team"]["members"])
+
+    body = f"""<header>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>BETA · Ekip</div>
+    <h1>{esc(data['title'])}</h1>
+    <p class="lede">{esc(data['principle'])}</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <p class="section-label">Yapı</p>
+      <h2 class="section-title">Yedi fonksiyon</h2>
+      <div class="groupbar">
+{bar}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Roller</p>
+      <h2 class="section-title">{len(data['roles'])} rol ve ne zaman gerektiği</h2>
+      <div class="roles">
+{chr(10).join(rows)}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Başlangıç</p>
+      <h2 class="section-title">Çekirdek ekip — {esc(data['core_team']['size'])}</h2>
+      <ul class="notes">
+{core}
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Sıra</p>
+      <h2 class="section-title">İşe alım dalgaları</h2>
+      <div class="waves">
+{waves}
+      </div>
+      <p style="margin-top:28px;font-size:15px;color:var(--muted)">
+        Gerekçe ve açık kararlar: <b>docs/team-and-org.md</b> · <a href="index.html">← Tüm BETA ürünleri</a>
+      </p>
+    </div>
+  </section>
+</main>"""
+    write("team.html", "BETA — Ürün ve Web Ekibi",
+          data["principle"], body, data["updated"])
+
+
 if __name__ == "__main__":
     build_index()
     build_work()
+    build_team()

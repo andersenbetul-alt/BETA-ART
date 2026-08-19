@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BETA — Ürün ve Web Ekibi</title>
+<meta name="description" content="Rol sayısı kişi sayısı demek değildir. Rol bir fonksiyondur; bir kişi birden fazla fonksiyon taşıyabilir, bazıları danışman olarak dışarıdan alınır. Aşağıdaki 21 rol, 7-9 kişilik bir çekirdek ekiple karşılanabilir.">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f6f6f4;
+  --surface: #ffffff;
+  --border: #e4e3df;
+  --text: #16150f;
+  --muted: #6b6a63;
+  --accent: #c8552a;
+  --accent-soft: #f5e7e0;
+  --shadow: 0 1px 2px rgba(22,21,15,.05), 0 8px 24px rgba(22,21,15,.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14140f;
+    --bg-soft: #1b1b15;
+    --surface: #1e1e17;
+    --border: #33322a;
+    --text: #f2f1ea;
+    --muted: #a5a396;
+    --accent: #e8825a;
+    --accent-soft: #33231b;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14140f;
+  --bg-soft: #1b1b15;
+  --surface: #1e1e17;
+  --border: #33322a;
+  --text: #f2f1ea;
+  --muted: #a5a396;
+  --accent: #e8825a;
+  --accent-soft: #33231b;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+a { color: inherit; }
+
+header { padding: 72px 0 52px; border-bottom: 1px solid var(--border); }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 26px;
+}
+.brand .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(32px, 5.6vw, 56px);
+  line-height: 1.1; letter-spacing: -.02em; font-weight: 600;
+}
+.lede { margin: 0; max-width: 58ch; font-size: clamp(16px, 2.2vw, 19px); color: var(--muted); }
+.quote {
+  margin: 0 0 20px; padding-left: 18px; border-left: 3px solid var(--accent);
+  font-size: clamp(17px, 2.4vw, 21px); max-width: 58ch;
+}
+
+section { padding: 56px 0 0; }
+.section-label {
+  font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 8px;
+}
+.section-title { margin: 0 0 26px; font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
+
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 26px 24px 24px; box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
+}
+.card__icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--accent-soft); color: var(--accent);
+  display: grid; place-items: center; font-size: 17px; margin-bottom: 18px;
+}
+.card__name { margin: 0 0 4px; font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+.card__tagline { margin: 0 0 14px; font-size: 14px; color: var(--accent); font-weight: 500; }
+.card__desc { margin: 0 0 18px; font-size: 15px; color: var(--muted); }
+.card__list { margin: auto 0 0; padding: 16px 0 0; list-style: none; border-top: 1px solid var(--border); }
+.card__list li { position: relative; padding-left: 18px; font-size: 14px; color: var(--muted); }
+.card__list li + li { margin-top: 7px; }
+.card__list li::before {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: .55;
+}
+.card__meta {
+  margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--border);
+  font-size: 13px; color: var(--muted);
+}
+.card__meta b { color: var(--text); font-weight: 500; }
+.card__meta p { margin: 0 0 6px; }
+.card__meta p:last-child { margin-bottom: 0; }
+
+.steps { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.step {
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: 12px; padding: 20px 18px;
+}
+.step__no { font-size: 12px; letter-spacing: .12em; color: var(--accent); font-weight: 600; }
+.step__name { margin: 8px 0 4px; font-size: 16px; font-weight: 600; }
+.step__dur { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.step__sum { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+.step__out { margin: 12px 0 0; font-size: 13px; color: var(--accent); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tags li {
+  font-size: 12px; color: var(--muted);
+  border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px;
+}
+
+.notes { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.notes li {
+  position: relative; padding-left: 24px; font-size: 15px; color: var(--muted);
+  max-width: 76ch;
+}
+.notes li::before {
+  content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 13px;
+}
+
+.card__night {
+  margin: 16px 0 0; padding: 12px 14px; border-radius: 10px;
+  background: var(--accent-soft); color: var(--text);
+  font-size: 13.5px; line-height: 1.5;
+}
+.mods { display: grid; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.mod {
+  display: grid; grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr) minmax(120px, auto);
+  gap: 14px; align-items: baseline;
+  padding: 14px 18px; background: var(--surface); font-size: 14px;
+}
+.mod + .mod { border-top: 1px solid var(--border); }
+.mod b { font-weight: 600; font-size: 14.5px; }
+.mod span { color: var(--muted); }
+.mod em {
+  font-style: normal; font-size: 12px; color: var(--accent);
+  letter-spacing: .04em; text-align: right;
+}
+@media (max-width: 640px) {
+  .mod { grid-template-columns: 1fr; gap: 4px; }
+  .mod em { text-align: left; }
+}
+.tiles { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.tile { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 20px 18px; }
+.tile h3 { margin: 0 0 8px; font-size: 15.5px; font-weight: 600; }
+.tile p { margin: 0; font-size: 14px; color: var(--muted); }
+
+.groupbar { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin-bottom: 28px; }
+.groupbar div {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; font-size: 13px;
+}
+.groupbar b { display: block; font-size: 13.5px; margin-bottom: 4px; }
+.groupbar span { color: var(--muted); font-size: 12.5px; line-height: 1.45; }
+
+.roles { display: grid; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.role {
+  display: grid; grid-template-columns: 30px minmax(150px, 1.1fr) minmax(0, 2fr) auto;
+  gap: 14px; align-items: baseline; padding: 15px 18px; background: var(--surface);
+}
+.role + .role { border-top: 1px solid var(--border); }
+.role__no { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.role__name { font-weight: 600; font-size: 14.5px; }
+.role__body { font-size: 14px; color: var(--muted); }
+.role__body em { font-style: normal; display: block; margin-top: 5px; font-size: 13px; opacity: .95; }
+.tag {
+  font-size: 11px; letter-spacing: .04em; text-transform: uppercase;
+  border: 1px solid var(--border); border-radius: 999px; padding: 3px 9px; color: var(--muted);
+  white-space: nowrap;
+}
+.tag--core { border-color: var(--accent); color: var(--accent); }
+.tag--new { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--accent); }
+@media (max-width: 720px) {
+  .role { grid-template-columns: 1fr; gap: 6px; }
+}
+
+.waves { display: grid; gap: 12px; }
+.wave {
+  display: grid; grid-template-columns: 46px 1fr; gap: 16px;
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 18px;
+}
+.wave__no {
+  width: 34px; height: 34px; border-radius: 50%; background: var(--accent-soft);
+  color: var(--accent); display: grid; place-items: center; font-weight: 600; font-size: 14px;
+}
+.wave__name { font-weight: 600; font-size: 16px; margin: 0 0 2px; }
+.wave__trigger { font-size: 12.5px; color: var(--accent); margin: 0 0 8px; }
+.wave__hires { margin: 0; font-size: 14px; color: var(--muted); }
+
+footer {
+  margin-top: 72px; padding: 28px 0 48px; border-top: 1px solid var(--border);
+  font-size: 14px; color: var(--muted);
+}
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>BETA · Ekip</div>
+    <h1>Ürün ve Web Ekibi</h1>
+    <p class="lede">Rol sayısı kişi sayısı demek değildir. Rol bir fonksiyondur; bir kişi birden fazla fonksiyon taşıyabilir, bazıları danışman olarak dışarıdan alınır. Aşağıdaki 21 rol, 7-9 kişilik bir çekirdek ekiple karşılanabilir.</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <p class="section-label">Yapı</p>
+      <h2 class="section-title">Yedi fonksiyon</h2>
+      <div class="groupbar">
+        <div><b>Strateji</b><span>Ne yapacağımıza ve neden yapacağımıza karar verir.</span></div>
+        <div><b>UX / Service Design</b><span>Hizmetin baştan sona nasıl deneyimleneceğini tasarlar.</span></div>
+        <div><b>UI / Brand</b><span>Görsel dili, tasarım sistemini ve metinleri kurar.</span></div>
+        <div><b>Development</b><span>Ürünü inşa eder ve ayakta tutar.</span></div>
+        <div><b>Safety / Legal</b><span>Güvenlik, gizlilik, erişilebilirlik ve kullanıcı güvenliği.</span></div>
+        <div><b>Marketing / Growth</b><span>Kullanıcıyı getirir ve dönüşüme çevirir.</span></div>
+        <div><b>Data &amp; Improvement</b><span>Ne işe yaradığını ölçer, kararı veriye bağlar.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Roller</p>
+      <h2 class="section-title">21 rol ve ne zaman gerektiği</h2>
+      <div class="roles">
+        <div class="role">
+          <span class="role__no">1</span>
+          <span class="role__name">Product Manager / Proje Lideri<br><span class="role__no">Strateji</span></span>
+          <span class="role__body">Vizyonu, hedefleri, öncelikleri ve ekip koordinasyonunu yönetir.<em>Başlangıçta kurucunun kendisidir. Erken PM alımı kurucuyla çakışır.</em></span>
+          <span class="tag tag--core">Kurucu</span>
+        </div>
+        <div class="role">
+          <span class="role__no">2</span>
+          <span class="role__name">Business Strategist<br><span class="role__no">Strateji</span></span>
+          <span class="role__body">İş modeli, gelir modeli, hedef müşteri ve rakip analizi.<em>Tam zamanlı değil; çeyreklik danışmanlık olarak yeterli.</em></span>
+          <span class="tag">Danışman</span>
+        </div>
+        <div class="role">
+          <span class="role__no">3</span>
+          <span class="role__name">Service Designer<br><span class="role__no">UX / Service Design</span></span>
+          <span class="role__body">Müşterinin hizmeti baştan sona nasıl deneyimleyeceğini tasarlar.<em>Yaşlı + aile + hizmet sağlayıcı üçgeninde en kritik rol. Ekran değil, hizmet tasarlar.</em></span>
+          <span class="tag tag--core">Çekirdek</span>
+        </div>
+        <div class="role">
+          <span class="role__no">4</span>
+          <span class="role__name">UX Researcher<br><span class="role__no">UX / Service Design</span></span>
+          <span class="role__body">Kullanıcı ihtiyaçlarını, sorunlarını ve davranışlarını araştırır.<em>Başta Service Designer yürütür. Yaşlı kullanıcıyla saha araştırması gerektiğinde ayrılır.</em></span>
+          <span class="tag">Sonraki dalga</span>
+        </div>
+        <div class="role">
+          <span class="role__no">5</span>
+          <span class="role__name">UX Designer<br><span class="role__no">UX / Service Design</span></span>
+          <span class="role__body">Kullanıcı yolculuğu, site mimarisi, wireframe ve akışlar.<em>Başlangıçta UI ile aynı kişi (UX/UI Designer).</em></span>
+          <span class="tag tag--core">Çekirdek</span>
+        </div>
+        <div class="role">
+          <span class="role__no">6</span>
+          <span class="role__name">UI Designer<br><span class="role__no">UI / Brand</span></span>
+          <span class="role__body">Renk, tipografi, buton, kart ve ekranların görsel tasarımı.<em>Ölçek büyüyene kadar UX Designer ile tek kişi.</em></span>
+          <span class="tag tag--core">Çekirdek</span>
+        </div>
+        <div class="role">
+          <span class="role__no">7</span>
+          <span class="role__name">Brand Designer<br><span class="role__no">UI / Brand</span></span>
+          <span class="role__body">Logo, marka kimliği, görsel dil ve tasarım sistemi.<em>Proje bazlı: kimlik bir kez kurulur, sonra ekip uygular.</em></span>
+          <span class="tag">Proje bazlı</span>
+        </div>
+        <div class="role">
+          <span class="role__no">8</span>
+          <span class="role__name">Copywriter / UX Writer<br><span class="role__no">UI / Brand</span></span>
+          <span class="role__body">Metinleri sade, güvenilir ve ikna edici şekilde yazar.<em>Yaşlı kullanıcıda metin, tasarımdan daha belirleyici. Erken alınmalı.</em></span>
+          <span class="tag tag--core">Çekirdek</span>
+        </div>
+        <div class="role">
+          <span class="role__no">9</span>
+          <span class="role__name">Frontend Developer<br><span class="role__no">Development</span></span>
+          <span class="role__body">Kullanıcının gördüğü arayüzü geliştirir.<em>Başta Full-Stack karşılar; arayüz karmaşıklaşınca ayrılır.</em></span>
+          <span class="tag">Sonraki dalga</span>
+        </div>
+        <div class="role">
+          <span class="role__no">10</span>
+          <span class="role__name">Backend Developer<br><span class="role__no">Development</span></span>
+          <span class="role__body">Üyelik, ödeme, mesajlaşma, veritabanı ve iş mantığı.<em>Ödeme ve kimlik altyapısı tek kişiye bırakılamayacak kadar kritik.</em></span>
+          <span class="tag tag--core">Çekirdek</span>
+        </div>
+        <div class="role">
+          <span class="role__no">11</span>
+          <span class="role__name">Full-Stack / Technical Lead<br><span class="role__no">Development</span></span>
+          <span class="role__body">Teknik mimariyi ve frontend-backend bütünlüğünü yönetir.<em>İlk teknik işe alım. Mimari kararlar bu kişiyle birlikte verilir.</em></span>
+          <span class="tag tag--core">Çekirdek</span>
+        </div>
+        <div class="role">
+          <span class="role__no">12</span>
+          <span class="role__name">Mobile Developer<br><span class="role__no">Development</span></span>
+          <span class="role__body">iOS/Android uygulamasını geliştirir.<em>Mobil uygulama gerçekten gerekli olduğu kanıtlanana kadar açılmaz.</em></span>
+          <span class="tag">Sonraki dalga</span>
+        </div>
+        <div class="role">
+          <span class="role__no">13</span>
+          <span class="role__name">SEO Specialist<br><span class="role__no">Marketing / Growth</span></span>
+          <span class="role__body">Bulunabilirlik, içerik yapısı ve teknik SEO.<em>Blog huninin girişi olduğu için SEO ürünün parçası, pazarlama eki değil.</em></span>
+          <span class="tag tag--core">Çekirdek</span>
+        </div>
+        <div class="role">
+          <span class="role__no">14</span>
+          <span class="role__name">Conversion / CRO Specialist<br><span class="role__no">Marketing / Growth</span></span>
+          <span class="role__body">Kayıt, satın alma ve başvuru dönüşümünü optimize eder.<em>Optimize edilecek anlamlı trafik oluşmadan alınması erken.</em></span>
+          <span class="tag">Sonraki dalga</span>
+        </div>
+        <div class="role">
+          <span class="role__no">15</span>
+          <span class="role__name">Data Analyst<br><span class="role__no">Data &amp; Improvement</span></span>
+          <span class="role__body">Kullanıcı davranışı ve dönüşüm oranlarını analiz eder.<em>Ama ölçüm altyapısı gün 0&#x27;da kurulur — analist sonra gelir, veri baştan toplanır.</em></span>
+          <span class="tag">Sonraki dalga</span>
+        </div>
+        <div class="role">
+          <span class="role__no">16</span>
+          <span class="role__name">QA / Test Engineer<br><span class="role__no">Development</span></span>
+          <span class="role__body">Farklı cihazlarda test eder, hataları bulur.<em>Yaşlı kullanıcıda hata toleransı düşüktür; tek kötü deneyim güveni bitirir.</em></span>
+          <span class="tag tag--core">Çekirdek</span>
+        </div>
+        <div class="role">
+          <span class="role__no">17</span>
+          <span class="role__name">Accessibility Specialist<br><span class="role__no">Safety / Legal</span></span>
+          <span class="role__body">Yaşlılar ve engelli kullanıcılar dahil herkes için erişilebilirlik.<em>Sonradan denetim değil, gün 0 kısıtı. Norveç&#x27;te yasal yükümlülük de var.</em></span>
+          <span class="tag">Danışman</span>
+        </div>
+        <div class="role">
+          <span class="role__no">18</span>
+          <span class="role__name">Cybersecurity Specialist<br><span class="role__no">Safety / Legal</span></span>
+          <span class="role__body">Hesap, kişisel bilgi ve ödeme güvenliği.<em>Ödeme ve kimlik canlıya çıkmadan önce bir denetim şart.</em></span>
+          <span class="tag">Danışman</span>
+        </div>
+        <div class="role">
+          <span class="role__no">19</span>
+          <span class="role__name">GDPR / Privacy Specialist<br><span class="role__no">Safety / Legal</span></span>
+          <span class="role__body">Avrupa veri koruma ve gizlilik gerekliliklerini kontrol eder.<em>Veri modeli çizilirken masada olmalı. Sonradan uyum, şema değişikliği demektir.</em></span>
+          <span class="tag">Danışman</span>
+        </div>
+        <div class="role">
+          <span class="role__no">20</span>
+          <span class="role__name">Growth / Digital Marketing<br><span class="role__no">Marketing / Growth</span></span>
+          <span class="role__body">Kullanıcı kazanımı, reklam, sosyal medya ve büyüme.<em>SEO ile aynı kişi olabilir (Growth/SEO).</em></span>
+          <span class="tag tag--core">Çekirdek</span>
+        </div>
+        <div class="role">
+          <span class="role__no">21</span>
+          <span class="role__name">Trust &amp; Safety<br><span class="role__no">Safety / Legal</span></span>
+          <span class="role__body">Hizmet sağlayıcı doğrulama, kötüye kullanım ve dolandırıcılık önleme, olay müdahalesi.<em>Listede yoktu ama yazınızda geçiyordu. Yaşlı kullanıcıyı hizmet sağlayıcıyla buluşturan bir platformda en yüksek riskli alan burasıdır — ayrı rol olarak yazılmalı.</em></span>
+          <span class="tag tag--core">Çekirdek <span class="tag tag--new">eklendi</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Başlangıç</p>
+      <h2 class="section-title">Çekirdek ekip — 7-9 kişi</h2>
+      <ul class="notes">
+      <li>Product Manager (kurucu)</li>
+      <li>Service Designer</li>
+      <li>UX/UI Designer</li>
+      <li>UX Writer</li>
+      <li>Full-Stack / Technical Lead</li>
+      <li>Backend Developer</li>
+      <li>Growth / SEO</li>
+      <li>QA</li>
+      <li>Güvenlik · GDPR · Erişilebilirlik (danışman)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Sıra</p>
+      <h2 class="section-title">İşe alım dalgaları</h2>
+      <div class="waves">
+        <div class="wave">
+          <div class="wave__no">0</div>
+          <div>
+            <p class="wave__name">Kurucu + danışman</p>
+            <p class="wave__trigger">Tetikleyici: Bugün</p>
+            <p class="wave__hires">Kurucu PM rolünü taşır. Business Strategist çeyreklik danışman.</p>
+          </div>
+        </div>
+        <div class="wave">
+          <div class="wave__no">1</div>
+          <div>
+            <p class="wave__name">İnşa edebilir hale gel</p>
+            <p class="wave__trigger">Tetikleyici: Ürün fikri doğrulandığında</p>
+            <p class="wave__hires">Technical Lead · Service Designer · UX/UI Designer · UX Writer. GDPR ve erişilebilirlik danışmanı bu aşamada masaya oturur.</p>
+          </div>
+        </div>
+        <div class="wave">
+          <div class="wave__no">2</div>
+          <div>
+            <p class="wave__name">Canlıya çık ve para al</p>
+            <p class="wave__trigger">Tetikleyici: İlk ürün satışa hazır olduğunda</p>
+            <p class="wave__hires">Backend Developer · QA · Growth/SEO · Trust &amp; Safety. Güvenlik denetimi ödeme canlıya çıkmadan yapılır.</p>
+          </div>
+        </div>
+        <div class="wave">
+          <div class="wave__no">3</div>
+          <div>
+            <p class="wave__name">Ölçek ve optimizasyon</p>
+            <p class="wave__trigger">Tetikleyici: Aylık anlamlı trafik ve tekrar eden gelir oluştuğunda</p>
+            <p class="wave__hires">Data Analyst · CRO · UX Researcher · Frontend Developer</p>
+          </div>
+        </div>
+        <div class="wave">
+          <div class="wave__no">4</div>
+          <div>
+            <p class="wave__name">Genişleme</p>
+            <p class="wave__trigger">Tetikleyici: Mobil ihtiyacı veriyle kanıtlandığında</p>
+            <p class="wave__hires">Mobile Developer · ayrı Brand Designer · ikinci Backend</p>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:28px;font-size:15px;color:var(--muted)">
+        Gerekçe ve açık kararlar: <b>docs/team-and-org.md</b> · <a href="index.html">← Tüm BETA ürünleri</a>
+      </p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>BETA</span>
+    <span>Güncelleme: 2026-08-19</span>
+  </div>
+</footer>
+</body>
+</html>

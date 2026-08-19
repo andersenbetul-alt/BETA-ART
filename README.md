@@ -55,13 +55,23 @@ Erişim, abonelik ve kredi doğruluğunun tek kaynağı kendi veritabanımızdı
 psql -f db/schema.sql -f db/seed.sql -f db/functions.sql -f db/test.sql
 ```
 
+## Ekip
+
+21 rol, 7 fonksiyon grubu ve tetikleyiciye bağlı 5 işe alım dalgası.
+Çekirdek ekip 7-9 kişi; roller tek kişide birleşir veya danışman olarak alınır.
+
+- Organizasyon ve işe alım sırası: [`docs/team-and-org.md`](docs/team-and-org.md)
+- Roller ve dalgalar: `data/team.json` → `team.html`
+
 ## Yapı
 
 ```
 data/categories.json            Kategorilerin tek kaynağı
 data/workforce.json             AI Workforce ürün tanımı (roller, iş alanları, süreç, paketler)
+data/team.json                  Ürün ve web ekibi: roller, gruplar, işe alım dalgaları
 docs/ai-workforce-playbook.md   Satış akışı, analiz şablonu, kurulum kontrol listesi
 docs/payment-architecture.md    Ödeme mimarisi, kararlar, açık sorular
+docs/team-and-org.md            Organizasyon yapısı ve işe alım sırası
 db/schema.sql                   Ödeme veritabanı şeması
 db/seed.sql                     Ürün kataloğu ve kredi fiyatları
 db/functions.sql                consume_credits, has_entitlement, grant_period_credits
@@ -69,6 +79,7 @@ db/test.sql                     Kredi ve erişim mantığı testleri
 build.py                        JSON'lardan index.html ve work.html üretir
 index.html                      Kategori sayfası (üretilen)
 work.html                       AI Workforce sayfası (üretilen)
+team.html                       Ekip ve organizasyon sayfası (üretilen)
 ```
 
 ## Kullanım
