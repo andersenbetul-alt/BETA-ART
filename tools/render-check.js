@@ -222,6 +222,18 @@ async function run() {
       deviceScaleFactor: 1,
     });
     const page = await ctx.newPage();
+
+    // Every page links Google Fonts. Chromium's CONNECT to fonts.googleapis.com
+    // is refused by the egress gateway, and Chromium spends thirteen seconds
+    // discovering that before it will fire domcontentloaded — four hundred
+    // times a run, and occasionally long enough to trip the timeout and report
+    // a page as failing to load when nothing is wrong with it.
+    //
+    // Refusing the request outright removes the wait and makes the run
+    // deterministic. It does not restore the typefaces: they were never
+    // arriving. See the caveat printed with the results.
+    await page.route(/fonts\.(googleapis|gstatic)\.com/, (r) => r.abort());
+
     let errors = [];
     page.on("pageerror", (e) => errors.push(String(e.message).slice(0, 120)));
     page.on("console", (m) => {
@@ -274,7 +286,8 @@ async function run() {
     if (!bySection.has(f.section)) bySection.set(f.section, []);
     bySection.get(f.section).push(f.msg);
   }
-  console.log(`\n${list.length} pages rendered at ${WIDTHS.length} widths\n`);
+  console.log(`\n${list.length} pages rendered at ${WIDTHS.length} widths`);
+  console.log("Web fonts are blocked to this session, so text was measured in the\nfallback stacks. Sizes and overflow are indicative where a webfont differs\nin metrics; contrast and structure are unaffected.\n");
   for (const [section, msgs] of [...bySection].sort()) {
     console.log(`${section} — ${msgs.length}`);
     const unique = [...new Set(msgs)];
