@@ -40,6 +40,16 @@ function pages() {
     for (const f of fs.readdirSync(base).sort()) {
       if (f.endsWith(".html")) out.push(path.join(base, f));
     }
+    // The per-language URLs live one level down and were never opened here.
+    // They share a stylesheet with the pages above them, so the header fault
+    // this gate had missed for months was on all 26 of them too — and the gate
+    // would have reported it clean.
+    const lang = path.join(base, "no");
+    if (fs.existsSync(lang)) {
+      for (const f of fs.readdirSync(lang).sort()) {
+        if (f.endsWith(".html")) out.push(path.join(lang, f));
+      }
+    }
   }
   return out;
 }
