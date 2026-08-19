@@ -21,7 +21,10 @@
     var saved = null;
     try { saved = localStorage.getItem(STORE_KEY); } catch (e) { /* private mode */ }
     var fromUrl = new URLSearchParams(location.search).get('lang');
-    var list = [fromUrl, saved].concat(navigator.languages || [navigator.language]);
+    // A pre-rendered page states its own language and that wins over anything remembered:
+    // arriving on /tr/ and being switched to English by an old preference is a bug.
+    var pinned = document.documentElement.dataset.pageLang;
+    var list = [pinned, fromUrl, saved].concat(navigator.languages || [navigator.language]);
     for (var i = 0; i < list.length; i++) {
       var hit = supported(list[i]);
       if (hit) return hit;
@@ -66,7 +69,15 @@
       opt.textContent = l.flag + '  ' + l.label;
       select.appendChild(opt);
     });
-    select.addEventListener('change', function () { apply(select.value); });
+    select.addEventListener('change', function () {
+      // On a pre-rendered page each language is its own URL — go there, so the address bar
+      // and what the visitor shares stay truthful.
+      if (document.documentElement.dataset.pageLang) {
+        location.href = '../' + select.value + '/';
+        return;
+      }
+      apply(select.value);
+    });
   }
 
   /* ---------- nav ---------- */

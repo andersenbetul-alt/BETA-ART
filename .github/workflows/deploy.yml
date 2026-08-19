@@ -24,10 +24,13 @@ jobs:
         with:
           node-version: 20
       - run: npm run check
+      # Pre-render one directory per language into dist/ so every hreflang URL
+      # serves real translated HTML instead of the same English page twelve times.
+      - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: dist
 
   deploy:
     needs: build
