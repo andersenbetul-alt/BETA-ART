@@ -432,3 +432,12 @@ strong, b { font-weight: 600; }
 }
 .nav a { min-width: 24px; text-align: center; }
 .contact-list a, .side-list a, .dir-list a, .legal-index a { padding-block: .35rem; }
+
+/* The end of an essay is where a reader decides whether to come back.
+   Further reading is not a next action; it is a way to keep browsing. */
+.essay-end { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  padding: 1.8rem 0; margin: 2.6rem 0; }
+.essay-end p { max-width: 60ch; }
+.essay-end-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.4rem 0 0; }
+.btn-quiet { background: transparent; color: var(--ink); border-color: var(--rule); }
+.btn-quiet:hover { border-color: var(--seal); color: var(--seal); }
