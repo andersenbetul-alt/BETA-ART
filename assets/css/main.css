@@ -442,6 +442,14 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
   color: var(--text-muted); font-size: .95rem;
 }
 
+/* Hero'daki kanıt bağlantısı: vaadin altında, ondan daha sessiz ama tıklanır */
+.hero-proof { margin: 10px 0 0; font-size: .92rem; }
+.hero-proof a {
+  color: var(--brand); font-weight: 600; text-decoration: none;
+  border-bottom: 1px solid transparent; transition: border-color .15s ease;
+}
+.hero-proof a:hover { border-bottom-color: var(--brand); }
+
 /* Metin içi yazı bağlantısı: kümeyi bağlamda gösterir */
 .article-body .article-see {
   margin: 1.4em 0; padding: 12px 16px; border-radius: 12px;
