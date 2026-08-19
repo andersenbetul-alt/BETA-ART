@@ -311,11 +311,18 @@
     return '<p class="article-disclosure">' + esc(t('posts.affDisclosure')) + '</p>';
   }
 
+  // Gövde metninde **vurgu** yazılabiliyor. Önce kaçırıyoruz, sonra çeviriyoruz:
+  // sıra bu olmazsa vurgu işareti HTML enjeksiyonuna kapı açar.
+  // Ara başlıkta kullanılmıyor — başlığın tamamı zaten vurgulu.
+  function rich(str) {
+    return esc(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  }
+
   function blockHTML(block) {
-    if (typeof block === 'string') return '<p>' + esc(block) + '</p>';
+    if (typeof block === 'string') return '<p>' + rich(block) + '</p>';
     if (block.h) return '<h2>' + esc(block.h) + '</h2>';
-    if (block.note) return '<p class="article-note">' + esc(block.note) + '</p>';
-    if (block.ul) return '<ul>' + block.ul.map(function (li) { return '<li>' + esc(li) + '</li>'; }).join('') + '</ul>';
+    if (block.note) return '<p class="article-note">' + rich(block.note) + '</p>';
+    if (block.ul) return '<ul>' + block.ul.map(function (li) { return '<li>' + rich(li) + '</li>'; }).join('') + '</ul>';
     if (block.see) return seeHTML(block.see);
     if (block.aff) return affHTML(block.aff);
     return '';

@@ -32,12 +32,19 @@ ikisini birden tutmak, geliri hem hızlı hem de tek kaynağa bağlı olmaktan �
 
 ## Sütun: Make Money (6 temel sayfa)
 
-### P01 — How to Make Money With AI in 2026: 25 Realistic Ways
+### P01 — How to Make Money With AI in 2026: 25 Realistic Ways  ✅ yayında
 **KW:** how to make money with ai · **Niyet:** bilgi → işlem · **Gelir:** AI aracı
 affiliate (SaaS %20–40 tekrarlayan) + kendi dijital ürünümüz · **Huni:** blog →
 newsletter → ürün
 Sitenin amiral gemisi. Her yolun yanında gerçek kazanç aralığı, gereken süre ve
 başlangıç maliyeti olacak — "25 fikir" listesi değil, 25 **değerlendirilmiş** yol.
+
+> **Yayındaki sürümün kapsam kararı (19.08).** 25 ayrı gelir rakamı kaynaklanamadı:
+> dolaşımdaki rakamların neredeyse tamamı o yolu satan kişilerden geliyor ve bu
+> ortamdan birincil kaynak sayfaları açılamıyor. Uydurmak yerine yollar **kanıt
+> kalitesine göre üçe ayrıldı** (güçlü / orta / zayıf) ve her birine üç soruluk bir
+> filtre uygulandı. Mimarinin kendi ölçütü olan "değerlendirilmiş yol" korunmuş oldu;
+> "25" sayısı korunmadı. Kaynaklanabilir yeni veri geldikçe yol eklenecek.
 
 1. AI ile freelance yazarlık: gerçek ücretler
 2. AI ajanı kurup KOBİ'ye satmak

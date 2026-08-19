@@ -95,7 +95,12 @@ Tarayıcı testi gerektiğinde Playwright, Chromium ile kullanılabilir
 
 Gövde blokları: düz dize (paragraf), `{h:'…'}` (ara başlık), `{ul:[…]}` (liste),
 `{note:'…'}` (uyarı kutusu), `{see:'slug'}` (metin içi yazı bağlantısı — küme
-bağlantısı sayılır, `check.mjs` olmayan slug'ı yakalar).
+bağlantısı sayılır, `check.mjs` olmayan slug'ı yakalar), `{aff:{t,u,why}}`
+(ortaklık bağlantısı).
+
+Paragraf, liste ve not içinde `**vurgu**` yazılabilir. Ara başlıkta çevrilmez.
+Kaçırma önce, çeviri sonra yapılır (`rich()`); sırayı bozmayın, yoksa vurgu
+işareti HTML enjeksiyonuna kapı açar. `check.mjs` eşleşmeyen `**` yakalar.
 
 Ayrıca iki alan görünürlük kuralı gereği doldurulur:
 - `orig` — bu sayfanın özgün katkısı tek cümleyle (kendi verisi, testi, tablosu).

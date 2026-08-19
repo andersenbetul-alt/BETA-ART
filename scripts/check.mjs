@@ -73,6 +73,13 @@ const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
           if (typeof x === 'object' && x && x.see && !POSTS.some((q) => q.slug === x.see)) {
             fail(`posts [${p.slug}]: ${code} içinde olmayan yazıya bağlantı — "${x.see}"`); bad++;
           }
+          // Vurgu işaretleri eşleşmeli; tek kalan ** sayfada düz yıldız olarak basılır.
+          const metin = typeof x === 'string' ? x : (x.note || (x.ul || []).join(' ') || '');
+          const yildiz = (metin.match(/\*\*/g) || []).length;
+          if (yildiz % 2) { fail(`posts [${p.slug}]: ${code} eşleşmeyen ** vurgu işareti`); bad++; }
+          if (typeof x === 'object' && x && x.h && /\*\*/.test(x.h)) {
+            warn(`posts [${p.slug}]: ${code} ara başlıkta ** kullanılmış — başlıkta vurgu çevrilmiyor`);
+          }
           // Ortaklık bağlantısı: adres geçerli olmalı, gerekçe zorunlu.
           // Gerekçesiz öneri reklamdır ve okur bunu anlar.
           if (typeof x === 'object' && x && x.aff) {
