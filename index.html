@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HXI — Norwegian Phonk Producer | Official Website</title>
-<meta name="description" content="Official website of HXI (Christoffer Andersen), Norwegian phonk producer from Oslo. 43M+ Spotify streams. Sync: Fast &amp; Furious, BODYCAM OST. NCS Artist.">
+<meta name="description" content="Official website of HXI (Christoffer Andersen), Norwegian phonk producer from Oslo. 43M+ Spotify streams. Sync: Fast &amp; Furious, BODYCAM OST. NCS Artist. Two tracks free for creators, with credit.">
 <meta name="keywords" content="HXI, phonk, drift phonk, phonk house, montagem, Norwegian producer, Oslo, NCS, help urself, X-PIRATA, Christoffer Andersen">
 <meta name="author" content="HXI / Christoffer Andersen">
 <meta name="robots" content="index, follow">
@@ -31,14 +31,14 @@
      and neither is contacted until the visitor asks for them. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-src https://www.youtube-nocookie.com https://open.spotify.com; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta property="og:title" content="HXI — Norwegian Phonk Producer">
-<meta property="og:description" content="43M+ Spotify streams. Fast &amp; Furious sync. BODYCAM OST. NCS Artist. Oslo, Norway.">
+<meta property="og:description" content="43M+ Spotify streams. Fast &amp; Furious sync. BODYCAM OST. NCS Artist. Two tracks free for creators, with credit.">
 <meta property="og:type" content="music.musician">
 <meta property="og:url" content="https://hximusic.com">
 <meta property="og:site_name" content="HXI">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HXI — Norwegian Phonk Producer">
-<meta name="twitter:description" content="43M+ Spotify streams. Fast &amp; Furious sync. BODYCAM OST. NCS Artist.">
+<meta name="twitter:description" content="43M+ Spotify streams. Fast &amp; Furious sync. BODYCAM OST. Two tracks free for creators, with credit.">
 <meta name="twitter:site" content="@HXIMusic">
 <meta property="og:image" content="https://hximusic.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -49,6 +49,10 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/barlow-condensed-900-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- The two faces that paint above the fold: the wordmark and the body text. Everything
+     else is discovered from fonts.css, which is enough for text further down. -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/barlow-condensed-900-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-300-latin.woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <noscript><style>
@@ -102,10 +106,10 @@
       <h1 class="wordmark">HXI</h1>
       <p class="hero-tagline" data-i18n="hero_tagline">Nordic Phonk</p>
 
-      <div class="stem-card">
-        <p class="stem-label" data-i18n="hero_stem_label">◈ Free Stem Pack</p>
-        <p class="stem-title">HELP URSELF — OFFICIAL STEMS</p>
-      </div>
+      <a class="stem-card" href="#use">
+        <span class="stem-label" data-i18n="hero_use_label">◈ Free for creators</span>
+        <span class="stem-title" data-i18n="hero_use_title">Two tracks cleared. Credit and go.</span>
+      </a>
 
       <p class="hero-cta">
         <a class="btn btn-solid btn-lg" href="https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU" target="_blank" rel="noopener noreferrer" data-i18n="btn_stream">Stream Now</a>
@@ -197,7 +201,6 @@
           </div>
           <p class="card-links">
             <a href="https://open.spotify.com/track/54ggxbEopZwQ20zurJiHSD" target="_blank" rel="noopener noreferrer">Spotify</a>
-            <a href="#drop" data-i18n="music_free_stems">◈ Free stems</a>
           </p>
         </article>
 
@@ -359,7 +362,7 @@
       <p class="lead" data-i18n="use_lead">The edit community built this catalogue's reach. This section exists for the people making things with it: what is cleared, what is not, and the exact text to paste.</p>
 
       <div class="use-grid">
-        <article class="card use-card use-card-main">
+        <article class="card use-card">
           <p class="tag accent" data-i18n="use_free_t">Cleared for creators</p>
           <p class="use-d" data-i18n="use_free_d">Two releases went out through NoCopyrightSounds. Creators can use them in videos, including monetised ones, on the terms NCS publishes — the credit below is the condition.</p>
 
@@ -486,7 +489,7 @@ Free Download / Stream: https://ncs.io/roundaround</pre>
       <div>
         <h2 class="h2" data-i18n="drop_title">First access. No noise.</h2>
         <p class="lead" data-i18n="drop_sub">New releases, stem packs, unreleased tracks — straight to your inbox.</p>
-        <p class="tag accent" data-i18n="drop_tag">Free “help urself” stem pack when you sign up.</p>
+        <p class="tag accent" data-i18n="drop_tag">Stems and unreleased tracks go to the list first.</p>
         <form class="signup" id="signup">
           <input type="email" id="signup-email" required placeholder="you@email.com" autocomplete="email" aria-label="Email">
           <button class="btn btn-solid" type="submit" data-i18n="drop_enter">Enter</button>

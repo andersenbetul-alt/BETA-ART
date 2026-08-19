@@ -425,9 +425,9 @@
       var value = input && input.value ? input.value.trim() : '';
       if (!value) return;
       // No backend on a static host: hand the address to the visitor's mail client.
-      var body = encodeURIComponent('Sign me up for HXI drops and the free stem pack.\nEmail: ' + value);
+      var body = encodeURIComponent('Sign me up for HXI drops.\nEmail: ' + value);
       location.href = 'mailto:hello@hximusic.com?subject=' +
-        encodeURIComponent('Stem pack signup') + '&body=' + body;
+        encodeURIComponent('Mailing list signup') + '&body=' + body;
       form.reset();
     });
   }

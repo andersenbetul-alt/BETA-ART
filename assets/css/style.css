@@ -91,9 +91,10 @@ h2.label,h3.label{font-weight:400;line-height:1.6}
 .kicker{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
 .wordmark{font-family:var(--display);font-weight:900;font-size:clamp(84px,22vw,240px);letter-spacing:-.04em;line-height:.8}
 .hero-tagline{font-family:var(--display);font-weight:300;font-size:clamp(13px,2.4vw,24px);letter-spacing:.5em;text-transform:uppercase;color:var(--muted);margin:14px 0 24px}
-.stem-card{max-width:430px;margin:0 auto 30px;padding:14px 24px;border:1px solid rgba(239,43,45,.34);background:rgba(239,43,45,.06)}
-.stem-label{font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
-.stem-title{font-family:var(--display);font-size:18px;letter-spacing:.05em;margin:0}
+.stem-card{display:block;max-width:430px;margin:0 auto 30px;padding:14px 24px;border:1px solid rgba(239,43,45,.34);background:rgba(239,43,45,.06);text-decoration:none;transition:background .18s,border-color .18s}
+.stem-card:hover,.stem-card:focus-visible{background:rgba(239,43,45,.12);border-color:var(--accent)}
+.stem-label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.stem-title{display:block;font-family:var(--display);font-size:18px;letter-spacing:.05em;margin:0}
 .hero-cta{margin-bottom:46px}
 .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(18px,5vw,52px)}
 .stats b{display:block;font-family:var(--display);font-size:clamp(22px,3.6vw,34px);font-weight:700;line-height:1}
