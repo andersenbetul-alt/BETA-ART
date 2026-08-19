@@ -84,6 +84,13 @@ footer p{margin:0 0 .5rem;font-family:var(--f-mono);font-size:.62rem;letter-spac
     text-transform: uppercase; line-height: 1;
   }
   .human-mark svg { flex: none; }
+  /* These two forms were links inside the human-approved badge. A flex item
+     inside a 10px-tall badge is a 10px-tall target, and both of them are the
+     route someone uses when something has gone wrong. They stand on their own
+     line now, at a size a thumb can find. */
+  .legal-foot-links { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 0 0 1rem; }
+  .legal-foot-links a { padding-block: .5rem; font-family: var(--f-mono); font-size: .66rem;
+    letter-spacing: .12em; text-transform: uppercase; }
   .human-mark-note {
     margin: 0 0 .9rem; max-width: 62ch;
     font-family: var(--f-body); font-size: .78rem; letter-spacing: 0;
@@ -508,8 +515,12 @@ promise more than we can deliver.</p>
 </main>
 <footer>
 <div class="wrap">
-<p class="human-mark"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.1" fill="none" stroke="currentColor" stroke-width="1.4"></circle><path d="M4.7 8.2 7 10.5 11.3 5.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"></path></svg><span>Human approved</span> · <a href="report.html">Report something unlawful</a> · <a href="https://beta-art-archive-bet-art.vercel.app/release.html">Model release</a></p>
+<p class="human-mark"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.1" fill="none" stroke="currentColor" stroke-width="1.4"></circle><path d="M4.7 8.2 7 10.5 11.3 5.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"></path></svg><span>Human approved</span></p>
 <p class="human-mark-note">Nothing is published here until a person has seen it and approved it.</p>
+<nav class="legal-foot-links" aria-label="Forms">
+<a href="report.html">Report something unlawful</a>
+<a href="https://beta-art-archive-bet-art.vercel.app/release.html">Model release</a>
+</nav>
 <p>© 2026 Beta Art — Betül Öner. All rights reserved worldwide. This legal notice is itself a protected work.</p>
 <p>Where a translation of this page exists, the English text governs; a translation is provided for understanding, not as a separate legal instrument. Last updated 2026.</p>
 </div>

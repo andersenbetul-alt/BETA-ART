@@ -823,3 +823,9 @@ strong, b { font-weight: 600; }
    into the service, and 21px is under the 24px WCAG 2.2 AA floor. Padding on
    an inline link grows the hit box without disturbing the card. */
 .card h3 a, .svc-card h3 a { padding-block: .25rem; }
+
+
+/* A breadcrumb whose last step is a two-letter category — "AI" — was 14px
+   wide. Tall enough already; it needed room on the sides. */
+.crumbs a { padding-inline: .4rem; }
+.crumbs a:first-child { padding-inline-start: 0; }
