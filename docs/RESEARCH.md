@@ -111,6 +111,26 @@ not in the archive yet — that is the only reason it is missing.
   "I Can't Stop" remix, and others) on Spotify. The catalogue only shows the original; a
   "versions" line on that card would reflect what is actually out there.
 
+## Poisoned sources — do not take figures from these
+
+Two files in the project archive are early AI mock-ups, not records of anything. Their
+numbers read like data and are not:
+
+- **`HXIWebsite.jsx`** — 850,000 monthly listeners, "60+ original tracks", "180+ countries",
+  "12+ platforms", and four releases that do not exist (*SYNTHETIC MIND*, *NEON PROTOCOL*,
+  *VOID SESSIONS*, *DIGITAL FEVER*). Contact addresses at `hxi.music`, a domain the project
+  does not use. Accent colour `#C8FF00`, which is not the brand.
+- **`IMPLEMENTATION_GUIDE_TR.md`** — repeats "850K+ dinleyici, 60+ parça" as though it were
+  established, and carries it into the meta description, the JSON-LD and the social-launch
+  copy it proposes.
+
+The real figures are 251K monthly listeners and the twenty-release archive above. 850K is
+3.4× the truth. If either number ever went out on a live page, a press kit or a pitch, it
+needs correcting at the source — an inflated listener count in front of a sync supervisor or
+a booking agent is the kind of error that costs the relationship, not the placement.
+
+Neither file is a source. Nothing on the page comes from them.
+
 ## Where the August 2026 round came from
 
 HXI's own project archive — a brand brief, a data pack, a phase history and several site
