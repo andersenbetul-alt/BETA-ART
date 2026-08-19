@@ -186,15 +186,25 @@ def check_headers():
 
 
 def check_language_signals():
-    for sub, f, path in pages():
-        src = read(path)
-        rel = os.path.join(sub, f) if sub else f
-        if "i18n.js" in src and 'hreflang' not in src:
-            note("language", "the switcher is client-side and the URL never changes, so "
-                 "all twelve languages share one address. hreflang cannot help until "
-                 "each language has its own URL — adding it now would be a false "
-                 "signal. Real fix: build /no/, /tr/ … as indexable pages.")
-            return   # true of every page; saying it once is enough
+    """A twelve-language switcher that never changes the URL is invisible to a
+    search engine. Report it per property, and only where it is still true."""
+    for label, sub in PROPS.items():
+        base = os.path.join(ROOT, sub)
+        idx = os.path.join(base, "index.html")
+        if not os.path.exists(idx):
+            continue
+        src = read(idx)
+        if "i18n.js" not in src:
+            continue
+        langs = sorted({d for d in os.listdir(base)
+                        if len(d) == 2 and os.path.isdir(os.path.join(base, d))})
+        if "hreflang" in src and langs:
+            continue          # real per-language addresses exist
+        note("language", "%s offers twelve languages from one address%s. Until each "
+             "language has its own URL, eleven of them are invisible to search — "
+             "adding hreflang without the pages would be a false signal."
+             % (label, " (%s/ exists but the home page does not link it)"
+                % ", ".join(langs) if langs else ""))
 
 
 def check_journal_depth():

@@ -771,3 +771,19 @@ strong, b { font-weight: 600; }
 }
 .nav a { min-width: 24px; text-align: center; }
 .contact-list a, .side-list a, .dir-list a, .legal-index a { padding-block: .35rem; }
+
+/* The two-language pair on Norwegian pages: a link that navigates, not a
+   switcher that swaps text. The URL has to change for a search engine to
+   know the page exists. */
+.lang-pair { display: flex; gap: .55rem; align-items: center; margin: 0;
+  font-family: var(--f-mono); font-size: .6rem; letter-spacing: .12em;
+  text-transform: uppercase; }
+.lang-pair a { color: var(--muted); text-decoration: none; padding-block: .4rem; }
+.lang-pair a:hover { color: var(--seal-bright); }
+.lang-pair span { color: var(--text); padding-block: .4rem; }
+.lang-pair a::after { content: "·"; margin-left: .55rem; color: var(--edge); }
+/* The one language that has real pages behind it gets a real link. */
+.lang-no { font-family: var(--f-mono); font-size: .6rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); text-decoration: none;
+  padding: .4rem .55rem; border: 1px solid var(--edge); white-space: nowrap; }
+.lang-no:hover { color: var(--seal-bright); border-color: var(--seal-bright); }
