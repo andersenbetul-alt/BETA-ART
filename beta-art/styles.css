@@ -651,3 +651,8 @@ strong, b { font-weight: 600; }
   padding: 1.2rem 1.4rem; margin: 1.5rem 0;
 }
 .note-band p:last-child { margin-bottom: 0; }
+
+/* A plate's title is the primary way into that plate, and it sat at 21px —
+   under the 24px WCAG 2.2 AA floor. Vertical padding on an inline link grows
+   the hit box without moving the card's layout. */
+.plate-meta h3 a { padding-block: .25rem; }

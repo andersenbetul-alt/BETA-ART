@@ -137,24 +137,24 @@ const PROBE = `(() => {
     }
   }
 
+  const cs2 = (el) => getComputedStyle(el);
+
   /* --- tap targets: 24x24 is the WCAG 2.2 AA floor -------------------- */
   for (const el of document.querySelectorAll("a,button,input,select,summary,[role=button]")) {
     if (el.offsetParent === null) continue;
     const r = el.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) continue;
-    // WCAG 2.5.8 exempts a target "in a sentence or block of text". A fixed
-    // list of parent tags gets this wrong both ways: it excused nothing inside
-    // a list item of prose, and it would excuse a nav link that happened to sit
-    // in a <p>. Measure instead — if the surrounding block says a good deal
-    // more than the link does, the link is inside a sentence.
-    if (el.tagName === "A") {
+    // WCAG 2.5.8 exempts a target "in a sentence or block of text". Two earlier
+    // attempts at this got it wrong in opposite directions: a fixed list of
+    // parent tags excused a heading that contained nothing but a link, and a
+    // character-count threshold condemned "the RSS feed" inside a short
+    // sentence. What the exemption actually describes is an inline target
+    // sitting in running text — so test exactly that: the link flows inline,
+    // and the block around it says something besides the link.
+    if (el.tagName === "A" && cs2(el).display === "inline") {
       const block = el.parentElement && el.parentElement.closest(
-        "p,li,dd,td,label,h1,h2,h3,h4,blockquote,figcaption,summary");
-      if (block) {
-        const around = block.textContent.trim().length;
-        const own = el.textContent.trim().length;
-        if (around >= own * 2 && around - own >= 40) continue;
-      }
+        "p,li,dd,dt,td,label,h1,h2,h3,h4,h5,blockquote,figcaption,summary,figure,div");
+      if (block && block.textContent.trim().length > el.textContent.trim().length) continue;
     }
     if (r.width < 24 || r.height < 24) {
       out.targets.push({

@@ -744,6 +744,11 @@ strong, b { font-weight: 600; }
      burger: 430px of content in a 360px viewport, so every business page
      scrolled sideways. The seal alone identifies the site at this width. */
   .mark-text { display: none; }
+  /* The homepage alone carries a visible link to the Norwegian pages next to
+     the language picker. At 360px it is the 19px that pushes the bar past the
+     edge, and the picker already offers Norwegian — so it steps aside here and
+     the footer carries the route instead. */
+  .lang-no { display: none; }
   .bar-actions { gap: .3rem; }
   .bar-actions .btn-sm { padding: .5rem .6rem; letter-spacing: .06em; }
   .lang-select { padding: .45rem 1.5rem .45rem .5rem; letter-spacing: .06em; }
@@ -813,3 +818,8 @@ strong, b { font-weight: 600; }
 /* The hero's text column. A grid child defaults to min-width:auto, so a long
    unbroken string in the copy can push the whole hero wider than the page. */
 .hero-copy { min-width: 0; max-width: 62ch; }
+
+/* Same reason as the archive's plate titles: a card's heading link is the way
+   into the service, and 21px is under the 24px WCAG 2.2 AA floor. Padding on
+   an inline link grows the hit box without disturbing the card. */
+.card h3 a, .svc-card h3 a { padding-block: .25rem; }

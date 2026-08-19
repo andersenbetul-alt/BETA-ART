@@ -482,3 +482,7 @@ strong, b { font-weight: 600; }
 .essay-nav .step:hover { color: var(--seal); }
 .essay-nav .step:only-child { grid-column: 1 / -1; }
 @media (max-width: 560px) { .essay-nav { grid-template-columns: 1fr; } .essay-nav .step-next { text-align: left; } }
+
+/* The essay kicker is a link back to the topic index and rendered 12px tall —
+   half the WCAG 2.2 AA floor, and the smallest target on the property. */
+.kicker a { display: inline-block; padding-block: .4rem; }
