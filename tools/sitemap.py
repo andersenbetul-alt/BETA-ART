@@ -24,7 +24,7 @@ def rank(name):
         return "weekly", "0.9"
     if name.startswith("s-"):
         return "monthly", "0.8"
-    if name.startswith("b-") or name == "post.html":
+    if name.startswith("b-") or name.startswith("j-"):
         return "monthly", "0.7"
     if name in ("legal.html", "privacy.html"):
         return "yearly", "0.3"

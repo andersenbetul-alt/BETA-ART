@@ -10,8 +10,8 @@ already exists, what is half-done, and what has not been started. A chart of
 roles you have not hired is a wish. A chart with the work measured against it
 is a plan.
 
-Counted from the repo at the time of writing: 91 pages, 26 Norwegian pages,
-9 tooling scripts, 5 automated gates, 8 documents, 26 commits, 6 pages with a
+Counted from the repo at the time of writing: 100 pages, 26 Norwegian pages,
+11 tooling scripts, 6 automated gates, 10 documents, 29 commits, 6 pages with a
 form, **0 lines of backend, 0 real photographs, 0 analytics**.
 
 ---
@@ -24,10 +24,10 @@ form, **0 lines of backend, 0 real photographs, 0 analytics**.
 | 2 | Business Strategist | Three properties, four revenue lines, the price ladder, the payment architecture | **Mostly done.** `docs/05` sets the model; the one open decision is merchant-of-record vs Stripe, split by property |
 | 3 | Service Designer | What actually happens from enquiry to delivered file: quote → scope → work → invoice → licence | **Half.** The quote flow and the seven-step process exist on the page. Nothing behind them exists |
 | 4 | UX Researcher | Talking to real buyers before building more | **Not started, and it is the biggest gap.** Every word on the site is a hypothesis |
-| 5 | UX Designer | Site architecture, the 20-point structure, the guided quote flow, the finder | **Done.** 91 pages with a real information architecture |
+| 5 | UX Designer | Site architecture, the 20-point structure, the guided quote flow, the finder | **Done.** 100 pages with a real information architecture |
 | 6 | UI Designer | The visual system across four properties | **Done, with a known debt** — 63 font sizes, 40 spacing values, four names for the same component |
 | 7 | Brand Designer | The mark, palette, typography, the ✓ HUMAN APPROVED seal | **Done.** Weak point: the mark's colour is hard-coded in the SVG rather than following the theme |
-| 8 | Copywriter / UX Writer | Every word on 91 pages, in English and Norwegian | **Done.** Norwegian is written, not translated |
+| 8 | Copywriter / UX Writer | Every word on 100 pages, in English and Norwegian | **Done.** Norwegian is written, not translated |
 | 9 | Frontend Developer | Static HTML/CSS/JS, no framework, no build step | **Done** |
 | 10 | Backend Developer | Accounts, payments, forms, the consent record | **Zero.** This is the single hardest blocker: six forms exist and not one of them stores anything |
 | 11 | Full-Stack / Tech Lead | Architecture, the generators, the gates | **Done** — the site is generated from data files, so nothing drifts |
@@ -35,7 +35,7 @@ form, **0 lines of backend, 0 real photographs, 0 analytics**.
 | 13 | SEO Specialist | Sitemaps, canonicals, hreflang, structured data, per-language URLs | **Done.** Blocked only by `x-robots-tag: noindex` on `*.vercel.app` until a real domain is attached |
 | 14 | CRO Specialist | Turning a visitor into an enquiry | **Not started**, and it cannot start: there is nothing to measure |
 | 15 | Data Analyst | What people do on the site | **Not started.** No analytics is installed, and the privacy policy names a processor that does not exist — that has to be fixed either way |
-| 16 | QA / Test Engineer | Testing on real devices | **Automated part done** — five gates, one of which opens every page in a real browser at three widths. The human part, on real phones, is not done |
+| 16 | QA / Test Engineer | Testing on real devices | **Automated part done** — six gates, one of which opens every page in a real browser at three widths. The human part, on real phones, is not done |
 | 17 | Accessibility Specialist | WCAG 2.2 AA | **Done and measured.** Contrast computed rather than eyeballed, 24px targets, keyboard focus restored, dark-mode flash fixed |
 | 18 | Cybersecurity Specialist | CSP, HSTS, frame protection, PCI posture | **Headers done.** The real work starts the day a payment or a login exists |
 | 19 | GDPR / Privacy Specialist | Lawful basis, retention, granular consent, notice-and-action | **Done to the limit of a static site.** `docs/09`, the release form, the report form, sections 12–13 of the legal notice |
@@ -66,7 +66,7 @@ ratio.
 **The exception is role 4.** UX research is blocked by nothing. It needs ten
 conversations with people who might actually pay — a Norwegian agency, a small
 shop owner, a photo buyer — and it is the only role that can invalidate the
-other nineteen. Every claim on 91 pages is currently a hypothesis written
+other nineteen. Every claim on 100 pages is currently a hypothesis written
 carefully. Careful is not the same as tested.
 
 ---

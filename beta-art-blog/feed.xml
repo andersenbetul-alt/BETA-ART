@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Field Notes — The Beta Art Journal</title>
+    <link>https://beta-art-journal-bet-art.vercel.app/</link>
+    <description>How a verified photography archive is built: provenance, planning, light and licensing.</description>
+    <language>en</language>
+    <copyright>© 2026 Beta Art — Betül Öner. All rights reserved worldwide. No text or image here may be used as AI training data.</copyright>
+    <atom:link href="https://beta-art-journal-bet-art.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Tue, 28 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title><![CDATA[The picture is not the proof. The paperwork is.]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-picture-is-not-the-proof.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-picture-is-not-the-proof.html</guid>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Photographs no longer carry their own credibility. Provenance does — the RAW original, the capture record and a licence signed by the maker.]]></description>
+      <category>Provenance</category>
+    </item>
+    <item>
+      <title><![CDATA[The three tests every frame has to pass]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-three-tests.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-three-tests.html</guid>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Provenance, not reproducible by a machine, and a named buyer. A frame has to clear all three before it is catalogued.]]></description>
+      <category>Method</category>
+    </item>
+    <item>
+      <title><![CDATA[What actually goes on an accession label]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-accession-label.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-accession-label.html</guid>
+      <pubDate>Tue, 30 Jun 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[The fields on a catalogue record, why each one is there, and the three buyers ask about long after the campaign has ended.]]></description>
+      <category>Provenance</category>
+    </item>
+    <item>
+      <title><![CDATA[Two days aboard before the first frame]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-two-days-aboard.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-two-days-aboard.html</guid>
+      <pubDate>Fri, 12 Jun 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Why the fisher plate could not be photographed on day one, and what changes once nobody is performing for the camera.]]></description>
+      <category>Method</category>
+    </item>
+    <item>
+      <title><![CDATA[Pricing a licence when the buyer says “just for social”]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-just-for-social.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-just-for-social.html</guid>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Media, term and territory are three separate questions. “Just for social” answers none of them, and it is rarely meant unkindly.]]></description>
+      <category>Trade</category>
+    </item>
+    <item>
+      <title><![CDATA[Who actually buys photography in Norway]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-who-buys-photography.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-who-buys-photography.html</guid>
+      <pubDate>Tue, 19 May 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Thirty industries in four tiers, from agencies buying weekly to recruiters discovering employer branding, and the ten worth contacting first.]]></description>
+      <category>Market</category>
+    </item>
+    <item>
+      <title><![CDATA[How long blue hour actually lasts at 59° north]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-blue-hour.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-blue-hour.html</guid>
+      <pubDate>Sat, 09 May 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[A computed field table of twilight length by month at 59° north, and the received wisdom it contradicts.]]></description>
+      <category>Light</category>
+    </item>
+    <item>
+      <title><![CDATA[Seven pictures worth avoiding at launch]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-pictures-to-avoid.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-pictures-to-avoid.html</guid>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Aurora over wilderness, fjord at sunset, the perfectly composed cabin. Technically fine, commercially finished.]]></description>
+      <category>Trade</category>
+    </item>
+    <item>
+      <title><![CDATA[Content credentials, switched on from the first frame]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-content-credentials.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-content-credentials.html</guid>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Why provenance metadata has to be enabled in camera, and why signing a file afterwards convinces nobody who matters.]]></description>
+      <category>Provenance</category>
+    </item>
+    <item>
+      <title><![CDATA[The filing habit that makes an archive findable in nine years]]></title>
+      <link>https://beta-art-journal-bet-art.vercel.app/j-filing-habit.html</link>
+      <guid isPermaLink="true">https://beta-art-journal-bet-art.vercel.app/j-filing-habit.html</guid>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[RAW archived within 24 hours, release signed within 7 days, catalogue decision within 14. Dull on purpose.]]></description>
+      <category>Method</category>
+    </item>
+  </channel>
+</rss>

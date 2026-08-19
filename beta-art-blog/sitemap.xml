@@ -6,7 +6,52 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://beta-art-journal-bet-art.vercel.app/post.html</loc>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-accession-label.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-blue-hour.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-content-credentials.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-filing-habit.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-just-for-social.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-picture-is-not-the-proof.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-pictures-to-avoid.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-three-tests.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-two-days-aboard.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/j-who-buys-photography.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

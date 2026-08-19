@@ -441,3 +441,35 @@ strong, b { font-weight: 600; }
 .essay-end-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.4rem 0 0; }
 .btn-quiet { background: transparent; color: var(--ink); border-color: var(--rule); }
 .btn-quiet:hover { border-color: var(--seal); color: var(--seal); }
+
+/* ---------- Essay furniture added with the nine entries ---------- */
+
+.frame-4 { background: linear-gradient(180deg, #d8d2c6 0%, #efe9db 46%, #a49a86 47%, #574f42 100%); }
+.frame-5 { background: linear-gradient(180deg, #e2ddd2 0%, #f2eee5 40%, #b3ab9a 41%, #6b6353 100%); }
+.frame-6 { background: linear-gradient(180deg, #aab4bd 0%, #ced5da 38%, #7d848b 39%, #3d4247 100%); }
+.frame-7 { background: linear-gradient(180deg, #ded8cd 0%, #f4f1e9 55%, #bab2a2 56%, #74695a 100%); }
+.frame-8 { background: linear-gradient(180deg, #97a3b0 0%, #c6ced6 34%, #6e767f 35%, #2f343a 100%); }
+.frame-9 { background: linear-gradient(180deg, #4a5b74 0%, #7d8ea6 42%, #38455a 43%, #171d27 100%); }
+
+.table-scroll { overflow-x: auto; margin: 2rem 0; }
+.field-table { border-collapse: collapse; width: 100%; min-width: 30rem; font-family: var(--f-sans); font-size: .95rem; }
+.field-table caption { text-align: left; font-family: var(--f-mono); font-size: .72rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-bottom: .7rem; }
+.field-table th, .field-table td { padding: .55rem .8rem; border-bottom: 1px solid var(--rule); text-align: left; }
+.field-table thead th { border-bottom: 2px solid var(--rule-strong); vertical-align: bottom; font-weight: 600; }
+.field-table tbody th { font-weight: 500; }
+.field-table td { font-variant-numeric: tabular-nums; }
+.th-note { display: block; font-family: var(--f-mono); font-size: .68rem; letter-spacing: .06em;
+  text-transform: none; color: var(--muted); font-weight: 400; }
+
+.essay-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); margin-top: 2.5rem; }
+.essay-nav .step { display: block; padding: 1rem 1.1rem; background: var(--paper);
+  text-decoration: none; font-family: var(--f-display); font-size: 1.02rem; line-height: 1.3; }
+.essay-nav .step span { display: block; font-family: var(--f-mono); font-size: .68rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: .4rem; }
+.essay-nav .step-prev { text-align: left; }
+.essay-nav .step-next { text-align: right; }
+.essay-nav .step:hover { color: var(--seal); }
+.essay-nav .step:only-child { grid-column: 1 / -1; }
+@media (max-width: 560px) { .essay-nav { grid-template-columns: 1fr; } .essay-nav .step-next { text-align: left; } }

@@ -1,8 +1,8 @@
 # Project 03 — Field Notes, the journal
 
-**Deliverable:** `beta-art-blog/index.html`, `post.html`, `styles.css`, `script.js`
+**Deliverable:** `beta-art-blog/index.html`, ten `j-*.html` essays, `feed.xml`, `styles.css`, `script.js`
 **Concept:** the Beta Art journal — how a verified archive gets built, written from inside it.
-**Status:** design and build complete, one full essay published; awaiting a newsletter provider.
+**Status:** ten essays published, each on its own URL, with an RSS feed; awaiting a newsletter provider.
 
 ## Phase 1 — Discovery
 
@@ -26,7 +26,9 @@ It is not a hobby blog. It does three jobs:
 
 ## Phase 3 — Editorial plan
 
-Eight entries in four topics, filterable on the page:
+Ten entries in five topics, filterable on the page. Every one of them is written in
+full and has its own page — an earlier build advertised ten headlines that all
+resolved to the same file, which is a promise the site could not keep:
 
 | Topic | Purpose |
 | --- | --- |
@@ -34,8 +36,15 @@ Eight entries in four topics, filterable on the page:
 | Method | The working discipline — three tests, filing habits, access before shooting |
 | Light | Genuinely useful field knowledge — blue hour this far north, metering fog |
 | Trade | The economics — pricing "just for social", pictures worth avoiding at launch |
+| Market | Who actually buys photography in Norway, in four tiers by purchase frequency |
 
-Lead essay published in full: *The picture is not the proof. The paperwork is.*
+Lead essay: *The picture is not the proof. The paperwork is.*
+
+One entry corrects the site in public. *How long blue hour actually lasts at 59° north*
+carries a computed twilight table, and the numbers contradict what an earlier version of
+the index claimed — twilight at this latitude is longest in midwinter and shortest at the
+equinoxes, not the other way round. The card on the index was rewritten to match the
+table rather than the table quietly dropped.
 
 ## Phase 4 — Design decisions
 
@@ -59,20 +68,25 @@ Verified headlessly at 1440 px and 390 px: no JavaScript errors, no horizontal o
 
 ## Phase 6 — SEO
 
-Canonical URLs under `https://betaart.no/field-notes/`; OG and Twitter cards; JSON-LD `Blog` on the
-index and `Article` on the essay. Each entry title is written as a real query someone would type,
+Canonical URLs on the preview host, switchable to the real domain in one command
+(`python3 tools/domain.py --set betaart.no`); OG and Twitter cards; JSON-LD `Blog` on the
+index and `Article` on every essay; an RSS feed at `/feed.xml`, derived from the pages
+rather than maintained beside them. Each entry title is a real query someone would type,
 and every essay cross-links to the archive and the business desk — internal links carrying intent.
 
 ## Phase 7 — Open items
 
-1. Connect the newsletter form to a provider and write the welcome letter.
-2. Publish the remaining seven entries; the excerpts are already the briefs.
-3. Add per-entry pages (`post.html` is the working template) and an RSS feed.
-4. Add author byline detail once the archive is public under a real name.
-5. Repurpose each essay into a LinkedIn post and a newsletter issue — one research pass, three assets.
+1. Connect the newsletter form to a provider and write the welcome letter. Until then the
+   form is honest about storing nothing, and the RSS feed is the working subscription.
+2. Add author byline detail once the archive is public under a real name.
+3. Repurpose each essay into a LinkedIn post and a newsletter issue — one research pass,
+   three assets.
+4. Replace the placeholder figures. Every essay carries a gradient where a plate belongs;
+   the captions already name the accession numbers they are waiting for.
+5. Norwegian versions of the essays, following the `/no/` pattern used on the business site.
 
 ## Next action
 
-Write entry two, *The three tests every frame has to pass* — it is the piece the archive's
-verification section links to, and the one that converts a curious reader into someone who trusts
-the licence.
+Point the archive's verification section at *The three tests every frame has to pass*. It is now
+a real page, it is the piece that converts a curious reader into someone who trusts the licence,
+and nothing on the archive links to it yet.

@@ -611,3 +611,7 @@ strong, b { font-weight: 600; }
   .release-output textarea { height: auto; min-height: 24cm; border: 0; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; }
 }
+
+/* A short pointer out of a section, into the journal or the legal notice. */
+.note { margin-top: 2rem; max-width: 62ch; font-size: .95rem; color: var(--muted); }
+.note a { color: var(--seal); }

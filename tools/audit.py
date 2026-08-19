@@ -91,7 +91,8 @@ for js,htmls in [("beta-art-business/quote.js",["beta-art-business/quote.html"])
                  ("beta-art-business/script.js",[p for p in pages if p.startswith("beta-art-business/")]),
                  ("beta-art/script.js",["beta-art/index.html"]),
                  ("beta-art/tools.js",["beta-art/index.html"]),
-                 ("beta-art-blog/script.js",["beta-art-blog/index.html","beta-art-blog/post.html"])]:
+                 ("beta-art-blog/script.js",["beta-art-blog/index.html",
+                  "beta-art-blog/j-picture-is-not-the-proof.html"])]:
     j=open(os.path.join(ROOT,js),encoding="utf-8").read()
     ids=set()
     for h in htmls: ids|=set(re.findall(r'\sid="([^"]+)"',src[h]))
