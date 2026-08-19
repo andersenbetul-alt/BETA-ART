@@ -69,6 +69,10 @@ writing, and when it does not cover something, add the rule rather than inventin
 
 ## Facts and sources
 
+`docs/BRAND.md` carries HXI's own six PR principles — no unfalsifiable absolutes, fact before
+adjective, no promise about the future, no rights claim without a confirmed basis, credits in
+the right category. Copy changes go through those five questions before they ship.
+
 `docs/RESEARCH.md` is the trail behind every claim on the page: what was verified, against
 what, and when — plus the claims that are still unconfirmed and the releases not yet added.
 Check it before changing a number or a credit, and add to it in the same commit. Anything

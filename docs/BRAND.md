@@ -44,8 +44,15 @@ the Fast & Furious credit, stated precisely as *WORTH NOTHING (Aggressive Drift 
 Version)*, Drift Tape/Phonk Vol 1, with TWISTED · two NCS releases with their dates · the
 collaborator list.
 
-Not currently usable: BODYCAM OST (nothing ties HXI to it), "10+ sync credits" (four are
-enumerable), 251,000 monthly listeners (moves weekly, only the artist can confirm it).
+Also verified, August 2026: the BODYCAM soundtrack — two tracks, *Never Phased* (with Lurk
+and Scythermane) and *KRASH* (with -Prey, March 2024) — and the twenty-release archive in
+the Music section, tabulated in `docs/RESEARCH.md`.
+
+Not currently usable: 251,000 monthly listeners as a *current* figure (it moves weekly; the
+page rounds to 251K and only the artist can confirm today's number), the TRXPICAL alias
+(HXI's own documents name it, nothing public links the two), and the GramArt confirmation of
+name and master ownership as a written fact (it is verbal, by the artist's own note — the
+page states ownership, it does not cite GramArt).
 
 Industry statistics are never ours. "Major labels take 70%" says nothing about HXI and was
 removed for that reason.
@@ -71,6 +78,31 @@ Genre words stay lowercase: phonk, drift phonk, phonk house, montagem.
 
 One accent. If something needs to stand out and the accent is already spent nearby, the
 answer is space, not a second colour. Nothing below 10px. No gradients as decoration.
+
+## Six rules from HXI's own PR principles
+
+These came from HXI, in `HXI_PR_Kommunikasjonsprinsipper.md`, and they govern every language.
+They overlap with Voice above; where they are stricter, they win.
+
+1. **No absolute that one counterexample would break.** Not "zero paid promotion", not "never",
+   not "no outside engineers". Say what *is* true: "grew organically", "written and produced
+   in-house".
+2. **Fact before adjective.** "Heavy sub-bass", not "architectural sound design". A subjective
+   grade is unattributable; a number explains itself.
+3. **As short as precision allows.** Two sentences a paragraph where possible. If a detail
+   would not change what a fan, a sync buyer or a journalist decides, cut it.
+4. **No promise about the future.** Not "will respond within 48 hours", not "guaranteed", not
+   "announced soon". "We aim to", "typically", or say nothing.
+5. **No rights claim without a confirmed basis.** Ownership, naming and licensing statements
+   go on the page only where they are confirmed. Where something is unclear, it is left out —
+   not hedged, not hinted at.
+6. **Credit by the right category.** A collaboration is not a solo placement; a remix is not a
+   sync. Get the category right before the number.
+
+Before any copy change, five questions: could one contrary event prove this false · is there
+an adjective here that a number would replace · can the sentence be cut in two · are we
+promising a future we do not control · is every named credit in the right category. A "maybe"
+on any of them means rewrite or remove.
 
 ## How to check a piece against this
 
