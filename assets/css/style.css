@@ -140,6 +140,27 @@ h2.label,h3.label{font-weight:400;line-height:1.6}
 .rows-compact li{padding:10px 18px}
 .rows-compact b{font-size:13px}
 
+/* Use It — the clearance and credit toolkit.
+   The cleared-for-creators card carries the section, so it gets the wider column; the two
+   shorter cards stack beside it rather than sitting in an equal third they cannot fill. */
+.use-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:2px;align-items:start}
+.use-side{display:grid;gap:2px}
+@media(max-width:860px){.use-grid{grid-template-columns:1fr}}
+.use-card{display:flex;flex-direction:column;gap:14px}
+.use-d{font-size:14px;line-height:1.65;color:var(--muted)}
+.credit-block{border:1px solid var(--border);padding:12px 14px}
+.credit-name{font-family:var(--display);font-size:14px;letter-spacing:.05em;text-transform:uppercase;margin:0 0 8px}
+.credit-block pre{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--text);margin:0 0 10px;white-space:pre-wrap;word-break:break-word;unicode-bidi:plaintext;text-align:start}
+.copy-btn{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--accent);padding:7px 12px;cursor:pointer}
+.copy-btn:hover,.copy-btn:focus-visible{background:var(--accent-strong);border-color:var(--accent-strong);color:#fff}
+.copy-btn[data-done="1"]{border-color:var(--muted);color:var(--muted);background:none}
+.use-list{list-style:none;padding:0;margin:0}
+.use-list li{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border)}
+.use-list li:last-child{border-bottom:0}
+.use-terms{margin:0}
+.use-terms a{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none}
+.use-terms a:hover,.use-terms a:focus-visible{text-decoration:underline}
+
 
 .panel{border:1px solid var(--border);background:var(--panel);padding:clamp(20px,4vw,36px)}
 

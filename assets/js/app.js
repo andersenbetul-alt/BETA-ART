@@ -40,6 +40,12 @@
     return 'en';
   }
 
+  // One string in the current language, for text JS builds rather than the markup carries.
+  function t(key) {
+    var dict = T[document.documentElement.lang] || T.en;
+    return (dict && dict[key] != null ? dict[key] : T.en[key]) || '';
+  }
+
   function apply(code) {
     var dict = T[code] || T.en;
     var fallback = T.en;
@@ -287,6 +293,53 @@
     if (stat) stat.hidden = true;
   }
 
+  /* ---------- copy a credit line ---------- */
+
+  function copyCredits() {
+    var status = document.getElementById('copy-status');
+    var buttons = document.querySelectorAll('.copy-btn[data-copy]');
+
+    // execCommand is the fallback: navigator.clipboard needs a secure context, and the page
+    // is meant to work when it is opened straight off a disk.
+    var write = function (text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(area);
+        ok ? resolve() : reject();
+      });
+    };
+
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function () {
+        var button = this;
+        var source = document.getElementById(button.getAttribute('data-copy'));
+        if (!source) return;
+        var label = button.textContent;
+        write(source.textContent).then(function () {
+          button.textContent = t('use_copied') || 'Copied';
+          button.setAttribute('data-done', '1');
+          if (status) status.textContent = t('use_copied') || 'Copied';
+          setTimeout(function () {
+            button.textContent = label;
+            button.removeAttribute('data-done');
+          }, 2000);
+        }).catch(function () {
+          // Nothing to apologise for — the text is on screen and selectable.
+          if (status) status.textContent = t('use_copy_manual') || 'Select the text above to copy it.';
+        });
+      });
+    }
+  }
+
   function releases() {
     // Same-origin file written by the weekly sync. Absent until the sync has credentials —
     // the section simply stays hidden, and the hand-written cards above carry the page.
@@ -393,6 +446,7 @@
     run(videos);
     run(spotify);
     run(releases);
+    run(copyCredits);
     run(shop);
     run(signup);
     run(reveal);

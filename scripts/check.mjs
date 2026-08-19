@@ -49,7 +49,11 @@ const shopKeys = [
   // every 'shop_*' literal the renderer asks for, including the ones inside ternaries
   ...[...(appJs + shopJs).matchAll(/'(shop_[a-z0-9_]+)'/g)].map((m) => m[1]),
 ];
-const required = [...new Set([...usedKeys, ...runtimeKeys, ...shopKeys])];
+// Keys the scripts ask for by name through t(), e.g. the copy-button's confirmation. Matched
+// against the English dictionary rather than by shape, so createElement('p') is not a key.
+const enKeys = [...new Set([...i18nJs.matchAll(/^  ([a-z0-9_]+):/gm)].map((m) => m[1]))];
+const literalKeys = enKeys.filter((k) => (appJs + shopJs).includes(`'${k}'`));
+const required = [...new Set([...usedKeys, ...runtimeKeys, ...shopKeys, ...literalKeys])];
 
 const codes = LANGS.map((l) => l.code);
 if (!codes.length) fail('HXI_LANGS is empty — the language switcher would render nothing.');

@@ -72,6 +72,7 @@
       <a href="#music" data-i18n="nav_music">Music</a>
       <a href="#videos" data-i18n="nav_videos">Videos</a>
       <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#use" data-i18n="nav_use">Use it</a>
       <a href="#collab" data-i18n="nav_collab">Collab</a>
       <a href="#shop" data-i18n="nav_shop">Store</a>
       <a href="#press" data-i18n="nav_press">Press</a>
@@ -349,8 +350,69 @@
     </div>
   </section>
 
+
+  <!-- USE IT -->
+  <section class="section" id="use">
+    <div class="wrap">
+      <p class="label accent" data-i18n="use_label">Use it</p>
+      <h2 class="h2" data-i18n="use_title">What you can use, and how to credit it</h2>
+      <p class="lead" data-i18n="use_lead">The edit community built this catalogue's reach. This section exists for the people making things with it: what is cleared, what is not, and the exact text to paste.</p>
+
+      <div class="use-grid">
+        <article class="card use-card use-card-main">
+          <p class="tag accent" data-i18n="use_free_t">Cleared for creators</p>
+          <p class="use-d" data-i18n="use_free_d">Two releases went out through NoCopyrightSounds. Creators can use them in videos, including monetised ones, on the terms NCS publishes — the credit below is the condition.</p>
+
+          <div class="credit-block">
+            <p class="credit-name">Lock n&#39; Load</p>
+            <pre id="credit-lnl">Track: HXI — Lock n' Load [NCS Release]
+Music provided by NoCopyrightSounds
+Free Download / Stream: https://ncs.io/LockNLoad</pre>
+            <button class="copy-btn" type="button" data-copy="credit-lnl" data-i18n="use_copy">Copy credit</button>
+          </div>
+
+          <div class="credit-block">
+            <p class="credit-name">Round Around feat. Nateki</p>
+            <pre id="credit-ra">Track: HXI — Round Around (feat. Nateki) [NCS Release]
+Music provided by NoCopyrightSounds
+Free Download / Stream: https://ncs.io/roundaround</pre>
+            <button class="copy-btn" type="button" data-copy="credit-ra" data-i18n="use_copy">Copy credit</button>
+          </div>
+
+          <p class="note" data-i18n="use_claim">Leave the credit out and the video can be claimed. The credit is the whole deal.</p>
+          <p class="use-terms"><a href="https://ncs.io/usage-policy" target="_blank" rel="noopener noreferrer" data-i18n="use_terms">NCS usage terms →</a></p>
+        </article>
+
+        <div class="use-side">
+        <article class="card use-card">
+          <p class="tag" data-i18n="use_lic_t">Everything else</p>
+          <p class="use-d" data-i18n="use_lic_d">The rest of the catalogue is rights-reserved. For film, games, advertising or any commercial release, ask first — it is one email and the answer is usually quick.</p>
+          <ul class="use-list">
+            <li data-i18n="use_lic_1">Where it will be used</li>
+            <li data-i18n="use_lic_2">How long, and in which territories</li>
+            <li data-i18n="use_lic_3">Which track, and roughly when</li>
+          </ul>
+          <p class="section-cta">
+            <a class="btn btn-solid" href="mailto:hello@hximusic.com?subject=Music%20use%20request&amp;body=Track%3A%0AWhere%20it%20will%20be%20used%3A%0ATerritories%20and%20term%3A%0ARelease%20date%3A%0A" data-i18n="use_lic_cta">Ask about a track →</a>
+          </p>
+        </article>
+
+        <article class="card use-card">
+          <p class="tag" data-i18n="use_stems_t">Stems</p>
+          <p class="use-d" data-i18n="use_stems_d">Stems are not out yet. When they are, the mailing list gets them before this page does.</p>
+          <p class="section-cta">
+            <a class="btn btn-ghost" href="#drop" data-i18n="use_stems_cta">Join the list →</a>
+          </p>
+        </article>
+        </div>
+      </div>
+
+      <p class="sr-only" id="copy-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
   <!-- ABOUT -->
-  <section class="section" id="about">
+  <section class="section alt" id="about">
     <div class="wrap">
       <p class="label accent" data-i18n="about_label">About</p>
       <h2 class="h2" data-i18n="about_title">From Norway. 43 million streams.</h2>
@@ -386,7 +448,7 @@
   </section>
 
   <!-- WORK WITH HXI -->
-  <section class="section alt" id="collab">
+  <section class="section" id="collab">
     <div class="wrap split">
       <div>
         <p class="label accent" data-i18n="collab_label">Collaboration</p>
@@ -406,7 +468,7 @@
   </section>
 
   <!-- SHOP -->
-  <section class="section" id="shop">
+  <section class="section alt" id="shop">
     <div class="wrap">
       <p class="label accent" data-i18n="shop_label">Store</p>
       <h2 class="h2" data-i18n="shop_title">Merch and stems</h2>
@@ -419,7 +481,7 @@
   </section>
 
   <!-- NEWSLETTER + COMMUNITY -->
-  <section class="section alt" id="drop">
+  <section class="section" id="drop">
     <div class="wrap split">
       <div>
         <h2 class="h2" data-i18n="drop_title">First access. No noise.</h2>
@@ -440,7 +502,7 @@
   </section>
 
   <!-- PRESS -->
-  <section class="section" id="press">
+  <section class="section alt" id="press">
     <div class="wrap split">
       <div>
         <p class="label accent" data-i18n="press_label">Press &amp; Media</p>
@@ -472,7 +534,7 @@
   </section>
 
   <!-- BOOKING -->
-  <section class="section alt" id="booking">
+  <section class="section" id="booking">
     <div class="wrap">
       <p class="label accent" data-i18n="book_label">Booking</p>
       <h2 class="h2" data-i18n="book_title">Book HXI</h2>
