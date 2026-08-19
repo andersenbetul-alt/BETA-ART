@@ -308,7 +308,7 @@ Bu sütun en az trafiği getirir, en çok parayı getirir. Okuyucusu "fikir aray
 **bütçesi olan** kişidir. Her sayfanın sonunda ücretsiz içerik değil, **keşif görüşmesi**
 teklifi durur. Huni burada kısadır: blog → keşif formu.
 
-### P18 — How to Use AI in Your Small Business: A Practical Playbook
+### P18 — How to Use AI in Your Small Business: A Practical Playbook  ✅ yayında
 **KW:** ai for small business · **Niyet:** bilgi → işlem · **Gelir:** hizmet satışı
 (otomasyon keşfi €900, AI Workforce kurulumu) · **Huni:** blog → keşif formu
 Sütunun giriş kapısı. "AI iş yerinizi dönüştürür" cümlesi kurulmayacak. Her bölüm tek

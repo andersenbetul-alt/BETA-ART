@@ -38,7 +38,7 @@ maliyet.
 | 10 | Örnek teslimat (bir makale + türetilmiş 5 içerik) PDF'i | Bekliyor | Brief formunda "örnek gör" olarak kullanılabilir |
 | 41 | **Lead magnet: Otomasyon Keşif Kontrol Listesi** | **Bitti** 18.08 | Bülten kaydı karşılığı indirilir; PDF'e yazdırılabilir |
 | 42 | Kendimizi ilk vaka çalışması yapmak | **Bitti** 18.08 | `ai-icerik-studyosu` yazısı: kendi hattımızın ölçülmüş rakamları, TR 1.045 / EN 1.358 |
-| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 3/7 bitti (platform karşılaştırması, içerik stüdyosu vakası, AI resepsiyonist). Kalan 4 yazı + üçünün 8 dili. Durum: `npm run gorunurluk` |
+| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 4/8 bitti (platform karşılaştırması, içerik stüdyosu, AI resepsiyonist, KOBİ başlangıç). Kalan 4 eski yazı + dördünün 8 dili. Durum: `npm run gorunurluk` |
 | 51 | P19 AI Receptionist pillar sayfası | **Bitti** 18.08 | İlk dalganın 1 numarası. TR 1.160 / EN 1.533 kelime, 5 kaynak, görünürlük denetimi geçti |
 | 52 | Gelir sistemi haritası + huni matematiği | **Bitti** 18.08 | `docs/gelir-sistemi.md`; beş katman, gerçekçi oranlar, kurulum sırası |
 | 53 | Ortaklık altyapısı | **Bitti** 18.08 | `{aff:}` bloğu, otomatik bildirim (10 dil), `rel="sponsored"`, gerekçe zorunluluğu |
@@ -47,6 +47,7 @@ maliyet.
 | 56 | Gizlilik metni | **Bitti** 18.08 | `gizlilik.html` (TR+EN). Yasal kimlik ve e-posta servisi alanları `[DOLDURULACAK]` işaretli |
 | 57 | canonical–hreflang tutarlılığı | **Bitti** 18.08 | `syncCanonical`; kalıcı çözüm ön-render (madde 58) |
 | 58 | Ön-render: her dil ayrı adreste | Bekliyor | Çok dilli SEO'dan tam verim için tek gerçek çözüm |
+| 59 | P18 KOBİ'de AI'a nereden başlanır | **Bitti** 19.08 | İlk dalganın 3 numarası, Business sütununun kapısı. TR 1.056 / EN 1.351, Anthropic Economic Index verisiyle |
 | 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
 ### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)
