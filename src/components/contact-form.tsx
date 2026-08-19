@@ -54,6 +54,7 @@ export function ContactForm({
   };
 
   const fieldId = (name: string) => `${ids}-${name}`;
+  const hintId = `${ids}-message-hint`;
   const errorId = (name: string) => `${ids}-${name}-error`;
 
   useEffect(() => {
@@ -234,6 +235,9 @@ export function ContactForm({
           >
             {form.message}
           </label>
+          <p id={hintId} className="mt-1 text-[0.85rem] leading-relaxed text-ink-800/70">
+            {form.messageHint}
+          </p>
           <textarea
             id={fieldId("message")}
             name="message"
@@ -241,7 +245,7 @@ export function ContactForm({
             required
             aria-invalid={state.fieldErrors?.message ? true : undefined}
             aria-describedby={
-              state.fieldErrors?.message ? errorId("message") : undefined
+              state.fieldErrors?.message ? `${errorId("message")} ${hintId}` : hintId
             }
             className={`${fieldClass} resize-y`}
           />
@@ -276,6 +280,10 @@ export function ContactForm({
 
       <div className="mt-6">
         <SubmitButton label={form.submit} pending={form.submitting} />
+        {/* İtiraz düğmenin başındayken cevaplanır, sayfanın başında değil */}
+        <p className="mt-3 text-[0.85rem] leading-relaxed text-ink-800/75">
+          {form.reassurance}
+        </p>
       </div>
     </form>
   );

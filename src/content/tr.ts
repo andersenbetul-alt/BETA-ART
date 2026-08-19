@@ -20,10 +20,13 @@ export const tr: Dictionary = {
     contact: "İletişim",
   },
   actions: {
-    contact: "Görüşme planlayın",
+    // Düğme metni bağlamdan koparak okunur; içine hem eylemi hem bedelsizliği
+    // koyuyoruz. "Görüşme planlayın" ne kadar sürdüğünü ve neye mal olduğunu
+    // söylemiyordu.
+    contact: "Ücretsiz ön görüşme ayarlayın",
     services: "Hizmetlerimizi inceleyin",
     approach: "Çalışma biçimimiz",
-    readMore: "Detaylı bilgi",
+    readMore: "Uzmanlık alanlarını inceleyin",
     backHome: "Ana sayfaya dön",
     skipToContent: "İçeriğe atla",
     openMenu: "Menüyü aç",
@@ -395,10 +398,36 @@ export const tr: Dictionary = {
       address: { label: "Adres", value: "İstanbul, Türkiye" },
       hours: { label: "Çalışma saatleri", value: "Hafta içi 09:00 – 18:00" },
     },
-    form: {
-      title: "Görüşme talebi",
+    firstCall: {
+      title: "Ön görüşmede ne oluyor",
       description:
-        "Aşağıdaki bilgileri paylaşın; yanıtı genellikle iki iş günü içinde veririz.",
+        "30 dakika, video görüşme. Hazırlık gerekmez; anlattığınız kadarıyla başlarız.",
+      steps: [
+        {
+          title: "İlk 10 dakika: durum",
+          description:
+            "Neyin işlemediğini anlatırsınız. Sunum, veri ya da hazırlık istemeyiz.",
+        },
+        {
+          title: "Sonraki 15 dakika: teşhis",
+          description:
+            "Sorunun strateji, süreç mi yoksa insan kaynağı tarafında mı durduğunu birlikte ayırırız.",
+        },
+        {
+          title: "Son 5 dakika: karar",
+          description:
+            "Bir sonraki adımın ne olduğunu söyleriz — bizimle çalışmak olmayabilir.",
+        },
+      ],
+      boundary:
+        "Görüşmede teklif sunmuyoruz ve peşinden arama yapmıyoruz. Yazılı teklif yalnızca siz isterseniz gelir.",
+      pricing:
+        "Ücretlendirme kapsam belli olduktan sonra yazılı olarak paylaşılır. Teşhis çalışması sabit bedellidir; uygulama dönemi ayrıca konuşulur, saat başı sayaç işletmiyoruz.",
+    },
+    form: {
+      title: "Ücretsiz ön görüşme",
+      description:
+        "Beş alan yeterli; ayrıntıyı görüşmede konuşuruz. Yanıtı genellikle iki iş günü içinde veririz.",
       name: "Ad soyad",
       company: "Kurum",
       email: "E-posta",
@@ -413,21 +442,31 @@ export const tr: Dictionary = {
         "Liderlik ve kurumsal eğitim",
         "Henüz emin değilim",
       ],
-      message: "Mesajınız",
-      submit: "Talebi gönder",
-      submitting: "Gönderiliyor...",
+      // Boş bir "Mesajınız" kutusu formun en büyük terk noktasıydı. Soru
+      // biçimindeki etiket hem yazmayı kolaylaştırır hem gelen talebin
+      // niteliğini yükseltir.
+      message: "Şu an sizi en çok ne zorluyor?",
+      messageHint:
+        "Birkaç cümle yeterli. Hazır bir çözüm beklemiyoruz; sorunu duymak istiyoruz.",
+      submit: "Ön görüşme talebi gönderin",
+      submitting: "Gönderiliyor…",
+      reassurance:
+        "Satış araması değildir. Size uygun olmadığını düşünürsek bunu ilk görüşmede söyleriz.",
       consent:
         "Formu göndererek, paylaştığınız bilgilerin talebinizi değerlendirmek amacıyla işlenmesini kabul etmiş olursunuz. Ayrıntılar için:",
       privacyLinkLabel: "Gizlilik ve KVKK aydınlatma metni",
       success:
-        "Teşekkürler, talebiniz bize ulaştı. Genellikle iki iş günü içinde size döneriz.",
+        "Talebiniz ulaştı. Genellikle iki iş günü içinde, görüşme için iki alternatif saatle birlikte döneriz.",
+      // Hata metni kullanıcıyı suçlamaz, ne yapacağını söyler. Çıkmaz sokak
+      // bırakmamak için gönderim hatasında alternatif yol verilir.
       errors: {
-        name: "Lütfen adınızı ve soyadınızı yazın.",
-        email: "Lütfen geçerli bir e-posta adresi girin.",
-        message: "Lütfen en az 20 karakterlik bir mesaj yazın.",
-        generic: "Talebiniz gönderilemedi. Lütfen tekrar deneyin.",
+        name: "Size nasıl hitap edelim? Ad ve soyadınızı yazın.",
+        email: "Bu adrese yanıt veremeyiz. Örnek: ad@kurum.com",
+        message: "Birkaç cümle yazın — bir paragraf bile görüşmeye hazırlanmamıza yeter.",
+        generic:
+          "Talep gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin ya da doğrudan info@naviar.com adresine yazın.",
         tooMany:
-          "Kısa sürede çok fazla talep gönderildi. Lütfen birkaç dakika sonra tekrar deneyin.",
+          "Kısa sürede birden fazla talep alındı. Birkaç dakika sonra tekrar deneyin; acilse info@naviar.com adresine yazabilirsiniz.",
       },
     },
   },

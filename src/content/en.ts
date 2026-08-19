@@ -20,10 +20,12 @@ export const en: Dictionary = {
     contact: "Contact",
   },
   actions: {
-    contact: "Book a conversation",
+    // Düğme metni bağlamdan koparak okunur; içine hem eylemi hem bedelsizliği
+    // koyuyoruz.
+    contact: "Book a free intro call",
     services: "Explore our services",
     approach: "How we work",
-    readMore: "Learn more",
+    readMore: "Explore our practice areas",
     backHome: "Back to home",
     skipToContent: "Skip to content",
     openMenu: "Open menu",
@@ -392,10 +394,36 @@ export const en: Dictionary = {
       address: { label: "Address", value: "Istanbul, Türkiye" },
       hours: { label: "Office hours", value: "Weekdays 09:00 – 18:00" },
     },
-    form: {
-      title: "Request a conversation",
+    firstCall: {
+      title: "What happens on the call",
       description:
-        "Share the details below; we usually reply within two business days.",
+        "Thirty minutes, by video. No preparation needed — we start from whatever you can tell us.",
+      steps: [
+        {
+          title: "First 10 minutes: the situation",
+          description:
+            "You describe what is not working. No deck, no data, no preparation required.",
+        },
+        {
+          title: "Next 15 minutes: the diagnosis",
+          description:
+            "Together we separate whether the problem sits in strategy, in process, or on the people side.",
+        },
+        {
+          title: "Last 5 minutes: the decision",
+          description:
+            "We name the next step — which may well be one that does not involve us.",
+        },
+      ],
+      boundary:
+        "We do not pitch on the call and we do not follow up with sales calls. A written proposal comes only if you ask for one.",
+      pricing:
+        "Fees are put in writing once the scope is clear. Diagnostic work is fixed-price; the implementation period is agreed separately, and we do not run an hourly meter.",
+    },
+    form: {
+      title: "Free intro call",
+      description:
+        "Five fields is enough; the detail belongs in the conversation. We usually reply within two business days.",
       name: "Full name",
       company: "Company",
       email: "Email",
@@ -410,21 +438,28 @@ export const en: Dictionary = {
         "Leadership and corporate learning",
         "Not sure yet",
       ],
-      message: "Your message",
-      submit: "Send request",
-      submitting: "Sending...",
+      // Boş bir "Your message" kutusu formun en büyük terk noktasıydı.
+      message: "What is getting in your way right now?",
+      messageHint:
+        "A few sentences is plenty. We are not expecting a worked-out solution — we want to hear the problem.",
+      submit: "Send intro call request",
+      submitting: "Sending…",
+      reassurance:
+        "This is not a sales call. If we do not think we are the right fit, we say so on the call.",
       consent:
         "By submitting this form you agree that the information you share may be processed in order to assess your request. For details:",
       privacyLinkLabel: "Privacy notice and data protection",
       success:
-        "Thank you — your request has reached us. We usually reply within two business days.",
+        "Your request has reached us. We usually reply within two business days, with two suggested times for the call.",
+      // Hata metni kullanıcıyı suçlamaz, ne yapacağını söyler.
       errors: {
-        name: "Please enter your full name.",
-        email: "Please enter a valid email address.",
-        message: "Please write a message of at least 20 characters.",
-        generic: "Your request could not be sent. Please try again.",
+        name: "What should we call you? Add your first and last name.",
+        email: "We cannot reply to this address. Example: name@company.com",
+        message: "Write a few sentences — even one paragraph helps us prepare.",
+        generic:
+          "The request could not be sent. Check your connection and try again, or email info@naviar.com directly.",
         tooMany:
-          "Too many requests were sent in a short time. Please try again in a few minutes.",
+          "More than one request arrived in a short time. Try again in a few minutes, or email info@naviar.com if it is urgent.",
       },
     },
   },

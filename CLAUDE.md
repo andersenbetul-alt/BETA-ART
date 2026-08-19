@@ -177,6 +177,17 @@ kalan bir ilke üçüncü düzenlemede unutulur.
 5. **Doğrulanmamış iddia yazılmaz.** Deneyim firmaya değil kurucuya
    atfedilir; belirsiz olan hiç yazılmaz.
 
+`tests/ux-copy.test.ts` ayrı bir soruya bakar: kullanıcı **eylem anında** ne
+yapacağını biliyor mu? Düğme etiketlerinin bağlamsız okunabilmesi, hata
+mesajlarının çıkmaz sokak bırakmaması (sistem hatasında e-posta adresi
+geçmek zorunda), iletişim düğmesinin bedelsizliği söylemesi, mesaj alanının
+soru biçiminde olması ve ilk görüşmenin sınırının yazılı olması burada
+zorunlu kılınır.
+
+Davranış testleri metin dizesine değil **sözlükteki alana** bakar
+(`expect(...).toBe(errors("tr").name)`). Bir cümle iyileştirildiğinde
+`contact.test.ts` kırılmamalı; kırılıyorsa test yanlış şeyi ölçüyordur.
+
 Testin kapsamı bilinçli olarak **kurumun kendi hakkındaki iddialarıdır**.
 İçgörü yazılarının ve ilanların gövde metni kapsam dışıdır — orada
 "her zaman" bir gözlemi anlatır, kurumsal taahhüdü değil.
@@ -202,6 +213,7 @@ Bu değerler `sand-100` (en koyu açık zemin) üzerinde hesaplanmıştır.
 - `seo.test.ts` — sitemap kapsamı, canonical/hreflang, Open Graph
 - `copy-principles.test.ts` — metin ilkeleri (mutlak ifade, garanti dili,
   cümle sayısı, kanıt bloğu)
+- `ux-copy.test.ts` — düğme etiketleri, hata mesajları, ilk görüşme bloğu
 
 Kontrast ve işaretleme hataları testlerle değil `npm run audit:a11y` ile yakalanır.
 

@@ -1,6 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { submitContactForm } from "@/lib/actions";
 import { initialContactState } from "@/lib/contact";
+import { getDictionary } from "@/content";
+
+// Metnin kendisine değil, hangi metnin seçildiğine bakılır. Metin yazarı
+// bir cümleyi iyileştirdiğinde davranış testi kırılmamalı.
+const errors = (locale: "tr" | "en") => getDictionary(locale).contact.form.errors;
 
 // Server action `headers()` çağırıyor; test ortamında istek bağlamı yok.
 // Her testin kendi istemci adresini vermesi için değiştirilebilir tutuluyor.
@@ -68,13 +73,14 @@ describe("doğrulama", () => {
   it("hata mesajlarını formun dilinde döner", async () => {
     const trState = await submitContactForm(initialContactState, form({ locale: "tr" }));
     const enState = await submitContactForm(initialContactState, form({ locale: "en" }));
-    expect(trState.fieldErrors?.name).toMatch(/adınızı/);
-    expect(enState.fieldErrors?.name).toMatch(/full name/i);
+    expect(trState.fieldErrors?.name).toBe(errors("tr").name);
+    expect(enState.fieldErrors?.name).toBe(errors("en").name);
+    expect(trState.fieldErrors?.name).not.toBe(enState.fieldErrors?.name);
   });
 
   it("bilinmeyen dilde varsayılana düşer", async () => {
     const state = await submitContactForm(initialContactState, form({ locale: "fr" }));
-    expect(state.fieldErrors?.name).toMatch(/adınızı/);
+    expect(state.fieldErrors?.name).toBe(errors("tr").name);
   });
 
   it("geçerli formu kabul eder", async () => {
@@ -112,7 +118,7 @@ describe("hız sınırı", () => {
 
     const blocked = await submitContactForm(initialContactState, form(valid));
     expect(blocked.status).toBe("error");
-    expect(blocked.message).toMatch(/çok fazla talep/i);
+    expect(blocked.message).toBe(errors("tr").tooMany);
     expect(blocked.fieldErrors).toBeUndefined();
   });
 

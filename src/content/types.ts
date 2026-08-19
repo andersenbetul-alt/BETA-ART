@@ -162,6 +162,19 @@ export type Dictionary = {
       address: { label: string; value: string };
       hours: { label: string; value: string };
     };
+    /**
+     * Görüşmeden önceki en büyük itiraz "bu bir satış araması mı?" sorusudur.
+     * Bu blok formun hemen yanında durur ve soruyu formu doldurmadan cevaplar.
+     */
+    firstCall: {
+      title: string;
+      description: string;
+      steps: Feature[];
+      /** Görüşmenin ne olmadığı — sınırı yazmak güveni artırır */
+      boundary: string;
+      /** Ücretlendirmenin nasıl işlediği; fiyat listesi değil, model */
+      pricing: string;
+    };
     form: {
       title: string;
       description: string;
@@ -174,8 +187,12 @@ export type Dictionary = {
       topicPlaceholder: string;
       topicOptions: string[];
       message: string;
+      /** Boş kutu en büyük terk noktası; yazma eşiğini düşüren yardım metni */
+      messageHint: string;
       submit: string;
       submitting: string;
+      /** Düğmenin hemen altında — kararın verildiği yerde riski azaltır */
+      reassurance: string;
       consent: string;
       privacyLinkLabel: string;
       success: string;
