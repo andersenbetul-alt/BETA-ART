@@ -9,6 +9,9 @@ til en fungerende markedsplass.
 - Senior Mode: bestilling med store knapper, taleinput og akuttfilter
 - Pårørendepanel: status, Care Circle, varsler, bestilling på vegne av
 - Prismodell med synlig pris før bestilling (`assets/js/pris.js`)
+- Oppdragstavla for hjelpere med tilgjengelighetsbryter som styrer posisjonsbruk
+- Matchingmotor med absolutte krav, vekter og begrunnelser (`assets/js/matching.js`)
+- Innsjekk med oppmøtekode, oppdragsnotat og utsjekk
 - Registreringsflyt for hjelpere i seks steg med validering
 - SMS-verifisering av mobilnummer (demomodus i frontend)
 - Frivillig posisjonsdeling med eget samtykke og mulighet for å slette
@@ -38,7 +41,8 @@ til en fungerende markedsplass.
 - Familier oppretter oppdrag med strukturerte felt (ikke fritekst som standard)
 - Oppdragskart som viser bydel og omtrentlig avstand, aldri adresse før tildeling
 - «Jeg er tilgjengelig»-bryter som styrer all posisjonsbruk
-- Matching på avstand, tilgjengelighet, ferdigheter, tillitsnivå, tidligere relasjon og pris
+- Matchingmotoren fra fase 1 kobles til ekte oppdrag, posisjon og varsling
+- Tilbudsbølger: fast hjelper → Care Circle → øvrige verifiserte
 
 ## Fase 5 – Gjennomføring og betaling
 

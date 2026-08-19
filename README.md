@@ -33,10 +33,14 @@ python3 -m http.server 8000
 | `trenger-hjelp.html` | Senior Mode – be om hjelp med store knapper og taleinput |
 | `familie.html` | Pårørendepanel – status, Care Circle, varsler, bestilling på vegne av |
 | `bli-hjelper.html` | Registrering av hjelper i seks steg |
+| `oppdrag.html` | Oppdragstavla – tilgjengelighetsbryter, rangerte oppdrag, innsjekk |
 | `trygghet.html` | Verifisering, tillitsnivåer, pengeregler, tillitsscore |
 | `personvern.html` | Personvernerklæring |
 | `assets/js/bestilling.js` | Bestillingsflyt, akuttfilter, taleinput, simulert matching |
 | `assets/js/pris.js` | Prismodell – timer, reisetid, hastetillegg, serviceavgift |
+| `assets/js/matching.js` | Matchingmotor – absolutte krav, vekter og begrunnelser |
+| `assets/js/tavle.js` | Oppdragstavla: tilgjengelighet, posisjonsstyring, innsjekk/utsjekk |
+| `assets/js/demodata.js` | Testdata; adresser holdes atskilt fra oppdragslisten |
 | `assets/js/registrering.js` | Skjemalogikk: validering, SMS-kode, posisjonssamtykke, kladd |
 | `assets/js/api.js` | API-adapter – byttes til ekte endepunkter i fase 2 |
 | `assets/js/app.js` | Meny, samtykke til informasjonskapsler |
@@ -56,6 +60,38 @@ python3 -m http.server 8000
 6. **Bekreftelse** – hvem som kommer, ankomsttid og oppmøtekode
 
 Beskrivelser som tyder på en akutt situasjon utløser nødnumrene i stedet for et oppdrag.
+
+## Matchingmotoren
+
+`assets/js/matching.js` skiller mellom **absolutte krav** og **vekter**.
+
+Absolutte krav er filtre, ikke poeng – brytes ett av dem, tilbys oppdraget aldri:
+tilgjengelig nå, kryssert av for oppdragstypen, tillitsnivå høyt nok, innenfor egen
+maksavstand, ledig i tidsrommet, og – i prøveperioden – kun lavrisiko på dagtid.
+
+Deretter rangeres de gjenværende oppdragene:
+
+| Faktor | Vekt |
+|---|---|
+| Tidligere oppdrag hos samme familie | 25 |
+| Nærhet | 25 |
+| Tillitsscore | 20 |
+| Språkmatch | 10 |
+| Punktlighet | 10 |
+| Transportform | 5 |
+| Pris | 5 |
+
+Motoren er bevisst forklarbar. Hvert oppdrag som vises, kommer med begrunnelsen for
+plasseringen sin, og hvert oppdrag som holdes utenfor, kommer med en grunn – for
+eksempel «Dette oppdraget krever tillitsnivå 2. Du er på nivå 1.» En hjelper som
+stenges ute av et oppdrag, skal kunne få et svar, ikke bare oppleve at det er stille.
+
+## Adressevern i praksis
+
+Testdataene speiler regelen fra personvernarkitekturen: gateadressen finnes ikke i
+oppdragslisten frontend rangerer på. Den hentes fra et eget oppslag først når oppdraget
+er tildelt, og forsvinner fra visningen igjen når oppdraget er meldt ferdig.
+Dette er verifisert i nettlesertest.
 
 ## Registreringsflyten (hjelper)
 

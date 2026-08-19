@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oppdragstavla – PårørendePilot</title>
+<meta name="description" content="Oppdrag i nærheten for verifiserte hjelpere. Slå på tilgjengelighet, se hvorfor du får se hvert oppdrag, ta oppdrag og sjekk inn med oppmøtekode.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+<style>
+  .tavle { display: grid; grid-template-columns: 300px 1fr; gap: 26px; align-items: start; }
+  @media (max-width: 940px) { .tavle { grid-template-columns: 1fr; } }
+
+  .bryter-kort { position: sticky; top: 88px; }
+  @media (max-width: 940px) { .bryter-kort { position: static; } }
+
+  .bryter { display: flex; align-items: center; gap: 14px; width: 100%; background: none; border: none; font: inherit; cursor: pointer; padding: 0; text-align: left; }
+  .bryter-spor { width: 62px; height: 34px; border-radius: 999px; background: #cfd8d4; flex: 0 0 auto; position: relative; transition: background .15s; }
+  .bryter-kule { position: absolute; top: 4px; left: 4px; width: 26px; height: 26px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .15s; }
+  .bryter[aria-pressed="true"] .bryter-spor { background: var(--brand); }
+  .bryter[aria-pressed="true"] .bryter-kule { transform: translateX(28px); }
+  .bryter-tekst { font-weight: 700; font-size: 1.02rem; }
+  .bryter-tekst small { display: block; font-weight: 400; font-size: .86rem; color: var(--ink-faint); }
+
+  .oppdrag-kort { background:#fff; border:1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow); }
+  .oppdrag-kort + .oppdrag-kort { margin-top: 16px; }
+  .oppdrag-topp { display:flex; gap:16px; align-items:flex-start; }
+  .oppdrag-ikon { width:46px; height:46px; flex:0 0 auto; border-radius:12px; background:var(--accent-light); display:grid; place-items:center; font-size:1.3rem; }
+  .oppdrag-betaling { margin-left:auto; text-align:right; }
+  .oppdrag-betaling strong { font-size:1.2rem; display:block; }
+  .oppdrag-betaling small { color:var(--ink-faint); }
+  .oppdrag-meta { color: var(--ink-faint); font-size:.92rem; margin:4px 0 0; }
+  .hvorfor { background: var(--bg-soft); border-radius: 10px; padding: 12px 14px; margin-top: 14px; font-size: .9rem; }
+  .hvorfor ul { margin:6px 0 0; padding-left: 1.1em; }
+  .hvorfor li { margin-bottom: 3px; }
+  .treff { display:inline-flex; align-items:center; gap:6px; background:var(--brand-light); color:var(--brand-dark); font-weight:700; font-size:.82rem; padding:4px 10px; border-radius:999px; }
+
+  .skjult-liste { list-style:none; margin:0; padding:0; }
+  .skjult-liste li { padding:13px 0; border-bottom:1px solid var(--line); font-size:.93rem; display:grid; grid-template-columns: 1fr; gap:3px; }
+  .skjult-liste li:last-child { border-bottom:none; }
+  .skjult-liste strong { color: var(--ink-soft); }
+  .skjult-liste span { color: var(--ink-faint); }
+
+  .kode-inn { display:flex; gap:10px; flex-wrap:wrap; align-items:flex-start; margin-top:14px; }
+  .kode-inn input { max-width: 160px; font-size:1.3rem; letter-spacing:.3em; text-align:center; font-weight:700; }
+
+  .tomt { text-align:center; padding: 40px 20px; color: var(--ink-faint); }
+  .tomt .stort { font-size: 2.4rem; display:block; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true">🧭</span> PårørendePilot</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="hovedmeny">Meny</button>
+    <nav class="site-nav" id="hovedmeny" aria-label="Hovedmeny">
+      <a href="index.html">Hjem</a>
+      <a href="trenger-hjelp.html">Trenger du hjelp?</a>
+      <a href="familie.html">For pårørende</a>
+      <a href="oppdrag.html" aria-current="page">Oppdragstavla</a>
+      <a class="btn btn-primary" href="bli-hjelper.html">Bli hjelper</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" style="padding:36px 0 72px;background:var(--bg-soft)">
+  <div class="wrap">
+
+    <div style="max-width:760px;margin-bottom:26px">
+      <h1 style="margin-bottom:.3em">Oppdrag i nærheten</h1>
+      <p class="muted" style="font-size:1rem;margin:0">
+        Demovisning av hjelpersiden. Du er logget inn som <strong>Sofia H.</strong> – tillitsnivå 2, maks 5 km,
+        ledig formiddag og ettermiddag. Rekkefølgen er beregnet, ikke tilfeldig, og du kan se hvorfor.
+      </p>
+    </div>
+
+    <div class="tavle">
+
+      <aside class="stack">
+        <div class="card bryter-kort">
+          <button class="bryter" type="button" id="tilgjengelig-bryter" aria-pressed="false">
+            <span class="bryter-spor" aria-hidden="true"><span class="bryter-kule"></span></span>
+            <span class="bryter-tekst" id="bryter-tekst">Ikke tilgjengelig<small>Slå på for å se oppdrag</small></span>
+          </button>
+
+          <div class="notice notice-privacy" id="posisjon-boks" style="margin:18px 0 0;font-size:.88rem" hidden>
+            <p style="margin:0 0 10px"><strong>Posisjon</strong></p>
+            <p style="margin:0 0 12px" id="posisjon-tekst">
+              For å vise oppdrag i nærheten trenger vi posisjonen din mens du er tilgjengelig.
+              Vi sporer deg ikke når bryteren står av.
+            </p>
+            <p style="margin:0;display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn btn-primary" type="button" id="del-posisjon" style="font-size:.88rem;padding:9px 14px">Tillat posisjon</button>
+              <button class="btn btn-ghost" type="button" id="uten-posisjon" style="font-size:.88rem;padding:9px 14px">Ikke nå</button>
+            </p>
+          </div>
+
+          <hr style="border:none;border-top:1px solid var(--line);margin:20px 0">
+
+          <h3 style="font-size:1rem">Din profil</h3>
+          <ul class="badge-row" style="margin-top:10px">
+            <li class="badge">✅ Identitet</li>
+            <li class="badge">✅ Referanser</li>
+            <li class="badge">✅ Sikkerhetskurs</li>
+            <li class="badge neutral">Tillitsnivå 2</li>
+          </ul>
+          <p class="muted" style="margin:14px 0 0;font-size:.88rem">
+            87 fullførte oppdrag · tillitsscore 91 · 98 % punktlighet
+          </p>
+          <p style="margin:14px 0 0"><a href="bli-hjelper.html" style="font-size:.9rem">Endre tilgjengelighet og oppdragstyper →</a></p>
+        </div>
+      </aside>
+
+      <div>
+        <div id="tavle-innhold">
+          <div class="card tomt">
+            <span class="stort" aria-hidden="true">🌙</span>
+            <p style="margin:0"><strong>Du er ikke tilgjengelig nå.</strong></p>
+            <p style="margin:6px 0 0">Slå på bryteren når du har tid, så viser vi oppdrag i nærheten.</p>
+          </div>
+        </div>
+
+        <section class="card" id="skjulte-kort" style="margin-top:22px" hidden>
+          <h3 style="font-size:1.05rem">Oppdrag du ikke får se – og hvorfor</h3>
+          <p class="muted" style="font-size:.9rem">
+            Et oppdrag som holdes utenfor, skal kunne forklares. Er du uenig i en begrunnelse, kan du be om
+            manuell gjennomgang.
+          </p>
+          <ul class="skjult-liste" id="skjulte-liste"></ul>
+        </section>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-bottom" style="margin:0;border:none;padding:0">
+      © <span data-year>2026</span> PårørendePilot · Demovisning med testdata ·
+      <a href="personvern.html">Personvern</a> · <a href="trygghet.html">Trygghet</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+<script src="assets/js/matching.js" defer></script>
+<script src="assets/js/demodata.js" defer></script>
+<script src="assets/js/tavle.js" defer></script>
+</body>
+</html>
