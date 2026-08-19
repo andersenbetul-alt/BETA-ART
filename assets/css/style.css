@@ -180,6 +180,8 @@ h2.label,h3.label{font-weight:400;line-height:1.6}
 }
 .signup input::placeholder{color:#7c7c8e}
 .signup .btn{border-inline-start:0}
+.signup-status:empty{display:none}
+.signup-status{color:var(--accent);letter-spacing:.1em}
 
 .dl-list li{margin-bottom:2px}
 .dl-list a{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:12px 16px;border:1px solid var(--border);transition:border-color .18s,color .18s}

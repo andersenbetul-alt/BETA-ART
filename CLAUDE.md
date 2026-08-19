@@ -56,6 +56,11 @@ add the nav link only if the section is a destination people look for.
 values in component rules. Nothing below 10px. Data cells that hold Latin names or
 figures need `unicode-bidi: plaintext` so they survive Arabic and Urdu.
 
+**The mailing list.** `SIGNUP_ENDPOINT` in `app.js` is empty, so the form falls back to the
+visitor's mail client and says so. `docs/MAILING-LIST.md` covers why the list matters more
+than the stream button, what to pick when it goes live, and why the note under the form no
+longer claims GDPR compliance.
+
 **Third-party embeds.** YouTube loads only after a click, through
 `youtube-nocookie.com`. Keep it that way — the page tells visitors it is GDPR
 compliant, and a click-to-load facade is what makes that true. Same rule for anything

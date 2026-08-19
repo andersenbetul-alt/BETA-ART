@@ -416,19 +416,44 @@
 
   /* ---------- newsletter ---------- */
 
+  // Set this to a form endpoint (one that stores in the EU) and the signup posts to it.
+  // Empty means there is no list backend yet, and the form says so instead of pretending.
+  var SIGNUP_ENDPOINT = '';
+
   function signup() {
     var form = document.getElementById('signup');
+    var status = document.getElementById('signup-status');
     if (!form) return;
+
+    var say = function (key) { if (status) status.textContent = t(key); };
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var input = document.getElementById('signup-email');
       var value = input && input.value ? input.value.trim() : '';
       if (!value) return;
-      // No backend on a static host: hand the address to the visitor's mail client.
+
+      if (SIGNUP_ENDPOINT) {
+        say('signup_sending');
+        fetch(SIGNUP_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: value })
+        }).then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          say('signup_ok');
+          form.reset();
+        }).catch(function () { say('signup_fail'); });
+        return;
+      }
+
+      // No list backend: hand the address to the visitor's mail client. That can quietly do
+      // nothing — plenty of machines have no mail client — so say what is about to happen
+      // and leave the address in the field rather than clearing it and looking successful.
       var body = encodeURIComponent('Sign me up for HXI drops.\nEmail: ' + value);
       location.href = 'mailto:hello@hximusic.com?subject=' +
         encodeURIComponent('Mailing list signup') + '&body=' + body;
-      form.reset();
+      say('signup_mail');
     });
   }
 
