@@ -107,3 +107,23 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
   :root:not([data-theme="light"]) .impact-tight  { background:#2A2113; color:#F0D6AC; }
   :root:not([data-theme="light"]) .impact-breaks { background:#2E1710; color:#F3C4B4; }
 }
+
+/* Arama karşılama sayfası */
+.help h1 { font-size:1.7rem; margin-bottom:.9rem; }
+.help p { margin:0 0 1rem; }
+.help h2 { margin-top:2.2rem; }
+.cta {
+  display:block; text-align:center; background:var(--clay); color:#fff;
+  padding:.95rem 1.2rem; border-radius:var(--radius); text-decoration:none;
+  font-weight:600; margin:1.6rem 0;
+}
+.cta:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+.cta.secondary { background:transparent; color:var(--ink); border:1px solid var(--border); }
+.steps { padding-left:1.2rem; margin:0; }
+.steps li { margin-bottom:.75rem; }
+.faq {
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:1rem 1.1rem; margin-top:2rem; font-size:.9rem;
+}
+.faq p { margin:0 0 .6rem; }
+.faq p:last-child { margin-bottom:0; }

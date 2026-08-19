@@ -9,11 +9,11 @@ import Link from 'next/link';
  *    Niyet zaten beş başlıktan biri; dil modeli bunu çözmek için gerekmiyor.
  */
 const problems = [
-  { kind: 'cancelled', icon: '⛴', label: 'My ferry or train was cancelled', hint: 'Find another way there' },
-  { kind: 'missed',    icon: '🕐', label: 'I missed my connection',          hint: 'Rebuild the rest of today' },
+  { kind: 'cancelled', icon: '⛴', label: 'My ferry or train was cancelled', hint: 'Other ways to still get there' },
+  { kind: 'missed',    icon: '🕐', label: 'I missed my connection',          hint: 'The rest of today, rebuilt' },
   { kind: 'road',      icon: '🚧', label: 'The road is closed',              hint: 'Alternative route' },
-  { kind: 'eat',       icon: '🍽', label: 'Where can we eat now?',           hint: 'Open, close, walkable' },
-  { kind: 'rain',      icon: '🌧', label: 'It started raining',              hint: 'Swap to indoor plans' },
+  { kind: 'eat',       icon: '🍽', label: 'Where can we eat now?',           hint: 'Worth walking to from here' },
+  { kind: 'rain',      icon: '🌧', label: 'It started raining',              hint: 'Wait it out, or move indoors' },
 ];
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <h1>What went wrong?</h1>
       <p className="muted" style={{ marginTop: 0, marginBottom: '1.5rem' }}>
-        Tap the problem. We&rsquo;ll handle the rest.
+        Tap what happened. Answer on the next screen.
       </p>
 
       <div className="problems">

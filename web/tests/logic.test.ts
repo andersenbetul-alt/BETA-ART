@@ -17,7 +17,7 @@ test('kısa süreli yağmurda içeri girmek önerilmez', () => {
   // Ürünün asıl faydası burada: 40 dakikalık yağmur için günü değiştirmek yanlış.
   const { indoors, advice } = shouldGoIndoors(weather({ dryInHours: 1 }));
   assert.equal(indoors, false);
-  assert.match(advice, /clears in about 1 hour/);
+  assert.match(advice, /Clears in about 1 hour/);
 });
 
 test('sınırdaki iki saat hâlâ beklemeye değer', () => {

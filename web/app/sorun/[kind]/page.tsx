@@ -17,11 +17,11 @@ const liveData = process.env.COBBAN_LIVE_DATA === 'true';
 
 /** Sorun başına cevabın ilk cümlesi. Marka sesi: sakin, kesin, çözülmüş. */
 const headline: Record<Kind, string> = {
-  cancelled: "Don't worry. Here's another way.",
-  missed: "Fine. Here's the rest of today, rebuilt.",
-  road: "There's another route.",
-  eat: 'Here are places open near you.',
-  rain: 'Let me check the sky first.',
+  cancelled: 'Other ways to still get there.',
+  missed: 'The rest of today, rebuilt.',
+  road: 'Routes that avoid the road.',
+  eat: 'Places worth walking to.',
+  rain: 'Wait it out, or move indoors?',
 };
 
 /**
@@ -87,7 +87,7 @@ async function TransportAnswer({
   const target = cityById(to ?? '') ?? cities[3];
 
   if (origin.id === target.id) {
-    return <p className="muted">Pick two different places.</p>;
+    return <p className="muted">Pick a different destination below.</p>;
   }
 
   const { trips, live } = await getTrips(origin.stopPlaceId, target.stopPlaceId);
@@ -118,11 +118,12 @@ async function TransportAnswer({
         <strong>
           {ordered.length > 0
             ? `Next departure ${clock(ordered[0].departure)}`
-            : 'No connection found today'}
+            : 'Nothing left today'}
         </strong>
         <span className="muted small">
-          {origin.name} → {target.name}
-          {ordered.length > 0 && ` · in ${relativeMinutes(ordered[0].departure)} min`}
+          {ordered.length > 0
+            ? `${origin.name} → ${target.name} · in ${relativeMinutes(ordered[0].departure)} min`
+            : `Nothing scheduled ${origin.name} → ${target.name} for the rest of today. Check overnight buses, or try early tomorrow.`}
         </span>
       </div>
 
@@ -276,7 +277,7 @@ function PlaceList({ city, kind }: { city: City; kind: 'eat' | 'indoor' }) {
       </div>
 
       <p className="muted small">
-        Hand-picked, not scraped. Opening hours change — call ahead for the late ones.
+        Hand-picked, not scraped. Hours change — call ahead for the late ones.
       </p>
     </>
   );

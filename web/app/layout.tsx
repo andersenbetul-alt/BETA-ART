@@ -3,8 +3,9 @@ import Link from 'next/link';
 import './globals.css';
 
 export const metadata = {
-  title: { default: 'COBBAN — Norway made simple', template: '%s · COBBAN' },
-  description: 'Ferry cancelled? Train missed? Road closed? COBBAN rebuilds your day.',
+  title: { default: 'COBBAN — travel problems in Norway, solved in one screen', template: '%s · COBBAN' },
+  description:
+    'Ferry cancelled, train missed, rain ruining the day? Tell COBBAN what went wrong and get the fix — with your hotel, dinner and flight still accounted for.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

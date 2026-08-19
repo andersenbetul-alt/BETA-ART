@@ -24,13 +24,13 @@ export type WeatherVerdict = {
  */
 export function shouldGoIndoors(w: WeatherVerdict): { indoors: boolean; advice: string } {
   if (!w.wetNow) {
-    return { indoors: false, advice: "It's dry right now. Your outdoor plan still works." };
+    return { indoors: false, advice: "Dry right now. Keep your outdoor plan." };
   }
   if (w.dryInHours !== null && w.dryInHours <= 2) {
     return {
       indoors: false,
-      advice: `Raining now, but it clears in about ${w.dryInHours} ${w.dryInHours === 1 ? 'hour' : 'hours'}. Worth waiting it out over a coffee.`,
+      advice: `Clears in about ${w.dryInHours} ${w.dryInHours === 1 ? 'hour' : 'hours'}. Wait it out over a coffee — don't rebook anything.`,
     };
   }
-  return { indoors: true, advice: 'Wet for the next few hours. Here are indoor options.' };
+  return { indoors: true, advice: 'Wet for the next few hours. Move the day indoors.' };
 }
