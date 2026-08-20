@@ -226,7 +226,13 @@ html[data-theme="dark"] .btn--primary { color: #06231f; }
   min-height: 68px;
 }
 
-.brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--text); font-weight: 800; letter-spacing: -.02em; font-size: 1.15rem; }
+.brand {
+  display: inline-flex; align-items: center; gap: .6rem;
+  text-decoration: none; color: var(--text); font-weight: 800;
+  letter-spacing: -.02em; font-size: 1.15rem;
+  min-width: 0;                      /* allow it to shrink in the flex row */
+}
+.brand__name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .brand:hover { color: var(--text); }
 .brand__mark { width: 34px; height: 34px; flex: none; }
 .brand__name span { color: var(--brand); }
@@ -240,7 +246,7 @@ html[data-theme="dark"] .btn--primary { color: #06231f; }
 .nav__link:hover { background: var(--bg-soft); color: var(--brand-strong); }
 .nav__link[aria-current="page"] { color: var(--brand-strong); background: var(--brand-soft); }
 
-.header-actions { display: flex; align-items: center; gap: .5rem; }
+.header-actions { display: flex; align-items: center; gap: .5rem; flex: none; }
 
 .icon-btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -639,6 +645,18 @@ html[data-theme="dark"] .site-footer { background: #0a1320; }
   .nav__list { flex-direction: column; align-items: stretch; padding: .75rem var(--gutter) 1.25rem; gap: .15rem; }
   .nav__link { padding: .75rem .8rem; font-size: 1rem; }
   .header-actions { margin-left: auto; }
+}
+
+/* Narrow phones: the brand, the language menu and two icon buttons together
+   exceed 380px at full size, which pushed the whole page sideways. Shrink the
+   chrome rather than letting the document scroll horizontally. */
+@media (max-width: 480px) {
+  .header-inner { gap: .5rem; }
+  .header-actions { gap: .3rem; }
+  .header-actions .select { max-width: 84px; padding-inline: .5rem 1.9rem; }
+  .brand { font-size: 1rem; gap: .45rem; }
+  .brand__mark { width: 30px; height: 30px; }
+  .icon-btn { width: 38px; height: 38px; }
 }
 
 @media (max-width: 720px) {

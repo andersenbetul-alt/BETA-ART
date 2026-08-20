@@ -15,19 +15,20 @@
   var DEFAULT_LANG = "en";
   var RTL_LANGS = ["ar", "fa", "he", "ur"];
 
-  /* Languages the interface itself is translated into. The *service* supports
-     far more (see assets/js/languages.js) — these are the UI locales. */
+  /* Languages the INTERFACE is translated into. The service consults in far
+     more (see data-languages.js) — these are the UI locales.
+
+     Only list a language once its dictionary is complete. A half-translated
+     locale falls back to English mid-page, which reads as broken rather than
+     as progress; the dictionary checks in tests/lint.test.js enforce
+     completeness, so adding a code here without the strings fails the build.
+     To add one: translate a copy of i18n/en.js, add it below, and add it to
+     RTL_LANGS too if it is right-to-left. */
   var UI_LANGUAGES = [
-    { code: "en", name: "English",    native: "English"    },
-    { code: "tr", name: "Turkish",    native: "Türkçe"     },
-    { code: "es", name: "Spanish",    native: "Español"    },
-    { code: "ar", name: "Arabic",     native: "العربية"    },
-    { code: "fr", name: "French",     native: "Français"   },
-    { code: "de", name: "German",     native: "Deutsch"    },
-    { code: "ru", name: "Russian",    native: "Русский"    },
-    { code: "zh", name: "Chinese",    native: "中文"        },
-    { code: "hi", name: "Hindi",      native: "हिन्दी"      },
-    { code: "pt", name: "Portuguese", native: "Português"  }
+    { code: "en", name: "English", native: "English" },
+    { code: "tr", name: "Turkish", native: "Türkçe"  },
+    { code: "es", name: "Spanish", native: "Español" },
+    { code: "ar", name: "Arabic",  native: "العربية" }
   ];
 
   var dictionaries = Object.create(null); // code -> flat key/value map

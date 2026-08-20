@@ -5,7 +5,9 @@
   "description": "Multilingual pre-visit preparation, specialist routing and consultation booking.",
   "scripts": {
     "test": "node tests/triage.test.js && node tests/booking.test.js && node tests/lint.test.js",
-    "serve": "python3 -m http.server 8000"
+    "serve": "python3 -m http.server 8000",
+    "test:e2e": "node tests/e2e/smoke.js",
+    "test:all": "npm test && npm run test:e2e"
   },
   "license": "UNLICENSED"
 }

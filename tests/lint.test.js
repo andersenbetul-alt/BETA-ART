@@ -188,6 +188,20 @@ check("all dictionaries hold exactly the same keys as English", () => {
   assert(problems.length === 0, problems.join(" | "));
 });
 
+check("every language offered in the switcher has a dictionary, and vice versa", () => {
+  // Offering a language whose dictionary is missing means the visitor picks it
+  // and gets English — worse than not offering it at all.
+  const engine = fs.readFileSync(path.join(root, "assets/js/i18n.js"), "utf8");
+  const block = engine.slice(engine.indexOf("var UI_LANGUAGES"), engine.indexOf("];", engine.indexOf("var UI_LANGUAGES")));
+  const offered = (block.match(/code:\s*"([a-z-]+)"/g) || []).map((m) => m.match(/"([a-z-]+)"/)[1]);
+  const shipped = i18nFiles.map((f) => f.replace(/\.js$/, ""));
+  assert(offered.length > 0, "could not read UI_LANGUAGES");
+  const noDictionary = offered.filter((c) => !shipped.includes(c));
+  const notOffered = shipped.filter((c) => !offered.includes(c));
+  assert(noDictionary.length === 0, "offered with no dictionary: " + noDictionary.join(", "));
+  assert(notOffered.length === 0, "dictionary exists but not offered: " + notOffered.join(", "));
+});
+
 check("no dictionary entry is empty or left as its own key", () => {
   const problems = [];
   for (const file of i18nFiles) {
