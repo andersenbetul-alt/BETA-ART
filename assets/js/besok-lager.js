@@ -15,18 +15,53 @@ window.PP_BESOK = (function () {
 
   var NOKKEL = 'pp_besok_v1';
 
-  /* Faste oppgaver. Ingen av dem er helsehjelp, og listen kan ikke utvides fra
-     grensesnittet – det er selve sperren mot at tjenesten glir. */
+  /* Faste oppgaver, med risikonivå.
+
+     Nivåene er selve sikkerhetsmodellen, ikke en merkelapp:
+
+       gronn    hverdagsoppgaver uten helserisiko. Enhver verifisert medarbeider.
+       gul      krever opplæring eller ansvar. Leverandøren bestemmer hvem.
+       rod      helsehjelp. Finnes ikke i denne lista og skal ikke finnes.
+       forbudt  penger, PIN, BankID, verdisaker. Aldri, uansett nivå.
+
+     Katalogen er bevisst kort. «Alt et menneske kan trenge» er ikke et
+     produkt – det er en ansvarsflukt. Riktig behov til riktig kompetanse. */
+
   var OPPGAVER = [
-    { id: 'handling',  navn: 'Handling',                ikon: '🛒' },
-    { id: 'folge',     navn: 'Følge til avtale',        ikon: '🤝' },
-    { id: 'transport', navn: 'Transport',               ikon: '🚗' },
-    { id: 'samvaer',   navn: 'Samvær og tur',           ikon: '☕' },
-    { id: 'praktisk',  navn: 'Praktisk hjelp i hjemmet',ikon: '🏠' },
-    { id: 'rengjoring',navn: 'Rengjøring',              ikon: '🧹' },
-    { id: 'apotek',    navn: 'Hente på apotek',         ikon: '💊' },
-    { id: 'dyr',       navn: 'Kjæledyr',                ikon: '🐕' }
+    { id: 'handling',  navn: 'Handling og ærend',        ikon: '🛒', risiko: 'gronn',
+      forklaring: 'Dagligvarer, post, hente pakker' },
+    { id: 'samvaer',   navn: 'Sosialt besøk',            ikon: '☕', risiko: 'gronn',
+      forklaring: 'Prat, kaffe, høytlesing, kortspill' },
+    { id: 'tur',       navn: 'Tur og aktivitet',         ikon: '🚶', risiko: 'gronn',
+      forklaring: 'Gåtur, kafé, aktivitetssenter' },
+    { id: 'digital',   navn: 'Hjelp med telefon og TV',  ikon: '📱', risiko: 'gronn',
+      forklaring: 'Videosamtale, wifi, fjernkontroll, gjenkjenne svindel' },
+    { id: 'praktisk',  navn: 'Små praktiske oppgaver',   ikon: '🔧', risiko: 'gronn',
+      forklaring: 'Lyspære, søppel, flytte noe lett, vanne blomster' },
+    { id: 'hjemme',    navn: 'Lett husarbeid',           ikon: '🧹', risiko: 'gul',
+      forklaring: 'Oppvask, klesvask, skifte sengetøy. Ikke høyt eller tungt' },
+    { id: 'mat',       navn: 'Matlaging',                ikon: '🍲', risiko: 'gul',
+      forklaring: 'Lage eller varme et enkelt måltid, spise sammen' },
+    { id: 'folge',     navn: 'Følge til avtale',         ikon: '🤝', risiko: 'gul',
+      forklaring: 'Lege, tannlege, frisør, bank. Medarbeideren venter og følger hjem' }
   ];
+
+  /* Ikke i katalogen, men søkt om ofte nok til at svaret må stå skrevet. */
+  var UTENFOR = [
+    { hva: 'Medisinering, sårstell, personlig stell', hvorfor: 'Helsehjelp. Krever autorisert personell.', niva: 'rod' },
+    { hva: 'Dusjing, bading, toalett, påkledning',    hvorfor: 'Personlig stell. Krever opplært pleiepersonell.', niva: 'rod' },
+    { hva: 'Løfte eller flytte en person',            hvorfor: 'Skaderisiko for begge. Krever opplæring.', niva: 'rod' },
+    { hva: 'Kontanter, bankkort, PIN, BankID',        hvorfor: 'Aldri. Uansett hvem som spør.', niva: 'forbudt' },
+    { hva: 'Verdisaker, testament, fullmakter',       hvorfor: 'Aldri via plattformen.', niva: 'forbudt' },
+    { hva: 'Elektrisk arbeid, rørlegging, stiger',    hvorfor: 'Krever fagbrev eller er for farlig.', niva: 'rod' }
+  ];
+
+  var RISIKO = {
+    gronn:   { navn: 'Grønn',   forklaring: 'Hverdagsoppgave uten helserisiko' },
+    gul:     { navn: 'Gul',     forklaring: 'Krever opplæring eller mer ansvar' },
+    rod:     { navn: 'Rød',     forklaring: 'Helsehjelp – ikke på plattformen' },
+    forbudt: { navn: 'Forbudt', forklaring: 'Aldri, uansett kompetanse' }
+  };
 
   var UTFALL = {
     utfort:      { navn: 'Utført',              farge: 'ok' },
@@ -237,6 +272,8 @@ window.PP_BESOK = (function () {
 
   return {
     OPPGAVER: OPPGAVER,
+    UTENFOR: UTENFOR,
+    RISIKO: RISIKO,
     UTFALL: UTFALL,
     opprett: opprett,
     hentAlle: hentAlle,
