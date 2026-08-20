@@ -117,7 +117,7 @@ AI-automatisering. En del av Beta Art, arkivet for verifisert menneskelig fotogr
 </div>
 <nav aria-label="Tjenester"><p class="tag">Tjenester</p><a href="index.html#privat">Privat</a><a href="index.html#bedrift">Bedrift</a><a href="index.html">Alle tjenester</a><a href="index.html#ai-ansatte">AI-ansatte</a></nav>
 <nav aria-label="Selskapet"><p class="tag">Selskapet</p><a href="../about.html" hreflang="en" lang="en">Om oss (engelsk)</a><a href="../ai-staff.html" hreflang="en" lang="en">Våre egne AI-ansatte (engelsk)</a><a href="../quote.html">Få et tilbud</a></nav>
-<nav aria-label="Juridisk"><p class="tag">Juridisk</p><a href="{HUB}/legal.html#terms">Vilkår</a><a href="{HUB}/legal.html#privacy">Personvern</a><a href="{HUB}/legal.html#refunds">Refusjon</a><a href="{HUB}/legal.html#ai">AI og data</a><a href="{HUB}/legal.html#accessibility">Universell utforming</a><a href="mailto:hallo@beta-art.com">Kontakt</a></nav>
+<nav aria-label="Juridisk"><p class="tag">Juridisk</p><a href="{HUB}/legal.html#terms">Vilkår</a><a href="{HUB}/legal.html#privacy">Personvern</a><a href="{HUB}/legal.html#refunds">Refusjon</a><a href="{HUB}/legal.html#ai">AI og data</a><a href="{HUB}/legal.html#accessibility">Universell utforming</a><a href="{HUB}/report.html">Meld fra om innhold</a><a href="mailto:hallo@beta-art.com">Kontakt</a></nav>
 </div>
 <div class="wrap footer-base">
 <p class="human-mark"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.1" fill="none" stroke="currentColor" stroke-width="1.4"></circle><path d="M4.7 8.2 7 10.5 11.3 5.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"></path></svg><span>Godkjent av menneske</span></p>
@@ -176,11 +176,20 @@ def li(items):
 def service(slug, prev, nxt):
     en, no = BY[slug], NO[slug]
     title = no["title"]
-    desc = no["lead"]
+    lead = no["lead"]                         # det som står på siden
+    # Metabeskrivelsen er en annen tekst med en annen jobb: den skal fylle et
+    # søkeresultat. Den ble tidligere skrevet rett inn i <p class="lead"> også,
+    # så tretten av sidene åpnet med overskriften, en tankestrek og
+    # problemavsnittet — fire av dem kuttet midt i en setning med ellipse.
+    desc = lead
     if len(desc) < 70:
-        desc = desc.rstrip(".") + " — " + no["problem"].split(". ")[0] + "."
-    if len(desc) > 158:                       # past what a search result shows
-        desc = desc[:155].rsplit(" ", 1)[0] + "…"
+        # Trettn av de norske ledeavsnittene er kortere enn et søkeresultat.
+        # De fylles ut med den første hele setningen om hva vi gjør — aldri
+        # med et avkuttet fragment. Passer den ikke, står ledeavsnittet alene:
+        # en kort beskrivelse er bedre enn en setning som stopper midt i.
+        neste = no["solution"].split(". ")[0].strip().rstrip(".")
+        if neste and len(desc) + len(neste) + 2 <= 158:
+            desc = desc.rstrip(".") + ". " + neste + "."
     ld = {"@context": "https://schema.org", "@type": "Service",
           "name": strip(title), "description": desc, "inLanguage": "no",
           "serviceType": strip(title), "areaServed": "NO",
@@ -218,7 +227,7 @@ def service(slug, prev, nxt):
 </nav>
 <p class="tag">{no['tag']}</p>
 <h1>{title}</h1>
-<p class="lead">{desc}</p>
+<p class="lead">{lead}</p>
 <div class="actions">
 <a class="btn btn-seal" href="../quote.html?service={slug}">Få et tilbud</a>
 <a class="btn btn-line" href="{SITE}/s-{slug}.html" hreflang="en" lang="en">Read this in English</a>
@@ -281,7 +290,7 @@ def service(slug, prev, nxt):
 </dl>
 <a class="btn btn-seal btn-block" href="../quote.html?service={slug}">Få et tilbud</a>
 <p class="footnote">Prisen er et utgangspunkt i norske kroner uten MVA. Hvert oppdrag prises
-skriftlig etter en brief, og ingenting faktureres før omfanget er avtalt.</p>
+skriftlig etter en brief, og vi sender ingen faktura før dere har godkjent omfanget.</p>
 </div>
 
 <div class="side-card">
@@ -397,14 +406,14 @@ personlig side, portefølje, innhold og bilder.</p>
 <p class="tag">Beta Art Bedrift · {len(biz)} tjenester</p>
 <h2>For selskaper</h2>
 </div>
-<p class="lead">Alt en liten bedrift blir bedt om og sjelden har tid til: nettside, merkevare,
+<p class="lead">Alt en liten bedrift må ha på plass og sjelden har tid til: nettside, merkevare,
 synlighet, innhold, drift — og tre AI-ansatte som svarer når kontoret er stengt.</p>
 </div>
 <div class="cards">
 {chr(10).join(card(s, i + 1) for i, s in enumerate(biz))}
 </div>
 <p class="footnote">Prisene er utgangspunkt i norske kroner uten MVA. Hvert oppdrag prises
-skriftlig etter en brief; ingenting faktureres før omfanget er avtalt.</p>
+skriftlig etter en brief, og vi sender ingen faktura før dere har godkjent omfanget.</p>
 </div>
 </section>
 

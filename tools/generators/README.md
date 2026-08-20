@@ -46,6 +46,7 @@ The gates are not optional, and they are quick:
     python3 tools/qc.py          # JS, CSS, i18n, prices, deployability
     python3 tools/copy.py        # conversion copy
     python3 tools/claims.py      # a promise on a page is a promise in the notice
+    python3 tools/klarsprak.py   # Norwegian against Språkrådet's klarspråk rules
     python3 tools/gaps.py        # what is still missing
     python3 tools/plates.py      # catalogue integrity
     node  tools/render-check.js  # a real browser, four widths
