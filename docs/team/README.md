@@ -13,6 +13,7 @@ arbeidsdokumenter fra fagpersonene, ikke vedtatt policy.
 | `MARKEDSFORING.md` | Markedsføring | Go-to-market for Oslo-piloten |
 | `SALG.md` | Salg | Abonnementsnivåer, arbeidsgiver- og kommunespor, innvendingsark |
 | `OKONOMI.md` | Økonomi | Enhetsøkonomi, følsomhet, kapitalbehov |
+| `JURIDISK-RISIKO.md` | Juridisk | 21 risikopunkter kontrollert mot faktisk kode, med fire hovedspørsmål til rådgiver |
 | `SYNTESE.md` | Koordinering | **Vedtatte beslutninger.** Elleve avgjørelser med begrunnelse |
 
 Rammene alle arbeider innenfor står i `../TEAM.md`.

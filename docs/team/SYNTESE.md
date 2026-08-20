@@ -299,7 +299,15 @@ Disse er ikke avgjort her, fordi de ikke kan avgjøres internt:
 | Forsikringsdekning og premie | Forutsetning for G14 | Før Bolk A trinn 8 |
 | Skatteplikt ved arbeidsgiverbetalte oppdrag | Salg tar det opp uoppfordret, men svaret må komme utenfra | Før første bedriftsavtale |
 
-Alle fire går til juridisk rådgiver samlet, ikke enkeltvis.
+Etter at dette ble skrevet, er listen utvidet i `JURIDISK-RISIKO.md` med 21
+punkter, og de fire hovedspørsmålene til rådgiver er omprioritert. To av dem var
+ikke fanget opp her: **betalingsformidling** — om pengestrømmen i det hele tatt er
+lovlig satt opp når vi holder kundens penger i fire dager — og **merverdiavgift**,
+som kan legge opptil 25 % på en prismodell regnet uten. I tillegg kom
+**samtykke på vegne av en person med svekket kognisjon**, som treffer selve
+kjerneproduktet.
+
+Alle går til juridisk rådgiver samlet, ikke enkeltvis.
 
 ---
 

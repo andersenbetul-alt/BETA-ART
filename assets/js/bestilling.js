@@ -351,6 +351,13 @@
   });
 
   document.getElementById('bekreft-hjelper').addEventListener('click', function () {
+    // Kvitteringen skal si det som faktisk ble valgt, ikke det vi håper ble valgt.
+    var status = document.getElementById('varsel-status');
+    if (status) {
+      status.textContent = valg.varsleFamilie
+        ? 'Anne (datter) får melding underveis og når oppdraget er ferdig.'
+        : 'Familien får ikke beskjed om dette oppdraget.';
+    }
     visPanel(7);
   });
 

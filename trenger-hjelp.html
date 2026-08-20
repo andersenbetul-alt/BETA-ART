@@ -209,9 +209,13 @@
 
       <div style="margin-top:24px">
         <label class="consent" style="font-size:1.02rem">
-          <input type="checkbox" id="varsle-familie" checked>
-          <span>Gi beskjed til familien min
-            <small>Anne (datter) får melding når hjelperen er på vei, når hun kommer, og når oppdraget er ferdig.</small>
+          <input type="checkbox" id="varsle-familie">
+          <span>Gi beskjed til Anne (datter) om dette oppdraget
+            <small>
+              Hun får vite hvem som kommer, når hjelperen er på vei, når hun kom, og når oppdraget er ferdig.
+              Hun får ikke vite hva du har skrevet i beskrivelsen. Du bestemmer dette for hvert oppdrag,
+              og du kan endre det når som helst.
+            </small>
           </span>
         </label>
       </div>
@@ -267,7 +271,7 @@
         <li><span class="tid">Nå</span><span>Sofia har tatt oppdraget og er på vei.</span></li>
         <li><span class="tid">Snart</span><span>Når hun ringer på, sier du koden <strong>4821</strong>.</span></li>
         <li><span class="tid">Etterpå</span><span>Du bekrefter at oppdraget er utført. Da får Sofia betalt.</span></li>
-        <li><span class="tid">Beskjed</span><span>Anne (datter) får melding underveis og når oppdraget er ferdig.</span></li>
+        <li><span class="tid">Beskjed</span><span id="varsel-status">Familien får ikke beskjed om dette oppdraget.</span></li>
       </ul>
       <p style="margin-top:26px">
         <a class="btn btn-secondary" href="index.html">Til forsiden</a>
