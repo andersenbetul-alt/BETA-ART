@@ -34,9 +34,50 @@ The public API does not expose these at all:
 - **Monthly listeners** — Spotify for Artists only.
 - **Per-track stream counts** — not published anywhere in the API.
 
-So "43,394,947 streams" and "251K monthly listeners" stay hand-maintained, in `index.html` and
-in the matching key of all twelve dictionaries. The script says so rather than approximating
-them from the `popularity` score, which is a 0–100 index and not a stream count.
+The script says so rather than approximating them from the `popularity` score, which is a
+0–100 index and not a stream count.
+
+# figures.json — the two numbers the API cannot fetch
+
+Those two figures used to be typed into seventeen places: five in `index.html` and one in each
+of the twelve dictionaries. That is why they went stale, and why the page and the artist's own
+July 2026 data pack disagreed about the stream count (43,394,947 against 43,367,812).
+
+They now live in `figures.json` and nowhere else.
+
+```json
+"streams_help_urself": { "value": 43394947, "source": "…", "checkedAt": "2026-08-18" }
+```
+
+**To change a number: edit `figures.json`, run `npm run figures`, commit.** That writes the
+no-JS fallback text in `index.html`; `app.js` fills the live page from the same file, and
+`build.mjs` bakes it into the twelve pre-rendered pages. `npm run check` fails if any of them
+ever disagree, and it fails if a number gets typed into a dictionary instead of `{n}`.
+
+A side effect worth having: the numbers are now formatted per language by `Intl.NumberFormat`,
+so Hindi shows `2,51,000` and `4.3 क॰`, French `43 394 947`, Turkish `43,4 Mn`. Before, every
+language printed the English `43.4M+`.
+
+`source` and `checkedAt` are there so the next person knows where a number came from and how
+old it is. Fill them in honestly — "Spotify for Artists, 1 July 2026" is useful; "Spotify" is not.
+
+# If the numbers should update themselves
+
+Nothing free will do it. The options, in the order worth considering:
+
+1. **Spotify for Artists, by hand.** First-party truth, and the only place monthly listeners
+   exist. One edit to `figures.json` a month is a two-minute job, and it is now genuinely one
+   edit. This is the recommendation until there is a reason to spend money.
+2. **Songstats** (~€13/month) has an API covering streams, followers and monthly listeners.
+   That is the cheapest way to make `figures.json` self-updating: a second scheduled workflow
+   writing the same file the same way. Chartmetric does the same for considerably more.
+3. **Scraping the public artist page.** Do not. It breaks whenever Spotify changes its markup,
+   and it puts the site on the wrong side of terms it does not need to be near.
+
+One thing to know before automating: **Spotify's Developer Policy restricts "derived metrics"** —
+presenting figures like "reached X streams" is limited regardless of where the number came
+from. An artist stating their own numbers on their own site is ordinary practice and is not
+what that clause is aimed at, but it is worth a read before building a dashboard out of it.
 
 ## The guard
 

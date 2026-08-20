@@ -97,9 +97,17 @@ for (const code of codes.filter((c) => c !== 'en')) {
 
 const fallbackRe = /<([a-z0-9]+)([^>]*?)data-i18n="([a-z0-9_]+)"([^>]*?)>([^<]*)<\/\1>/g;
 const unescape = (s) => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'");
+// figures.json is read a few checks further down; the fallback text has the number already
+// substituted, so substitute it here too before comparing.
+const enStreams = existsSync(join(root, 'assets/data/figures.json'))
+  ? new Intl.NumberFormat('en').format(
+      JSON.parse(read('assets/data/figures.json')).streams_help_urself.value)
+  : null;
+
 for (const [, , , key, , text] of html.matchAll(fallbackRe)) {
-  const expected = DICTS.en?.[key];
+  let expected = DICTS.en?.[key];
   if (expected === undefined) continue;
+  if (enStreams && expected.includes('{n}')) expected = expected.replace('{n}', enStreams);
   if (unescape(text) !== expected) {
     fail(`fallback text for "${key}" does not match the en dictionary:\n` +
          `      markup: ${unescape(text)}\n` +
@@ -146,6 +154,36 @@ if (existsSync(join(root, '404.html'))) {
   const codes = new Set(LANGS.map((l) => l.code));
   for (const [, code] of read('404.html').matchAll(/href="\/([a-z]{2})\/"/g)) {
     if (!codes.has(code)) fail(`404.html links /${code}/, which is not a language in HXI_LANGS.`);
+  }
+}
+
+// The two figures the API cannot fetch live in one file. Every place that prints them must
+// agree with it — index.html carries the English formatting as its no-JS fallback, and the
+// twelve dictionaries carry {n} rather than a number typed thirteen times.
+const figuresPath = join(root, 'assets/data/figures.json');
+if (existsSync(figuresPath)) {
+  const FIG = JSON.parse(read('assets/data/figures.json'));
+  const SLOT = { streams: 'streams_help_urself', listeners: 'monthly_listeners' };
+  const fmt = (v, compact) =>
+    new Intl.NumberFormat('en', compact ? { notation: 'compact', maximumFractionDigits: 1 } : {}).format(v);
+
+  for (const [, name, text] of html.matchAll(/data-figure="([a-z_]+)"[^>]*>([^<]*)</g)) {
+    const parts = name.split('_');
+    const shape = parts.pop();
+    const figure = FIG[SLOT[parts.join('_')]];
+    if (!figure) { fail(`index.html has data-figure="${name}", which figures.json does not define.`); continue; }
+    const expected = shape === 'compact'
+      ? fmt(figure.value, true) + (name === 'streams_compact' ? '+' : '')
+      : fmt(figure.value, false);
+    if (text !== expected) {
+      fail(`index.html prints "${text}" for ${name}; figures.json says "${expected}".`);
+    }
+  }
+
+  for (const [code, dict] of Object.entries(DICTS)) {
+    if (dict.music_help_streams && !dict.music_help_streams.includes('{n}')) {
+      fail(`[${code}] music_help_streams has a number typed into it — use {n} so figures.json stays the only source.`);
+    }
   }
 }
 

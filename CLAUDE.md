@@ -87,15 +87,19 @@ unverified or waiting to be checked.
 ## Content that goes stale
 
 `scripts/sync-spotify.mjs` keeps the release archive current on its own once the two Spotify
-secrets are set — every release, its date and its credits, daily. What it cannot fetch is
-monthly listeners and stream counts; Spotify does not publish those through the API, so those
-two figures stay hand-maintained. `assets/data/README.md` has the setup and the reasoning.
+secrets are set — every release, its date and its credits, daily.
+
+The stream count and the monthly-listener count are not in Spotify's API at all, so they are
+entered by hand — but in **one** place: `assets/data/figures.json`. Edit it, run `npm run
+figures`, commit. Everything else follows, in each language's own number formatting, and
+`npm run check` fails if anything drifts. Never type either figure into the markup or a
+dictionary; the dictionaries carry `{n}`.
 
 
-Stream counts, monthly listeners and release dates are baked into `index.html` and the
-dictionaries. When a number changes, it changes in one place in the markup and in the
-matching key in all twelve dictionaries. Current figures: 43,394,947 streams on
-"help urself", 251,000 monthly listeners, latest release MONTAGEM HYSTERIA (June 2026).
+Current figures: 43,394,947 streams on "help urself" and 251,000 monthly listeners, both in
+`assets/data/figures.json`. The latest release is MONTAGEM HYSTERIA (June 2026), which is
+still hand-written in the Latest section — that section is the one thing here with no source
+behind it, so it is the one that dates fastest.
 
 ## Deployment
 

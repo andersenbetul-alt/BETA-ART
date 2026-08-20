@@ -46,6 +46,41 @@
     return (dict && dict[key] != null ? dict[key] : T.en[key]) || '';
   }
 
+  /* ---------- the figures, from one file ---------- */
+
+  // Filled from assets/data/figures.json. Until it loads, the markup's own numbers stand —
+  // they are the same values, so nothing flickers and nothing is blank without JS.
+  var FIGURES = null;
+
+  // 43,394,947 → "43.4M" in English, "43,4 M" in French, and the local digits elsewhere.
+  function compact(value, lang) {
+    try {
+      return new Intl.NumberFormat(lang, { notation: 'compact', maximumFractionDigits: 1 }).format(value);
+    } catch (e) { return String(value); }
+  }
+
+  function full(value, lang) {
+    try { return new Intl.NumberFormat(lang).format(value); }
+    catch (e) { return String(value); }
+  }
+
+  function applyFigures(code) {
+    if (!FIGURES) return;
+    var lang = code || document.documentElement.lang || 'en';
+    var nodes = document.querySelectorAll('[data-figure]');
+    for (var i = 0; i < nodes.length; i++) {
+      var name = nodes[i].getAttribute('data-figure');
+      var parts = name.split('_');
+      var shape = parts.pop();                       // 'compact' or 'full'
+      var key = { streams: 'streams_help_urself', listeners: 'monthly_listeners' }[parts.join('_')];
+      var figure = key && FIGURES[key];
+      if (!figure) continue;
+      nodes[i].textContent = shape === 'compact'
+        ? compact(figure.value, lang) + (name === 'streams_compact' ? '+' : '')
+        : full(figure.value, lang);
+    }
+  }
+
   function apply(code) {
     var dict = T[code] || T.en;
     var fallback = T.en;
@@ -53,8 +88,16 @@
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       var value = dict[key] != null ? dict[key] : fallback[key];
-      if (value != null) el.textContent = value;
+      if (value == null) return;
+      // {n} in a string is the stream figure, formatted for this language.
+      if (value.indexOf('{n}') !== -1) {
+        var streams = FIGURES && FIGURES.streams_help_urself;
+        if (!streams) return;                        // leave the markup's own text alone
+        value = value.replace('{n}', full(streams.value, code));
+      }
+      el.textContent = value;
     });
+    applyFigures(code);
 
     var html = document.documentElement;
     html.setAttribute('lang', code);
@@ -476,6 +519,16 @@
   document.addEventListener('DOMContentLoaded', function () {
     run(buildSwitcher);
     run(function () { apply(detect()); });
+    run(function () {
+      fetch(ASSETS + 'data/figures.json', { cache: 'no-cache' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (!data) return;
+          FIGURES = data;
+          apply(document.documentElement.lang || detect());
+        })
+        .catch(function () { /* the markup already carries the same numbers */ });
+    });
     run(nav);
     run(videos);
     run(spotify);

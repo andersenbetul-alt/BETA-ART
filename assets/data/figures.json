@@ -1,0 +1,13 @@
+{
+  "_comment": "The numbers the page states as fact. Edit here and nowhere else: app.js fills them in at runtime, build.mjs bakes them into the pre-rendered pages, and npm run check fails if any of them drift out of sync. Spotify's public API publishes neither of these, so both are entered by hand — see assets/data/README.md.",
+  "streams_help_urself": {
+    "value": 43394947,
+    "source": "Spotify track page, help urself",
+    "checkedAt": "2026-08-18"
+  },
+  "monthly_listeners": {
+    "value": 251000,
+    "source": "Spotify for Artists (artist-supplied; 251,063 in the July 2026 data pack)",
+    "checkedAt": "2026-07-01"
+  }
+}

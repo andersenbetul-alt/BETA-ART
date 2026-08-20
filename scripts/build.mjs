@@ -23,6 +23,12 @@ const SITE = 'https://hximusic.com';
 const RTL = new Set(['ar', 'ur']);
 
 const html = readFileSync(join(root, 'index.html'), 'utf8');
+// The figures live in one file; the pre-rendered pages get them baked in, formatted for the
+// language, so a crawler and a visitor with JS off see the same numbers as everyone else.
+const FIGURES = JSON.parse(readFileSync(join(root, 'assets/data/figures.json'), 'utf8'));
+const SLOT = { streams: 'streams_help_urself', listeners: 'monthly_listeners' };
+const num = (value, code, compact) =>
+  new Intl.NumberFormat(code, compact ? { notation: 'compact', maximumFractionDigits: 1 } : {}).format(value);
 const sandbox = { window: {} };
 new Function('window', readFileSync(join(root, 'assets/js/i18n.js'), 'utf8'))(sandbox.window);
 const LANGS = sandbox.window.HXI_LANGS;
@@ -58,9 +64,25 @@ function render(code, { atRoot, source = html, slug = '', title, description }) 
   //    which is the state a crawler indexes.
   page = page.replace(
     /(<([a-z0-9]+)([^>]*?)data-i18n="([a-z0-9_]+)"([^>]*?)>)([^<]*)(<\/\2>)/g,
-    (match, open, tag, pre, key, post, text, close) =>
-      dict[key] === undefined ? match : open + escape(dict[key]) + close,
+    (match, open, tag, pre, key, post, text, close) => {
+      if (dict[key] === undefined) return match;
+      const value = dict[key].replace('{n}', num(FIGURES.streams_help_urself.value, code, false));
+      return open + escape(value) + close;
+    },
   );
+
+  // 1b. The figures, formatted for this language.
+  page = page.replace(/(<(\w+)([^>]*?)data-figure="([a-z_]+)"([^>]*?)>)([^<]*)(<\/\2>)/g,
+    (match, open, tag, pre, name, post, text, close) => {
+      const parts = name.split('_');
+      const shape = parts.pop();
+      const figure = FIGURES[SLOT[parts.join('_')]];
+      if (!figure) return match;
+      const value = shape === 'compact'
+        ? num(figure.value, code, true) + (name === 'streams_compact' ? '+' : '')
+        : num(figure.value, code, false);
+      return open + escape(value) + close;
+    });
 
   // 2. Language, direction, and a marker the runtime uses to pin the pre-rendered language.
   page = page.replace(
