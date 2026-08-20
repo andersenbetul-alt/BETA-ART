@@ -1,0 +1,53 @@
+# Where AI is used, and where it is not
+
+HXI's positioning is that he is a real person making real records — the blueprint calls the
+site his "proof-of-humanity". That only works if the page is exact about AI rather than
+absolute about it. A blanket "no AI" is easy to write and easy to disprove; a precise
+statement survives.
+
+His own EU AI Act gap analysis reaches the same place from the legal side. It finds he is a
+**deployer**, not a provider: no high-risk system, no prohibited use, no provider obligations.
+Two things bite, and only two — Article 4 (AI literacy for anyone using AI on his work) and
+Article 50 (label AI-generated media shared with the public). The standing rule it asks for is
+"label any published AI-generated media; keep the 'produced by HXI' claims accurate."
+
+## The music
+
+No AI. Every release is written, mixed and mastered by HXI; collaborators are credited on the
+releases they worked on. This is a claim the page makes in the FAQ, and it is a claim he can
+stand behind, so it stays.
+
+## This website
+
+The site is built with AI assistance, and the honest place that shows is the translations.
+Twelve dictionaries were produced with machine assistance and have not all been read by native
+speakers — his blueprint flags exactly this as a real risk for claims and consent text. So the
+FAQ says it in every language: the music is human, the translations are machine-assisted and
+still under review, and the English is the wording HXI stands behind.
+
+Saying this costs nothing and buys the rest of the page its credibility. A visitor who finds an
+awkward sentence in Bengali now knows why, instead of concluding that everything else was
+generated too.
+
+## What has to happen when it changes
+
+- **Any AI-generated image, audio or video published on the site gets labelled.** Article 50,
+  and there is no exception for "it's only a background".
+- **A translation that has been reviewed stops being "under review".** When native speakers
+  have signed off on a language, that language's `faq_a5` should say so — do not leave a
+  disclaimer standing after it stops being true. Track the sign-offs here.
+- **If the site ever ships an AI feature** — a recommender, a generator, a chat assistant —
+  the role changes from deployer toward provider and the gap analysis has to be re-run.
+
+## Native-speaker review — status
+
+| Language | Reviewed by | Date |
+| --- | --- | --- |
+| en | — (source language) | — |
+| no | not yet | |
+| es · fr · pt | not yet | |
+| zh · hi · ar · bn · ru · ur | not yet | |
+| tr | not yet | |
+
+The non-Latin five (ar, hi, bn, zh, ru) plus Urdu are the priority: they carry the same legal
+and commercial claims as the English, and nobody on this project reads them natively.
