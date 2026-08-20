@@ -438,6 +438,16 @@ til vilkårene faktisk er skrevet.
 
 ---
 
+## Hvis modellen endres
+
+Registeret over gjelder markedsplassmodellen. Blir første versjon i stedet et
+koordineringsverktøy for familien, endres bildet vesentlig: ni risikoer bortfaller,
+fire krymper, tre skjerpes, og seks nye kommer til. Se `PIVOT-KOORDINERING.md`.
+
+Ett spørsmål er felles for begge modeller og bør stilles uansett hva som velges:
+hva som kreves for at familien kan handle på vegne av en person som ikke fullt ut
+kan samtykke selv.
+
 ## Til juridisk rådgiver, samlet
 
 Fire spørsmål avgjør om modellen bærer, og bør stilles først:

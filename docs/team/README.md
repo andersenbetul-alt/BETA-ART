@@ -14,6 +14,7 @@ arbeidsdokumenter fra fagpersonene, ikke vedtatt policy.
 | `SALG.md` | Salg | Abonnementsnivåer, arbeidsgiver- og kommunespor, innvendingsark |
 | `OKONOMI.md` | Økonomi | Enhetsøkonomi, følsomhet, kapitalbehov |
 | `JURIDISK-RISIKO.md` | Juridisk | 21 risikopunkter kontrollert mot faktisk kode, med fire hovedspørsmål til rådgiver |
+| `PIVOT-KOORDINERING.md` | Juridisk | Risikobildet hvis v1 blir koordineringsverktøy i stedet for markedsplass |
 | `SYNTESE.md` | Koordinering | **Vedtatte beslutninger.** Elleve avgjørelser med begrunnelse |
 
 Rammene alle arbeider innenfor står i `../TEAM.md`.
