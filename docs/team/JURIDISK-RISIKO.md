@@ -37,6 +37,9 @@ Alvorsgrad: **A** stopper drift · **B** må avklares før Bolk A ferdigstilles 
 | J19 | Aldersgrense og legitimasjonskontroll | **C** | Bolk A trinn 3 |
 | J20 | Referansepersoner er registrerte som aldri meldte seg på | **B** | Bolk A trinn 3 |
 | J21 | Avslagsgrunner og utestengelse som svarteliste | **C** | Før vekst |
+| J22 | Språkkrav som indirekte diskriminering | **B** | Første leverandør |
+| J23 | Sperring på språknivå som automatisert avgjørelse | **B** | Første leverandør |
+| J24 | Behovsplattformen behandlet til Naviars eget formål | **A** | Rettet, se under |
 
 ---
 
@@ -463,3 +466,78 @@ Deretter resten, i rekkefølgen alvorsgraden angir.
 Vi ber ikke om en generell vurdering. Vi ber om svar på disse, med utgangspunkt i
 at tjenesten formidler praktisk hjelp, ikke helsehjelp, og at posisjonsdata ikke
 settes i drift før DPIA er signert.
+
+---
+
+## J22 · Språkkrav som indirekte diskriminering · **B**
+
+Vi krever B1 for å arbeide alene og B2 for følge til avtale, koordinering og alt
+som grenser mot helsehjelp.
+
+Et språkkrav rammer i praksis personer med en bestemt etnisitet eller nasjonal
+opprinnelse hardere enn andre. Det er lovlig bare når det har et saklig formål,
+er nødvendig for å oppnå formålet, og ikke er uforholdsmessig inngripende.
+
+Tre grep er tatt for å gjøre kravet forsvarlig:
+
+1. Nivået henger på **oppgaven**, ikke på personen, og hver oppgave har en
+   oppgitt begrunnelse for hvorfor nivået er nødvendig
+   (`OPPGAVEKRAV` i `assets/js/besok-sprakkrav.js`).
+2. Kravet gjelder likt for alle, også for dem som har språket som morsmål.
+3. Nivået kan dokumenteres på tre likeverdige måter – prøvebevis, utdanning på
+   språket, eller en strukturert samtale hos leverandøren. Det er ikke bundet
+   til én bestemt prøve som koster penger og har ventetid.
+
+Vurderingen gjøres av **leverandøren**, som er arbeidsgiver. Naviar vurderer
+ingen. Det er både riktig rollefordeling og en risiko mindre: en
+vurderingsavgjørelse fra oss ville vært en avgjørelse om en annens
+arbeidsforhold.
+
+**Må avklares:** om B2 for «følge til avtale» er forholdsmessig, eller om
+begrunnelsen «må gjengi det legen sa riktig» heller taler for at oppgaven bør
+ha andre sikkerhetstiltak enn et språkkrav.
+
+---
+
+## J23 · Sperring på språknivå som automatisert avgjørelse · **B**
+
+Dette er ikke nevnt i noe annet dokument.
+
+`kanUtfore()` sperrer automatisk en tildeling når bekreftet språknivå ikke holder
+for oppgaven. For medarbeideren betyr det færre oppdrag – altså mindre inntekt –
+uten at et menneske har sett saken.
+
+Vi mener det ikke er en avgjørelse etter art. 22, fordi den ikke er utelukkende
+automatisert: leverandøren har selv lagt inn nivået, og leverandøren kan endre
+det. Sperren utfører leverandørens egen beslutning, den treffer den ikke.
+
+Det er vår vurdering, ikke en avklaring.
+
+**Må avklares:** om resonnementet holder, og om det uansett bør logges som en
+beslutning med begrunnelse som medarbeideren kan be om å få se. Begrunnelsen
+finnes allerede i returverdien – spørsmålet er om den skal vises til den det
+gjelder, og ikke bare til den som planlegger.
+
+---
+
+## J24 · Behovsplattformen behandlet til Naviars eget formål · **A** · rettet
+
+`besok-behov.js` samlet etterspørsel som ikke ble tatt imot, og gjorde den om til
+forslag om nye tjenester. Den lagret kundens egen formulering, kundeidentifikator
+og inntil tre eksempelsitater per kategori.
+
+Formålet var **vårt**: å utvikle produktet. Naviar er databehandler for
+leverandøren og skal bare behandle etter instruks. En databehandler som behandler
+opplysninger til egne formål, regnes som behandlingsansvarlig for den
+behandlingen. Det ville gitt oss selvstendig ansvar for en samling fritekst fra
+eldre menneskers hjem – den verst tenkelige kategorien å oppdage at man eier.
+
+**Rettet:** analysen teller i stedet for å huske. Ut kommer kategori, antall,
+antall ulike kunder og måned. Ingen fritekst, ingen kundeidentifikator, ingen
+dato. En test kontrollerer at verken tekst eller kundenøkkel finnes i
+returverdien.
+
+**Gjenstår:** om den aggregerte statistikken kan brukes av Naviar på tvers av
+leverandører, eller om også det krever et punkt i databehandleravtalen. Tallet
+«ni kunder spurte om hagearbeid» er ikke en personopplysning, men det er
+leverandørens forretningsinformasjon.
