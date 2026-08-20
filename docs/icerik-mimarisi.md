@@ -533,7 +533,7 @@ Küçük ama stratejik sütun. Trafiği düşük, **otoritesi yüksek**: bu iki 
 sayfanın güvenilirliğini taşır. AI satan bir sitenin AI'ın sınırlarını dürüstçe yazması,
 satış sayfasından daha ikna edicidir.
 
-### P29 — Is AI Safe? What the Risks Actually Are (and Aren't)
+### P29 — Is AI Safe? What the Risks Actually Are (and Aren't)  ✅ yayında
 **KW:** is ai safe · **Niyet:** bilgi · **Gelir:** dolaylı (otorite) ·
 **Huni:** blog → newsletter
 Ne felaket senaryosu ne de rahatlatma. Riskleri üç kovaya ayırıp her birine kanıt
