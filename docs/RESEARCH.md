@@ -95,6 +95,53 @@ whenever the catalogue figures are refreshed — a big new release could make it
 **HELLDRIFT 2** is credited HXI, HXELLPLAYA & $werve. Its date is not established, so it is
 not in the archive yet — that is the only reason it is missing.
 
+## Corrected August 2026 — the label claim came off the page
+
+The page said, in all twelve languages, that **"HXI is signed to Scar Scheme Records and owns
+his masters."** Three problems with that sentence, and they compound:
+
+1. **Nothing in this file ever backed it.** Search "Scar Scheme" in this log before this entry
+   and there is no row. It was on the page as fact with no trail behind it, which is the one
+   thing this file exists to prevent.
+2. **HXI's own press kit forbids printing it.** Under "Please do not print": *"Any record label
+   name. HXI is independent — there is no label. Releases are self-released except where a named
+   release partner is credited on that specific release."* The artist's cleared bio, in three
+   lengths, calls him independent throughout.
+3. **The contract has not been read.** `docs/TRADEMARK.md` lists "get the Scar Scheme contract
+   read" as the step that blocks everything else. Asserting *both* a label deal *and* master
+   ownership is a rights claim about a document nobody in this project has seen — PR principle 4.
+
+Replaced with the press kit's own cleared wording: independent, self-releasing except where a
+release partner is credited on that release, masters owned on his own work. The `recordLabel`
+property is out of the JSON-LD, the footer says "Norway · Independent", and the fact sheet row
+says "Independent · self-released". Two new keys carry it: `fact_label_v`, `footer_place`.
+
+A contract does appear to exist — `docs/BUSINESS.md` records it as signed under the name "HXI"
+— so this is not a claim that Scar Scheme is fictional. It is that the *relationship* is
+undescribed until someone reads the paper. When it is read, put the row in the table above and
+the sentence can come back in whatever form the contract actually supports.
+
+## Where the press kit and this log disagree — and why the page keeps the credits
+
+HXI's July 2026 press kit also says do not print **any Fast & Furious credit** and **any
+video-game soundtrack credit**, "because no written confirmation exists". Both are on the page.
+That is deliberate, and it is not a contradiction: the press kit predates the verification. The
+Fast & Furious credit was confirmed on 2026-08-18 against the *Drift Tape/Phonk Vol 1* album
+(Spotify `5N4m9LmD1qtqjfWC4OW9g4`), and the two BODYCAM tracks the same day against their own
+Spotify IDs — all four rows are in the tables here with dates. The press kit's rule was right
+for the day it was written; the confirmation arrived after.
+
+What that means in practice: **the press kit is now the stale document, not the page.** It
+should be reissued with those two entries moved out of "do not print" and into the fact sheet.
+Until it is, a journalist working from the PDF and a journalist working from the site will be
+told different things — so if the kit is sent out before it is updated, send the corrected
+lines with it.
+
+The kit's other rules all still hold and the page obeys them: no trademark symbol (the mark is
+unregistered), no second alias, no "aggressive drift phonk" as a genre label — the phrase
+appears once on the page and only inside the actual title of the Fast & Furious remix version,
+which is the one place it is a fact rather than a label.
+
 ## Unverified — do not present as fact until confirmed
 
 - **TRXPICAL — the evidence now points the other way.** Three of HXI's own brand documents
