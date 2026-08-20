@@ -365,7 +365,15 @@
     var consent = input('consent', 'checkbox', true);
     consent.checked = Boolean(d.consent);
     consentWrap.appendChild(consent);
-    consentWrap.appendChild(el('span', null, I18n.t('booking.consent')));
+    var consentText = el('span', null, I18n.t('booking.consent') + ' ');
+    /* Consent has to be informed, so the notice is reachable from the box
+       itself rather than only from the footer. */
+    var notice = el('a', null, I18n.t('booking.consentLink'));
+    notice.href = 'personvern.html';
+    notice.target = '_blank';
+    notice.rel = 'noopener';
+    consentText.appendChild(notice);
+    consentWrap.appendChild(consentText);
     form.appendChild(consentWrap);
 
     var status = el('p', 'status err');

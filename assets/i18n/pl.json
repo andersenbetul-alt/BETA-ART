@@ -366,7 +366,8 @@
     "tolkNotice": "Urzędy mają co do zasady obowiązek zapewnić i opłacić tłumacza na spotkania z nimi. Tłumacz prywatny dotyczy rozmów poza tym zakresem.",
     "fitFirst": "Sprawdzamy, czy sprawa pasuje, zanim zapłacisz.",
     "returnPaid": "Dziękujemy. Płatność przeszła, a Twoja sprawa została zarejestrowana.",
-    "returnCancelled": "Płatność została anulowana, więc nic nie pobrano. Twoja sprawa jest zapisana — napisz do nas, jeśli chcesz ją dokończyć."
+    "returnCancelled": "Płatność została anulowana, więc nic nie pobrano. Twoja sprawa jest zapisana — napisz do nas, jeśli chcesz ją dokończyć.",
+    "consentLink": "Przeczytaj informację o prywatności"
   },
   "faq": {
     "eyebrow": "Pytania",

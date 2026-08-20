@@ -366,7 +366,8 @@
     "tolkNotice": "Valstybės įstaigos paprastai privalo pačios pasirūpinti vertėju ir jį apmokėti susitikimams su jomis. Privatus vertėjas skirtas pokalbiams, kurie į tai nepatenka.",
     "fitFirst": "Patikriname, ar byla tinka, prieš jums sumokant.",
     "returnPaid": "Ačiū. Mokėjimas pavyko, jūsų byla užregistruota.",
-    "returnCancelled": "Mokėjimas atšauktas, todėl nieko nenuskaityta. Jūsų byla išsaugota — parašykite mums, jei norite ją užbaigti."
+    "returnCancelled": "Mokėjimas atšauktas, todėl nieko nenuskaityta. Jūsų byla išsaugota — parašykite mums, jei norite ją užbaigti.",
+    "consentLink": "Perskaitykite privatumo pranešimą"
   },
   "faq": {
     "eyebrow": "Klausimai",

@@ -366,7 +366,8 @@
     "tolkNotice": "Public agencies are normally required to arrange and pay for an interpreter for meetings with them. A private interpreter is for the conversations that fall outside that.",
     "fitFirst": "We check that the case fits before you pay.",
     "returnPaid": "Thank you. The payment went through and your case is registered.",
-    "returnCancelled": "The payment was cancelled, so nothing has been charged. Your case is saved — get in touch if you want to complete it."
+    "returnCancelled": "The payment was cancelled, so nothing has been charged. Your case is saved — get in touch if you want to complete it.",
+    "consentLink": "Read the privacy notice"
   },
   "faq": {
     "eyebrow": "Questions",

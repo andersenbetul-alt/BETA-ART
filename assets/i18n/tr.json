@@ -366,7 +366,8 @@
     "tolkNotice": "Kamu kurumları, kendileriyle yapılan görüşmelerde kural olarak tercümanı sağlamak ve ücretini ödemekle yükümlüdür. Özel tolk, bunun dışında kalan görüşmeler içindir.",
     "fitFirst": "Ödeme yapmadan önce dosyanın uygun olduğunu kontrol ediyoruz.",
     "returnPaid": "Teşekkürler. Ödeme tamamlandı ve dosyanız kaydedildi.",
-    "returnCancelled": "Ödeme iptal edildi, hiçbir tahsilat yapılmadı. Dosyanız kayıtlı — tamamlamak isterseniz bize yazın."
+    "returnCancelled": "Ödeme iptal edildi, hiçbir tahsilat yapılmadı. Dosyanız kayıtlı — tamamlamak isterseniz bize yazın.",
+    "consentLink": "Gizlilik bildirimini okuyun"
   },
   "faq": {
     "eyebrow": "Sorular",

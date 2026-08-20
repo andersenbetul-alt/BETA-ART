@@ -26,6 +26,8 @@ bookings, payments and enquiries. It is not the case-management platform — see
 | `assets/js/app.js` | Renders every repeated block; runs the need finder and the contact form. |
 | `assets/js/booking.js` | The four-step booking flow. |
 | `assets/i18n/*.json` | 10 languages, identical key sets. |
+| `personvern.html`, `vilkar.html` | Privacy notice and terms. Norwegian and English. |
+| `assets/js/legal.js` | Fills the legal pages from `config.js`; language switch. |
 | `admin.html` + `assets/js/admin.js` | The case queue. Token-gated, `noindex`. |
 | `server/db.js` | SQLite schema, migrations and queries. |
 | `server/server.js` | The API: bookings, Stripe Checkout, enquiries, need finder, admin. |
@@ -157,6 +159,36 @@ review are done.
 Amounts are always recomputed on the server from the catalogue; a tampered price in the
 browser is ignored.
 
+## Legal pages
+
+`personvern.html` (privacy notice) and `vilkar.html` (terms) are written to match
+what the code actually does, not from a template. If you change what is
+collected, stored or for how long, change these too — the privacy notice names
+each field, each purpose and each legal basis, including the `?src=` attribution
+and the `localStorage` keys.
+
+Both carry Norwegian and English in one file. **Norwegian governs**; English is a
+courtesy translation, and both pages say so. The other eight site languages are
+deliberately not included: a binding document that drifts between ten versions is
+worse than one the reader can ask us to explain. Company details come from
+`config.js`, so the org number lives in one place.
+
+Points worth knowing before you edit them:
+
+- **Case text is treated as special-category data.** People describing a NAV case
+  will mention health whether or not you ask them to. The notice asks them not to,
+  and falls back to explicit consent under Article 9(2)(a) if it happens anyway.
+- **The consent checkbox links to the notice**, because consent has to be informed.
+- **Retention is specific**: case text 12 months after closing, accounting records
+  5 years (bokføringsloven), unconverted enquiries 6 months.
+- **The terms say what NAVIAR is not** — not NAV, not a law firm, no promised
+  outcome — and tell people not to use the service in an emergency.
+
+> **A Norwegian lawyer has not reviewed these.** They are written carefully and
+> they match the system, but the angrerett wording, the liability limits and the
+> Article 9 basis are exactly the parts where being close is not the same as being
+> right. Have them checked before you take the first payment.
+
 ## Languages
 
 Ten languages ship: Norwegian (default), English, Turkish, Arabic (RTL), Polish,
@@ -233,13 +265,14 @@ The blueprint describes considerably more than a website. Still missing:
 - Notification emails — the API stores bookings but sends nothing yet; the queue
   has to be checked by hand
 - Vipps ePayment
-- Privacy and terms pages (linked in the footer, not written)
 
 ## Before launch
 
 - [ ] Real org.nr., address, email and phone in `config.js`
 - [ ] `ADMIN_TOKEN` of at least 24 characters, stored in the host's secret store
 - [ ] The API on a host with a persistent disk for `server/data`
+- [ ] Norwegian lawyer's review of `personvern.html` and `vilkar.html`
+- [ ] A data processing agreement with whoever hosts the server and email
 - [ ] Native-speaker review of all ten translations
 - [ ] Legal review: behandlingsgrunnlag, DPIA, advokatloven boundary, consumer terms
 - [ ] Accountant review: MVA treatment and invoicing model

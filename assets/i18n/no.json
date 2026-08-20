@@ -366,7 +366,8 @@
     "tolkNotice": "Offentlige etater skal som regel skaffe og betale tolk til møter med dem. Privat tolk er for samtalene som faller utenfor det.",
     "fitFirst": "Vi sjekker at saken passer før du betaler.",
     "returnPaid": "Takk. Betalingen er gjennomført, og saken din er registrert.",
-    "returnCancelled": "Betalingen ble avbrutt, så ingen betaling er registrert. Saken din er lagret — ta kontakt hvis du vil fullføre den."
+    "returnCancelled": "Betalingen ble avbrutt, så ingen betaling er registrert. Saken din er lagret — ta kontakt hvis du vil fullføre den.",
+    "consentLink": "Les personvernerklæringen"
   },
   "faq": {
     "eyebrow": "Spørsmål",

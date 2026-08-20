@@ -366,7 +366,8 @@
     "tolkNotice": "Hay'adaha dawladdu caadi ahaan waa waajib inay turjumaan u helaan oo u bixiyaan kulamada ay adiga kula yeeshaan. Turjumaanka gaarka ah waa wada-hadallada taas ka baxsan.",
     "fitFirst": "Waxaan hubinnaa in arrintu habboon tahay ka hor inta aadan bixin.",
     "returnPaid": "Mahadsanid. Lacag bixintu waa dhammaatay, arrintaadana waa la diiwaan geliyey.",
-    "returnCancelled": "Lacag bixintii waa la joojiyey, wax lacag ahna lagama jarin. Arrintaadu way kaydsan tahay — nala soo xiriir haddii aad rabto inaad dhammaystirto."
+    "returnCancelled": "Lacag bixintii waa la joojiyey, wax lacag ahna lagama jarin. Arrintaadu way kaydsan tahay — nala soo xiriir haddii aad rabto inaad dhammaystirto.",
+    "consentLink": "Akhri ogeysiiska qarsoodiga"
   },
   "faq": {
     "eyebrow": "Su'aalo",
