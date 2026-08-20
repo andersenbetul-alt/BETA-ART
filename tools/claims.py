@@ -106,7 +106,9 @@ CLAIMS = [
         said=[r"Human approved", r"Menneskelig godkjent"],
         anchor="human-approved",
         backed=[r"[Aa] person decides what goes up",
-                r"have not been read by a native speaker"],
+                # holds in both states: while languages are outstanding, and
+                # on the day the last one is signed off
+                r"read by a native speaker"],
         contradicts=[],
     ),
 ]

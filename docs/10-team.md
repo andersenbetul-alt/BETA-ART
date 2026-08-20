@@ -11,7 +11,7 @@ roles you have not hired is a wish. A chart with the work measured against it
 is a plan.
 
 Counted from the repo at the time of writing: 100 pages, 26 Norwegian pages,
-14 tooling scripts, 8 automated gates, 11 documents, 36 commits, 6 pages with a
+15 tooling scripts, 9 automated gates, 11 documents, 39 commits, 6 pages with a
 form, **0 lines of backend, 0 real photographs, 0 analytics**.
 
 ---
@@ -35,7 +35,7 @@ form, **0 lines of backend, 0 real photographs, 0 analytics**.
 | 13 | SEO Specialist | Sitemaps, canonicals, hreflang, structured data, per-language URLs | **Done.** Blocked only by `x-robots-tag: noindex` on `*.vercel.app` until a real domain is attached |
 | 14 | CRO Specialist | Turning a visitor into an enquiry | **Not started**, and it cannot start: there is nothing to measure |
 | 15 | Data Analyst | What people do on the site | **Not started.** No analytics is installed, and the privacy policy names a processor that does not exist — that has to be fixed either way |
-| 16 | QA / Test Engineer | Testing on real devices | **Automated part done** — eight gates, one of which opens every page in a real browser at four widths. The human part, on real phones, is not done |
+| 16 | QA / Test Engineer | Testing on real devices | **Automated part done** — nine gates, one of which opens every page in a real browser at four widths. The human part, on real phones, is not done |
 | 17 | Accessibility Specialist | WCAG 2.2 AA | **Done and measured.** Contrast computed rather than eyeballed, 24px targets, keyboard focus restored, dark-mode flash fixed |
 | 18 | Cybersecurity Specialist | CSP, HSTS, frame protection, PCI posture | **Headers done.** The real work starts the day a payment or a login exists |
 | 19 | GDPR / Privacy Specialist | Lawful basis, retention, granular consent, notice-and-action | **Done to the limit of a static site.** `docs/09`, the release form, the report form, sections 12–13 of the legal notice |
