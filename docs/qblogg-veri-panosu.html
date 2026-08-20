@@ -1,0 +1,215 @@
+<meta charset="utf-8">
+<title>QBLOGG — ölçüm panosu</title>
+<style>
+.viz-root{
+  --surface-1:#fcfcfb; --surface-2:#f2f2ef;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#77766f;
+  --grid:#e3e3de; --axis:#c9c9c3;
+  --s1:#2a78d6; --s2:#1baf7a; --s3:#eb6834;
+  --good:#1a7f47; --bad:#c0392b; --rule:#8a8980;
+  color-scheme:light;
+}
+:root[data-theme="dark"] .viz-root, :where(.viz-root.dark){
+  --surface-1:#1a1a19; --surface-2:#232322;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#96958c;
+  --grid:#33332f; --axis:#4a4a45;
+  --s1:#3987e5; --s2:#199e70; --s3:#d95926;
+  --good:#4fbd7e; --bad:#e66767; --rule:#7d7c74;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .viz-root{
+  --surface-1:#1a1a19; --surface-2:#232322;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#96958c;
+  --grid:#33332f; --axis:#4a4a45;
+  --s1:#3987e5; --s2:#199e70; --s3:#d95926;
+  --good:#4fbd7e; --bad:#e66767; --rule:#7d7c74;
+  color-scheme:dark; } }
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-2);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.viz-root{padding:40px 28px 64px;background:var(--surface-2);color:var(--text-primary)}
+.wrap{max-width:1060px;margin:0 auto}
+h1{font-size:1.6rem;letter-spacing:-.02em;margin:0 0 6px}
+.lede{color:var(--text-secondary);margin:0 0 34px;max-width:66ch}
+.fig{background:var(--surface-1);border:1px solid var(--grid);border-radius:14px;padding:22px 24px 18px;margin-bottom:22px}
+.fig h2{font-size:1.02rem;margin:0 0 3px;letter-spacing:-.01em}
+.fig .sub{color:var(--text-secondary);font-size:.88rem;margin:0 0 18px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:22px}
+.tile{background:var(--surface-1);border:1px solid var(--grid);border-radius:14px;padding:18px 20px}
+.tile .n{font-size:1.9rem;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.tile .l{color:var(--text-secondary);font-size:.84rem;margin-top:4px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 14px;font-size:.84rem;color:var(--text-secondary)}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block;margin-inline-end:6px;vertical-align:-1px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.gl{stroke:var(--grid);stroke-width:1}
+.ax{fill:var(--text-secondary);font-size:11.5px}
+.vl{fill:var(--text-primary);font-size:11.5px;font-weight:600}
+.rule{stroke:var(--rule);stroke-width:1.5;stroke-dasharray:5 4}
+.rlab{fill:var(--text-muted);font-size:10.5px}
+.note{color:var(--text-secondary);font-size:.82rem;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--grid)}
+details{margin-top:12px}summary{cursor:pointer;color:var(--text-secondary);font-size:.84rem}
+table{border-collapse:collapse;margin-top:10px;font-size:.84rem;width:100%}
+th,td{text-align:right;padding:5px 9px;border-bottom:1px solid var(--grid)}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--text-secondary);font-weight:600}
+.tip{position:fixed;pointer-events:none;background:var(--text-primary);color:var(--surface-1);
+ padding:6px 10px;border-radius:7px;font-size:12px;opacity:0;transition:opacity .12s;z-index:9;white-space:nowrap}
+rect[data-t]{cursor:default}
+</style>
+<div class="viz-root"><div class="wrap">
+<h1>QBLOGG — ölçüm panosu</h1>
+<p class="lede">Üç ölçüm seti: kimliğin küçük boy dayanıklılığı, renk kontrastları ve gelir modeli.
+İlk ikisi ölçümdür; üçüncüsü açıkça işaretlenmiş bir modeldir.</p>
+
+<div class="tiles">
+  <div class="tile"><div class="n">%14,78</div><div class="l">Aqua / sayaç alanı — hedef %12–16</div></div>
+  <div class="tile"><div class="n">14,0:1</div><div class="l">Navy / beyaz kontrast</div></div>
+  <div class="tile"><div class="n">10 × 10</div><div class="l">Yazı × dil, eksiksiz</div></div>
+  <div class="tile"><div class="n">0</div><div class="l">Sayfa başına dış istek</div></div>
+</div>
+
+<div class="fig">
+  <h2>Küçük boy dayanıklılığı</h2>
+  <p class="sub">Her öğenin render edilen kalınlığı, brief'in en küçük öğe eşiklerine karşı. Kesikli çizgi = eşik.</p>
+  <div id="c1"></div>
+  <p class="note"><strong>Sonuç:</strong> navy şerit 24 px'te eşiği geçiyor (3,62 px). Aqua köprü sembolde
+  32 px'e kadar 3 px'in altında; <code>icon-small</code> varyantı köprüyü 100u'ya kalınlaştırarak bunu
+  32 px'te kapatıyor. 16 px'te aqua her iki varyantta da eşiğin altında — o boyutta tek renk kullanılmalı.</p>
+  <details><summary>Veriyi tablo olarak gör</summary><table id="t1"></table></details>
+</div>
+
+<div class="fig">
+  <h2>Renk kontrastı</h2>
+  <p class="sub">Ölçülen kontrast oranları. WCAG AA: normal metin 4,5:1, büyük metin 3:1.</p>
+  <div id="c2"></div>
+  <p class="note"><strong>Sonuç:</strong> Electric Aqua beyaz üzerinde <strong>1,81:1</strong> — metin olarak
+  kullanılamaz. Bu yüzden açık zeminde metin için <code>--brand-2-ink</code> (#0a7d72, 5,01:1) tanımlandı;
+  hero gradyanının ucu ve paket onay işaretleri oraya alındı.</p>
+  <details><summary>Veriyi tablo olarak gör</summary><table id="t2"></table></details>
+</div>
+
+<div class="fig">
+  <h2>Aynı 10.000 ziyaretçi, üç model</h2>
+  <p class="sub">Yıllık gelir. <strong>Bunlar ölçüm değil, modeldir</strong> — dönüşüm oranları varsayımdır ve
+  QBLOGG'un henüz ölçülmüş trafiği yoktur.</p>
+  <div id="c3"></div>
+  <p class="note"><strong>Sonuç:</strong> iyimser ürün senaryosu %10/%10 dönüşüm varsayar; sektör bandı %1–3/%1–3.
+  Aradaki fark ~25 kat. Hizmet satışı aynı trafikte 90 kat öne geçiyor, çünkü düşük fiyatlı üründe kâr hacimden,
+  hizmette işlem başına değerden gelir.</p>
+  <details><summary>Veriyi tablo olarak gör</summary><table id="t3"></table></details>
+</div>
+</div></div>
+<div class="tip" id="tip"></div>
+<script>
+const tip=document.getElementById('tip');
+const NS='http://www.w3.org/2000/svg';
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
+function hover(node,text){
+  node.addEventListener('pointerenter',e=>{tip.textContent=text;tip.style.opacity=1});
+  node.addEventListener('pointermove',e=>{tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY-34)+'px'});
+  node.addEventListener('pointerleave',()=>tip.style.opacity=0);
+}
+function table(id,head,rows){
+  const t=document.getElementById(id);
+  t.innerHTML='<tr>'+head.map(h=>`<th>${h}</th>`).join('')+'</tr>'+
+    rows.map(r=>'<tr>'+r.map(c=>`<td>${c}</td>`).join('')+'</tr>').join('');
+}
+
+/* ---- 1. küçük boy: küçük çoklu, öğe başına bir panel, eşik çizgisiyle ---- */
+const SIZES=[16,24,32,48];
+const F=[
+ {n:'Navy şerit (en ince)',u:151,th:3.5,c:'var(--s1)'},
+ {n:'Aqua köprü — sembol',u:86,th:3,c:'var(--s2)'},
+ {n:'Aqua köprü — icon-small',u:100,th:3,c:'var(--s2)'},
+ {n:'Sayaç açıklığı',u:484,th:7,c:'var(--s3)'}];
+(function(){
+  /* Üç kalem ölçütü ortak ölçekte (0-8 px); sayaç açıklığı farklı türde bir ölçü
+     olduğu için kendi ölçeğinde ve ekseni ayrıca etiketli. */
+  const W=1000,PH=230,GAP=26,PW=(W-GAP*3)/4,base=PH-46;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${PH}`,role:'img','aria-label':'Küçük boy dayanıklılığı'});
+  F.forEach((f,i)=>{
+    const MAX=(i===3)?24:8, x0=i*(PW+GAP);
+    const sc=v=>base-Math.min(v,MAX)/MAX*(base-40);
+    const h=el('text',{x:x0,y:12,class:'ax'});h.textContent=f.n;svg.appendChild(h);
+    const u=el('text',{x:x0,y:26,class:'rlab'});
+    u.textContent='0–'+MAX+' px · - - eşik '+f.th+' px';svg.appendChild(u);
+    for(let g=0;g<=MAX;g+=MAX/4) svg.appendChild(el('line',{x1:x0,x2:x0+PW,y1:sc(g),y2:sc(g),class:'gl'}));
+    svg.appendChild(el('line',{x1:x0,x2:x0+PW,y1:sc(f.th),y2:sc(f.th),class:'rule'}));
+    const bw=PW/SIZES.length*0.5;
+    SIZES.forEach((s2,j)=>{
+      const v=f.u*s2/1000, x=x0+(j+0.5)*PW/SIZES.length-bw/2, y=sc(v);
+      const r=el('rect',{x,y,width:bw,height:Math.max(base-y,1),rx:4,fill:f.c,'data-t':1});
+      hover(r,`${f.n} · ${s2} px → ${v.toFixed(2)} px (eşik ${f.th} px)`);
+      svg.appendChild(r);
+      const lab=el('text',{x:x+bw/2,y:y-7,class:'vl','text-anchor':'middle'});
+      lab.textContent=v.toFixed(1); svg.appendChild(lab);
+      const t=el('text',{x:x+bw/2,y:base+15,class:'ax','text-anchor':'middle'});
+      t.textContent=s2+'px'; svg.appendChild(t);
+      const ok=el('text',{x:x+bw/2,y:base+29,class:'rlab','text-anchor':'middle',
+        fill:v>=f.th?'var(--good)':'var(--bad)'});
+      ok.textContent=v>=f.th?'geçti':'kaldı'; svg.appendChild(ok);
+    });
+    svg.appendChild(el('line',{x1:x0,x2:x0+PW,y1:base,y2:base,stroke:'var(--axis)','stroke-width':1}));
+  });
+  document.getElementById('c1').appendChild(svg);
+  table('t1',['Öğe','Izgara (u)','16px','24px','32px','48px','Eşik'],
+    F.map(f=>[f.n,f.u,...SIZES.map(s2=>(f.u*s2/1000).toFixed(2)),f.th+' px'])
+      .concat([['Alt hilal',27,...SIZES.map(s2=>(27*s2/1000).toFixed(2)),'—']]));
+})();
+
+/* ---- 2. kontrast: yatay çubuk + iki eşik ---- */
+const C=[
+ {n:'Navy #082C54 / beyaz',v:14.01},
+ {n:'Beyaz / navy #082C54',v:14.01},
+ {n:'Aqua #00D8C2 / koyu #0c0e14',v:10.66},
+ {n:'Koyu #08202f / aqua (buton)',v:9.22},
+ {n:'Aqua-ink #0a7d72 / beyaz',v:5.01},
+ {n:'Aqua #00D8C2 / beyaz',v:1.81,bad:1}];
+(function(){
+  const W=1000,RH=34,PAD=250,MAX=15,H=C.length*RH+48;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Kontrast oranları'});
+  const sc=v=>PAD+Math.min(v,MAX)/MAX*(W-PAD-70);
+  [[3,'3:1 büyük metin',14,'end'],[4.5,'4,5:1 normal metin',28,'start']].forEach(([t,txt,dy,anch])=>{
+    svg.appendChild(el('line',{x1:sc(t),x2:sc(t),y1:6,y2:C.length*RH+6,class:'rule'}));
+    const l=el('text',{x:sc(t)+(anch==='end'?-6:6),y:C.length*RH+dy,class:'rlab','text-anchor':anch});
+    l.textContent=txt; svg.appendChild(l);
+  });
+  C.forEach((c,i)=>{
+    const y=i*RH+10;
+    const t=el('text',{x:PAD-12,y:y+15,class:'ax','text-anchor':'end'});t.textContent=c.n;svg.appendChild(t);
+    const r=el('rect',{x:PAD,y,width:Math.max(sc(c.v)-PAD,2),height:20,rx:4,
+      fill:c.bad?'var(--bad)':'var(--s1)','data-t':1});
+    hover(r,`${c.n} → ${c.v.toFixed(2)}:1`); svg.appendChild(r);
+    const v=el('text',{x:sc(c.v)+8,y:y+15,class:'vl'});
+    v.textContent=c.v.toFixed(2)+':1'; svg.appendChild(v);
+    if(c.bad){ const w=el('text',{x:sc(c.v)+72,y:y+15,class:'vl',fill:'var(--bad)'});
+      w.textContent='✕ metinde kullanılamaz'; svg.appendChild(w); }
+  });
+  document.getElementById('c2').appendChild(svg);
+  table('t2',['Çift','Oran','AA normal 4,5:1','AA büyük 3:1'],
+    C.map(c=>[c.n,c.v.toFixed(2)+':1',c.v>=4.5?'geçti':'kaldı',c.v>=3?'geçti':'kaldı']));
+})();
+
+/* ---- 3. gelir modeli ---- */
+const R=[
+ {n:'Ürün — iyimser varsayım (%10 / %10)',v:3000,c:'var(--s3)'},
+ {n:'Ürün — sektör bandı (%1–3 / %1–3)',v:120,c:'var(--s3)'},
+ {n:'Hizmet — 1 müşteri × 900 €/ay',v:10800,c:'var(--s1)'}];
+(function(){
+  const W=1000,RH=52,PAD=330,H=R.length*RH+16,MAX=11000;
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Gelir modeli'});
+  const sc=v=>PAD+v/MAX*(W-PAD-140);
+  R.forEach((r,i)=>{
+    const y=i*RH+12;
+    const t=el('text',{x:PAD-12,y:y+18,class:'ax','text-anchor':'end'});t.textContent=r.n;svg.appendChild(t);
+    const b=el('rect',{x:PAD,y,width:Math.max(sc(r.v)-PAD,2),height:26,rx:4,fill:r.c,'data-t':1});
+    hover(b,`${r.n} → ${r.v.toLocaleString('tr-TR')} € / yıl`); svg.appendChild(b);
+    const v=el('text',{x:sc(r.v)+9,y:y+18,class:'vl'});
+    v.textContent=r.v.toLocaleString('tr-TR')+' € / yıl'; svg.appendChild(v);
+  });
+  document.getElementById('c3').appendChild(svg);
+  table('t3',['Model','Abone','Satın alma','Yıllık gelir'],
+   [['Ürün — iyimser varsayım','1.000','100','3.000 €'],
+    ['Ürün — sektör bandı','~200','~4','120 €'],
+    ['Hizmet','~200','1 müşteri','10.800 €']]);
+})();
+</script>
