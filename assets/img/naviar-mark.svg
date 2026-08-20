@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Naviar">
+  <!-- Varden fra A-en i ordmerket. Tegnet som fylte flater, ikke streker:
+       en hårstrek på 1 px forsvinner ved 16 px, en flate gjør det ikke. -->
+  <path fill="currentColor" d="M16 3.2 3.4 28.8h5.1L16 13.6l7.5 15.2h5.1L16 3.2Z"/>
+  <path fill="currentColor" opacity=".45" d="M11.1 23.6h9.8l2.2 4.4H8.9l2.2-4.4Z"/>
+</svg>

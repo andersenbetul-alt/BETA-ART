@@ -83,11 +83,15 @@ a  { color: var(--brand-dark); }
 }
 .site-header .wrap { display: flex; align-items: center; gap: 24px; height: 68px; }
 .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; color: var(--ink); font-size: 1.05rem; }
+/* Merket er varden fra A-en i ordmerket, tegnet som fylte flater og ikke
+   streker. En hårstrek forsvinner ved 16 px; en flate gjør det ikke, og 16 px
+   er favicon – den størrelsen merket oftest sees i. */
 .logo-mark {
   width: 34px; height: 34px; border-radius: 10px; flex: 0 0 auto;
-  background: linear-gradient(145deg, var(--brand), #2e9077);
-  display: grid; place-items: center; color: #fff; font-size: 1rem;
+  background: var(--brand-light);
+  display: grid; place-items: center; color: var(--brand);
 }
+.logo-mark svg { display: block; }
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: 6px; }
 .site-nav a {
   text-decoration: none; color: var(--ink-soft); font-size: .95rem; font-weight: 500;
