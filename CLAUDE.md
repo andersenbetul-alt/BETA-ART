@@ -93,6 +93,9 @@ matching key in all twelve dictionaries. Current figures: 43,394,947 streams on
 
 ## Deployment
 
+`docs/DEPLOY.md` has the domain steps for both hosts, the DNS records, and what to
+check once it is live.
+
 `.github/workflows/deploy.yml` publishes to GitHub Pages on every push to `main`,
 but only after `npm run check` passes. Any other static host works too — Netlify
 drop, Vercel, plain FTP — since there is nothing to build. The `og:` tags,

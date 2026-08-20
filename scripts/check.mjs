@@ -16,7 +16,11 @@ const problems = [];
 const notes = [];
 const fail = (msg) => problems.push(msg);
 
+// Every page the site ships. index.html is the one most checks are about; the others join
+// the i18n, anchor, asset and class checks so a second page cannot drift out of step.
+const PAGES = ['index.html', 'privacy.html', '404.html'].filter((f) => existsSync(join(root, f)));
 const html = read('index.html');
+const allHtml = PAGES.map(read).join('\n');
 const css = read('assets/css/style.css');
 const appJs = read('assets/js/app.js');
 const i18nJs = read('assets/js/i18n.js');
@@ -38,7 +42,7 @@ new Function('window', i18nJs)(sandbox.window);
 const LANGS = sandbox.window.HXI_LANGS || [];
 const DICTS = sandbox.window.HXI_I18N || {};
 
-const usedKeys = [...new Set([...html.matchAll(/data-i18n="([a-z0-9_]+)"/g)].map((m) => m[1]))];
+const usedKeys = [...new Set([...allHtml.matchAll(/data-i18n="([a-z0-9_]+)"/g)].map((m) => m[1]))];
 // form_email is applied from JS as the signup placeholder, not via a data-i18n attribute.
 const runtimeKeys = [...new Set([...appJs.matchAll(/dict\.([a-z0-9_]+)/g)].map((m) => m[1]))];
 // The store renders from assets/js/shop.js, so its description keys and the labels the
@@ -112,9 +116,13 @@ for (const [, href] of html.matchAll(/href="#([^"]+)"/g)) {
 
 /* ---------- 5. Referenced local files exist ---------- */
 
-const refs = [...html.matchAll(/(?:href|src)="((?!https?:|mailto:|#|data:)[^"]+)"/g)].map((m) => m[1]);
+const refs = [...allHtml.matchAll(/(?:href|src)="((?!https?:|mailto:|#|data:)[^"]+)"/g)]
+  .map((m) => m[1])
+  // Site-absolute paths ("/tr/") point at build output, not at repo files. 404.html has to
+  // use them because Pages serves it for a 404 at any depth. They are checked just below.
+  .filter((r) => !r.startsWith('/'));
 for (const ref of [...new Set(refs)]) {
-  if (!existsSync(join(root, ref))) fail(`index.html references ${ref}, which is not in the repo.`);
+  if (!existsSync(join(root, ref))) fail(`${ref} is referenced but not in the repo.`);
 }
 
 // A stylesheet's url(...) targets are just as much "referenced files", and a malformed one
@@ -130,6 +138,14 @@ for (const sheet of refs.filter((r) => r.endsWith('.css'))) {
     }
     const path = join(root, dir, target);
     if (!existsSync(path)) fail(`${sheet} references ${target}, which is not in the repo.`);
+  }
+}
+
+// The 404 page links every language directory absolutely; those codes must be real.
+if (existsSync(join(root, '404.html'))) {
+  const codes = new Set(LANGS.map((l) => l.code));
+  for (const [, code] of read('404.html').matchAll(/href="\/([a-z]{2})\/"/g)) {
+    if (!codes.has(code)) fail(`404.html links /${code}/, which is not a language in HXI_LANGS.`);
   }
 }
 
@@ -165,7 +181,7 @@ for (const code of codes) {
 
 const cssClasses = new Set([...css.matchAll(/\.([a-zA-Z][\w-]*)/g)].map((m) => m[1]));
 const htmlClasses = new Set(
-  [...html.matchAll(/class="([^"]+)"/g)].flatMap((m) => m[1].split(/\s+/)).filter(Boolean)
+  [...allHtml.matchAll(/class="([^"]+)"/g)].flatMap((m) => m[1].split(/\s+/)).filter(Boolean)
 );
 const unstyled = [...htmlClasses].filter((c) => !cssClasses.has(c));
 if (unstyled.length) notes.push(`class(es) with no CSS rule: ${unstyled.join(', ')}`);

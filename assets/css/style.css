@@ -307,3 +307,10 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
 .notfound-langs{margin-top:44px;line-height:2.4;letter-spacing:.14em}
 .notfound-langs a{color:var(--muted);text-decoration:none}
 .notfound-langs a:hover,.notfound-langs a:focus-visible{color:var(--accent)}
+
+/* ---------- legal pages ---------- */
+.legal-page{border-top:0}
+.legal-page .wrap{max-width:760px}
+.legal-page .h3{margin-top:40px}
+.legal-page p{color:#c9c9d4;font-size:15px;max-width:66ch}
+.legal-page .note{margin-top:26px}

@@ -45,12 +45,14 @@ const META = {
   tr: ['HXI — Norveçli phonk prodüktörü', 'Oslo’dan Norveçli phonk prodüktörü. 43 milyondan fazla Spotify dinlenmesi. Drift phonk, phonk house, montagem. İki parça üreticiler için ücretsiz, kredi vererek.'],
 };
 
+const l = (code) => `${code}/`;
 const escape = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-function render(code, { atRoot }) {
+function render(code, { atRoot, source = html, slug = '', title, description }) {
   const dict = DICTS[code];
   const prefix = atRoot ? '' : '../';
-  let page = html;
+  const self = `${SITE}/${atRoot ? '' : l(code)}${slug}`;
+  let page = source;
 
   // 1. Substitute every translated string so the page reads correctly with JS switched off,
   //    which is the state a crawler indexes.
@@ -67,7 +69,6 @@ function render(code, { atRoot }) {
   );
 
   // 3. Head copy in this language.
-  const [title, description] = META[code];
   page = page
     .replace(/<title>[^<]*<\/title>/, `<title>${escape(title)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(")/, `$1${escape(description)}$2`)
@@ -78,11 +79,10 @@ function render(code, { atRoot }) {
     .replace(/(<meta property="og:locale" content=")[^"]*(")/, `$1${code}$2`);
 
   // 4. Canonical points at this page; hreflang points at real directories, not query strings.
-  const self = atRoot ? `${SITE}/` : `${SITE}/${code}/`;
   page = page.replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${self}">`);
   page = page.replace(/(\n<link rel="alternate"[^>]*>)+/, '\n' +
-    LANGS.map((l) => `<link rel="alternate" hreflang="${l.code}" href="${SITE}/${l.code}/">`).join('\n') +
-    `\n<link rel="alternate" hreflang="x-default" href="${SITE}/">`);
+    LANGS.map((l) => `<link rel="alternate" hreflang="${l.code}" href="${SITE}/${l.code}/${slug}">`).join('\n') +
+    `\n<link rel="alternate" hreflang="x-default" href="${SITE}/${slug}">`);
 
   // 5. Asset paths, relative to where this file will sit.
   if (prefix) {
@@ -94,22 +94,42 @@ function render(code, { atRoot }) {
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
-for (const entry of ['assets', 'robots.txt', '.well-known', '.nojekyll', '404.html']) {
+// CNAME binds the custom domain on GitHub Pages and is ignored by every other host, so it
+// is safe to ship either way. Pages reads it from the published root, which is dist/.
+for (const entry of ['assets', 'robots.txt', '.well-known', '.nojekyll', '404.html', 'CNAME']) {
   const from = join(root, entry);
   if (existsSync(from)) cpSync(from, join(dist, entry), { recursive: true });
 }
 
-writeFileSync(join(dist, 'index.html'), render('en', { atRoot: true }));
-for (const { code } of LANGS) {
-  mkdirSync(join(dist, code), { recursive: true });
-  writeFileSync(join(dist, code, 'index.html'), render(code, { atRoot: false }));
+// index.html and, when it exists, privacy.html — English at the root, one directory each
+// for the twelve languages. The privacy page takes its head copy from the dictionary rather
+// than a second META table, so there is one place to translate it.
+const privacy = existsSync(join(root, 'privacy.html')) ? readFileSync(join(root, 'privacy.html'), 'utf8') : null;
+
+const headFor = (code, slug) => slug
+  ? [`${DICTS[code].priv_title} — HXI`, DICTS[code].priv_intro]
+  : META[code];
+
+function emit(code, atRoot) {
+  const dir = atRoot ? dist : join(dist, code);
+  mkdirSync(dir, { recursive: true });
+  for (const [slug, source] of [['', html], ['privacy.html', privacy]]) {
+    if (!source) continue;
+    const [title, description] = headFor(code, slug);
+    const page = render(code, { atRoot, source, slug, title, description });
+    writeFileSync(join(dir, slug || 'index.html'), page);
+  }
 }
 
-const urls = [`${SITE}/`, ...LANGS.map((l) => `${SITE}/${l.code}/`)];
+emit('en', true);
+for (const { code } of LANGS) emit(code, false);
+
+const urls = [`${SITE}/`, ...LANGS.map((x) => `${SITE}/${x.code}/`)];
+if (privacy) urls.push(`${SITE}/privacy.html`, ...LANGS.map((x) => `${SITE}/${x.code}/privacy.html`));
 writeFileSync(join(dist, 'sitemap.xml'),
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   urls.map((u) => `  <url><loc>${u}</loc><changefreq>weekly</changefreq><priority>${u === SITE + '/' ? '1.0' : '0.8'}</priority></url>`).join('\n') +
   '\n</urlset>\n');
 
-console.log(`Built ${1 + LANGS.length} pages and a sitemap into dist/.`);
+console.log(`Built ${urls.length} pages and a sitemap into dist/.`);
