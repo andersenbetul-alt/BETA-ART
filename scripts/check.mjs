@@ -206,6 +206,38 @@ if (existsSync(figuresPath)) {
   }
 }
 
+// A translation in the wrong dictionary passes every other check here: the key exists, the
+// value is a non-empty string, and nothing points at it being Spanish sitting in the Hindi
+// block. Six of these languages have their own script, which makes the mistake mechanical to
+// catch — and it is worth catching, because forty-four keys once sat in the wrong language
+// after a dictionary order was assumed rather than read.
+const SCRIPTS = {
+  hi: [/[\u0900-\u097F]/, 'Devanagari'],
+  bn: [/[\u0980-\u09FF]/, 'Bengali'],
+  ru: [/[\u0400-\u04FF]/, 'Cyrillic'],
+  zh: [/[\u4E00-\u9FFF]/, 'Han'],
+  ar: [/[\u0600-\u06FF]/, 'Arabic'],
+  ur: [/[\u0600-\u06FF]/, 'Arabic'],
+};
+// Values that are legitimately Latin in every language: an address, a placeholder, a name.
+const LATIN_EVERYWHERE = new Set(['priv_contact', 'form_email']);
+
+for (const [code, [script, name]] of Object.entries(SCRIPTS)) {
+  const dict = DICTS[code];
+  if (!dict) continue;
+  const strays = [];
+  for (const [key, value] of Object.entries(dict)) {
+    if (LATIN_EVERYWHERE.has(key)) continue;
+    // Only judge strings that are prose in English; skip codes, numbers and symbols.
+    if (!/[A-Za-z]{3}/.test(DICTS.en?.[key] ?? '')) continue;
+    if (!script.test(value)) strays.push(key);
+  }
+  if (strays.length) {
+    fail(`[${code}] ${strays.length} value(s) contain no ${name} — wrong language in this ` +
+      `dictionary? ${strays.slice(0, 8).join(', ')}${strays.length > 8 ? ' …' : ''}`);
+  }
+}
+
 /* ---------- 6. RTL languages are declared in both places ---------- */
 
 const rtlInApp = [...appJs.matchAll(/RTL = \{([^}]*)\}/g)][0];

@@ -318,3 +318,6 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
 /* The follow row repeated at the foot: the hero's copy scrolls away, and the end of the page
    is exactly where someone who read the whole thing decides to go somewhere else. */
 .follow-footer{justify-content:flex-start;margin-bottom:22px}
+
+.use-share{margin:26px 0 0}
+.use-share .copy-btn{padding:10px 16px}

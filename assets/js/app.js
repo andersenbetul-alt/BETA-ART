@@ -398,6 +398,49 @@
     }
   }
 
+  /* ---------- share ---------- */
+
+  // navigator.share opens the device's own sheet — no third-party button, no script from a
+  // network, nothing loaded before the visitor asks. Where it does not exist (most desktops),
+  // the link goes to the clipboard instead, which is what a desktop user would do anyway.
+  function share() {
+    var button = document.getElementById('share-use');
+    var status = document.getElementById('copy-status');
+    if (!button) return;
+
+    button.addEventListener('click', function () {
+      var url = location.origin + location.pathname + '#use';
+      var data = { title: document.title, text: t('use_share_text'), url: url };
+
+      if (navigator.share) {
+        navigator.share(data).catch(function () { /* the visitor closed the sheet */ });
+        return;
+      }
+      var done = function () {
+        var label = button.textContent;
+        button.textContent = t('use_shared');
+        button.setAttribute('data-done', '1');
+        if (status) status.textContent = t('use_shared');
+        setTimeout(function () {
+          button.textContent = label;
+          button.removeAttribute('data-done');
+        }, 2000);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(done).catch(function () {});
+      } else {
+        var area = document.createElement('textarea');
+        area.value = url;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        try { document.execCommand('copy'); done(); } catch (e) { /* nothing to do */ }
+        document.body.removeChild(area);
+      }
+    });
+  }
+
   function releases() {
     // Same-origin file written by the weekly sync. Absent until the sync has credentials —
     // the section simply stays hidden, and the hand-written cards above carry the page.
@@ -560,6 +603,7 @@
     run(spotify);
     run(releases);
     run(copyCredits);
+    run(share);
     run(shop);
     run(signup);
     run(reveal);
