@@ -24,6 +24,9 @@
  *   Talep üzerine baskı, kumaş — tişört, hoodie. Yine stok riski yok ama beden var, ve
  *   iadelerin çoğu bedenden geliyor. Beden tablosu olmadan `checkout` doldurulmaz.
  *
+ * Fiyatlar Ağustos 2026 pazar araştırmasından; kaynaklar ve gerekçe docs/SHOP.md içinde.
+ * KDV dahil düşünülmeli (Norveç %25 MVA) — ilan edilen fiyat tüketicinin ödediği fiyattır.
+ *
  * Saat, yüzük, kargo pantolon gibi kalemler bilerek yok: stok bağlar, birim maliyeti yüksek,
  * ve henüz satış geçmişi olmayan bir markada parayı rafta bekletirler.
  */
@@ -49,6 +52,7 @@ window.HXI_SHOP = [
     kind: 'digital',
     name: 'HXI Drum Kit Vol. 1',
     desc: 'shop_d_kit',
+    price: { amount: 149, currency: 'NOK' },
     checkout: ''
   },
   {
@@ -56,6 +60,7 @@ window.HXI_SHOP = [
     kind: 'digital',
     name: 'HXI Wallpaper Pack',
     desc: 'shop_d_wallpaper',
+    price: { amount: 49, currency: 'NOK' },
     checkout: ''
   },
   {
@@ -64,6 +69,7 @@ window.HXI_SHOP = [
     kind: 'physical',
     name: 'X Mark Sticker Pack',
     desc: 'shop_d_stickers',
+    price: { amount: 99, currency: 'NOK' },
     checkout: ''
   },
   {
@@ -72,6 +78,7 @@ window.HXI_SHOP = [
     kind: 'physical',
     name: 'HELP URSELF — Numbered Print',
     desc: 'shop_d_print',
+    price: { amount: 299, currency: 'NOK' },
     checkout: ''
   },
   {
@@ -79,6 +86,7 @@ window.HXI_SHOP = [
     kind: 'physical',
     name: 'Norwegian Flag Tee',
     desc: 'shop_d_tee',
+    price: { amount: 399, currency: 'NOK' },
     checkout: ''
   },
   {
@@ -86,6 +94,7 @@ window.HXI_SHOP = [
     kind: 'physical',
     name: 'Norwegian Flag Hoodie',
     desc: 'shop_d_hoodie',
+    price: { amount: 799, currency: 'NOK' },
     checkout: ''
   }
 ];

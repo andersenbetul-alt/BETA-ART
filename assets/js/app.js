@@ -459,8 +459,15 @@
     // the currency code is one Intl does not know.
     function money(amount, currency) {
       var lang = document.documentElement.lang || 'en';
+      // Whole krone shows as "399 kr", not "399,00 kr" — the trailing zeros are how a price
+      // starts looking like an invoice. Fractions still print when a price has them.
+      var whole = amount % 1 === 0;
       try {
-        return new Intl.NumberFormat(lang, { style: 'currency', currency: currency }).format(amount);
+        return new Intl.NumberFormat(lang, {
+          style: 'currency',
+          currency: currency,
+          minimumFractionDigits: whole ? 0 : 2,
+        }).format(amount);
       } catch (e) {
         return amount + ' ' + currency;
       }

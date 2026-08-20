@@ -67,6 +67,41 @@ to make. They are a decision for after the first band has sold something.
 The order in `shop.js` is the order on the page, and it is this order on purpose: a visitor
 meets the free thing first, then the cheap thing, then the thing with a size.
 
+## The prices, and where they came from
+
+Researched August 2026. These are starting prices, not settled ones — a price is a decision
+that gets revised after the first fifty sales, and every one of them is a one-line edit in
+`shop.js`.
+
+| Product | Price | What the market shows |
+| --- | --- | --- |
+| Wallpaper pack | 49 NOK | Barely a market. Priced low because its job is the first transaction, not the margin. |
+| Sticker pack | 99 NOK | Band stickers sell at $3–8 / £4–12. Small goods carry 70–85% gross margin, the highest of anything here. |
+| Drum Kit Vol. 1 | 149 NOK | Phonk kits on Gumroad sit at **$5** and the shelf is crowded. This is priced above that on purpose — see below. |
+| Numbered print | 299 NOK | Indie limited prints run £15–30. High margin, ships flat, and the number is what people pay for. |
+| Tee | 399 NOK | Independent shows average **$37–38**; UK core tier £20–35. Target 55–70% gross margin. |
+| Hoodie | 799 NOK | Averages around **$70**. Target 50–65% gross margin. |
+
+**On the drum kit being 149 and not 55.** The generic phonk kit market has bottomed out at
+$5, and competing there is a losing game — those packs are anonymous, and there are hundreds.
+What is being sold here is not a folder of 808s; it is the 808s from a track with 43 million
+streams, from the person who made it. That is a different product and it does not price
+against the $5 shelf. If it does not sell at 149, the lesson is about the audience, not the
+number, and the number is easy to change.
+
+**On the wallpaper pack.** It may work harder as free — a list incentive that costs nothing
+to give away and gives the mailing list something real to hand over. `free: true` and
+`signup: true` turn it into that in one edit. Worth trying before selling it.
+
+**VAT.** Norway charges 25% MVA. The number on the card is what a consumer pays, VAT included
+— that is the convention here and the legal expectation for consumer pricing. For digital
+sales abroad the Merchant of Record handles the buyer's local rate, which is a second reason
+to use one.
+
+**Currency.** Prices are set in NOK and shown in the visitor's own formatting, not converted
+at checkout. A EUR price is a separate decision, not an exchange rate — set it when there is
+a reason to sell in EUR.
+
 ## Which checkout provider
 
 The answer is not the same for the two kinds of product, and the difference is tax, not payment.
