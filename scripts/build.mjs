@@ -27,6 +27,7 @@ const html = readFileSync(join(root, 'index.html'), 'utf8');
 // language, so a crawler and a visitor with JS off see the same numbers as everyone else.
 const FIGURES = JSON.parse(readFileSync(join(root, 'assets/data/figures.json'), 'utf8'));
 const SLOT = { streams: 'streams_help_urself', listeners: 'monthly_listeners' };
+const unescape = (t) => t.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'").replace(/&quot;/g, '"');
 const num = (value, code, compact) =>
   new Intl.NumberFormat(code, compact ? { notation: 'compact', maximumFractionDigits: 1 } : {}).format(value);
 // data-figure="…_checked" prints the date the figure was last verified, in this language's
@@ -121,6 +122,36 @@ function render(code, { atRoot, source = html, slug = '', title, description }) 
         (m, open, close) => open + '\n' +
           JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: entity })
             .replace(/</g, '\\u003c') + '\n' + close);
+    }
+  }
+
+  // 1b-iii. The catalogue as structured data. The archive rows are the only complete,
+  // dated list of releases anywhere on the page, and they are already sourced one by one in
+  // docs/RESEARCH.md — so the MusicGroup's track list is generated from them rather than
+  // maintained twice. Reading the markup keeps the two from ever disagreeing.
+  {
+    const rows = [...page.matchAll(
+      /<li><div><b>([^<]+)<\/b><span><time datetime="([^"]+)">[^<]*<\/time>([\s\S]*?)<\/span><\/div>(?:<a href="([^"]+)")?/g)];
+    const tracks = rows.map(([, name, date, , url]) => {
+      const item = { '@type': 'MusicRecording', name: unescape(name), byArtist: { '@type': 'MusicGroup', name: 'HXI' } };
+      if (date) item.datePublished = date;
+      if (url) item.sameAs = url;
+      return item;
+    });
+    if (tracks.length) {
+      page = page.replace(/("@type":"MusicGroup","name":"HXI")/,
+        (m) => m + ',"track":' + JSON.stringify(tracks).replace(/</g, '\\u003c'));
+    }
+  }
+
+  // Three of the four JSON-LD blocks are generated, and a broken one fails silently: the
+  // page renders, the crawler drops the block, and nobody finds out. Parse them here so a
+  // bad build stops instead.
+  for (const [, body] of page.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
+    try {
+      JSON.parse(body);
+    } catch (e) {
+      throw new Error(`[${code}] a JSON-LD block does not parse: ${e.message}`);
     }
   }
 
