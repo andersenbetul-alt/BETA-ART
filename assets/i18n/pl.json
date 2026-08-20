@@ -281,7 +281,8 @@
     "code": "Kod",
     "delivery": "Realizacja",
     "perHour": "za godzinę",
-    "inclVat": "z VAT"
+    "inclVat": "z VAT",
+    "later": "Wkrótce: pomoc przy wnioskach, bieżące prowadzenie sprawy i odwołania. Zaczynamy od jednej rzeczy i robimy ją dobrze."
   },
   "safety": {
     "eyebrow": "Bezpieczeństwo i etyka",
@@ -345,7 +346,7 @@
     "doneTitle": "Rezerwacja przyjęta",
     "doneLead": "Wysłaliśmy potwierdzenie na Twój e-mail. Zachowaj ten numer przy kontakcie z nami.",
     "reference": "Numer sprawy",
-    "doneNext": "Dalej: otrzymasz bezpieczny link do przesłania dokumentów. Nigdy nie wysyłaj wrażliwych dokumentów zwykłym e-mailem.",
+    "doneNext": "Odpowiadamy e-mailem w ciągu jednego dnia roboczego i potwierdzamy dopasowanie sprawy przed rozpoczęciem pracy. Nigdy nie wysyłaj wrażliwych dokumentów zwykłym e-mailem.",
     "another": "Zrób kolejną rezerwację",
     "demoNotice": "Tryb demo: system rezerwacji nie jest jeszcze podłączony, więc ta rezerwacja zapisuje się tylko w przeglądarce. Podłącz backend w assets/js/config.js, aby uruchomić usługę.",
     "errGeneric": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio.",
@@ -359,7 +360,9 @@
     "angrerett": "Usługi co do zasady objęte są 14-dniowym prawem odstąpienia. Prosząc o natychmiastowe rozpoczęcie, akceptujesz, że prawo to wygasa po pełnym wykonaniu usługi i że w razie rezygnacji zapłacisz za już wykonaną pracę.",
     "deliveryNote": "Ta usługa nie wymaga spotkania. Dostarczamy pisemnie w ciągu {sla}.",
     "upload": "Dokumenty",
-    "uploadNote": "Po rezerwacji otrzymasz bezpieczny link do przesyłania plików. Nigdy nie wysyłaj wrażliwych dokumentów zwykłym e-mailem."
+    "uploadNote": "Opisz sprawę własnymi słowami. Nie musisz teraz przesyłać dokumentu ani podawać wrażliwych danych.",
+    "tolkNotice": "Urzędy mają co do zasady obowiązek zapewnić i opłacić tłumacza na spotkania z nimi. Tłumacz prywatny dotyczy rozmów poza tym zakresem.",
+    "fitFirst": "Sprawdzamy, czy sprawa pasuje, zanim zapłacisz."
   },
   "faq": {
     "eyebrow": "Pytania",
@@ -379,7 +382,7 @@
       },
       {
         "q": "Ile to kosztuje?",
-        "a": "Pierwsza 15-minutowa rozmowa jest bezpłatna. Potem dostajesz stałą cenę na piśmie przed rozpoczęciem pracy. Ceny pilotażowe zaczynają się od 690 NOK za wyjaśnienie jednego pisma."
+        "a": "Sprawdzenie dopasowania jest bezpłatne. Wyjaśnienie jednego pisma kosztuje 800 NOK, a 45-minutowa konsultacja 1 500 NOK. Cenę dostajesz na piśmie przed rozpoczęciem pracy, a jeśli sprawa nie pasuje — mówimy o tym."
       },
       {
         "q": "W jakich językach mogę uzyskać pomoc?",
@@ -391,7 +394,7 @@
       },
       {
         "q": "Jak bezpiecznie przesłać dokumenty?",
-        "a": "Po rezerwacji otrzymasz bezpieczny link do przesłania plików. Nie wysyłaj wrażliwych dokumentów jako zwykłych załączników e-mail."
+        "a": "W tym pilotażu nie musisz w ogóle przesyłać dokumentów. Opisz pismo własnymi słowami, a powiemy, jeśli będziemy potrzebować więcej. Nie wysyłaj wrażliwych dokumentów zwykłym e-mailem."
       }
     ]
   },
@@ -429,9 +432,9 @@
     "pilot": "Usługa pilotażowa. Ceny i zakres są testowane i mogą się zmienić."
   },
   "catalog": {
-    "intro": {
-      "n": "Bezpłatna rozmowa wstępna",
-      "d": "Krótka rozmowa, żebyśmy mogli powiedzieć, czy możemy pomóc."
+    "fit": {
+      "n": "Bezpłatne sprawdzenie dopasowania",
+      "d": "Krótkie sprawdzenie, czy Twoja sprawa do nas pasuje. To nie analiza — uczciwe tak lub nie, i podpowiedź, jeśli coś innego pasuje lepiej."
     },
     "k01": {
       "n": "Pismo wyjaśnione",
@@ -440,6 +443,10 @@
     "k02": {
       "n": "Konsultacja wyjaśniająca",
       "d": "45 minut z doradcą o Twojej sprawie, telefonicznie lub wideo."
+    },
+    "tolk": {
+      "n": "Tłumacz prywatny",
+      "d": "Tłumacz do rozmów, które organizujesz sam. Cena ustalana przed rezerwacją."
     },
     "h01": {
       "n": "Wniosek razem",

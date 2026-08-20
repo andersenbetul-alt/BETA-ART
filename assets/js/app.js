@@ -43,6 +43,17 @@
   };
   var price = global.naviarFormatPrice;
 
+  /* Outreach attribution for the first-100 scoreboard: ?src=whatsapp,
+     ?src=partner-x, ?utm_source=linkedin ... captured once, then remembered. */
+  global.naviarSource = (function () {
+    var qs = new URLSearchParams(global.location.search);
+    var src = qs.get('src') || qs.get('utm_source') || '';
+    try {
+      if (src) localStorage.setItem('naviar.src', src.slice(0, 40));
+      return src || localStorage.getItem('naviar.src') || 'direct';
+    } catch (e) { return src || 'direct'; }
+  })();
+
   function serviceById(id) {
     return CFG.services.filter(function (s) { return s.id === id; })[0];
   }
@@ -85,27 +96,6 @@
     });
   }
 
-  function renderServices() {
-    var host = byId('serviceCards');
-    if (!host) return;
-    host.innerHTML = '';
-    (I18n.get('services.items') || []).forEach(function (s, i) {
-      var card = el('article', 'card');
-      var icon = el('div', 'icon');
-      icon.setAttribute('aria-hidden', 'true');
-      icon.innerHTML =
-        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
-        'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + ICONS[i % ICONS.length] + '</svg>';
-      card.appendChild(icon);
-      card.appendChild(el('h3', null, s.t));
-      card.appendChild(el('p', null, s.d));
-      var ul = el('ul');
-      (s.i || []).forEach(function (item) { ul.appendChild(el('li', null, item)); });
-      card.appendChild(ul);
-      host.appendChild(card);
-    });
-  }
-
   function renderAreas() {
     var host = byId('areaList');
     if (!host) return;
@@ -126,40 +116,30 @@
     var host = byId('priceCards');
     if (host) {
       host.innerHTML = '';
-      var plans = I18n.get('pricing.plans') || [];
-      /* Marketing cards map to the catalogue entries a customer books most. */
-      var ids = ['intro', 'k01', 'h01', 'o01', 'komplett'];
-      plans.forEach(function (plan, i) {
-        var svc = serviceById(ids[i]);
+      CFG.services.forEach(function (svc) {
+        var entry = (I18n.get('catalog') || {})[svc.id] || {};
         var card = el('article', 'card');
-        if (svc && svc.free) {
-          var free = el('span', 'badge-free', I18n.t('pricing.plans')[0].tag);
-          card.appendChild(free);
-        }
-        card.appendChild(el('h3', null, plan.n));
-        card.appendChild(el('p', null, plan.d));
+        if (svc.free) card.appendChild(el('span', 'badge-free', I18n.t('pricing.from') === '' ? '' : '0 ' + CFG.currency));
+        card.appendChild(el('h3', null, entry.n || svc.id));
+        card.appendChild(el('p', null, entry.d || ''));
 
         var p = el('p');
         p.style.cssText = 'font-family:Fraunces,serif;font-size:1.5rem;color:var(--navy);margin:14px 0 2px';
-        p.textContent = svc ? price(svc.price) : I18n.t('pricing.quote');
+        p.textContent = price(svc.price);
         card.appendChild(p);
+
         var sub = el('p');
         sub.style.cssText = 'font-size:.8rem;color:var(--muted);margin:0 0 12px';
-        sub.textContent = svc && svc.price ? I18n.t('pricing.inclVat') : '';
+        sub.textContent = svc.price ? I18n.t('pricing.inclVat')
+                        : (svc.sla ? I18n.t('pricing.delivery') + ': ' + svc.sla : '');
         card.appendChild(sub);
 
-        var ul = el('ul');
-        (plan.f || []).forEach(function (f) { ul.appendChild(el('li', null, f)); });
-        card.appendChild(ul);
-
-        var a = el('a', 'btn btn-outline', svc ? I18n.t('pricing.select') : I18n.t('pricing.ask'));
-        a.href = svc ? '#booking' : '#contact';
-        a.style.cssText = 'margin-top:18px;width:100%';
-        if (svc) {
-          a.addEventListener('click', function () {
-            document.dispatchEvent(new CustomEvent('naviar:pickservice', { detail: { id: svc.id } }));
-          });
-        }
+        var a = el('a', 'btn btn-outline', svc.price == null ? I18n.t('pricing.ask') : I18n.t('pricing.select'));
+        a.href = '#booking';
+        a.style.cssText = 'margin-top:8px;width:100%';
+        a.addEventListener('click', function () {
+          document.dispatchEvent(new CustomEvent('naviar:pickservice', { detail: { id: svc.id } }));
+        });
         card.appendChild(a);
         host.appendChild(card);
       });
@@ -184,7 +164,6 @@
       tr.appendChild(name);
 
       var dur = s.minutes ? s.minutes + ' min' : (s.sla || '—');
-      if (s.perHour) dur = I18n.t('pricing.perHour');
       var td = el('td', null, dur);
       td.style.cssText = 'white-space:nowrap;color:var(--body)';
       tr.appendChild(td);
@@ -193,18 +172,6 @@
       pr.style.cssText = 'white-space:nowrap;font-weight:600;color:var(--navy);text-align:end';
       tr.appendChild(pr);
       body.appendChild(tr);
-    });
-  }
-
-  function renderMore() {
-    var host = byId('moreCards');
-    if (!host) return;
-    host.innerHTML = '';
-    (I18n.get('pricing.more') || []).forEach(function (m) {
-      var card = el('article', 'card');
-      card.appendChild(el('h3', null, m.n));
-      card.appendChild(el('p', null, m.d));
-      host.appendChild(card);
     });
   }
 
@@ -276,7 +243,9 @@
 
   /* ----------------------------------------------------------- need finder */
   /* Maps the first answer to the service that actually fits it. */
-  var FINDER_MAP = ['k01', 'h01', 'o01', 's01', 'intro'];
+  /* Only the offers we sell today. Anything we cannot deliver yet routes to
+     the free fit check, where a human says yes or no honestly. */
+  var FINDER_MAP = ['k01', 'fit', 'fit', 'fit', 'k02'];
   var finderState = { step: 0, answers: [] };
 
   function recordNeed(answers) {
@@ -285,7 +254,8 @@
       situation: answers[0],
       office: answers[1],
       urgency: answers[2],
-      recommended: FINDER_MAP[answers[0]] || 'intro'
+      recommended: FINDER_MAP[answers[0]] || 'fit',
+      source: global.naviarSource
     };
     if (CFG.apiBase) {
       fetch(CFG.apiBase + '/api/needs', {
@@ -433,7 +403,8 @@
         email: data.get('email'),
         phone: data.get('phone') || '',
         message: data.get('message'),
-        lang: I18n.lang
+        lang: I18n.lang,
+        source: global.naviarSource
       };
 
       function done() {
@@ -490,10 +461,8 @@
     renderHeroCard();
     renderProcess();
     renderStatus();
-    renderServices();
     renderAreas();
     renderPricing();
-    renderMore();
     renderSafety();
     renderFaq();
     renderFinder();

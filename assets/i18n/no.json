@@ -281,7 +281,8 @@
     "code": "Kode",
     "delivery": "Levering",
     "perHour": "per time",
-    "inclVat": "inkl. mva."
+    "inclVat": "inkl. mva.",
+    "later": "Kommer senere: søknadsstøtte, løpende oppfølging og hjelp med klage. Vi starter med én ting og gjør den godt."
   },
   "safety": {
     "eyebrow": "Trygghet og etikk",
@@ -345,7 +346,7 @@
     "doneTitle": "Bestillingen er mottatt",
     "doneLead": "Vi har sendt en bekreftelse til e-posten din. Ta vare på referansen ved kontakt med oss.",
     "reference": "Referanse",
-    "doneNext": "Neste: du får en sikker lenke for opplasting av dokumenter. Send aldri sensitive dokumenter med vanlig e-post.",
+    "doneNext": "Vi svarer på e-post innen én virkedag og bekrefter at saken passer før arbeidet starter. Send aldri sensitive dokumenter med vanlig e-post.",
     "another": "Gjør en ny bestilling",
     "demoNotice": "Demomodus: bestillingssystemet er ikke koblet til ennå, så denne bestillingen lagres bare i nettleseren din. Koble til backend i assets/js/config.js for å gå live.",
     "errGeneric": "Noe gikk galt. Prøv igjen, eller ta kontakt med oss direkte.",
@@ -359,7 +360,9 @@
     "angrerett": "Tjenester har som hovedregel 14 dagers angrerett. Ber du oss starte med én gang, godtar du at angreretten faller bort når tjenesten er levert i sin helhet, og at du betaler for arbeid som allerede er utført dersom du avbestiller.",
     "deliveryNote": "Denne tjenesten krever ikke møte. Vi leverer skriftlig innen {sla}.",
     "upload": "Dokumenter",
-    "uploadNote": "Du får en sikker opplastingslenke etter bestillingen. Send aldri sensitive dokumenter med vanlig e-post."
+    "uploadNote": "Beskriv saken med dine egne ord. Du trenger ikke laste opp dokumentet eller oppgi sensitive opplysninger nå.",
+    "tolkNotice": "Offentlige etater skal som regel skaffe og betale tolk til møter med dem. Privat tolk er for samtalene som faller utenfor det.",
+    "fitFirst": "Vi sjekker at saken passer før du betaler."
   },
   "faq": {
     "eyebrow": "Spørsmål",
@@ -379,7 +382,7 @@
       },
       {
         "q": "Hva koster det?",
-        "a": "Den første samtalen på 15 minutter er gratis. Deretter får du en fast pris skriftlig før arbeidet starter. Pilotprisene starter på 690 kr for ett brev forklart."
+        "a": "Passkontrollen er gratis. Ett brev forklart koster 800 kr, og en klarhetssamtale på 45 minutter koster 1 500 kr. Du får prisen skriftlig før arbeidet starter, og vi sier fra hvis saken ikke passer."
       },
       {
         "q": "Hvilke språk kan jeg få hjelp på?",
@@ -391,7 +394,7 @@
       },
       {
         "q": "Hvordan sender jeg dokumenter trygt?",
-        "a": "Etter bestilling får du en sikker opplastingslenke. Ikke send sensitive dokumenter som vanlige e-postvedlegg."
+        "a": "I denne pilotfasen trenger du ikke sende dokumenter i det hele tatt. Beskriv brevet med egne ord, så sier vi fra hvis vi trenger mer. Ikke send sensitive dokumenter med vanlig e-post."
       }
     ]
   },
@@ -429,9 +432,9 @@
     "pilot": "Pilottjeneste. Priser og omfang testes og kan bli endret."
   },
   "catalog": {
-    "intro": {
-      "n": "Gratis forhåndssamtale",
-      "d": "En kort samtale så vi kan si om vi kan hjelpe deg."
+    "fit": {
+      "n": "Gratis passkontroll",
+      "d": "En kort sjekk på om saken passer for oss. Ingen analyse — bare et ærlig ja eller nei, og et forslag hvis noe annet passer bedre."
     },
     "k01": {
       "n": "Brev forklart",
@@ -440,6 +443,10 @@
     "k02": {
       "n": "Klar konsultasjon",
       "d": "45 minutter med en rådgiver om saken din, på telefon eller video."
+    },
+    "tolk": {
+      "n": "Privat tolk",
+      "d": "Tolk til samtaler du tar selv. Pris avtales før bestilling."
     },
     "h01": {
       "n": "Søknad sammen",

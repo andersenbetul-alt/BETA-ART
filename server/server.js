@@ -231,6 +231,7 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
     commission: service.net == null ? null : Math.round(service.net * CFG.commissionRate),
     payment,
     lang: str(body.lang, 5),
+    source: str(body.source, 40),
     customer: { name, email, phone, lang: str(details.lang, 5), channel: str(details.channel, 12) },
     tolk: service.tolk
       ? { language: str(details.tolkLang, 60), dialect: str(details.tolkDialect, 60) }
@@ -317,7 +318,8 @@ app.post('/api/enquiries', throttle(20, 60 * 60 * 1000), (req, res) => {
   append('enquiries.json', {
     id: crypto.randomUUID(),
     at: new Date().toISOString(),
-    name, email, phone: str(b.phone, 40), message, lang: str(b.lang, 5)
+    name, email, phone: str(b.phone, 40), message,
+    lang: str(b.lang, 5), source: str(b.source, 40)
   });
   res.json({ ok: true });
 });
@@ -333,7 +335,8 @@ app.post('/api/needs', throttle(120, 60 * 60 * 1000), (req, res) => {
     situation: int(b.situation),
     office: int(b.office),
     urgency: int(b.urgency),
-    recommended: str(b.recommended, 20)
+    recommended: str(b.recommended, 20),
+    source: str(b.source, 40)
   });
   res.json({ ok: true });
 });
@@ -356,6 +359,7 @@ app.get('/api/insights', (req, res) => {
     byUrgency: tally('urgency'),
     byLanguage: tally('lang'),
     byRecommendation: tally('recommended'),
+    bySource: tally('source'),
     bookings: read('bookings.json').length,
     enquiries: read('enquiries.json').length
   });

@@ -49,16 +49,16 @@ window.NAVIAR_CONFIG = {
   vatRate: 0.25,
   commissionRate: 0.20,          // pilot platform commission on the net fee
   currency: 'NOK',
+
+  /* The First-100 launch offer. One result, sold well, before anything else.
+     Translations for the phase-2 offers (h01, o01, s01, t30, t60, tf) are kept
+     in assets/i18n/*.json under `catalog` — add them back here when the pilot
+     proves demand. */
   services: [
-    { id: 'intro',  code: '—',   price: 0,    net: 0,    minutes: 15, type: 'meeting',  group: 'advice', free: true },
-    { id: 'k01',    code: 'K01', price: 800,  net: 640,  minutes: 0,  type: 'delivery', group: 'advice', sla: '24–48t' },
-    { id: 'k02',    code: 'K02', price: 1500, net: 1200, minutes: 45, type: 'meeting',  group: 'advice' },
-    { id: 'h01',    code: 'H01', price: 3000, net: 2400, minutes: 60, type: 'meeting',  group: 'advice', sla: '2–4d' },
-    { id: 'o01',    code: 'O01', price: 4500, net: 3600, minutes: 45, type: 'meeting',  group: 'advice', sla: '30d' },
-    { id: 's01',    code: 'S01', price: 1500, net: 1200, minutes: 60, type: 'meeting',  group: 'advice', perHour: true },
-    { id: 't30',    code: 'T30', price: 800,  net: 640,  minutes: 30, type: 'meeting',  group: 'tolk', tolk: true },
-    { id: 't60',    code: 'T60', price: 1250, net: 1000, minutes: 60, type: 'meeting',  group: 'tolk', tolk: true },
-    { id: 'tf',     code: 'TF',  price: null, net: null, minutes: 60, type: 'meeting',  group: 'tolk', tolk: true }
+    { id: 'fit',  code: '—',   price: 0,    net: 0,    minutes: 0,  type: 'delivery', group: 'advice', free: true, sla: '1 virkedag' },
+    { id: 'k01',  code: 'K01', price: 800,  net: 640,  minutes: 0,  type: 'delivery', group: 'advice', sla: '24–48t' },
+    { id: 'k02',  code: 'K02', price: 1500, net: 1200, minutes: 45, type: 'meeting',  group: 'advice' },
+    { id: 'tolk', code: 'T',   price: null, net: null, minutes: 60, type: 'meeting',  group: 'tolk', tolk: true }
   ],
 
   /* Surcharges (§12.2). Shown before purchase, never added afterwards. */
@@ -93,8 +93,11 @@ window.NAVIAR_CONFIG = {
     card: true,                 // Stripe Checkout via the backend
     vipps: true,                // Vipps ePayment (backend, Norway)
     invoice: true,              // manual invoice / faktura
-    /* Fallback for pure static hosting: one Stripe Payment Link per service. */
-    paymentLinks: {}
+    /* Fallback for pure static hosting, before server/ is deployed: paste one
+       Stripe Payment Link (or PayPal button link) per paid service. The booking
+       flow stores the case locally, then sends the customer to this link with
+       the case reference attached. Leave empty to collect by invoice instead. */
+    paymentLinks: { k01: '', k02: '' }
   },
 
   /* Where the form falls back to when there is no backend. */

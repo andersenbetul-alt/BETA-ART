@@ -281,7 +281,8 @@
     "code": "Kodas",
     "delivery": "Pristatymas",
     "perHour": "už valandą",
-    "inclVat": "su PVM"
+    "inclVat": "su PVM",
+    "later": "Vėliau: pagalba su prašymais, nuolatinė priežiūra ir skundai. Pradedame nuo vieno dalyko ir darome jį gerai."
   },
   "safety": {
     "eyebrow": "Saugumas ir etika",
@@ -345,7 +346,7 @@
     "doneTitle": "Registracija gauta",
     "doneLead": "Patvirtinimą išsiuntėme jūsų el. paštu. Išsaugokite šį numerį susisiekimui su mumis.",
     "reference": "Numeris",
-    "doneNext": "Toliau: gausite saugią nuorodą dokumentams įkelti. Niekada nesiųskite jautrių dokumentų paprastu el. paštu.",
+    "doneNext": "Atsakome el. paštu per vieną darbo dieną ir patvirtiname, kad byla tinka, prieš pradedant darbą. Niekada nesiųskite jautrių dokumentų paprastu el. paštu.",
     "another": "Registruotis dar kartą",
     "demoNotice": "Demonstracinis režimas: registracijos sistema dar neprijungta, todėl ši registracija saugoma tik jūsų naršyklėje. Prijunkite serverį assets/js/config.js, kad veiktų realiai.",
     "errGeneric": "Kažkas nepavyko. Bandykite dar kartą arba susisiekite su mumis tiesiogiai.",
@@ -359,7 +360,9 @@
     "angrerett": "Paslaugoms paprastai taikoma 14 dienų teisė atsisakyti. Paprašę pradėti nedelsiant, sutinkate, kad ši teisė baigiasi visiškai suteikus paslaugą ir kad atšaukę sumokėsite už jau atliktą darbą.",
     "deliveryNote": "Šiai paslaugai susitikimas nereikalingas. Pristatome raštu per {sla}.",
     "upload": "Dokumentai",
-    "uploadNote": "Po registracijos gausite saugią įkėlimo nuorodą. Niekada nesiųskite jautrių dokumentų paprastu el. paštu."
+    "uploadNote": "Aprašykite bylą savais žodžiais. Dabar nereikia įkelti dokumento ar nurodyti jautrių duomenų.",
+    "tolkNotice": "Valstybės įstaigos paprastai privalo pačios pasirūpinti vertėju ir jį apmokėti susitikimams su jomis. Privatus vertėjas skirtas pokalbiams, kurie į tai nepatenka.",
+    "fitFirst": "Patikriname, ar byla tinka, prieš jums sumokant."
   },
   "faq": {
     "eyebrow": "Klausimai",
@@ -379,7 +382,7 @@
       },
       {
         "q": "Kiek tai kainuoja?",
-        "a": "Pirmas 15 minučių pokalbis nemokamas. Vėliau prieš pradedant darbą gaunate fiksuotą kainą raštu. Bandomosios kainos prasideda nuo 690 NOK už vieno laiško paaiškinimą."
+        "a": "Tinkamumo patikrinimas nemokamas. Vieno laiško paaiškinimas kainuoja 800 NOK, o 45 minučių konsultacija — 1 500 NOK. Kainą gaunate raštu prieš pradedant darbą, o jei byla netinka — pasakome."
       },
       {
         "q": "Kokiomis kalbomis galiu gauti pagalbą?",
@@ -391,7 +394,7 @@
       },
       {
         "q": "Kaip saugiai atsiųsti dokumentus?",
-        "a": "Po registracijos gausite saugią įkėlimo nuorodą. Nesiųskite jautrių dokumentų kaip paprastų el. laiško priedų."
+        "a": "Šiame bandomajame etape dokumentų siųsti visai nereikia. Aprašykite laišką savais žodžiais, o mes pasakysime, jei prireiks daugiau. Nesiųskite jautrių dokumentų paprastu el. paštu."
       }
     ]
   },
@@ -429,9 +432,9 @@
     "pilot": "Bandomoji paslauga. Kainos ir apimtis testuojamos ir gali keistis."
   },
   "catalog": {
-    "intro": {
-      "n": "Nemokamas įvadinis pokalbis",
-      "d": "Trumpas pokalbis, kad galėtume pasakyti, ar galime padėti."
+    "fit": {
+      "n": "Nemokamas tinkamumo patikrinimas",
+      "d": "Trumpas patikrinimas, ar jūsų byla mums tinka. Tai ne analizė — sąžiningas taip arba ne ir patarimas, jei kas kita tiktų geriau."
     },
     "k01": {
       "n": "Laiškas paaiškintas",
@@ -440,6 +443,10 @@
     "k02": {
       "n": "Aiškumo konsultacija",
       "d": "45 minutės su konsultantu apie jūsų bylą, telefonu ar vaizdu."
+    },
+    "tolk": {
+      "n": "Privatus vertėjas",
+      "d": "Vertėjas pokalbiams, kuriuos organizuojate patys. Kaina sutariama prieš registraciją."
     },
     "h01": {
       "n": "Prašymas kartu",

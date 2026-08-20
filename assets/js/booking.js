@@ -316,6 +316,9 @@
       row3.appendChild(field(I18n.t('booking.tolkLangLabel'), tolkSel));
       row3.appendChild(field(I18n.t('booking.tolkDialect'), input('tolkDialect', 'text', false, d.tolkDialect)));
       form.appendChild(row3);
+      /* Say this before taking money: for meetings with a public agency the
+         agency normally has to provide and pay for the interpreter. */
+      form.appendChild(el('p', 'status info show', I18n.t('booking.tolkNotice')));
     }
 
     if (s && s.type === 'delivery') {
@@ -458,6 +461,8 @@
       host.appendChild(opts);
 
       /* Right of withdrawal must be accepted explicitly when work starts now. */
+      host.appendChild(el('p', 'status info show', I18n.t('booking.fitFirst')));
+
       var angre = el('p', 'finder-hint', I18n.t('booking.angrerett'));
       angre.style.marginTop = '16px';
       host.appendChild(angre);
@@ -493,17 +498,29 @@
       amount: total(),
       currency: CFG.currency,
       lang: I18n.lang,
+      source: global.naviarSource,
       details: state.details
     };
 
     if (!CFG.apiBase) {
-      /* Demo mode — keep the booking locally and say plainly that it is a demo. */
       state.reference = reference();
       try {
         var store = JSON.parse(localStorage.getItem('naviar.bookings') || '[]');
         store.push(Object.assign({ reference: state.reference, at: new Date().toISOString() }, payload));
         localStorage.setItem('naviar.bookings', JSON.stringify(store.slice(-100)));
       } catch (e) { /* private mode */ }
+
+      /* No backend yet, but a Stripe/PayPal payment link is configured: take
+         the customer there with the case reference attached, so the payment can
+         be matched to the case by hand during the pilot. */
+      var link = (CFG.payments.paymentLinks || {})[s.id];
+      if (link && payload.amount) {
+        global.location.href = link + (link.indexOf('?') === -1 ? '?' : '&') +
+          'client_reference_id=' + encodeURIComponent(state.reference) +
+          '&prefilled_email=' + encodeURIComponent(state.details.email);
+        return;
+      }
+
       renderDone(true);
       return;
     }

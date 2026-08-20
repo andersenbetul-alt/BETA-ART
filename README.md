@@ -63,32 +63,52 @@ Everything a non-developer needs to change lives in `assets/js/config.js`.
 **Before launch, replace the placeholders:** `orgNumber`, `email`, `phone`,
 `phoneHref`, `address`. They currently hold obvious dummy values.
 
-### Prices
+### The offer
 
-Prices come from the pilot catalogue in the system blueprint (§12.1). `price` is the
-**customer total including 25% MVA** — a consumer interface must always show the final
-total — and `net` is the ex-MVA fee the 20% platform commission is calculated from.
+The site sells the **First-100 launch offer** — one result, sold well, before
+anything else. `price` is the customer total including 25% MVA; `net` is the
+ex-MVA fee the 20% commission is calculated from.
 
-| Code | Service | Customer total | Delivery |
+| Code | Offer | Price | Delivery |
 | --- | --- | --- | --- |
-| — | Gratis forhåndssamtale | 0 | 15 min |
-| K01 | Brev forklart | 800 NOK | 24–48 t |
-| K02 | Klar konsultasjon | 1 500 NOK | 45 min |
-| H01 | Søknad sammen | 3 000 NOK | 2–4 d |
-| O01 | Saksoppfølging | 4 500 NOK | 30 d |
-| S01 | Senior/ekspert | 1 500 NOK | per time |
-| T30 | Tolk 30 min | 800 NOK | 30 min |
-| T60 | Tolk 60 min | 1 250 NOK | 60 min |
-| TF | Fremmøtetolk | Etter tilbud | — |
+| — | Gratis passkontroll | Free | 1 working day, no analysis |
+| K01 | Brev forklart | 800 NOK | 24–48 t, one letter up to 5 pages |
+| K02 | Klar konsultasjon | 1 500 NOK | 45 min, phone or video |
+| T | Privat tolk | By quote | Agreed before booking |
 
-Express (+25%) is offered in the booking flow and shown before purchase, never added
-afterwards. The MVA assumption, the MVA status of each advisor and the invoicing model
-still need an accountant's confirmation.
+Phase-2 offers (H01 søknad, O01 oppfølging, S01 senior, fixed-price tolk) are
+**not sold yet** — the launch kit says prove demand first. Their translations
+are still in `assets/i18n/*.json` under `catalog`; add them back to `services`
+in `config.js` when you are ready.
+
+Two things the site deliberately does **not** do, per the launch kit:
+
+- **No document upload.** The booking form asks the customer to describe the
+  case in their own words, and says so explicitly. Nothing promises a secure
+  upload link.
+- **Interpreter pricing is by quote**, and the booking flow tells the customer
+  that a public agency normally has to arrange and pay for an interpreter for
+  meetings with that agency. Do not remove this notice.
+
+### Outreach attribution
+
+Every link you send can carry `?src=` — `?src=whatsapp`, `?src=partner-caritas`,
+`?src=linkedin`. It is stored on first visit and attached to fit checks,
+bookings and enquiries, so `/api/insights` can tell you which channel actually
+produced paid cases. That is the Source column of the daily scoreboard.
 
 ### Payments
 
-`server/` creates a **Stripe Checkout** session for card payments, so NAVIAR never
-touches card data and never holds the money itself. Vipps appears in the config and the
+Two routes, depending on how far you have deployed.
+
+**Without the server** (day 1 of the launch plan): paste a Stripe Payment Link or
+PayPal link into `payments.paymentLinks` in `config.js`. The booking flow stores
+the case, generates a reference, and sends the customer to that link with
+`client_reference_id` and `prefilled_email` attached, so you can match the
+payment to the case by hand. Leave the links empty to collect by invoice.
+
+**With the server**: `server/` creates a **Stripe Checkout** session, so NAVIAR
+never touches card data and never holds the money itself. Vipps appears in the config and the
 UI copy but is **deliberately not implemented** — the server downgrades a Vipps request
 to invoice. Turn it on only after the merchant agreement and the payment-provider
 review are done.
@@ -140,8 +160,7 @@ outlined vector master, drop it in as an SVG and replace `.brand-word`.
 The blueprint describes considerably more than a website. Still missing:
 
 - Customer portal: case status, tasks, deadlines, secure messaging
-- **Secure document upload** — the site promises a secure link after booking; that link
-  does not exist yet. Do not launch the promise before the storage does.
+- Document upload — deliberately absent, and the copy no longer promises it
 - Consent/fullmakt registry with scope, duration and withdrawal
 - Marketplace: advisor onboarding, KYC/KYB, category approval, offers, payouts, disputes
 - Interpreter scheduling against Nasjonalt tolkeregister categories and habilitet checks
@@ -158,7 +177,6 @@ The blueprint describes considerably more than a website. Still missing:
 - [ ] Accountant review: MVA treatment and invoicing model
 - [ ] Trademark clearance (Patentstyret, EUIPO/TMview, WIPO) — the name sits close to
       NAVAIR and NAVIER
-- [ ] Secure document storage before advertising secure upload
 - [ ] Stripe account, webhook secret, and a payment-provider review of the payout flow
 
 ---

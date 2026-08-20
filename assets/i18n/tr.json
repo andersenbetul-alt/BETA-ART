@@ -281,7 +281,8 @@
     "code": "Kod",
     "delivery": "Teslim",
     "perHour": "saat başına",
-    "inclVat": "KDV dahil"
+    "inclVat": "KDV dahil",
+    "later": "Daha sonra gelecek: başvuru desteği, sürekli takip ve itiraz yardımı. Tek bir işle başlıyor ve onu iyi yapıyoruz."
   },
   "safety": {
     "eyebrow": "Güvenlik ve etik",
@@ -345,7 +346,7 @@
     "doneTitle": "Randevu alındı",
     "doneLead": "E-posta adresinize bir onay gönderdik. Bizimle iletişimde bu referansı kullanın.",
     "reference": "Referans",
-    "doneNext": "Sıradaki adım: belge yüklemek için güvenli bir bağlantı alacaksınız. Hassas belgeleri asla normal e-postayla göndermeyin.",
+    "doneNext": "Bir iş günü içinde e-postayla yanıt veriyor ve iş başlamadan önce dosyanın uygun olduğunu teyit ediyoruz. Hassas belgeleri asla normal e-postayla göndermeyin.",
     "another": "Yeni randevu al",
     "demoNotice": "Demo modu: randevu sistemi henüz bağlı değil, bu kayıt yalnızca tarayıcınızda saklanıyor. Canlıya almak için assets/js/config.js içinde backend'i bağlayın.",
     "errGeneric": "Bir sorun oluştu. Tekrar deneyin veya doğrudan bizimle iletişime geçin.",
@@ -359,7 +360,9 @@
     "angrerett": "Hizmetlerde kural olarak 14 günlük cayma hakkı vardır. Hemen başlamamızı isterseniz, hizmet tümüyle teslim edildiğinde bu hakkın sona ereceğini ve iptal etmeniz halinde yapılmış işin bedelini ödeyeceğinizi kabul etmiş olursunuz.",
     "deliveryNote": "Bu hizmet için görüşme gerekmez. {sla} içinde yazılı olarak teslim ederiz.",
     "upload": "Belgeler",
-    "uploadNote": "Randevudan sonra güvenli bir yükleme bağlantısı alırsınız. Hassas belgeleri asla normal e-postayla göndermeyin."
+    "uploadNote": "Konuyu kendi kelimelerinizle anlatın. Şu aşamada belgeyi yüklemeniz veya hassas bilgi vermeniz gerekmiyor.",
+    "tolkNotice": "Kamu kurumları, kendileriyle yapılan görüşmelerde kural olarak tercümanı sağlamak ve ücretini ödemekle yükümlüdür. Özel tolk, bunun dışında kalan görüşmeler içindir.",
+    "fitFirst": "Ödeme yapmadan önce dosyanın uygun olduğunu kontrol ediyoruz."
   },
   "faq": {
     "eyebrow": "Sorular",
@@ -379,7 +382,7 @@
       },
       {
         "q": "Ücreti nedir?",
-        "a": "İlk 15 dakikalık görüşme ücretsizdir. Sonrasında iş başlamadan önce sabit fiyatı yazılı alırsınız. Pilot fiyatlar, bir mektubun açıklanması için 690 NOK'tan başlar."
+        "a": "Uygunluk kontrolü ücretsizdir. Bir mektubun açıklanması 800 NOK, 45 dakikalık netlik görüşmesi 1.500 NOK. Fiyatı iş başlamadan yazılı alırsınız; dosya uygun değilse bunu söyleriz."
       },
       {
         "q": "Hangi dillerde yardım alabilirim?",
@@ -391,7 +394,7 @@
       },
       {
         "q": "Belgeleri güvenle nasıl gönderirim?",
-        "a": "Randevudan sonra güvenli bir yükleme bağlantısı alırsınız. Lütfen hassas belgeleri normal e-posta ekiyle göndermeyin."
+        "a": "Bu pilot aşamada belge göndermenize hiç gerek yok. Mektubu kendi kelimelerinizle anlatın, daha fazlası gerekirse size söyleriz. Hassas belgeleri normal e-postayla göndermeyin."
       }
     ]
   },
@@ -429,9 +432,9 @@
     "pilot": "Pilot hizmet. Fiyatlar ve kapsam test edilmektedir, değişebilir."
   },
   "catalog": {
-    "intro": {
-      "n": "Ücretsiz ön görüşme",
-      "d": "Size yardımcı olup olamayacağımızı söyleyebilmemiz için kısa bir görüşme."
+    "fit": {
+      "n": "Ücretsiz uygunluk kontrolü",
+      "d": "Dosyanızın bize uygun olup olmadığına dair kısa bir kontrol. Analiz değil — dürüst bir evet ya da hayır, uygun değilse bir yönlendirme."
     },
     "k01": {
       "n": "Mektup açıklaması",
@@ -440,6 +443,10 @@
     "k02": {
       "n": "Netlik danışmanlığı",
       "d": "Dosyanız hakkında bir danışmanla 45 dakika, telefon veya görüntülü."
+    },
+    "tolk": {
+      "n": "Özel tolk",
+      "d": "Kendi ayarladığınız görüşmeler için tercüman. Fiyat rezervasyondan önce belirlenir."
     },
     "h01": {
       "n": "Başvuru birlikte",

@@ -281,7 +281,8 @@
     "code": "Code",
     "delivery": "Delivery",
     "perHour": "per hour",
-    "inclVat": "incl. VAT"
+    "inclVat": "incl. VAT",
+    "later": "Coming later: application support, ongoing follow-up and help with appeals. We are starting with one thing and doing it well."
   },
   "safety": {
     "eyebrow": "Safety and ethics",
@@ -345,7 +346,7 @@
     "doneTitle": "Booking received",
     "doneLead": "We have sent a confirmation to your email. Keep this reference for any contact with us.",
     "reference": "Reference",
-    "doneNext": "Next: you will receive a secure link for uploading documents. Never send sensitive documents by ordinary email.",
+    "doneNext": "We reply by email within one working day and confirm the case fits before any work starts. Never send sensitive documents by ordinary email.",
     "another": "Make another booking",
     "demoNotice": "Demo mode: no booking system is connected yet, so this booking is only stored in your browser. Connect the backend in assets/js/config.js to go live.",
     "errGeneric": "Something went wrong. Please try again, or contact us directly.",
@@ -359,7 +360,9 @@
     "angrerett": "Services normally carry a 14-day right of withdrawal. If you ask us to start immediately, you accept that the right ends once the service is fully delivered, and that you pay for work already done if you cancel.",
     "deliveryNote": "No meeting is needed for this service. We deliver in writing within {sla}.",
     "upload": "Documents",
-    "uploadNote": "You receive a secure upload link after booking. Never send sensitive documents by ordinary email."
+    "uploadNote": "Describe the case in your own words. You do not need to upload the document or give sensitive details now.",
+    "tolkNotice": "Public agencies are normally required to arrange and pay for an interpreter for meetings with them. A private interpreter is for the conversations that fall outside that.",
+    "fitFirst": "We check that the case fits before you pay."
   },
   "faq": {
     "eyebrow": "Questions",
@@ -379,7 +382,7 @@
       },
       {
         "q": "What does it cost?",
-        "a": "The first 15-minute conversation is free. After that you get a fixed price in writing before any work starts. Pilot prices start at 690 NOK for a letter explained."
+        "a": "The fit check is free. One letter explained costs 800 NOK, and a 45-minute clarity call costs 1 500 NOK. You get the price in writing before any work starts, and we say so if the case does not fit."
       },
       {
         "q": "Which languages can I get help in?",
@@ -391,7 +394,7 @@
       },
       {
         "q": "How do I send documents safely?",
-        "a": "After booking you receive a secure upload link. Please do not send sensitive documents as ordinary email attachments."
+        "a": "In this pilot you do not need to send documents at all. Describe the letter in your own words and we will say if we need more. Do not send sensitive documents by ordinary email."
       }
     ]
   },
@@ -429,9 +432,9 @@
     "pilot": "Pilot service. Prices and scope are being tested and may change."
   },
   "catalog": {
-    "intro": {
-      "n": "Free orientation",
-      "d": "A short conversation so we can tell you whether we can help."
+    "fit": {
+      "n": "Free fit check",
+      "d": "A short check on whether your case fits us. No analysis — an honest yes or no, and a suggestion if something else suits you better."
     },
     "k01": {
       "n": "Letter explained",
@@ -440,6 +443,10 @@
     "k02": {
       "n": "Clarity consultation",
       "d": "45 minutes with an advisor about your case, by phone or video."
+    },
+    "tolk": {
+      "n": "Private interpreter",
+      "d": "An interpreter for conversations you arrange yourself. The price is agreed before booking."
     },
     "h01": {
       "n": "Application together",

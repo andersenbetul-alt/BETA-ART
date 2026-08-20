@@ -281,7 +281,8 @@
     "code": "Koodh",
     "delivery": "Gudbin",
     "perHour": "saacaddii",
-    "inclVat": "canshuur ku jirto"
+    "inclVat": "canshuur ku jirto",
+    "later": "Wixii soo socda: taageero codsi, la socod joogto ah iyo caawimaad cabasho. Waxaan ku bilaabaynaa hal shay oo si fiican u qabanaynaa."
   },
   "safety": {
     "eyebrow": "Badbaado iyo anshax",
@@ -345,7 +346,7 @@
     "doneTitle": "Ballanka waa la helay",
     "doneLead": "Xaqiijin ayaan u dirnay iimaylkaaga. Tixraacan hayso marka aad nala soo xiriirto.",
     "reference": "Tixraac",
-    "doneNext": "Xiga: waxaad heli doontaa link ammaan ah oo aad dukumentiyada ku soo shubto. Waligaa ha ku dirin dukumentiyo xasaasi ah iimayl caadi ah.",
+    "doneNext": "Waxaan kuugu jawaabnaa iimayl hal maalin shaqo gudaheed, waxaana xaqiijinnaa in arrintu habboon tahay ka hor inta aan shaqadu bilaaban. Waligaa ha ku dirin dukumentiyo xasaasi ah iimayl caadi ah.",
     "another": "Ballan kale qabso",
     "demoNotice": "Qaab tijaabo: nidaamka ballanta weli lama xirin, sidaas darteed ballankan waxaa lagu kaydiyaa browserkaaga oo keliya. Ku xir backend-ka assets/js/config.js si uu u shaqeeyo.",
     "errGeneric": "Wax baa qaldamay. Fadlan isku day mar kale, ama si toos ah nala soo xiriir.",
@@ -359,7 +360,9 @@
     "angrerett": "Adeegyadu caadi ahaan waxay leeyihiin xaq 14 maalmood ah oo laga noqdo. Haddii aad na weydiisato inaan isla markiiba bilowno, waxaad ogolaanaysaa in xaqaas dhammaado marka adeeggu si buuxda u dhammaado, iyo inaad bixiso shaqada hore loo qabtay haddii aad joojiso.",
     "deliveryNote": "Adeeggan kulan looma baahna. Waxaan qoraal ku soo gudbinnaa {sla} gudahood.",
     "upload": "Dukumentiyo",
-    "uploadNote": "Ballanka kadib waxaad heleysaa link ammaan ah oo aad wax ku soo shubto. Waligaa ha ku dirin dukumentiyo xasaasi ah iimayl caadi ah."
+    "uploadNote": "Arrinta ku sharrax erayadaada. Hadda uma baahnid inaad dukumentiga soo shubto ama xog xasaasi ah bixiso.",
+    "tolkNotice": "Hay'adaha dawladdu caadi ahaan waa waajib inay turjumaan u helaan oo u bixiyaan kulamada ay adiga kula yeeshaan. Turjumaanka gaarka ah waa wada-hadallada taas ka baxsan.",
+    "fitFirst": "Waxaan hubinnaa in arrintu habboon tahay ka hor inta aadan bixin."
   },
   "faq": {
     "eyebrow": "Su'aalo",
@@ -379,7 +382,7 @@
       },
       {
         "q": "Imisa ayay ku kacaysaa?",
-        "a": "Wada-hadalka ugu horreeya ee 15-ka daqiiqo waa bilaash. Kadibna waxaad qoraal ku heshaa qiime go'an ka hor inta aan shaqadu bilaaban. Qiimaha tijaabada wuxuu ka bilaabmaa 690 NOK warqad la sharraxay."
+        "a": "Hubinta ku habboonaanshaha waa bilaash. Hal warqad oo la sharraxo waa 800 NOK, wada-hadal cad oo 45 daqiiqo ahna waa 1,500 NOK. Qiimaha qoraal ayaad ku heshaa ka hor inta aan shaqadu bilaaban, haddii arrintu ku habboonayn waan kuu sheegaynaa."
       },
       {
         "q": "Luqadaha kee ayaan caawimaad ku heli karaa?",
@@ -391,7 +394,7 @@
       },
       {
         "q": "Sidee ayaan si ammaan ah dukumentiyada u diraa?",
-        "a": "Ballanka kadib waxaad heleysaa link ammaan ah oo aad wax ku soo shubto. Fadlan ha ku dirin dukumentiyo xasaasi ah iimayl caadi ah."
+        "a": "Marxaladdan tijaabada ah gabi ahaanba uma baahnid inaad dukumentiyo soo dirto. Warqadda ku sharrax erayadaada, haddii aan wax dheeraad ah u baahanno waan kuu sheegaynaa. Ha ku dirin dukumentiyo xasaasi ah iimayl caadi ah."
       }
     ]
   },
@@ -429,9 +432,9 @@
     "pilot": "Adeeg tijaabo ah. Qiimaha iyo baaxadda waa la tijaabinayaa, waana beddeli karaan."
   },
   "catalog": {
-    "intro": {
-      "n": "Wada-hadal hordhac ah oo bilaash ah",
-      "d": "Wada-hadal gaaban si aan kuugu sheegno inaan ku caawin karno."
+    "fit": {
+      "n": "Hubin bilaash ah oo ku habboonaanshaha",
+      "d": "Hubin gaaban oo lagu ogaanayo in arrintaadu nagu habboon tahay. Ma aha falanqayn — haa ama maya oo daacad ah, iyo talo haddii wax kale kuu fiican yihiin."
     },
     "k01": {
       "n": "Warqad la sharraxay",
@@ -440,6 +443,10 @@
     "k02": {
       "n": "La-talin cad",
       "d": "45 daqiiqo oo la-taliye ah oo ku saabsan arrintaada, telefoon ama fiidyo."
+    },
+    "tolk": {
+      "n": "Turjumaan gaar ah",
+      "d": "Turjumaan wada-hadallada aad adigu qabanqaabiso. Qiimaha waa la isku afgartaa ballanka ka hor."
     },
     "h01": {
       "n": "Codsi wadajir ah",
