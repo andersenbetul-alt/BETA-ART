@@ -49,6 +49,7 @@ The gates are not optional, and they are quick:
     python3 tools/klarsprak.py   # Norwegian against Språkrådet's klarspråk rules
     python3 tools/languages.py   # the notice says what languages.json records
     python3 tools/i18n_pakke.py tr   # a review packet for one language's strings
+    python3 tools/launch.py      # is it ready? machine answers vs. person answers
     python3 tools/gaps.py        # what is still missing
     python3 tools/plates.py      # catalogue integrity
     node  tools/render-check.js  # a real browser, four widths
