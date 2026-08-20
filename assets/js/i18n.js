@@ -177,7 +177,7 @@ window.HXI_I18N.en = {
 
   shop_label: "Store",
   shop_title: "Merch and stems",
-  shop_p: "Nothing is on sale yet. When something is, it shows up here — and the mailing list hears before the page does.",
+  shop_p: "Prices are set; nothing is buyable yet. Products open one at a time as each one is ready — and the mailing list hears before the page does.",
   shop_secure: "Payment is handled by the payment provider. Card details are entered on their page, not here.",
   shop_digital: "Digital",
   shop_physical: "Physical",
@@ -396,7 +396,7 @@ window.HXI_I18N.zh = {
 
   shop_label: "商店",
   shop_title: "周边与分轨",
-  shop_p: "目前还没有在售商品。上架时会先出现在这里——邮件订阅者比页面更早知道。",
+  shop_p: "价格已定，但还不能购买。产品会在各自准备好时逐个上架——邮件订阅者比页面更早知道。",
   shop_secure: "付款由支付服务商处理。银行卡信息在服务商的页面上填写，不在本站。",
   shop_digital: "数字",
   shop_physical: "实体",
@@ -618,7 +618,7 @@ window.HXI_I18N.es = {
 
   shop_label: "Tienda",
   shop_title: "Merch y stems",
-  shop_p: "Todavía no hay nada a la venta. Cuando lo haya, aparecerá aquí — y la lista de correo se entera antes que la página.",
+  shop_p: "Los precios están puestos; todavía no se puede comprar. Los productos se abren de uno en uno según estén listos, y la lista de correo se entera antes que la página.",
   shop_secure: "El pago lo gestiona el proveedor de pagos. Los datos de la tarjeta se introducen en su página, no aquí.",
   shop_digital: "Digital",
   shop_physical: "Físico",
@@ -837,7 +837,7 @@ window.HXI_I18N.hi = {
 
   shop_label: "स्टोर",
   shop_title: "मर्च और स्टेम",
-  shop_p: "अभी कुछ भी बिक्री पर नहीं है। जब होगा, सबसे पहले यहीं दिखेगा — और मेलिंग लिस्ट को पेज से पहले पता चलता है।",
+  shop_p: "क़ीमतें तय हैं, ख़रीदारी अभी नहीं। हर उत्पाद तैयार होते ही एक-एक करके खुलेगा — और मेलिंग लिस्ट को इस पेज से पहले पता चलेगा।",
   shop_secure: "भुगतान सेवा प्रदाता संभालता है। कार्ड की जानकारी उनके पेज पर दर्ज होती है, यहाँ नहीं।",
   shop_digital: "डिजिटल",
   shop_physical: "भौतिक",
@@ -1056,7 +1056,7 @@ window.HXI_I18N.ar = {
 
   shop_label: "المتجر",
   shop_title: "منتجات وستِمز",
-  shop_p: "لا شيء معروض للبيع بعد. حين يتوفر شيء سيظهر هنا أولًا — وقائمة البريد تعرف قبل الصفحة.",
+  shop_p: "الأسعار محدّدة، لكن الشراء لم يُفتح بعد. تُطرح المنتجات واحدًا تلو الآخر كلما جهز أحدها — والقائمة البريدية تعرف قبل الصفحة.",
   shop_secure: "تتولى جهة الدفع معالجة العملية. تُدخل بيانات البطاقة في صفحتها، لا هنا.",
   shop_digital: "رقمي",
   shop_physical: "منتج مادي",
@@ -1275,7 +1275,7 @@ window.HXI_I18N.fr = {
 
   shop_label: "Boutique",
   shop_title: "Merch et stems",
-  shop_p: "Rien n’est encore en vente. Dès que ce sera le cas, ça apparaîtra ici — et la liste de diffusion l’apprend avant la page.",
+  shop_p: "Les prix sont fixés ; rien n’est encore achetable. Les produits s’ouvrent un par un, à mesure qu’ils sont prêts — et la liste de diffusion l’apprend avant la page.",
   shop_secure: "Le paiement est géré par le prestataire de paiement. Les données bancaires se saisissent sur sa page, pas ici.",
   shop_digital: "Numérique",
   shop_physical: "Physique",
@@ -1494,7 +1494,7 @@ window.HXI_I18N.pt = {
 
   shop_label: "Loja",
   shop_title: "Merch e stems",
-  shop_p: "Ainda não há nada à venda. Quando houver, aparece aqui primeiro — e a lista de e-mail sabe antes da página.",
+  shop_p: "Os preços estão definidos; ainda não dá para comprar. Os produtos abrem um de cada vez, à medida que ficam prontos — e a lista de e-mail sabe antes da página.",
   shop_secure: "O pagamento é processado pelo provedor de pagamento. Os dados do cartão são inseridos na página dele, não aqui.",
   shop_digital: "Digital",
   shop_physical: "Físico",
@@ -1713,7 +1713,7 @@ window.HXI_I18N.bn = {
 
   shop_label: "স্টোর",
   shop_title: "মার্চ ও স্টেম",
-  shop_p: "এখনও কিছু বিক্রির জন্য নেই। যখন থাকবে, প্রথমে এখানেই দেখা যাবে — আর মেইলিং লিস্ট পেজের আগেই জানে।",
+  shop_p: "দাম ঠিক করা আছে, কেনা এখনও যাবে না। প্রতিটি পণ্য প্রস্তুত হওয়ার সঙ্গে সঙ্গে একে একে খুলবে — আর মেইলিং লিস্ট এই পেজের আগে জানবে।",
   shop_secure: "পেমেন্ট সামলায় পেমেন্ট প্রদানকারী। কার্ডের তথ্য তাদের পেজে দেওয়া হয়, এখানে নয়।",
   shop_digital: "ডিজিটাল",
   shop_physical: "ভৌত",
@@ -1932,7 +1932,7 @@ window.HXI_I18N.ru = {
 
   shop_label: "Магазин",
   shop_title: "Мерч и стемы",
-  shop_p: "Пока ничего не продаётся. Когда появится — сначала здесь, а рассылка узнаёт раньше страницы.",
+  shop_p: "Цены назначены, купить пока нельзя. Товары открываются по одному, как только каждый готов, — и рассылка узнаёт раньше страницы.",
   shop_secure: "Платёж обрабатывает платёжный провайдер. Данные карты вводятся на его странице, не здесь.",
   shop_digital: "Цифровое",
   shop_physical: "Физический",
@@ -2151,7 +2151,7 @@ window.HXI_I18N.ur = {
 
   shop_label: "اسٹور",
   shop_title: "مرچ اور اسٹیمز",
-  shop_p: "ابھی کچھ فروخت کے لیے دستیاب نہیں۔ جب ہوگا تو سب سے پہلے یہیں نظر آئے گا — اور میلنگ لسٹ کو صفحے سے پہلے پتہ چلتا ہے۔",
+  shop_p: "قیمتیں طے ہیں، خریداری ابھی نہیں۔ ہر پروڈکٹ تیار ہوتے ہی ایک ایک کر کے کھلے گا — اور میلنگ لسٹ کو اس صفحے سے پہلے پتہ چلے گا۔",
   shop_secure: "ادائیگی پیمنٹ فراہم کنندہ سنبھالتا ہے۔ کارڈ کی تفصیلات اُن کے صفحے پر درج ہوتی ہیں، یہاں نہیں۔",
   shop_digital: "ڈیجیٹل",
   shop_physical: "طبعی",
@@ -2370,7 +2370,7 @@ window.HXI_I18N.no = {
 
   shop_label: "Butikk",
   shop_title: "Merch og stems",
-  shop_p: "Ingenting er til salgs ennå. Når noe er det, dukker det opp her — og e-postlisten får vite det før siden.",
+  shop_p: "Prisene er satt, men ingenting kan kjøpes ennå. Produktene åpner ett om gangen etter hvert som de blir klare — og e-postlista får vite det før siden.",
   shop_secure: "Betalingen håndteres av betalingsleverandøren. Kortdetaljer fylles inn på deres side, ikke her.",
   shop_digital: "Digitalt",
   shop_physical: "Fysisk",
@@ -2589,7 +2589,7 @@ window.HXI_I18N.tr = {
 
   shop_label: "Mağaza",
   shop_title: "Ürünler ve stem’ler",
-  shop_p: "Henüz satışta bir şey yok. Olduğunda ilk burada görünecek — ve e-posta listesi sayfadan önce duyar.",
+  shop_p: "Fiyatlar belli, ama henüz satın alınamıyor. Ürünler hazır oldukça teker teker açılıyor — ve e-posta listesi sayfadan önce haber alıyor.",
   shop_secure: "Ödemeyi ödeme sağlayıcısı yürütür. Kart bilgisi onların sayfasında girilir, burada değil.",
   shop_digital: "Dijital",
   shop_physical: "Fiziksel",
