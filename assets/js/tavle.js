@@ -70,7 +70,7 @@
         lon: Math.round(pos.coords.longitude * 1000) / 1000
       };
       posisjonTekst.innerHTML =
-        '<strong style="color:#1f7a4d">✓ Posisjon i bruk</strong> mens du er tilgjengelig. ' +
+        '<strong style="color:var(--brand-dark)">✓ Posisjon i bruk</strong> mens du er tilgjengelig. ' +
         'Familier ser bare omtrentlig avstand, aldri hvor du befinner deg.';
       tegn();
     }, function () {

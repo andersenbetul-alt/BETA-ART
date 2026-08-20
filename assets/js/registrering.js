@@ -223,7 +223,7 @@
         visFeil('telefonVerifisert', false);
         otpFelt.hidden = true;
         sendOtpBtn.hidden = true;
-        otpStatus.innerHTML = '<strong style="color:#1f7a4d">✓ Mobilnummer bekreftet</strong>';
+        otpStatus.innerHTML = '<strong style="color:var(--brand-dark)">✓ Mobilnummer bekreftet</strong>';
       } else {
         telefonVerifisert = false;
         visFeil('otp', true);
@@ -333,7 +333,7 @@
     var html = '';
     html += rad('Navn', escapeHtml(verdi('fornavn') + ' ' + verdi('etternavn')));
     html += rad('E-post', escapeHtml(verdi('epost')));
-    html += rad('Mobil', escapeHtml(verdi('telefon')) + (telefonVerifisert ? ' <span style="color:#1f7a4d">✓ bekreftet</span>' : ''));
+    html += rad('Mobil', escapeHtml(verdi('telefon')) + (telefonVerifisert ? ' <span style="color:var(--brand-dark)">✓ bekreftet</span>' : ''));
     html += rad('Sted', escapeHtml(verdi('postnummer') + ' ' + verdi('by')));
     html += rad('Maks avstand', 'Inntil ' + escapeHtml(valgtRadio('maksAvstand')) + ' km');
     html += rad('Transport', avkrysset('transport').map(etikett).join(', ') || '–');

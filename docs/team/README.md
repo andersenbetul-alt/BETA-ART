@@ -13,6 +13,9 @@ arbeidsdokumenter fra fagpersonene, ikke vedtatt policy.
 | `MARKEDSFORING.md` | Markedsføring | Go-to-market for Oslo-piloten |
 | `SALG.md` | Salg | Abonnementsnivåer, arbeidsgiver- og kommunespor, innvendingsark |
 | `OKONOMI.md` | Økonomi | Enhetsøkonomi, følsomhet, kapitalbehov |
-| `SYNTESE.md` | Koordinering | Der rollene er uenige, og hva som velges |
+| `SYNTESE.md` | Koordinering | **Vedtatte beslutninger.** Elleve avgjørelser med begrunnelse |
 
 Rammene alle arbeider innenfor står i `../TEAM.md`.
+
+Er du usikker på hva som gjelder, er `SYNTESE.md` fasit. De øvrige dokumentene er
+fagpersonenes grunnlag; syntesen er det som er bestemt.

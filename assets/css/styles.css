@@ -16,7 +16,12 @@
   --accent:         #c8752a;
   --accent-light:   #fbeee0;
 
-  --ok:             #1f7a4d;
+  /* «Dette gikk bra» er merkevarefargen, ikke en egen grønn. En egen grønn ville
+     ligget 1,13 i kontrast mot --brand – altså umulig å skille – og det finnes ingen
+     grønn som både er lesbar på hvitt og skiller seg fra en mørk grønn merkevare.
+     Suksess signaliseres derfor av merkevarefargen pluss et ✓, aldri av farge alene.
+     Unntakene bærer sine egne farger: --warn og --danger. */
+  --ok:             var(--brand-dark);
   --warn:           #9a6a08;
   --danger:         #a32f24;
   --danger-light:   #fbeceb;
