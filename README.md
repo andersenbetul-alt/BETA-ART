@@ -37,6 +37,13 @@ seçim, kurulum, devreye alma, ölçüm.
 - Ürün tanımı: `data/workforce.json`
 - Kurulum ve satış playbook'u: [`docs/ai-workforce-playbook.md`](docs/ai-workforce-playbook.md)
 
+## İş geliştirme incelemesi
+
+Konseptin bütününe dair değerlendirme: kapasite tavanı, odak, hizmet-SaaS
+tuzağı, GDPR yükümlülüğü, sıralama önerisi ve ilk 90 günde ölçülecekler.
+
+- [`docs/business-review.md`](docs/business-review.md)
+
 ## Ödeme altyapısı
 
 Tüm ürünler (blog, Curiosity Engine, AI business) tek merkezi ödeme
@@ -83,6 +90,7 @@ docs/ai-workforce-playbook.md   Satış akışı, analiz şablonu, kurulum kontr
 docs/payment-architecture.md    Ödeme mimarisi, kararlar, açık sorular
 docs/team-and-org.md            Organizasyon yapısı ve işe alım sırası
 docs/copy-standards.md          Metin standardı, yasak kalıplar, yayın kontrol listesi
+docs/business-review.md         İş geliştirme incelemesi ve karar noktaları
 db/schema.sql                   Ödeme veritabanı şeması
 db/seed.sql                     Ürün kataloğu ve kredi fiyatları
 db/functions.sql                consume_credits, has_entitlement, grant_period_credits
