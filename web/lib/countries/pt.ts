@@ -7,7 +7,7 @@ export const country: Country = {
     { id: 'porto',  name: 'Porto',  lat: 41.1579, lon: -8.6291, stopPlaceId: null },
     { id: 'faro',   name: 'Faro',   lat: 37.0194, lon: -7.9304, stopPlaceId: null },
   ],
-  emergency: { general: '112', police: '112', ambulance: '112', fire: '112' },
+  emergency: { general: '112' },
   places: [
     { cityId: 'lisboa', name: 'Time Out Market', kind: 'eat', walkMinutes: 10, price: '$$', note: 'Covered hall, many kitchens, open late' },
     { cityId: 'lisboa', name: 'Cervejaria Ramiro', kind: 'eat', walkMinutes: 20, price: '$$$', note: 'Seafood; take a queue number and wait' },

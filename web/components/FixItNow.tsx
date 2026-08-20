@@ -12,10 +12,12 @@ import { telHref } from '@/lib/messages.ts';
  * tek dokunuşla arıyor.
  */
 export default function FixItNow({
-  what, message, phone,
+  what, message, language, phone,
 }: {
   what: string;
   message: Message;
+  /** Mesajın yazıldığı dil — ekran okuyucu doğru telaffuz etsin diye. */
+  language: string;
   phone?: string;
 }) {
   const [copied, setCopied] = useState(false);
@@ -36,7 +38,7 @@ export default function FixItNow({
     <div className="fix">
       <p className="fix-head"><strong>{what}</strong></p>
 
-      <p className="fix-msg" lang="no">{message.local}</p>
+      <p className="fix-msg" lang={language}>{message.local}</p>
 
       <div className="fix-actions">
         <button className="btn-primary" onClick={copy}>

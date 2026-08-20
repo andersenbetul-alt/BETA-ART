@@ -5,6 +5,7 @@ import {
   type CityRef, type Country,
 } from '@/lib/country.ts';
 import { rankEvents, universalWays, weekdayIn } from '@/lib/events.ts';
+import { kinds, problemFor, type Kind } from '@/lib/problems.ts';
 import { findTrips, type TripOption } from '@/lib/entur.ts';
 import { demoTrips } from '@/lib/fixtures.ts';
 import { clock, duration, modeLabel, relativeMinutes } from '@/lib/format.ts';
@@ -17,21 +18,7 @@ import { messageFor } from '@/lib/messages.ts';
 import FixItNow from '@/components/FixItNow.tsx';
 import { demoPlan } from '@/lib/demo-plan.ts';
 
-const KINDS = ['cancelled', 'missed', 'road', 'eat', 'rain', 'meet', 'basics'] as const;
-type Kind = (typeof KINDS)[number];
-
 const liveData = process.env.COBBAN_LIVE_DATA === 'true';
-
-/** Sorun başına cevabın ilk cümlesi. Marka sesi: sakin, kesin, çözülmüş. */
-const headline: Record<Kind, string> = {
-  cancelled: 'Other ways to still get there.',
-  missed: 'The rest of today, rebuilt.',
-  road: 'Routes that avoid the road.',
-  eat: 'Places worth walking to.',
-  rain: 'Wait it out, or move indoors?',
-  meet: 'What is on tonight, and tomorrow.',
-  basics: 'What everyone here already knows.',
-};
 
 /**
  * "İptal oldu" ve "kaçırdım" aynı ekran değil.
@@ -57,7 +44,7 @@ async function getTrips(from: string, to: string): Promise<{ trips: TripOption[]
 }
 
 export function generateStaticParams() {
-  return KINDS.map((kind) => ({ kind }));
+  return kinds.map((kind) => ({ kind }));
 }
 
 export default async function ProblemPage({
@@ -67,7 +54,8 @@ export default async function ProblemPage({
   searchParams: Promise<{ country?: string; from?: string; to?: string; city?: string }>;
 }) {
   const { kind } = await params;
-  if (!KINDS.includes(kind as Kind)) notFound();
+  const problem = problemFor(kind);
+  if (!problem) notFound();
   const k = kind as Kind;
 
   const { country: code, from, to, city } = await searchParams;
@@ -77,7 +65,7 @@ export default async function ProblemPage({
   return (
     <>
       <Link href="/" className="back">← Something else</Link>
-      <h1>{headline[k]}</h1>
+      <h1>{problem.headline}</h1>
 
       <CountryPicker active={country.code} basePath={`/sorun/${k}`} />
 
@@ -146,7 +134,7 @@ async function TransportAnswer({
       <div className="answer">
         <strong>
           {ordered.length > 0
-            ? `Next departure ${clock(ordered[0].departure)}`
+            ? `Next departure ${clock(ordered[0].departure, country.timeZone)}`
             : 'Nothing left today'}
         </strong>
         <span className="muted small">
@@ -159,10 +147,11 @@ async function TransportAnswer({
       {ordered.map((trip) => (
         <div className="option" key={trip.departure}>
           <PlanImpact impact={impactOf.get(trip.departure)} />
-          <FixItPanel impact={impactOf.get(trip.departure)} arrival={trip.arrival} problem={kind} />
+          <FixItPanel country={country} impact={impactOf.get(trip.departure)}
+                      arrival={trip.arrival} problem={kind} />
           <div className="option-head">
-            <span className="time">{clock(trip.departure)}</span>
-            <span className="muted">→ {clock(trip.arrival)}</span>
+            <span className="time">{clock(trip.departure, country.timeZone)}</span>
+            <span className="muted">→ {clock(trip.arrival, country.timeZone)}</span>
             <span className="dur">{duration(trip.durationMinutes)}</span>
           </div>
           {trip.legs.map((leg) => (
@@ -172,7 +161,7 @@ async function TransportAnswer({
                 {leg.lineCode ? ` ${leg.lineCode}` : ''}
               </span>
               <span>{leg.from} → {leg.to}</span>
-              <span className="dur">{clock(leg.departure)}</span>
+              <span className="dur">{clock(leg.departure, country.timeZone)}</span>
             </div>
           ))}
         </div>
@@ -243,8 +232,9 @@ function NoTransportYet({ country }: { country: Country }) {
  * kurtaran seçeneğe "otele haber ver" demek gereksiz gürültüdür.
  */
 function FixItPanel({
-  impact, arrival, problem,
+  country, impact, arrival, problem,
 }: {
+  country: Country;
   impact?: Impact;
   arrival: string;
   problem: 'cancelled' | 'missed' | 'road';
@@ -253,12 +243,13 @@ function FixItPanel({
 
   // Kırılan madde varsa onu öne al; yoksa sıkışan ilk madde.
   const target = impact.affected.find((a) => a.level === 'breaks') ?? impact.affected[0];
-  const message = messageFor(target.item.kind, target.item.title, clock(arrival), problem);
+  const message = messageFor(target.item.kind, target.item.title, clock(arrival, country.timeZone), problem);
 
   return (
     <FixItNow
       what={`${target.item.title} — sort it now`}
       message={message}
+      language={country.language}
       phone={target.item.phone}
     />
   );
@@ -484,21 +475,33 @@ function EventsAnswer({ country, city }: { country: Country; city?: string }) {
  */
 function Essentials({ country }: { country: Country }) {
   const e = country.emergency;
-  const numbers = [
+  /*
+   * Yalnizca gercekten ACIL hatlar. Ihbar hatti (Danimarka 114, Hollanda
+   * 0900-8844) bu satira karismaz: "Emergency" basligi altinda gorunurse
+   * tehlikedeki turisti bekleme kuyruguna gonderir.
+   */
+  const direct = [
     ['Police', e.police], ['Ambulance', e.ambulance], ['Fire', e.fire],
-  ].filter(([, n]) => n !== e.general);
+  ].filter((entry): entry is [string, string] => Boolean(entry[1]));
 
   return (
     <>
       <div className="answer">
         <strong>Emergency in {country.name}: {e.general}</strong>
         <span className="muted small">
-          {numbers.length > 0
-            ? `${numbers.map(([w, n]) => `${w} ${n}`).join(' · ')} · `
-            : ''}
           112 reaches an English-speaking operator anywhere in the EU and EEA.
+          {direct.length > 0
+            ? ` Direct lines: ${direct.map(([w, n]) => `${w} ${n}`).join(' · ')}.`
+            : ''}
         </span>
       </div>
+
+      {country.nonEmergency && (
+        <p className="muted small" style={{ marginTop: '-.7rem', marginBottom: '1.4rem' }}>
+          {country.nonEmergency.what}? That is <strong>{country.nonEmergency.number}</strong>,
+          not {e.general}. Use {e.general} only when someone is in danger.
+        </p>
+      )}
 
       <div className="option">
         {country.essentials.map((item) => (

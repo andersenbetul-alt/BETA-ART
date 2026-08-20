@@ -43,6 +43,10 @@ kurtarandan kötüdür (`web/lib/plan.ts`).
 - **Kod yorumları ve `docs/` Türkçe; arayüz metni İngilizce.** Turist Türkçe okumuyor.
 - **Ülke eklemek kod yazmak değil, veri yazmaktır:** `lib/countries/xx.ts` + kayıt satırı.
   Ulaşım entegrasyonu yoksa `transport: 'none'` bırak — ülke yine faydalı açılır.
+- **`emergency` alanına yalnızca hayati tehlike hattı yazılır.** İhbar hattı
+  (Danimarka 114, Hollanda 0900-8844) `nonEmergency`'ye gider ve ekranda
+  "112'yi yalnızca biri tehlikedeyken ara" cümlesiyle birlikte çıkar. Acil
+  başlığı altındaki yanlış numara, hiç numara vermemekten kötüdür.
 - **Doğrulayamadığın bilgiyi yazma.** `essentials` içindeki her madde turistin
   parasını etkiliyor; uydurma bir bahşiş kuralı ürünün tamamını çürütür.
 - **"Yakında" yazma.** Elinde veri yoksa o an gerçekten işe yarayan şeyi ver
@@ -59,9 +63,9 @@ kurtarandan kötüdür (`web/lib/plan.ts`).
 
 ```bash
 cd web
-npm run check          # typecheck + 35 birim testi + build
+npm run check          # typecheck + 46 birim testi + build
 npm run start          # ayrı terminalde
-npm run smoke          # 13 ülke × 7 ekran, canlı sunucuya karşı (1460 kontrol)
+npm run smoke          # 13 ülke × 7 ekran, canlı sunucuya karşı (1488 kontrol)
 npm run verify:apis    # Entur ve MET sorgularını canlı doğrular (kısıtsız ağ gerekir)
 ```
 

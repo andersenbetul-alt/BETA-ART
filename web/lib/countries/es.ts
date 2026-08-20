@@ -8,7 +8,7 @@ export const country: Country = {
     { id: 'sevilla',   name: 'Sevilla',   lat: 37.3891, lon: -5.9845, stopPlaceId: null },
     { id: 'valencia',  name: 'Valencia',  lat: 39.4699, lon: -0.3763, stopPlaceId: null },
   ],
-  emergency: { general: '112', police: '091', ambulance: '112', fire: '080' },
+  emergency: { general: '112', police: '091' },
   places: [
     { cityId: 'barcelona', name: 'Mercat de Santa Caterina', kind: 'eat', walkMinutes: 10, price: '$$', note: 'Covered market with counters; quieter than La Boqueria' },
     { cityId: 'barcelona', name: 'Bar del Pla', kind: 'eat', walkMinutes: 12, price: '$$', note: 'Tapas, no reservations, go early' },

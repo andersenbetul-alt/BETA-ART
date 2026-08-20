@@ -1,7 +1,15 @@
-/** Saat gösterimi Norveç formatında — kullanıcı istasyon tabelasıyla eşleştirebilmeli. */
-export function clock(iso: string): string {
-  return new Intl.DateTimeFormat('nb-NO', {
-    hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Oslo',
+/**
+ * Saat, SEFERİN ÜLKESİNİN saat diliminde gösterilir.
+ *
+ * Turist ekrandaki saati istasyon tabelasıyla karşılaştırıyor; kendi
+ * telefonunun saatiyle değil. Sabit bir saat dilimi yazmak, Norveç dışında
+ * her kalkışı yanlış gösterir — ve yanlış saat, hiç saat vermemekten kötüdür.
+ *
+ * 24 saatlik biçim ('en-GB') Avrupa tabelalarının tamamıyla uyumlu.
+ */
+export function clock(iso: string, timeZone: string): string {
+  return new Intl.DateTimeFormat('en-GB', {
+    hour: '2-digit', minute: '2-digit', hour12: false, timeZone,
   }).format(new Date(iso));
 }
 

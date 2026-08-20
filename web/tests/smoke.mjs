@@ -117,6 +117,18 @@ for (const [code, name, emergency, hasTransport] of COUNTRIES) {
       }
     }
 
+    if (kind === 'basics') {
+      // İhbar hattı "Emergency" satırına asla karışmamalı.
+      const emergencyLine = (text.match(/Emergency in [^.]+\./) ?? [''])[0];
+      ok(!/0900|\b114\b/.test(emergencyLine),
+         `${label}: acil satırında ihbar hattı var — "${emergencyLine}"`);
+      ok(text.includes('112'), `${label}: 112 yok`);
+      if (/0900|\b114\b/.test(text)) {
+        ok(text.includes('only when someone is in danger'),
+           `${label}: ihbar hattı var ama ne zaman aranmayacağı yazmıyor`);
+      }
+    }
+
     if (kind === 'meet') {
       // Küratörlü etkinlik olmayan şehirde bile evrensel blok durmalı.
       ok(text.includes('Anywhere in Europe, tonight'), `${label}: evrensel blok yok`);

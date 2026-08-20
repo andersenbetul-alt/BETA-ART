@@ -61,8 +61,17 @@ export type Country = {
   places: Place[];
   /** Yalnizca TEKRAR EDEN etkinlikler. Tek seferlik olan bir hafta sonra yalan. */
   events: SocialEvent[];
-  /** 112 AB genelinde çalışır; ülkeye özgü numaralar burada. */
-  emergency: { general: string; police: string; ambulance: string; fire: string };
+  /**
+   * YALNIZCA hayati tehlike numaraları. 112 her AB/AEA ülkesinde çalışır;
+   * ülkenin kendi doğrudan hattı 112'den FARKLIYSA yazılır, aynıysa boş bırakılır.
+   *
+   * İhbar hattı buraya ASLA yazılmaz. Danimarka'nın 114'ü ve Hollanda'nın
+   * 0900-8844'ü acil hat değil; "Emergency" başlığı altında görünürlerse
+   * tehlikedeki turisti bekleme kuyruğuna gönderirler.
+   */
+  emergency: { general: string; police?: string; ambulance?: string; fire?: string };
+  /** Tehlike YOKKEN aranan hat: hırsızlık ihbarı, kayıp eşya. Ayrı gösterilir. */
+  nonEmergency?: { what: string; number: string };
   essentials: Essential[];
 };
 

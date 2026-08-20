@@ -7,7 +7,7 @@ export const country: Country = {
     { id: 'munchen', name: 'München', lat: 48.1351, lon: 11.5820, stopPlaceId: null },
     { id: 'hamburg', name: 'Hamburg', lat: 53.5511, lon: 9.9937,  stopPlaceId: null },
   ],
-  emergency: { general: '112', police: '110', ambulance: '112', fire: '112' },
+  emergency: { general: '112', police: '110' },
   places: [
     { cityId: 'berlin', name: 'Markthalle Neun', kind: 'eat', walkMinutes: 12, price: '$$', note: 'Indoor market hall, Thursday street food night' },
     { cityId: 'berlin', name: 'Mustafas Gemüse Kebap', kind: 'eat', walkMinutes: 15, price: '$', note: 'Queue is real; go off-peak' },

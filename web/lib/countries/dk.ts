@@ -7,7 +7,8 @@ export const country: Country = {
     { id: 'kobenhavn', name: 'København', lat: 55.6761, lon: 12.5683, stopPlaceId: null },
     { id: 'aarhus',    name: 'Aarhus',    lat: 56.1629, lon: 10.2039, stopPlaceId: null },
   ],
-  emergency: { general: '112', police: '114', ambulance: '112', fire: '112' },
+  emergency: { general: '112' },
+  nonEmergency: { what: 'Reporting a theft or a crime with nobody in danger', number: '114' },
   places: [
     { cityId: 'kobenhavn', name: 'Torvehallerne', kind: 'eat', walkMinutes: 8, price: '$$', note: 'Two glass halls of food stalls' },
     { cityId: 'kobenhavn', name: 'Reffen', kind: 'eat', walkMinutes: 25, price: '$', note: 'Street food by the water — mostly outdoors' },

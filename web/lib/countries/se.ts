@@ -8,7 +8,7 @@ export const country: Country = {
     { id: 'goteborg',  name: 'Göteborg',  lat: 57.7089, lon: 11.9746, stopPlaceId: null },
     { id: 'malmo',     name: 'Malmö',     lat: 55.6050, lon: 13.0038, stopPlaceId: null },
   ],
-  emergency: { general: '112', police: '112', ambulance: '112', fire: '112' },
+  emergency: { general: '112' },
   places: [
     { cityId: 'stockholm', name: 'Östermalms Saluhall', kind: 'eat', walkMinutes: 8, price: '$$', note: 'Indoor market hall, open in any weather' },
     { cityId: 'stockholm', name: 'Kajsas Fisk', kind: 'eat', walkMinutes: 6, price: '$', note: 'Fish soup in the Hötorget basement hall' },

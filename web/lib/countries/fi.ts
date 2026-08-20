@@ -6,7 +6,7 @@ export const country: Country = {
     { id: 'helsinki', name: 'Helsinki', lat: 60.1699, lon: 24.9384, stopPlaceId: null },
     { id: 'rovaniemi', name: 'Rovaniemi', lat: 66.5039, lon: 25.7294, stopPlaceId: null },
   ],
-  emergency: { general: '112', police: '112', ambulance: '112', fire: '112' },
+  emergency: { general: '112' },
   places: [
     { cityId: 'helsinki', name: 'Vanha Kauppahalli', kind: 'eat', walkMinutes: 7, price: '$$', note: 'Old market hall on the harbour' },
     { cityId: 'helsinki', name: 'Hietalahden Kauppahalli', kind: 'eat', walkMinutes: 15, price: '$$', note: 'Smaller hall, less touristy' },
