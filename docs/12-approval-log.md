@@ -44,6 +44,22 @@ contact sheet, plus close looks at fifteen pages across the four properties, at
 
 ---
 
+## 2026-08-20 — two architecture decisions
+
+**Decided by:** Betül Öner, owner. Recorded in `docs/05` section 0.
+
+- **Merchant of record: Stripe for everything.** No split between the archive
+  and the desk, no Lemon Squeezy. Beta Art is the seller, and therefore owns the
+  VAT liability everywhere it sells — including EU OSS for digital sales to
+  consumers, where a supplier outside the EU has no threshold. To be confirmed
+  with the accountant before the first invoice.
+- **The payment service runs on Render, Frankfurt.** The four websites stay on
+  Vercel. A website deploy cannot take the till down.
+
+Neither is built. These are decisions about what will be built.
+
+---
+
 ## What would change this record
 
 Each of these is one line in this file when it happens, and none of them are

@@ -9,6 +9,86 @@ webhook, never by a redirect.**
 
 ---
 
+## 0. Decisions taken
+
+Two open questions in this document are now closed. Both were the owner's to
+decide; the consequences below are not opinions about the decisions but the
+obligations that come with them.
+
+### Merchant of record — Stripe for everything
+
+**Decided 2026-08-20: Beta Art is the merchant of record for every product, on
+Stripe. No Lemon Squeezy, no Paddle, no split between the archive and the desk.**
+
+That is position A in section 6, and it is now the position rather than the
+starting point. One processor, one contract with the customer, one set of
+books, one place to look when a payment is queried. For a business whose
+revenue is Norwegian and whose first customers will be Norwegian, that
+simplicity is worth more than what a merchant of record would absorb.
+
+What it means Beta Art now owns, and cannot delegate:
+
+- **The VAT liability, everywhere.** Stripe Tax can calculate and report; it is
+  not the seller. Registration, filing and remittance stay with the company —
+  Norwegian MVA above kr 50 000 rolling turnover, and, for digital sales to
+  consumers in the EU, the non-Union OSS scheme, where there is no small-seller
+  threshold for a supplier established outside the EU. Confirm the exact
+  treatment with the accountant before the first invoice.
+- **Chargebacks and disputes**, in Beta Art's name.
+- **Customer contracts.** The buyer's counterparty is Beta Art, which is what
+  the licence terms already say.
+
+This decision is worth reopening on exactly one trigger: the Curiosity Engine
+selling to consumers across many countries outside the EEA. At that point the
+filing load, not the fee, is what makes a merchant of record cheaper.
+
+### Vipps is one-off only, and that is a Stripe limitation, not a choice
+
+Checked against Stripe's own documentation rather than assumed: **Stripe's Vipps
+support is in private preview** — API calls carry a `vipps_preview=v1` header —
+**and it does not support recurring payments.** MobilePay through Stripe covers
+Denmark and Finland; it is not a Norwegian method.
+
+So, under "all Stripe":
+
+- One-off purchases in Norway — archive licences, courses, reports, a fixed
+  project fee — can offer Vipps, once preview access is granted.
+- **Every subscription is card-only.** Retainers, the three AI staff roles, the
+  monthly social and content services, the journal's Pro tier. Vipps cannot
+  carry them through Stripe.
+
+The only way to take Vipps for subscriptions is Vipps' own Recurring API, which
+is a second integration and would end "all Stripe". Do not do it because it
+would be tidy; do it if and when Norwegian subscribers actually refuse to enter
+a card.
+
+### Where it runs — Render, Frankfurt
+
+**Decided: the payment service runs on Render in the EU (Frankfurt) region. The
+four websites stay on Vercel.**
+
+Vercel Functions were the other candidate, and the argument for them is that the
+sites are already there. It does not survive contact with the schema. `06-payment
+-schema.sql` is eighteen tables with a ledger, webhook idempotency and an audit
+log; it wants a real Postgres with transactions, a worker that drains a queue,
+and cron for renewals, credit expiry and invoice runs. Render has web services,
+background workers, cron and managed Postgres on one private network. Choosing
+Vercel would have meant a database somewhere else anyway, so "fewer moving
+parts" was never true.
+
+Three things settle it beyond convenience:
+
+- **Frankfurt keeps personal and payment-adjacent data inside the EEA**, so the
+  privacy section does not have to answer a transfer question it would rather
+  not have.
+- **A website deploy can never take the payment service down.** They are
+  separate systems with separate release cycles, which is the correct
+  relationship between a brochure and a till.
+- **A smaller attack surface for the thing that touches money** — section 5's
+  PCI posture is easier to hold on a service that does one job.
+
+---
+
 ## 1. Shape
 
 ```
@@ -118,6 +198,11 @@ The customer sees the fewest methods that can plausibly work for them.
 | Rest of world | card · wallet |
 | Any, business (org number given) | card · invoice, net 14 |
 
+**Subscriptions are card-only, in every row of that table.** Vipps through
+Stripe does not do recurring (section 0), so a customer choosing a monthly
+product is shown cards and wallets and no Vipps button. Showing one and failing
+at the last step is worse than not showing it.
+
 Routing input is the billing country and whether an organisation number was
 entered — never the IP address alone, which is wrong often enough to matter
 for people travelling.
@@ -197,9 +282,10 @@ and the address needed for tax and invoicing. Nothing else.
 
 ## 6. Tax
 
-Two positions, and the second is a decision for later, not now.
+**Decided: position A.** Position B is kept below because the day it becomes
+the right answer, the reasoning should already be written down.
 
-**A — we are the merchant (start here).** Beta Art sells; Beta Art owes the
+**A — we are the merchant. This is the decision.** Beta Art sells; Beta Art owes the
 VAT. Stripe Tax can calculate and Stripe can produce the data, but the
 liability and the filing stay with the company. Norwegian VAT registration
 starts at kr 50 000 of taxable turnover in any rolling twelve months. B2B
@@ -208,7 +294,7 @@ digital sales are taxed where the customer is. Get the exact treatment
 confirmed by the accountant before the first invoice, not after the first
 quarter.
 
-**B — merchant of record (revisit when the Engine sells worldwide).** Paddle or
+**B — merchant of record (not chosen; revisit only on the trigger in section 0).** Paddle or
 Lemon Squeezy become the seller and take on collecting and remitting sales
 tax and VAT across jurisdictions. That is a real reduction in administrative
 load and a real cost, and it changes who the customer's contract is with.
@@ -269,11 +355,19 @@ Anything else quietly takes money from the customer at every period boundary.
 2. Stripe Checkout for one-time products. One product end to end.
 3. Stripe Billing for subscriptions, plus the customer portal, plus
    Entitlements.
-4. Vipps: eCom first, then order Recurring and add subscription support.
+4. Vipps through Stripe for one-off products only — request preview access
+   early, because it gates the step rather than the step gating it.
 5. B2B invoice with EHF 3.0, ahead of the 1 January 2027 mandate.
 6. Credits: meters, grants, the ledger, the top-up product.
 7. Klarna, on high-value consumer items only.
-8. Re-evaluate merchant of record when the Engine sells outside the EEA.
+8. Vipps Recurring, direct, **only if** Norwegian subscribers actually refuse
+   cards. It ends "all Stripe" and buys one payment method.
+9. Re-evaluate merchant of record only on the section 0 trigger.
+
+Step 0, before any of it: the company has to exist on paper. An organisation
+number from Brønnøysund and a registered address are prerequisites for a Stripe
+account and for issuing a legal invoice, and nothing in this repository can
+create them.
 
 Nothing here needs the whole ladder to exist first. It needs the ledger and
 the webhook discipline to exist first — which is the entire argument for
