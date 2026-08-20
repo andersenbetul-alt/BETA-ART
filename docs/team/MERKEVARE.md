@@ -762,3 +762,76 @@ Disse er ikke avgjort her, og skal ikke behandles som avgjort:
 4. **Erstatning for «Care Circle»** i fire språk. Eier: merkevare sammen med copy.
 5. **Høykontrastvarianten.** Skal den være en tredje modus, eller en innstilling som
    virker i begge eksisterende? Eier: tjenestedesign.
+
+---
+
+## Merket i produktet – vedtatt
+
+Ordmerket er **NAVIAR** i geometrisk sans, med **CARE** sperret under høyre
+halvdel. Marineblå. Ingen payoff i låsingen.
+
+### Hvorfor blekket ble byttet
+
+Fargen `--ink` er nå logoens marineblå `#101a2e`, ikke den grønnsvarte
+`#14231f`. Det er ikke en tilpasning til logoen – det **er** logoen, og det er
+forskjellen på en identitet og en dekorasjon. Et merke som ligger oppå siden i
+en annen farge enn siden, leses som et klistremerke.
+
+Byttet kostet ingenting: kontrasten mot hvitt gikk fra 16,3:1 til **17,4:1**.
+
+### Fargene, og hva hver av dem er til
+
+| Token | Verdi | Brukes til | Kontrast |
+|---|---|---|---|
+| `--ink` | `#101a2e` | All tekst, mørke flater, merkeflaten | 17,4:1 på hvitt |
+| `--ink-soft` | `#4a5568` | Ingress, sekundærtekst | 7,5:1 |
+| `--ink-faint` | `#657084` | Hjelpetekst, metadata | 5,0:1 på hvitt, 4,6:1 på sand |
+| `--brand` | `#1f6f5c` | Handling på lys flate | 6,0:1 på hvitt |
+| `--brand-pa-mork` | `#4cb99b` | Handling på mørk flate | 7,2:1 på blekket |
+| `--bg-sand` | `#fbf6ee` | Varm flate | – |
+
+**`--brand-pa-mork` finnes fordi grønnfargen gir 2,9:1 mot marineblått.** En
+grønn knapp i en marineblå topp er uleselig. Det er ikke et smaksspørsmål, og
+derfor er det to grønner og ikke én.
+
+Sanden er beholdt med vilje. Marineblå alene blir kald, og siden leses også av
+eldre mennesker og familiene deres. Den varme flaten er motvekten.
+
+### Merket ved små størrelser
+
+Ordmerket bruker hårstreker som forsvinner under ca. 40 px. Derfor finnes et
+eget merke – varden fra A-en, tegnet som fylte flater – i
+`assets/img/naviar-mark.svg`.
+
+| Flate | Hva som brukes |
+|---|---|
+| Favicon, appikon | Merket, hvitt på marineblå flate med runde hjørner |
+| Topp på siden | Samme flate, 34 px |
+| E-post til familien | Samme flate. Dette er den flaten merket oftest sees på |
+| Presentasjon, nettsted over 40 px | Fullt ordmerke |
+
+Favicon har egen flate og ikke gjennomsiktig bakgrunn. Marineblå på en mørk
+fanelinje er usynlig; en flate virker uansett hva nettleseren har bak seg.
+
+### Det som mangler
+
+**Vektorfilen til ordmerket.** Den finnes ikke i repoet – merket er levert som
+raster. Legges den inn som `assets/img/naviar-care-logo.svg`, er den eneste
+endringen som trengs å bytte `.logo-mark`-flaten mot en `<img>` i toppen på de
+fjorten sidene.
+
+Ordmerket er ikke tegnet på nytt for hånd, og skal ikke bli det. En logotype som
+er 95 % riktig er verre enn en raster, fordi den sprer seg overalt og feilen
+følger med.
+
+### Payoff
+
+«Clarity in complex systems» er **Naviars** payoff, ikke Naviar Cares.
+Kjøperen driver et selskap med tolv ansatte og setter opp vaktlista selv. Hun
+har ikke komplekse systemer; hun har familier som ringer og spør om mor fikk
+besøk. Produktets egen setning står allerede på landingssiden:
+
+> Ett besøk. Én bekreftelse. Alle vet det.
+
+Den sier hva produktet gjør. Ingen payoff i låsingen betyr at hver flate kan
+velge den setningen som hører hjemme der – og det er riktig, ikke uferdig.

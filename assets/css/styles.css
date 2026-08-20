@@ -2,17 +2,26 @@
    Designprinsipp: rolig, tillitsvekkende, høy lesbarhet (målgruppe: pårørende 40-70 år). */
 
 :root {
-  --ink:            #14231f;
-  --ink-soft:       #4a5a55;
-  --ink-faint:      #77857f;
-  --line:           #dfe6e2;
+  /* Blekket er logoens marineblå. Den er ikke valgt for å matche logoen –
+     den ER logoen, og det er forskjellen på en identitet og en dekorasjon.
+     Kontrasten mot hvitt er 17,4:1, altså bedre enn den grønnsvarte den
+     erstattet (16,3:1). Byttet koster ingenting og gjør at merket hører
+     hjemme på siden i stedet for å ligge oppå den. */
+  --ink:            #101a2e;
+  --ink-soft:       #4a5568;
+  --ink-faint:      #657084;
+  --line:           #dde2ea;
   --bg:             #ffffff;
-  --bg-soft:        #f4f7f5;
+  --bg-soft:        #f4f6fa;
   --bg-sand:        #fbf6ee;
 
   --brand:          #1f6f5c;
   --brand-dark:     #175446;
   --brand-light:    #e6f1ed;
+  /* Grønnfargen er lesbar på hvitt (6,0:1) og uleselig på marineblått (2,9:1).
+     Mørke flater trenger derfor sin egen grønn. Denne gir 7,2:1 mot blekket,
+     og blekket gir 7,2:1 tilbake som knappetekst. */
+  --brand-pa-mork:  #4cb99b;
   --accent:         #c8752a;
   --accent-light:   #fbeee0;
 
@@ -87,9 +96,9 @@ a  { color: var(--brand-dark); }
    streker. En hårstrek forsvinner ved 16 px; en flate gjør det ikke, og 16 px
    er favicon – den størrelsen merket oftest sees i. */
 .logo-mark {
-  width: 34px; height: 34px; border-radius: 10px; flex: 0 0 auto;
-  background: var(--brand-light);
-  display: grid; place-items: center; color: var(--brand);
+  width: 34px; height: 34px; border-radius: 8px; flex: 0 0 auto;
+  background: var(--ink);
+  display: grid; place-items: center; color: #fff;
 }
 .logo-mark svg { display: block; }
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: 6px; }
