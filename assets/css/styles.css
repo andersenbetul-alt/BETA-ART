@@ -152,7 +152,7 @@ header{
   content:"";position:absolute;inset:auto -10% -55% 55%;height:70%;
   background:radial-gradient(circle at center,rgba(255,255,255,.07),transparent 65%);pointer-events:none;
 }
-.hero h1{color:#fff;max-width:15ch}
+.hero h1{color:#fff;max-width:19ch}
 .hero p{color:rgba(255,255,255,.82);max-width:56ch;font-size:1.1rem}
 .hero .eyebrow{color:var(--gold-soft)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}

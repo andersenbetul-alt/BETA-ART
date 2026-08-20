@@ -61,6 +61,18 @@
     });
   }
 
+  function renderHeroCard() {
+    var host = byId('heroCardList');
+    if (!host) return;
+    host.innerHTML = '';
+    (I18n.get('hero.card') || []).forEach(function (text) {
+      var li = el('li');
+      li.appendChild(svg(CHECK));
+      li.appendChild(el('span', null, text));
+      host.appendChild(li);
+    });
+  }
+
   function renderStatus() {
     var host = byId('statusList');
     if (!host) return;
@@ -475,6 +487,7 @@
 
   function renderAll() {
     renderStats();
+    renderHeroCard();
     renderProcess();
     renderStatus();
     renderServices();
