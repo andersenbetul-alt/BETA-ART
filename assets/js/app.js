@@ -662,7 +662,9 @@
     if (el) el.textContent = String(new Date().getFullYear());
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  // Sayfa açılışı. Tek dosyalık önizleme, gövdeyi değiştirdikten sonra
+  // bunu yeniden çağırır — o yüzden ayrı bir isim altında duruyor.
+  function boot() {
     initYear();
     syncCanonical();
     initTheme();
@@ -674,5 +676,8 @@
     initWorkForms();
     applyLang(currentLang, false);
     revealInit();
-  });
+  }
+  window.QB_BOOT = boot;
+
+  document.addEventListener('DOMContentLoaded', boot);
 })();

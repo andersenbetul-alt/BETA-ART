@@ -9,7 +9,8 @@
     "dev": "python3 -m http.server 8000",
     "repurpose": "node scripts/repurpose.mjs",
     "gorunurluk": "node scripts/gorunurluk.mjs",
-    "guvenlik": "node scripts/guvenlik.mjs"
+    "guvenlik": "node scripts/guvenlik.mjs",
+    "onizleme": "node scripts/onizleme.mjs"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.70.0",

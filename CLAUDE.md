@@ -32,6 +32,7 @@ assets/js/app.js    Dil, tema, liste/arama/filtre, yazı sayfası, sekmeler, for
 scripts/check.mjs   Proje sağlık kontrolü
 scripts/gorunurluk.mjs Yayınlanmış yazıları görünürlük kurallarına karşı denetler
 scripts/guvenlik.mjs   Güvenlik ve veri koruma denetimi
+scripts/onizleme.mjs   Tüm siteyi tek tıklanabilir HTML dosyasına gömer
 
 engine/             Curiosity Engine (site değil, üretim hattı)
   schema.sql        Sinyal → konu → makale tabloları
@@ -72,6 +73,12 @@ npm run check    # zorunlu: commit öncesi çalıştırın
 denetler (tek yazı: `node scripts/gorunurluk.mjs <slug>`). Motorun taslaklara uyguladığı
 ölçütü sitenin kendi yazılarına da uygular — kendi kuralımıza uymayan bir hattı
 kimseye satamayız.
+
+`npm run onizleme` beş sayfayı, yazı tipleri dahil her şeyi tek dosyaya gömüp
+`onizleme/qblogg.html` üretir: sunucu kurmadan, dışarıya hiç istek atmadan
+tıklanabilir bir önizleme. Birine site göstermek gerektiğinde bunu kullanın.
+Yönlendirme `?page=` ile; `slug` ve `lang` gerçek sorgu dizesinde kaldığı için
+`app.js` değişmeden çalışır. Gövde değiştikten sonra `window.QB_BOOT()` çağrılır.
 
 `npm run guvenlik` üçüncü bir soruyu sorar: site ziyaretçiye zarar verebilir mi,
 topladığı veriyi hukuka uygun işliyor mu? XSS, JSON-LD kaçışı, tabnabbing,
