@@ -1,0 +1,469 @@
+{
+  "meta": {
+    "title": "NAVIAR — Pagalba suprasti ir tvarkyti bylas su valstybės įstaigomis",
+    "description": "NAVIAR yra nepriklausoma konsultacijų tarnyba, padedanti žmonėms suprasti, sutvarkyti ir prižiūrėti savo bylas Norvegijos valstybės įstaigose."
+  },
+  "brand": {
+    "tagline": "Aiškumas sudėtingose sistemose.",
+    "promise": "Nuo pirmojo laiško iki bylos pabaigos.",
+    "disclaimer": "NAVIAR yra nepriklausoma įmonė ir nėra NAV ar kurios nors valstybės institucijos dalis."
+  },
+  "nav": {
+    "how": "Kaip dirbame",
+    "services": "Paslaugos",
+    "areas": "Sritys",
+    "pricing": "Kainos",
+    "safety": "Saugumas",
+    "faq": "Klausimai",
+    "contact": "Kontaktai",
+    "cta": "Užsisakyti susitikimą",
+    "menu": "Meniu",
+    "language": "Kalba"
+  },
+  "hero": {
+    "eyebrow": "Gyventojų parama ir bylų vedimas",
+    "title": "Gaukite pagalbos suprasti ir tvarkyti bylas su valstybės įstaigomis",
+    "sub": "Mes palengviname valstybines procedūras. Sužinosite, į kurią įstaigą kreiptis, kokių dokumentų reikia, ką rašyti, kada yra terminas — ir koks kitas žingsnis.",
+    "sales": "Atsiųskite mums laišką. Gaukite aiškų veiksmų planą.",
+    "cta1": "Atsiųsti laišką",
+    "cta2": "Kaip dirbame",
+    "cardTitle": "Ką gausite",
+    "card": [
+      "Jūsų laiškas ar sprendimas, paaiškintas paprasta kalba",
+      "Jūsų teisės, pareigos ir visos svarbios datos",
+      "Dokumentų sąrašas ir planas žingsnis po žingsnio",
+      "Tinkama įstaiga ir tinkamas kreipimosi būdas"
+    ]
+  },
+  "stats": {
+    "languages": "Kalbos, kuriomis dirbame",
+    "areas": "Sritys, kurias apimame",
+    "reply": "Atsakymas į naujas užklausas",
+    "written": "Apimtis sutarta raštu"
+  },
+  "finder": {
+    "eyebrow": "Pradėkite čia",
+    "title": "Kokios pagalbos jums reikia?",
+    "lead": "Trys trumpi klausimai. Jūs gaunate rekomendaciją, o mes sužinome, su kuo žmonėms iš tikrųjų sunku — tai lemia, ką kuriame toliau.",
+    "back": "Atgal",
+    "restart": "Pradėti iš naujo",
+    "progress": "Klausimas {n} iš {total}",
+    "questions": [
+      {
+        "q": "Kokia jūsų situacija dabar?",
+        "hint": "Pasirinkite artimiausią variantą.",
+        "options": [
+          "Gavau laišką ar sprendimą, kurio nesuprantu",
+          "Man reikia pateikti prašymą",
+          "Mano byla per ilgai užtrunka arba sustojo",
+          "Nesutinku su sprendimu ir noriu jį apskųsti",
+          "Padedu šeimos nariui tvarkyti jo bylą"
+        ]
+      },
+      {
+        "q": "Kuri įstaiga susijusi?",
+        "hint": "Pasirinkite vieną. Daugiau papasakosite vėliau.",
+        "options": [
+          "NAV",
+          "Savivaldybė (kommune)",
+          "Mokesčių inspekcija arba Altinn",
+          "Helfo, sveikata ar pensija",
+          "Nesu tikras"
+        ]
+      },
+      {
+        "q": "Ar yra terminas?",
+        "hint": "Terminas lemia, kaip greitai turime dirbti.",
+        "options": [
+          "Taip — per 7 dienas",
+          "Taip — per mėnesį",
+          "Termino nėra arba nežinau"
+        ]
+      }
+    ],
+    "resultTitle": "Mūsų rekomendacija",
+    "urgent": "Trumpas terminas — susisiekite šiandien",
+    "cta": "Užsisakyti šią paslaugą",
+    "ctaAlt": "Pirma pasiklausti",
+    "saved": "Ačiū. Jūsų atsakymai padeda mums nustatyti, kokios pagalbos žmonėms reikia labiausiai."
+  },
+  "process": {
+    "eyebrow": "Kaip dirbame",
+    "title": "Vienos durys, penki etapai",
+    "lead": "Jums nereikia žinoti, kurio paketo reikia. Atsiųskite bylą — ją įvertinsime, pateiksime planą ir kainą ir lydėsime iki pabaigos.",
+    "steps": [
+      {
+        "t": "Suprasti",
+        "d": "Perskaitome laišką ar sprendimą ir paprastais žodžiais paaiškiname, kas ten parašyta, ką tai reiškia jums ir kurios datos svarbios."
+      },
+      {
+        "t": "Paruošti",
+        "d": "Sudarome reikalingų dokumentų sąrašą, padedame užpildyti formas ir parengiame raštų įstaigai projektus."
+      },
+      {
+        "t": "Pateikti",
+        "d": "Kartu su jumis užbaigiame prašymą tinkamu kanalu ir užfiksuojame, kas ir kada buvo išsiųsta."
+      },
+      {
+        "t": "Prižiūrėti",
+        "d": "Sekame nagrinėjimo terminus, tvarkome prašymus dėl trūkstamų dokumentų ir informuojame apie bylos eigą."
+      },
+      {
+        "t": "Skundas ir eskalavimas",
+        "d": "Paaiškiname sprendimą ir apskundimo terminą, padedame parengti skundą ir nukreipiame pas advokatą ar specialistą, kai byla to reikalauja."
+      }
+    ]
+  },
+  "status": {
+    "title": "Visada matote keturis dalykus",
+    "lead": "Jokia byla pas mus nėra juodoji dėžė. Kiekviename etape tiksliai matote, kur ji yra.",
+    "items": [
+      "Kurioje stadijoje byla dabar",
+      "Koks kitas veiksmas",
+      "Kas jį atlieka — jūs ar mes",
+      "Kada yra terminas"
+    ]
+  },
+  "services": {
+    "eyebrow": "Paslaugos",
+    "title": "Parama kiekviename bylos etape",
+    "lead": "Pradedame nuo jūsų problemos, o ne nuo paketo.",
+    "items": [
+      {
+        "t": "Laiškų ir sprendimų paaiškinimas",
+        "d": "Oficialūs raštai, parašyti administracine kalba, išversti į kalbą, pagal kurią galite veikti.",
+        "i": [
+          "Paaiškinimas paprasta kalba",
+          "Teisės, pareigos ir terminai",
+          "Kas bus, jei nieko nedarysite"
+        ]
+      },
+      {
+        "t": "Prašymai ir formos",
+        "d": "Randame tinkamą prašymo kelią ir užpildome jį kartu su jumis.",
+        "i": [
+          "Dokumentų sąrašas",
+          "Formos pildomos kartu",
+          "Raštų ir paaiškinimų projektai"
+        ]
+      },
+      {
+        "t": "Bylos priežiūra",
+        "d": "Bylos sustoja, kai niekas jų neseka. Mes sekame.",
+        "i": [
+          "Terminų kontrolė",
+          "Prašymų dėl dokumentų tvarkymas",
+          "Reguliarūs būsenos pranešimai"
+        ]
+      },
+      {
+        "t": "Skundai ir apskundimas",
+        "d": "Sprendimas, su kuriuo nesutinkate, turi apskundimo terminą. Padedame jį tinkamai panaudoti.",
+        "i": [
+          "Sprendimo paaiškinimas",
+          "Dokumentų sutvarkymas",
+          "Pagalba rašant skundą"
+        ]
+      },
+      {
+        "t": "Pasiruošimas susitikimui",
+        "d": "Eikite į susitikimą ar pokalbį telefonu žinodami, ką sakyti ir ko klausti.",
+        "i": [
+          "Ko klaus įstaiga",
+          "Ką turėtumėte turėti su savimi",
+          "Užrašai po susitikimo"
+        ]
+      },
+      {
+        "t": "Bendravimas jūsų vardu",
+        "d": "Pagal rašytinį įgaliojimą (fullmakt), kurio apimtį nustatote jūs, galime bendrauti su įstaiga už jus.",
+        "i": [
+          "Apimtį ir trukmę nustatote jūs",
+          "Rašytinis kiekvieno kontakto įrašas",
+          "Galima atšaukti bet kada"
+        ]
+      }
+    ]
+  },
+  "areas": {
+    "eyebrow": "Aprėptis",
+    "title": "Sritys, kuriose dirbame",
+    "lead": "Mūsų bandomasis etapas sutelktas į NAV ir savivaldybių paslaugas. Kitas sritis dengiame savo konsultantais arba patikrintais partneriais.",
+    "items": [
+      "NAV — išmokos, nedarbingumas, nedarbas",
+      "Savivaldybių paslaugos",
+      "Mokesčių inspekcija ir Altinn",
+      "Helfo ir sveikatos administravimas",
+      "Pensijų klausimai",
+      "Būstas ir socialinė parama",
+      "Ligos ir nedarbo procedūros",
+      "Šeimos ir priežiūros paslaugos",
+      "Valstybinės procedūros naujai atvykusiems į Norvegiją"
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Kainos",
+    "title": "Aiškios kainos, sutartos prieš pradedant",
+    "lead": "Tai bandomosios kainos. Apimtį ir kainą visada gaunate raštu prieš pradedant darbą, o trečiųjų šalių išlaidos nurodomos atskirai.",
+    "from": "nuo",
+    "quote": "Pagal pasiūlymą",
+    "vat": "Kainos NOK. Bandomosios kainos, gali keistis.",
+    "select": "Užsisakyti",
+    "ask": "Prašyti pasiūlymo",
+    "plans": [
+      {
+        "n": "Nemokamas įvadinis pokalbis",
+        "tag": "15 minučių",
+        "d": "Trumpas pokalbis, kad galėtume pasakyti, ar ir kaip galime padėti.",
+        "f": [
+          "Sąžiningas įvertinimas",
+          "Kuri paslauga tinka",
+          "Jokių įsipareigojimų"
+        ]
+      },
+      {
+        "n": "NAVIAR Klarhet",
+        "tag": "Suprask laišką",
+        "d": "Vienas laiškas ar sprendimas paaiškintas, su kitais žingsniais raštu.",
+        "f": [
+          "Paaiškinimas paprasta kalba",
+          "Terminai ir teisės",
+          "Rašytinis veiksmų planas"
+        ]
+      },
+      {
+        "n": "NAVIAR Handling",
+        "tag": "Prašymas kartu",
+        "d": "Paruošiame ir pateikiame prašymą kartu su jumis, įskaitant dokumentus.",
+        "f": [
+          "Dokumentų sąrašas",
+          "Formą pildome kartu",
+          "Pagalba pateikiant"
+        ]
+      },
+      {
+        "n": "NAVIAR Oppfølging",
+        "tag": "Bylos parama",
+        "d": "Prižiūrime bylą, tvarkome susirašinėjimą ir laikomės terminų.",
+        "f": [
+          "Terminų kontrolė",
+          "Ryšys su įstaiga",
+          "Būsenos pranešimai"
+        ]
+      },
+      {
+        "n": "NAVIAR Komplett",
+        "tag": "Nuo pradžios iki pabaigos",
+        "d": "Visą procesą vedame už jus — nuo pirmojo laiško iki galutinio rezultato.",
+        "f": [
+          "Visi etapai įskaičiuoti",
+          "Vienas paskirtas konsultantas",
+          "Kaina už bylą"
+        ]
+      }
+    ],
+    "moreTitle": "Šeimoms ir organizacijoms",
+    "more": [
+      {
+        "n": "NAVIAR Familie",
+        "d": "Koordinavimas vyresnio amžiaus giminaičio ar paramos reikalingo šeimos nario vardu."
+      },
+      {
+        "n": "NAVIAR Business",
+        "d": "Darbdavio apmokama parama darbuotojams, tvarkantiems valstybines procedūras."
+      },
+      {
+        "n": "NAVIAR Public",
+        "d": "Pajėgumų parama ir paslaugų vystymas savivaldybėms ir valstybės įstaigoms."
+      }
+    ],
+    "catalogTitle": "Visas kainoraštis",
+    "code": "Kodas",
+    "delivery": "Pristatymas",
+    "perHour": "už valandą",
+    "inclVat": "su PVM"
+  },
+  "safety": {
+    "eyebrow": "Saugumas ir etika",
+    "title": "Taisyklės, kurių niekada nelaužome",
+    "lead": "Patikite mums jautrius reikalus. Šios taisyklės nediskutuotinos, ir galite mūsų jų reikalauti.",
+    "rules": [
+      "Niekada neprašome jūsų BankID slaptažodžio ar kodų.",
+      "Niekada nesijungiame į jūsų paskyras jūsų tapatybe.",
+      "Dirbame jums esant šalia arba pagal jūsų duotą rašytinį įgaliojimą.",
+      "Jautrūs dokumentai niekada nesiunčiami paprastu el. paštu.",
+      "Niekada negarantuojame rezultato ar išmokos.",
+      "Bylos, kurioms reikia teisinio atstovavimo, nukreipiamos advokatui."
+    ]
+  },
+  "booking": {
+    "eyebrow": "Registracija",
+    "title": "Užsisakyti susitikimą",
+    "lead": "Pasirinkite paslaugą ir laiką bei trumpai aprašykite bylą. Telefonu ar vaizdu — jūs pasirenkate.",
+    "steps": [
+      "Paslauga",
+      "Laikas",
+      "Duomenys",
+      "Mokėjimas"
+    ],
+    "chooseService": "Kokios paslaugos jums reikia?",
+    "chooseTime": "Pasirinkite dieną ir laiką",
+    "tzNote": "Visi laikai nurodyti Norvegijos laiku (Europe/Oslo).",
+    "noSlots": "Šią dieną laisvų laikų nėra. Pasirinkite kitą dieną.",
+    "loadingSlots": "Įkeliami laisvi laikai…",
+    "yourDetails": "Jūsų duomenys",
+    "name": "Vardas ir pavardė",
+    "email": "El. paštas",
+    "phone": "Telefonas",
+    "lang": "Pageidaujama susitikimo kalba",
+    "channel": "Kaip susitiksime?",
+    "channelPhone": "Telefonu",
+    "channelVideo": "Vaizdu",
+    "channelOffice": "Biure",
+    "case": "Su kuo susijusi byla?",
+    "casePlaceholder": "Kuri įstaiga, kas parašyta laiške ir žinomas terminas. Nerašykite čia asmens kodo ar sveikatos duomenų.",
+    "noSensitive": "Nerašykite šiame lauke asmens kodo ar sveikatos informacijos. Po registracijos gausite saugų kanalą dokumentams.",
+    "consent": "Sutinku, kad NAVIAR susisiektų su manimi dėl šios užklausos ir tvarkytų mano duomenis šiuo tikslu.",
+    "summary": "Jūsų registracija",
+    "service": "Paslauga",
+    "when": "Laikas",
+    "duration": "Trukmė",
+    "total": "Iš viso",
+    "payTitle": "Kaip norite sumokėti?",
+    "payCard": "Kortelė",
+    "payCardD": "Saugus mokėjimas kortele. Būsite nukreipti pas mokėjimo tiekėją.",
+    "payVipps": "Vipps",
+    "payVippsD": "Mokėkite per Vipps telefone.",
+    "payInvoice": "Sąskaita",
+    "payInvoiceD": "Po susitikimo siunčiame sąskaitą su 10 dienų mokėjimo terminu.",
+    "payFree": "Šis susitikimas nemokamas. Mokėti nereikia.",
+    "next": "Toliau",
+    "back": "Atgal",
+    "confirm": "Patvirtinti registraciją",
+    "pay": "Patvirtinti ir mokėti",
+    "processing": "Apdorojama…",
+    "doneTitle": "Registracija gauta",
+    "doneLead": "Patvirtinimą išsiuntėme jūsų el. paštu. Išsaugokite šį numerį susisiekimui su mumis.",
+    "reference": "Numeris",
+    "doneNext": "Toliau: gausite saugią nuorodą dokumentams įkelti. Niekada nesiųskite jautrių dokumentų paprastu el. paštu.",
+    "another": "Registruotis dar kartą",
+    "demoNotice": "Demonstracinis režimas: registracijos sistema dar neprijungta, todėl ši registracija saugoma tik jūsų naršyklėje. Prijunkite serverį assets/js/config.js, kad veiktų realiai.",
+    "errGeneric": "Kažkas nepavyko. Bandykite dar kartą arba susisiekite su mumis tiesiogiai.",
+    "errSlotTaken": "Šis laikas ką tik užimtas. Pasirinkite kitą.",
+    "groupAdvice": "Konsultacijos",
+    "groupTolk": "Vertimas",
+    "tolkLangLabel": "Kokios kalbos jums reikia?",
+    "tolkDialect": "Tarmė ar regionas",
+    "express": "Skubiai — per 24 valandas (+25%)",
+    "expressD": "Jei laisvas konsultantas priims, jūsų byla bus prioritetinė.",
+    "angrerett": "Paslaugoms paprastai taikoma 14 dienų teisė atsisakyti. Paprašę pradėti nedelsiant, sutinkate, kad ši teisė baigiasi visiškai suteikus paslaugą ir kad atšaukę sumokėsite už jau atliktą darbą.",
+    "deliveryNote": "Šiai paslaugai susitikimas nereikalingas. Pristatome raštu per {sla}.",
+    "upload": "Dokumentai",
+    "uploadNote": "Po registracijos gausite saugią įkėlimo nuorodą. Niekada nesiųskite jautrių dokumentų paprastu el. paštu."
+  },
+  "faq": {
+    "eyebrow": "Klausimai",
+    "title": "Dažniausi klausimai",
+    "items": [
+      {
+        "q": "Ar esate NAV dalis?",
+        "a": "Ne. NAVIAR yra nepriklausoma įmonė ir nėra NAV ar kurios nors valstybės institucijos dalis. Dirbame jums, o ne įstaigai, kuri nagrinėja jūsų bylą."
+      },
+      {
+        "q": "Ar garantuojate, kad gausiu išmoką ar leidimą?",
+        "a": "Ne, ir nepasitikėkite tais, kas tai žada. Sprendimą priima įstaiga. Mes galime užtikrinti, kad jūsų byla būtų išsami, teisinga ir pateikta laiku — būtent čia pralaimima daugiausia bylų."
+      },
+      {
+        "q": "Ar jums reikia mano BankID?",
+        "a": "Niekada slaptažodžio ar kodų. Arba esate šalia ir prisijungiate patys, arba duodate mums rašytinį įgaliojimą (fullmakt), kuris tiksliai nurodo, ką galime daryti ir kiek laiko. Galite jį atšaukti bet kada."
+      },
+      {
+        "q": "Kiek tai kainuoja?",
+        "a": "Pirmas 15 minučių pokalbis nemokamas. Vėliau prieš pradedant darbą gaunate fiksuotą kainą raštu. Bandomosios kainos prasideda nuo 690 NOK už vieno laiško paaiškinimą."
+      },
+      {
+        "q": "Kokiomis kalbomis galiu gauti pagalbą?",
+        "a": "Dirbame norvegų, anglų, turkų, arabų, lenkų, ukrainiečių, rusų, somaliečių, lietuvių ir tigrinjų kalbomis. Registruodamiesi nurodykite pageidaujamą kalbą."
+      },
+      {
+        "q": "Ar esate advokatai?",
+        "a": "Ne. Teikiame konsultacijas, paruošimą ir priežiūrą. Kai byla reikalauja teisinio atstovavimo arba specialisto vertinimo sveikatos, mokesčių ar migracijos klausimais, nukreipiame jus pas kvalifikuotą specialistą."
+      },
+      {
+        "q": "Kaip saugiai atsiųsti dokumentus?",
+        "a": "Po registracijos gausite saugią įkėlimo nuorodą. Nesiųskite jautrių dokumentų kaip paprastų el. laiško priedų."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Kontaktai",
+    "title": "Atsiųskite mums laišką",
+    "lead": "Trumpai aprašykite savo situaciją — atsakysime per vieną darbo dieną. Jei paprasčiau, užsisakykite nemokamą 15 minučių pokalbį.",
+    "email": "El. paštas",
+    "phone": "Telefonas",
+    "office": "Biuras",
+    "hours": "Darbo laikas",
+    "org": "Įmonės kodas",
+    "formTitle": "Parašykite mums",
+    "message": "Kokios pagalbos jums reikia?",
+    "messagePlaceholder": "Kuri įstaiga, kas atsitiko ir koks terminas. Prašome nenurodyti asmens kodų ir sveikatos duomenų.",
+    "send": "Siųsti užklausą",
+    "sent": "Ačiū. Gavome jūsų užklausą ir atsakysime per vieną darbo dieną.",
+    "note": "Jūsų užklausa konfidenciali ir niekada neperduodama tretiesiems asmenims."
+  },
+  "band": {
+    "title": "Nežinote, koks kitas žingsnis?",
+    "sub": "Būtent tam ir skirtas nemokamas 15 minučių pokalbis. Jūs atneškite laišką — mes atnešime planą.",
+    "cta": "Užsisakyti nemokamą pokalbį",
+    "cta2": "Parašyti mums"
+  },
+  "footer": {
+    "services": "Paslaugos",
+    "company": "Įmonė",
+    "legal": "Teisinė informacija",
+    "about": "Apie mus",
+    "privacy": "Privatumas",
+    "terms": "Sąlygos",
+    "rights": "Visos teisės saugomos.",
+    "note": "Šioje svetainėje pateikiama bendro pobūdžio informacija, kuri nėra teisinė konsultacija.",
+    "pilot": "Bandomoji paslauga. Kainos ir apimtis testuojamos ir gali keistis."
+  },
+  "catalog": {
+    "intro": {
+      "n": "Nemokamas įvadinis pokalbis",
+      "d": "Trumpas pokalbis, kad galėtume pasakyti, ar galime padėti."
+    },
+    "k01": {
+      "n": "Laiškas paaiškintas",
+      "d": "Vienas laiškas ar sprendimas (iki 5 puslapių) paaiškintas raštu, su kitais žingsniais."
+    },
+    "k02": {
+      "n": "Aiškumo konsultacija",
+      "d": "45 minutės su konsultantu apie jūsų bylą, telefonu ar vaizdu."
+    },
+    "h01": {
+      "n": "Prašymas kartu",
+      "d": "Standartinis prašymas paruoštas ir pateiktas kartu su jumis, su dokumentais."
+    },
+    "o01": {
+      "n": "Bylos priežiūra",
+      "d": "30 dienų priežiūros, iki 3 kontaktų, terminų kontrolė."
+    },
+    "s01": {
+      "n": "Vyresniojo ir specialisto konsultacija",
+      "d": "Valandinė konsultacija sudėtingoms ar didesnės rizikos byloms."
+    },
+    "t30": {
+      "n": "Vertėjas — 30 minučių",
+      "d": "Vertimas telefonu ar vaizdu su kvalifikuotu vertėju."
+    },
+    "t60": {
+      "n": "Vertėjas — 60 minučių",
+      "d": "Vertimas telefonu ar vaizdu su kvalifikuotu vertėju."
+    },
+    "tf": {
+      "n": "Vertėjas vietoje",
+      "d": "Vertimas gyvai. Kaina už užduotį, kelionė įskaičiuota."
+    }
+  }
+}

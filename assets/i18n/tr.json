@@ -1,0 +1,469 @@
+{
+  "meta": {
+    "title": "NAVIAR — Kamu işlemlerinizi anlamak ve takip etmek için destek",
+    "description": "NAVIAR, insanların Norveç'te kamu kurumlarıyla ilgili işlemlerini anlamalarına, düzenlemelerine ve takip etmelerine yardımcı olan bağımsız bir danışmanlık hizmetidir."
+  },
+  "brand": {
+    "tagline": "Karmaşık sistemlerde açıklık.",
+    "promise": "İlk mektuptan sürecin tamamlanmasına kadar.",
+    "disclaimer": "NAVIAR bağımsız bir şirkettir; NAV'ın veya herhangi bir kamu kurumunun parçası değildir."
+  },
+  "nav": {
+    "how": "Nasıl çalışıyoruz",
+    "services": "Hizmetler",
+    "areas": "Alanlar",
+    "pricing": "Fiyatlar",
+    "safety": "Güvenlik",
+    "faq": "Sorular",
+    "contact": "İletişim",
+    "cta": "Randevu al",
+    "menu": "Menü",
+    "language": "Dil"
+  },
+  "hero": {
+    "eyebrow": "Vatandaş desteği ve dosya rehberliği",
+    "title": "Kamu işlemlerinizi anlamak ve takip etmek için destek alın",
+    "sub": "Kamu işlemlerini kolaylaştırıyoruz. Hangi kuruma başvuracağınızı, hangi belgelerin gerektiğini, ne yazacağınızı, son başvuru tarihini ve sonraki adımı açık şekilde gösteriyoruz.",
+    "sales": "Mektubu bize gönderin. Net bir eylem planı alın.",
+    "cta1": "Mektubu gönderin",
+    "cta2": "Nasıl çalışıyoruz",
+    "cardTitle": "Elinize geçenler",
+    "card": [
+      "Mektubunuzun veya kararın sade dille açıklaması",
+      "Haklarınız, yükümlülükleriniz ve tüm önemli tarihler",
+      "Belge kontrol listesi ve adım adım plan",
+      "Doğru kurum ve doğru başvuru yolu"
+    ]
+  },
+  "stats": {
+    "languages": "Hizmet verdiğimiz dil",
+    "areas": "Kapsadığımız alan",
+    "reply": "Yeni başvurulara yanıt",
+    "written": "Önceden yazılı anlaşma"
+  },
+  "finder": {
+    "eyebrow": "Buradan başlayın",
+    "title": "Hangi konuda yardıma ihtiyacınız var?",
+    "lead": "Üç kısa soru. Siz bir öneri alırsınız, biz de insanların gerçekte hangi konuda zorlandığını öğreniriz — sonraki adımlarımızı bu belirliyor.",
+    "back": "Geri",
+    "restart": "Baştan başla",
+    "progress": "Soru {n} / {total}",
+    "questions": [
+      {
+        "q": "Şu anda durumunuz nedir?",
+        "hint": "Size en yakın olanı seçin.",
+        "options": [
+          "Anlamadığım bir mektup veya karar aldım",
+          "Bir başvuru yapmam gerekiyor",
+          "Dosyam çok uzadı veya durdu",
+          "Bir karara itiraz etmek istiyorum",
+          "Bir aile bireyinin işlemlerine yardım ediyorum"
+        ]
+      },
+      {
+        "q": "Hangi kurumla ilgili?",
+        "hint": "Birini seçin. Ayrıntıyı sonra anlatabilirsiniz.",
+        "options": [
+          "NAV",
+          "Belediye (kommune)",
+          "Vergi dairesi veya Altinn",
+          "Helfo, sağlık veya emeklilik",
+          "Emin değilim"
+        ]
+      },
+      {
+        "q": "Bir son tarih var mı?",
+        "hint": "Süre, ne kadar hızlı çalışmamız gerektiğini belirler.",
+        "options": [
+          "Evet — 7 gün içinde",
+          "Evet — bir ay içinde",
+          "Son tarih yok veya bilmiyorum"
+        ]
+      }
+    ],
+    "resultTitle": "Önerimiz",
+    "urgent": "Süre kısa — bugün iletişime geçin",
+    "cta": "Bu hizmeti seç",
+    "ctaAlt": "Önce sorayım",
+    "saved": "Teşekkürler. Yanıtlarınız, en çok ihtiyaç duyulan yardımı önceliklendirmemize yardımcı oluyor."
+  },
+  "process": {
+    "eyebrow": "Nasıl çalışıyoruz",
+    "title": "Tek kapı, beş aşama",
+    "lead": "Hangi pakete ihtiyacınız olduğunu bilmenize gerek yok. Dosyayı gönderin — biz değerlendirir, size plan ve fiyat sunar, bitene kadar takip ederiz.",
+    "steps": [
+      {
+        "t": "Anlama",
+        "d": "Mektubu veya kararı okur; ne yazdığını, sizin için ne anlama geldiğini ve hangi tarihlerin geçerli olduğunu sade dille açıklarız."
+      },
+      {
+        "t": "Hazırlama",
+        "d": "Gereken belgeleri listeler, formları doldurmanıza yardım eder ve kuruma gidecek yazıların taslağını hazırlarız."
+      },
+      {
+        "t": "Gönderme",
+        "d": "Başvuruyu sizinle birlikte, doğru kanaldan tamamlar; neyin ne zaman gönderildiğini kayıt altına alırız."
+      },
+      {
+        "t": "Takip",
+        "d": "İşlem sürelerini izler, eksik belge taleplerini yönetir ve dosyanın durumunu size düzenli bildiririz."
+      },
+      {
+        "t": "İtiraz ve yönlendirme",
+        "d": "Kararı ve itiraz süresini açıklar, itiraz hazırlığına destek olur; dosya gerektiriyorsa avukata veya uzmana yönlendiririz."
+      }
+    ]
+  },
+  "status": {
+    "title": "Her zaman dört şeyi görürsünüz",
+    "lead": "Bizdeki hiçbir dosya kapalı kutu değildir. Her aşamada nerede olduğunu tam olarak görürsünüz.",
+    "items": [
+      "Dosya şu anda hangi aşamada",
+      "Sıradaki işlem ne",
+      "Kim yapacak — siz mi biz mi",
+      "Son tarih ne zaman"
+    ]
+  },
+  "services": {
+    "eyebrow": "Hizmetler",
+    "title": "Kamu sürecinin her aşamasında destek",
+    "lead": "Bir paketten değil, karşınızdaki sorundan başlıyoruz.",
+    "items": [
+      {
+        "t": "Mektup ve kararların açıklanması",
+        "d": "Resmî dilde yazılmış yazıları, harekete geçebileceğiniz bir dile çeviriyoruz.",
+        "i": [
+          "Sade dille açıklama",
+          "Haklar, yükümlülükler ve süreler",
+          "Hiçbir şey yapmazsanız ne olur"
+        ]
+      },
+      {
+        "t": "Başvuru ve formlar",
+        "d": "Doğru başvuru yolunu buluyor ve formu sizinle birlikte dolduruyoruz.",
+        "i": [
+          "Belge kontrol listesi",
+          "Formlar birlikte dolduruluyor",
+          "Yazı ve dilekçe taslakları"
+        ]
+      },
+      {
+        "t": "Dosya takibi",
+        "d": "Kimse izlemediğinde dosyalar durur. Biz izliyoruz.",
+        "i": [
+          "Süre takibi",
+          "Eksik belge taleplerinin yönetimi",
+          "Düzenli durum bildirimi"
+        ]
+      },
+      {
+        "t": "İtiraz ve şikâyet",
+        "d": "Katılmadığınız kararın bir itiraz süresi vardır. Onu doğru kullanmanıza yardım ediyoruz.",
+        "i": [
+          "Kararın açıklanması",
+          "Belgelerin düzenlenmesi",
+          "İtiraz taslağına destek"
+        ]
+      },
+      {
+        "t": "Görüşmeye hazırlık",
+        "d": "Toplantıya veya telefon görüşmesine ne söyleyeceğinizi ve ne soracağınızı bilerek girin.",
+        "i": [
+          "Kurumun soracakları",
+          "Yanınızda götürmeniz gerekenler",
+          "Görüşme sonrası not"
+        ]
+      },
+      {
+        "t": "Sizin adınıza iletişim",
+        "d": "Kapsamını sizin belirlediğiniz yazılı bir vekaletle (fullmakt) kurumla sizin adınıza iletişim kurabiliriz.",
+        "i": [
+          "Kapsam ve süreyi siz belirlersiniz",
+          "Tüm iletişimin yazılı kaydı",
+          "İstediğiniz an geri alınır"
+        ]
+      }
+    ]
+  },
+  "areas": {
+    "eyebrow": "Kapsam",
+    "title": "Çalıştığımız alanlar",
+    "lead": "Pilot hizmetimiz NAV ve belediye işlemlerine odaklanıyor. Diğer alanlar kendi danışmanlarımız veya doğrulanmış iş ortaklarımız aracılığıyla kapsanıyor.",
+    "items": [
+      "NAV — ödenekler, hastalık izni, işsizlik",
+      "Belediye hizmetleri",
+      "Vergi dairesi ve Altinn",
+      "Helfo ve sağlık idaresi",
+      "Emeklilik işlemleri",
+      "Barınma ve sosyal destek",
+      "Hastalık ve işsizlik süreçleri",
+      "Aile ve bakım hizmetleri",
+      "Norveç'e yeni gelenlerin kamu işlemleri"
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Fiyatlar",
+    "title": "Net fiyatlar, işe başlamadan önce anlaşılır",
+    "lead": "Bunlar pilot fiyatlardır. İş başlamadan önce kapsamı ve fiyatı her zaman yazılı alırsınız; üçüncü taraf masrafları ayrıca belirtilir.",
+    "from": "başlangıç",
+    "quote": "Teklife göre",
+    "vat": "Fiyatlar NOK cinsindendir. Pilot fiyatlar olup değişebilir.",
+    "select": "Bunu seç",
+    "ask": "Teklif iste",
+    "plans": [
+      {
+        "n": "Ücretsiz ön görüşme",
+        "tag": "15 dakika",
+        "d": "Size yardımcı olup olamayacağımızı ve nasıl olacağını söyleyebilmemiz için kısa bir görüşme.",
+        "f": [
+          "Dürüst bir değerlendirme",
+          "Hangi hizmetin uygun olduğu",
+          "Yükümlülük yok"
+        ]
+      },
+      {
+        "n": "NAVIAR Klarhet",
+        "tag": "Mektubu anlayın",
+        "d": "Bir mektup veya kararın açıklaması ve sonraki adımlarınız yazılı olarak.",
+        "f": [
+          "Sade dille açıklama",
+          "Süreler ve haklar",
+          "Yazılı eylem planı"
+        ]
+      },
+      {
+        "n": "NAVIAR Handling",
+        "tag": "Başvuruyu birlikte yapalım",
+        "d": "Bir başvuruyu belgeleriyle birlikte hazırlayıp sizinle tamamlıyoruz.",
+        "f": [
+          "Belge kontrol listesi",
+          "Form birlikte dolduruluyor",
+          "Gönderim desteği"
+        ]
+      },
+      {
+        "n": "NAVIAR Oppfølging",
+        "tag": "Dosya desteği",
+        "d": "Dosyayı takip eder, yazışmaları yürütür ve süreleri kaçırmayız.",
+        "f": [
+          "Süre takibi",
+          "Kurumla iletişim",
+          "Durum bildirimleri"
+        ]
+      },
+      {
+        "n": "NAVIAR Komplett",
+        "tag": "Baştan sona",
+        "d": "İlk mektuptan nihai sonuca kadar tüm sürecin yönetimi.",
+        "f": [
+          "Tüm aşamalar dahil",
+          "Tek bir sorumlu danışman",
+          "Dosya başına fiyat"
+        ]
+      }
+    ],
+    "moreTitle": "Aileler ve kurumlar için",
+    "more": [
+      {
+        "n": "NAVIAR Familie",
+        "d": "Yaşlı bir yakının veya desteğe ihtiyaç duyan bir aile bireyinin işlemlerinin koordinasyonu."
+      },
+      {
+        "n": "NAVIAR Business",
+        "d": "Kamu süreçleriyle uğraşan çalışanlar için işveren tarafından karşılanan destek."
+      },
+      {
+        "n": "NAVIAR Public",
+        "d": "Belediyeler ve kamu kurumları için kapasite desteği ve hizmet geliştirme."
+      }
+    ],
+    "catalogTitle": "Tam fiyat listesi",
+    "code": "Kod",
+    "delivery": "Teslim",
+    "perHour": "saat başına",
+    "inclVat": "KDV dahil"
+  },
+  "safety": {
+    "eyebrow": "Güvenlik ve etik",
+    "title": "Asla çiğnemediğimiz kurallar",
+    "lead": "Bize hassas konuları emanet ediyorsunuz. Bu kurallar pazarlığa açık değildir ve bizi bunlara zorlayabilirsiniz.",
+    "rules": [
+      "BankID şifrenizi veya kodlarınızı asla istemeyiz.",
+      "Sizin kimliğinizle hesaplarınıza asla giriş yapmayız.",
+      "İşlemi siz ekran başındayken veya verdiğiniz yazılı vekaletle yürütürüz.",
+      "Hassas belgeler asla normal e-postayla gönderilmez.",
+      "Hiçbir zaman sonuç veya ödenek garantisi vermeyiz.",
+      "Hukuki temsil gerektiren dosyalar avukata yönlendirilir."
+    ]
+  },
+  "booking": {
+    "eyebrow": "Randevu",
+    "title": "Randevu alın",
+    "lead": "Bir hizmet ve saat seçin, konuyu kısaca anlatın. Telefon veya görüntülü görüşme — seçim sizin.",
+    "steps": [
+      "Hizmet",
+      "Saat",
+      "Bilgiler",
+      "Ödeme"
+    ],
+    "chooseService": "Hangi hizmete ihtiyacınız var?",
+    "chooseTime": "Gün ve saat seçin",
+    "tzNote": "Tüm saatler Norveç saatidir (Europe/Oslo).",
+    "noSlots": "Bu günde uygun saat yok. Lütfen başka bir gün seçin.",
+    "loadingSlots": "Uygun saatler yükleniyor…",
+    "yourDetails": "Bilgileriniz",
+    "name": "Ad soyad",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "lang": "Görüşme için tercih ettiğiniz dil",
+    "channel": "Nasıl görüşelim?",
+    "channelPhone": "Telefon",
+    "channelVideo": "Görüntülü",
+    "channelOffice": "Ofiste",
+    "case": "Konu nedir?",
+    "casePlaceholder": "Hangi kurum, mektupta ne yazıyor ve bildiğiniz bir son tarih var mı. Buraya kimlik numarası veya sağlık bilgisi yazmayın.",
+    "noSensitive": "Bu alana kimlik numarası veya sağlık bilgisi yazmayın. Randevudan sonra belgeler için güvenli bir kanal alacaksınız.",
+    "consent": "NAVIAR'ın bu başvuru hakkında benimle iletişime geçmesini ve bilgilerimi bu amaçla işlemesini kabul ediyorum.",
+    "summary": "Randevunuz",
+    "service": "Hizmet",
+    "when": "Zaman",
+    "duration": "Süre",
+    "total": "Toplam",
+    "payTitle": "Nasıl ödemek istersiniz?",
+    "payCard": "Kart",
+    "payCardD": "Güvenli kart ödemesi. Ödeme sağlayıcımıza yönlendirilirsiniz.",
+    "payVipps": "Vipps",
+    "payVippsD": "Telefonunuzdan Vipps ile ödeyin.",
+    "payInvoice": "Fatura",
+    "payInvoiceD": "Görüşmeden sonra 10 gün vadeli fatura gönderiyoruz.",
+    "payFree": "Bu görüşme ücretsizdir. Ödeme gerekmez.",
+    "next": "Devam",
+    "back": "Geri",
+    "confirm": "Randevuyu onayla",
+    "pay": "Onayla ve öde",
+    "processing": "İşleniyor…",
+    "doneTitle": "Randevu alındı",
+    "doneLead": "E-posta adresinize bir onay gönderdik. Bizimle iletişimde bu referansı kullanın.",
+    "reference": "Referans",
+    "doneNext": "Sıradaki adım: belge yüklemek için güvenli bir bağlantı alacaksınız. Hassas belgeleri asla normal e-postayla göndermeyin.",
+    "another": "Yeni randevu al",
+    "demoNotice": "Demo modu: randevu sistemi henüz bağlı değil, bu kayıt yalnızca tarayıcınızda saklanıyor. Canlıya almak için assets/js/config.js içinde backend'i bağlayın.",
+    "errGeneric": "Bir sorun oluştu. Tekrar deneyin veya doğrudan bizimle iletişime geçin.",
+    "errSlotTaken": "Bu saat az önce doldu. Lütfen başka bir saat seçin.",
+    "groupAdvice": "Danışmanlık",
+    "groupTolk": "Tercüme",
+    "tolkLangLabel": "Hangi dile ihtiyacınız var?",
+    "tolkDialect": "Lehçe veya bölge",
+    "express": "Ekspres — 24 saat içinde (+%25)",
+    "expressD": "Uygun bir danışman kabul ederse dosyanız önceliklendirilir.",
+    "angrerett": "Hizmetlerde kural olarak 14 günlük cayma hakkı vardır. Hemen başlamamızı isterseniz, hizmet tümüyle teslim edildiğinde bu hakkın sona ereceğini ve iptal etmeniz halinde yapılmış işin bedelini ödeyeceğinizi kabul etmiş olursunuz.",
+    "deliveryNote": "Bu hizmet için görüşme gerekmez. {sla} içinde yazılı olarak teslim ederiz.",
+    "upload": "Belgeler",
+    "uploadNote": "Randevudan sonra güvenli bir yükleme bağlantısı alırsınız. Hassas belgeleri asla normal e-postayla göndermeyin."
+  },
+  "faq": {
+    "eyebrow": "Sorular",
+    "title": "Sık sorulanlar",
+    "items": [
+      {
+        "q": "NAV'ın bir parçası mısınız?",
+        "a": "Hayır. NAVIAR bağımsız bir şirkettir; NAV'ın veya herhangi bir kamu kurumunun parçası değildir. Dosyanıza bakan kurum için değil, sizin için çalışıyoruz."
+      },
+      {
+        "q": "Ödeneği veya izni alacağımı garanti edebilir misiniz?",
+        "a": "Hayır — ve bunu vaat eden kimseye güvenmeyin. Karar kurumundur. Bizim yapabileceğimiz, dosyanızın eksiksiz, doğru ve zamanında verilmesini sağlamaktır; dosyaların çoğu tam burada kaybediliyor."
+      },
+      {
+        "q": "BankID'me ihtiyacınız var mı?",
+        "a": "Şifrenize veya kodlarınıza asla. Ya siz oradasınızdır ve kendiniz giriş yaparsınız ya da bize ne yapabileceğimizi ve ne kadar süreyle yapabileceğimizi tanımlayan yazılı bir vekalet (fullmakt) verirsiniz. İstediğiniz an geri alabilirsiniz."
+      },
+      {
+        "q": "Ücreti nedir?",
+        "a": "İlk 15 dakikalık görüşme ücretsizdir. Sonrasında iş başlamadan önce sabit fiyatı yazılı alırsınız. Pilot fiyatlar, bir mektubun açıklanması için 690 NOK'tan başlar."
+      },
+      {
+        "q": "Hangi dillerde yardım alabilirim?",
+        "a": "Norveççe, İngilizce, Türkçe, Arapça, Lehçe, Ukraynaca, Rusça ve Somalice hizmet veriyoruz. Randevu alırken tercih ettiğiniz dili belirtin."
+      },
+      {
+        "q": "Avukat mısınız?",
+        "a": "Hayır. Rehberlik, hazırlık ve takip hizmeti veriyoruz. Dosya hukuki temsil gerektirdiğinde ya da sağlık, vergi veya göçmenlik konusunda uzman değerlendirmesi gerektiğinde sizi yetkili bir uzmana yönlendiriyoruz."
+      },
+      {
+        "q": "Belgeleri güvenle nasıl gönderirim?",
+        "a": "Randevudan sonra güvenli bir yükleme bağlantısı alırsınız. Lütfen hassas belgeleri normal e-posta ekiyle göndermeyin."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "İletişim",
+    "title": "Mektubu bize gönderin",
+    "lead": "Durumunuzu kısaca anlatın, bir iş günü içinde yanıt verelim. Daha kolaysa 15 dakikalık ücretsiz görüşme alın.",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "office": "Ofis",
+    "hours": "Çalışma saatleri",
+    "org": "Şirket no.",
+    "formTitle": "Bize yazın",
+    "message": "Hangi konuda yardıma ihtiyacınız var?",
+    "messagePlaceholder": "Hangi kurum, ne oldu ve varsa son tarih. Lütfen kimlik numarası ve sağlık bilgisi yazmayın.",
+    "send": "Gönder",
+    "sent": "Teşekkürler. Başvurunuzu aldık, bir iş günü içinde yanıt vereceğiz.",
+    "note": "Başvurunuz gizlidir ve üçüncü taraflarla asla paylaşılmaz."
+  },
+  "band": {
+    "title": "Sonraki adımdan emin değil misiniz?",
+    "sub": "Ücretsiz 15 dakikalık görüşme tam olarak bunun için var. Siz mektubu getirin — planı biz getirelim.",
+    "cta": "Ücretsiz görüşme alın",
+    "cta2": "E-posta gönderin"
+  },
+  "footer": {
+    "services": "Hizmetler",
+    "company": "Şirket",
+    "legal": "Hukuki",
+    "about": "Hakkımızda",
+    "privacy": "Gizlilik",
+    "terms": "Koşullar",
+    "rights": "Tüm hakları saklıdır.",
+    "note": "Bu sitedeki bilgiler genel yönlendirme niteliğindedir ve hukuki danışmanlık teşkil etmez.",
+    "pilot": "Pilot hizmet. Fiyatlar ve kapsam test edilmektedir, değişebilir."
+  },
+  "catalog": {
+    "intro": {
+      "n": "Ücretsiz ön görüşme",
+      "d": "Size yardımcı olup olamayacağımızı söyleyebilmemiz için kısa bir görüşme."
+    },
+    "k01": {
+      "n": "Mektup açıklaması",
+      "d": "Bir mektup veya karar (en fazla 5 sayfa) yazılı olarak açıklanır, sonraki adımlarınızla birlikte."
+    },
+    "k02": {
+      "n": "Netlik danışmanlığı",
+      "d": "Dosyanız hakkında bir danışmanla 45 dakika, telefon veya görüntülü."
+    },
+    "h01": {
+      "n": "Başvuru birlikte",
+      "d": "Standart bir başvuru belgeleriyle hazırlanır ve sizinle tamamlanır."
+    },
+    "o01": {
+      "n": "Dosya takibi",
+      "d": "30 gün takip, en fazla 3 temas, süreler izlenir."
+    },
+    "s01": {
+      "n": "Kıdemli ve uzman danışmanlık",
+      "d": "Karmaşık veya yüksek riskli dosyalar için saatlik danışmanlık."
+    },
+    "t30": {
+      "n": "Tolk — 30 dakika",
+      "d": "Nitelikli tolk ile telefon veya görüntülü tercüme."
+    },
+    "t60": {
+      "n": "Tolk — 60 dakika",
+      "d": "Nitelikli tolk ile telefon veya görüntülü tercüme."
+    },
+    "tf": {
+      "n": "Yerinde tolk",
+      "d": "Yüz yüze tercüme. Görev başına fiyat, yol dahil."
+    }
+  }
+}

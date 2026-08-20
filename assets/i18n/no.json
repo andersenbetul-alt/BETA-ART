@@ -1,0 +1,469 @@
+{
+  "meta": {
+    "title": "NAVIAR — Få hjelp til å forstå og følge opp offentlige saker",
+    "description": "NAVIAR er en uavhengig rådgivningstjeneste som hjelper mennesker med å forstå, organisere og følge opp saker i møte med offentlige tjenester."
+  },
+  "brand": {
+    "tagline": "Klarhet i komplekse systemer.",
+    "promise": "Fra første brev til ferdig oppfølging.",
+    "disclaimer": "NAVIAR er en uavhengig virksomhet og er ikke en del av NAV eller offentlig forvaltning."
+  },
+  "nav": {
+    "how": "Slik jobber vi",
+    "services": "Tjenester",
+    "areas": "Områder",
+    "pricing": "Priser",
+    "safety": "Trygghet",
+    "faq": "Spørsmål",
+    "contact": "Kontakt",
+    "cta": "Bestill møte",
+    "menu": "Meny",
+    "language": "Språk"
+  },
+  "hero": {
+    "eyebrow": "Innbyggerstøtte og saksveiledning",
+    "title": "Få hjelp til å forstå og følge opp offentlige saker",
+    "sub": "Vi gjør offentlige prosesser enklere. Du får vite hvilket kontor du skal kontakte, hvilke dokumenter som kreves, hva du skal skrive, når fristen er — og hva neste steg er.",
+    "sales": "Send oss brevet. Få en klar handlingsplan.",
+    "cta1": "Send oss brevet",
+    "cta2": "Slik jobber vi",
+    "cardTitle": "Dette får du",
+    "card": [
+      "Brevet eller vedtaket forklart på et enkelt språk",
+      "Rettigheter, plikter og alle viktige datoer",
+      "Dokumentliste og en plan steg for steg",
+      "Riktig instans og riktig vei inn"
+    ]
+  },
+  "stats": {
+    "languages": "Språk vi hjelper på",
+    "areas": "Områder vi dekker",
+    "reply": "Svar på nye henvendelser",
+    "written": "Avtalt skriftlig på forhånd"
+  },
+  "finder": {
+    "eyebrow": "Start her",
+    "title": "Hva trenger du hjelp med?",
+    "lead": "Tre korte spørsmål. Du får en anbefaling, og vi lærer hva folk faktisk sliter med — det avgjør hva vi bygger videre.",
+    "back": "Tilbake",
+    "restart": "Start på nytt",
+    "progress": "Spørsmål {n} av {total}",
+    "questions": [
+      {
+        "q": "Hva er situasjonen din nå?",
+        "hint": "Velg det som passer best.",
+        "options": [
+          "Jeg har fått et brev eller vedtak jeg ikke forstår",
+          "Jeg skal søke om noe",
+          "Saken min tar for lang tid eller har stoppet opp",
+          "Jeg er uenig i et vedtak og vil klage",
+          "Jeg hjelper et familiemedlem med saken deres"
+        ]
+      },
+      {
+        "q": "Hvilken instans gjelder det?",
+        "hint": "Velg én. Du kan fortelle mer senere.",
+        "options": [
+          "NAV",
+          "Kommunen",
+          "Skatteetaten eller Altinn",
+          "Helfo, helse eller pensjon",
+          "Jeg er usikker"
+        ]
+      },
+      {
+        "q": "Er det en frist?",
+        "hint": "Fristen avgjør hvor raskt vi må jobbe.",
+        "options": [
+          "Ja — innen 7 dager",
+          "Ja — innen en måned",
+          "Ingen frist, eller jeg vet ikke"
+        ]
+      }
+    ],
+    "resultTitle": "Vår anbefaling",
+    "urgent": "Kort frist — ta kontakt i dag",
+    "cta": "Bestill denne tjenesten",
+    "ctaAlt": "Spør oss først",
+    "saved": "Takk. Svarene dine hjelper oss å prioritere den hjelpen folk trenger mest."
+  },
+  "process": {
+    "eyebrow": "Slik jobber vi",
+    "title": "Én dør inn, fem steg gjennom",
+    "lead": "Du trenger ikke vite hvilken pakke du trenger. Send oss saken — vi vurderer den, gir deg en plan og en pris, og følger den til den er ferdig.",
+    "steps": [
+      {
+        "t": "Forstå",
+        "d": "Vi leser brevet eller vedtaket og forklarer med enkle ord hva det står, hva det betyr for deg og hvilke datoer som gjelder."
+      },
+      {
+        "t": "Forberede",
+        "d": "Vi lister opp dokumentene du trenger, hjelper deg å fylle ut skjemaer og skriver utkast til brevene som skal til instansen."
+      },
+      {
+        "t": "Gjennomføre",
+        "d": "Vi fullfører søknaden sammen med deg, gjennom riktig kanal, og noterer hva som ble sendt og når."
+      },
+      {
+        "t": "Følge opp",
+        "d": "Vi følger saksbehandlingstiden, håndterer krav om manglende dokumenter og holder deg oppdatert på hvor saken står."
+      },
+      {
+        "t": "Klage og eskalering",
+        "d": "Vi forklarer vedtaket og klagefristen, hjelper med å forberede klagen, og henviser til advokat eller fagperson når saken krever det."
+      }
+    ]
+  },
+  "status": {
+    "title": "Du ser alltid fire ting",
+    "lead": "Ingen sak hos oss er en svart boks. I hvert steg ser du nøyaktig hvor den står.",
+    "items": [
+      "Hvor saken står akkurat nå",
+      "Hva som er neste handling",
+      "Hvem som gjør det — du eller vi",
+      "Når fristen er"
+    ]
+  },
+  "services": {
+    "eyebrow": "Tjenester",
+    "title": "Støtte i hvert steg av en offentlig sak",
+    "lead": "Vi starter med problemet du står i, ikke med en pakke.",
+    "items": [
+      {
+        "t": "Brev og vedtak forklart",
+        "d": "Offentlige brev skrevet i forvaltningsspråk, oversatt til noe du kan handle ut fra.",
+        "i": [
+          "Forklaring på klarspråk",
+          "Rettigheter, plikter og frister",
+          "Hva skjer hvis du ikke gjør noe"
+        ]
+      },
+      {
+        "t": "Søknader og skjemaer",
+        "d": "Vi finner riktig søknadsvei og fyller den ut sammen med deg.",
+        "i": [
+          "Sjekkliste for dokumenter",
+          "Skjemaer fylt ut sammen",
+          "Utkast til brev og redegjørelser"
+        ]
+      },
+      {
+        "t": "Oppfølging av saken",
+        "d": "Saker stopper opp når ingen følger med. Vi følger med.",
+        "i": [
+          "Overvåking av frister",
+          "Krav om manglende dokumenter håndtert",
+          "Jevnlige statusoppdateringer"
+        ]
+      },
+      {
+        "t": "Klage og innsigelse",
+        "d": "Et vedtak du er uenig i har en frist. Vi hjelper deg å bruke den riktig.",
+        "i": [
+          "Vedtaket forklart",
+          "Dokumentene organisert",
+          "Hjelp til å skrive klagen"
+        ]
+      },
+      {
+        "t": "Forberedelse til møter",
+        "d": "Gå inn i et møte eller en telefonsamtale og vit hva du skal si og spørre om.",
+        "i": [
+          "Hva instansen kommer til å spørre om",
+          "Hva du bør ha med",
+          "Referat i etterkant"
+        ]
+      },
+      {
+        "t": "Kontakt på dine vegne",
+        "d": "Med en skriftlig fullmakt som du selv bestemmer omfanget av, kan vi kommunisere med instansen for deg.",
+        "i": [
+          "Omfang og varighet bestemmer du",
+          "Skriftlig logg over all kontakt",
+          "Kan trekkes tilbake når du vil"
+        ]
+      }
+    ]
+  },
+  "areas": {
+    "eyebrow": "Dekning",
+    "title": "Områder vi jobber med",
+    "lead": "Piloten vår handler om NAV og kommunale tjenester. De øvrige områdene dekkes gjennom egne rådgivere eller kvalitetssikrede samarbeidspartnere.",
+    "items": [
+      "NAV — ytelser, sykmelding, arbeidsledighet",
+      "Kommunale tjenester",
+      "Skatteetaten og Altinn",
+      "Helfo og helseforvaltning",
+      "Pensjonssaker",
+      "Bolig og sosial støtte",
+      "Sykdoms- og arbeidsledighetsprosesser",
+      "Familie- og omsorgstjenester",
+      "Offentlige prosesser for nyankomne til Norge"
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Priser",
+    "title": "Tydelige priser, avtalt før vi starter",
+    "lead": "Dette er pilotpriser. Du får alltid omfang og pris skriftlig før arbeidet begynner, og kostnader til tredjepart står oppført separat.",
+    "from": "fra",
+    "quote": "Etter tilbud",
+    "vat": "Priser i NOK. Pilotpriser, kan bli justert.",
+    "select": "Bestill denne",
+    "ask": "Be om tilbud",
+    "plans": [
+      {
+        "n": "Gratis forhåndssamtale",
+        "tag": "15 minutter",
+        "d": "En kort samtale så vi kan si om vi kan hjelpe deg, og hvordan.",
+        "f": [
+          "En ærlig vurdering",
+          "Hvilken tjeneste som passer",
+          "Uforpliktende"
+        ]
+      },
+      {
+        "n": "NAVIAR Klarhet",
+        "tag": "Forstå brevet",
+        "d": "Ett brev eller vedtak forklart, med dine neste steg skriftlig.",
+        "f": [
+          "Forklaring på klarspråk",
+          "Frister og rettigheter",
+          "Skriftlig handlingsplan"
+        ]
+      },
+      {
+        "n": "NAVIAR Handling",
+        "tag": "Søknad sammen",
+        "d": "Vi forbereder og fullfører en søknad sammen med deg, dokumenter inkludert.",
+        "f": [
+          "Sjekkliste for dokumenter",
+          "Skjema fylt ut sammen",
+          "Hjelp til innsending"
+        ]
+      },
+      {
+        "n": "NAVIAR Oppfølging",
+        "tag": "Saksstøtte",
+        "d": "Vi følger saken, håndterer korrespondansen og holder fristene.",
+        "f": [
+          "Overvåking av frister",
+          "Kontakt med instansen",
+          "Statusoppdateringer"
+        ]
+      },
+      {
+        "n": "NAVIAR Komplett",
+        "tag": "Fra start til slutt",
+        "d": "Hele prosessen håndtert for deg, fra første brev til endelig utfall.",
+        "f": [
+          "Alle steg inkludert",
+          "Én fast rådgiver",
+          "Pris per sak"
+        ]
+      }
+    ],
+    "moreTitle": "For familier og virksomheter",
+    "more": [
+      {
+        "n": "NAVIAR Familie",
+        "d": "Koordinering på vegne av en eldre pårørende eller et familiemedlem som trenger støtte."
+      },
+      {
+        "n": "NAVIAR Business",
+        "d": "Arbeidsgiverbetalt støtte til ansatte som står i offentlige prosesser."
+      },
+      {
+        "n": "NAVIAR Public",
+        "d": "Kapasitetsstøtte og tjenesteutvikling for kommuner og offentlige virksomheter."
+      }
+    ],
+    "catalogTitle": "Full prisliste",
+    "code": "Kode",
+    "delivery": "Levering",
+    "perHour": "per time",
+    "inclVat": "inkl. mva."
+  },
+  "safety": {
+    "eyebrow": "Trygghet og etikk",
+    "title": "Regler vi aldri bryter",
+    "lead": "Du betror oss sensitive saker. Disse reglene er ikke til forhandling, og du kan holde oss til dem.",
+    "rules": [
+      "Vi ber aldri om BankID-passordet eller kodene dine.",
+      "Vi logger aldri inn på kontoene dine med din identitet.",
+      "Vi jobber mens du er til stede, eller med en skriftlig fullmakt du har gitt.",
+      "Sensitive dokumenter sendes aldri med vanlig e-post.",
+      "Vi garanterer aldri et utfall eller en ytelse.",
+      "Saker som krever juridisk representasjon henvises til advokat."
+    ]
+  },
+  "booking": {
+    "eyebrow": "Bestilling",
+    "title": "Bestill et møte",
+    "lead": "Velg en tjeneste, velg et tidspunkt, og fortell kort hva saken gjelder. Telefon eller video — du velger.",
+    "steps": [
+      "Tjeneste",
+      "Tidspunkt",
+      "Opplysninger",
+      "Betaling"
+    ],
+    "chooseService": "Hvilken tjeneste trenger du?",
+    "chooseTime": "Velg dag og tidspunkt",
+    "tzNote": "Alle tidspunkter er norsk tid (Europa/Oslo).",
+    "noSlots": "Ingen ledige tider denne dagen. Velg en annen dag.",
+    "loadingSlots": "Henter ledige tider …",
+    "yourDetails": "Dine opplysninger",
+    "name": "Fullt navn",
+    "email": "E-post",
+    "phone": "Telefon",
+    "lang": "Ønsket språk i møtet",
+    "channel": "Hvordan vil du møtes?",
+    "channelPhone": "Telefon",
+    "channelVideo": "Video",
+    "channelOffice": "På kontoret",
+    "case": "Hva gjelder saken?",
+    "casePlaceholder": "Hvilken instans, hva det står i brevet, og eventuell frist du kjenner til. Ikke skriv fødselsnummer eller helseopplysninger her.",
+    "noSensitive": "Ikke skriv fødselsnummer eller helseopplysninger i dette feltet. Du får en sikker kanal for dokumenter etter bestillingen.",
+    "consent": "Jeg samtykker til at NAVIAR kan kontakte meg om denne henvendelsen og behandle opplysningene mine til dette formålet.",
+    "summary": "Din bestilling",
+    "service": "Tjeneste",
+    "when": "Tidspunkt",
+    "duration": "Varighet",
+    "total": "Totalt",
+    "payTitle": "Hvordan vil du betale?",
+    "payCard": "Kort",
+    "payCardD": "Sikker kortbetaling. Du sendes videre til betalingsleverandøren vår.",
+    "payVipps": "Vipps",
+    "payVippsD": "Betal med Vipps på mobilen.",
+    "payInvoice": "Faktura",
+    "payInvoiceD": "Vi sender faktura med 10 dagers betalingsfrist etter møtet.",
+    "payFree": "Dette møtet er gratis. Ingen betaling er nødvendig.",
+    "next": "Fortsett",
+    "back": "Tilbake",
+    "confirm": "Bekreft bestilling",
+    "pay": "Bekreft og betal",
+    "processing": "Behandler …",
+    "doneTitle": "Bestillingen er mottatt",
+    "doneLead": "Vi har sendt en bekreftelse til e-posten din. Ta vare på referansen ved kontakt med oss.",
+    "reference": "Referanse",
+    "doneNext": "Neste: du får en sikker lenke for opplasting av dokumenter. Send aldri sensitive dokumenter med vanlig e-post.",
+    "another": "Gjør en ny bestilling",
+    "demoNotice": "Demomodus: bestillingssystemet er ikke koblet til ennå, så denne bestillingen lagres bare i nettleseren din. Koble til backend i assets/js/config.js for å gå live.",
+    "errGeneric": "Noe gikk galt. Prøv igjen, eller ta kontakt med oss direkte.",
+    "errSlotTaken": "Det tidspunktet ble nettopp opptatt. Velg et annet.",
+    "groupAdvice": "Rådgivning",
+    "groupTolk": "Tolking",
+    "tolkLangLabel": "Hvilket språk trenger du?",
+    "tolkDialect": "Dialekt eller region",
+    "express": "Ekspress — innen 24 timer (+25 %)",
+    "expressD": "Hvis en ledig rådgiver tar oppdraget, prioriteres saken din.",
+    "angrerett": "Tjenester har som hovedregel 14 dagers angrerett. Ber du oss starte med én gang, godtar du at angreretten faller bort når tjenesten er levert i sin helhet, og at du betaler for arbeid som allerede er utført dersom du avbestiller.",
+    "deliveryNote": "Denne tjenesten krever ikke møte. Vi leverer skriftlig innen {sla}.",
+    "upload": "Dokumenter",
+    "uploadNote": "Du får en sikker opplastingslenke etter bestillingen. Send aldri sensitive dokumenter med vanlig e-post."
+  },
+  "faq": {
+    "eyebrow": "Spørsmål",
+    "title": "Ofte stilte spørsmål",
+    "items": [
+      {
+        "q": "Er dere en del av NAV?",
+        "a": "Nei. NAVIAR er en uavhengig virksomhet og er ikke en del av NAV eller offentlig forvaltning. Vi jobber for deg, ikke for instansen som behandler saken din."
+      },
+      {
+        "q": "Kan dere garantere at jeg får ytelsen eller tillatelsen?",
+        "a": "Nei, og du bør ikke stole på noen som sier at de kan det. Vedtaket tilhører instansen. Det vi kan gjøre er å sørge for at saken din er komplett, korrekt og levert i tide — det er der de fleste saker taper."
+      },
+      {
+        "q": "Trenger dere BankID-en min?",
+        "a": "Aldri passordet eller kodene dine. Enten er du til stede og logger inn selv, eller du gir oss en skriftlig fullmakt som sier nøyaktig hva vi kan gjøre og hvor lenge. Du kan trekke den tilbake når som helst."
+      },
+      {
+        "q": "Hva koster det?",
+        "a": "Den første samtalen på 15 minutter er gratis. Deretter får du en fast pris skriftlig før arbeidet starter. Pilotprisene starter på 690 kr for ett brev forklart."
+      },
+      {
+        "q": "Hvilke språk kan jeg få hjelp på?",
+        "a": "Vi jobber på norsk, engelsk, tyrkisk, arabisk, polsk, ukrainsk, russisk og somali. Oppgi ønsket språk når du bestiller."
+      },
+      {
+        "q": "Er dere advokater?",
+        "a": "Nei. Vi gir veiledning, forberedelse og oppfølging. Når en sak krever juridisk representasjon, eller faglig vurdering innen helse, skatt eller innvandring, henviser vi deg til en kvalifisert fagperson."
+      },
+      {
+        "q": "Hvordan sender jeg dokumenter trygt?",
+        "a": "Etter bestilling får du en sikker opplastingslenke. Ikke send sensitive dokumenter som vanlige e-postvedlegg."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Send oss brevet",
+    "lead": "Beskriv situasjonen kort, så svarer vi innen én virkedag. Er det enklere, bestill heller en gratis samtale på 15 minutter.",
+    "email": "E-post",
+    "phone": "Telefon",
+    "office": "Kontor",
+    "hours": "Åpningstid",
+    "org": "Org.nr.",
+    "formTitle": "Skriv til oss",
+    "message": "Hva trenger du hjelp med?",
+    "messagePlaceholder": "Hvilken instans, hva som har skjedd, og eventuell frist. Utelat fødselsnummer og helseopplysninger.",
+    "send": "Send henvendelse",
+    "sent": "Takk. Vi har mottatt henvendelsen din og svarer innen én virkedag.",
+    "note": "Henvendelsen din er konfidensiell og deles aldri med tredjeparter."
+  },
+  "band": {
+    "title": "Usikker på neste steg?",
+    "sub": "Det er nettopp det den gratis 15-minutters samtalen er til for. Ta med brevet — så tar vi med planen.",
+    "cta": "Bestill en gratis samtale",
+    "cta2": "Send oss en e-post"
+  },
+  "footer": {
+    "services": "Tjenester",
+    "company": "Virksomheten",
+    "legal": "Juridisk",
+    "about": "Om oss",
+    "privacy": "Personvern",
+    "terms": "Vilkår",
+    "rights": "Alle rettigheter forbeholdt.",
+    "note": "Informasjonen på dette nettstedet er generell veiledning og utgjør ikke juridisk rådgivning.",
+    "pilot": "Pilottjeneste. Priser og omfang testes og kan bli endret."
+  },
+  "catalog": {
+    "intro": {
+      "n": "Gratis forhåndssamtale",
+      "d": "En kort samtale så vi kan si om vi kan hjelpe deg."
+    },
+    "k01": {
+      "n": "Brev forklart",
+      "d": "Ett brev eller vedtak (inntil 5 sider) forklart skriftlig, med dine neste steg."
+    },
+    "k02": {
+      "n": "Klar konsultasjon",
+      "d": "45 minutter med en rådgiver om saken din, på telefon eller video."
+    },
+    "h01": {
+      "n": "Søknad sammen",
+      "d": "En standard søknad forberedt og fullført sammen med deg, dokumenter inkludert."
+    },
+    "o01": {
+      "n": "Saksoppfølging",
+      "d": "30 dagers oppfølging med inntil 3 kontaktpunkter, og frister overvåket."
+    },
+    "s01": {
+      "n": "Senior- og ekspertrådgivning",
+      "d": "Rådgivning per time for komplekse saker eller saker med høyere risiko."
+    },
+    "t30": {
+      "n": "Tolk — 30 minutter",
+      "d": "Telefon- eller videotolking med kvalifisert tolk."
+    },
+    "t60": {
+      "n": "Tolk — 60 minutter",
+      "d": "Telefon- eller videotolking med kvalifisert tolk."
+    },
+    "tf": {
+      "n": "Fremmøtetolk",
+      "d": "Tolking på stedet. Pris per oppdrag, reise inkludert."
+    }
+  }
+}

@@ -1,0 +1,469 @@
+{
+  "meta": {
+    "title": "NAVIAR — Help to understand and follow up public-sector cases",
+    "description": "NAVIAR is an independent advisory service that helps people understand, organise and follow up their cases with public authorities in Norway."
+  },
+  "brand": {
+    "tagline": "Clarity in complex systems.",
+    "promise": "From the first letter to completed follow-up.",
+    "disclaimer": "NAVIAR is an independent company and is not part of NAV or any public authority."
+  },
+  "nav": {
+    "how": "How it works",
+    "services": "Services",
+    "areas": "Areas",
+    "pricing": "Prices",
+    "safety": "Safety",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "cta": "Book a meeting",
+    "menu": "Menu",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "Citizen support and case guidance",
+    "title": "Get help to understand and follow up public-sector cases",
+    "sub": "We help you find out which office to contact, which documents are needed, what to write, when the deadline is — and what the next step is.",
+    "sales": "Send us the letter. Get a clear action plan.",
+    "cta1": "Send us the letter",
+    "cta2": "See how it works",
+    "cardTitle": "What you receive",
+    "card": [
+      "Your letter or decision explained in plain language",
+      "Your rights, duties and every important date",
+      "A document checklist and a step-by-step plan",
+      "The right office and the right way to reach it"
+    ]
+  },
+  "stats": {
+    "languages": "Languages we work in",
+    "areas": "Areas we cover",
+    "reply": "Reply to new enquiries",
+    "written": "Scope agreed in writing"
+  },
+  "finder": {
+    "eyebrow": "Start here",
+    "title": "What do you need help with?",
+    "lead": "Three short questions. You get a recommendation, and we learn what people actually struggle with — that is how we decide what to build next.",
+    "back": "Back",
+    "restart": "Start over",
+    "progress": "Question {n} of {total}",
+    "questions": [
+      {
+        "q": "What is your situation right now?",
+        "hint": "Choose the closest match.",
+        "options": [
+          "I received a letter or a decision I do not understand",
+          "I need to apply for something",
+          "My case is taking too long or has stopped",
+          "I disagree with a decision and want to appeal",
+          "I am helping a family member with their case"
+        ]
+      },
+      {
+        "q": "Which office is involved?",
+        "hint": "Choose one. You can tell us more later.",
+        "options": [
+          "NAV",
+          "The municipality (kommune)",
+          "The Tax Administration or Altinn",
+          "Helfo, health or pension",
+          "I am not sure"
+        ]
+      },
+      {
+        "q": "Is there a deadline?",
+        "hint": "Deadlines decide how fast we need to work.",
+        "options": [
+          "Yes — within 7 days",
+          "Yes — within a month",
+          "No deadline, or I do not know"
+        ]
+      }
+    ],
+    "resultTitle": "Our recommendation",
+    "urgent": "Short deadline — contact us today",
+    "cta": "Book this service",
+    "ctaAlt": "Ask us first",
+    "saved": "Thank you. Your answers help us prioritise the help people need most."
+  },
+  "process": {
+    "eyebrow": "How it works",
+    "title": "One door in, five stages through",
+    "lead": "You do not need to know which package you need. Send us the case — we assess it, give you a plan and a price, and stay with it until it is finished.",
+    "steps": [
+      {
+        "t": "Understand",
+        "d": "We read the letter or decision and explain in plain language what it says, what it means for you and which dates matter."
+      },
+      {
+        "t": "Prepare",
+        "d": "We list the documents you need, help you fill in forms, and draft the letters that go to the office."
+      },
+      {
+        "t": "Submit",
+        "d": "We complete the application together with you, through the correct channel, and record what was sent and when."
+      },
+      {
+        "t": "Follow up",
+        "d": "We track response times, handle requests for missing documents and keep you updated on where the case stands."
+      },
+      {
+        "t": "Appeal and escalate",
+        "d": "We explain the decision and the appeal deadline, help prepare the appeal, and refer you to a lawyer or specialist when the case requires one."
+      }
+    ]
+  },
+  "status": {
+    "title": "You always see four things",
+    "lead": "No case with us is a black box. At every stage you can see exactly where things stand.",
+    "items": [
+      "Where the case stands right now",
+      "What the next action is",
+      "Who is doing it — you or us",
+      "When the deadline is"
+    ]
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "Support at every stage of a public-sector case",
+    "lead": "We start with the problem in front of you, not with a package.",
+    "items": [
+      {
+        "t": "Letters and decisions explained",
+        "d": "Official letters written in bureaucratic Norwegian, translated into language you can act on.",
+        "i": [
+          "Plain-language explanation",
+          "Rights, duties and deadlines",
+          "What happens if you do nothing"
+        ]
+      },
+      {
+        "t": "Applications and forms",
+        "d": "We find the right application route and complete it together with you.",
+        "i": [
+          "Document checklist",
+          "Forms filled in together",
+          "Letters and statements drafted"
+        ]
+      },
+      {
+        "t": "Case follow-up",
+        "d": "Cases stall when nobody is watching them. We watch them.",
+        "i": [
+          "Deadline monitoring",
+          "Missing-document requests handled",
+          "Regular status updates"
+        ]
+      },
+      {
+        "t": "Appeals and complaints",
+        "d": "A decision you disagree with has a deadline. We help you use it properly.",
+        "i": [
+          "The decision explained",
+          "Documents organised",
+          "Help drafting the appeal"
+        ]
+      },
+      {
+        "t": "Meeting preparation",
+        "d": "Go into a meeting or a phone call knowing what to say and what to ask.",
+        "i": [
+          "What the office will ask",
+          "What you should bring",
+          "Notes taken afterwards"
+        ]
+      },
+      {
+        "t": "Contact on your behalf",
+        "d": "With a written authorisation (fullmakt) that you define, we can communicate with the office for you.",
+        "i": [
+          "Scope and duration set by you",
+          "Written record of every contact",
+          "Withdrawn whenever you want"
+        ]
+      }
+    ]
+  },
+  "areas": {
+    "eyebrow": "Coverage",
+    "title": "Areas we work in",
+    "lead": "Our pilot focuses on NAV and municipal services. The other areas are covered through our own advisors or vetted partners.",
+    "items": [
+      "NAV — benefits, sick leave, unemployment",
+      "Municipal services (kommune)",
+      "The Tax Administration and Altinn",
+      "Helfo and health administration",
+      "Pension matters",
+      "Housing and social support",
+      "Sickness and unemployment processes",
+      "Family and care services",
+      "Public processes for newcomers to Norway"
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Prices",
+    "title": "Clear prices, agreed before we start",
+    "lead": "These are pilot prices. You always receive the scope and the price in writing before any work begins, and third-party costs are listed separately.",
+    "from": "from",
+    "quote": "By quote",
+    "vat": "Prices in NOK. Pilot pricing, subject to change.",
+    "select": "Book this",
+    "ask": "Request a quote",
+    "plans": [
+      {
+        "n": "Free orientation",
+        "tag": "15 minutes",
+        "d": "A short conversation so we can tell you whether we can help, and how.",
+        "f": [
+          "An honest assessment",
+          "Which service fits",
+          "No obligation"
+        ]
+      },
+      {
+        "n": "NAVIAR Clarity",
+        "tag": "Understand the letter",
+        "d": "One letter or decision explained, with your next steps in writing.",
+        "f": [
+          "Plain-language explanation",
+          "Deadlines and rights",
+          "Written action plan"
+        ]
+      },
+      {
+        "n": "NAVIAR Action",
+        "tag": "Apply together",
+        "d": "We prepare and complete an application with you, documents included.",
+        "f": [
+          "Document checklist",
+          "Form filled in together",
+          "Submission support"
+        ]
+      },
+      {
+        "n": "NAVIAR Follow-up",
+        "tag": "Case support",
+        "d": "We follow the case, handle correspondence and keep the deadlines.",
+        "f": [
+          "Deadline monitoring",
+          "Contact with the office",
+          "Status updates"
+        ]
+      },
+      {
+        "n": "NAVIAR Complete",
+        "tag": "Start to finish",
+        "d": "The whole process managed for you, from the first letter to the final outcome.",
+        "f": [
+          "All stages included",
+          "One named advisor",
+          "Priced per case"
+        ]
+      }
+    ],
+    "moreTitle": "For families and organisations",
+    "more": [
+      {
+        "n": "NAVIAR Family",
+        "d": "Coordination on behalf of an elderly relative or a family member who needs support."
+      },
+      {
+        "n": "NAVIAR Business",
+        "d": "Employer-funded support for employees dealing with public-sector processes."
+      },
+      {
+        "n": "NAVIAR Public",
+        "d": "Capacity support and service development for municipalities and public bodies."
+      }
+    ],
+    "catalogTitle": "Full price list",
+    "code": "Code",
+    "delivery": "Delivery",
+    "perHour": "per hour",
+    "inclVat": "incl. VAT"
+  },
+  "safety": {
+    "eyebrow": "Safety and ethics",
+    "title": "Rules we never break",
+    "lead": "You are handing us sensitive matters. These rules are not negotiable, and you may hold us to them.",
+    "rules": [
+      "We never ask for your BankID password or codes.",
+      "We never log in to your accounts using your identity.",
+      "We work with you present, or under a written authorisation you have given.",
+      "Sensitive documents are never sent by ordinary email.",
+      "We never guarantee an outcome or a benefit.",
+      "Cases requiring legal representation are referred to a lawyer."
+    ]
+  },
+  "booking": {
+    "eyebrow": "Booking",
+    "title": "Book a meeting",
+    "lead": "Choose a service, pick a time, and tell us briefly what the case is about. Phone or video — your choice.",
+    "steps": [
+      "Service",
+      "Time",
+      "Details",
+      "Payment"
+    ],
+    "chooseService": "Which service do you need?",
+    "chooseTime": "Choose a day and time",
+    "tzNote": "All times are Norwegian time (Europe/Oslo).",
+    "noSlots": "No available times on this day. Please choose another day.",
+    "loadingSlots": "Loading available times…",
+    "yourDetails": "Your details",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "lang": "Preferred language for the meeting",
+    "channel": "How should we meet?",
+    "channelPhone": "Phone",
+    "channelVideo": "Video",
+    "channelOffice": "At the office",
+    "case": "What is the case about?",
+    "casePlaceholder": "Which office, what the letter says, and any deadline you know about. Do not include personal identity numbers or health details here.",
+    "noSensitive": "Please do not write national identity numbers or health information in this field. You will get a secure channel for documents after booking.",
+    "consent": "I agree that NAVIAR may contact me about this enquiry and process my details for that purpose.",
+    "summary": "Your booking",
+    "service": "Service",
+    "when": "Time",
+    "duration": "Duration",
+    "total": "Total",
+    "payTitle": "How would you like to pay?",
+    "payCard": "Card",
+    "payCardD": "Secure card payment. You are redirected to our payment provider.",
+    "payVipps": "Vipps",
+    "payVippsD": "Pay with Vipps on your phone.",
+    "payInvoice": "Invoice",
+    "payInvoiceD": "We send an invoice with 10 days to pay after the meeting.",
+    "payFree": "This meeting is free. No payment is needed.",
+    "next": "Continue",
+    "back": "Back",
+    "confirm": "Confirm booking",
+    "pay": "Confirm and pay",
+    "processing": "Processing…",
+    "doneTitle": "Booking received",
+    "doneLead": "We have sent a confirmation to your email. Keep this reference for any contact with us.",
+    "reference": "Reference",
+    "doneNext": "Next: you will receive a secure link for uploading documents. Never send sensitive documents by ordinary email.",
+    "another": "Make another booking",
+    "demoNotice": "Demo mode: no booking system is connected yet, so this booking is only stored in your browser. Connect the backend in assets/js/config.js to go live.",
+    "errGeneric": "Something went wrong. Please try again, or contact us directly.",
+    "errSlotTaken": "That time was just taken. Please choose another.",
+    "groupAdvice": "Advice",
+    "groupTolk": "Interpreting",
+    "tolkLangLabel": "Which language do you need?",
+    "tolkDialect": "Dialect or region",
+    "express": "Express — within 24 hours (+25%)",
+    "expressD": "If an available advisor accepts, your case is prioritised.",
+    "angrerett": "Services normally carry a 14-day right of withdrawal. If you ask us to start immediately, you accept that the right ends once the service is fully delivered, and that you pay for work already done if you cancel.",
+    "deliveryNote": "No meeting is needed for this service. We deliver in writing within {sla}.",
+    "upload": "Documents",
+    "uploadNote": "You receive a secure upload link after booking. Never send sensitive documents by ordinary email."
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "title": "Frequently asked",
+    "items": [
+      {
+        "q": "Are you part of NAV?",
+        "a": "No. NAVIAR is an independent company and is not part of NAV or any public authority. We work for you, not for the office handling your case."
+      },
+      {
+        "q": "Can you guarantee that I get the benefit or the permit?",
+        "a": "No, and you should not trust anyone who says they can. The decision belongs to the authority. What we can do is make sure your case is complete, correct and submitted on time — which is where most cases are lost."
+      },
+      {
+        "q": "Do you need my BankID?",
+        "a": "Never your password or codes. Either you are present and log in yourself, or you give us a written authorisation (fullmakt) that defines exactly what we may do and for how long. You can withdraw it at any time."
+      },
+      {
+        "q": "What does it cost?",
+        "a": "The first 15-minute conversation is free. After that you get a fixed price in writing before any work starts. Pilot prices start at 690 NOK for a letter explained."
+      },
+      {
+        "q": "Which languages can I get help in?",
+        "a": "We work in Norwegian, English, Turkish, Arabic, Polish, Ukrainian, Russian and Somali. Tell us your preferred language when you book."
+      },
+      {
+        "q": "Are you lawyers?",
+        "a": "No. We provide guidance, preparation and follow-up. When a case needs legal representation, or specialist review in health, tax or immigration matters, we refer you to a qualified professional."
+      },
+      {
+        "q": "How do I send documents safely?",
+        "a": "After booking you receive a secure upload link. Please do not send sensitive documents as ordinary email attachments."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Send us the letter",
+    "lead": "Describe your situation briefly and we will reply within one working day. If it is easier, book a free 15-minute conversation instead.",
+    "email": "Email",
+    "phone": "Phone",
+    "office": "Office",
+    "hours": "Opening hours",
+    "org": "Org. no.",
+    "formTitle": "Write to us",
+    "message": "What do you need help with?",
+    "messagePlaceholder": "Which office, what happened, and any deadline. Please leave out identity numbers and health details.",
+    "send": "Send enquiry",
+    "sent": "Thank you. We have received your enquiry and will reply within one working day.",
+    "note": "Your enquiry is confidential and is never shared with third parties."
+  },
+  "band": {
+    "title": "Uncertain about the next step?",
+    "sub": "That is exactly what the free 15-minute conversation is for. Bring the letter — we will bring the plan.",
+    "cta": "Book a free conversation",
+    "cta2": "Email us"
+  },
+  "footer": {
+    "services": "Services",
+    "company": "Company",
+    "legal": "Legal",
+    "about": "About us",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "rights": "All rights reserved.",
+    "note": "Information on this site is general guidance and does not constitute legal advice.",
+    "pilot": "Pilot service. Prices and scope are being tested and may change."
+  },
+  "catalog": {
+    "intro": {
+      "n": "Free orientation",
+      "d": "A short conversation so we can tell you whether we can help."
+    },
+    "k01": {
+      "n": "Letter explained",
+      "d": "One letter or decision (up to 5 pages) explained in writing, with your next steps."
+    },
+    "k02": {
+      "n": "Clarity consultation",
+      "d": "45 minutes with an advisor about your case, by phone or video."
+    },
+    "h01": {
+      "n": "Application together",
+      "d": "A standard application prepared and completed with you, documents included."
+    },
+    "o01": {
+      "n": "Case follow-up",
+      "d": "30 days of follow-up with up to 3 contact points, deadlines monitored."
+    },
+    "s01": {
+      "n": "Senior and specialist advice",
+      "d": "Hourly advice for complex or higher-risk cases."
+    },
+    "t30": {
+      "n": "Interpreter — 30 minutes",
+      "d": "Phone or video interpreting with a qualified interpreter."
+    },
+    "t60": {
+      "n": "Interpreter — 60 minutes",
+      "d": "Phone or video interpreting with a qualified interpreter."
+    },
+    "tf": {
+      "n": "On-site interpreter",
+      "d": "Interpreting in person. Priced per assignment, travel included."
+    }
+  }
+}

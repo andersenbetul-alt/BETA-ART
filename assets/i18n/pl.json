@@ -1,0 +1,469 @@
+{
+  "meta": {
+    "title": "NAVIAR — Pomoc w zrozumieniu i prowadzeniu spraw urzędowych",
+    "description": "NAVIAR to niezależna usługa doradcza, która pomaga ludziom zrozumieć, uporządkować i prowadzić swoje sprawy w norweskich urzędach."
+  },
+  "brand": {
+    "tagline": "Jasność w złożonych systemach.",
+    "promise": "Od pierwszego pisma do zakończenia sprawy.",
+    "disclaimer": "NAVIAR jest niezależną firmą i nie jest częścią NAV ani żadnego urzędu państwowego."
+  },
+  "nav": {
+    "how": "Jak pracujemy",
+    "services": "Usługi",
+    "areas": "Obszary",
+    "pricing": "Ceny",
+    "safety": "Bezpieczeństwo",
+    "faq": "Pytania",
+    "contact": "Kontakt",
+    "cta": "Umów spotkanie",
+    "menu": "Menu",
+    "language": "Język"
+  },
+  "hero": {
+    "eyebrow": "Wsparcie mieszkańców i prowadzenie spraw",
+    "title": "Uzyskaj pomoc w zrozumieniu i prowadzeniu spraw urzędowych",
+    "sub": "Upraszczamy sprawy urzędowe. Dowiesz się, do którego urzędu się zwrócić, jakie dokumenty są potrzebne, co napisać, jaki jest termin — i jaki jest następny krok.",
+    "sales": "Wyślij nam pismo. Otrzymasz jasny plan działania.",
+    "cta1": "Wyślij nam pismo",
+    "cta2": "Zobacz, jak pracujemy",
+    "cardTitle": "Co otrzymujesz",
+    "card": [
+      "Twoje pismo lub decyzję wyjaśnione prostym językiem",
+      "Twoje prawa, obowiązki i wszystkie ważne daty",
+      "Listę dokumentów i plan krok po kroku",
+      "Właściwy urząd i właściwą drogę kontaktu"
+    ]
+  },
+  "stats": {
+    "languages": "Języki, w których pomagamy",
+    "areas": "Obszary, które obejmujemy",
+    "reply": "Odpowiedź na nowe zgłoszenia",
+    "written": "Zakres ustalony pisemnie"
+  },
+  "finder": {
+    "eyebrow": "Zacznij tutaj",
+    "title": "W czym potrzebujesz pomocy?",
+    "lead": "Trzy krótkie pytania. Ty dostajesz rekomendację, a my dowiadujemy się, z czym ludzie naprawdę mają problem — to decyduje o tym, co budujemy dalej.",
+    "back": "Wstecz",
+    "restart": "Zacznij od nowa",
+    "progress": "Pytanie {n} z {total}",
+    "questions": [
+      {
+        "q": "Jaka jest Twoja sytuacja?",
+        "hint": "Wybierz najbliższą odpowiedź.",
+        "options": [
+          "Dostałem pismo lub decyzję, której nie rozumiem",
+          "Muszę złożyć wniosek",
+          "Moja sprawa trwa zbyt długo albo utknęła",
+          "Nie zgadzam się z decyzją i chcę się odwołać",
+          "Pomagam członkowi rodziny w jego sprawie"
+        ]
+      },
+      {
+        "q": "Którego urzędu dotyczy sprawa?",
+        "hint": "Wybierz jeden. Więcej powiesz nam później.",
+        "options": [
+          "NAV",
+          "Gmina (kommune)",
+          "Urząd skarbowy lub Altinn",
+          "Helfo, zdrowie lub emerytura",
+          "Nie jestem pewien"
+        ]
+      },
+      {
+        "q": "Czy jest termin?",
+        "hint": "Termin decyduje o tym, jak szybko musimy działać.",
+        "options": [
+          "Tak — w ciągu 7 dni",
+          "Tak — w ciągu miesiąca",
+          "Brak terminu albo nie wiem"
+        ]
+      }
+    ],
+    "resultTitle": "Nasza rekomendacja",
+    "urgent": "Krótki termin — skontaktuj się dzisiaj",
+    "cta": "Zamów tę usługę",
+    "ctaAlt": "Najpierw zapytam",
+    "saved": "Dziękujemy. Twoje odpowiedzi pomagają nam ustalić, jakiej pomocy ludzie potrzebują najbardziej."
+  },
+  "process": {
+    "eyebrow": "Jak pracujemy",
+    "title": "Jedne drzwi, pięć etapów",
+    "lead": "Nie musisz wiedzieć, którego pakietu potrzebujesz. Wyślij nam sprawę — ocenimy ją, damy Ci plan i cenę, i zostaniemy przy niej do końca.",
+    "steps": [
+      {
+        "t": "Zrozumieć",
+        "d": "Czytamy pismo lub decyzję i wyjaśniamy prostym językiem, co tam jest napisane, co to oznacza dla Ciebie i które daty się liczą."
+      },
+      {
+        "t": "Przygotować",
+        "d": "Robimy listę potrzebnych dokumentów, pomagamy wypełnić formularze i piszemy projekty pism do urzędu."
+      },
+      {
+        "t": "Złożyć",
+        "d": "Kończymy wniosek razem z Tobą, właściwym kanałem, i zapisujemy, co i kiedy zostało wysłane."
+      },
+      {
+        "t": "Prowadzić",
+        "d": "Pilnujemy czasu rozpatrywania, obsługujemy wezwania o brakujące dokumenty i informujemy Cię o stanie sprawy."
+      },
+      {
+        "t": "Odwołanie i eskalacja",
+        "d": "Wyjaśniamy decyzję i termin odwołania, pomagamy przygotować odwołanie i kierujemy do prawnika lub specjalisty, gdy sprawa tego wymaga."
+      }
+    ]
+  },
+  "status": {
+    "title": "Zawsze widzisz cztery rzeczy",
+    "lead": "Żadna sprawa u nas nie jest czarną skrzynką. Na każdym etapie widzisz dokładnie, na czym stoi.",
+    "items": [
+      "Na jakim etapie jest sprawa",
+      "Jaki jest następny krok",
+      "Kto go wykonuje — Ty czy my",
+      "Kiedy upływa termin"
+    ]
+  },
+  "services": {
+    "eyebrow": "Usługi",
+    "title": "Wsparcie na każdym etapie sprawy urzędowej",
+    "lead": "Zaczynamy od problemu, który masz przed sobą, a nie od pakietu.",
+    "items": [
+      {
+        "t": "Pisma i decyzje wyjaśnione",
+        "d": "Urzędowe pisma pisane językiem administracji, przetłumaczone na język, na podstawie którego możesz działać.",
+        "i": [
+          "Wyjaśnienie prostym językiem",
+          "Prawa, obowiązki i terminy",
+          "Co się stanie, jeśli nic nie zrobisz"
+        ]
+      },
+      {
+        "t": "Wnioski i formularze",
+        "d": "Znajdujemy właściwą drogę wniosku i wypełniamy go razem z Tobą.",
+        "i": [
+          "Lista dokumentów",
+          "Formularze wypełniane wspólnie",
+          "Projekty pism i oświadczeń"
+        ]
+      },
+      {
+        "t": "Prowadzenie sprawy",
+        "d": "Sprawy stoją, kiedy nikt ich nie pilnuje. My pilnujemy.",
+        "i": [
+          "Kontrola terminów",
+          "Obsługa wezwań o dokumenty",
+          "Regularne informacje o statusie"
+        ]
+      },
+      {
+        "t": "Odwołania i skargi",
+        "d": "Decyzja, z którą się nie zgadzasz, ma termin. Pomagamy go dobrze wykorzystać.",
+        "i": [
+          "Wyjaśnienie decyzji",
+          "Uporządkowanie dokumentów",
+          "Pomoc w napisaniu odwołania"
+        ]
+      },
+      {
+        "t": "Przygotowanie do spotkania",
+        "d": "Wejdź na spotkanie lub rozmowę telefoniczną wiedząc, co powiedzieć i o co zapytać.",
+        "i": [
+          "O co zapyta urząd",
+          "Co należy zabrać",
+          "Notatka po spotkaniu"
+        ]
+      },
+      {
+        "t": "Kontakt w Twoim imieniu",
+        "d": "Na podstawie pisemnego pełnomocnictwa (fullmakt), którego zakres sam określasz, możemy kontaktować się z urzędem za Ciebie.",
+        "i": [
+          "Zakres i czas ustalasz Ty",
+          "Pisemny zapis każdego kontaktu",
+          "Można je cofnąć w każdej chwili"
+        ]
+      }
+    ]
+  },
+  "areas": {
+    "eyebrow": "Zakres",
+    "title": "Obszary, którymi się zajmujemy",
+    "lead": "Nasz pilotaż skupia się na NAV i usługach gminnych. Pozostałe obszary obsługujemy przez własnych doradców lub sprawdzonych partnerów.",
+    "items": [
+      "NAV — świadczenia, zwolnienia, bezrobocie",
+      "Usługi gminne",
+      "Urząd skarbowy i Altinn",
+      "Helfo i administracja zdrowia",
+      "Sprawy emerytalne",
+      "Mieszkanie i wsparcie socjalne",
+      "Procesy chorobowe i bezrobocia",
+      "Usługi rodzinne i opiekuńcze",
+      "Sprawy urzędowe nowo przybyłych do Norwegii"
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Ceny",
+    "title": "Jasne ceny, ustalone zanim zaczniemy",
+    "lead": "To ceny pilotażowe. Zakres i cenę zawsze dostajesz na piśmie przed rozpoczęciem pracy, a koszty stron trzecich są wykazane osobno.",
+    "from": "od",
+    "quote": "Na podstawie oferty",
+    "vat": "Ceny w NOK. Ceny pilotażowe, mogą ulec zmianie.",
+    "select": "Zamów",
+    "ask": "Poproś o ofertę",
+    "plans": [
+      {
+        "n": "Bezpłatna rozmowa wstępna",
+        "tag": "15 minut",
+        "d": "Krótka rozmowa, żebyśmy mogli powiedzieć, czy i jak możemy pomóc.",
+        "f": [
+          "Uczciwa ocena",
+          "Która usługa pasuje",
+          "Bez zobowiązań"
+        ]
+      },
+      {
+        "n": "NAVIAR Klarhet",
+        "tag": "Zrozum pismo",
+        "d": "Jedno pismo lub decyzja wyjaśnione, z kolejnymi krokami na piśmie.",
+        "f": [
+          "Wyjaśnienie prostym językiem",
+          "Terminy i prawa",
+          "Pisemny plan działania"
+        ]
+      },
+      {
+        "n": "NAVIAR Handling",
+        "tag": "Wniosek razem",
+        "d": "Przygotowujemy i składamy wniosek razem z Tobą, wraz z dokumentami.",
+        "f": [
+          "Lista dokumentów",
+          "Formularz wypełniony wspólnie",
+          "Pomoc przy złożeniu"
+        ]
+      },
+      {
+        "n": "NAVIAR Oppfølging",
+        "tag": "Wsparcie w sprawie",
+        "d": "Prowadzimy sprawę, obsługujemy korespondencję i pilnujemy terminów.",
+        "f": [
+          "Kontrola terminów",
+          "Kontakt z urzędem",
+          "Informacje o statusie"
+        ]
+      },
+      {
+        "n": "NAVIAR Komplett",
+        "tag": "Od początku do końca",
+        "d": "Cały proces prowadzony za Ciebie, od pierwszego pisma do ostatecznego rozstrzygnięcia.",
+        "f": [
+          "Wszystkie etapy w cenie",
+          "Jeden stały doradca",
+          "Cena za sprawę"
+        ]
+      }
+    ],
+    "moreTitle": "Dla rodzin i firm",
+    "more": [
+      {
+        "n": "NAVIAR Familie",
+        "d": "Koordynacja w imieniu starszego krewnego lub członka rodziny, który potrzebuje wsparcia."
+      },
+      {
+        "n": "NAVIAR Business",
+        "d": "Wsparcie finansowane przez pracodawcę dla pracowników prowadzących sprawy urzędowe."
+      },
+      {
+        "n": "NAVIAR Public",
+        "d": "Wsparcie kadrowe i rozwój usług dla gmin i instytucji publicznych."
+      }
+    ],
+    "catalogTitle": "Pełny cennik",
+    "code": "Kod",
+    "delivery": "Realizacja",
+    "perHour": "za godzinę",
+    "inclVat": "z VAT"
+  },
+  "safety": {
+    "eyebrow": "Bezpieczeństwo i etyka",
+    "title": "Zasady, których nigdy nie łamiemy",
+    "lead": "Powierzasz nam sprawy wrażliwe. Te zasady nie podlegają negocjacjom i możesz nas z nich rozliczać.",
+    "rules": [
+      "Nigdy nie prosimy o hasło ani kody do BankID.",
+      "Nigdy nie logujemy się na Twoje konta Twoją tożsamością.",
+      "Pracujemy przy Tobie albo na podstawie pisemnego pełnomocnictwa, które nam dałeś.",
+      "Wrażliwych dokumentów nigdy nie wysyłamy zwykłym e-mailem.",
+      "Nigdy nie gwarantujemy wyniku ani świadczenia.",
+      "Sprawy wymagające reprezentacji prawnej kierujemy do adwokata."
+    ]
+  },
+  "booking": {
+    "eyebrow": "Rezerwacja",
+    "title": "Umów spotkanie",
+    "lead": "Wybierz usługę i termin oraz opisz krótko sprawę. Telefon albo wideo — Ty decydujesz.",
+    "steps": [
+      "Usługa",
+      "Termin",
+      "Dane",
+      "Płatność"
+    ],
+    "chooseService": "Jakiej usługi potrzebujesz?",
+    "chooseTime": "Wybierz dzień i godzinę",
+    "tzNote": "Wszystkie godziny są czasu norweskiego (Europe/Oslo).",
+    "noSlots": "Brak wolnych godzin tego dnia. Wybierz inny dzień.",
+    "loadingSlots": "Wczytywanie wolnych terminów…",
+    "yourDetails": "Twoje dane",
+    "name": "Imię i nazwisko",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "lang": "Preferowany język spotkania",
+    "channel": "Jak się spotkamy?",
+    "channelPhone": "Telefon",
+    "channelVideo": "Wideo",
+    "channelOffice": "W biurze",
+    "case": "Czego dotyczy sprawa?",
+    "casePlaceholder": "Który urząd, co jest w piśmie i jaki znasz termin. Nie wpisuj tutaj numeru personalnego ani danych o zdrowiu.",
+    "noSensitive": "Nie wpisuj w tym polu numeru personalnego ani informacji o zdrowiu. Po rezerwacji otrzymasz bezpieczny kanał do dokumentów.",
+    "consent": "Zgadzam się, aby NAVIAR skontaktował się ze mną w sprawie tego zgłoszenia i przetwarzał moje dane w tym celu.",
+    "summary": "Twoja rezerwacja",
+    "service": "Usługa",
+    "when": "Termin",
+    "duration": "Czas trwania",
+    "total": "Razem",
+    "payTitle": "Jak chcesz zapłacić?",
+    "payCard": "Karta",
+    "payCardD": "Bezpieczna płatność kartą. Przekierujemy Cię do operatora płatności.",
+    "payVipps": "Vipps",
+    "payVippsD": "Zapłać przez Vipps w telefonie.",
+    "payInvoice": "Faktura",
+    "payInvoiceD": "Wysyłamy fakturę z 10-dniowym terminem płatności po spotkaniu.",
+    "payFree": "To spotkanie jest bezpłatne. Płatność nie jest potrzebna.",
+    "next": "Dalej",
+    "back": "Wstecz",
+    "confirm": "Potwierdź rezerwację",
+    "pay": "Potwierdź i zapłać",
+    "processing": "Przetwarzanie…",
+    "doneTitle": "Rezerwacja przyjęta",
+    "doneLead": "Wysłaliśmy potwierdzenie na Twój e-mail. Zachowaj ten numer przy kontakcie z nami.",
+    "reference": "Numer sprawy",
+    "doneNext": "Dalej: otrzymasz bezpieczny link do przesłania dokumentów. Nigdy nie wysyłaj wrażliwych dokumentów zwykłym e-mailem.",
+    "another": "Zrób kolejną rezerwację",
+    "demoNotice": "Tryb demo: system rezerwacji nie jest jeszcze podłączony, więc ta rezerwacja zapisuje się tylko w przeglądarce. Podłącz backend w assets/js/config.js, aby uruchomić usługę.",
+    "errGeneric": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio.",
+    "errSlotTaken": "Ten termin właśnie został zajęty. Wybierz inny.",
+    "groupAdvice": "Doradztwo",
+    "groupTolk": "Tłumaczenie",
+    "tolkLangLabel": "Jakiego języka potrzebujesz?",
+    "tolkDialect": "Dialekt lub region",
+    "express": "Ekspres — w ciągu 24 godzin (+25%)",
+    "expressD": "Jeśli dostępny doradca przyjmie zlecenie, Twoja sprawa ma priorytet.",
+    "angrerett": "Usługi co do zasady objęte są 14-dniowym prawem odstąpienia. Prosząc o natychmiastowe rozpoczęcie, akceptujesz, że prawo to wygasa po pełnym wykonaniu usługi i że w razie rezygnacji zapłacisz za już wykonaną pracę.",
+    "deliveryNote": "Ta usługa nie wymaga spotkania. Dostarczamy pisemnie w ciągu {sla}.",
+    "upload": "Dokumenty",
+    "uploadNote": "Po rezerwacji otrzymasz bezpieczny link do przesyłania plików. Nigdy nie wysyłaj wrażliwych dokumentów zwykłym e-mailem."
+  },
+  "faq": {
+    "eyebrow": "Pytania",
+    "title": "Najczęstsze pytania",
+    "items": [
+      {
+        "q": "Czy jesteście częścią NAV?",
+        "a": "Nie. NAVIAR jest niezależną firmą i nie jest częścią NAV ani żadnego urzędu. Pracujemy dla Ciebie, nie dla urzędu prowadzącego Twoją sprawę."
+      },
+      {
+        "q": "Czy gwarantujecie, że dostanę świadczenie lub pozwolenie?",
+        "a": "Nie i nie należy ufać nikomu, kto twierdzi inaczej. Decyzja należy do urzędu. My możemy zadbać o to, aby Twoja sprawa była kompletna, poprawna i złożona w terminie — a właśnie tam przegrywa większość spraw."
+      },
+      {
+        "q": "Czy potrzebujecie mojego BankID?",
+        "a": "Nigdy hasła ani kodów. Albo jesteś obecny i logujesz się sam, albo dajesz nam pisemne pełnomocnictwo (fullmakt), które określa dokładnie, co i jak długo możemy robić. Możesz je cofnąć w każdej chwili."
+      },
+      {
+        "q": "Ile to kosztuje?",
+        "a": "Pierwsza 15-minutowa rozmowa jest bezpłatna. Potem dostajesz stałą cenę na piśmie przed rozpoczęciem pracy. Ceny pilotażowe zaczynają się od 690 NOK za wyjaśnienie jednego pisma."
+      },
+      {
+        "q": "W jakich językach mogę uzyskać pomoc?",
+        "a": "Pracujemy po norwesku, angielsku, turecku, arabsku, polsku, ukraińsku, rosyjsku, somalijsku, litewsku i tigrinia. Podaj preferowany język przy rezerwacji."
+      },
+      {
+        "q": "Czy jesteście prawnikami?",
+        "a": "Nie. Zapewniamy doradztwo, przygotowanie i prowadzenie sprawy. Gdy sprawa wymaga reprezentacji prawnej albo oceny specjalisty w sprawach zdrowotnych, podatkowych czy imigracyjnych, kierujemy do wykwalifikowanego specjalisty."
+      },
+      {
+        "q": "Jak bezpiecznie przesłać dokumenty?",
+        "a": "Po rezerwacji otrzymasz bezpieczny link do przesłania plików. Nie wysyłaj wrażliwych dokumentów jako zwykłych załączników e-mail."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Wyślij nam pismo",
+    "lead": "Opisz krótko swoją sytuację, a odpowiemy w ciągu jednego dnia roboczego. Jeśli tak łatwiej — umów bezpłatną 15-minutową rozmowę.",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "office": "Biuro",
+    "hours": "Godziny otwarcia",
+    "org": "Nr organizacji",
+    "formTitle": "Napisz do nas",
+    "message": "W czym potrzebujesz pomocy?",
+    "messagePlaceholder": "Który urząd, co się stało i jaki jest termin. Prosimy nie podawać numerów personalnych ani danych o zdrowiu.",
+    "send": "Wyślij zgłoszenie",
+    "sent": "Dziękujemy. Otrzymaliśmy zgłoszenie i odpowiemy w ciągu jednego dnia roboczego.",
+    "note": "Twoje zgłoszenie jest poufne i nigdy nie jest przekazywane osobom trzecim."
+  },
+  "band": {
+    "title": "Nie wiesz, jaki jest następny krok?",
+    "sub": "Właśnie po to jest bezpłatna 15-minutowa rozmowa. Ty przynieś pismo — my przyniesiemy plan.",
+    "cta": "Umów bezpłatną rozmowę",
+    "cta2": "Napisz do nas"
+  },
+  "footer": {
+    "services": "Usługi",
+    "company": "Firma",
+    "legal": "Informacje prawne",
+    "about": "O nas",
+    "privacy": "Prywatność",
+    "terms": "Warunki",
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "note": "Informacje na tej stronie mają charakter ogólny i nie stanowią porady prawnej.",
+    "pilot": "Usługa pilotażowa. Ceny i zakres są testowane i mogą się zmienić."
+  },
+  "catalog": {
+    "intro": {
+      "n": "Bezpłatna rozmowa wstępna",
+      "d": "Krótka rozmowa, żebyśmy mogli powiedzieć, czy możemy pomóc."
+    },
+    "k01": {
+      "n": "Pismo wyjaśnione",
+      "d": "Jedno pismo lub decyzja (do 5 stron) wyjaśnione pisemnie, z kolejnymi krokami."
+    },
+    "k02": {
+      "n": "Konsultacja wyjaśniająca",
+      "d": "45 minut z doradcą o Twojej sprawie, telefonicznie lub wideo."
+    },
+    "h01": {
+      "n": "Wniosek razem",
+      "d": "Standardowy wniosek przygotowany i złożony razem z Tobą, wraz z dokumentami."
+    },
+    "o01": {
+      "n": "Prowadzenie sprawy",
+      "d": "30 dni prowadzenia sprawy, do 3 kontaktów, kontrola terminów."
+    },
+    "s01": {
+      "n": "Doradztwo seniora i specjalisty",
+      "d": "Doradztwo godzinowe dla spraw złożonych lub o wyższym ryzyku."
+    },
+    "t30": {
+      "n": "Tłumacz — 30 minut",
+      "d": "Tłumaczenie telefoniczne lub wideo z wykwalifikowanym tłumaczem."
+    },
+    "t60": {
+      "n": "Tłumacz — 60 minut",
+      "d": "Tłumaczenie telefoniczne lub wideo z wykwalifikowanym tłumaczem."
+    },
+    "tf": {
+      "n": "Tłumacz na miejscu",
+      "d": "Tłumaczenie osobiste. Cena za zlecenie, dojazd wliczony."
+    }
+  }
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NAVIAR — Få hjelp til å forstå og følge opp offentlige saker</title>
+<meta name="description" content="NAVIAR er en uavhengig rådgivningstjeneste som hjelper mennesker med å forstå, organisere og følge opp saker i møte med offentlige tjenester.">
+<meta name="theme-color" content="#0A1628">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NAVIAR — Clarity in complex systems">
+<meta property="og:description" content="Vi gjør offentlige prosesser enklere. Send oss brevet — få en klar handlingsplan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' rx='190' fill='%230A1628'/><path d='M120 100h150l460 560V400h150v500H730L270 340v560H120z' fill='%23F5F6F8'/><path d='M730 100h150v300H730z' fill='%23D4AF37'/></svg>">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- ========================================================= header ===== -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="NAVIAR">
+      <!-- Two-tone N monogram. 1000x1000 grid, live footprint 760x800,
+           ribbon 150u, diagonal 39.4 deg, gold accent 12.8% of visible area.
+           One closed main path + one closed gold path. Flat, no effects. -->
+      <svg class="brand-mark" width="34" height="34" viewBox="0 0 1000 1000" aria-hidden="true">
+        <path d="M120 100h150l460 560V400h150v500H730L270 340v560H120z" fill="currentColor"/>
+        <path d="M730 100h150v300H730z" fill="#D4AF37"/>
+      </svg>
+      <span class="brand-type">
+        <span class="brand-word">NAVIAR</span>
+        <span class="brand-descriptor" data-company="descriptor">CONSULTING</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks"
+            data-i18n-attr="aria-label:nav.menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#process" data-i18n="nav.how">Slik jobber vi</a></li>
+      <li><a href="#services" data-i18n="nav.services">Tjenester</a></li>
+      <li><a href="#pricing" data-i18n="nav.pricing">Priser</a></li>
+      <li><a href="#safety" data-i18n="nav.safety">Trygghet</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">Spørsmål</a></li>
+      <li class="lang" data-lang-switcher></li>
+      <li><a class="btn btn-primary" href="#booking" data-i18n="nav.cta">Bestill møte</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Independence notice. Required on every page: NAVIAR resembles NAV. -->
+<div class="disclaimer-bar">
+  <div class="wrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16v.5"/>
+    </svg>
+    <span data-i18n="brand.disclaimer">NAVIAR er en uavhengig virksomhet og er ikke en del av NAV eller offentlig forvaltning.</span>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ========================================================== hero ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow" data-i18n="hero.eyebrow">Innbyggerstøtte og saksveiledning</span>
+          <h1 data-i18n="hero.title">Få hjelp til å forstå og følge opp offentlige saker</h1>
+          <p data-i18n="hero.sub"></p>
+          <p class="tagline-no" data-i18n="hero.sales">Send oss brevet. Få en klar handlingsplan.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking" data-i18n="hero.cta1">Send oss brevet</a>
+            <a class="btn btn-ghost" href="#process" data-i18n="hero.cta2">Slik jobber vi</a>
+          </div>
+          <div class="trust" id="trustStats"></div>
+        </div>
+
+        <aside class="hero-card">
+          <h3 data-i18n="hero.cardTitle">Dette får du</h3>
+          <ul id="heroCardList" data-i18n-list="hero.card"></ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== need finder ===== -->
+  <section id="finder">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow" data-i18n="finder.eyebrow">Start her</span>
+        <h2 data-i18n="finder.title">Hva trenger du hjelp med?</h2>
+        <p class="lead" data-i18n="finder.lead"></p>
+      </div>
+      <div class="finder" id="finderBody"></div>
+    </div>
+  </section>
+
+  <!-- ====================================================== process ===== -->
+  <section id="process" class="alt">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow" data-i18n="process.eyebrow">Slik jobber vi</span>
+        <h2 data-i18n="process.title">Én dør inn, fem steg gjennom</h2>
+        <p class="lead" data-i18n="process.lead"></p>
+      </div>
+      <div class="steps" id="processSteps"></div>
+
+      <div class="split" style="margin-top:64px">
+        <div>
+          <h3 data-i18n="status.title">Du ser alltid fire ting</h3>
+          <p data-i18n="status.lead"></p>
+        </div>
+        <ul class="value-list" id="statusList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== services ===== -->
+  <section id="services">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow" data-i18n="services.eyebrow">Tjenester</span>
+        <h2 data-i18n="services.title">Støtte i hvert steg av en offentlig sak</h2>
+        <p class="lead" data-i18n="services.lead"></p>
+      </div>
+      <div class="grid grid-3" id="serviceCards" style="margin-top:48px"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================== areas ===== -->
+  <section id="areas" class="alt">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow" data-i18n="areas.eyebrow">Dekning</span>
+        <h2 data-i18n="areas.title">Områder vi jobber med</h2>
+        <p class="lead" data-i18n="areas.lead"></p>
+      </div>
+      <ul class="grid grid-3 plain-grid" id="areaList" style="margin-top:44px"></ul>
+    </div>
+  </section>
+
+  <!-- ====================================================== pricing ===== -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow" data-i18n="pricing.eyebrow">Priser</span>
+        <h2 data-i18n="pricing.title">Tydelige priser, avtalt før vi starter</h2>
+        <p class="lead" data-i18n="pricing.lead"></p>
+      </div>
+
+      <div class="grid grid-3" id="priceCards" style="margin-top:48px"></div>
+
+      <h3 style="margin-top:64px" data-i18n="pricing.catalogTitle">Full prisliste</h3>
+      <div class="table-scroll">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th data-i18n="pricing.code">Kode</th>
+              <th data-i18n="nav.services">Tjeneste</th>
+              <th data-i18n="booking.duration">Varighet</th>
+              <th style="text-align:end" data-i18n="booking.total">Totalt</th>
+            </tr>
+          </thead>
+          <tbody id="catalogBody"></tbody>
+        </table>
+      </div>
+      <p class="finder-hint" data-i18n="pricing.vat"></p>
+
+      <h3 style="margin-top:56px" data-i18n="pricing.moreTitle">For familier og virksomheter</h3>
+      <div class="grid grid-3" id="moreCards" style="margin-top:22px"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================= safety ===== -->
+  <section id="safety" class="alt">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow" data-i18n="safety.eyebrow">Trygghet og etikk</span>
+        <h2 data-i18n="safety.title">Regler vi aldri bryter</h2>
+        <p data-i18n="safety.lead"></p>
+      </div>
+      <ul class="value-list" id="safetyRules"></ul>
+    </div>
+  </section>
+
+  <!-- ====================================================== booking ===== -->
+  <section id="booking">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow" data-i18n="booking.eyebrow">Bestilling</span>
+        <h2 data-i18n="booking.title">Bestill et møte</h2>
+        <p class="lead" data-i18n="booking.lead"></p>
+      </div>
+      <div class="booking-shell">
+        <ol class="bk-steps" id="bkSteps"></ol>
+        <div id="bkBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== faq ===== -->
+  <section id="faq" class="alt">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow" data-i18n="faq.eyebrow">Spørsmål</span>
+        <h2 data-i18n="faq.title">Ofte stilte spørsmål</h2>
+      </div>
+      <div class="faq" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- ====================================================== contact ===== -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <span class="eyebrow" data-i18n="contact.eyebrow">Kontakt</span>
+          <h2 data-i18n="contact.title">Send oss brevet</h2>
+          <p data-i18n="contact.lead"></p>
+
+          <div style="margin-top:32px">
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+              <span><strong data-i18n="contact.email">E-post</strong><a data-company="emailLink" href="#"></a></span>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg>
+              <span><strong data-i18n="contact.phone">Telefon</strong><a data-company="phoneLink" href="#"></a></span>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span><strong data-i18n="contact.office">Kontor</strong><span data-company="address"></span></span>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span><strong data-i18n="contact.hours">Åpningstid</strong><span data-company="hours"></span></span>
+            </div>
+          </div>
+        </div>
+
+        <form class="form-card" id="contactForm" novalidate>
+          <h3 data-i18n="contact.formTitle">Skriv til oss</h3>
+          <div class="field-row">
+            <div class="field">
+              <label for="cName" data-i18n="booking.name">Fullt navn</label>
+              <input type="text" id="cName" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cEmail" data-i18n="booking.email">E-post</label>
+              <input type="email" id="cEmail" name="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cPhone" data-i18n="booking.phone">Telefon</label>
+            <input type="tel" id="cPhone" name="phone" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="cMsg" data-i18n="contact.message">Hva trenger du hjelp med?</label>
+            <textarea id="cMsg" name="message" required data-i18n-attr="placeholder:contact.messagePlaceholder"></textarea>
+          </div>
+          <label class="consent" for="cConsent">
+            <input type="checkbox" id="cConsent" name="consent" required>
+            <span data-i18n="booking.consent"></span>
+          </label>
+          <button class="btn btn-primary" type="submit" style="width:100%" data-i18n="contact.send">Send henvendelse</button>
+          <p class="status ok" id="contactStatus" role="status"></p>
+          <p class="form-note" data-i18n="contact.note"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== cta band ===== -->
+  <section class="band">
+    <div class="wrap">
+      <h2 data-i18n="band.title">Usikker på neste steg?</h2>
+      <p data-i18n="band.sub"></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#booking" data-i18n="band.cta">Bestill en gratis samtale</a>
+        <a class="btn btn-ghost" href="#" data-company="mailto" data-i18n="band.cta2">Send oss en e-post</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========================================================= footer ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand brand--footer" href="#top" aria-label="NAVIAR">
+          <svg class="brand-mark" width="30" height="30" viewBox="0 0 1000 1000" aria-hidden="true">
+            <path d="M120 100h150l460 560V400h150v500H730L270 340v560H120z" fill="currentColor"/>
+            <path d="M730 100h150v300H730z" fill="#D4AF37"/>
+          </svg>
+          <span class="brand-type">
+            <span class="brand-word">NAVIAR</span>
+            <span class="brand-descriptor">CONSULTING</span>
+          </span>
+        </a>
+        <p class="tagline" data-i18n="brand.tagline">Klarhet i komplekse systemer.</p>
+        <p data-i18n="brand.disclaimer"></p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.services">Tjenester</h4>
+        <ul>
+          <li><a href="#services" data-i18n="nav.services">Tjenester</a></li>
+          <li><a href="#areas" data-i18n="nav.areas">Områder</a></li>
+          <li><a href="#pricing" data-i18n="nav.pricing">Priser</a></li>
+          <li><a href="#booking" data-i18n="nav.cta">Bestill møte</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footer.company">Virksomheten</h4>
+        <ul>
+          <li><a href="#process" data-i18n="nav.how">Slik jobber vi</a></li>
+          <li><a href="#safety" data-i18n="nav.safety">Trygghet</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">Spørsmål</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="nav.contact">Kontakt</h4>
+        <ul>
+          <li><a data-company="emailLink" href="#"></a></li>
+          <li><a data-company="phoneLink" href="#"></a></li>
+          <li><span data-company="hours"></span></li>
+          <li><span data-i18n="contact.org">Org.nr.</span> <span data-company="orgNumber"></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="year">2026</span> <span data-company="legalName">NAVIAR CONSULT AS</span>. <span data-i18n="footer.rights"></span></span>
+      <span data-i18n="footer.pilot"></span>
+      <span data-i18n="footer.note"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/booking.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
