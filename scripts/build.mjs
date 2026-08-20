@@ -32,6 +32,11 @@ const num = (value, code, compact) =>
 const sandbox = { window: {} };
 new Function('window', readFileSync(join(root, 'assets/js/i18n.js'), 'utf8'))(sandbox.window);
 const LANGS = sandbox.window.HXI_LANGS;
+// The store renders from JS at runtime, which left it empty in the pre-rendered HTML — a
+// crawler saw a heading with nothing under it, and so did anyone with JS off. Build the same
+// cards server-side; app.js redraws them identically once it loads.
+new Function('window', readFileSync(join(root, 'assets/js/shop.js'), 'utf8'))(sandbox.window);
+const SHOP = sandbox.window.HXI_SHOP || [];
 const DICTS = sandbox.window.HXI_I18N;
 
 // Localised head copy. Kept here rather than in the dictionaries because it is metadata,
@@ -84,6 +89,37 @@ function render(code, { atRoot, source = html, slug = '', title, description }) 
         : num(figure.value, code, false);
       return open + escape(value) + close;
     });
+
+  // 1c. The store, drawn the same way app.js draws it.
+  if (SHOP.length && page.includes('id="shop-grid"')) {
+    const money = (amount, currency) => {
+      try {
+        return new Intl.NumberFormat(code, {
+          style: 'currency', currency,
+          minimumFractionDigits: amount % 1 === 0 ? 0 : 2,
+        }).format(amount);
+      } catch (e) { return `${amount} ${currency}`; }
+    };
+    const cards = SHOP.map((item) => {
+      const kind = dict[item.kind === 'digital' ? 'shop_digital' : item.kind === 'experience' ? 'shop_experience' : 'shop_physical'] || '';
+      const price = item.free ? (dict.shop_free || '')
+        : item.price ? money(item.price.amount, item.price.currency) +
+            (item.per === 'month' ? ' ' + (dict.shop_per_month || '') : '')
+        : (dict.shop_soon || '');
+      const cta = item.checkout ? (dict.shop_buy || '')
+        : (item.signup ? dict.shop_get : dict.shop_notify) || '';
+      const link = item.checkout
+        ? `<a href="${item.checkout}" target="_blank" rel="noopener noreferrer">${escape(cta)}</a>`
+        : `<a href="#drop">${escape(cta)}</a>`;
+      return `<article class="card product"><p class="tag">${escape(kind)}</p>` +
+        `<h3 class="h3 product-name">${escape(item.name)}</h3>` +
+        `<p class="news-text">${escape(dict[item.desc] || '')}</p>` +
+        `<p class="meta">${escape(price)}</p>` +
+        `<p class="card-links">${link}</p></article>`;
+    }).join('');
+    page = page.replace('<div class="grid-3" id="shop-grid"></div>',
+      `<div class="grid-3" id="shop-grid">${cards}</div>`);
+  }
 
   // 2. Language, direction, and a marker the runtime uses to pin the pre-rendered language.
   page = page.replace(
