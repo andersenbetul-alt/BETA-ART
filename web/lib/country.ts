@@ -37,6 +37,9 @@ export type Place = {
   price?: '$' | '$$' | '$$$';
 };
 
+export type { SocialEvent } from './events.ts';
+import type { SocialEvent } from './events.ts';
+
 export type Essential = {
   /** Turistin bu bilgiye ihtiyaç duyduğu an. */
   when: string;
@@ -51,9 +54,13 @@ export type Country = {
   /** Yerel dil kodu — hazır mesajlar bu dilde yazılır. */
   language: string;
   currency: string;
+  /** IANA saat dilimi — "bu akşam ne var" sorusu turistin bulundugu saate göre. */
+  timeZone: string;
   transport: TransportProviderId;
   cities: CityRef[];
   places: Place[];
+  /** Yalnizca TEKRAR EDEN etkinlikler. Tek seferlik olan bir hafta sonra yalan. */
+  events: SocialEvent[];
   /** 112 AB genelinde çalışır; ülkeye özgü numaralar burada. */
   emergency: { general: string; police: string; ambulance: string; fire: string };
   essentials: Essential[];
@@ -111,4 +118,8 @@ export function placesIn(country: Country, cityId: string, kind: Place['kind']):
   return country.places
     .filter((p) => p.cityId === cityId && p.kind === kind)
     .sort((a, b) => a.walkMinutes - b.walkMinutes);
+}
+
+export function eventsIn(country: Country, cityId: string): SocialEvent[] {
+  return country.events.filter((e) => e.cityId === cityId);
 }

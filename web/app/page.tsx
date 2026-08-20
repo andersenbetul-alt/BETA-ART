@@ -8,7 +8,7 @@ import { getCountry } from '@/lib/country.ts';
  * Serbest metin yerine buton kullanıyoruz. İki sebep:
  * 1) Mahsur kalmış, ıslanmış, telefonu %12 şarjda olan biri yazmak istemez.
  * 2) Serbest metin bir LLM çağrısı demek — MVP'de gereksiz maliyet ve gecikme.
- *    Niyet zaten altı başlıktan biri; dil modeli bunu çözmek için gerekmiyor.
+ *    Niyet zaten yedi başlıktan biri; dil modeli bunu çözmek için gerekmiyor.
  */
 const problems = [
   { kind: 'cancelled', icon: '⛴', label: 'My ferry or train was cancelled', hint: 'Other ways to still get there' },
@@ -16,6 +16,7 @@ const problems = [
   { kind: 'road',      icon: '🚧', label: 'The road is closed',              hint: 'Alternative route' },
   { kind: 'eat',       icon: '🍽', label: 'Where can we eat now?',           hint: 'Worth walking to from here' },
   { kind: 'rain',      icon: '🌧', label: 'It started raining',              hint: 'Wait it out, or move indoors' },
+  { kind: 'meet',      icon: '🎪', label: 'I want to be around people',      hint: 'What is on tonight, free to walk into' },
   { kind: 'basics',    icon: '💶', label: 'What am I supposed to know here?', hint: 'The rules locals never explain' },
 ];
 

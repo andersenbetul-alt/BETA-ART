@@ -85,6 +85,8 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
 }
 .cost { color:var(--cost); margin-top:.25rem; }
 .place .walk small { display:block; font-weight:400; font-size:.7rem; color:var(--steel); }
+/* Etkinlikte sol sutun dakika degil gun adi tasiyor: "Wednesday" sigmali. */
+.place .when { min-width:5.6rem; font-size:.9rem; }
 
 .note {
   font-size:.8rem; color:var(--steel); border-top:1px solid var(--border);

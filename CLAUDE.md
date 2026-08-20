@@ -35,7 +35,8 @@ kurtarandan kötüdür (`web/lib/plan.ts`).
 | `lib/plan.ts` | Tatil planına etki hesabı — ülkeden bağımsız, ürünün kalbi |
 | `lib/entur.ts` | Norveç canlı sefer verisi (tek ulaşım entegrasyonu) |
 | `lib/met.ts` + `lib/weather.ts` | Hava (MET Norway — **dünya çapında**, ücretsiz) |
-| `app/sorun/[kind]/` | Altı sorun ekranı: cancelled · missed · road · eat · rain · basics |
+| `lib/events.ts` | Tekrar eden etkinlik sıralaması — "bugün ne var" mantığı |
+| `app/sorun/[kind]/` | Yedi sorun ekranı: cancelled · missed · road · eat · rain · meet · basics |
 
 ## Çalışma kuralları
 
@@ -48,6 +49,9 @@ kurtarandan kötüdür (`web/lib/plan.ts`).
   (bkz. `NoTransportYet`: AB yolcu hakları + üç somut adım).
 - **Boş liste = boş ekran.** Her şehirde her tür için en az bir kayıt olmalı;
   test bunu zorunlu tutuyor.
+- **Etkinlikte yalnızca TEKRAR EDEN kayıt.** Tek seferlik konser bir hafta
+  sonra yalan olur ve turist kapalı kapıya gider. Küratörlü etkinliği
+  olmayan şehirde `universalWays` devreye girer — boş ekran yok.
 - **Rıza olmadan ölçüm betiği yüklenmez.** `cobban:consent` olayını dinle.
 - Yasal metinlerdeki `{{...}}` alanları doldurulmadan hiçbir metin yayına alınmaz.
 
@@ -55,13 +59,19 @@ kurtarandan kötüdür (`web/lib/plan.ts`).
 
 ```bash
 cd web
-npm run check         # typecheck + 23 test + build
-npm run verify:apis   # Entur ve MET sorgularını canlı doğrular (kısıtsız ağ gerekir)
+npm run check          # typecheck + 35 birim testi + build
+npm run start          # ayrı terminalde
+npm run smoke          # 13 ülke × 7 ekran, canlı sunucuya karşı (1460 kontrol)
+npm run verify:apis    # Entur ve MET sorgularını canlı doğrular (kısıtsız ağ gerekir)
 ```
+
+`smoke` üretim derlemesine karşı HER sayfayı açıyor: boş ekran, kayıp ülke
+seçimi, arayüze sızmış Türkçe, kırık bağlantı ve "yakında" metni testte patlar.
 
 Değişiklikten sonra en az bunları tarayıcıda dene: anasayfa, ülke değiştirici,
 `/sorun/cancelled?country=NO` (plan etkisi üç seviyede de görünmeli),
-`/sorun/cancelled?country=IT` (ulaşımsız ülke ekranı), `/sorun/basics?country=GR`.
+`/sorun/cancelled?country=IT` (ulaşımsız ülke ekranı), `/sorun/basics?country=GR`,
+`/sorun/meet?country=DE&city=berlin` (perşembeyse "Tonight" görünmeli).
 
 ## Bilinen durum
 

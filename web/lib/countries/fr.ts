@@ -1,7 +1,7 @@
 import type { Country } from '../country.ts';
 
 export const country: Country = {
-  code: 'FR', name: 'France', language: 'fr', currency: 'EUR', transport: 'none',
+  code: 'FR', name: 'France', language: 'fr', currency: 'EUR', timeZone: 'Europe/Paris', transport: 'none',
   cities: [
     { id: 'paris',     name: 'Paris',     lat: 48.8566, lon: 2.3522, stopPlaceId: null },
     { id: 'lyon',      name: 'Lyon',      lat: 45.7640, lon: 4.8357, stopPlaceId: null },
@@ -20,6 +20,13 @@ export const country: Country = {
     { cityId: 'nice', name: 'Musée Matisse', kind: 'indoor', walkMinutes: 30, note: 'Uphill in Cimiez — take the bus, not the walk' },
     { cityId: 'marseille', name: 'Les Halles de la Major', kind: 'eat', walkMinutes: 10, price: '$$', note: 'Under the cathedral, sheltered seating' },
     { cityId: 'marseille', name: 'MuCEM', kind: 'indoor', walkMinutes: 12, note: 'Walkways are outdoors — the galleries are not' },
+  ],
+  events: [
+    { cityId: 'paris', name: 'Marché aux Puces de Saint-Ouen', kind: 'market', days: [6, 0, 1], from: '10:00', to: '18:00', free: true, note: 'Saturday to Monday only. Largest antiques market in the world' },
+    { cityId: 'paris', name: 'Marché des Enfants Rouges', kind: 'market', days: [2, 3, 4, 5, 6, 0], from: '08:30', to: '20:30', free: true, note: 'Closed Mondays. Shared tables between the kitchens' },
+    { cityId: 'lyon', name: 'Marché de la Croix-Rousse', kind: 'market', days: [2, 3, 4, 5, 6, 0], from: '06:00', to: '13:30', free: true, note: 'Mornings only; the boulevard fills the whole way up' },
+    { cityId: 'nice', name: 'Cours Saleya market', kind: 'market', days: [2, 3, 4, 5, 6, 0], from: '06:00', to: '13:30', free: true, note: 'Flowers and produce Tuesday to Sunday; Monday it turns into an antiques market' },
+    { cityId: 'marseille', name: 'Vieux-Port fish market', kind: 'market', days: 'daily', from: '08:00', to: '13:00', free: true, note: 'Fishermen sell straight off the boats every morning' },
   ],
   essentials: [
     { when: 'You want lunch at 15:30', answer: 'Most kitchens serve roughly 12:00–14:00 and 19:00–22:00. Outside those hours look for a brasserie, a bakery, or a covered market.', costsIfUnknown: 'Walking past twenty restaurants that are all open but serving nothing' },

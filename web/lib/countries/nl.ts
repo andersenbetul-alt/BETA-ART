@@ -1,7 +1,7 @@
 import type { Country } from '../country.ts';
 
 export const country: Country = {
-  code: 'NL', name: 'Netherlands', language: 'nl', currency: 'EUR', transport: 'none',
+  code: 'NL', name: 'Netherlands', language: 'nl', currency: 'EUR', timeZone: 'Europe/Amsterdam', transport: 'none',
   cities: [
     { id: 'amsterdam', name: 'Amsterdam', lat: 52.3676, lon: 4.9041, stopPlaceId: null },
     { id: 'rotterdam', name: 'Rotterdam', lat: 51.9244, lon: 4.4777, stopPlaceId: null },
@@ -17,6 +17,12 @@ export const country: Country = {
     { cityId: 'rotterdam', name: 'Kunsthal', kind: 'indoor', walkMinutes: 12, note: 'Changing exhibitions, rarely crowded' },
     { cityId: 'utrecht', name: 'Village Coffee', kind: 'eat', walkMinutes: 7, price: '$', note: 'Good coffee near the canals' },
     { cityId: 'utrecht', name: 'Museum Speelklok', kind: 'indoor', walkMinutes: 6, note: 'Self-playing instruments — odd and delightful' },
+  ],
+  events: [
+    { cityId: 'amsterdam', name: 'Albert Cuypmarkt', kind: 'market', days: [1, 2, 3, 4, 5, 6], from: '09:00', to: '17:00', free: true, note: 'Longest street market in the country' },
+    { cityId: 'amsterdam', name: 'Waterlooplein flea market', kind: 'market', days: [1, 2, 3, 4, 5, 6], from: '09:30', to: '18:00', free: true, note: 'Second-hand everything; closed Sundays' },
+    { cityId: 'rotterdam', name: 'Markthal', kind: 'market', days: 'daily', from: '10:00', to: '20:00', free: true, note: 'Stalls under the painted arch, open every day' },
+    { cityId: 'utrecht', name: 'Janskerkhof flower market', kind: 'market', days: [6], from: '08:00', to: '17:00', free: true, note: 'Saturday flower market in the old centre' },
   ],
   essentials: [
     { when: 'Paying by card', answer: 'Many Dutch shops take only Maestro/debit, not credit cards. Visa and Mastercard credit are refused more often than tourists expect.', costsIfUnknown: 'A refused card in a supermarket queue' },

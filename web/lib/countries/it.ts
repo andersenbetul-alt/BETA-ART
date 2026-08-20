@@ -1,7 +1,7 @@
 import type { Country } from '../country.ts';
 
 export const country: Country = {
-  code: 'IT', name: 'Italy', language: 'it', currency: 'EUR', transport: 'none',
+  code: 'IT', name: 'Italy', language: 'it', currency: 'EUR', timeZone: 'Europe/Rome', transport: 'none',
   cities: [
     { id: 'roma',    name: 'Roma',    lat: 41.9028, lon: 12.4964, stopPlaceId: null },
     { id: 'firenze', name: 'Firenze', lat: 43.7696, lon: 11.2558, stopPlaceId: null },
@@ -21,6 +21,12 @@ export const country: Country = {
     { cityId: 'venezia', name: 'Gallerie dell’Accademia', kind: 'indoor', walkMinutes: 20, note: 'Reliable refuge during acqua alta' },
     { cityId: 'milano', name: 'Mercato Centrale Milano', kind: 'eat', walkMinutes: 12, price: '$$', note: 'At Centrale station; useful when a train is delayed' },
     { cityId: 'milano', name: 'Museo Nazionale Scienza e Tecnologia', kind: 'indoor', walkMinutes: 20, note: 'Leonardo galleries; large enough for half a day' },
+  ],
+  events: [
+    { cityId: 'roma', name: 'Porta Portese market', kind: 'market', days: [0], from: '07:00', to: '14:00', free: true, note: 'Sunday morning only. Enormous, and the pickpockets know it too' },
+    { cityId: 'firenze', name: 'Mercato Centrale Firenze', kind: 'market', days: 'daily', from: '09:00', to: '00:00', free: true, note: 'Upper floor runs to midnight every day; communal tables' },
+    { cityId: 'venezia', name: 'Rialto fish market', kind: 'market', days: [2, 3, 4, 5, 6], from: '07:30', to: '12:00', free: true, note: 'Closed Sundays and Mondays. Go before 10:00 or it is over' },
+    { cityId: 'milano', name: 'Mercato Centrale Milano', kind: 'market', days: 'daily', from: '08:00', to: '00:00', free: true, note: 'Inside Centrale station — useful when a train is delayed and you have hours' },
   ],
   essentials: [
     { when: 'The bill has extra lines', answer: '"Coperto" (a per-person cover charge) and sometimes "servizio" are normal and must be on the menu. Bread you did not order is usually part of the coperto.', costsIfUnknown: 'Arguing over a charge that is legal, or tipping on top of a service charge' },

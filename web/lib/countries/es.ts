@@ -1,7 +1,7 @@
 import type { Country } from '../country.ts';
 
 export const country: Country = {
-  code: 'ES', name: 'Spain', language: 'es', currency: 'EUR', transport: 'none',
+  code: 'ES', name: 'Spain', language: 'es', currency: 'EUR', timeZone: 'Europe/Madrid', transport: 'none',
   cities: [
     { id: 'barcelona', name: 'Barcelona', lat: 41.3874, lon: 2.1686,  stopPlaceId: null },
     { id: 'madrid',    name: 'Madrid',    lat: 40.4168, lon: -3.7038, stopPlaceId: null },
@@ -21,6 +21,12 @@ export const country: Country = {
     { cityId: 'sevilla', name: 'Museo de Bellas Artes', kind: 'indoor', walkMinutes: 12, note: 'Cool, calm and cheap when the street is 40 °C' },
     { cityId: 'valencia', name: 'Mercat Central', kind: 'eat', walkMinutes: 8, price: '$$', note: 'One of Europe’s largest market halls; mornings only' },
     { cityId: 'valencia', name: 'Ciutat de les Arts i les Ciències', kind: 'indoor', walkMinutes: 30, note: 'Aquarium and science museum; a full day indoors' },
+  ],
+  events: [
+    { cityId: 'barcelona', name: 'Els Encants Fira de Bellcaire', kind: 'market', days: [1, 3, 5, 6], from: '09:00', to: '20:00', free: true, note: 'Monday, Wednesday, Friday and Saturday under the mirrored roof' },
+    { cityId: 'madrid', name: 'El Rastro', kind: 'market', days: [0], from: '09:00', to: '15:00', free: true, note: 'Sunday morning in La Latina, then everyone moves to the bars around it' },
+    { cityId: 'sevilla', name: 'Mercado Lonja del Barranco', kind: 'market', days: 'daily', from: '10:00', to: '00:00', free: true, note: 'Riverside food hall, air-conditioned, open late' },
+    { cityId: 'valencia', name: 'Mercat Central', kind: 'market', days: [1, 2, 3, 4, 5, 6], from: '07:30', to: '15:00', free: true, note: 'Mornings only; one of the largest market halls in Europe' },
   ],
   essentials: [
     { when: 'You are hungry at 18:00', answer: 'Kitchens serve lunch around 14:00–16:00 and dinner from 20:30 or 21:00. In between, tapas bars and markets are your option.', costsIfUnknown: 'An evening spent looking for a restaurant that is open but not cooking' },

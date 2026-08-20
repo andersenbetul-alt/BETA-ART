@@ -2,7 +2,7 @@ import type { Country } from '../country.ts';
 
 /** Rejseplanen API anahtar istiyor — henüz bağlı değil. */
 export const country: Country = {
-  code: 'DK', name: 'Denmark', language: 'da', currency: 'DKK', transport: 'none',
+  code: 'DK', name: 'Denmark', language: 'da', currency: 'DKK', timeZone: 'Europe/Copenhagen', transport: 'none',
   cities: [
     { id: 'kobenhavn', name: 'København', lat: 55.6761, lon: 12.5683, stopPlaceId: null },
     { id: 'aarhus',    name: 'Aarhus',    lat: 56.1629, lon: 10.2039, stopPlaceId: null },
@@ -15,6 +15,11 @@ export const country: Country = {
     { cityId: 'kobenhavn', name: 'Designmuseum Danmark', kind: 'indoor', walkMinutes: 18, note: 'The chairs you have seen everywhere, explained' },
     { cityId: 'aarhus', name: 'Aarhus Street Food', kind: 'eat', walkMinutes: 5, price: '$', note: 'Indoor hall near the station' },
     { cityId: 'aarhus', name: 'ARoS', kind: 'indoor', walkMinutes: 10, note: 'The rainbow walkway on the roof is the point' },
+  ],
+  events: [
+    { cityId: 'kobenhavn', name: 'Torvehallerne', kind: 'market', days: 'daily', from: '10:00', to: '19:00', free: true, note: 'Two glass halls; stand-up counters make it easy to talk to people' },
+    { cityId: 'kobenhavn', name: 'Reffen street food', kind: 'outdoor', days: 'daily', from: '12:00', to: '21:00', free: true, note: 'Open spring to autumn only — check before crossing the water' },
+    { cityId: 'aarhus', name: 'Aarhus Street Food', kind: 'market', days: 'daily', from: '11:30', to: '21:00', free: true, note: 'Indoor hall by the station, shared benches' },
   ],
   essentials: [
     { when: 'Getting around a city', answer: 'Cycling beats transit in Copenhagen. Rentals are everywhere — but bike lanes have real rules and locals will tell you off.', costsIfUnknown: 'Taxi fares for trips that cost nothing by bike' },

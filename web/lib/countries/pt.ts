@@ -1,7 +1,7 @@
 import type { Country } from '../country.ts';
 
 export const country: Country = {
-  code: 'PT', name: 'Portugal', language: 'pt', currency: 'EUR', transport: 'none',
+  code: 'PT', name: 'Portugal', language: 'pt', currency: 'EUR', timeZone: 'Europe/Lisbon', transport: 'none',
   cities: [
     { id: 'lisboa', name: 'Lisboa', lat: 38.7223, lon: -9.1393, stopPlaceId: null },
     { id: 'porto',  name: 'Porto',  lat: 41.1579, lon: -8.6291, stopPlaceId: null },
@@ -18,6 +18,11 @@ export const country: Country = {
     { cityId: 'porto', name: 'Serralves', kind: 'indoor', walkMinutes: 35, note: 'Modern art museum; the park needs dry weather, the museum does not' },
     { cityId: 'faro', name: 'Mercado Municipal de Faro', kind: 'eat', walkMinutes: 12, price: '$', note: 'Local prices; mornings only' },
     { cityId: 'faro', name: 'Museu Municipal de Faro', kind: 'indoor', walkMinutes: 6, note: 'Small; an hour, not a day' },
+  ],
+  events: [
+    { cityId: 'lisboa', name: 'Feira da Ladra', kind: 'market', days: [2, 6], from: '09:00', to: '18:00', free: true, note: 'Tuesdays and Saturdays only, at Campo de Santa Clara' },
+    { cityId: 'lisboa', name: 'Time Out Market', kind: 'market', days: 'daily', from: '10:00', to: '00:00', free: true, note: 'Communal tables until midnight — the easiest place to eat alone in Lisbon' },
+    { cityId: 'porto', name: 'Mercado do Bolhão', kind: 'market', days: [1, 2, 3, 4, 5, 6], from: '08:00', to: '20:00', free: true, note: 'Closed Sundays. Counters inside serve through the day' },
   ],
   essentials: [
     { when: 'Bread, olives or cheese arrive unordered', answer: 'That is the "couvert" and it is charged per item. You may refuse it and send it back — say "não, obrigado".', costsIfUnknown: '5–15 € added for food you did not order' },

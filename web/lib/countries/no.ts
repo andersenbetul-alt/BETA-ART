@@ -1,7 +1,7 @@
 import type { Country } from '../country.ts';
 
 export const country: Country = {
-  code: 'NO', name: 'Norway', language: 'no', currency: 'NOK', transport: 'entur',
+  code: 'NO', name: 'Norway', language: 'no', currency: 'NOK', timeZone: 'Europe/Oslo', transport: 'entur',
   cities: [
     { id: 'bergen',    name: 'Bergen',    lat: 60.3913, lon: 5.3221,  stopPlaceId: 'NSR:StopPlace:548' },
     { id: 'oslo',      name: 'Oslo',      lat: 59.9111, lon: 10.7528, stopPlaceId: 'NSR:StopPlace:337' },
@@ -27,6 +27,10 @@ export const country: Country = {
     { cityId: 'stavanger', name: 'Renaa Xpress', kind: 'eat', walkMinutes: 5, price: '$$', note: 'Central, quick' },
     { cityId: 'stavanger', name: 'Sjøhuset Skagen', kind: 'eat', walkMinutes: 6, price: '$$$', note: 'Seafood by the harbour' },
     { cityId: 'stavanger', name: 'Norsk Oljemuseum', kind: 'indoor', walkMinutes: 8, note: 'More interesting than it sounds' },
+  ],
+  events: [
+    { cityId: 'bergen', name: 'Fisketorget fish market', kind: 'market', days: 'daily', from: '09:00', to: '18:00', free: true, note: 'Shared counters, no booking — eating alone is normal here' },
+    { cityId: 'oslo', name: 'Mathallen Oslo food hall', kind: 'market', days: [2, 3, 4, 5, 6, 0], from: '11:00', to: '20:00', free: true, note: 'Closed Mondays. Long tables, many kitchens, one bill each' },
   ],
   essentials: [
     { when: 'Paying for anything', answer: 'Cards work everywhere, including buses and small kiosks. You can cross Norway without touching cash.', costsIfUnknown: 'ATM fees and poor exchange rates on cash you never needed' },

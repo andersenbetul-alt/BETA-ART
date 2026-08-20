@@ -1,7 +1,7 @@
 import type { Country } from '../country.ts';
 
 export const country: Country = {
-  code: 'FI', name: 'Finland', language: 'fi', currency: 'EUR', transport: 'none',
+  code: 'FI', name: 'Finland', language: 'fi', currency: 'EUR', timeZone: 'Europe/Helsinki', transport: 'none',
   cities: [
     { id: 'helsinki', name: 'Helsinki', lat: 60.1699, lon: 24.9384, stopPlaceId: null },
     { id: 'rovaniemi', name: 'Rovaniemi', lat: 66.5039, lon: 25.7294, stopPlaceId: null },
@@ -14,6 +14,10 @@ export const country: Country = {
     { cityId: 'helsinki', name: 'Amos Rex', kind: 'indoor', walkMinutes: 5, note: 'Underground galleries beneath the square' },
     { cityId: 'rovaniemi', name: 'Nili', kind: 'eat', walkMinutes: 5, price: '$$$', note: 'Lappish menu, book ahead in winter' },
     { cityId: 'rovaniemi', name: 'Arktikum', kind: 'indoor', walkMinutes: 15, note: 'Arctic science and Sámi history under a glass tube' },
+  ],
+  events: [
+    { cityId: 'helsinki', name: 'Hakaniemi market square', kind: 'market', days: [1, 2, 3, 4, 5, 6], from: '08:00', to: '16:00', free: true, note: 'Outdoor stalls plus the hall behind them' },
+    { cityId: 'helsinki', name: 'Vanha Kauppahalli', kind: 'market', days: [1, 2, 3, 4, 5, 6], from: '08:00', to: '18:00', free: true, note: 'Old harbour hall; soup counters at lunch' },
   ],
   essentials: [
     { when: 'Paying for anything', answer: 'Cards are accepted almost everywhere, including buses and taxis. Cash is rarely needed.', costsIfUnknown: 'ATM fees on cash you will not spend' },

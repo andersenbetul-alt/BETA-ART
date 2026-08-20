@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
-  cityIn, getCountry, placesIn,
+  cityIn, eventsIn, getCountry, placesIn,
   type CityRef, type Country,
 } from '@/lib/country.ts';
+import { rankEvents, universalWays, weekdayIn } from '@/lib/events.ts';
 import { findTrips, type TripOption } from '@/lib/entur.ts';
 import { demoTrips } from '@/lib/fixtures.ts';
 import { clock, duration, modeLabel, relativeMinutes } from '@/lib/format.ts';
@@ -16,7 +17,7 @@ import { messageFor } from '@/lib/messages.ts';
 import FixItNow from '@/components/FixItNow.tsx';
 import { demoPlan } from '@/lib/demo-plan.ts';
 
-const KINDS = ['cancelled', 'missed', 'road', 'eat', 'rain', 'basics'] as const;
+const KINDS = ['cancelled', 'missed', 'road', 'eat', 'rain', 'meet', 'basics'] as const;
 type Kind = (typeof KINDS)[number];
 
 const liveData = process.env.COBBAN_LIVE_DATA === 'true';
@@ -28,6 +29,7 @@ const headline: Record<Kind, string> = {
   road: 'Routes that avoid the road.',
   eat: 'Places worth walking to.',
   rain: 'Wait it out, or move indoors?',
+  meet: 'What is on tonight, and tomorrow.',
   basics: 'What everyone here already knows.',
 };
 
@@ -85,7 +87,9 @@ export default async function ProblemPage({
           ? <PlaceAnswer country={country} kind="eat" city={city} />
           : k === 'rain'
             ? <RainAnswer country={country} city={city} />
-            : <Essentials country={country} />}
+            : k === 'meet'
+              ? <EventsAnswer country={country} city={city} />
+              : <Essentials country={country} />}
     </>
   );
 }
@@ -391,6 +395,81 @@ function PlaceList({
 
       <p className="muted small">
         Hand-picked, not scraped. Hours change — call ahead for the late ones.
+      </p>
+    </>
+  );
+}
+
+/* --------------------------------------------------------------- etkinlik */
+
+/**
+ * "Bu akşam ne var" ekranı.
+ *
+ * Sıralama bugüne göre: turist "bu şehirde neler oluyor" diye sormuyor,
+ * "BU AKŞAM nereye gideyim" diye soruyor. Gün, turistin bulunduğu ülkenin
+ * saat diliminde hesaplanır — Atina'da gece yarısını geçmişse Oslo'nun
+ * takvimi yanlış cevap verir.
+ *
+ * Veri yalnızca TEKRAR EDEN etkinliklerden oluşur. Tek seferlik konser
+ * listelemiyoruz: bir hafta sonra yalan olur ve turist kapalı kapıya gider.
+ */
+function EventsAnswer({ country, city }: { country: Country; city?: string }) {
+  const active = cityIn(country, city);
+  const ranked = rankEvents(eventsIn(country, active.id), weekdayIn(country.timeZone));
+  const today = ranked.filter((e) => e.inDays === 0);
+
+  return (
+    <>
+      <CityChips label="Where are you?" cities={country.cities} selected={active.id}
+                 href={(id) => `?country=${country.code}&city=${id}`} />
+      <UseMyLocation cities={country.cities} />
+
+      <div className="answer">
+        <strong>
+          {today.length > 0
+            ? `${today.length} thing${today.length > 1 ? 's' : ''} on today in ${active.name}`
+            : `Nothing of ours running today in ${active.name}`}
+        </strong>
+        <span className="muted small">
+          {today.length > 0
+            ? 'All free to walk into. No ticket, no booking, no plan needed.'
+            : 'Here is what is on later this week, and three things that work in any city tonight.'}
+        </span>
+      </div>
+
+      {ranked.length > 0 && (
+        <div className="option">
+          {ranked.map((e) => (
+            <div className="place" key={e.name}>
+              <span className="walk when">
+                {e.dayLabel}
+                <small>{e.to ? `${e.from}\u2013${e.to}` : e.from}</small>
+              </span>
+              <span>
+                <strong>{e.name}</strong>
+                {e.free ? <span className="muted small"> · free</span> : null}
+                <span className="hint small muted" style={{ display: 'block' }}>{e.note}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <h2>Anywhere in Europe, tonight</h2>
+      <div className="option">
+        {universalWays.map((w) => (
+          <div className="place" key={w.what}>
+            <span>
+              <strong>{w.what}</strong>
+              <span className="hint small muted" style={{ display: 'block' }}>{w.detail}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <p className="muted small">
+        We only list things that happen every week, so this page cannot go stale.
+        For one-off concerts and festivals, the tourist office desk beats every website.
       </p>
     </>
   );

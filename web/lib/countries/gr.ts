@@ -1,7 +1,7 @@
 import type { Country } from '../country.ts';
 
 export const country: Country = {
-  code: 'GR', name: 'Greece', language: 'el', currency: 'EUR', transport: 'none',
+  code: 'GR', name: 'Greece', language: 'el', currency: 'EUR', timeZone: 'Europe/Athens', transport: 'none',
   cities: [
     { id: 'athina',       name: 'Athína',       lat: 37.9838, lon: 23.7275, stopPlaceId: null },
     { id: 'thessaloniki', name: 'Thessaloníki', lat: 40.6401, lon: 22.9444, stopPlaceId: null },
@@ -17,6 +17,12 @@ export const country: Country = {
     { cityId: 'thessaloniki', name: 'Museum of Byzantine Culture', kind: 'indoor', walkMinutes: 20, note: 'Cool and quiet in a heatwave' },
     { cityId: 'irakleio', name: 'Peskesi', kind: 'eat', walkMinutes: 8, price: '$$', note: 'Cretan cooking; book ahead in season' },
     { cityId: 'irakleio', name: 'Heraklion Archaeological Museum', kind: 'indoor', walkMinutes: 6, note: 'The Knossos finds are here, not at the site' },
+  ],
+  events: [
+    { cityId: 'athina', name: 'Monastiraki flea market', kind: 'market', days: [0], from: '08:00', to: '15:00', free: true, note: 'Sunday morning is the real one; the rest of the week is tourist shops' },
+    { cityId: 'athina', name: 'Varvakios Agora', kind: 'market', days: [1, 2, 3, 4, 5, 6], from: '07:00', to: '18:00', free: true, note: 'Central market; the tavernas inside stay open through the night on weekdays' },
+    { cityId: 'thessaloniki', name: 'Modiano Market', kind: 'market', days: [1, 2, 3, 4, 5, 6], from: '09:00', to: '23:00', free: true, note: 'Restored hall — a market by day and a bar street by night' },
+    { cityId: 'irakleio', name: '1866 Street market', kind: 'market', days: [1, 2, 3, 4, 5, 6], from: '08:00', to: '15:00', free: true, note: 'Closed Sundays. Runs the length of the old street' },
   ],
   essentials: [
     { when: 'Your ferry is cancelled', answer: 'Ferries stop for wind, not rain. When the port authority declares a sailing ban, no operator sails and no operator is at fault — you get a refund or a later sailing, not compensation. Ask the port police, not the ticket desk.', costsIfUnknown: 'A missed flight home because you assumed the next boat would run' },
