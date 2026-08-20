@@ -31,7 +31,7 @@ offentlige, og den skal stå i annonsen – ikke bare i vilkårene.
 
 ### Grenseoppgangen mot kommunen — skrevet én gang, brukt overalt
 
-PårørendePilot **kommer i tillegg til**, aldri i stedet for, kommunale helse- og
+Naviar **kommer i tillegg til**, aldri i stedet for, kommunale helse- og
 omsorgstjenester. Hjemmesykepleie, praktisk bistand etter vedtak, trygghetsalarm,
 matombringing og hverdagsrehabilitering søkes hos bydelen. Vi tar oppdrag ingen har
 vedtak på: handling, følge til avtaler, digital hjelp, snømåking, en prat.

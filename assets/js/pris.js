@@ -1,4 +1,4 @@
-/* PårørendePilot – prismodell.
+/* Naviar – prismodell.
    Prisen skal være synlig FØR oppdraget bestilles, og hver linje skal kunne forklares.
    Satsene her er piloteksempler for Norge (NOK) og hentes fra land-laget i produksjon. */
 
@@ -69,7 +69,7 @@ window.PP_PRIS = (function () {
         { navn: 'Reisetid (' + reisetidMin + ' min)', belop: rund(reisetid) },
         { navn: 'Reiseutgift', belop: rund(reise) },
         { navn: 'Tillegg for hastegrad', belop: rund(hastetillegg), skjulHvisNull: true },
-        { navn: 'Serviceavgift til PårørendePilot', belop: rund(plattform) }
+        { navn: 'Serviceavgift til Naviar', belop: rund(plattform) }
       ].filter(function (l) { return !(l.skjulHvisNull && l.belop === 0); }),
       tilHjelper: rund(tilHjelper),
       plattform: rund(plattform),

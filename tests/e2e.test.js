@@ -56,7 +56,7 @@ if (!pw) {
   t.gruppe('Alle sider laster');
 
   var SIDER = [
-    ['index.html', 'PårørendePilot'],
+    ['index.html', 'Naviar'],
     ['trenger-hjelp.html', 'Jeg trenger hjelp'],
     ['familie.html', 'For pårørende'],
     ['bli-hjelper.html', 'Bli hjelper'],

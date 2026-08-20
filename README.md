@@ -1,12 +1,26 @@
-# PårørendePilot / Nærhjelp
+# Naviar
 
-Europeisk plattform for praktisk hverdagshjelp til eldre som vil bo hjemme.
-En familie ber om hjelp – systemet finner den nærmeste, ledige, kvalifiserte og
-verifiserte hjelperen, oppdraget gjennomføres, familien varsles, hjelperen får betalt
-og plattformen tar en andel.
+Besøksbekreftelse for små selskaper som hjelper eldre hjemme. Medarbeideren bekrefter
+besøket på 30 sekunder, pårørende får beskjed om at det er gjort, og leverandøren
+sitter igjen med en historikk som kan vises fram.
 
-> **Regelen for matching:** ikke den nærmeste personen, men den nærmeste
-> *kvalifiserte og betrodde* personen.
+Leverandøren betaler. Verken den eldre eller de pårørende trenger konto eller app.
+
+> **Grensen som holder produktet på plass:** oppgavelisten er fast og ikke-klinisk.
+> Vi tar ikke imot helseopplysninger, og skal ikke bli et journalsystem.
+
+## To produkter i dette repoet
+
+| | Status | Hvor |
+|---|---|---|
+| **Besøksbekreftelse** (B2B) | Bygget og testet. Dette er det som selges nå | `besok/` |
+| **Markedsplassen** (v1-konseptet) | Parkert som grunnlag for v2 | rot-nivå |
+
+Markedsplassen ble pressetestet og lagt til side: den krevde verifiseringskjede,
+vaktordning og betalingsformidling før første oppdrag kunne formidles. Koden står
+urørt, og er nøyaktig det v2 trenger den dagen verifiserte hjelpere kobles på.
+Vurderingen ligger i [`docs/team/PIVOT-KOORDINERING.md`](docs/team/PIVOT-KOORDINERING.md)
+og [`docs/team/SYNTESE.md`](docs/team/SYNTESE.md).
 
 ## Status
 

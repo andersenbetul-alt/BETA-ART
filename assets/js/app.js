@@ -1,4 +1,4 @@
-/* PårørendePilot – felles skript: meny, informasjonskapsler, årstall.
+/* Naviar – felles skript: meny, informasjonskapsler, årstall.
    Ingen sporing kjører før brukeren har gitt samtykke. */
 
 (function () {

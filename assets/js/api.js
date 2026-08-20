@@ -1,4 +1,4 @@
-/* PårørendePilot – API-adapter.
+/* Naviar – API-adapter.
    Frontend snakker kun med dette laget. I demomodus finnes ingen backend,
    og personopplysninger sendes ingen steder. Når backend er på plass,
    byttes DEMO til false og endepunktene under tas i bruk. */

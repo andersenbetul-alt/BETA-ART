@@ -1,4 +1,4 @@
-# KI-veikart for PårørendePilot
+# KI-veikart for Naviar
 
 Eier: KI-ansvarlig (`.claude/agents/ai.md`). Status: arbeidsdokument, ikke besluttet plan.
 

@@ -1,4 +1,4 @@
-/* PårørendePilot Besøksbekreftelse – datalag.
+/* Naviar Besøksbekreftelse – datalag.
 
    Prototypen lagrer i nettleseren slik at hele flyten kan kjøres uten backend.
    I produksjon byttes bare dette laget ut; skjermene rører ikke lagringen direkte.
@@ -170,7 +170,7 @@ window.PP_BESOK = (function () {
 
     if (b.rapport.kommentar) linjer.push('Melding fra ' + b.ansattNavn + ': «' + b.rapport.kommentar + '»');
     linjer.push('');
-    linjer.push('Denne meldingen er sendt fra ' + leverandor().navn + ' via PårørendePilot.');
+    linjer.push('Denne meldingen er sendt fra ' + leverandor().navn + ' via Naviar.');
     linjer.push('Har du spørsmål, kontakt ' + leverandor().kontakt + '.');
     return linjer.join('\n');
   }

@@ -16,7 +16,7 @@ Beslektede dokumenter: `docs/SERVICE-BLUEPRINT.md` (flyten), `docs/EUROPA.md`
 
 1. Vi er en formidler av **praktisk hverdagshjelp**, ikke en omsorgstjeneste.
    Grensen mot helsehjelp er en merkevaregrense, ikke bare en juridisk.
-2. Navnet **PårørendePilot bæres ikke til Sverige, Tyskland og Spania.** Vi bygger
+2. Navnet **Naviar bæres ikke til Sverige, Tyskland og Spania.** Vi bygger
    ett paraplynavn for alle fire markeder. Se kapittel 2.
 3. **Verifiseringsmerket er selskapets mest verdifulle eiendel.** Det bæres av en
    person, aldri av selskapet. Se kapittel 3.
@@ -32,7 +32,7 @@ Beslektede dokumenter: `docs/SERVICE-BLUEPRINT.md` (flyten), `docs/EUROPA.md`
 
 ### 1.1 Hva vi er
 
-PårørendePilot formidler praktisk hverdagshjelp til eldre som vil bo hjemme,
+Naviar formidler praktisk hverdagshjelp til eldre som vil bo hjemme,
 utført av verifiserte hjelpere i nabolaget, med familien koblet på.
 
 Vi er tre ting samtidig, og alle tre må stemme:
@@ -147,7 +147,7 @@ av en funksjon og skrives med liten forbokstav der språket tillater det.
 
 ---
 
-## 2. Navnevurdering: PårørendePilot i fire markeder
+## 2. Navnevurdering: Naviar i fire markeder
 
 ### 2.1 Hva navnet gjør i dag
 
@@ -162,11 +162,11 @@ utenlandssaken:
   eldre. Det står i direkte spenning med regelen vår om at vi snakker til den eldre
   som en voksen. Den eldre er hovedpersonen i tjenesten, men ikke i navnet.
 - **«Pilot» betyr også prøveprosjekt.** Forsiden sier i dag «Pilot · Oslo og Viken»
-  rett under navnet PårørendePilot. En tjeneste man overlater moren sin til, bør
+  rett under navnet Naviar. En tjeneste man overlater moren sin til, bør
   ikke hete «prøveversjon». Dette bør rettes i norsk tekst uansett hva vi gjør med
   navnet: bruk «Oslo og Viken – vi starter her» i stedet for eyebrow-teksten «Pilot».
 
-`README.md` bærer allerede et skyggenavn – «PårørendePilot / Nærhjelp». At det
+`README.md` bærer allerede et skyggenavn – «Naviar / Nærhjelp». At det
 finnes to navn i toppen av repoet, er i seg selv et signal om at spørsmålet ikke er
 avgjort. Det avgjøres her.
 
@@ -184,7 +184,7 @@ Tre forhold i tillegg, som gjelder alle tre nye markeder:
 - **Domenet blir uleselig.** Et domene med å og ø kodes som `xn--...` i lenker,
   e-postoverskrifter og sikkerhetsvarsler. En tjeneste som ber familier om ikke å
   klikke på mistenkelige lenker, kan ikke selv ha en lenke som ser ut som svindel.
-- **Merket kan ikke uttales.** «PårørendePilot Verifisert» er et merke en tysk eller
+- **Merket kan ikke uttales.** «Naviar Verifisert» er et merke en tysk eller
   spansk familie skal kjenne igjen, si høyt og etterspørre. Et merke ingen kan si,
   kan ikke bli et krav i markedet.
 - **Ironisk nok passer navnet best der det er minst uttalbart.** I Spania er
@@ -258,11 +258,11 @@ juridisk gransking av de fem som overlever → valg. Regn tre til fire måneder.
 - **Ett bytte, ikke en glidning.** Paraplynavnet innføres i Norge samtidig som
   Sverige åpner. En periode med to navn i markedet svekker merket mer enn selve
   byttet gjør.
-- **Norge får en avsenderlinje i seks måneder:** «[Navn] – tidligere PårørendePilot».
-  Deretter fjernes den. Ingen dobbeltlogo, ingen «by PårørendePilot» i det uendelige.
+- **Norge får en avsenderlinje i seks måneder:** «[Navn] – tidligere Naviar».
+  Deretter fjernes den. Ingen dobbeltlogo, ingen «by Naviar» i det uendelige.
 - **Merket bytter navn samme dag som selskapet.** Det finnes aldri to gyldige
   verifiseringsmerker samtidig.
-- **PårørendePilot beholdes som registrert varemerke i Norge** selv etter byttet, for
+- **Naviar beholdes som registrert varemerke i Norge** selv etter byttet, for
   ikke å slippe navnet til andre i en sårbar overgang.
 - **Care Circle skal ut.** Et engelsk funksjonsnavn i en norsk, svensk, tysk og
   spansk tjeneste for eldre er en fremmedgjøring vi ikke har råd til. Erstattes av

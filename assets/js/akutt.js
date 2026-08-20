@@ -1,4 +1,4 @@
-/* PårørendePilot – akuttvurdering.
+/* Naviar – akuttvurdering.
 
    Plattformen skal aldri formidle et oppdrag der nødetatene er riktig svar.
 

@@ -1,4 +1,4 @@
-/* PårørendePilot – driftskonsoll.
+/* Naviar – driftskonsoll.
 
    Konsollen er bygget rundt tre driftsprinsipper:
    1. Hver sak har en alvorsgrad, og alvorsgraden bestemmer svarfristen.

@@ -1,6 +1,6 @@
 # Service Blueprint v1
 
-PårørendePilot er ikke en app med funksjoner, men en tjeneste med syv systemer som må
+Naviar er ikke en app med funksjoner, men en tjeneste med syv systemer som må
 henge sammen. Hver designbeslutning testes mot syv spørsmål:
 
 1. Er det enkelt for brukeren?

@@ -1,6 +1,6 @@
 # Salgsmodell
 
-Salgsansvarlig · PårørendePilot · versjon 1, klar til bruk.
+Salgsansvarlig · Naviar · versjon 1, klar til bruk.
 
 Alle priser i NOK, eksklusive mva. der ikke annet er oppgitt. Alle regnestykker under
 er regnet med satsene i `assets/js/pris.js` (NO: timesats 260, reisetidsats 130,
@@ -101,7 +101,7 @@ Typisk: mor klarer seg stort sett, men det er tre–fire ganger i året det ikke
 | Inkluderte timer | 0 |
 | Serviceavgift på oppdrag | 18 % – **uendret** |
 | Til hjelperen av abonnementet | 0 kr |
-| Til PårørendePilot | 199 kr/mnd |
+| Til Naviar | 199 kr/mnd |
 
 Dette nivået kan per konstruksjon aldri gjøre et oppdrag ulønnsomt for hjelperen,
 fordi det ikke rører oppdragsprisen i det hele tatt. Det er et beredskaps- og
@@ -135,7 +135,7 @@ kunder som blir værende, ender her.
 | Post | Regnestykke | Beløp |
 |---|---|---|
 | Til hjelperne | 4 × 549 | 2 196 kr |
-| Til PårørendePilot | 2 550 − 2 196 | 354 kr |
+| Til Naviar | 2 550 − 2 196 | 354 kr |
 | Effektiv serviceavgift | 354 / 2 196 | **16,1 %** |
 | **Kundens pris** | | **2 550 kr/mnd** |
 
@@ -176,7 +176,7 @@ helsefaglige.
 | Post | Regnestykke | Beløp |
 |---|---|---|
 | Til hjelperne | 8 × 549 | 4 392 kr |
-| Til PårørendePilot | 5 100 − 4 392 | 708 kr |
+| Til Naviar | 5 100 − 4 392 | 708 kr |
 | Effektiv serviceavgift | 708 / 4 392 | **16,1 %** |
 | **Kundens pris** | | **5 100 kr/mnd** |
 | Kostnad ved erstatningsgaranti, verste fall | inntil 2 × (606 − 549) | −114 kr |
@@ -712,7 +712,7 @@ avtalt evalueringsmøte, i stedet for rabatt.
 
 ---
 
-### PårørendePilot
+### Naviar
 
 **Bo hjemme. Få hjelp når du trenger det. Ha familien nær – uansett hvor de bor.**
 
@@ -746,7 +746,7 @@ Eksempel: 2 timer handling og selskap, dagtid, 15 minutters reisetid.
 | Arbeidstid (260 kr/t × 2 t) | 520 kr |
 | Reisetid (halv sats, 15 min) | 33 kr |
 | Reiseutgift | 25 kr |
-| Serviceavgift PårørendePilot (18 %) | 104 kr |
+| Serviceavgift Naviar (18 %) | 104 kr |
 | **Totalt, planlagt tidspunkt** | **681 kr** |
 
 | Hastegrad | Kunden betaler | Av dette til hjelperen |

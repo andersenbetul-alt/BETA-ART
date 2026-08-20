@@ -1,4 +1,4 @@
-# Tekstgjennomgang – PårørendePilot
+# Tekstgjennomgang – Naviar
 
 Rolle: senior conversion copywriter og UX-writer.
 Gjennomgått: `index.html`, `trenger-hjelp.html`, `familie.html`, `bli-hjelper.html`,
@@ -59,7 +59,7 @@ Alt annet på denne siden er finpuss. Dette er hovedsaken.
 | Hero, H1 | Bo hjemme. Få hjelp når du trenger det. | Se punkt 1.3 – tre varianter | Nåværende H1 taler til den eldre, mens trafikken i praksis er pårørende. Den sier heller ikke noe det er vanskelig å si nei til: «få hjelp når du trenger det» er en påstand alle tjenester kan skrive. |
 | Hero, ingress | …vi finner den nærmeste ledige, kvalifiserte og betrodde personen. | …vi spør de hjelperne som er verifiserte, nærme nok og ledige – og du ser hvem det er før besøket. | «Den nærmeste ledige, kvalifiserte og betrodde» lover ett bestemt utfall matchemotoren ikke kan garantere (den *rangerer* kandidater, den *finner* ikke alltid noen). «Betrodde» er dessuten et ord uten innhold; «verifisert» er ordet vi faktisk kan stå inne for. |
 | Hero, under CTA | *(mangler)* | **Ingen sendes hjem til en familie uten å være verifisert.** Elektronisk ID-kontroll, to referanser vi ringer, og et sikkerhetskurs som må bestås. | Innvendingen først. I dag ligger dette svaret 5–6 skjermhøyder ned. Den pårørende som ikke får svar over brettkanten, scroller ikke – hun lukker fanen. |
-| Hero, prisnote | Pris vises før du bestiller · Betaling kun gjennom plattformen · Posisjon deles kun når du selv slår den på | Du ser prisen før du bestiller – en vanlig time på dagtid koster ca. **[X] kr**. All betaling går gjennom PårørendePilot, aldri kontant. Posisjon deles bare når du selv slår den på. | «Pris vises før du bestiller» er en prosessopplysning, ikke en pris. Skjult pris er den dyreste teksten vi kan skrive. `pris.js` gir i dag ca. 375 kr for én planlagt time på dagtid og ca. 450 kr for «Nå» – **verifiser tallet mot gjeldende satser før publisering**, og oppgi det som «fra ca.», ikke som et løfte. |
+| Hero, prisnote | Pris vises før du bestiller · Betaling kun gjennom plattformen · Posisjon deles kun når du selv slår den på | Du ser prisen før du bestiller – en vanlig time på dagtid koster ca. **[X] kr**. All betaling går gjennom Naviar, aldri kontant. Posisjon deles bare når du selv slår den på. | «Pris vises før du bestiller» er en prosessopplysning, ikke en pris. Skjult pris er den dyreste teksten vi kan skrive. `pris.js` gir i dag ca. 375 kr for én planlagt time på dagtid og ca. 450 kr for «Nå» – **verifiser tallet mot gjeldende satser før publisering**, og oppgi det som «fra ca.», ikke som et løfte. |
 | Hero, sekundær CTA | Jeg vil ta oppdrag | Bli hjelper | Knappen sier «ta oppdrag», siden man lander på heter «Bli hjelper». Etter klikk skal siden bekrefte at det var det som skjedde. Enten rettes knappen, eller så får `bli-hjelper.html` H1 «Bli hjelper – ta oppdrag i nabolaget». |
 | Hero, primær CTA | Jeg trenger hjelp | Behold, men legg til en tredje, tekstlig inngang under knappene: «Bestiller du på vegne av mor eller far? → Se pårørendepanelet» | To likeverdige knapper deler oppmerksomheten i to. Den tredje og mest sannsynlige leseren – den pårørende – har ingen inngang i hero i dag, bare et kort langt nede. |
 | Hero, eksempelkort | Illustrasjon. Nøyaktig adresse vises først når du har fått oppdraget – før det ser du bare bydel og omtrentlig avstand. | Eksempel på oppdrag. Full adresse åpnes først når du har takket ja – før det ser du bydel og omtrentlig avstand. | ✅ Innholdet er riktig og viktig. «Illustrasjon» er designspråk; «Eksempel» er norsk. «Fått oppdraget» → «takket ja» gjør hjelperen til den som bestemmer. |
@@ -69,7 +69,7 @@ Alt annet på denne siden er finpuss. Dette er hovedsaken.
 **Kontroll (dagens)**
 
 > **Bo hjemme. Få hjelp når du trenger det.**
-> PårørendePilot kobler eldre som vil bo hjemme, og familier som bor et annet
+> Naviar kobler eldre som vil bo hjemme, og familier som bor et annet
 > sted, med verifiserte hjelpere i nabolaget.
 
 ---
@@ -93,7 +93,7 @@ sjelden tør si.
 **Variant B – «Det observerbare»**
 
 > **«Sofia kom til Maria klokka 14:02.»**
-> Slik ser beskjeden ut når noen har vært hos moren din. PårørendePilot kobler
+> Slik ser beskjeden ut når noen har vært hos moren din. Naviar kobler
 > eldre som vil bo hjemme med verifiserte hjelpere i nabolaget – og holder deg
 > oppdatert underveis, uansett hvor du selv bor.
 >
@@ -178,7 +178,7 @@ teksten ikke besvarer i dag, og teksten som besvarer den.
 | Sted | I dag | Forslag | Hvorfor |
 |---|---|---|---|
 | **Frafall 1: steg 1, valget «Nå».** Ubesvart innvending: *«Hva koster det ekstra å be om hjelp nå?»* | «Nå – Vi finner noen som kan komme innen ca. 90 minutter». «I dag» sier «Litt rimeligere», «Nå» sier ingenting om pris. | «Nå – Vi spør hjelpere som kan komme innen ca. 90 minutter. Litt dyrere, fordi noen må avbryte det de holder på med.» | Prisforskjellen nevnes bare på det ene alternativet. Da fremstår det andre som «det normale» og «Nå» som en felle. Begrunnelsen («noen må avbryte») gjør tillegget rimelig i stedet for grådig. Merk også: «vi finner noen» skal være «vi spør» – vi kan ikke garantere at noen takker ja. |
-| **Frafall 2: steg 4, prisen.** Ubesvart innvending: *«Hvorfor koster det så mye – hvor mye får hjelperen?»* | Linjen heter «Serviceavgift til PårørendePilot» uten forklaring. | Legg til under prislinjene: «Av dette går [X] kr til hjelperen. Serviceavgiften dekker verifisering, forsikring, support og betaling.» | Prisen er øyeblikket der bestillingen enten holder eller ryker. En avgift uten begrunnelse leses som påslag; en avgift med begrunnelse leses som en tjeneste. Tallet finnes allerede i `pris.js` (`tilHjelper`) og vises bare ikke. |
+| **Frafall 2: steg 4, prisen.** Ubesvart innvending: *«Hvorfor koster det så mye – hvor mye får hjelperen?»* | Linjen heter «Serviceavgift til Naviar» uten forklaring. | Legg til under prislinjene: «Av dette går [X] kr til hjelperen. Serviceavgiften dekker verifisering, forsikring, support og betaling.» | Prisen er øyeblikket der bestillingen enten holder eller ryker. En avgift uten begrunnelse leses som påslag; en avgift med begrunnelse leses som en tjeneste. Tallet finnes allerede i `pris.js` (`tilHjelper`) og vises bare ikke. |
 | **Frafall 3: panel 5, «Vi leter etter en hjelper».** Ubesvart innvending: *«Hva om ingen kan?»* | Flyten har ingen tekst for null treff – den finner alltid Sofia. | «Vi fant ingen ledig hjelper til dette tidspunktet. / Du kan prøve et annet tidspunkt, utvide til «i dag», eller ringe oss på 400 00 000 så leter vi videre sammen. / Du er ikke belastet for noe.» | Uten denne teksten er dette den mest skadelige tomme tilstanden i hele tjenesten: en person på 82 som har fylt ut fire steg og møter en tom skjerm. Siste setning er den viktigste. |
 | **Frafall 4: panel 6, «Jeg vil ha en annen».** Ubesvart innvending: *«Blir det pinlig hvis jeg sier nei?»* | En liten sekundærknapp ved siden av en stor primærknapp. | Se punkt 4.3 – lik visuell vekt og en støttelinje: «Det er helt greit. Da spør vi en annen med én gang.» | Å si nei skal være like lett som å si ja. I dag er det tydelig vanskeligere, og en eldre som ikke tør si nei, avbestiller i stedet. |
 

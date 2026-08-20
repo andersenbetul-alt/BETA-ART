@@ -1,4 +1,4 @@
-/* PårørendePilot – testdata for driftskonsollen.
+/* Naviar – testdata for driftskonsollen.
    Ingen ekte personer. Fødselsnummer, kontonummer og helseopplysninger
    forekommer ikke – heller ikke i driftsverktøyet.
 

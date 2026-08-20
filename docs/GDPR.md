@@ -1,4 +1,4 @@
-# GDPR-arkitektur for PårørendePilot
+# GDPR-arkitektur for Naviar
 
 Personvern er en del av produktarkitekturen, ikke en juridisk side som legges på til slutt.
 Dette dokumentet er utviklingsteamets arbeidsgrunnlag. Den brukervendte teksten ligger i `personvern.html`.

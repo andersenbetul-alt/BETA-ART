@@ -1,4 +1,4 @@
-/* PårørendePilot – bestillingsflyt i Senior Mode.
+/* Naviar – bestillingsflyt i Senior Mode.
    Utformet for at én person over 75 skal klare den alene: ett spørsmål om gangen,
    store trykkflater, ingen skjulte valg, og pris før bestilling.
    Demo: ingen ekte oppdrag opprettes. */

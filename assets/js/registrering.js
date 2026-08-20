@@ -1,4 +1,4 @@
-/* PårørendePilot – registreringsflyt for hjelpere.
+/* Naviar – registreringsflyt for hjelpere.
    Prinsipper: hvert samtykke er et eget, aktivt valg; posisjon er frivillig
    og aldri en forutsetning for å fullføre registreringen. */
 

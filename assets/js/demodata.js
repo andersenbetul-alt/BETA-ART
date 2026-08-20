@@ -1,4 +1,4 @@
-/* PårørendePilot – demodata for oppdragstavla.
+/* Naviar – demodata for oppdragstavla.
    Ingen ekte personer. Adresser er utelatt med vilje: før et oppdrag er tatt,
    finnes ikke gateadressen i dataene frontend får se. */
 

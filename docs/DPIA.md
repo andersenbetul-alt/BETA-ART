@@ -1,6 +1,6 @@
 # DPIA – utkast og arbeidsplan
 
-Vurdering av personvernkonsekvenser for PårørendePilot. **Skal ferdigstilles før
+Vurdering av personvernkonsekvenser for Naviar. **Skal ferdigstilles før
 posisjonsfunksjonene settes i produksjon.** Dette dokumentet er et strukturert utkast
 som skal fylles ut sammen med juridisk rådgiver – ikke en ferdig vurdering.
 

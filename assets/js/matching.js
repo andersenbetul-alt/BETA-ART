@@ -1,4 +1,4 @@
-/* PårørendePilot – matchingmotor.
+/* Naviar – matchingmotor.
    Regelen er «nærmeste kvalifiserte og betrodde hjelper», ikke «nærmeste person».
 
    Motoren er bevisst forklarbar: hver score kommer med begrunnelse, og hvert

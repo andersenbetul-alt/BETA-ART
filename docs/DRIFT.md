@@ -1,6 +1,6 @@
 # Driftsrutiner
 
-Hvordan PårørendePilot drives i praksis. Dokumentet er bindende for driftsorganisasjonen
+Hvordan Naviar drives i praksis. Dokumentet er bindende for driftsorganisasjonen
 og speiles i driftskonsollen (`drift.html`).
 
 Grunnregelen: **en tjeneste som sender mennesker hjem til andre mennesker, må ha en

@@ -239,7 +239,7 @@ det er måneder Bolk A trenger mer.
 |---|---|
 | Nå | Navne- og varemerkeprosessen startes. Den blokkerer ikke Bolk A |
 | Nå | Verifiseringsmerket får **eget navn og egen visuell identitet**, uavhengig av selskapsnavnet |
-| Pilot | Lanseres som PårørendePilot i Norge |
+| Pilot | Lanseres som Naviar i Norge |
 | Marked 2 | Nytt paraplynavn på plass før Sverige |
 
 Merket skilles ut først fordi det er det eneste som ikke tåler å byttes to ganger.

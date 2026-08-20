@@ -1,8 +1,8 @@
 {
-  "name": "paarorendepilot",
+  "name": "naviar",
   "version": "0.1.0",
   "private": true,
-  "description": "Plattform for praktisk hverdagshjelp til eldre som vil bo hjemme",
+  "description": "Naviar Besøksbekreftelse - besøksbekreftelse og familieoppdatering for små omsorgstjenester",
   "scripts": {
     "start": "python3 -m http.server 8000",
     "serve": "python3 -m http.server 8000",

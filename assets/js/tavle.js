@@ -1,4 +1,4 @@
-/* PårørendePilot – oppdragstavla for hjelpere.
+/* Naviar – oppdragstavla for hjelpere.
 
    To prinsipper styrer denne siden:
    1. Bryteren «Jeg er tilgjengelig» er det eneste som slår på posisjonsbruk.
