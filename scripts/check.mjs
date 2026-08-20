@@ -52,6 +52,8 @@ const shopKeys = [
   ...[...shopJs.matchAll(/desc:\s*'([a-z0-9_]+)'/g)].map((m) => m[1]),
   // every 'shop_*' literal the renderer asks for, including the ones inside ternaries
   ...[...(appJs + shopJs).matchAll(/'(shop_[a-z0-9_]+)'/g)].map((m) => m[1]),
+  // the card's category label is built as 'shop_' + kind, so the key never appears whole
+  ...[...shopJs.matchAll(/kind:\s*'([a-z]+)'/g)].map((m) => `shop_${m[1]}`),
 ];
 // Keys the scripts ask for by name through t(), e.g. the copy-button's confirmation. Matched
 // against the English dictionary rather than by shape, so createElement('p') is not a key.

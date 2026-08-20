@@ -478,7 +478,7 @@
 
       var tag = document.createElement('p');
       tag.className = 'tag';
-      tag.textContent = t(item.kind === 'digital' ? 'shop_digital' : 'shop_physical');
+      tag.textContent = t('shop_' + (item.kind || 'physical'));
       card.appendChild(tag);
 
       var name = document.createElement('h3');

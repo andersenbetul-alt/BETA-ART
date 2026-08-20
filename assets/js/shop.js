@@ -149,8 +149,10 @@ window.HXI_SHOP = [
     checkout: ''
   },
   {
+    // Bir deneyim, bir dosya değil: maliyeti HXI'nın saati. Bu yüzden `checkout` dolmadan
+    // önce cevaplanacak soru fiyat değil, "hangi akşam, ve kaç kişi".
     id: 'listening-stream',
-    kind: 'digital',
+    kind: 'experience',
     name: 'Private Listening Stream',
     desc: 'shop_d_stream',
     price: { amount: 249, currency: 'NOK' },
