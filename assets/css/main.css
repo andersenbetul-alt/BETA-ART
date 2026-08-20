@@ -8,10 +8,13 @@
   --text: #14161c;
   --text-muted: #5b6172;
   --border: #e4e7f0;
-  --brand: #4b3cf7;
-  --brand-2: #00b3a4;
-  --brand-soft: rgba(75, 60, 247, .09);
-  --on-brand: #ffffff;            /* marka rengi üzerindeki metin */
+  --brand: #082C54;               /* Midnight Navy — kimlik rengi */
+  --brand-2: #00D8C2;             /* Electric Aqua — yalnızca vurgu */
+  --brand-soft: rgba(8, 44, 84, .08);
+  --on-brand: #ffffff;            /* marka rengi üzerindeki metin — 13.2:1 */
+  --logo-ink: #082C54;            /* logo halkası; aqua köprü her iki temada sabit */
+  /* Aqua beyaz üzerinde 1.9:1 — metinde kullanılamaz. Metin için koyulaştırılmış ton. */
+  --brand-2-ink: #0a7d72;         /* beyaz üzerinde 4.4:1 */
   --shadow: 0 1px 2px rgba(16, 20, 40, .04), 0 12px 32px rgba(16, 20, 40, .07);
   --shadow-lg: 0 2px 4px rgba(16, 20, 40, .05), 0 24px 60px rgba(16, 20, 40, .12);
   --radius: 16px;
@@ -28,11 +31,14 @@ html[data-theme="dark"] {
   --text: #eef0f6;
   --text-muted: #9aa1b5;
   --border: #242838;
-  --brand: #8b7dff;
-  --brand-2: #2ee0c9;
-  --brand-soft: rgba(139, 125, 255, .14);
-  /* Koyu temada marka rengi açık; beyaz metin 3.2:1'de kalıyordu (WCAG AA = 4.5:1) */
-  --on-brand: #12141c;
+  /* Koyu temada navy zeminden ayrışmıyor; kimliğin ikinci rengi öne geçiyor. */
+  --brand: #00D8C2;
+  --brand-2: #7ce9dd;
+  --brand-soft: rgba(0, 216, 194, .13);
+  /* Marka rengi açık; beyaz metin 1.7:1'de kalırdı (WCAG AA = 4.5:1) */
+  --on-brand: #08202f;
+  --logo-ink: #ffffff;
+  --brand-2-ink: var(--brand-2);  /* koyu zeminde parlak aqua zaten okunuyor */
   --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .35);
   --shadow-lg: 0 2px 4px rgba(0, 0, 0, .45), 0 24px 60px rgba(0, 0, 0, .5);
 }
@@ -92,10 +98,10 @@ p { margin: 0 0 1em; }
 .nav { display: flex; align-items: center; gap: 14px; height: 66px; min-width: 0; }
 .logo { display: flex; align-items: center; gap: 9px; font-weight: 800; letter-spacing: -.03em; font-size: 1.16rem; text-decoration: none; }
 .logo-mark {
-  width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color: var(--on-brand); font-size: .85rem; font-weight: 800;
+  width: 30px; height: 30px; flex: 0 0 auto; display: block;
+  color: var(--logo-ink);        /* halka currentColor; köprü sabit aqua */
 }
+.logo-mark svg { width: 100%; height: 100%; display: block; }
 .nav-links { display: flex; gap: 4px; margin-inline-start: 18px; min-width: 0; overflow: hidden; }
 .nav-links a {
   text-decoration: none; color: var(--text-muted); font-size: .93rem; font-weight: 500;
@@ -165,7 +171,7 @@ p { margin: 0 0 1em; }
 }
 .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand-2); }
 .hero h1 .accent {
-  background: linear-gradient(120deg, var(--brand), var(--brand-2));
+  background: linear-gradient(120deg, var(--brand), var(--brand-2-ink));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .hero-sub { font-size: clamp(1.02rem, 1.9vw, 1.2rem); color: var(--text-muted); max-width: 640px; margin-inline: auto; }
@@ -239,7 +245,7 @@ p { margin: 0 0 1em; }
 .plan .price small { font-size: .85rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0; }
 .plan ul { list-style: none; padding: 0; margin: 18px 0 24px; display: grid; gap: 9px; }
 .plan li { display: flex; gap: 9px; align-items: flex-start; font-size: .93rem; color: var(--text-muted); }
-.plan li::before { content: '✓'; color: var(--brand-2); font-weight: 800; }
+.plan li::before { content: '✓'; color: var(--brand); font-weight: 800; }
 .plan .btn { margin-top: auto; }
 
 /* ---------- Blog ---------- */

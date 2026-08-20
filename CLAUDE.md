@@ -26,6 +26,7 @@ gizlilik.html       Gizlilik ve veri koruma metni (TR + EN)
 post.html           Yazı detayı (?slug=... ile)
 assets/js/config.js Yayın ayarları: e-posta, alan adı, sosyal hesaplar, fiyatlar, lead magnet
 assets/css/main.css Tek stil dosyası; tüm renkler :root değişkenlerinden gelir
+assets/brand/       Kimlik: sembol, kilitler, ikonlar, favicon (scripts/marka-uret.py üretir)
 assets/js/i18n.js   Dil listesi (QB_LANGS) + 10 dilde metinler (QB_I18N)
 assets/js/posts.js  Blog içeriği (QB_POSTS): her yazı 10 dilde
 assets/js/app.js    Dil, tema, liste/arama/filtre, yazı sayfası, sekmeler, formlar
@@ -54,7 +55,10 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    `data-i18n-title`, `data-i18n-content`) ile sözlükten gelir. HTML'deki Türkçe metinler
    yalnızca JavaScript kapalıyken görünen yedeklerdir.
 4. **Renkler değişkenlerden gelir.** Doğrudan hex yazmayın; `var(--brand)`, `var(--text)`
-   gibi değişkenleri kullanın ki koyu tema kendiliğinden çalışsın.
+   gibi değişkenleri kullanın ki koyu tema kendiliğinden çalışsın. Marka renkleri:
+   Midnight Navy `#082C54` ve Electric Aqua `#00D8C2`. **Aqua beyaz üzerinde 1,8:1'dir
+   ve metinde kullanılamaz**; açık zeminde metin için `var(--brand-2-ink)` (`#0a7d72`,
+   5,0:1). Logo halkası `var(--logo-ink)` ile temaya göre döner, aqua köprü sabittir.
 5. **Sayfa iskeleti beş dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
    beşini birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`). `check.mjs` çiftlenen
    id ve script'leri yakalar ama eksik menü bağlantısını yakalamaz.
@@ -79,6 +83,12 @@ kimseye satamayız.
 tıklanabilir bir önizleme. Birine site göstermek gerektiğinde bunu kullanın.
 Yönlendirme `?page=` ile; `slug` ve `lang` gerçek sorgu dizesinde kaldığı için
 `app.js` değişmeden çalışır. Gövde değiştikten sonra `window.QB_BOOT()` çağrılır.
+
+`python3 scripts/marka-uret.py` kimlik vektörlerini yeniden üretir (gereken:
+`pip install fonttools brotli`). Wordmark ana hatları deponun kendi Inter değişken
+fontundan `wght=700`'de örneklenir; dış servis gerekmez. Geometri, ölçümler ve
+brief'ten sapma gerekçeleri `docs/logo-sistemi.md`; test protokolleri ve marka
+araştırma sayfası `docs/marka-testleri.md`.
 
 `npm run guvenlik` üçüncü bir soruyu sorar: site ziyaretçiye zarar verebilir mi,
 topladığı veriyi hukuka uygun işliyor mu? XSS, JSON-LD kaçışı, tabnabbing,
