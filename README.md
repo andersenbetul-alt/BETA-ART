@@ -26,7 +26,9 @@ bookings, payments and enquiries. It is not the case-management platform — see
 | `assets/js/app.js` | Renders every repeated block; runs the need finder and the contact form. |
 | `assets/js/booking.js` | The four-step booking flow. |
 | `assets/i18n/*.json` | 10 languages, identical key sets. |
-| `server/` | Optional Node API: bookings, Stripe Checkout, enquiries, need-finder tally. |
+| `admin.html` + `assets/js/admin.js` | The case queue. Token-gated, `noindex`. |
+| `server/db.js` | SQLite schema, migrations and queries. |
+| `server/server.js` | The API: bookings, Stripe Checkout, enquiries, need finder, admin. |
 
 ## Run it locally
 
@@ -47,6 +49,45 @@ npm start                          # http://127.0.0.1:8787
 ```
 
 Then set `apiBase: 'http://127.0.0.1:8787'` in `assets/js/config.js`.
+
+## The case queue
+
+`admin.html` is the operator's side of the pilot: every booking and enquiry, the
+status of each case, an internal note, a history of what changed, and the
+need-finder answers as bar charts.
+
+```bash
+openssl rand -hex 32        # put the result in server/.env as ADMIN_TOKEN
+```
+
+Then open `/admin.html` and paste the token. It is held in `sessionStorage`, so
+closing the tab signs you out; it never appears in a URL.
+
+The door is deliberately unfriendly, because behind it sit real people's names,
+phone numbers and case text:
+
+- a token shorter than 24 characters switches the admin endpoints **off**
+  entirely (`503`), rather than running with a guessable code
+- the token is compared in constant time
+- five wrong answers lock that IP out for 15 minutes, correct token included
+- the page is `noindex, nofollow` and sends no referrer
+
+Cases move through `awaiting_payment → new → fit_checked → in_progress →
+delivered`, with `cancelled` available at any point. Only a Stripe webhook can
+move a case out of `awaiting_payment` by marking it paid — nothing in the
+browser can. An invoice case skips that state and lands in the queue as `new`,
+because the work starts before the invoice is settled.
+
+## Data
+
+`server/data/naviar.db` — SQLite via `node:sqlite`, which is built into Node 22,
+so there is nothing to compile and no ORM. Bookings written by the pilot's
+original JSON files are imported automatically on first boot and the files are
+renamed `.imported`.
+
+**This is a file on disk.** Serverless hosts with an ephemeral filesystem
+(Vercel functions, Netlify functions) will lose it between deploys. Run the API
+on a host with a persistent disk, or mount a volume at `server/data`.
 
 ## Deploy
 
@@ -165,13 +206,16 @@ The blueprint describes considerably more than a website. Still missing:
 - Marketplace: advisor onboarding, KYC/KYB, category approval, offers, payouts, disputes
 - Interpreter scheduling against Nasjonalt tolkeregister categories and habilitet checks
 - Triage/risk engine (green/yellow/red) and the five submission gates
-- Notification emails — the API stores bookings but sends nothing yet
+- Notification emails — the API stores bookings but sends nothing yet; the queue
+  has to be checked by hand
 - Vipps ePayment
 - Privacy and terms pages (linked in the footer, not written)
 
 ## Before launch
 
 - [ ] Real org.nr., address, email and phone in `config.js`
+- [ ] `ADMIN_TOKEN` of at least 24 characters, stored in the host's secret store
+- [ ] The API on a host with a persistent disk for `server/data`
 - [ ] Native-speaker review of all ten translations
 - [ ] Legal review: behandlingsgrunnlag, DPIA, advokatloven boundary, consumer terms
 - [ ] Accountant review: MVA treatment and invoicing model

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Never index the door to the case queue. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>NAVIAR — case queue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><rect width='1000' height='1000' rx='170' fill='%230A1628'/><path d='M120 100h150l460 560V400h150v500H730L270 340v560H120Z' fill='%23F5F6F8'/><path d='M730 100h150v300H730Z' fill='%23D4AF37'/></svg>">
+<style>
+  body{background:var(--bg-alt)}
+  /* The admin page reuses the site stylesheet, whose sections carry large
+     vertical padding meant for a landing page. Not here. */
+  #view{padding:0}
+  #view>p.lead{margin-bottom:26px}
+  .admin-head{background:var(--navy);color:#fff;padding:18px 0}
+  .admin-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin:28px 0}
+  .count{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .count strong{display:block;font-family:Fraunces,serif;font-size:1.7rem;color:var(--navy);line-height:1.2}
+  .count span{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .case{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:14px}
+  .case-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+  .ref{font-family:ui-monospace,Menlo,monospace;font-weight:600;color:var(--navy);letter-spacing:.05em}
+  .pill{border-radius:999px;padding:4px 12px;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .pill.new{background:var(--warn-bg);color:#8a5a00}
+  .pill.awaiting_payment{background:#fdefef;color:#a02020}
+  .pill.fit_checked,.pill.answered{background:#eaf1f8;color:#1B3557}
+  .pill.in_progress{background:#e8f0fb;color:#1B3557}
+  .pill.delivered,.pill.closed{background:var(--ok-bg);color:var(--ok)}
+  .pill.cancelled{background:#f1f1f1;color:#666}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px 22px;margin:16px 0;font-size:.9rem}
+  .facts b{color:var(--muted);font-weight:500}
+  .case-text{background:var(--bg-alt);border-radius:10px;padding:14px 16px;font-size:.93rem;white-space:pre-wrap;margin:8px 0 14px}
+  .case-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .case-actions select,.case-actions input{width:auto;flex:1 1 200px}
+  .history{font-size:.82rem;color:var(--muted);margin-top:12px}
+  .history li{list-style:none;padding:2px 0}
+  .tabs{display:flex;gap:8px;margin:8px 0 20px;flex-wrap:wrap}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 18px;font:inherit;font-size:.9rem;font-weight:600;color:var(--body);cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+  .bars{display:grid;gap:10px}
+  .bar-row{display:grid;grid-template-columns:minmax(140px,1fr) 3fr auto;gap:12px;align-items:center;font-size:.9rem}
+  .bar{height:10px;border-radius:999px;background:var(--line);overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--cyan);border-radius:999px}
+  .gate{max-width:420px;margin:12vh auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px}
+</style>
+</head>
+<body>
+
+<div id="gate" class="wrap">
+  <form class="gate" id="gateForm">
+    <h1 style="font-size:1.6rem">NAVIAR case queue</h1>
+    <p style="font-size:.92rem">Private. Every case here contains a real person's name, contact details and situation. Do not open this on a shared screen.</p>
+    <div class="field">
+      <label for="token">Admin token</label>
+      <input type="password" id="token" autocomplete="off" autofocus required>
+    </div>
+    <button class="btn btn-primary" style="width:100%" type="submit">Open queue</button>
+    <p class="status err" id="gateErr"></p>
+    <p class="form-note">The token is held for this tab only and forgotten when you close it.</p>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="admin-head">
+    <div class="wrap">
+      <div>
+        <strong style="font-family:Fraunces,serif;font-size:1.2rem">NAVIAR case queue</strong>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.65)">Pilot operations</div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost" id="refresh" type="button">Refresh</button>
+        <button class="btn btn-ghost" id="signout" type="button">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-bottom:60px">
+    <div class="counts" id="counts"></div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-view="cases" aria-selected="true">Cases</button>
+      <button class="tab" role="tab" data-view="enquiries" aria-selected="false">Enquiries</button>
+      <button class="tab" role="tab" data-view="insights" aria-selected="false">What people need</button>
+    </div>
+
+    <p class="status err" id="err"></p>
+    <section id="view"></section>
+  </main>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

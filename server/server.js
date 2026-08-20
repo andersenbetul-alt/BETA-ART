@@ -2,9 +2,9 @@
    NAVIAR pilot API
    Bookings, payments, enquiries and the need-finder tally.
 
-   Deliberately small: JSON files on disk, one process, no ORM. It is enough
-   for Phase 0/1 of the blueprint (5 paid pilot customers) and easy to replace
-   with a real database once the case engine exists.
+   Deliberately small: SQLite through node:sqlite, one process, no ORM. It is
+   enough for Phase 0/1 of the blueprint and it keeps the pilot's cases after a
+   restart, which the JSON files it replaces did not do reliably.
 
    What this service must never do:
      - hold client funds itself (collection and payout run through Stripe)
@@ -39,35 +39,9 @@ function loadSiteConfig() {
 }
 const CFG = loadSiteConfig();
 
-/* ------------------------------------------------------------ tiny storage */
-fs.mkdirSync(DATA_DIR, { recursive: true });
-
-function read(file) {
-  const p = path.join(DATA_DIR, file);
-  if (!fs.existsSync(p)) return [];
-  try {
-    return JSON.parse(fs.readFileSync(p, 'utf8'));
-  } catch (err) {
-    console.error('[naviar] corrupt data file', file, err.message);
-    return [];
-  }
-}
-
-/* Write to a temp file then rename, so a crash mid-write cannot truncate the
-   only copy of the bookings. */
-function write(file, rows) {
-  const p = path.join(DATA_DIR, file);
-  const tmp = p + '.tmp';
-  fs.writeFileSync(tmp, JSON.stringify(rows, null, 2));
-  fs.renameSync(tmp, p);
-}
-
-function append(file, row) {
-  const rows = read(file);
-  rows.push(row);
-  write(file, rows);
-  return row;
-}
+/* ---------------------------------------------------------------- storage */
+const DB = require('./db');
+const db = DB.open(DATA_DIR);
 
 /* --------------------------------------------------------------- helpers */
 function reference() {
@@ -144,6 +118,58 @@ function throttle(limit, windowMs) {
   };
 }
 
+/* ---------------------------------------------------------------- admin
+   The queue holds every customer's name, email, phone and the text of their
+   case. It is the most sensitive thing this service owns, so the door is
+   deliberately unfriendly: a long token only, compared in constant time, with
+   a lockout after a handful of wrong answers. A short code would be guessed.
+   ------------------------------------------------------------------------ */
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
+const ADMIN_MIN_LENGTH = 24;
+const LOCK_AFTER = 5;
+const LOCK_MS = 15 * 60 * 1000;
+const failures = new Map();
+
+function sameToken(given, expected) {
+  const a = crypto.createHash('sha256').update(given).digest();
+  const b = crypto.createHash('sha256').update(expected).digest();
+  return crypto.timingSafeEqual(a, b);
+}
+
+function requireAdmin(req, res, next) {
+  if (ADMIN_TOKEN.length < ADMIN_MIN_LENGTH) {
+    /* Refusing to run beats running with a guessable door. */
+    return res.status(503).json({ error: 'admin_disabled' });
+  }
+  const now = Date.now();
+  let state = failures.get(req.ip);
+
+  /* A served lockout clears the record entirely — `lockedUntil: 0` means "has
+     failed before but is not locked", which is not the same as "expired". */
+  if (state && state.lockedUntil && state.lockedUntil <= now) {
+    failures.delete(req.ip);
+    state = undefined;
+  }
+  if (state && state.lockedUntil > now) {
+    res.set('Retry-After', String(Math.ceil((state.lockedUntil - now) / 1000)));
+    return res.status(429).json({ error: 'locked_out' });
+  }
+
+  const given = String(req.headers.authorization || '').replace(/^Bearer\s+/i, '');
+  if (!given || !sameToken(given, ADMIN_TOKEN)) {
+    const count = (state ? state.count : 0) + 1;
+    failures.set(req.ip, {
+      count,
+      lockedUntil: count >= LOCK_AFTER ? now + LOCK_MS : 0
+    });
+    if (count >= LOCK_AFTER) console.warn('[naviar] admin locked out for', req.ip);
+    return res.status(401).json({ error: 'unauthorized' });
+  }
+
+  failures.delete(req.ip);
+  next();
+}
+
 /* ------------------------------------------------------------- endpoints */
 app.get('/api/health', (req, res) => {
   res.json({ ok: true, services: CFG.services.length, payments: paymentModes() });
@@ -162,11 +188,7 @@ app.get('/api/availability', (req, res) => {
   if (!DATE_RE.test(date)) return res.status(400).json({ error: 'bad_date' });
   if (!isWorkday(date)) return res.json({ date, taken: slotGrid(date, CFG.booking.slotMinutes) });
 
-  const taken = read('bookings.json')
-    .filter((b) => b.date === date && b.status !== 'cancelled')
-    .map((b) => b.time)
-    .filter(Boolean);
-  res.json({ date, taken });
+  res.json({ date, taken: DB.takenSlots(db, date) });
 });
 
 app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
@@ -202,9 +224,7 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
     if (new Date(date + 'T' + time + ':00').getTime() < earliest) {
       return res.status(400).json({ error: 'inside_lead_time' });
     }
-    const clash = read('bookings.json')
-      .some((b) => b.date === date && b.time === time && b.status !== 'cancelled');
-    if (clash) return res.status(409).json({ error: 'slot_taken' });
+    if (DB.slotClash(db, date, time)) return res.status(409).json({ error: 'slot_taken' });
   }
 
   const express24 = body.express === true;
@@ -218,7 +238,9 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
   const booking = {
     reference: reference(),
     createdAt: new Date().toISOString(),
-    status: amount ? 'awaiting_payment' : 'confirmed',
+    /* Only a card payment waits on Stripe. An invoice case is real work the
+       moment it arrives, so it goes straight into the queue. */
+    status: payment === 'card' ? 'awaiting_payment' : 'new',
     serviceId: service.id,
     serviceCode: service.code,
     date,
@@ -266,7 +288,7 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
         cancel_url: site + '/index.html?cancelled=1#booking'
       });
       booking.checkoutId = session.id;
-      append('bookings.json', booking);
+      DB.insertBooking(db, booking);
       return res.json({ reference: booking.reference, checkoutUrl: session.url });
     } catch (err) {
       console.error('[naviar] stripe checkout failed:', err.message);
@@ -274,7 +296,7 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
     }
   }
 
-  append('bookings.json', booking);
+  DB.insertBooking(db, booking);
   res.json({ reference: booking.reference });
 });
 
@@ -295,12 +317,7 @@ function handleWebhook(req, res) {
 
   if (event.type === 'checkout.session.completed') {
     const ref = event.data.object.client_reference_id;
-    const rows = read('bookings.json');
-    const row = rows.find((b) => b.reference === ref);
-    if (row) {
-      row.status = 'confirmed';
-      row.paidAt = new Date().toISOString();
-      write('bookings.json', rows);
+    if (DB.markPaid(db, ref)) {
       console.log('[naviar] booking paid:', ref);   // reference only, never case text
     }
   }
@@ -315,7 +332,7 @@ app.post('/api/enquiries', throttle(20, 60 * 60 * 1000), (req, res) => {
   if (!name || !EMAIL_RE.test(email) || !message) {
     return res.status(400).json({ error: 'missing_fields' });
   }
-  append('enquiries.json', {
+  DB.insertEnquiry(db, {
     id: crypto.randomUUID(),
     at: new Date().toISOString(),
     name, email, phone: str(b.phone, 40), message,
@@ -329,7 +346,7 @@ app.post('/api/enquiries', throttle(20, 60 * 60 * 1000), (req, res) => {
 app.post('/api/needs', throttle(120, 60 * 60 * 1000), (req, res) => {
   const b = req.body || {};
   const int = (v) => (Number.isInteger(v) && v >= 0 && v < 20 ? v : null);
-  append('needs.json', {
+  DB.insertNeed(db, {
     at: new Date().toISOString(),
     lang: str(b.lang, 5),
     situation: int(b.situation),
@@ -341,27 +358,62 @@ app.post('/api/needs', throttle(120, 60 * 60 * 1000), (req, res) => {
   res.json({ ok: true });
 });
 
-app.get('/api/insights', (req, res) => {
-  const token = process.env.ADMIN_TOKEN;
-  if (!token || req.headers.authorization !== 'Bearer ' + token) {
-    return res.status(401).json({ error: 'unauthorized' });
-  }
-  const rows = read('needs.json');
-  const tally = (key) => rows.reduce((acc, r) => {
-    const k = String(r[key]);
-    acc[k] = (acc[k] || 0) + 1;
-    return acc;
-  }, {});
+app.get('/api/admin/queue', throttle(60, 60 * 1000), requireAdmin, (req, res) => {
+  const q = DB.queue(db, req.query.limit);
   res.json({
-    total: rows.length,
-    bySituation: tally('situation'),
-    byOffice: tally('office'),
-    byUrgency: tally('urgency'),
-    byLanguage: tally('lang'),
-    byRecommendation: tally('recommended'),
-    bySource: tally('source'),
-    bookings: read('bookings.json').length,
-    enquiries: read('enquiries.json').length
+    counts: DB.counts(db),
+    statuses: { booking: DB.BOOKING_STATUS, enquiry: DB.ENQUIRY_STATUS },
+    services: CFG.services.map((s) => ({ id: s.id, code: s.code, price: s.price })),
+    bookings: q.bookings,
+    enquiries: q.enquiries
+  });
+});
+
+app.get('/api/admin/events', throttle(120, 60 * 1000), requireAdmin, (req, res) => {
+  const subject = str(req.query.subject, 64);
+  if (!subject) return res.status(400).json({ error: 'missing_subject' });
+  res.json({ subject, events: DB.events(db, subject) });
+});
+
+app.post('/api/admin/booking', throttle(120, 60 * 1000), requireAdmin, (req, res) => {
+  const b = req.body || {};
+  const reference = str(b.reference, 32);
+  const status = str(b.status, 24);
+  if (status && !DB.BOOKING_STATUS.includes(status)) {
+    return res.status(400).json({ error: 'bad_status' });
+  }
+  const note = typeof b.note === 'string' ? str(b.note, 2000) : undefined;
+  const row = DB.setBookingStatus(db, reference, status || null, note);
+  if (!row) return res.status(404).json({ error: 'not_found' });
+  res.json({ booking: row });
+});
+
+app.post('/api/admin/enquiry', throttle(120, 60 * 1000), requireAdmin, (req, res) => {
+  const b = req.body || {};
+  const id = str(b.id, 64);
+  const status = str(b.status, 24);
+  if (status && !DB.ENQUIRY_STATUS.includes(status)) {
+    return res.status(400).json({ error: 'bad_status' });
+  }
+  const note = typeof b.note === 'string' ? str(b.note, 2000) : undefined;
+  const row = DB.setEnquiryStatus(db, id, status || null, note);
+  if (!row) return res.status(404).json({ error: 'not_found' });
+  res.json({ enquiry: row });
+});
+
+/* What people actually struggle with. No personal data is stored against these
+   answers, so this is the one view that is safe to screenshot. */
+app.get('/api/insights', throttle(60, 60 * 1000), requireAdmin, (req, res) => {
+  res.json({
+    total: DB.counts(db).needs,
+    bySituation: DB.tally(db, 'needs', 'situation'),
+    byOffice: DB.tally(db, 'needs', 'office'),
+    byUrgency: DB.tally(db, 'needs', 'urgency'),
+    byLanguage: DB.tally(db, 'needs', 'lang'),
+    byRecommendation: DB.tally(db, 'needs', 'recommended'),
+    bySource: DB.tally(db, 'needs', 'source'),
+    bookingsBySource: DB.tally(db, 'bookings', 'source'),
+    counts: DB.counts(db)
   });
 });
 
@@ -373,4 +425,8 @@ app.use((err, req, res, next) => {   // eslint-disable-line no-unused-vars
 app.listen(PORT, () => {
   console.log('[naviar] API on http://127.0.0.1:' + PORT);
   console.log('[naviar] payments:', JSON.stringify(paymentModes()));
+  if (ADMIN_TOKEN.length < ADMIN_MIN_LENGTH) {
+    console.warn('[naviar] ADMIN_TOKEN missing or shorter than ' + ADMIN_MIN_LENGTH +
+                 ' characters — the admin queue is switched off.');
+  }
 });
