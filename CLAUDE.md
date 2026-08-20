@@ -89,11 +89,18 @@ unverified or waiting to be checked.
 `scripts/sync-spotify.mjs` keeps the release archive current on its own once the two Spotify
 secrets are set — every release, its date and its credits, daily.
 
-The stream count and the monthly-listener count are not in Spotify's API at all, so they are
-entered by hand — but in **one** place: `assets/data/figures.json`. Edit it, run `npm run
-figures`, commit. Everything else follows, in each language's own number formatting, and
-`npm run check` fails if anything drifts. Never type either figure into the markup or a
-dictionary; the dictionaries carry `{n}`.
+The stream count and the monthly-listener count are not in Spotify's API at all. They come
+off Spotify for Artists once a month:
+
+```bash
+npm run figures -- --streams 43500000 --listeners 252400
+```
+
+That is the entire update. It writes `assets/data/figures.json`, stamps the date it was
+checked, and rewrites the fallback text in `index.html`; everything else follows from that one
+file, in each language's own number formatting. `npm run check` fails if anything drifts and
+prints a reminder once a figure is sixty days old. Never type either figure into the markup or
+a dictionary — the dictionaries carry `{n}`.
 
 
 Current figures: 43,394,947 streams on "help urself" and 251,000 monthly listeners, both in

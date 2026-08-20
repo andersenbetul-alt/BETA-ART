@@ -185,6 +185,20 @@ if (existsSync(figuresPath)) {
       fail(`[${code}] music_help_streams has a number typed into it — use {n} so figures.json stays the only source.`);
     }
   }
+
+  // A note, not a failure: nothing is wrong with the code when a figure gets old, but a
+  // stream count nobody has looked at since spring is the quiet way this page stops being
+  // true. Sixty days is about two missed monthly checks.
+  const STALE_DAYS = 60;
+  for (const [key, figure] of Object.entries(FIG)) {
+    if (!figure || typeof figure !== 'object' || !figure.checkedAt) continue;
+    const age = Math.floor((Date.now() - Date.parse(figure.checkedAt)) / 86400000);
+    if (age > STALE_DAYS) {
+      notes.push(`${key} was last checked ${age} days ago (${figure.checkedAt}) — ` +
+        'read it off Spotify for Artists and run: npm run figures -- --' +
+        (key === 'monthly_listeners' ? 'listeners' : 'streams') + ' <number>');
+    }
+  }
 }
 
 /* ---------- 6. RTL languages are declared in both places ---------- */

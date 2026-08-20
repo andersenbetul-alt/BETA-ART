@@ -49,10 +49,25 @@ They now live in `figures.json` and nowhere else.
 "streams_help_urself": { "value": 43394947, "source": "…", "checkedAt": "2026-08-18" }
 ```
 
-**To change a number: edit `figures.json`, run `npm run figures`, commit.** That writes the
-no-JS fallback text in `index.html`; `app.js` fills the live page from the same file, and
-`build.mjs` bakes it into the twelve pre-rendered pages. `npm run check` fails if any of them
-ever disagree, and it fails if a number gets typed into a dictionary instead of `{n}`.
+**The monthly job.** Open Spotify for Artists — monthly listeners on the dashboard, the
+stream count on the "help urself" track page — and run:
+
+```bash
+npm run figures -- --streams 43500000 --listeners 252400
+```
+
+Either flag on its own is fine, and the numbers can be pasted with the separators Spotify
+shows (`43.500.000`, `252 400`) — they are stripped. The script stamps `checkedAt` with
+today's date on whatever it changed, so that field never lies about how old a figure is.
+Then commit.
+
+That is the whole job. `app.js` fills the live page from the same file, `build.mjs` bakes it
+into the twelve pre-rendered pages, and `npm run check` fails if any of them ever disagree —
+or if a number gets typed into a dictionary instead of `{n}`.
+
+`npm run check` also prints a note when a figure has not been checked in sixty days, with the
+command to fix it. It is a note, not a failure: nothing is broken, but a stream count nobody
+has looked at since spring is the quiet way this page stops being true.
 
 A side effect worth having: the numbers are now formatted per language by `Intl.NumberFormat`,
 so Hindi shows `2,51,000` and `4.3 क॰`, French `43 394 947`, Turkish `43,4 Mn`. Before, every
@@ -65,9 +80,9 @@ old it is. Fill them in honestly — "Spotify for Artists, 1 July 2026" is usefu
 
 Nothing free will do it. The options, in the order worth considering:
 
-1. **Spotify for Artists, by hand.** First-party truth, and the only place monthly listeners
-   exist. One edit to `figures.json` a month is a two-minute job, and it is now genuinely one
-   edit. This is the recommendation until there is a reason to spend money.
+1. **Spotify for Artists, by hand — the chosen approach.** First-party truth, and the only
+   place monthly listeners exist. One command a month, with a reminder in `npm run check`
+   when it has been missed. Revisit only if the cadence starts slipping.
 2. **Songstats** (~€13/month) has an API covering streams, followers and monthly listeners.
    That is the cheapest way to make `figures.json` self-updating: a second scheduled workflow
    writing the same file the same way. Chartmetric does the same for considerably more.
