@@ -42,8 +42,9 @@
 
   // One string in the current language, for text JS builds rather than the markup carries.
   function t(key) {
-    var dict = T[document.documentElement.lang] || T.en;
-    return (dict && dict[key] != null ? dict[key] : T.en[key]) || '';
+    var dict = T[document.documentElement.lang] || T.en || {};
+    var fallback = T.en || {};
+    return (dict[key] != null ? dict[key] : fallback[key]) || '';
   }
 
   /* ---------- the figures, from one file ---------- */
@@ -82,8 +83,8 @@
   }
 
   function apply(code) {
-    var dict = T[code] || T.en;
-    var fallback = T.en;
+    var dict = T[code] || T.en || {};
+    var fallback = T.en || dict;
 
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
@@ -135,9 +136,15 @@
     });
     select.addEventListener('change', function () {
       // On a pre-rendered page each language is its own URL — go there, so the address bar
-      // and what the visitor shares stay truthful.
+      // and what the visitor shares stay truthful. Keep the page the visitor is on: someone
+      // reading the privacy page in English wants it in Turkish, not the homepage.
       if (document.documentElement.dataset.pageLang) {
-        location.href = '../' + select.value + '/';
+        var parts = location.pathname.split('/').filter(Boolean);
+        var last = parts[parts.length - 1] || '';
+        var file = /\.html$/.test(last) ? parts.pop() : '';
+        var inLangDir = parts.length > 0 && supported(parts[parts.length - 1]) === parts[parts.length - 1];
+        location.href = (inLangDir ? '../' : '') + select.value + '/' +
+          (file === 'index.html' ? '' : file);
         return;
       }
       apply(select.value);
@@ -461,8 +468,8 @@
     var items = window.HXI_SHOP;
     if (!grid || !items || !items.length) return;
 
-    var dict = T[document.documentElement.lang] || T.en;
-    var t = function (key) { return (dict && dict[key]) || T.en[key] || ''; };
+    var dict = T[document.documentElement.lang] || T.en || {};
+    var t = function (key) { return dict[key] || (T.en && T.en[key]) || ''; };
 
     grid.textContent = '';
     items.forEach(function (item) {
