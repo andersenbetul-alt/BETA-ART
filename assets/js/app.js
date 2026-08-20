@@ -89,11 +89,17 @@
       var key = el.getAttribute('data-i18n');
       var value = dict[key] != null ? dict[key] : fallback[key];
       if (value == null) return;
-      // {n} in a string is the stream figure, formatted for this language.
-      if (value.indexOf('{n}') !== -1) {
-        var streams = FIGURES && FIGURES.streams_help_urself;
-        if (!streams) return;                        // leave the markup's own text alone
-        value = value.replace('{n}', full(streams.value, code));
+      // {name} is a figure from figures.json, formatted for this language. If the file has
+      // not loaded, leave the markup's own text alone rather than printing a placeholder.
+      if (value.indexOf('{') !== -1) {
+        if (!FIGURES) return;
+        var missing = false;
+        value = value.replace(/\{([a-z_]+)\}/g, function (match, name) {
+          var figure = FIGURES[name];
+          if (!figure) { missing = true; return match; }
+          return full(figure.value, code);
+        });
+        if (missing) return;
       }
       el.textContent = value;
     });

@@ -99,15 +99,16 @@ const fallbackRe = /<([a-z0-9]+)([^>]*?)data-i18n="([a-z0-9_]+)"([^>]*?)>([^<]*)
 const unescape = (s) => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'");
 // figures.json is read a few checks further down; the fallback text has the number already
 // substituted, so substitute it here too before comparing.
-const enStreams = existsSync(join(root, 'assets/data/figures.json'))
-  ? new Intl.NumberFormat('en').format(
-      JSON.parse(read('assets/data/figures.json')).streams_help_urself.value)
+const enFigures = existsSync(join(root, 'assets/data/figures.json'))
+  ? JSON.parse(read('assets/data/figures.json'))
   : null;
+const fillTokens = (text) => text.replace(/\{([a-z_]+)\}/g, (token, name) =>
+  enFigures && enFigures[name] ? new Intl.NumberFormat('en').format(enFigures[name].value) : token);
 
 for (const [, , , key, , text] of html.matchAll(fallbackRe)) {
   let expected = DICTS.en?.[key];
   if (expected === undefined) continue;
-  if (enStreams && expected.includes('{n}')) expected = expected.replace('{n}', enStreams);
+  if (enFigures) expected = fillTokens(expected);
   if (unescape(text) !== expected) {
     fail(`fallback text for "${key}" does not match the en dictionary:\n` +
          `      markup: ${unescape(text)}\n` +
@@ -180,9 +181,13 @@ if (existsSync(figuresPath)) {
     }
   }
 
+  // Any dictionary string that quotes one of these has to use the token, not a typed number.
+  const TOKENED = { music_help_streams: 'streams_help_urself', music_xp_sub: 'streams_x_pirata' };
   for (const [code, dict] of Object.entries(DICTS)) {
-    if (dict.music_help_streams && !dict.music_help_streams.includes('{n}')) {
-      fail(`[${code}] music_help_streams has a number typed into it — use {n} so figures.json stays the only source.`);
+    for (const [key, figure] of Object.entries(TOKENED)) {
+      if (dict[key] && !dict[key].includes(`{${figure}}`)) {
+        fail(`[${code}] ${key} has a number typed into it — use {${figure}} so figures.json stays the only source.`);
+      }
     }
   }
 

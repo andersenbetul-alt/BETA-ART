@@ -66,7 +66,8 @@ function render(code, { atRoot, source = html, slug = '', title, description }) 
     /(<([a-z0-9]+)([^>]*?)data-i18n="([a-z0-9_]+)"([^>]*?)>)([^<]*)(<\/\2>)/g,
     (match, open, tag, pre, key, post, text, close) => {
       if (dict[key] === undefined) return match;
-      const value = dict[key].replace('{n}', num(FIGURES.streams_help_urself.value, code, false));
+      const value = dict[key].replace(/\{([a-z_]+)\}/g, (token, name) =>
+        FIGURES[name] ? num(FIGURES[name].value, code, false) : token);
       return open + escape(value) + close;
     },
   );

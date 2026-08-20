@@ -9,5 +9,15 @@
     "value": 251000,
     "source": "Spotify for Artists (artist-supplied; 251,063 in the July 2026 data pack)",
     "checkedAt": "2026-07-01"
+  },
+  "streams_x_pirata": {
+    "value": 2616334,
+    "source": "Spotify album page, X-PIRATA",
+    "checkedAt": "2026-08-18"
+  },
+  "streams_x_pirata_slowed": {
+    "value": 622708,
+    "source": "Spotify track page, X-PIRATA (Slowed)",
+    "checkedAt": "2026-08-18"
   }
 }

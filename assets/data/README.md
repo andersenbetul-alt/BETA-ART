@@ -49,6 +49,12 @@ They now live in `figures.json` and nowhere else.
 "streams_help_urself": { "value": 43394947, "source": "…", "checkedAt": "2026-08-18" }
 ```
 
+`figures.json` holds four numbers now: `streams_help_urself`, `monthly_listeners`,
+`streams_x_pirata` and `streams_x_pirata_slowed`. Any dictionary string that prints one
+carries a **named token** — `{streams_help_urself}`, not a typed number — and `npm run check`
+fails if a number is typed in instead. Adding a fifth figure is a key in the file plus a token
+in the string; nothing else changes.
+
 **The monthly job.** Open Spotify for Artists — monthly listeners on the dashboard, the
 stream count on the "help urself" track page — and run:
 
@@ -56,7 +62,7 @@ stream count on the "help urself" track page — and run:
 npm run figures -- --streams 43500000 --listeners 252400
 ```
 
-Either flag on its own is fine, and the numbers can be pasted with the separators Spotify
+The two X-PIRATA figures are edited in the file directly for now; only the two that move weekly have flags. Either flag on its own is fine, and the numbers can be pasted with the separators Spotify
 shows (`43.500.000`, `252 400`) — they are stripped. The script stamps `checkedAt` with
 today's date on whatever it changed, so that field never lies about how old a figure is.
 Then commit.

@@ -83,20 +83,24 @@ let after = before.replace(
   },
 );
 
-// The one dictionary string that prints a number: its fallback in the markup is the English
-// dictionary's text with {n} filled in.
-const template = String(
-  new Function('window', readFileSync(join(root, 'assets/js/i18n.js'), 'utf8') + '; return window.HXI_I18N.en.music_help_streams;')({}),
-);
-const streams = fmt(FIG.streams_help_urself.value, false);
-after = after.replace(
-  /(data-i18n="music_help_streams">)([^<]*)(<)/,
-  (match, open, text, close) => {
-    const value = template.replace('{n}', streams);
-    if (value !== text) changes.push(`music_help_streams: ${text} → ${value}`);
-    return open + value + close;
-  },
-);
+// Dictionary strings that print a figure carry a {token}. Their fallback text in the markup
+// is the English string with the tokens filled in, so it is written from the same source.
+const sandbox = { window: {} };
+new Function('window', readFileSync(join(root, 'assets/js/i18n.js'), 'utf8'))(sandbox.window);
+const en = sandbox.window.HXI_I18N.en;
+
+for (const [key, template] of Object.entries(en)) {
+  if (typeof template !== 'string' || !/\{[a-z_]+\}/.test(template)) continue;
+  const value = template.replace(/\{([a-z_]+)\}/g, (token, name) =>
+    FIG[name] ? fmt(FIG[name].value, false) : token);
+  after = after.replace(
+    new RegExp(`(data-i18n="${key}">)([^<]*)(<)`),
+    (match, open, text, close) => {
+      if (value !== text) changes.push(`${key}: ${text} → ${value}`);
+      return open + value + close;
+    },
+  );
+}
 
 if (after === before) {
   console.log('Figures already match.');
