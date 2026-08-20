@@ -126,67 +126,6 @@
       "Son tarih ne zaman"
     ]
   },
-  "services": {
-    "eyebrow": "Hizmetler",
-    "title": "Kamu sürecinin her aşamasında destek",
-    "lead": "Bir paketten değil, karşınızdaki sorundan başlıyoruz.",
-    "items": [
-      {
-        "t": "Mektup ve kararların açıklanması",
-        "d": "Resmî dilde yazılmış yazıları, harekete geçebileceğiniz bir dile çeviriyoruz.",
-        "i": [
-          "Sade dille açıklama",
-          "Haklar, yükümlülükler ve süreler",
-          "Hiçbir şey yapmazsanız ne olur"
-        ]
-      },
-      {
-        "t": "Başvuru ve formlar",
-        "d": "Doğru başvuru yolunu buluyor ve formu sizinle birlikte dolduruyoruz.",
-        "i": [
-          "Belge kontrol listesi",
-          "Formlar birlikte dolduruluyor",
-          "Yazı ve dilekçe taslakları"
-        ]
-      },
-      {
-        "t": "Dosya takibi",
-        "d": "Kimse izlemediğinde dosyalar durur. Biz izliyoruz.",
-        "i": [
-          "Süre takibi",
-          "Eksik belge taleplerinin yönetimi",
-          "Düzenli durum bildirimi"
-        ]
-      },
-      {
-        "t": "İtiraz ve şikâyet",
-        "d": "Katılmadığınız kararın bir itiraz süresi vardır. Onu doğru kullanmanıza yardım ediyoruz.",
-        "i": [
-          "Kararın açıklanması",
-          "Belgelerin düzenlenmesi",
-          "İtiraz taslağına destek"
-        ]
-      },
-      {
-        "t": "Görüşmeye hazırlık",
-        "d": "Toplantıya veya telefon görüşmesine ne söyleyeceğinizi ve ne soracağınızı bilerek girin.",
-        "i": [
-          "Kurumun soracakları",
-          "Yanınızda götürmeniz gerekenler",
-          "Görüşme sonrası not"
-        ]
-      },
-      {
-        "t": "Sizin adınıza iletişim",
-        "d": "Kapsamını sizin belirlediğiniz yazılı bir vekaletle (fullmakt) kurumla sizin adınıza iletişim kurabiliriz.",
-        "i": [
-          "Kapsam ve süreyi siz belirlersiniz",
-          "Tüm iletişimin yazılı kaydı",
-          "İstediğiniz an geri alınır"
-        ]
-      }
-    ]
-  },
   "areas": {
     "eyebrow": "Kapsam",
     "title": "Çalıştığımız alanlar",
@@ -212,73 +151,7 @@
     "vat": "Fiyatlar NOK cinsindendir. Pilot fiyatlar olup değişebilir.",
     "select": "Bunu seç",
     "ask": "Teklif iste",
-    "plans": [
-      {
-        "n": "Ücretsiz ön görüşme",
-        "tag": "15 dakika",
-        "d": "Size yardımcı olup olamayacağımızı ve nasıl olacağını söyleyebilmemiz için kısa bir görüşme.",
-        "f": [
-          "Dürüst bir değerlendirme",
-          "Hangi hizmetin uygun olduğu",
-          "Yükümlülük yok"
-        ]
-      },
-      {
-        "n": "NAVIAR Klarhet",
-        "tag": "Mektubu anlayın",
-        "d": "Bir mektup veya kararın açıklaması ve sonraki adımlarınız yazılı olarak.",
-        "f": [
-          "Sade dille açıklama",
-          "Süreler ve haklar",
-          "Yazılı eylem planı"
-        ]
-      },
-      {
-        "n": "NAVIAR Handling",
-        "tag": "Başvuruyu birlikte yapalım",
-        "d": "Bir başvuruyu belgeleriyle birlikte hazırlayıp sizinle tamamlıyoruz.",
-        "f": [
-          "Belge kontrol listesi",
-          "Form birlikte dolduruluyor",
-          "Gönderim desteği"
-        ]
-      },
-      {
-        "n": "NAVIAR Oppfølging",
-        "tag": "Dosya desteği",
-        "d": "Dosyayı takip eder, yazışmaları yürütür ve süreleri kaçırmayız.",
-        "f": [
-          "Süre takibi",
-          "Kurumla iletişim",
-          "Durum bildirimleri"
-        ]
-      },
-      {
-        "n": "NAVIAR Komplett",
-        "tag": "Baştan sona",
-        "d": "İlk mektuptan nihai sonuca kadar tüm sürecin yönetimi.",
-        "f": [
-          "Tüm aşamalar dahil",
-          "Tek bir sorumlu danışman",
-          "Dosya başına fiyat"
-        ]
-      }
-    ],
     "moreTitle": "Aileler ve kurumlar için",
-    "more": [
-      {
-        "n": "NAVIAR Familie",
-        "d": "Yaşlı bir yakının veya desteğe ihtiyaç duyan bir aile bireyinin işlemlerinin koordinasyonu."
-      },
-      {
-        "n": "NAVIAR Business",
-        "d": "Kamu süreçleriyle uğraşan çalışanlar için işveren tarafından karşılanan destek."
-      },
-      {
-        "n": "NAVIAR Public",
-        "d": "Belediyeler ve kamu kurumları için kapasite desteği ve hizmet geliştirme."
-      }
-    ],
     "catalogTitle": "Tam fiyat listesi",
     "code": "Kod",
     "delivery": "Teslim",

@@ -160,8 +160,12 @@
       btn.innerHTML =
         '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
         'stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>' +
-        '<path d="M12 3c2.4 2.6 3.7 5.6 3.7 9s-1.3 6.4-3.7 9c-2.4-2.6-3.7-5.6-3.7-9S9.6 5.6 12 3z"/></svg>' +
-        '<span>' + current.label + '</span>';
+        '<path d="M12 3c2.4 2.6 3.7 5.6 3.7 9s-1.3 6.4-3.7 9c-2.4-2.6-3.7-5.6-3.7-9S9.6 5.6 12 3z"/></svg>';
+      /* Language names come from config, so set them as text rather than
+         building HTML around them. */
+      var btnLabel = document.createElement('span');
+      btnLabel.textContent = current.label;
+      btn.appendChild(btnLabel);
 
       var menu = document.createElement('ul');
       menu.className = 'lang-menu';
@@ -174,8 +178,13 @@
         opt.setAttribute('role', 'option');
         opt.setAttribute('lang', l.code);
         opt.setAttribute('aria-current', String(l.code === I18n.lang));
-        opt.innerHTML = '<span>' + l.label + '</span>' +
-                        '<span class="lang-native">' + l.native + '</span>';
+        var label = document.createElement('span');
+        label.textContent = l.label;
+        var native = document.createElement('span');
+        native.className = 'lang-native';
+        native.textContent = l.native;
+        opt.appendChild(label);
+        opt.appendChild(native);
         opt.addEventListener('click', function () {
           menu.classList.remove('open');
           btn.setAttribute('aria-expanded', 'false');

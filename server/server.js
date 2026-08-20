@@ -49,6 +49,40 @@ function reference() {
   return 'NAV-' + crypto.randomBytes(4).toString('hex').toUpperCase().slice(0, 6);
 }
 
+/* Six hex characters is 16.7 million references, so a collision is unlikely but
+   not impossible — and the failure mode is a primary-key error, a 500, and a
+   customer who thinks the booking failed. Try again a few times instead. */
+function freeReference() {
+  for (let i = 0; i < 5; i += 1) {
+    const ref = reference();
+    if (!DB.referenceTaken(db, ref)) return ref;
+  }
+  /* Astronomically improbable; a longer reference is better than an error. */
+  return 'NAV-' + crypto.randomBytes(8).toString('hex').toUpperCase().slice(0, 12);
+}
+
+/* Slots are wall-clock times in Norway. The server may well run in UTC, and
+   `new Date('2026-09-01T10:00:00')` would then be read as 10:00 UTC — one or
+   two hours off, which is enough to accept a booking inside the lead time or
+   refuse one outside it. This converts an Oslo wall clock to a real instant. */
+function osloInstant(dateStr, timeStr) {
+  const asUtc = Date.parse(dateStr + 'T' + timeStr + ':00Z');
+  if (Number.isNaN(asUtc)) return NaN;
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: CFG.booking.timezone || 'Europe/Oslo', hour12: false,
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  }).formatToParts(new Date(asUtc)).reduce((acc, p) => {
+    acc[p.type] = p.value;
+    return acc;
+  }, {});
+  const hour = parts.hour === '24' ? '00' : parts.hour;
+  const wall = Date.parse(
+    `${parts.year}-${parts.month}-${parts.day}T${hour}:${parts.minute}:${parts.second}Z`
+  );
+  return asUtc - (wall - asUtc);
+}
+
 function serviceById(id) {
   return CFG.services.find((s) => s.id === id);
 }
@@ -221,7 +255,7 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
     if (!isWorkday(date)) return res.status(400).json({ error: 'not_a_workday' });
 
     const earliest = Date.now() + CFG.booking.leadTimeHours * 3600000;
-    if (new Date(date + 'T' + time + ':00').getTime() < earliest) {
+    if (osloInstant(date, time) < earliest) {
       return res.status(400).json({ error: 'inside_lead_time' });
     }
     if (DB.slotClash(db, date, time)) return res.status(409).json({ error: 'slot_taken' });
@@ -236,7 +270,7 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
   if (payment === 'vipps') payment = 'invoice';   // until Vipps is live
 
   const booking = {
-    reference: reference(),
+    reference: freeReference(),
     createdAt: new Date().toISOString(),
     /* Only a card payment waits on Stripe. An invoice case is real work the
        moment it arrives, so it goes straight into the queue. */

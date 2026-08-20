@@ -236,6 +236,10 @@ function setEnquiryStatus(db, id, status, note) {
 }
 
 /* ------------------------------------------------------------------ reads */
+function referenceTaken(db, reference) {
+  return db.prepare('SELECT 1 FROM bookings WHERE reference = ? LIMIT 1').get(reference) !== undefined;
+}
+
 function takenSlots(db, date) {
   return db.prepare(`
     SELECT time FROM bookings
@@ -296,5 +300,5 @@ module.exports = {
   open, BOOKING_STATUS, ENQUIRY_STATUS,
   insertBooking, insertEnquiry, insertNeed,
   markPaid, setBookingStatus, setEnquiryStatus,
-  takenSlots, slotClash, queue, events, tally, counts, logEvent
+  referenceTaken, takenSlots, slotClash, queue, events, tally, counts, logEvent
 };

@@ -126,67 +126,6 @@
       "Goorta uu yahay wakhtiga kama dambeysta ah"
     ]
   },
-  "services": {
-    "eyebrow": "Adeegyada",
-    "title": "Taageero tallaabo kasta oo arrin dawladeed ah",
-    "lead": "Waxaan ka bilownaa dhibaatada ku hor taal, ma aha xirmo horay loo diyaariyay.",
-    "items": [
-      {
-        "t": "Warqado iyo go'aanno la sharraxay",
-        "d": "Warqadaha rasmiga ah ee luqad maamul ku qoran, waxaan u turjunnaa luqad aad ku tallaabsan karto.",
-        "i": [
-          "Sharraxaad luqad fudud",
-          "Xuquuq, waajibaad iyo wakhtiyo",
-          "Waxa dhacaya haddii aadan waxba qaban"
-        ]
-      },
-      {
-        "t": "Codsiyo iyo foomam",
-        "d": "Waxaan helnaa habka codsiga ee saxda ah waxaana kula buuxinnaa.",
-        "i": [
-          "Liiska dukumentiyada",
-          "Foomamka wadajir ayaa loo buuxiyaa",
-          "Qabyo-qoraal warqado iyo sharraxaad"
-        ]
-      },
-      {
-        "t": "La socodka arrinta",
-        "d": "Arrimuhu way istaagaan marka aan cidina dabagal samayn. Annagaa dabagal samaynayna.",
-        "i": [
-          "La socodka wakhtiyada",
-          "Codsiyada dukumentiyada maqan",
-          "Warbixin joogto ah oo xaalad"
-        ]
-      },
-      {
-        "t": "Cabasho iyo dacwad",
-        "d": "Go'aan aadan raalli ka ahayn wuxuu leeyahay wakhti cabasho. Waxaan kaa caawinaa inaad si sax ah u isticmaasho.",
-        "i": [
-          "Go'aanka oo la sharraxay",
-          "Dukumentiyada oo la habeeyay",
-          "Caawimaad qorista cabashada"
-        ]
-      },
-      {
-        "t": "Diyaarinta kulanka",
-        "d": "Ku gal kulan ama wicitaan telefoon adigoo garanaya waxa aad sheegayso iyo waxa aad weydiinayso.",
-        "i": [
-          "Waxa hay'addu weydiin doonto",
-          "Waxa aad qaadan lahayd",
-          "Qoraal la sameeyo kadib"
-        ]
-      },
-      {
-        "t": "Xiriir magacaaga ah",
-        "d": "Adigoo bixiya fullmakt qoraal ah oo aad adigu go'aamiso baaxaddiisa, waxaan hay'adda kula xiriiri karnaa adiga oo matalaya.",
-        "i": [
-          "Baaxadda iyo muddada adigaa go'aamiya",
-          "Diiwaan qoraal ah oo xiriir kasta",
-          "Wakhti kasta waa la burin karaa"
-        ]
-      }
-    ]
-  },
   "areas": {
     "eyebrow": "Daboolka",
     "title": "Qaybaha aan ka shaqeyno",
@@ -212,73 +151,7 @@
     "vat": "Qiimayaasha waa NOK. Qiimo tijaabo ah, waa la beddeli karaa.",
     "select": "Kan ballan qabso",
     "ask": "Dalab qiime codso",
-    "plans": [
-      {
-        "n": "Wada-hadal hordhac ah oo bilaash ah",
-        "tag": "15 daqiiqo",
-        "d": "Wada-hadal gaaban si aan kuugu sheegno inaan ku caawin karno iyo sida.",
-        "f": [
-          "Qiimeyn daacad ah",
-          "Adeegga kugu habboon",
-          "Waajibaad ma leh"
-        ]
-      },
-      {
-        "n": "NAVIAR Klarhet",
-        "tag": "Fahan warqadda",
-        "d": "Hal warqad ama go'aan oo la sharraxay, iyo tallaabooyinkaaga xiga oo qoraal ah.",
-        "f": [
-          "Sharraxaad luqad fudud",
-          "Wakhtiyo iyo xuquuq",
-          "Qorshe hawleed qoraal ah"
-        ]
-      },
-      {
-        "n": "NAVIAR Handling",
-        "tag": "Codsiga wadajir",
-        "d": "Waxaan diyaarinnaa oo aan kula dhammaystirnaa codsi, dukumentiyada oo ay ku jiraan.",
-        "f": [
-          "Liiska dukumentiyada",
-          "Foomka wadajir ayaa loo buuxiyaa",
-          "Taageero gudbin"
-        ]
-      },
-      {
-        "n": "NAVIAR Oppfølging",
-        "tag": "Taageero arrimeed",
-        "d": "Waan la soconnaa arrinta, waxaan qabanaa warqadaha, waana ilaalinnaa wakhtiyada.",
-        "f": [
-          "La socodka wakhtiyada",
-          "Xiriirka hay'adda",
-          "Warbixin xaalad"
-        ]
-      },
-      {
-        "n": "NAVIAR Komplett",
-        "tag": "Bilow ilaa dhammaad",
-        "d": "Habraaca oo dhan adiga ayaan kuugu maamulnaa, warqadda ugu horreysa ilaa natiijada ugu dambeysa.",
-        "f": [
-          "Dhammaan tallaabooyinka",
-          "Hal la-taliye go'an",
-          "Qiime arrin kasta"
-        ]
-      }
-    ],
     "moreTitle": "Qoysaska iyo hay'adaha",
-    "more": [
-      {
-        "n": "NAVIAR Familie",
-        "d": "Isku-duwid loo sameeyo qaraabo waayeel ah ama xubin qoys oo taageero u baahan."
-      },
-      {
-        "n": "NAVIAR Business",
-        "d": "Taageero uu shaqo-bixiyuhu bixiyo oo loogu talagalay shaqaalaha ku jira habraacyo dawladeed."
-      },
-      {
-        "n": "NAVIAR Public",
-        "d": "Taageero awood iyo horumarinta adeegyada degmooyinka iyo hay'adaha dawladda."
-      }
-    ],
     "catalogTitle": "Liiska qiimaha oo dhan",
     "code": "Koodh",
     "delivery": "Gudbin",

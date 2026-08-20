@@ -126,67 +126,6 @@
       "Når fristen er"
     ]
   },
-  "services": {
-    "eyebrow": "Tjenester",
-    "title": "Støtte i hvert steg av en offentlig sak",
-    "lead": "Vi starter med problemet du står i, ikke med en pakke.",
-    "items": [
-      {
-        "t": "Brev og vedtak forklart",
-        "d": "Offentlige brev skrevet i forvaltningsspråk, oversatt til noe du kan handle ut fra.",
-        "i": [
-          "Forklaring på klarspråk",
-          "Rettigheter, plikter og frister",
-          "Hva skjer hvis du ikke gjør noe"
-        ]
-      },
-      {
-        "t": "Søknader og skjemaer",
-        "d": "Vi finner riktig søknadsvei og fyller den ut sammen med deg.",
-        "i": [
-          "Sjekkliste for dokumenter",
-          "Skjemaer fylt ut sammen",
-          "Utkast til brev og redegjørelser"
-        ]
-      },
-      {
-        "t": "Oppfølging av saken",
-        "d": "Saker stopper opp når ingen følger med. Vi følger med.",
-        "i": [
-          "Overvåking av frister",
-          "Krav om manglende dokumenter håndtert",
-          "Jevnlige statusoppdateringer"
-        ]
-      },
-      {
-        "t": "Klage og innsigelse",
-        "d": "Et vedtak du er uenig i har en frist. Vi hjelper deg å bruke den riktig.",
-        "i": [
-          "Vedtaket forklart",
-          "Dokumentene organisert",
-          "Hjelp til å skrive klagen"
-        ]
-      },
-      {
-        "t": "Forberedelse til møter",
-        "d": "Gå inn i et møte eller en telefonsamtale og vit hva du skal si og spørre om.",
-        "i": [
-          "Hva instansen kommer til å spørre om",
-          "Hva du bør ha med",
-          "Referat i etterkant"
-        ]
-      },
-      {
-        "t": "Kontakt på dine vegne",
-        "d": "Med en skriftlig fullmakt som du selv bestemmer omfanget av, kan vi kommunisere med instansen for deg.",
-        "i": [
-          "Omfang og varighet bestemmer du",
-          "Skriftlig logg over all kontakt",
-          "Kan trekkes tilbake når du vil"
-        ]
-      }
-    ]
-  },
   "areas": {
     "eyebrow": "Dekning",
     "title": "Områder vi jobber med",
@@ -212,73 +151,7 @@
     "vat": "Priser i NOK. Pilotpriser, kan bli justert.",
     "select": "Bestill denne",
     "ask": "Be om tilbud",
-    "plans": [
-      {
-        "n": "Gratis forhåndssamtale",
-        "tag": "15 minutter",
-        "d": "En kort samtale så vi kan si om vi kan hjelpe deg, og hvordan.",
-        "f": [
-          "En ærlig vurdering",
-          "Hvilken tjeneste som passer",
-          "Uforpliktende"
-        ]
-      },
-      {
-        "n": "NAVIAR Klarhet",
-        "tag": "Forstå brevet",
-        "d": "Ett brev eller vedtak forklart, med dine neste steg skriftlig.",
-        "f": [
-          "Forklaring på klarspråk",
-          "Frister og rettigheter",
-          "Skriftlig handlingsplan"
-        ]
-      },
-      {
-        "n": "NAVIAR Handling",
-        "tag": "Søknad sammen",
-        "d": "Vi forbereder og fullfører en søknad sammen med deg, dokumenter inkludert.",
-        "f": [
-          "Sjekkliste for dokumenter",
-          "Skjema fylt ut sammen",
-          "Hjelp til innsending"
-        ]
-      },
-      {
-        "n": "NAVIAR Oppfølging",
-        "tag": "Saksstøtte",
-        "d": "Vi følger saken, håndterer korrespondansen og holder fristene.",
-        "f": [
-          "Overvåking av frister",
-          "Kontakt med instansen",
-          "Statusoppdateringer"
-        ]
-      },
-      {
-        "n": "NAVIAR Komplett",
-        "tag": "Fra start til slutt",
-        "d": "Hele prosessen håndtert for deg, fra første brev til endelig utfall.",
-        "f": [
-          "Alle steg inkludert",
-          "Én fast rådgiver",
-          "Pris per sak"
-        ]
-      }
-    ],
     "moreTitle": "For familier og virksomheter",
-    "more": [
-      {
-        "n": "NAVIAR Familie",
-        "d": "Koordinering på vegne av en eldre pårørende eller et familiemedlem som trenger støtte."
-      },
-      {
-        "n": "NAVIAR Business",
-        "d": "Arbeidsgiverbetalt støtte til ansatte som står i offentlige prosesser."
-      },
-      {
-        "n": "NAVIAR Public",
-        "d": "Kapasitetsstøtte og tjenesteutvikling for kommuner og offentlige virksomheter."
-      }
-    ],
     "catalogTitle": "Full prisliste",
     "code": "Kode",
     "delivery": "Levering",

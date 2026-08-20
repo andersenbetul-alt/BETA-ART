@@ -126,67 +126,6 @@
       "Kiedy upływa termin"
     ]
   },
-  "services": {
-    "eyebrow": "Usługi",
-    "title": "Wsparcie na każdym etapie sprawy urzędowej",
-    "lead": "Zaczynamy od problemu, który masz przed sobą, a nie od pakietu.",
-    "items": [
-      {
-        "t": "Pisma i decyzje wyjaśnione",
-        "d": "Urzędowe pisma pisane językiem administracji, przetłumaczone na język, na podstawie którego możesz działać.",
-        "i": [
-          "Wyjaśnienie prostym językiem",
-          "Prawa, obowiązki i terminy",
-          "Co się stanie, jeśli nic nie zrobisz"
-        ]
-      },
-      {
-        "t": "Wnioski i formularze",
-        "d": "Znajdujemy właściwą drogę wniosku i wypełniamy go razem z Tobą.",
-        "i": [
-          "Lista dokumentów",
-          "Formularze wypełniane wspólnie",
-          "Projekty pism i oświadczeń"
-        ]
-      },
-      {
-        "t": "Prowadzenie sprawy",
-        "d": "Sprawy stoją, kiedy nikt ich nie pilnuje. My pilnujemy.",
-        "i": [
-          "Kontrola terminów",
-          "Obsługa wezwań o dokumenty",
-          "Regularne informacje o statusie"
-        ]
-      },
-      {
-        "t": "Odwołania i skargi",
-        "d": "Decyzja, z którą się nie zgadzasz, ma termin. Pomagamy go dobrze wykorzystać.",
-        "i": [
-          "Wyjaśnienie decyzji",
-          "Uporządkowanie dokumentów",
-          "Pomoc w napisaniu odwołania"
-        ]
-      },
-      {
-        "t": "Przygotowanie do spotkania",
-        "d": "Wejdź na spotkanie lub rozmowę telefoniczną wiedząc, co powiedzieć i o co zapytać.",
-        "i": [
-          "O co zapyta urząd",
-          "Co należy zabrać",
-          "Notatka po spotkaniu"
-        ]
-      },
-      {
-        "t": "Kontakt w Twoim imieniu",
-        "d": "Na podstawie pisemnego pełnomocnictwa (fullmakt), którego zakres sam określasz, możemy kontaktować się z urzędem za Ciebie.",
-        "i": [
-          "Zakres i czas ustalasz Ty",
-          "Pisemny zapis każdego kontaktu",
-          "Można je cofnąć w każdej chwili"
-        ]
-      }
-    ]
-  },
   "areas": {
     "eyebrow": "Zakres",
     "title": "Obszary, którymi się zajmujemy",
@@ -212,73 +151,7 @@
     "vat": "Ceny w NOK. Ceny pilotażowe, mogą ulec zmianie.",
     "select": "Zamów",
     "ask": "Poproś o ofertę",
-    "plans": [
-      {
-        "n": "Bezpłatna rozmowa wstępna",
-        "tag": "15 minut",
-        "d": "Krótka rozmowa, żebyśmy mogli powiedzieć, czy i jak możemy pomóc.",
-        "f": [
-          "Uczciwa ocena",
-          "Która usługa pasuje",
-          "Bez zobowiązań"
-        ]
-      },
-      {
-        "n": "NAVIAR Klarhet",
-        "tag": "Zrozum pismo",
-        "d": "Jedno pismo lub decyzja wyjaśnione, z kolejnymi krokami na piśmie.",
-        "f": [
-          "Wyjaśnienie prostym językiem",
-          "Terminy i prawa",
-          "Pisemny plan działania"
-        ]
-      },
-      {
-        "n": "NAVIAR Handling",
-        "tag": "Wniosek razem",
-        "d": "Przygotowujemy i składamy wniosek razem z Tobą, wraz z dokumentami.",
-        "f": [
-          "Lista dokumentów",
-          "Formularz wypełniony wspólnie",
-          "Pomoc przy złożeniu"
-        ]
-      },
-      {
-        "n": "NAVIAR Oppfølging",
-        "tag": "Wsparcie w sprawie",
-        "d": "Prowadzimy sprawę, obsługujemy korespondencję i pilnujemy terminów.",
-        "f": [
-          "Kontrola terminów",
-          "Kontakt z urzędem",
-          "Informacje o statusie"
-        ]
-      },
-      {
-        "n": "NAVIAR Komplett",
-        "tag": "Od początku do końca",
-        "d": "Cały proces prowadzony za Ciebie, od pierwszego pisma do ostatecznego rozstrzygnięcia.",
-        "f": [
-          "Wszystkie etapy w cenie",
-          "Jeden stały doradca",
-          "Cena za sprawę"
-        ]
-      }
-    ],
     "moreTitle": "Dla rodzin i firm",
-    "more": [
-      {
-        "n": "NAVIAR Familie",
-        "d": "Koordynacja w imieniu starszego krewnego lub członka rodziny, który potrzebuje wsparcia."
-      },
-      {
-        "n": "NAVIAR Business",
-        "d": "Wsparcie finansowane przez pracodawcę dla pracowników prowadzących sprawy urzędowe."
-      },
-      {
-        "n": "NAVIAR Public",
-        "d": "Wsparcie kadrowe i rozwój usług dla gmin i instytucji publicznych."
-      }
-    ],
     "catalogTitle": "Pełny cennik",
     "code": "Kod",
     "delivery": "Realizacja",

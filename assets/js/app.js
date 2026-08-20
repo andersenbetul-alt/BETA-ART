@@ -238,7 +238,14 @@
     var c = CFG.company;
     document.querySelectorAll('[data-company]').forEach(function (node) {
       var key = node.getAttribute('data-company');
-      if (key === 'address') { node.innerHTML = c.address.join('<br>'); return; }
+      if (key === 'address') {
+        node.textContent = '';
+        c.address.forEach(function (line, i) {
+          if (i) node.appendChild(document.createElement('br'));
+          node.appendChild(document.createTextNode(line));
+        });
+        return;
+      }
       if (key === 'emailLink') { node.href = 'mailto:' + c.email; node.textContent = c.email; return; }
       if (key === 'phoneLink') { node.href = 'tel:' + c.phoneHref; node.textContent = c.phone; return; }
       if (key === 'mailto') { node.href = 'mailto:' + c.email; return; }
@@ -437,7 +444,7 @@
       var body = [
         payload.name, payload.email, payload.phone, '', payload.message
       ].join('\n');
-      global.location.href = 'mailto:' + CFG.fallbackMailto +
+      global.location.href = 'mailto:' + (CFG.fallbackMailto || CFG.company.email) +
         '?subject=' + encodeURIComponent('NAVIAR — ' + payload.name) +
         '&body=' + encodeURIComponent(body);
       done();

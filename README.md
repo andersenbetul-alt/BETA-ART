@@ -207,6 +207,28 @@ Check key parity across locales with `tools/check-i18n.js`:
 node tools/check-i18n.js
 ```
 
+### Accessibility
+
+Norway requires WCAG 2.1 AA of public-facing websites (forskrift om universell
+utforming av IKT), and this service is aimed at people who are elderly, ill or
+reading in a second language — the ones a low-contrast label fails first. All
+five pages pass **axe-core with zero violations** across `wcag2a`, `wcag2aa`,
+`wcag21a` and `wcag21aa`.
+
+Two palette rules follow from that, and both matter if you edit the CSS:
+
+- **Premium Gold is 2.1:1 on white.** It may not carry text on a light surface.
+  Gold belongs on dark backgrounds, in the monogram, and as a button fill with
+  dark text on it. Section labels on light surfaces are Midnight Navy.
+- `--muted` is `#5F6B7A`, not a lighter grey: 5.4:1 on white, 5.0:1 on off-white.
+
+Re-check after any colour change:
+
+```bash
+npm install axe-core        # in a scratch directory
+# then run axe against each page in a headless browser
+```
+
 ### Readability
 
 The whole product is "we explain it in plain language", so the Norwegian is
@@ -268,7 +290,8 @@ The blueprint describes considerably more than a website. Still missing:
 
 ## Before launch
 
-- [ ] Real org.nr., address, email and phone in `config.js`
+- [ ] Real org.nr., address, email and phone in `config.js` (also used by the
+      `<noscript>` block in `index.html`, which is static and must be edited by hand)
 - [ ] `ADMIN_TOKEN` of at least 24 characters, stored in the host's secret store
 - [ ] The API on a host with a persistent disk for `server/data`
 - [ ] Norwegian lawyer's review of `personvern.html` and `vilkar.html`

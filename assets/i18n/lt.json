@@ -126,67 +126,6 @@
       "Kada yra terminas"
     ]
   },
-  "services": {
-    "eyebrow": "Paslaugos",
-    "title": "Parama kiekviename bylos etape",
-    "lead": "Pradedame nuo jūsų problemos, o ne nuo paketo.",
-    "items": [
-      {
-        "t": "Laiškų ir sprendimų paaiškinimas",
-        "d": "Oficialūs raštai, parašyti administracine kalba, išversti į kalbą, pagal kurią galite veikti.",
-        "i": [
-          "Paaiškinimas paprasta kalba",
-          "Teisės, pareigos ir terminai",
-          "Kas bus, jei nieko nedarysite"
-        ]
-      },
-      {
-        "t": "Prašymai ir formos",
-        "d": "Randame tinkamą prašymo kelią ir užpildome jį kartu su jumis.",
-        "i": [
-          "Dokumentų sąrašas",
-          "Formos pildomos kartu",
-          "Raštų ir paaiškinimų projektai"
-        ]
-      },
-      {
-        "t": "Bylos priežiūra",
-        "d": "Bylos sustoja, kai niekas jų neseka. Mes sekame.",
-        "i": [
-          "Terminų kontrolė",
-          "Prašymų dėl dokumentų tvarkymas",
-          "Reguliarūs būsenos pranešimai"
-        ]
-      },
-      {
-        "t": "Skundai ir apskundimas",
-        "d": "Sprendimas, su kuriuo nesutinkate, turi apskundimo terminą. Padedame jį tinkamai panaudoti.",
-        "i": [
-          "Sprendimo paaiškinimas",
-          "Dokumentų sutvarkymas",
-          "Pagalba rašant skundą"
-        ]
-      },
-      {
-        "t": "Pasiruošimas susitikimui",
-        "d": "Eikite į susitikimą ar pokalbį telefonu žinodami, ką sakyti ir ko klausti.",
-        "i": [
-          "Ko klaus įstaiga",
-          "Ką turėtumėte turėti su savimi",
-          "Užrašai po susitikimo"
-        ]
-      },
-      {
-        "t": "Bendravimas jūsų vardu",
-        "d": "Pagal rašytinį įgaliojimą (fullmakt), kurio apimtį nustatote jūs, galime bendrauti su įstaiga už jus.",
-        "i": [
-          "Apimtį ir trukmę nustatote jūs",
-          "Rašytinis kiekvieno kontakto įrašas",
-          "Galima atšaukti bet kada"
-        ]
-      }
-    ]
-  },
   "areas": {
     "eyebrow": "Aprėptis",
     "title": "Sritys, kuriose dirbame",
@@ -212,73 +151,7 @@
     "vat": "Kainos NOK. Bandomosios kainos, gali keistis.",
     "select": "Užsisakyti",
     "ask": "Prašyti pasiūlymo",
-    "plans": [
-      {
-        "n": "Nemokamas įvadinis pokalbis",
-        "tag": "15 minučių",
-        "d": "Trumpas pokalbis, kad galėtume pasakyti, ar ir kaip galime padėti.",
-        "f": [
-          "Sąžiningas įvertinimas",
-          "Kuri paslauga tinka",
-          "Jokių įsipareigojimų"
-        ]
-      },
-      {
-        "n": "NAVIAR Klarhet",
-        "tag": "Suprask laišką",
-        "d": "Vienas laiškas ar sprendimas paaiškintas, su kitais žingsniais raštu.",
-        "f": [
-          "Paaiškinimas paprasta kalba",
-          "Terminai ir teisės",
-          "Rašytinis veiksmų planas"
-        ]
-      },
-      {
-        "n": "NAVIAR Handling",
-        "tag": "Prašymas kartu",
-        "d": "Paruošiame ir pateikiame prašymą kartu su jumis, įskaitant dokumentus.",
-        "f": [
-          "Dokumentų sąrašas",
-          "Formą pildome kartu",
-          "Pagalba pateikiant"
-        ]
-      },
-      {
-        "n": "NAVIAR Oppfølging",
-        "tag": "Bylos parama",
-        "d": "Prižiūrime bylą, tvarkome susirašinėjimą ir laikomės terminų.",
-        "f": [
-          "Terminų kontrolė",
-          "Ryšys su įstaiga",
-          "Būsenos pranešimai"
-        ]
-      },
-      {
-        "n": "NAVIAR Komplett",
-        "tag": "Nuo pradžios iki pabaigos",
-        "d": "Visą procesą vedame už jus — nuo pirmojo laiško iki galutinio rezultato.",
-        "f": [
-          "Visi etapai įskaičiuoti",
-          "Vienas paskirtas konsultantas",
-          "Kaina už bylą"
-        ]
-      }
-    ],
     "moreTitle": "Šeimoms ir organizacijoms",
-    "more": [
-      {
-        "n": "NAVIAR Familie",
-        "d": "Koordinavimas vyresnio amžiaus giminaičio ar paramos reikalingo šeimos nario vardu."
-      },
-      {
-        "n": "NAVIAR Business",
-        "d": "Darbdavio apmokama parama darbuotojams, tvarkantiems valstybines procedūras."
-      },
-      {
-        "n": "NAVIAR Public",
-        "d": "Pajėgumų parama ir paslaugų vystymas savivaldybėms ir valstybės įstaigoms."
-      }
-    ],
     "catalogTitle": "Visas kainoraštis",
     "code": "Kodas",
     "delivery": "Pristatymas",

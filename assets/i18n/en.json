@@ -126,67 +126,6 @@
       "When the deadline is"
     ]
   },
-  "services": {
-    "eyebrow": "Services",
-    "title": "Support at every stage of a public-sector case",
-    "lead": "We start with the problem in front of you, not with a package.",
-    "items": [
-      {
-        "t": "Letters and decisions explained",
-        "d": "Official letters written in bureaucratic Norwegian, translated into language you can act on.",
-        "i": [
-          "Plain-language explanation",
-          "Rights, duties and deadlines",
-          "What happens if you do nothing"
-        ]
-      },
-      {
-        "t": "Applications and forms",
-        "d": "We find the right application route and complete it together with you.",
-        "i": [
-          "Document checklist",
-          "Forms filled in together",
-          "Letters and statements drafted"
-        ]
-      },
-      {
-        "t": "Case follow-up",
-        "d": "Cases stall when nobody is watching them. We watch them.",
-        "i": [
-          "Deadline monitoring",
-          "Missing-document requests handled",
-          "Regular status updates"
-        ]
-      },
-      {
-        "t": "Appeals and complaints",
-        "d": "A decision you disagree with has a deadline. We help you use it properly.",
-        "i": [
-          "The decision explained",
-          "Documents organised",
-          "Help drafting the appeal"
-        ]
-      },
-      {
-        "t": "Meeting preparation",
-        "d": "Go into a meeting or a phone call knowing what to say and what to ask.",
-        "i": [
-          "What the office will ask",
-          "What you should bring",
-          "Notes taken afterwards"
-        ]
-      },
-      {
-        "t": "Contact on your behalf",
-        "d": "With a written authorisation (fullmakt) that you define, we can communicate with the office for you.",
-        "i": [
-          "Scope and duration set by you",
-          "Written record of every contact",
-          "Withdrawn whenever you want"
-        ]
-      }
-    ]
-  },
   "areas": {
     "eyebrow": "Coverage",
     "title": "Areas we work in",
@@ -212,73 +151,7 @@
     "vat": "Prices in NOK. Pilot pricing, subject to change.",
     "select": "Book this",
     "ask": "Request a quote",
-    "plans": [
-      {
-        "n": "Free orientation",
-        "tag": "15 minutes",
-        "d": "A short conversation so we can tell you whether we can help, and how.",
-        "f": [
-          "An honest assessment",
-          "Which service fits",
-          "No obligation"
-        ]
-      },
-      {
-        "n": "NAVIAR Clarity",
-        "tag": "Understand the letter",
-        "d": "One letter or decision explained, with your next steps in writing.",
-        "f": [
-          "Plain-language explanation",
-          "Deadlines and rights",
-          "Written action plan"
-        ]
-      },
-      {
-        "n": "NAVIAR Action",
-        "tag": "Apply together",
-        "d": "We prepare and complete an application with you, documents included.",
-        "f": [
-          "Document checklist",
-          "Form filled in together",
-          "Submission support"
-        ]
-      },
-      {
-        "n": "NAVIAR Follow-up",
-        "tag": "Case support",
-        "d": "We follow the case, handle correspondence and keep the deadlines.",
-        "f": [
-          "Deadline monitoring",
-          "Contact with the office",
-          "Status updates"
-        ]
-      },
-      {
-        "n": "NAVIAR Complete",
-        "tag": "Start to finish",
-        "d": "The whole process managed for you, from the first letter to the final outcome.",
-        "f": [
-          "All stages included",
-          "One named advisor",
-          "Priced per case"
-        ]
-      }
-    ],
     "moreTitle": "For families and organisations",
-    "more": [
-      {
-        "n": "NAVIAR Family",
-        "d": "Coordination on behalf of an elderly relative or a family member who needs support."
-      },
-      {
-        "n": "NAVIAR Business",
-        "d": "Employer-funded support for employees dealing with public-sector processes."
-      },
-      {
-        "n": "NAVIAR Public",
-        "d": "Capacity support and service development for municipalities and public bodies."
-      }
-    ],
     "catalogTitle": "Full price list",
     "code": "Code",
     "delivery": "Delivery",

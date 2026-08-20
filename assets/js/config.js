@@ -101,5 +101,6 @@ window.NAVIAR_CONFIG = {
   },
 
   /* Where the form falls back to when there is no backend. */
-  fallbackMailto: 'post@naviar.no'
+  /* Falls back to company.email so the address exists in one place only. */
+  fallbackMailto: null
 };
