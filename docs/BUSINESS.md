@@ -83,7 +83,8 @@ support surface to learn one funnel. **Ship one, learn, then widen.**
 
 ## Unresolved legal exposure, in order of expected cost
 
-1. **"HXI" is not trademarked.** The brand pack says so plainly. Merch is about to be sold
+1. **"HXI" is not trademarked.** Procedure, fees and the order to do it in are in
+   `docs/TRADEMARK.md`. The brand pack says so plainly. Merch is about to be sold
    under a name nobody has secured — and the moment it sells, the name is worth filing against.
    Norway first (Patentstyret), then EUIPO. This is the cheapest high-value action available
    and it is not on anyone's list.
