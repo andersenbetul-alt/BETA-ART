@@ -38,7 +38,7 @@ maliyet.
 | 10 | Örnek teslimat (bir makale + türetilmiş 5 içerik) PDF'i | Bekliyor | Brief formunda "örnek gör" olarak kullanılabilir |
 | 41 | **Lead magnet: Otomasyon Keşif Kontrol Listesi** | **Bitti** 18.08 | Bülten kaydı karşılığı indirilir; PDF'e yazdırılabilir |
 | 42 | Kendimizi ilk vaka çalışması yapmak | **Bitti** 18.08 | `ai-icerik-studyosu` yazısı: kendi hattımızın ölçülmüş rakamları, TR 1.045 / EN 1.358 |
-| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | *Sürüyor* | 6/10 bitti. Kalan 4 eski yazı (Upwork, nDash, Medium, Substack) + altısının 8 dili. Durum: `npm run gorunurluk` |
+| 20 | **Blog yazılarını gerçek uzunluğa çıkar** | **Bitti** 20.08 | **10/10 yazı görünürlük kapısından geçiyor** (TR ve EN). Kalan: sekiz dilin kısa sürümleri — bilinçli, `npm run gorunurluk` |
 | 51 | P19 AI Receptionist pillar sayfası | **Bitti** 18.08 | İlk dalganın 1 numarası. TR 1.160 / EN 1.533 kelime, 5 kaynak, görünürlük denetimi geçti |
 | 52 | Gelir sistemi haritası + huni matematiği | **Bitti** 18.08 | `docs/gelir-sistemi.md`; beş katman, gerçekçi oranlar, kurulum sırası |
 | 53 | Ortaklık altyapısı | **Bitti** 18.08 | `{aff:}` bloğu, otomatik bildirim (10 dil), `rel="sponsored"`, gerekçe zorunluluğu |
@@ -54,6 +54,9 @@ maliyet.
 | 63 | Hero başlığı "beş" → "yedi" | **Bitti** 19.08 | Slogan, akış şeması (5→7 satır), istatistik ve hero.sub aynı sayıya çekildi. LinkedIn postu sayısı olan 5'e dokunulmadı |
 | 64 | Paket özelliklerine video/YouTube eklendi | **Bitti** 19.08 | Yalnızca Stüdyo (€2.500) paketine: `p3.f4`. Orta paketin teslim yükü artmadı. `flow.note` yetenek–kapsam farkını söylüyor |
 | 65 | P29 AI Safety sütununun kapı sayfası | **Bitti** 20.08 | Üç kova: bugün olan / olması muhtemel / spekülasyon. Sistem kendi doğrulanamayan yanlarını da yazdı. TR 1.005 / EN 1.326, 5 kaynak (hepsi adresli) |
+| 66 | Beş eski yazıyı kapıdan geçir | **Bitti** 20.08 | Hepsine kaynak, özgün katkı ve Norveç piyasa karşılaştırması. 10/10 geçiyor |
+| 67 | Fiyatları Norveç piyasasına göre düzelt | **Karar bekliyor** | İş geliştirme incelemesi: Tek Makale 2–5 kat düşük, Büyüme negatif marjda. `config.js → prices` |
+| 68 | Denetim raporunu kama ürüne çevir | **Karar bekliyor** | Etkin saat ücreti 1.500–2.250 kr; retainer'ın 3–4 katı |
 | 21 | NOK fiyat gösterimi ve pazar konumu | Bekliyor | Norveç'te ajanslar 10–40 bin kr/ay, sabit abonelik 3–6 bin kr/ay; €900 ≈ 10.400 kr |
 
 ### 3. Trafik (öncelik: orta — gelir 1. ve 2. aşamadan sonra hızlanır)
