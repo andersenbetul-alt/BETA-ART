@@ -116,8 +116,12 @@ h2.label,h3.label{font-weight:400;line-height:1.6}
 .hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 38%,var(--accent-a16),transparent 62%)}
 .hero-inner{position:relative;z-index:1;padding-block:clamp(56px,10vw,120px)}
 .kicker{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
-.wordmark{font-family:var(--display);font-weight:900;font-size:clamp(84px,22vw,240px);letter-spacing:-.04em;line-height:.8}
-.hero-tagline{font-family:var(--display);font-weight:300;font-size:clamp(13px,2.4vw,24px);letter-spacing:.5em;text-transform:uppercase;color:var(--muted);margin:14px 0 24px}
+/* The H1 is the wordmark plus the line under it, so the heading a crawler reads is
+   "HXI Norwegian Drift Phonk" — what he is, in words, with nothing hidden. Both parts stay
+   exactly as they looked when they were an h1 and a p. */
+.hero-title{margin:0;display:block;font-weight:400}
+.wordmark{display:block;font-family:var(--display);font-weight:900;font-size:clamp(84px,22vw,240px);letter-spacing:-.04em;line-height:.8}
+.hero-tagline{display:block;font-family:var(--display);font-weight:300;font-size:clamp(13px,2.4vw,24px);letter-spacing:.5em;text-transform:uppercase;color:var(--muted);margin:14px 0 24px}
 .stem-card{display:block;max-width:430px;margin:0 auto 30px;padding:14px 24px;border:1px solid var(--accent-a34);background:var(--accent-a06);text-decoration:none;transition:background .18s,border-color .18s}
 .stem-card:hover,.stem-card:focus-visible{background:var(--accent-a12);border-color:var(--accent)}
 .stem-label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}

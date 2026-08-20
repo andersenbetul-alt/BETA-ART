@@ -117,6 +117,26 @@ in the proof list · does it open with the answer · is the accent spent once ·
 cased correctly. Anything this page does not cover is not a violation — it is a gap, and the
 gap is worth writing down rather than guessing at.
 
+## Norwegian, not Nordic
+
+The positioning term is **Norwegian**. HXI is a Norwegian producer; the sound is Norwegian
+drift phonk. "Nordic" is correct only when the sentence is genuinely about the region rather
+than about him — "connected Nordic and Brazilian phonk" is right, and the track title *Nordic
+Drift* is a title and does not change. As a tagline it was wrong, and it was the page's own
+tagline until August 2026: the hero said "Nordic Phonk", which describes a region instead of a
+person and is a term nobody searches for. It now says "Norwegian Drift Phonk".
+
+This is HXI's own rule, not one invented here — his brand review counts the two words and
+checks that every "Nordic" on the page is regional. Count them when you touch the hero copy.
+
+## The H1 says what he is
+
+The heading is the wordmark and the tagline together, so the first heading on the page reads
+"HXI Norwegian Drift Phonk". Both parts are visible; neither is a hidden keyword string. His
+SEO audit's finding was that an H1 of just "HXI" tells a search engine nothing, and that
+"Norwegian phonk" is the identity term while "drift phonk" is the one people actually type —
+this wording is both, which is why it is worth keeping as it is.
+
 ## Norwegian — klarspråk
 
 The Norwegian text follows Språkrådet's klarspråk standard, and the informational and legal
