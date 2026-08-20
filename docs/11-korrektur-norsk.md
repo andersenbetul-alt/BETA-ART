@@ -1,5 +1,16 @@
 # Korrekturpakke — norsk tekst
 
+**Dette er ikke en oversettelse.** Den norske teksten er skrevet direkte,
+ikke oversatt fra engelsk, og ingen oversettelsestjeneste har vært inne i
+den — verken DeepL, Smartling, LILT eller noen annen. Det betyr to ting for
+den som skal gjennomgå den:
+
+- Bestill **språkvask mot klarspråk**, ikke oversettelseskontroll. En
+  oversettelseskontroll sammenligner norsk med engelsk og melder avvik — men
+  her *skal* de avvike, fordi de er skrevet hver for seg for hvert sitt marked.
+- Teksten har aldri vært lest av noen med norsk som morsmål. Den er skrevet
+  av en maskin. Det er hele grunnen til at denne pakken finnes.
+
 Alt norsk på nettstedet, side for side, med maskinfunnene ved siden av.
 Funnene er *forslag*, ikke fasit: klarspråk er en vurdering, og en maskin
 kan ikke gjøre den. Det den kan, er å peke på stedene det er verdt å se på.
@@ -65,7 +76,7 @@ fra kr 24 000
 Én side med én oppgave: at den som kommer, gjør det ene du vil.
 fra kr 9 900
 ### Nettbutikk
-Bygget rundt kassen, ikke rundt temaet.
+Bygget rundt kassen, ikke rundt temaet — Vipps og kort fra dag én, på en plattform dere eier selv.
 fra kr 39 000
 ### Merkevare
 Et navn, et merke og et system dere kan bruke overalt uten å spørre.
@@ -764,7 +775,7 @@ Det som alltid gjelder
 ```
 Bedrift · Web
 # Nettbutikk
-Bygget rundt kassen, ikke rundt temaet.
+Bygget rundt kassen, ikke rundt temaet — Vipps og kort fra dag én, på en plattform dere eier selv.
 ## Hvem dette er for
   - Bedrifter som selger fysiske varer i dag uten nettbutikk
   - Butikker som får trafikk men få fullførte kjøp
