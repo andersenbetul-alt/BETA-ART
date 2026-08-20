@@ -142,6 +142,75 @@ means giving an address to someone met on the internet. Before it is ever listed
 whom else present, and on what terms. That is a decision about a young artist's safety, not a
 product decision, and it should be made away from a pricing table.
 
+## Decided: Lemon Squeezy
+
+Opening a product is one command:
+
+```bash
+npm run checkout -- --id drumkit-01 --url https://hxi.lemonsqueezy.com/buy/xxxx
+npm run checkout                                    # list the catalogue and its state
+npm run checkout -- --id drumkit-01 --clear         # take it off sale again
+```
+
+It refuses a non-https URL, refuses an id that is not in the catalogue, and refuses to put a
+product on sale that has no price — a Buy button with nothing beside it is not a product.
+
+**Use the hosted checkout link, not the embedded overlay.** Lemon Squeezy offers a JavaScript
+overlay that opens the checkout on top of the page. It needs a third-party script and a
+third-party frame, and the site's Content-Security-Policy refuses both on purpose. The whole
+privacy claim on this page is that nothing third-party loads before the visitor asks; an
+overlay would break that to save one click.
+
+## The file never lives on this site
+
+Paying and getting the file have to be the same moment, and a static site cannot make that
+happen. There is no server here to check whether someone paid, so any file in this repo is
+public: the URL is the permission. Put a track, an image or a pack in `assets/` and it can be
+downloaded by anyone who guesses or shares the address, forever, whether or not they paid.
+
+So the file lives with Lemon Squeezy. The buyer pays on their page, and their system hands
+over the download — that is the entire reason a Merchant of Record was chosen over a Stripe
+Payment Link, whose success page cannot safely deliver anything.
+
+**What this means in practice:** cover art, wallpapers, posters and packs that are for sale
+must never be committed to this repo at full resolution. What belongs here is a preview —
+small, watermarked if it is an image people would otherwise just save. The product is the file
+the buyer receives, not the picture on the card.
+
+## Tax, country by country
+
+This is the reason the provider decision was never really about payment.
+
+**With a Merchant of Record, the tax is not HXI's to calculate.** Lemon Squeezy is the legal
+seller. They determine the buyer's country, apply that country's rate, collect it, and remit
+it. HXI's relationship is with Lemon Squeezy, not with thirty tax authorities.
+
+Without one, the picture is this, and it is why one-person digital shops get into trouble:
+
+- **The EU** taxes B2C digital services where the *consumer* is, not where the seller is, and
+  there is no small-seller grace on cross-border sales. One sale to Germany is a German VAT
+  question. Twenty-seven countries, twenty-seven rates.
+- **The UK** works the same way post-Brexit.
+- **The US** has no national rule: sales tax is per state, economic nexus thresholds differ,
+  and whether a digital download is taxable at all differs.
+- **Norway** charges 25% MVA, with a general registration threshold of **NOK 50,000** of
+  taxable turnover in a twelve-month period. Norway is not in the EU — its VAT regime is
+  autonomous and does not run through EU systems, so EU simplifications do not apply to it.
+  Cross-border digital services have their own simplified scheme (VOES/VOEC), and sources
+  disagree on whether the 50,000 threshold applies there or whether registration starts at the
+  first sale.
+
+That last sentence is the honest state of it, and it is the point: **this is where an
+accountant earns their fee, not a documentation file.** What is written here is enough to
+understand why the architecture is what it is. Before the first sale, one conversation with a
+Norwegian accountant, with one question: *given that a Merchant of Record is the seller, how
+is Lemon Squeezy's payout recorded, and does anything change at 50,000 kroner?*
+
+**Physical goods are a different problem and a MoR does not solve it.** A hoodie crossing a
+border is customs, import duty and possibly a charge the buyer pays on delivery — a surprise
+at the door is how a fan becomes a complaint. Whoever prints and ships has to answer that
+before the first tee is listed.
+
 ## Payment methods — what "everyone in the world can use" actually means
 
 There is no single method the whole world can use. Cards feel universal from Norway and are
@@ -166,7 +235,7 @@ What the two candidate Merchants of Record cover:
 | Fee | 5% + $0.50 | 10% |
 | Built for | subscriptions | creators selling digital downloads |
 
-**Recommendation: Lemon Squeezy.** Two reasons, and the second decides it.
+**Chosen: Lemon Squeezy.** Two reasons, and the second decided it.
 
 1. **Fees cross over around $10.** On a 49 NOK wallpaper pack Gumroad is cheaper; on the 199
    NOK preset pack and everything above it, Lemon Squeezy is. Most of this catalogue sits
