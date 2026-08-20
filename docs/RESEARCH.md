@@ -80,9 +80,17 @@ real credit.
 **"more than every other HXI release combined."** The About section used to say "one of the
 most-streamed phonk producers in Northern Europe" — nothing ranks that, and HXI's own PR
 principles forbid exactly this kind of unrankable superlative. The replacement is a checkable
-claim from his own analytics: "help urself" is 87.6% of catalogue streams, so it outweighs
-everything else together by a wide margin. Source: the artist's data pack, July 2026. Recheck
-it whenever the catalogue figures are refreshed — a big new release could make it false.
+claim from his own analytics: "help urself" is somewhere around 84–88% of catalogue streams,
+so it outweighs everything else together by a wide margin. Source: the artist's data pack,
+July 2026. Two cautions travel with this number and must travel with it anywhere it is
+quoted. First, his own documents disagree: the earlier Competitive Brief says ~88%, everything
+written after it says ~84%; neither was ever reconciled, so the honest form is the range, not
+a decimal. Second, the denominator is "known streams" — there are no verified per-track counts
+for the whole catalogue, so the ratio is an estimate over an uncertain base. Both cautions come
+from the artist's own Data Validation Report. The page states only the qualitative form ("more
+than every other HXI release combined"), which holds across the whole range; the percentage
+itself is not on the page and should not be put there while the base is unverified. Recheck it
+whenever the catalogue figures are refreshed — a big new release could make it false.
 
 **HELLDRIFT 2** is credited HXI, HXELLPLAYA & $werve. Its date is not established, so it is
 not in the archive yet — that is the only reason it is missing.

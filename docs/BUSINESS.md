@@ -21,8 +21,12 @@ Every one of those 251,000 people is rented. Spotify knows who they are; HXI doe
 
 ## The number that defines the risk
 
-**"help urself" is 87.6% of catalogue streams.** One track, released December 2022, carries
-the artist.
+**"help urself" is roughly 84–88% of catalogue streams.** One track, released December 2022,
+carries the artist. The range is the honest form of the figure: HXI's own documents put it at
+~88% in the earlier Competitive Brief and ~84% in everything more recent, and the denominator
+in both is "known streams" — an incomplete base, since there are no verified per-track counts
+for the whole catalogue. Nothing in the argument below depends on which end of the range is
+right; at 84% the risk is the same shape as at 88%.
 
 That is not a growth curve, it is an annuity — and streaming annuities decay. The peer table
 in the brand pack (LXNGVX 386K, Slowboy 299K, HXI 251K, D4C 185K) reads like a competitive
