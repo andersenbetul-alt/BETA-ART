@@ -142,6 +142,58 @@ means giving an address to someone met on the internet. Before it is ever listed
 whom else present, and on what terms. That is a decision about a young artist's safety, not a
 product decision, and it should be made away from a pricing table.
 
+## Payment methods — what "everyone in the world can use" actually means
+
+There is no single method the whole world can use. Cards feel universal from Norway and are
+not: large parts of this audience are young, on a phone, and have never owned a credit card.
+So the goal is not to pick a method — it is to pick a **checkout that offers the buyer their
+own method**, and then get out of the way.
+
+**The one that travels furthest is the phone wallet.** Apple Pay and Google Pay convert better
+than anything else for this audience for a reason that has nothing to do with payments: the
+card is already in the phone, and nobody types sixteen digits on a bus. Every method below
+matters regionally; the wallet matters everywhere.
+
+What the two candidate Merchants of Record cover:
+
+| | Lemon Squeezy | Gumroad |
+| --- | --- | --- |
+| Cards | Visa, Mastercard, Amex | Visa, Mastercard, Amex, Discover, Diners, JCB, UnionPay |
+| Wallets | Apple Pay, Google Pay | Apple Pay, Google Pay, Cash App Pay |
+| PayPal | yes | yes |
+| China | Alipay, WeChat Pay | Alipay, WeChat Pay |
+| Bank debit | ACH and others | bank debits |
+| Fee | 5% + $0.50 | 10% |
+| Built for | subscriptions | creators selling digital downloads |
+
+**Recommendation: Lemon Squeezy.** Two reasons, and the second decides it.
+
+1. **Fees cross over around $10.** On a 49 NOK wallpaper pack Gumroad is cheaper; on the 199
+   NOK preset pack and everything above it, Lemon Squeezy is. Most of this catalogue sits
+   above the crossover.
+2. **The membership is a subscription.** Lemon Squeezy is built for recurring billing;
+   Gumroad's is an afterthought. Since `HXI Frequency` is the only line that produces regular
+   income, the provider should be good at exactly that.
+
+Both are Merchants of Record, so both solve the VAT problem the same way.
+
+**One gap to check before launch, and it is not a small one.** Neither provider's published
+list mentions **Pix**. Phonk's largest audience outside the US is Brazilian — HXI's own
+catalogue has MONTAGEM HYSTERIA, SENTA CORACAO, RITMO DO MISTÉRIO and a collaboration called
+*De Norway Com Amor* in it — and in Brazil, Pix is not one option among several, it is how
+people pay. **UPI** is the same story in India. Ask both providers directly before committing;
+if neither carries Pix, a Brazilian buyer effectively cannot buy, and that is the single
+biggest hole in a catalogue aimed at this audience.
+
+**What not to do.** Do not add a second checkout provider to cover one country before there
+is evidence anyone from that country tried to buy. Two providers is two sets of fees, two tax
+positions and two support inboxes for a one-person operation. Ship with one, read the failed
+checkouts, then decide.
+
+**Vipps** is worth knowing about for Norway specifically: it is what Norwegians actually use,
+and it is single-use only through Stripe — no subscriptions. That makes it a physical-merch
+consideration later, not a fix for this catalogue.
+
 ## Which checkout provider
 
 The answer is not the same for the two kinds of product, and the difference is tax, not payment.
