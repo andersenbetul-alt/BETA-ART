@@ -40,6 +40,9 @@ sammen gjør en vurdering nødvendig:
 | R7 | Posisjonssporing oppfattes som arbeidstakerkontroll | Middels | Middels | Formålsbegrensning, informasjon, ingen sporing utenfor oppdrag; arbeidsrettslig avklaring |
 | R8 | Datainnbrudd hos databehandler | Høy | Lav | Databehandleravtaler, EU/EØS, kryptering, revisjon, varslingsrutine |
 | R9 | Familien deler mer enn nødvendig i oppdragsbeskrivelse | Middels | Høy | Strukturerte felt fremfor fritekst; hjelperen ser kun det oppdraget krever |
+| R10 | Pårørende får løpende innsyn i den eldres hverdag | Høy | Høy | Innsynsnivå settes av den eldre, standard er ingen deling; fritekst deles aldri |
+| R11 | Den eldre kan ikke samtykke selv, og pårørende samtykker på hennes vegne | Svært høy | Middels | Uavklart – se J1 i juridisk register. Blokkerer kontomodellen |
+| R12 | Referansepersoner behandles uten å ha meldt seg på | Middels | Høy | Informeres ved første kontakt, vurdering ikke sitat, 12 måneders lagring |
 
 ## 4. Nødvendighet og proporsjonalitet
 
@@ -59,6 +62,14 @@ Fylles ut ved ferdigstillelse:
 - [ ] Neste gjennomgang, dato:
 
 ## 6. Utestående avklaringer med juridisk rådgiver
+
+Den fullstendige listen står nå i `team/JURIDISK-RISIKO.md` med 21 punkter.
+De fire som må besvares først:
+
+0. Arbeidsrettslig status · betalingsformidling · merverdiavgift · samtykke på
+   vegne av en person med svekket kognisjon
+
+Øvrige punkter som berører denne vurderingen:
 
 1. Hjemmelsgrunnlag for politiattest per oppdragskategori
 2. Arbeidsrettslig status for hjelpere (oppdragstaker vs. arbeidstaker) og konsekvenser for posisjonsbruk

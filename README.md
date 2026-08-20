@@ -27,7 +27,7 @@ npm start            # statisk server på http://localhost:8000
 ## Tester
 
 ```bash
-npm test             # enhetstester + nettlesertester
+npm test             # enhetstester + nettlesertester (107 tester)
 npm run test:enhet   # bare enhetstester, ingen nettleser
 npm run sjekk        # syntakssjekk av alle skriptfiler
 ```
@@ -66,6 +66,8 @@ over seg selv i stedet for å feile. Detaljer i [`docs/TESTING.md`](docs/TESTING
 | `docs/SERVICE-BLUEPRINT.md` | Tjenestedesign: syv systemer, matching, pris, kvalitet |
 | `docs/DRIFT.md` | Driftsrutiner: roller, alvorsgrader, eskalering, avvik |
 | `docs/TESTING.md` | Testoppsett og hvilke løfter testene beskytter |
+| `docs/team/JURIDISK-RISIKO.md` | 21 juridiske risikopunkter, kontrollert mot koden |
+| `docs/team/SYNTESE.md` | Vedtatte beslutninger – fasit når dokumentene spriker |
 | `docs/EUROPA.md` | Felles kjerne med lokale landlag |
 | `docs/GDPR.md` | Behandlingsprotokoll og personvernarkitektur |
 | `docs/DPIA.md` | Utkast til vurdering av personvernkonsekvenser |
@@ -132,6 +134,8 @@ Dette er verifisert i nettlesertest.
 - Hvert samtykke lagres med tidspunkt og versjon, uten forhåndsavkryssing
 - Kladd lagres i `sessionStorage`, aldri fødselsdato eller engangskode
 - Informasjonskapsler er delt i nødvendige / analyse / markedsføring, med atskilte formål
+- Den eldre velger selv hva familien får se, og ingen deling er forvalgt
+- Hjelperen har en vei ut når hun blir bedt om noe utenfor oppdraget
 
 Detaljene ligger i [`docs/GDPR.md`](docs/GDPR.md).
 

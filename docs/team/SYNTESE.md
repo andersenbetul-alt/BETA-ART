@@ -52,6 +52,11 @@ Piloten lykkes hvis fem ting er sanne etter tolv uker per bydel:
 
 Krav 5 er absolutt. Brytes det, stanses piloten uansett hvordan de fire andre står.
 
+**Forutsetning som kom til etter den juridiske gjennomgangen:** piloten starter
+ikke før de fire hovedspørsmålene i `JURIDISK-RISIKO.md` er besvart. Ikke fordi
+alt må være avklart — det blir det aldri — men fordi disse fire avgjør om modellen
+i det hele tatt kan leveres slik den er tegnet.
+
 **Konsekvens for kapital:** 9,6 mill. kr dekker tolv måneder, men balanse nås ikke
 innen tolv måneder. Kapitalplanen skal derfor kuttes på nytt for **atten måneder,
 med en beslutningsport i måned ni** der de fem kravene avgjør om det hentes mer
@@ -99,6 +104,11 @@ resultatet som teller, er om folk vil betale i det hele tatt.
 **Avgiften er en skalaknapp, ikke en pilotknapp.** Den vurderes på nytt ved 5 000
 fullførte oppdrag i måneden, ikke før.
 
+**Forbehold etter juridisk gjennomgang:** hele prismodellen i `pris.js` er regnet
+uten merverdiavgift. Viser det seg at avgiften skal beregnes, endres tallene i
+denne beslutningen, ikke resonnementet. Spørsmålet må derfor besvares før prisen
+låses utad — se J16.
+
 Salgs gulv på 15 % **stadfestes**, med én tilføyelse: 15 % gis bare mot forpliktet
 volum. Kommuneavtaler uten et avtalt minsteantall oppdrag prises på 16 %.
 
@@ -131,6 +141,24 @@ Rekkefølgen låses slik, fordi hvert trinn er en forutsetning for det neste:
 | 9 | G13 DPIA ferdigstilt og signert | Rekkefølgekrav 1 |
 
 G16 akuttfilter uten omgåelse er **allerede lukket** — se B6.
+
+### Juridiske porter i byggerekkefølgen
+
+Den juridiske gjennomgangen endret rekkefølgen. Fire spørsmål må være besvart før
+det trinnet de påvirker, ellers bygger vi noe som må rives:
+
+| Port | Må besvares før | Hvorfor |
+|---|---|---|
+| J1/J2 samtykke på vegne av en person med svekket kognisjon | Trinn 1, konto | Avgjør hvem som er avtalepart, og dermed hele kontomodellen |
+| J16 merverdiavgift | Trinn 2, oppdrag med pris | Kan legge opptil 25 % på en prismodell regnet uten |
+| J11 betalingsformidling | Trinn 4, betaling | Avgjør om pengestrømmen kan settes opp slik den er tegnet |
+| J6 arbeidsrettslig status | Trinn 4, betaling | Avgjør om 18 % er riktig nivå i det hele tatt |
+
+Portene er ikke rekkefølgekrav vi kan «ta parallelt». Et konto-API bygget på feil
+antakelse om hvem som er avtalepart, må skrives om, ikke lappes.
+
+**Konsekvens for planen:** de fire spørsmålene sendes til rådgiver **nå**, før
+trinn 1 startes. Svartiden blir dermed en del av byggetiden, ikke et tillegg til den.
 
 ---
 
@@ -311,6 +339,29 @@ Alle går til juridisk rådgiver samlet, ikke enkeltvis.
 
 ---
 
+## B11 · Juridisk blir en fast rolle, ikke en gjennomgang
+
+**Vedtatt.** Den juridiske gjennomgangen fant to risikoer ingen av de sju rollene
+hadde sett — betalingsformidling og referansepersoner som registrerte — og tre
+feil som var feil uansett tolkning. Det er ikke tilfeldig: hver fagrolle ser sitt
+eget område, og risikoen samler seg i mellomrommene.
+
+Juridisk legges derfor til som fast rolle i `.claude/agents/`, med samme krav som
+de andre: konkrete leveranser, ikke prinsipper.
+
+Tre ting er allerede ført inn i produktet i denne runden, ikke bare i et dokument:
+
+| Funn | Hva som ble bygget |
+|---|---|
+| J2 utlevering til pårørende | Den eldre velger selv innsynsnivå, og **ingen deling er forvalgt** |
+| J9 grensen mot helsehjelp | Hjelperen har en knapp for å melde fra om forespørsler utenfor oppdraget, uten følger for henne |
+| J20 referansepersoner | Skjematekst forklarer hva vi gjør, og driftsrutinen krever vurdering framfor sitat |
+
+Regelen som følger: **et juridisk funn er ikke lukket når det er skrevet ned. Det
+er lukket når det er bygget, eller når det står i en kø med en dato.**
+
+---
+
 ## Beslutningene i ett blikk
 
 | # | Beslutning | Status |
@@ -326,5 +377,7 @@ Alle går til juridisk rådgiver samlet, ikke enkeltvis.
 | B8 | Én grønn. Ingen tilstand signaliseres av farge alene | Utført |
 | B9 | Tre tekstendringer før lansering | Vedtatt |
 | B10 | Markedsplan godkjent, driftsreglene bindende | Vedtatt |
+| B11 | Juridisk blir fast rolle. Tre funn bygget inn i produktet | Vedtatt |
 
-Neste beslutningspunkt: når Bolk A trinn 1–3 er ferdige.
+Neste beslutningspunkt: når svar på de fire juridiske hovedspørsmålene foreligger.
+Deretter når Bolk A trinn 1–3 er ferdige.

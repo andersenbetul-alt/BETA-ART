@@ -28,6 +28,35 @@ Dette dokumentet er utviklingsteamets arbeidsgrunnlag. Den brukervendte teksten 
 
 **Behandles ikke:** fødselsnummer, diagnoser, journal, medisinlister, kontonummer i egen database.
 
+### Registrerte som ikke er brukere
+
+To grupper er registrerte uten å ha opprettet konto hos oss. De ble oversett i
+første utkast, og er lagt til etter den juridiske gjennomgangen:
+
+| Gruppe | Hva vi behandler | Grunnlag | Lagringstid | Plikt |
+|---|---|---|---|---|
+| Referansepersoner | Navn, telefon, relasjon, vurdering av søkeren | Berettiget interesse – egnethetsvurdering | 12 måneder | Informeres ved første kontakt |
+| Avviste søkere | Søknadsopplysninger og avslagsgrunn | Berettiget interesse – hindre omgåelse | 6 måneder | Får begrunnelsen, kan klage |
+
+For referansepersoner noteres en **vurdering, ikke et ordrett sitat**. Søkeren som
+avvises har innsynsrett i begrunnelsen; et sitat ville røpet hvem som sa hva, og
+satt oss mellom to personer som begge har innsynsrett.
+
+### Den eldres opplysninger til pårørende
+
+Familiepanelet er en løpende utlevering av opplysninger om én person til en annen.
+Nivået settes av den eldre selv, og standardvalget er det mest lukkede:
+
+| Nivå | Hva familien ser |
+|---|---|
+| Ingen (standard) | Ingenting |
+| Bare beskjed | At oppdraget er utført, for det enkelte oppdraget hun velger |
+| Underveis | Hvem som kommer, når hjelperen er på vei, og når hun kom |
+| Full oversikt | I tillegg historikk, faste hjelpere og forbruk |
+
+Familien ser aldri fritekstbeskrivelsen den eldre har skrevet. Betaler familien for
+tjenesten, gir det ingen utvidet rett til innsyn.
+
 ## 2. Dataminimering i praksis
 
 - Registreringsskjemaet skiller tydelig mellom nødvendige og frivillige felt.

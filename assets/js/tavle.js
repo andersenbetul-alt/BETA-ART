@@ -152,6 +152,30 @@
       html += '<p class="muted" style="margin:6px 0 0;font-size:.85rem">Skriv om oppdraget, ikke om helsen hennes.</p>';
       html += '</div>';
       html += '<p style="margin-top:16px"><button class="btn btn-primary" type="button" id="sjekk-ut">Meld ferdig</button></p>';
+
+      /* Grensen mot helsehjelp holder bare hvis hjelperen har et sted å si nei.
+         Uten dette blir «det står i vilkårene» hennes problem alene. */
+      html += '<div class="notice notice-warn" style="margin-top:18px;font-size:.92rem">';
+      html += '<h4>Blir du bedt om noe som ikke er en del av oppdraget?</h4>';
+      html += '<p>Du skal si nei, og du skal slippe å stå alene om det. Meld fra, så tar vi det videre — ';
+      html += 'det får ingen følger for deg.</p>';
+      html += '<p style="margin:0"><button class="btn btn-secondary" type="button" id="utenfor-oppdrag" ';
+      html += 'style="font-size:.88rem;padding:9px 14px">Meld fra om forespørsel utenfor oppdraget</button></p>';
+      html += '<div id="utenfor-skjema" hidden style="margin-top:14px">';
+      html += '<div class="option-grid">';
+      [
+        ['medisin', 'Medisiner eller stell', 'Ligger utenfor plattformen'],
+        ['penger', 'Penger, kort, PIN eller BankID', 'Aldri tillatt'],
+        ['verdi', 'Verdisaker eller dokumenter', 'Aldri tillatt'],
+        ['annet', 'Noe annet', 'Beskriv kort']
+      ].forEach(function (v) {
+        html += '<label class="option"><input type="checkbox" name="utenfor" value="' + v[0] + '">' +
+                '<span class="option-text">' + v[1] + '<small>' + v[2] + '</small></span></label>';
+      });
+      html += '</div>';
+      html += '<p style="margin:12px 0 0"><button class="btn btn-primary" type="button" id="send-utenfor" ';
+      html += 'style="font-size:.88rem;padding:9px 14px">Send melding</button></p>';
+      html += '</div></div>';
     }
 
     if (aktivtOppdrag.fase === 'ferdig') {
@@ -245,6 +269,25 @@
         feil.classList.add('show');
         felt.setAttribute('aria-invalid', 'true');
       }
+      return;
+    }
+
+    if (e.target.id === 'utenfor-oppdrag') {
+      document.getElementById('utenfor-skjema').hidden = false;
+      return;
+    }
+
+    if (e.target.id === 'send-utenfor') {
+      var valgt = Array.prototype.filter
+        .call(document.querySelectorAll('input[name="utenfor"]'), function (i) { return i.checked; })
+        .map(function (i) { return i.value; });
+      if (!valgt.length) return;
+      // I produksjon: eget varsel til drift, uavhengig av oppdragets utfall.
+      aktivtOppdrag.utenfor = valgt;
+      var boks = document.getElementById('utenfor-skjema').parentNode;
+      boks.innerHTML = '<h4>✓ Meldingen er sendt</h4>' +
+        '<p style="margin:0">Vi tar kontakt etter oppdraget. Du har gjort det riktige. ' +
+        'Fortsett med oppdraget som avtalt, eller avslutt hvis du ikke er komfortabel.</p>';
       return;
     }
 

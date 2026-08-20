@@ -19,7 +19,9 @@
     beskrivelse: '',
     sprak: '',
     fastHjelper: true,
-    varsleFamilie: true
+    // Personvern som standard: minst mulig deling er forvalgt, og den eldre
+    // velger selv om familien skal få vite noe i det hele tatt.
+    innsyn: 'ingen'
   };
 
   var tilbakeBtn = document.getElementById('senior-tilbake');
@@ -28,6 +30,11 @@
   var nav = document.getElementById('senior-nav');
 
   function paneler() { return document.querySelectorAll('.senior-panel[data-panel]'); }
+
+  function valgtRadio(navn) {
+    var valgt = document.querySelector('input[name="' + navn + '"]:checked');
+    return valgt ? valgt.value : '';
+  }
 
   function visPanel(n) {
     panel = n;
@@ -326,6 +333,12 @@
     setTimeout(function () { kjorSok(indeks + 1); }, steg.ms);
   }
 
+  var INNSYNSTEKST = {
+    ingen:     'Familien får ikke beskjed om dette oppdraget.',
+    ferdig:    'Anne (datter) får én melding når oppdraget er utført.',
+    underveis: 'Anne (datter) får melding underveis og når oppdraget er ferdig.'
+  };
+
   bestillBtn.addEventListener('click', function () {
     // Teksten kan ha endret seg etter forrige kontroll, og den som har det
     // travelt skriver ofte først på siste steg. Derfor kontrolleres den her igjen.
@@ -345,7 +358,7 @@
       }
     }
 
-    valg.varsleFamilie = document.getElementById('varsle-familie').checked;
+    valg.innsyn = valgtRadio('innsyn') || 'ingen';
     visPanel(5);
     kjorSok(0);
   });
@@ -353,11 +366,7 @@
   document.getElementById('bekreft-hjelper').addEventListener('click', function () {
     // Kvitteringen skal si det som faktisk ble valgt, ikke det vi håper ble valgt.
     var status = document.getElementById('varsel-status');
-    if (status) {
-      status.textContent = valg.varsleFamilie
-        ? 'Anne (datter) får melding underveis og når oppdraget er ferdig.'
-        : 'Familien får ikke beskjed om dette oppdraget.';
-    }
+    if (status) status.textContent = INNSYNSTEKST[valg.innsyn] || INNSYNSTEKST.ingen;
     visPanel(7);
   });
 

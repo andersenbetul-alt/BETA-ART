@@ -208,6 +208,50 @@ if (!pw) {
   await side.waitForSelector('[data-panel="5"]:not([hidden])', { timeout: 10000 });
   t.test('«ja» slipper bestillingen gjennom', function () { t.erSann(true); });
 
+  /* ---------------- innsyn for pårørende ---------------- */
+
+  t.gruppe('Hva familien får vite');
+
+  await side.goto(BASE + 'trenger-hjelp.html', { waitUntil: 'domcontentloaded' });
+  await side.click('[data-nar="idag"]');
+  await side.click('#senior-neste');
+  await side.click('[data-oppgave="handling"]');
+  await side.click('#senior-neste');
+  await side.click('[data-timer="1"]');
+  await side.click('#senior-neste');
+
+  var forvalgt = await side.inputValue('input[name="innsyn"]:checked').catch(function () { return null; });
+  var ingenErValgt = await side.isChecked('input[name="innsyn"][value="ingen"]');
+  t.test('ingen deling er forvalgt', function () {
+    t.erSann(ingenErValgt, 'det mest lukkede nivået skal være standard, fikk: ' + forvalgt);
+  });
+
+  await side.click('#senior-bestill');
+  await side.waitForSelector('[data-panel="6"]:not([hidden])', { timeout: 20000 });
+  await side.click('#bekreft-hjelper');
+  await side.waitForSelector('[data-panel="7"]:not([hidden])');
+  var utenDeling = await side.textContent('#varsel-status');
+  t.test('kvitteringen sier at familien ikke får beskjed', function () {
+    t.erSann(utenDeling.indexOf('ikke beskjed') !== -1, 'fikk: ' + utenDeling);
+  });
+
+  await side.goto(BASE + 'trenger-hjelp.html', { waitUntil: 'domcontentloaded' });
+  await side.click('[data-nar="idag"]');
+  await side.click('#senior-neste');
+  await side.click('[data-oppgave="handling"]');
+  await side.click('#senior-neste');
+  await side.click('[data-timer="1"]');
+  await side.click('#senior-neste');
+  await side.check('input[name="innsyn"][value="underveis"]');
+  await side.click('#senior-bestill');
+  await side.waitForSelector('[data-panel="6"]:not([hidden])', { timeout: 20000 });
+  await side.click('#bekreft-hjelper');
+  await side.waitForSelector('[data-panel="7"]:not([hidden])');
+  var medDeling = await side.textContent('#varsel-status');
+  t.test('valgt nivå styrer kvitteringen', function () {
+    t.erSann(medDeling.indexOf('underveis') !== -1, 'fikk: ' + medDeling);
+  });
+
   /* ---------------- registrering ---------------- */
 
   t.gruppe('Hjelperregistrering');
@@ -363,6 +407,27 @@ if (!pw) {
   await side.click('#tilgjengelig-bryter');
   var oppdragEtterAv = await side.isVisible('.oppdrag-kort').catch(function () { return false; });
   t.test('bryteren av stopper visning av oppdrag', function () { t.erUsann(oppdragEtterAv); });
+
+  /* Grensen mot helsehjelp holder bare hvis hjelperen har et sted å si nei. */
+  await side.goto(BASE + 'oppdrag.html', { waitUntil: 'domcontentloaded' });
+  await side.click('#tilgjengelig-bryter');
+  await side.waitForSelector('.oppdrag-kort');
+  await side.click('[data-ta="o-1"]');
+  await side.waitForSelector('#kode-felt');
+  await side.fill('#kode-felt', '4821');
+  await side.click('#sjekk-inn');
+  await side.waitForSelector('#utenfor-oppdrag');
+  t.test('hjelperen kan melde fra om forespørsel utenfor oppdraget', function () { t.erSann(true); });
+
+  await side.click('#utenfor-oppdrag');
+  await side.check('input[name="utenfor"][value="medisin"]');
+  await side.click('#send-utenfor');
+  await side.waitForTimeout(150);
+  var kvittert = await side.textContent('.oppdrag-kort');
+  t.test('meldingen bekreftes uten følger for hjelperen', function () {
+    t.erSann(kvittert.indexOf('Meldingen er sendt') !== -1);
+    t.erSann(kvittert.indexOf('gjort det riktige') !== -1);
+  });
 
   /* ---------------- driftskonsoll ---------------- */
 

@@ -74,6 +74,21 @@ Et steg kan ikke hoppes over, og godkjenning er sperret i verktøyet til alle er
 
 Nær familie godtas ikke som referanse. Avslag begrunnes skriftlig og kan påklages.
 
+**Referansepersonen er en registrert som aldri meldte seg på hos oss.** Det gir tre
+plikter som gjelder fra første samtale:
+
+1. **Vi presenterer oss ved oppringing:** hvem vi er, hvorfor vi ringer, hva svaret
+   brukes til, og at hun kan la være å svare.
+2. **Vi noterer en vurdering, ikke et sitat.** «Bekrefter pålitelighet og
+   punktlighet» kan gjengis til en avvist søker. Ordrette sitater kan ikke gjengis
+   uten å røpe hvem som sa hva, og setter oss mellom to personer som begge har
+   innsynsrett.
+3. **Vi lagrer svaret i 12 måneder**, deretter slettes det. Referansepersonens
+   opplysninger slettes samtidig, uavhengig av om søkeren fortsatt er aktiv.
+
+Ber referansepersonen om innsyn, behandles det som en ordinær rettighetsforespørsel
+etter punkt 9.
+
 Godkjent søker starter på **tillitsnivå 1** med prøveperiode: fem oppdrag med lav risiko
 på dagtid.
 
@@ -116,6 +131,8 @@ Konsollen viser oppdragsstatus, ikke hjelperens bevegelser.
 | Sletting | 30 dager | Personvernansvarlig |
 | Dataportabilitet | 30 dager | Personvernansvarlig |
 | Tilbaketrekking av samtykke | Umiddelbart, selvbetjent | Automatisk i profilen |
+| Innsyn fra referanseperson | 30 dager | Personvernansvarlig |
+| Sletting av avvist søknad | 6 måneder automatisk | Automatisk |
 
 Enkelte opplysninger må beholdes tross slettekrav, for eksempel regnskapsbilag. Det
 forklares konkret for den som spør, ikke med en generell henvisning til «lovkrav».

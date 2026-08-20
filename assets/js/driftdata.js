@@ -1,6 +1,10 @@
 /* PårørendePilot – testdata for driftskonsollen.
    Ingen ekte personer. Fødselsnummer, kontonummer og helseopplysninger
-   forekommer ikke – heller ikke i driftsverktøyet. */
+   forekommer ikke – heller ikke i driftsverktøyet.
+
+   Referansesvarene er vurderinger, ikke ordrette sitater. En avvist søker har
+   innsynsrett i begrunnelsen, og et sitat ville røpet hvem som sa hva.
+   Se docs/DRIFT.md punkt 5 og docs/team/JURIDISK-RISIKO.md J20. */
 
 window.PP_DRIFT_DATA = (function () {
   'use strict';
@@ -21,7 +25,7 @@ window.PP_DRIFT_DATA = (function () {
       oppgaver: ['handling', 'praktisk', 'ute'], sprak: ['norsk'], transport: ['bil', 'til-fots'],
       referanser: [
         { navn: 'Hilde Berg', relasjon: 'tidligere leder', telefon: '4001 22 33', status: 'godkjent',
-          svar: 'Kjent i 4 år. Pålitelig, møter presist. Ville vært trygg på at han jobbet hos en eldre.' },
+          svar: 'Bekrefter 4 års kjennskap, pålitelighet og punktlighet. Ingen innvending mot arbeid hos eldre.' },
         { navn: 'Jonas Ek', relasjon: 'frivilligkoordinator', telefon: '4009 88 77', status: 'venter', svar: '' }
       ],
       merknad: 'Har oppgitt førerkort klasse B. Ikke helsefaglig bakgrunn.'
@@ -33,9 +37,9 @@ window.PP_DRIFT_DATA = (function () {
       oppgaver: ['handling', 'folge', 'samvaer', 'digital'], sprak: ['norsk', 'engelsk', 'somali'], transport: ['kollektiv', 'til-fots'],
       referanser: [
         { navn: 'Turid Sand', relasjon: 'tidligere kollega', telefon: '4111 22 33', status: 'godkjent',
-          svar: 'Kjent i 6 år. Svært pålitelig og god med mennesker. Anbefales.' },
+          svar: 'Bekrefter 6 års kjennskap. Vurderer pålitelighet og folkelag som god. Anbefaler.' },
         { navn: 'Peter Holm', relasjon: 'studieveileder', telefon: '4122 33 44', status: 'godkjent',
-          svar: 'Kjent i 3 år. Ryddig og punktlig. Ingen innvendinger.' }
+          svar: 'Bekrefter 3 års kjennskap, ryddighet og punktlighet. Ingen innvending.' }
       ],
       merknad: 'Alle steg fullført. Klar for godkjenning til nivå 1.'
     },
@@ -46,7 +50,7 @@ window.PP_DRIFT_DATA = (function () {
       oppgaver: ['handling', 'ute'], sprak: ['norsk'], transport: ['sykkel'],
       referanser: [
         { navn: 'Ingrid Vik', relasjon: 'mor', telefon: '4133 44 55', status: 'avvist',
-          svar: 'Nær familie godtas ikke som referanse. Ny referanse etterspurt.' },
+          svar: 'Avvist: nær familie godtas ikke som referanse. Ny referanse etterspurt.' },
         { navn: '—', relasjon: '', telefon: '', status: 'mangler', svar: '' }
       ],
       merknad: 'ID-kontroll ikke gjennomført. Referanse 1 avvist: nær familie.'

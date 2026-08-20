@@ -208,16 +208,28 @@
       </div>
 
       <div style="margin-top:24px">
-        <label class="consent" style="font-size:1.02rem">
-          <input type="checkbox" id="varsle-familie">
-          <span>Gi beskjed til Anne (datter) om dette oppdraget
-            <small>
-              Hun får vite hvem som kommer, når hjelperen er på vei, når hun kom, og når oppdraget er ferdig.
-              Hun får ikke vite hva du har skrevet i beskrivelsen. Du bestemmer dette for hvert oppdrag,
-              og du kan endre det når som helst.
-            </small>
-          </span>
-        </label>
+        <fieldset style="border:none;padding:0;margin:0">
+          <legend class="field-label" style="font-size:1.1rem;font-weight:600;margin-bottom:6px">
+            Skal Anne (datter) få vite om dette oppdraget?
+          </legend>
+          <p class="muted" style="font-size:.98rem;margin-bottom:12px">
+            Du bestemmer. Uansett hva du velger, får hun aldri se det du har skrevet over.
+          </p>
+          <div class="option-grid" role="radiogroup" aria-label="Hva familien får vite">
+            <label class="option">
+              <input type="radio" name="innsyn" value="ingen" checked>
+              <span class="option-text">Nei, ingenting<small>Hun får ikke vite at du har bestilt hjelp</small></span>
+            </label>
+            <label class="option">
+              <input type="radio" name="innsyn" value="ferdig">
+              <span class="option-text">Bare når det er ferdig<small>Én melding om at oppdraget er utført</small></span>
+            </label>
+            <label class="option">
+              <input type="radio" name="innsyn" value="underveis">
+              <span class="option-text">Følg med underveis<small>Hvem som kommer, når hun er på vei, og når hun kom</small></span>
+            </label>
+          </div>
+        </fieldset>
       </div>
     </section>
 

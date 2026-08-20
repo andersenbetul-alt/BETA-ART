@@ -1,7 +1,7 @@
 # Testing
 
 ```bash
-npm test             # enhetstester + nettlesertester (71 tester)
+npm test             # enhetstester + nettlesertester (107 tester)
 npm run test:enhet   # bare enhetstester, ingen nettleser
 npm run sjekk        # syntakssjekk av alle skriptfiler
 ```
@@ -38,10 +38,16 @@ en teknisk detalj:
 | «feil oppmøtekode avvises» | Innsjekk krever kode fra familien |
 | «søknad med manglende steg kan ikke godkjennes» | Verifiseringskjeden kan ikke hoppes over |
 | «oversittet svarfrist markeres» | En brutt frist skjules ikke for driftsorganisasjonen |
+| «ingen deling er forvalgt» | Den eldre deler ingenting med familien før hun selv velger det |
+| «valgt nivå styrer kvitteringen» | Vi bekrefter det hun faktisk valgte, ikke det vi håpet |
+| «hjelperen kan melde fra om forespørsel utenfor oppdraget» | Grensen mot helsehjelp er hennes rettighet, ikke bare vår regel |
+| «ufarlig tekst med ordet avfallet gir ingen alarm» | Falske alarmer lærer brukeren å slå av vernet |
+| «avvist varsel slår ikke av vernet for ny tekst» | Ett avvist varsel gjelder én tekst, ikke hele økten |
+| «ubesvart sikkerhetsspørsmål stopper bestillingen» | Ved «nå» spør vi om bevissthet og pust uansett |
 
 ## Funn fra testkjøringene
 
-Testene har allerede avdekket fire reelle feil i koden:
+Testene har allerede avdekket seks reelle feil i koden:
 
 1. `hidden`-attributtet slo ikke gjennom mot `.btn` og `.site-nav`, så knapper ble
    vist i feil steg av skjemaene.
@@ -51,6 +57,11 @@ Testene har allerede avdekket fire reelle feil i koden:
    derfor hele sidebredden på mobil.
 4. Lange norske sammensatte ord (Personvernerklæring) flyter utenfor skjermen uten
    `overflow-wrap`. Relevant for hele nettstedet, ikke bare den ene overskriften.
+5. Akuttfilteret kunne slås av for hele økten av brukeren selv, ved et uhell.
+   Delstrengsøk ga «fall» i «avfallet» og «nød» i «nødvendig», mens «kraftig
+   blødning» og «vondt i brystet» slapp gjennom.
+6. Samtykket til å varsle familien lå ferdig avkrysset i bestillingsflyten — et
+   forhåndsvalg om utlevering til en tredjeperson.
 
 ## Før hver utsjekking
 

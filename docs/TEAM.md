@@ -14,6 +14,7 @@ leveranser i stedet for prinsipper.
 | Markedsføring | Posisjonering, kanaler, vekst per by | `marketing.md` |
 | Salg | Prismodell, abonnement, B2B, partnerskap | `salg.md` |
 | Økonomi | Enhetsøkonomi, kapitalbehov, kontantstrøm | `finans.md` |
+| Juridisk | Personvern, klassifisering, betaling, ansvar, vilkår | `juridisk.md` |
 
 ## Bruk
 
@@ -30,6 +31,7 @@ de er implementert i koden og dekket av tester:
 2. Adressen til den eldre åpnes først når oppdraget er tildelt, og skjules etterpå.
 3. Akutte situasjoner går til nødetatene, aldri gjennom oppdragsflyten.
 4. Automatiske avgjørelser er forklarbare, og ingen konto stenges permanent uten et menneske.
+5. Minst mulig deling er standardvalget, og å si nei skal være like lett som å si ja.
 
 En rolle som foreslår noe som bryter en av disse, skal si det høyt i stedet for å
 skrive rundt det.

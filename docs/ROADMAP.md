@@ -67,9 +67,24 @@ til en fungerende markedsplass.
 - By for by, ikke land for land: tetthet av hjelpere før geografisk bredde
 - Åpenhet i matchingen og menneskelig gjennomgang av kontostenging
 
+## Juridiske porter
+
+Fire spørsmål må besvares før trinnet de påvirker. De sendes samlet til rådgiver
+før fase 2 startes, slik at svartiden blir en del av byggetiden.
+
+| Port | Blokkerer | Konsekvens hvis vi bygger først |
+|---|---|---|
+| Samtykke på vegne av person med svekket kognisjon | Kontomodellen | Feil antakelse om avtalepart må skrives om, ikke lappes |
+| Merverdiavgift | Prising utad | Opptil 25 % på en modell regnet uten |
+| Betalingsformidling | Betalingsflyten | Kan kreve konsesjon, eller en helt annen oppsett |
+| Arbeidsrettslig status | Prismodell og forsikring | Rundt 30 % på hjelperlinjen mot 99 kr i avgift |
+
+Hele registeret: `docs/team/JURIDISK-RISIKO.md`.
+
 ## Rekkefølgekrav
 
 1. DPIA ferdigstilles før posisjonsfunksjoner settes i drift
 2. Verifiseringskjeden er komplett før første reelle oppdrag formidles
 3. Betalingsflyt gjennom leverandør før penger utveksles
 4. Akuttfilteret skal aldri kunne omgås av en oppdragsmal
+5. De fire juridiske portene besvares før fase 2 startes
