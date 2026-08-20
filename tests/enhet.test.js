@@ -543,4 +543,87 @@ t.test('bare måned, ikke dato, følger med ut', function () {
   t.erSann(r.overGrensen[0].dato === undefined);
 });
 
+
+/* ---------------- sletting ---------------- */
+
+t.gruppe('Besøket krymper');
+
+var demobesok = {
+  id: 'B-1001', kunde: 'Ingrid', oppgaver: ['handling', 'tur'], dato: '2026-08-20',
+  tid: '14:00', ansattId: 'A-1', ansattNavn: 'Sofia H.',
+  parorendeEpost: 'datter@epost.no', notat: 'Ring på hos naboen',
+  token: 'abc123', status: 'fullfort',
+  opprettet: '2026-08-20T09:00:00.000Z', utloper: '2026-08-20T21:00:00.000Z',
+  fullfortTid: '2026-08-20T15:12:00.000Z',
+  rapport: { utfall: 'utfort', sjekkliste: ['handling', 'tur'],
+             kommentar: 'Varene er satt på plass', sekunder: 2400 }
+};
+
+function etter(tid) { return V.krymp(demobesok, tid).besok; }
+
+t.test('lenken forsvinner etter tolv timer', function () {
+  t.erSann(etter('2026-08-20T20:00:00.000Z').token !== undefined);
+  t.erLik(etter('2026-08-21T04:00:00.000Z').token, undefined);
+});
+
+t.test('all fritekst er borte etter en uke', function () {
+  var b = etter('2026-08-28T15:12:00.000Z');
+  t.erLik(b.notat, undefined);
+  t.erLik(b.rapport.kommentar, undefined);
+  t.erSann(b.kunde !== undefined, 'navnet skulle ikke være borte ennå');
+});
+
+t.test('navn og kontaktpunkt er borte etter en måned', function () {
+  var b = etter('2026-09-29T15:12:00.000Z');
+  t.erLik(b.kunde, undefined);
+  t.erLik(b.parorendeEpost, undefined);
+  t.erLik(b.ansattNavn, undefined);
+});
+
+t.test('etter et år står ingenting igjen som peker på et menneske', function () {
+  var b = etter('2027-09-24T15:12:00.000Z');
+  var ut = JSON.stringify(b);
+  ['Ingrid', 'Sofia', 'datter@epost.no', 'A-1', 'B-1001', 'abc123', 'naboen'].forEach(function (spor) {
+    t.erSann(ut.indexOf(spor) === -1, spor + ' overlevde');
+  });
+  t.erLik(b.dato, '2026-08');
+  t.erLik(b.rapport.utfall, 'utfort');
+});
+
+t.test('eksakt dato kortes til måned, ikke bare navnet fjernes', function () {
+  t.erSann(etter('2027-09-24T15:12:00.000Z').dato.length === 7);
+});
+
+t.test('krympingen rører ikke originalen', function () {
+  V.krymp(demobesok, '2027-09-24T15:12:00.000Z');
+  t.erLik(demobesok.kunde, 'Ingrid');
+  t.erLik(demobesok.rapport.kommentar, 'Varene er satt på plass');
+});
+
+t.test('et besøk som aldri ble fullført, krymper fra det ble opprettet', function () {
+  var glemt = { opprettet: '2026-08-20T09:00:00.000Z', kunde: 'Ingrid', token: 'x',
+                rapport: {} };
+  t.erLik(V.krymp(glemt, '2026-10-01T09:00:00.000Z').besok.kunde, undefined);
+});
+
+t.test('trinnene kommer i rekkefølge og har hver sin begrunnelse', function () {
+  V.SLETTEPLAN.forEach(function (steg, i) {
+    t.erLik(steg.steg, i + 1);
+    t.erSann(steg.hvorfor.length > 20, 'trinn ' + steg.steg + ' mangler begrunnelse');
+    t.erSann(steg.fjerner.length > 0);
+  });
+});
+
+t.test('lovpålagte frister er skilt fra besøksdata', function () {
+  t.erSann(V.LOVPALAGT.length >= 3);
+  V.LOVPALAGT.forEach(function (l) {
+    t.erSann(!!l.hjemmel, l.hva + ' mangler hjemmel');
+    t.erSann(l.gjelder === 'Naviar' || l.gjelder === 'Leverandøren');
+  });
+  /* Femårsregelen treffer fakturaer, ikke besøk. Blandes de, lagrer man alt i
+     fem år for sikkerhets skyld – og det er nettopp feilen. */
+  var femaar = V.LOVPALAGT.filter(function (l) { return l.frist.indexOf('5 år') === 0; });
+  femaar.forEach(function (l) { t.erSann(l.hva.toLowerCase().indexOf('faktura') !== -1); });
+});
+
 t.oppsummer('Enhetstester');

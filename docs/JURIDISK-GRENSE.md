@@ -278,6 +278,79 @@ hver enkelt.
 
 ---
 
+## Hvor lenge vi lagrer, og hvorfor akkurat det
+
+Loven gir ikke noe tall. Personvernforordningen sier at opplysninger skal
+slettes eller anonymiseres når de ikke lenger er nødvendige for formålet, og at
+den behandlingsansvarlige selv må sette fristene og kunne dokumentere at de
+følges. Det finnes altså ingen «lovlig lagringstid» å slå opp. Fristen er en
+beslutning, og beslutningen må begrunnes.
+
+Det vanskelige er at ett besøk juridisk sett er tre ting samtidig:
+
+| Hva det er | Hvem plikten treffer | Frist |
+|---|---|---|
+| Regnskapsbilag | Den som fakturerer | 5 år etter regnskapsårets slutt (bokføringsloven § 13) |
+| Bevis ved erstatningskrav | Leverandøren | 3 år, ytre grense 10 (foreldelsesloven §§ 2 og 9) |
+| Opplysning om et menneske i sitt eget hjem | Alle som har den | Så kort som mulig |
+
+**Femårsregelen treffer ikke oss.** Vi fakturerer leverandørens abonnement, ikke
+det enkelte besøket. Bokføringsplikten for besøket ligger hos leverandøren, i
+leverandørens regnskapssystem. Å lagre besøksdata i fem år «fordi
+bokføringsloven sier fem år» ville vært å ta på seg en plikt vi ikke har – og
+det er akkurat den feilen som gjør at systemer lagrer alt for lenge.
+
+### Vi sletter ikke besøket. Vi krymper det.
+
+En sletting på én dato betyr at fullt navn, kontaktopplysninger og fritekst
+ligger urørt til dagen før. I stedet faller feltene bort etter hvert som
+formålet deres tar slutt:
+
+| Etter | Forsvinner | Fordi |
+|---|---|---|
+| 12 timer | Arbeiderlenken | Lenken har gjort jobben. En lenke i en SMS-tråd er en åpen dør |
+| 7 dager | All fritekst – kontorets beskjed og medarbeiderens melding | Familien har lest meldingen. Setningene er den delen som kan bære noe personlig |
+| 30 dager | Fornavn, pårørendes kontaktpunkt, medarbeiderens navn | Etter en måned er ingen i tvil om hva som skjedde |
+| 365 dager | Id, oppgaver, ansatt-id, tidspunkter. Datoen kortes til måned | Det som står igjen handler ikke om noen |
+
+Etter det siste trinnet er raden `{ dato: "2026-08", utfall: "utfort", sekunder:
+2400 }`. Anonyme opplysninger er ikke personopplysninger og faller utenfor
+regelverket – men bare hvis de faktisk er anonyme. Derfor kortes datoen til
+måned: en eksakt dato sammen med varighet og utfall peker fortsatt på ett
+bestemt besøk hos ett bestemt menneske. En slik rad er ikke anonym, den er
+navnløs, og det er ikke det samme.
+
+**Rutinen kjører ved hver lesning**, ikke som en nattjobb som kan stanse uten at
+noen merker det. En sletterutine som ikke kjører, er ikke en sletterutine – den
+er en setning i en personvernerklæring.
+
+**I koden:** `SLETTEPLAN` og `krymp()` i `assets/js/besok-vern.js`, kalt fra
+`rydd()` i `assets/js/besok-lager.js`. Ni tester holder planen fast, blant annet
+at ingen av de opprinnelige verdiene finnes igjen i raden etter et år.
+
+### Retten til sletting
+
+Krav om sletting kan ikke settes til side for besøksdata hos oss – vi har ingen
+lovpålagt plikt til å beholde dem. Unntaket i personvernforordningen gjelder der
+lagringen er nødvendig for å oppfylle en rettslig forpliktelse, og det er
+leverandørens regnskapsbilag, ikke våre besøksrader.
+
+Trenger leverandøren dokumentasjonen lenger enn planen gir, eksporterer de den
+til sine egne systemer, der de er behandlingsansvarlig for den. Vi er ikke
+leverandørens arkiv.
+
+### Hva som må avklares
+
+7. Er 7 dager for kort for medarbeiderens melding, gitt at en klage kan komme
+   etter to uker? Alternativet er 30 dager for fritekst, som er et reelt
+   personvernstap. Vi har valgt det korteste og lar leverandøren eksportere.
+8. Er `{ måned, utfall, varighet }` anonymt nok når leverandøren er liten og har
+   få besøk? Hos en leverandør med tre besøk i august er raden i praksis
+   identifiserbar for den som kjenner driften.
+
+
+---
+
 ## Hva som fortsatt må avklares av advokat
 
 Dette dokumentet fjerner ikke behovet for en gjennomgang. Det gjør den

@@ -101,10 +101,28 @@ window.PP_BESOK = (function () {
   function les() {
     try {
       var rå = localStorage.getItem(NOKKEL);
-      return rå ? JSON.parse(rå) : tom();
+      return rydd(rå ? JSON.parse(rå) : tom());
     } catch (e) {
       return tom();
     }
+  }
+
+  /* Sletting kjører ved hver lesning, ikke ved et nattlig jobbkall som kan
+     stanse uten at noen merker det. Feltene faller bort etter tur – se
+     SLETTEPLAN i besok-vern.js. En sletterutine som ikke kjører, er ikke en
+     sletterutine; den er en setning i en personvernerklæring. */
+  function rydd(data) {
+    if (!window.PP_VERN || !data.besok) return data;
+    var endret = false;
+    data.besok = data.besok.map(function (b) {
+      var r = window.PP_VERN.krymp(b);
+      if (r.steg !== (b.krympet || 0)) endret = true;
+      return r.besok;
+    });
+    if (endret) {
+      try { localStorage.setItem(NOKKEL, JSON.stringify(data)); } catch (e) {}
+    }
+    return data;
   }
 
   function skriv(data) {

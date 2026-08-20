@@ -47,14 +47,94 @@ window.PP_VERN = (function () {
     'Bilder fra hjemmet', 'Lydopptak', 'Løpende posisjon'
   ];
 
-  /* Hvor lenge. Standardene er våre; leverandøren kan sette kortere, ikke
-     lengre. Ingen frist er «til vi rydder». */
+  /* Hvor lenge.
+
+     Loven gir ingen tallverdi. Personvernforordningen sier at opplysninger
+     skal slettes eller anonymiseres når de ikke lenger er nødvendige for
+     formålet de ble samlet inn for, og at den behandlingsansvarlige selv må
+     sette fristene og kunne dokumentere at de følges. Det finnes altså ingen
+     «lovlig lagringstid» å slå opp – det er en beslutning vi må ta og
+     begrunne.
+
+     Det som gjør beslutningen vanskelig, er at ett besøk juridisk sett er tre
+     forskjellige ting samtidig:
+
+       1. Regnskapsbilag. Bokføringsloven krever fem år etter regnskapsårets
+          slutt for primærdokumentasjon. Den plikten treffer den som fakturerer
+          – altså LEVERANDØREN, ikke oss. Vi fakturerer leverandørens
+          abonnement, ikke det enkelte besøket. Femårsregelen gjelder derfor
+          vår egen fakturering, og ikke besøksdataene.
+
+       2. Bevis hvis noen krever erstatning. Den alminnelige
+          foreldelsesfristen er tre år, med en ytre grense på ti år for
+          erstatningskrav. Leverandøren kan ha behov for å vise hva som ble
+          gjort. Vi kan ikke ha det – vi utførte ikke besøket.
+
+       3. En opplysning om et menneske i sitt eget hjem. Denne delen er ikke
+          nødvendig for noe av det over etter at familien har lest meldingen.
+
+     Derfor sletter vi ikke besøket på én dato. Vi krymper det. Feltene faller
+     bort etter hvert som formålet deres tar slutt, og til slutt står det igjen
+     en rad som ikke handler om noen. Anonymiserte opplysninger er ikke
+     personopplysninger, og faller utenfor regelverket.
+
+     Leverandøren kan sette kortere frister, ikke lengre. Trenger de
+     dokumentasjonen lenger, eksporterer de den til sine egne systemer, der de
+     er behandlingsansvarlig for den. Vi er ikke leverandørens arkiv. */
+
+  var SLETTEPLAN = [
+    { steg: 1, timer: 12,   hva: 'Arbeiderlenken',
+      fjerner: ['token'],
+      hvorfor: 'Lenken har gjort jobben sin. En lenke i en SMS-tråd er en åpen dør.' },
+
+    { steg: 2, dager: 7,    hva: 'Fritekst',
+      fjerner: ['notat', 'rapport.kommentar'],
+      hvorfor: 'Familien har lest meldingen. Setningene trengs ikke mer, og de er den delen som kan bære noe personlig.' },
+
+    { steg: 3, dager: 30,   hva: 'Navn og kontaktpunkt',
+      fjerner: ['kunde', 'parorendeEpost', 'ansattNavn'],
+      hvorfor: 'Etter en måned er ingen i tvil om hva som skjedde. Da trengs ikke navnene.' },
+
+    { steg: 4, dager: 365,  hva: 'Resten',
+      fjerner: ['id', 'oppgaver', 'ansattId', 'rapport.sjekkliste', 'tid',
+                'fullfortTid', 'opprettet', 'utloper', 'status'],
+      /* Datoen kortes til måned. En eksakt dato sammen med varighet og utfall
+         peker fortsatt på ett bestemt besøk hos ett bestemt menneske – og da
+         er raden ikke anonym, den er bare navnløs. Det er ikke det samme. */
+      grovner: { dato: 'maaned' },
+      hvorfor: 'Det som står igjen er måned, utfall og varighet. Det handler ikke om noen lenger.' }
+  ];
+
+  /* Fristene loven setter for de to tingene som IKKE er besøksdata. De står
+     her fordi de ellers blandes sammen med besøket, og det er nettopp
+     sammenblandingen som gjør at folk lagrer alt i fem år «for sikkerhets
+     skyld». */
+  var LOVPALAGT = [
+    { hva: 'Naviars fakturaer til leverandøren', frist: '5 år etter regnskapsårets slutt',
+      hjemmel: 'Bokføringsloven § 13', gjelder: 'Naviar',
+      merk: 'Inneholder leverandørens firmaopplysninger, ikke sluttkundens.' },
+    { hva: 'Leverandørens fakturaer til sine kunder', frist: '5 år etter regnskapsårets slutt',
+      hjemmel: 'Bokføringsloven § 13', gjelder: 'Leverandøren',
+      merk: 'Ligger i leverandørens regnskapssystem. Ikke hos oss.' },
+    { hva: 'Dokumentasjon ved erstatningskrav', frist: '3 år, ytre grense 10 år',
+      hjemmel: 'Foreldelsesloven §§ 2 og 9', gjelder: 'Leverandøren',
+      merk: 'Eksporteres av leverandøren hvis de mener de trenger den.' }
+  ];
+
+  /* Retten til sletting har unntak, og unntaket er verdt å kunne: den gjelder
+     ikke der lagringen er nødvendig for å oppfylle en rettslig forpliktelse.
+     En faktura kan derfor ikke slettes på oppfordring. Et besøksnotat kan. */
+  var SLETTING_UNNTAK =
+    'Krav om sletting kan ikke settes til side for besøksdata hos oss. ' +
+    'Regnskapsbilag er unntatt så lenge bokføringsplikten løper, og det er ' +
+    'leverandørens bilag, ikke våre.';
+
   var FRISTER = {
-    besok:     { dager: 365, hva: 'Besøk med utfall',        hvorfor: 'Leverandøren må kunne dokumentere hva som ble gjort' },
+    besok:     { dager: 365, hva: 'Besøket, ferdig krympet',   hvorfor: 'Etter fire trinn står bare anonym statistikk igjen' },
     ansatt:    { dager: null, hva: 'Medarbeiderens språknivå', hvorfor: 'Så lenge medarbeideren er aktiv, deretter 30 dager' },
-    logg:      { dager: 365, hva: 'Beslutningslogg',         hvorfor: 'Menneskelig kontroll må kunne etterprøves' },
-    sikkerhet: { dager: 90,  hva: 'Innlogging og tilgang',   hvorfor: 'Oppdage misbruk, ikke følge med på folk' },
-    lenke:     { timer: 12,  hva: 'Arbeiderlenken',          hvorfor: 'En lenke i en SMS-tråd er en åpen dør' },
+    logg:      { dager: 365, hva: 'Beslutningslogg',           hvorfor: 'Menneskelig kontroll må kunne etterprøves' },
+    sikkerhet: { dager: 90,  hva: 'Innlogging og tilgang',     hvorfor: 'Oppdage misbruk, ikke følge med på folk' },
+    lenke:     { timer: 12,  hva: 'Arbeiderlenken',            hvorfor: 'En lenke i en SMS-tråd er en åpen dør' },
     melding:   { dager: 0,   hva: 'Innholdet i familiemeldingen',
                  hvorfor: 'Sendes og forsvinner. Vi lagrer at den gikk, til hvem og når – ikke teksten' }
   };
@@ -155,6 +235,57 @@ window.PP_VERN = (function () {
     return new Date(post.slettesEtter) <= new Date(naa || Date.now());
   }
 
+  function alder(fra, naa) {
+    return (new Date(naa || Date.now()) - new Date(fra)) / 1000;
+  }
+
+  function terskel(steg) {
+    return steg.timer !== undefined ? steg.timer * 3600 : steg.dager * 86400;
+  }
+
+  /* Fjerner et felt, også når det ligger ett nivå ned. Sletting som ikke når
+     inn i rapporten, er ikke sletting. */
+  function fjern(post, sti) {
+    var deler = sti.split('.');
+    if (deler.length === 1) { delete post[deler[0]]; return; }
+    if (post[deler[0]]) delete post[deler[0]][deler[1]];
+  }
+
+  /* Krymper besøket til det tidspunktet sier. Returnerer en kopi – originalen
+     røres ikke, slik at den som kaller, bestemmer om resultatet skal skrives.
+
+     Regnes fra fullførelse. Et besøk som aldri ble fullført, krymper fra det
+     ble opprettet; ellers ville en glemt rad ligge for alltid. */
+  function krymp(besok, naa) {
+    var post = JSON.parse(JSON.stringify(besok));
+    var fra = besok.fullfortTid || besok.opprettet;
+    if (!fra) return { besok: post, steg: 0, utfort: [] };
+
+    var gatt = alder(fra, naa);
+    var utfort = [];
+
+    SLETTEPLAN.forEach(function (steg) {
+      if (gatt < terskel(steg)) return;
+      steg.fjerner.forEach(function (felt) { fjern(post, felt); });
+      Object.keys(steg.grovner || {}).forEach(function (felt) {
+        if (post[felt]) post[felt] = String(post[felt]).slice(0, 7);
+      });
+      utfort.push(steg.steg);
+    });
+
+    post.krympet = utfort.length ? utfort[utfort.length - 1] : 0;
+    return { besok: post, steg: post.krympet, utfort: utfort };
+  }
+
+  /* Hva som blir borte og når, i klartekst. Leverandøren skal kunne lese
+     sletteplanen uten å be om den. */
+  function sletteplanTekst() {
+    return SLETTEPLAN.map(function (s) {
+      var nar = s.timer !== undefined ? s.timer + ' timer' : s.dager + ' dager';
+      return 'Etter ' + nar + ': ' + s.hva.toLowerCase() + ' forsvinner. ' + s.hvorfor;
+    });
+  }
+
   /* De registrertes rettigheter, med hvem som svarer. Spørsmålet kommer alltid
      til feil sted først, og da må svaret være klart. */
   var RETTIGHETER = [
@@ -180,10 +311,15 @@ window.PP_VERN = (function () {
     LAGRES: LAGRES,
     LAGRES_ALDRI: LAGRES_ALDRI,
     FRISTER: FRISTER,
+    SLETTEPLAN: SLETTEPLAN,
+    LOVPALAGT: LOVPALAGT,
+    SLETTING_UNNTAK: SLETTING_UNNTAK,
     STOPP: STOPP,
     RETTIGHETER: RETTIGHETER,
     BRUDD: BRUDD,
     sjekk: sjekk,
+    krymp: krymp,
+    sletteplanTekst: sletteplanTekst,
     slettesEtter: slettesEtter,
     skalSlettes: skalSlettes
   };
