@@ -1,0 +1,133 @@
+/* PårørendePilot Besøksbekreftelse – B2B-flate.
+   Tettere og mer verktøyaktig enn de forbrukervendte sidene: dette brukes av
+   noen som gjør det tjue ganger om dagen, ikke av noen som besøker én gang. */
+
+:root {
+  --b-topp:    #14231f;
+  --b-ok:      #175446;
+  --b-warn:    #9a6a08;
+  --b-avvik:   #a32f24;
+  --b-warn-bg: #fbeee0;
+  --b-avvik-bg:#fbeceb;
+  --b-ok-bg:   #e6f1ed;
+}
+
+body.besok { background: var(--bg-soft); }
+
+/* Topplinje */
+.b-topp { background: var(--b-topp); color: #fff; padding: 13px 0; }
+.b-topp .wrap { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.b-topp a.logo { color: #fff; font-size: 1rem; }
+.b-topp nav { margin-left: auto; display: flex; gap: 4px; flex-wrap: wrap; }
+.b-topp nav a {
+  color: #a9bcb5; text-decoration: none; font-size: .92rem; font-weight: 500;
+  padding: 7px 12px; border-radius: 8px;
+}
+.b-topp nav a:hover { background: rgba(255,255,255,.08); color: #fff; }
+.b-topp nav a[aria-current="page"] { background: rgba(255,255,255,.13); color: #fff; }
+.b-topp .org { font-size: .85rem; color: #8ba49c; }
+
+.b-flate { padding: 26px 0 70px; }
+.b-flate h1 { font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem); margin-bottom: .25em; }
+.b-flate .lede { color: var(--ink-soft); margin-bottom: 26px; max-width: 62ch; }
+
+/* Kort og tabeller */
+.b-kort { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 22px; }
+.b-kort + .b-kort { margin-top: 16px; }
+.b-kort h2 { font-size: 1.1rem; margin-bottom: 4px; }
+.b-kort h3 { font-size: .95rem; }
+
+.b-tabell { width: 100%; border-collapse: collapse; font-size: .93rem; min-width: 620px; }
+.b-tabell th {
+  text-align: left; font-size: .74rem; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--ink-faint); padding: 9px 12px; border-bottom: 1px solid var(--line); font-weight: 600;
+}
+.b-tabell td { padding: 13px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.b-tabell tr:last-child td { border-bottom: none; }
+.b-tabell tbody tr:hover { background: var(--bg-soft); }
+.b-id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .82rem; color: var(--ink-faint); }
+
+/* Statusmerker – form i tillegg til farge */
+.b-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .78rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+}
+.b-status.planlagt { background: var(--bg-soft); color: var(--ink-soft); }
+.b-status.ok    { background: var(--b-ok-bg);    color: var(--b-ok); }
+.b-status.warn  { background: var(--b-warn-bg);  color: var(--b-warn); }
+.b-status.avvik { background: var(--b-avvik-bg); color: var(--b-avvik); }
+
+/* Lenkeboks til arbeider */
+.b-lenke {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  background: var(--bg-soft); border: 1px dashed var(--line); border-radius: 10px; padding: 12px 14px;
+}
+.b-lenke code {
+  font-size: .82rem; background: #fff; border: 1px solid var(--line); border-radius: 6px;
+  padding: 5px 9px; overflow-wrap: anywhere; flex: 1; min-width: 0;
+}
+
+/* Arbeiderflaten – tommel, ikke mus */
+body.arbeider { background: var(--bg-sand); }
+.a-flate { max-width: 560px; margin: 0 auto; padding: 20px 18px 60px; }
+.a-kort { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: var(--shadow); }
+.a-oppdrag { border-left: 4px solid var(--brand); padding-left: 16px; margin-bottom: 22px; }
+.a-oppdrag h1 { font-size: 1.5rem; margin-bottom: 6px; }
+.a-oppdrag .meta { color: var(--ink-soft); font-size: 1rem; margin: 0; }
+
+.a-valg { display: grid; gap: 12px; margin: 20px 0; }
+.a-knapp {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  background: #fff; border: 3px solid var(--line); border-radius: 14px;
+  padding: 18px 20px; font: inherit; font-size: 1.1rem; font-weight: 600; color: var(--ink);
+  cursor: pointer; min-height: 74px;
+}
+.a-knapp .ik { font-size: 1.7rem; line-height: 1; }
+.a-knapp small { display: block; font-weight: 400; font-size: .88rem; color: var(--ink-soft); }
+.a-knapp:hover { border-color: var(--brand); background: var(--brand-light); }
+.a-knapp[aria-pressed="true"] { border-color: var(--brand); background: var(--brand-light); box-shadow: inset 0 0 0 2px var(--brand); }
+.a-knapp[data-utfall="ikke_utfort"][aria-pressed="true"] { border-color: var(--b-avvik); background: var(--b-avvik-bg); box-shadow: inset 0 0 0 2px var(--b-avvik); }
+.a-knapp[data-utfall="oppfolging"][aria-pressed="true"],
+.a-knapp[data-utfall="delvis"][aria-pressed="true"] { border-color: var(--b-warn); background: var(--b-warn-bg); box-shadow: inset 0 0 0 2px var(--b-warn); }
+
+.a-sjekk { display: grid; gap: 9px; }
+.a-sjekk label {
+  display: flex; gap: 12px; align-items: center; padding: 13px 15px;
+  border: 2px solid var(--line); border-radius: 11px; cursor: pointer; font-size: 1.02rem;
+}
+.a-sjekk label:has(input:checked) { border-color: var(--brand); background: var(--brand-light); }
+.a-sjekk input { width: 21px; height: 21px; accent-color: var(--brand); flex: 0 0 auto; }
+
+.a-send {
+  width: 100%; background: var(--brand); color: #fff; border: none; border-radius: 13px;
+  padding: 20px; font: inherit; font-size: 1.2rem; font-weight: 700; cursor: pointer; min-height: 66px;
+}
+.a-send:hover { background: var(--brand-dark); }
+.a-send[disabled] { opacity: .45; cursor: not-allowed; }
+
+.a-tid { text-align: center; font-size: .88rem; color: var(--ink-faint); margin-top: 14px; }
+
+/* Advarsel mot helseopplysninger – gjentas overalt fritekst finnes */
+.b-helsevarsel {
+  background: var(--b-warn-bg); border: 1px solid #eccfa9; border-radius: 9px;
+  padding: 11px 14px; font-size: .88rem; color: #6f4310; margin-top: 8px;
+}
+
+/* Forhåndsvisning av familiemeldingen */
+.b-epost {
+  background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+  font-size: .93rem;
+}
+.b-epost .hode { background: var(--bg-soft); border-bottom: 1px solid var(--line); padding: 11px 15px; font-size: .82rem; color: var(--ink-faint); }
+.b-epost .kropp { padding: 16px 15px; white-space: pre-wrap; }
+
+/* Landingsside */
+.b-hero { background: linear-gradient(180deg, var(--bg-sand), #fff 72%); padding: 66px 0 50px; }
+.b-hero h1 { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem); max-width: 18ch; }
+.b-hero .lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 52ch; }
+.b-pris { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 700px) { .b-pris { grid-template-columns: 1fr; } }
+.b-pris .b-kort strong.tall { font-size: 2rem; display: block; line-height: 1.1; }
+
+.b-tom { text-align: center; padding: 44px 20px; color: var(--ink-faint); }
+.b-tom .stor { font-size: 2.2rem; display: block; margin-bottom: 10px; }

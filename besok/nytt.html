@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nytt besøk – Besøksbekreftelse</title>
+<meta name="description" content="Opprett et besøk og send arbeideren en sikker lenke.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/besok.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>✅</text></svg>">
+</head>
+<body class="besok">
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="b-topp">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true">✓</span> Besøksbekreftelse</a>
+    <nav aria-label="Hovedmeny">
+      <a href="oversikt.html" >Besøk</a>
+      <a href="nytt.html" aria-current="page">Nytt besøk</a>
+      <a href="historikk.html" >Historikk</a>
+    </nav>
+    <span class="org" id="org-navn">–</span>
+  </div>
+</header>
+
+<main id="main" class="b-flate">
+  <div class="wrap" style="max-width:720px">
+    <h1>Nytt besøk</h1>
+    <p class="lede">Fem felter. Arbeideren får en lenke som virker i 12 timer og bare kan brukes én gang.</p>
+
+    <div class="b-kort">
+      <form id="nytt-skjema" novalidate>
+
+        <div class="field">
+          <label for="kunde">Kunde <span class="req">*</span></label>
+          <span class="hint">Fornavn eller kundenummer. Vi ber ikke om etternavn eller adresse.</span>
+          <input type="text" id="kunde" name="kunde" placeholder="Ingrid – eller K-2481" required>
+          <p class="error-text" data-error-for="kunde">Fyll inn fornavn eller kundenummer.</p>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Oppgaver <span class="req">*</span></span>
+          <span class="hint">Faste kategorier. Helseoppgaver finnes ikke i listen, og skal ikke utføres.</span>
+          <div class="option-grid" id="oppgaveliste"></div>
+          <p class="error-text" data-error-for="oppgaver">Velg minst én oppgave.</p>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="dato">Dato <span class="req">*</span></label>
+            <input type="date" id="dato" name="dato" required>
+            <p class="error-text" data-error-for="dato">Velg dato.</p>
+          </div>
+          <div class="field">
+            <label for="tid">Klokkeslett <span class="req">*</span></label>
+            <input type="time" id="tid" name="tid" value="14:00" required>
+            <p class="error-text" data-error-for="tid">Velg klokkeslett.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="ansatt">Hvem utfører besøket? <span class="req">*</span></label>
+          <select id="ansatt" name="ansatt" required></select>
+          <p class="error-text" data-error-for="ansatt">Velg en ansatt.</p>
+        </div>
+
+        <div class="field">
+          <label for="parorende">Pårørende som skal varsles <span class="optional">(valgfritt)</span></label>
+          <span class="hint">
+            E-postadresse. De trenger ingen konto. Kunden må ha sagt ja til at denne personen får beskjed.
+          </span>
+          <input type="email" id="parorende" name="parorende" inputmode="email" placeholder="anne@example.no">
+          <p class="error-text" data-error-for="parorende">Skriv inn en gyldig e-postadresse, eller la feltet stå tomt.</p>
+        </div>
+
+        <div class="field">
+          <label for="notat">Beskjed til arbeideren <span class="optional">(valgfritt)</span></label>
+          <textarea id="notat" name="notat" maxlength="200" placeholder="F.eks. «Ring på hos naboen hvis hun ikke åpner.»"></textarea>
+          <p class="b-helsevarsel">
+            Ikke skriv diagnoser, medisiner eller andre helseopplysninger. Trenger arbeideren slik
+            informasjon, hører oppgaven ikke hjemme her.
+          </p>
+        </div>
+
+        <button class="btn btn-primary" type="submit" style="width:100%">Opprett besøk</button>
+      </form>
+
+      <div id="kvittering" hidden>
+        <div class="notice notice-info" style="margin:0 0 18px">
+          <h4>✓ Besøket er opprettet</h4>
+          <p style="margin:0">Send denne lenken til <strong id="k-ansatt"></strong>. Den utløper om 12 timer og virker én gang.</p>
+        </div>
+        <div class="b-lenke">
+          <code id="k-lenke"></code>
+          <button class="btn btn-secondary" type="button" id="kopier" style="font-size:.88rem;padding:9px 14px">Kopier</button>
+          <a class="btn btn-primary" id="k-apne" href="#" style="font-size:.88rem;padding:9px 14px">Åpne som arbeider</a>
+        </div>
+        <p style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-secondary" href="oversikt.html">Til besøksoversikten</a>
+          <button class="btn btn-ghost" type="button" id="nytt-igjen">Opprett et til</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/besok-lager.js" defer></script>
+<script src="../assets/js/besok-nytt.js" defer></script>
+</body>
+</html>

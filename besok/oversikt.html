@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Besøk – Besøksbekreftelse</title>
+<meta name="description" content="Kommende og pågående besøk.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/besok.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>✅</text></svg>">
+</head>
+<body class="besok">
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="b-topp">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true">✓</span> Besøksbekreftelse</a>
+    <nav aria-label="Hovedmeny">
+      <a href="oversikt.html" aria-current="page">Besøk</a>
+      <a href="nytt.html" >Nytt besøk</a>
+      <a href="historikk.html" >Historikk</a>
+    </nav>
+    <span class="org" id="org-navn">–</span>
+  </div>
+</header>
+
+<main id="main" class="b-flate">
+  <div class="wrap">
+    <div style="display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:24px">
+      <div>
+        <h1>Besøk</h1>
+        <p class="lede" style="margin:0">Alt som ikke er rapportert ennå. Klikk på et besøk for å hente lenken på nytt.</p>
+      </div>
+      <a class="btn btn-primary" href="nytt.html" style="margin-left:auto">Nytt besøk</a>
+    </div>
+
+    <div class="b-kort" style="padding:0">
+      <div class="table-scroll" style="border:none">
+        <table class="b-tabell">
+          <thead>
+            <tr><th>Besøk</th><th>Kunde</th><th>Oppgaver</th><th>Når</th><th>Utfører</th><th>Pårørende</th><th>Status</th></tr>
+          </thead>
+          <tbody id="rader"></tbody>
+        </table>
+      </div>
+      <div id="tomt" class="b-tom" hidden>
+        <span class="stor" aria-hidden="true">📋</span>
+        <p style="margin:0"><strong>Ingen besøk ennå.</strong></p>
+        <p style="margin:6px 0 16px">Opprett det første, så får du lenken du sender til arbeideren.</p>
+        <a class="btn btn-primary" href="nytt.html">Opprett besøk</a>
+      </div>
+    </div>
+
+    <div class="b-kort" id="detalj" hidden>
+      <h2 id="d-tittel">–</h2>
+      <p class="muted" id="d-meta" style="margin-bottom:16px">–</p>
+      <div class="b-lenke">
+        <code id="d-lenke"></code>
+        <a class="btn btn-primary" id="d-apne" href="#" style="font-size:.88rem;padding:9px 14px">Åpne som arbeider</a>
+      </div>
+      <p class="muted" id="d-utlop" style="margin:12px 0 0;font-size:.88rem"></p>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/besok-lager.js" defer></script>
+<script src="../assets/js/besok-oversikt.js" defer></script>
+</body>
+</html>

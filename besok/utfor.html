@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meld fra om besøket</title>
+<meta name="description" content="Bekreft at besøket er gjennomført.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/besok.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>">
+</head>
+<body class="arbeider">
+<main class="a-flate">
+
+  <!-- Lenken virker ikke -->
+  <div class="a-kort" id="sperret" hidden>
+    <h1 style="font-size:1.4rem" id="sperre-tittel">Lenken virker ikke</h1>
+    <p id="sperre-tekst" style="font-size:1.05rem">–</p>
+    <p class="muted" style="margin-bottom:0">Ta kontakt med kontoret, så sender de en ny.</p>
+  </div>
+
+  <!-- Selve rapporten -->
+  <div class="a-kort" id="skjema" hidden>
+    <div class="a-oppdrag">
+      <h1 id="o-kunde">–</h1>
+      <p class="meta" id="o-nar">–</p>
+      <p class="meta" id="o-oppgaver" style="margin-top:8px">–</p>
+    </div>
+
+    <div class="notice notice-info" id="o-notat" hidden style="margin-bottom:20px;font-size:.98rem">
+      <p style="margin:0"><strong>Beskjed fra kontoret:</strong> <span id="o-notat-tekst"></span></p>
+    </div>
+
+    <h2 style="font-size:1.15rem;margin-bottom:4px">Hvordan gikk det?</h2>
+    <div class="a-valg" role="group" aria-label="Resultat">
+      <button class="a-knapp" type="button" data-utfall="utfort" aria-pressed="false">
+        <span class="ik" aria-hidden="true">✅</span>
+        <span>Alt er gjort<small>Besøket ble gjennomført som planlagt</small></span>
+      </button>
+      <button class="a-knapp" type="button" data-utfall="delvis" aria-pressed="false">
+        <span class="ik" aria-hidden="true">➗</span>
+        <span>Noe ble gjort<small>Kryss av under for det du rakk</small></span>
+      </button>
+      <button class="a-knapp" type="button" data-utfall="ikke_utfort" aria-pressed="false">
+        <span class="ik" aria-hidden="true">✖️</span>
+        <span>Fikk ikke gjort det<small>Ingen hjemme, avlyst, eller noe kom i veien</small></span>
+      </button>
+      <button class="a-knapp" type="button" data-utfall="oppfolging" aria-pressed="false">
+        <span class="ik" aria-hidden="true">📞</span>
+        <span>Kontoret bør ringe<small>Noe bør følges opp, uten at det haster</small></span>
+      </button>
+    </div>
+
+    <div id="sjekk-blokk" hidden style="margin-bottom:20px">
+      <h2 style="font-size:1.05rem;margin-bottom:8px">Hva rakk du?</h2>
+      <div class="a-sjekk" id="sjekkliste"></div>
+    </div>
+
+    <div class="field" style="margin-bottom:12px">
+      <label for="kommentar" style="font-size:1.02rem">Kort melding <span class="optional">(valgfritt)</span></label>
+      <textarea id="kommentar" maxlength="140" placeholder="F.eks. «Varene er satt på plass.»" style="min-height:80px"></textarea>
+      <p class="b-helsevarsel" style="margin-top:6px">
+        Ikke skriv om helse, medisiner eller hvordan hun har det. Skriv om oppgaven.
+        Er du bekymret, velg <strong>Kontoret bør ringe</strong> i stedet.
+      </p>
+    </div>
+
+    <button class="a-send" type="button" id="send" disabled>Send inn</button>
+    <p class="a-tid" id="teller">–</p>
+  </div>
+
+  <!-- Kvittering -->
+  <div class="a-kort" id="ferdig" hidden>
+    <div style="text-align:center;padding:8px 0 18px">
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--brand-light);color:var(--brand);display:grid;place-items:center;font-size:2rem;margin:0 auto 16px">✓</div>
+      <h1 style="font-size:1.4rem;margin-bottom:6px">Takk — det er registrert</h1>
+      <p class="muted" id="f-tid" style="margin:0">–</p>
+    </div>
+
+    <div id="f-sendt" hidden>
+      <p style="font-weight:600;margin-bottom:8px">Dette fikk pårørende:</p>
+      <div class="b-epost"><div class="kropp" id="f-melding">–</div></div>
+    </div>
+    <p class="muted" id="f-ikke-sendt" hidden style="margin:0">Ingen pårørende var satt opp for dette besøket, så det ble ikke sendt noen melding.</p>
+
+    <p class="muted" style="margin:20px 0 0;font-size:.9rem">Du kan lukke siden nå. Lenken virker ikke lenger.</p>
+  </div>
+
+</main>
+
+<script src="../assets/js/besok-lager.js" defer></script>
+<script src="../assets/js/besok-utfor.js" defer></script>
+</body>
+</html>
