@@ -6,6 +6,7 @@ var t = require('./hjelpere');
 globalThis.window = globalThis;
 require('../assets/js/pris.js');
 require('../assets/js/akutt.js');
+require('../assets/js/besok-behov.js');
 require('../assets/js/matching.js');
 require('../assets/js/demodata.js');
 
@@ -243,6 +244,66 @@ t.test('tom tekst gir ingen vurdering', function () {
   t.erLik(A.vurder('').niva, 'ingen');
   t.erLik(A.vurder(null).niva, 'ingen');
   t.erLik(A.vurder('   ').niva, 'ingen');
+});
+
+/* ---------------- helsegrensen i behovsanalysen ----------------
+   Etterspørsel skal aldri kunne opprette en helsetjeneste. Disse testene
+   finnes fordi «dusje» ikke fanget «dusjing» første gang. */
+
+var B = window.PP_BEHOV;
+
+t.gruppe('Helsegrensen – skal alltid stoppes');
+
+[
+  'Hjelp med dusjing', 'Kan dere stelle henne?', 'Trenger hjelp til å bade',
+  'Sette på støttestrømper', 'Gi henne medisinene', 'Måle blodtrykket',
+  'Løfte henne opp av senga', 'Hjelp på toalettet', 'Skifte bandasje',
+  'Sette insulin', 'Gi hunden medisin'
+].forEach(function (tekst) {
+  t.test(tekst, function () {
+    t.erLik(B.klassifiser(tekst).type, 'over_grensen');
+  });
+});
+
+t.gruppe('Helsegrensen – skal ikke stoppes');
+
+[
+  ['Bade hunden', 'dyrepass, ikke stell'],
+  ['Stelle katten', 'dyrepass'],
+  ['Lufte hunden', 'dyrepass'],
+  ['Klippe plenen', 'hage'],
+  ['Måke snø', 'sesong'],
+  ['Får ikke wifi til å virke', 'data']
+].forEach(function (rad) {
+  t.test(rad[0] + ' (' + rad[1] + ')', function () {
+    t.erUsann(B.klassifiser(rad[0]).type === 'over_grensen');
+  });
+});
+
+t.gruppe('Behovsanalyse');
+
+t.test('etterspørsel over helsegrensen blir aldri et forslag', function () {
+  var r = B.analyser([
+    { tekst: 'Gi henne medisinene', kunde: 'a' }, { tekst: 'Gi henne medisinene', kunde: 'b' },
+    { tekst: 'Gi henne medisinene', kunde: 'c' }, { tekst: 'Gi henne medisinene', kunde: 'd' },
+    { tekst: 'Gi henne medisinene', kunde: 'e' }
+  ], []);
+  t.erLik(r.forslag.length, 0, 'fem forespørsler skal ikke gi et forslag');
+  t.erLik(r.overGrensen.length, 5);
+});
+
+t.test('én kunde som spør ofte er ikke et modent behov', function () {
+  var r = B.analyser([
+    { tekst: 'Klippe plenen', kunde: 'Ingrid' }, { tekst: 'Klippe plenen', kunde: 'Ingrid' },
+    { tekst: 'Klippe plenen', kunde: 'Ingrid' }, { tekst: 'Klippe plenen', kunde: 'Ingrid' }
+  ], []);
+  t.erLik(r.forslag.length, 1);
+  t.erUsann(r.forslag[0].moden, 'krever minst to ulike kunder');
+});
+
+t.test('kategorier som allerede tilbys foreslås ikke', function () {
+  var r = B.analyser([{ tekst: 'Klippe plenen', kunde: 'a' }], ['hage']);
+  t.erLik(r.forslag.length, 0);
 });
 
 t.gruppe('Adressevern i datamodellen');
