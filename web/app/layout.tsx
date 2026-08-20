@@ -1,11 +1,30 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import './globals.css';
+import { siteUrl } from '@/lib/site.ts';
+
+const description =
+  'Ferry cancelled, train missed, rain ruining the day? Tell COBBAN what went wrong anywhere '
+  + 'in Europe and get the fix — with your hotel, dinner and flight still accounted for.';
 
 export const metadata = {
+  /*
+   * Mutlak adres olmadan canonical etiketleri ve paylaşım kartları çözümlenmiyor.
+   * Yardım sayfaları göreli canonical veriyor; kökü buradan alıyorlar.
+   */
+  metadataBase: new URL(siteUrl),
   title: { default: 'COBBAN — travel problems in Europe, solved in one screen', template: '%s · COBBAN' },
-  description:
-    'Ferry cancelled, train missed, rain ruining the day? Tell COBBAN what went wrong anywhere in Europe and get the fix — with your hotel, dinner and flight still accounted for.',
+  description,
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    siteName: 'COBBAN',
+    title: 'COBBAN — travel problems in Europe, solved in one screen',
+    description,
+    url: siteUrl,
+    locale: 'en',
+  },
+  twitter: { card: 'summary', title: 'COBBAN', description },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

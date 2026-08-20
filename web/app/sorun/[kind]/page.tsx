@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import {
   cityIn, eventsIn, getCountry, placesIn,
@@ -47,6 +48,24 @@ async function getTrips(from: string, to: string): Promise<{ trips: TripOption[]
 
 export function generateStaticParams() {
   return kinds.map((kind) => ({ kind }));
+}
+
+/**
+ * Ülke seçimi `?country=XX` ile taşınıyor. Her ekranın on üç varyantı
+ * arama motoruna yakın kopya olarak görünürdü; canonical hepsini tek
+ * adreste topluyor.
+ */
+export async function generateMetadata(
+  { params }: { params: Promise<{ kind: string }> },
+): Promise<Metadata> {
+  const { kind } = await params;
+  const problem = problemFor(kind);
+  if (!problem) return {};
+  return {
+    title: problem.headline.replace(/[.?]$/, ''),
+    description: `${problem.label} — ${problem.hint}. Thirteen European countries, no account, no tracking.`,
+    alternates: { canonical: `/sorun/${problem.kind}` },
+  };
 }
 
 export default async function ProblemPage({

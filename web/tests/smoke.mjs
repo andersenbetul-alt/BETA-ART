@@ -197,6 +197,29 @@ console.log('\nKenar durumlar');
   const kept = (home.html.match(/href="\/sorun\/[a-z]+\?country=GR"/g) ?? []).length;
   ok(kept === 8, `anasayfadaki 8 bağlantı ülkeyi taşımalı, ${kept} taşıyor`);
 
+  // Domain: canonical, sitemap ve robots birbirini tutmali. Yanlis mutlak
+  // adres, arama motoruna sitenin var olmayan bir kopyasini gosterir.
+  const robots = await get('/robots.txt');
+  ok(robots.status === 200, 'robots.txt yok');
+  const sitemapUrl = (robots.html.match(/Sitemap:\s*(\S+)/) ?? [])[1];
+  ok(Boolean(sitemapUrl), 'robots.txt sitemap adresi vermiyor');
+
+  const sitemap = await get('/sitemap.xml');
+  ok(sitemap.status === 200, 'sitemap.xml yok');
+  const locs = [...sitemap.html.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
+  ok(locs.length >= 11, `sitemap eksik: ${locs.length} adres`);
+  ok(!locs.some((u) => u.includes('?')), 'sitemap sorgu parametreli adres tasiyor');
+  ok(!locs.some((u) => u.includes('localhost')), 'sitemap localhost tasiyor');
+  const origin = new URL(sitemapUrl).origin;
+  ok(locs.every((u) => u.startsWith(origin)),
+     'sitemap adresleri robots.txt ile ayni alan adinda degil');
+
+  // Ulke varyanti kendi adresini degil, temiz yolu isaret etmeli.
+  const variant = await get('/sorun/car?country=IT');
+  const canonical = (variant.html.match(/<link rel="canonical" href="([^"]+)"/) ?? [])[1];
+  ok(canonical === `${origin}/sorun/car`,
+     `ulke varyanti yanlis canonical veriyor: ${canonical}`);
+
   const meetNoCity = await get('/sorun/meet?country=NO&city=tromso');
   ok(meetNoCity.status === 200, 'etkinliksiz şehir sayfayı kırıyor');
   ok(visibleText(meetNoCity.html).includes('Anywhere in Europe, tonight'),
