@@ -186,6 +186,29 @@ if (existsSync(figuresPath)) {
     }
   }
 
+  // The FAQ structured data is generated from the dictionary at build time. If someone edits
+  // the JSON-LD by hand, or adds a question to the markup without adding the pair to the
+  // dictionaries, the schema starts telling search engines something the page does not say.
+  {
+    const asked = [...html.matchAll(/data-i18n="faq_(q|a)(\d+)"/g)];
+    const pairs = new Map();
+    for (const [, kind, n] of asked) pairs.set(n, (pairs.get(n) || '') + kind);
+    for (const [n, kinds] of pairs) {
+      if (!kinds.includes('q') || !kinds.includes('a')) {
+        fail(`FAQ item ${n} has only ${kinds === 'q' ? 'a question' : 'an answer'} in the markup — both are needed or the schema goes lopsided.`);
+      }
+    }
+    // The generator walks faq_q1, faq_q2, … until one is missing, so a gap silently truncates
+    // the schema. Catch the gap here instead.
+    const numbers = [...pairs.keys()].map(Number).sort((a, b) => a - b);
+    numbers.forEach((n, i) => {
+      if (n !== i + 1) fail(`FAQ numbering jumps to faq_q${n} — the build stops at the first gap, so ${numbers.length - i} question(s) would vanish from the structured data.`);
+    });
+    if (numbers.length && !html.includes('data-faq-schema')) {
+      fail('The page has an FAQ but no data-faq-schema block for the build to fill in.');
+    }
+  }
+
   // Any dictionary string that quotes one of these has to use the token, not a typed number.
   const TOKENED = { music_help_streams: 'streams_help_urself', music_xp_sub: 'streams_x_pirata' };
   for (const [code, dict] of Object.entries(DICTS)) {

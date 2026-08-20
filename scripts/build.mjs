@@ -100,6 +100,30 @@ function render(code, { atRoot, source = html, slug = '', title, description }) 
       return open + escape(value) + close;
     });
 
+  // 1b-ii. The FAQ structured data, built from this language's own dictionary. Generating it
+  // rather than writing it by hand is the point: the schema and the visible answers come from
+  // the same strings, so Google can never be shown a claim the page does not make.
+  {
+    const dict = DICTS[code] || DICTS.en;
+    const en = DICTS.en;
+    const pick = (key) => (dict[key] != null ? dict[key] : en[key]);
+    const entity = [];
+    for (let i = 1; en[`faq_q${i}`]; i++) {
+      entity.push({
+        '@type': 'Question',
+        name: pick(`faq_q${i}`),
+        acceptedAnswer: { '@type': 'Answer', text: pick(`faq_a${i}`) },
+      });
+    }
+    if (entity.length) {
+      page = page.replace(
+        /(<script type="application\/ld\+json" data-faq-schema>)[\s\S]*?(<\/script>)/,
+        (m, open, close) => open + '\n' +
+          JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: entity })
+            .replace(/</g, '\\u003c') + '\n' + close);
+    }
+  }
+
   // 1c. The store, drawn the same way app.js draws it.
   if (SHOP.length && page.includes('id="shop-grid"')) {
     const money = (amount, currency) => {
