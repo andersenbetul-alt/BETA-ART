@@ -22,6 +22,8 @@ require('../assets/js/besok-behov.js');
 require('../assets/js/besok-sprakkrav.js');
 require('../assets/js/besok-agenter.js');
 require('../assets/js/besok-vern.js');
+require('../assets/js/besok-klage.js');
+require('../assets/js/besok-sprak.js');
 require('../assets/js/matching.js');
 require('../assets/js/demodata.js');
 
@@ -624,6 +626,111 @@ t.test('lovpålagte frister er skilt fra besøksdata', function () {
      fem år for sikkerhets skyld – og det er nettopp feilen. */
   var femaar = V.LOVPALAGT.filter(function (l) { return l.frist.indexOf('5 år') === 0; });
   femaar.forEach(function (l) { t.erSann(l.hva.toLowerCase().indexOf('faktura') !== -1); });
+});
+
+
+/* ---------------- klagekanal ---------------- */
+
+t.gruppe('Klagefrister');
+
+var KL = window.PP_KLAGE;
+var torsdag = '2026-08-20T14:00:00.000Z';   /* torsdag */
+var fredag  = '2026-08-21T14:00:00.000Z';
+
+t.test('mistanke om overgrep har ingen behandlingstid', function () {
+  var r = KL.motta({ kategori: 'overgrep', mottatt: torsdag });
+  t.erLik(r.frist, torsdag);
+  t.erSann(r.stopper);
+  t.erSann(r.hjemmel.indexOf('196') !== -1);
+});
+
+t.test('72-timersfristen bryr seg ikke om helg', function () {
+  var r = KL.motta({ kategori: 'personvernbrudd_tilsyn', mottatt: fredag });
+  t.erLik(r.frist, '2026-08-24T14:00:00.000Z');   /* mandag, ikke onsdag */
+});
+
+t.test('vi melder til leverandøren, ikke til Datatilsynet', function () {
+  t.erLik(KL.kategori('personvernbrudd_leverandor').til, 'Leverandøren (behandlingsansvarlig)');
+  t.erSann(KL.kategori('personvernbrudd_tilsyn').til.indexOf('Datatilsynet') !== -1);
+});
+
+t.test('innsyn er én måned, og forlengelsen krever et varsel', function () {
+  var r = KL.motta({ kategori: 'innsyn', mottatt: torsdag });
+  t.erLik(r.frist, '2026-09-19T14:00:00.000Z');
+  t.erSann(!!r.forlengetTil);
+  t.erSann(r.forlengVilkar.indexOf('INNEN den første måneden') !== -1);
+});
+
+t.test('våre egne frister regnes i virkedager', function () {
+  /* Fredag + 1 virkedag er mandag, ikke lørdag. */
+  t.erLik(KL.leggTilVirkedager(fredag, 1).slice(0, 10), '2026-08-24');
+  t.erLik(KL.leggTilVirkedager(torsdag, 1).slice(0, 10), '2026-08-21');
+});
+
+t.test('ukjent kategori går til et menneske og stopper automatikken', function () {
+  var r = KL.motta({ kategori: 'noe_vi_ikke_har', mottatt: torsdag });
+  t.erLik(r.kategori, 'ukjent');
+  t.erSann(r.stopper);
+});
+
+t.test('lovfrister er merket som lovfrister', function () {
+  ['overgrep', 'personvernbrudd_leverandor', 'personvernbrudd_tilsyn',
+   'personvernbrudd_berort', 'innsyn'].forEach(function (id) {
+    t.erLik(KL.kategori(id).mot, 'lov', id);
+    t.erSann(!!KL.kategori(id).hjemmel, id + ' mangler hjemmel');
+  });
+  ['misbruk', 'skade', 'medarbeider', 'tjeneste'].forEach(function (id) {
+    t.erLik(KL.kategori(id).mot, 'egen', id);
+  });
+});
+
+t.test('statusen varsler før fristen ryker, ikke etterpå', function () {
+  t.erLik(KL.status('2026-08-24T14:00:00Z', '2026-08-24T11:00:00Z').niva, 'kritisk');
+  t.erLik(KL.status('2026-08-24T14:00:00Z', '2026-08-24T02:00:00Z').niva, 'nær');
+  t.erLik(KL.status('2026-08-24T14:00:00Z', '2026-08-20T14:00:00Z').niva, 'god');
+  t.erLik(KL.status('2026-08-24T14:00:00Z', '2026-08-25T14:00:00Z').niva, 'oversittet');
+});
+
+t.gruppe('Misbruk av stillingen');
+
+t.test('misbruk stopper automatikken og går til politiet', function () {
+  var r = KL.motta({ kategori: 'misbruk', mottatt: torsdag });
+  t.erSann(r.stopper);
+  t.erSann(r.til.indexOf('politiet') !== -1);
+  t.erLik(r.frist, torsdag);
+});
+
+t.test('anmeldelse ved tyveri er vår regel, ikke en lovpålagt plikt', function () {
+  var k = KL.kategori('misbruk');
+  t.erLik(k.hjemmel, null);
+  t.erLik(k.mot, 'egen');
+  t.erSann(k.ikkeAvvergingsplikt.indexOf('196') !== -1);
+});
+
+t.test('ved vold eller mishandling i omsorg blir det en plikt', function () {
+  var k = KL.kategori('misbruk');
+  t.erSann(k.naarDetBlirPlikt.indexOf('196') !== -1);
+  t.erSann(k.naarDetBlirPlikt.indexOf('taushetsplikt') !== -1);
+});
+
+t.test('medarbeidervarselet finnes på alle språkene vi tilbyr', function () {
+  window.PP_SPRAK.SPRAK.forEach(function (s) {
+    t.erSann(!!KL.MEDARBEIDERVARSEL[s.kode], 'mangler ' + s.kode);
+  });
+  t.erLik(Object.keys(KL.MEDARBEIDERVARSEL).length, window.PP_SPRAK.SPRAK.length);
+});
+
+t.test('varselet sier både hva som er forbudt og at det å si fra er trygt', function () {
+  Object.keys(KL.MEDARBEIDERVARSEL).forEach(function (kode) {
+    t.erSann(KL.MEDARBEIDERVARSEL[kode].length > 100, kode + ' er for kort til å si alt');
+  });
+  var nb = KL.medarbeidervarsel('nb');
+  t.erSann(nb.indexOf('politiet') !== -1);
+  t.erSann(nb.indexOf('aldri følger for deg') !== -1);
+});
+
+t.test('ukjent språkkode faller tilbake til norsk', function () {
+  t.erLik(KL.medarbeidervarsel('xx'), KL.medarbeidervarsel('nb'));
 });
 
 t.oppsummer('Enhetstester');

@@ -351,6 +351,88 @@ leverandørens arkiv.
 
 ---
 
+## Klagekanal og svarfrister
+
+De fleste fristene her står i lov, og de løper fra noen sier fra – ikke fra vi
+rakk å se på det. En 72-timersfrist bryr seg ikke om at det var helg.
+
+| Hva | Frist | Hvem | Hjemmel |
+|---|---|---|---|
+| Mistanke om vold, overgrep, omsorgssvikt | Straks | Politiet | Straffeloven § 196 |
+| Misbruk av stillingen | Straks | Politiet, via leverandøren | Vår regel |
+| Personvernbrudd: vi → leverandøren | Uten ugrunnet opphold | Leverandøren | Art. 33 nr. 2 |
+| Personvernbrudd: leverandøren → tilsynet | 72 timer | Datatilsynet | Art. 33 nr. 1 |
+| Personvernbrudd → de berørte | Uten ugrunnet opphold, ved høy risiko | Den enkelte | Art. 34 |
+| Innsyn, retting, sletting | 1 måned (+2 ved varsel) | Leverandøren | Art. 12 nr. 3 |
+| Fall, skade, tap | Samme dag | Driftsansvarlig | Vår regel |
+| Klage på medarbeider eller på oss | 1 virkedag bekreftet, 5 til svar | Leverandøren / Naviar | Vår regel |
+
+**Vi melder ikke til Datatilsynet.** Som databehandler har vi ingen selvstendig
+meldeplikt dit; vi melder til leverandøren, som melder videre. Databehandler-
+avtalen må si uttrykkelig om vi har fullmakt til å sende en fristavbrytende
+førstemelding på deres vegne. Uten den setningen risikerer man at begge tror
+den andre meldte.
+
+**Forlengelsen av månedsfristen krever et varsel**, ikke bare at det tok lengre
+tid. Varselet må sendes innen den opprinnelige måneden, med begrunnelse.
+
+### Misbruk av stillingen
+
+Den som slipper inn i et hjem, har fått noe som ikke kan kontrolleres utenfra.
+Derfor er terskelen lav og svaret alltid det samme: vi anmelder.
+
+Skillet det er verdt å holde rett, fordi det avgjør om noen kan la være:
+
+Avvergingsplikten i straffeloven § 196 har en **uttømmende** katalog. Den
+gjelder vold og seksuallovbrudd – grov kroppsskade (§ 274), mishandling i nære
+relasjoner (§§ 282 og 283), voldtekt (§ 291), misbruk av overmaktsforhold
+(§ 295). **Tyveri og bedrageri står ikke der.** Å anmelde økonomisk utnyttelse
+er derfor en rett, og hos oss en regel vi har satt selv – ikke en lovpålagt
+plikt.
+
+Men to broer går over til katalogen, og de er ikke teoretiske:
+
+- **§ 282 verner den som er «i hans omsorg».** En medarbeider som yter omsorg i
+  hjemmet, kan være nettopp den personen loven snakker om.
+- **§ 295 gjelder misbruk av overmaktsforhold.** Å være alene med noen som er
+  avhengig av deg for å komme seg gjennom dagen, *er* et overmaktsforhold.
+
+Medarbeideren skal ikke stå i noens gang og finne ut hvilken paragraf hun er
+borti. Hun skal si fra. Sorteringen er vår jobb, og den er derfor skrevet ned
+på forhånd og ikke overlatt til øyeblikket.
+
+**Varselet står på alle 18 språk**, over oppgavelista i arbeiderskjermen – ikke
+under, og ikke i vilkårene. Det som kommer etter handlingen, er ikke et varsel.
+Grunnen til at det er oversatt: den som er nyest i landet er også den som
+lettest blir presset til å gjøre en tjeneste med et bankkort, og den som minst
+av alt tør å si fra.
+
+### Rødt på en konto
+
+Rødt betyr at en person ikke får flere oppdrag. Det er en avgjørelse med følger
+for noens inntekt.
+
+1. **Automatikken foreslår. Den setter aldri.** En automatisert avgjørelse som i
+   betydelig grad påvirker noen, krever menneskelig inngripen, begrunnelse og en
+   mulighet til å si sin mening – personvernforordningen artikkel 22. Et rødt
+   merke satt av en modell er nettopp det artikkelen handler om.
+2. **Rødt krever et navn og en grunn.** Ikke en score. En begrunnelse som ikke
+   kan leses opp for den det gjelder, er ingen begrunnelse. `settStatus()` nekter
+   å sette rødt uten `satt_av`, `grunn` og `varslet`.
+3. **Personen får vite det og får svare.** Vi er ikke arbeidsgiver –
+   konsekvensen for ansettelsesforholdet er leverandørens sak. Men å bli stengt
+   ute uten å få vite hvorfor, skal ikke kunne skje her.
+
+Én dårlig tilbakemelding gir aldri rødt. Mønster krever minst tre hendelser fra
+minst to ulike kunder – ellers er det én kundes opplevelse, og det er noe annet.
+De alvorlige tilfellene (misbruk, overgrep, penger, betaling utenom) foreslår
+stans umiddelbart, uten å vente på et mønster.
+
+**I koden:** `assets/js/besok-klage.js`. 20 tester.
+
+
+---
+
 ## Hva som fortsatt må avklares av advokat
 
 Dette dokumentet fjerner ikke behovet for en gjennomgang. Det gjør den

@@ -63,6 +63,14 @@
   document.getElementById('o-nar').textContent = b.dato + ' kl. ' + b.tid;
   document.getElementById('o-oppgaver').textContent = oppgaver.map(function (o) { return o.ikon + ' ' + o.navn; }).join(' · ');
 
+  /* Varselet står over oppgavelista, ikke under. Det som kommer etter
+     handlingen, er ikke et varsel – det er en unnskyldning. Språket følger
+     besøket, slik at den som leser det, faktisk forstår det. */
+  var varselFelt = document.getElementById('tillitsvarsel-tekst');
+  if (varselFelt && window.PP_KLAGE) {
+    varselFelt.textContent = window.PP_KLAGE.medarbeidervarsel(b.sprak || 'nb');
+  }
+
   if (b.notat) {
     document.getElementById('o-notat-tekst').textContent = b.notat;
     document.getElementById('o-notat').hidden = false;
