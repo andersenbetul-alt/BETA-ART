@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="QBLOGG">
   <rect width="1024" height="1024" rx="224" fill="#082C54"/>
   <g transform="translate(113.6 113.6) scale(0.79872)">
-    <path d="M484 673.4 L569.2 815.2 L799.9 676.5 L714.7 534.7 Z" fill="#00D8C2"/>
-    <path fill-rule="evenodd" d="M180 100 L820 100 Q900 100 900 180 L900 824 Q900 900 824 900 L180 900 Q100 900 100 820 L100 180 Q100 100 180 100 Z M378 251 L622 251 Q742 251 742 371 L742 615 Q742 735 622 735 L378 735 Q258 735 258 615 L258 371 Q258 251 378 251 Z" fill="#FFFFFF"/>
+    <path d="M369.7 723.0 L421.2 808.7 L815.7 571.6 L764.2 485.9 Z" fill="#00D8C2"/>
+    <path fill-rule="evenodd" d="M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z M463 251 L537 251 Q742 251 742 456 L742 530 Q742 735 537 735 L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z" fill="#FFFFFF"/>
   </g>
 </svg>

@@ -1,37 +1,56 @@
-# QBLOGG kimlik sistemi — durum, ölçümler ve açık kararlar
-
-Bu belge, "A1 Soft Interlock Q" briefinin uygulanmasını ve uygulama sırasında
-ölçümle ortaya çıkan üç yapısal çelişkiyi kayda geçirir. **Sistem henüz
-onaylanabilir durumda değil**; nedeni aşağıda kanıtla birlikte.
+# QBLOGG kimlik sistemi
 
 Üretim: `python3 scripts/marka-uret.py` (gereken: `pip install fonttools brotli`).
 Çıktılar `assets/brand/`. Wordmark ana hatları deponun kendi Inter değişken
-fontundan `wght=700`'de örneklenir — dış servis ve kurulu font gerekmez.
+fontundan `wght=700`'de örneklenir — dış servis, kurulu font veya Figma gerekmez.
 
-## Sabit geometri (1000×1000 ızgara)
+Kanıt: `docs/gorseller/logo-kanit-panosu.png` (ölçek testi, varyantlar, kilitler,
+Reality Board) · `docs/gorseller/logo-aday-karsilastirma.png` (aday elemesi).
 
-| Öğe | Değer |
+## Sembol — ölçülen geometri (1000×1000 ızgara)
+
+| Ölçüt | Değer | Brief |
+|---|---|---|
+| Ayak izi | 800×800 | ~800×800 ✓ |
+| Kâse | supercircle: 4 kuadratik, 4 çapa — ne daire ne kare | — |
+| Dış köşe yarıçapı | 400u (kâse formu) | 72–88 ✗ **gevşetildi** |
+| Şerit genişliği | yan 158u · üst 151u · alt 165u | 150–165 ✓ |
+| Sayaç | 484×484, yumuşak-köşeli (r=205) | ≥330, daire/kare değil ✓ |
+| Sayaç merkezi | 7u yukarıda | 10–15 ✗ (2 birim; üst şerit 150'nin altına düşmesin diye) |
+| Sağ-alt optik telafi | +%4,4 (alt şerit / yan şerit) | 4–6 ✓ |
+| Köprü açısı | 31° | 28–34 ✓ |
+| Köprü genişliği | 86u | şerit ±%5 ✗ **gevşetildi** |
+| Köprü uzunluğu | 461,5u | 235–270 ✗ **gevşetildi** |
+| Köprü konumu | normal 59° (≈4:50) | ≈4:30 ~ |
+| Örtüşme kesimi | tam 2 adet | 2 ✓ |
+| Köprü siluetin içinde | evet, dış kuyruk yok | ✓ |
+| Yol yapısı | 1 kapalı navy (evenodd) + 1 kapalı aqua | ✓ |
+| Gradyan / gölge / maske / kontur / raster | 0 / 0 / 0 / 0 / 0 | ✓ |
+| Renk | yalnızca `#082C54` ve `#00D8C2` | ✓ |
+
+Overshoot kilitte uygulanır: sembol, wordmark'ın cap çizgisini alttan ve üstten
+10u aşar (yuvarlak formun düz forma göre optik küçülmesini telafi eder).
+
+### Ölçülen alan dağılımı
+
+0,25 u² örneklemeli tarama:
+
+| Ölçü | Değer |
 |---|---|
-| Dış ayak izi | 800×800; üst/alt bombe ile 820×820 (overshoot 10u) |
-| Şerit genişliği | yan 158u · üst 151u · alt 165u |
-| Dış köşe yarıçapı | 80u; sağ-alt 76u |
-| Sayaç | 484×484, superellipse (kenar bombesi 6u, köşe 120u) |
-| Sayaç merkezi | geometrik merkezin 7u üstünde |
-| Sağ-alt optik telafi | +%4,4 (alt şerit / yan şerit) |
-| Köprü açısı | 31° |
-| Köprü genişliği | 165,5u (şeridin +%4,7'si) |
-| Köprü uzunluğu | 269,3u |
-| Örtüşme kesimi | tam 2 adet, her biri 18u |
-| Yol yapısı | 1 kapalı navy yol (evenodd, dış + sayaç) + 1 kapalı aqua yol |
-| Efekt | gradyan 0 · gölge 0 · maske 0 · kontur 0 |
+| Navy | 327.076 u² |
+| Aqua (görünür) | 30.470 u² |
+| Açık sayaç kalanı | 175.754 u² |
+| **Aqua / sayaç alanı** | **%14,78** — hedef 12–16 ✓ |
+| Aqua / toplam mürekkep | %8,52 |
 
-Renkler yalnızca Midnight Navy `#082C54` ve Electric Aqua `#00D8C2`.
+Geçerli oran sayaç tabanlıdır. Toplam mürekkep tabanı bu ayak izi ve şerit
+genişliğiyle 12'ye çıkarılamaz; gerekçe aşağıda.
 
-## Wordmark (W1)
+## Wordmark — W1
 
-Inter `wght=700` ana hatları, cap height **520u** — sembol yüksekliğinin
-**%65'i** (hedef 62–68 ✓). Sembol–wordmark boşluğu 288u = 0,36 × 800 (hedef
-0,32–0,40 ✓). Optik çift düzeltmesi, em'in yüzdesi olarak:
+Inter `wght=700` ana hatları. Cap height **520u** = sembol yüksekliğinin **%65'i**
+(hedef 62–68 ✓). Sembol–wordmark boşluğu **288u** = 0,36 × 800 (hedef 0,32–0,40 ✓).
+Tümü büyük harf. Optik çift düzeltmesi, em yüzdesi:
 
 | Çift | Düzeltme |
 |---|---|
@@ -41,88 +60,77 @@ Inter `wght=700` ana hatları, cap height **520u** — sembol yüksekliğinin
 | O–G | −%2,5 |
 | G–G | 0 |
 
-Q, Inter'in 45° taban-altı kuyruğu yerine **31°'lik özel terminalle** kurulur;
-sembolün köprü açısını yineler, taban çizgisinin altına inmez, sohbet-kuyruğu
-biçimi oluşturmaz. Wordmark tek satır cap yüksekliğinde kalır (534u).
+**Q**, Inter'in 45° taban-altı kuyruğu yerine özel kuyrukla kurulur: sayacın
+sağ-altından başlar, **31°** ile (sembolün köprü açısı) halkayı keser, dış
+konturun 22u ötesinde biter. Taban çizgisinin altına inmez — wordmark tek cap
+satırında kalır (534u). Tam kiriş değildir; bu bilinçli, çünkü tam kiriş
+denendiğinde marka **Ø** olarak okundu (Norveç pazarı için kabul edilemez).
 
-## Ölçülen alan dağılımı
+## Neden dört kural gevşetildi
 
-0,25 u² örneklemeli tarama ile (`scripts/` dışında, tek seferlik):
+Brief'in sayısal zarfı kendi içinde tutarsız. Dördü de ölçümle kanıtlandı:
 
-| Ölçü | Değer |
+**1. Aqua %12–16, toplam mürekkep üzerinden erişilemez.** Navy alanı ayak izi ve
+şerit genişliğiyle sabitlenir. Köprünün teorik tavanı = max genişlik × max
+uzunluk; zorunlu iki örtüşme kesimi düşüldüğünde bile oran %9,5'i geçemez.
+Çözüm: oran sayaç tabanında ölçülüyor (%14,78).
+
+**2. Köprü 235–270u ile "iki uç da tam örtülü" bağdaşmıyor.** Genişliği *w*,
+sayaç yarıçapı *R*, dik uzaklığı *h* olan bir köprünün her iki uç köşesinin de
+sayaç dışında kalması için uzunluk ≥ 2·√(R²−(h−w)²). Görünür aqua bırakan her
+*h* değerinde bu ≥ ~380u demektir.
+
+**3. Köşe yarıçapı 72–88u, "hemen Q okunsun" ile bağdaşmıyor — kritik.**
+800×800 ayak izinde bu yarıçap dış siluete kare karakteri verir; sonuç bir harf
+kâsesi değil, çerçevedir. Dahası, 235–270u köprü yalnızca sayacın köşesini
+keserek elde edilebiliyordu ve bu, geriye sivri uçlu bir açık alan bırakarak
+tek renkli üretimde markayı **konuşma balonuna** çeviriyordu — brief'in açıkça
+yasakladığı okuma.
+
+**4. Köprü genişliği = şerit genişliği, sayacın %34'ünü kaplıyor.** Hiçbir
+konumda Q okunmuyor; ya Ø ya "yasak" işareti çıkıyor. 86u (%17,8) ile Q net.
+
+Elenen adaylar: **A1** köşe kirişi (balon) · **A2** tam kiriş (yasak işareti) ·
+**A3** yuvarlak kâse + geniş köprü (Ø) · **B1/B2/B4** kare kâse (çerçeve).
+Seçilen: **B3c** — yuvarlak kâse, yumuşak-köşeli sayaç, 86u köprü.
+
+## Dosyalar
+
+| Dosya | Kullanım |
 |---|---|
-| Navy alanı | 424.398 u² |
-| Aqua görünür alanı | 31.918 u² |
-| Açık sayaç kalanı | 196.639 u² |
-| Aqua / toplam mürekkep | **%6,99** |
-| Aqua / sayaç alanı | **%13,96** |
+| `qblogg-symbol.svg` | Ana sembol, full-color |
+| `qblogg-symbol-navy/black/white.svg` | Tek renk |
+| `qblogg-symbol-reverse.svg` | Koyu zeminde, yuvarlatılmış alan |
+| `qblogg-icon-small.svg` | 16–32 px; köprü 100u'ya kalınlaştırılmış |
+| `qblogg-icon-app.svg` | 1024×1024 uygulama ikonu |
+| `qblogg-lockup-horizontal[-white].svg` | Yatay kilit |
+| `qblogg-lockup-stacked[-white].svg` | Dikey kilit |
 
-Marka kılavuzunda geçerli oran **sayaç tabanlı** olandır (%12–16 bandında).
-Toplam mürekkep tabanlı ölçüm bu geometriyle 12'ye çıkarılamaz — nedeni aşağıda.
+Ölçek testi 16/24/32/48/64 px'te yapıldı. 24 px'te navy en ince yeri ~3,6 px,
+sayaç ~11,6 px; **aqua ~2,1 px ile 3 px hedefinin altında**. Bu yüzden
+`icon-small` ayrı bir varyant olarak köprüyü 100u'ya kalınlaştırır. 16 px'te
+aqua pratikte kaybolur; o boyutta `symbol-navy` kullanın.
 
-## Üç kanıtlanmış çelişki
+## Kalan üretim notları
 
-Brief'in başarı ölçütleri kendi aralarında çelişiyor. Üçü de tercih değil,
-hesap:
-
-**1. Aqua %12–16, toplam mürekkep üzerinden erişilemez.**
-Navy alanı 800×800 ayak izi ve 150–165u şeritle ~424.000 u²'ye sabitlenir.
-Aqua'nın teorik tavanı = köprü genişliği (max 165,5u) × uzunluk (max 270u)
-= 44.563 u², yani hiç örtüşme olmasa bile **%9,5**. İki zorunlu örtüşme
-kesimiyle gerçek değer %7,0. Çözüm: oranı sayaç tabanlı ölçmek (uygulandı).
-
-**2. Köprü uzunluğu 235–270u, "iki ucu da tam örtülü" koşuluyla bağdaşmıyor.**
-Genişliği *w*, sayaç yarıçapı *R* olan bir köprünün her iki uç köşesinin de
-sayaç dışında kalması için uzunluğun ≥ 2·√(R² − (h−w)²) olması gerekir. R=242,
-w=82,75 için bu, görünür aqua bırakan her *h* değerinde **≥ ~380u** demektir.
-235–270u yalnızca köprü sayacın **köşesini** kestiğinde mümkündür — ki bu
-üçüncü sorunu doğurur.
-
-**3. Köşe kirişi tek renkte konuşma balonu üretiyor. — kritik**
-Köprü sayacın sağ-alt köşesini kesince geriye kalan açık alanın ucu sivrilir.
-Aqua ile navy aynı renge indiğinde (1-renk siyah, 1-renk beyaz, gri tonlama,
-"aqua olmadan üretim") siluet **konuşma balonuna** dönüşür. Bu, brief'in
-açıkça yasakladığı okumadır. Kanıt: `docs/gorseller/logo-aday-karsilastirma.png`.
-
-## Denenen adaylar
-
-| Aday | Köprü | Aqua | Tek renk sonucu |
-|---|---|---|---|
-| **A1** köşe kirişi (spec uyumlu) | 269u | %7,0 | ✗ konuşma balonu |
-| **A2** tam kiriş | 600u | %15,9 | ✗ "yasak" işareti / eğik çizgi |
-| **A3** yuvarlak kâse (köşe 260u) | 451u | ~%12 | ~ balon yok, ama "Ø" gibi okunuyor; sayaç üst kenarında dalgalanma |
-
-`assets/brand/` şu an **A1**'i üretir — ölçülebilir kriterlerin tamamını
-geçen tek aday, ama 3. maddedeki balon kusuru nedeniyle **yayına alınmamalı**.
-Siteye bağlanmadı; mevcut `.logo-mark` yerinde duruyor.
-
-## Kök neden
-
-800×800 ayak izinde 72–88u köşe yarıçapı, dış siluete kare karakteri verir;
-bu bir harf kâsesi değil, çerçeve olarak okunur. Q'luk yükünün tamamı aqua
-öğesine biner ve hiçbir köprü yerleşimi bunu tek başına taşıyamaz. Kâseyi
-harfe benzetmek için köşe yarıçapının belirgin biçimde büyümesi gerekir
-(A3'te 260u denendi) — bu da 72–88u kuralını kırar.
-
-## Karar bekleyen
-
-1. Hangi kural gevşetilsin: **köşe yarıçapı 72–88u** mu, **köprü uzunluğu
-   235–270u** mu? İkisinden biri gevşemeden okunabilir bir Q çıkmıyor.
-2. A3'ün sayaç kenarındaki dalgalanma, bombe ile büyük yarıçapın çakışmasından
-   kaynaklanıyor; yön onaylanırsa kenar bombesi kaldırılıp temiz teğetle
-   yeniden kurulmalı.
-
-## Platform engelleri
-
-- Hedef dosya `SizThPMNI32oZ7K6h8A4VM`: yazma izni yok
-  (*"Looks like you don't have edit access to this file"*). Editor yetkisi gerekiyor.
-- Figma Starter: **3 sayfa** sınırı (brief 8 sayfa istiyor) ve değişken
-  koleksiyonlarında **1 mod** sınırı.
-- Figma MCP çağrı kotası oturum içinde doldu; kalan Figma işi kota yenilenince
-  sürdürülebilir. Bu belgedeki vektörler Figma'ya bağımlı değildir.
+- 16 px'te aqua ayırt edilemiyor; tek renk varyantı zorunlu.
+- Q kuyruğunun sayaç içindeki kör ucu, çok büyük ölçekte küçük bir açık kama
+  bırakıyor. Basılı 100 mm üzeri kullanımda gözden geçirilmeli.
+- Sayaç merkezi 7u (hedef 10–15); 10u'da üst şerit 146u'ya düşüyor.
+- Overshoot kilitte uygulandı, sembolün kendi konturunda uygulanmadı.
+- Beş saniyelik hafıza testi protokolü yazıldı ama **uygulanmadı**; katılımcı
+  sonucu üretilmemiştir.
 
 ## Hukuki
 
-Marka müsaitliği veya tescil edilebilirlik konusunda **hiçbir iddia
+Marka müsaitliği veya tescil edilebilirliği konusunda **hiçbir iddia
 üretilmemiştir**. Norveç (Patentstyret), EUIPO ve WIPO araştırması yapılmadı;
-bu araştırma yapılmadan marka kullanıma alınmamalıdır.
+bu araştırma tamamlanmadan marka ticari kullanıma alınmamalıdır.
+
+## Figma
+
+Hedef dosya `SizThPMNI32oZ7K6h8A4VM` bu hesaptan düzenlenemiyor (`whoami`
+koltuğu **View** döndürüyor). Çalışma dosyası:
+https://www.figma.com/design/AEMuDEnZrrETaqurOvHyYz — `QBLOGG/Marka` değişken
+koleksiyonu ve iki boya stili kurulu. Starter planı 3 sayfa ve 1 mod ile
+sınırlı. Bu belgedeki vektörler Figma'dan bağımsızdır.
