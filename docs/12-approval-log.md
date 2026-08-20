@@ -1,0 +1,56 @@
+# Approval log
+
+The mark on every page says a person has seen what is published and approved it.
+This is where that person says so, with a date, so the claim rests on a record
+rather than on everybody's memory of a conversation.
+
+One rule, the same one the archive applies to a plate marked verified and the
+language record applies to a review marked done: **an approval names who, when,
+and what it covers.** An approval without those is not an approval.
+
+---
+
+## 2026-08-20 — the build at `748fdb7`
+
+**Approved by:** Betül Öner, owner.
+**How it was reviewed:** all 100 pages rendered from the build and viewed as a
+contact sheet, plus close looks at fifteen pages across the four properties, at
+360, 1024 and 1440 px, in light and dark.
+
+**What this approval covers**
+
+- The four properties as designed and written: the hub, the archive, the
+  business desk and the journal.
+- All 100 pages as they stood at this commit, in **English** — the layout, the
+  structure, the imagery placeholders, the prices shown, and the English copy.
+- The nine automated gates passing: HTML, quality control, conversion copy,
+  claims against the legal notice, catalogue integrity, plain-language findings,
+  the language record, and a real browser at four widths.
+
+**What this approval does not cover, and cannot**
+
+- **The eleven machine-written languages.** Norwegian, Turkish, Spanish, French,
+  German, Portuguese, Russian, Arabic, Chinese, Japanese and Hindi have not been
+  read by a native speaker. Approving the build is not approving text nobody has
+  read. Section 5 of the legal notice says this in public, and `languages.json`
+  is where each language changes status.
+- **Legal sign-off.** The provisions in the notice were researched, not advised
+  on. `docs/09` and the licence terms still want a few hours from a Norwegian
+  lawyer.
+- **The facts left blank on purpose** — organisation number, registered address,
+  the archive's real size, the photographer's city. Nothing here invents them.
+- **Anything about a live site.** Nothing was published on this date. The build
+  exists in the repository only.
+
+---
+
+## What would change this record
+
+Each of these is one line in this file when it happens, and none of them are
+things a machine can write for you:
+
+- a language reviewed → also set its row in `languages.json`, then run
+  `python3 tools/languages.py --write`
+- the lawyer's read of `docs/09` and the licence terms
+- the first real photograph replacing a placeholder → also `beta-art/plates.json`
+- the day the site is actually published, and from which commit

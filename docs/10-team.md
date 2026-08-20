@@ -11,7 +11,7 @@ roles you have not hired is a wish. A chart with the work measured against it
 is a plan.
 
 Counted from the repo at the time of writing: 100 pages, 26 Norwegian pages,
-15 tooling scripts, 9 automated gates, 11 documents, 39 commits, 6 pages with a
+16 tooling scripts, 9 automated gates, 13 documents, 40 commits, 6 pages with a
 form, **0 lines of backend, 0 real photographs, 0 analytics**.
 
 ---
