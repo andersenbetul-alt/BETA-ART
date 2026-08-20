@@ -54,16 +54,34 @@ async function api(path, access) {
 
 const access = await token();
 
+// Spotify pages at 50; the catalogue is past that once collaborations are counted.
+async function all(path, access) {
+  const items = [];
+  let next = path;
+  while (next) {
+    const page = await api(next, access);
+    items.push(...page.items);
+    // `page.next` is an absolute URL; api() wants the path after /v1.
+    next = page.next ? page.next.replace('https://api.spotify.com/v1', '') : null;
+  }
+  return items;
+}
+
 const artist = await api(`/artists/${ARTIST_ID}`, access);
-const albums = await api(
-  `/artists/${ARTIST_ID}/albums?include_groups=album,single&market=NO&limit=50`,
+// appears_on matters here: TOMA, Dança Estrada and MONTAGEM HYSTERIA are all releases where
+// HXI is credited but not the primary artist. Leaving that group out hides a third of the
+// catalogue, which is the opposite of what this sync is for.
+const albums = await all(
+  `/artists/${ARTIST_ID}/albums?include_groups=album,single,appears_on&market=NO&limit=50`,
   access,
 );
 const top = await api(`/artists/${ARTIST_ID}/top-tracks?market=NO`, access);
 
 // Spotify returns every market variant; collapse to one entry per release name, newest first.
+// No cap: the page's archive is meant to be the whole catalogue, and truncating here would
+// silently shorten it — the renderer replaces the hand-written archive with this list.
 const seen = new Set();
-const releases = albums.items
+const releases = albums
   .sort((a, b) => b.release_date.localeCompare(a.release_date))
   .filter((a) => {
     const key = a.name.toLowerCase();
@@ -71,7 +89,6 @@ const releases = albums.items
     seen.add(key);
     return true;
   })
-  .slice(0, 12)
   .map((a) => ({
     name: a.name,
     type: a.album_type,
@@ -79,6 +96,8 @@ const releases = albums.items
     releaseDate: a.release_date,          // 'YYYY-MM-DD' or 'YYYY' — precision varies
     url: a.external_urls.spotify,
     id: a.id,
+    // Who it is credited to, so a collaboration is not shown as an HXI headline release.
+    artists: a.artists.map((x) => x.name),
   }));
 
 const data = {
@@ -106,6 +125,16 @@ const stripDate = (s) => s.replace(/"syncedAt": "[^"]*",\n/, '');
 if (stripDate(previous) === stripDate(next)) {
   console.log('No change.');
   process.exit(0);
+}
+
+// The page swaps its hand-written archive for this list. If the sync came back with less
+// than the archive already shows, writing it would quietly shorten the catalogue — so stop
+// and say so instead. A partial API response is not a reason to lose rows.
+const archived = (readFileSync(join(root, 'index.html'), 'utf8').match(/<time datetime=/g) || []).length;
+if (archived && releases.length < archived) {
+  console.error(`Refusing to write: Spotify returned ${releases.length} releases but the page's`);
+  console.error(`archive already lists ${archived}. Check the API response before overwriting.`);
+  process.exit(1);
 }
 
 writeFileSync(out, next);

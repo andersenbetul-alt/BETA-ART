@@ -86,6 +86,12 @@ unverified or waiting to be checked.
 
 ## Content that goes stale
 
+`scripts/sync-spotify.mjs` keeps the release archive current on its own once the two Spotify
+secrets are set — every release, its date and its credits, daily. What it cannot fetch is
+monthly listeners and stream counts; Spotify does not publish those through the API, so those
+two figures stay hand-maintained. `assets/data/README.md` has the setup and the reasoning.
+
+
 Stream counts, monthly listeners and release dates are baked into `index.html` and the
 dictionaries. When a number changes, it changes in one place in the markup and in the
 matching key in all twelve dictionaries. Current figures: 43,394,947 streams on

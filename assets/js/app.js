@@ -269,8 +269,17 @@
       var name = document.createElement('b');
       name.textContent = release.name;
       var meta = document.createElement('span');
-      meta.textContent = fmt(release.releaseDate) + ' · ' + release.type +
-        (release.tracks > 1 ? ' · ' + release.tracks : '');
+      // Everyone credited except HXI — a collaboration should not read as a solo release.
+      var others = (release.artists || []).filter(function (name) { return name !== 'HXI'; });
+      // Spotify has no "EP": it returns album_type 'single' for anything short, so a
+      // multi-track single is what an EP looks like coming out of the API. Map it to the
+      // same words the hand-written archive uses, in the visitor's language.
+      var key = release.type === 'single' && release.tracks > 1 ? 'rel_ep'
+        : release.type === 'album' || release.type === 'compilation' ? 'rel_album'
+        : 'rel_single';
+      var kind = t(key) || release.type;
+      meta.textContent = fmt(release.releaseDate) + ' · ' + kind +
+        (others.length ? ' · ' + others.join(' · ') : '');
       left.appendChild(name);
       left.appendChild(meta);
 
