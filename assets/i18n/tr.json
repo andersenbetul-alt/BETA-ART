@@ -27,13 +27,23 @@
     "sales": "Mektubu bize gönderin. Net bir eylem planı alın.",
     "cta1": "Mektubu gönderin",
     "cta2": "Nasıl çalışıyoruz",
-    "cardTitle": "Elinize geçenler",
+    "cardTitle": "Netlik planınız",
     "card": [
-      "Mektubunuzun veya kararın sade dille açıklaması",
-      "Haklarınız, yükümlülükleriniz ve tüm önemli tarihler",
-      "Belge kontrol listesi ve adım adım plan",
-      "Doğru kurum ve doğru başvuru yolu"
-    ]
+      {
+        "t": "Mektup ne diyor",
+        "d": "Resmî jargon olmadan açıklanmış."
+      },
+      {
+        "t": "Hangi süre geçerli",
+        "d": "Tarihler ve sonuçları net."
+      },
+      {
+        "t": "Sıradaki adımınız",
+        "d": "Kısa ve somut bir işlem listesi."
+      }
+    ],
+    "cardBadge": "24–48 saat",
+    "cardFoot": "BankID yok. Kart bilgisi yok. Pilotta belge yükleme yok."
   },
   "stats": {
     "languages": "Hizmet verdiğimiz dil",
@@ -89,28 +99,20 @@
   },
   "process": {
     "eyebrow": "Nasıl çalışıyoruz",
-    "title": "Tek kapı, beş aşama",
-    "lead": "Hangi pakete ihtiyacınız olduğunu bilmenize gerek yok. Dosyayı gönderin — biz değerlendirir, size plan ve fiyat sunar, bitene kadar takip ederiz.",
+    "title": "Belirsizlikten sıradaki adıma",
+    "lead": "Tek bir net sonucu olan küçük bir hizmet. Abonelik yok, gizli paket yok.",
     "steps": [
       {
-        "t": "Anlama",
-        "d": "Mektubu veya kararı okur; ne yazdığını, sizin için ne anlama geldiğini ve hangi tarihlerin geçerli olduğunu sade dille açıklarız."
+        "t": "Konuyu anlatın",
+        "d": "Göndereni, dili ve süreyi seçin. Kendi kelimelerinizle yazın — hassas bilgi göndermeyin."
       },
       {
-        "t": "Hazırlama",
-        "d": "Gereken belgeleri listeler, formları doldurmanıza yardım eder ve kuruma gidecek yazıların taslağını hazırlarız."
+        "t": "Uygunluğu kontrol ediyoruz",
+        "d": "İş başlamadan önce bir referans numarası ve sabit fiyat alırsınız."
       },
       {
-        "t": "Gönderme",
-        "d": "Başvuruyu sizinle birlikte, doğru kanaldan tamamlar; neyin ne zaman gönderildiğini kayıt altına alırız."
-      },
-      {
-        "t": "Takip",
-        "d": "İşlem sürelerini izler, eksik belge taleplerini yönetir ve dosyanın durumunu size düzenli bildiririz."
-      },
-      {
-        "t": "İtiraz ve yönlendirme",
-        "d": "Kararı ve itiraz süresini açıklar, itiraz hazırlığına destek olur; dosya gerektiriyorsa avukata veya uzmana yönlendiririz."
+        "t": "Netlik planını alın",
+        "d": "Açıklama, süreler ve sıradaki adımlar 24–48 saat içinde."
       }
     ]
   },
@@ -287,7 +289,7 @@
   "safety": {
     "eyebrow": "Güvenlik ve etik",
     "title": "Asla çiğnemediğimiz kurallar",
-    "lead": "Bize hassas konuları emanet ediyorsunuz. Bu kurallar pazarlığa açık değildir ve bizi bunlara zorlayabilirsiniz.",
+    "lead": "Size netlik sözü veriyoruz — dosyanızda belirli bir sonuç değil. Bize hassas konular emanet ediyorsunuz; bu kurallar pazarlığa açık değil.",
     "rules": [
       "BankID şifrenizi veya kodlarınızı asla istemeyiz.",
       "Sizin kimliğinizle hesaplarınıza asla giriş yapmayız.",
@@ -415,9 +417,9 @@
     "note": "Başvurunuz gizlidir ve üçüncü taraflarla asla paylaşılmaz."
   },
   "band": {
-    "title": "Sonraki adımdan emin değil misiniz?",
-    "sub": "Ücretsiz 15 dakikalık görüşme tam olarak bunun için var. Siz mektubu getirin — planı biz getirelim.",
-    "cta": "Ücretsiz görüşme alın",
+    "title": "Mektubun neyle ilgili olduğunu anlatın",
+    "sub": "Uygunluk kontrolü ücretsiz; fiyatı iş başlamadan yazılı alırsınız.",
+    "cta": "Ücretsiz uygunluk kontrolünü başlat",
     "cta2": "E-posta gönderin"
   },
   "footer": {
@@ -429,7 +431,7 @@
     "terms": "Koşullar",
     "rights": "Tüm hakları saklıdır.",
     "note": "Bu sitedeki bilgiler genel yönlendirme niteliğindedir ve hukuki danışmanlık teşkil etmez.",
-    "pilot": "Pilot hizmet. Fiyatlar ve kapsam test edilmektedir, değişebilir."
+    "pilot": "Pilot hizmet. Fiyatlar ve kapsam test ediliyor, değişebilir. Acil tehlike durumunda veya süresi bugün dolan bir işlemde kullanmayın."
   },
   "catalog": {
     "fit": {

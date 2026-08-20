@@ -27,13 +27,23 @@
     "sales": "Send oss brevet. Få en klar handlingsplan.",
     "cta1": "Send oss brevet",
     "cta2": "Slik jobber vi",
-    "cardTitle": "Dette får du",
+    "cardTitle": "Din klarhetsplan",
     "card": [
-      "Brevet eller vedtaket forklart på et enkelt språk",
-      "Rettigheter, plikter og alle viktige datoer",
-      "Dokumentliste og en plan steg for steg",
-      "Riktig instans og riktig vei inn"
-    ]
+      {
+        "t": "Hva brevet betyr",
+        "d": "Forklart uten vanskelig fagspråk."
+      },
+      {
+        "t": "Hvilken frist som gjelder",
+        "d": "Datoer og konsekvenser blir tydelige."
+      },
+      {
+        "t": "Ditt neste steg",
+        "d": "En kort og konkret handlingsliste."
+      }
+    ],
+    "cardBadge": "24–48 t",
+    "cardFoot": "Ingen BankID. Ingen kortopplysninger. Ingen dokumentopplasting i piloten."
   },
   "stats": {
     "languages": "Språk vi hjelper på",
@@ -89,28 +99,20 @@
   },
   "process": {
     "eyebrow": "Slik jobber vi",
-    "title": "Én dør inn, fem steg gjennom",
-    "lead": "Du trenger ikke vite hvilken pakke du trenger. Send oss saken — vi vurderer den, gir deg en plan og en pris, og følger den til den er ferdig.",
+    "title": "Fra usikkerhet til neste steg",
+    "lead": "En liten tjeneste med ett tydelig resultat. Ingen abonnement, ingen skjulte pakker.",
     "steps": [
       {
-        "t": "Forstå",
-        "d": "Vi leser brevet eller vedtaket og forklarer med enkle ord hva det står, hva det betyr for deg og hvilke datoer som gjelder."
+        "t": "Beskriv saken",
+        "d": "Velg avsender, språk og frist. Skriv med egne ord — ikke send sensitive opplysninger."
       },
       {
-        "t": "Forberede",
-        "d": "Vi lister opp dokumentene du trenger, hjelper deg å fylle ut skjemaer og skriver utkast til brevene som skal til instansen."
+        "t": "Vi sjekker at saken passer",
+        "d": "Du får en referanse og en fast pris før arbeidet starter."
       },
       {
-        "t": "Gjennomføre",
-        "d": "Vi fullfører søknaden sammen med deg, gjennom riktig kanal, og noterer hva som ble sendt og når."
-      },
-      {
-        "t": "Følge opp",
-        "d": "Vi følger saksbehandlingstiden, håndterer krav om manglende dokumenter og holder deg oppdatert på hvor saken står."
-      },
-      {
-        "t": "Klage og eskalering",
-        "d": "Vi forklarer vedtaket og klagefristen, hjelper med å forberede klagen, og henviser til advokat eller fagperson når saken krever det."
+        "t": "Motta klarhetsplanen",
+        "d": "Forklaring, frister og neste steg innen 24–48 timer."
       }
     ]
   },
@@ -287,7 +289,7 @@
   "safety": {
     "eyebrow": "Trygghet og etikk",
     "title": "Regler vi aldri bryter",
-    "lead": "Du betror oss sensitive saker. Disse reglene er ikke til forhandling, og du kan holde oss til dem.",
+    "lead": "Vi lover klarhet — ikke et bestemt utfall i saken din. Du betror oss sensitive opplysninger, og disse reglene er ikke til forhandling.",
     "rules": [
       "Vi ber aldri om BankID-passordet eller kodene dine.",
       "Vi logger aldri inn på kontoene dine med din identitet.",
@@ -415,9 +417,9 @@
     "note": "Henvendelsen din er konfidensiell og deles aldri med tredjeparter."
   },
   "band": {
-    "title": "Usikker på neste steg?",
-    "sub": "Det er nettopp det den gratis 15-minutters samtalen er til for. Ta med brevet — så tar vi med planen.",
-    "cta": "Bestill en gratis samtale",
+    "title": "Fortell oss hva brevet gjelder",
+    "sub": "Passkontrollen er gratis, og du får prisen skriftlig før arbeidet starter.",
+    "cta": "Start gratis passkontroll",
     "cta2": "Send oss en e-post"
   },
   "footer": {
@@ -429,7 +431,7 @@
     "terms": "Vilkår",
     "rights": "Alle rettigheter forbeholdt.",
     "note": "Informasjonen på dette nettstedet er generell veiledning og utgjør ikke juridisk rådgivning.",
-    "pilot": "Pilottjeneste. Priser og omfang testes og kan bli endret."
+    "pilot": "Pilottjeneste. Priser og omfang testes og kan bli endret. Ikke bruk tjenesten ved akutt fare, eller når en frist går ut i dag."
   },
   "catalog": {
     "fit": {

@@ -27,13 +27,23 @@
     "sales": "Warqadda noo soo dir. Hel qorshe hawleed cad.",
     "cta1": "Warqadda noo soo dir",
     "cta2": "Sida aan u shaqeyno",
-    "cardTitle": "Waxa aad heli doonto",
+    "cardTitle": "Qorshahaaga cadaynta",
     "card": [
-      "Warqaddaada ama go'aanka oo luqad fudud lagu sharraxay",
-      "Xuquuqdaada, waajibaadkaaga iyo taariikhaha muhiimka ah",
-      "Liiska dukumentiyada iyo qorshe tallaabo-tallaabo ah",
-      "Hay'adda saxda ah iyo habka saxda ah ee lagu gaaro"
-    ]
+      {
+        "t": "Waxa warqaddu ka dhigan tahay",
+        "d": "Lagu sharraxay af fudud oo aan rasmi ahayn."
+      },
+      {
+        "t": "Waqtiga xaddidan ee khuseeya",
+        "d": "Taariikhaha iyo waxa ka dhalan kara si cad."
+      },
+      {
+        "t": "Talaabadaada xigta",
+        "d": "Liis gaaban oo la taaban karo."
+      }
+    ],
+    "cardBadge": "24–48 saac",
+    "cardFoot": "BankID ma jiro. Xog kaar ah ma jirto. Tijaabada dukumenti soo shubid ma jirto."
   },
   "stats": {
     "languages": "Luqadaha aan ku shaqeyno",
@@ -89,28 +99,20 @@
   },
   "process": {
     "eyebrow": "Sida aan u shaqeyno",
-    "title": "Hal albaab, shan tallaabo",
-    "lead": "Uma baahnid inaad ogaato xirmada aad u baahan tahay. Arrinta noo soo dir — waan qiimeynaa, waxaan ku siineynaa qorshe iyo qiime, waana la socon doonnaa ilaa ay dhammaato.",
+    "title": "Ka shaki ilaa talaabada xigta",
+    "lead": "Adeeg yar oo hal natiijo cad leh. Rukun joogto ah ma jiro, xirmooyin qarsoon ma jiraan.",
     "steps": [
       {
-        "t": "Fahmid",
-        "d": "Waxaan akhrinaa warqadda ama go'aanka, waxaana ku sharraxnaa erayo fudud waxa ku qoran, waxa ay kuu tahay, iyo taariikhaha muhiimka ah."
+        "t": "Sharax arrinta",
+        "d": "Dooro cidda dirtay, luqadda iyo waqtiga. Ku qor erayadaada — ha dirin xog xasaasi ah."
       },
       {
-        "t": "Diyaarin",
-        "d": "Waxaan liis garaynaa dukumentiyada aad u baahan tahay, waxaan kaa caawinaa buuxinta foomamka, waxaana qornaa qabyo-qoraalka warqadaha hay'adda loo dirayo."
+        "t": "Waxaan hubinnaa in arrintu habboon tahay",
+        "d": "Waxaad heshaa lambar tixraac iyo qiime go'an ka hor inta aan shaqadu bilaaban."
       },
       {
-        "t": "Gudbin",
-        "d": "Codsiga adiga ayaan kula dhammaystiraynaa, anagoo isticmaalayna habka saxda ah, waxaana diiwaan galinaa waxa la diray iyo goorta."
-      },
-      {
-        "t": "La socod",
-        "d": "Waxaan la soconaa muddada baaritaanka, waxaan qabanaa codsiyada dukumentiyada maqan, waxaana kuu sheegnaa halka arrintu marayso."
-      },
-      {
-        "t": "Cabasho iyo kor u qaadis",
-        "d": "Waxaan sharraxnaa go'aanka iyo muddada cabashada, waxaan kaa caawinaa diyaarinta cabashada, waxaana kuu gudbinnaa qareen ama khabiir marka arrintu taas u baahan tahay."
+        "t": "Hel qorshaha cadaynta",
+        "d": "Sharraxaad, waqtiyo iyo talaabooyinka xiga 24–48 saacadood gudahood."
       }
     ]
   },
@@ -287,7 +289,7 @@
   "safety": {
     "eyebrow": "Badbaado iyo anshax",
     "title": "Xeerar aan waligeen jebin",
-    "lead": "Waxaad nagu aaminaysaa arrimo xasaasi ah. Xeerarkaan lagama gorgortamo, waadna nagu xisaabtami kartaa.",
+    "lead": "Waxaan kuu ballanqaadaynaa caddayn — ma aha natiijo gaar ah oo arrintaada ah. Waxaad noo aaminaysaa arrimo xasaasi ah, xeerarkanina looma gorgortamo.",
     "rules": [
       "Waligeen kaa ma weydiino furaha sirta ah ee BankID ama koodhadhka.",
       "Waligeen kuma galno akoonnadaada annagoo aqoonsigaaga isticmaalayna.",
@@ -415,9 +417,9 @@
     "note": "Codsigaagu waa qarsoodi, waligeedna lama wadaago dhinac saddexaad."
   },
   "band": {
-    "title": "Ma hubtid tallaabada xigta?",
-    "sub": "Taasi waa sababta uu u jiro wada-hadalka bilaashka ah ee 15-ka daqiiqo. Adigu warqadda keen — annagu qorshaha ayaan keeneynaa.",
-    "cta": "Ballan qabso wada-hadal bilaash ah",
+    "title": "Noo sheeg waxa warqaddu ku saabsan tahay",
+    "sub": "Hubinta ku habboonaanshaha waa bilaash, qiimahana qoraal ahaan ayaad ku heshaa ka hor inta aan shaqadu bilaaban.",
+    "cta": "Bilow hubinta bilaashka ah",
     "cta2": "Iimayl noo dir"
   },
   "footer": {
@@ -429,7 +431,7 @@
     "terms": "Shuruudaha",
     "rights": "Dhammaan xuquuqda way dhowran yihiin.",
     "note": "Macluumaadka boggan waa hagitaan guud, mana aha talo sharci.",
-    "pilot": "Adeeg tijaabo ah. Qiimaha iyo baaxadda waa la tijaabinayaa, waana beddeli karaan."
+    "pilot": "Adeeg tijaabo ah. Qiimayaasha iyo baaxadda waa la tijaabinayaa waana beddelmi karaan. Ha u isticmaalin xaalad khatar degdeg ah, ama marka waqtigu maanta dhammaanayo."
   },
   "catalog": {
     "fit": {

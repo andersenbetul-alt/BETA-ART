@@ -27,13 +27,23 @@
     "sales": "Wyślij nam pismo. Otrzymasz jasny plan działania.",
     "cta1": "Wyślij nam pismo",
     "cta2": "Zobacz, jak pracujemy",
-    "cardTitle": "Co otrzymujesz",
+    "cardTitle": "Twój plan jasności",
     "card": [
-      "Twoje pismo lub decyzję wyjaśnione prostym językiem",
-      "Twoje prawa, obowiązki i wszystkie ważne daty",
-      "Listę dokumentów i plan krok po kroku",
-      "Właściwy urząd i właściwą drogę kontaktu"
-    ]
+      {
+        "t": "Co oznacza pismo",
+        "d": "Wyjaśnione bez urzędowego żargonu."
+      },
+      {
+        "t": "Jaki termin obowiązuje",
+        "d": "Daty i ich konsekwencje na jasno."
+      },
+      {
+        "t": "Twój następny krok",
+        "d": "Krótka, konkretna lista działań."
+      }
+    ],
+    "cardBadge": "24–48 godz.",
+    "cardFoot": "Bez BankID. Bez danych karty. Bez przesyłania dokumentów w pilotażu."
   },
   "stats": {
     "languages": "Języki, w których pomagamy",
@@ -89,28 +99,20 @@
   },
   "process": {
     "eyebrow": "Jak pracujemy",
-    "title": "Jedne drzwi, pięć etapów",
-    "lead": "Nie musisz wiedzieć, którego pakietu potrzebujesz. Wyślij nam sprawę — ocenimy ją, damy Ci plan i cenę, i zostaniemy przy niej do końca.",
+    "title": "Od niepewności do następnego kroku",
+    "lead": "Mała usługa z jednym wyraźnym rezultatem. Bez abonamentu, bez ukrytych pakietów.",
     "steps": [
       {
-        "t": "Zrozumieć",
-        "d": "Czytamy pismo lub decyzję i wyjaśniamy prostym językiem, co tam jest napisane, co to oznacza dla Ciebie i które daty się liczą."
+        "t": "Opisz sprawę",
+        "d": "Wybierz nadawcę, język i termin. Pisz własnymi słowami — nie przesyłaj wrażliwych danych."
       },
       {
-        "t": "Przygotować",
-        "d": "Robimy listę potrzebnych dokumentów, pomagamy wypełnić formularze i piszemy projekty pism do urzędu."
+        "t": "Sprawdzamy, czy sprawa pasuje",
+        "d": "Dostajesz numer referencyjny i stałą cenę, zanim zaczniemy pracę."
       },
       {
-        "t": "Złożyć",
-        "d": "Kończymy wniosek razem z Tobą, właściwym kanałem, i zapisujemy, co i kiedy zostało wysłane."
-      },
-      {
-        "t": "Prowadzić",
-        "d": "Pilnujemy czasu rozpatrywania, obsługujemy wezwania o brakujące dokumenty i informujemy Cię o stanie sprawy."
-      },
-      {
-        "t": "Odwołanie i eskalacja",
-        "d": "Wyjaśniamy decyzję i termin odwołania, pomagamy przygotować odwołanie i kierujemy do prawnika lub specjalisty, gdy sprawa tego wymaga."
+        "t": "Odbierz plan jasności",
+        "d": "Wyjaśnienie, terminy i kolejne kroki w ciągu 24–48 godzin."
       }
     ]
   },
@@ -287,7 +289,7 @@
   "safety": {
     "eyebrow": "Bezpieczeństwo i etyka",
     "title": "Zasady, których nigdy nie łamiemy",
-    "lead": "Powierzasz nam sprawy wrażliwe. Te zasady nie podlegają negocjacjom i możesz nas z nich rozliczać.",
+    "lead": "Obiecujemy jasność — nie konkretny wynik w Twojej sprawie. Powierzasz nam sprawy wrażliwe, a te zasady nie podlegają negocjacji.",
     "rules": [
       "Nigdy nie prosimy o hasło ani kody do BankID.",
       "Nigdy nie logujemy się na Twoje konta Twoją tożsamością.",
@@ -415,9 +417,9 @@
     "note": "Twoje zgłoszenie jest poufne i nigdy nie jest przekazywane osobom trzecim."
   },
   "band": {
-    "title": "Nie wiesz, jaki jest następny krok?",
-    "sub": "Właśnie po to jest bezpłatna 15-minutowa rozmowa. Ty przynieś pismo — my przyniesiemy plan.",
-    "cta": "Umów bezpłatną rozmowę",
+    "title": "Powiedz nam, czego dotyczy pismo",
+    "sub": "Sprawdzenie dopasowania jest bezpłatne, a cenę dostajesz na piśmie przed rozpoczęciem pracy.",
+    "cta": "Zacznij bezpłatne sprawdzenie",
     "cta2": "Napisz do nas"
   },
   "footer": {
@@ -429,7 +431,7 @@
     "terms": "Warunki",
     "rights": "Wszelkie prawa zastrzeżone.",
     "note": "Informacje na tej stronie mają charakter ogólny i nie stanowią porady prawnej.",
-    "pilot": "Usługa pilotażowa. Ceny i zakres są testowane i mogą się zmienić."
+    "pilot": "Usługa pilotażowa. Ceny i zakres są testowane i mogą się zmienić. Nie korzystaj z niej w nagłym niebezpieczeństwie ani gdy termin upływa dzisiaj."
   },
   "catalog": {
     "fit": {

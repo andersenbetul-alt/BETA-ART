@@ -27,13 +27,23 @@
     "sales": "Send us the letter. Get a clear action plan.",
     "cta1": "Send us the letter",
     "cta2": "See how it works",
-    "cardTitle": "What you receive",
+    "cardTitle": "Your clarity plan",
     "card": [
-      "Your letter or decision explained in plain language",
-      "Your rights, duties and every important date",
-      "A document checklist and a step-by-step plan",
-      "The right office and the right way to reach it"
-    ]
+      {
+        "t": "What the letter means",
+        "d": "Explained without official jargon."
+      },
+      {
+        "t": "Which deadline applies",
+        "d": "Dates and their consequences made clear."
+      },
+      {
+        "t": "Your next step",
+        "d": "A short, concrete list of actions."
+      }
+    ],
+    "cardBadge": "24–48 h",
+    "cardFoot": "No BankID. No card details. No document upload in the pilot."
   },
   "stats": {
     "languages": "Languages we work in",
@@ -89,28 +99,20 @@
   },
   "process": {
     "eyebrow": "How it works",
-    "title": "One door in, five stages through",
-    "lead": "You do not need to know which package you need. Send us the case — we assess it, give you a plan and a price, and stay with it until it is finished.",
+    "title": "From uncertainty to the next step",
+    "lead": "A small service with one clear result. No subscription, no hidden packages.",
     "steps": [
       {
-        "t": "Understand",
-        "d": "We read the letter or decision and explain in plain language what it says, what it means for you and which dates matter."
+        "t": "Describe the case",
+        "d": "Pick the sender, the language and the deadline. Use your own words — do not send sensitive details."
       },
       {
-        "t": "Prepare",
-        "d": "We list the documents you need, help you fill in forms, and draft the letters that go to the office."
+        "t": "We check the case fits",
+        "d": "You get a reference and a fixed price before any work starts."
       },
       {
-        "t": "Submit",
-        "d": "We complete the application together with you, through the correct channel, and record what was sent and when."
-      },
-      {
-        "t": "Follow up",
-        "d": "We track response times, handle requests for missing documents and keep you updated on where the case stands."
-      },
-      {
-        "t": "Appeal and escalate",
-        "d": "We explain the decision and the appeal deadline, help prepare the appeal, and refer you to a lawyer or specialist when the case requires one."
+        "t": "Receive the clarity plan",
+        "d": "Explanation, deadlines and next steps within 24–48 hours."
       }
     ]
   },
@@ -287,7 +289,7 @@
   "safety": {
     "eyebrow": "Safety and ethics",
     "title": "Rules we never break",
-    "lead": "You are handing us sensitive matters. These rules are not negotiable, and you may hold us to them.",
+    "lead": "We promise clarity — not a particular outcome in your case. You trust us with sensitive matters, and these rules are not negotiable.",
     "rules": [
       "We never ask for your BankID password or codes.",
       "We never log in to your accounts using your identity.",
@@ -415,9 +417,9 @@
     "note": "Your enquiry is confidential and is never shared with third parties."
   },
   "band": {
-    "title": "Uncertain about the next step?",
-    "sub": "That is exactly what the free 15-minute conversation is for. Bring the letter — we will bring the plan.",
-    "cta": "Book a free conversation",
+    "title": "Tell us what the letter is about",
+    "sub": "The fit check is free, and you get the price in writing before any work starts.",
+    "cta": "Start the free fit check",
     "cta2": "Email us"
   },
   "footer": {
@@ -429,7 +431,7 @@
     "terms": "Terms",
     "rights": "All rights reserved.",
     "note": "Information on this site is general guidance and does not constitute legal advice.",
-    "pilot": "Pilot service. Prices and scope are being tested and may change."
+    "pilot": "Pilot service. Prices and scope are being tested and may change. Do not use it in an emergency, or when a deadline expires today."
   },
   "catalog": {
     "fit": {

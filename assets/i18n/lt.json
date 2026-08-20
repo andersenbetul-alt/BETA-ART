@@ -27,13 +27,23 @@
     "sales": "Atsiųskite mums laišką. Gaukite aiškų veiksmų planą.",
     "cta1": "Atsiųsti laišką",
     "cta2": "Kaip dirbame",
-    "cardTitle": "Ką gausite",
+    "cardTitle": "Jūsų aiškumo planas",
     "card": [
-      "Jūsų laiškas ar sprendimas, paaiškintas paprasta kalba",
-      "Jūsų teisės, pareigos ir visos svarbios datos",
-      "Dokumentų sąrašas ir planas žingsnis po žingsnio",
-      "Tinkama įstaiga ir tinkamas kreipimosi būdas"
-    ]
+      {
+        "t": "Ką reiškia laiškas",
+        "d": "Paaiškinta be kanceliarinės kalbos."
+      },
+      {
+        "t": "Koks terminas galioja",
+        "d": "Datos ir jų pasekmės aiškiai."
+      },
+      {
+        "t": "Jūsų kitas žingsnis",
+        "d": "Trumpas konkretus veiksmų sąrašas."
+      }
+    ],
+    "cardBadge": "24–48 val.",
+    "cardFoot": "Jokio BankID. Jokių kortelės duomenų. Jokio dokumentų įkėlimo bandomuoju laikotarpiu."
   },
   "stats": {
     "languages": "Kalbos, kuriomis dirbame",
@@ -89,28 +99,20 @@
   },
   "process": {
     "eyebrow": "Kaip dirbame",
-    "title": "Vienos durys, penki etapai",
-    "lead": "Jums nereikia žinoti, kurio paketo reikia. Atsiųskite bylą — ją įvertinsime, pateiksime planą ir kainą ir lydėsime iki pabaigos.",
+    "title": "Nuo nežinios iki kito žingsnio",
+    "lead": "Maža paslauga su vienu aiškiu rezultatu. Jokių prenumeratų, jokių paslėptų paketų.",
     "steps": [
       {
-        "t": "Suprasti",
-        "d": "Perskaitome laišką ar sprendimą ir paprastais žodžiais paaiškiname, kas ten parašyta, ką tai reiškia jums ir kurios datos svarbios."
+        "t": "Aprašykite bylą",
+        "d": "Pasirinkite siuntėją, kalbą ir terminą. Rašykite savais žodžiais — nesiųskite jautrių duomenų."
       },
       {
-        "t": "Paruošti",
-        "d": "Sudarome reikalingų dokumentų sąrašą, padedame užpildyti formas ir parengiame raštų įstaigai projektus."
+        "t": "Patikriname, ar byla tinka",
+        "d": "Prieš pradedant darbą gaunate bylos numerį ir fiksuotą kainą."
       },
       {
-        "t": "Pateikti",
-        "d": "Kartu su jumis užbaigiame prašymą tinkamu kanalu ir užfiksuojame, kas ir kada buvo išsiųsta."
-      },
-      {
-        "t": "Prižiūrėti",
-        "d": "Sekame nagrinėjimo terminus, tvarkome prašymus dėl trūkstamų dokumentų ir informuojame apie bylos eigą."
-      },
-      {
-        "t": "Skundas ir eskalavimas",
-        "d": "Paaiškiname sprendimą ir apskundimo terminą, padedame parengti skundą ir nukreipiame pas advokatą ar specialistą, kai byla to reikalauja."
+        "t": "Gaukite aiškumo planą",
+        "d": "Paaiškinimas, terminai ir kiti žingsniai per 24–48 valandas."
       }
     ]
   },
@@ -287,7 +289,7 @@
   "safety": {
     "eyebrow": "Saugumas ir etika",
     "title": "Taisyklės, kurių niekada nelaužome",
-    "lead": "Patikite mums jautrius reikalus. Šios taisyklės nediskutuotinos, ir galite mūsų jų reikalauti.",
+    "lead": "Žadame aiškumą — ne konkretų jūsų bylos rezultatą. Patikite mums jautrius dalykus, o šios taisyklės nesvarstomos.",
     "rules": [
       "Niekada neprašome jūsų BankID slaptažodžio ar kodų.",
       "Niekada nesijungiame į jūsų paskyras jūsų tapatybe.",
@@ -415,9 +417,9 @@
     "note": "Jūsų užklausa konfidenciali ir niekada neperduodama tretiesiems asmenims."
   },
   "band": {
-    "title": "Nežinote, koks kitas žingsnis?",
-    "sub": "Būtent tam ir skirtas nemokamas 15 minučių pokalbis. Jūs atneškite laišką — mes atnešime planą.",
-    "cta": "Užsisakyti nemokamą pokalbį",
+    "title": "Papasakokite, dėl ko tas laiškas",
+    "sub": "Tinkamumo patikrinimas nemokamas, o kainą gaunate raštu prieš pradedant darbą.",
+    "cta": "Pradėti nemokamą patikrinimą",
     "cta2": "Parašyti mums"
   },
   "footer": {
@@ -429,7 +431,7 @@
     "terms": "Sąlygos",
     "rights": "Visos teisės saugomos.",
     "note": "Šioje svetainėje pateikiama bendro pobūdžio informacija, kuri nėra teisinė konsultacija.",
-    "pilot": "Bandomoji paslauga. Kainos ir apimtis testuojamos ir gali keistis."
+    "pilot": "Bandomoji paslauga. Kainos ir apimtis testuojamos ir gali keistis. Nesinaudokite ja kilus skubiam pavojui arba kai terminas baigiasi šiandien."
   },
   "catalog": {
     "fit": {

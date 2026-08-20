@@ -162,10 +162,29 @@ header{
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
   border-radius:18px;padding:28px;backdrop-filter:blur(6px);
 }
-.hero-card h3{color:#fff;font-size:1.05rem;margin-bottom:18px}
-.hero-card ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.hero-card li{display:flex;gap:12px;align-items:flex-start;color:rgba(255,255,255,.86);font-size:.95rem}
+.hero-card h3{color:#fff;font-size:1.15rem;margin:0}
+.hero-card-top{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.16);
+}
+.hero-card-badge{
+  flex:none;background:rgba(212,175,55,.16);color:var(--gold-soft);border-radius:999px;
+  padding:5px 13px;font-size:.76rem;font-weight:700;letter-spacing:.04em;white-space:nowrap;
+}
+.hero-card ul{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.hero-card li{display:flex;gap:14px;align-items:flex-start;color:rgba(255,255,255,.86);font-size:.95rem}
 .hero-card li svg{flex:none;margin-top:3px}
+.hero-card .step-n{
+  flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+  font-size:.76rem;font-weight:700;color:var(--gold-soft);
+}
+.hero-card li strong{display:block;color:#fff;font-weight:600}
+.hero-card .step-d{display:block;color:rgba(255,255,255,.7);font-size:.88rem;margin-top:2px}
+.hero-card-foot{
+  margin:22px 0 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.16);
+  font-size:.84rem;font-weight:600;color:rgba(255,255,255,.72);
+}
 .tagline-no{
   margin-top:22px;padding-inline-start:16px;border-inline-start:2px solid var(--gold);
   color:rgba(255,255,255,.72);font-size:.95rem;font-style:italic;max-width:52ch;

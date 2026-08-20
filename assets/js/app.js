@@ -72,14 +72,19 @@
     });
   }
 
+  /* The hero card is the product itself: what lands in the customer's inbox,
+     numbered, so the promise is concrete before anyone is asked to pay. */
   function renderHeroCard() {
     var host = byId('heroCardList');
     if (!host) return;
     host.innerHTML = '';
-    (I18n.get('hero.card') || []).forEach(function (text) {
+    (I18n.get('hero.card') || []).forEach(function (item, i) {
       var li = el('li');
-      li.appendChild(svg(CHECK));
-      li.appendChild(el('span', null, text));
+      li.appendChild(el('span', 'step-n', '0' + (i + 1)));
+      var body = el('div');
+      body.appendChild(el('strong', null, item.t));
+      body.appendChild(el('span', 'step-d', item.d));
+      li.appendChild(body);
       host.appendChild(li);
     });
   }
