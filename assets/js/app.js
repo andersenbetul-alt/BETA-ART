@@ -65,18 +65,33 @@
     catch (e) { return String(value); }
   }
 
+  // The date the figure was last looked at, in the visitor's own convention. HXI's press kit
+  // requires a stream or listener count to be printed with "approximately" and a date; that
+  // rule only survives contact with a copy button if the date is part of the copied text.
+  function checked(iso, lang) {
+    if (!iso) return '';
+    try {
+      return new Intl.DateTimeFormat(lang, { year: 'numeric', month: 'long' })
+        .format(new Date(iso + 'T00:00:00Z'));
+    } catch (e) { return iso; }
+  }
+
   function applyFigures(code) {
     if (!FIGURES) return;
-    var lang = code || document.documentElement.lang || 'en';
     var nodes = document.querySelectorAll('[data-figure]');
     for (var i = 0; i < nodes.length; i++) {
       var name = nodes[i].getAttribute('data-figure');
+      // The press bios are cleared in English and meant to be copied out whole, so their
+      // numbers and dates stay in English convention even on the Norwegian page — otherwise
+      // a journalist pastes "43,4 mill.+" into an English sentence.
+      var lang = nodes[i].getAttribute('data-figure-locale') || (code || document.documentElement.lang || 'en');
       var parts = name.split('_');
       var shape = parts.pop();                       // 'compact' or 'full'
       var key = { streams: 'streams_help_urself', listeners: 'monthly_listeners' }[parts.join('_')];
       var figure = key && FIGURES[key];
       if (!figure) continue;
-      nodes[i].textContent = shape === 'compact'
+      nodes[i].textContent = shape === 'checked' ? checked(figure.checkedAt, lang)
+        : shape === 'compact'
         ? compact(figure.value, lang) + (name === 'streams_compact' ? '+' : '')
         : full(figure.value, lang);
     }

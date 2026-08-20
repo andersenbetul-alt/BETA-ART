@@ -175,7 +175,10 @@ if (existsSync(figuresPath)) {
     const shape = parts.pop();
     const figure = FIG[SLOT[parts.join('_')]];
     if (!figure) { fail(`index.html has data-figure="${name}", which figures.json does not define.`); continue; }
-    const expected = shape === 'compact'
+    const expected = shape === 'checked'
+      ? new Intl.DateTimeFormat('en', { year: 'numeric', month: 'long' })
+          .format(new Date(figure.checkedAt + 'T00:00:00Z'))
+      : shape === 'compact'
       ? fmt(figure.value, true) + (name === 'streams_compact' ? '+' : '')
       : fmt(figure.value, false);
     if (text !== expected) {

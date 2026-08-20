@@ -29,6 +29,10 @@ const FIGURES = JSON.parse(readFileSync(join(root, 'assets/data/figures.json'), 
 const SLOT = { streams: 'streams_help_urself', listeners: 'monthly_listeners' };
 const num = (value, code, compact) =>
   new Intl.NumberFormat(code, compact ? { notation: 'compact', maximumFractionDigits: 1 } : {}).format(value);
+// data-figure="…_checked" prints the date the figure was last verified, in this language's
+// convention — so a stream count copied out of the press bios carries its date with it.
+const when = (iso, code) => !iso ? '' :
+  new Intl.DateTimeFormat(code, { year: 'numeric', month: 'long' }).format(new Date(iso + 'T00:00:00Z'));
 const sandbox = { window: {} };
 new Function('window', readFileSync(join(root, 'assets/js/i18n.js'), 'utf8'))(sandbox.window);
 const LANGS = sandbox.window.HXI_LANGS;
@@ -84,9 +88,15 @@ function render(code, { atRoot, source = html, slug = '', title, description }) 
       const shape = parts.pop();
       const figure = FIGURES[SLOT[parts.join('_')]];
       if (!figure) return match;
-      const value = shape === 'compact'
-        ? num(figure.value, code, true) + (name === 'streams_compact' ? '+' : '')
-        : num(figure.value, code, false);
+      // data-figure-locale pins a slot to one language. The press bios use it: they are
+      // cleared in English and copied out whole, so "43.4M+" must not become "43,4 mill.+"
+      // just because the surrounding page is Norwegian.
+      const pinned = /data-figure-locale="([a-z-]+)"/.exec(pre + post);
+      const loc = pinned ? pinned[1] : code;
+      const value = shape === 'checked' ? when(figure.checkedAt, loc)
+        : shape === 'compact'
+        ? num(figure.value, loc, true) + (name === 'streams_compact' ? '+' : '')
+        : num(figure.value, loc, false);
       return open + escape(value) + close;
     });
 

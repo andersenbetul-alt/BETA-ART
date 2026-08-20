@@ -155,6 +155,11 @@ h2.label,h3.label{font-weight:400;line-height:1.6}
 .copy-btn{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid var(--accent);padding:7px 12px;cursor:pointer}
 .copy-btn:hover,.copy-btn:focus-visible{background:var(--accent-strong);border-color:var(--accent-strong);color:#fff}
 .copy-btn[data-done="1"]{border-color:var(--muted);color:var(--muted);background:none}
+/* Press bios. A journalist copies from here, so the text stays selectable and the
+   Latin-script bio keeps its own direction inside the Arabic and Urdu pages. */
+.bio{border-left:2px solid var(--border);padding:0 0 0 16px;margin:20px 0}
+.bio .label{margin:0 0 6px}
+.bio-text{font-size:14px;line-height:1.75;color:var(--text);margin:0 0 12px;unicode-bidi:plaintext;text-align:start}
 .use-list{list-style:none;padding:0;margin:0}
 .use-list li{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border)}
 .use-list li:last-child{border-bottom:0}
