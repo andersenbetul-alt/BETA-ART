@@ -42,7 +42,8 @@ seçim, kurulum, devreye alma, ölçüm.
 Konseptin bütününe dair değerlendirme: kapasite tavanı, odak, hizmet-SaaS
 tuzağı, GDPR yükümlülüğü, sıralama önerisi ve ilk 90 günde ölçülecekler.
 
-- [`docs/business-review.md`](docs/business-review.md)
+- [`docs/business-review.md`](docs/business-review.md) — tam metin
+- `review.html` — görsel özet (grafikler, `build_review.py` ile üretilir)
 
 ## Ödeme altyapısı
 
@@ -95,7 +96,8 @@ db/schema.sql                   Ödeme veritabanı şeması
 db/seed.sql                     Ürün kataloğu ve kredi fiyatları
 db/functions.sql                consume_credits, has_entitlement, grant_period_credits
 db/test.sql                     Kredi ve erişim mantığı testleri
-build.py                        JSON'lardan index.html ve work.html üretir
+build.py                        JSON'lardan index.html, work.html ve team.html üretir
+build_review.py                 review.html (incelemenin görsel özeti) üretir
 index.html                      Kategori sayfası (üretilen)
 work.html                       AI Workforce sayfası (üretilen)
 team.html                       Ekip ve organizasyon sayfası (üretilen)
