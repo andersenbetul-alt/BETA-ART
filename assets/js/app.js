@@ -438,7 +438,8 @@
       var price = document.createElement('p');
       price.className = 'meta';
       price.textContent = item.free ? t('shop_free')
-        : item.price ? money(item.price.amount, item.price.currency)
+        : item.price ? money(item.price.amount, item.price.currency) +
+            (item.per === 'month' ? ' ' + t('shop_per_month') : '')
         : t('shop_soon');
       card.appendChild(price);
 

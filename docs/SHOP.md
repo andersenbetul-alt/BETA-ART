@@ -102,6 +102,46 @@ to use one.
 at checkout. A EUR price is a separate decision, not an exchange rate — set it when there is
 a reason to sell in EUR.
 
+## The digital line, and what did not translate
+
+The product list this came from was written for a visual artist. Most of it maps onto a
+producer; two rows do not.
+
+**Icon packs and brush packs are out.** A brush pack is an illustrator selling the tool
+behind their own hand. HXI does not illustrate, and a brush pack with his logo on it would be
+a thing he bought from someone else and resold.
+
+**The producer's brush pack is a preset pack** — `HXI Serum Presets`, 199 NOK, against a
+market where a hundred-preset Serum pack runs about $19.99. That is the exact analogue: the
+patches the sound is actually made of, sold to someone who wants to build with them.
+
+**And there is a second one nobody would guess.** This audience is visual. They found the
+music while cutting video, and their tool is not a brush either — it is LUTs, overlays and
+transitions. `HXI Edit Pack`, 149 NOK. It contains no music at all and it sells to exactly
+the community that built the 43 million streams. It is the closest thing in the catalogue to
+selling the audience their own craft back.
+
+`HXI Poster — Print at Home` (79 NOK) is the numbered print's zero-cost sibling: the buyer
+prints it. No printer, no courier, no returns.
+
+## Membership and experiences
+
+`HXI Frequency` — 99 NOK a month. The only recurring line, and the only one whose real cost
+is not money but a promise: **something has to go out every month.** The question to answer
+before its checkout gets filled in is not the price, it is "what am I sending in March". An
+empty month is a cancelled subscription, and cancellations do not come back.
+
+The name is deliberate — an earlier plan had a FREQUENCY podcast that was built and never
+launched. If the podcast ever happens, it belongs inside the membership rather than beside it.
+
+`Private Listening Stream` — 249 NOK. Experiences pay well and do not scale: what is being
+sold is an hour. A stream is the scalable one — done once, watched by many.
+
+**A studio visit is not in the catalogue, and that is deliberate.** It does not scale, and it
+means giving an address to someone met on the internet. Before it is ever listed: where, with
+whom else present, and on what terms. That is a decision about a young artist's safety, not a
+product decision, and it should be made away from a pricing table.
+
 ## Which checkout provider
 
 The answer is not the same for the two kinds of product, and the difference is tax, not payment.

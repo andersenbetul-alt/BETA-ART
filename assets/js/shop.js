@@ -64,6 +64,36 @@ window.HXI_SHOP = [
     checkout: ''
   },
   {
+    // "Dijital poster": alıcı kendi bastırır. Baskıcı yok, kargo yok, iade yok — numaralı
+    // fiziksel baskının sıfır maliyetli kardeşi.
+    id: 'poster-digital-01',
+    kind: 'digital',
+    name: 'HXI Poster — Print at Home',
+    desc: 'shop_d_poster',
+    price: { amount: 79, currency: 'NOK' },
+    checkout: ''
+  },
+  {
+    // Fırça paketinin prodüktördeki tam karşılığı: illüstratöre fırça neyse, prodüktöre
+    // preset odur — sanatçının sesini kendi işinde kullanmanın aracı.
+    id: 'presets-01',
+    kind: 'digital',
+    name: 'HXI Serum Presets',
+    desc: 'shop_d_presets',
+    price: { amount: 199, currency: 'NOK' },
+    checkout: ''
+  },
+  {
+    // Bu kitlenin asıl "fırça paketi" bu. HXI'yı bulan insanlar video kuruyordu; onların
+    // aleti LUT ve overlay. Müzik değil ama tam olarak aynı topluluğa satılıyor.
+    id: 'editpack-01',
+    kind: 'digital',
+    name: 'HXI Edit Pack — LUTs & Overlays',
+    desc: 'shop_d_editpack',
+    price: { amount: 149, currency: 'NOK' },
+    checkout: ''
+  },
+  {
     // Kâğıt: en ucuz talep üzerine baskı. Beden yok, iade yok, zarfla gidiyor.
     id: 'sticker-pack-01',
     kind: 'physical',
@@ -95,6 +125,35 @@ window.HXI_SHOP = [
     name: 'Norwegian Flag Hoodie',
     desc: 'shop_d_hoodie',
     price: { amount: 799, currency: 'NOK' },
+    checkout: ''
+  },
+
+  /* ---- Üyelik ve deneyimler: tek seferlik bir şey değil ----
+   *
+   * Üyelik, düzenli gelirin tek kaynağı. Tek kişilik bir operasyonda asıl maliyeti para
+   * değil, söz: her ay teslim edilecek bir şey olmalı. `checkout` dolmadan önce cevaplanması
+   * gereken soru fiyat değil, "bu ay ne göndereceğim". Boş bir ay, iptal edilen abonelik.
+   *
+   * Deneyimler yüksek gelirli ama ölçeklenmez: satılan şey saat. Özel yayın ölçeklenebilir
+   * olanı — bir kere yapılır, çok kişi izler. Stüdyo ziyareti ölçeklenmez ve internetten
+   * tanımadığın birine adres vermek demektir; onu satışa açmadan önce nerede, kiminle ve
+   * hangi koşulda sorularının cevabı olmalı. O yüzden katalogda yok.
+   */
+  {
+    id: 'membership-01',
+    kind: 'digital',
+    name: 'HXI Frequency',
+    desc: 'shop_d_membership',
+    price: { amount: 99, currency: 'NOK' },
+    per: 'month',
+    checkout: ''
+  },
+  {
+    id: 'listening-stream',
+    kind: 'digital',
+    name: 'Private Listening Stream',
+    desc: 'shop_d_stream',
+    price: { amount: 249, currency: 'NOK' },
     checkout: ''
   }
 ];
