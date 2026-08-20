@@ -115,3 +115,36 @@ Read `docs/BRAND.md`, then ask in order: does it say what HXI is in one line · 
 in the proof list · does it open with the answer · is the accent spent once · are the titles
 cased correctly. Anything this page does not cover is not a violation — it is a gap, and the
 gap is worth writing down rather than guessing at.
+
+## Norwegian — klarspråk
+
+The Norwegian text follows Språkrådet's klarspråk standard, and the informational and legal
+text is held to it strictly: the privacy page, the footer's rights line, the signup states,
+and the usage terms. Brand copy in the About and Sound sections keeps its licence to be
+figurative.
+
+What the pass in August 2026 changed, and what to keep watching for:
+
+- **Active voice, named actor.** "be om at det rettes eller slettes" became "be HXI om å få
+  det rettet eller slettet". Someone has to be doing the thing.
+- **No nominalisation stacks.** "Uautorisert reproduksjon, distribusjon, synkronisering eller
+  bruk … er strengt forbudt" became "Du kan ikke kopiere, spre, synkronisere eller bruke
+  innhold herfra …". Verbs, not noun-chains.
+- **Everyday words over calques.** `vert` → *leverandør*, `tjenerlogger` → *serverlogger*,
+  `serveres fra dette domenet` → *ligger på dette domenet*, `monetiserte videoer` → *videoer
+  du tjener penger på*.
+- **One idea per sentence.** The embed paragraph carried a relative clause three levels deep;
+  it is three sentences now.
+- **English constructions do not survive translation.** "den nøyaktige teksten å lime inn" is
+  an English infinitive; Norwegian wants "nøyaktig hvilken tekst du skal lime inn".
+- **Say what the reader can do.** "Blir noe stående uløst, er tilsynsmyndigheten i Norge
+  Datatilsynet" became "Er du ikke fornøyd med svaret, kan du klage til Datatilsynet" — the
+  same fact, but phrased as the action available to the reader.
+
+Three outright errors were fixed in the same pass: a missing relative pronoun ("en lang ingen
+leser"), "Den blir på enheten din" for *blir liggende*, and "kan videoen bli krevd", which does
+not mean a copyright claim in Norwegian.
+
+**Still to do:** this was a pass against the klarspråk criteria, not a review by a native
+speaker. Before launch, have one read the privacy page and the footer aloud. Anything they
+stumble over is the next fix.
