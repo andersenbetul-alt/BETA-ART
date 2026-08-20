@@ -601,6 +601,17 @@
     if (!form) return;
 
     var say = function (key) { if (status) status.textContent = t(key); };
+    var submit = form.querySelector('button[type="submit"], .btn');
+
+    // While the request is in flight the button says so and stops accepting a second click.
+    // Without this the only feedback is a line of status text below the fold on a phone,
+    // which is how one signup becomes three.
+    var busy = function (on) {
+      if (!submit) return;
+      submit.disabled = on;
+      if (on) submit.setAttribute('aria-busy', 'true');
+      else submit.removeAttribute('aria-busy');
+    };
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -610,6 +621,7 @@
 
       if (SIGNUP_ENDPOINT) {
         say('signup_sending');
+        busy(true);
         fetch(SIGNUP_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -618,7 +630,9 @@
           if (!r.ok) throw new Error(r.status);
           say('signup_ok');
           form.reset();
-        }).catch(function () { say('signup_fail'); });
+        }).catch(function () {
+          say('signup_fail');
+        }).then(function () { busy(false); });
         return;
       }
 

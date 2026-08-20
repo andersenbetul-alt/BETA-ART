@@ -118,6 +118,23 @@ for (const [, , , key, , text] of html.matchAll(fallbackRe)) {
   }
 }
 
+/* ---------- 3b. Colours live in :root ----------
+   CLAUDE.md: "Take colours and spacing from the tokens in :root; do not hardcode hex values
+   in component rules." That rule was quietly broken in twenty-one places — four greys and
+   six tints of the accent, spread across the component rules, which is how a palette drifts
+   into having three near-blacks nobody chose. Colour only, and only outside :root. */
+
+{
+  // Every :root block, not just the first — @media print redefines the palette for paper,
+  // and those values belong in a token block exactly like the screen ones do.
+  const outside = css.replace(/:root\s*\{[^}]*\}/g, '');
+  const literals = [...outside.matchAll(/#[0-9a-fA-F]{3,8}\b|\brgba?\([^)]*\)/g)].map((m) => m[0]);
+  if (literals.length) {
+    fail(`style.css has ${literals.length} colour value(s) outside :root — move them to tokens: ` +
+         [...new Set(literals)].join(', '));
+  }
+}
+
 /* ---------- 4. Internal links resolve ---------- */
 
 const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
