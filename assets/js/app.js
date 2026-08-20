@@ -438,7 +438,7 @@
       var price = document.createElement('p');
       price.className = 'meta';
       price.textContent = item.free ? t('shop_free')
-        : item.price ? item.price.amount + ' ' + item.price.currency
+        : item.price ? money(item.price.amount, item.price.currency)
         : t('shop_soon');
       card.appendChild(price);
 
@@ -453,6 +453,18 @@
       card.appendChild(links);
       grid.appendChild(card);
     });
+
+    // 249 NOK reads as "249,00 kr" in Norwegian and "NOK 249.00" in English — the visitor's
+    // own convention, the same treatment the figures get. Falls back to the plain pair if
+    // the currency code is one Intl does not know.
+    function money(amount, currency) {
+      var lang = document.documentElement.lang || 'en';
+      try {
+        return new Intl.NumberFormat(lang, { style: 'currency', currency: currency }).format(amount);
+      } catch (e) {
+        return amount + ' ' + currency;
+      }
+    }
 
     function link(href, text, external) {
       var a = document.createElement('a');
