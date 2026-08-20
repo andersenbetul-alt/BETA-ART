@@ -8,6 +8,8 @@ import { forecast } from '@/lib/met.ts';
 import { shouldGoIndoors } from '@/lib/weather.ts';
 import UseMyLocation from '@/components/UseMyLocation.tsx';
 import { rankByPlan, type Impact } from '@/lib/plan.ts';
+import { messageFor } from '@/lib/messages.ts';
+import FixItNow from '@/components/FixItNow.tsx';
 import { demoPlan } from '@/lib/demo-plan.ts';
 
 const KINDS = ['cancelled', 'missed', 'road', 'eat', 'rain'] as const;
@@ -130,6 +132,7 @@ async function TransportAnswer({
       {ordered.map((trip) => (
         <div className="option" key={trip.departure}>
           <PlanImpact impact={impactOf.get(trip.departure)} />
+          <FixItPanel impact={impactOf.get(trip.departure)} arrival={trip.arrival} problem={kind} />
           <div className="option-head">
             <span className="time">{clock(trip.departure)}</span>
             <span className="muted">→ {clock(trip.arrival)}</span>
@@ -148,6 +151,34 @@ async function TransportAnswer({
         </div>
       ))}
     </>
+  );
+}
+
+/**
+ * Etkilenen ilk madde için hazır mesaj.
+ *
+ * Yalnızca gerçekten bir şeyin bozulduğu seçeneklerde çıkar. Planı
+ * kurtaran seçeneğe "otele haber ver" demek gereksiz gürültüdür.
+ */
+function FixItPanel({
+  impact, arrival, problem,
+}: {
+  impact?: Impact;
+  arrival: string;
+  problem: 'cancelled' | 'missed' | 'road';
+}) {
+  if (!impact || impact.level === 'safe' || impact.affected.length === 0) return null;
+
+  // Kırılan madde varsa onu öne al; yoksa sıkışan ilk madde.
+  const target = impact.affected.find((a) => a.level === 'breaks') ?? impact.affected[0];
+  const message = messageFor(target.item.kind, target.item.title, clock(arrival), problem);
+
+  return (
+    <FixItNow
+      what={`${target.item.title} — sort it now`}
+      message={message}
+      phone={target.item.phone}
+    />
   );
 }
 

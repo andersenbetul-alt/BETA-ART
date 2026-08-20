@@ -39,7 +39,7 @@ export const places: Record<City, Place[]> = {
     { name: 'KODE Kunstmuseer', kind: 'indoor', walkMinutes: 8, note: 'Four buildings, one ticket — fills a wet day' },
     { name: 'Bergen Akvariet', kind: 'indoor', walkMinutes: 20, note: 'First choice if you have kids' },
     { name: 'Hanseatisk Museum', kind: 'indoor', walkMinutes: 6, note: 'Bryggen history, small and quick' },
-    { name: 'Fløibanen füniküler', kind: 'indoor', walkMinutes: 8, note: 'No view if it is clouded in — check the webcam first' },
+    { name: 'Fløibanen funicular', kind: 'indoor', walkMinutes: 8, note: 'No view if it is clouded in — check the webcam first' },
   ],
   oslo: [
     { name: 'Mathallen Oslo', kind: 'eat', walkMinutes: 15, price: '$$', note: 'Indoor food hall, lots of choice' },
@@ -47,7 +47,7 @@ export const places: Record<City, Place[]> = {
     { name: 'Vippa', kind: 'eat', walkMinutes: 18, price: '$', note: 'Harbourside street food' },
     { name: 'Munchmuseet', kind: 'indoor', walkMinutes: 12, note: 'The Scream is here — easily a full day' },
     { name: 'Nasjonalmuseet', kind: 'indoor', walkMinutes: 10, note: 'Largest art museum in the Nordics' },
-    { name: 'Operahuset çatısı', kind: 'indoor', walkMinutes: 8, note: 'Free to walk inside; the roof is slippery when wet' },
+    { name: 'Operahuset rooftop', kind: 'indoor', walkMinutes: 8, note: 'Free to walk inside; the roof is slippery when wet' },
   ],
   tromso: [
     { name: 'Bardus Bistro', kind: 'eat', walkMinutes: 3, price: '$$', note: 'Central and dependable' },

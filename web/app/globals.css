@@ -127,3 +127,32 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
 }
 .faq p { margin:0 0 .6rem; }
 .faq p:last-child { margin-bottom:0; }
+
+/* "Şimdi hallet" bloğu — bilgiden eyleme geçiş */
+.fix {
+  background:var(--surface); border:1px solid var(--border);
+  border-left:4px solid var(--clay); border-radius:var(--radius);
+  padding:.9rem 1rem; margin:.2rem 0 .7rem;
+}
+.fix-head { margin:0 0 .5rem; font-size:.9rem; }
+.fix-msg {
+  margin:0 0 .8rem; font-size:.9rem; line-height:1.5;
+  padding:.6rem .7rem; background:var(--fog); border-radius:6px;
+}
+.fix-en { margin:.6rem 0 0; }
+.fix-actions { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
+/* Dokunmatik hedefler 44 px (WCAG 2.5.8) */
+.btn-primary, .btn-secondary {
+  min-height:44px; display:inline-flex; align-items:center; padding:0 1.1rem;
+  border-radius:var(--radius); font-weight:600; font-size:.9rem;
+  text-decoration:none; border:1px solid transparent;
+}
+.btn-primary { background:var(--clay); color:#fff; }
+.btn-secondary { background:transparent; color:var(--ink); border-color:var(--border); }
+.btn-plain {
+  background:none; border:0; padding:.5rem 0; color:var(--steel);
+  text-decoration:underline; font-size:.85rem; min-height:44px;
+}
+.btn-primary:focus-visible, .btn-secondary:focus-visible, .btn-plain:focus-visible {
+  outline:2px solid var(--clay); outline-offset:2px;
+}

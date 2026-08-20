@@ -22,10 +22,12 @@ export const demoPlan: Plan = {
     {
       id: 'hotel', kind: 'stay', title: 'Hotel check-in',
       startsAt: inHours(5), latestAcceptableAt: inHours(9), fixed: true, cityId: 'stavanger',
+      phone: '+47 51 50 05 00',
     },
     {
       id: 'dinner', kind: 'meal', title: 'Dinner reservation',
       startsAt: inHours(6), fixed: false, cityId: 'stavanger',
+      phone: '+47 51 89 51 80',
     },
     {
       id: 'flight', kind: 'transport', title: 'Flight home',

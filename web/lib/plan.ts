@@ -29,6 +29,8 @@ export type PlanItem = {
   fixed: boolean;
   /** Konaklama girişi genelde belli bir saate kadar esnek olabilir. */
   latestAcceptableAt?: string;
+  /** Varsa doğrudan arama için. Kullanıcının rezervasyonundan gelir. */
+  phone?: string;
 };
 
 export type Plan = {
