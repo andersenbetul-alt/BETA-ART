@@ -4,9 +4,12 @@
    flere betalingsstrømmer, men bare én er aktiv:
 
      leverandor  → aktiv. Abonnement fra tjenesteleverandøren til oss.
-     familie     → forberedt, avslått. Å ta betalt fra pårørende bryter løftet
-                   «ingen app, ingen konto, ingen kostnad for familien», som er
-                   et av de tre argumentene landingssiden hviler på.
+     familie     → sperret i v1. To grunner, og den andre er den harde:
+                   det bryter løftet «ingen app, ingen konto, ingen kostnad for
+                   familien», og det gjør oss til forbrukerleverandør. Da følger
+                   angrerett på fjernsalg av tjenester, krav til opplysninger før
+                   avtale, og regler om fornyelse og oppsigelse. Hele poenget med
+                   B2B-modellen er å slippe den kontrakten i første versjon.
      mellom      → sperret. Penger mellom familie og hjelper er
                    betalingsformidling og kan utløse konsesjonsplikt. Se J11 i
                    docs/team/JURIDISK-RISIKO.md. Skal ikke åpnes uten juridisk
@@ -21,7 +24,9 @@ window.PP_ABONNEMENT = (function () {
   var STROMMER = {
     leverandor: { aktiv: true,  navn: 'Abonnement fra leverandør' },
     familie:    { aktiv: false, navn: 'Betaling fra pårørende',
-                  sperre: 'Bryter løftet om at familien ikke betaler. Krever ny landingsside og ny prismodell.' },
+                  sperre: 'Sperret i v1. Gjør oss til forbrukerleverandør: angrerett, ' +
+                          'opplysningsplikt før avtale og fornyelsesregler. Krever egen ' +
+                          'juridisk gjennomgang, ny landingsside og ny prismodell.' },
     mellom:     { aktiv: false, navn: 'Betaling mellom familie og hjelper',
                   sperre: 'Betalingsformidling. Kan utløse konsesjonsplikt – se J11. Krever juridisk avklaring.' }
   };

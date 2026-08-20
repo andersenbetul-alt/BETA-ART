@@ -67,6 +67,17 @@
     var epostOk = !parorende || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(parorende);
     feil('parorende', !epostOk); if (!epostOk) ok = false;
 
+    /* Beskjeden til arbeideren er det ene fritekstfeltet kontoret har. Den
+       stoppes her, ikke i databasen – da rekker den aldri å bli lagret. */
+    var notat = document.getElementById('notat').value.trim();
+    var vern = window.PP_VERN ? window.PP_VERN.sjekk(notat) : { ok: true };
+    if (!vern.ok) {
+      var f = document.querySelector('[data-error-for="notat"]');
+      if (f) f.textContent = vern.beskjed;
+      ok = false;
+    }
+    feil('notat', !vern.ok);
+
     if (!ok) return;
 
     var ansatt = L.ansatte().filter(function (a) { return a.id === ansattId; })[0];
@@ -79,7 +90,7 @@
       ansattId: ansattId,
       ansattNavn: ansatt.navn,
       parorendeEpost: parorende || null,
-      notat: document.getElementById('notat').value.trim() || null
+      notat: notat || null
     });
 
     document.getElementById('k-ansatt').textContent = ansatt.navn;

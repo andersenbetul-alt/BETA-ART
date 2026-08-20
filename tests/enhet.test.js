@@ -4,9 +4,24 @@
 var t = require('./hjelpere');
 
 globalThis.window = globalThis;
+
+/* besok-lager lagrer i nettleseren. Testene trenger bare katalogen, så vi gir
+   den et minne som holder så lenge prosessen lever. */
+if (typeof globalThis.localStorage === 'undefined') {
+  var minne = {};
+  globalThis.localStorage = {
+    getItem: function (k) { return Object.prototype.hasOwnProperty.call(minne, k) ? minne[k] : null; },
+    setItem: function (k, v) { minne[k] = String(v); },
+    removeItem: function (k) { delete minne[k]; }
+  };
+}
 require('../assets/js/pris.js');
 require('../assets/js/akutt.js');
+require('../assets/js/besok-lager.js');
 require('../assets/js/besok-behov.js');
+require('../assets/js/besok-sprakkrav.js');
+require('../assets/js/besok-agenter.js');
+require('../assets/js/besok-vern.js');
 require('../assets/js/matching.js');
 require('../assets/js/demodata.js');
 
@@ -318,6 +333,214 @@ t.test('oppdragslisten inneholder ingen gateadresse', function () {
 t.test('adressen hentes bare gjennom eget oppslag', function () {
   t.erSann(typeof window.PP_DEMO.hentAdresse('o-1') === 'string');
   t.erLik(window.PP_DEMO.hentAdresse('finnes-ikke'), null);
+});
+
+
+/* ---------------- språkkrav ---------------- */
+
+t.gruppe('Språkkrav');
+
+var SK = window.PP_SPRAKKRAV;
+var bekreftetB1 = { sprak: [{ kode: 'nb', niva: 'B1', bekreftetAv: 'leverandor' }] };
+var bekreftetB2 = { sprak: [{ kode: 'nb', niva: 'B2', bekreftetAv: 'leverandor' }] };
+
+t.test('B1 holder for grønne oppgaver', function () {
+  t.erSann(SK.kanUtfore(bekreftetB1, ['handling', 'samvaer', 'tur'], 'NO').ok);
+});
+
+t.test('følge til avtale krever B2', function () {
+  var r = SK.kanUtfore(bekreftetB1, ['folge'], 'NO');
+  t.erUsann(r.ok);
+  t.erLik(r.krever, 'B2');
+  t.erSann(r.grunn.indexOf('B2') !== -1);
+});
+
+t.test('et besøk følger sin vanskeligste oppgave', function () {
+  t.erLik(SK.kravForBesok(['handling', 'folge']).niva, 'B2');
+  t.erLik(SK.kravForBesok(['handling', 'samvaer']).niva, 'B1');
+});
+
+t.test('nivå leverandøren ikke har bekreftet, teller ikke', function () {
+  var r = SK.kanUtfore({ sprak: [{ kode: 'nb', niva: 'C1' }] }, ['handling'], 'NO');
+  t.erUsann(r.ok);
+  t.erLik(r.kode, 'mangler_bekreftelse');
+});
+
+t.test('skandinaviske språk godtas på tvers, men ikke utenfor Skandinavia', function () {
+  var svensk = { sprak: [{ kode: 'sv', niva: 'B2', bekreftetAv: 'leverandor' }] };
+  t.erSann(SK.kanUtfore(svensk, ['handling'], 'NO').ok);
+  t.erSann(SK.kanUtfore(svensk, ['handling'], 'DK').ok);
+  t.erUsann(SK.kanUtfore(svensk, ['handling'], 'DE').ok);
+  t.erUsann(SK.kanUtfore(svensk, ['handling'], 'IS').ok);
+});
+
+t.test('hver oppgave i katalogen har et språkkrav', function () {
+  window.PP_BESOK.OPPGAVER.forEach(function (o) {
+    t.erSann(!!SK.OPPGAVEKRAV[o.id], 'mangler krav for ' + o.id);
+  });
+});
+
+t.test('alle land er dekket av en region i utrullingen', function () {
+  var dekket = SK.landIRegion('skandinavia').length + SK.landIRegion('norden').length +
+               SK.landIRegion('europa').length;
+  t.erLik(dekket, Object.keys(SK.LAND).length);
+});
+
+t.test('avslag har alltid en begrunnelse som kan vises', function () {
+  var r = SK.kanUtfore({ sprak: [] }, ['folge'], 'NO');
+  t.erUsann(r.ok);
+  t.erSann(r.grunn.length > 20);
+});
+
+/* ---------------- agenter ---------------- */
+
+t.gruppe('KI-agenter');
+
+var AG = window.PP_AGENTER;
+
+t.test('åtte kjerneagenter, og en av dem er et menneske', function () {
+  t.erLik(AG.kjerne().length, 8);
+  t.erLik(AG.agent('operator').autonomi, 'menneske');
+});
+
+t.test('grønn oppgave kan behandles automatisk', function () {
+  t.erLik(AG.avgjor('kategoriser', 'gronn').autonomi, 'auto');
+});
+
+t.test('gul oppgave krever godkjenning', function () {
+  t.erLik(AG.avgjor('lukk_gronn', 'gul').autonomi, 'godkjenning');
+});
+
+t.test('rød oppgave går alltid til et menneske', function () {
+  t.erLik(AG.avgjor('lukk_gronn', 'rod').autonomi, 'menneske');
+});
+
+t.test('nød stopper automatikken uansett hva handlingen er', function () {
+  AG.AUTOMATISK.forEach(function (h) {
+    var r = AG.avgjor(h.id, 'nod');
+    t.erLik(r.autonomi, 'menneske', h.id + ' ble ikke stoppet');
+    t.erSann(r.nod);
+  });
+});
+
+t.test('ukjent handling er ikke automatisk', function () {
+  t.erLik(AG.avgjor('noe_vi_ikke_har_tenkt_pa', 'gronn').autonomi, 'menneske');
+});
+
+t.test('det som krever menneske, blir aldri automatisk', function () {
+  AG.KREVER_MENNESKE.forEach(function (h) {
+    ['gronn', 'gul', 'rod'].forEach(function (r) {
+      t.erLik(AG.avgjor(h.id, r).autonomi, 'menneske', h.id + ' ved ' + r);
+    });
+  });
+});
+
+t.test('beslutningslogg uten alle sju felt avvises', function () {
+  var kastet = false;
+  try { AG.loggpost({ agent: 'plan', grunnlag: ['dato'] }); } catch (e) { kastet = true; }
+  t.erSann(kastet);
+});
+
+t.test('fullstendig beslutningslogg får tidsstempel', function () {
+  var p = AG.loggpost({ agent: 'plan', grunnlag: ['dato'], sikkerhet: 0.9,
+    regel: 'AUTOMATISK.ledig', godkjenning: false, endretAv: null, melding: 'Satt til torsdag' });
+  t.erSann(typeof p.tid === 'string' && p.tid.length > 10);
+  AG.LOGGFELT.forEach(function (f) { t.erSann(p[f] !== undefined, 'mangler ' + f); });
+});
+
+/* ---------------- personvern ---------------- */
+
+t.gruppe('Personvern i fritekst');
+
+var V = window.PP_VERN;
+
+t.test('vanlig beskjed slipper gjennom', function () {
+  t.erSann(V.sjekk('Varene er satt på plass. Vi gikk en runde rundt kvartalet.').ok);
+  t.erSann(V.sjekk('').ok);
+});
+
+t.test('helseopplysninger stoppes', function () {
+  ['ga henne en tablett', 'blodtrykket var høyt', 'ny resept fra fastlegen',
+   'såret ser bedre ut'].forEach(function (tekst) {
+    t.erUsann(V.sjekk(tekst).ok, 'slapp gjennom: ' + tekst);
+  });
+});
+
+t.test('bankopplysninger og lange tallrekker stoppes', function () {
+  t.erUsann(V.sjekk('bruk bankid-en hennes').ok);
+  t.erUsann(V.sjekk('fnr 01019512345').ok);
+  t.erUsann(V.sjekk('kontonr 1234 56 78903').ok);
+});
+
+t.test('telefonnummer er ikke en lang tallrekke', function () {
+  t.erSann(V.sjekk('ring 90112233 hvis noe').ok);
+});
+
+t.test('det blokkerte innholdet lagres ikke i loggen', function () {
+  var r = V.sjekk('ga henne insulin klokka ti');
+  t.erUsann(r.ok);
+  t.erSann(r.logglinje.indexOf('insulin') === -1);
+  t.erSann(r.logglinje.indexOf('helse') !== -1);
+});
+
+t.test('sperren sier hva man skal skrive i stedet', function () {
+  t.erSann(V.sjekk('hun har vondt i ryggen').beskjed.length > 20);
+});
+
+t.test('et fall blir vist videre til kontoret, ikke bare avvist', function () {
+  var r = V.sjekk('hun falt på badet men klarte seg');
+  t.erUsann(r.ok);
+  t.erLik(r.funn[0].id, 'haster');
+  t.erSann(r.beskjed.indexOf('følge opp') !== -1);
+  t.erSann(r.beskjed.indexOf('113') !== -1);
+});
+
+t.test('utfallet sperren peker på, finnes faktisk', function () {
+  t.erSann(!!window.PP_BESOK.UTFALL.oppfolging);
+  t.erSann(!!window.PP_BESOK.UTFALL.kontakt_familie);
+});
+
+t.test('arbeiderlenken slettes etter tolv timer', function () {
+  var f = V.slettesEtter('lenke', '2026-08-20T10:00:00.000Z');
+  t.erLik(f, '2026-08-20T22:00:00.000Z');
+});
+
+t.test('familiemeldingens innhold har null dagers frist', function () {
+  t.erLik(V.FRISTER.melding.dager, 0);
+});
+
+t.test('hvert lagret felt har et behandlingsgrunnlag og en frist', function () {
+  V.LAGRES.forEach(function (l) {
+    t.erSann(!!l.grunnlag, l.felt + ' mangler grunnlag');
+    t.erSann(!!V.FRISTER[l.frist], l.felt + ' viser til en frist som ikke finnes');
+  });
+});
+
+/* ---------------- behovsplattform ---------------- */
+
+t.gruppe('Behovsplattformen husker ikke');
+
+t.test('analysen returnerer tall, ikke tekst eller kunde', function () {
+  var r = window.PP_BEHOV.analyser([
+    { tekst: 'kan noen klippe plenen', dato: '2026-08-03', kunde: 'K1' },
+    { tekst: 'hjelp med hagen', dato: '2026-08-11', kunde: 'K2' },
+    { tekst: 'plenen igjen', dato: '2026-08-19', kunde: 'K1' },
+    { tekst: 'mor trenger hjelp med medisiner', dato: '2026-08-05', kunde: 'K3' }
+  ], ['handling']);
+  var ut = JSON.stringify(r);
+  t.erSann(ut.indexOf('plenen') === -1, 'fritekst fulgte med ut');
+  t.erSann(ut.indexOf('K1') === -1, 'kundeidentifikator fulgte med ut');
+  t.erLik(r.forslag[0].antall, 3);
+  t.erLik(r.forslag[0].antallKunder, 2);
+  t.erSann(r.forslag[0].moden);
+});
+
+t.test('bare måned, ikke dato, følger med ut', function () {
+  var r = window.PP_BEHOV.analyser([
+    { tekst: 'mor trenger medisiner', dato: '2026-08-05', kunde: 'K3' }
+  ], []);
+  t.erLik(r.overGrensen[0].maaned, '2026-08');
+  t.erSann(r.overGrensen[0].dato === undefined);
 });
 
 t.oppsummer('Enhetstester');

@@ -49,6 +49,10 @@
         <span class="ik" aria-hidden="true">✖️</span>
         <span>Fikk ikke gjort det<small>Ingen hjemme, avlyst, eller noe kom i veien</small></span>
       </button>
+      <button class="a-knapp" type="button" data-utfall="kontakt_familie" aria-pressed="false">
+        <span class="a-ikon" aria-hidden="true">📞</span>
+        <span class="a-tekst">Familien bør kontaktes</span>
+      </button>
       <button class="a-knapp" type="button" data-utfall="oppfolging" aria-pressed="false">
         <span class="ik" aria-hidden="true">📞</span>
         <span>Kontoret bør ringe<small>Noe bør følges opp, uten at det haster</small></span>
@@ -63,6 +67,8 @@
     <div class="field" style="margin-bottom:12px">
       <label for="kommentar" style="font-size:1.02rem">Kort melding <span class="optional">(valgfritt)</span></label>
       <textarea id="kommentar" maxlength="140" placeholder="F.eks. «Varene er satt på plass.»" style="min-height:80px"></textarea>
+      <p class="hint">Skriv hva du gjorde. Ikke hvordan personen har det.</p>
+      <p class="error-text" data-error-for="kommentar">Denne meldingen kan ikke lagres.</p>
       <p class="b-helsevarsel" style="margin-top:6px">
         Ikke skriv om helse, medisiner eller hvordan hun har det. Skriv om oppgaven.
         Er du bekymret, velg <strong>Kontoret bør ringe</strong> i stedet.
@@ -93,6 +99,7 @@
 </main>
 
 <script src="../assets/js/besok-lager.js" defer></script>
+<script src="../assets/js/besok-vern.js" defer></script>
 <script src="../assets/js/besok-utfor.js" defer></script>
 </body>
 </html>

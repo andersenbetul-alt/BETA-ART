@@ -87,7 +87,20 @@ window.PP_BEHOV = (function () {
 
   /**
    * Samler alt som ikke passet inn i dagens tilbud.
-   * @param {Array} kilder - {tekst, dato, kunde, opphav}
+   *
+   * Den teller, den husker ikke. Ingen fritekst og ingen kundeidentifikator
+   * følger med ut av funksjonen – bare hvor mange ganger noe ble spurt om, og
+   * av hvor mange forskjellige.
+   *
+   * Grunnen er ikke forsiktighet, den er rollefordeling: Naviar er
+   * databehandler for leverandøren. En databehandler som behandler
+   * opplysninger til sine egne formål – og produktutvikling er vårt formål,
+   * ikke leverandørens – regnes som behandlingsansvarlig for den behandlingen
+   * etter personvernforordningen artikkel 28 nr. 10. Et tall om at «ni kunder
+   * spurte om hagearbeid» er ikke en personopplysning. Setningen de skrev, er
+   * det. Derfor beholder vi tallet og slipper setningen.
+   *
+   * @param {Array} kilder - {tekst, dato, kunde} – leses, lagres ikke
    * @param {Array} aktiveOppgaver - id-er leverandøren allerede tilbyr
    */
   function analyser(kilder, aktiveOppgaver) {
@@ -100,20 +113,23 @@ window.PP_BEHOV = (function () {
       var r = klassifiser(k.tekst);
 
       if (r.type === 'over_grensen') {
-        overGrensen.push({ tekst: k.tekst, dato: k.dato, kunde: k.kunde, ord: r.ord });
+        /* Hva som ble spurt om, ikke hvem som spurte eller hvordan det ble
+           skrevet. Ordet som utløste grensen er nok til å forstå mønsteret. */
+        overGrensen.push({ ord: r.ord, maaned: maaned(k.dato) });
         return;
       }
       if (r.type === 'ukjent') {
-        ukjent.push({ tekst: k.tekst, dato: k.dato, kunde: k.kunde });
+        ukjent.push({ maaned: maaned(k.dato) });
         return;
       }
 
       var id = r.kandidat.id;
       if (aktive.indexOf(id) !== -1) return;   // tilbys allerede
-      kandidater[id] = kandidater[id] || { kandidat: r.kandidat, antall: 0, kunder: {}, eksempler: [] };
+      kandidater[id] = kandidater[id] || { kandidat: r.kandidat, antall: 0, kunder: {} };
       kandidater[id].antall++;
+      /* Nøkkelen brukes bare til å telle hvor mange forskjellige det er, og
+         kastes når kjøringen er ferdig. Den følger ikke med i svaret. */
       kandidater[id].kunder[k.kunde || '?'] = true;
-      if (kandidater[id].eksempler.length < 3) kandidater[id].eksempler.push(k.tekst);
     });
 
     var forslag = Object.keys(kandidater).map(function (id) {
@@ -124,7 +140,6 @@ window.PP_BEHOV = (function () {
         ikon: d.kandidat.ikon,
         antall: d.antall,
         antallKunder: Object.keys(d.kunder).length,
-        eksempler: d.eksempler,
         /* Terskelen er bevisst lav, men krever mer enn én kunde. Én kunde som
            spør fem ganger er én kunde, ikke et behov. */
         moden: d.antall >= 3 && Object.keys(d.kunder).length >= 2
@@ -137,6 +152,12 @@ window.PP_BEHOV = (function () {
       ukjent: ukjent,
       sum: (kilder || []).length
     };
+  }
+
+  /* Måned, ikke dato. En dato sammen med en kategori kan peke tilbake på ett
+     bestemt besøk hos én bestemt person. */
+  function maaned(dato) {
+    return typeof dato === 'string' ? dato.slice(0, 7) : null;
   }
 
   /* Setningen leverandøren faktisk leser. Tall alene overbeviser ingen. */

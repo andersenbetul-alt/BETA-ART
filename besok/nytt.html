@@ -81,6 +81,8 @@
         <div class="field">
           <label for="notat">Beskjed til arbeideren <span class="optional">(valgfritt)</span></label>
           <textarea id="notat" name="notat" maxlength="200" placeholder="F.eks. «Ring på hos naboen hvis hun ikke åpner.»"></textarea>
+          <p class="hint">Praktiske beskjeder. Ikke helseopplysninger, og aldri kontonummer eller koder.</p>
+          <p class="error-text" data-error-for="notat">Denne beskjeden kan ikke lagres.</p>
           <p class="b-helsevarsel">
             Ikke skriv diagnoser, medisiner eller andre helseopplysninger. Trenger arbeideren slik
             informasjon, hører oppgaven ikke hjemme her.
@@ -110,6 +112,7 @@
 </main>
 
 <script src="../assets/js/besok-lager.js" defer></script>
+<script src="../assets/js/besok-vern.js" defer></script>
 <script src="../assets/js/besok-nytt.js" defer></script>
 </body>
 </html>

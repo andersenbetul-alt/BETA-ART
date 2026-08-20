@@ -96,6 +96,24 @@
 
   sendKnapp.addEventListener('click', function () {
     if (!valgtUtfall) return;
+
+    /* Dette feltet er der en helseopplysning oftest havner. Ikke fordi noen
+       bryter en regel, men fordi det er det naturlige å skrive når man nettopp
+       har vært hos et menneske. Sperren kommer før innsending, med en beskjed
+       om hva man skal skrive i stedet. */
+    var kommentar = document.getElementById('kommentar').value.trim();
+    var vern = window.PP_VERN ? window.PP_VERN.sjekk(kommentar) : { ok: true };
+    var feltfeil = document.querySelector('[data-error-for="kommentar"]');
+    if (!vern.ok) {
+      if (feltfeil) {
+        feltfeil.textContent = vern.beskjed;
+        feltfeil.classList.add('show');
+      }
+      document.getElementById('kommentar').focus();
+      return;
+    }
+    if (feltfeil) feltfeil.classList.remove('show');
+
     sendKnapp.disabled = true;
 
     var sjekket = Array.prototype.filter
@@ -105,7 +123,7 @@
     var rapport = {
       utfall: valgtUtfall,
       sjekkliste: valgtUtfall === 'delvis' ? sjekket : b.oppgaver,
-      kommentar: document.getElementById('kommentar').value.trim() || null,
+      kommentar: kommentar || null,
       sekunder: Math.round((Date.now() - start) / 1000)
     };
 

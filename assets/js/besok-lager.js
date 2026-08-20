@@ -63,11 +63,18 @@ window.PP_BESOK = (function () {
     forbudt: { navn: 'Forbudt', forklaring: 'Aldri, uansett kompetanse' }
   };
 
+  /* Faste utfall i stedet for fritekst.
+
+     Et åpent notatfelt hos en eldre person fylles før eller siden med en
+     helseopplysning. Ikke fordi noen bryter reglene, men fordi det er det
+     naturlige å skrive. Fem valg dekker det som faktisk må formidles, og
+     ingen av dem kan bli en diagnose. */
   var UTFALL = {
-    utfort:      { navn: 'Utført',              farge: 'ok' },
-    delvis:      { navn: 'Delvis utført',       farge: 'warn' },
-    ikke_utfort: { navn: 'Ikke utført',         farge: 'avvik' },
-    oppfolging:  { navn: 'Trenger oppfølging',  farge: 'warn' }
+    utfort:         { navn: 'Utført',                     farge: 'ok' },
+    delvis:         { navn: 'Delvis utført',              farge: 'warn' },
+    ikke_utfort:    { navn: 'Ikke utført',                farge: 'avvik' },
+    oppfolging:     { navn: 'Leverandøren må følge opp',  farge: 'warn' },
+    kontakt_familie:{ navn: 'Familien bør kontaktes',     farge: 'warn' }
   };
 
   function nå() { return new Date().toISOString(); }
