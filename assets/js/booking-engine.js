@@ -57,6 +57,80 @@
     return { level: "none", interpreter: false };
   }
 
+  /* --------------------------------------------------------- session mode */
+
+  /* A clinician may only diagnose, treat and prescribe where they are
+     licensed — and licensure follows the PATIENT's location, not the
+     clinician's (COMPLIANCE.md §2). This never hides a clinician from a
+     patient: anyone can reach any doctor anywhere. It decides what the
+     session IS, and that must be shown before booking.                     */
+  function sessionMode(doctor, patientCountry) {
+    if (!patientCountry) return "unknown";
+    var licensed = doctor.licensed || [];
+    return licensed.indexOf(patientCountry) !== -1 ? "consultation" : "second-opinion";
+  }
+
+  /* What a session in this mode may include. Used to drive the UI copy and,
+     server-side, to gate prescribing. */
+  function sessionScope(mode) {
+    if (mode === "consultation") {
+      return { diagnose: true, prescribe: true, sickNote: true, key: "mode.consultation" };
+    }
+    if (mode === "second-opinion") {
+      return { diagnose: false, prescribe: false, sickNote: false, key: "mode.second-opinion" };
+    }
+    return { diagnose: false, prescribe: false, sickNote: false, key: "mode.unknown" };
+  }
+
+  /* ---------------------------------------------------------------- money */
+
+  function pricingRules(patientCountry) {
+    var cfg = (root.NaviarConfig && root.NaviarConfig.pricing) || null;
+    if (!cfg) return { model: "flat", platformFee: 0, interpreterFee: 0, currency: "USD", currencySymbol: "$", note: null };
+    var rules = (patientCountry && cfg.byCountry && cfg.byCountry[patientCountry]) || cfg.default;
+    return {
+      model: rules.model,
+      platformFee: rules.platformFee,
+      interpreterFee: rules.interpreterFee,
+      note: rules.note,
+      currency: cfg.currency,
+      currencySymbol: cfg.currencySymbol
+    };
+  }
+
+  /* Full price breakdown. Every line is shown to the patient before they
+     confirm: price transparency is required in several of our markets, and
+     a stated platform fee is a far weaker fee-splitting argument than a
+     silent percentage cut (COMPLIANCE.md §4).                               */
+  function quote(doctor, options) {
+    var opts = options || {};
+    var rules = pricingRules(opts.patientCountry);
+    var doctorFee = Number(doctor.fee) || 0;
+
+    var platformFee = rules.model === "percent"
+      ? Math.round(doctorFee * (rules.platformFee / 100) * 100) / 100
+      : rules.platformFee;
+
+    var interpreterFee = opts.interpreter ? rules.interpreterFee : 0;
+
+    return {
+      doctorFee: doctorFee,
+      platformFee: platformFee,
+      interpreterFee: interpreterFee,
+      total: Math.round((doctorFee + platformFee + interpreterFee) * 100) / 100,
+      model: rules.model,
+      note: rules.note,
+      currency: rules.currency,
+      currencySymbol: rules.currencySymbol
+    };
+  }
+
+  function formatMoney(amount, q) {
+    var symbol = (q && q.currencySymbol) || "$";
+    var rounded = Math.round(amount * 100) / 100;
+    return symbol + (rounded % 1 === 0 ? String(rounded) : rounded.toFixed(2));
+  }
+
   /* --------------------------------------------------------------- scoring */
 
   function scoreDoctor(doctor, criteria) {
@@ -82,6 +156,25 @@
     if (criteria.urgency === "emergency" || criteria.urgency === "urgent") waitPenalty *= 1.8;
     score -= waitPenalty;
 
+    // A declared sub-specialty interest in what the patient actually
+    // described is a better signal than the broad specialty alone.
+    var focusHits = [];
+    if (criteria.symptoms && criteria.symptoms.length) {
+      var focus = doctor.focus || [];
+      for (var f = 0; f < criteria.symptoms.length; f++) {
+        if (focus.indexOf(criteria.symptoms[f]) !== -1) focusHits.push(criteria.symptoms[f]);
+      }
+      score += Math.min(focusHits.length, 3) * 7;
+    }
+
+    // Country filter, when the patient has asked for a specific one.
+    if (criteria.country && doctor.country !== criteria.country) return null;
+
+    // Being licensed where the patient is means they can actually be treated.
+    var mode = sessionMode(doctor, criteria.patientCountry);
+    if (mode === "consultation") score += 10;
+    if (criteria.mode && criteria.mode !== mode) return null;
+
     // Gentle nudges from experience and patient feedback.
     score += (doctor.rating - 4.5) * 8;
     score += Math.min(doctor.years, 25) * 0.18;
@@ -91,7 +184,10 @@
       score: Math.round(score * 100) / 100,
       language: fit,
       status: statusOf(doctor),
-      waitMinutes: mins
+      waitMinutes: mins,
+      mode: mode,
+      scope: sessionScope(mode),
+      focusHits: focusHits
     };
   }
 
@@ -138,6 +234,48 @@
     return { total: roster.length, now: now, soon: soon };
   }
 
+  /* Clinicians grouped by the category their specialty belongs to, so the
+     directory can be browsed by area of medicine rather than as a flat list. */
+  function groupByCategory(matches) {
+    var specialties = data().specialties || [];
+    var categoryOf = Object.create(null);
+    for (var i = 0; i < specialties.length; i++) categoryOf[specialties[i].id] = specialties[i].group;
+
+    var buckets = Object.create(null);
+    var order = [];
+    for (var m = 0; m < matches.length; m++) {
+      var group = categoryOf[matches[m].doctor.spec] || "other";
+      if (!buckets[group]) { buckets[group] = []; order.push(group); }
+      buckets[group].push(matches[m]);
+    }
+
+    /* Present categories in the catalogue's own order, not discovery order,
+       so the directory does not reshuffle as filters change. */
+    var canonical = [];
+    for (var c = 0; c < specialties.length; c++) {
+      var g = specialties[c].group;
+      if (canonical.indexOf(g) === -1) canonical.push(g);
+    }
+    var out = [];
+    for (var k = 0; k < canonical.length; k++) {
+      if (buckets[canonical[k]]) out.push({ category: canonical[k], matches: buckets[canonical[k]] });
+    }
+    for (var o = 0; o < order.length; o++) {
+      if (canonical.indexOf(order[o]) === -1) out.push({ category: order[o], matches: buckets[order[o]] });
+    }
+    return out;
+  }
+
+  /* Countries with at least one clinician, for the country filter. */
+  function doctorCountries() {
+    var seen = Object.create(null);
+    var roster = data().doctors || [];
+    for (var i = 0; i < roster.length; i++) {
+      seen[roster[i].country] = (seen[roster[i].country] || 0) + 1;
+    }
+    return seen;
+  }
+
   /* Deterministic, human-readable reference for a confirmed booking. */
   function reference(doctorId, when) {
     var stamp = (when instanceof Date ? when : new Date()).getTime().toString(36).toUpperCase();
@@ -147,6 +285,13 @@
   return {
     match: match,
     scoreDoctor: scoreDoctor,
+    sessionMode: sessionMode,
+    sessionScope: sessionScope,
+    quote: quote,
+    pricingRules: pricingRules,
+    formatMoney: formatMoney,
+    groupByCategory: groupByCategory,
+    doctorCountries: doctorCountries,
     nextFreeAt: nextFreeAt,
     statusOf: statusOf,
     languageFit: languageFit,

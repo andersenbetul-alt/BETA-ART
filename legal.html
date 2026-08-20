@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-page="legal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.legal.title">Legal and regulatory — Naviar Care</title>
+<meta name="description" data-i18n-content="meta.legal.desc" content="What Naviar Care is and is not under medical law, who may treat you, how long your records are kept, and what rights you have over them.">
+<meta name="theme-color" content="#0d8172">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>
+/* Set the theme before first paint so dark-mode users never see a white flash. */
+(function(){try{var t=localStorage.getItem("naviar.theme");
+if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+      <span class="brand__name">Naviar<span>Care</span></span>
+    </a>
+
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__list">
+          <li><a class="nav__link" href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav__link" href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a class="nav__link" href="booking.html" data-i18n="nav.booking">Find a doctor</a></li>
+          <li><a class="nav__link" href="languages.html" data-i18n="nav.languages">Languages</a></li>
+          <li><a class="nav__link" href="join.html" data-i18n="nav.join">For doctors</a></li>
+          <li><a class="nav__link" href="about.html" data-i18n="nav.about">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <label class="visually-hidden" for="lang-select" data-i18n="a11y.choose-language">Choose your language</label>
+      <select class="select" id="lang-select" data-lang-select style="width:auto;padding:.45rem 2.2rem .45rem .7rem;font-size:.9rem"></select>
+
+      <button class="icon-btn" type="button" data-theme-toggle
+              data-i18n-aria-label="a11y.toggle-theme" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+              data-i18n-aria-label="a11y.toggle-menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.legal">Legal &amp; regulatory</span></p>
+      <h1 data-i18n="legal.title">Where you stand, legally</h1>
+      <p data-i18n="legal.lead">Healthcare is regulated for good reasons. This page sets out plainly what we are allowed to do for you, what we are not, and what happens to what you tell us.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+
+      <h2 data-i18n="legal.what.title">What the symptom check is</h2>
+      <p data-i18n="legal.what.p1">It is a preparation and navigation tool. It reads what you describe, works out which specialty usually handles it, and tells you how soon you ought to be seen. It is designed to help you arrive at the right place already prepared, instead of waiting in the wrong queue.</p>
+      <p data-i18n="legal.what.p2">It does not diagnose you. It cannot rule anything out, it has not examined you, and it does not know your history. When it is uncertain it will send you to a generalist rather than guess. Only a doctor who assesses you can diagnose you.</p>
+
+      <div class="callout callout--danger" style="margin:1.5rem 0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M12 9v4.5" stroke-linecap="round"/><circle cx="12" cy="17" r=".9" fill="currentColor" stroke="none"/>
+          <path d="M10.3 4.3 2.8 17.4A2 2 0 0 0 4.5 20.4h15a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <p class="callout__title" data-i18n="legal.emergency.t">We are not an emergency service</p>
+          <p data-i18n="legal.emergency.d">Naviar Care cannot send an ambulance. For chest pain with sweating, difficulty breathing, heavy bleeding, a drooping face, a seizure, or someone who cannot be woken, call your local emergency number immediately.</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top:2.5rem" data-i18n="legal.who.title">Who is allowed to treat you</h2>
+      <p data-i18n="legal.who.p1">Medical licensing follows the patient, not the doctor. A clinician may diagnose, treat and prescribe only in the countries where they hold a licence — and what counts is where <em>you</em> are, not where they are.</p>
+      <p data-i18n="legal.who.p2">We do not use that as a reason to hide doctors from you. You can reach any doctor on Naviar Care from anywhere in the world. What changes is what the session is, and we tell you which before you pay.</p>
+
+      <div class="table-wrap" style="margin:1.5rem 0">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="legal.who.col.session">Session</th>
+              <th data-i18n="legal.who.col.when">When it applies</th>
+              <th data-i18n="legal.who.col.can">What the doctor can do</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag tag--routine" data-i18n="mode.consultation.tag">Full consultation</span></td>
+              <td data-i18n="legal.who.row1.when">The doctor is licensed in your country</td>
+              <td data-i18n="legal.who.row1.can">Assess you, diagnose, treat, and prescribe where local law allows</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag--urgent" data-i18n="mode.second-opinion.tag">Second opinion</span></td>
+              <td data-i18n="legal.who.row2.when">The doctor is not licensed in your country</td>
+              <td data-i18n="legal.who.row2.can">Review your case, give a specialist opinion, explain your results, and prepare you for your own doctor — but not diagnose or prescribe</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="card__meta" data-i18n="legal.who.verify">Every clinician's licence is verified with the issuing authority before their profile goes live, and re-checked periodically. Their licensed countries are listed on their profile.</p>
+
+      <h2 style="margin-top:2.5rem" id="retention" data-i18n="legal.retention.title">How long your records are kept</h2>
+      <p data-i18n="legal.retention.p1">This one surprises people, so it is worth being direct about it: once you have had a consultation, we are <strong>required by law</strong> to keep the record for a set number of years. That duty comes from medical records law in your country, and it overrides a request to delete it.</p>
+      <p data-i18n="legal.retention.p2">So if you ask us to erase your consultation record before that period is up, we will have to say no, and tell you which law requires it. When the period ends, we delete it. Records for children are kept longer, usually until they have been an adult for several years, because a child cannot bring a claim until they can act for themselves.</p>
+
+      <div class="grid grid--2" style="gap:1rem;margin:1.5rem 0">
+        <div class="field mb-0">
+          <label for="retention-country" data-i18n="legal.retention.picker">Check the period for your country</label>
+          <select class="select" id="retention-country" data-retention-country></select>
+        </div>
+        <div class="field mb-0">
+          <label for="retention-age" data-i18n="legal.retention.age">Who was the patient?</label>
+          <select class="select" id="retention-age" data-retention-age>
+            <option value="adult" data-i18n="age.adult">Adult (18–64)</option>
+            <option value="senior" data-i18n="age.senior">Older adult (65+)</option>
+            <option value="teen" data-i18n="age.teen">Teenager (13–17)</option>
+            <option value="child" data-i18n="age.child">Child (1–12)</option>
+            <option value="infant" data-i18n="age.infant">Baby (under 1)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card" data-retention-result aria-live="polite"></div>
+
+      <p class="card__meta" style="margin-top:1rem" data-i18n="legal.retention.note">These periods are compiled from published national requirements and are confirmed with local counsel before we operate in a country. Your symptom check is different: it never leaves your browser, so there is nothing to retain unless you go on to book.</p>
+
+      <h2 style="margin-top:2.5rem" data-i18n="legal.rights.title">What you can ask us for</h2>
+      <ul class="feature-list">
+        <li data-i18n="legal.rights.1">A copy of everything we hold about you, in a form you can take elsewhere</li>
+        <li data-i18n="legal.rights.2">Correction of anything inaccurate in your record</li>
+        <li data-i18n="legal.rights.3">Deletion, once the statutory retention period has passed</li>
+        <li data-i18n="legal.rights.4">Withdrawal of your consent at any time, which stops any further processing</li>
+        <li data-i18n="legal.rights.5">An explanation of why your consultation was routed the way it was</li>
+        <li data-i18n="legal.rights.6">To complain to your national data protection authority</li>
+      </ul>
+
+      <h2 style="margin-top:2.5rem" data-i18n="legal.data.title">Your consultation, and who is in the room</h2>
+      <ul class="feature-list">
+        <li data-i18n="legal.data.1">Consultations are held over an end-to-end encrypted connection</li>
+        <li data-i18n="legal.data.2">Nothing is recorded unless both you and the doctor agree to it first</li>
+        <li data-i18n="legal.data.3">If an interpreter joins, you are told before the consultation starts, and you can ask for a different doctor instead</li>
+        <li data-i18n="legal.data.4">Interpreters are bound by the same duty of confidentiality as the doctor</li>
+        <li data-i18n="legal.data.5">Your symptom check runs on your own device and is not transmitted while you answer</li>
+      </ul>
+
+      <h2 style="margin-top:2.5rem" data-i18n="legal.money.title">What you pay, and what we take</h2>
+      <p data-i18n="legal.money.p1">The doctor sets their own fee and keeps it in full. Our platform fee is a separate, fixed amount shown next to it before you confirm — it pays for the booking, the interpretation and the support around your consultation.</p>
+      <p data-i18n="legal.money.p2">We deliberately do not take a percentage of the doctor's fee. Sharing in a clinician's professional fee is restricted or prohibited in a number of countries, precisely because it gives a commercial party an interest in clinical decisions. Keeping the two separate is better for you and better for the doctor.</p>
+
+      <h2 style="margin-top:2.5rem" data-i18n="legal.status.title">The status of this build</h2>
+      <div class="callout callout--warn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 11v5" stroke-linecap="round"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/>
+        </svg>
+        <div>
+          <p class="callout__title" data-i18n="legal.status.t">This is a demonstration, not a live service</p>
+          <p data-i18n="legal.status.d">The clinicians and availability shown are sample data. No consultation is booked, no payment is taken, and no personal data is transmitted anywhere. Before operating for real, the service needs device-classification opinions, national licensing, verified clinicians and a payment provider in each market it launches in.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:1.5rem" data-i18n-html="legal.more">The full regulatory review behind these decisions — covering medical device classification, cross-border licensing, data protection, fee-splitting and record retention — is kept in <code>COMPLIANCE.md</code> in the project repository.</p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+          <span class="brand__name">Naviar<span style="color:#69d7c6">Care</span></span>
+        </a>
+        <p data-i18n="footer.blurb">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <p class="footer-emergency" data-i18n="footer.emergency">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</p>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.service">Service</h4>
+        <ul>
+          <li><a href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a href="booking.html" data-i18n="nav.booking">Book a doctor</a></li>
+          <li><a href="languages.html" data-i18n="nav.languages">Languages</a></li>
+          <li><a href="booking.html#available" data-i18n="footer.available-now">Doctors available now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.company">Company</h4>
+        <ul>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="about.html#how" data-i18n="footer.how">How it works</a></li>
+          <li><a href="about.html#safety" data-i18n="footer.safety">Safety &amp; privacy</a></li>
+          <li><a href="legal.html" data-i18n="footer.legal">Legal &amp; regulatory</a></li>
+          <li><a href="join.html" data-i18n="nav.join">For doctors</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.help">Help</h4>
+        <ul>
+          <li><a href="about.html#faq" data-i18n="footer.faq">Frequently asked questions</a></li>
+          <li><a href="languages.html#interpreters" data-i18n="footer.interpreters">Interpreters</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.support">Support</a></li>
+          <li><a href="feedback.html" data-i18n="footer.feedback">Leave feedback</a></li>
+          <li><a href="legal.html#retention" data-i18n="footer.retention">Your records</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span data-i18n="footer.built">Available 24 hours a day, in every language we can reach.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data-specialties.js"></script>
+<script src="assets/js/data-symptoms.js"></script>
+<script src="assets/js/data-languages.js"></script>
+<script src="assets/js/data-countries.js"></script>
+<script src="assets/js/data-retention.js"></script>
+<script src="assets/js/data-doctors.js"></script>
+<script src="assets/js/triage-engine.js"></script>
+<script src="assets/js/booking-engine.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/legal-ui.js"></script>
+</body>
+</html>

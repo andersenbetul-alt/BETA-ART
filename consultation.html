@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light" data-page="booking">
+<html lang="en" dir="ltr" data-theme="light" data-page="consultation">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title data-i18n="meta.booking.title">Book a doctor available now — Naviar Care</title>
-<meta name="description" data-i18n-content="meta.booking.desc" content="See which doctors are free right now, filter by specialty and by the language you speak, and book a consultation online.">
+<title data-i18n="meta.consultation.title">Consultation room — Naviar Care</title>
+<meta name="description" data-i18n-content="meta.consultation.desc" content="Your end-to-end encrypted consultation room. Nothing is recorded unless both you and the doctor agree.">
 <meta name="theme-color" content="#0d8172">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
       <ul class="nav__list">
           <li><a class="nav__link" href="index.html" data-i18n="nav.home">Home</a></li>
           <li><a class="nav__link" href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
-          <li><a class="nav__link" href="booking.html" aria-current="page" data-i18n="nav.booking">Find a doctor</a></li>
+          <li><a class="nav__link" href="booking.html" data-i18n="nav.booking">Find a doctor</a></li>
           <li><a class="nav__link" href="languages.html" data-i18n="nav.languages">Languages</a></li>
           <li><a class="nav__link" href="join.html" data-i18n="nav.join">For doctors</a></li>
           <li><a class="nav__link" href="about.html" data-i18n="nav.about">About</a></li>
@@ -68,92 +68,58 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
 
   <section class="page-hero">
     <div class="container">
-      <p class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.booking">Book a doctor</span></p>
-      <h1 data-i18n="booking.title">Doctors who can see you now</h1>
-      <p data-i18n="booking.lead">Every clinician below is on shift. Filter by what you need and by the language you want to be seen in, then book the next free slot.</p>
-    </div>
-  </section>
-
-  <section class="section" id="available">
-    <div class="container">
-
-      <div class="card" style="margin-bottom:1.25rem">
-        <div class="field mb-0">
-          <label for="patient-country" data-i18n="booking.patient-country.label">Which country are you in?</label>
-          <span class="field__hint" data-i18n="booking.patient-country.hint">This never limits which doctors you can reach. It tells us whether a doctor can treat and prescribe where you are, or give you a specialist second opinion — and we show you which before you pay.</span>
-          <select class="select" id="patient-country" data-patient-country></select>
-        </div>
-      </div>
-
-      <div class="card" style="margin-bottom:2rem" data-booking-filters>
-        <div class="grid grid--4" style="gap:1rem">
-          <div class="field mb-0">
-            <label for="filter-specialty" data-i18n="booking.filter.specialty">What do you need?</label>
-            <select class="select" id="filter-specialty" data-filter-specialty></select>
-          </div>
-          <div class="field mb-0">
-            <label for="filter-language" data-i18n="booking.filter.language">Language you want to be seen in</label>
-            <select class="select" id="filter-language" data-filter-language></select>
-          </div>
-          <div class="field mb-0">
-            <label for="filter-country" data-i18n="booking.filter.country">Doctor's country</label>
-            <select class="select" id="filter-country" data-filter-country></select>
-          </div>
-          <div class="field mb-0">
-            <label for="filter-when" data-i18n="booking.filter.when">When?</label>
-            <select class="select" id="filter-when" data-filter-when>
-              <option value="any" data-i18n="booking.when.any">Any time today</option>
-              <option value="now" data-i18n="booking.when.now">Available right now</option>
-              <option value="soon" data-i18n="booking.when.soon">Within 30 minutes</option>
-            </select>
-          </div>
-        </div>
-
-        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;margin-top:1.25rem">
-          <p class="card__meta mb-0" data-result-count aria-live="polite">—</p>
-          <button class="btn btn--ghost btn--sm" type="button" data-clear-filters style="margin-inline-start:auto" data-i18n="booking.filter.clear">Clear filters</button>
-        </div>
-      </div>
-
-      <div data-triage-handoff hidden style="margin-bottom:2rem"></div>
-
-      <div class="grid grid--2" data-doctor-list></div>
-
-      <div data-empty-state hidden>
-        <div class="callout callout--info">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <circle cx="12" cy="12" r="9"/><path d="M12 11v5" stroke-linecap="round"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/>
-          </svg>
-          <div>
-            <p class="callout__title" data-i18n="booking.empty.t">Nobody matches all of those filters right now</p>
-            <p data-i18n="booking.empty.d">Try widening the time filter, or keep your language and let us bring in a medical interpreter — that always finds someone.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------------ booking -->
-  <section class="section section--soft" id="book" data-booking-section hidden>
-    <div class="container container--narrow">
-      <div class="triage-card">
-        <div data-booking-root></div>
-      </div>
+      <p class="breadcrumb"><a href="booking.html" data-i18n="nav.booking">Find a doctor</a> / <span data-i18n="consult.crumb">Consultation room</span></p>
+      <h1 data-i18n="consult.title">Your consultation room</h1>
+      <p data-i18n="consult.lead">The connection is end-to-end encrypted. Your doctor will admit you when they are ready.</p>
     </div>
   </section>
 
   <section class="section">
-    <div class="container container--narrow">
-      <div class="callout callout--warn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
-          <path d="M12 9v4.5" stroke-linecap="round"/><circle cx="12" cy="17" r=".9" fill="currentColor" stroke="none"/>
-          <path d="M10.3 4.3 2.8 17.4A2 2 0 0 0 4.5 20.4h15a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z" stroke-linejoin="round"/>
-        </svg>
-        <div>
-          <p class="callout__title" data-i18n="safety.title">Naviar Care does not replace emergency services</p>
-          <p data-i18n="safety.body">If someone is unconscious, struggling to breathe, bleeding heavily, or you think they are having a heart attack or stroke, call your local emergency number now. Our intake will tell you the same thing the moment it spots a warning sign.</p>
-        </div>
+    <div class="container triage">
+
+      <div class="triage-card">
+        <div data-consult-room></div>
       </div>
+
+      <aside>
+        <div class="card side-card">
+          <h3 style="font-size:1.05rem" data-i18n="consult.side.security.t">How this call is protected</h3>
+          <ul class="feature-list">
+            <li data-i18n="consult.side.security.1">End-to-end encrypted — nobody in between can listen, including us</li>
+            <li data-i18n="consult.side.security.2">Nothing is recorded unless you and the doctor both agree first</li>
+            <li data-i18n="consult.side.security.3">You wait in a lobby until the doctor admits you, so nobody else can join</li>
+            <li data-i18n="consult.side.security.4">No third-party tracking or analytics runs in the room</li>
+          </ul>
+        </div>
+
+        <div class="card side-card">
+          <h3 style="font-size:1.05rem" data-i18n="consult.side.who.t">Who will be present</h3>
+          <div data-consult-participants></div>
+        </div>
+
+        <div class="card side-card">
+          <h3 style="font-size:1.05rem" data-i18n="consult.side.prepare.t">Before you join</h3>
+          <ul class="feature-list">
+            <li data-i18n="consult.side.prepare.1">Find somewhere private where you can speak freely</li>
+            <li data-i18n="consult.side.prepare.2">Have any medicines you take, and recent test results, to hand</li>
+            <li data-i18n="consult.side.prepare.3">Tell the doctor straight away if you cannot hear or understand them</li>
+          </ul>
+        </div>
+
+        <div class="card side-card">
+          <div class="callout callout--danger" style="border:0;padding:0;background:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+              <path d="M12 9v4.5" stroke-linecap="round"/><circle cx="12" cy="17" r=".9" fill="currentColor" stroke="none"/>
+              <path d="M10.3 4.3 2.8 17.4A2 2 0 0 0 4.5 20.4h15a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <p class="callout__title" data-i18n="consult.side.emergency.t">If this becomes an emergency</p>
+              <p style="font-size:.92rem" data-i18n="consult.side.emergency.d">Leave the call and phone your local emergency number. Your doctor cannot send help to you.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
     </div>
   </section>
 
@@ -226,6 +192,7 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
 <script src="assets/js/triage-engine.js"></script>
 <script src="assets/js/booking-engine.js"></script>
 <script src="assets/js/main.js"></script>
-<script src="assets/js/booking-ui.js"></script>
+<script src="assets/js/video.js"></script>
+<script src="assets/js/consultation-ui.js"></script>
 </body>
 </html>

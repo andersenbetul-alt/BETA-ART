@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-page="join">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.join.title">Join as a doctor — Naviar Care</title>
+<meta name="description" data-i18n-content="meta.join.desc" content="Register as a clinician on Naviar Care, set out your specialty, languages and licence, and help patients waiting for care in your own language.">
+<meta name="theme-color" content="#0d8172">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>
+/* Set the theme before first paint so dark-mode users never see a white flash. */
+(function(){try{var t=localStorage.getItem("naviar.theme");
+if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+      <span class="brand__name">Naviar<span>Care</span></span>
+    </a>
+
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__list">
+          <li><a class="nav__link" href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav__link" href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a class="nav__link" href="booking.html" data-i18n="nav.booking">Find a doctor</a></li>
+          <li><a class="nav__link" href="languages.html" data-i18n="nav.languages">Languages</a></li>
+          <li><a class="nav__link" href="join.html" aria-current="page" data-i18n="nav.join">For doctors</a></li>
+          <li><a class="nav__link" href="about.html" data-i18n="nav.about">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <label class="visually-hidden" for="lang-select" data-i18n="a11y.choose-language">Choose your language</label>
+      <select class="select" id="lang-select" data-lang-select style="width:auto;padding:.45rem 2.2rem .45rem .7rem;font-size:.9rem"></select>
+
+      <button class="icon-btn" type="button" data-theme-toggle
+              data-i18n-aria-label="a11y.toggle-theme" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+              data-i18n-aria-label="a11y.toggle-menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.join">For doctors</span></p>
+      <h1 data-i18n="join.title">Help someone in your own language</h1>
+      <p data-i18n="join.lead">Somewhere right now, a person who speaks your language is sitting in a hospital queue, or has given up on being seen at all. Register your specialty, your languages and your licence, and we will route them to you.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--3">
+        <article class="card">
+          <h3 data-i18n="join.why.hours.t">Your hours, your fee</h3>
+          <p class="mb-0" data-i18n="join.why.hours.d">You set when you are available and what you charge. There is no minimum commitment and no exclusivity.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="join.why.prepared.t">Patients arrive prepared</h3>
+          <p class="mb-0" data-i18n="join.why.prepared.d">Every patient reaches you having already described their symptoms, how long they have lasted and how severe they are. You start the consultation with the history in front of you.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="join.why.fee.t">A flat platform fee</h3>
+          <p class="mb-0" data-i18n="join.why.fee.d">We charge a fixed amount per completed consultation for booking, interpretation and support. We do not take a percentage of your professional fee.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container triage">
+
+      <div class="triage-card">
+        <form id="join-form" novalidate>
+
+          <h2 data-i18n="join.form.title">Your application</h2>
+          <p class="card__meta" data-i18n="join.form.lead">Everything here appears on your public profile except your licence details, which we verify privately.</p>
+
+          <!-- ------------------------------------------------- identity -->
+          <h3 style="margin-top:2rem" data-i18n="join.s1.title">About you</h3>
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="field">
+              <label for="j-name" data-i18n="join.name">Full name</label>
+              <input class="input" id="j-name" name="name" type="text" required autocomplete="name">
+              <p class="field__error" data-i18n="join.err.name">Please enter your full name.</p>
+            </div>
+            <div class="field">
+              <label for="j-email" data-i18n="join.email">Email address</label>
+              <input class="input" id="j-email" name="email" type="email" required autocomplete="email">
+              <p class="field__error" data-i18n="join.err.email">Please enter an email address we can reach you on.</p>
+            </div>
+          </div>
+
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="field">
+              <label for="j-country" data-i18n="join.country">Country you practise in</label>
+              <select class="select" id="j-country" name="country" required data-join-country></select>
+              <p class="field__error" data-i18n="join.err.country">Please choose the country you practise in.</p>
+            </div>
+            <div class="field">
+              <label for="j-years" data-i18n="join.years">Years in practice</label>
+              <input class="input" id="j-years" name="years" type="number" min="0" max="60" required>
+              <p class="field__error" data-i18n="join.err.years">Please enter how many years you have been in practice.</p>
+            </div>
+          </div>
+
+          <!-- ---------------------------------------------- credentials -->
+          <h3 style="margin-top:2rem" data-i18n="join.s2.title">Your licence</h3>
+          <p class="card__meta" data-i18n="join.s2.help">We verify every licence against the issuing register before your profile goes live. This is also how we work out which patients you can treat and which you can advise.</p>
+
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="field">
+              <label for="j-licence" data-i18n="join.licence">Licence or registration number</label>
+              <input class="input" id="j-licence" name="licence" type="text" required>
+              <p class="field__error" data-i18n="join.err.licence">Please enter your licence number.</p>
+            </div>
+            <div class="field">
+              <label for="j-authority" data-i18n="join.authority">Issuing authority</label>
+              <input class="input" id="j-authority" name="authority" type="text" required
+                     data-i18n-placeholder="join.authority.ph" placeholder="e.g. Türk Tabipleri Birliği, GMC, state medical board">
+              <p class="field__error" data-i18n="join.err.authority">Please name the authority that issued your licence.</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field__label" data-i18n="join.jurisdictions">Countries you are licensed to treat patients in</span>
+            <span class="field__hint" data-i18n="join.jurisdictions.hint">Select every country where you hold a licence. Patients elsewhere can still reach you — those sessions are second opinions rather than consultations, and we label them that way.</span>
+            <div class="filter-bar" data-join-jurisdictions></div>
+            <p class="field__error" data-i18n="join.err.jurisdictions">Please select at least the country you practise in.</p>
+          </div>
+
+          <label class="checkbox" style="margin-bottom:1.15rem">
+            <input type="checkbox" id="j-indemnity" name="indemnity" required>
+            <span data-i18n="join.indemnity">I hold professional indemnity insurance that covers telemedicine, and I will keep it valid for as long as I consult through Naviar Care.</span>
+          </label>
+
+          <!-- ------------------------------------------------ expertise -->
+          <h3 style="margin-top:2rem" data-i18n="join.s3.title">What you treat</h3>
+
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="field">
+              <label for="j-specialty" data-i18n="join.specialty">Your main specialty</label>
+              <select class="select" id="j-specialty" name="specialty" required data-join-specialty></select>
+              <p class="field__error" data-i18n="join.err.specialty">Please choose your main specialty.</p>
+            </div>
+            <div class="field">
+              <label for="j-also" data-i18n="join.also">Anything else you consult on</label>
+              <select class="select" id="j-also" name="also" data-join-also></select>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field__label" data-i18n="join.focus">Which problems do you actually spend your time on?</span>
+            <span class="field__hint" data-i18n="join.focus.hint">Pick the complaints you see most. We match these against what patients describe, so choosing accurately gets you the right patients rather than more of them.</span>
+            <div class="field symptom-search" style="margin-top:.5rem">
+              <input class="input" type="text" id="j-focus-search" autocomplete="off"
+                     data-i18n-placeholder="join.focus.placeholder" placeholder="Search complaints…"
+                     role="combobox" aria-expanded="false" aria-controls="j-focus-results">
+              <ul class="symptom-results" id="j-focus-results" role="listbox"
+                  data-i18n-aria-label="triage.search.results" aria-label="Matching symptoms"></ul>
+            </div>
+            <div class="selected-list" data-join-focus>
+              <span class="selected-empty" data-i18n="triage.selected.empty">Nothing chosen yet.</span>
+            </div>
+          </div>
+
+          <!-- ------------------------------------------------ languages -->
+          <h3 style="margin-top:2rem" data-i18n="join.s4.title">Languages you consult in</h3>
+          <p class="card__meta" data-i18n="join.s4.help">This is the single most useful thing you can tell us. A patient who can describe their symptoms in their own language gets better care, and you get a consultation that is not fighting a translation.</p>
+
+          <div class="field" style="margin-top:1rem">
+            <div class="field symptom-search">
+              <label class="visually-hidden" for="j-lang-search" data-i18n="join.languages.search">Search languages</label>
+              <input class="input" type="text" id="j-lang-search" autocomplete="off"
+                     data-i18n-placeholder="join.languages.placeholder" placeholder="Search languages…"
+                     role="combobox" aria-expanded="false" aria-controls="j-lang-results">
+              <ul class="symptom-results" id="j-lang-results" role="listbox"
+                  data-i18n-aria-label="join.languages.results" aria-label="Matching languages"></ul>
+            </div>
+            <div class="selected-list" data-join-languages>
+              <span class="selected-empty" data-i18n="triage.selected.empty">Nothing chosen yet.</span>
+            </div>
+            <p class="field__error" data-i18n="join.err.languages">Please add at least one language.</p>
+          </div>
+
+          <!-- --------------------------------------- availability & fee -->
+          <h3 style="margin-top:2rem" data-i18n="join.s5.title">Availability and fee</h3>
+
+          <div class="grid grid--2" style="gap:1rem">
+            <div class="field">
+              <label for="j-hours" data-i18n="join.hours">Roughly how many hours a week?</label>
+              <select class="select" id="j-hours" name="hours">
+                <option value="1-5" data-i18n="join.hours.1">1–5 hours</option>
+                <option value="5-10" data-i18n="join.hours.2">5–10 hours</option>
+                <option value="10-20" data-i18n="join.hours.3">10–20 hours</option>
+                <option value="20+" data-i18n="join.hours.4">More than 20 hours</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="j-fee" data-i18n="join.fee">Your consultation fee (USD)</label>
+              <span class="field__hint" data-i18n="join.fee.hint">You keep this in full. Our platform fee is charged separately to the patient.</span>
+              <input class="input" id="j-fee" name="fee" type="number" min="0" max="1000" step="5" required>
+              <p class="field__error" data-i18n="join.err.fee">Please set a consultation fee.</p>
+            </div>
+          </div>
+
+          <!-- -------------------------------------------------- profile -->
+          <h3 style="margin-top:2rem" data-i18n="join.s6.title">Introduce yourself</h3>
+          <div class="field">
+            <label for="j-intro" data-i18n="join.intro">A short introduction for patients</label>
+            <span class="field__hint" data-i18n="join.intro.hint">Two or three sentences, in whichever language you like — patients see it as you wrote it. Say what you do day to day rather than listing qualifications.</span>
+            <textarea class="textarea" id="j-intro" name="intro" required maxlength="600"></textarea>
+            <p class="field__error" data-i18n="join.err.intro">Please write a short introduction.</p>
+          </div>
+
+          <!-- --------------------------------------------- declarations -->
+          <h3 style="margin-top:2rem" data-i18n="join.s7.title">Declarations</h3>
+          <div class="redflag-list">
+            <label class="checkbox">
+              <input type="checkbox" id="j-truth" required>
+              <span data-i18n="join.declare.truth">Everything I have entered is accurate, and I will update it if my licence, insurance or scope of practice changes.</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="j-scope" required>
+              <span data-i18n="join.declare.scope">I understand that I may only diagnose, treat and prescribe for patients in countries where I am licensed, and that sessions with other patients are second opinions.</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="j-privacy" required>
+              <span data-i18n="join.declare.privacy">I will keep patient information confidential, and I understand consultations are not recorded unless both the patient and I consent.</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="j-emergency" required>
+              <span data-i18n="join.declare.emergency">I understand Naviar Care is not an emergency service, and I will direct a patient to emergency care when their condition needs it.</span>
+            </label>
+          </div>
+          <p class="field__error" data-error-declarations style="display:none" data-i18n="join.err.declarations">Please confirm all four declarations to continue.</p>
+
+          <div class="triage-actions">
+            <button class="btn btn--primary btn--lg" type="submit" data-i18n="join.submit">Send my application</button>
+          </div>
+
+          <p class="card__meta" data-join-status role="status" style="margin-top:1rem"></p>
+        </form>
+      </div>
+
+      <aside>
+        <div class="card side-card">
+          <h3 style="font-size:1.05rem" data-i18n="join.side.verify.t">What happens next</h3>
+          <ul class="feature-list">
+            <li data-i18n="join.side.verify.1">We verify your licence with the issuing authority</li>
+            <li data-i18n="join.side.verify.2">We check your indemnity cover includes telemedicine</li>
+            <li data-i18n="join.side.verify.3">A clinician on our team reviews your profile</li>
+            <li data-i18n="join.side.verify.4">You go live and choose your first available hours</li>
+          </ul>
+          <p class="card__meta" data-i18n="join.side.verify.time">Verification usually takes three to five working days.</p>
+        </div>
+
+        <div class="card side-card">
+          <h3 style="font-size:1.05rem" data-i18n="join.side.legal.t">Where you can practise</h3>
+          <p class="card__meta" data-i18n="join.side.legal.d">Medical licensing follows the patient, not the doctor. You can consult with patients anywhere in the world, but you may only diagnose and prescribe where you hold a licence. We label every session so both you and the patient know which it is before it starts.</p>
+          <p class="card__meta"><a href="legal.html" data-i18n="join.side.legal.link">Read how we handle this</a></p>
+        </div>
+
+        <div class="card side-card">
+          <h3 style="font-size:1.05rem" data-i18n="join.side.facility.t">Working with health facilities</h3>
+          <p class="card__meta" data-i18n="join.side.facility.d">Some countries — Türkiye among them — require remote consultations to be delivered through a licensed health facility rather than by an individual doctor. If that applies where you are, we will tell you during verification and connect you to a partner facility.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+          <span class="brand__name">Naviar<span style="color:#69d7c6">Care</span></span>
+        </a>
+        <p data-i18n="footer.blurb">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <p class="footer-emergency" data-i18n="footer.emergency">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</p>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.service">Service</h4>
+        <ul>
+          <li><a href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a href="booking.html" data-i18n="nav.booking">Book a doctor</a></li>
+          <li><a href="languages.html" data-i18n="nav.languages">Languages</a></li>
+          <li><a href="booking.html#available" data-i18n="footer.available-now">Doctors available now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.company">Company</h4>
+        <ul>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="about.html#how" data-i18n="footer.how">How it works</a></li>
+          <li><a href="about.html#safety" data-i18n="footer.safety">Safety &amp; privacy</a></li>
+          <li><a href="legal.html" data-i18n="footer.legal">Legal &amp; regulatory</a></li>
+          <li><a href="join.html" data-i18n="nav.join">For doctors</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.help">Help</h4>
+        <ul>
+          <li><a href="about.html#faq" data-i18n="footer.faq">Frequently asked questions</a></li>
+          <li><a href="languages.html#interpreters" data-i18n="footer.interpreters">Interpreters</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.support">Support</a></li>
+          <li><a href="feedback.html" data-i18n="footer.feedback">Leave feedback</a></li>
+          <li><a href="legal.html#retention" data-i18n="footer.retention">Your records</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span data-i18n="footer.built">Available 24 hours a day, in every language we can reach.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/data-specialties.js"></script>
+<script src="assets/js/data-symptoms.js"></script>
+<script src="assets/js/data-languages.js"></script>
+<script src="assets/js/data-countries.js"></script>
+<script src="assets/js/data-retention.js"></script>
+<script src="assets/js/data-doctors.js"></script>
+<script src="assets/js/triage-engine.js"></script>
+<script src="assets/js/booking-engine.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/join-ui.js"></script>
+</body>
+</html>

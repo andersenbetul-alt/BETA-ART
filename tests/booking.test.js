@@ -9,6 +9,9 @@ require(asset("data-specialties.js"));
 require(asset("data-symptoms.js"));
 require(asset("data-languages.js"));
 require(asset("data-doctors.js"));
+require(asset("data-countries.js"));
+require(asset("data-retention.js"));
+require(asset("config.js"));
 const booking = require(asset("booking-engine.js"));
 const N = global.window.NaviarData;
 
@@ -182,6 +185,161 @@ check("booking references are unique per clinician and stable in shape", () => {
   assert(/^NV-[A-Z0-9]+-[A-Z0-9]{5}$/.test(a), "unexpected reference format: " + a);
   assert(a !== b, "references collided");
   eq(booking.reference("d01", when), a, "reference should be stable for the same inputs");
+});
+
+/* ---------------------------------------------------------- session mode -- */
+
+check("a clinician licensed where the patient is gives a full consultation", () => {
+  eq(booking.sessionMode({ licensed: ["TR", "DE"] }, "TR"), "consultation");
+});
+
+check("a clinician not licensed there gives a second opinion, not nothing", () => {
+  eq(booking.sessionMode({ licensed: ["TR"] }, "US"), "second-opinion");
+});
+
+check("only a full consultation may prescribe", () => {
+  eq(booking.sessionScope("consultation").prescribe, true);
+  eq(booking.sessionScope("second-opinion").prescribe, false);
+  eq(booking.sessionScope("unknown").prescribe, false);
+});
+
+check("an unknown patient country never silently unlocks prescribing", () => {
+  eq(booking.sessionMode({ licensed: ["TR"] }, null), "unknown");
+  eq(booking.sessionScope(booking.sessionMode({ licensed: ["TR"] }, null)).diagnose, false);
+});
+
+check("EVERY clinician stays reachable from EVERY country", () => {
+  // The founding requirement: any person reaches any doctor, anywhere.
+  // Licensure sets the session mode; it must never remove a doctor from view.
+  const gaps = [];
+  for (const country of N.countries) {
+    const reachable = booking.match({ patientCountry: country.code });
+    if (reachable.length !== N.doctors.length) {
+      gaps.push(country.code + ": " + reachable.length + "/" + N.doctors.length);
+    }
+  }
+  eq(gaps.length, 0, "clinicians hidden from patients in: " + gaps.slice(0, 5).join(", "));
+});
+
+check("every clinician can serve a patient in their own country fully", () => {
+  const bad = N.doctors.filter((d) => booking.sessionMode(d, d.country) !== "consultation");
+  eq(bad.length, 0, "not licensed at home: " + bad.map((d) => d.id).join(", "));
+});
+
+check("filtering explicitly by mode still works when the patient wants it", () => {
+  const full = booking.match({ patientCountry: "TR", mode: "consultation" });
+  assert(full.length > 0, "no full consultations available to a patient in Türkiye");
+  for (const m of full) eq(m.mode, "consultation");
+});
+
+/* ---------------------------------------------------------------- money -- */
+
+check("a quote itemises the doctor fee and the platform fee separately", () => {
+  const q = booking.quote({ fee: 50 }, { patientCountry: "TR" });
+  eq(q.doctorFee, 50);
+  assert(q.platformFee > 0, "platform fee missing");
+  eq(q.total, q.doctorFee + q.platformFee + q.interpreterFee, "total must equal the sum of its lines");
+});
+
+check("the interpreter fee is only charged when an interpreter is used", () => {
+  const without = booking.quote({ fee: 50 }, { patientCountry: "TR", interpreter: false });
+  const with_ = booking.quote({ fee: 50 }, { patientCountry: "TR", interpreter: true });
+  eq(without.interpreterFee, 0);
+  assert(with_.interpreterFee > 0, "interpreter fee not applied");
+  eq(with_.total - without.total, with_.interpreterFee, "difference must be exactly the interpreter fee");
+});
+
+check("the platform fee defaults to flat, not a percentage of the doctor's fee", () => {
+  // Percentage commission on clinical fees is unlawful fee-splitting in a
+  // number of jurisdictions — the default must not depend on the fee.
+  const cheap = booking.quote({ fee: 25 }, {});
+  const dear = booking.quote({ fee: 95 }, {});
+  eq(cheap.model, "flat");
+  eq(cheap.platformFee, dear.platformFee, "flat fee must not scale with the doctor's fee");
+});
+
+check("pricing can be overridden per market", () => {
+  const tr = booking.pricingRules("TR");
+  const us = booking.pricingRules("US");
+  assert(tr.platformFee !== us.platformFee, "per-market override not applied");
+});
+
+check("an unknown country falls back to default pricing rather than free", () => {
+  const q = booking.quote({ fee: 40 }, { patientCountry: "ZZ" });
+  assert(q.platformFee > 0, "fell through to a zero platform fee");
+});
+
+check("money formatting is stable", () => {
+  const q = booking.quote({ fee: 50 }, {});
+  eq(booking.formatMoney(12, q), "$12");
+  eq(booking.formatMoney(12.5, q), "$12.50");
+});
+
+/* ------------------------------------------------------ categories & focus */
+
+check("the directory groups clinicians by specialty category", () => {
+  const groups = booking.groupByCategory(booking.match({}));
+  assert(groups.length > 1, "expected several categories");
+  const total = groups.reduce((n, g) => n + g.matches.length, 0);
+  eq(total, N.doctors.length, "grouping lost or duplicated clinicians");
+});
+
+check("category order is stable regardless of filtering", () => {
+  const a = booking.groupByCategory(booking.match({})).map((g) => g.category);
+  const b = booking.groupByCategory(booking.match({ language: "en" })).map((g) => g.category);
+  const shared = b.filter((c) => a.includes(c));
+  eq(shared.join(","), a.filter((c) => b.includes(c)).join(","), "category order changed between filters");
+});
+
+check("a declared sub-specialty interest raises a clinician's rank", () => {
+  const base = { id: "x", spec: "cardiology", also: [], langs: ["en"], rating: 4.7, years: 10, offset: 0, licensed: ["TR"] };
+  const focused = booking.scoreDoctor(Object.assign({}, base, { focus: ["chest-pain"] }), { specialty: "cardiology", symptoms: ["chest-pain"] });
+  const plain = booking.scoreDoctor(Object.assign({}, base, { focus: [] }), { specialty: "cardiology", symptoms: ["chest-pain"] });
+  assert(focused.score > plain.score, "focus area should count");
+  eq(focused.focusHits.length, 1);
+});
+
+check("every clinician declares focus areas that exist in the catalogue", () => {
+  const known = new Set(N.symptoms.map((s) => s.id));
+  const bad = [];
+  for (const d of N.doctors) {
+    for (const f of d.focus || []) if (!known.has(f)) bad.push(d.id + ":" + f);
+  }
+  eq(bad.length, 0, bad.join(", "));
+});
+
+check("filtering by country returns only clinicians based there", () => {
+  const out = booking.match({ country: "TR" });
+  assert(out.length > 0, "no clinicians in Türkiye");
+  for (const m of out) eq(m.doctor.country, "TR");
+});
+
+check("countries with clinicians are all in the country catalogue", () => {
+  const known = new Set(N.countries.map((c) => c.code));
+  const bad = Object.keys(booking.doctorCountries()).filter((c) => !known.has(c));
+  eq(bad.length, 0, bad.join(", "));
+});
+
+/* ------------------------------------------------------------- retention -- */
+
+check("retention follows the patient's country and is never zero", () => {
+  for (const country of N.countries) {
+    const rule = N.retentionFor(country.code, "adult");
+    assert(rule.years >= 3, country.code + " retention implausibly short: " + rule.years);
+  }
+});
+
+check("children's records carry a longer retention rule", () => {
+  for (const age of ["infant", "child", "teen"]) {
+    assert(N.retentionFor("TR", age).minorRule, age + " should carry the minor rule");
+  }
+  eq(N.retentionFor("TR", "adult").minorRule, null);
+});
+
+check("the deletion-eligible date is the retention period after the record", () => {
+  const from = new Date("2026-01-01T00:00:00Z");
+  const out = N.retentionUntil("TR", "adult", from);
+  eq(out.date.getUTCFullYear() - from.getUTCFullYear(), out.rule.years);
 });
 
 /* ---------------------------------------------------------------- report -- */
