@@ -18,7 +18,33 @@ ATM komisyonu, bilinmeyen bahşiş kuralı, kapalı eczane yüzünden doktora gi
 Bunların hiçbiri canlı API istemiyor.
 
 **Sonuç:** bir ülke, ulaşım entegrasyonu hiç olmadan açılabilir ve yine faydalı olur.
-İsveç ve Danimarka tam olarak böyle eklendi (`transport: 'none'`).
+Norveç dışındaki on iki ülke tam olarak böyle açıldı (`transport: 'none'`).
+
+## Bugünkü kapsam (Ağu 2026)
+
+13 ülke canlı. Hepsinde acil numaralar, `essentials` (turistin en pahalıya mal
+olan bilinmeyenleri), küratörlü yer listeleri ve — MET Norway dünya çapında
+çalıştığı için — hava kararı var.
+
+| Ülke | Şehir | Ulaşım |
+|---|---|---|
+| 🇳🇴 Norveç | Bergen · Oslo · Tromsø · Stavanger | **Entur (canlı)** |
+| 🇸🇪 İsveç | 3 şehir | yok |
+| 🇩🇰 Danimarka · 🇫🇮 Finlandiya · 🇮🇸 İzlanda | 2'şer şehir | yok |
+| 🇩🇪 Almanya · 🇳🇱 Hollanda · 🇦🇹 Avusturya | 3'er şehir | yok |
+| 🇫🇷 Fransa · 🇮🇹 İtalya · 🇪🇸 İspanya | 4'er şehir | yok |
+| 🇵🇹 Portekiz · 🇬🇷 Yunanistan | 3'er şehir | yok |
+
+İkincil şehirlerin çoğunda yer listesi tek satır. Bu bilerek: uydurulmuş
+liste, kısa listeden kötüdür. Şehir derinliği ülke eklemekten daha ucuz —
+sıradaki iş orası.
+
+Ulaşım verisi olmayan ülkede "yakında" demiyoruz; AB yolcu haklarını ve o an
+işe yarayan üç adımı veriyoruz (`NoTransportYet`). Boş ekran yok.
+
+**Yunanistan özel:** feribot iptalleri rüzgâr yüzünden olur ve liman
+başkanlığı kararıdır. Bu, Norveç'ten sonra ürünün en güçlü ikinci vakası —
+ulaşım API'si eklenecek ilk aday.
 
 ## Ülke eklemek ne kadar iş
 

@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
-import { cities } from '@/lib/places.ts';
+import type { CityRef } from '@/lib/country.ts';
 
 /** İki nokta arası kaba mesafe — şehir seçmek için yeterli, harita kütüphanesi gerekmez. */
 function distanceKm(aLat: number, aLon: number, bLat: number, bLon: number): number {
@@ -15,7 +15,9 @@ function distanceKm(aLat: number, aLon: number, bLat: number, bLon: number): num
  * Tarayıcının konum API'si — ücretsiz, sunucu gerektirmez, hiçbir yere
  * gönderilmez. Sadece en yakın şehri seçip URL'yi günceller.
  */
-export default function UseMyLocation({ param = 'city' }: { param?: 'city' | 'from' }) {
+export default function UseMyLocation(
+  { cities, param = 'city' }: { cities: CityRef[]; param?: 'city' | 'from' },
+) {
   const router = useRouter();
   const params = useSearchParams();
   const [state, setState] = useState<'idle' | 'working' | 'denied' | 'far'>('idle');
@@ -47,7 +49,7 @@ export default function UseMyLocation({ param = 'city' }: { param?: 'city' | 'fr
   return (
     <p className="small muted" style={{ marginTop: '-.8rem', marginBottom: '1.2rem' }}>
       {state === 'far'
-        ? "You're outside our cities for now — pick the closest one."
+        ? "You're not near any city we cover here — check the country above."
         : (
           <button
             onClick={locate}

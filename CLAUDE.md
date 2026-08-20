@@ -1,9 +1,13 @@
 # COBBAN — proje notu
 
-**Norway is complicated. COBBAN makes it simple.**
+**Europe is complicated. COBBAN makes it simple.**
 
-Norveç'te seyahat aksaklığı yaşayan turiste tek ekranda çözüm veren asistan.
+Avrupa'da seyahat aksaklığı yaşayan turiste tek ekranda çözüm veren asistan.
 `Problem → COBBAN → DONE`
+
+Ayırt edici nokta: cevaplar **hıza göre değil, tatil planına göre** sıralanır.
+20 dakika erken varıp uçuşu kaçıran seçenek, 20 dakika geç varıp her şeyi
+kurtarandan kötüdür (`web/lib/plan.ts`).
 
 > **Yön değişikliği (Ağu 2026):** COBBAN önce çok kategorili bir e-ticaret
 > markasıydı. Mağaza vitrini `177a485` commit'inde duruyor
@@ -17,19 +21,33 @@ Norveç'te seyahat aksaklığı yaşayan turiste tek ekranda çözüm veren asis
 |---|---|
 | `brand.json` | Marka bilgilerinin tek kaynağı — ad, renk, font, domain, iletişim |
 | `brand/` | Logo (SVG) ve `tokens.css` |
-| `docs/` | Şirket kurulum, vergi, ihracat, pazarlama dokümanları (Türkçe) |
+| `docs/` | Şirket kurulum, vergi, ölçekleme, metin rehberi (Türkçe) |
 | `docs/sozlesmeler/` | Yasal metin şablonları (TR / NO / EN) |
-| `web/` | Next.js mağaza vitrini |
+| `payments/` | Ödeme mimarisi notları ve şema taslağı — henüz kod değil |
+| `web/` | Next.js uygulaması: asıl ürün |
+
+### `web/` içinde ne nerede
+
+| Yol | İş |
+|---|---|
+| `lib/country.ts` | Ülke soyutlaması + kayıt defteri. **Tek veri kaynağı.** |
+| `lib/countries/xx.ts` | Ülke verisi: şehirler, acil numaralar, yerler, `essentials` |
+| `lib/plan.ts` | Tatil planına etki hesabı — ülkeden bağımsız, ürünün kalbi |
+| `lib/entur.ts` | Norveç canlı sefer verisi (tek ulaşım entegrasyonu) |
+| `lib/met.ts` + `lib/weather.ts` | Hava (MET Norway — **dünya çapında**, ücretsiz) |
+| `app/sorun/[kind]/` | Altı sorun ekranı: cancelled · missed · road · eat · rain · basics |
 
 ## Çalışma kuralları
 
-- **Doküman dili Türkçe**, site içeriği üç dilde (`web/lib/i18n.ts` sözlükleri).
-- **Yeni metin eklerken üç dile de ekle** — eksik anahtar sessizce Norveççeye düşer.
-- **Fiyatlar pazar başına el ile yazılır** (`price: { no, en, tr }`).
-  Otomatik kur çevirimi kullanma; `347,83 kr` gibi fiyatlar güven kırar.
-- **Fiyatlar vergi dahil gösterilir** — Norveç'te *prisopplysningsforskriften* gereği yasal zorunluluk.
-- **Fiyat ve varyant kimliği asla istemciden alınmaz.** `/api/checkout` yalnızca
-  slug ve adet kabul eder, geri kalanını sunucudaki katalogdan okur.
+- **Kod yorumları ve `docs/` Türkçe; arayüz metni İngilizce.** Turist Türkçe okumuyor.
+- **Ülke eklemek kod yazmak değil, veri yazmaktır:** `lib/countries/xx.ts` + kayıt satırı.
+  Ulaşım entegrasyonu yoksa `transport: 'none'` bırak — ülke yine faydalı açılır.
+- **Doğrulayamadığın bilgiyi yazma.** `essentials` içindeki her madde turistin
+  parasını etkiliyor; uydurma bir bahşiş kuralı ürünün tamamını çürütür.
+- **"Yakında" yazma.** Elinde veri yoksa o an gerçekten işe yarayan şeyi ver
+  (bkz. `NoTransportYet`: AB yolcu hakları + üç somut adım).
+- **Boş liste = boş ekran.** Her şehirde her tür için en az bir kayıt olmalı;
+  test bunu zorunlu tutuyor.
 - **Rıza olmadan ölçüm betiği yüklenmez.** `cobban:consent` olayını dinle.
 - Yasal metinlerdeki `{{...}}` alanları doldurulmadan hiçbir metin yayına alınmaz.
 
@@ -37,18 +55,20 @@ Norveç'te seyahat aksaklığı yaşayan turiste tek ekranda çözüm veren asis
 
 ```bash
 cd web
-npm run typecheck     # tsc --noEmit
-npm run build         # 42 sayfa üretmeli
+npm run check         # typecheck + 23 test + build
+npm run verify:apis   # Entur ve MET sorgularını canlı doğrular (kısıtsız ağ gerekir)
 ```
 
-Değişiklikten sonra en az bunları tarayıcıda dene: anasayfa, ürün detay,
-sepet (iki üründe ücretsiz kargo eşiği), dil değiştirici, çerez bandı.
+Değişiklikten sonra en az bunları tarayıcıda dene: anasayfa, ülke değiştirici,
+`/sorun/cancelled?country=NO` (plan etkisi üç seviyede de görünmeli),
+`/sorun/cancelled?country=IT` (ulaşımsız ülke ekranı), `/sorun/basics?country=GR`.
 
 ## Bilinen durum
 
-- Shopify mağazası `p8q2mw-ab.myshopify.com` — **trial planında**, adı hâlâ "Min butikk".
-- 8 ürün **DRAFT** durumunda; Storefront API yalnızca ACTIVE ürünleri döndürür.
-- `SHOPIFY_STOREFRONT_ACCESS_TOKEN` yoksa site yerel katalogla çalışır, ödeme kapalıdır.
+- 13 ülke canlı; canlı sefer verisi yalnızca Norveç'te (Entur).
+- `COBBAN_LIVE_DATA=true` yoksa sefer ve hava demo veriyle çalışır — ekranda yazıyor.
+- Entur ve MET sorguları bu ortamdan **canlı doğrulanamadı** (çıkış trafiği kapalı).
+- `cobban.eu` kayıtsız ve alınabilir; Vercel `.eu` satmıyor, ayrı kayıt gerekiyor.
 - GitHub push bu ortamdan 403 veriyor; çıktılar zip/bundle olarak veriliyor.
 
 ## Bilgi tazeleme
@@ -57,4 +77,5 @@ Vergi oranı, eşik, limit gibi her rakam `docs/12-kaynak-takibi.md`'de tarihiyl
 kayıtlı. Bir rakamı kullanmadan veya güncellemeden önce oraya bak; "tekrar bak"
 tarihi geçmişse kaynaktan doğrula ve kaydı güncelle. Eski değeri silme.
 
+Ölçekleme modeli: `docs/13-olcekleme.md` · Metin standardı: `docs/14-metin-rehberi.md`
 Sıradaki işler: `docs/11-gelistirme-plani.md`

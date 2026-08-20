@@ -1,11 +1,15 @@
 :root {
   --ink:#141A1F; --fog:#F4F1EC; --clay:#A85835; --moss:#3F5B4C;
   --sand:#D8CBB8; --steel:#5C6B75; --surface:#FFFFFF; --border:#E4DED4;
+  /* "Bilmemenin bedeli" satiri — dikkat cekmeli ama alarm olmamali.
+     Acik temada --clay 4.53:1, koyu temada 3.68:1 kaliyordu; koyu icin ayri deger. */
+  --cost:#A85835;
   --radius:10px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --fog:#0F1418; --ink:#F4F1EC; --steel:#9AA7AF; --surface:#171E23; --border:#2A343B;
+    --cost:#E08B62;
   }
 }
 *,*::before,*::after { box-sizing: border-box; }
@@ -79,6 +83,7 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
 .place .walk {
   min-width:3.2rem; font-weight:700; font-variant-numeric:tabular-nums; font-size:.95rem;
 }
+.cost { color:var(--cost); margin-top:.25rem; }
 .place .walk small { display:block; font-weight:400; font-size:.7rem; color:var(--steel); }
 
 .note {

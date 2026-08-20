@@ -1,19 +1,21 @@
 /**
- * Ülke soyutlaması.
+ * Ülke soyutlaması — uygulamanın tek veri kaynağı.
  *
- * Amaç: yeni ülke eklemek KOD yazmak değil, VERİ yazmak olsun.
- * Bir ülke dosyası şehirleri, acil numaraları, ulaşım sağlayıcısını ve
- * turistin para/zaman kaybettiği ülkeye özgü bilgileri taşır.
+ * Yeni ülke eklemek KOD yazmak değil, VERİ yazmaktır: bir dosya + kayıt
+ * satırı. Sayfalar ülkeye özgü hiçbir şey bilmez.
  *
- * Ölçekleme gerçeği: canlı ulaşım verisi her ülkede yok ve pahalı.
- * Ama turistin EN ÇOK para kaybettiği sorunlar (eczane, acil numara,
- * taksi tarifesi, ATM kuru) tamamen STATİK bilgi — API gerektirmiyor.
- * Bu yüzden bir ülke, hiç ulaşım entegrasyonu olmadan da faydalı açılabilir.
+ * Ölçekleme gerçeği: canlı ulaşım verisi her ülkede yok ve pahalı. Ama
+ * turistin EN ÇOK para kaybettiği bilgiler (acil numara, kart/nakit, bahşiş,
+ * eczane, bilet cezası) tamamen STATİK. Bu yüzden bir ülke, hiç ulaşım
+ * entegrasyonu olmadan da faydalı açılır — `transport: 'none'` ile.
  */
 
-export type CountryCode = 'NO' | 'SE' | 'DK';
+export type CountryCode =
+  | 'NO' | 'SE' | 'DK' | 'FI' | 'IS'
+  | 'DE' | 'NL' | 'AT' | 'FR'
+  | 'IT' | 'ES' | 'PT' | 'GR';
 
-/** Ulaşım sağlayıcısı yoksa 'none' — uygulama yine çalışır, sadece o soru kapalıdır. */
+/** Ulaşım sağlayıcısı yoksa 'none' — ulaşım soruları o ülkede kapalı görünür. */
 export type TransportProviderId = 'entur' | 'none';
 
 export type CityRef = {
@@ -21,46 +23,92 @@ export type CityRef = {
   name: string;
   lat: number;
   lon: number;
-  /** Sağlayıcıya özgü durak kimliği; sağlayıcı 'none' ise null. */
+  /** Sağlayıcıya özgü durak kimliği; sağlayıcı yoksa null. */
   stopPlaceId: string | null;
 };
 
+export type Place = {
+  name: string;
+  cityId: string;
+  kind: 'eat' | 'indoor';
+  /** Şehir merkezinden yaklaşık yürüme dakikası. */
+  walkMinutes: number;
+  note: string;
+  price?: '$' | '$$' | '$$$';
+};
+
 export type Essential = {
-  /** Turistin bu bilgiyi aramasına sebep olan an. */
+  /** Turistin bu bilgiye ihtiyaç duyduğu an. */
   when: string;
   answer: string;
-  /** Bilinmemesi durumunda kaybedilen para/zaman — önceliklendirme için. */
+  /** Bilinmemesinin bedeli — önceliklendirme ve metnin tonu için. */
   costsIfUnknown: string;
 };
 
 export type Country = {
   code: CountryCode;
   name: string;
+  /** Yerel dil kodu — hazır mesajlar bu dilde yazılır. */
+  language: string;
   currency: string;
-  languages: string[];
   transport: TransportProviderId;
   cities: CityRef[];
+  places: Place[];
+  /** 112 AB genelinde çalışır; ülkeye özgü numaralar burada. */
   emergency: { general: string; police: string; ambulance: string; fire: string };
   essentials: Essential[];
 };
 
-/**
- * Ülke kaydı. Yeni ülke = yeni veri dosyası + buraya bir satır.
- * Sıra: İskandinavya → Avrupa.
- */
 const registry: Record<CountryCode, () => Promise<{ country: Country }>> = {
   NO: () => import('./countries/no.ts'),
   SE: () => import('./countries/se.ts'),
   DK: () => import('./countries/dk.ts'),
+  FI: () => import('./countries/fi.ts'),
+  IS: () => import('./countries/is.ts'),
+  DE: () => import('./countries/de.ts'),
+  NL: () => import('./countries/nl.ts'),
+  AT: () => import('./countries/at.ts'),
+  FR: () => import('./countries/fr.ts'),
+  IT: () => import('./countries/it.ts'),
+  ES: () => import('./countries/es.ts'),
+  PT: () => import('./countries/pt.ts'),
+  GR: () => import('./countries/gr.ts'),
 };
 
-export const countryCodes = Object.keys(registry) as CountryCode[];
+/** Menüde görünecek sıra: önce en olgun ülke, sonra bölge bölge. */
+export const countryOrder: { code: CountryCode; name: string }[] = [
+  { code: 'NO', name: 'Norway' },
+  { code: 'SE', name: 'Sweden' },
+  { code: 'DK', name: 'Denmark' },
+  { code: 'FI', name: 'Finland' },
+  { code: 'IS', name: 'Iceland' },
+  { code: 'DE', name: 'Germany' },
+  { code: 'NL', name: 'Netherlands' },
+  { code: 'AT', name: 'Austria' },
+  { code: 'FR', name: 'France' },
+  { code: 'IT', name: 'Italy' },
+  { code: 'ES', name: 'Spain' },
+  { code: 'PT', name: 'Portugal' },
+  { code: 'GR', name: 'Greece' },
+];
 
-export async function getCountry(code: string): Promise<Country | null> {
-  const load = registry[code as CountryCode];
-  return load ? (await load()).country : null;
-}
+export const defaultCountry: CountryCode = 'NO';
 
 export function isCountryCode(v: string): v is CountryCode {
   return v in registry;
+}
+
+export async function getCountry(code: string): Promise<Country> {
+  const key = isCountryCode(code) ? code : defaultCountry;
+  return (await registry[key]()).country;
+}
+
+export function cityIn(country: Country, id?: string): CityRef {
+  return country.cities.find((c) => c.id === id) ?? country.cities[0];
+}
+
+export function placesIn(country: Country, cityId: string, kind: Place['kind']): Place[] {
+  return country.places
+    .filter((p) => p.cityId === cityId && p.kind === kind)
+    .sort((a, b) => a.walkMinutes - b.walkMinutes);
 }

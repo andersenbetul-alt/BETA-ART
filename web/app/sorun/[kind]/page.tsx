@@ -1,18 +1,22 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { cities, cityById, placesFor, type City } from '@/lib/places.ts';
+import {
+  cityIn, getCountry, placesIn,
+  type CityRef, type Country,
+} from '@/lib/country.ts';
 import { findTrips, type TripOption } from '@/lib/entur.ts';
 import { demoTrips } from '@/lib/fixtures.ts';
 import { clock, duration, modeLabel, relativeMinutes } from '@/lib/format.ts';
 import { forecast } from '@/lib/met.ts';
 import { shouldGoIndoors } from '@/lib/weather.ts';
 import UseMyLocation from '@/components/UseMyLocation.tsx';
+import CountryPicker from '@/components/CountryPicker.tsx';
 import { rankByPlan, type Impact } from '@/lib/plan.ts';
 import { messageFor } from '@/lib/messages.ts';
 import FixItNow from '@/components/FixItNow.tsx';
 import { demoPlan } from '@/lib/demo-plan.ts';
 
-const KINDS = ['cancelled', 'missed', 'road', 'eat', 'rain'] as const;
+const KINDS = ['cancelled', 'missed', 'road', 'eat', 'rain', 'basics'] as const;
 type Kind = (typeof KINDS)[number];
 
 const liveData = process.env.COBBAN_LIVE_DATA === 'true';
@@ -24,6 +28,7 @@ const headline: Record<Kind, string> = {
   road: 'Routes that avoid the road.',
   eat: 'Places worth walking to.',
   rain: 'Wait it out, or move indoors?',
+  basics: 'What everyone here already knows.',
 };
 
 /**
@@ -57,13 +62,14 @@ export default async function ProblemPage({
   params, searchParams,
 }: {
   params: Promise<{ kind: string }>;
-  searchParams: Promise<{ from?: string; to?: string; city?: string }>;
+  searchParams: Promise<{ country?: string; from?: string; to?: string; city?: string }>;
 }) {
   const { kind } = await params;
   if (!KINDS.includes(kind as Kind)) notFound();
   const k = kind as Kind;
 
-  const { from, to, city } = await searchParams;
+  const { country: code, from, to, city } = await searchParams;
+  const country = await getCountry(code ?? '');
   const isTransport = k === 'cancelled' || k === 'missed' || k === 'road';
 
   return (
@@ -71,11 +77,15 @@ export default async function ProblemPage({
       <Link href="/" className="back">← Something else</Link>
       <h1>{headline[k]}</h1>
 
+      <CountryPicker active={country.code} basePath={`/sorun/${k}`} />
+
       {isTransport
-        ? <TransportAnswer kind={k} from={from} to={to} />
+        ? <TransportAnswer country={country} kind={k} from={from} to={to} />
         : k === 'eat'
-          ? <PlaceAnswer kind="eat" city={city} />
-          : <RainAnswer city={city} />}
+          ? <PlaceAnswer country={country} kind="eat" city={city} />
+          : k === 'rain'
+            ? <RainAnswer country={country} city={city} />
+            : <Essentials country={country} />}
     </>
   );
 }
@@ -83,13 +93,24 @@ export default async function ProblemPage({
 /* ------------------------------------------------------------- ulaşım */
 
 async function TransportAnswer({
-  kind, from, to,
-}: { kind: 'cancelled' | 'missed' | 'road'; from?: string; to?: string }) {
-  const origin = cityById(from ?? '') ?? cities[0];
-  const target = cityById(to ?? '') ?? cities[3];
+  country, kind, from, to,
+}: {
+  country: Country;
+  kind: 'cancelled' | 'missed' | 'road';
+  from?: string; to?: string;
+}) {
+  const origin = cityIn(country, from);
+  const target =
+    country.cities.find((c) => c.id === to && c.id !== origin.id)
+    ?? country.cities.find((c) => c.id !== origin.id)
+    ?? origin;
 
-  if (origin.id === target.id) {
-    return <p className="muted">Pick a different destination below.</p>;
+  /*
+   * Canlı ulaşım verisi her ülkede yok. Turiste boş bir liste göstermek
+   * yerine ne olduğunu ve şimdi ne yapacağını söylüyoruz — yalan söylemeden.
+   */
+  if (country.transport === 'none' || !origin.stopPlaceId || !target.stopPlaceId) {
+    return <NoTransportYet country={country} />;
   }
 
   const { trips, live } = await getTrips(origin.stopPlaceId, target.stopPlaceId);
@@ -106,9 +127,11 @@ async function TransportAnswer({
   return (
     <>
       <p className="muted small" style={{ marginTop: '-.2rem' }}>{tripHint[kind]}</p>
-      <Picker label="From" param="from" selected={origin.id} otherParam="to" otherValue={target.id} />
-      <UseMyLocation param="from" />
-      <Picker label="To" param="to" selected={target.id} otherParam="from" otherValue={origin.id} />
+      <CityChips label="From" cities={country.cities} selected={origin.id}
+                 href={(id) => `?country=${country.code}&from=${id}&to=${target.id}`} />
+      <UseMyLocation param="from" cities={country.cities} />
+      <CityChips label="To" cities={country.cities} selected={target.id}
+                 href={(id) => `?country=${country.code}&from=${origin.id}&to=${id}`} />
 
       {!live && (
         <p className="demo">
@@ -155,6 +178,61 @@ async function TransportAnswer({
 }
 
 /**
+ * Ulaşım entegrasyonu olmayan ülke.
+ *
+ * "Yakında" demek turiste hiçbir şey vermez. Onun yerine o ülkede
+ * gerçekten işe yarayan şeyi veriyoruz: hakları ve elimizdeki bilgi.
+ */
+function NoTransportYet({ country }: { country: Country }) {
+  return (
+    <>
+      <div className="answer">
+        <strong>We don’t have live departures in {country.name} yet</strong>
+        <span className="muted small">
+          Norway is the only country where we can read the timetable in real time so far.
+          Here is what still applies to you today.
+        </span>
+      </div>
+
+      <div className="option">
+        <div className="place">
+          <span>
+            <strong>Ask for re-routing, not a refund</strong>
+            <span className="hint small muted" style={{ display: 'block' }}>
+              Under EU passenger rules a cancelled train, coach, ferry or flight generally
+              gives you a choice: re-routing to your destination at no extra cost, or your
+              money back. A refund solves the money and leaves you standing in the same place.
+            </span>
+          </span>
+        </div>
+        <div className="place">
+          <span>
+            <strong>Photograph the cancellation</strong>
+            <span className="hint small muted" style={{ display: 'block' }}>
+              The departure board, the SMS, the desk notice. This is what an insurer or a
+              compensation claim asks for weeks later, when nobody remembers your delay.
+            </span>
+          </span>
+        </div>
+        <div className="place">
+          <span>
+            <strong>Call the next thing in your plan before you rebook</strong>
+            <span className="hint small muted" style={{ display: 'block' }}>
+              Hotels hold rooms far past check-in if you tell them. Restaurants move a table
+              an hour. Both stop being possible once you are late without warning.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <p className="muted small">
+        Emergency in {country.name}: <strong>{country.emergency.general}</strong> — works in English.
+      </p>
+    </>
+  );
+}
+
+/**
  * Etkilenen ilk madde için hazır mesaj.
  *
  * Yalnızca gerçekten bir şeyin bozulduğu seçeneklerde çıkar. Planı
@@ -193,10 +271,13 @@ function PlanImpact({ impact }: { impact?: Impact }) {
   );
 }
 
-function Picker({
-  label, param, selected, otherParam, otherValue,
+function CityChips({
+  label, cities, selected, href,
 }: {
-  label: string; param: 'from' | 'to'; selected: City; otherParam: string; otherValue: string;
+  label: string;
+  cities: CityRef[];
+  selected: string;
+  href: (id: string) => string;
 }) {
   return (
     <>
@@ -205,7 +286,7 @@ function Picker({
         {cities.map((c) => (
           <Link
             key={c.id}
-            href={`?${param}=${c.id}&${otherParam}=${otherValue}`}
+            href={href(c.id)}
             className="chip"
             aria-current={c.id === selected ? 'true' : undefined}
           >
@@ -223,9 +304,11 @@ function Picker({
  * Yağmur ekranı önce havaya bakar. Yağış 2 saatten kısa sürecekse içeri
  * girmeyi önermek yanlış tavsiye olur — turistin dışarıdaki planı hâlâ
  * geçerlidir, sadece beklemesi gerekir.
+ *
+ * MET Norway tüm dünyayı kapsıyor: bu ekran her ülkede aynı şekilde çalışır.
  */
-async function RainAnswer({ city }: { city?: string }) {
-  const active = cityById(city ?? '') ?? cities[0];
+async function RainAnswer({ country, city }: { country: Country; city?: string }) {
+  const active = cityIn(country, city);
 
   let advice = 'Here are indoor options.';
   let indoors = true;
@@ -243,16 +326,9 @@ async function RainAnswer({ city }: { city?: string }) {
 
   return (
     <>
-      <h2>Where are you?</h2>
-      <div className="chips">
-        {cities.map((c) => (
-          <Link key={c.id} href={`?city=${c.id}`} className="chip"
-                aria-current={c.id === active.id ? 'true' : undefined}>
-            {c.name}
-          </Link>
-        ))}
-      </div>
-      <UseMyLocation />
+      <CityChips label="Where are you?" cities={country.cities} selected={active.id}
+                 href={(id) => `?country=${country.code}&city=${id}`} />
+      <UseMyLocation cities={country.cities} />
 
       {!live && (
         <p className="demo">
@@ -265,34 +341,40 @@ async function RainAnswer({ city }: { city?: string }) {
         <span className="muted small">{advice}</span>
       </div>
 
-      {indoors && <PlaceList city={active.id} kind="indoor" />}
+      {indoors && <PlaceList country={country} city={active.id} kind="indoor" />}
     </>
   );
 }
 
-function PlaceAnswer({ kind, city }: { kind: 'eat' | 'indoor'; city?: string }) {
-  const active = cityById(city ?? '') ?? cities[0];
+function PlaceAnswer({
+  country, kind, city,
+}: { country: Country; kind: 'eat' | 'indoor'; city?: string }) {
+  const active = cityIn(country, city);
 
   return (
     <>
-      <h2>Where are you?</h2>
-      <div className="chips">
-        {cities.map((c) => (
-          <Link key={c.id} href={`?city=${c.id}`} className="chip"
-                aria-current={c.id === active.id ? 'true' : undefined}>
-            {c.name}
-          </Link>
-        ))}
-      </div>
-      <UseMyLocation />
+      <CityChips label="Where are you?" cities={country.cities} selected={active.id}
+                 href={(id) => `?country=${country.code}&city=${id}`} />
+      <UseMyLocation cities={country.cities} />
 
-      <PlaceList city={active.id} kind={kind} />
+      <PlaceList country={country} city={active.id} kind={kind} />
     </>
   );
 }
 
-function PlaceList({ city, kind }: { city: City; kind: 'eat' | 'indoor' }) {
-  const list = placesFor(city, kind);
+function PlaceList({
+  country, city, kind,
+}: { country: Country; city: string; kind: 'eat' | 'indoor' }) {
+  const list = placesIn(country, city, kind);
+
+  if (list.length === 0) {
+    return (
+      <p className="muted small">
+        No hand-picked places in this city yet. We only list what someone has actually checked.
+      </p>
+    );
+  }
+
   return (
     <>
       <div className="option">
@@ -309,6 +391,53 @@ function PlaceList({ city, kind }: { city: City; kind: 'eat' | 'indoor' }) {
 
       <p className="muted small">
         Hand-picked, not scraped. Hours change — call ahead for the late ones.
+      </p>
+    </>
+  );
+}
+
+/* ------------------------------------------------------------- temel bilgi */
+
+/**
+ * Turistin en çok parasını yiyen şey gecikme değil, BİLMEMEK: doğrulanmamış
+ * bilet, kapalı mutfak, nakit istemeyen taverna. Bu bilgiler statik — yani
+ * hiçbir API'ye bağlı olmadan her ülkede aynı gün açılabilir.
+ */
+function Essentials({ country }: { country: Country }) {
+  const e = country.emergency;
+  const numbers = [
+    ['Police', e.police], ['Ambulance', e.ambulance], ['Fire', e.fire],
+  ].filter(([, n]) => n !== e.general);
+
+  return (
+    <>
+      <div className="answer">
+        <strong>Emergency in {country.name}: {e.general}</strong>
+        <span className="muted small">
+          {numbers.length > 0
+            ? `${numbers.map(([w, n]) => `${w} ${n}`).join(' · ')} · `
+            : ''}
+          112 reaches an English-speaking operator anywhere in the EU and EEA.
+        </span>
+      </div>
+
+      <div className="option">
+        {country.essentials.map((item) => (
+          <div className="place" key={item.when}>
+            <span>
+              <strong>{item.when}</strong>
+              <span className="hint small muted" style={{ display: 'block' }}>{item.answer}</span>
+              <span className="cost small" style={{ display: 'block' }}>
+                Not knowing costs you: {item.costsIfUnknown}
+              </span>
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <p className="muted small">
+        Currency: {country.currency}. Local language: {country.language}.
+        Checked by hand — tell us if something has changed.
       </p>
     </>
   );
