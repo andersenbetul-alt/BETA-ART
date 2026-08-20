@@ -94,11 +94,19 @@ CLAIMS = [
         contradicts=[r"all sales are final"],
     ),
     dict(
+        # The mark is on 67 pages in 12 languages and reads, in each of them,
+        # "nothing is published here until a person has seen it and approved
+        # it". Eleven of those twelve languages were written by a machine and
+        # have never been read by anyone who speaks them — including the
+        # sentence making the claim. The mark is not withdrawn; its edges are
+        # stated, and the notice has to keep stating them.
         id="human-approved",
+        commits="[Aa] person decides what goes up",
         promise="nothing is published until a person has approved it",
         said=[r"Human approved", r"Menneskelig godkjent"],
-        anchor="ai",
-        backed=[r"A person is responsible for every delivery"],
+        anchor="human-approved",
+        backed=[r"[Aa] person decides what goes up",
+                r"have not been read by a native speaker"],
         contradicts=[],
     ),
 ]
@@ -163,6 +171,7 @@ def main():
                  % (c["id"], c["anchor"]))
             continue
         blocks = re.findall(r"<(?:p|li)[^>]*>.*?</(?:p|li)>", body, re.S)
+        matched = []
         for phrase in c["backed"]:
             hits = [b for b in blocks if re.search(phrase, b)]
             if not hits and re.search(phrase, body):
@@ -171,14 +180,17 @@ def main():
                 note("unbacked", "legal.html #%s does not say \u201c%s\u201d, so the promise "
                      "\u201c%s\u201d is made on the site and kept nowhere"
                      % (c["anchor"], phrase, c["promise"]))
-            elif c.get("commits") and not any(re.search(c["commits"], h) for h in hits):
-                # The words are there, but only in passing. A mention is not an
-                # undertaking: this is what let the 48-hour promise look backed
-                # when its commitment sentence had been taken out.
-                note("mentioned, not promised",
-                     "legal.html #%s uses \u201c%s\u201d without committing to it, so "
-                     "\u201c%s\u201d is described rather than owed"
-                     % (c["anchor"], phrase, c["promise"]))
+            matched += hits
+        # The words are there, but only in passing. A mention is not an
+        # undertaking: this is what let the 48-hour promise look backed when
+        # its commitment sentence had been taken out. Backing may run across
+        # several paragraphs — the human-approved mark states what it covers in
+        # one and what it does not cover in the next — so the undertaking has
+        # to appear somewhere in the backing, not in every part of it.
+        if matched and c.get("commits") and not any(re.search(c["commits"], h) for h in matched):
+            note("mentioned, not promised",
+                 "legal.html #%s carries the words but never undertakes anything, so "
+                 "\u201c%s\u201d is described rather than owed" % (c["anchor"], c["promise"]))
 
         # ---- where is it said? --------------------------------------------
         said_on = [p for p, s in src.items()
