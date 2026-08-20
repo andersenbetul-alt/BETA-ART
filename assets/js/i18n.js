@@ -46,7 +46,7 @@ window.HXI_I18N.en = {
   play_preview: "Play preview",
   follow_label: "Follow",
 
-  credits_label: "Sync & Collab Credits",
+  credits_label: "Soundtrack & collab credits",
   credit_ff: "Drift Tape/Phonk Vol 1 · with TWISTED",
   credit_bodycam: "Official Game Soundtrack",
   credit_310: "Soak City · Remix",
@@ -282,7 +282,7 @@ window.HXI_I18N.en = {
   fact_genre_v: "Drift phonk, with bass house and Brazilian phonk",
   fact_streams: "Streams",
   fact_listeners: "Monthly listeners",
-  fact_sync: "Sync",
+  fact_sync: "On soundtracks",
   fact_label: "Label",
 
   book_label: "Booking",
@@ -323,7 +323,7 @@ window.HXI_I18N.zh = {
   play_preview: "试听",
   follow_label: "关注",
 
-  credits_label: "影视授权与合作",
+  credits_label: "原声与合作署名",
   credit_ff: "Drift Tape/Phonk Vol 1 · 与 TWISTED",
   credit_bodycam: "官方游戏原声",
   credit_310: "Soak City · 混音",
@@ -559,7 +559,7 @@ window.HXI_I18N.zh = {
   fact_genre_v: "Drift phonk，兼有 bass house 与巴西 phonk",
   fact_streams: "播放量",
   fact_listeners: "月听众",
-  fact_sync: "影视授权",
+  fact_sync: "收录于原声",
   fact_label: "厂牌",
 
   book_label: "演出预订",
@@ -600,7 +600,7 @@ window.HXI_I18N.es = {
   play_preview: "Escuchar",
   follow_label: "Sigue a HXI",
 
-  credits_label: "Créditos de sync y colaboración",
+  credits_label: "Créditos de bandas sonoras y colaboraciones",
   credit_ff: "Drift Tape/Phonk Vol 1 · con TWISTED",
   credit_bodycam: "Banda sonora oficial del juego",
   credit_310: "Soak City · Remix",
@@ -839,7 +839,7 @@ window.HXI_I18N.es = {
   fact_genre_v: "Drift phonk, con bass house y phonk brasileño",
   fact_streams: "Reproducciones",
   fact_listeners: "Oyentes mensuales",
-  fact_sync: "Sync",
+  fact_sync: "En bandas sonoras",
   fact_label: "Sello",
 
   book_label: "Contrataciones",
@@ -880,7 +880,7 @@ window.HXI_I18N.hi = {
   play_preview: "झलक सुनें",
   follow_label: "फ़ॉलो करें",
 
-  credits_label: "सिंक व सहयोग क्रेडिट",
+  credits_label: "साउंडट्रैक और सहयोग के श्रेय",
   credit_ff: "Drift Tape/Phonk Vol 1 · TWISTED के साथ",
   credit_bodycam: "आधिकारिक गेम साउंडट्रैक",
   credit_310: "Soak City · रीमिक्स",
@@ -1116,7 +1116,7 @@ window.HXI_I18N.hi = {
   fact_genre_v: "Drift phonk, साथ में bass house और ब्राज़ीलियन phonk",
   fact_streams: "स्ट्रीम",
   fact_listeners: "मासिक श्रोता",
-  fact_sync: "सिंक",
+  fact_sync: "साउंडट्रैक पर",
   fact_label: "लेबल",
 
   book_label: "बुकिंग",
@@ -1157,7 +1157,7 @@ window.HXI_I18N.ar = {
   play_preview: "استمع لمقتطف",
   follow_label: "تابِع",
 
-  credits_label: "أعمال ترخيص وتعاون",
+  credits_label: "اعتمادات الموسيقى التصويرية والتعاونات",
   credit_ff: "Drift Tape/Phonk Vol 1 · مع TWISTED",
   credit_bodycam: "الموسيقى التصويرية الرسمية للعبة",
   credit_310: "Soak City · ريمكس",
@@ -1393,7 +1393,7 @@ window.HXI_I18N.ar = {
   fact_genre_v: "‏Drift phonk، مع bass house وفونك برازيلي",
   fact_streams: "الاستماع",
   fact_listeners: "مستمعون شهريًا",
-  fact_sync: "الترخيص",
+  fact_sync: "على موسيقى تصويرية",
   fact_label: "شركة الإنتاج",
 
   book_label: "الحجز",
@@ -1434,7 +1434,7 @@ window.HXI_I18N.fr = {
   play_preview: "Écouter un extrait",
   follow_label: "Suivre",
 
-  credits_label: "Crédits sync et collabs",
+  credits_label: "Crédits bandes originales et collaborations",
   credit_ff: "Drift Tape/Phonk Vol 1 · avec TWISTED",
   credit_bodycam: "Bande-son officielle du jeu",
   credit_310: "Soak City · Remix",
@@ -1670,7 +1670,7 @@ window.HXI_I18N.fr = {
   fact_genre_v: "Drift phonk, avec de la bass house et du phonk brésilien",
   fact_streams: "Écoutes",
   fact_listeners: "Auditeurs mensuels",
-  fact_sync: "Sync",
+  fact_sync: "Sur des bandes originales",
   fact_label: "Label",
 
   book_label: "Booking",
@@ -1711,7 +1711,7 @@ window.HXI_I18N.pt = {
   play_preview: "Ouvir prévia",
   follow_label: "Seguir",
 
-  credits_label: "Créditos de sync e colabs",
+  credits_label: "Créditos de trilhas e colaborações",
   credit_ff: "Drift Tape/Phonk Vol 1 · com TWISTED",
   credit_bodycam: "Trilha sonora oficial do jogo",
   credit_310: "Soak City · Remix",
@@ -1947,7 +1947,7 @@ window.HXI_I18N.pt = {
   fact_genre_v: "Drift phonk, com bass house e phonk brasileiro",
   fact_streams: "Streams",
   fact_listeners: "Ouvintes mensais",
-  fact_sync: "Sync",
+  fact_sync: "Em trilhas sonoras",
   fact_label: "Selo",
 
   book_label: "Contratação",
@@ -1988,7 +1988,7 @@ window.HXI_I18N.bn = {
   play_preview: "প্রিভিউ শুনুন",
   follow_label: "ফলো করুন",
 
-  credits_label: "সিঙ্ক ও কোলাব ক্রেডিট",
+  credits_label: "সাউন্ডট্র্যাক ও যৌথ কাজের কৃতিত্ব",
   credit_ff: "Drift Tape/Phonk Vol 1 · TWISTED-এর সঙ্গে",
   credit_bodycam: "গেমের অফিসিয়াল সাউন্ডট্র্যাক",
   credit_310: "Soak City · রিমিক্স",
@@ -2224,7 +2224,7 @@ window.HXI_I18N.bn = {
   fact_genre_v: "Drift phonk, সঙ্গে bass house আর ব্রাজিলিয়ান phonk",
   fact_streams: "স্ট্রিম",
   fact_listeners: "মাসিক শ্রোতা",
-  fact_sync: "সিঙ্ক",
+  fact_sync: "সাউন্ডট্র্যাকে",
   fact_label: "লেবেল",
 
   book_label: "বুকিং",
@@ -2265,7 +2265,7 @@ window.HXI_I18N.ru = {
   play_preview: "Послушать",
   follow_label: "Подписаться",
 
-  credits_label: "Синки и коллаборации",
+  credits_label: "Саундтреки и совместные работы",
   credit_ff: "Drift Tape/Phonk Vol 1 · вместе с TWISTED",
   credit_bodycam: "Официальный саундтрек игры",
   credit_310: "Soak City · ремикс",
@@ -2501,7 +2501,7 @@ window.HXI_I18N.ru = {
   fact_genre_v: "Drift phonk, с bass house и бразильским phonk",
   fact_streams: "Прослушивания",
   fact_listeners: "Слушателей в месяц",
-  fact_sync: "Синк",
+  fact_sync: "В саундтреках",
   fact_label: "Лейбл",
 
   book_label: "Букинг",
@@ -2542,7 +2542,7 @@ window.HXI_I18N.ur = {
   play_preview: "جھلک سنیں",
   follow_label: "فالو کریں",
 
-  credits_label: "سنک اور اشتراک کے کریڈٹ",
+  credits_label: "ساؤنڈ ٹریک اور اشتراک کے کریڈٹس",
   credit_ff: "Drift Tape/Phonk Vol 1 · TWISTED کے ساتھ",
   credit_bodycam: "گیم کا سرکاری ساؤنڈ ٹریک",
   credit_310: "Soak City · ری مکس",
@@ -2778,7 +2778,7 @@ window.HXI_I18N.ur = {
   fact_genre_v: "‏Drift phonk، ساتھ bass house اور برازیلی phonk",
   fact_streams: "اسٹریمز",
   fact_listeners: "ماہانہ سامعین",
-  fact_sync: "سنک",
+  fact_sync: "ساؤنڈ ٹریکس پر",
   fact_label: "لیبل",
 
   book_label: "بکنگ",
@@ -2819,7 +2819,7 @@ window.HXI_I18N.no = {
   play_preview: "Hør smakebit",
   follow_label: "Følg",
 
-  credits_label: "Sync- og samarbeidskreditter",
+  credits_label: "Lydspor- og samarbeidskreditering",
   credit_ff: "Drift Tape/Phonk Vol 1 · med TWISTED",
   credit_bodycam: "Offisielt spillsoundtrack",
   credit_310: "Soak City · remiks",
@@ -3055,7 +3055,7 @@ window.HXI_I18N.no = {
   fact_genre_v: "Drift phonk, med bass house og brasiliansk phonk",
   fact_streams: "Strømminger",
   fact_listeners: "Månedlige lyttere",
-  fact_sync: "Sync",
+  fact_sync: "På lydspor",
   fact_label: "Plateselskap",
 
   book_label: "Booking",
@@ -3096,7 +3096,7 @@ window.HXI_I18N.tr = {
   play_preview: "Önizlemeyi çal",
   follow_label: "Takip et",
 
-  credits_label: "Sync ve iş birliği künyesi",
+  credits_label: "Film müziği ve ortak çalışma künyeleri",
   credit_ff: "Drift Tape/Phonk Vol 1 · TWISTED ile",
   credit_bodycam: "Resmi oyun müziği",
   credit_310: "Soak City · remix",
@@ -3332,7 +3332,7 @@ window.HXI_I18N.tr = {
   fact_genre_v: "Drift phonk; içinde bass house ve Brezilya phonk'u",
   fact_streams: "Dinlenme",
   fact_listeners: "Aylık dinleyici",
-  fact_sync: "Sync",
+  fact_sync: "Film müziklerinde",
   fact_label: "Etiket",
 
   book_label: "Booking",

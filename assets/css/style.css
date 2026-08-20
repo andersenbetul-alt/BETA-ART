@@ -282,7 +282,12 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
    let each one pick its own direction from its content. */
 .facts dd,.chips,.meta,.stats b,.credit-list b,.credit-list span,
 .rows b,.rows span,.video figcaption b,.video figcaption span,
-.socials a,.contacts a,.tracklist li,.stem-title,.legal,.note{unicode-bidi:plaintext}
+/* Latin names and figures inside an Arabic or Urdu page. Without plaintext the browser
+   reorders them against the paragraph direction and "Fast & Furious: Drift Tape/Phonk
+   Vol 1 · BODYCAM · NCS" comes out backwards. CLAUDE.md requires this on any data cell
+   that holds one; the fact sheet and the credit strip were both missing it. */
+.socials a,.contacts a,.tracklist li,.stem-title,.legal,.note,
+.facts dd,.credit-list b,.credit-list span,.chips{unicode-bidi:plaintext;text-align:start}
 
 /* ---------- youtube facade ----------
    Nothing is requested from YouTube until the visitor presses play. */

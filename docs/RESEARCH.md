@@ -121,6 +121,31 @@ A contract does appear to exist — `docs/BUSINESS.md` records it as signed unde
 undescribed until someone reads the paper. When it is read, put the row in the table above and
 the sentence can come back in whatever form the contract actually supports.
 
+## Corrected August 2026 — the credits were filed under the wrong heading
+
+HXI's build blueprint carries a "locked do-not-claim list" that must survive every future
+edit, and two of its entries are *no "Fast & Furious sync"* and *no "BODYCAM OST"*. Reading
+that against what was actually verified on 2026-08-18 shows the objection is not to the
+credits — it is to the word **sync**, and it was right.
+
+What the sources support:
+
+- **Fast & Furious.** "WORTH NOTHING (feat. Oliver Tree) — Aggressive Drift Phonk Version" is
+  on the album *Fast & Furious: Drift Tape/Phonk Vol 1*, credited TWISTED & HXI. That is a
+  credit on a companion album. It is **not** evidence that any HXI music is synced into a
+  Fast & Furious film, and nobody has paperwork saying it is.
+- **BODYCAM.** *Never Phased* and *KRASH* are on the game's official soundtrack. Calling that
+  a soundtrack credit is fair; calling it a sync placement imports a contract nobody has read.
+
+So the credits stay and the category changed. The strip is headed "Soundtrack & collab
+credits" instead of "Sync & Collab Credits", the fact sheet row is "On soundtracks" and spells
+out the album by name, and the meta, og and twitter descriptions say "on the Fast & Furious:
+Drift Tape/Phonk Vol 1 album and the BODYCAM soundtrack" instead of "Fast & Furious sync".
+
+This is PR principle 5 — credits in the right category — doing exactly the work it was written
+for. The rule to carry forward: **name the release, not the franchise.** "On *Drift Tape/Phonk
+Vol 1*" is checkable; "Fast & Furious sync" is a claim about a contract.
+
 ## Where the press kit and this log disagree — and why the page keeps the credits
 
 HXI's July 2026 press kit also says do not print **any Fast & Furious credit** and **any
