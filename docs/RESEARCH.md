@@ -111,6 +111,20 @@ not in the archive yet — that is the only reason it is missing.
   "I Can't Stop" remix, and others) on Spotify. The catalogue only shows the original; a
   "versions" line on that card would reflect what is actually out there.
 
+## Corrected August 2026 — NCS is 34.3 million, not 50
+
+The page said "50 million subscribers" as the NCS section's headline, again in the credits
+strip ("NoCopyrightSounds · 50M+"), again in a Latest card, and stretched it further into
+"NCS extends that reach to 200M+ content creators".
+
+NCS has **34.3 million YouTube subscribers and about 12.5 billion views** — Wikipedia and
+two analytics trackers agree, figures dated July 2026. The page was overstating a partner's
+audience by roughly 46%, and the 200M creator figure has no source anywhere. Both are
+corrected; the 200M line is gone rather than adjusted, because nothing measures it.
+
+The 50M came from the same brand pack as the 850K listener figure. Treat every round number
+in that pack as unchecked until it has a line here.
+
 ## Poisoned sources — do not take figures from these
 
 Two files in the project archive are early AI mock-ups, not records of anything. Their

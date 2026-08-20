@@ -59,7 +59,7 @@ window.HXI_I18N.en = {
   news2_text: "Second NoCopyrightSounds release. Free for content creators worldwide.",
   news3_date: "September 2024",
   news3_tag: "NCS debut",
-  news3_text: "The NCS debut. More than 50 million subscribers now have access to the official track.",
+  news3_text: "The NCS debut. Free for creators to use, with credit, anywhere NCS reaches.",
 
   music_label: "Music",
   music_title: "Discography",
@@ -100,12 +100,12 @@ window.HXI_I18N.en = {
 
   video_label: "Edit Culture",
   video_title: "43M streams. Built by the community.",
-  video_p: "“help urself” spread through anime and gaming edits. The edit community built 43 million streams organically. NCS extends that reach to 200M+ content creators.",
+  video_p: "“help urself” spread through anime and gaming edits. The edit community built 43 million streams organically. Two tracks now sit in the NCS catalogue, where creators find music they can use.",
   video_consent: "Videos load from YouTube only after you press play.",
 
   ncs_label: "NCS Artist",
-  ncs_title: "50 million subscribers.",
-  ncs_p: "HXI is an official NoCopyrightSounds artist — the channel sits at the centre of the creator ecosystem with more than 50 million subscribers. Two HXI releases are out there.",
+  ncs_title: "34 million subscribers.",
+  ncs_p: "HXI is an official NoCopyrightSounds artist. The channel carries 34.3 million subscribers and 12.5 billion views, and creators go there for music they can use. Two HXI releases are in that catalogue.",
   ncs_listen: "Listen →",
 
   about_label: "About",
@@ -234,7 +234,7 @@ window.HXI_I18N.zh = {
   news2_text: "第二首 NoCopyrightSounds 发行作品，全球创作者可免费使用。",
   news3_date: "2024 年 9 月",
   news3_tag: "NCS 首发",
-  news3_text: "NCS 首秀。5000 多万订阅者从此可以使用这首官方曲目。",
+  news3_text: "NCS 首秀。创作者署名后即可自由使用，NCS 触达之处皆可。",
 
   music_label: "音乐",
   music_title: "作品目录",
@@ -275,12 +275,12 @@ window.HXI_I18N.zh = {
 
   video_label: "剪辑文化",
   video_title: "4300 万播放，由社区推动。",
-  video_p: "《help urself》凭借动漫与游戏剪辑走红。4300 万次播放由剪辑社区自发带来。NCS 又将这份触达扩展到 2 亿以上的内容创作者。",
+  video_p: "《help urself》凭借动漫与游戏剪辑走红。4300 万次播放由剪辑社区自发带来。如今有两首作品收录在 NCS 目录里，创作者在那里寻找可用的音乐。",
   video_consent: "只有点击播放后，视频才会从 YouTube 加载。",
 
   ncs_label: "NCS 签约艺人",
-  ncs_title: "5000 万订阅者的平台。",
-  ncs_p: "HXI 是 NoCopyrightSounds 的官方签约艺人；这个拥有 5000 万以上订阅者的频道处于创作者生态的中心。HXI 已有两首作品在那里上线。",
+  ncs_title: "3430 万订阅者的平台。",
+  ncs_p: "HXI 是 NoCopyrightSounds 的官方签约艺人。该频道拥有 3430 万订阅者、125 亿次观看，创作者会到那里寻找可用的音乐。HXI 有两首作品在这个目录里。",
   ncs_listen: "收听 →",
 
   about_label: "关于",
@@ -409,7 +409,7 @@ window.HXI_I18N.es = {
   news2_text: "Segundo lanzamiento en NoCopyrightSounds. Gratis para creadores de contenido de todo el mundo.",
   news3_date: "septiembre de 2024",
   news3_tag: "Debut en NCS",
-  news3_text: "El debut en NCS. Más de 50 millones de suscriptores tienen ya acceso al tema oficial.",
+  news3_text: "El debut en NCS. Libre para que los creadores lo usen, con crédito, allí donde llega NCS.",
 
   music_label: "Música",
   music_title: "Discografía",
@@ -450,12 +450,12 @@ window.HXI_I18N.es = {
 
   video_label: "Cultura del edit",
   video_title: "43 M de reproducciones. Construidas por la comunidad.",
-  video_p: "«help urself» se difundió a través de los edits de anime y gaming. La comunidad de edits generó 43 millones de reproducciones de forma orgánica. NCS amplía ese alcance a más de 200 millones de creadores.",
+  video_p: "«help urself» se difundió a través de los edits de anime y gaming. La comunidad de edits generó 43 millones de reproducciones de forma orgánica. Dos temas están ahora en el catálogo de NCS, donde los creadores buscan música que puedan usar.",
   video_consent: "Los vídeos se cargan desde YouTube solo cuando pulsas reproducir.",
 
   ncs_label: "Artista NCS",
-  ncs_title: "50 millones de suscriptores.",
-  ncs_p: "HXI es artista oficial de NoCopyrightSounds, un canal que ocupa el centro del ecosistema de creadores con más de 50 millones de suscriptores. Allí hay dos lanzamientos suyos.",
+  ncs_title: "34 millones de suscriptores.",
+  ncs_p: "HXI es artista oficial de NoCopyrightSounds. El canal tiene 34,3 millones de suscriptores y 12.500 millones de visualizaciones, y los creadores acuden allí a buscar música que puedan usar. Dos lanzamientos suyos están en ese catálogo.",
   ncs_listen: "Escuchar →",
 
   about_label: "Perfil",
@@ -584,7 +584,7 @@ window.HXI_I18N.hi = {
   news2_text: "दूसरी NoCopyrightSounds रिलीज़। दुनिया भर के कंटेंट क्रिएटर्स के लिए मुफ़्त।",
   news3_date: "सितंबर 2024",
   news3_tag: "NCS डेब्यू",
-  news3_text: "NCS पर पहला कदम। 5 करोड़ से अधिक सब्सक्राइबर अब इस आधिकारिक ट्रैक का इस्तेमाल कर सकते हैं।",
+  news3_text: "NCS पर पहला कदम। क्रिएटर्स श्रेय देकर इसे कहीं भी इस्तेमाल कर सकते हैं, जहाँ-जहाँ NCS पहुँचता है।",
 
   music_label: "संगीत",
   music_title: "डिस्कोग्राफ़ी",
@@ -625,12 +625,12 @@ window.HXI_I18N.hi = {
 
   video_label: "एडिट कल्चर",
   video_title: "4.3 करोड़ स्ट्रीम। समुदाय ने बनाए।",
-  video_p: "“help urself” एनीमे और गेमिंग एडिट के ज़रिये फैला। एडिट समुदाय ने ऑर्गैनिक रूप से 4.3 करोड़ स्ट्रीम तक पहुँचाया। NCS इस पहुँच को 20 करोड़ से अधिक कंटेंट क्रिएटर्स तक ले जाता है।",
+  video_p: "“help urself” एनीमे और गेमिंग एडिट के ज़रिये फैला। एडिट समुदाय ने ऑर्गैनिक रूप से 4.3 करोड़ स्ट्रीम तक पहुँचाया। दो ट्रैक अब NCS कैटलॉग में हैं, जहाँ क्रिएटर इस्तेमाल लायक संगीत खोजते हैं।",
   video_consent: "वीडियो तभी यूट्यूब से लोड होते हैं जब आप प्ले दबाते हैं।",
 
   ncs_label: "NCS कलाकार",
-  ncs_title: "5 करोड़ सब्सक्राइबर।",
-  ncs_p: "HXI आधिकारिक NoCopyrightSounds कलाकार हैं — 5 करोड़ से अधिक सब्सक्राइबर वाला यह चैनल क्रिएटर इकोसिस्टम के केंद्र में है। वहाँ HXI की दो रिलीज़ मौजूद हैं।",
+  ncs_title: "3.43 करोड़ सब्सक्राइबर।",
+  ncs_p: "HXI आधिकारिक NoCopyrightSounds कलाकार हैं। इस चैनल के 3.43 करोड़ सब्सक्राइबर और 1250 करोड़ व्यूज़ हैं, और क्रिएटर वहीं इस्तेमाल लायक संगीत खोजने जाते हैं। उस कैटलॉग में HXI की दो रिलीज़ हैं।",
   ncs_listen: "सुनें →",
 
   about_label: "परिचय",
@@ -759,7 +759,7 @@ window.HXI_I18N.ar = {
   news2_text: "ثاني إصدار على NoCopyrightSounds، متاح مجانًا لصنّاع المحتوى حول العالم.",
   news3_date: "سبتمبر 2024",
   news3_tag: "بداية على NCS",
-  news3_text: "الظهور الأول على NCS. أكثر من 50 مليون مشترك صار بإمكانهم استخدام المقطوعة الرسمية.",
+  news3_text: "الظهور الأول على NCS. متاح لصنّاع المحتوى مع النسبة، أينما وصلت NCS.",
 
   music_label: "الموسيقى",
   music_title: "الأعمال",
@@ -800,12 +800,12 @@ window.HXI_I18N.ar = {
 
   video_label: "ثقافة المونتاج",
   video_title: "43 مليون استماع صنعها الجمهور.",
-  video_p: "انتشر «help urself» عبر مقاطع مونتاج الأنمي والألعاب. مجتمع المونتاج هو من صنع 43 مليون استماع بشكل عضوي، وتوسّع هذا الوصول عبر NCS إلى أكثر من 200 مليون صانع محتوى.",
+  video_p: "انتشر «help urself» عبر مقاطع مونتاج الأنمي والألعاب. مجتمع المونتاج هو من صنع 43 مليون استماع بشكل عضوي. ومقطوعتان الآن ضمن كتالوج NCS، حيث يبحث صنّاع المحتوى عن موسيقى يمكنهم استخدامها.",
   video_consent: "لا تُحمَّل مقاطع الفيديو من يوتيوب إلا بعد الضغط على زر التشغيل.",
 
   ncs_label: "فنان NCS",
-  ncs_title: "50 مليون مشترك.",
-  ncs_p: "HXI فنان رسمي لدى NoCopyrightSounds؛ قناة تقع في قلب منظومة صنّاع المحتوى ولديها أكثر من 50 مليون مشترك. صدر له عملان هناك.",
+  ncs_title: "34 مليون مشترك.",
+  ncs_p: "HXI فنان رسمي لدى NoCopyrightSounds. للقناة 34.3 مليون مشترك و12.5 مليار مشاهدة، وإليها يذهب صنّاع المحتوى بحثًا عن موسيقى يمكنهم استخدامها. وفي هذا الكتالوج عملان لـ HXI.",
   ncs_listen: "استمع →",
 
   about_label: "نبذة",
@@ -934,7 +934,7 @@ window.HXI_I18N.fr = {
   news2_text: "Deuxième sortie sur NoCopyrightSounds. Gratuite pour les créateurs du monde entier.",
   news3_date: "septembre 2024",
   news3_tag: "Débuts sur NCS",
-  news3_text: "Les débuts sur NCS. Plus de 50 millions d’abonnés peuvent désormais utiliser le titre officiel.",
+  news3_text: "Les débuts sur NCS. Libre d’utilisation pour les créateurs, avec crédit, partout où NCS est présent.",
 
   music_label: "Musique",
   music_title: "Discographie",
@@ -975,12 +975,12 @@ window.HXI_I18N.fr = {
 
   video_label: "Culture de l’edit",
   video_title: "43 M d’écoutes. Portées par la communauté.",
-  video_p: "« help urself » s’est diffusé grâce aux edits d’anime et de gaming. La communauté des edits a généré 43 millions d’écoutes de façon organique. NCS étend cette portée à plus de 200 millions de créateurs.",
+  video_p: "« help urself » s’est diffusé grâce aux edits d’anime et de gaming. La communauté des edits a généré 43 millions d’écoutes de façon organique. Deux titres figurent désormais au catalogue NCS, là où les créateurs cherchent de la musique utilisable.",
   video_consent: "Les vidéos ne se chargent depuis YouTube qu’après un clic sur lecture.",
 
   ncs_label: "Artiste NCS",
-  ncs_title: "50 millions d’abonnés.",
-  ncs_p: "HXI est artiste officiel NoCopyrightSounds, une chaîne au cœur de l’écosystème des créateurs avec plus de 50 millions d’abonnés. Deux de ses titres y sont sortis.",
+  ncs_title: "34 millions d’abonnés.",
+  ncs_p: "HXI est artiste officiel NoCopyrightSounds. La chaîne compte 34,3 millions d’abonnés et 12,5 milliards de vues, et c’est là que les créateurs cherchent de la musique utilisable. Deux de ses titres figurent à ce catalogue.",
   ncs_listen: "Écouter →",
 
   about_label: "À propos",
@@ -1109,7 +1109,7 @@ window.HXI_I18N.pt = {
   news2_text: "Segundo lançamento na NoCopyrightSounds. Grátis para criadores de conteúdo do mundo todo.",
   news3_date: "setembro de 2024",
   news3_tag: "Estreia na NCS",
-  news3_text: "A estreia na NCS. Mais de 50 milhões de inscritos já podem usar a faixa oficial.",
+  news3_text: "A estreia na NCS. Livre para criadores usarem, com crédito, onde a NCS chega.",
 
   music_label: "Música",
   music_title: "Discografia",
@@ -1150,12 +1150,12 @@ window.HXI_I18N.pt = {
 
   video_label: "Cultura do edit",
   video_title: "43 mi de streams. Construídos pela comunidade.",
-  video_p: "“help urself” se espalhou pelos edits de anime e gaming. A comunidade de edits construiu 43 milhões de streams de forma orgânica. O NCS amplia esse alcance para mais de 200 milhões de criadores.",
+  video_p: "“help urself” se espalhou pelos edits de anime e gaming. A comunidade de edits construiu 43 milhões de streams de forma orgânica. Duas faixas estão agora no catálogo da NCS, onde criadores procuram música que possam usar.",
   video_consent: "Os vídeos só carregam do YouTube depois que você aperta play.",
 
   ncs_label: "Artista NCS",
-  ncs_title: "50 milhões de inscritos.",
-  ncs_p: "HXI é artista oficial da NoCopyrightSounds, um canal no centro do ecossistema de criadores, com mais de 50 milhões de inscritos. Dois lançamentos dele estão lá.",
+  ncs_title: "34 milhões de inscritos.",
+  ncs_p: "HXI é artista oficial da NoCopyrightSounds. O canal tem 34,3 milhões de inscritos e 12,5 bilhões de visualizações, e é lá que criadores procuram música que possam usar. Dois lançamentos dele estão nesse catálogo.",
   ncs_listen: "Ouvir →",
 
   about_label: "Sobre",
@@ -1284,7 +1284,7 @@ window.HXI_I18N.bn = {
   news2_text: "দ্বিতীয় NoCopyrightSounds রিলিজ। বিশ্বজুড়ে কনটেন্ট নির্মাতাদের জন্য বিনামূল্যে।",
   news3_date: "সেপ্টেম্বর ২০২৪",
   news3_tag: "NCS অভিষেক",
-  news3_text: "NCS-এ অভিষেক। ৫ কোটির বেশি সাবস্ক্রাইবার এখন অফিসিয়াল ট্র্যাকটি ব্যবহার করতে পারেন।",
+  news3_text: "NCS-এ অভিষেক। কৃতিত্ব দিয়ে নির্মাতারা এটি ব্যবহার করতে পারেন, NCS যেখানেই পৌঁছায়।",
 
   music_label: "সংগীত",
   music_title: "ডিসকোগ্রাফি",
@@ -1325,12 +1325,12 @@ window.HXI_I18N.bn = {
 
   video_label: "এডিট কালচার",
   video_title: "৪.৩ কোটি স্ট্রিম। গড়েছে কমিউনিটি।",
-  video_p: "“help urself” ছড়িয়েছে অ্যানিমে ও গেমিং এডিটের মাধ্যমে। এডিট কমিউনিটিই স্বাভাবিকভাবে ৪.৩ কোটি স্ট্রিম তৈরি করেছে। NCS সেই নাগাল ২০ কোটিরও বেশি কনটেন্ট নির্মাতার কাছে পৌঁছে দেয়।",
+  video_p: "“help urself” ছড়িয়েছে অ্যানিমে ও গেমিং এডিটের মাধ্যমে। এডিট কমিউনিটিই স্বাভাবিকভাবে ৪.৩ কোটি স্ট্রিম তৈরি করেছে। দুটি ট্র্যাক এখন NCS ক্যাটালগে, যেখানে নির্মাতারা ব্যবহারযোগ্য গান খোঁজেন।",
   video_consent: "প্লে চাপলে তবেই ভিডিও ইউটিউব থেকে লোড হয়।",
 
   ncs_label: "NCS শিল্পী",
-  ncs_title: "৫ কোটি সাবস্ক্রাইবার।",
-  ncs_p: "HXI একজন অফিসিয়াল NoCopyrightSounds শিল্পী — ৫ কোটির বেশি সাবস্ক্রাইবার নিয়ে এই চ্যানেল ক্রিয়েটর ইকোসিস্টেমের কেন্দ্রে। সেখানে HXI-এর দুটি রিলিজ রয়েছে।",
+  ncs_title: "৩.৪৩ কোটি সাবস্ক্রাইবার।",
+  ncs_p: "HXI একজন অফিসিয়াল NoCopyrightSounds শিল্পী। চ্যানেলটির ৩.৪৩ কোটি সাবস্ক্রাইবার আর ১২৫০ কোটি ভিউ, আর নির্মাতারা সেখানেই ব্যবহারযোগ্য গান খুঁজতে যান। সেই ক্যাটালগে HXI-এর দুটি রিলিজ আছে।",
   ncs_listen: "শুনুন →",
 
   about_label: "পরিচিতি",
@@ -1459,7 +1459,7 @@ window.HXI_I18N.ru = {
   news2_text: "Второй релиз на NoCopyrightSounds. Бесплатно для авторов контента по всему миру.",
   news3_date: "сентябрь 2024",
   news3_tag: "Дебют на NCS",
-  news3_text: "Дебют на NCS. Более 50 миллионов подписчиков получили доступ к официальному треку.",
+  news3_text: "Дебют на NCS. Авторы могут использовать трек с указанием — везде, куда дотягивается NCS.",
 
   music_label: "Музыка",
   music_title: "Дискография",
@@ -1500,12 +1500,12 @@ window.HXI_I18N.ru = {
 
   video_label: "Культура эдитов",
   video_title: "43 млн прослушиваний. Их сделало сообщество.",
-  video_p: "«help urself» разошёлся благодаря аниме- и гейминг-эдитам. Сообщество эдиторов органически принесло 43 миллиона прослушиваний. NCS расширяет этот охват до 200+ миллионов авторов контента.",
+  video_p: "«help urself» разошёлся благодаря аниме- и гейминг-эдитам. Сообщество эдиторов органически принесло 43 миллиона прослушиваний. Два трека теперь в каталоге NCS — там, где авторы ищут музыку, которую можно использовать.",
   video_consent: "Видео загружаются с YouTube только после нажатия на «плей».",
 
   ncs_label: "Артист NCS",
-  ncs_title: "50 миллионов подписчиков.",
-  ncs_p: "HXI — официальный артист NoCopyrightSounds: у канала больше 50 миллионов подписчиков, и он находится в центре креаторской экосистемы. Там вышли два его релиза.",
+  ncs_title: "34 миллиона подписчиков.",
+  ncs_p: "HXI — официальный артист NoCopyrightSounds. У канала 34,3 миллиона подписчиков и 12,5 миллиарда просмотров, и именно туда авторы идут за музыкой, которую можно использовать. В этом каталоге есть два его релиза.",
   ncs_listen: "Слушать →",
 
   about_label: "О проекте",
@@ -1634,7 +1634,7 @@ window.HXI_I18N.ur = {
   news2_text: "دوسری NoCopyrightSounds ریلیز۔ دنیا بھر کے کنٹینٹ تخلیق کاروں کے لیے مفت۔",
   news3_date: "ستمبر 2024",
   news3_tag: "NCS آغاز",
-  news3_text: "NCS پر پہلا قدم۔ پانچ کروڑ سے زائد سبسکرائبرز اب یہ سرکاری ٹریک استعمال کر سکتے ہیں۔",
+  news3_text: "NCS پر پہلا قدم۔ تخلیق کار کریڈٹ کے ساتھ اسے کہیں بھی استعمال کر سکتے ہیں، جہاں جہاں NCS پہنچتا ہے۔",
 
   music_label: "موسیقی",
   music_title: "ڈسکوگرافی",
@@ -1675,12 +1675,12 @@ window.HXI_I18N.ur = {
 
   video_label: "ایڈٹ کلچر",
   video_title: "4.3 کروڑ اسٹریمز، جو کمیونٹی نے بنائے۔",
-  video_p: "“help urself” اینیمے اور گیمنگ ایڈٹس کے ذریعے پھیلا۔ ایڈٹ کمیونٹی نے قدرتی طور پر 4.3 کروڑ اسٹریمز بنائے۔ NCS اس رسائی کو 20 کروڑ سے زائد کنٹینٹ تخلیق کاروں تک پہنچاتا ہے۔",
+  video_p: "“help urself” اینیمے اور گیمنگ ایڈٹس کے ذریعے پھیلا۔ ایڈٹ کمیونٹی نے قدرتی طور پر 4.3 کروڑ اسٹریمز بنائے۔ دو ٹریک اب NCS کیٹلاگ میں ہیں، جہاں تخلیق کار قابلِ استعمال موسیقی ڈھونڈتے ہیں۔",
   video_consent: "ویڈیوز صرف پلے دبانے کے بعد یوٹیوب سے لوڈ ہوتی ہیں۔",
 
   ncs_label: "NCS آرٹسٹ",
-  ncs_title: "5 کروڑ سبسکرائبرز۔",
-  ncs_p: "HXI سرکاری طور پر NoCopyrightSounds کے فنکار ہیں — پانچ کروڑ سے زائد سبسکرائبرز کے ساتھ یہ چینل تخلیق کاروں کے ماحول کے مرکز میں ہے۔ وہاں ان کی دو ریلیزیں موجود ہیں۔",
+  ncs_title: "3.43 کروڑ سبسکرائبرز۔",
+  ncs_p: "HXI سرکاری طور پر NoCopyrightSounds کے فنکار ہیں۔ چینل کے 3.43 کروڑ سبسکرائبرز اور 1250 کروڑ ویوز ہیں، اور تخلیق کار وہیں قابلِ استعمال موسیقی ڈھونڈنے جاتے ہیں۔ اُس کیٹلاگ میں اُن کی دو ریلیزیں ہیں۔",
   ncs_listen: "سنیں →",
 
   about_label: "تعارف",
@@ -1809,7 +1809,7 @@ window.HXI_I18N.no = {
   news2_text: "Andre utgivelse på NoCopyrightSounds. Gratis for innholdsskapere over hele verden.",
   news3_date: "september 2024",
   news3_tag: "NCS-debut",
-  news3_text: "Debuten på NCS. Over 50 millioner abonnenter har nå tilgang til den offisielle låten.",
+  news3_text: "Debuten på NCS. Fri for skapere å bruke, med kreditering, overalt der NCS når.",
 
   music_label: "Musikk",
   music_title: "Diskografi",
@@ -1850,12 +1850,12 @@ window.HXI_I18N.no = {
 
   video_label: "Edit-kultur",
   video_title: "43 mill. strømminger. Bygget av publikum.",
-  video_p: "«help urself» spredte seg gjennom anime- og gaming-edits. Edit-miljøet bygget 43 millioner strømminger organisk. NCS utvider rekkevidden til over 200 millioner innholdsskapere.",
+  video_p: "«help urself» spredte seg gjennom anime- og gaming-edits. Edit-miljøet bygget 43 millioner strømminger organisk. To låter ligger nå i NCS-katalogen, der skapere leter etter musikk de kan bruke.",
   video_consent: "Videoene lastes fra YouTube først når du trykker på play.",
 
   ncs_label: "NCS-artist",
-  ncs_title: "50 millioner abonnenter.",
-  ncs_p: "HXI er offisiell NoCopyrightSounds-artist — kanalen har over 50 millioner abonnenter og står midt i skaperøkonomien. To HXI-utgivelser ligger ute der.",
+  ncs_title: "34 millioner abonnenter.",
+  ncs_p: "HXI er offisiell NoCopyrightSounds-artist. Kanalen har 34,3 millioner abonnenter og 12,5 milliarder visninger, og det er dit skapere går for musikk de kan bruke. To HXI-utgivelser ligger i den katalogen.",
   ncs_listen: "Hør →",
 
   about_label: "Om",
@@ -1984,7 +1984,7 @@ window.HXI_I18N.tr = {
   news2_text: "İkinci NoCopyrightSounds çıkışı. Dünyanın her yerindeki içerik üreticilerine ücretsiz.",
   news3_date: "Eylül 2024",
   news3_tag: "NCS ilk çıkışı",
-  news3_text: "NCS’teki ilk iş. 50 milyondan fazla abone artık resmi parçayı kullanabiliyor.",
+  news3_text: "NCS’teki ilk iş. Üreticiler kredi vererek istedikleri yerde kullanabiliyor, NCS nereye ulaşıyorsa.",
 
   music_label: "Müzik",
   music_title: "Diskografi",
@@ -2025,12 +2025,12 @@ window.HXI_I18N.tr = {
 
   video_label: "Edit kültürü",
   video_title: "43 milyon dinlenme. Topluluğun eseri.",
-  video_p: "“help urself”, anime ve oyun editleriyle yayıldı. 43 milyon dinlenmeyi edit topluluğu organik olarak yarattı. NCS ise bu erişimi 200 milyondan fazla içerik üreticisine taşıyor.",
+  video_p: "“help urself”, anime ve oyun editleriyle yayıldı. 43 milyon dinlenmeyi edit topluluğu organik olarak yarattı. İki parça artık NCS kataloğunda — üreticilerin kullanabilecekleri müziği aradıkları yerde.",
   video_consent: "Videolar yalnızca oynat’a bastığınızda YouTube’dan yüklenir.",
 
   ncs_label: "NCS sanatçısı",
-  ncs_title: "50 milyon abone.",
-  ncs_p: "HXI resmi bir NoCopyrightSounds sanatçısı — 50 milyonu aşkın aboneli bu kanal, içerik üretici ekosisteminin merkezinde. HXI’nın iki çıkışı orada yayında.",
+  ncs_title: "34 milyon abone.",
+  ncs_p: "HXI resmi bir NoCopyrightSounds sanatçısı. Kanalın 34,3 milyon abonesi ve 12,5 milyar izlenmesi var; üreticiler kullanabilecekleri müziği orada arıyor. O katalogda HXI’nın iki çıkışı var.",
   ncs_listen: "Dinle →",
 
   about_label: "Hakkında",

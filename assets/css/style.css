@@ -299,3 +299,11 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
   border:1px solid var(--border);padding:11px 18px;transition:border-color .18s,color .18s;
 }
 .follow a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- 404 ---------- */
+.notfound{min-height:100vh;display:grid;place-content:center;text-align:center;padding:var(--pad);max-width:760px;margin-inline:auto}
+.notfound-mark{font-size:clamp(60px,16vw,150px);margin-bottom:10px}
+.notfound .lead{margin-inline:auto}
+.notfound-langs{margin-top:44px;line-height:2.4;letter-spacing:.14em}
+.notfound-langs a{color:var(--muted);text-decoration:none}
+.notfound-langs a:hover,.notfound-langs a:focus-visible{color:var(--accent)}

@@ -19,7 +19,8 @@ window.HXI_SHOP = [
     kind: 'digital',
     name: 'HELP URSELF — Official Stems',
     desc: 'shop_d_stems',
-    // Ücretsiz ama dosya henüz yok: kart, hero'nun söylediği yere — listeye — yollar.
+    // Ücretsiz ama dosya henüz yok: kart ziyaretçiyi listeye yollar; stem'ler çıktığında
+    // listedekiler önce haber alır.
     free: true,
     checkout: '',
     signup: true

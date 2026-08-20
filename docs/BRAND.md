@@ -46,6 +46,9 @@ the Fast & Furious credit, stated precisely as *WORTH NOTHING (Aggressive Drift 
 Version)*, Drift Tape/Phonk Vol 1, with TWISTED · two NCS releases with their dates · the
 collaborator list.
 
+NCS's own size, when the page cites it: 34.3 million subscribers, 12.5 billion views
+(July 2026). Not 50 million — that figure was wrong on the page for months.
+
 Also verified, August 2026: the BODYCAM soundtrack — two tracks, *Never Phased* (with Lurk
 and Scythermane) and *KRASH* (with -Prey, March 2024) — and the twenty-release archive in
 the Music section, tabulated in `docs/RESEARCH.md`.

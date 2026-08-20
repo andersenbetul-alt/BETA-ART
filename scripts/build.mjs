@@ -94,7 +94,7 @@ function render(code, { atRoot }) {
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 
-for (const entry of ['assets', 'robots.txt', '.well-known', '.nojekyll']) {
+for (const entry of ['assets', 'robots.txt', '.well-known', '.nojekyll', '404.html']) {
   const from = join(root, entry);
   if (existsSync(from)) cpSync(from, join(dist, entry), { recursive: true });
 }

@@ -4,13 +4,15 @@
 
    node scripts/inline.mjs [dist/index.html] [out.html]                                    */
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const src = resolve(repo, process.argv[2] || 'dist/index.html');
-const out = resolve(repo, process.argv[3] || 'dist/hxi-standalone.html');
+// Deliberately not inside dist/: everything in dist/ is published, and a second copy of
+// the homepage at /hxi-standalone.html would be duplicate content on the live site.
+const out = resolve(repo, process.argv[3] || 'preview/hxi-standalone.html');
 const base = dirname(src);
 
 const MIME = { '.woff2': 'font/woff2', '.png': 'image/png', '.svg': 'image/svg+xml', '.json': 'application/json' };
@@ -48,5 +50,6 @@ for (const [, ref] of html.matchAll(/(?:href|content|src)="((?:\.\.\/)?assets\/[
 // block its own <style>/<script>. Everything it protected is now part of this file.
 html = html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>\n?/, '');
 
+await mkdir(dirname(out), { recursive: true });
 await writeFile(out, html);
 console.log(`Inlined ${src.replace(repo + '/', '')} → ${out.replace(repo + '/', '')} (${(html.length / 1024).toFixed(0)} KB)`);
