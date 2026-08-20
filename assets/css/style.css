@@ -314,3 +314,7 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
 .legal-page .h3{margin-top:40px}
 .legal-page p{color:#c9c9d4;font-size:15px;max-width:66ch}
 .legal-page .note{margin-top:26px}
+
+/* The follow row repeated at the foot: the hero's copy scrolls away, and the end of the page
+   is exactly where someone who read the whole thing decides to go somewhere else. */
+.follow-footer{justify-content:flex-start;margin-bottom:22px}
