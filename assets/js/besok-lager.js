@@ -46,6 +46,7 @@ window.PP_BESOK = (function () {
     return {
       leverandor: { navn: 'Nærhjelp Oslo AS', kontakt: 'post@naerhjelp.example' },
       logg: [],
+      foresporsler: [],
       ansatte: [
         { id: 'a1', navn: 'Sofia H.' },
         { id: 'a2', navn: 'Daniel R.' },
@@ -97,6 +98,65 @@ window.PP_BESOK = (function () {
   }
 
   function hentAlle() { return les().besok; }
+
+  /* ---------- forespørsler fra den eldre eller pårørende ----------
+
+     Forespørselen går til leverandøren, ikke til en åpen pool av fremmede.
+     Leverandøren tildeler en av sine egne ansatte. Det er forskjellen mellom
+     en markedsplass, som krever verifiseringskjede og vaktordning, og en
+     mottaksfunksjon, som ikke gjør det. */
+
+  function nyForesporsel(f) {
+    var data = les();
+    data.foresporsler = data.foresporsler || [];
+    f.id = 'F-' + (100 + data.foresporsler.length + 1);
+    f.mottatt = nå();
+    f.status = 'ny';
+    data.foresporsler.push(f);
+    loggfor(data, 'Forespørsel mottatt', f.id, f.fra || 'kunde');
+    skriv(data);
+    return f;
+  }
+
+  function foresporsler() { return (les().foresporsler || []); }
+
+  /* Tildeling gjør forespørselen om til et besøk. Da gjelder resten av
+     flyten uendret: sikker lenke, bekreftelse, familiemelding. */
+  function tildel(foresporselId, ansattId, dato, tid) {
+    var data = les();
+    var f = (data.foresporsler || []).filter(function (x) { return x.id === foresporselId; })[0];
+    if (!f) return null;
+    var ansatt = data.ansatte.filter(function (a) { return a.id === ansattId; })[0];
+    if (!ansatt) return null;
+
+    f.status = 'tildelt';
+    skriv(data);
+
+    var besok = opprett({
+      kunde: f.kunde,
+      oppgaver: f.oppgaver,
+      dato: dato || f.onsketDato,
+      tid: tid || f.onsketTid,
+      ansattId: ansattId,
+      ansattNavn: ansatt.navn,
+      parorendeEpost: f.parorendeEpost || null,
+      notat: f.notat || null,
+      sprak: f.sprak || 'nb',
+      fraForesporsel: f.id
+    });
+    return besok;
+  }
+
+  function avvisForesporsel(id, grunn) {
+    var data = les();
+    var f = (data.foresporsler || []).filter(function (x) { return x.id === id; })[0];
+    if (!f) return null;
+    f.status = 'avvist';
+    f.avvistGrunn = grunn || null;
+    loggfor(data, 'Forespørsel avvist', id);
+    skriv(data);
+    return f;
+  }
 
   function hent(id) {
     return les().besok.filter(function (b) { return b.id === id; })[0] || null;
@@ -186,6 +246,10 @@ window.PP_BESOK = (function () {
     ansatte: ansatte,
     leverandor: leverandor,
     familiemelding: familiemelding,
+    nyForesporsel: nyForesporsel,
+    foresporsler: foresporsler,
+    tildel: tildel,
+    avvisForesporsel: avvisForesporsel,
     logg: logg,
     LENKE_TIMER: LENKE_TIMER,
     nullstill: nullstill
