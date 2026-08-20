@@ -1,5 +1,10 @@
 # Service Blueprint v1
 
+> **Skrevet for markedsplassmodellen.** Deler av dette gjelder fortsatt, men
+> dokumentet forutsetter at Naviar rekrutterer og verifiserer hjelpere og formidler
+> betaling. Det gjør vi ikke lenger. Grensen for hva som gjelder nå står i
+> `docs/JURIDISK-GRENSE.md`.
+
 Naviar er ikke en app med funksjoner, men en tjeneste med syv systemer som må
 henge sammen. Hver designbeslutning testes mot syv spørsmål:
 

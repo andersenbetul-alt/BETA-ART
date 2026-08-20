@@ -1,5 +1,10 @@
 # Gap-analyse før pilot
 
+> **Skrevet for markedsplassmodellen.** Deler av dette gjelder fortsatt, men
+> dokumentet forutsetter at Naviar rekrutterer og verifiserer hjelpere og formidler
+> betaling. Det gjør vi ikke lenger. Grensen for hva som gjelder nå står i
+> `docs/JURIDISK-GRENSE.md`.
+
 Tjenestedesign · vurdering av tjenesten slik den står i repoet i dag.
 
 Tjenestemodellen selv ligger i [`docs/SERVICE-BLUEPRINT.md`](../SERVICE-BLUEPRINT.md).

@@ -194,11 +194,23 @@ For balansens skyld, fordi resten av dokumentet er kritisk:
 
 ## 9. Det som må ryddes
 
-`docs/team/OKONOMI.md` og `docs/team/SALG.md` priser fortsatt markedsplassen: 18 %
-provisjon, verifiseringskjede, vaktordning 24/7. Under B2B-modellen bæres de
-kostnadene av leverandøren, ikke av oss. **Det finnes altså ikke noe gjeldende
-regnskap for produktet vi faktisk selger.** Det må skrives på nytt før noen
-tallfester noe som helst utad.
+**Gjort.** `OKONOMI.md` og `SALG.md` priset fortsatt markedsplassen: 18 % provisjon,
+verifiseringskjede, vaktordning 24/7. Under B2B bæres de kostnadene av leverandøren,
+ikke av oss, og det fantes derfor ikke noe gjeldende regnskap for produktet vi selger.
+
+Begge er skrevet om for B2B. De gamle ligger i `docs/arkiv/` med en boks som sier
+hva de er. Det som kom ut av å faktisk regne:
+
+- Dekningsbidraget er **94,3 %**, ikke 15,25 %. Vi sluttet å bære kostnaden ved å
+  garantere for mennesker – ID-kontroll, referanser, kurs, forsikring og vakt
+  døgnet rundt ligger nå hos leverandøren, som er arbeidsgiver.
+- Break-even falt fra **2 843 besøk i måneden** – rundt 1 140 aktive familier – til
+  **75 betalende leverandører**. Fra noe som krever et marked, til noe som krever
+  en kundeliste.
+- Ved 499 kr/mnd er break-even 253 kunder. Ved 1 490 er den 75. Det er den samme
+  observasjonen som i punkt 2, sett fra kostnadssiden.
+- Bare to ting flytter tallet: **prisen og churn.** 94 % margin betyr at det ikke
+  finnes kostnader å kutte seg ut av et for lavt prispunkt.
 
 ---
 
@@ -208,5 +220,6 @@ tallfester noe som helst utad.
   Agenda Kaupang for Helsedirektoratet, kartlegging av kjøp av pleie- og
   omsorgstjenester.
 - Antall aktive hjemmetjenestevirksomheter (3 600, i hovedsak kommunale): SSB.
-- Egne satser: `docs/team/OKONOMI.md` (fullt belastet time 435 kr).
+- Egne satser: `docs/arkiv/OKONOMI-markedsplass.md` (fullt belastet time 435 kr).
+- Gjeldende kostnadsbase og break-even: `docs/team/OKONOMI.md`.
 - Priser: `assets/js/besok-abonnement.js` (pilot 990 engangs, standard 499/mnd).

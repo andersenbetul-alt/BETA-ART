@@ -1,5 +1,10 @@
 # DPIA – utkast og arbeidsplan
 
+> **Skrevet for markedsplassmodellen.** Deler av dette gjelder fortsatt, men
+> dokumentet forutsetter at Naviar rekrutterer og verifiserer hjelpere og formidler
+> betaling. Det gjør vi ikke lenger. Grensen for hva som gjelder nå står i
+> `docs/JURIDISK-GRENSE.md`.
+
 Vurdering av personvernkonsekvenser for Naviar. **Skal ferdigstilles før
 posisjonsfunksjonene settes i produksjon.** Dette dokumentet er et strukturert utkast
 som skal fylles ut sammen med juridisk rådgiver – ikke en ferdig vurdering.

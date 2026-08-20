@@ -1,5 +1,10 @@
 # Tekstgjennomgang – Naviar
 
+> **Skrevet for markedsplassmodellen.** Deler av dette gjelder fortsatt, men
+> dokumentet forutsetter at Naviar rekrutterer og verifiserer hjelpere og formidler
+> betaling. Det gjør vi ikke lenger. Grensen for hva som gjelder nå står i
+> `docs/JURIDISK-GRENSE.md`.
+
 Rolle: senior conversion copywriter og UX-writer.
 Gjennomgått: `index.html`, `trenger-hjelp.html`, `familie.html`, `bli-hjelper.html`,
 `oppdrag.html` – samt teksten som genereres fra `assets/js/registrering.js`,

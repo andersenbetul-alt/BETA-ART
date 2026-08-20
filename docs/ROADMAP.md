@@ -1,5 +1,10 @@
 # Teknisk veikart
 
+> **Skrevet for markedsplassmodellen.** Deler av dette gjelder fortsatt, men
+> dokumentet forutsetter at Naviar rekrutterer og verifiserer hjelpere og formidler
+> betaling. Det gjør vi ikke lenger. Grensen for hva som gjelder nå står i
+> `docs/JURIDISK-GRENSE.md`.
+
 Fase 1 er levert i dette repoet. Fasene videre gjør nettstedet om fra registreringsflate
 til en fungerende markedsplass.
 

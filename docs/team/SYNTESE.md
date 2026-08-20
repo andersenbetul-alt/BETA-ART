@@ -1,10 +1,39 @@
 # Syntese – vedtatte beslutninger
 
+> **Vedtatt under markedsplassmodellen.** Disse elleve beslutningene ble tatt da
+> produktet var en åpen markedsplass med provisjon, egen verifiseringskjede og
+> vaktordning. Etter pivoten gjelder de ikke alle. Se tabellen rett under.
+>
+> **Gjeldende fasit er `../JURIDISK-GRENSE.md`** – grensen for hva tjenesten gjør
+> og ikke gjør – sammen med `OKONOMI.md` og `SALG.md` for tall og salgsmodell.
+
+## Hva som overlevde pivoten
+
+| | Beslutning | Status nå |
+|---|---|---|
+| B0 | Piloten måles ikke på break-even | **Gjelder.** Men tallet er nytt: 75 leverandører, ikke 1 140 familier |
+| B1 | Åpningstid 07–21, vakt 07–23 | **Bortfaller.** Vakten er leverandørens ansvar, ikke vårt |
+| B2 | Serviceavgift 18 % gjennom piloten | **Bortfaller.** Ingen serviceavgift. Abonnement per medarbeider |
+| B3 | Bolk A er byggelisten | **Erstattet** av det som faktisk er bygget i `besok/` |
+| B4 | Teknisk arkitektur godkjent | **Gjelder.** Statisk pilot, ingen avhengigheter, API-adapter |
+| B5 | KI-rekkefølgen, og hva som ikke skal bruke KI | **Gjelder, og er skjerpet.** Se `assets/js/besok-agenter.js`: ALDRI-lista er nå kode |
+| B6 | Akuttfeilen er rettet | **Gjelder.** Rettelsen står i `assets/js/akutt.js` |
+| B7 | Navnet byttes, merket skilles ut | **Gjennomført.** Naviar / Naviar Care |
+| B8 | Ingen egen grønn for suksess | **Gjelder.** Kontrastproblemet er det samme |
+| B9 | Tekstendringene | **Delvis.** Skrevet for markedsplassens sider |
+| B10 | Markedsføringsplanen | **Bortfaller.** Planlagt mot familier i Oslo, ikke mot leverandører |
+| B11 | Juridisk er en fast rolle | **Gjelder, og er den som har holdt.** Se `JURIDISK-GRENSE.md` |
+
+Fem av elleve står uendret, tre er bortfalt, tre er endret eller erstattet. Det er
+et normalt resultat av en pivot, og grunnen til at dokumentet er beholdt: en
+beslutning som er forlatt, er verdt mer enn en som aldri ble skrevet ned.
+
 Sju roller leverte hver sitt. Der de peker i ulik retning, avgjøres det her.
 Hver beslutning sier hva som er valgt, hva som ble valgt bort, og hva den koster.
 
-Grunnlaget: `TJENESTEDESIGN.md`, `TEKNOLOGI.md`, `KI.md`, `OKONOMI.md`, `SALG.md`,
-`MARKEDSFORING.md`, `MERKEVARE.md`, `TEKST.md`.
+Grunnlaget: `TJENESTEDESIGN.md`, `TEKNOLOGI.md`, `KI.md`, `MARKEDSFORING.md`,
+`MERKEVARE.md`, `TEKST.md`, og økonomi- og salgsdokumentene slik de var da –
+nå `docs/arkiv/OKONOMI-markedsplass.md` og `docs/arkiv/SALG-markedsplass.md`.
 
 ---
 

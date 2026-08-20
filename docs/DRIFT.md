@@ -1,5 +1,10 @@
 # Driftsrutiner
 
+> **Skrevet for markedsplassmodellen.** Deler av dette gjelder fortsatt, men
+> dokumentet forutsetter at Naviar rekrutterer og verifiserer hjelpere og formidler
+> betaling. Det gjør vi ikke lenger. Grensen for hva som gjelder nå står i
+> `docs/JURIDISK-GRENSE.md`.
+
 Hvordan Naviar drives i praksis. Dokumentet er bindende for driftsorganisasjonen
 og speiles i driftskonsollen (`drift.html`).
 
