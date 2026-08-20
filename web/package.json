@@ -2,7 +2,7 @@
   "name": "cobban",
   "version": "0.1.0",
   "private": true,
-  "description": "COBBAN — Norway is complicated. COBBAN makes it simple.",
+  "description": "COBBAN \u2014 Europe is complicated. COBBAN makes it simple.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

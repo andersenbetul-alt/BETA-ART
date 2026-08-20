@@ -54,8 +54,9 @@ export default async function HelpPage({ params }: { params: Promise<{ topic: st
       <div className="faq">
         <p><strong>Is COBBAN free?</strong> Yes. No account, no payment, no ads.</p>
         <p><strong>Do you track me?</strong> No. Your location, if you share it, stays in your browser.</p>
-        <p><strong>How much does it cover?</strong> Norway first — Bergen, Oslo, Tromsø and Stavanger,
-          with live departures for every mode including ferries. Sweden and Denmark are next.</p>
+        <p><strong>How much does it cover?</strong> Thirteen European countries for local rules,
+          emergency numbers and places worth walking to. Live departures — every mode, ferries
+          included — are Norway only so far.</p>
       </div>
 
       <Link href="/" className="cta secondary">Something else went wrong →</Link>
