@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-page="triage">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.triage.title">Check your symptoms — Naviar Care</title>
+<meta name="description" data-i18n-content="meta.triage.desc" content="Describe your symptoms in your own language and find out which specialist you need and how urgently.">
+<meta name="theme-color" content="#0d8172">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>
+/* Set the theme before first paint so dark-mode users never see a white flash. */
+(function(){try{var t=localStorage.getItem("naviar.theme");
+if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+      <span class="brand__name">Naviar<span>Care</span></span>
+    </a>
+
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__list">
+          <li><a class="nav__link" href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav__link" href="triage.html" aria-current="page" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a class="nav__link" href="booking.html" data-i18n="nav.booking">Book a doctor</a></li>
+          <li><a class="nav__link" href="languages.html" data-i18n="nav.languages">Languages</a></li>
+          <li><a class="nav__link" href="about.html" data-i18n="nav.about">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <label class="visually-hidden" for="lang-select" data-i18n="a11y.choose-language">Choose your language</label>
+      <select class="select" id="lang-select" data-lang-select style="width:auto;padding:.45rem 2.2rem .45rem .7rem;font-size:.9rem"></select>
+
+      <button class="icon-btn" type="button" data-theme-toggle
+              data-i18n-aria-label="a11y.toggle-theme" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+              data-i18n-aria-label="a11y.toggle-menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.triage">Check symptoms</span></p>
+      <h1 data-i18n="triage.title">What is troubling you?</h1>
+      <p data-i18n="triage.lead">Answer a few questions in your own words. In about two minutes you will know which specialist fits and how quickly you should be seen.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container triage">
+
+      <div class="triage-card">
+        <form id="triage-form" novalidate>
+
+          <div class="progress">
+            <div class="progress__bar">
+              <div class="progress__fill" data-progress-fill style="width:25%"></div>
+            </div>
+            <div class="progress__meta">
+              <span data-progress-label data-i18n="triage.step1.label">Your symptoms</span>
+              <span><span data-progress-step>1</span> / 4</span>
+            </div>
+          </div>
+
+          <!-- ---------------------------------------------------- step 1 -->
+          <div class="triage-step is-active" data-step="1">
+            <h2 data-i18n="triage.step1.title">Tell us what is wrong</h2>
+            <p class="card__meta" data-i18n="triage.step1.help">Use whatever words you would use at home. You can add more than one.</p>
+
+            <div class="field symptom-search" style="margin-top:1.5rem">
+              <label for="symptom-input" data-i18n="triage.search.label">Search your symptoms</label>
+              <span class="field__hint" data-i18n="triage.search.hint">For example: headache, stomach pain, cannot sleep</span>
+              <input class="input" type="text" id="symptom-input" autocomplete="off"
+                     data-i18n-placeholder="triage.search.placeholder" placeholder="Type a symptom…"
+                     role="combobox" aria-expanded="false" aria-controls="symptom-results" aria-autocomplete="list">
+              <ul class="symptom-results" id="symptom-results" role="listbox"
+                  data-i18n-aria-label="triage.search.results" aria-label="Matching symptoms"></ul>
+            </div>
+
+            <p class="field__label" style="margin-top:.5rem" data-i18n="triage.browse.label">Or choose an area of the body</p>
+            <div class="filter-bar" data-region-chips></div>
+            <div class="filter-bar" data-region-symptoms style="margin-top:-1rem"></div>
+
+            <p class="field__label" style="margin-top:1.5rem" data-i18n="triage.selected.label">Your symptoms</p>
+            <div class="selected-list" data-selected-list>
+              <span class="selected-empty" data-i18n="triage.selected.empty">Nothing chosen yet.</span>
+            </div>
+            <p class="field__error" data-error-symptoms style="display:none" data-i18n="triage.error.symptoms">Please add at least one symptom to continue.</p>
+          </div>
+
+          <!-- ---------------------------------------------------- step 2 -->
+          <div class="triage-step" data-step="2">
+            <h2 data-i18n="triage.step2.title">A little about the patient</h2>
+            <p class="card__meta" data-i18n="triage.step2.help">This changes who is the right person to see — a child and an adult with the same symptom often need different specialists.</p>
+
+            <div class="field" style="margin-top:1.5rem">
+              <span class="field__label" data-i18n="triage.age.label">Who is the consultation for?</span>
+              <div class="choice-grid" data-age-group>
+                <label class="choice"><input type="radio" name="age" value="infant"><span data-i18n="age.infant">Baby (under 1)</span></label>
+                <label class="choice"><input type="radio" name="age" value="child"><span data-i18n="age.child">Child (1–12)</span></label>
+                <label class="choice"><input type="radio" name="age" value="teen"><span data-i18n="age.teen">Teenager (13–17)</span></label>
+                <label class="choice"><input type="radio" name="age" value="adult" checked><span data-i18n="age.adult">Adult (18–64)</span></label>
+                <label class="choice"><input type="radio" name="age" value="senior"><span data-i18n="age.senior">Older adult (65+)</span></label>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field__label" data-i18n="triage.duration.label">How long has this been going on?</span>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="duration" value="today"><span data-i18n="duration.today">Started today</span></label>
+                <label class="choice"><input type="radio" name="duration" value="days" checked><span data-i18n="duration.days">A few days</span></label>
+                <label class="choice"><input type="radio" name="duration" value="weeks"><span data-i18n="duration.weeks">A few weeks</span></label>
+                <label class="choice"><input type="radio" name="duration" value="months"><span data-i18n="duration.months">Months or longer</span></label>
+              </div>
+            </div>
+
+            <div class="field">
+              <span class="field__label" data-i18n="triage.severity.label">How bad is it right now?</span>
+              <div class="choice-grid">
+                <label class="choice"><input type="radio" name="severity" value="mild"><span data-i18n="severity.mild">Mild — annoying</span></label>
+                <label class="choice"><input type="radio" name="severity" value="moderate" checked><span data-i18n="severity.moderate">Moderate — affecting my day</span></label>
+                <label class="choice"><input type="radio" name="severity" value="severe"><span data-i18n="severity.severe">Severe — I cannot cope</span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ---------------------------------------------------- step 3 -->
+          <div class="triage-step" data-step="3">
+            <h2 data-i18n="triage.step3.title">Safety check</h2>
+            <p class="card__meta" data-i18n="triage.step3.help">Tick anything that is happening right now. If none apply, leave them all unticked and continue.</p>
+
+            <div class="redflag-list" data-redflags style="margin-top:1.5rem"></div>
+
+            <div class="callout callout--info" style="margin-top:1.5rem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/><path d="M12 11v5" stroke-linecap="round"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/>
+              </svg>
+              <p data-i18n="triage.step3.note">These are the signs that mean "do not wait". Ticking one will not book anything automatically — it just changes the advice we give you.</p>
+            </div>
+          </div>
+
+          <!-- ---------------------------------------------------- step 4 -->
+          <div class="triage-step" data-step="4">
+            <div data-result-root aria-live="polite">
+              <p class="card__meta" data-i18n="triage.result.pending">Working out where to send you…</p>
+            </div>
+          </div>
+
+          <div class="triage-actions">
+            <button class="btn btn--ghost" type="button" data-triage-back hidden data-i18n="cta.back">Back</button>
+            <button class="btn btn--ghost" type="button" data-triage-restart hidden data-i18n="cta.restart">Start again</button>
+            <button class="btn btn--primary" type="button" data-triage-next data-i18n="cta.continue">Continue</button>
+          </div>
+        </form>
+      </div>
+
+      <aside>
+        <div class="card side-card">
+          <div class="callout callout--danger" style="border:0;padding:0;background:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+              <path d="M12 9v4.5" stroke-linecap="round"/><circle cx="12" cy="17" r=".9" fill="currentColor" stroke="none"/>
+              <path d="M10.3 4.3 2.8 17.4A2 2 0 0 0 4.5 20.4h15a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <p class="callout__title" data-i18n="triage.side.emergency.t">In an emergency, stop here</p>
+              <p style="font-size:.92rem" data-i18n="triage.side.emergency.d">Call your local emergency number if there is chest pain with sweating, trouble breathing, heavy bleeding, a drooping face, or the person cannot be woken.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card side-card">
+          <h3 style="font-size:1.05rem" data-i18n="triage.side.private.t">This stays on your device</h3>
+          <p class="card__meta" data-i18n="triage.side.private.d">Your answers are worked out in your browser. Nothing is sent anywhere until you choose to book a consultation.</p>
+        </div>
+
+        <div class="card side-card">
+          <h3 style="font-size:1.05rem" data-i18n="triage.side.lang.t">Not your language?</h3>
+          <p class="card__meta" data-i18n="triage.side.lang.d">Switch language at the top of the page. Your answers are kept as you switch.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+          <span class="brand__name">Naviar<span style="color:#69d7c6">Care</span></span>
+        </a>
+        <p data-i18n="footer.blurb">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <p class="footer-emergency" data-i18n="footer.emergency">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</p>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.service">Service</h4>
+        <ul>
+          <li><a href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a href="booking.html" data-i18n="nav.booking">Book a doctor</a></li>
+          <li><a href="languages.html" data-i18n="nav.languages">Languages</a></li>
+          <li><a href="booking.html#available" data-i18n="footer.available-now">Doctors available now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.company">Company</h4>
+        <ul>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="about.html#how" data-i18n="footer.how">How it works</a></li>
+          <li><a href="about.html#safety" data-i18n="footer.safety">Safety &amp; privacy</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.help">Help</h4>
+        <ul>
+          <li><a href="about.html#faq" data-i18n="footer.faq">Frequently asked questions</a></li>
+          <li><a href="languages.html#interpreters" data-i18n="footer.interpreters">Interpreters</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span data-i18n="footer.built">Available 24 hours a day, in every language we can reach.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data-specialties.js"></script>
+<script src="assets/js/data-symptoms.js"></script>
+<script src="assets/js/data-languages.js"></script>
+<script src="assets/js/data-doctors.js"></script>
+<script src="assets/js/triage-engine.js"></script>
+<script src="assets/js/booking-engine.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/triage-ui.js"></script>
+</body>
+</html>

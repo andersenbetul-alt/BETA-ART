@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-page="languages">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.languages.title">Languages we consult in — Naviar Care</title>
+<meta name="description" data-i18n-content="meta.languages.desc" content="Naviar Care consults in over a hundred languages, with native-speaking doctors and 24/7 medical interpreters.">
+<meta name="theme-color" content="#0d8172">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>
+/* Set the theme before first paint so dark-mode users never see a white flash. */
+(function(){try{var t=localStorage.getItem("naviar.theme");
+if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+      <span class="brand__name">Naviar<span>Care</span></span>
+    </a>
+
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__list">
+          <li><a class="nav__link" href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav__link" href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a class="nav__link" href="booking.html" data-i18n="nav.booking">Book a doctor</a></li>
+          <li><a class="nav__link" href="languages.html" aria-current="page" data-i18n="nav.languages">Languages</a></li>
+          <li><a class="nav__link" href="about.html" data-i18n="nav.about">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <label class="visually-hidden" for="lang-select" data-i18n="a11y.choose-language">Choose your language</label>
+      <select class="select" id="lang-select" data-lang-select style="width:auto;padding:.45rem 2.2rem .45rem .7rem;font-size:.9rem"></select>
+
+      <button class="icon-btn" type="button" data-theme-toggle
+              data-i18n-aria-label="a11y.toggle-theme" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+              data-i18n-aria-label="a11y.toggle-menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.languages">Languages</span></p>
+      <h1 data-i18n="lang.title">Care in the language you think in</h1>
+      <p data-i18n="lang.lead">Describing pain is hard enough in your first language. We make sure the language barrier is ours to solve, not yours.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--3">
+        <div class="card">
+          <strong style="font-size:2.2rem;color:var(--brand-strong);display:block;line-height:1.1" data-count-total>—</strong>
+          <p class="card__meta mb-0" data-i18n="lang.stat.total">languages we can consult in</p>
+        </div>
+        <div class="card">
+          <strong style="font-size:2.2rem;color:var(--brand-strong);display:block;line-height:1.1" data-count-native>—</strong>
+          <p class="card__meta mb-0" data-i18n="lang.stat.native">spoken natively by doctors on the platform</p>
+        </div>
+        <div class="card">
+          <strong style="font-size:2.2rem;color:var(--brand-strong);display:block;line-height:1.1">24/7</strong>
+          <p class="card__meta mb-0" data-i18n="lang.stat.interp">medical interpreters on call for the rest</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="interpreters">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="lang.how.eyebrow">How it works</p>
+        <h2 data-i18n="lang.how.title">Two ways we get you a consultation in your language</h2>
+      </div>
+      <div class="grid grid--2">
+        <article class="card">
+          <span class="tag tag--brand" data-i18n="lang.tier.doctor">Doctor speaks it</span>
+          <h3 style="margin-top:.75rem" data-i18n="lang.how.native.t">Straight to a doctor who shares your language</h3>
+          <p data-i18n="lang.how.native.d">For these languages we have clinicians who consult natively. Nothing is relayed through anyone else — you speak, the doctor answers, in the same language.</p>
+        </article>
+        <article class="card">
+          <span class="tag" data-i18n="lang.tier.interpreter">Interpreter joins</span>
+          <h3 style="margin-top:.75rem" data-i18n="lang.how.interp.t">A medical interpreter on the same call</h3>
+          <p data-i18n="lang.how.interp.d">For every other language, a trained medical interpreter joins within minutes. They interpret clinical terms accurately — this is not machine translation, and it is never a family member left to explain a diagnosis.</p>
+        </article>
+      </div>
+
+      <div class="callout callout--info" style="margin-top:1.5rem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 11v5" stroke-linecap="round"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/>
+        </svg>
+        <div>
+          <p class="callout__title" data-i18n="lang.note.t">Your written notes come in your language too</p>
+          <p data-i18n="lang.note.d">The summary, the advice and any referral are written in the language you were seen in, so you still have it after the call ends.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="lang.list.eyebrow">Full list</p>
+        <h2 data-i18n="lang.list.title">Every language we currently cover</h2>
+        <p data-i18n="lang.list.lead">Search for your own, or filter by region. If yours is missing, tell us — we add languages as we find interpreters for them.</p>
+      </div>
+
+      <div class="grid grid--2" style="gap:1rem;margin-bottom:1.5rem">
+        <div class="field mb-0">
+          <label for="lang-search" data-i18n="lang.list.search">Find your language</label>
+          <input class="input" type="search" id="lang-search" data-language-search autocomplete="off"
+                 data-i18n-placeholder="lang.list.placeholder" placeholder="Type a language…">
+        </div>
+        <div class="field mb-0">
+          <label for="lang-region" data-i18n="lang.list.region">Region</label>
+          <select class="select" id="lang-region" data-language-region></select>
+        </div>
+      </div>
+
+      <p class="card__meta" data-language-count aria-live="polite">—</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="lang.col.native">Language</th>
+              <th data-i18n="lang.col.language">International name</th>
+              <th data-i18n="lang.col.how">How you are seen</th>
+              <th data-i18n="lang.col.action">Book</th>
+            </tr>
+          </thead>
+          <tbody data-language-table></tbody>
+        </table>
+      </div>
+
+      <p class="card__meta" data-language-empty hidden style="margin-top:1rem" data-i18n="lang.list.empty">No language matches that search. Try the region filter, or contact us and we will look into adding it.</p>
+    </div>
+  </section>
+
+  <section class="section--tight section">
+    <div class="container">
+      <div class="cta-band">
+        <h2 data-i18n="lang.cta.title">Ready to speak to someone?</h2>
+        <p data-i18n="lang.cta.body">Pick your language at the top of the page and the whole site — including your consultation notes — follows you.</p>
+        <div class="btn-row btn-row--center" style="margin-top:1.75rem">
+          <a class="btn btn--light btn--lg" href="triage.html" data-i18n="cta.start">Describe my symptoms</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+          <span class="brand__name">Naviar<span style="color:#69d7c6">Care</span></span>
+        </a>
+        <p data-i18n="footer.blurb">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <p class="footer-emergency" data-i18n="footer.emergency">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</p>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.service">Service</h4>
+        <ul>
+          <li><a href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a href="booking.html" data-i18n="nav.booking">Book a doctor</a></li>
+          <li><a href="languages.html" data-i18n="nav.languages">Languages</a></li>
+          <li><a href="booking.html#available" data-i18n="footer.available-now">Doctors available now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.company">Company</h4>
+        <ul>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="about.html#how" data-i18n="footer.how">How it works</a></li>
+          <li><a href="about.html#safety" data-i18n="footer.safety">Safety &amp; privacy</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.help">Help</h4>
+        <ul>
+          <li><a href="about.html#faq" data-i18n="footer.faq">Frequently asked questions</a></li>
+          <li><a href="languages.html#interpreters" data-i18n="footer.interpreters">Interpreters</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span data-i18n="footer.built">Available 24 hours a day, in every language we can reach.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data-specialties.js"></script>
+<script src="assets/js/data-symptoms.js"></script>
+<script src="assets/js/data-languages.js"></script>
+<script src="assets/js/data-doctors.js"></script>
+<script src="assets/js/triage-engine.js"></script>
+<script src="assets/js/booking-engine.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/languages-ui.js"></script>
+</body>
+</html>

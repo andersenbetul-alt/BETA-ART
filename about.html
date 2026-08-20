@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light" data-page="about">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.about.title">About Naviar Care</title>
+<meta name="description" data-i18n-content="meta.about.desc" content="Why Naviar Care exists, how the service works, how we handle safety and privacy, and how to reach us.">
+<meta name="theme-color" content="#0d8172">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script>
+/* Set the theme before first paint so dark-mode users never see a white flash. */
+(function(){try{var t=localStorage.getItem("naviar.theme");
+if(!t)t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+      <span class="brand__name">Naviar<span>Care</span></span>
+    </a>
+
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__list">
+          <li><a class="nav__link" href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav__link" href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a class="nav__link" href="booking.html" data-i18n="nav.booking">Book a doctor</a></li>
+          <li><a class="nav__link" href="languages.html" data-i18n="nav.languages">Languages</a></li>
+          <li><a class="nav__link" href="about.html" aria-current="page" data-i18n="nav.about">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <label class="visually-hidden" for="lang-select" data-i18n="a11y.choose-language">Choose your language</label>
+      <select class="select" id="lang-select" data-lang-select style="width:auto;padding:.45rem 2.2rem .45rem .7rem;font-size:.9rem"></select>
+
+      <button class="icon-btn" type="button" data-theme-toggle
+              data-i18n-aria-label="a11y.toggle-theme" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+              data-i18n-aria-label="a11y.toggle-menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.about">About</span></p>
+      <h1 data-i18n="about.title">Getting everyone to the right doctor, faster</h1>
+      <p data-i18n="about.lead">Naviar Care exists to shorten the distance between "something is wrong" and someone qualified to help — whoever you are and whatever language you speak.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow">
+      <h2 data-i18n="about.problem.title">The problem we are working on</h2>
+      <p data-i18n="about.problem.p1">Most people who are seriously unwell do not go straight to the specialist who can treat them. They wait, because getting an appointment is hard. They guess, because nobody has told them which specialty handles their symptom. Or they stay silent, because explaining what hurts in a language they are still learning feels impossible.</p>
+      <p data-i18n="about.problem.p2">Each of those delays makes the eventual treatment harder. Naviar Care removes all three: a doctor within minutes, a routing step that works out the specialty for you, and a consultation held in your own language.</p>
+
+      <h2 style="margin-top:2.5rem" data-i18n="about.values.title">What we hold to</h2>
+      <div class="grid grid--2" style="margin-top:1.5rem">
+        <article class="card">
+          <h3 data-i18n="about.value.access.t">Distance should not decide outcomes</h3>
+          <p class="mb-0" data-i18n="about.value.access.d">The difference between a treatable problem and a serious one is often just how long it took to reach someone who knew what to look for.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="about.value.language.t">Language is a clinical safety issue</h3>
+          <p class="mb-0" data-i18n="about.value.language.d">A mistranslated symptom is a misrouted patient. We treat interpretation as part of the medicine, not an optional extra.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="about.value.honesty.t">Tell people the truth about urgency</h3>
+          <p class="mb-0" data-i18n="about.value.honesty.d">Both over- and under-warning are harmful. Our intake is tuned to say 'this can wait' when it can, so that 'go now' still means something.</p>
+        </article>
+        <article class="card">
+          <h3 data-i18n="about.value.dignity.t">Nobody should feel like a burden</h3>
+          <p class="mb-0" data-i18n="about.value.dignity.d">No queue-jumping, no having to justify why you called, no explaining your symptoms to four people before reaching the right one.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft" id="how">
+    <div class="container container--narrow">
+      <h2 data-i18n="about.how.title">How a consultation actually runs</h2>
+      <div class="steps" style="margin-top:1.5rem">
+        <div class="step"><div>
+          <h3 data-i18n="about.how.s1.t">You describe the problem in your own words</h3>
+          <p data-i18n="about.how.s1.d">In your own language, with no medical vocabulary required. You can pick from a list if typing is easier.</p>
+        </div></div>
+        <div class="step"><div>
+          <h3 data-i18n="about.how.s2.t">We check for danger signs before anything else</h3>
+          <p data-i18n="about.how.s2.d">If your answers suggest an emergency, we stop and say so instead of offering you an appointment.</p>
+        </div></div>
+        <div class="step"><div>
+          <h3 data-i18n="about.how.s3.t">We match your description to a specialty</h3>
+          <p data-i18n="about.how.s3.d">Your symptoms, age and how long it has lasted are weighed against the specialties that treat them, and we show you the ranking rather than hiding it.</p>
+        </div></div>
+        <div class="step"><div>
+          <h3 data-i18n="about.how.s4.t">You pick a doctor who is free and who understands you</h3>
+          <p data-i18n="about.how.s4.d">Availability and language are shown together, because a doctor you cannot talk to is not really available.</p>
+        </div></div>
+        <div class="step"><div>
+          <h3 data-i18n="about.how.s5.t">You keep the notes</h3>
+          <p data-i18n="about.how.s5.d">The summary, advice and any referral are written in your language and stay with you for the next appointment.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="safety">
+    <div class="container container--narrow">
+      <h2 data-i18n="about.safety.title">Safety and privacy</h2>
+
+      <div class="callout callout--danger" style="margin-bottom:1.5rem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M12 9v4.5" stroke-linecap="round"/><circle cx="12" cy="17" r=".9" fill="currentColor" stroke="none"/>
+          <path d="M10.3 4.3 2.8 17.4A2 2 0 0 0 4.5 20.4h15a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <p class="callout__title" data-i18n="about.safety.emergency.t">We are not an emergency service</p>
+          <p data-i18n="about.safety.emergency.d">Naviar Care cannot send an ambulance. For chest pain with sweating, trouble breathing, heavy bleeding, a drooping face, a seizure, or someone who cannot be woken, call your local emergency number immediately.</p>
+        </div>
+      </div>
+
+      <h3 data-i18n="about.safety.limits.t">What the symptom check is and is not</h3>
+      <p data-i18n="about.safety.limits.d">It is a routing tool. It reads your description and works out which specialty treats it and how soon you should be seen. It does not diagnose, it does not rule anything out, and it is not a substitute for examination. When it is uncertain it sends you to a generalist rather than guessing.</p>
+
+      <h3 data-i18n="about.safety.data.t">What we do with your information</h3>
+      <ul class="feature-list">
+        <li data-i18n="about.safety.d1">The symptom check runs in your browser; nothing is transmitted while you answer</li>
+        <li data-i18n="about.safety.d2">Booking details are limited to what the clinician needs to hold the consultation</li>
+        <li data-i18n="about.safety.d3">Interpreters are bound by the same confidentiality duty as the clinician</li>
+        <li data-i18n="about.safety.d4">Your consultation notes belong to you and you can take them elsewhere</li>
+      </ul>
+      <p class="card__meta" data-i18n="about.safety.demo">This site is a working demonstration of the Naviar Care service. The clinician roster and availability shown are sample data, and no real consultation is booked.</p>
+    </div>
+  </section>
+
+  <section class="section section--soft" id="faq">
+    <div class="container container--narrow">
+      <h2 data-i18n="about.faq.title">Frequently asked questions</h2>
+      <div class="faq" style="margin-top:1.5rem">
+        <details>
+          <summary data-i18n="faq.who.q">Who am I actually talking to?</summary>
+          <div><p data-i18n="faq.who.a">Licensed doctors and, for mental health, licensed psychologists. Every clinician's specialty, languages and years in practice are shown before you book.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.cost.q">What does a consultation cost?</summary>
+          <div><p data-i18n="faq.cost.a">Pricing depends on the specialty and your country. The price is always shown on the booking screen before you confirm — there is never a charge you did not see first.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.prescription.q">Can I get a prescription or a sick note?</summary>
+          <div><p data-i18n="faq.prescription.a">Often yes, depending on what the law allows where you are. The doctor will tell you during the consultation what they can and cannot issue in your country.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.diagnosis.q">Is the symptom checker a diagnosis?</summary>
+          <div><p data-i18n="faq.diagnosis.a">No. It decides which specialist fits your description and how urgently you should be seen. Only the doctor you speak to can diagnose you.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.data.q">What happens to what I type?</summary>
+          <div><p data-i18n="faq.data.a">The symptom check runs entirely in your browser. Nothing leaves your device unless you go on to book, and then only what is needed for the consultation.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.interpreter.q">What if no doctor speaks my language?</summary>
+          <div><p data-i18n="faq.interpreter.a">A trained medical interpreter joins the call. They interpret clinical language accurately, so you are never relying on a relative or a translation app to explain a diagnosis.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.emergency.q">What if it turns out to be an emergency?</summary>
+          <div><p data-i18n="faq.emergency.a">The intake checks for warning signs first. If it spots one it stops and tells you to contact emergency services rather than booking you an appointment.</p></div>
+        </details>
+        <details>
+          <summary data-i18n="faq.followup.q">Do I have to explain everything again next time?</summary>
+          <div><p data-i18n="faq.followup.a">No. Your summary and any referral carry over, so the next clinician starts with your history rather than a blank page.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container container--narrow">
+      <h2 data-i18n="about.contact.title">Contact us</h2>
+      <p data-i18n="about.contact.lead">Questions, a language you want us to add, or a clinician who wants to join — write to us in whichever language suits you.</p>
+
+      <form class="card" id="contact-form" novalidate style="margin-top:1.5rem">
+        <div class="grid grid--2" style="gap:1rem">
+          <div class="field">
+            <label for="contact-name" data-i18n="contact.name">Your name</label>
+            <input class="input" type="text" id="contact-name" name="name" required
+                   data-i18n-placeholder="contact.name.ph" placeholder="Your name">
+            <p class="field__error" data-i18n="contact.err.name">Please tell us your name.</p>
+          </div>
+          <div class="field">
+            <label for="contact-email" data-i18n="contact.email">Email address</label>
+            <input class="input" type="email" id="contact-email" name="email" required
+                   data-i18n-placeholder="contact.email.ph" placeholder="you@example.com">
+            <p class="field__error" data-i18n="contact.err.email">Please enter an email address we can reply to.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="contact-topic" data-i18n="contact.topic">What is this about?</label>
+          <select class="select" id="contact-topic" name="topic">
+            <option value="general" data-i18n="contact.topic.general">A general question</option>
+            <option value="language" data-i18n="contact.topic.language">Adding a language</option>
+            <option value="clinician" data-i18n="contact.topic.clinician">Joining as a clinician</option>
+            <option value="partner" data-i18n="contact.topic.partner">Working together</option>
+            <option value="support" data-i18n="contact.topic.support">Help with a booking</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="contact-message" data-i18n="contact.message">Your message</label>
+          <span class="field__hint" data-i18n="contact.message.hint">Write in any language — we will reply in the same one.</span>
+          <textarea class="textarea" id="contact-message" name="message" required
+                    data-i18n-placeholder="contact.message.ph" placeholder="How can we help?"></textarea>
+          <p class="field__error" data-i18n="contact.err.message">Please write a short message.</p>
+        </div>
+
+        <div class="callout callout--info" style="margin-bottom:1.25rem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/><path d="M12 11v5" stroke-linecap="round"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/>
+          </svg>
+          <p data-i18n="contact.medical-note">Please do not send medical details here. For anything clinical, start a consultation instead — that channel is confidential and reaches a doctor.</p>
+        </div>
+
+        <button class="btn btn--primary" type="submit" data-i18n="contact.send">Send message</button>
+        <p class="card__meta" data-contact-status role="status" style="margin:1rem 0 0"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11" fill="#0d8172"/>
+        <path d="M20 8.5 27.8 28 20 24.2 12.2 28z" fill="#fff"/>
+        <circle cx="20" cy="20" r="14.5" fill="none" stroke="#69d7c6" stroke-width="1.6" opacity=".65"/>
+      </svg>
+          <span class="brand__name">Naviar<span style="color:#69d7c6">Care</span></span>
+        </a>
+        <p data-i18n="footer.blurb">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <p class="footer-emergency" data-i18n="footer.emergency">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</p>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.service">Service</h4>
+        <ul>
+          <li><a href="triage.html" data-i18n="nav.triage">Check symptoms</a></li>
+          <li><a href="booking.html" data-i18n="nav.booking">Book a doctor</a></li>
+          <li><a href="languages.html" data-i18n="nav.languages">Languages</a></li>
+          <li><a href="booking.html#available" data-i18n="footer.available-now">Doctors available now</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.company">Company</h4>
+        <ul>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="about.html#how" data-i18n="footer.how">How it works</a></li>
+          <li><a href="about.html#safety" data-i18n="footer.safety">Safety &amp; privacy</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="footer.help">Help</h4>
+        <ul>
+          <li><a href="about.html#faq" data-i18n="footer.faq">Frequently asked questions</a></li>
+          <li><a href="languages.html#interpreters" data-i18n="footer.interpreters">Interpreters</a></li>
+          <li><a href="about.html#contact" data-i18n="footer.support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span data-i18n="footer.built">Available 24 hours a day, in every language we can reach.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/data-specialties.js"></script>
+<script src="assets/js/data-symptoms.js"></script>
+<script src="assets/js/data-languages.js"></script>
+<script src="assets/js/data-doctors.js"></script>
+<script src="assets/js/triage-engine.js"></script>
+<script src="assets/js/booking-engine.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/about-ui.js"></script>
+</body>
+</html>
