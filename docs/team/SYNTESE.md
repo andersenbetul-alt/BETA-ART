@@ -28,6 +28,12 @@ Fem av elleve står uendret, tre er bortfalt, tre er endret eller erstattet. Det
 et normalt resultat av en pivot, og grunnen til at dokumentet er beholdt: en
 beslutning som er forlatt, er verdt mer enn en som aldri ble skrevet ned.
 
+Resten av dokumentet står som det ble vedtatt, uendret.
+
+---
+
+## Slik det ble skrevet, den gangen
+
 Sju roller leverte hver sitt. Der de peker i ulik retning, avgjøres det her.
 Hver beslutning sier hva som er valgt, hva som ble valgt bort, og hva den koster.
 
