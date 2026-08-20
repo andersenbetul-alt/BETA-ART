@@ -30,17 +30,32 @@ Sorduklarına şöyle cevap verin:
 **Not:** GitHub yazma izni açılırsa bu adım tamamen kalkar. Depoyu Vercel'e
 bağladığınızda her push kendiliğinden yayına gider ve elle dağıtım gerekmez.
 
-## 2. Alan adını bağla
+## 2. Alan adını bağla — qblogg.com (GoDaddy)
 
-Vercel panelinde: **Project → Settings → Domains → Add** → `qblogg.com`.
+**Doğrulanan durum (20.08):** `qblogg.com` kayıtlı ve GoDaddy'de. Şu an
+`160.153.0.38` adresine çözümleniyor — bu GoDaddy'nin park sayfası. Yani alan
+adı sizin, ama henüz hiçbir siteye bağlı değil.
 
-Vercel size iki kayıt gösterir. Alan adınızı aldığınız yerin DNS panelinde
-bunları girin:
+Önce Vercel panelinde: **Project → Settings → Domains → Add** → `qblogg.com`
+(www'yu ayrıca eklemeyin; Vercel apex'i eklerken www'yu da sorar).
 
-| Tip | Ad | Değer |
-|---|---|---|
-| A | `@` | `76.76.21.21` |
-| CNAME | `www` | Vercel'in panelde gösterdiği değer |
+Sonra **GoDaddy → My Products → qblogg.com → DNS → Manage DNS**:
+
+| İşlem | Tip | Ad | Değer |
+|---|---|---|---|
+| **Düzenle** (mevcut park kaydı) | A | `@` | `76.76.21.21` |
+| **Düzenle veya ekle** | CNAME | `www` | *Vercel'in panelde gösterdiği değer* |
+
+Mevcut `A @ → 160.153.0.38` kaydını **silmeyin, düzenleyin** — silip yeniden
+eklemek yayılmayı uzatıyor.
+
+**CNAME değerini panelden okuyun, buraya yazmayın.** Vercel bu hedefi projeye
+göre veriyor (`cname.vercel-dns.com` ya da `cname.vercel-dns-N.com` olabilir);
+yanlış değer sessizce çalışmaz.
+
+GoDaddy'de ayrıca **Forwarding** (yönlendirme) açıksa kapatın — açık kalırsa
+A kaydını ezip park sayfasını göstermeye devam eder. En sık gözden kaçan adım
+budur.
 
 **CNAME değerini panelden okuyun, buraya yazmayın.** Vercel bu hedefi projeye
 göre veriyor (`cname.vercel-dns.com` ya da `cname.vercel-dns-N.com` olabilir);
@@ -53,11 +68,19 @@ ama e-posta kayıtlarınızı (MX) da oraya taşımanız gerekir.
 Yayılma genelde 10 dakika–2 saat sürer, en kötü 48 saat. HTTPS sertifikası
 doğrulama biter bitmez otomatik gelir.
 
-### www mi, www'siz mi
+### www mi, www'siz mi — karar verilmiş durumda
 
-Birini asıl adres seçin, diğerini ona yönlendirin. Öneri: **qblogg.com** asıl,
-`www.qblogg.com` ona yönlensin. İkisi de açık kalırsa arama motoru aynı sayfayı
-iki adreste görür.
+Site şu anda **`qblogg.com`** (www'suz) üzerine kurulu: `config.js → siteUrl`,
+`sitemap.xml`'deki 144 adres, JSON-LD kimlikleri ve hreflang etiketlerinin
+tamamı bu adresi gösteriyor.
+
+Vercel'de apex'i asıl adres seçin, `www.qblogg.com`'u ona **yönlendirin**
+(Vercel bunu Domains ekranında tek tıkla yapıyor). İkisi de aynı içeriği
+sunarsa arama motoru aynı sayfayı iki adreste görür ve ikisini de zayıflatır.
+
+www'yu asıl adres yapmak isterseniz söyleyin: `config.js`, `sitemap.xml` ve
+canonical üretimi topluca değişmeli — elle üç dosyada değiştirmeyin, tek
+komutla yapılıyor.
 
 ## 3. Yayın sonrası
 

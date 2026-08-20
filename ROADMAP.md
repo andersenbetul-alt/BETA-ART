@@ -22,7 +22,7 @@ maliyet.
 | # | İş | Durum | Not |
 |---|---|---|---|
 | 1 | Depoya yazma izni ver, dalı push et | **Engelli** | git ve GitHub App 403; izin kullanıcıda |
-| 2 | Alan adı bağla ve yayına al | *Sürüyor* | qblogg.com alındı. `vercel.json` + `.vercelignore` + `DAGITIM.md` hazır, CSP tarayıcıda doğrulandı. Kalan: `npx vercel --prod` ve DNS (bu ortamdan yapılamıyor) |
+| 2 | Alan adı bağla ve yayına al | *Sürüyor* | qblogg.com GoDaddy'de kayıtlı, 160.153.0.38 park sayfasında. Vercel'de henüz `qblogg` projesi yok — bağlanacak hedef yok. `vercel.json` + `DAGITIM.md` hazır (GoDaddy adımlarıyla). Kalan: `npx vercel --prod`, sonra A kaydı 76.76.21.21 |
 | 3 | Gerçek e-posta, alan adı ve fiyatlar | **Hazır — senden veri bekliyor** | Hepsi tek dosyada: `assets/js/config.js` |
 | 4 | ~~Paket fiyatlarını güncelle~~ | Birleşti → #3 | Fiyat da config.js'ten geliyor (NOK yazılabilir) |
 | 5 | Formu Formspree/Netlify Forms'a bağla | Bekliyor | `composeMail` içindeki `mailto` bloğu |
