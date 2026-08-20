@@ -104,3 +104,33 @@ canonical robots'takinden farklı alan adı gösteriyorsa test patlar.
 3. Google Search Console'a `cobban.eu` ekle, sitemap'i bildir.
 4. `cobban.vercel.app` çalışmaya devam eder; Vercel yeni alan adını birincil
    yapınca ona yönlendirir.
+
+
+## Dağıtım yöntemi — bunu değiştirmek gerekiyor
+
+Şu an her dağıtımda **projenin tamamı** Vercel'e tek tek dosya olarak
+yeniden gönderiliyor. Bu yöntem çalışıyor ama kırılgan:
+
+- Eksik dosya gönderilirse derleme kırılıyor (bir kez oldu; canlı site
+  etkilenmedi çünkü Vercel başarısız derlemede eski dağıtımı sunmaya
+  devam ediyor).
+- Her dağıtım ~130 KB'lık bir aktarım demek.
+
+**Doğru çözüm: Vercel'i git deposuna bağlamak.** O zaman `git push`
+yeterli oluyor, hiçbir şey elle aktarılmıyor.
+
+Engel: bu ortamdan GitHub'a push 403 veriyor. Ama **senin makinenden
+çalışıyor** — bundle'ı açıp kendi hesabınla push edebilirsin:
+
+```bash
+git clone cobban-eu.bundle BETA-ART
+cd BETA-ART
+git remote set-url origin https://github.com/andersenbetul-alt/BETA-ART.git
+git push -u origin claude/urun-satis-firma-kurulum-a94vqt
+```
+
+Sonra Vercel panelinde: **cobban projesi → Settings → Git → Connect**
+→ depoyu ve dalı seç. Kök dizin olarak `web` ver.
+
+Bundan sonra her push otomatik dağıtım tetikler ve önizleme dağıtımları
+da bedava gelir.

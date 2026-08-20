@@ -1,5 +1,5 @@
 /**
- * Yedi sorunun tek kaynağı.
+ * Sekiz sorunun tek kaynağı.
  *
  * Bu liste daha önce iki yerde duruyordu: anasayfadaki kartlar ve sorun
  * sayfasındaki geçerli tür listesi. İkisi birbirinden habersizdi — birine
