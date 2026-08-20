@@ -55,7 +55,8 @@ the Music section, tabulated in `docs/RESEARCH.md`.
 
 Not currently usable: 251,000 monthly listeners as a *current* figure (it moves weekly; the
 page rounds to 251K and only the artist can confirm today's number), the TRXPICAL alias
-(HXI's own documents name it, nothing public links the two), and the GramArt confirmation of
+(HXI's own documents name it, and Spotify credits Trxpical as a separate artist alongside
+HXI on *help urself funk*, which reads as a collaboration rather than an alias), and the GramArt confirmation of
 name and master ownership as a written fact (it is verbal, by the artist's own note — the
 page states ownership, it does not cite GramArt).
 

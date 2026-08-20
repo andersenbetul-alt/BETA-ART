@@ -89,9 +89,13 @@ not in the archive yet — that is the only reason it is missing.
 
 ## Unverified — do not present as fact until confirmed
 
-- **TRXPICAL.** Three of HXI's own brand documents say he also releases under this alias, and
-  a separate site draft exists for it. Nothing indexed ties the two names together, so it is
-  not on the page. It goes on when a release or a profile links them publicly.
+- **TRXPICAL — the evidence now points the other way.** Three of HXI's own brand documents
+  say he "also releases as TRXPICAL". Spotify shows **Trxpical** as its own artist
+  (`spotify:artist:5zgjilQFCdUUV2sNNgaLk8`), and the *help urself funk* EP is credited to
+  **HXI and Trxpical as two separate artists on the same release**. That is what a
+  collaboration looks like, not an alias. It does not disprove the claim outright — an artist
+  can hold two profiles and credit both — but until something states the connection publicly,
+  the safer reading is that Trxpical is a collaborator. Not on the page either way.
 - **Monthly listeners and follower count.** The brand pack gives 251,063 listeners and 19,834
   followers as of July 2026; the page rounds to 251K. Spotify's artist page is blocked from
   here and the number moves weekly — only Spotify for Artists confirms the current one.
@@ -102,10 +106,27 @@ not in the archive yet — that is the only reason it is missing.
 
 ## Leads — releases the site does not mention yet
 
-- **Dança Estrada** — EP, reported June 2026. Confirm artist credit and exact date, then add
-  it to the Latest section and, if it is the newest, to the Music section.
-- **HELLDRIFT 2** — HXI, HXELLPLAYA & $werve. Named in HXI's Spotify bio as a hit; no date
-  or stream figure established. Add to the archive once the release date is confirmed.
+- **Dança Estrada** — confirmed on Spotify as an EP credited **HXI, Scythermane, Lurk**
+  (`spotify:album:4wqC92gaHtgYPQC2vkkkmI`). Same pairing as *Never Phased* on the BODYCAM
+  soundtrack. Still no release date, which is the only reason it is not in the archive.
+
+### Confirmed to exist, dates still missing
+
+Found on Spotify in August 2026, credits verified, dates not. Each goes into the archive the
+day its release date is established — the archive is grouped by year, so an undated row has
+nowhere to sit.
+
+| Release | Credit | Spotify |
+| --- | --- | --- |
+| Dança Estrada | HXI, Scythermane, Lurk | `album:4wqC92gaHtgYPQC2vkkkmI` |
+| TOMA | EnvyMind, HXI | `album:1jBljVzUQ456jfleYcjpNk` |
+| Loved You. | HXI | `album:22CxsJer1lpksTuhmLxRUH` |
+| HELLDRIFT 2 | HXI, HXELLPLAYA, $werve | `track:2fA6syjvdiDZmXk8qyH8uM` |
+| HELLDRIFT | HXI | `track:1Dh9zuLVe4FlukC2VBWe5a` |
+| help urself funk | HXI, Trxpical | `album:5RRdnYHtxhK9NImm5Nq53Y` |
+
+The archive lists twenty releases; this makes at least twenty-five. The fastest way to close
+the gap is HXI's own Spotify for Artists, which shows every release date in one table.
 - **ASSASSINATO** — HXI & TWISTED, on Spotify. Date not established.
 - **help urself** has official Sped Up, Slowed and remix versions (freddy fazbear remix,
   "I Can't Stop" remix, and others) on Spotify. The catalogue only shows the original; a
