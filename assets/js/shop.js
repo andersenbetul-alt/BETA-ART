@@ -34,6 +34,8 @@
 window.HXI_SHOP = [
   {
     id: 'stems-help-urself',
+    specs: ['shop_s_stems_1', 'shop_s_stems_2'],
+    delivery: 'shop_dl_instant',
     kind: 'digital',
     name: 'HELP URSELF — Official Stems',
     desc: 'shop_d_stems',
@@ -49,6 +51,8 @@ window.HXI_SHOP = [
     // `checkout` bir Merchant of Record bağlantısı olacak (Gumroad / Lemon Squeezy): dosyayı
     // onlar teslim eder ve AB KDV'sini yasal satıcı olarak üstlenir. Stripe ikisini de yapmaz.
     id: 'drumkit-01',
+    specs: ['shop_s_kit_1', 'shop_s_kit_2'],
+    delivery: 'shop_dl_instant',
     kind: 'digital',
     name: 'HXI Drum Kit Vol. 1',
     desc: 'shop_d_kit',
@@ -57,6 +61,8 @@ window.HXI_SHOP = [
   },
   {
     id: 'wallpapers-01',
+    specs: ['shop_s_wall_1', 'shop_s_wall_2'],
+    delivery: 'shop_dl_instant',
     kind: 'digital',
     name: 'HXI Wallpaper Pack',
     desc: 'shop_d_wallpaper',
@@ -67,6 +73,8 @@ window.HXI_SHOP = [
     // "Dijital poster": alıcı kendi bastırır. Baskıcı yok, kargo yok, iade yok — numaralı
     // fiziksel baskının sıfır maliyetli kardeşi.
     id: 'poster-digital-01',
+    specs: ['shop_s_post_1', 'shop_s_post_2'],
+    delivery: 'shop_dl_instant',
     kind: 'digital',
     name: 'HXI Poster — Print at Home',
     desc: 'shop_d_poster',
@@ -77,6 +85,8 @@ window.HXI_SHOP = [
     // Fırça paketinin prodüktördeki tam karşılığı: illüstratöre fırça neyse, prodüktöre
     // preset odur — sanatçının sesini kendi işinde kullanmanın aracı.
     id: 'presets-01',
+    specs: ['shop_s_pre_1', 'shop_s_pre_2'],
+    delivery: 'shop_dl_instant',
     kind: 'digital',
     name: 'HXI Serum Presets',
     desc: 'shop_d_presets',
@@ -87,6 +97,8 @@ window.HXI_SHOP = [
     // Bu kitlenin asıl "fırça paketi" bu. HXI'yı bulan insanlar video kuruyordu; onların
     // aleti LUT ve overlay. Müzik değil ama tam olarak aynı topluluğa satılıyor.
     id: 'editpack-01',
+    specs: ['shop_s_edit_1', 'shop_s_edit_2'],
+    delivery: 'shop_dl_instant',
     kind: 'digital',
     name: 'HXI Edit Pack — LUTs & Overlays',
     desc: 'shop_d_editpack',
@@ -96,6 +108,8 @@ window.HXI_SHOP = [
   {
     // Kâğıt: en ucuz talep üzerine baskı. Beden yok, iade yok, zarfla gidiyor.
     id: 'sticker-pack-01',
+    specs: ['shop_s_stick_1', 'shop_s_stick_2'],
+    delivery: 'shop_dl_print',
     kind: 'physical',
     name: 'X Mark Sticker Pack',
     desc: 'shop_d_stickers',
@@ -105,6 +119,9 @@ window.HXI_SHOP = [
   {
     // Numaralı, imzasız. Kimlik yüzsüz; imza her nüshada tutulması gereken fiziksel bir söz.
     id: 'print-help-urself',
+    specs: ['shop_s_print_1', 'shop_s_print_2'],
+    delivery: 'shop_dl_print',
+    edition: 100,
     kind: 'physical',
     name: 'HELP URSELF — Numbered Print',
     desc: 'shop_d_print',
@@ -113,6 +130,8 @@ window.HXI_SHOP = [
   },
   {
     id: 'tee-norwegian-flag',
+    specs: ['shop_s_tee_1', 'shop_s_tee_2'],
+    delivery: 'shop_dl_print',
     kind: 'physical',
     name: 'Norwegian Flag Tee',
     desc: 'shop_d_tee',
@@ -121,6 +140,8 @@ window.HXI_SHOP = [
   },
   {
     id: 'hoodie-norwegian-flag',
+    specs: ['shop_s_hood_1', 'shop_s_hood_2'],
+    delivery: 'shop_dl_print',
     kind: 'physical',
     name: 'Norwegian Flag Hoodie',
     desc: 'shop_d_hoodie',
@@ -141,6 +162,8 @@ window.HXI_SHOP = [
    */
   {
     id: 'membership-01',
+    specs: ['shop_s_mem_1', 'shop_s_mem_2'],
+    delivery: 'shop_dl_monthly',
     kind: 'digital',
     name: 'HXI Frequency',
     desc: 'shop_d_membership',
@@ -152,6 +175,8 @@ window.HXI_SHOP = [
     // Bir deneyim, bir dosya değil: maliyeti HXI'nın saati. Bu yüzden `checkout` dolmadan
     // önce cevaplanacak soru fiyat değil, "hangi akşam, ve kaç kişi".
     id: 'listening-stream',
+    specs: ['shop_s_str_1', 'shop_s_str_2'],
+    delivery: 'shop_dl_booked',
     kind: 'experience',
     name: 'Private Listening Stream',
     desc: 'shop_d_stream',

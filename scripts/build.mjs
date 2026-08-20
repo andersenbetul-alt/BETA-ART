@@ -111,10 +111,21 @@ function render(code, { atRoot, source = html, slug = '', title, description }) 
       const link = item.checkout
         ? `<a href="${item.checkout}" target="_blank" rel="noopener noreferrer">${escape(cta)}</a>`
         : `<a href="#drop">${escape(cta)}</a>`;
+      const specs = (item.specs || []).map((k) => `<li>${escape(dict[k] || '')}</li>`).join('') +
+        (item.edition
+          ? `<li class="spec-edition">${escape((dict.shop_edition || '').replace('{n}', item.edition))}</li>`
+          : '');
+      const included = specs
+        ? `<details class="product-specs"><summary>${escape(dict.shop_included || '')}</summary><ul>${specs}</ul></details>`
+        : '';
+      const delivery = item.delivery
+        ? `<p class="product-delivery">${escape(dict[item.delivery] || '')}</p>`
+        : '';
       return `<article class="card product"><p class="tag">${escape(kind)}</p>` +
         `<h3 class="h3 product-name">${escape(item.name)}</h3>` +
         `<p class="news-text">${escape(dict[item.desc] || '')}</p>` +
         `<p class="meta">${escape(price)}</p>` +
+        included + delivery +
         `<p class="card-links">${link}</p></article>`;
     }).join('');
     page = page.replace('<div class="grid-3" id="shop-grid"></div>',

@@ -499,6 +499,38 @@
         : t('shop_soon');
       card.appendChild(price);
 
+      // What you actually get. Online, this list decides the purchase more often than the
+      // description does — and with no product photography yet, it is the only thing to decide on.
+      if (item.specs && item.specs.length) {
+        var details = document.createElement('details');
+        details.className = 'product-specs';
+        var summary = document.createElement('summary');
+        summary.textContent = t('shop_included');
+        details.appendChild(summary);
+        var list = document.createElement('ul');
+        item.specs.forEach(function (key) {
+          var li = document.createElement('li');
+          li.textContent = t(key);
+          list.appendChild(li);
+        });
+        if (item.edition) {
+          var ed = document.createElement('li');
+          ed.className = 'spec-edition';
+          ed.textContent = (t('shop_edition') || '').replace('{n}', item.edition);
+          list.appendChild(ed);
+        }
+        details.appendChild(list);
+        card.appendChild(details);
+      }
+
+      // When it arrives. A buyer who cannot see this before paying is a buyer who does not pay.
+      if (item.delivery) {
+        var delivery = document.createElement('p');
+        delivery.className = 'product-delivery';
+        delivery.textContent = t(item.delivery);
+        card.appendChild(delivery);
+      }
+
       var links = document.createElement('p');
       links.className = 'card-links';
       if (item.checkout) {

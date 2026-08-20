@@ -321,3 +321,15 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
 
 .use-share{margin:26px 0 0}
 .use-share .copy-btn{padding:10px 16px}
+
+/* ---------- product detail ---------- */
+.product-specs{margin:14px 0 0;border-top:1px solid var(--border);padding-top:12px}
+.product-specs summary{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);cursor:pointer;list-style:none}
+.product-specs summary::-webkit-details-marker{display:none}
+.product-specs summary::before{content:"+ ";}
+.product-specs[open] summary::before{content:"− ";}
+.product-specs ul{margin:12px 0 0}
+.product-specs li{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--muted);padding-inline-start:14px;position:relative;unicode-bidi:plaintext;text-align:start}
+.product-specs li::before{content:"·";position:absolute;inset-inline-start:2px}
+.spec-edition{color:var(--accent) !important}
+.product-delivery{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);margin:14px 0 0;unicode-bidi:plaintext;text-align:start}
