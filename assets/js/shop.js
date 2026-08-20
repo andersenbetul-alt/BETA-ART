@@ -13,6 +13,21 @@
  * Ürün adları çevrilmez (parça adları gibi). Açıklamalar `desc` anahtarıyla i18n'den gelir.
  */
 
+/* Sıra üretim maliyetine göre: dosyalar önce, kâğıt sonra, kumaş en sonda.
+ *
+ *   Sıfır marjinal maliyet — HXI'nın zaten sahip olduğu dosyalar. Stok yok, baskı yok,
+ *   kargo yok, beden yok. Bir kere hazırlanır, sonsuz kere satılır.
+ *
+ *   Talep üzerine baskı, kâğıt — sticker ve poster. Birim maliyeti düşük, beden sorunu yok,
+ *   kargosu ucuz, iade oranı neredeyse sıfır: yanlış beden diye iade edilmiyor.
+ *
+ *   Talep üzerine baskı, kumaş — tişört, hoodie. Yine stok riski yok ama beden var, ve
+ *   iadelerin çoğu bedenden geliyor. Beden tablosu olmadan `checkout` doldurulmaz.
+ *
+ * Saat, yüzük, kargo pantolon gibi kalemler bilerek yok: stok bağlar, birim maliyeti yüksek,
+ * ve henüz satış geçmişi olmayan bir markada parayı rafta bekletirler.
+ */
+
 window.HXI_SHOP = [
   {
     id: 'stems-help-urself',
@@ -34,6 +49,29 @@ window.HXI_SHOP = [
     kind: 'digital',
     name: 'HXI Drum Kit Vol. 1',
     desc: 'shop_d_kit',
+    checkout: ''
+  },
+  {
+    id: 'wallpapers-01',
+    kind: 'digital',
+    name: 'HXI Wallpaper Pack',
+    desc: 'shop_d_wallpaper',
+    checkout: ''
+  },
+  {
+    // Kâğıt: en ucuz talep üzerine baskı. Beden yok, iade yok, zarfla gidiyor.
+    id: 'sticker-pack-01',
+    kind: 'physical',
+    name: 'X Mark Sticker Pack',
+    desc: 'shop_d_stickers',
+    checkout: ''
+  },
+  {
+    // Numaralı, imzasız. Kimlik yüzsüz; imza her nüshada tutulması gereken fiziksel bir söz.
+    id: 'print-help-urself',
+    kind: 'physical',
+    name: 'HELP URSELF — Numbered Print',
+    desc: 'shop_d_print',
     checkout: ''
   },
   {

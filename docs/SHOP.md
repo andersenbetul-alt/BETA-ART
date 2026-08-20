@@ -49,6 +49,24 @@ card says; the product page has to say precisely what that covers — commercial
 or no; resale of the samples themselves, no. A sample pack without a licence line generates
 support mail forever, and the answer changes depending on who asks.
 
+## Order of play: cheapest to produce first
+
+The catalogue is ordered by what it costs HXI to make one, not by what it sells for. Three
+bands, and the reason each sits where it does:
+
+| Band | Products | Cost to produce one | Why here |
+| --- | --- | --- | --- |
+| Files | Drum kit, wallpaper pack, stems | **Nothing** | They already exist in his sessions. Prepared once, sold forever. No printer, courier, size or return. |
+| Paper | Stickers, numbered print | Low, per unit sold | Cheapest print-on-demand there is. No sizes, so almost nothing comes back — a sticker is never the wrong fit. Posts in an envelope. |
+| Fabric | Tee, hoodie | Low, per unit sold | No stock risk either, but sizing is real, and most apparel returns are a size problem. Do not fill in `checkout` without a size chart. |
+
+Deliberately absent: **watches, rings, cargo trousers, jackets.** Each ties up money in stock
+or carries a high unit cost, and a brand with no sales history yet has no way to know how many
+to make. They are a decision for after the first band has sold something.
+
+The order in `shop.js` is the order on the page, and it is this order on purpose: a visitor
+meets the free thing first, then the cheap thing, then the thing with a size.
+
 ## Which checkout provider
 
 The answer is not the same for the two kinds of product, and the difference is tax, not payment.

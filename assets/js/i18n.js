@@ -185,6 +185,9 @@ window.HXI_I18N.en = {
   shop_notify: "Notify me →",
   shop_d_stems: "The full session behind the track: drums, bass, leads, FX. Yours to flip.",
   shop_d_kit: "808s, hi-hats and one-shots pulled from HXI's own sessions. WAV, royalty-free for your tracks.",
+  shop_d_wallpaper: "Cover art at phone and desktop sizes. The artwork, without the streaming app on top of it.",
+  shop_d_stickers: "Vinyl stickers of the X mark. Cut, weatherproof, and made to end up on a laptop or a case.",
+  shop_d_print: "The help urself artwork, printed on heavy matte stock. Numbered edition, never reprinted.",
   shop_d_tee: "Norwegian flag tee. No release date set.",
   shop_d_hoodie: "Norwegian flag hoodie. No release date set.",
 
@@ -383,6 +386,9 @@ window.HXI_I18N.zh = {
   shop_notify: "上架时通知我 →",
   shop_d_stems: "这首曲子的完整工程：鼓组、贝斯、主音、效果，随你改编。",
   shop_d_kit: "808、hi-hat 与 one-shot，全部取自 HXI 本人的工程文件。WAV 格式，可免版税用于你的作品。",
+  shop_d_wallpaper: "手机与桌面尺寸的封面图。是那张画本身，上面没有播放器界面。",
+  shop_d_stickers: "X 标记的乙烯基贴纸。模切、防水，贴在笔记本或琴箱上刚好。",
+  shop_d_print: "《help urself》封面，印在厚哑光纸上。限量编号，不再加印。",
   shop_d_tee: "挪威国旗 T 恤，发售日期未定。",
   shop_d_hoodie: "挪威国旗连帽衫，发售日期未定。",
 
@@ -581,6 +587,9 @@ window.HXI_I18N.es = {
   shop_notify: "Avísame →",
   shop_d_stems: "La sesión completa detrás del tema: batería, bajo, leads, FX. Para que hagas lo tuyo.",
   shop_d_kit: "808, hi-hat और one-shot — सब HXI के अपने सेशन से। WAV, आपके ट्रैक में रॉयल्टी-फ़्री इस्तेमाल के लिए।",
+  shop_d_wallpaper: "फ़ोन और डेस्कटॉप नाप में कवर आर्ट। सिर्फ़ आर्टवर्क, ऊपर कोई ऐप नहीं।",
+  shop_d_stickers: "X मार्क के विनाइल स्टिकर। कट किए हुए, मौसम-रोधी — लैपटॉप या केस पर चिपकने के लिए बने।",
+  shop_d_print: "help urself का आर्टवर्क, भारी मैट काग़ज़ पर। नंबर वाला संस्करण, दोबारा नहीं छपेगा।",
   shop_d_tee: "Camiseta con la bandera noruega. Sin fecha de lanzamiento.",
   shop_d_hoodie: "Sudadera con la bandera noruega. Sin fecha de lanzamiento.",
 
@@ -779,6 +788,9 @@ window.HXI_I18N.hi = {
   shop_notify: "मुझे बताएँ →",
   shop_d_stems: "ट्रैक के पीछे का पूरा सेशन: ड्रम, बेस, लीड, एफ़एक्स। जैसा चाहें बदलिए।",
   shop_d_kit: "808, hi-hats y one-shots sacados de las propias sesiones de HXI. WAV, libres de regalías para tus temas.",
+  shop_d_wallpaper: "La portada en tamaños de móvil y escritorio. La ilustración, sin la app de streaming encima.",
+  shop_d_stickers: "Pegatinas de vinilo con la marca X. Troqueladas, resistentes al agua, hechas para acabar en un portátil o un estuche.",
+  shop_d_print: "La portada de help urself, impresa en papel mate grueso. Edición numerada, sin reimpresión.",
   shop_d_tee: "नॉर्वेजियन फ्लैग टी-शर्ट। रिलीज़ तारीख़ तय नहीं।",
   shop_d_hoodie: "नॉर्वेजियन फ्लैग हुडी। रिलीज़ तारीख़ तय नहीं।",
 
@@ -977,6 +989,9 @@ window.HXI_I18N.ar = {
   shop_notify: "أبلغني →",
   shop_d_stems: "الجلسة الكاملة خلف المقطوعة: الإيقاع، الباس، الألحان، المؤثرات. أعد تشكيلها كما تشاء.",
   shop_d_kit: "أصوات 808 وهاي-هاتس ووَن-شوت مأخوذة من جلسات HXI نفسها. صيغة WAV، وبلا إتاوات لاستخدامها في أعمالك.",
+  shop_d_wallpaper: "غلاف العمل بمقاسات الهاتف وسطح المكتب. الصورة وحدها، دون واجهة التطبيق فوقها.",
+  shop_d_stickers: "ملصقات فينيل بعلامة X. مقصوصة ومقاومة للماء، صُنعت لتنتهي على حاسوب محمول أو حقيبة آلة.",
+  shop_d_print: "غلاف help urself مطبوعًا على ورق مطفأ سميك. نسخة مرقّمة، لا تُطبع ثانية.",
   shop_d_tee: "قميص بعلم النرويج. لا تاريخ إصدار محدد.",
   shop_d_hoodie: "هودي بعلم النرويج. لا تاريخ إصدار محدد.",
 
@@ -1175,6 +1190,9 @@ window.HXI_I18N.fr = {
   shop_notify: "Me prévenir →",
   shop_d_stems: "La session complète derrière le morceau : batterie, basse, leads, FX. À vous de la retourner.",
   shop_d_kit: "808, hi-hats et one-shots tirés des sessions de HXI. En WAV, libres de droits pour vos morceaux.",
+  shop_d_wallpaper: "La pochette aux formats téléphone et bureau. L’image seule, sans l’appli de streaming par-dessus.",
+  shop_d_stickers: "Stickers vinyle au sigle X. Découpés, résistants aux intempéries, faits pour finir sur un portable ou un étui.",
+  shop_d_print: "La pochette de help urself, imprimée sur papier mat épais. Édition numérotée, jamais réimprimée.",
   shop_d_tee: "T-shirt drapeau norvégien. Pas de date de sortie.",
   shop_d_hoodie: "Hoodie drapeau norvégien. Pas de date de sortie.",
 
@@ -1373,6 +1391,9 @@ window.HXI_I18N.pt = {
   shop_notify: "Me avise →",
   shop_d_stems: "A sessão completa por trás da faixa: bateria, baixo, leads, FX. Vira do seu jeito.",
   shop_d_kit: "৮০৮, হাই-হ্যাট আর ওয়ান-শট — সব HXI-এর নিজের সেশন থেকে। WAV, আপনার ট্র্যাকে রয়্যালটি-ফ্রি ব্যবহারের জন্য।",
+  shop_d_wallpaper: "ফোন আর ডেস্কটপ মাপে কভার আর্ট। শুধু ছবিটা, উপরে কোনো অ্যাপ নেই।",
+  shop_d_stickers: "X চিহ্নের ভিনাইল স্টিকার। কাটা, আবহাওয়ারোধী — ল্যাপটপ বা কেসে লাগানোর জন্যই বানানো।",
+  shop_d_print: "help urself-এর আর্টওয়ার্ক, ভারী ম্যাট কাগজে ছাপা। নম্বর দেওয়া সংস্করণ, আর ছাপা হবে না।",
   shop_d_tee: "Camiseta com a bandeira da Noruega. Sem data de lançamento.",
   shop_d_hoodie: "Moletom com a bandeira da Noruega. Sem data de lançamento.",
 
@@ -1571,6 +1592,9 @@ window.HXI_I18N.bn = {
   shop_notify: "জানিয়ে দিন →",
   shop_d_stems: "ট্র্যাকের পেছনের পূর্ণ সেশন: ড্রাম, বেস, লিড, এফএক্স। আপনার মতো করে বদলান।",
   shop_d_kit: "808s, hi-hats e one-shots tirados das próprias sessões do HXI. Em WAV, livres de royalties para as suas faixas.",
+  shop_d_wallpaper: "A capa em tamanhos de telemóvel e computador. A arte, sem a app de streaming por cima.",
+  shop_d_stickers: "Autocolantes de vinil com a marca X. Cortados, resistentes ao tempo, feitos para acabar num portátil ou numa case.",
+  shop_d_print: "A capa de help urself, impressa em papel mate espesso. Edição numerada, sem reimpressão.",
   shop_d_tee: "নরওয়েজিয়ান পতাকার টি-শার্ট। প্রকাশের তারিখ ঠিক হয়নি।",
   shop_d_hoodie: "নরওয়েজিয়ান পতাকার হুডি। প্রকাশের তারিখ ঠিক হয়নি।",
 
@@ -1769,6 +1793,9 @@ window.HXI_I18N.ru = {
   shop_notify: "Сообщить мне →",
   shop_d_stems: "Полная сессия трека: барабаны, бас, лиды, эффекты. Делайте с ними что хотите.",
   shop_d_kit: "808-е, хэты и ваншоты из собственных сессий HXI. WAV, без отчислений — используйте в своих треках.",
+  shop_d_wallpaper: "Обложка в размерах для телефона и рабочего стола. Сама картинка, без интерфейса стримингового приложения поверх.",
+  shop_d_stickers: "Виниловые стикеры со знаком X. С высечкой, не боятся погоды — сделаны, чтобы осесть на ноутбуке или кейсе.",
+  shop_d_print: "Обложка help urself, отпечатанная на плотной матовой бумаге. Нумерованный тираж, допечаток не будет.",
   shop_d_tee: "Футболка с норвежским флагом. Дата выхода не назначена.",
   shop_d_hoodie: "Худи с норвежским флагом. Дата выхода не назначена.",
 
@@ -1967,6 +1994,9 @@ window.HXI_I18N.ur = {
   shop_notify: "مجھے اطلاع دیں →",
   shop_d_stems: "ٹریک کے پیچھے کا مکمل سیشن: ڈرم، بیس، لیڈ، ایفیکٹس۔ جیسے چاہیں بدلیں۔",
   shop_d_kit: "808، ہائی ہیٹس اور ون شاٹس — سب HXI کے اپنے سیشنز سے۔ WAV، آپ کے ٹریکس میں رائلٹی فری استعمال کے لیے۔",
+  shop_d_wallpaper: "فون اور ڈیسک ٹاپ سائز میں کور آرٹ۔ صرف تصویر، اوپر کوئی ایپ نہیں۔",
+  shop_d_stickers: "X نشان کے وینائل اسٹیکرز۔ کٹے ہوئے، موسم سے محفوظ — لیپ ٹاپ یا کیس پر لگنے کے لیے بنے۔",
+  shop_d_print: "help urself کا آرٹ ورک، بھاری میٹ کاغذ پر چھپا۔ نمبر شدہ ایڈیشن، دوبارہ نہیں چھپے گا۔",
   shop_d_tee: "نارویجن پرچم والی ٹی شرٹ۔ ریلیز کی تاریخ طے نہیں۔",
   shop_d_hoodie: "نارویجن پرچم والی ہوڈی۔ ریلیز کی تاریخ طے نہیں۔",
 
@@ -2165,6 +2195,9 @@ window.HXI_I18N.no = {
   shop_notify: "Si fra →",
   shop_d_stems: "Hele økta bak låten: trommer, bass, leads, FX. Gjør hva du vil med den.",
   shop_d_kit: "808-er, hi-hats og one-shots hentet fra HXI sine egne økter. WAV, royaltyfritt til dine egne låter.",
+  shop_d_wallpaper: "Coveret i telefon- og skjermstørrelse. Bildet alene, uten strømmeappen oppå.",
+  shop_d_stickers: "Vinylklistremerker med X-merket. Konturskåret, tåler vær og vind, laget for å havne på en laptop eller en case.",
+  shop_d_print: "Coveret til help urself, trykt på tykt matt papir. Nummerert opplag, aldri trykt opp igjen.",
   shop_d_tee: "T-skjorte med norsk flagg. Ingen slippdato satt.",
   shop_d_hoodie: "Hettegenser med norsk flagg. Ingen slippdato satt.",
 
@@ -2363,6 +2396,9 @@ window.HXI_I18N.tr = {
   shop_notify: "Haber ver →",
   shop_d_stems: "Parçanın arkasındaki tüm oturum: davul, bas, lead, efektler. İstediğiniz gibi çevirin.",
   shop_d_kit: "808’ler, hi-hat’ler ve one-shot’lar — hepsi HXI’nın kendi seanslarından. WAV, kendi parçalarında telifsiz kullanabilirsin.",
+  shop_d_wallpaper: "Kapak görseli, telefon ve masaüstü ölçülerinde. Sadece resim — üstünde uygulama arayüzü yok.",
+  shop_d_stickers: "X işaretli vinil sticker'lar. Kesilmiş, dış koşullara dayanıklı; laptopta ya da case'de bitsin diye yapıldı.",
+  shop_d_print: "help urself kapağı, kalın mat kâğıda basılı. Numaralı baskı, bir daha basılmıyor.",
   shop_d_tee: "Norveç bayraklı tişört. Çıkış tarihi belirlenmedi.",
   shop_d_hoodie: "Norveç bayraklı hoodie. Çıkış tarihi belirlenmedi.",
 
