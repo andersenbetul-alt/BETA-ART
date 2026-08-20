@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "NAVIAR — Help to understand and follow up public-sector cases",
-    "description": "NAVIAR is an independent advisory service that helps people understand, organise and follow up their cases with public authorities in Norway."
+    "description": "NAVIAR helps you understand letters from public authorities. You learn what applies, when the deadline is, and what to do."
   },
   "brand": {
     "tagline": "Clarity in complex systems.",
@@ -190,7 +190,7 @@
   "areas": {
     "eyebrow": "Coverage",
     "title": "Areas we work in",
-    "lead": "Our pilot focuses on NAV and municipal services. The other areas are covered through our own advisors or vetted partners.",
+    "lead": "Our pilot is NAV and the municipality. We take other areas only when we have an adviser who knows them.",
     "items": [
       "NAV — benefits, sick leave, unemployment",
       "Municipal services (kommune)",
@@ -206,7 +206,7 @@
   "pricing": {
     "eyebrow": "Prices",
     "title": "Clear prices, agreed before we start",
-    "lead": "These are pilot prices. You always receive the scope and the price in writing before any work begins, and third-party costs are listed separately.",
+    "lead": "These are pilot prices. You get the price and the scope in writing before we start. Fees to others come on top.",
     "from": "from",
     "quote": "By quote",
     "vat": "Prices in NOK. Pilot pricing, subject to change.",
@@ -326,7 +326,7 @@
     "case": "What is the case about?",
     "casePlaceholder": "Which office, what the letter says, and any deadline you know about. Do not include personal identity numbers or health details here.",
     "noSensitive": "Please do not write national identity numbers or health information in this field. You will get a secure channel for documents after booking.",
-    "consent": "I agree that NAVIAR may contact me about this enquiry and process my details for that purpose.",
+    "consent": "I agree that NAVIAR may contact me about this case and use my details only for that.",
     "summary": "Your booking",
     "service": "Service",
     "when": "Time",
@@ -364,7 +364,9 @@
     "upload": "Documents",
     "uploadNote": "Describe the case in your own words. You do not need to upload the document or give sensitive details now.",
     "tolkNotice": "Public agencies are normally required to arrange and pay for an interpreter for meetings with them. A private interpreter is for the conversations that fall outside that.",
-    "fitFirst": "We check that the case fits before you pay."
+    "fitFirst": "We check that the case fits before you pay.",
+    "returnPaid": "Thank you. The payment went through and your case is registered.",
+    "returnCancelled": "The payment was cancelled, so nothing has been charged. Your case is saved — get in touch if you want to complete it."
   },
   "faq": {
     "eyebrow": "Questions",

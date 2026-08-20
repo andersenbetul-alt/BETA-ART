@@ -550,7 +550,7 @@
     });
   }
 
-  function renderDone(demo) {
+  function renderDone(demo, returned) {
     var host = byId('bkBody');
     var stepsHost = byId('bkSteps');
     if (stepsHost) stepsHost.innerHTML = '';
@@ -567,6 +567,13 @@
     box.appendChild(el('p', 'finder-hint', I18n.t('booking.reference')));
     box.appendChild(el('div', 'ref-box', state.reference));
     box.appendChild(el('p', null, I18n.t('booking.doneNext')));
+
+    if (returned) {
+      var back = el('p', 'status ' + (returned === 'paid' ? 'ok' : 'info') + ' show',
+                    I18n.t(returned === 'paid' ? 'booking.returnPaid' : 'booking.returnCancelled'));
+      back.style.textAlign = 'start';
+      box.appendChild(back);
+    }
 
     if (demo) {
       var warn = el('p', 'status info show', I18n.t('booking.demoNotice'));
@@ -608,6 +615,24 @@
     render();
   });
 
-  document.addEventListener('naviar:lang', render);
-  global.NaviarBooking = { render: render, state: state };
+  /* Stripe sends the customer back here after checkout. Without this the
+     person who just paid 800 kr lands on an empty booking form. */
+  function returnFromCheckout() {
+    var qs = new URLSearchParams(global.location.search);
+    var paid = qs.get('booking');
+    var cancelled = qs.get('cancelled');
+    var ref = paid || cancelled;
+    if (!ref || !/^[A-Z0-9-]{4,32}$/.test(ref)) return false;
+    state.reference = ref;
+    renderDone(false, paid ? 'paid' : 'cancelled');
+    return true;
+  }
+
+  document.addEventListener('naviar:lang', function () {
+    if (!returnFromCheckout()) render();
+  });
+  global.NaviarBooking = {
+    render: function () { if (!returnFromCheckout()) render(); },
+    state: state
+  };
 })(window);

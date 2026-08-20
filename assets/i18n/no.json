@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "NAVIAR — Få hjelp til å forstå og følge opp offentlige saker",
-    "description": "NAVIAR er en uavhengig rådgivningstjeneste som hjelper mennesker med å forstå, organisere og følge opp saker i møte med offentlige tjenester."
+    "description": "NAVIAR hjelper deg å forstå brev fra det offentlige. Du får vite hva som gjelder, når fristen er, og hva du skal gjøre."
   },
   "brand": {
     "tagline": "Klarhet i komplekse systemer.",
@@ -190,7 +190,7 @@
   "areas": {
     "eyebrow": "Dekning",
     "title": "Områder vi jobber med",
-    "lead": "Piloten vår handler om NAV og kommunale tjenester. De øvrige områdene dekkes gjennom egne rådgivere eller kvalitetssikrede samarbeidspartnere.",
+    "lead": "Piloten vår er NAV og kommunen. Andre områder tar vi bare når vi har en rådgiver som kan dem.",
     "items": [
       "NAV — ytelser, sykmelding, arbeidsledighet",
       "Kommunale tjenester",
@@ -206,7 +206,7 @@
   "pricing": {
     "eyebrow": "Priser",
     "title": "Tydelige priser, avtalt før vi starter",
-    "lead": "Dette er pilotpriser. Du får alltid omfang og pris skriftlig før arbeidet begynner, og kostnader til tredjepart står oppført separat.",
+    "lead": "Dette er pilotpriser. Du får pris og omfang skriftlig før vi starter. Gebyrer til andre kommer i tillegg.",
     "from": "fra",
     "quote": "Etter tilbud",
     "vat": "Priser i NOK. Pilotpriser, kan bli justert.",
@@ -326,7 +326,7 @@
     "case": "Hva gjelder saken?",
     "casePlaceholder": "Hvilken instans, hva det står i brevet, og eventuell frist du kjenner til. Ikke skriv fødselsnummer eller helseopplysninger her.",
     "noSensitive": "Ikke skriv fødselsnummer eller helseopplysninger i dette feltet. Du får en sikker kanal for dokumenter etter bestillingen.",
-    "consent": "Jeg samtykker til at NAVIAR kan kontakte meg om denne henvendelsen og behandle opplysningene mine til dette formålet.",
+    "consent": "Jeg samtykker i at NAVIAR kontakter meg om denne saken og bruker opplysningene mine bare til det.",
     "summary": "Din bestilling",
     "service": "Tjeneste",
     "when": "Tidspunkt",
@@ -364,7 +364,9 @@
     "upload": "Dokumenter",
     "uploadNote": "Beskriv saken med dine egne ord. Du trenger ikke laste opp dokumentet eller oppgi sensitive opplysninger nå.",
     "tolkNotice": "Offentlige etater skal som regel skaffe og betale tolk til møter med dem. Privat tolk er for samtalene som faller utenfor det.",
-    "fitFirst": "Vi sjekker at saken passer før du betaler."
+    "fitFirst": "Vi sjekker at saken passer før du betaler.",
+    "returnPaid": "Takk. Betalingen er gjennomført, og saken din er registrert.",
+    "returnCancelled": "Betalingen ble avbrutt, så ingen betaling er registrert. Saken din er lagret — ta kontakt hvis du vil fullføre den."
   },
   "faq": {
     "eyebrow": "Spørsmål",

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "NAVIAR — Pagalba suprasti ir tvarkyti bylas su valstybės įstaigomis",
-    "description": "NAVIAR yra nepriklausoma konsultacijų tarnyba, padedanti žmonėms suprasti, sutvarkyti ir prižiūrėti savo bylas Norvegijos valstybės įstaigose."
+    "description": "NAVIAR padeda suprasti valstybės įstaigų laiškus. Sužinosite, kas jums galioja, kada terminas ir ką daryti."
   },
   "brand": {
     "tagline": "Aiškumas sudėtingose sistemose.",
@@ -190,7 +190,7 @@
   "areas": {
     "eyebrow": "Aprėptis",
     "title": "Sritys, kuriose dirbame",
-    "lead": "Mūsų bandomasis etapas sutelktas į NAV ir savivaldybių paslaugas. Kitas sritis dengiame savo konsultantais arba patikrintais partneriais.",
+    "lead": "Mūsų bandymas — NAV ir savivaldybė. Kitas sritis imame tik tada, kai turime jas išmanantį patarėją.",
     "items": [
       "NAV — išmokos, nedarbingumas, nedarbas",
       "Savivaldybių paslaugos",
@@ -206,7 +206,7 @@
   "pricing": {
     "eyebrow": "Kainos",
     "title": "Aiškios kainos, sutartos prieš pradedant",
-    "lead": "Tai bandomosios kainos. Apimtį ir kainą visada gaunate raštu prieš pradedant darbą, o trečiųjų šalių išlaidos nurodomos atskirai.",
+    "lead": "Tai bandomosios kainos. Kainą ir apimtį gaunate raštu, prieš pradedant. Mokesčiai kitiems pridedami atskirai.",
     "from": "nuo",
     "quote": "Pagal pasiūlymą",
     "vat": "Kainos NOK. Bandomosios kainos, gali keistis.",
@@ -326,7 +326,7 @@
     "case": "Su kuo susijusi byla?",
     "casePlaceholder": "Kuri įstaiga, kas parašyta laiške ir žinomas terminas. Nerašykite čia asmens kodo ar sveikatos duomenų.",
     "noSensitive": "Nerašykite šiame lauke asmens kodo ar sveikatos informacijos. Po registracijos gausite saugų kanalą dokumentams.",
-    "consent": "Sutinku, kad NAVIAR susisiektų su manimi dėl šios užklausos ir tvarkytų mano duomenis šiuo tikslu.",
+    "consent": "Sutinku, kad NAVIAR susisiektų su manimi dėl šios bylos ir naudotų mano duomenis tik tam.",
     "summary": "Jūsų registracija",
     "service": "Paslauga",
     "when": "Laikas",
@@ -364,7 +364,9 @@
     "upload": "Dokumentai",
     "uploadNote": "Aprašykite bylą savais žodžiais. Dabar nereikia įkelti dokumento ar nurodyti jautrių duomenų.",
     "tolkNotice": "Valstybės įstaigos paprastai privalo pačios pasirūpinti vertėju ir jį apmokėti susitikimams su jomis. Privatus vertėjas skirtas pokalbiams, kurie į tai nepatenka.",
-    "fitFirst": "Patikriname, ar byla tinka, prieš jums sumokant."
+    "fitFirst": "Patikriname, ar byla tinka, prieš jums sumokant.",
+    "returnPaid": "Ačiū. Mokėjimas pavyko, jūsų byla užregistruota.",
+    "returnCancelled": "Mokėjimas atšauktas, todėl nieko nenuskaityta. Jūsų byla išsaugota — parašykite mums, jei norite ją užbaigti."
   },
   "faq": {
     "eyebrow": "Klausimai",

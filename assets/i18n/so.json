@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "NAVIAR — Caawimaad si aad u fahamto oo aad ula socoto arrimahaaga dawladda",
-    "description": "NAVIAR waa adeeg la-talin oo madax-bannaan oo caawiya dadka inay fahmaan, habeeyaan lana socdaan arrimahooda hay'adaha dawladda Norway."
+    "description": "NAVIAR wuxuu kaa caawiyaa inaad fahamto warqadaha ka yimaada hay'adaha dawladda. Waxaad ogaanaysaa waxa ku khuseeya, goorta uu waqtigu dhammaanayo iyo waxa aad samayn lahayd."
   },
   "brand": {
     "tagline": "Cadayn nidaamyo adag dhexdood.",
@@ -190,7 +190,7 @@
   "areas": {
     "eyebrow": "Daboolka",
     "title": "Qaybaha aan ka shaqeyno",
-    "lead": "Tijaabadayadu waxay diiradda saareysaa NAV iyo adeegyada degmada. Qaybaha kale waxaa daboola la-taliyayaasheena ama shuraakada la hubiyay.",
+    "lead": "Tijaabadeennu waa NAV iyo degmada. Meelo kale waxaan qaadnaa oo keliya marka aan haysanno lataliye taqaan.",
     "items": [
       "NAV — gunnooyin, fasax caafimaad, shaqo la'aan",
       "Adeegyada degmada",
@@ -206,7 +206,7 @@
   "pricing": {
     "eyebrow": "Qiimaha",
     "title": "Qiimo cad, oo la isku afgarto ka hor inta aan la bilaabin",
-    "lead": "Kuwani waa qiimayaal tijaabo ah. Had iyo jeer waxaad qoraal ku heshaa baaxadda iyo qiimaha ka hor inta aan shaqadu bilaaban, kharashyada dhinaca saddexaadna gooni ayaa loo qoraa.",
+    "lead": "Kuwani waa qiimayaal tijaabo ah. Qiimaha iyo baaxadda qoraal ahaan ayaad ku heshaa ka hor inta aanan bilaabin. Khidmadaha dadka kale la siiyo way ku darsamaan.",
     "from": "laga bilaabo",
     "quote": "Sida dalabka",
     "vat": "Qiimayaasha waa NOK. Qiimo tijaabo ah, waa la beddeli karaa.",
@@ -326,7 +326,7 @@
     "case": "Arrintu maxay ku saabsan tahay?",
     "casePlaceholder": "Hay'adda, waxa warqaddu leedahay, iyo wakhti kama dambeys haddii aad taqaan. Halkan ha ku qorin lambarka aqoonsiga ama xogta caafimaad.",
     "noSensitive": "Fadlan halkan ha ku qorin lambarka aqoonsiga qaranka ama xog caafimaad. Ballanka kadib waxaad heli doontaa kanaal ammaan ah oo dukumentiyada.",
-    "consent": "Waan ogolahay in NAVIAR ila soo xiriirto arrintan iyo inay xogtayda u isticmaasho ujeeddadaas.",
+    "consent": "Waxaan oggolahay in NAVIAR ila soo xiriiro arrintan, xogtaydana u isticmaalo taas oo keliya.",
     "summary": "Ballankaaga",
     "service": "Adeegga",
     "when": "Wakhtiga",
@@ -364,7 +364,9 @@
     "upload": "Dukumentiyo",
     "uploadNote": "Arrinta ku sharrax erayadaada. Hadda uma baahnid inaad dukumentiga soo shubto ama xog xasaasi ah bixiso.",
     "tolkNotice": "Hay'adaha dawladdu caadi ahaan waa waajib inay turjumaan u helaan oo u bixiyaan kulamada ay adiga kula yeeshaan. Turjumaanka gaarka ah waa wada-hadallada taas ka baxsan.",
-    "fitFirst": "Waxaan hubinnaa in arrintu habboon tahay ka hor inta aadan bixin."
+    "fitFirst": "Waxaan hubinnaa in arrintu habboon tahay ka hor inta aadan bixin.",
+    "returnPaid": "Mahadsanid. Lacag bixintu waa dhammaatay, arrintaadana waa la diiwaan geliyey.",
+    "returnCancelled": "Lacag bixintii waa la joojiyey, wax lacag ahna lagama jarin. Arrintaadu way kaydsan tahay — nala soo xiriir haddii aad rabto inaad dhammaystirto."
   },
   "faq": {
     "eyebrow": "Su'aalo",

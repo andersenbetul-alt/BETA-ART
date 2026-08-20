@@ -175,6 +175,30 @@ Check key parity across locales with `tools/check-i18n.js`:
 node tools/check-i18n.js
 ```
 
+### Readability
+
+The whole product is "we explain it in plain language", so the Norwegian is
+measured, not guessed. `tools/lix.mjs` scores every passage with **LIX**
+(lesbarhetsindeks), the standard readability measure for Norwegian, Swedish and
+Danish: `words/sentences + long words × 100 / words`, where a long word is more
+than six letters. Norwegian public bodies aim below 40 for text written for the
+public.
+
+```bash
+node tools/lix.mjs                      # defaults to the Norwegian locale
+node tools/lix.mjs assets/i18n/en.json
+```
+
+The locale currently averages **LIX 34**. Treat scores on fragments of fewer
+than ~15 words as noise — the words-per-sentence term is too small to mean
+anything there; the measure is built for running text.
+
+A Hunspell spellcheck (`dictionary-nb`) was also run over the Norwegian. It
+flagged 39 words, all of which turned out to be correct compounds, proper nouns
+or gaps in the dictionary itself — it rejects `noe`, `noen`, `datoer` and
+`skjemaer`, which are ordinary Norwegian. Useful as a typo net, not as an
+authority, which is why it is not wired into the repo.
+
 > **The translations have not been reviewed by native speakers.** They were drafted for
 > this pilot. Before launch, have each language checked by a native speaker — especially
 > the safety rules and the BankID wording, where a mistranslation could cause real harm.

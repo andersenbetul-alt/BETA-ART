@@ -285,7 +285,7 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
         }],
         metadata: { reference: booking.reference, serviceCode: service.code },
         success_url: site + '/index.html?booking=' + booking.reference + '#booking',
-        cancel_url: site + '/index.html?cancelled=1#booking'
+        cancel_url: site + '/index.html?cancelled=' + booking.reference + '#booking'
       });
       booking.checkoutId = session.id;
       DB.insertBooking(db, booking);

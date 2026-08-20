@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "NAVIAR — Kamu işlemlerinizi anlamak ve takip etmek için destek",
-    "description": "NAVIAR, insanların Norveç'te kamu kurumlarıyla ilgili işlemlerini anlamalarına, düzenlemelerine ve takip etmelerine yardımcı olan bağımsız bir danışmanlık hizmetidir."
+    "description": "NAVIAR, kamu kurumlarından gelen mektupları anlamanıza yardım eder. Neyin geçerli olduğunu, sürenin ne zaman dolduğunu ve ne yapmanız gerektiğini öğrenirsiniz."
   },
   "brand": {
     "tagline": "Karmaşık sistemlerde açıklık.",
@@ -190,7 +190,7 @@
   "areas": {
     "eyebrow": "Kapsam",
     "title": "Çalıştığımız alanlar",
-    "lead": "Pilot hizmetimiz NAV ve belediye işlemlerine odaklanıyor. Diğer alanlar kendi danışmanlarımız veya doğrulanmış iş ortaklarımız aracılığıyla kapsanıyor.",
+    "lead": "Pilotumuz NAV ve belediye. Diğer alanları ancak o konuyu bilen bir danışmanımız varsa alıyoruz.",
     "items": [
       "NAV — ödenekler, hastalık izni, işsizlik",
       "Belediye hizmetleri",
@@ -206,7 +206,7 @@
   "pricing": {
     "eyebrow": "Fiyatlar",
     "title": "Net fiyatlar, işe başlamadan önce anlaşılır",
-    "lead": "Bunlar pilot fiyatlardır. İş başlamadan önce kapsamı ve fiyatı her zaman yazılı alırsınız; üçüncü taraf masrafları ayrıca belirtilir.",
+    "lead": "Bunlar pilot fiyatlardır. Fiyatı ve kapsamı başlamadan önce yazılı alırsınız. Başkalarına ödenen harçlar ayrıca gelir.",
     "from": "başlangıç",
     "quote": "Teklife göre",
     "vat": "Fiyatlar NOK cinsindendir. Pilot fiyatlar olup değişebilir.",
@@ -326,7 +326,7 @@
     "case": "Konu nedir?",
     "casePlaceholder": "Hangi kurum, mektupta ne yazıyor ve bildiğiniz bir son tarih var mı. Buraya kimlik numarası veya sağlık bilgisi yazmayın.",
     "noSensitive": "Bu alana kimlik numarası veya sağlık bilgisi yazmayın. Randevudan sonra belgeler için güvenli bir kanal alacaksınız.",
-    "consent": "NAVIAR'ın bu başvuru hakkında benimle iletişime geçmesini ve bilgilerimi bu amaçla işlemesini kabul ediyorum.",
+    "consent": "NAVIAR'ın bu konuda benimle iletişime geçmesini ve bilgilerimi yalnızca bunun için kullanmasını kabul ediyorum.",
     "summary": "Randevunuz",
     "service": "Hizmet",
     "when": "Zaman",
@@ -364,7 +364,9 @@
     "upload": "Belgeler",
     "uploadNote": "Konuyu kendi kelimelerinizle anlatın. Şu aşamada belgeyi yüklemeniz veya hassas bilgi vermeniz gerekmiyor.",
     "tolkNotice": "Kamu kurumları, kendileriyle yapılan görüşmelerde kural olarak tercümanı sağlamak ve ücretini ödemekle yükümlüdür. Özel tolk, bunun dışında kalan görüşmeler içindir.",
-    "fitFirst": "Ödeme yapmadan önce dosyanın uygun olduğunu kontrol ediyoruz."
+    "fitFirst": "Ödeme yapmadan önce dosyanın uygun olduğunu kontrol ediyoruz.",
+    "returnPaid": "Teşekkürler. Ödeme tamamlandı ve dosyanız kaydedildi.",
+    "returnCancelled": "Ödeme iptal edildi, hiçbir tahsilat yapılmadı. Dosyanız kayıtlı — tamamlamak isterseniz bize yazın."
   },
   "faq": {
     "eyebrow": "Sorular",

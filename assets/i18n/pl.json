@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "NAVIAR — Pomoc w zrozumieniu i prowadzeniu spraw urzędowych",
-    "description": "NAVIAR to niezależna usługa doradcza, która pomaga ludziom zrozumieć, uporządkować i prowadzić swoje sprawy w norweskich urzędach."
+    "description": "NAVIAR pomaga zrozumieć pisma od urzędów. Dowiesz się, co Cię dotyczy, kiedy mija termin i co zrobić."
   },
   "brand": {
     "tagline": "Jasność w złożonych systemach.",
@@ -190,7 +190,7 @@
   "areas": {
     "eyebrow": "Zakres",
     "title": "Obszary, którymi się zajmujemy",
-    "lead": "Nasz pilotaż skupia się na NAV i usługach gminnych. Pozostałe obszary obsługujemy przez własnych doradców lub sprawdzonych partnerów.",
+    "lead": "Nasz pilotaż to NAV i gmina. Inne obszary bierzemy tylko wtedy, gdy mamy doradcę, który je zna.",
     "items": [
       "NAV — świadczenia, zwolnienia, bezrobocie",
       "Usługi gminne",
@@ -206,7 +206,7 @@
   "pricing": {
     "eyebrow": "Ceny",
     "title": "Jasne ceny, ustalone zanim zaczniemy",
-    "lead": "To ceny pilotażowe. Zakres i cenę zawsze dostajesz na piśmie przed rozpoczęciem pracy, a koszty stron trzecich są wykazane osobno.",
+    "lead": "To są ceny pilotażowe. Cenę i zakres dostajesz na piśmie, zanim zaczniemy. Opłaty na rzecz innych dochodzą osobno.",
     "from": "od",
     "quote": "Na podstawie oferty",
     "vat": "Ceny w NOK. Ceny pilotażowe, mogą ulec zmianie.",
@@ -326,7 +326,7 @@
     "case": "Czego dotyczy sprawa?",
     "casePlaceholder": "Który urząd, co jest w piśmie i jaki znasz termin. Nie wpisuj tutaj numeru personalnego ani danych o zdrowiu.",
     "noSensitive": "Nie wpisuj w tym polu numeru personalnego ani informacji o zdrowiu. Po rezerwacji otrzymasz bezpieczny kanał do dokumentów.",
-    "consent": "Zgadzam się, aby NAVIAR skontaktował się ze mną w sprawie tego zgłoszenia i przetwarzał moje dane w tym celu.",
+    "consent": "Zgadzam się, aby NAVIAR skontaktował się ze mną w tej sprawie i użył moich danych tylko do tego.",
     "summary": "Twoja rezerwacja",
     "service": "Usługa",
     "when": "Termin",
@@ -364,7 +364,9 @@
     "upload": "Dokumenty",
     "uploadNote": "Opisz sprawę własnymi słowami. Nie musisz teraz przesyłać dokumentu ani podawać wrażliwych danych.",
     "tolkNotice": "Urzędy mają co do zasady obowiązek zapewnić i opłacić tłumacza na spotkania z nimi. Tłumacz prywatny dotyczy rozmów poza tym zakresem.",
-    "fitFirst": "Sprawdzamy, czy sprawa pasuje, zanim zapłacisz."
+    "fitFirst": "Sprawdzamy, czy sprawa pasuje, zanim zapłacisz.",
+    "returnPaid": "Dziękujemy. Płatność przeszła, a Twoja sprawa została zarejestrowana.",
+    "returnCancelled": "Płatność została anulowana, więc nic nie pobrano. Twoja sprawa jest zapisana — napisz do nas, jeśli chcesz ją dokończyć."
   },
   "faq": {
     "eyebrow": "Pytania",
