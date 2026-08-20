@@ -26,6 +26,17 @@ window.HXI_SHOP = [
     signup: true
   },
   {
+    // Mağazanın ilk gerçek ürünü. Dijital olması tesadüf değil: baskı yok, kargo yok, beden
+    // yok — bir prodüktörün bugün teslim edebileceği tek ürün türü, çünkü dosya zaten var.
+    // `checkout` bir Merchant of Record bağlantısı olacak (Gumroad / Lemon Squeezy): dosyayı
+    // onlar teslim eder ve AB KDV'sini yasal satıcı olarak üstlenir. Stripe ikisini de yapmaz.
+    id: 'drumkit-01',
+    kind: 'digital',
+    name: 'HXI Drum Kit Vol. 1',
+    desc: 'shop_d_kit',
+    checkout: ''
+  },
+  {
     id: 'tee-norwegian-flag',
     kind: 'physical',
     name: 'Norwegian Flag Tee',

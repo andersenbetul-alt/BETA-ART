@@ -184,6 +184,7 @@ window.HXI_I18N.en = {
   shop_get: "Get it →",
   shop_notify: "Notify me →",
   shop_d_stems: "The full session behind the track: drums, bass, leads, FX. Yours to flip.",
+  shop_d_kit: "808s, hi-hats and one-shots pulled from HXI's own sessions. WAV, royalty-free for your tracks.",
   shop_d_tee: "Norwegian flag tee. No release date set.",
   shop_d_hoodie: "Norwegian flag hoodie. No release date set.",
 
@@ -381,6 +382,7 @@ window.HXI_I18N.zh = {
   shop_get: "领取 →",
   shop_notify: "上架时通知我 →",
   shop_d_stems: "这首曲子的完整工程：鼓组、贝斯、主音、效果，随你改编。",
+  shop_d_kit: "808、hi-hat 与 one-shot，全部取自 HXI 本人的工程文件。WAV 格式，可免版税用于你的作品。",
   shop_d_tee: "挪威国旗 T 恤，发售日期未定。",
   shop_d_hoodie: "挪威国旗连帽衫，发售日期未定。",
 
@@ -578,6 +580,7 @@ window.HXI_I18N.es = {
   shop_get: "Consíguelo →",
   shop_notify: "Avísame →",
   shop_d_stems: "La sesión completa detrás del tema: batería, bajo, leads, FX. Para que hagas lo tuyo.",
+  shop_d_kit: "808, hi-hat और one-shot — सब HXI के अपने सेशन से। WAV, आपके ट्रैक में रॉयल्टी-फ़्री इस्तेमाल के लिए।",
   shop_d_tee: "Camiseta con la bandera noruega. Sin fecha de lanzamiento.",
   shop_d_hoodie: "Sudadera con la bandera noruega. Sin fecha de lanzamiento.",
 
@@ -775,6 +778,7 @@ window.HXI_I18N.hi = {
   shop_get: "हासिल करें →",
   shop_notify: "मुझे बताएँ →",
   shop_d_stems: "ट्रैक के पीछे का पूरा सेशन: ड्रम, बेस, लीड, एफ़एक्स। जैसा चाहें बदलिए।",
+  shop_d_kit: "808, hi-hats y one-shots sacados de las propias sesiones de HXI. WAV, libres de regalías para tus temas.",
   shop_d_tee: "नॉर्वेजियन फ्लैग टी-शर्ट। रिलीज़ तारीख़ तय नहीं।",
   shop_d_hoodie: "नॉर्वेजियन फ्लैग हुडी। रिलीज़ तारीख़ तय नहीं।",
 
@@ -972,6 +976,7 @@ window.HXI_I18N.ar = {
   shop_get: "احصل عليه →",
   shop_notify: "أبلغني →",
   shop_d_stems: "الجلسة الكاملة خلف المقطوعة: الإيقاع، الباس، الألحان، المؤثرات. أعد تشكيلها كما تشاء.",
+  shop_d_kit: "أصوات 808 وهاي-هاتس ووَن-شوت مأخوذة من جلسات HXI نفسها. صيغة WAV، وبلا إتاوات لاستخدامها في أعمالك.",
   shop_d_tee: "قميص بعلم النرويج. لا تاريخ إصدار محدد.",
   shop_d_hoodie: "هودي بعلم النرويج. لا تاريخ إصدار محدد.",
 
@@ -1169,6 +1174,7 @@ window.HXI_I18N.fr = {
   shop_get: "Le récupérer →",
   shop_notify: "Me prévenir →",
   shop_d_stems: "La session complète derrière le morceau : batterie, basse, leads, FX. À vous de la retourner.",
+  shop_d_kit: "808, hi-hats et one-shots tirés des sessions de HXI. En WAV, libres de droits pour vos morceaux.",
   shop_d_tee: "T-shirt drapeau norvégien. Pas de date de sortie.",
   shop_d_hoodie: "Hoodie drapeau norvégien. Pas de date de sortie.",
 
@@ -1366,6 +1372,7 @@ window.HXI_I18N.pt = {
   shop_get: "Pegar →",
   shop_notify: "Me avise →",
   shop_d_stems: "A sessão completa por trás da faixa: bateria, baixo, leads, FX. Vira do seu jeito.",
+  shop_d_kit: "৮০৮, হাই-হ্যাট আর ওয়ান-শট — সব HXI-এর নিজের সেশন থেকে। WAV, আপনার ট্র্যাকে রয়্যালটি-ফ্রি ব্যবহারের জন্য।",
   shop_d_tee: "Camiseta com a bandeira da Noruega. Sem data de lançamento.",
   shop_d_hoodie: "Moletom com a bandeira da Noruega. Sem data de lançamento.",
 
@@ -1563,6 +1570,7 @@ window.HXI_I18N.bn = {
   shop_get: "নিয়ে নিন →",
   shop_notify: "জানিয়ে দিন →",
   shop_d_stems: "ট্র্যাকের পেছনের পূর্ণ সেশন: ড্রাম, বেস, লিড, এফএক্স। আপনার মতো করে বদলান।",
+  shop_d_kit: "808s, hi-hats e one-shots tirados das próprias sessões do HXI. Em WAV, livres de royalties para as suas faixas.",
   shop_d_tee: "নরওয়েজিয়ান পতাকার টি-শার্ট। প্রকাশের তারিখ ঠিক হয়নি।",
   shop_d_hoodie: "নরওয়েজিয়ান পতাকার হুডি। প্রকাশের তারিখ ঠিক হয়নি।",
 
@@ -1760,6 +1768,7 @@ window.HXI_I18N.ru = {
   shop_get: "Забрать →",
   shop_notify: "Сообщить мне →",
   shop_d_stems: "Полная сессия трека: барабаны, бас, лиды, эффекты. Делайте с ними что хотите.",
+  shop_d_kit: "808-е, хэты и ваншоты из собственных сессий HXI. WAV, без отчислений — используйте в своих треках.",
   shop_d_tee: "Футболка с норвежским флагом. Дата выхода не назначена.",
   shop_d_hoodie: "Худи с норвежским флагом. Дата выхода не назначена.",
 
@@ -1957,6 +1966,7 @@ window.HXI_I18N.ur = {
   shop_get: "حاصل کریں →",
   shop_notify: "مجھے اطلاع دیں →",
   shop_d_stems: "ٹریک کے پیچھے کا مکمل سیشن: ڈرم، بیس، لیڈ، ایفیکٹس۔ جیسے چاہیں بدلیں۔",
+  shop_d_kit: "808، ہائی ہیٹس اور ون شاٹس — سب HXI کے اپنے سیشنز سے۔ WAV، آپ کے ٹریکس میں رائلٹی فری استعمال کے لیے۔",
   shop_d_tee: "نارویجن پرچم والی ٹی شرٹ۔ ریلیز کی تاریخ طے نہیں۔",
   shop_d_hoodie: "نارویجن پرچم والی ہوڈی۔ ریلیز کی تاریخ طے نہیں۔",
 
@@ -2154,6 +2164,7 @@ window.HXI_I18N.no = {
   shop_get: "Hent den →",
   shop_notify: "Si fra →",
   shop_d_stems: "Hele økta bak låten: trommer, bass, leads, FX. Gjør hva du vil med den.",
+  shop_d_kit: "808-er, hi-hats og one-shots hentet fra HXI sine egne økter. WAV, royaltyfritt til dine egne låter.",
   shop_d_tee: "T-skjorte med norsk flagg. Ingen slippdato satt.",
   shop_d_hoodie: "Hettegenser med norsk flagg. Ingen slippdato satt.",
 
@@ -2351,6 +2362,7 @@ window.HXI_I18N.tr = {
   shop_get: "Al →",
   shop_notify: "Haber ver →",
   shop_d_stems: "Parçanın arkasındaki tüm oturum: davul, bas, lead, efektler. İstediğiniz gibi çevirin.",
+  shop_d_kit: "808’ler, hi-hat’ler ve one-shot’lar — hepsi HXI’nın kendi seanslarından. WAV, kendi parçalarında telifsiz kullanabilirsin.",
   shop_d_tee: "Norveç bayraklı tişört. Çıkış tarihi belirlenmedi.",
   shop_d_hoodie: "Norveç bayraklı hoodie. Çıkış tarihi belirlenmedi.",
 

@@ -20,6 +20,35 @@ string is the safe default — a product is only for sale once its checkout link
 
 `npm run check` fails if a `desc` key is missing from any dictionary.
 
+## Decided, August 2026
+
+**The first product is digital, and it goes out through a Merchant of Record.**
+
+`HXI Drum Kit Vol. 1` is in the catalogue with an empty `checkout`, so it renders as
+"coming soon" until the link exists. It is first because it is the only kind of product a
+producer can deliver today: the files already exist in his sessions. No printer, no courier,
+no size chart, no returns.
+
+To open it:
+
+1. Create the product on **Gumroad** or **Lemon Squeezy** — upload the pack, set the price,
+   write the licence line (see below).
+2. Paste the product URL into `checkout` in `assets/js/shop.js`, and add
+   `price: { amount: …, currency: 'NOK' }`.
+3. `npm run check`, commit. The card becomes a formatted price and a Buy button in all
+   twelve languages.
+
+**Stripe is not the provider for this one**, and the account being live and ready does not
+change that. Stripe takes the payment and stops there: it does not hand the buyer a file, and
+it does not become the seller of record for VAT. Both of those are the entire problem with
+selling a digital product from Norway to a consumer in Germany. Stripe (`acct_1U5ZmK2Od2RM6qBk`,
+BETA ART) is the right answer for physical goods, once there is a print partner behind them.
+
+**Write the licence line before the first sale.** "Royalty-free for your tracks" is what the
+card says; the product page has to say precisely what that covers — commercial releases, yes
+or no; resale of the samples themselves, no. A sample pack without a licence line generates
+support mail forever, and the answer changes depending on who asks.
+
 ## Which checkout provider
 
 The answer is not the same for the two kinds of product, and the difference is tax, not payment.
