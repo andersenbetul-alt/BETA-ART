@@ -8,7 +8,7 @@
  */
 
 export type Kind =
-  | 'cancelled' | 'missed' | 'road' | 'eat' | 'rain' | 'meet' | 'basics';
+  | 'cancelled' | 'missed' | 'road' | 'car' | 'eat' | 'rain' | 'meet' | 'basics';
 
 export type Problem = {
   kind: Kind;
@@ -27,6 +27,8 @@ export const problems: Problem[] = [
     hint: 'The rest of today, rebuilt', headline: 'The rest of today, rebuilt.' },
   { kind: 'road', icon: '🚧', label: 'The road is closed',
     hint: 'Alternative route', headline: 'Routes that avoid the road.' },
+  { kind: 'car', icon: '🔧', label: 'My car broke down',
+    hint: 'Who to call first, and who pays', headline: 'Who to call, before anyone tows it.' },
   { kind: 'eat', icon: '🍽', label: 'Where can we eat now?',
     hint: 'Worth walking to from here', headline: 'Places worth walking to.' },
   { kind: 'rain', icon: '🌧', label: 'It started raining',

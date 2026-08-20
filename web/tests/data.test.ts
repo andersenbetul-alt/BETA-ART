@@ -60,7 +60,7 @@ test('saat 24 saatlik biçimde — Avrupa tabelalarıyla aynı', () => {
 });
 
 test('her sorun türünün kartı ve başlığı var', () => {
-  assert.equal(problems.length, 7);
+  assert.equal(problems.length, 8);
   assert.equal(kinds.length, new Set(kinds).size, 'yinelenen tür');
   for (const p of problems) {
     assert.ok(p.headline.endsWith('.') || p.headline.endsWith('?'), p.kind);
@@ -72,6 +72,35 @@ test('her sorun türünün kartı ve başlığı var', () => {
 
 test('bilinmeyen sorun türü çözülmüyor', () => {
   assert.equal(problemFor('shopping'), undefined);
+});
+
+test('her ülkede yerel tamirci kelimesi var', async () => {
+  // Tamirci ADI ve TELEFONU bilerek yok: doğrulayamadığımız bir numara, yol
+  // kenarında kalmış turistin boşuna aradığı numaradır. Verdiğimiz tek şey
+  // doğru arama kelimesi — yanlış kelime turisti kaportacıya gönderiyor.
+  for (const { code } of countryOrder) {
+    const { roadside } = await getCountry(code);
+    assert.ok(roadside.garageWord.length > 3, `${code}: arama kelimesi yok`);
+    if (roadside.bodyShopWord) {
+      assert.notEqual(roadside.bodyShopWord, roadside.garageWord, code);
+    }
+  }
+});
+
+test('arıza tavsiyesi araca göre değişiyor', async () => {
+  const { whoToCall } = await import('../lib/roadside.ts');
+  // Kiralıkta kendi tamircini aramak sözleşmeyi geçersiz kılıyor; asıl
+  // para kaybı burada. İki durumun cevabı aynı çıkarsa ekran işe yaramaz.
+  assert.notEqual(whoToCall('rental').verdict, whoToCall('own').verdict);
+  assert.match(whoToCall('rental').verdict, /rental company/i);
+  assert.match(whoToCall('unknown').verdict, /whose car/i);
+});
+
+test('ilk dakikalar önce güvenlik diyor', async () => {
+  const { firstMinutes } = await import('../lib/roadside.ts');
+  // Sıra keyfi değil: yelek ve bariyerin arkası, doğru numaradan önce gelir.
+  assert.match(firstMinutes[0].what, /vest/i);
+  for (const step of firstMinutes) assert.ok(step.detail.length > 60, step.what);
 });
 
 test('her şehirde yemek ve kapalı alan seçeneği var', async () => {

@@ -72,6 +72,17 @@ export type Country = {
   emergency: { general: string; police?: string; ambulance?: string; fire?: string };
   /** Tehlike YOKKEN aranan hat: hırsızlık ihbarı, kayıp eşya. Ayrı gösterilir. */
   nonEmergency?: { what: string; number: string };
+  /**
+   * Araç arızasında YEREL ARAMA KELİMESİ — tamirci adı ve telefonu değil.
+   * Tek tek garaj yazmıyoruz: doğrulayamadığımız bir numara, yol kenarında
+   * kalmış turistin boşuna aradığı numaradır.
+   */
+  roadside: {
+    /** Mekanik tamir için aratılacak kelime. */
+    garageWord: string;
+    /** Kaporta/boya — farklı iş. Yanlış kelime yanlış dükkâna götürür. */
+    bodyShopWord?: string;
+  };
   essentials: Essential[];
 };
 

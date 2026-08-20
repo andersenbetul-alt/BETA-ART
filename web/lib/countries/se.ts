@@ -9,6 +9,7 @@ export const country: Country = {
     { id: 'malmo',     name: 'Malmö',     lat: 55.6050, lon: 13.0038, stopPlaceId: null },
   ],
   emergency: { general: '112' },
+  roadside: { garageWord: 'bilverkstad' },
   places: [
     { cityId: 'stockholm', name: 'Östermalms Saluhall', kind: 'eat', walkMinutes: 8, price: '$$', note: 'Indoor market hall, open in any weather' },
     { cityId: 'stockholm', name: 'Kajsas Fisk', kind: 'eat', walkMinutes: 6, price: '$', note: 'Fish soup in the Hötorget basement hall' },

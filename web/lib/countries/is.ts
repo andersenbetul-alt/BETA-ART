@@ -7,6 +7,7 @@ export const country: Country = {
     { id: 'akureyri', name: 'Akureyri', lat: 65.6885, lon: -18.1262, stopPlaceId: null },
   ],
   emergency: { general: '112' },
+  roadside: { garageWord: 'bílaverkstæði' },
   places: [
     { cityId: 'reykjavik', name: 'Bæjarins Beztu Pylsur', kind: 'eat', walkMinutes: 5, price: '$', note: 'The hot dog stand, open late' },
     { cityId: 'reykjavik', name: 'Hlemmur Mathöll', kind: 'eat', walkMinutes: 12, price: '$$', note: 'Indoor food hall in an old bus station' },

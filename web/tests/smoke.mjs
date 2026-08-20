@@ -24,7 +24,7 @@ const COUNTRIES = [
   ['PT', 'Portugal', '112', false],
   ['GR', 'Greece', '112', false],
 ];
-const KINDS = ['cancelled', 'missed', 'road', 'eat', 'rain', 'meet', 'basics'];
+const KINDS = ['cancelled', 'missed', 'road', 'car', 'eat', 'rain', 'meet', 'basics'];
 
 /** Arayüzde asla görünmemesi gereken Türkçe kelimeler — yorumlar Türkçe, metin İngilizce. */
 const TURKISH = ['için', 'değil', 'şehir', 'ülke', 'yağmur', 'canlı veri', 'seçenek', 'plana göre'];
@@ -97,6 +97,17 @@ for (const [code, name, emergency, hasTransport] of COUNTRIES) {
     ok(/class="answer"/.test(html) || /class="option"/.test(html),
        `${label}: cevap kutusu yok — boş ekran`);
 
+    if (kind === 'car') {
+      // Ürünün burada verdiği söz: uydurulmuş garaj yok.
+      ok(text.includes('We do not list individual garages'),
+         `${label}: garaj listelemediğimizi söylemiyor`);
+      ok(text.includes('rental'), `${label}: kiralık ayrımı yok`);
+      ok(/vest/i.test(text), `${label}: güvenlik adımı yok`);
+      // Telefon numarasına benzeyen hiçbir şey olmamalı (112 hariç).
+      const phones = (text.match(/\b\d{3}[\s-]?\d{2,}[\s-]?\d{2,}\b/g) ?? []);
+      ok(phones.length === 0, `${label}: doğrulanmamış numara sızmış: ${phones[0]}`);
+    }
+
     if (kind === 'basics') {
       ok(text.includes(`Emergency in ${name}: ${emergency}`), `${label}: acil numara satırı yok`);
       const costs = (text.match(/Not knowing costs you:/g) ?? []).length;
@@ -115,6 +126,17 @@ for (const [code, name, emergency, hasTransport] of COUNTRIES) {
       if (text.includes('Go indoors')) {
         ok(/min walk/.test(text), `${label}: "içeri geç" dedi ama kapalı mekan listelemedi`);
       }
+    }
+
+    if (kind === 'car') {
+      // Ürünün burada verdiği söz: uydurulmuş garaj yok.
+      ok(text.includes('We do not list individual garages'),
+         `${label}: garaj listelemediğimizi söylemiyor`);
+      ok(text.includes('rental'), `${label}: kiralık ayrımı yok`);
+      ok(/vest/i.test(text), `${label}: güvenlik adımı yok`);
+      // Telefon numarasına benzeyen hiçbir şey olmamalı (112 hariç).
+      const phones = (text.match(/\b\d{3}[\s-]?\d{2,}[\s-]?\d{2,}\b/g) ?? []);
+      ok(phones.length === 0, `${label}: doğrulanmamış numara sızmış: ${phones[0]}`);
     }
 
     if (kind === 'basics') {
@@ -173,7 +195,7 @@ console.log('\nKenar durumlar');
   ok(home.status === 200, `anasayfa: HTTP ${home.status}`);
   ok(currentChip(home.html) === 'Greece', 'anasayfa ülke seçimini taşımıyor');
   const kept = (home.html.match(/href="\/sorun\/[a-z]+\?country=GR"/g) ?? []).length;
-  ok(kept === 7, `anasayfadaki 7 bağlantı ülkeyi taşımalı, ${kept} taşıyor`);
+  ok(kept === 8, `anasayfadaki 8 bağlantı ülkeyi taşımalı, ${kept} taşıyor`);
 
   const meetNoCity = await get('/sorun/meet?country=NO&city=tromso');
   ok(meetNoCity.status === 200, 'etkinliksiz şehir sayfayı kırıyor');

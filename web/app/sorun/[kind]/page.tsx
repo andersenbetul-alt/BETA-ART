@@ -5,6 +5,8 @@ import {
   type CityRef, type Country,
 } from '@/lib/country.ts';
 import { rankEvents, universalWays, weekdayIn } from '@/lib/events.ts';
+import { firstMinutes, motorwayRule, searchHint, whoToCall,
+         type CarSituation } from '@/lib/roadside.ts';
 import { kinds, problemFor, type Kind } from '@/lib/problems.ts';
 import { findTrips, type TripOption } from '@/lib/entur.ts';
 import { demoTrips } from '@/lib/fixtures.ts';
@@ -51,14 +53,16 @@ export default async function ProblemPage({
   params, searchParams,
 }: {
   params: Promise<{ kind: string }>;
-  searchParams: Promise<{ country?: string; from?: string; to?: string; city?: string }>;
+  searchParams: Promise<{
+    country?: string; from?: string; to?: string; city?: string; car?: string;
+  }>;
 }) {
   const { kind } = await params;
   const problem = problemFor(kind);
   if (!problem) notFound();
   const k = kind as Kind;
 
-  const { country: code, from, to, city } = await searchParams;
+  const { country: code, from, to, city, car } = await searchParams;
   const country = await getCountry(code ?? '');
   const isTransport = k === 'cancelled' || k === 'missed' || k === 'road';
 
@@ -71,13 +75,15 @@ export default async function ProblemPage({
 
       {isTransport
         ? <TransportAnswer country={country} kind={k} from={from} to={to} />
-        : k === 'eat'
-          ? <PlaceAnswer country={country} kind="eat" city={city} />
-          : k === 'rain'
-            ? <RainAnswer country={country} city={city} />
-            : k === 'meet'
-              ? <EventsAnswer country={country} city={city} />
-              : <Essentials country={country} />}
+        : k === 'car'
+          ? <CarAnswer country={country} situation={car} />
+          : k === 'eat'
+            ? <PlaceAnswer country={country} kind="eat" city={city} />
+            : k === 'rain'
+              ? <RainAnswer country={country} city={city} />
+              : k === 'meet'
+                ? <EventsAnswer country={country} city={city} />
+                : <Essentials country={country} />}
     </>
   );
 }
@@ -461,6 +467,100 @@ function EventsAnswer({ country, city }: { country: Country; city?: string }) {
       <p className="muted small">
         We only list things that happen every week, so this page cannot go stale.
         For one-off concerts and festivals, the tourist office desk beats every website.
+      </p>
+    </>
+  );
+}
+
+/* ------------------------------------------------------------------ araç */
+
+/**
+ * Araç arızası ekranı.
+ *
+ * Burada BİLEREK tamirci listesi yok. Doğrulayamadığımız bir garaj telefonu,
+ * yol kenarında kalmış turistin boşuna aradığı numaradır — ve kiralık araçta
+ * doğru cevap zaten "kendi tamircini arama" oluyor.
+ *
+ * Ekran tek soruyla açılıyor: araç kimin? Cevabı bilmeden verilen her tavsiye
+ * yanlış, çünkü kiralıkta ve kendi aracında ödeyen kişi değişiyor.
+ */
+function CarAnswer({ country, situation }: { country: Country; situation?: string }) {
+  const s: CarSituation =
+    situation === 'rental' || situation === 'own' ? situation : 'unknown';
+  const advice = whoToCall(s);
+  const choices: { id: CarSituation; label: string }[] = [
+    { id: 'rental', label: 'It is a rental' },
+    { id: 'own', label: 'It is my own car' },
+  ];
+
+  return (
+    <>
+      <h2>Whose car is it?</h2>
+      <div className="chips">
+        {choices.map((c) => (
+          <Link key={c.id} href={`?country=${country.code}&car=${c.id}`}
+                className="chip" aria-current={c.id === s ? 'true' : undefined}>
+            {c.label}
+          </Link>
+        ))}
+      </div>
+
+      <div className="answer">
+        <strong>{advice.verdict}</strong>
+        <span className="muted small">{advice.detail}</span>
+      </div>
+
+      <h2>Right now, in this order</h2>
+      <div className="option">
+        {firstMinutes.map((step) => (
+          <div className="place" key={step.what}>
+            <span>
+              <strong>{step.what}</strong>
+              <span className="hint small muted" style={{ display: 'block' }}>{step.detail}</span>
+            </span>
+          </div>
+        ))}
+        <div className="place">
+          <span>
+            <strong>{motorwayRule.what}</strong>
+            <span className="hint small muted" style={{ display: 'block' }}>{motorwayRule.detail}</span>
+          </span>
+        </div>
+      </div>
+
+      <p className="muted small">
+        Emergency in {country.name}: <strong>{country.emergency.general}</strong> — call it if
+        anyone is hurt or the car is blocking a live lane.
+      </p>
+
+      {s === 'own' && (
+        <>
+          <h2>Looking for a garage yourself</h2>
+          <div className="option">
+            <div className="place">
+              <span>
+                <strong>The word to search for in {country.name}</strong>
+                <span className="hint small muted" style={{ display: 'block' }}>
+                  {searchHint(country.roadside.garageWord, country.roadside.bodyShopWord)}
+                </span>
+              </span>
+            </div>
+            <div className="place">
+              <span>
+                <strong>Ask for the price in writing before they start</strong>
+                <span className="hint small muted" style={{ display: 'block' }}>
+                  A written estimate is your right in most of Europe and it is the only thing
+                  that helps afterwards. Say you want it before any work begins, not after.
+                </span>
+              </span>
+            </div>
+          </div>
+        </>
+      )}
+
+      <p className="muted small">
+        We do not list individual garages. We cannot check that a name, a number or an
+        opening time is still right, and a wrong one costs you the hour you do not have.
       </p>
     </>
   );

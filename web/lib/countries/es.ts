@@ -9,6 +9,7 @@ export const country: Country = {
     { id: 'valencia',  name: 'Valencia',  lat: 39.4699, lon: -0.3763, stopPlaceId: null },
   ],
   emergency: { general: '112', police: '091' },
+  roadside: { garageWord: 'taller mecánico', bodyShopWord: 'chapa y pintura' },
   places: [
     { cityId: 'barcelona', name: 'Mercat de Santa Caterina', kind: 'eat', walkMinutes: 10, price: '$$', note: 'Covered market with counters; quieter than La Boqueria' },
     { cityId: 'barcelona', name: 'Bar del Pla', kind: 'eat', walkMinutes: 12, price: '$$', note: 'Tapas, no reservations, go early' },

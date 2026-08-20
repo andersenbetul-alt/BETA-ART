@@ -9,6 +9,7 @@ export const country: Country = {
   ],
   emergency: { general: '112' },
   nonEmergency: { what: 'Reporting a theft or a crime with nobody in danger', number: '114' },
+  roadside: { garageWord: 'autoværksted' },
   places: [
     { cityId: 'kobenhavn', name: 'Torvehallerne', kind: 'eat', walkMinutes: 8, price: '$$', note: 'Two glass halls of food stalls' },
     { cityId: 'kobenhavn', name: 'Reffen', kind: 'eat', walkMinutes: 25, price: '$', note: 'Street food by the water — mostly outdoors' },

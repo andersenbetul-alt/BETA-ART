@@ -9,6 +9,7 @@ export const country: Country = {
     { id: 'marseille', name: 'Marseille', lat: 43.2965, lon: 5.3698, stopPlaceId: null },
   ],
   emergency: { general: '112', police: '17', ambulance: '15', fire: '18' },
+  roadside: { garageWord: 'garagiste', bodyShopWord: 'carrosserie' },
   places: [
     { cityId: 'paris', name: 'Marché des Enfants Rouges', kind: 'eat', walkMinutes: 12, price: '$$', note: 'Covered market, open when it rains, many kitchens' },
     { cityId: 'paris', name: 'L’As du Fallafel', kind: 'eat', walkMinutes: 14, price: '$', note: 'Cheap and fast; closed Saturdays' },

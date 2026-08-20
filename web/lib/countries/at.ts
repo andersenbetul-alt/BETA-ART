@@ -8,6 +8,7 @@ export const country: Country = {
     { id: 'innsbruck', name: 'Innsbruck', lat: 47.2692, lon: 11.4041, stopPlaceId: null },
   ],
   emergency: { general: '112', police: '133', ambulance: '144', fire: '122' },
+  roadside: { garageWord: 'KFZ-Werkstatt', bodyShopWord: 'Karosseriebau' },
   places: [
     { cityId: 'wien', name: 'Naschmarkt', kind: 'eat', walkMinutes: 12, price: '$$', note: 'Long market street; the far end is cheaper' },
     { cityId: 'wien', name: 'Bitzinger Würstelstand', kind: 'eat', walkMinutes: 6, price: '$', note: 'Sausage stand behind the opera, open late' },

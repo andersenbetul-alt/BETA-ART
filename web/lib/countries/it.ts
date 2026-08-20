@@ -9,6 +9,7 @@ export const country: Country = {
     { id: 'milano',  name: 'Milano',  lat: 45.4642, lon: 9.1900,  stopPlaceId: null },
   ],
   emergency: { general: '112', police: '113', ambulance: '118', fire: '115' },
+  roadside: { garageWord: 'meccanico', bodyShopWord: 'carrozzeria' },
   places: [
     { cityId: 'roma', name: 'Mercato Centrale Roma', kind: 'eat', walkMinutes: 10, price: '$$', note: 'Inside Termini station, open late, dry' },
     { cityId: 'roma', name: 'Pizzarium Bonci', kind: 'eat', walkMinutes: 25, price: '$', note: 'Pizza by weight, standing only' },

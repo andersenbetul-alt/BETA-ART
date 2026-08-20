@@ -8,6 +8,7 @@ export const country: Country = {
     { id: 'irakleio',     name: 'Irákleio',     lat: 35.3387, lon: 25.1442, stopPlaceId: null },
   ],
   emergency: { general: '112', police: '100', ambulance: '166', fire: '199' },
+  roadside: { garageWord: 'συνεργείο αυτοκινήτων', bodyShopWord: 'φανοποιείο' },
   places: [
     { cityId: 'athina', name: 'Varvakios Agora', kind: 'eat', walkMinutes: 12, price: '$', note: 'Central market hall; the tavernas inside serve all day' },
     { cityId: 'athina', name: 'Karamanlidika tou Fani', kind: 'eat', walkMinutes: 14, price: '$$', note: 'Deli and meze near the market' },

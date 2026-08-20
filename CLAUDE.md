@@ -36,7 +36,8 @@ kurtarandan kötüdür (`web/lib/plan.ts`).
 | `lib/entur.ts` | Norveç canlı sefer verisi (tek ulaşım entegrasyonu) |
 | `lib/met.ts` + `lib/weather.ts` | Hava (MET Norway — **dünya çapında**, ücretsiz) |
 | `lib/events.ts` | Tekrar eden etkinlik sıralaması — "bugün ne var" mantığı |
-| `app/sorun/[kind]/` | Yedi sorun ekranı: cancelled · missed · road · eat · rain · meet · basics |
+| `lib/roadside.ts` | Araç arızası — kim aranır, kim öder. Garaj listesi YOK |
+| `app/sorun/[kind]/` | Sekiz sorun ekranı: cancelled · missed · road · car · eat · rain · meet · basics |
 
 ## Çalışma kuralları
 
@@ -47,6 +48,9 @@ kurtarandan kötüdür (`web/lib/plan.ts`).
   (Danimarka 114, Hollanda 0900-8844) `nonEmergency`'ye gider ve ekranda
   "112'yi yalnızca biri tehlikedeyken ara" cümlesiyle birlikte çıkar. Acil
   başlığı altındaki yanlış numara, hiç numara vermemekten kötüdür.
+- **Tek tek işletme yazma.** Garaj, çekici, servis adı ve telefonu
+  doğrulanamaz ve bayatlar; yol kenarındaki turist boşuna arar. Onun yerine
+  kararı ver (kiralıkta kendi tamircini arama) ve yerel arama kelimesini ver.
 - **Doğrulayamadığın bilgiyi yazma.** `essentials` içindeki her madde turistin
   parasını etkiliyor; uydurma bir bahşiş kuralı ürünün tamamını çürütür.
 - **"Yakında" yazma.** Elinde veri yoksa o an gerçekten işe yarayan şeyi ver
@@ -63,9 +67,9 @@ kurtarandan kötüdür (`web/lib/plan.ts`).
 
 ```bash
 cd web
-npm run check          # typecheck + 46 birim testi + build
+npm run check          # typecheck + 49 birim testi + build
 npm run start          # ayrı terminalde
-npm run smoke          # 13 ülke × 7 ekran, canlı sunucuya karşı (1488 kontrol)
+npm run smoke          # 13 ülke × 8 ekran, canlı sunucuya karşı (1749 kontrol)
 npm run verify:apis    # Entur ve MET sorgularını canlı doğrular (kısıtsız ağ gerekir)
 ```
 
