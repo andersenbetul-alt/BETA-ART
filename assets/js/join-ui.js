@@ -30,10 +30,7 @@
     status: form.querySelector("[data-join-status]")
   };
 
-  function countryName(code) {
-    var entry = Data.countryByCode(code);
-    return entry ? UI.t("country." + code, entry.en) : code;
-  }
+  function countryName(code) { return UI.countryName(code); }
 
   function option(value, label) {
     var o = document.createElement("option");

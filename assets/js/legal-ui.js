@@ -12,10 +12,7 @@
   var countrySelect = document.querySelector("[data-retention-country]");
   var ageSelect = document.querySelector("[data-retention-age]");
 
-  function countryName(code) {
-    var entry = Data.countryByCode(code);
-    return entry ? UI.t("country." + code, entry.en) : code;
-  }
+  function countryName(code) { return UI.countryName(code); }
 
   function fillCountries() {
     if (!countrySelect) return;

@@ -86,7 +86,7 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
             </div>
             <div class="progress__meta">
               <span data-progress-label data-i18n="triage.step1.label">Your symptoms</span>
-              <span><span data-progress-step>1</span> / 4</span>
+              <span><span data-progress-step>1</span> / 5</span>
             </div>
           </div>
 
@@ -133,6 +133,12 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
             </div>
 
             <div class="field">
+              <label for="triage-country" data-i18n="triage.country.label">Which country are you in?</label>
+              <span class="field__hint" data-i18n="triage.country.hint">This decides which doctors can treat you where you are, and how long your record must be kept by law. It never limits who you can reach.</span>
+              <select class="select" id="triage-country" data-triage-country></select>
+            </div>
+
+            <div class="field">
               <span class="field__label" data-i18n="triage.duration.label">How long has this been going on?</span>
               <div class="choice-grid">
                 <label class="choice"><input type="radio" name="duration" value="today"><span data-i18n="duration.today">Started today</span></label>
@@ -169,6 +175,59 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
 
           <!-- ---------------------------------------------------- step 4 -->
           <div class="triage-step" data-step="4">
+            <h2 data-i18n="triage.step4.title">Get everything ready</h2>
+            <p class="card__meta" data-i18n="triage.step4.help">These are the questions a doctor asks in the first two minutes of an appointment. Answering them now means you walk in prepared — and you can hand this over instead of trying to remember it under pressure. Leave anything blank if it does not apply.</p>
+
+            <div class="field" style="margin-top:1.5rem">
+              <label for="prep-medications" data-i18n="prep.medications">Medicines you are taking</label>
+              <span class="field__hint" data-i18n="prep.medications.hint">Include anything you buy without a prescription, plus vitamins and herbal remedies.</span>
+              <textarea class="textarea" id="prep-medications" style="min-height:90px"
+                        data-i18n-placeholder="prep.medications.ph" placeholder="Name and dose, if you know it"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="prep-allergies" data-i18n="prep.allergies">Allergies or bad reactions</label>
+              <textarea class="textarea" id="prep-allergies" style="min-height:70px"
+                        data-i18n-placeholder="prep.allergies.ph" placeholder="Medicines, foods, anything else"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="prep-conditions" data-i18n="prep.conditions">Conditions you already have</label>
+              <span class="field__hint" data-i18n="prep.conditions.hint">Anything long-term you are treated for, and any operations you have had.</span>
+              <textarea class="textarea" id="prep-conditions" style="min-height:70px"
+                        data-i18n-placeholder="prep.conditions.ph" placeholder="For example: diabetes, high blood pressure"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="prep-pattern" data-i18n="prep.pattern">What makes it better or worse?</label>
+              <span class="field__hint" data-i18n="prep.pattern.hint">Time of day, movement, food, rest, medicines you have already tried.</span>
+              <textarea class="textarea" id="prep-pattern" style="min-height:70px"
+                        data-i18n-placeholder="prep.pattern.ph" placeholder="For example: worse at night, better after eating"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="prep-tried" data-i18n="prep.tried">What have you already tried?</label>
+              <textarea class="textarea" id="prep-tried" style="min-height:70px"
+                        data-i18n-placeholder="prep.tried.ph" placeholder="Treatments, tests, other doctors you have seen"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="prep-questions" data-i18n="prep.questions">What do you want to ask the doctor?</label>
+              <span class="field__hint" data-i18n="prep.questions.hint">People forget their questions in the room. Write them here and they will be on your summary.</span>
+              <textarea class="textarea" id="prep-questions" style="min-height:90px"
+                        data-i18n-placeholder="prep.questions.ph" placeholder="One per line"></textarea>
+            </div>
+
+            <div class="callout callout--info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/><path d="M12 11v5" stroke-linecap="round"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/>
+              </svg>
+              <p data-i18n="triage.step4.note">This stays on your device. It is put into a summary you can print or hand over — to a Naviar Care doctor, or to your own doctor at the hospital.</p>
+            </div>
+          </div>
+
+          <!-- ---------------------------------------------------- step 5 -->
+          <div class="triage-step" data-step="5">
             <div data-result-root aria-live="polite">
               <p class="card__meta" data-i18n="triage.result.pending">Working out where to send you…</p>
             </div>

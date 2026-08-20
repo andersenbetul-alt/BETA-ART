@@ -122,6 +122,34 @@
     return t("sym." + id, id.replace(/-/g, " "));
   }
 
+  /* Country names come from the browser's own locale data, so they are
+     correct in every language the visitor might pick without us shipping 58
+     more strings per language. Falls back to the English name. */
+  var countryFormatter = null;
+  var countryFormatterLocale = null;
+
+  function countryName(code) {
+    if (!code) return "";
+    var current = locale();
+    if (countryFormatterLocale !== current) {
+      countryFormatterLocale = current;
+      countryFormatter = null;
+      try {
+        if (typeof Intl !== "undefined" && Intl.DisplayNames) {
+          countryFormatter = new Intl.DisplayNames([current], { type: "region" });
+        }
+      } catch (e) { countryFormatter = null; }
+    }
+    if (countryFormatter) {
+      try {
+        var name = countryFormatter.of(code);
+        if (name && name !== code) return name;
+      } catch (e) { /* unknown region code */ }
+    }
+    var entry = window.NaviarData && window.NaviarData.countryByCode(code);
+    return entry ? entry.en : code;
+  }
+
   function languageName(code) {
     var entry = window.NaviarData && window.NaviarData.languageByCode(code);
     if (!entry) return code;
@@ -158,6 +186,7 @@
     specialtyName: specialtyName,
     symptomName: symptomName,
     languageName: languageName,
+    countryName: countryName,
     escapeHTML: escapeHTML,
     el: el,
     onLanguageChange: onLanguageChange,

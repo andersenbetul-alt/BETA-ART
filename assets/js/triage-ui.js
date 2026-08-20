@@ -11,16 +11,23 @@
   var Data = window.NaviarData;
   var Engine = window.NaviarTriage;
 
-  var TOTAL_STEPS = 4;
-  var STEP_LABELS = ["triage.step1.label", "triage.step2.label", "triage.step3.label", "triage.step4.label"];
-  var STEP_FALLBACK = ["Your symptoms", "About the patient", "Safety check", "Your result"];
+  var TOTAL_STEPS = 5;
+  var STEP_LABELS = ["triage.step1.label", "triage.step2.label", "triage.step3.label", "triage.step4.label", "triage.step5.label"];
+  var STEP_FALLBACK = ["Your symptoms", "About the patient", "Safety check", "Getting ready", "Your summary"];
+
+  /* Free-text preparation answers. These never leave the device unless the
+     patient goes on to book, and they are what turns a symptom check into
+     something you can hand to a doctor. */
+  var PREP_FIELDS = ["medications", "allergies", "conditions", "pattern", "tried", "questions"];
 
   var state = {
     step: 1,
     symptoms: [],
     redFlags: [],
     region: null,
-    result: null
+    result: null,
+    country: "",
+    prep: {}
   };
 
   var els = {
@@ -36,6 +43,7 @@
     error:      form.querySelector("[data-error-symptoms]"),
     flags:      form.querySelector("[data-redflags]"),
     result:     form.querySelector("[data-result-root]"),
+    country:    form.querySelector("[data-triage-country]"),
     next:       form.querySelector("[data-triage-next]"),
     back:       form.querySelector("[data-triage-back]"),
     restart:    form.querySelector("[data-triage-restart]")
@@ -54,6 +62,36 @@
       if (seen.indexOf(Data.symptoms[i].region) === -1) seen.push(Data.symptoms[i].region);
     }
     return seen;
+  }
+
+  function countryName(code) { return UI.countryName(code); }
+
+  function fillCountries() {
+    if (!els.country) return;
+    els.country.innerHTML = "";
+
+    var none = document.createElement("option");
+    none.value = "";
+    none.textContent = UI.t("triage.country.none", "Select your country…");
+    els.country.appendChild(none);
+
+    var sorted = Data.countries.slice().sort(function (a, b) {
+      return countryName(a.code).localeCompare(countryName(b.code), UI.locale());
+    });
+    for (var i = 0; i < sorted.length; i++) {
+      var o = document.createElement("option");
+      o.value = sorted[i].code;
+      o.textContent = countryName(sorted[i].code);
+      els.country.appendChild(o);
+    }
+    els.country.value = state.country;
+  }
+
+  function readPrep() {
+    for (var i = 0; i < PREP_FIELDS.length; i++) {
+      var node = document.getElementById("prep-" + PREP_FIELDS[i]);
+      if (node) state.prep[PREP_FIELDS[i]] = node.value.trim();
+    }
   }
 
   /* ------------------------------------------------------------- step 1 */
@@ -309,6 +347,9 @@
     summary.appendChild(dl);
     root.appendChild(summary);
 
+    /* --- the document the patient takes to their appointment ------------ */
+    root.appendChild(buildPreVisitSummary(result));
+
     /* --- next step ------------------------------------------------------ */
     var actions = UI.el("div", "btn-row");
     actions.style.marginTop = "1.75rem";
@@ -320,7 +361,7 @@
     book.addEventListener("click", storeHandoff);
     actions.appendChild(book);
 
-    var print = UI.el("button", "btn btn--ghost no-print", UI.t("cta.print", "Save or print this"));
+    var print = UI.el("button", "btn btn--ghost no-print", UI.t("cta.print", "Print my summary"));
     print.type = "button";
     print.addEventListener("click", function () { window.print(); });
     actions.appendChild(print);
@@ -334,14 +375,80 @@
     root.appendChild(disclaimer);
   }
 
+  /* The deliverable of a preparation tool: everything a doctor asks in the
+     first minutes, written down, in the patient's own language. Works whether
+     they go on to book here or walk into their own hospital with it. */
+  function buildPreVisitSummary(result) {
+    var wrap = UI.el("div", "card");
+    wrap.style.marginTop = "1.5rem";
+
+    wrap.appendChild(UI.el("h3", null, UI.t("prep.summary.title", "Take this to your appointment")));
+    wrap.appendChild(UI.el("p", "card__meta", UI.t("prep.summary.lead",
+      "Print this, or keep it on your phone. Hand it over at the start — it answers most of what you would otherwise be asked from memory.")));
+
+    var dl = UI.el("ul", "summary-list");
+    function row(labelKey, labelFallback, value) {
+      if (!value) return;
+      var li = document.createElement("li");
+      li.appendChild(UI.el("span", "k", UI.t(labelKey, labelFallback)));
+      li.appendChild(UI.el("span", null, value));
+      dl.appendChild(li);
+    }
+
+    var names = result.symptoms.map(function (id) { return UI.symptomName(id); });
+    row("prep.summary.complaint", "Why I am here", names.join(", "));
+    row("triage.duration.label", "How long", UI.t("duration." + result.input.duration, result.input.duration));
+    row("triage.severity.label", "How bad", UI.t("severity." + result.input.severity, result.input.severity));
+    row("triage.age.label", "Patient", UI.t("age." + result.input.age, result.input.age));
+
+    if (result.flags.length) {
+      row("prep.summary.flags", "Warning signs reported",
+        result.flags.map(function (id) { return UI.t("flag." + id, id); }).join("; "));
+    }
+
+    row("prep.medications", "Medicines", state.prep.medications);
+    row("prep.allergies", "Allergies", state.prep.allergies);
+    row("prep.conditions", "Existing conditions", state.prep.conditions);
+    row("prep.pattern", "Better or worse with", state.prep.pattern);
+    row("prep.tried", "Already tried", state.prep.tried);
+
+    row("prep.summary.suggested", "Suggested department",
+      result.matches.map(function (m) { return UI.specialtyName(m.id); }).slice(0, 2).join(" / "));
+
+    wrap.appendChild(dl);
+
+    if (state.prep.questions) {
+      wrap.appendChild(UI.el("h4", null, UI.t("prep.summary.questions", "Questions I want answered")));
+      var list = UI.el("ul", "feature-list");
+      var lines = state.prep.questions.split(/\r?\n/);
+      for (var i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (line) list.appendChild(UI.el("li", null, line));
+      }
+      wrap.appendChild(list);
+    }
+
+    var caveat = UI.el("p", "card__meta");
+    caveat.style.marginTop = "1rem";
+    caveat.textContent = UI.t("prep.summary.caveat",
+      "This was written by the patient, not by a clinician. It is a record of what they reported, not a diagnosis or a referral.");
+    wrap.appendChild(caveat);
+
+    return wrap;
+  }
+
   function storeHandoff() {
     if (!state.result) return;
     try {
       window.sessionStorage.setItem("naviar.triage", JSON.stringify({
         urgency: state.result.urgency,
         matches: state.result.matches,
-        symptoms: state.result.symptoms
+        symptoms: state.result.symptoms,
+        age: state.result.input.age,
+        country: state.country,
+        prep: state.prep
       }));
+      if (state.country) window.localStorage.setItem("naviar.country", state.country);
     } catch (e) { /* storage unavailable — the query string still carries the specialty */ }
   }
 
@@ -378,6 +485,8 @@
       els.input.focus();
       return;
     }
+    if (state.step === 2 && els.country) state.country = els.country.value;
+    if (state.step === 4) readPrep();
     if (state.step < TOTAL_STEPS) showStep(state.step + 1);
   }
 
@@ -390,6 +499,13 @@
     if (Data.symptomById(id) && state.symptoms.indexOf(id) === -1) state.symptoms.push(id);
   }
 
+  function seedCountry() {
+    try {
+      var saved = window.localStorage.getItem("naviar.country");
+      if (saved && Data.countryByCode(saved)) state.country = saved;
+    } catch (e) { /* storage unavailable */ }
+  }
+
   function wire() {
     els.next.addEventListener("click", goNext);
     els.back.addEventListener("click", function () {
@@ -400,6 +516,8 @@
       state.redFlags = [];
       state.region = null;
       state.result = null;
+      state.country = "";
+      state.prep = {};
       form.reset();
       renderSelected();
       renderRegionChips();
@@ -429,6 +547,7 @@
   }
 
   function renderAll() {
+    fillCountries();
     renderRegionChips();
     renderRegionSymptoms();
     renderSelected();
@@ -443,6 +562,8 @@
   }
 
   seedFromQuery();
+  seedCountry();
+  fillCountries();
   wire();
   showStep(1);
   UI.onLanguageChange(renderAll);
