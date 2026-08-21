@@ -26,7 +26,7 @@ maliyet.
 | 3 | Gerçek e-posta, alan adı ve fiyatlar | **Hazır — senden veri bekliyor** | Hepsi tek dosyada: `assets/js/config.js` |
 | 4 | ~~Paket fiyatlarını güncelle~~ | Birleşti → #3 | Fiyat da config.js'ten geliyor (NOK yazılabilir) |
 | 5 | Formu Formspree/Netlify Forms'a bağla | Bekliyor | `composeMail` içindeki `mailto` bloğu |
-| 6 | Bülten kaydını e-posta servisine bağla | Bekliyor | `initForm`; Substack veya Buttondown |
+| 6 | ~~Bülten kaydını e-posta servisine bağla~~ | **Bitti** 21.08 | Buttondown — bkz. #54 |
 
 ### 2. Güvenilirlik (öncelik: yüksek — teklif almanın önündeki engel)
 
@@ -42,7 +42,7 @@ maliyet.
 | 51 | P19 AI Receptionist pillar sayfası | **Bitti** 18.08 | İlk dalganın 1 numarası. TR 1.160 / EN 1.533 kelime, 5 kaynak, görünürlük denetimi geçti |
 | 52 | Gelir sistemi haritası + huni matematiği | **Bitti** 18.08 | `docs/gelir-sistemi.md`; beş katman, gerçekçi oranlar, kurulum sırası |
 | 53 | Ortaklık altyapısı | **Bitti** 18.08 | `{aff:}` bloğu, otomatik bildirim (10 dil), `rel="sponsored"`, gerekçe zorunluluğu |
-| 54 | **E-posta servisini bağla** | **Kritik** | `config.js → newsletterEndpoint`. Bağlanana kadar liste oluşmuyor; diğer dört katman bunun üstünde |
+| 54 | **E-posta servisini bağla** | **Bitti** 21.08 | Buttondown bağlandı. CSP `connect-src`'ye `https://buttondown.com` eklendi — bu olmadan istek sessizce engelleniyordu. Prod CSP başlığı taklit edilerek tarayıcıda doğrulandı: POST gidiyor, `email=` alanı doğru, ihlal yok. **Açık: Buttondown kullanıcı adı `tatil` — halka açık adres `buttondown.com/tatil`, `qblogg` olmalı** |
 | 55 | Güvenlik ve veri koruma denetimi | **Bitti** 18.08 | `npm run guvenlik`; 13 kontrol. XSS, JSON-LD kaçışı, tabnabbing, canonical–hreflang, mailto, başlıklar |
 | 56 | Gizlilik metni | **Bitti** 18.08 | `gizlilik.html` (TR+EN). Yasal kimlik ve e-posta servisi alanları `[DOLDURULACAK]` işaretli |
 | 57 | canonical–hreflang tutarlılığı | **Bitti** 18.08 | `syncCanonical`; kalıcı çözüm ön-render (madde 58) |

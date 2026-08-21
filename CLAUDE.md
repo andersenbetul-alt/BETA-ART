@@ -207,8 +207,9 @@ açık talebi.
 - Formlar `mailto:` taslağı üretir (sunucu yok). Gerçek forma geçiş noktası: `app.js`
   içindeki `composeMail`. Alıcı adres, alan adı, fiyatlar ve sosyal hesaplar
   **`assets/js/config.js`** içinde — yayına almak için başka dosyaya dokunmak gerekmez.
-- Bülten kaydı `config.js → newsletterEndpoint` boşken yalnızca tarayıcıda tutulur
-  ve konsola uyarı düşer. Adres girilince gerçek servise POST ediliyor.
+- Bülten kaydı Buttondown'a POST ediliyor (`config.js → newsletterEndpoint`).
+  **Yeni bir dış servis bağlarken `vercel.json` → CSP `connect-src`'ye de eklenmeli**,
+  yoksa istek sessizce engellenir. `npm run guvenlik` bunu artık denetliyor.
 - Ortaklık bağlantısı `{aff:{t,u,why}}` bloğuyla eklenir; bildirim kutusu,
   `rel="sponsored nofollow noopener"` ve gerekçe denetimi kendiliğinden çalışır.
   Gelir katmanlarının tamamı için `docs/gelir-sistemi.md`.

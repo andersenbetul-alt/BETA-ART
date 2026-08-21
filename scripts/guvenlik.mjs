@@ -143,6 +143,32 @@ const app = read('assets/js/app.js');
   else gecti('dış kaynak: sayfalar hiçbir üçüncü tarafa istek atmıyor');
 }
 
+/* --- 8b. config.js'teki dış uç noktalar CSP'de açık mı? ---
+   Yeni bir servis bağlandığında (bülten, form) istek fetch ile gidiyor, yani
+   connect-src'ye tabi. CSP güncellenmezse istek sessizce engelleniyor: tarayıcı
+   konsolunda görünür ama kullanıcı yalnızca "hata" mesajı görür. Bu kontrol
+   tam olarak o sessiz kırılmayı yakalar. */
+{
+  const cfg = read('assets/js/config.js');
+  const ucNoktalar = [...cfg.matchAll(/^\s*(\w+Endpoint)\s*:\s*'(https:\/\/[^']+)'/gm)]
+    .map((m) => ({ ad: m[1], host: new URL(m[2]).origin }));
+  if (!ucNoktalar.length) {
+    kaydet('bilgi', 'uc-nokta', 'config.js\'te bağlı dış servis yok — bülten listesi oluşmuyor');
+  } else if (!existsSync(join(ROOT, 'vercel.json'))) {
+    kaydet('orta', 'uc-nokta', 'Dış uç nokta var ama vercel.json yok: CSP tanımsız');
+  } else {
+    const csp = JSON.parse(read('vercel.json')).headers
+      .flatMap((x) => x.headers || []).find((x) => x.key.toLowerCase() === 'content-security-policy');
+    const connect = (csp?.value.match(/connect-src ([^;]*)/) || [, ''])[1];
+    const eksik = ucNoktalar.filter((u) => !connect.includes(u.host));
+    if (eksik.length) {
+      kaydet('yuksek', 'uc-nokta', `CSP connect-src bu adresleri engelliyor: ${eksik.map((u) => u.ad + ' → ' + u.host).join(', ')}`);
+    } else {
+      gecti(`uç noktalar: ${ucNoktalar.map((u) => u.host).join(', ')} CSP connect-src'de açık`);
+    }
+  }
+}
+
 /* --- 9. Ortaklık bağlantılarında sponsored --- */
 {
   if (/rel="sponsored nofollow noopener"/.test(app)) gecti('ortaklık: bağlantılar rel="sponsored nofollow noopener" ile işaretleniyor');

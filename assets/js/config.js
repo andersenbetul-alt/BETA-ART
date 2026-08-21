@@ -40,7 +40,7 @@ window.QB_CONFIG = {
      adresi verir; POST edilen alan adı genelde 'email'.
 
      Örnek: 'https://buttondown.com/api/emails/embed-subscribe/qblogg'   */
-  newsletterEndpoint: '',
+  newsletterEndpoint: 'https://buttondown.com/api/emails/embed-subscribe/tatil',
   newsletterField: 'email',
 
   /* Ortaklık (affiliate) bağlantıları.
