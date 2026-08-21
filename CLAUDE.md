@@ -54,15 +54,22 @@ engine/             Curiosity Engine (site değil, üretim hattı)
 3. **Metin HTML'de sabitlenmez.** Görünen her metin `data-i18n` (veya `data-i18n-attr`,
    `data-i18n-title`, `data-i18n-content`) ile sözlükten gelir. HTML'deki Türkçe metinler
    yalnızca JavaScript kapalıyken görünen yedeklerdir.
-4. **Renkler değişkenlerden gelir.** Doğrudan hex yazmayın; `var(--brand)`, `var(--text)`
+4. **Emoji kullanılmaz, ikon çizilir.** Görünen her ikon satır içi SVG'dir:
+   24×24 ızgara, `fill="none"`, `stroke="currentColor"`, `stroke-width="1.7"`,
+   yuvarlak uç ve birleşim. Emoji'yi işletim sistemi çizer — Windows, Android ve
+   macOS üç farklı görünüm verir, marka kendi görselinin kontrolünü kaybeder.
+   Yazı ikonları `app.js` içindeki `ICONS` kaydında adla durur (`icon: 'coin'`);
+   sayfa ikonları doğrudan HTML'e gömülür. Ok ve tema düğmesindeki tek renkli
+   metin işaretleri (`→ ↑ ☾ ☀`) bunun dışındadır; onlar yazı tipiyle çizilir.
+5. **Renkler değişkenlerden gelir.** Doğrudan hex yazmayın; `var(--brand)`, `var(--text)`
    gibi değişkenleri kullanın ki koyu tema kendiliğinden çalışsın. Marka renkleri:
    Midnight Navy `#082C54` ve Electric Aqua `#00D8C2`. **Aqua beyaz üzerinde 1,8:1'dir
    ve metinde kullanılamaz**; açık zeminde metin için `var(--brand-2-ink)` (`#0a7d72`,
    5,0:1). Logo halkası `var(--logo-ink)` ile temaya göre döner, aqua köprü sabittir.
-5. **Sayfa iskeleti beş dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
+6. **Sayfa iskeleti beş dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
    beşini birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`). `check.mjs` çiftlenen
    id ve script'leri yakalar ama eksik menü bağlantısını yakalamaz.
-6. **Rakamlar örnek olarak işaretlenir.** Paket fiyatları ve blog yazılarındaki ücret
+7. **Rakamlar örnek olarak işaretlenir.** Paket fiyatları ve blog yazılarındaki ücret
    bilgileri araştırma/örnek veridir. Kesin vaat gibi sunmayın; abartılı iddia bu işte
    en pahalı hatadır.
 
@@ -107,7 +114,8 @@ Tarayıcı testi gerektiğinde Playwright, Chromium ile kullanılabilir
 ## Sık yapılan işler
 
 **Yeni blog yazısı:** `assets/js/posts.js` dizisine nesne ekleyin — `slug`, `category`
-(sözlükte `cat.<ad>` olmalı), `date` (YYYY-AA-GG), `accent` (1–6), `icon`, sonra
+(sözlükte `cat.<ad>` olmalı), `date` (YYYY-AA-GG), `accent` (1–6: navy–teal kapak
+rampası), `icon` (`app.js` → `ICONS` kaydındaki ad), sonra
 `t` / `e` / `b` alanlarını on dilde doldurun. `sitemap.xml`'e de ekleyin.
 
 Gövde blokları: düz dize (paragraf), `{h:'…'}` (ara başlık), `{ul:[…]}` (liste),

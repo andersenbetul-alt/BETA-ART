@@ -9,10 +9,34 @@
   var LS_LANG = 'qb_lang';
   var LS_THEME = 'qb_theme';
 
+  /* Kapak rampası navy–teal aralığında kalır: markanın dışına çıkan renk yok.
+     Beyaz ikon her uçta en az 4,76:1 kontrast görür (ölçüldü). */
   var ACCENTS = {
-    1: ['#4b3cf7', '#00b3a4'], 2: ['#f7576c', '#ff9a44'], 3: ['#00a2ff', '#7b5cff'],
-    4: ['#0fb36b', '#7ed321'], 5: ['#ff7a45', '#f7576c'], 6: ['#7b5cff', '#00b3a4']
+    1: ['#082C54', '#0a7d72'], 2: ['#0b3a63', '#0d8175'], 3: ['#06263f', '#12657f'],
+    4: ['#0a5f6b', '#082C54'], 5: ['#123c66', '#177a86'], 6: ['#041d38', '#0a6b64']
   };
+
+  /* Kapak ikonları — emoji yerine satır içi SVG: işletim sistemi ne çizeceğine
+     karar veremez, ikon temaya ve kapak rengine uyar. */
+  var ICONS = {
+    question: '<circle cx="12" cy="12" r="9"/><path d="M9.2 9.4a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.4-2.8 4"/><path d="M12 17.4h.01"/>',
+    coin:     '<circle cx="9.3" cy="9.3" r="5.6"/><circle cx="14.7" cy="14.7" r="5.6"/>',
+    blocks:   '<rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.8"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="1.8"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="1.8"/><path d="M13 16.75h7.5M16.75 13v7.5"/>',
+    phone:    '<path d="M8.4 4.5H5.6A1.6 1.6 0 0 0 4 6.2C4 13.9 10.1 20 17.8 20a1.6 1.6 0 0 0 1.7-1.6v-2.8l-3.6-1.4-1.9 2.1a12.6 12.6 0 0 1-4.3-4.3l2.1-1.9Z"/>',
+    banknote: '<rect x="2.5" y="6" width="19" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.9"/>',
+    compass:  '<circle cx="12" cy="12" r="9"/><path d="m15.4 8.6-1.9 4.9-4.9 1.9 1.9-4.9Z"/>',
+    bulb:     '<path d="M9.3 17.5a6 6 0 1 1 5.4 0"/><path d="M9.5 20.4h5M10 17.5h4"/>',
+    chart:    '<path d="M3.5 20.5V4"/><path d="M3.5 20.5H21"/><path d="m7 15.5 3.6-4.2 3 2.6L20 7"/><path d="M16.4 7H20v3.6"/>',
+    envelope: '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.8 7.5 7.1 5a2 2 0 0 0 2.2 0l7.1-5"/>',
+    link:     '<path d="M10.2 13.8a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 1 0-5.7-5.7l-1.3 1.3"/><path d="M13.8 10.2a4 4 0 0 0-5.7 0l-2.8 2.8a4 4 0 1 0 5.7 5.7l1.3-1.3"/>',
+    gear:     '<circle cx="12" cy="12" r="3.1"/><path d="M19.6 14.5a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7h-.3a2 2 0 0 1 0-4h.2a1.6 1.6 0 0 0 1.1-2.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1v-.3a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 2.8 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7h.3a2 2 0 0 1 0 4h-.2a1.6 1.6 0 0 0-1.4 1Z"/>'
+  };
+  function iconSVG(name) {
+    var body = ICONS[name];
+    if (!body) return '';
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + body + '</svg>';
+  }
 
   /* ---------- yardımcılar ---------- */
   function $(sel, root) { return (root || document).querySelector(sel); }
@@ -259,7 +283,7 @@
   function cardHTML(p) {
     var c = ACCENTS[p.accent] || ACCENTS[1];
     return '<a class="card post-card reveal" href="post.html?slug=' + encodeURIComponent(p.slug) + '">' +
-      '<div class="post-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + p.icon + '</div>' +
+      '<div class="post-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + iconSVG(p.icon) + '</div>' +
       '<div class="post-body">' +
         '<div class="post-meta"><span class="tag">' + esc(t('cat.' + p.category)) + '</span>' +
         '<span class="meta-when">' + esc(fmtDate(p.date)) +
@@ -429,14 +453,14 @@
         '<h1>' + esc(pick(post.t)) + '</h1>' +
         '<p class="muted">' + esc(pick(post.e)) + '</p>' +
       '</div>' +
-      '<div class="article-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + post.icon + '</div>' +
+      '<div class="article-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + iconSVG(post.icon) + '</div>' +
       '<div class="article-body">' + affDisclosureHTML(post) + body + sourcesHTML(post) + '</div>' +
       '<div class="article-foot">' +
         '<a class="btn btn--ghost" href="blog.html">← ' + esc(t('posts.back')) + '</a>' +
         '<div class="share-row">' +
           '<span class="share-label">' + esc(t('share.on')) + '</span>' +
           shareLinks(post) +
-          '<button type="button" class="share-btn" id="shareBtn" title="' + esc(t('posts.share')) + '" aria-label="' + esc(t('posts.share')) + '">🔗</button>' +
+          '<button type="button" class="share-btn" id="shareBtn" title="' + esc(t('posts.share')) + '" aria-label="' + esc(t('posts.share')) + '">' + iconSVG('link') + '</button>' +
         '</div>' +
       '</div>' +
       '<aside class="post-cta reveal">' +

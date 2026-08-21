@@ -7,7 +7,7 @@
 window.QB_POSTS = [
 {
   slug: 'yapay-zeka-hakkinda-en-cok-sorulanlar',
-  category: 'safety', date: '2026-08-20', accent: 5, icon: '🧠',
+  category: 'safety', date: '2026-08-20', accent: 5, icon: 'question',
   orig: "Soruları üç kovaya ayırdık — bugün olan, olması muhtemel, spekülasyon — ve her birinin hangi kovaya neden düştüğünü yazdık. Sayfayı üreten sistem kendi doğrulanamayan yanlarını da listeledi; sonunda okurun kullanabileceği dört maddelik bir güven çerçevesi var.",
   src: [
     {"t": "Anthropic Economic Index — gözlemlenmiş kullanım, Mayıs 2026 dönemi (CC BY 4.0)", "u": "https://www.anthropic.com/economic-index"},
@@ -135,7 +135,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'ai-ile-para-kazanma-yollari',
-  category: 'money', date: '2026-08-19', accent: 4, icon: '🪙',
+  category: 'money', date: '2026-08-19', accent: 4, icon: 'coin',
   orig: "Yolları fikir olarak değil kanıt kalitesine göre üçe ayırdık ve her birine üç soruluk bir filtre uyguladık: rakamı kim yayınlıyor, kaç kişide çalıştı, ilk paraya kaç ayda ulaşılıyor. Ayrıca talebin nerede olduğunu gözlemlenmiş kullanım verisiyle gösterdik.",
   src: [
     {"t": "Anthropic Economic Index — gözlemlenmiş Claude kullanımı, Mayıs 2026 dönemi (CC BY 4.0)", "u": "https://www.anthropic.com/economic-index"},
@@ -279,7 +279,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'kobi-icin-ai-nereden-baslanir',
-  category: 'business', date: '2026-08-19', accent: 2, icon: '🧩',
+  category: 'business', date: '2026-08-19', accent: 2, icon: 'blocks',
   orig: "Satıcıların en çok sattığı otomasyonla insanların AI'ı gerçekte kullandığı işleri gözlemlenmiş veriyle karşılaştırdık: müşteri hizmetleri sohbetlerin %0,6'sı, içerik üretimi %22,7'si. Ayrıca Norveç'in kendi kullanım profilini küresel ortalamayla yan yana koyduk.",
   src: [
     {"t": "Anthropic Economic Index — gözlemlenmiş Claude kullanımı, Mayıs 2026 dönemi (CC BY 4.0)", "u": "https://www.anthropic.com/economic-index"},
@@ -418,7 +418,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'ai-resepsiyonist-maliyet',
-  category: 'business', date: '2026-08-18', accent: 3, icon: '☎️',
+  category: 'business', date: '2026-08-18', accent: 3, icon: 'phone',
   orig: "Piyasada dolaşan \"kaçan çağrı\" istatistiklerinin kaynağını sürdük ve hepsinin çözümü satan firmaların bloglarına çıktığını gösterdik; yerine yedi günlük kendi ölçüm yöntemini ve dakika başı maliyet hesabını verdik.",
   src: [
     {"t": "EU AI Act, Madde 50 — belirli yapay zekâ sistemleri için şeffaflık yükümlülükleri (yürürlük: 2 Ağustos 2026)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
@@ -560,7 +560,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'yazarak-para-kazanma-platformlari',
-  category: 'money', date: '2026-08-16', accent: 1, icon: '💸', featured: true,
+  category: 'money', date: '2026-08-16', accent: 1, icon: 'banknote', featured: true,
   src: [
     {"t": "Upwork — Upwork Hourly Rate: Rates by Skill & Experience (platformun kendi işlem verisi)", "u": "https://www.upwork.com/resources/upwork-hourly-rates"},
     {"t": "Nettscore — Hva koster SEO? Prisguide for norske bedrifter 2026", "u": "https://nettscore.no/blogg/hva-koster-seo.html"},
@@ -731,7 +731,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'upwork-blog-yazarligi',
-  category: 'jobs', date: '2026-08-09', accent: 2, icon: '🧭',
+  category: 'jobs', date: '2026-08-09', accent: 2, icon: 'compass',
   src: [
     {"t": "Upwork — Upwork Hourly Rate: Rates by Skill & Experience (platformun kendi işlem verisi)", "u": "https://www.upwork.com/resources/upwork-hourly-rates"},
     {"t": "Nettscore — Hva koster SEO? Prisguide for norske bedrifter 2026", "u": "https://nettscore.no/blogg/hva-koster-seo.html"},
@@ -852,7 +852,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'ndash-makale-fikri-sunmak',
-  category: 'jobs', date: '2026-08-02', accent: 3, icon: '💡',
+  category: 'jobs', date: '2026-08-02', accent: 3, icon: 'bulb',
   src: [
     {"t": "nDash — Content Platform for Top Freelance Writers (platformun kendi yazar sayfası)", "u": "https://www.ndash.com/for-writers"},
     {"t": "nDash — Platform 101 for Interested Freelance Writers", "u": "https://www.ndash.com/blog/ndash-platform-101-for-freelance-writers"},
@@ -977,7 +977,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'medium-partner-program-2026',
-  category: 'money', date: '2026-07-26', accent: 4, icon: '📈',
+  category: 'money', date: '2026-07-26', accent: 4, icon: 'chart',
   src: [
     {"t": "Medium — Partner Program katılım şartları (yardım merkezi)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
     {"t": "Medium — Partner Program genel bakış: okuma süresine dayalı kazanç modeli", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
@@ -1100,7 +1100,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'substack-abonelik-matematigi',
-  category: 'business', date: '2026-07-19', accent: 5, icon: '✉️',
+  category: 'business', date: '2026-07-19', accent: 5, icon: 'envelope',
   src: [
     {"t": "beehiiv 2026 bülten karşılaştırma verisi — ücretsizden ücretliye geçiş medyanı %0,62", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
     {"t": "Substack — ödeme altyapısı ve yayıncı komisyon yapısı (platform belgeleri)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
@@ -1231,7 +1231,7 @@ window.QB_POSTS = [
 },
 {
   slug: 'ai-icerik-studyosu',
-  category: 'ai', date: '2026-07-12', accent: 6, icon: '⚙️',
+  category: 'ai', date: '2026-07-12', accent: 6, icon: 'gear',
   orig: 'Kendi hattımızın ölçülmüş rakamları: 2.312 kelimelik yedi türev, 30 sinyal → 16 konu, puanlama eşikleri ve on altı maddelik görünürlük denetimi.',
   src: [
     {"t": "Google Search Central — Spam policies for Google web search (“scaled content abuse” bölümü)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},

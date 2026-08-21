@@ -124,6 +124,8 @@ p { margin: 0 0 1em; }
   color: var(--text); font: inherit; font-size: .88rem; font-weight: 600;
 }
 .lang-btn:hover { background: var(--bg-soft); }
+.lang-globe { display: block; width: 17px; height: 17px; color: var(--brand-2-ink); }
+.lang-globe svg { width: 100%; height: 100%; display: block; }
 .lang-menu {
   position: absolute; inset-inline-end: 0; top: calc(100% + 8px); width: 190px;
   background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
@@ -199,7 +201,7 @@ p { margin: 0 0 1em; }
 
 .grid { display: grid; gap: 18px; }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.grid--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); }
 
 .card {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
@@ -211,8 +213,9 @@ p { margin: 0 0 1em; }
 .card p { color: var(--text-muted); margin: 0; font-size: .95rem; }
 .card-icon {
   width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
-  background: var(--brand-soft); font-size: 1.25rem; margin-bottom: 16px;
+  background: var(--brand-soft); color: var(--brand-2-ink); margin-bottom: 16px;
 }
+.card-icon svg { width: 22px; height: 22px; display: block; }
 
 /* ---------- Akış (repurposing) ---------- */
 .flow { display: grid; gap: 20px; grid-template-columns: minmax(220px, 300px) 1fr; align-items: center; }
@@ -264,14 +267,17 @@ p { margin: 0 0 1em; }
 .chip:hover { color: var(--text); }
 .chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
 
-.posts { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+/* min(): 320px sınıfı telefonlarda sabit taban sütunu kapsayıcıdan taşırıyordu. */
+.posts { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
 .post-card {
   display: flex; flex-direction: column; text-decoration: none; overflow: hidden; padding: 0;
 }
 .post-cover {
-  height: 132px; display: grid; place-items: center; font-size: 2.2rem;
+  height: 132px; display: grid; place-items: center; color: #fff;
   background: linear-gradient(135deg, var(--c1), var(--c2));
 }
+/* Kapak ikonu beyaz; --c1/--c2 rampasının en açık ucu bile 4,76:1 verir. */
+.post-cover svg { width: 40px; height: 40px; display: block; }
 .post-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
 .post-meta { display: flex; gap: 10px; align-items: center; font-size: .78rem; color: var(--text-muted); margin-bottom: 10px; flex-wrap: wrap; }
 /* Tarih ve okuma süresi tek grup: ayraç satır başına düşüp madde imi gibi
@@ -292,9 +298,10 @@ p { margin: 0 0 1em; }
 .article-head { text-align: center; margin-bottom: 34px; }
 .article-head h1 { font-size: clamp(1.9rem, 4.2vw, 2.8rem); }
 .article-cover {
-  height: 190px; border-radius: var(--radius); display: grid; place-items: center; font-size: 3.4rem;
+  height: 190px; border-radius: var(--radius); display: grid; place-items: center; color: #fff;
   background: linear-gradient(135deg, var(--c1), var(--c2)); margin-bottom: 34px;
 }
+.article-cover svg { width: 62px; height: 62px; display: block; }
 .article-body { font-size: 1.08rem; }
 .article-body p { margin-bottom: 1.25em; }
 .article-body p:first-of-type::first-letter { font-size: 1.6em; font-weight: 700; line-height: 1; }
@@ -378,7 +385,27 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
   }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 11px 12px; }
-  .nav-cta { display: none; }
+}
+
+/* Dar ekranda dil düğmesi etiketini bırakır, küreye iner. Yer birincil eyleme
+   kalsın: "Teklif al" sayfanın tek hedefi ve trafiğin çoğu telefondan geliyor. */
+@media (max-width: 620px) {
+  .lang-btn { width: 44px; padding-inline: 0; justify-content: center; gap: 0; }
+  .lang-btn #langLabel { display: none; }
+  /* Fransızca ve Rusça CTA etiketi Türkçenin iki katı; düğme küçülmezse başlık
+     taşıyor. 44px dokunma yüksekliği korunur, yalnız yazı küçülür. */
+  .nav-cta { font-size: .85rem; padding-inline: 12px; }
+  /* Başlıkta yalnız sembol kalır. Sembol tam bu iş için tasarlandı; wordmark
+     yerini CTA'ya bırakır. Bağlantının erişilebilir adı metinle korunur. */
+  .site-header .logo { font-size: 0; gap: 0; }
+}
+
+/* 320px sınıfı telefonlarda başlık beşinci denetimi taşıyamıyor. Giden tema
+   düğmesi: seçim yoksa site zaten prefers-color-scheme'i izliyor, yani koyu tema
+   kaybolmuyor. Yatay kaydırma ise gerçek bir kusur olurdu. */
+@media (max-width: 360px) {
+  .site-header #themeBtn { display: none; }
+  .nav-cta { padding-inline: 10px; }
 }
 
 /* ---------- Bizimle çalışın sayfası ---------- */
@@ -503,6 +530,7 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
   transition: border-color .15s ease, color .15s ease, transform .15s ease;
 }
 .share-btn:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-1px); }
+.share-btn svg { width: 18px; height: 18px; display: block; }
 
 /* Bülten karşılığı indirme bağlantısı */
 .magnet-link { margin-top: 4px; background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.5); color: #fff; }
