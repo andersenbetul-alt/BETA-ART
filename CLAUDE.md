@@ -31,6 +31,33 @@ not in the repo, a missing `hreflang`, an RTL language absent from the RTL map, 
 that does not parse. It also prints notes (values identical to English, unstyled
 classes) — those are hints, not failures.
 
+## How to work here
+
+Four principles, adapted from Karpathy's list of what LLMs get wrong when they write code
+(`github.com/forrestchang/andrej-karpathy-skills`). They are here in the project's own terms
+rather than as a generic paste, because this project already has machinery for three of them.
+
+**Say what you assumed.** If two readings of a request lead to different work, name both
+instead of silently picking one. If a number or a credit is unclear, `docs/RESEARCH.md` is
+where the answer lives or where the gap gets recorded — it is not a thing to guess at. Half
+the corrections in that file exist because an earlier pass assumed rather than checked.
+
+**The smallest thing that is true.** No section, key or abstraction beyond what was asked for.
+Twelve dictionaries mean every new visible string costs twelve translations, so a string that
+does not need to exist is expensive in a way it would not be on a one-language site.
+
+**Change only what the task touches.** Do not tidy adjacent markup, rename a class you did not
+need to rename, or "improve" a translation you were not asked about. Every changed line should
+trace to the request. The exception is an orphan your own change created — an unused key, a
+now-dead rule — which `npm run check` will fail on anyway, so clean that up.
+
+**Finish at a verified state, not a plausible one.** `npm run check` is the floor: twelve
+languages, every key, every anchor, every referenced file, every colour token, the figures
+against `figures.json`. Above it, `npm run build` and a look at the rendered page — the checks
+catch structure, not layout, and this codebase has shipped a bug the checks were blind to
+(eighteen `url(url(…))` font declarations that failed silently and made Lighthouse score
+*better*). When you add a rule, prove it by reintroducing the fault it is meant to catch.
+
 ## Conventions
 
 **Scope.** This is an artist page: music, story, collaboration, contact, and a store for the
