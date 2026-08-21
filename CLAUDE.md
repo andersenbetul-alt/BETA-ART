@@ -1,127 +1,65 @@
-# COBBAN — proje notu
+# CLAUDE.md
 
-**Europe is complicated. COBBAN makes it simple.**
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
 
-Avrupa'da seyahat aksaklığı yaşayan turiste tek ekranda çözüm veren asistan.
-`Problem → COBBAN → DONE`
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
-Ayırt edici nokta: cevaplar **hıza göre değil, tatil planına göre** sıralanır.
-20 dakika erken varıp uçuşu kaçıran seçenek, 20 dakika geç varıp her şeyi
-kurtarandan kötüdür (`web/lib/plan.ts`).
+## 1. Think Before Coding
 
-> **Yön değişikliği (Ağu 2026):** COBBAN önce çok kategorili bir e-ticaret
-> markasıydı. Mağaza vitrini `177a485` commit'inde duruyor
-> (`git checkout 177a485 -- web/`). `docs/` altındaki şirket kurulum, vergi ve
-> yasal metin dokümanları hâlâ geçerli; mağazaya özgü olanlar (06, 07, 08, 09)
-> eski konumlandırmayı anlatıyor.
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
 
-## Depo yapısı
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
 
-| Yol | İçerik |
-|---|---|
-| `brand.json` | Marka bilgilerinin tek kaynağı — ad, renk, font, domain, iletişim |
-| `brand/` | Logo (SVG) ve `tokens.css` |
-| `docs/` | Şirket kurulum, vergi, ölçekleme, metin rehberi (Türkçe) |
-| `docs/sozlesmeler/` | Yasal metin şablonları (TR / NO / EN) |
-| `payments/` | Ödeme mimarisi notları ve şema taslağı — henüz kod değil |
-| `web/` | Next.js uygulaması: asıl ürün |
+## 2. Simplicity First
 
-### `web/` içinde ne nerede
+**Minimum code that solves the problem. Nothing speculative.**
 
-| Yol | İş |
-|---|---|
-| `lib/country.ts` | Ülke soyutlaması + kayıt defteri. **Tek veri kaynağı.** |
-| `lib/countries/xx.ts` | Ülke verisi: şehirler, acil numaralar, yerler, `essentials` |
-| `lib/plan.ts` | Tatil planına etki hesabı — ülkeden bağımsız, ürünün kalbi |
-| `lib/entur.ts` | Norveç canlı sefer verisi (tek ulaşım entegrasyonu) |
-| `lib/met.ts` + `lib/weather.ts` | Hava (MET Norway — **dünya çapında**, ücretsiz) |
-| `lib/events.ts` | Tekrar eden etkinlik sıralaması — "bugün ne var" mantığı |
-| `lib/roadside.ts` | Araç arızası — kim aranır, kim öder. Garaj listesi YOK |
-| `app/sorun/[kind]/` | Sekiz sorun ekranı: cancelled · missed · road · car · eat · rain · meet · basics |
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
 
-## Çalışma kuralları
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
-- **Kod yorumları ve `docs/` Türkçe; arayüz metni İngilizce.** Turist Türkçe okumuyor.
-- **Ülke eklemek kod yazmak değil, veri yazmaktır:** `lib/countries/xx.ts` + kayıt satırı.
-  Ulaşım entegrasyonu yoksa `transport: 'none'` bırak — ülke yine faydalı açılır.
-- **`emergency` alanına yalnızca hayati tehlike hattı yazılır.** İhbar hattı
-  (Danimarka 114, Hollanda 0900-8844) `nonEmergency`'ye gider ve ekranda
-  "112'yi yalnızca biri tehlikedeyken ara" cümlesiyle birlikte çıkar. Acil
-  başlığı altındaki yanlış numara, hiç numara vermemekten kötüdür.
-- **Tek tek işletme yazma.** Garaj, çekici, servis adı ve telefonu
-  doğrulanamaz ve bayatlar; yol kenarındaki turist boşuna arar. Onun yerine
-  kararı ver (kiralıkta kendi tamircini arama) ve yerel arama kelimesini ver.
-- **Doğrulayamadığın bilgiyi yazma.** `essentials` içindeki her madde turistin
-  parasını etkiliyor; uydurma bir bahşiş kuralı ürünün tamamını çürütür.
-- **"Yakında" yazma.** Elinde veri yoksa o an gerçekten işe yarayan şeyi ver
-  (bkz. `NoTransportYet`: AB yolcu hakları + üç somut adım).
-- **Boş liste = boş ekran.** Her şehirde her tür için en az bir kayıt olmalı;
-  test bunu zorunlu tutuyor.
-- **Etkinlikte yalnızca TEKRAR EDEN kayıt.** Tek seferlik konser bir hafta
-  sonra yalan olur ve turist kapalı kapıya gider. Küratörlü etkinliği
-  olmayan şehirde `universalWays` devreye girer — boş ekran yok.
-- **Rıza olmadan ölçüm betiği yüklenmez.** `cobban:consent` olayını dinle.
-- Yasal metinlerdeki `{{...}}` alanları doldurulmadan hiçbir metin yayına alınmaz.
+## 3. Surgical Changes
 
-## Çalışma biçimi — genel mühendislik kuralları
+**Touch only what you must. Clean up only your own mess.**
 
-Kaynak: [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills).
-Dosyanın kendisi "proje kurallarıyla BİRLEŞTİR" diyor; yukarıdaki COBBAN
-kuralları çelişki hâlinde önce gelir. Önyargı hızdan yana değil, dikkatten yana —
-önemsiz işlerde muhakeme kullan.
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
 
-**1 · Kodlamadan önce düşün.** Varsayımını açıkça söyle. Birden fazla okuma
-varsa sessizce birini seçme, ikisini de göster. Daha basit bir yol varsa söyle.
-Kafan karıştıysa neyin karıştırdığını adlandır.
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
 
-**2 · Önce sadelik.** Sorunu çözen en az kod. İstenmemiş özellik yok. Tek
-kullanımlık kod için soyutlama yok. İstenmemiş "esneklik" yok. İmkânsız
-senaryo için hata yönetimi yok. 200 satır yazdıysan ve 50 olabiliyorsa,
-yeniden yaz.
+The test: Every changed line should trace directly to the user's request.
 
-**3 · Cerrahi değişiklik.** Yalnızca dokunman gerekene dokun. Komşu kodu,
-yorumu, biçimi "iyileştirme". Bozuk olmayanı refactor etme. Kendi
-değişikliğinin ürettiği kullanılmayan import ve değişkeni temizle — önceden
-var olan ölü kodu isteneni beklemeden silme, sadece söyle. Ölçüt: değişen her
-satır doğrudan istenen şeye kadar izlenebilmeli.
+## 4. Goal-Driven Execution
 
-**4 · Hedefe göre çalış.** Görevi doğrulanabilir hedefe çevir: "doğrulama
-ekle" → "geçersiz girdi için test yaz, sonra geçir". "Hatayı düzelt" →
-"hatayı üreten test yaz, sonra geçir". Bu depoda doğrulama hazır:
-`npm run check` ve `npm run smoke`. Zayıf ölçüt ("çalışsın") sürekli soru
-sordurur; güçlü ölçüt tek başına döngü kurmanı sağlar.
+**Define success criteria. Loop until verified.**
 
-## Doğrulama
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
 
-```bash
-cd web
-npm run check          # typecheck + 49 birim testi + build
-npm run start          # ayrı terminalde
-npm run smoke          # 13 ülke × 8 ekran, canlı sunucuya karşı (1749 kontrol)
-npm run verify:apis    # Entur ve MET sorgularını canlı doğrular (kısıtsız ağ gerekir)
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
 ```
 
-`smoke` üretim derlemesine karşı HER sayfayı açıyor: boş ekran, kayıp ülke
-seçimi, arayüze sızmış Türkçe, kırık bağlantı ve "yakında" metni testte patlar.
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
-Değişiklikten sonra en az bunları tarayıcıda dene: anasayfa, ülke değiştirici,
-`/sorun/cancelled?country=NO` (plan etkisi üç seviyede de görünmeli),
-`/sorun/cancelled?country=IT` (ulaşımsız ülke ekranı), `/sorun/basics?country=GR`,
-`/sorun/meet?country=DE&city=berlin` (perşembeyse "Tonight" görünmeli).
+---
 
-## Bilinen durum
-
-- 13 ülke canlı; canlı sefer verisi yalnızca Norveç'te (Entur).
-- `COBBAN_LIVE_DATA=true` yoksa sefer ve hava demo veriyle çalışır — ekranda yazıyor.
-- Entur ve MET sorguları bu ortamdan **canlı doğrulanamadı** (çıkış trafiği kapalı).
-- `cobban.eu` kayıtsız ve alınabilir; Vercel `.eu` satmıyor, ayrı kayıt gerekiyor.
-- GitHub push bu ortamdan 403 veriyor; çıktılar zip/bundle olarak veriliyor.
-
-## Bilgi tazeleme
-
-Vergi oranı, eşik, limit gibi her rakam `docs/12-kaynak-takibi.md`'de tarihiyle
-kayıtlı. Bir rakamı kullanmadan veya güncellemeden önce oraya bak; "tekrar bak"
-tarihi geçmişse kaynaktan doğrula ve kaydı güncelle. Eski değeri silme.
-
-Ölçekleme modeli: `docs/13-olcekleme.md` · Metin standardı: `docs/14-metin-rehberi.md`
-Sıradaki işler: `docs/11-gelistirme-plani.md`
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
