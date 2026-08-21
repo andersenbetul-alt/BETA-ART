@@ -123,3 +123,41 @@ broken harness, not a finding.
 **Principle:** A measurement harness fails silently when given an unknown option.
 Always print something that proves the configuration actually took effect,
 before trusting anything else the harness reports.
+
+---
+
+### Observation 5: A gate can be blocked by a person even when the work looks mechanical
+
+**Status:** OPEN
+**Date:** 2026-08-21
+**Session context:** Driving every gate to zero. `gaps` wanted per-language
+URLs for the hub, the journal and the archive.
+**Skill:** Any "make the checks pass" workflow
+**Type:** internal
+**Phase/Area:** Deciding what is machine-doable
+
+**Issue:** Two of the three were mechanical and got done — the hub from
+Norwegian already written in `i18n.js`, the journal from a new written copy
+table. The archive looked like the same job, one size larger. It is not.
+Measured by section, **96% of the archive index's 1,743 words are
+legal-bearing**: the verification guarantee, licence tiers, refund terms,
+model releases, the FAQ. Writing those in Norwegian would author a Norwegian
+statement of the archive's legal position, unreviewed, while `docs/09` and the
+licence terms are still waiting on a Norwegian lawyer — and Norwegian is
+queue 1 in `languages.json` precisely because nobody has checked it yet.
+
+The first instinct was right, but it was only an instinct until the sections
+were counted. Counting turned a hunch into a number that can be handed to
+somebody else.
+
+**Suggested improvement:** Before deciding a content task is mechanical,
+measure how much of it carries a commitment rather than a description. A
+page that is 96% commitments is a legal document with pictures, whatever the
+gate calls it.
+
+**Principle:** "Can a machine do this?" and "should a machine do this
+unreviewed?" are different questions, and the second one is answered by what
+the words commit to, not by how hard they are to write. A gate that stays red
+for a documented reason is worth more than a gate turned green by authoring
+promises nobody has approved.
+
