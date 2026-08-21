@@ -280,7 +280,12 @@
     try { return new Date(iso).toLocaleDateString(currentLang, { year: 'numeric', month: 'short', day: 'numeric' }); }
     catch (e) { return iso; }
   }
-  function cardHTML(p) {
+  /* seviye: kartın başlık düzeyi. Blog sayfasında kartlar doğrudan h1'in
+     altında duruyor, yani h2 olmalı; ana sayfada ve yazı sayfasında bir
+     bölüm h2'sinin altındalar, orada h3 doğru. Sabit h3 blog.html'de
+     h1→h3 atlaması üretiyordu. */
+  function cardHTML(p, seviye) {
+    var h = seviye === 2 ? 'h2' : 'h3';
     var c = ACCENTS[p.accent] || ACCENTS[1];
     return '<a class="card post-card reveal" href="post.html?slug=' + encodeURIComponent(p.slug) + '">' +
       '<div class="post-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + iconSVG(p.icon) + '</div>' +
@@ -288,7 +293,7 @@
         '<div class="post-meta"><span class="tag">' + esc(t('cat.' + p.category)) + '</span>' +
         '<span class="meta-when">' + esc(fmtDate(p.date)) +
           '<span class="dot">' + readTime(p) + ' ' + esc(t('posts.min')) + '</span></span></div>' +
-        '<h3>' + esc(pick(p.t)) + '</h3><p>' + esc(pick(p.e)) + '</p>' +
+        '<' + h + '>' + esc(pick(p.t)) + '</' + h + '><p>' + esc(pick(p.e)) + '</p>' +
         '<span class="read-more">' + esc(t('posts.readMore')) + ' →</span>' +
       '</div></a>';
   }
@@ -378,7 +383,7 @@
   function renderHome() {
     var box = $('#latestPosts');
     if (!box) return;
-    box.innerHTML = sorted().slice(0, 3).map(cardHTML).join('');
+    box.innerHTML = sorted().slice(0, 3).map(function (p) { return cardHTML(p, 3); }).join('');
   }
 
   /* ---------- sayfa: blog ---------- */
@@ -401,7 +406,7 @@
       var hay = pick(p.t) + ' ' + pick(p.e) + ' ' + (pick(p.b) || []).map(blockText).join(' ');
       return hay.toLowerCase().indexOf(q) > -1;
     });
-    box.innerHTML = list.length ? list.map(cardHTML).join('')
+    box.innerHTML = list.length ? list.map(function (p) { return cardHTML(p, 2); }).join('')
       : '<p class="empty">' + esc(t('posts.empty')) + '</p>';
     revealInit();
   }
@@ -472,7 +477,7 @@
         '</div>' +
       '</aside>' +
       '<h2 style="margin-top:52px">' + esc(t('posts.related')) + '</h2>' +
-      '<div class="posts">' + related.map(cardHTML).join('') + '</div>';
+      '<div class="posts">' + related.map(function (p) { return cardHTML(p, 3); }).join('') + '</div>';
 
     var share = $('#shareBtn');
     if (share) share.addEventListener('click', function () {

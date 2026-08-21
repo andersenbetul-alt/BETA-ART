@@ -9,7 +9,7 @@
  *   research.json · article.md · seo.json · money.json · quality.json
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as db from './db.mjs';
 import { checkVisibility, printReport } from './visibility.mjs';
@@ -129,4 +129,9 @@ async function main() {
   }
 }
 
-main().catch((e) => { console.error('\nHata:', e.message); process.exit(1); });
+/* Yalnızca doğrudan çalıştırıldığında koş. Bu koruma olmadan `import` etmek
+   tüm hattı çalıştırıyordu: run.mjs veritabanına yazıyor, write.mjs API'ye
+   çıkıp kimlik hatasıyla düşüyordu. Test ve denetim betikleri bu dosyaları
+   içe aktaramıyordu. */
+const DOGRUDAN = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (DOGRUDAN) main().catch((e) => { console.error('\nHata:', e.message); process.exit(1); });

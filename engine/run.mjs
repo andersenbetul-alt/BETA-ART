@@ -9,7 +9,7 @@
  * Akış: TARA → KÜMELE → ÖZNİTELİK → PUANLA → KARAR → KUYRUK → PANEL
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { join, dirname } from 'node:path';
+import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as db from './db.mjs';
 import { clusterSignals, guessPillar } from './cluster.mjs';
@@ -140,4 +140,9 @@ function printBoard(rows) {
   }
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+/* Yalnızca doğrudan çalıştırıldığında koş. Bu koruma olmadan `import` etmek
+   tüm hattı çalıştırıyordu: run.mjs veritabanına yazıyor, write.mjs API'ye
+   çıkıp kimlik hatasıyla düşüyordu. Test ve denetim betikleri bu dosyaları
+   içe aktaramıyordu. */
+const DOGRUDAN = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (DOGRUDAN) main().catch((e) => { console.error(e); process.exit(1); });

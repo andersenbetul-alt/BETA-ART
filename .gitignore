@@ -2,3 +2,7 @@ onizleme/
 node_modules/
 __pycache__/
 .DS_Store
+
+# Motorun ürettiği veri. run.mjs bunları sıfırdan kuruyor (sınandı), ama izlenince
+# her koşuda diff üretiyorlardı — SQLite dosyası ikili olduğu için diff de okunmaz.
+engine/data/
