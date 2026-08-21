@@ -95,7 +95,9 @@ tıklanabilir bir önizleme. Birine site göstermek gerektiğinde bunu kullanın
 Yönlendirme `?page=` ile; `slug` ve `lang` gerçek sorgu dizesinde kaldığı için
 `app.js` değişmeden çalışır. Gövde değiştikten sonra `window.QB_BOOT()` çağrılır.
 
-`python3 scripts/marka-uret.py` kimlik vektörlerini yeniden üretir (gereken:
+`python3 scripts/marka-uret.py` 13 kimlik varlığının hepsini yeniden üretir —
+11 SVG + 2 PNG (favicon-32, apple-touch-icon). Rasterleştirici stdlib ile yazılı,
+yeni bağımlılık yok. Betik hangi klasörden çağrılırsa çağrılsın çalışır (gereken:
 `pip install fonttools brotli`). Wordmark ana hatları deponun kendi Inter değişken
 fontundan `wght=700`'de örneklenir; dış servis gerekmez. Geometri, ölçümler ve
 brief'ten sapma gerekçeleri `docs/logo-sistemi.md`; test protokolleri ve marka

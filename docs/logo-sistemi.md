@@ -1,7 +1,11 @@
 # QBLOGG kimlik sistemi
 
 Üretim: `python3 scripts/marka-uret.py` (gereken: `pip install fonttools brotli`).
-Çıktılar `assets/brand/`. Wordmark ana hatları deponun kendi Inter değişken
+Çıktılar `assets/brand/` — **13 varlığın hepsi**: 11 SVG + 2 PNG (favicon-32,
+apple-touch-icon). PNG'ler önce elle yapılmıştı ve yeniden üretilemiyordu; artık
+betiğin içindeki stdlib rasterleştirici üretiyor (çift-tek tarama, y'de 8 kat
+örnekleme, x'te tam örtüşme). Yeni bağımlılık yok. Betik yolları kendi konumundan
+çözer, yani depo kökünden de kaynak paketinden de çalışır. Wordmark ana hatları deponun kendi Inter değişken
 fontundan `wght=700`'de örneklenir — dış servis, kurulu font veya Figma gerekmez.
 
 Kanıt: `docs/gorseller/logo-kanit-panosu.png` (ölçek testi, varyantlar, kilitler,
