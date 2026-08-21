@@ -63,6 +63,34 @@ kurtarandan kötüdür (`web/lib/plan.ts`).
 - **Rıza olmadan ölçüm betiği yüklenmez.** `cobban:consent` olayını dinle.
 - Yasal metinlerdeki `{{...}}` alanları doldurulmadan hiçbir metin yayına alınmaz.
 
+## Çalışma biçimi — genel mühendislik kuralları
+
+Kaynak: [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills).
+Dosyanın kendisi "proje kurallarıyla BİRLEŞTİR" diyor; yukarıdaki COBBAN
+kuralları çelişki hâlinde önce gelir. Önyargı hızdan yana değil, dikkatten yana —
+önemsiz işlerde muhakeme kullan.
+
+**1 · Kodlamadan önce düşün.** Varsayımını açıkça söyle. Birden fazla okuma
+varsa sessizce birini seçme, ikisini de göster. Daha basit bir yol varsa söyle.
+Kafan karıştıysa neyin karıştırdığını adlandır.
+
+**2 · Önce sadelik.** Sorunu çözen en az kod. İstenmemiş özellik yok. Tek
+kullanımlık kod için soyutlama yok. İstenmemiş "esneklik" yok. İmkânsız
+senaryo için hata yönetimi yok. 200 satır yazdıysan ve 50 olabiliyorsa,
+yeniden yaz.
+
+**3 · Cerrahi değişiklik.** Yalnızca dokunman gerekene dokun. Komşu kodu,
+yorumu, biçimi "iyileştirme". Bozuk olmayanı refactor etme. Kendi
+değişikliğinin ürettiği kullanılmayan import ve değişkeni temizle — önceden
+var olan ölü kodu isteneni beklemeden silme, sadece söyle. Ölçüt: değişen her
+satır doğrudan istenen şeye kadar izlenebilmeli.
+
+**4 · Hedefe göre çalış.** Görevi doğrulanabilir hedefe çevir: "doğrulama
+ekle" → "geçersiz girdi için test yaz, sonra geçir". "Hatayı düzelt" →
+"hatayı üreten test yaz, sonra geçir". Bu depoda doğrulama hazır:
+`npm run check` ve `npm run smoke`. Zayıf ölçüt ("çalışsın") sürekli soru
+sordurur; güçlü ölçüt tek başına döngü kurmanı sağlar.
+
 ## Doğrulama
 
 ```bash
