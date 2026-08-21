@@ -7,6 +7,28 @@ generally. Newest entries first. For current state and blockers see
 
 ---
 
+## 2026-08-21 — Merged Karpathy working guidelines into project memory
+
+Pulled `CLAUDE.md` from
+[forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)
+— behavioural guidelines for reducing common LLM coding mistakes (think
+before coding, simplicity first, surgical changes, goal-driven execution).
+
+**Merged rather than copied over.** The two files serve different purposes and
+do not overlap: ours holds project facts, theirs holds working method. The
+incoming file's own second line says "Merge with project-specific instructions
+as needed." A straight `cp` would have deleted the BETA-ART project memory.
+
+The guidelines now sit under a `# Working guidelines` section at the end of
+`CLAUDE.md`, headings demoted one level, with a note that project facts win on
+conflict. Not adopted: the repo's `skills/karpathy-guidelines/SKILL.md`, its
+`EXAMPLES.md`, or the Cursor variant — not asked for.
+
+No change to navbar status: still not started, still blocked on D-002 and
+D-003.
+
+---
+
 ## 2026-08-20 — Repository audit and status tracking
 
 **Branch:** `claude/navbar-beta-art-cobban-6t07ru`
