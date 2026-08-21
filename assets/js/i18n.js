@@ -259,6 +259,8 @@ window.HXI_I18N.en = {
   faq_a7: "press@hximusic.com. Bios you can publish without asking anyone are in the Press section, and interviews happen by email, by call, or in person in Oslo.",
 
   press_bio_label: "Bio — ready to publish",
+
+  press_bio_copy: "Copy bio",
   press_bio_p: "Three lengths, cleared as written. Copy the one that fits and print it; no approval call needed.",
   press_bio_1_t: "One line",
   press_bio_2_t: "Short — for listings and programmes",
@@ -536,6 +538,8 @@ window.HXI_I18N.zh = {
   faq_a7: "press@hximusic.com。不必事先征询即可直接刊用的简介在 Press 一节；采访可以通过邮件、通话，或在奥斯陆当面进行。",
 
   press_bio_label: "简介 — 可直接刊用",
+
+  press_bio_copy: "复制简介",
   press_bio_p: "三种长度，均按原文获准使用。挑合适的一条复制刊登即可，无需再来确认。",
   press_bio_1_t: "一句话",
   press_bio_2_t: "简短版 — 用于节目单与条目",
@@ -816,6 +820,8 @@ window.HXI_I18N.es = {
   faq_a7: "press@hximusic.com. En la sección Press hay biografías que puedes publicar sin pedirle permiso a nadie, y las entrevistas se hacen por correo, por llamada o en persona en Oslo.",
 
   press_bio_label: "Biografía — lista para publicar",
+
+  press_bio_copy: "Copiar biografía",
   press_bio_p: "Tres extensiones, aprobadas tal cual están escritas. Copia la que te encaje y publícala; no hace falta pedir permiso.",
   press_bio_1_t: "Una línea",
   press_bio_2_t: "Corta — para listados y programas",
@@ -1093,6 +1099,8 @@ window.HXI_I18N.hi = {
   faq_a7: "press@hximusic.com। जिन बायो को बिना किसी से पूछे छापा जा सकता है, वे Press सेक्शन में हैं; और इंटरव्यू ईमेल से, कॉल पर, या ओस्लो में आमने-सामने होते हैं।",
 
   press_bio_label: "बायो — छापने के लिए तैयार",
+
+  press_bio_copy: "बायो कॉपी करें",
   press_bio_p: "तीन लंबाइयाँ, जैसी लिखी हैं वैसी ही स्वीकृत। जो फ़िट बैठे उसे कॉपी करके छाप दीजिए; मंज़ूरी के लिए फ़ोन करने की ज़रूरत नहीं।",
   press_bio_1_t: "एक पंक्ति",
   press_bio_2_t: "संक्षिप्त — लिस्टिंग और कार्यक्रम-पुस्तिका के लिए",
@@ -1370,6 +1378,8 @@ window.HXI_I18N.ar = {
   faq_a7: "press@hximusic.com. في قسم Press نبذ يمكنك نشرها دون الرجوع إلى أحد، والمقابلات تجري بالبريد أو بمكالمة أو وجهًا لوجه في أوسلو.",
 
   press_bio_label: "نبذة — جاهزة للنشر",
+
+  press_bio_copy: "نسخ النبذة",
   press_bio_p: "ثلاث صيغ بأطوال مختلفة، جميعها معتمدة كما هي. انسخ ما يناسبك وانشره؛ لا حاجة إلى طلب موافقة.",
   press_bio_1_t: "سطر واحد",
   press_bio_2_t: "قصيرة — للقوائم وبرامج المهرجانات",
@@ -1647,6 +1657,8 @@ window.HXI_I18N.fr = {
   faq_a7: "press@hximusic.com. Des bios publiables sans rien demander à personne se trouvent dans la section Press, et les interviews se font par e-mail, par appel ou en personne à Oslo.",
 
   press_bio_label: "Bio — prête à publier",
+
+  press_bio_copy: "Copier la bio",
   press_bio_p: "Trois longueurs, validées telles quelles. Copiez celle qui convient et publiez-la ; aucune validation à demander.",
   press_bio_1_t: "Une ligne",
   press_bio_2_t: "Courte — pour les programmes et annuaires",
@@ -1924,6 +1936,8 @@ window.HXI_I18N.pt = {
   faq_a7: "press@hximusic.com. Na seção Press há bios que você pode publicar sem pedir nada a ninguém, e as entrevistas acontecem por e-mail, por chamada ou pessoalmente em Oslo.",
 
   press_bio_label: "Bio — pronta para publicar",
+
+  press_bio_copy: "Copiar bio",
   press_bio_p: "Três tamanhos, aprovados como estão. Copie o que servir e publique; não precisa pedir autorização.",
   press_bio_1_t: "Uma linha",
   press_bio_2_t: "Curta — para listagens e programas",
@@ -2201,6 +2215,8 @@ window.HXI_I18N.bn = {
   faq_a7: "press@hximusic.com। কাউকে না জিজ্ঞেস করেই ছাপানো যায় এমন পরিচিতি Press অংশে আছে, আর সাক্ষাৎকার হয় ইমেইলে, কলে, কিংবা অসলোতে সামনাসামনি।",
 
   press_bio_label: "পরিচিতি — প্রকাশের জন্য তৈরি",
+
+  press_bio_copy: "পরিচিতি কপি করুন",
   press_bio_p: "তিনটি দৈর্ঘ্য, যেমন লেখা তেমনই অনুমোদিত। যেটি মানানসই সেটি কপি করে ছাপিয়ে দিন; আলাদা করে অনুমতি নেওয়ার দরকার নেই।",
   press_bio_1_t: "এক লাইন",
   press_bio_2_t: "সংক্ষিপ্ত — তালিকা ও অনুষ্ঠানসূচির জন্য",
@@ -2478,6 +2494,8 @@ window.HXI_I18N.ru = {
   faq_a7: "press@hximusic.com. В разделе Press лежат биографии, которые можно публиковать ни у кого не спрашивая, а интервью проходят по почте, по звонку или лично в Осло.",
 
   press_bio_label: "Биография — готова к публикации",
+
+  press_bio_copy: "Копировать биографию",
   press_bio_p: "Три варианта по длине, все согласованы в том виде, в каком написаны. Скопируйте подходящий и публикуйте — согласовывать отдельно не нужно.",
   press_bio_1_t: "Одна строка",
   press_bio_2_t: "Короткая — для афиш и программок",
@@ -2755,6 +2773,8 @@ window.HXI_I18N.ur = {
   faq_a7: "press@hximusic.com۔ جن تعارفوں کو کسی سے پوچھے بغیر شائع کیا جا سکتا ہے وہ Press سیکشن میں ہیں، اور انٹرویو ای میل پر، کال پر، یا اوسلو میں بالمشافہ ہوتے ہیں۔",
 
   press_bio_label: "تعارف — اشاعت کے لیے تیار",
+
+  press_bio_copy: "تعارف کاپی کریں",
   press_bio_p: "تین لمبائیاں، جیسی لکھی ہیں ویسی ہی منظور شدہ۔ جو مناسب لگے اُسے کاپی کر کے شائع کر دیں؛ الگ سے اجازت لینے کی ضرورت نہیں۔",
   press_bio_1_t: "ایک سطر",
   press_bio_2_t: "مختصر — فہرستوں اور پروگراموں کے لیے",
@@ -3032,6 +3052,8 @@ window.HXI_I18N.no = {
   faq_a7: "press@hximusic.com. Bioer du kan publisere uten å spørre noen ligger i Press-delen, og intervjuer gjøres på e-post, på telefon eller i person i Oslo.",
 
   press_bio_label: "Bio — klar til publisering",
+
+  press_bio_copy: "Kopier bio",
   press_bio_p: "Tre lengder, godkjent slik de står. Kopier den som passer og publiser den – du trenger ikke be om klarering.",
   press_bio_1_t: "Én linje",
   press_bio_2_t: "Kort – for oppføringer og programmer",
@@ -3309,6 +3331,8 @@ window.HXI_I18N.tr = {
   faq_a7: "press@hximusic.com. Kimseye sormadan yayımlayabileceğiniz biyografiler Press bölümünde; röportajlar e-postayla, görüşmeyle ya da Oslo'da yüz yüze yapılıyor.",
 
   press_bio_label: "Biyografi — yayına hazır",
+
+  press_bio_copy: "Biyografiyi kopyala",
   press_bio_p: "Üç ayrı uzunluk, yazıldığı hâliyle onaylı. Hangisi uyuyorsa kopyalayıp yayımlayın; ayrıca onay istemenize gerek yok.",
   press_bio_1_t: "Tek satır",
   press_bio_2_t: "Kısa — listeler ve program kitapçıkları için",
