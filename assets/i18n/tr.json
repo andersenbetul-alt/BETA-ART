@@ -132,18 +132,16 @@
   },
   "areas": {
     "eyebrow": "Kapsam",
-    "title": "Çalıştığımız alanlar",
-    "lead": "Pilotumuz NAV ve belediye. Diğer alanları ancak o konuyu bilen bir danışmanımız varsa alıyoruz.",
+    "title": "Nerede yol gösterebiliriz",
+    "lead": "Doğru kanalı bulmanıza ve sorularınızı hazırlamanıza yardım ederiz. Konunun içeriği hakkında tavsiye vermeyiz — bunu kurumun kendisi veya bir uzman yapar.",
     "items": [
-      "NAV — ödenekler, hastalık izni, işsizlik",
-      "Belediye hizmetleri",
-      "Vergi dairesi ve Altinn",
-      "Helfo ve sağlık idaresi",
-      "Emeklilik işlemleri",
-      "Barınma ve sosyal destek",
-      "Hastalık ve işsizlik süreçleri",
-      "Aile ve bakım hizmetleri",
-      "Norveç'e yeni gelenlerin kamu işlemleri"
+      "NAV — doğru daireyi, formu ve kanalı bulmak",
+      "Belediye hizmetleri — kiminle görüşmeniz gerektiği",
+      "Skatteetaten ve Altinn — konunun ait olduğu kanal",
+      "Helfo, sağlık ve emeklilik — nereye başvurmanız gerektiği",
+      "Norveç’e yeni gelenler için kamu hizmetleri",
+      "İş arama — CV, başvuru ve mülakat",
+      "Dil yardımı gereken özel görüşmeler"
     ]
   },
   "pricing": {
@@ -312,7 +310,6 @@
     "services": "Hizmetler",
     "company": "Şirket",
     "legal": "Hukuki",
-    "about": "Hakkımızda",
     "privacy": "Gizlilik",
     "terms": "Koşullar",
     "rights": "Tüm hakları saklıdır.",

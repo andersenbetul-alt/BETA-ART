@@ -132,18 +132,16 @@
   },
   "areas": {
     "eyebrow": "Dekning",
-    "title": "Områder vi jobber med",
-    "lead": "Piloten vår er NAV og kommunen. Andre områder tar vi bare når vi har en rådgiver som kan dem.",
+    "title": "Hvor vi kan vise vei",
+    "lead": "Vi hjelper deg å finne riktig kanal og forberede spørsmålene dine. Vi gir ikke råd om innholdet i saken — det gjør instansen selv eller en fagperson.",
     "items": [
-      "NAV — ytelser, sykmelding, arbeidsledighet",
-      "Kommunale tjenester",
-      "Skatteetaten og Altinn",
-      "Helfo og helseforvaltning",
-      "Pensjonssaker",
-      "Bolig og sosial støtte",
-      "Sykdoms- og arbeidsledighetsprosesser",
-      "Familie- og omsorgstjenester",
-      "Offentlige prosesser for nyankomne til Norge"
+      "NAV — finne riktig kontor, skjema og kanal",
+      "Kommunale tjenester — hvem du skal kontakte",
+      "Skatteetaten og Altinn — hvilken kanal saken hører hjemme i",
+      "Helfo, helse og pensjon — hvor du skal henvende deg",
+      "Offentlige tjenester for nyankomne til Norge",
+      "Jobbsøking — CV, søknad og intervju",
+      "Private samtaler der du trenger språkstøtte"
     ]
   },
   "pricing": {
@@ -312,7 +310,6 @@
     "services": "Tjenester",
     "company": "Virksomheten",
     "legal": "Juridisk",
-    "about": "Om oss",
     "privacy": "Personvern",
     "terms": "Vilkår",
     "rights": "Alle rettigheter forbeholdt.",

@@ -133,6 +133,14 @@ export default async function () {
       equal(links.length, 0, 'a payment link is configured: ' + links.join(', '));
     });
 
+    /* Two numbers on the front page count things that live elsewhere. They
+       drift the moment either list changes, and nobody notices a wrong count. */
+    await test('the counts on the front page match what is actually listed', () => {
+      const no = load('no.json');
+      equal(CFG.stats.areas, String(no.areas.items.length), 'areas count');
+      equal(CFG.stats.languages, String(CFG.languages.length), 'language count');
+    });
+
     await test('booking hours are in Norwegian wall-clock time', () => {
       equal(CFG.booking.timezone, 'Europe/Oslo');
     });

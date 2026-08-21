@@ -132,18 +132,16 @@
   },
   "areas": {
     "eyebrow": "Daboolka",
-    "title": "Qaybaha aan ka shaqeyno",
-    "lead": "Tijaabadeennu waa NAV iyo degmada. Meelo kale waxaan qaadnaa oo keliya marka aan haysanno lataliye taqaan.",
+    "title": "Halka aan jidka ku tusi karno",
+    "lead": "Waxaan kaa caawinnaa inaad hesho kanaalka saxda ah oo aad diyaariso su’aalahaaga. Kama talo bixinno nuxurka arrinta — taas waxaa qabta hay’adda lafteeda ama khabiir.",
     "items": [
-      "NAV — gunnooyin, fasax caafimaad, shaqo la'aan",
-      "Adeegyada degmada",
-      "Hay'adda Canshuuraha iyo Altinn",
-      "Helfo iyo maamulka caafimaadka",
-      "Arrimaha hawlgabka",
-      "Guri iyo taageero bulsho",
-      "Habraacyada jirrada iyo shaqo la'aanta",
-      "Adeegyada qoyska iyo daryeelka",
-      "Habraacyada dawladda ee dadka cusub ee Norway yimid"
+      "NAV — helitaanka xafiiska, foomka iyo kanaalka saxda ah",
+      "Adeegyada degmada — cidda aad la xiriirto",
+      "Skatteetaten iyo Altinn — kanaalka arrintu ku tahay",
+      "Helfo, caafimaad iyo hawlgab — meesha aad u tagto",
+      "Adeegyada dawladda ee dadka cusub ee Norway",
+      "Raadinta shaqada — CV, codsi iyo wareysi",
+      "Wada-hadallo gaar ah oo aad caawimaad luqadeed ugu baahan tahay"
     ]
   },
   "pricing": {
@@ -312,7 +310,6 @@
     "services": "Adeegyada",
     "company": "Shirkadda",
     "legal": "Sharci",
-    "about": "Nagu saabsan",
     "privacy": "Asturnaanta",
     "terms": "Shuruudaha",
     "rights": "Dhammaan xuquuqda way dhowran yihiin.",

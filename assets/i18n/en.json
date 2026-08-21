@@ -132,18 +132,16 @@
   },
   "areas": {
     "eyebrow": "Coverage",
-    "title": "Areas we work in",
-    "lead": "Our pilot is NAV and the municipality. We take other areas only when we have an adviser who knows them.",
+    "title": "Where we can point the way",
+    "lead": "We help you find the right channel and prepare your questions. We do not advise on the substance of your matter — the body itself or a qualified professional does that.",
     "items": [
-      "NAV — benefits, sick leave, unemployment",
-      "Municipal services (kommune)",
-      "The Tax Administration and Altinn",
-      "Helfo and health administration",
-      "Pension matters",
-      "Housing and social support",
-      "Sickness and unemployment processes",
-      "Family and care services",
-      "Public processes for newcomers to Norway"
+      "NAV — finding the right office, form and channel",
+      "Municipal services — who to contact",
+      "Skatteetaten and Altinn — which channel your matter belongs to",
+      "Helfo, health and pensions — where to turn",
+      "Public services for people new to Norway",
+      "Job seeking — CV, application and interview",
+      "Private conversations where you need language help"
     ]
   },
   "pricing": {
@@ -312,7 +310,6 @@
     "services": "Services",
     "company": "Company",
     "legal": "Legal",
-    "about": "About us",
     "privacy": "Privacy",
     "terms": "Terms",
     "rights": "All rights reserved.",

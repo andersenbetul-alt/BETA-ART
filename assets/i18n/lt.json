@@ -132,18 +132,16 @@
   },
   "areas": {
     "eyebrow": "Aprėptis",
-    "title": "Sritys, kuriose dirbame",
-    "lead": "Mūsų bandymas — NAV ir savivaldybė. Kitas sritis imame tik tada, kai turime jas išmanantį patarėją.",
+    "title": "Kur galime parodyti kelią",
+    "lead": "Padedame rasti tinkamą kanalą ir pasiruošti klausimus. Nekonsultuojame dėl reikalo esmės – tai daro pati įstaiga arba specialistas.",
     "items": [
-      "NAV — išmokos, nedarbingumas, nedarbas",
-      "Savivaldybių paslaugos",
-      "Mokesčių inspekcija ir Altinn",
-      "Helfo ir sveikatos administravimas",
-      "Pensijų klausimai",
-      "Būstas ir socialinė parama",
-      "Ligos ir nedarbo procedūros",
-      "Šeimos ir priežiūros paslaugos",
-      "Valstybinės procedūros naujai atvykusiems į Norvegiją"
+      "NAV – tinkamos įstaigos, formos ir kanalo paieška",
+      "Savivaldybės paslaugos – į ką kreiptis",
+      "Skatteetaten ir Altinn – kuriam kanalui priklauso reikalas",
+      "Helfo, sveikata ir pensijos – kur kreiptis",
+      "Viešosios paslaugos neseniai į Norvegiją atvykusiems",
+      "Darbo paieška – CV, prašymas ir pokalbis",
+      "Privatūs pokalbiai, kuriuose reikia kalbos pagalbos"
     ]
   },
   "pricing": {
@@ -312,7 +310,6 @@
     "services": "Paslaugos",
     "company": "Įmonė",
     "legal": "Teisinė informacija",
-    "about": "Apie mus",
     "privacy": "Privatumas",
     "terms": "Sąlygos",
     "rights": "Visos teisės saugomos.",

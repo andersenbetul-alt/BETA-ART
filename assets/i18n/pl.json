@@ -132,18 +132,16 @@
   },
   "areas": {
     "eyebrow": "Zakres",
-    "title": "Obszary, którymi się zajmujemy",
-    "lead": "Nasz pilotaż to NAV i gmina. Inne obszary bierzemy tylko wtedy, gdy mamy doradcę, który je zna.",
+    "title": "Gdzie możemy wskazać drogę",
+    "lead": "Pomagamy znaleźć właściwy kanał i przygotować pytania. Nie doradzamy w meritum sprawy — robi to sam urząd albo specjalista.",
     "items": [
-      "NAV — świadczenia, zwolnienia, bezrobocie",
-      "Usługi gminne",
-      "Urząd skarbowy i Altinn",
-      "Helfo i administracja zdrowia",
-      "Sprawy emerytalne",
-      "Mieszkanie i wsparcie socjalne",
-      "Procesy chorobowe i bezrobocia",
-      "Usługi rodzinne i opiekuńcze",
-      "Sprawy urzędowe nowo przybyłych do Norwegii"
+      "NAV — znalezienie właściwego urzędu, formularza i kanału",
+      "Usługi gminne — z kim się kontaktować",
+      "Skatteetaten i Altinn — do którego kanału należy sprawa",
+      "Helfo, zdrowie i emerytury — gdzie się zwrócić",
+      "Usługi publiczne dla osób nowych w Norwegii",
+      "Szukanie pracy — CV, podanie i rozmowa",
+      "Prywatne rozmowy, w których potrzebujesz pomocy językowej"
     ]
   },
   "pricing": {
@@ -312,7 +310,6 @@
     "services": "Usługi",
     "company": "Firma",
     "legal": "Informacje prawne",
-    "about": "O nas",
     "privacy": "Prywatność",
     "terms": "Warunki",
     "rights": "Wszelkie prawa zastrzeżone.",

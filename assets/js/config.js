@@ -40,7 +40,7 @@ window.NAVIAR_CONFIG = {
 
   /* ----------------------------------------------------------- key figures */
   /* Only verifiable facts. No invented client counts or success rates.       */
-  stats: { languages: '10', areas: '9', reply: '24t', written: '100%' },
+  stats: { languages: '10', areas: '7', reply: '24t', written: '100%' },
 
   /* -------------------------------------------------------- price catalogue
      Pilot catalogue from the NAVIAR System Blueprint v1.0 §12.1.

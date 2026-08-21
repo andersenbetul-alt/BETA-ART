@@ -124,6 +124,33 @@ export default async function () {
       assert(/Disallow:\s*\/admin\.html/.test(robots), 'robots.txt must keep the case queue out');
     });
 
+    /* The share image is referenced by absolute URL, so the relative-asset check
+       above steps over it. A link that unfurls as a grey box is the failure
+       this catches. */
+    await test('every public page has an icon and a share image that exist', () => {
+      const site = fs.readFileSync('assets/js/config.js', 'utf8').match(/siteUrl:\s*'([^']+)'/)[1];
+      for (const file of ['index.html', 'personvern.html', 'vilkar.html', 'hva-vi-gjor.html']) {
+        const html = fs.readFileSync(file, 'utf8');
+        assert(/rel="icon" href="favicon\.ico"/.test(html), `${file} has no favicon.ico`);
+        assert(/rel="apple-touch-icon"/.test(html), `${file} has no apple-touch-icon`);
+        assert(/rel="manifest"/.test(html), `${file} does not link the web manifest`);
+
+        const images = [...html.matchAll(/(?:og:image|twitter:image)"\s+content="([^"]+)"/g)].map(m => m[1]);
+        assert(images.length >= 2, `${file} names ${images.length} share image(s)`);
+        for (const url of images) {
+          assert(url.startsWith(site + '/'), `${file}: share image is not absolute: ${url}`);
+          const target = url.slice(site.length + 1);
+          assert(fs.existsSync(target), `${file} points at a missing share image: ${target}`);
+        }
+        assert(/twitter:image:alt|og:image:alt/.test(html), `${file} share image has no alt text`);
+      }
+
+      const manifest = JSON.parse(fs.readFileSync('site.webmanifest', 'utf8'));
+      for (const icon of manifest.icons) {
+        assert(fs.existsSync(icon.src.replace(/^\//, '')), `the manifest lists a missing icon: ${icon.src}`);
+      }
+    });
+
     await test('the service model and the code agree on the workflow', () => {
       const doc = fs.readFileSync('docs/tjenestemodell.md', 'utf8');
       const src = fs.readFileSync('server/db.js', 'utf8');
