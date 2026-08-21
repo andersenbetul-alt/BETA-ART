@@ -133,6 +133,41 @@ Ayrıca iki alan görünürlük kuralı gereği doldurulur:
 sözlüğünü İngilizcedeki tüm anahtarlarla doldurun, yazılara aynı kodu ekleyin,
 `hreflang` etiketlerini ve `sitemap.xml`'i güncelleyin.
 
+## Çalışma ilkeleri
+
+Karpathy'nin LLM kodlama tuzakları üzerine gözlemlerinden türetilmiş dört ilke
+(kaynak: github.com/forrestchang/andrej-karpathy-skills). Bunlar davranış
+kuralıdır; yukarıdaki **Değişmez kurallar** projeye özgüdür ve çelişki hâlinde
+onlar kazanır.
+
+**Denge:** bu ilkeler hızdan çok temkini seçer. Önemsiz işlerde muhakeme kullanın.
+
+**1. Kodlamadan önce düşün.** Varsayma, kafa karışıklığını gizleme, ödünleşimi
+söyle. Uygulamadan önce varsayımlarını açıkça yaz; birden fazla okuma varsa
+sessizce birini seçme, ikisini de sun. Daha basit bir yol varsa söyle; gerektiğinde
+itiraz et. Bir şey belirsizse dur, neyin belirsiz olduğunu adlandır, sor.
+
+**2. Önce sadelik.** Sorunu çözen en az kod, fazlası yok. İstenmeyen özellik yok.
+Tek kullanımlık kod için soyutlama yok. İstenmemiş "esneklik" yok. İmkânsız
+senaryolar için hata yakalama yok. 200 satır yazdıysan ve 50 yeterliyse, yeniden yaz.
+
+**3. Cerrahi değişiklik.** Yalnızca dokunman gerekene dokun; yalnızca kendi
+dağınıklığını topla. Komşu kodu, yorumu, biçimlendirmeyi "iyileştirme". Bozuk
+olmayanı yeniden düzenleme. Kendi tarzın farklı olsa da mevcut tarza uy. İlgisiz
+ölü kod görürsen **söyle, silme**. Kendi değişikliğinin yetim bıraktığı import ve
+değişkenleri temizle; önceden var olan ölü kodu istenmedikçe kaldırma.
+Ölçüt: değişen her satır doğrudan istenen işe kadar izlenebilmeli.
+
+**4. Hedefe göre yürüt.** Başarı ölçütünü tanımla, doğrulanana kadar döngüde kal.
+"Doğrulama ekle" → "geçersiz girdiler için test yaz, sonra geçir". "Hatayı düzelt"
+→ "hatayı üreten test yaz, sonra geçir". Bu projede doğrulama katmanı hazır:
+`npm run check`, `npm run guvenlik`, `npm run gorunurluk`. Çok adımlı işlerde
+kısa bir plan yaz ve her adımın yanına doğrulamasını koy.
+
+Bu ilkeler işe yarıyorsa: diff'lerde gereksiz değişiklik azalır, fazla
+karmaşıklıktan doğan yeniden yazımlar azalır ve açıklayıcı sorular hatadan sonra
+değil önce gelir.
+
 ## Bilinen sınırlar / açık işler
 
 - Dil değişimi istemci tarafında; arama motoru tek HTML görür. Çok dilli SEO'dan tam
