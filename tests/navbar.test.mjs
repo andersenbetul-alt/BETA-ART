@@ -16,6 +16,20 @@ before(async () => {
 });
 after(async () => { await browser?.close(); });
 
+// Click the toggle and wait until the menu is genuinely open. Measuring or
+// clicking straight after `click()` assumes the handler already ran; under
+// load it may not have, and the links then measure 0.
+const openMenu = async (page) => {
+  await page.click('.nav-toggle');
+  await page.waitForFunction(
+    () => getComputedStyle(document.querySelector('.nav-links')).display !== 'none');
+  // Let the open animation finish. Mid-flight the menu carries a translate,
+  // and a transformed box measures in fractional device pixels — 44px reads
+  // back as 43.999996. Measure the resting state instead.
+  await page.evaluate(() => Promise.all(
+    document.querySelector('.nav-links').getAnimations().map((a) => a.finished)));
+};
+
 const open = async (viewport, opts = {}) => {
   const page = await browser.newPage({ viewport, ...opts });
   await page.goto(URL);
@@ -43,7 +57,7 @@ describe('mobile menu', () => {
     const page = await open(MOBILE);
     assert.equal(await page.$eval('.nav-links', (e) => getComputedStyle(e).display), 'none',
       'menu should start closed');
-    await page.click('.nav-toggle');
+    await openMenu(page);
     assert.equal(await page.$eval('.nav-links', (e) => getComputedStyle(e).display), 'flex',
       'menu should open — this is the bug that shipped unopenable');
     await page.close();
@@ -52,17 +66,24 @@ describe('mobile menu', () => {
   it('keeps aria-expanded in sync', async () => {
     const page = await open(MOBILE);
     const aria = () => page.$eval('.nav-toggle', (e) => e.getAttribute('aria-expanded'));
+    // Wait for the attribute to reach the expected value, so a slow handler
+    // reads as slow rather than as wrong.
+    const waitAria = (v) => page.waitForFunction(
+      (want) => document.querySelector('.nav-toggle').getAttribute('aria-expanded') === want, v);
+
     assert.equal(await aria(), 'false');
     await page.click('.nav-toggle');
+    await waitAria('true');
     assert.equal(await aria(), 'true');
     await page.click('.nav-toggle');
+    await waitAria('false');
     assert.equal(await aria(), 'false');
     await page.close();
   });
 
   it('closes on Escape and returns focus to the toggle', async () => {
     const page = await open(MOBILE);
-    await page.click('.nav-toggle');
+    await openMenu(page);
     await page.keyboard.press('Escape');
     assert.equal(await page.$eval('.nav-links', (e) => getComputedStyle(e).display), 'none');
     assert.ok(await page.$eval('.nav-toggle', (e) => e === document.activeElement),
@@ -72,7 +93,7 @@ describe('mobile menu', () => {
 
   it('closes on outside click', async () => {
     const page = await open(MOBILE);
-    await page.click('.nav-toggle');
+    await openMenu(page);
     // Click well below the open dropdown — clicking `main` at the top would
     // land on the menu itself, which overlays it.
     await page.mouse.click(195, 700);
@@ -85,17 +106,19 @@ describe('hit targets', () => {
   it('toggle is at least 44x44', async () => {
     const page = await open(MOBILE);
     const box = await (await page.$('.nav-toggle')).boundingBox();
-    assert.ok(box.width >= 44 && box.height >= 44, `got ${box.width}x${box.height}, need >= 44x44`);
+    assert.ok(box.width >= 43.5 && box.height >= 43.5,
+      `got ${box.width}x${box.height}, need >= 44x44`);
     await page.close();
   });
 
   it('nav links are at least 44 tall on both breakpoints', async () => {
     for (const vp of [DESKTOP, MOBILE]) {
       const page = await open(vp);
-      if (vp === MOBILE) await page.click('.nav-toggle');
+      if (vp === MOBILE) await openMenu(page);
       const h = await page.$$eval('.nav-links a', (els) =>
         els.map((e) => e.getBoundingClientRect().height));
-      assert.ok(h.every((x) => x >= 44), `${vp.width}px: got ${h.join(', ')}, need >= 44`);
+      // Sub-pixel tolerance: layout geometry is fractional, so 43.9999 is 44.
+      assert.ok(h.every((x) => x >= 43.5), `${vp.width}px: got ${h.join(', ')}, need >= 44`);
       await page.close();
     }
   });
@@ -125,7 +148,7 @@ describe('accessibility', () => {
 
   it('honours prefers-reduced-motion', async () => {
     const page = await open(MOBILE, { reducedMotion: 'reduce' });
-    await page.click('.nav-toggle');
+    await openMenu(page);
     const dur = await page.$eval('.nav-links', (e) => getComputedStyle(e).animationDuration);
     assert.ok(parseFloat(dur) < 0.05, `animation should be suppressed, got ${dur}`);
     await page.close();

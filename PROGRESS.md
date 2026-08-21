@@ -45,10 +45,21 @@ Two test bugs found and fixed along the way:
 
 - The outside-click test clicked `main` at (10,10), which the open menu
   overlays — Playwright timed out. Now clicks below the dropdown.
-- Layout assertions ran straight after `goto`, so under load Chromium could
-  return a pre-layout box (2 failures in 20 runs). Now awaits
-  `document.fonts.ready`. 18 consecutive clean runs before the fix could be
-  confirmed, 6 after.
+- An intermittent failure in the 44px hit-target test (~1 run in 8). Two
+  wrong diagnoses first — "slow layout after goto" (added
+  `document.fonts.ready`) and "click race" (added explicit open-state waits).
+  Neither was the cause; both changes are worth keeping, but the failure
+  persisted. Capturing the actual assertion gave it away:
+
+      '390px: got 43.999996185302734, 44, 44, 44, need >= 44'
+
+  Floating point. The open animation applies `translateY(-0.5rem)`, and a
+  transformed box measures in fractional device pixels, so 44px reads back as
+  43.999996. The test was measuring mid-animation and comparing floats
+  exactly. Fixed by awaiting `getAnimations()` completion before measuring,
+  plus a 0.5px tolerance. Verified the tolerance still catches a real
+  regression: `min-height: 1.5rem` fails with `got 24, need >= 44`.
+  12 consecutive clean runs.
 
 ---
 
