@@ -23,6 +23,8 @@ require('../assets/js/besok-sprakkrav.js');
 require('../assets/js/besok-agenter.js');
 require('../assets/js/besok-vern.js');
 require('../assets/js/besok-klage.js');
+require('../assets/js/besok-abonnement.js');
+require('../assets/js/besok-kvalitet.js');
 require('../assets/js/besok-sprak.js');
 require('../assets/js/matching.js');
 require('../assets/js/demodata.js');
@@ -731,6 +733,136 @@ t.test('varselet sier både hva som er forbudt og at det å si fra er trygt', fu
 
 t.test('ukjent språkkode faller tilbake til norsk', function () {
   t.erLik(KL.medarbeidervarsel('xx'), KL.medarbeidervarsel('nb'));
+});
+
+
+/* ---------------- abonnement ----------------
+
+   Modulen hadde ingen dekning: ingen side laster den, ingen test krevde den.
+   Den holder likevel en juridisk grense – sperren mot å ta betalt fra
+   familien – og en grense uten test er en grense som forsvinner stille. */
+
+t.gruppe('Abonnement og betalingsstrømmer');
+
+var AB = window.PP_ABONNEMENT;
+
+t.test('bare leverandørstrømmen er aktiv', function () {
+  t.erSann(AB.STROMMER.leverandor.aktiv);
+  t.erUsann(AB.STROMMER.familie.aktiv, 'familiebetaling er slått på');
+  t.erUsann(AB.STROMMER.mellom.aktiv, 'betaling mellom familie og hjelper er slått på');
+});
+
+t.test('hver sperret strøm sier hvorfor den er sperret', function () {
+  ['familie', 'mellom'].forEach(function (k) {
+    t.erSann((AB.STROMMER[k].sperre || '').length > 30, k + ' mangler begrunnelse');
+  });
+});
+
+t.test('familiesperren nevner forbrukerfølgene, ikke bare løftet', function () {
+  var g = AB.STROMMER.familie.sperre;
+  t.erSann(/angrerett/i.test(g), 'nevner ikke angrerett: ' + g);
+});
+
+t.test('mellomsperren viser til det juridiske punktet', function () {
+  t.erSann(/J11/.test(AB.STROMMER.mellom.sperre));
+});
+
+t.test('begge planene finnes og har pris', function () {
+  ['pilot', 'standard'].forEach(function (id) {
+    var p = AB.plan(id);
+    t.erSann(!!p, 'mangler plan: ' + id);
+    t.erSann(p.pris > 0);
+  });
+  t.erLik(AB.plan('finnes-ikke'), null);
+});
+
+t.test('piloten stopper av seg selv', function () {
+  var p = AB.plan('pilot');
+  t.erLik(p.periode, 'engangs');
+  t.erSann(p.dager > 0, 'piloten har ingen sluttdato');
+});
+
+t.test('mva er ikke avklart, og fakturaen sier det i stedet for å gjette', function () {
+  t.erUsann(AB.MVA.avklart);
+  var f = AB.faktura({ plan: 'standard', start: '2026-09-01' });
+  t.erLik(f.mva, null, 'fakturaen oppgir en mva-sats vi ikke har avklart');
+  t.erSann((f.note || '').length > 20, 'ingen forklaring på manglende mva');
+});
+
+t.test('fakturaen summerer til planens pris', function () {
+  var f = AB.faktura({ plan: 'standard', start: '2026-09-01' });
+  var sum = f.linjer.reduce(function (a, l) { return a + l.belop; }, 0);
+  t.erLik(sum, f.sum);
+  t.erLik(f.sum, AB.plan('standard').pris);
+});
+
+t.test('status uten abonnement er ikke en feil', function () {
+  t.erLik(AB.status(null).kode, 'ingen');
+});
+
+t.test('utløpt pilot vises som utløpt', function () {
+  var i_gar = new Date(Date.now() - 86400000).toISOString();
+  t.erLik(AB.status({ plan: 'pilot', slutt: i_gar }).kode, 'utlopt');
+});
+
+t.test('beløp formateres med mellomrom, ikke komma', function () {
+  t.erLik(AB.formater(1490), '1 490 kr');
+  t.erLik(AB.formater(990), '990 kr');
+});
+
+/* ---------------- kvalitet ---------------- */
+
+t.gruppe('Kvalitet og kontinuitet');
+
+var KV = window.PP_KVALITET;
+
+function fullfort(kunde, navn, utfall, tilfredshet) {
+  return { kunde: kunde, ansattNavn: navn, ansattId: navn, status: 'fullfort',
+           rapport: { utfall: utfall || 'utfort' }, tilfredshet: tilfredshet };
+}
+
+t.test('spørsmålet finnes på flere språk og faller tilbake til norsk', function () {
+  t.erSann(KV.sporsmal('nb', 'Omsorg AS').tittel.length > 0);
+  t.erSann(KV.sporsmal('tr', 'Omsorg AS').tittel.length > 0);
+  t.erLik(KV.sporsmal('xx', 'Omsorg AS').tittel, KV.sporsmal('nb', 'Omsorg AS').tittel);
+});
+
+t.test('firmanavnet settes inn i hjelpeteksten', function () {
+  t.erSann(KV.sporsmal('nb', 'Omsorg AS').hjelp.indexOf('Omsorg AS') !== -1);
+});
+
+t.test('bare fullførte besøk telles', function () {
+  var liste = [fullfort('Ingrid', 'Sofia'), { kunde: 'Ingrid', ansattNavn: 'Sofia', status: 'planlagt' }];
+  var st = KV.perMedarbeider(liste);
+  t.erLik(st.length, 1);
+  t.erLik(st[0].besok, 1);
+});
+
+t.test('under tre besøk gir ingen konklusjon om en person', function () {
+  var liste = [fullfort('Ingrid', 'Sofia', 'utfort', 'bra'), fullfort('Ingrid', 'Sofia', 'utfort', 'bra')];
+  t.erLik(KV.forslag(KV.perMedarbeider(liste)).length, 0, 'konkluderte på to besøk');
+});
+
+t.test('den som kjenner kunden fra før, foreslås først', function () {
+  var liste = [fullfort('Ingrid', 'Sofia'), fullfort('Ingrid', 'Sofia'), fullfort('Ingrid', 'Sofia')];
+  var f = KV.foreslaaMedarbeider('Ingrid', liste, [
+    { id: 'Anna', navn: 'Anna' }, { id: 'Sofia', navn: 'Sofia' }
+  ]);
+  t.erLik(f[0].navn, 'Sofia', 'kontinuitet tapte mot en fremmed');
+  t.erSann(f[0].kjenner);
+  t.erSann(f[0].grunner.length > 0, 'ingen begrunnelse vist');
+});
+
+t.test('en fremmed foreslås fortsatt når ingen kjenner kunden', function () {
+  var f = KV.foreslaaMedarbeider('Ny Kunde', [], [{ id: 'Anna', navn: 'Anna' }]);
+  t.erLik(f.length, 1);
+  t.erUsann(f[0].kjenner);
+});
+
+t.test('svarverdiene er tre, ikke en terning', function () {
+  t.erLik(Object.keys(KV.VERDI).length, 3);
+  t.erLik(KV.VERDI.bra, 2);
+  t.erLik(KV.VERDI.ikke, 0);
 });
 
 t.oppsummer('Enhetstester');
