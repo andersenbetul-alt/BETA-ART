@@ -227,7 +227,14 @@ if (existsSync(figuresPath)) {
   }
 
   // Any dictionary string that quotes one of these has to use the token, not a typed number.
-  const TOKENED = { music_help_streams: 'streams_help_urself', music_xp_sub: 'streams_x_pirata' };
+  // break_p1 quoted "43 million" and "2.6 million" as literal words in all twelve
+  // dictionaries, so a figures.json update would have left twelve languages saying the
+  // old number. Any string that names one of these has to carry the token.
+  const TOKENED = {
+    music_help_streams: 'streams_help_urself',
+    music_xp_sub: 'streams_x_pirata',
+    break_p1: 'streams_help_urself',
+  };
   for (const [code, dict] of Object.entries(DICTS)) {
     for (const [key, figure] of Object.entries(TOKENED)) {
       if (dict[key] && !dict[key].includes(`{${figure}}`)) {
