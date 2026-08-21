@@ -192,6 +192,14 @@ Bu ilkeler işe yarıyorsa: diff'lerde gereksiz değişiklik azalır, fazla
 karmaşıklıktan doğan yeniden yazımlar azalır ve açıklayıcı sorular hatadan sonra
 değil önce gelir.
 
+## Kullanıcıya iş devrederken
+
+Kullanıcının kendi yapması gereken bir adım varsa (izin verme, DNS, panel ayarı,
+terminal komutu) **adım adım anlatın**: nereye tıklanacak, ne yazılacak, ne
+görünmesi gerekir, hata gelirse ne yapılır. "Vercel'e deploy edin" yetmez;
+komutun kendisi, beklenen çıktı ve olası hata mesajı yazılır. Bu kullanıcının
+açık talebi.
+
 ## Bilinen sınırlar / açık işler
 
 - Dil değişimi istemci tarafında; arama motoru tek HTML görür. Çok dilli SEO'dan tam
