@@ -523,8 +523,10 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 /* ---------- Paylaşım satırı ---------- */
 .share-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .share-label { font-size: .85rem; color: var(--text-muted); margin-inline-end: 2px; }
+/* 44px: HIG dokunma hedefi tabanı. Diğer düğmeler bu tabana çekilmişti,
+   paylaşım satırı atlanmıştı. */
 .share-btn {
-  width: 36px; height: 36px; display: grid; place-items: center; cursor: pointer;
+  width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer;
   border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card);
   color: var(--text); font: inherit; font-size: .95rem; font-weight: 700; text-decoration: none;
   transition: border-color .15s ease, color .15s ease, transform .15s ease;

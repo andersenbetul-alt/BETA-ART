@@ -22,7 +22,7 @@ maliyet.
 | # | İş | Durum | Not |
 |---|---|---|---|
 | 1 | Depoya yazma izni ver, dalı push et | **Engelli** | git ve GitHub App 403; izin kullanıcıda |
-| 2 | Alan adı bağla ve yayına al | *Sürüyor* | qblogg.com GoDaddy'de kayıtlı, 160.153.0.38 park sayfasında. Vercel'de henüz `qblogg` projesi yok — bağlanacak hedef yok. `vercel.json` + `DAGITIM.md` hazır (GoDaddy adımlarıyla). Kalan: `npx vercel --prod`, sonra A kaydı 76.76.21.21 |
+| 2 | Alan adı bağla ve yayına al | **Engelli** | Bu oturumun ağ politikası `*.vercel.com`'u kapatıyor: `api.vercel.com`, `vercel.com` ve claim-deploy uç noktası CONNECT 403 döndürüyor (`$HTTPS_PROXY/__agentproxy/status` → recentRelayFailures). Vercel CLI 59.3.0 kurulu ama dışarı çıkamıyor. Çözüm: ortamın ağ politikasına `*.vercel.com` eklensin ya da dağıtım yerelden yapılsın. `vercel.json` + `DAGITIM.md` hazır |
 | 3 | Gerçek e-posta, alan adı ve fiyatlar | **Hazır — senden veri bekliyor** | Hepsi tek dosyada: `assets/js/config.js` |
 | 4 | ~~Paket fiyatlarını güncelle~~ | Birleşti → #3 | Fiyat da config.js'ten geliyor (NOK yazılabilir) |
 | 5 | Formu Formspree/Netlify Forms'a bağla | Bekliyor | `composeMail` içindeki `mailto` bloğu |
