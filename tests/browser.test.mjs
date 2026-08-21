@@ -8,7 +8,8 @@ import { suite, test, assert, equal } from './harness.mjs';
 const require = createRequire(import.meta.url);
 const PORT = 8792;
 const BASE = `http://127.0.0.1:${PORT}`;
-const PAGES = ['index.html?lang=no', 'index.html?lang=ar', 'personvern.html', 'vilkar.html', 'admin.html'];
+const PAGES = ['index.html?lang=no', 'index.html?lang=ar', 'personvern.html', 'vilkar.html',
+               'hva-vi-gjor.html', 'admin.html'];
 const WCAG = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
 function playwright() {
@@ -108,7 +109,7 @@ export default async function () {
         await p.locator('#bkBody .service-opt').nth(1).click();
         await p.waitForTimeout(300);
         const steps = await p.locator('#bkSteps li').count();
-        equal(steps, 3, 'K01 should have three steps, not four');
+        equal(steps, 3, 'a delivery service should have three steps, not four');
         await p.close();
       });
 
@@ -131,6 +132,93 @@ export default async function () {
         await p.locator('#bkBody .btn-primary').click();
         await p.waitForTimeout(300);
         equal(await p.locator('#bkBody .consent a').getAttribute('href'), 'personvern.html');
+        await p.close();
+      });
+
+      /* Reaching the last step means filling in the details form first, so the
+         helper walks it: service -> details -> confirm. */
+      const reachConfirm = async () => {
+        const { p } = await open();
+        await p.locator('#bkBody .service-opt').nth(1).click();
+        await p.waitForTimeout(300);
+        await p.locator('#bkBody .btn-primary').click();
+        await p.waitForTimeout(300);
+        await p.fill('#bkBody [name="name"]', 'Test Testesen');
+        await p.fill('#bkBody [name="email"]', 'test@example.com');
+        await p.fill('#bkBody [name="phone"]', '+4740000000');
+        await p.fill('#bkBody [name="caseText"]', 'Vet ikke hvilket skjema jeg skal bruke.');
+        await p.check('#bkBody [name="consent"]');
+        await p.locator('#bkBody .btn-primary').click();
+        await p.waitForTimeout(300);
+        return p;
+      };
+
+      await test('the last step asks for no money and offers no way to pay', async () => {
+        const p = await reachConfirm();
+        equal(await p.locator('#bkBody input[name="payment"]').count(), 0, 'a payment method is offered');
+        equal(await p.locator('#bkBody .pay-opts').count(), 0, 'the payment block is still rendered');
+        const info = (await p.locator('#bkBody .status.info').allTextContents()).join(' ');
+        assert(/betaler ingenting|betalingslenke/i.test(info), 'nothing tells the customer they are not paying now');
+        await p.close();
+      });
+
+      await test('the work we refuse is listed before the customer commits', async () => {
+        const p = await reachConfirm();
+        const items = await p.locator('#bkBody .risk-list li').count();
+        assert(items >= 8, `only ${items} refusals listed`);
+        const text = (await p.locator('#bkBody .risk-list').innerText()).toLowerCase();
+        for (const must of ['bankid', 'vedtak', 'fullmakt']) {
+          assert(text.includes(must), `the list never mentions ${must}`);
+        }
+        await p.close();
+      });
+
+      await test('the request cannot be sent without confirming it is practical help', async () => {
+        const p = await reachConfirm();
+        await p.locator('#bkBody .btn-primary').click();
+        await p.waitForTimeout(300);
+        equal(await p.locator('#bkBody .confirm').count(), 0, 'the request went through unconfirmed');
+        assert(await p.locator('#bkBody .status.err.show').count() > 0, 'no error shown');
+        await p.check('#bkBody [name="lowRisk"]');
+        await p.locator('#bkBody .btn-primary').click();
+        await p.waitForTimeout(500);
+        assert(await p.locator('#bkBody .confirm').count() > 0, 'the request did not go through once confirmed');
+        await p.close();
+      });
+    });
+
+    await suite('out of scope', async () => {
+      await test('a decision or an appeal is referred on, not sold to', async () => {
+        const p = await browser.newPage();
+        await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
+        await p.waitForTimeout(900);
+        await p.locator('#finderBody .opt').nth(3).click();   // a decision, refusal or appeal deadline
+        await p.waitForTimeout(200);
+        await p.locator('#finderBody .opt').first().click();
+        await p.waitForTimeout(200);
+        await p.locator('#finderBody .opt').first().click();
+        await p.waitForTimeout(400);
+
+        const box = await p.locator('#finderBody .finder-result').innerText();
+        assert(/advokat/i.test(box), 'the referral never mentions a lawyer');
+        equal(await p.locator('#finderBody a[href="#booking"]').count(), 0, 'it still offers a booking');
+        assert(!/\d{3}\s?kr/i.test(box), 'a price is shown for work we refuse: ' + box);
+        equal(await p.locator('#finderBody a[href="hva-vi-gjor.html"]').count(), 1,
+          'no link to the page that explains why');
+        await p.close();
+      });
+
+      await test('a practical answer still leads to the free scope check', async () => {
+        const p = await browser.newPage();
+        await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
+        await p.waitForTimeout(900);
+        for (const n of [0, 0, 0]) {
+          await p.locator('#finderBody .opt').nth(n).click();
+          await p.waitForTimeout(250);
+        }
+        const box = await p.locator('#finderBody .finder-result').innerText();
+        assert(/590/.test(box), 'the practical guide price is missing: ' + box);
+        equal(await p.locator('#finderBody a[href="#booking"]').count(), 1, 'no way to start the check');
         await p.close();
       });
     });

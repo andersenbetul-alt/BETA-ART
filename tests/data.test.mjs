@@ -107,11 +107,30 @@ export default async function () {
       }
     });
 
-    await test('the launch offer is exactly what the kit says to sell', () => {
+    await test('the catalogue is the low-risk offer', () => {
       equal(CFG.services.length, 4, 'service count');
-      equal(CFG.services.find(s => s.id === 'k01').price, 800, 'letter explained');
-      equal(CFG.services.find(s => s.id === 'k02').price, 1500, 'clarity call');
-      equal(CFG.services.find(s => s.id === 'tolk').price, null, 'interpreter is by quote');
+      equal(CFG.services.find(s => s.id === 'sjekk').price, 0, 'the scope check is free');
+      equal(CFG.services.find(s => s.id === 'v01').price, 590, 'practical guide');
+      equal(CFG.services.find(s => s.id === 'v02').price, 790, 'job application support');
+      equal(CFG.services.find(s => s.id === 'sprak').price, null, 'language support is by quote');
+    });
+
+    /* The work the model refuses to take must not be back on the price list by
+       accident. These ids sold exactly that: reading a decision letter, an
+       advice call about a case, official interpreting. */
+    await test('the refused services are not sold anywhere', () => {
+      for (const id of ['k01', 'k02', 'tolk', 'h01', 'o01', 's01', 't30', 't60', 'tf']) {
+        assert(!CFG.services.some(s => s.id === id), `${id} is back in the catalogue`);
+        assert(!catalog[id], `${id} still has a translation, so it can be sold again by mistake`);
+      }
+    });
+
+    /* Nothing is bought straight off the page: a person checks the scope, then
+       sends a payment link to one customer. A link in config would put a buy
+       button back on the site. */
+    await test('nothing can be paid for without a scope check', () => {
+      const links = Object.values(CFG.payments.paymentLinks || {}).filter(Boolean);
+      equal(links.length, 0, 'a payment link is configured: ' + links.join(', '));
     });
 
     await test('booking hours are in Norwegian wall-clock time', () => {

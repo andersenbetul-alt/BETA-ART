@@ -274,9 +274,12 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
   const booking = {
     reference: freeReference(),
     createdAt: new Date().toISOString(),
-    /* Only a card payment waits on Stripe. An invoice case is real work the
-       moment it arrives, so it goes straight into the queue. */
-    status: payment === 'card' ? 'awaiting_payment' : 'new',
+    /* Every request that arrives from the site is a free scope check, whatever
+       the browser says about payment. A person reads it, decides whether we may
+       take it, and only then does a price and a payment link go out. Trusting a
+       browser-supplied payment mode here would put a buy button back on the
+       site through the back door. */
+    status: 'new',
     serviceId: service.id,
     serviceCode: service.code,
     date,

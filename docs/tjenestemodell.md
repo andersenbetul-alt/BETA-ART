@@ -40,14 +40,37 @@ by implication.
 
 | | Price | What the customer gets |
 |---|---|---|
-| Fit check | free | We say whether we can help, within one working day |
-| K01 — a letter explained | 800 NOK | The letter in plain language, the deadline, and what to do next, in 24–48 hours |
-| K02 — clarity call | 1 500 NOK | 45 minutes with an adviser |
-| Interpreter | by quote | Booked per assignment |
+| Scope check | free | We say whether we can help, within one working day |
+| V01 — practical guide | 590 NOK | The right public channel, a list of questions, a practical checklist |
+| V02 — job application support | 790 NOK | CV, application, LinkedIn profile, interview preparation |
+| Private language support | by quote | Private, everyday conversations only |
 
 The catalogue in `assets/js/config.js` is the single source of truth for
 prices. The server recomputes every amount from it; nothing the browser sends
 about money is trusted.
+
+### What we will not take
+
+Not a matter of judgement in the moment — this list is fixed:
+
+- interpreting a decision, refusal, appeal or legal deadline
+- judging a right, or the likely outcome of a case
+- advice on health, tax, debt, finance or residency
+- submitting or signing an application for the customer
+- contacting NAV on the customer's behalf without a valid *fullmakt*
+- using BankID, a PIN, a password or a one-time code
+- collecting health records, national ID numbers or other sensitive documents
+- private language support in place of an official interpreter in a meeting
+  with a public body
+
+Three of those are not house rules but the law's: acting for someone towards
+NAV requires a written *fullmakt* stating what it covers and for how long; a
+public body assesses and orders the interpreter for its own meetings
+(tolkeloven); and a BankID password is never to be shared with anyone.
+
+`hva-vi-gjor.html` is this list, written for the customer, in Norwegian and
+English. A test fails if the catalogue ever sells one of the withdrawn
+services again.
 
 ## 4. The revenue split
 
@@ -65,15 +88,23 @@ adviser is engaged, not after.
 
 ## 5. The customer's path
 
-1. The customer describes what they need.
-2. NAVIAR reviews it — can we help, and may we.
-3. Scope and price are agreed.
-4. The customer pays.
-5. A suitable adviser or interpreter is chosen.
-6. The work is done.
-7. It is read through before it goes out.
-8. The customer gets it.
-9. The person who did the work is paid.
+1. The customer fills in a free scope check and says what they need.
+2. The form shows the high-risk work in full, and the customer confirms their
+   request is practical help only.
+3. A person at NAVIAR reads it. Nothing here is automatic.
+4. A request that does not fit is referred to the right body or expert.
+5. A request that fits gets the scope, the price and the terms in writing.
+6. Only then does a payment link go out.
+7. The customer pays.
+8. A suitable adviser or interpreter is chosen.
+9. The adviser does the agreed task and nothing beyond it.
+10. It is read through before it goes out.
+11. The customer gets it, and the adviser is paid.
+
+There is no buy button. A customer cannot reach payment without the scope
+check, and the site cannot create one: every request the server accepts is
+recorded as `new` whatever the browser sends, and `paymentLinks` in the config
+is empty and tested for.
 
 ## 6. The case workflow
 
@@ -84,12 +115,11 @@ in `BOOKING_TRANSITIONS`. The server refuses any move that is not drawn here.
 stateDiagram-v2
     [*] --> new
     new --> in_review
-    new --> awaiting_payment
-    new --> assigning
+    new --> declined
     in_review --> awaiting_payment
-    in_review --> assigning
     in_review --> declined
     awaiting_payment --> assigning
+    awaiting_payment --> declined
     assigning --> in_progress
     in_progress --> quality_check
     quality_check --> delivered
@@ -101,8 +131,8 @@ stateDiagram-v2
 | State | Norwegian | Means |
 |---|---|---|
 | `new` | Ny | Arrived, nobody has looked at it |
-| `in_review` | Under vurdering | The free fit check |
-| `awaiting_payment` | Venter på betaling | Scope agreed, money not in |
+| `in_review` | Under vurdering | The free scope check |
+| `awaiting_payment` | Venter på betaling | Scope, price and terms sent; money not in |
 | `assigning` | Finner rådgiver | Paid; a person is choosing who does it |
 | `in_progress` | Under arbeid | The work is being done |
 | `quality_check` | Kvalitetssikring | Being read before it goes out |
@@ -110,12 +140,14 @@ stateDiagram-v2
 | `declined` | Avvist | We will not take it — referred on |
 | `cancelled` | Avbrutt | Abandoned |
 
-Three of these edges exist to stop something specific:
+The edges that are missing are the point:
 
+- Nothing reaches `awaiting_payment` except through `in_review`. Nobody is
+  quoted a price before a person has read the request.
+- Nothing reaches `assigning` except through `awaiting_payment`. No adviser is
+  put on a case that has not been paid for.
 - Nothing reaches `delivered` except through `quality_check`. Quality control
   cannot be skipped by an operator in a hurry.
-- Nothing reaches `in_progress` except through `assigning`. Work does not start
-  before somebody has been chosen to do it.
 - `delivered` and `declined` are terminal. A finished case is finished.
 
 `quality_check → in_progress` is the one edge that goes backwards: work that is
@@ -144,6 +176,13 @@ after the answers, not before.
 The same reasoning is why the launch kit's *do not build yet* list still holds:
 no adviser marketplace, no customer accounts, no subscriptions, no reviews, no
 document upload, no AI legal advice, no app, no commission accounting.
+
+## 7a. What this model does not fix
+
+It lowers the risk considerably. It does not remove it. Before this goes public
+a Norwegian lawyer needs to read the customer contract, the right-of-withdrawal
+handling, the privacy notice, the adviser agreement and the insurance cover.
+Nothing in this repository is a substitute for that.
 
 ## 8. The rules that do not bend
 

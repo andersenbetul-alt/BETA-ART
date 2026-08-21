@@ -59,28 +59,32 @@ export default async function () {
       await test('the server answers', () => assert(up, 'never became healthy'));
 
       await test('a delivery booking needs no time slot', async () => {
-        const r = await booking({ serviceId: 'k01', payment: 'invoice', lang: 'no', details: customer() });
+        const r = await booking({ serviceId: 'v01', payment: 'invoice', lang: 'no', details: customer() });
         equal(r.status, 200);
         assert(/^NAV-[A-F0-9]{6}$/.test(r.body.reference), 'reference: ' + r.body.reference);
       });
 
       await test('the price comes from the catalogue, not the browser', async () => {
-        const r = await booking({ serviceId: 'k01', payment: 'invoice', lang: 'no',
+        const r = await booking({ serviceId: 'v01', payment: 'invoice', lang: 'no',
                                   amount: 1, price: 1, details: customer() });
         equal(r.status, 200);
         const q = await admin('/api/admin/queue');
         const row = q.body.bookings.find(b => b.reference === r.body.reference);
-        equal(row.amount, 800, 'a tampered price must be ignored');
+        equal(row.amount, 590, 'a tampered price must be ignored');
       });
 
-      await test('an invoice case enters the work queue, not payment limbo', async () => {
-        const r = await booking({ serviceId: 'k01', payment: 'invoice', lang: 'no', details: customer() });
-        const q = await admin('/api/admin/queue');
-        equal(q.body.bookings.find(b => b.reference === r.body.reference).status, 'new');
+      await test('every request arrives as a scope check, whatever the browser asks for', async () => {
+        for (const payment of ['card', 'vipps', 'invoice']) {
+          const r = await booking({ serviceId: 'v01', payment, lang: 'no', details: customer() });
+          const q = await admin('/api/admin/queue');
+          const row = q.body.bookings.find(b => b.reference === r.body.reference);
+          equal(row.status, 'new', payment + ' must still be reviewed first');
+          equal(row.paid_at, null, payment + ' must not arrive paid');
+        }
       });
 
       await test('consent is required', async () => {
-        const r = await booking({ serviceId: 'k01', payment: 'invoice', details: customer({ consent: false }) });
+        const r = await booking({ serviceId: 'v01', payment: 'invoice', details: customer({ consent: false }) });
         equal(r.status, 400);
         equal(r.body.error, 'consent_required');
       });
@@ -90,20 +94,20 @@ export default async function () {
       });
 
       await test('an interpreter booking must name a language', async () => {
-        const r = await booking({ serviceId: 'tolk', payment: 'invoice', date: '2026-09-01', time: '10:00',
+        const r = await booking({ serviceId: 'sprak', payment: 'invoice', date: '2026-09-01', time: '10:00',
                                   details: customer() });
         equal(r.body.error, 'tolk_language_required');
       });
 
       await test('a slot inside the lead time is refused', async () => {
         const today = new Date().toISOString().slice(0, 10);
-        const r = await booking({ serviceId: 'k02', payment: 'invoice', date: today, time: '09:00',
+        const r = await booking({ serviceId: 'v02', payment: 'invoice', date: today, time: '09:00',
                                   details: customer() });
         equal(r.body.error, 'inside_lead_time');
       });
 
       await test('nothing in the browser can mark a case paid', async () => {
-        const r = await booking({ serviceId: 'k01', payment: 'invoice', lang: 'no', details: customer() });
+        const r = await booking({ serviceId: 'v01', payment: 'invoice', lang: 'no', details: customer() });
         const q = await admin('/api/admin/queue');
         equal(q.body.bookings.find(b => b.reference === r.body.reference).paid_at, null);
       });
@@ -114,7 +118,7 @@ export default async function () {
         method: 'POST', body: JSON.stringify({ reference, status })
       });
       const fresh = async () => (await booking({
-        serviceId: 'k01', payment: 'invoice', lang: 'no', details: customer()
+        serviceId: 'v01', payment: 'invoice', lang: 'no', details: customer()
       })).body.reference;
 
       await test('a case cannot jump straight to delivered', async () => {
@@ -125,15 +129,24 @@ export default async function () {
 
       await test('quality control cannot be skipped', async () => {
         const ref = await fresh();
-        await move(ref, 'assigning');
-        await move(ref, 'in_progress');
+        for (const st of ['in_review', 'awaiting_payment', 'assigning', 'in_progress']) await move(ref, st);
         const r = await move(ref, 'delivered');
         equal(r.status, 409, 'in_progress → delivered must be refused');
       });
 
+      await test('nobody is assigned before the case has been reviewed and paid for', async () => {
+        const ref = await fresh();
+        equal((await move(ref, 'assigning')).status, 409, 'new → assigning');
+        equal((await move(ref, 'in_progress')).status, 409, 'new → in_progress');
+        equal((await move(ref, 'in_review')).status, 200);
+        equal((await move(ref, 'assigning')).status, 409, 'in_review → assigning skips payment');
+        equal((await move(ref, 'awaiting_payment')).status, 200);
+        equal((await move(ref, 'assigning')).status, 200);
+      });
+
       await test('the whole workflow runs end to end', async () => {
         const ref = await fresh();
-        for (const s of ['in_review', 'assigning', 'in_progress', 'quality_check', 'delivered']) {
+        for (const s of ['in_review', 'awaiting_payment', 'assigning', 'in_progress', 'quality_check', 'delivered']) {
           const r = await move(ref, s);
           equal(r.status, 200, 'move to ' + s);
           equal(r.body.booking.status, s);
@@ -142,14 +155,14 @@ export default async function () {
 
       await test('quality control can send the work back', async () => {
         const ref = await fresh();
-        for (const s of ['assigning', 'in_progress', 'quality_check', 'in_progress']) {
+        for (const s of ['in_review', 'awaiting_payment', 'assigning', 'in_progress', 'quality_check', 'in_progress']) {
           equal((await move(ref, s)).status, 200, 'move to ' + s);
         }
       });
 
       await test('a delivered case is finished', async () => {
         const ref = await fresh();
-        for (const s of ['assigning', 'in_progress', 'quality_check', 'delivered']) await move(ref, s);
+        for (const s of ['in_review', 'awaiting_payment', 'assigning', 'in_progress', 'quality_check', 'delivered']) await move(ref, s);
         equal((await move(ref, 'in_progress')).status, 409);
         equal((await move(ref, 'cancelled')).status, 409);
       });

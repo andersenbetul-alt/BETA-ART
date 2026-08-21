@@ -1,11 +1,11 @@
 {
   "meta": {
-    "title": "NAVIAR — Få hjelp til å forstå og følge opp offentlige saker",
-    "description": "NAVIAR hjelper deg å forstå brev fra det offentlige. Du får vite hva som gjelder, når fristen er, og hva du skal gjøre."
+    "title": "NAVIAR — Praktisk veiledning i offentlige tjenester",
+    "description": "NAVIAR gir praktisk veiledning: riktig kanal, riktige spørsmål og en sjekkliste. Vi tolker ikke vedtak og gir ikke juridiske råd."
   },
   "brand": {
     "tagline": "Klarhet i komplekse systemer.",
-    "promise": "Fra første brev til ferdig oppfølging.",
+    "promise": "Praktisk hjelp, tydelig avgrenset.",
     "disclaimer": "NAVIAR er en uavhengig virksomhet og er ikke en del av NAV eller offentlig forvaltning."
   },
   "nav": {
@@ -16,34 +16,35 @@
     "safety": "Trygghet",
     "faq": "Spørsmål",
     "contact": "Kontakt",
-    "cta": "Bestill møte",
+    "cta": "Start gratis sjekk",
     "menu": "Meny",
-    "language": "Språk"
+    "language": "Språk",
+    "limits": "Hva vi gjør"
   },
   "hero": {
-    "eyebrow": "Innbyggerstøtte og saksveiledning",
-    "title": "Få hjelp til å forstå og følge opp offentlige saker",
-    "sub": "Vi gjør offentlige prosesser enklere. Du får vite hvilket kontor du skal kontakte, hvilke dokumenter som kreves, hva du skal skrive, når fristen er — og hva neste steg er.",
-    "sales": "Send oss brevet. Få en klar handlingsplan.",
-    "cta1": "Send oss brevet",
-    "cta2": "Slik jobber vi",
-    "cardTitle": "Din klarhetsplan",
+    "eyebrow": "Praktisk veiledning",
+    "title": "Praktisk hjelp til å finne fram i offentlige tjenester",
+    "sub": "Vi viser deg hvilken kanal saken hører hjemme i, hvilke spørsmål du bør stille, og hva du bør ha klart. Vi tolker ikke vedtak, og vi gir ikke juridiske, helsefaglige eller økonomiske råd.",
+    "sales": "Start med en gratis omfangskontroll.",
+    "cta1": "Start gratis sjekk",
+    "cta2": "Hva vi kan og ikke kan gjøre",
+    "cardTitle": "Din praktiske veiviser",
     "card": [
       {
-        "t": "Hva brevet betyr",
-        "d": "Forklart uten vanskelig fagspråk."
+        "t": "Riktig kanal",
+        "d": "Hvilket kontor eller skjema saken hører hjemme i."
       },
       {
-        "t": "Hvilken frist som gjelder",
-        "d": "Datoer og konsekvenser blir tydelige."
+        "t": "Spørsmålsliste",
+        "d": "Hva du bør spørre om, formulert på forhånd."
       },
       {
-        "t": "Ditt neste steg",
-        "d": "En kort og konkret handlingsliste."
+        "t": "Sjekkliste",
+        "d": "Hva du bør ha klart før du tar kontakt."
       }
     ],
-    "cardBadge": "24–48 t",
-    "cardFoot": "Ingen BankID. Ingen kortopplysninger. Ingen dokumentopplasting i piloten."
+    "cardBadge": "2 virkedager",
+    "cardFoot": "Ingen BankID. Ingen kortopplysninger. Ingen dokumentopplasting."
   },
   "stats": {
     "languages": "Språk vi hjelper på",
@@ -54,20 +55,20 @@
   "finder": {
     "eyebrow": "Start her",
     "title": "Hva trenger du hjelp med?",
-    "lead": "Tre korte spørsmål. Du får en anbefaling, og vi lærer hva folk faktisk sliter med — det avgjør hva vi bygger videre.",
+    "lead": "Tre korte spørsmål. Du får en anbefaling — eller en henvisning videre hvis saken hører hjemme et annet sted.",
     "back": "Tilbake",
     "restart": "Start på nytt",
     "progress": "Spørsmål {n} av {total}",
     "questions": [
       {
-        "q": "Hva er situasjonen din nå?",
+        "q": "Hva trenger du hjelp med?",
         "hint": "Velg det som passer best.",
         "options": [
-          "Jeg har fått et brev eller vedtak jeg ikke forstår",
-          "Jeg skal søke om noe",
-          "Saken min tar for lang tid eller har stoppet opp",
-          "Jeg er uenig i et vedtak og vil klage",
-          "Jeg hjelper et familiemedlem med saken deres"
+          "Jeg vet ikke hvilket kontor eller skjema jeg skal bruke",
+          "Jeg trenger hjelp med CV eller jobbsøknad",
+          "Jeg trenger språkhjelp i en privat samtale",
+          "Jeg har fått et vedtak, et avslag eller en klagefrist",
+          "Jeg hjelper et familiemedlem med noe praktisk"
         ]
       },
       {
@@ -82,37 +83,40 @@
         ]
       },
       {
-        "q": "Er det en frist?",
-        "hint": "Fristen avgjør hvor raskt vi må jobbe.",
+        "q": "Når trenger du svaret?",
+        "hint": "Det avgjør bare rekkefølgen, ikke prisen.",
         "options": [
-          "Ja — innen 7 dager",
-          "Ja — innen en måned",
-          "Ingen frist, eller jeg vet ikke"
+          "Så snart som mulig",
+          "I løpet av et par uker",
+          "Det haster ikke"
         ]
       }
     ],
     "resultTitle": "Vår anbefaling",
-    "urgent": "Kort frist — ta kontakt i dag",
-    "cta": "Bestill denne tjenesten",
+    "urgent": "Vi svarer på omfangskontrollen innen én virkedag",
+    "cta": "Start gratis sjekk",
     "ctaAlt": "Spør oss først",
-    "saved": "Takk. Svarene dine hjelper oss å prioritere den hjelpen folk trenger mest."
+    "saved": "Takk. Svarene dine hjelper oss å prioritere den hjelpen folk trenger mest.",
+    "referTitle": "Dette hører hjemme hos noen andre",
+    "referText": "Vedtak, avslag, klager og juridiske frister tar vi ikke. Kontakt instansen som sendte brevet, eller en advokat. Er du usikker, spør oss — å spørre koster ingenting.",
+    "referCta": "Se hva vi kan og ikke kan gjøre"
   },
   "process": {
     "eyebrow": "Slik jobber vi",
-    "title": "Fra usikkerhet til neste steg",
-    "lead": "En liten tjeneste med ett tydelig resultat. Ingen abonnement, ingen skjulte pakker.",
+    "title": "Fra spørsmål til neste steg",
+    "lead": "En liten tjeneste med tydelige grenser. Ingen abonnement, ingen skjulte pakker.",
     "steps": [
       {
-        "t": "Beskriv saken",
-        "d": "Velg avsender, språk og frist. Skriv med egne ord — ikke send sensitive opplysninger."
+        "t": "Fortell hva du trenger",
+        "d": "Fyll ut en gratis omfangskontroll. Skriv med egne ord — ikke send sensitive opplysninger."
       },
       {
-        "t": "Vi sjekker at saken passer",
-        "d": "Du får en referanse og en fast pris før arbeidet starter."
+        "t": "Vi vurderer om vi kan hjelpe",
+        "d": "Et menneske leser den. Passer den ikke, henviser vi deg videre — det koster ingenting."
       },
       {
-        "t": "Motta klarhetsplanen",
-        "d": "Forklaring, frister og neste steg innen 24–48 timer."
+        "t": "Du får omfang og pris skriftlig",
+        "d": "Betalingslenken kommer først etterpå. Du betaler ingenting før du har sagt ja."
       }
     ]
   },
@@ -123,7 +127,7 @@
       "Hvor saken står akkurat nå",
       "Hva som er neste handling",
       "Hvem som gjør det — du eller vi",
-      "Når fristen er"
+      "Hva som er avtalt, og hva som ikke er det"
     ]
   },
   "areas": {
@@ -145,11 +149,11 @@
   "pricing": {
     "eyebrow": "Priser",
     "title": "Tydelige priser, avtalt før vi starter",
-    "lead": "Dette er pilotpriser. Du får pris og omfang skriftlig før vi starter. Gebyrer til andre kommer i tillegg.",
+    "lead": "Du får omfang og pris skriftlig før du betaler. Vi sender aldri en betalingslenke før vi har sagt ja til oppdraget.",
     "from": "fra",
     "quote": "Etter tilbud",
     "vat": "Priser i NOK. Pilotpriser, kan bli justert.",
-    "select": "Bestill denne",
+    "select": "Start gratis sjekk",
     "ask": "Be om tilbud",
     "moreTitle": "For familier og virksomheter",
     "catalogTitle": "Full prisliste",
@@ -157,7 +161,7 @@
     "delivery": "Levering",
     "perHour": "per time",
     "inclVat": "inkl. mva.",
-    "later": "Kommer senere: søknadsstøtte, løpende oppfølging og hjelp med klage. Vi starter med én ting og gjør den godt."
+    "later": "Vi tar bare praktiske oppgaver. Saker som gjelder vedtak, klage, frister, helse, skatt, gjeld eller opphold henviser vi videre."
   },
   "safety": {
     "eyebrow": "Trygghet og etikk",
@@ -174,13 +178,13 @@
   },
   "booking": {
     "eyebrow": "Bestilling",
-    "title": "Bestill et møte",
-    "lead": "Velg en tjeneste, velg et tidspunkt, og fortell kort hva saken gjelder. Telefon eller video — du velger.",
+    "title": "Start med en gratis omfangskontroll",
+    "lead": "Fortell kort hva du trenger. Vi svarer innen én virkedag med ja eller nei — og med omfang og pris hvis vi kan hjelpe.",
     "steps": [
       "Tjeneste",
       "Tidspunkt",
       "Opplysninger",
-      "Betaling"
+      "Bekreft"
     ],
     "chooseService": "Hvilken tjeneste trenger du?",
     "chooseTime": "Velg dag og tidspunkt",
@@ -197,32 +201,24 @@
     "channelVideo": "Video",
     "channelOffice": "På kontoret",
     "case": "Hva gjelder saken?",
-    "casePlaceholder": "Hvilken instans, hva det står i brevet, og eventuell frist du kjenner til. Ikke skriv fødselsnummer eller helseopplysninger her.",
+    "casePlaceholder": "Hva du trenger praktisk hjelp til. Ikke skriv fødselsnummer, helseopplysninger eller innholdet i et vedtak.",
     "noSensitive": "Ikke skriv fødselsnummer eller helseopplysninger i dette feltet. Du får en sikker kanal for dokumenter etter bestillingen.",
     "consent": "Jeg samtykker i at NAVIAR kontakter meg om denne saken og bruker opplysningene mine bare til det.",
-    "summary": "Din bestilling",
+    "summary": "Din forespørsel",
     "service": "Tjeneste",
     "when": "Tidspunkt",
     "duration": "Varighet",
     "total": "Totalt",
-    "payTitle": "Hvordan vil du betale?",
-    "payCard": "Kort",
-    "payCardD": "Sikker kortbetaling. Du sendes videre til betalingsleverandøren vår.",
-    "payVipps": "Vipps",
-    "payVippsD": "Betal med Vipps på mobilen.",
-    "payInvoice": "Faktura",
-    "payInvoiceD": "Vi sender faktura med 10 dagers betalingsfrist etter møtet.",
     "payFree": "Dette møtet er gratis. Ingen betaling er nødvendig.",
     "next": "Fortsett",
     "back": "Tilbake",
-    "confirm": "Bekreft bestilling",
-    "pay": "Bekreft og betal",
+    "confirm": "Send forespørsel",
     "processing": "Behandler …",
-    "doneTitle": "Bestillingen er mottatt",
-    "doneLead": "Vi har sendt en bekreftelse til e-posten din. Ta vare på referansen ved kontakt med oss.",
+    "doneTitle": "Forespørselen er mottatt",
+    "doneLead": "Vi har mottatt forespørselen din. Ta vare på referansen.",
     "reference": "Referanse",
-    "doneNext": "Vi svarer på e-post innen én virkedag og bekrefter at saken passer før arbeidet starter. Send aldri sensitive dokumenter med vanlig e-post.",
-    "another": "Gjør en ny bestilling",
+    "doneNext": "Vi svarer på e-post innen én virkedag. Kan vi hjelpe, får du omfang, pris og vilkår skriftlig før du betaler. Send aldri sensitive dokumenter med vanlig e-post.",
+    "another": "Send en ny forespørsel",
     "demoNotice": "Demomodus: bestillingssystemet er ikke koblet til ennå, så denne bestillingen lagres bare i nettleseren din. Koble til backend i assets/js/config.js for å gå live.",
     "errGeneric": "Noe gikk galt. Prøv igjen, eller ta kontakt med oss direkte.",
     "errSlotTaken": "Det tidspunktet ble nettopp opptatt. Velg et annet.",
@@ -232,15 +228,29 @@
     "tolkDialect": "Dialekt eller region",
     "express": "Ekspress — innen 24 timer (+25 %)",
     "expressD": "Hvis en ledig rådgiver tar oppdraget, prioriteres saken din.",
-    "angrerett": "Tjenester har som hovedregel 14 dagers angrerett. Ber du oss starte med én gang, godtar du at angreretten faller bort når tjenesten er levert i sin helhet, og at du betaler for arbeid som allerede er utført dersom du avbestiller.",
+    "angrerett": "Tjenester kjøpt på nett har 14 dagers angrerett. Ønsker du at vi starter før fristen er ute, ber vi om et uttrykkelig samtykke i tilbudet. Du godtar da at angreretten faller bort når tjenesten er levert i sin helhet.",
     "deliveryNote": "Denne tjenesten krever ikke møte. Vi leverer skriftlig innen {sla}.",
     "upload": "Dokumenter",
     "uploadNote": "Beskriv saken med dine egne ord. Du trenger ikke laste opp dokumentet eller oppgi sensitive opplysninger nå.",
-    "tolkNotice": "Offentlige etater skal som regel skaffe og betale tolk til møter med dem. Privat tolk er for samtalene som faller utenfor det.",
+    "tolkNotice": "Offentlige etater vurderer selv behovet for tolk i sine møter og bestiller kvalifisert tolk. Privat språkstøtte er bare for samtalene du tar selv.",
     "fitFirst": "Vi sjekker at saken passer før du betaler.",
     "returnPaid": "Takk. Betalingen er gjennomført, og saken din er registrert.",
     "returnCancelled": "Betalingen ble avbrutt, så ingen betaling er registrert. Saken din er lagret — ta kontakt hvis du vil fullføre den.",
-    "consentLink": "Les personvernerklæringen"
+    "consentLink": "Les personvernerklæringen",
+    "riskTitle": "Dette kan vi ikke hjelpe med",
+    "riskLead": "Gjelder forespørselen din noe på denne listen, kan vi ikke ta den. Da henviser vi deg til riktig instans i stedet.",
+    "riskItems": [
+      "Å tolke et vedtak, avslag, klage eller en juridisk frist",
+      "Å vurdere rettigheter eller utfallet av en sak",
+      "Råd om helse, skatt, gjeld, økonomi eller opphold",
+      "Å sende inn eller signere en søknad for deg",
+      "Å kontakte NAV på dine vegne uten gyldig fullmakt",
+      "BankID, PIN, passord eller engangskoder",
+      "Helsedokumenter, fødselsnummer eller andre sensitive dokumenter",
+      "Privat språkstøtte i stedet for offentlig tolk i møter med det offentlige"
+    ],
+    "riskConfirm": "Jeg bekrefter at forespørselen min bare gjelder praktisk hjelp, og ikke noe på listen over.",
+    "noPayNow": "Du betaler ingenting nå. Kan vi hjelpe, sender vi omfang, pris og vilkår skriftlig — og først deretter en betalingslenke."
   },
   "faq": {
     "eyebrow": "Spørsmål",
@@ -252,7 +262,7 @@
       },
       {
         "q": "Kan dere garantere at jeg får ytelsen eller tillatelsen?",
-        "a": "Nei, og du bør ikke stole på noen som sier at de kan det. Vedtaket tilhører instansen. Det vi kan gjøre er å sørge for at saken din er komplett, korrekt og levert i tide — det er der de fleste saker taper."
+        "a": "Nei, og du bør ikke stole på noen som sier at de kan det. Vi vurderer ikke rettigheter og forutsier ikke utfall. Det vi gjør er praktisk: finne riktig kanal, sette opp spørsmålene og lage en sjekkliste."
       },
       {
         "q": "Trenger dere BankID-en min?",
@@ -260,7 +270,7 @@
       },
       {
         "q": "Hva koster det?",
-        "a": "Passkontrollen er gratis. Ett brev forklart koster 800 kr, og en klarhetssamtale på 45 minutter koster 1 500 kr. Du får prisen skriftlig før arbeidet starter, og vi sier fra hvis saken ikke passer."
+        "a": "Omfangskontrollen er gratis. En praktisk veiviser koster 590 kr, og jobbsøknadsstøtte koster 790 kr. Privat språkstøtte gis etter tilbud. Du får omfang og pris skriftlig før du betaler."
       },
       {
         "q": "Hvilke språk kan jeg få hjelp på?",
@@ -268,18 +278,18 @@
       },
       {
         "q": "Er dere advokater?",
-        "a": "Nei. Vi gir veiledning, forberedelse og oppfølging. Når en sak krever juridisk representasjon, eller faglig vurdering innen helse, skatt eller innvandring, henviser vi deg til en kvalifisert fagperson."
+        "a": "Nei. Vi gir praktisk veiledning, ikke juridisk rådgivning. Gjelder saken et vedtak, en klage, en frist, helse, skatt, gjeld eller opphold, henviser vi deg til rett instans eller til advokat."
       },
       {
         "q": "Hvordan sender jeg dokumenter trygt?",
-        "a": "I denne pilotfasen trenger du ikke sende dokumenter i det hele tatt. Beskriv brevet med egne ord, så sier vi fra hvis vi trenger mer. Ikke send sensitive dokumenter med vanlig e-post."
+        "a": "Du skal ikke sende dokumenter i det hele tatt. Beskriv med egne ord hva du trenger. Vi ber aldri om helsedokumenter, fødselsnummer eller andre sensitive dokumenter."
       }
     ]
   },
   "contact": {
     "eyebrow": "Kontakt",
-    "title": "Send oss brevet",
-    "lead": "Beskriv situasjonen kort, så svarer vi innen én virkedag. Er det enklere, bestill heller en gratis samtale på 15 minutter.",
+    "title": "Fortell oss hva du trenger",
+    "lead": "Beskriv kort hva du trenger hjelp til, så svarer vi innen én virkedag.",
     "email": "E-post",
     "phone": "Telefon",
     "office": "Kontor",
@@ -287,15 +297,15 @@
     "org": "Org.nr.",
     "formTitle": "Skriv til oss",
     "message": "Hva trenger du hjelp med?",
-    "messagePlaceholder": "Hvilken instans, hva som har skjedd, og eventuell frist. Utelat fødselsnummer og helseopplysninger.",
+    "messagePlaceholder": "Hva du trenger praktisk hjelp til. Utelat fødselsnummer, helseopplysninger og innholdet i vedtak.",
     "send": "Send henvendelse",
     "sent": "Takk. Vi har mottatt henvendelsen din og svarer innen én virkedag.",
     "note": "Henvendelsen din er konfidensiell og deles aldri med tredjeparter."
   },
   "band": {
-    "title": "Fortell oss hva brevet gjelder",
-    "sub": "Passkontrollen er gratis, og du får prisen skriftlig før arbeidet starter.",
-    "cta": "Start gratis passkontroll",
+    "title": "Start med en gratis omfangskontroll",
+    "sub": "Vi sier ærlig ja eller nei. Passer saken ikke, henviser vi deg videre — gratis.",
+    "cta": "Start gratis sjekk",
     "cta2": "Send oss en e-post"
   },
   "footer": {
@@ -307,48 +317,25 @@
     "terms": "Vilkår",
     "rights": "Alle rettigheter forbeholdt.",
     "note": "Informasjonen på dette nettstedet er generell veiledning og utgjør ikke juridisk rådgivning.",
-    "pilot": "Pilottjeneste. Priser og omfang testes og kan bli endret. Ikke bruk tjenesten ved akutt fare, eller når en frist går ut i dag."
+    "pilot": "Pilottjeneste. Vi gir praktisk veiledning, ikke juridisk, helsefaglig eller økonomisk rådgivning. Ikke bruk tjenesten ved akutt fare.",
+    "limits": "Hva vi gjør"
   },
   "catalog": {
-    "fit": {
-      "n": "Gratis passkontroll",
-      "d": "En kort sjekk på om saken passer for oss. Ingen analyse — bare et ærlig ja eller nei, og et forslag hvis noe annet passer bedre."
+    "sjekk": {
+      "n": "Gratis omfangskontroll",
+      "d": "Vi leser forespørselen din og sier om den passer for oss. Passer den ikke, henviser vi deg videre. Svar innen én virkedag."
     },
-    "k01": {
-      "n": "Brev forklart",
-      "d": "Ett brev eller vedtak (inntil 5 sider) forklart skriftlig, med dine neste steg."
+    "v01": {
+      "n": "Praktisk veiviser",
+      "d": "Vi finner riktig offentlig kanal for saken din. Du får en spørsmålsliste og en praktisk sjekkliste."
     },
-    "k02": {
-      "n": "Klar konsultasjon",
-      "d": "45 minutter med en rådgiver om saken din, på telefon eller video."
+    "v02": {
+      "n": "Jobbsøknadsstøtte",
+      "d": "Hjelp med CV, søknad, LinkedIn-profil og forberedelse til intervju."
     },
-    "tolk": {
-      "n": "Privat tolk",
-      "d": "Tolk til samtaler du tar selv. Pris avtales før bestilling."
-    },
-    "h01": {
-      "n": "Søknad sammen",
-      "d": "En standard søknad forberedt og fullført sammen med deg, dokumenter inkludert."
-    },
-    "o01": {
-      "n": "Saksoppfølging",
-      "d": "30 dagers oppfølging med inntil 3 kontaktpunkter, og frister overvåket."
-    },
-    "s01": {
-      "n": "Senior- og ekspertrådgivning",
-      "d": "Rådgivning per time for komplekse saker eller saker med høyere risiko."
-    },
-    "t30": {
-      "n": "Tolk — 30 minutter",
-      "d": "Telefon- eller videotolking med kvalifisert tolk."
-    },
-    "t60": {
-      "n": "Tolk — 60 minutter",
-      "d": "Telefon- eller videotolking med kvalifisert tolk."
-    },
-    "tf": {
-      "n": "Fremmøtetolk",
-      "d": "Tolking på stedet. Pris per oppdrag, reise inkludert."
+    "sprak": {
+      "n": "Privat språkstøtte",
+      "d": "Språkhjelp i private og dagligdagse samtaler. Erstatter ikke offentlig tolk i møter med det offentlige."
     }
   }
 }

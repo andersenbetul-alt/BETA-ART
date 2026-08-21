@@ -1,11 +1,11 @@
 {
   "meta": {
-    "title": "NAVIAR — Caawimaad si aad u fahamto oo aad ula socoto arrimahaaga dawladda",
-    "description": "NAVIAR wuxuu kaa caawiyaa inaad fahamto warqadaha ka yimaada hay'adaha dawladda. Waxaad ogaanaysaa waxa ku khuseeya, goorta uu waqtigu dhammaanayo iyo waxa aad samayn lahayd."
+    "title": "NAVIAR — Hagid wax ku ool ah oo adeegyada dawladda",
+    "description": "NAVIAR waxay bixisaa hagid wax ku ool ah: kanaalka saxda ah, su’aalaha saxda ah iyo liis hubin. Ma fasirno go’aanno, mana bixinno talo sharci."
   },
   "brand": {
     "tagline": "Cadayn nidaamyo adag dhexdood.",
-    "promise": "Warqadda ugu horreysa ilaa arrinta oo dhammaystiran.",
+    "promise": "Caawimaad wax ku ool ah, xad cad leh.",
     "disclaimer": "NAVIAR waa shirkad madax-bannaan, mana aha qayb ka mid ah NAV ama hay'ad dawladeed."
   },
   "nav": {
@@ -16,34 +16,35 @@
     "safety": "Badbaadada",
     "faq": "Su'aalo",
     "contact": "Nala soo xiriir",
-    "cta": "Ballan qabso",
+    "cta": "Hubin bilaash ah",
     "menu": "Menu",
-    "language": "Luqadda"
+    "language": "Luqadda",
+    "limits": "Waxa aan qabanno"
   },
   "hero": {
-    "eyebrow": "Taageero muwaadin iyo hagitaan arrimeed",
-    "title": "Hel caawimaad si aad u fahamto oo aad ula socoto arrimahaaga dawladda",
-    "sub": "Waxaan fududeynaa habraacyada dawladda. Waxaad ogaan doontaa hay'adda aad la xiriirto, dukumentiyada loo baahan yahay, waxa aad qorto, goorta uu yahay wakhtiga ugu dambeeya — iyo tallaabada xigta.",
-    "sales": "Warqadda noo soo dir. Hel qorshe hawleed cad.",
-    "cta1": "Warqadda noo soo dir",
-    "cta2": "Sida aan u shaqeyno",
-    "cardTitle": "Qorshahaaga cadaynta",
+    "eyebrow": "Hagid wax ku ool ah",
+    "title": "Caawimaad wax ku ool ah oo aad ku hesho jidka adeegyada dawladda",
+    "sub": "Waxaan ku tusinnaa kanaalka arrintaadu ku tahay, su’aalaha aad weydiin lahayd, iyo waxa aad diyaarin lahayd. Ma fasirno go’aanno, mana bixinno talo sharci, caafimaad ama maaliyadeed.",
+    "sales": "Ku bilow hubin bilaash ah oo baaxadda ah.",
+    "cta1": "Hubin bilaash ah",
+    "cta2": "Waxa aan qaban karno iyo waxa aanan qaban karin",
+    "cardTitle": "Hagahaaga wax ku ool ah",
     "card": [
       {
-        "t": "Waxa warqaddu ka dhigan tahay",
-        "d": "Lagu sharraxay af fudud oo aan rasmi ahayn."
+        "t": "Kanaalka saxda ah",
+        "d": "Xafiiska ama foomka arrintaadu ku tahay."
       },
       {
-        "t": "Waqtiga xaddidan ee khuseeya",
-        "d": "Taariikhaha iyo waxa ka dhalan kara si cad."
+        "t": "Liiska su’aalaha",
+        "d": "Waxa aad weydiin lahayd, oo horay loo qoray."
       },
       {
-        "t": "Talaabadaada xigta",
-        "d": "Liis gaaban oo la taaban karo."
+        "t": "Liiska hubinta",
+        "d": "Waxa aad diyaarin lahayd intaadan xiriirin."
       }
     ],
-    "cardBadge": "24–48 saac",
-    "cardFoot": "BankID ma jiro. Xog kaar ah ma jirto. Tijaabada dukumenti soo shubid ma jirto."
+    "cardBadge": "2 maalmood shaqo",
+    "cardFoot": "BankID ma jiro. Faahfaahin kaarka ma jirto. Dukumeenti soo gelin ma jirto."
   },
   "stats": {
     "languages": "Luqadaha aan ku shaqeyno",
@@ -54,20 +55,20 @@
   "finder": {
     "eyebrow": "Halkan ka bilow",
     "title": "Maxaad caawimaad uga baahan tahay?",
-    "lead": "Saddex su'aal oo gaaban. Adigu waxaad heleysaa talo, annaguna waxaan baraneynaa waxa dadku dhab ahaan ku dhibtoodaan — taasina waa waxa go'aamiya waxa aan xiga u sameyno.",
+    "lead": "Saddex su’aalood oo gaaban. Waxaad heshaa talo — ama tilmaan meel kale haddii arrintu meel kale ku tahay.",
     "back": "Dib u noqo",
     "restart": "Dib u bilow",
     "progress": "Su'aal {n} ka mid ah {total}",
     "questions": [
       {
-        "q": "Waa maxay xaaladdaada hadda?",
-        "hint": "Dooro tan kugu dhow.",
+        "q": "Maxaad caawimaad uga baahan tahay?",
+        "hint": "Dooro kan ugu dhow.",
         "options": [
-          "Waxaan helay warqad ama go'aan aanan fahmin",
-          "Waxaan u baahanahay inaan wax codsado",
-          "Arrintaydu aad bay u daahday ama way istaagtay",
-          "Ma aan raalli ka ihi go'aan, waxaan rabaa inaan ka cabto",
-          "Waxaan ka caawinayaa qof qoyska ka mid ah arrintiisa"
+          "Ma garanayo xafiiska ama foomka aan u baahanahay",
+          "Waxaan u baahanahay caawimaad CV ama codsi shaqo",
+          "Waxaan u baahanahay caawimaad luqadeed wada-hadal gaar ah",
+          "Waxaan haystaa go’aan, diidmo ama waqti rafcaan",
+          "Waxaan xubin qoys ka caawinayaa arrin wax ku ool ah"
         ]
       },
       {
@@ -82,37 +83,40 @@
         ]
       },
       {
-        "q": "Ma jiraa wakhti kama dambeys ah?",
-        "hint": "Wakhtiga kama dambeysta ah ayaa go'aaminaya sida aan u degdegno.",
+        "q": "Goorma ayaad jawaabta u baahan tahay?",
+        "hint": "Kani wuxuu saameeyaa kaliya kala horreynta, ma aha qiimaha.",
         "options": [
-          "Haa — 7 maalmood gudahood",
-          "Haa — bil gudaheed",
-          "Ma jiro wakhti kama dambeys ah, ama ma garanayo"
+          "Sida ugu dhaqsaha badan",
+          "Dhowr toddobaad gudahood",
+          "Ma degdegsana"
         ]
       }
     ],
     "resultTitle": "Talladayada",
-    "urgent": "Wakhti gaaban — maanta nala soo xiriir",
-    "cta": "Adeeggan ballan qabso",
+    "urgent": "Hubinta baaxadda waxaan ku jawaabnaa hal maalin shaqo gudaheed",
+    "cta": "Hubin bilaash ah",
     "ctaAlt": "Marka hore su'aal weydii",
-    "saved": "Mahadsanid. Jawaabahaagu waxay naga caawiyaan inaan mudnaanta siino caawimaadda dadku ugu baahan yihiin."
+    "saved": "Mahadsanid. Jawaabahaagu waxay naga caawiyaan inaan mudnaanta siino caawimaadda dadku ugu baahan yihiin.",
+    "referTitle": "Tan waxay u taal cid kale",
+    "referText": "Ma qaadanno go’aanno, diidmooyin, rafcaanno ama waqtiyo sharci. La xiriir hay’adda warqadda soo dirtay, ama qareen. Haddii aad shakisan tahay, na weydii — weydiintu waa bilaash.",
+    "referCta": "Eeg waxa aan qaban karno iyo waxa aanan qaban karin"
   },
   "process": {
     "eyebrow": "Sida aan u shaqeyno",
-    "title": "Ka shaki ilaa talaabada xigta",
-    "lead": "Adeeg yar oo hal natiijo cad leh. Rukun joogto ah ma jiro, xirmooyin qarsoon ma jiraan.",
+    "title": "Su’aal ilaa talaabada xigta",
+    "lead": "Adeeg yar oo xad cad leh. Rukumaad ma jirto, xirmooyin qarsoon ma jiraan.",
     "steps": [
       {
-        "t": "Sharax arrinta",
-        "d": "Dooro cidda dirtay, luqadda iyo waqtiga. Ku qor erayadaada — ha dirin xog xasaasi ah."
+        "t": "Noo sheeg waxa aad u baahan tahay",
+        "d": "Buuxi hubinta baaxadda ee bilaashka ah. Erayadaada ku qor — ha soo dirin macluumaad xasaasi ah."
       },
       {
-        "t": "Waxaan hubinnaa in arrintu habboon tahay",
-        "d": "Waxaad heshaa lambar tixraac iyo qiime go'an ka hor inta aan shaqadu bilaaban."
+        "t": "Waxaan qiimeyneynaa inaan ku caawin karno",
+        "d": "Qof ayaa akhrinaya. Haddii aysan habboonayn, waxaan kugu tilmaamaynaa meel kale — waa bilaash."
       },
       {
-        "t": "Hel qorshaha cadaynta",
-        "d": "Sharraxaad, waqtiyo iyo talaabooyinka xiga 24–48 saacadood gudahood."
+        "t": "Baaxadda iyo qiimaha qoraal ahaan",
+        "d": "Xiriiriyaha lacag-bixinta kaddib ayuu imanayaa. Waxba ma bixinaysid ka hor inta aadan ogolaan."
       }
     ]
   },
@@ -123,7 +127,7 @@
       "Halka arrintu hadda marayso",
       "Waxa ay tahay tallaabada xigta",
       "Cidda samaynaysa — adiga ama annaga",
-      "Goorta uu yahay wakhtiga kama dambeysta ah"
+      "Waxa la isku afgartay iyo waxa aan la isku afgarin"
     ]
   },
   "areas": {
@@ -145,11 +149,11 @@
   "pricing": {
     "eyebrow": "Qiimaha",
     "title": "Qiimo cad, oo la isku afgarto ka hor inta aan la bilaabin",
-    "lead": "Kuwani waa qiimayaal tijaabo ah. Qiimaha iyo baaxadda qoraal ahaan ayaad ku heshaa ka hor inta aanan bilaabin. Khidmadaha dadka kale la siiyo way ku darsamaan.",
+    "lead": "Baaxadda iyo qiimaha waxaad qoraal ku heshaa ka hor intaadan bixin. Weligeen ma dirno xiriiriye lacag-bixin ka hor inta aanan aqbalin shaqada.",
     "from": "laga bilaabo",
     "quote": "Sida dalabka",
     "vat": "Qiimayaasha waa NOK. Qiimo tijaabo ah, waa la beddeli karaa.",
-    "select": "Kan ballan qabso",
+    "select": "Hubin bilaash ah",
     "ask": "Dalab qiime codso",
     "moreTitle": "Qoysaska iyo hay'adaha",
     "catalogTitle": "Liiska qiimaha oo dhan",
@@ -157,7 +161,7 @@
     "delivery": "Gudbin",
     "perHour": "saacaddii",
     "inclVat": "canshuur ku jirto",
-    "later": "Wixii soo socda: taageero codsi, la socod joogto ah iyo caawimaad cabasho. Waxaan ku bilaabaynaa hal shay oo si fiican u qabanaynaa."
+    "later": "Waxaan qaadanaa hawlo wax ku ool ah oo keliya. Arrimaha go’aanno, rafcaan, waqtiyo sharci, caafimaad, canshuur, deyn ama sharci-degenaansho waxaan u gudbinnaa meel kale."
   },
   "safety": {
     "eyebrow": "Badbaado iyo anshax",
@@ -174,13 +178,13 @@
   },
   "booking": {
     "eyebrow": "Ballan",
-    "title": "Ballan qabso",
-    "lead": "Dooro adeeg iyo wakhti, kuna sheeg si kooban waxa arrintu ku saabsan tahay. Telefoon ama fiidyo — adigaa dooranaya.",
+    "title": "Ku bilow hubin baaxad oo bilaash ah",
+    "lead": "Si kooban noo sheeg waxa aad u baahan tahay. Waxaan kugu jawaabnaa hal maalin shaqo gudaheed — haa ama maya — iyo baaxadda iyo qiimaha haddii aan ku caawin karno.",
     "steps": [
-      "Adeegga",
-      "Wakhtiga",
-      "Xogta",
-      "Lacag bixinta"
+      "Adeeg",
+      "Waqti",
+      "Faahfaahin",
+      "Xaqiiji"
     ],
     "chooseService": "Adeeggee ayaad u baahan tahay?",
     "chooseTime": "Dooro maalin iyo saac",
@@ -197,32 +201,24 @@
     "channelVideo": "Fiidyo",
     "channelOffice": "Xafiiska",
     "case": "Arrintu maxay ku saabsan tahay?",
-    "casePlaceholder": "Hay'adda, waxa warqaddu leedahay, iyo wakhti kama dambeys haddii aad taqaan. Halkan ha ku qorin lambarka aqoonsiga ama xogta caafimaad.",
+    "casePlaceholder": "Waxa aad caawimaad wax ku ool ah uga baahan tahay. Ha qorin lambar aqoonsi, macluumaad caafimaad ama waxa ku qoran go’aan.",
     "noSensitive": "Fadlan halkan ha ku qorin lambarka aqoonsiga qaranka ama xog caafimaad. Ballanka kadib waxaad heli doontaa kanaal ammaan ah oo dukumentiyada.",
     "consent": "Waxaan oggolahay in NAVIAR ila soo xiriiro arrintan, xogtaydana u isticmaalo taas oo keliya.",
-    "summary": "Ballankaaga",
+    "summary": "Codsigaaga",
     "service": "Adeegga",
     "when": "Wakhtiga",
     "duration": "Muddada",
     "total": "Wadarta",
-    "payTitle": "Sidee ayaad rabtaa inaad bixiso?",
-    "payCard": "Kaarka",
-    "payCardD": "Lacag bixin kaar ammaan ah. Waxaa lagu gudbin doonaa bixiyaha lacag bixinta.",
-    "payVipps": "Vipps",
-    "payVippsD": "Ku bixi Vipps taleefankaaga.",
-    "payInvoice": "Qaansheegad",
-    "payInvoiceD": "Waxaan soo dirnaa qaansheegad leh 10 maalmood lacag bixin kadib kulanka.",
     "payFree": "Kulankan waa bilaash. Lacag bixin looma baahna.",
     "next": "Sii wad",
     "back": "Dib u noqo",
-    "confirm": "Xaqiiji ballanka",
-    "pay": "Xaqiiji oo bixi",
+    "confirm": "Dir codsiga",
     "processing": "Waa la habeynayaa…",
-    "doneTitle": "Ballanka waa la helay",
-    "doneLead": "Xaqiijin ayaan u dirnay iimaylkaaga. Tixraacan hayso marka aad nala soo xiriirto.",
+    "doneTitle": "Codsiga waa la helay",
+    "doneLead": "Codsigaaga waa naga soo gaadhay. Hay tixraaca.",
     "reference": "Tixraac",
-    "doneNext": "Waxaan kuugu jawaabnaa iimayl hal maalin shaqo gudaheed, waxaana xaqiijinnaa in arrintu habboon tahay ka hor inta aan shaqadu bilaaban. Waligaa ha ku dirin dukumentiyo xasaasi ah iimayl caadi ah.",
-    "another": "Ballan kale qabso",
+    "doneNext": "Waxaan iimayl kugu soo jawaabnaa hal maalin shaqo gudaheed. Haddii aan ku caawin karno, waxaad qoraal ku heshaa baaxadda, qiimaha iyo shuruudaha ka hor intaadan bixin. Weligaa ha ku dirin dukumeenti xasaasi ah iimayl caadi ah.",
+    "another": "Dir codsi kale",
     "demoNotice": "Qaab tijaabo: nidaamka ballanta weli lama xirin, sidaas darteed ballankan waxaa lagu kaydiyaa browserkaaga oo keliya. Ku xir backend-ka assets/js/config.js si uu u shaqeeyo.",
     "errGeneric": "Wax baa qaldamay. Fadlan isku day mar kale, ama si toos ah nala soo xiriir.",
     "errSlotTaken": "Wakhtigaas hadda ayaa la qaatay. Fadlan mid kale dooro.",
@@ -232,15 +228,29 @@
     "tolkDialect": "Lahjad ama gobol",
     "express": "Degdeg — 24 saacadood gudahood (+25%)",
     "expressD": "Haddii la-taliye banaan uu qaato, arrintaada mudnaan ayaa la siinayaa.",
-    "angrerett": "Adeegyadu caadi ahaan waxay leeyihiin xaq 14 maalmood ah oo laga noqdo. Haddii aad na weydiisato inaan isla markiiba bilowno, waxaad ogolaanaysaa in xaqaas dhammaado marka adeeggu si buuxda u dhammaado, iyo inaad bixiso shaqada hore loo qabtay haddii aad joojiso.",
+    "angrerett": "Adeegyada laga soo iibsado internetka waxay leeyihiin xaq 14 maalmood ah oo laga noqdo. Haddii aad rabto inaan bilowno ka hor inta uusan waqtigaas dhammaan, waxaan dalbanaynaa ogolaansho cad oo dalabka ku qoran. Markaas waxaad aqbashaa in xaqa laga noqoshadu dhammaado marka adeegga si buuxda loo gudbiyo.",
     "deliveryNote": "Adeeggan kulan looma baahna. Waxaan qoraal ku soo gudbinnaa {sla} gudahood.",
     "upload": "Dukumentiyo",
     "uploadNote": "Arrinta ku sharrax erayadaada. Hadda uma baahnid inaad dukumentiga soo shubto ama xog xasaasi ah bixiso.",
-    "tolkNotice": "Hay'adaha dawladdu caadi ahaan waa waajib inay turjumaan u helaan oo u bixiyaan kulamada ay adiga kula yeeshaan. Turjumaanka gaarka ah waa wada-hadallada taas ka baxsan.",
+    "tolkNotice": "Hay’adda dawladda ayaa qiimeysa baahida turjubaan ee kulamadeeda, iyaduna dalbata turjubaan u qalma. Taageerada luqadeed ee gaarka ah waxay u gaar tahay wada-hadallada aad adigu leedahay.",
     "fitFirst": "Waxaan hubinnaa in arrintu habboon tahay ka hor inta aadan bixin.",
     "returnPaid": "Mahadsanid. Lacag bixintu waa dhammaatay, arrintaadana waa la diiwaan geliyey.",
     "returnCancelled": "Lacag bixintii waa la joojiyey, wax lacag ahna lagama jarin. Arrintaadu way kaydsan tahay — nala soo xiriir haddii aad rabto inaad dhammaystirto.",
-    "consentLink": "Akhri ogeysiiska qarsoodiga"
+    "consentLink": "Akhri ogeysiiska qarsoodiga",
+    "riskTitle": "Waxa aanan kaa caawin karin",
+    "riskLead": "Haddii codsigaagu ku saabsan yahay wax ka mid ah liiskan, ma qaadan karno. Halkii waxaan kugu tilmaamaynaa hay’adda saxda ah.",
+    "riskItems": [
+      "Fasiridda go’aan, diidmo, rafcaan ama waqti sharci",
+      "Qiimeynta xuquuqdaada ama natiijada kiiska",
+      "Talo ku saabsan caafimaad, canshuur, deyn, maaliyad ama sharci-degenaansho",
+      "In codsi laguu gudbiyo ama laguu saxiixo",
+      "In NAV laguula xiriiro adiga oo aan wakiilnimo ansax ah la haysan",
+      "BankID, PIN, furayaal sir ah ama koodhadh hal-mar ah",
+      "Dukumeentiyo caafimaad, lambarro aqoonsi ama dukumeentiyo kale oo xasaasi ah",
+      "Taageero luqadeed gaar ah oo lagu beddelo turjubaan rasmi ah kulamada dawladda"
+    ],
+    "riskConfirm": "Waxaan xaqiijinayaa in codsigaygu yahay caawimaad wax ku ool ah oo keliya, oo aan ahayn wax ka mid ah liiska kore.",
+    "noPayNow": "Hadda waxba ma bixinaysid. Haddii aan ku caawin karno, waxaan qoraal ahaan kuu soo dirnaa baaxadda, qiimaha iyo shuruudaha — kaddibna xiriiriyaha lacag-bixinta."
   },
   "faq": {
     "eyebrow": "Su'aalo",
@@ -252,7 +262,7 @@
       },
       {
         "q": "Ma damaanad qaadi kartaan inaan helo gunnada ama oggolaanshaha?",
-        "a": "Maya, mana aaminin qof sheegaya inuu taas awoodo. Go'aanku wuxuu ku yaal hay'adda. Waxa aan awoodno waa in aan hubinno in arrintaadu buuxdo, sax tahay, oo wakhtigeedii la gudbiyo — halkaas ayaa arrimaha badankood ku lumaan."
+        "a": "Maya, oo ha ku kalsoonaan qof kasta oo sheegta inuu awoodo. Ma qiimeyno xuquuq, mana saadaalinno natiijo. Waxa aan qabanno waa wax ku ool: helitaanka kanaalka saxda ah, qorista su’aalaha iyo samaynta liis hubin."
       },
       {
         "q": "Ma u baahan tihiin BankID-gayga?",
@@ -260,7 +270,7 @@
       },
       {
         "q": "Imisa ayay ku kacaysaa?",
-        "a": "Hubinta ku habboonaanshaha waa bilaash. Hal warqad oo la sharraxo waa 800 NOK, wada-hadal cad oo 45 daqiiqo ahna waa 1,500 NOK. Qiimaha qoraal ayaad ku heshaa ka hor inta aan shaqadu bilaaban, haddii arrintu ku habboonayn waan kuu sheegaynaa."
+        "a": "Hubinta baaxaddu waa bilaash. Hagaha wax ku oolka ah waa 590 kr, taageerada codsiga shaqada 790 kr. Taageerada luqadeed ee gaarka ah waa qiimo la soo bandhigo. Baaxadda iyo qiimaha waxaad qoraal ku heshaa ka hor bixinta."
       },
       {
         "q": "Luqadaha kee ayaan caawimaad ku heli karaa?",
@@ -268,18 +278,18 @@
       },
       {
         "q": "Ma qareenno tihiin?",
-        "a": "Maya. Waxaan bixinnaa hagitaan, diyaarin iyo la socod. Marka arrintu u baahan tahay matalaad sharci, ama qiimeyn khabiir oo caafimaad, canshuur ama socdaal ah, waxaan kuu gudbinnaa khabiir u qalma."
+        "a": "Maya. Waxaan bixinnaa hagid wax ku ool ah, ma aha talo sharci. Haddii arrintu tahay go’aan, rafcaan, waqti sharci, caafimaad, canshuur, deyn ama sharci-degenaansho, waxaan kugu tilmaamaynaa hay’adda saxda ah ama qareen."
       },
       {
         "q": "Sidee ayaan si ammaan ah dukumentiyada u diraa?",
-        "a": "Marxaladdan tijaabada ah gabi ahaanba uma baahnid inaad dukumentiyo soo dirto. Warqadda ku sharrax erayadaada, haddii aan wax dheeraad ah u baahanno waan kuu sheegaynaa. Ha ku dirin dukumentiyo xasaasi ah iimayl caadi ah."
+        "a": "Waa inaadan gabi ahaanba dukumeenti soo dirin. Erayadaada ku sheeg waxa aad u baahan tahay. Weligeen ma weydiisanno dukumeenti caafimaad, lambar aqoonsi ama dukumeenti kale oo xasaasi ah."
       }
     ]
   },
   "contact": {
     "eyebrow": "Xiriir",
-    "title": "Warqadda noo soo dir",
-    "lead": "Si kooban u sharrax xaaladdaada, waxaanan kuugu jawaabnaa hal maalin shaqo gudaheed. Haddii ay fududahay, ballan qabso wada-hadal bilaash ah oo 15 daqiiqo ah.",
+    "title": "Noo sheeg waxa aad u baahan tahay",
+    "lead": "Si kooban u sharax waxa aad caawimaad uga baahan tahay — waxaan kugu jawaabnaa hal maalin shaqo gudaheed.",
     "email": "Iimayl",
     "phone": "Telefoon",
     "office": "Xafiiska",
@@ -287,15 +297,15 @@
     "org": "Lambarka shirkadda",
     "formTitle": "Noo qor",
     "message": "Maxaad caawimaad uga baahan tahay?",
-    "messagePlaceholder": "Hay'adda, waxa dhacay, iyo wakhti kama dambeys haddii uu jiro. Fadlan ha ku qorin lambarka aqoonsiga ama xog caafimaad.",
+    "messagePlaceholder": "Waxa aad caawimaad wax ku ool ah uga baahan tahay. Ka tag lambarrada aqoonsiga, macluumaadka caafimaadka iyo waxa ku qoran go’aanka.",
     "send": "Dir codsiga",
     "sent": "Mahadsanid. Codsigaaga waan helnay, waxaanan kuugu jawaabi doonnaa hal maalin shaqo gudaheed.",
     "note": "Codsigaagu waa qarsoodi, waligeedna lama wadaago dhinac saddexaad."
   },
   "band": {
-    "title": "Noo sheeg waxa warqaddu ku saabsan tahay",
-    "sub": "Hubinta ku habboonaanshaha waa bilaash, qiimahana qoraal ahaan ayaad ku heshaa ka hor inta aan shaqadu bilaaban.",
-    "cta": "Bilow hubinta bilaashka ah",
+    "title": "Ku bilow hubin baaxad oo bilaash ah",
+    "sub": "Si daacad ah ayaan haa ama maya u odhanaynaa. Haddii aysan habboonayn, bilaash ayaan kuu tilmaamaynaa meel kale.",
+    "cta": "Hubin bilaash ah",
     "cta2": "Iimayl noo dir"
   },
   "footer": {
@@ -307,48 +317,25 @@
     "terms": "Shuruudaha",
     "rights": "Dhammaan xuquuqda way dhowran yihiin.",
     "note": "Macluumaadka boggan waa hagitaan guud, mana aha talo sharci.",
-    "pilot": "Adeeg tijaabo ah. Qiimayaasha iyo baaxadda waa la tijaabinayaa waana beddelmi karaan. Ha u isticmaalin xaalad khatar degdeg ah, ama marka waqtigu maanta dhammaanayo."
+    "pilot": "Adeeg tijaabo ah. Waxaan bixinnaa hagid wax ku ool ah, ma aha talo sharci, caafimaad ama maaliyadeed. Ha isticmaalin marka khatar degdeg ah jirto.",
+    "limits": "Waxa aan qabanno"
   },
   "catalog": {
-    "fit": {
-      "n": "Hubin bilaash ah oo ku habboonaanshaha",
-      "d": "Hubin gaaban oo lagu ogaanayo in arrintaadu nagu habboon tahay. Ma aha falanqayn — haa ama maya oo daacad ah, iyo talo haddii wax kale kuu fiican yihiin."
+    "sjekk": {
+      "n": "Hubin baaxad oo bilaash ah",
+      "d": "Waxaan akhrinnaa codsigaaga oo aan kuu sheegnaa haddii uu nagu habboon yahay. Haddii uusan habboonayn, waxaan ku tilmaamnaa meel kale. Jawaab hal maalin shaqo gudaheed."
     },
-    "k01": {
-      "n": "Warqad la sharraxay",
-      "d": "Hal warqad ama go'aan (ilaa 5 bog) oo qoraal lagu sharraxay, tallaabooyinkaaga xigana la socdaan."
+    "v01": {
+      "n": "Hage wax ku ool ah",
+      "d": "Waxaan u helnaa kanaalka dawladeed ee saxda ah. Waxaad heshaa liis su’aalo iyo liis hubin oo wax ku ool ah."
     },
-    "k02": {
-      "n": "La-talin cad",
-      "d": "45 daqiiqo oo la-taliye ah oo ku saabsan arrintaada, telefoon ama fiidyo."
+    "v02": {
+      "n": "Taageero codsi shaqo",
+      "d": "Caawimaad CV, codsi, astaanta LinkedIn iyo diyaargarowga wareysiga."
     },
-    "tolk": {
-      "n": "Turjumaan gaar ah",
-      "d": "Turjumaan wada-hadallada aad adigu qabanqaabiso. Qiimaha waa la isku afgartaa ballanka ka hor."
-    },
-    "h01": {
-      "n": "Codsi wadajir ah",
-      "d": "Codsi caadi ah oo la diyaariyay lana dhammaystiray adiga, dukumentiyada oo ay ku jiraan."
-    },
-    "o01": {
-      "n": "La socodka arrinta",
-      "d": "30 maalmood oo la socod ah, ilaa 3 xiriir, wakhtiyadana la ilaaliyo."
-    },
-    "s01": {
-      "n": "La-talin sare iyo khabiir",
-      "d": "La-talin saacaddii ah oo loogu talagalay arrimo adag ama khatar sare leh."
-    },
-    "t30": {
-      "n": "Turjumaan — 30 daqiiqo",
-      "d": "Turjumaad telefoon ama fiidyo ah oo turjumaan u qalma."
-    },
-    "t60": {
-      "n": "Turjumaan — 60 daqiiqo",
-      "d": "Turjumaad telefoon ama fiidyo ah oo turjumaan u qalma."
-    },
-    "tf": {
-      "n": "Turjumaan goobta jooga",
-      "d": "Turjumaad wejiga ah. Qiime hawl kasta, safarka oo ku jira."
+    "sprak": {
+      "n": "Taageero luqadeed gaar ah",
+      "d": "Caawimaad luqadeed oo ku saabsan wada-hadallo gaar ah oo maalinle ah. Ma beddesho turjubaan rasmi ah oo kulamada dawladda."
     }
   }
 }

@@ -254,11 +254,40 @@
   }
 
   /* ----------------------------------------------------------- need finder */
-  /* Maps the first answer to the service that actually fits it. */
-  /* Only the offers we sell today. Anything we cannot deliver yet routes to
-     the free fit check, where a human says yes or no honestly. */
-  var FINDER_MAP = ['k01', 'fit', 'fit', 'fit', 'k02'];
+  /* Maps the first answer to what actually fits it. 'refer' is not a service:
+     it is the answer 'we do not take this', which the fourth option — a
+     decision, a refusal, an appeal deadline — always gets. Sending that
+     person to a booking form would be selling them work we have said we will
+     not do. */
+  var FINDER_MAP = ['v01', 'v02', 'sprak', 'refer', 'sjekk'];
   var finderState = { step: 0, answers: [] };
+
+  /* What the finder shows when the answer is out of scope. No price, no
+     booking button — a referral and the page that explains why. */
+  function referralBox() {
+    var box = el('div', 'finder-result');
+    box.appendChild(el('p', 'eyebrow', I18n.t('finder.referTitle')));
+    box.appendChild(el('p', null, I18n.t('finder.referText')));
+
+    var actions = el('div', 'result-actions');
+    var read = el('a', 'btn btn-primary', I18n.t('finder.referCta'));
+    read.href = 'hva-vi-gjor.html';
+    actions.appendChild(read);
+
+    var ask = el('a', 'btn btn-outline', I18n.t('finder.ctaAlt'));
+    ask.href = '#contact';
+    actions.appendChild(ask);
+
+    var again = el('button', 'btn-quiet', I18n.t('finder.restart'));
+    again.type = 'button';
+    again.addEventListener('click', function () {
+      finderState = { step: 0, answers: [] };
+      renderFinder();
+    });
+    actions.appendChild(again);
+    box.appendChild(actions);
+    return box;
+  }
 
   function recordNeed(answers) {
     var payload = {
@@ -266,7 +295,7 @@
       situation: answers[0],
       office: answers[1],
       urgency: answers[2],
-      recommended: FINDER_MAP[answers[0]] || 'fit',
+      recommended: FINDER_MAP[answers[0]] || 'sjekk',
       source: global.naviarSource
     };
     if (CFG.apiBase) {
@@ -343,7 +372,13 @@
     }
 
     /* ---- result ---- */
-    var serviceId = FINDER_MAP[finderState.answers[0]] || 'intro';
+    var serviceId = FINDER_MAP[finderState.answers[0]] || 'sjekk';
+
+    if (serviceId === 'refer') {
+      host.appendChild(referralBox());
+      return;
+    }
+
     var svc = serviceById(serviceId);
     var entry = (I18n.get('catalog') || {})[serviceId] || {};
     var urgent = finderState.answers[2] === 0;

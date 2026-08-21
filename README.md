@@ -149,30 +149,44 @@ Everything a non-developer needs to change lives in `assets/js/config.js`.
 
 ### The offer
 
-The site sells the **First-100 launch offer** — one result, sold well, before
-anything else. `price` is the customer total including 25% MVA; `net` is the
-ex-MVA fee the 20% commission is calculated from.
+The site sells **practical help only**. `price` is the customer total including
+25% MVA; `net` is the ex-MVA fee the 20% commission is calculated from.
 
 | Code | Offer | Price | Delivery |
 | --- | --- | --- | --- |
-| — | Gratis passkontroll | Free | 1 working day, no analysis |
-| K01 | Brev forklart | 800 NOK | 24–48 t, one letter up to 5 pages |
-| K02 | Klar konsultasjon | 1 500 NOK | 45 min, phone or video |
-| T | Privat tolk | By quote | Agreed before booking |
+| — | Gratis omfangskontroll | Free | 1 working day, honest yes or no |
+| V01 | Praktisk veiviser | 590 NOK | 2 working days — right channel, questions, checklist |
+| V02 | Jobbsøknadsstøtte | 790 NOK | 60 min — CV, application, LinkedIn, interview prep |
+| S | Privat språkstøtte | By quote | Private, everyday conversations only |
 
-Phase-2 offers (H01 søknad, O01 oppfølging, S01 senior, fixed-price tolk) are
-**not sold yet** — the launch kit says prove demand first. Their translations
-are still in `assets/i18n/*.json` under `catalog`; add them back to `services`
-in `config.js` when you are ready.
+**Nothing on this list is bought directly.** Every request is a free scope
+check; a person reads it, and the scope, the price and the payment link go out
+afterwards. `payments.paymentLinks` is empty on purpose, the server records
+every incoming request as `new` whatever the browser sends, and both are
+tested. Putting a link back in the config puts a buy button back on the site.
+
+### What the model refuses
+
+Interpreting a decision, refusal, appeal or legal deadline · judging a right or
+an outcome · health, tax, debt, finance or residency advice · submitting or
+signing for the customer · contacting NAV without a valid *fullmakt* · BankID,
+PIN, passwords or one-time codes · collecting sensitive documents · private
+language support in place of an official interpreter.
+
+The customer-facing version is `hva-vi-gjor.html`; the reasoning and the legal
+basis are in `docs/tjenestemodell.md`. The withdrawn offers (K01, K02, tolk,
+H01, O01, S01, T30, T60, TF) have been removed from both `config.js` and the
+translation files, and a test fails if any of them reappears — they described
+work this model does not do.
 
 Two things the site deliberately does **not** do, per the launch kit:
 
 - **No document upload.** The booking form asks the customer to describe the
   case in their own words, and says so explicitly. Nothing promises a secure
   upload link.
-- **Interpreter pricing is by quote**, and the booking flow tells the customer
-  that a public agency normally has to arrange and pay for an interpreter for
-  meetings with that agency. Do not remove this notice.
+- **Language support is by quote**, and the booking flow tells the customer
+  that a public body assesses and orders the interpreter for its own meetings.
+  Do not remove this notice.
 
 ### Outreach attribution
 

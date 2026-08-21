@@ -409,6 +409,19 @@ textarea{min-height:120px;resize:vertical}
    under a third of the 44px touch minimum, on the control that matters most
    to the people this service is built for. The whole row is the target now,
    and the box itself is 24px. */
+/* The work NAVIAR refuses, listed on the last step of the request form. It is
+   a warning, so it reads as one — but it stays inside the form's own type
+   scale rather than shouting. */
+.risk-list{
+  list-style:none;margin:0 0 20px;padding:15px 17px;
+  background:var(--warn-bg);border-radius:10px;font-size:.88rem;
+}
+.risk-list li{position:relative;padding-inline-start:22px;padding-block:4px;color:var(--ink)}
+.risk-list li::before{
+  content:"";position:absolute;inset-inline-start:2px;top:.72em;
+  width:8px;height:2px;border-radius:2px;background:#8a5a00;
+}
+
 .consent{
   display:flex;gap:13px;align-items:flex-start;font-size:.85rem;margin-bottom:20px;
   font-weight:400;color:var(--body);cursor:pointer;

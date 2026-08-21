@@ -54,21 +54,31 @@ window.NAVIAR_CONFIG = {
   commissionRate: 0.20,          // pilot platform commission on the net fee
   currency: 'NOK',
 
-  /* The First-100 launch offer. One result, sold well, before anything else.
-     Translations for the phase-2 offers (h01, o01, s01, t30, t60, tf) are kept
-     in assets/i18n/*.json under `catalog` — add them back here when the pilot
-     proves demand. */
+  /* The low-risk catalogue. Every one of these is practical help: finding the
+     right channel, preparing questions, writing a CV. None of it interprets a
+     decision, judges a right, or touches health, tax, debt or residency — see
+     docs/tjenestemodell.md §3 for the line and hva-vi-gjor.html for how it is
+     put to the customer.
+
+     Nothing here is bought directly. Every request starts as a free scope
+     check; the price is agreed in writing and the payment link is sent by a
+     person, afterwards. That is why there are no payment links below. */
   services: [
-    { id: 'fit',  code: '—',   price: 0,    net: 0,    minutes: 0,  type: 'delivery', group: 'advice', free: true, sla: '1 virkedag' },
-    { id: 'k01',  code: 'K01', price: 800,  net: 640,  minutes: 0,  type: 'delivery', group: 'advice', sla: '24–48t' },
-    { id: 'k02',  code: 'K02', price: 1500, net: 1200, minutes: 45, type: 'meeting',  group: 'advice' },
-    { id: 'tolk', code: 'T',   price: null, net: null, minutes: 60, type: 'meeting',  group: 'tolk', tolk: true }
+    { id: 'sjekk', code: '—',   price: 0,   net: 0,   minutes: 0,  type: 'delivery', group: 'advice', free: true, sla: '1 virkedag' },
+    { id: 'v01',   code: 'V01', price: 590, net: 472, minutes: 0,  type: 'delivery', group: 'advice', sla: '2 virkedager' },
+    { id: 'v02',   code: 'V02', price: 790, net: 632, minutes: 60, type: 'meeting',  group: 'advice' },
+    /* `tolk: true` asks the customer which language they need. It does NOT mean
+       official interpreting: a public body assesses and orders a qualified
+       interpreter for its own meetings (tolkeloven). This is private, everyday
+       conversation only, and the form says so. */
+    { id: 'sprak', code: 'S',   price: null, net: null, minutes: 60, type: 'meeting', group: 'tolk', tolk: true }
   ],
 
   /* Surcharges (§12.2). Shown before purchase, never added afterwards. */
   surcharges: { express24h: 0.25, eveningWeekend: 0.25 },
 
-  /* Interpreter languages offered for NAVIAR Tolk bookings. */
+  /* Languages offered for private language support — everyday conversations
+     the customer has themselves. Not for meetings with a public body. */
   tolkLanguages: [
     'Arabisk', 'Dari', 'Engelsk', 'Fransk', 'Kurdisk (sorani)', 'Litauisk',
     'Pashto', 'Polsk', 'Russisk', 'Somali', 'Spansk', 'Swahili', 'Thai',
@@ -97,11 +107,11 @@ window.NAVIAR_CONFIG = {
     card: true,                 // Stripe Checkout via the backend
     vipps: true,                // Vipps ePayment (backend, Norway)
     invoice: true,              // manual invoice / faktura
-    /* Fallback for pure static hosting, before server/ is deployed: paste one
-       Stripe Payment Link (or PayPal button link) per paid service. The booking
-       flow stores the case locally, then sends the customer to this link with
-       the case reference attached. Leave empty to collect by invoice instead. */
-    paymentLinks: { k01: '', k02: '' }
+    /* Deliberately empty. The site does not sell anything directly: a payment
+       link is written by a person, after the scope check, and sent to the one
+       customer it belongs to. Putting a link here would put a buy button back
+       on the page. */
+    paymentLinks: {}
   },
 
   /* Where the form falls back to when there is no backend. */

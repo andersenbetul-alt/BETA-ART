@@ -1,6 +1,11 @@
 /* =============================================================================
    NAVIAR — booking flow
-   Four steps: service -> time -> details -> payment.
+   Four steps: service -> time -> details -> confirm.
+
+   Nothing is paid for here. Every request is a free scope check: a person
+   reads it, decides whether NAVIAR may take it, and sends the scope, the price
+   and a payment link afterwards. That is why the last step confirms what is
+   being asked for rather than collecting money.
    Services of type 'delivery' (e.g. K01 "Brev forklart") have no meeting, so
    the time step is skipped for them.
 
@@ -21,7 +26,6 @@
     time: null,      // 'HH:MM'
     express: false,
     details: {},
-    payment: 'card',
     reference: null
   };
 
@@ -47,7 +51,7 @@
   /* Steps present for the chosen service. 'time' drops out for deliveries. */
   function steps() {
     var s = service();
-    var list = ['service', 'time', 'details', 'payment'];
+    var list = ['service', 'time', 'details', 'confirm'];
     if (s && s.type === 'delivery') list.splice(1, 1);
     return list;
   }
@@ -110,7 +114,7 @@
     var present = steps();
     host.innerHTML = '';
     present.forEach(function (name, i) {
-      var idx = ['service', 'time', 'details', 'payment'].indexOf(name);
+      var idx = ['service', 'time', 'details', 'confirm'].indexOf(name);
       var li = el('li');
       if (i === state.step) li.setAttribute('aria-current', 'step');
       if (i < state.step) li.className = 'done';
@@ -432,55 +436,59 @@
     return box;
   }
 
-  function stepPayment(host) {
+  function stepConfirm(host) {
     var s = service();
     host.appendChild(el('h3', null, I18n.t('booking.summary')));
     host.appendChild(summaryBlock());
 
-    var free = s.free || s.price === 0;
-    var quote = s.price == null;
+    /* The list of work NAVIAR refuses, shown before the customer commits and
+       not buried in the terms. The box below it is the customer saying their
+       request is none of it — which is what the operator reads first. */
+    host.appendChild(el('h3', null, I18n.t('booking.riskTitle')));
+    host.appendChild(el('p', 'finder-hint', I18n.t('booking.riskLead')));
 
-    if (free) {
-      host.appendChild(el('p', 'status ok show', I18n.t('booking.payFree')));
-    } else if (quote) {
-      host.appendChild(el('p', 'status info show', I18n.t('pricing.quote')));
-    } else {
-      host.appendChild(el('h3', null, I18n.t('booking.payTitle')));
-      var opts = el('div', 'pay-opts');
-      var methods = [];
-      if (CFG.payments.card) methods.push(['card', 'payCard', 'payCardD']);
-      if (CFG.payments.vipps) methods.push(['vipps', 'payVipps', 'payVippsD']);
-      if (CFG.payments.invoice) methods.push(['invoice', 'payInvoice', 'payInvoiceD']);
-      methods.forEach(function (m) {
-        var label = el('label', 'pay-opt');
-        var radio = el('input');
-        radio.type = 'radio';
-        radio.name = 'payment';
-        radio.value = m[0];
-        radio.checked = state.payment === m[0];
-        radio.addEventListener('change', function () { state.payment = m[0]; });
-        label.appendChild(radio);
-        var text = el('span');
-        text.appendChild(el('strong', null, I18n.t('booking.' + m[1])));
-        text.appendChild(el('span', null, I18n.t('booking.' + m[2])));
-        label.appendChild(text);
-        opts.appendChild(label);
-      });
-      host.appendChild(opts);
+    var risks = el('ul', 'risk-list');
+    (I18n.get('booking.riskItems') || []).forEach(function (item) {
+      risks.appendChild(el('li', null, item));
+    });
+    host.appendChild(risks);
 
-      /* Right of withdrawal must be accepted explicitly when work starts now. */
-      host.appendChild(el('p', 'status info show', I18n.t('booking.fitFirst')));
+    var lowRiskWrap = el('label', 'consent');
+    var lowRisk = el('input');
+    lowRisk.type = 'checkbox';
+    lowRisk.name = 'lowRisk';
+    lowRisk.checked = Boolean(state.details.lowRisk);
+    lowRiskWrap.appendChild(lowRisk);
+    var lowRiskText = el('span', null, I18n.t('booking.riskConfirm') + ' ');
+    var more = el('a', null, I18n.t('nav.limits'));
+    more.href = 'hva-vi-gjor.html';
+    more.target = '_blank';
+    more.rel = 'noopener';
+    lowRiskText.appendChild(more);
+    lowRiskWrap.appendChild(lowRiskText);
+    host.appendChild(lowRiskWrap);
 
-      var angre = el('p', 'finder-hint', I18n.t('booking.angrerett'));
-      angre.style.marginTop = '16px';
-      host.appendChild(angre);
-    }
+    host.appendChild(el('p', 'status info show', I18n.t('booking.noPayNow')));
+
+    if (s && s.tolk) host.appendChild(el('p', 'finder-hint', I18n.t('booking.tolkNotice')));
+
+    var angre = el('p', 'finder-hint', I18n.t('booking.angrerett'));
+    angre.style.marginTop = '16px';
+    host.appendChild(angre);
 
     var status = el('p', 'status');
     host.appendChild(status);
 
-    var label = free || quote ? I18n.t('booking.confirm') : I18n.t('booking.pay');
-    var nav = navRow(function () { go(-1); }, label, function () { submit(status, nav); }, true);
+    var nav = navRow(function () { go(-1); }, I18n.t('booking.confirm'), function () {
+      if (!lowRisk.checked) {
+        status.className = 'status err show';
+        status.textContent = I18n.t('booking.riskConfirm');
+        lowRisk.focus();
+        return;
+      }
+      state.details.lowRisk = true;
+      submit(status, nav);
+    }, true);
     host.appendChild(nav);
   }
 
@@ -502,7 +510,9 @@
       date: state.date,
       time: state.time,
       express: state.express,
-      payment: (s.free || s.price == null) ? 'none' : state.payment,
+      /* Always 'none'. The site does not take money; the scope check comes
+         first and the payment link is sent by a person afterwards. */
+      payment: 'none',
       amount: total(),
       currency: CFG.currency,
       lang: I18n.lang,
@@ -518,17 +528,6 @@
         localStorage.setItem('naviar.bookings', JSON.stringify(store.slice(-100)));
       } catch (e) { /* private mode */ }
 
-      /* No backend yet, but a Stripe/PayPal payment link is configured: take
-         the customer there with the case reference attached, so the payment can
-         be matched to the case by hand during the pilot. */
-      var link = (CFG.payments.paymentLinks || {})[s.id];
-      if (link && payload.amount) {
-        global.location.href = link + (link.indexOf('?') === -1 ? '?' : '&') +
-          'client_reference_id=' + encodeURIComponent(state.reference) +
-          '&prefilled_email=' + encodeURIComponent(state.details.email);
-        return;
-      }
-
       renderDone(true);
       return;
     }
@@ -543,14 +542,10 @@
       return res.json();
     }).then(function (json) {
       state.reference = json.reference;
-      if (json.checkoutUrl) {
-        global.location.href = json.checkoutUrl;   // licensed payment provider
-        return;
-      }
       renderDone(false);
     }).catch(function (err) {
       button.disabled = false;
-      button.textContent = I18n.t('booking.pay');
+      button.textContent = I18n.t('booking.confirm');
       status.className = 'status err show';
       status.textContent = err.message === 'slot'
         ? I18n.t('booking.errSlotTaken')
@@ -594,7 +589,7 @@
     again.style.marginTop = '18px';
     again.addEventListener('click', function () {
       state = { step: 0, serviceId: null, date: null, time: null, express: false,
-                details: {}, payment: 'card', reference: null };
+                details: {}, reference: null };
       render();
     });
     box.appendChild(again);
@@ -611,7 +606,7 @@
     if (name === 'service') stepService(host);
     else if (name === 'time') stepTime(host);
     else if (name === 'details') stepDetails(host);
-    else stepPayment(host);
+    else stepConfirm(host);
   }
 
   /* Price cards and the need finder can preselect a service. */

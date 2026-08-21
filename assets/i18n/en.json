@@ -1,11 +1,11 @@
 {
   "meta": {
-    "title": "NAVIAR — Help to understand and follow up public-sector cases",
-    "description": "NAVIAR helps you understand letters from public authorities. You learn what applies, when the deadline is, and what to do."
+    "title": "NAVIAR — Practical guidance for public services",
+    "description": "NAVIAR gives practical guidance: the right channel, the right questions and a checklist. We do not interpret decisions and give no legal advice."
   },
   "brand": {
     "tagline": "Clarity in complex systems.",
-    "promise": "From the first letter to completed follow-up.",
+    "promise": "Practical help, clearly bounded.",
     "disclaimer": "NAVIAR is an independent company and is not part of NAV or any public authority."
   },
   "nav": {
@@ -16,34 +16,35 @@
     "safety": "Safety",
     "faq": "FAQ",
     "contact": "Contact",
-    "cta": "Book a meeting",
+    "cta": "Start a free check",
     "menu": "Menu",
-    "language": "Language"
+    "language": "Language",
+    "limits": "What we do"
   },
   "hero": {
-    "eyebrow": "Citizen support and case guidance",
-    "title": "Get help to understand and follow up public-sector cases",
-    "sub": "We help you find out which office to contact, which documents are needed, what to write, when the deadline is — and what the next step is.",
-    "sales": "Send us the letter. Get a clear action plan.",
-    "cta1": "Send us the letter",
-    "cta2": "See how it works",
-    "cardTitle": "Your clarity plan",
+    "eyebrow": "Practical guidance",
+    "title": "Practical help finding your way through public services",
+    "sub": "We show you which channel your matter belongs in, which questions to ask, and what to have ready. We do not interpret decisions, and we give no legal, medical or financial advice.",
+    "sales": "Start with a free scope check.",
+    "cta1": "Start a free check",
+    "cta2": "What we can and cannot do",
+    "cardTitle": "Your practical guide",
     "card": [
       {
-        "t": "What the letter means",
-        "d": "Explained without official jargon."
+        "t": "The right channel",
+        "d": "Which office or form your matter belongs to."
       },
       {
-        "t": "Which deadline applies",
-        "d": "Dates and their consequences made clear."
+        "t": "A list of questions",
+        "d": "What to ask, written out in advance."
       },
       {
-        "t": "Your next step",
-        "d": "A short, concrete list of actions."
+        "t": "A checklist",
+        "d": "What to have ready before you make contact."
       }
     ],
-    "cardBadge": "24–48 h",
-    "cardFoot": "No BankID. No card details. No document upload in the pilot."
+    "cardBadge": "2 working days",
+    "cardFoot": "No BankID. No card details. No document uploads."
   },
   "stats": {
     "languages": "Languages we work in",
@@ -54,20 +55,20 @@
   "finder": {
     "eyebrow": "Start here",
     "title": "What do you need help with?",
-    "lead": "Three short questions. You get a recommendation, and we learn what people actually struggle with — that is how we decide what to build next.",
+    "lead": "Three short questions. You get a recommendation — or a referral onwards if your matter belongs somewhere else.",
     "back": "Back",
     "restart": "Start over",
     "progress": "Question {n} of {total}",
     "questions": [
       {
-        "q": "What is your situation right now?",
-        "hint": "Choose the closest match.",
+        "q": "What do you need help with?",
+        "hint": "Pick the closest match.",
         "options": [
-          "I received a letter or a decision I do not understand",
-          "I need to apply for something",
-          "My case is taking too long or has stopped",
-          "I disagree with a decision and want to appeal",
-          "I am helping a family member with their case"
+          "I do not know which office or form to use",
+          "I need help with a CV or job application",
+          "I need language help in a private conversation",
+          "I have a decision, a refusal or an appeal deadline",
+          "I am helping a family member with something practical"
         ]
       },
       {
@@ -82,37 +83,40 @@
         ]
       },
       {
-        "q": "Is there a deadline?",
-        "hint": "Deadlines decide how fast we need to work.",
+        "q": "When do you need the answer?",
+        "hint": "This affects the order of work, not the price.",
         "options": [
-          "Yes — within 7 days",
-          "Yes — within a month",
-          "No deadline, or I do not know"
+          "As soon as possible",
+          "Within a couple of weeks",
+          "There is no rush"
         ]
       }
     ],
     "resultTitle": "Our recommendation",
-    "urgent": "Short deadline — contact us today",
-    "cta": "Book this service",
+    "urgent": "We answer the scope check within one working day",
+    "cta": "Start a free check",
     "ctaAlt": "Ask us first",
-    "saved": "Thank you. Your answers help us prioritise the help people need most."
+    "saved": "Thank you. Your answers help us prioritise the help people need most.",
+    "referTitle": "This belongs with someone else",
+    "referText": "We do not take decisions, refusals, appeals or legal deadlines. Contact the body that sent the letter, or a lawyer. If you are unsure, ask us — asking costs nothing.",
+    "referCta": "See what we can and cannot do"
   },
   "process": {
     "eyebrow": "How it works",
-    "title": "From uncertainty to the next step",
-    "lead": "A small service with one clear result. No subscription, no hidden packages.",
+    "title": "From a question to a next step",
+    "lead": "A small service with clear limits. No subscriptions, no hidden bundles.",
     "steps": [
       {
-        "t": "Describe the case",
-        "d": "Pick the sender, the language and the deadline. Use your own words — do not send sensitive details."
+        "t": "Tell us what you need",
+        "d": "Fill in a free scope check. Write in your own words — do not send sensitive information."
       },
       {
-        "t": "We check the case fits",
-        "d": "You get a reference and a fixed price before any work starts."
+        "t": "We decide whether we can help",
+        "d": "A person reads it. If it does not fit, we refer you onwards — that costs nothing."
       },
       {
-        "t": "Receive the clarity plan",
-        "d": "Explanation, deadlines and next steps within 24–48 hours."
+        "t": "You get the scope and price in writing",
+        "d": "The payment link comes only afterwards. You pay nothing before you have agreed."
       }
     ]
   },
@@ -123,7 +127,7 @@
       "Where the case stands right now",
       "What the next action is",
       "Who is doing it — you or us",
-      "When the deadline is"
+      "What has been agreed, and what has not"
     ]
   },
   "areas": {
@@ -145,11 +149,11 @@
   "pricing": {
     "eyebrow": "Prices",
     "title": "Clear prices, agreed before we start",
-    "lead": "These are pilot prices. You get the price and the scope in writing before we start. Fees to others come on top.",
+    "lead": "You get the scope and the price in writing before you pay. We never send a payment link before we have accepted the work.",
     "from": "from",
     "quote": "By quote",
     "vat": "Prices in NOK. Pilot pricing, subject to change.",
-    "select": "Book this",
+    "select": "Start a free check",
     "ask": "Request a quote",
     "moreTitle": "For families and organisations",
     "catalogTitle": "Full price list",
@@ -157,7 +161,7 @@
     "delivery": "Delivery",
     "perHour": "per hour",
     "inclVat": "incl. VAT",
-    "later": "Coming later: application support, ongoing follow-up and help with appeals. We are starting with one thing and doing it well."
+    "later": "We take practical tasks only. Anything about decisions, appeals, deadlines, health, tax, debt or residency we refer onwards."
   },
   "safety": {
     "eyebrow": "Safety and ethics",
@@ -174,13 +178,13 @@
   },
   "booking": {
     "eyebrow": "Booking",
-    "title": "Book a meeting",
-    "lead": "Choose a service, pick a time, and tell us briefly what the case is about. Phone or video — your choice.",
+    "title": "Start with a free scope check",
+    "lead": "Tell us briefly what you need. We answer within one working day with a yes or a no — and with the scope and price if we can help.",
     "steps": [
       "Service",
       "Time",
       "Details",
-      "Payment"
+      "Confirm"
     ],
     "chooseService": "Which service do you need?",
     "chooseTime": "Choose a day and time",
@@ -197,32 +201,24 @@
     "channelVideo": "Video",
     "channelOffice": "At the office",
     "case": "What is the case about?",
-    "casePlaceholder": "Which office, what the letter says, and any deadline you know about. Do not include personal identity numbers or health details here.",
+    "casePlaceholder": "What you need practical help with. Do not write national ID numbers, health information or the contents of a decision.",
     "noSensitive": "Please do not write national identity numbers or health information in this field. You will get a secure channel for documents after booking.",
     "consent": "I agree that NAVIAR may contact me about this case and use my details only for that.",
-    "summary": "Your booking",
+    "summary": "Your request",
     "service": "Service",
     "when": "Time",
     "duration": "Duration",
     "total": "Total",
-    "payTitle": "How would you like to pay?",
-    "payCard": "Card",
-    "payCardD": "Secure card payment. You are redirected to our payment provider.",
-    "payVipps": "Vipps",
-    "payVippsD": "Pay with Vipps on your phone.",
-    "payInvoice": "Invoice",
-    "payInvoiceD": "We send an invoice with 10 days to pay after the meeting.",
     "payFree": "This meeting is free. No payment is needed.",
     "next": "Continue",
     "back": "Back",
-    "confirm": "Confirm booking",
-    "pay": "Confirm and pay",
+    "confirm": "Send request",
     "processing": "Processing…",
-    "doneTitle": "Booking received",
-    "doneLead": "We have sent a confirmation to your email. Keep this reference for any contact with us.",
+    "doneTitle": "Request received",
+    "doneLead": "We have your request. Keep the reference.",
     "reference": "Reference",
-    "doneNext": "We reply by email within one working day and confirm the case fits before any work starts. Never send sensitive documents by ordinary email.",
-    "another": "Make another booking",
+    "doneNext": "We answer by email within one working day. If we can help, you get the scope, the price and the terms in writing before you pay. Never send sensitive documents by ordinary email.",
+    "another": "Send another request",
     "demoNotice": "Demo mode: no booking system is connected yet, so this booking is only stored in your browser. Connect the backend in assets/js/config.js to go live.",
     "errGeneric": "Something went wrong. Please try again, or contact us directly.",
     "errSlotTaken": "That time was just taken. Please choose another.",
@@ -232,15 +228,29 @@
     "tolkDialect": "Dialect or region",
     "express": "Express — within 24 hours (+25%)",
     "expressD": "If an available advisor accepts, your case is prioritised.",
-    "angrerett": "Services normally carry a 14-day right of withdrawal. If you ask us to start immediately, you accept that the right ends once the service is fully delivered, and that you pay for work already done if you cancel.",
+    "angrerett": "Services bought online carry a 14-day right of withdrawal. If you want us to start before that period is over, we ask for your explicit consent in the offer. You then accept that the right of withdrawal ends once the service has been delivered in full.",
     "deliveryNote": "No meeting is needed for this service. We deliver in writing within {sla}.",
     "upload": "Documents",
     "uploadNote": "Describe the case in your own words. You do not need to upload the document or give sensitive details now.",
-    "tolkNotice": "Public agencies are normally required to arrange and pay for an interpreter for meetings with them. A private interpreter is for the conversations that fall outside that.",
+    "tolkNotice": "A public body assesses the need for an interpreter in its own meetings and orders a qualified one. Private language support is only for the conversations you have yourself.",
     "fitFirst": "We check that the case fits before you pay.",
     "returnPaid": "Thank you. The payment went through and your case is registered.",
     "returnCancelled": "The payment was cancelled, so nothing has been charged. Your case is saved — get in touch if you want to complete it.",
-    "consentLink": "Read the privacy notice"
+    "consentLink": "Read the privacy notice",
+    "riskTitle": "What we cannot help with",
+    "riskLead": "If your request involves anything on this list, we cannot take it. We will point you to the right body instead.",
+    "riskItems": [
+      "Interpreting a decision, refusal, appeal or legal deadline",
+      "Judging your rights or the outcome of a case",
+      "Advice on health, tax, debt, finance or residency",
+      "Submitting or signing an application for you",
+      "Contacting NAV on your behalf without a valid power of attorney",
+      "BankID, PIN, passwords or one-time codes",
+      "Health records, national ID numbers or other sensitive documents",
+      "Private language support instead of an official interpreter in meetings with a public body"
+    ],
+    "riskConfirm": "I confirm that my request is for practical help only, and for nothing on the list above.",
+    "noPayNow": "You pay nothing now. If we can help, we send the scope, the price and the terms in writing — and only then a payment link."
   },
   "faq": {
     "eyebrow": "Questions",
@@ -252,7 +262,7 @@
       },
       {
         "q": "Can you guarantee that I get the benefit or the permit?",
-        "a": "No, and you should not trust anyone who says they can. The decision belongs to the authority. What we can do is make sure your case is complete, correct and submitted on time — which is where most cases are lost."
+        "a": "No, and you should not trust anyone who says they can. We do not judge rights and we do not predict outcomes. What we do is practical: find the right channel, write out the questions, and make a checklist."
       },
       {
         "q": "Do you need my BankID?",
@@ -260,7 +270,7 @@
       },
       {
         "q": "What does it cost?",
-        "a": "The fit check is free. One letter explained costs 800 NOK, and a 45-minute clarity call costs 1 500 NOK. You get the price in writing before any work starts, and we say so if the case does not fit."
+        "a": "The scope check is free. A practical guide costs 590 kr and job application support costs 790 kr. Private language support is by quote. You get the scope and the price in writing before you pay."
       },
       {
         "q": "Which languages can I get help in?",
@@ -268,18 +278,18 @@
       },
       {
         "q": "Are you lawyers?",
-        "a": "No. We provide guidance, preparation and follow-up. When a case needs legal representation, or specialist review in health, tax or immigration matters, we refer you to a qualified professional."
+        "a": "No. We give practical guidance, not legal advice. If your matter concerns a decision, an appeal, a deadline, health, tax, debt or residency, we refer you to the right body or to a lawyer."
       },
       {
         "q": "How do I send documents safely?",
-        "a": "In this pilot you do not need to send documents at all. Describe the letter in your own words and we will say if we need more. Do not send sensitive documents by ordinary email."
+        "a": "You should not send documents at all. Describe what you need in your own words. We never ask for health records, national ID numbers or other sensitive documents."
       }
     ]
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Send us the letter",
-    "lead": "Describe your situation briefly and we will reply within one working day. If it is easier, book a free 15-minute conversation instead.",
+    "title": "Tell us what you need",
+    "lead": "Describe briefly what you need help with and we answer within one working day.",
     "email": "Email",
     "phone": "Phone",
     "office": "Office",
@@ -287,15 +297,15 @@
     "org": "Org. no.",
     "formTitle": "Write to us",
     "message": "What do you need help with?",
-    "messagePlaceholder": "Which office, what happened, and any deadline. Please leave out identity numbers and health details.",
+    "messagePlaceholder": "What you need practical help with. Leave out national ID numbers, health information and the contents of a decision.",
     "send": "Send enquiry",
     "sent": "Thank you. We have received your enquiry and will reply within one working day.",
     "note": "Your enquiry is confidential and is never shared with third parties."
   },
   "band": {
-    "title": "Tell us what the letter is about",
-    "sub": "The fit check is free, and you get the price in writing before any work starts.",
-    "cta": "Start the free fit check",
+    "title": "Start with a free scope check",
+    "sub": "We give you an honest yes or no. If it does not fit, we refer you onwards — free.",
+    "cta": "Start a free check",
     "cta2": "Email us"
   },
   "footer": {
@@ -307,48 +317,25 @@
     "terms": "Terms",
     "rights": "All rights reserved.",
     "note": "Information on this site is general guidance and does not constitute legal advice.",
-    "pilot": "Pilot service. Prices and scope are being tested and may change. Do not use it in an emergency, or when a deadline expires today."
+    "pilot": "Pilot service. We give practical guidance, not legal, medical or financial advice. Do not use this service in an emergency.",
+    "limits": "What we do"
   },
   "catalog": {
-    "fit": {
-      "n": "Free fit check",
-      "d": "A short check on whether your case fits us. No analysis — an honest yes or no, and a suggestion if something else suits you better."
+    "sjekk": {
+      "n": "Free scope check",
+      "d": "We read your request and say whether it suits us. If it does not, we point you somewhere better. Answer within one working day."
     },
-    "k01": {
-      "n": "Letter explained",
-      "d": "One letter or decision (up to 5 pages) explained in writing, with your next steps."
+    "v01": {
+      "n": "Practical guide",
+      "d": "We find the right public channel for your matter. You get a list of questions and a practical checklist."
     },
-    "k02": {
-      "n": "Clarity consultation",
-      "d": "45 minutes with an advisor about your case, by phone or video."
+    "v02": {
+      "n": "Job application support",
+      "d": "Help with your CV, application, LinkedIn profile and interview preparation."
     },
-    "tolk": {
-      "n": "Private interpreter",
-      "d": "An interpreter for conversations you arrange yourself. The price is agreed before booking."
-    },
-    "h01": {
-      "n": "Application together",
-      "d": "A standard application prepared and completed with you, documents included."
-    },
-    "o01": {
-      "n": "Case follow-up",
-      "d": "30 days of follow-up with up to 3 contact points, deadlines monitored."
-    },
-    "s01": {
-      "n": "Senior and specialist advice",
-      "d": "Hourly advice for complex or higher-risk cases."
-    },
-    "t30": {
-      "n": "Interpreter — 30 minutes",
-      "d": "Phone or video interpreting with a qualified interpreter."
-    },
-    "t60": {
-      "n": "Interpreter — 60 minutes",
-      "d": "Phone or video interpreting with a qualified interpreter."
-    },
-    "tf": {
-      "n": "On-site interpreter",
-      "d": "Interpreting in person. Priced per assignment, travel included."
+    "sprak": {
+      "n": "Private language support",
+      "d": "Language help in private, everyday conversations. It does not replace an official interpreter in meetings with a public body."
     }
   }
 }

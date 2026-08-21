@@ -1,11 +1,11 @@
 {
   "meta": {
-    "title": "NAVIAR — Kamu işlemlerinizi anlamak ve takip etmek için destek",
-    "description": "NAVIAR, kamu kurumlarından gelen mektupları anlamanıza yardım eder. Neyin geçerli olduğunu, sürenin ne zaman dolduğunu ve ne yapmanız gerektiğini öğrenirsiniz."
+    "title": "NAVIAR — Kamu hizmetlerinde pratik rehberlik",
+    "description": "NAVIAR pratik rehberlik verir: doğru kanal, doğru sorular ve bir kontrol listesi. Kararları yorumlamaz, hukuki tavsiye vermeyiz."
   },
   "brand": {
     "tagline": "Karmaşık sistemlerde açıklık.",
-    "promise": "İlk mektuptan sürecin tamamlanmasına kadar.",
+    "promise": "Pratik yardım, sınırları açık.",
     "disclaimer": "NAVIAR bağımsız bir şirkettir; NAV'ın veya herhangi bir kamu kurumunun parçası değildir."
   },
   "nav": {
@@ -16,34 +16,35 @@
     "safety": "Güvenlik",
     "faq": "Sorular",
     "contact": "İletişim",
-    "cta": "Randevu al",
+    "cta": "Ücretsiz kontrol",
     "menu": "Menü",
-    "language": "Dil"
+    "language": "Dil",
+    "limits": "Ne yapıyoruz"
   },
   "hero": {
-    "eyebrow": "Vatandaş desteği ve dosya rehberliği",
-    "title": "Kamu işlemlerinizi anlamak ve takip etmek için destek alın",
-    "sub": "Kamu işlemlerini kolaylaştırıyoruz. Hangi kuruma başvuracağınızı, hangi belgelerin gerektiğini, ne yazacağınızı, son başvuru tarihini ve sonraki adımı açık şekilde gösteriyoruz.",
-    "sales": "Mektubu bize gönderin. Net bir eylem planı alın.",
-    "cta1": "Mektubu gönderin",
-    "cta2": "Nasıl çalışıyoruz",
-    "cardTitle": "Netlik planınız",
+    "eyebrow": "Pratik rehberlik",
+    "title": "Kamu hizmetlerinde yolunuzu bulmanız için pratik yardım",
+    "sub": "Konunuzun hangi kanala ait olduğunu, hangi soruları sormanız gerektiğini ve neleri hazır bulundurmanız gerektiğini gösteririz. Kararları yorumlamayız; hukuki, tıbbi veya mali tavsiye vermeyiz.",
+    "sales": "Ücretsiz kapsam kontrolüyle başlayın.",
+    "cta1": "Ücretsiz kontrol",
+    "cta2": "Neyi yapabilir, neyi yapamayız",
+    "cardTitle": "Pratik yol haritanız",
     "card": [
       {
-        "t": "Mektup ne diyor",
-        "d": "Resmî jargon olmadan açıklanmış."
+        "t": "Doğru kanal",
+        "d": "Konunuzun ait olduğu daire veya form."
       },
       {
-        "t": "Hangi süre geçerli",
-        "d": "Tarihler ve sonuçları net."
+        "t": "Soru listesi",
+        "d": "Önceden hazırlanmış, sormanız gereken sorular."
       },
       {
-        "t": "Sıradaki adımınız",
-        "d": "Kısa ve somut bir işlem listesi."
+        "t": "Kontrol listesi",
+        "d": "Başvurmadan önce hazır etmeniz gerekenler."
       }
     ],
-    "cardBadge": "24–48 saat",
-    "cardFoot": "BankID yok. Kart bilgisi yok. Pilotta belge yükleme yok."
+    "cardBadge": "2 iş günü",
+    "cardFoot": "BankID yok. Kart bilgisi yok. Belge yükleme yok."
   },
   "stats": {
     "languages": "Hizmet verdiğimiz dil",
@@ -54,20 +55,20 @@
   "finder": {
     "eyebrow": "Buradan başlayın",
     "title": "Hangi konuda yardıma ihtiyacınız var?",
-    "lead": "Üç kısa soru. Siz bir öneri alırsınız, biz de insanların gerçekte hangi konuda zorlandığını öğreniriz — sonraki adımlarımızı bu belirliyor.",
+    "lead": "Üç kısa soru. Bir öneri alırsınız — konu başka bir yere aitse yönlendirme alırsınız.",
     "back": "Geri",
     "restart": "Baştan başla",
     "progress": "Soru {n} / {total}",
     "questions": [
       {
-        "q": "Şu anda durumunuz nedir?",
-        "hint": "Size en yakın olanı seçin.",
+        "q": "Neye yardım gerekiyor?",
+        "hint": "En yakın olanı seçin.",
         "options": [
-          "Anlamadığım bir mektup veya karar aldım",
-          "Bir başvuru yapmam gerekiyor",
-          "Dosyam çok uzadı veya durdu",
-          "Bir karara itiraz etmek istiyorum",
-          "Bir aile bireyinin işlemlerine yardım ediyorum"
+          "Hangi daireye veya forma başvuracağımı bilmiyorum",
+          "CV veya iş başvurusu konusunda yardım gerekiyor",
+          "Özel bir görüşmede dil yardımı gerekiyor",
+          "Bir karar, ret veya itiraz süresi var",
+          "Bir aile üyesine pratik bir konuda yardım ediyorum"
         ]
       },
       {
@@ -82,37 +83,40 @@
         ]
       },
       {
-        "q": "Bir son tarih var mı?",
-        "hint": "Süre, ne kadar hızlı çalışmamız gerektiğini belirler.",
+        "q": "Cevaba ne zaman ihtiyacınız var?",
+        "hint": "Bu yalnızca sırayı belirler, fiyatı değil.",
         "options": [
-          "Evet — 7 gün içinde",
-          "Evet — bir ay içinde",
-          "Son tarih yok veya bilmiyorum"
+          "Mümkün olan en kısa sürede",
+          "Birkaç hafta içinde",
+          "Acelesi yok"
         ]
       }
     ],
     "resultTitle": "Önerimiz",
-    "urgent": "Süre kısa — bugün iletişime geçin",
-    "cta": "Bu hizmeti seç",
+    "urgent": "Kapsam kontrolünü bir iş günü içinde yanıtlarız",
+    "cta": "Ücretsiz kontrol",
     "ctaAlt": "Önce sorayım",
-    "saved": "Teşekkürler. Yanıtlarınız, en çok ihtiyaç duyulan yardımı önceliklendirmemize yardımcı oluyor."
+    "saved": "Teşekkürler. Yanıtlarınız, en çok ihtiyaç duyulan yardımı önceliklendirmemize yardımcı oluyor.",
+    "referTitle": "Bu konu başka bir yere ait",
+    "referText": "Karar, ret, itiraz ve hukuki süreleri kabul etmiyoruz. Mektubu gönderen kuruma ya da bir avukata başvurun. Emin değilseniz bize sorun — sormak ücretsizdir.",
+    "referCta": "Neyi yapabilir, neyi yapamayız"
   },
   "process": {
     "eyebrow": "Nasıl çalışıyoruz",
-    "title": "Belirsizlikten sıradaki adıma",
-    "lead": "Tek bir net sonucu olan küçük bir hizmet. Abonelik yok, gizli paket yok.",
+    "title": "Sorudan bir sonraki adıma",
+    "lead": "Sınırları açık, küçük bir hizmet. Abonelik yok, gizli paket yok.",
     "steps": [
       {
-        "t": "Konuyu anlatın",
-        "d": "Göndereni, dili ve süreyi seçin. Kendi kelimelerinizle yazın — hassas bilgi göndermeyin."
+        "t": "Neye ihtiyacınız olduğunu yazın",
+        "d": "Ücretsiz kapsam kontrolünü doldurun. Kendi cümlelerinizle yazın — hassas bilgi göndermeyin."
       },
       {
-        "t": "Uygunluğu kontrol ediyoruz",
-        "d": "İş başlamadan önce bir referans numarası ve sabit fiyat alırsınız."
+        "t": "Yardımcı olabilir miyiz diye bakarız",
+        "d": "Bir insan okur. Uygun değilse sizi doğru yere yönlendiririz — ücretsizdir."
       },
       {
-        "t": "Netlik planını alın",
-        "d": "Açıklama, süreler ve sıradaki adımlar 24–48 saat içinde."
+        "t": "Kapsam ve fiyat yazılı gelir",
+        "d": "Ödeme bağlantısı ancak ondan sonra gelir. Onay vermeden hiçbir şey ödemezsiniz."
       }
     ]
   },
@@ -123,7 +127,7 @@
       "Dosya şu anda hangi aşamada",
       "Sıradaki işlem ne",
       "Kim yapacak — siz mi biz mi",
-      "Son tarih ne zaman"
+      "Neyin kararlaştırıldığı ve neyin kararlaştırılmadığı"
     ]
   },
   "areas": {
@@ -145,11 +149,11 @@
   "pricing": {
     "eyebrow": "Fiyatlar",
     "title": "Net fiyatlar, işe başlamadan önce anlaşılır",
-    "lead": "Bunlar pilot fiyatlardır. Fiyatı ve kapsamı başlamadan önce yazılı alırsınız. Başkalarına ödenen harçlar ayrıca gelir.",
+    "lead": "Ödeme yapmadan önce kapsamı ve fiyatı yazılı olarak alırsınız. İşi kabul etmeden asla ödeme bağlantısı göndermeyiz.",
     "from": "başlangıç",
     "quote": "Teklife göre",
     "vat": "Fiyatlar NOK cinsindendir. Pilot fiyatlar olup değişebilir.",
-    "select": "Bunu seç",
+    "select": "Ücretsiz kontrol",
     "ask": "Teklif iste",
     "moreTitle": "Aileler ve kurumlar için",
     "catalogTitle": "Tam fiyat listesi",
@@ -157,7 +161,7 @@
     "delivery": "Teslim",
     "perHour": "saat başına",
     "inclVat": "KDV dahil",
-    "later": "Daha sonra gelecek: başvuru desteği, sürekli takip ve itiraz yardımı. Tek bir işle başlıyor ve onu iyi yapıyoruz."
+    "later": "Yalnızca pratik işler alıyoruz. Karar, itiraz, süre, sağlık, vergi, borç veya oturum konularını doğru kuruma yönlendiririz."
   },
   "safety": {
     "eyebrow": "Güvenlik ve etik",
@@ -174,13 +178,13 @@
   },
   "booking": {
     "eyebrow": "Randevu",
-    "title": "Randevu alın",
-    "lead": "Bir hizmet ve saat seçin, konuyu kısaca anlatın. Telefon veya görüntülü görüşme — seçim sizin.",
+    "title": "Ücretsiz kapsam kontrolüyle başlayın",
+    "lead": "Neye ihtiyacınız olduğunu kısaca anlatın. Bir iş günü içinde evet ya da hayır diye yanıtlarız; yardımcı olabiliyorsak kapsam ve fiyatı da yazarız.",
     "steps": [
       "Hizmet",
-      "Saat",
+      "Zaman",
       "Bilgiler",
-      "Ödeme"
+      "Onay"
     ],
     "chooseService": "Hangi hizmete ihtiyacınız var?",
     "chooseTime": "Gün ve saat seçin",
@@ -197,32 +201,24 @@
     "channelVideo": "Görüntülü",
     "channelOffice": "Ofiste",
     "case": "Konu nedir?",
-    "casePlaceholder": "Hangi kurum, mektupta ne yazıyor ve bildiğiniz bir son tarih var mı. Buraya kimlik numarası veya sağlık bilgisi yazmayın.",
+    "casePlaceholder": "Hangi pratik konuda yardım gerektiği. Kimlik numarası, sağlık bilgisi veya karar metni yazmayın.",
     "noSensitive": "Bu alana kimlik numarası veya sağlık bilgisi yazmayın. Randevudan sonra belgeler için güvenli bir kanal alacaksınız.",
     "consent": "NAVIAR'ın bu konuda benimle iletişime geçmesini ve bilgilerimi yalnızca bunun için kullanmasını kabul ediyorum.",
-    "summary": "Randevunuz",
+    "summary": "Talebiniz",
     "service": "Hizmet",
     "when": "Zaman",
     "duration": "Süre",
     "total": "Toplam",
-    "payTitle": "Nasıl ödemek istersiniz?",
-    "payCard": "Kart",
-    "payCardD": "Güvenli kart ödemesi. Ödeme sağlayıcımıza yönlendirilirsiniz.",
-    "payVipps": "Vipps",
-    "payVippsD": "Telefonunuzdan Vipps ile ödeyin.",
-    "payInvoice": "Fatura",
-    "payInvoiceD": "Görüşmeden sonra 10 gün vadeli fatura gönderiyoruz.",
     "payFree": "Bu görüşme ücretsizdir. Ödeme gerekmez.",
     "next": "Devam",
     "back": "Geri",
-    "confirm": "Randevuyu onayla",
-    "pay": "Onayla ve öde",
+    "confirm": "Talebi gönder",
     "processing": "İşleniyor…",
-    "doneTitle": "Randevu alındı",
-    "doneLead": "E-posta adresinize bir onay gönderdik. Bizimle iletişimde bu referansı kullanın.",
+    "doneTitle": "Talebiniz alındı",
+    "doneLead": "Talebinizi aldık. Referans numarasını saklayın.",
     "reference": "Referans",
-    "doneNext": "Bir iş günü içinde e-postayla yanıt veriyor ve iş başlamadan önce dosyanın uygun olduğunu teyit ediyoruz. Hassas belgeleri asla normal e-postayla göndermeyin.",
-    "another": "Yeni randevu al",
+    "doneNext": "Bir iş günü içinde e-posta ile yanıt veririz. Yardımcı olabilirsek ödemeden önce kapsamı, fiyatı ve koşulları yazılı alırsınız. Hassas belgeleri asla normal e-postayla göndermeyin.",
+    "another": "Yeni bir talep gönder",
     "demoNotice": "Demo modu: randevu sistemi henüz bağlı değil, bu kayıt yalnızca tarayıcınızda saklanıyor. Canlıya almak için assets/js/config.js içinde backend'i bağlayın.",
     "errGeneric": "Bir sorun oluştu. Tekrar deneyin veya doğrudan bizimle iletişime geçin.",
     "errSlotTaken": "Bu saat az önce doldu. Lütfen başka bir saat seçin.",
@@ -232,15 +228,29 @@
     "tolkDialect": "Lehçe veya bölge",
     "express": "Ekspres — 24 saat içinde (+%25)",
     "expressD": "Uygun bir danışman kabul ederse dosyanız önceliklendirilir.",
-    "angrerett": "Hizmetlerde kural olarak 14 günlük cayma hakkı vardır. Hemen başlamamızı isterseniz, hizmet tümüyle teslim edildiğinde bu hakkın sona ereceğini ve iptal etmeniz halinde yapılmış işin bedelini ödeyeceğinizi kabul etmiş olursunuz.",
+    "angrerett": "İnternetten alınan hizmetlerde 14 günlük cayma hakkı vardır. Bu süre dolmadan başlamamızı isterseniz, teklifte açık onayınızı isteriz. Bu durumda hizmet tümüyle teslim edildiğinde cayma hakkının sona erdiğini kabul etmiş olursunuz.",
     "deliveryNote": "Bu hizmet için görüşme gerekmez. {sla} içinde yazılı olarak teslim ederiz.",
     "upload": "Belgeler",
     "uploadNote": "Konuyu kendi kelimelerinizle anlatın. Şu aşamada belgeyi yüklemeniz veya hassas bilgi vermeniz gerekmiyor.",
-    "tolkNotice": "Kamu kurumları, kendileriyle yapılan görüşmelerde kural olarak tercümanı sağlamak ve ücretini ödemekle yükümlüdür. Özel tolk, bunun dışında kalan görüşmeler içindir.",
+    "tolkNotice": "Kamu kurumu kendi görüşmelerinde tercüman ihtiyacını kendisi değerlendirir ve nitelikli tercümanı kendisi sipariş eder. Özel dil desteği yalnızca kendi yaptığınız görüşmeler içindir.",
     "fitFirst": "Ödeme yapmadan önce dosyanın uygun olduğunu kontrol ediyoruz.",
     "returnPaid": "Teşekkürler. Ödeme tamamlandı ve dosyanız kaydedildi.",
     "returnCancelled": "Ödeme iptal edildi, hiçbir tahsilat yapılmadı. Dosyanız kayıtlı — tamamlamak isterseniz bize yazın.",
-    "consentLink": "Gizlilik bildirimini okuyun"
+    "consentLink": "Gizlilik bildirimini okuyun",
+    "riskTitle": "Yardımcı olamayacağımız konular",
+    "riskLead": "Talebiniz bu listedeki bir konuyu içeriyorsa kabul edemeyiz. Bunun yerine sizi doğru kuruma yönlendiririz.",
+    "riskItems": [
+      "Bir kararı, reddi, itirazı veya hukuki süreyi yorumlamak",
+      "Haklarınızı veya bir davanın sonucunu değerlendirmek",
+      "Sağlık, vergi, borç, finans veya oturum konusunda tavsiye",
+      "Sizin adınıza başvuru göndermek veya imzalamak",
+      "Geçerli vekâlet olmadan sizin adınıza NAV ile görüşmek",
+      "BankID, PIN, parola veya tek kullanımlık kodlar",
+      "Sağlık belgeleri, kimlik numaraları veya diğer hassas belgeler",
+      "Kamu kurumlarıyla görüşmelerde resmî tercüman yerine özel dil desteği"
+    ],
+    "riskConfirm": "Talebimin yalnızca pratik yardım için olduğunu, yukarıdaki listedeki hiçbir konuyu içermediğini onaylıyorum.",
+    "noPayNow": "Şimdi hiçbir ödeme yapmıyorsunuz. Yardımcı olabilirsek kapsamı, fiyatı ve koşulları yazılı gönderiririz — ödeme bağlantısı ancak ondan sonra gelir."
   },
   "faq": {
     "eyebrow": "Sorular",
@@ -252,7 +262,7 @@
       },
       {
         "q": "Ödeneği veya izni alacağımı garanti edebilir misiniz?",
-        "a": "Hayır — ve bunu vaat eden kimseye güvenmeyin. Karar kurumundur. Bizim yapabileceğimiz, dosyanızın eksiksiz, doğru ve zamanında verilmesini sağlamaktır; dosyaların çoğu tam burada kaybediliyor."
+        "a": "Hayır; yapabileceğini söyleyen kimseye de güvenmeyin. Hakları değerlendirmez, sonuç tahmini yapmayız. Yaptığımız iş pratiktir: doğru kanalı bulmak, soruları hazırlamak ve bir kontrol listesi çıkarmak."
       },
       {
         "q": "BankID'me ihtiyacınız var mı?",
@@ -260,7 +270,7 @@
       },
       {
         "q": "Ücreti nedir?",
-        "a": "Uygunluk kontrolü ücretsizdir. Bir mektubun açıklanması 800 NOK, 45 dakikalık netlik görüşmesi 1.500 NOK. Fiyatı iş başlamadan yazılı alırsınız; dosya uygun değilse bunu söyleriz."
+        "a": "Kapsam kontrolü ücretsizdir. Pratik yönlendirme 590 kr, iş başvurusu desteği 790 kr. Özel dil desteği teklif üzerinedir. Ödemeden önce kapsamı ve fiyatı yazılı alırsınız."
       },
       {
         "q": "Hangi dillerde yardım alabilirim?",
@@ -268,18 +278,18 @@
       },
       {
         "q": "Avukat mısınız?",
-        "a": "Hayır. Rehberlik, hazırlık ve takip hizmeti veriyoruz. Dosya hukuki temsil gerektirdiğinde ya da sağlık, vergi veya göçmenlik konusunda uzman değerlendirmesi gerektiğinde sizi yetkili bir uzmana yönlendiriyoruz."
+        "a": "Hayır. Pratik rehberlik veririz, hukuki danışmanlık değil. Konu bir karar, itiraz, süre, sağlık, vergi, borç veya oturum ise sizi doğru kuruma ya da avukata yönlendiririz."
       },
       {
         "q": "Belgeleri güvenle nasıl gönderirim?",
-        "a": "Bu pilot aşamada belge göndermenize hiç gerek yok. Mektubu kendi kelimelerinizle anlatın, daha fazlası gerekirse size söyleriz. Hassas belgeleri normal e-postayla göndermeyin."
+        "a": "Hiç belge göndermemelisiniz. Neye ihtiyacınız olduğunu kendi cümlelerinizle anlatın. Sağlık belgesi, kimlik numarası veya başka hassas belge asla istemeyiz."
       }
     ]
   },
   "contact": {
     "eyebrow": "İletişim",
-    "title": "Mektubu bize gönderin",
-    "lead": "Durumunuzu kısaca anlatın, bir iş günü içinde yanıt verelim. Daha kolaysa 15 dakikalık ücretsiz görüşme alın.",
+    "title": "Neye ihtiyacınız olduğunu yazın",
+    "lead": "Neye yardım gerektiğini kısaca anlatın; bir iş günü içinde yanıtlarız.",
     "email": "E-posta",
     "phone": "Telefon",
     "office": "Ofis",
@@ -287,15 +297,15 @@
     "org": "Şirket no.",
     "formTitle": "Bize yazın",
     "message": "Hangi konuda yardıma ihtiyacınız var?",
-    "messagePlaceholder": "Hangi kurum, ne oldu ve varsa son tarih. Lütfen kimlik numarası ve sağlık bilgisi yazmayın.",
+    "messagePlaceholder": "Hangi pratik konuda yardım gerektiği. Kimlik numarası, sağlık bilgisi ve karar metnini yazmayın.",
     "send": "Gönder",
     "sent": "Teşekkürler. Başvurunuzu aldık, bir iş günü içinde yanıt vereceğiz.",
     "note": "Başvurunuz gizlidir ve üçüncü taraflarla asla paylaşılmaz."
   },
   "band": {
-    "title": "Mektubun neyle ilgili olduğunu anlatın",
-    "sub": "Uygunluk kontrolü ücretsiz; fiyatı iş başlamadan yazılı alırsınız.",
-    "cta": "Ücretsiz uygunluk kontrolünü başlat",
+    "title": "Ücretsiz kapsam kontrolüyle başlayın",
+    "sub": "Dürüstçe evet ya da hayır deriz. Uygun değilse sizi ücretsiz yönlendiririz.",
+    "cta": "Ücretsiz kontrol",
     "cta2": "E-posta gönderin"
   },
   "footer": {
@@ -307,48 +317,25 @@
     "terms": "Koşullar",
     "rights": "Tüm hakları saklıdır.",
     "note": "Bu sitedeki bilgiler genel yönlendirme niteliğindedir ve hukuki danışmanlık teşkil etmez.",
-    "pilot": "Pilot hizmet. Fiyatlar ve kapsam test ediliyor, değişebilir. Acil tehlike durumunda veya süresi bugün dolan bir işlemde kullanmayın."
+    "pilot": "Pilot hizmet. Pratik rehberlik veririz; hukuki, tıbbi veya mali danışmanlık değil. Acil tehlike durumunda bu hizmeti kullanmayın.",
+    "limits": "Ne yapıyoruz"
   },
   "catalog": {
-    "fit": {
-      "n": "Ücretsiz uygunluk kontrolü",
-      "d": "Dosyanızın bize uygun olup olmadığına dair kısa bir kontrol. Analiz değil — dürüst bir evet ya da hayır, uygun değilse bir yönlendirme."
+    "sjekk": {
+      "n": "Ücretsiz kapsam kontrolü",
+      "d": "Talebinizi okur ve bize uygun olup olmadığını söyleriz. Uygun değilse sizi doğru yere yönlendiririz. Bir iş günü içinde yanıt."
     },
-    "k01": {
-      "n": "Mektup açıklaması",
-      "d": "Bir mektup veya karar (en fazla 5 sayfa) yazılı olarak açıklanır, sonraki adımlarınızla birlikte."
+    "v01": {
+      "n": "Pratik yönlendirme",
+      "d": "Konunuz için doğru resmî kanalı buluruz. Bir soru listesi ve pratik bir kontrol listesi alırsınız."
     },
-    "k02": {
-      "n": "Netlik danışmanlığı",
-      "d": "Dosyanız hakkında bir danışmanla 45 dakika, telefon veya görüntülü."
+    "v02": {
+      "n": "İş başvurusu desteği",
+      "d": "CV, başvuru, LinkedIn profili ve mülakat hazırlığı konusunda yardım."
     },
-    "tolk": {
-      "n": "Özel tolk",
-      "d": "Kendi ayarladığınız görüşmeler için tercüman. Fiyat rezervasyondan önce belirlenir."
-    },
-    "h01": {
-      "n": "Başvuru birlikte",
-      "d": "Standart bir başvuru belgeleriyle hazırlanır ve sizinle tamamlanır."
-    },
-    "o01": {
-      "n": "Dosya takibi",
-      "d": "30 gün takip, en fazla 3 temas, süreler izlenir."
-    },
-    "s01": {
-      "n": "Kıdemli ve uzman danışmanlık",
-      "d": "Karmaşık veya yüksek riskli dosyalar için saatlik danışmanlık."
-    },
-    "t30": {
-      "n": "Tolk — 30 dakika",
-      "d": "Nitelikli tolk ile telefon veya görüntülü tercüme."
-    },
-    "t60": {
-      "n": "Tolk — 60 dakika",
-      "d": "Nitelikli tolk ile telefon veya görüntülü tercüme."
-    },
-    "tf": {
-      "n": "Yerinde tolk",
-      "d": "Yüz yüze tercüme. Görev başına fiyat, yol dahil."
+    "sprak": {
+      "n": "Özel dil desteği",
+      "d": "Özel ve gündelik görüşmelerde dil yardımı. Kamu kurumlarıyla yapılan görüşmelerde resmî tercümanın yerini tutmaz."
     }
   }
 }

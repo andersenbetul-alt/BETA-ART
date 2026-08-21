@@ -109,14 +109,21 @@ const BOOKING_STATUS = [
   'cancelled'
 ];
 
-/* Which moves are allowed. This is a guard, not paperwork: it is what stops a
-   case reaching the customer without passing quality control, and stops one
-   being marked delivered without having been paid for. A case can be abandoned
-   from anywhere it is still open; nothing leaves 'delivered' or 'declined'. */
+/* Which moves are allowed. This is a guard, not paperwork. Read as a path it
+   is the promise the site makes to the customer, in the same order:
+
+     every request is reviewed by a person before anything is quoted
+       -> the scope and price go out in writing before a payment link
+         -> nobody is assigned before the work has been paid for
+           -> nothing reaches the customer without being read through first
+
+   Every one of those is an edge that does not exist rather than a rule
+   somebody has to remember. A case can be declined or abandoned from anywhere
+   it is still open; nothing leaves 'delivered' or 'declined'. */
 const BOOKING_TRANSITIONS = {
-  new:              ['in_review', 'awaiting_payment', 'assigning', 'declined', 'cancelled'],
-  in_review:        ['awaiting_payment', 'assigning', 'declined', 'cancelled'],
-  awaiting_payment: ['assigning', 'cancelled'],
+  new:              ['in_review', 'declined', 'cancelled'],
+  in_review:        ['awaiting_payment', 'declined', 'cancelled'],
+  awaiting_payment: ['assigning', 'declined', 'cancelled'],
   assigning:        ['in_progress', 'cancelled'],
   in_progress:      ['quality_check', 'cancelled'],
   quality_check:    ['delivered', 'in_progress', 'cancelled'],   // back for rework
