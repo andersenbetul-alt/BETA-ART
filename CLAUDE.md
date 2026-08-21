@@ -67,6 +67,9 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    Midnight Navy `#082C54` ve Electric Aqua `#00D8C2`. **Aqua beyaz üzerinde 1,8:1'dir
    ve metinde kullanılamaz**; açık zeminde metin için `var(--brand-2-ink)` (`#0a7d72`,
    5,0:1). Logo halkası `var(--logo-ink)` ile temaya göre döner, aqua köprü sabittir.
+   Yazı boyutu da aynı kuraldadır: ham `rem` yazmayın, `--fs-2xs`…`--fs-xl`
+   basamaklarını kullanın. Başlıkların `clamp()` değerleri ve `em` göreli boyutlar
+   (ilk harf, `code`) ölçeğin dışındadır.
 6. **Sayfa iskeleti altı dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
    altısını birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`). `check.mjs` çiftlenen
    id ve script'leri yakalar ama eksik menü bağlantısını yakalamaz.
