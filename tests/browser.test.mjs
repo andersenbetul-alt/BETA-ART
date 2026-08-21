@@ -202,6 +202,25 @@ export default async function () {
         await p.close();
       });
 
+      await test('a career request goes through without a phone number', async () => {
+        const p = await browser.newPage();
+        await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
+        await p.waitForTimeout(900);
+        await p.locator('#bkBody .service-opt').nth(2).click();   // Career Starter
+        await p.waitForTimeout(400);
+        equal(await p.locator('#bkBody [name="phone"]').getAttribute('required'), null,
+          'the phone field is still required for a career request');
+        await p.fill('#bkBody [name="name"]', 'Test Testesen');
+        await p.fill('#bkBody [name="email"]', 'test@example.com');
+        await p.fill('#bkBody [name="caseText"]', 'Vil bytte bransje.');
+        await p.check('#bkBody [name="consent"]');
+        await p.locator('#bkBody .btn-primary').click();
+        await p.waitForTimeout(400);
+        assert(await p.locator('#bkBody .risk-list').count() > 0,
+          'the form refused to move on without a phone number');
+        await p.close();
+      });
+
       await test('the career page states the limits it has to state', async () => {
         const p = await browser.newPage();
         await p.goto(`${BASE}/karriere.html`, { waitUntil: 'load' });

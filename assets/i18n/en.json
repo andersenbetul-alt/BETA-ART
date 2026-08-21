@@ -253,7 +253,8 @@
     "groupCareer": "Career",
     "goal": "What do you want to achieve?",
     "goalPlaceholder": "For example: I want to change industry, or I get no reply to my applications. Do not write national ID numbers or health information.",
-    "noDocs": "Do not send a CV or any other document here. If we need your CV for a personal review, you get a separate secure link afterwards."
+    "noDocs": "Do not send a CV or any other document here. If we need your CV for a personal review, you get a separate secure link afterwards.",
+    "phoneOptional": "Optional. We only need your name, email, language and what you want to achieve."
   },
   "faq": {
     "eyebrow": "Questions",

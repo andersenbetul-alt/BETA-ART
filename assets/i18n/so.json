@@ -253,7 +253,8 @@
     "groupCareer": "Xirfad",
     "goal": "Maxaad rabtaa inaad gaadho?",
     "goalPlaceholder": "Tusaale: waxaan rabaa inaan beddelo qaybta shaqada, ama jawaab kama helo codsiyadayda. Ha qorin lambar aqoonsi ama macluumaad caafimaad.",
-    "noDocs": "Halkan ha ku soo dirin CV ama dukumeenti kale. Haddii aan CV-gaaga ugu baahanno dib u eegis shakhsi ah, waxaad kadib heli doontaa xiriiriye gaar ah oo ammaan ah."
+    "noDocs": "Halkan ha ku soo dirin CV ama dukumeenti kale. Haddii aan CV-gaaga ugu baahanno dib u eegis shakhsi ah, waxaad kadib heli doontaa xiriiriye gaar ah oo ammaan ah.",
+    "phoneOptional": "Ikhtiyaari. Waxaan u baahannahay oo keliya magaca, iimaylka, luqadda iyo waxa aad rabto inaad gaadho."
   },
   "faq": {
     "eyebrow": "Su'aalo",

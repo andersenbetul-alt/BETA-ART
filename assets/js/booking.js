@@ -291,8 +291,15 @@
     row1.appendChild(field(I18n.t('booking.email'), input('email', 'email', true, d.email)));
     form.appendChild(row1);
 
+    /* A career request is meant to collect name, email, language and the goal,
+       and nothing more. The phone number stays on the form because a customer
+       may want to be rung back, but it is not required for one. */
+    var careerService = Boolean(s && s.group === 'karriere');
+
     var row2 = el('div', 'field-row');
-    row2.appendChild(field(I18n.t('booking.phone'), input('phone', 'tel', true, d.phone)));
+    row2.appendChild(field(I18n.t('booking.phone'),
+                           input('phone', 'tel', !careerService, d.phone),
+                           careerService ? I18n.t('booking.phoneOptional') : null));
 
     var langSel = el('select');
     langSel.name = 'lang';
@@ -348,18 +355,16 @@
        case is about — and it says outright that no CV belongs here. The CV, if
        one is needed at all, comes later over a separate secure link, and only
        for the personal review. */
-    var career = Boolean(s && s.group === 'karriere');
-
     var ta = el('textarea');
     ta.name = 'caseText';
     ta.required = true;
-    ta.placeholder = I18n.t(career ? 'booking.goalPlaceholder' : 'booking.casePlaceholder');
+    ta.placeholder = I18n.t(careerService ? 'booking.goalPlaceholder' : 'booking.casePlaceholder');
     if (d.caseText) ta.value = d.caseText;
-    form.appendChild(field(I18n.t(career ? 'booking.goal' : 'booking.case'), ta,
+    form.appendChild(field(I18n.t(careerService ? 'booking.goal' : 'booking.case'), ta,
                            I18n.t('booking.noSensitive')));
 
     var upload = el('p', 'status info show',
-                    I18n.t(career ? 'booking.noDocs' : 'booking.uploadNote'));
+                    I18n.t(careerService ? 'booking.noDocs' : 'booking.uploadNote'));
     form.appendChild(upload);
 
     /* Express is a real +25% surcharge, shown before purchase (Blueprint 12.2) */
@@ -397,7 +402,8 @@
 
     host.appendChild(navRow(function () { go(-1); }, I18n.t('booking.next'), function () {
       var data = new FormData(form);
-      var required = ['name', 'email', 'phone', 'caseText'];
+      var required = careerService ? ['name', 'email', 'caseText']
+                                   : ['name', 'email', 'phone', 'caseText'];
       if (s && s.tolk) required.push('tolkLang');
       var missing = required.filter(function (k) { return !String(data.get(k) || '').trim(); });
       if (missing.length || !consent.checked) {

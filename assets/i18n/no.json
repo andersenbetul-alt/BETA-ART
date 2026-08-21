@@ -253,7 +253,8 @@
     "groupCareer": "Karriere",
     "goal": "Hva vil du oppnå?",
     "goalPlaceholder": "For eksempel: jeg vil bytte bransje, eller jeg får ikke svar på søknadene mine. Ikke skriv fødselsnummer eller helseopplysninger.",
-    "noDocs": "Ikke send CV eller andre dokumenter her. Trenger vi CV-en din til en personlig gjennomgang, får du en egen sikker lenke etterpå."
+    "noDocs": "Ikke send CV eller andre dokumenter her. Trenger vi CV-en din til en personlig gjennomgang, får du en egen sikker lenke etterpå.",
+    "phoneOptional": "Valgfritt. Vi trenger bare navn, e-post, språk og hva du vil oppnå."
   },
   "faq": {
     "eyebrow": "Spørsmål",

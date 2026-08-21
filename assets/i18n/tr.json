@@ -253,7 +253,8 @@
     "groupCareer": "Kariyer",
     "goal": "Neyi başarmak istiyorsunuz?",
     "goalPlaceholder": "Örneğin: sektör değiştirmek istiyorum ya da başvurularıma yanıt alamıyorum. Kimlik numarası veya sağlık bilgisi yazmayın.",
-    "noDocs": "Buraya CV veya başka belge göndermeyin. Kişisel inceleme için CV’nize ihtiyacımız olursa size ayrı bir güvenli bağlantı gönderilir."
+    "noDocs": "Buraya CV veya başka belge göndermeyin. Kişisel inceleme için CV’nize ihtiyacımız olursa size ayrı bir güvenli bağlantı gönderilir.",
+    "phoneOptional": "İsteğe bağlı. Yalnızca isim, e-posta, dil ve neyi başarmak istediğinize ihtiyacımız var."
   },
   "faq": {
     "eyebrow": "Sorular",

@@ -253,7 +253,8 @@
     "groupCareer": "Kariera",
     "goal": "Co chcesz osiągnąć?",
     "goalPlaceholder": "Na przykład: chcę zmienić branżę albo nie dostaję odpowiedzi na podania. Nie wpisuj numerów ewidencyjnych ani danych o zdrowiu.",
-    "noDocs": "Nie przesyłaj tutaj CV ani żadnych dokumentów. Jeśli będziemy potrzebować CV do osobistego przeglądu, otrzymasz osobny bezpieczny link."
+    "noDocs": "Nie przesyłaj tutaj CV ani żadnych dokumentów. Jeśli będziemy potrzebować CV do osobistego przeglądu, otrzymasz osobny bezpieczny link.",
+    "phoneOptional": "Opcjonalne. Potrzebujemy tylko imienia, e-maila, języka i tego, co chcesz osiągnąć."
   },
   "faq": {
     "eyebrow": "Pytania",

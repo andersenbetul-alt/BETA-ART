@@ -253,7 +253,8 @@
     "groupCareer": "Karjera",
     "goal": "Ko norite pasiekti?",
     "goalPlaceholder": "Pavyzdžiui: noriu pakeisti sritį arba negaunu atsakymų į prašymus. Nerašykite asmens kodų ar sveikatos duomenų.",
-    "noDocs": "Nesiųskite čia CV ar kitų dokumentų. Jei CV prireiks asmeninei peržiūrai, vėliau gausite atskirą saugią nuorodą."
+    "noDocs": "Nesiųskite čia CV ar kitų dokumentų. Jei CV prireiks asmeninei peržiūrai, vėliau gausite atskirą saugią nuorodą.",
+    "phoneOptional": "Neprivaloma. Mums reikia tik vardo, el. pašto, kalbos ir to, ko norite pasiekti."
   },
   "faq": {
     "eyebrow": "Klausimai",
