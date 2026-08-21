@@ -304,3 +304,54 @@ def _ikon_uret(ad, boy):
 
 _ikon_uret('favicon-32.png', 32)
 _ikon_uret('apple-touch-icon.png', 180)
+
+
+# ---------------------------------------------------------------------------
+# MANIFEST.md — hangi dosya, hangi rol, hangi özet.
+# Çıktı-entegrasyon denetimi v0.2, kabul kontrolü 8: "her başvurulan dosya
+# mevcut ve özeti kayıtlı olmalı". Özet burada üretilir ki elle güncellenmesin.
+# ---------------------------------------------------------------------------
+import hashlib as _hl
+
+_ROL = {
+    'qblogg-symbol.svg': 'Ana sembol, tam renk — birincil varlık',
+    'qblogg-symbol-navy.svg': 'Sembol, tek renk navy',
+    'qblogg-symbol-white.svg': 'Sembol, tek renk beyaz',
+    'qblogg-symbol-black.svg': 'Sembol, tek renk siyah — faks/gravür',
+    'qblogg-symbol-reverse.svg': 'Koyu zeminde, yuvarlatılmış alan',
+    'qblogg-lockup-horizontal.svg': 'Yatay kilit (sembol + wordmark)',
+    'qblogg-lockup-horizontal-white.svg': 'Yatay kilit, koyu zemin',
+    'qblogg-lockup-stacked.svg': 'Dikey kilit',
+    'qblogg-lockup-stacked-white.svg': 'Dikey kilit, koyu zemin',
+    'qblogg-icon-app.svg': '1024×1024 uygulama ikonu — köprü 100u',
+    'qblogg-icon-small.svg': '16–32 px ikon — köprü 100u',
+    'favicon-32.png': 'Tarayıcı sekmesi, 32×32 — app ikonundan',
+    'apple-touch-icon.png': 'iOS ana ekran, 180×180 — app ikonundan',
+}
+
+_satir = []
+for _ad in sorted(_ROL):
+    _p = OUT / _ad
+    if not _p.exists():
+        _satir.append(f'| `{_ad}` | {_ROL[_ad]} | — | **DOSYA YOK** |')
+        continue
+    _b = _p.read_bytes()
+    # Binlik ayracı yalnızca sayıya uygulanır. Önce tüm satıra uygulanıyordu
+    # ve rol metnindeki virgülleri de noktaya çeviriyordu.
+    _boy = f'{len(_b):,}'.replace(',', '.')
+    _satir.append(f'| `{_ad}` | {_ROL[_ad]} | {_boy} | `{_hl.sha256(_b).hexdigest()[:16]}` |')
+
+_fazla = sorted(p.name for p in OUT.iterdir() if p.name not in _ROL and p.name != 'MANIFEST.md')
+
+(OUT / 'MANIFEST.md').write_text(
+    '# QBLOGG marka varlıkları — manifesto\n\n'
+    '`python3 scripts/marka-uret.py` üretir. **Elle düzenlemeyin.**\n\n'
+    'Özetler SHA-256\'nın ilk 16 hanesi. Bir dosya beklenmedik biçimde\n'
+    'değiştiyse özeti burada tutmaz — üretici yeniden çalıştırılıp\n'
+    'değişikliğin kaynağı bulunmalıdır.\n\n'
+    '| Dosya | Rol | Bayt | SHA-256 |\n|---|---|---:|---|\n'
+    + '\n'.join(_satir) + '\n\n'
+    + (f'**Manifesto dışı dosya:** {", ".join(_fazla)}\n' if _fazla
+       else 'Klasörde manifesto dışı dosya yok.\n'),
+    encoding='utf8')
+print(f'  ✓ {OUT.name}/MANIFEST.md  ({len(_ROL)} varlık kayıtlı)')

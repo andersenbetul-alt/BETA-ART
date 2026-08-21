@@ -116,3 +116,67 @@ raporda sayfa başlığı `Multi-Timezone Digital Clock`, görünen başlık
 Raporun kendi kararı da bunu söylüyor: `TARGET REPOSITORY MISMATCH`. Kayıt için
 saklandı; bulguları bu depoya uygulanmaz. Doğru depoda 13 varlığın hepsi
 mevcut, favicon ve apple-touch-icon bağlı, eski mor kare kaldırılmış durumda.
+
+
+---
+
+# Çıktı-entegrasyon denetimi v0.2 — kabul kontrolleri
+
+Rapor başka bir depoyu denetlemiş olsa da listelediği sekiz kabul kontrolü
+bu depoya karşı tek tek çalıştırıldı.
+
+| # | Kontrol | Sonuç |
+|---|---|---|
+| 1 | Başlık doğru yatay kilidi kullanıyor | **Bilinçli fark** — aşağıya bakın |
+| 2 | Koyu/açık tema doğru varyantı, kontrast düşmeden | ✓ `--logo-ink` ile döner; navy/beyaz 14,01:1 |
+| 3 | favicon-32 ve apple-touch-icon HTTP 200 | ✓ ikisi de 200 |
+| 4 | App ikonu ile küçük ikon birbirinin yerine geçmiyor | ✓ sayfalar yalnızca `icon-small`, `favicon-32`, `apple-touch-icon` kullanıyor; `icon-app` referans verilmiyor |
+| 5 | Erişilebilir marka adı var | ✓ SVG `aria-hidden`, ad "QBLOGG" metninden geliyor |
+| 6 | Logo boyutu düzen kaymasına yol açmıyor | ✓ `.logo-mark` 30×30 sabit, `flex: 0 0 auto` |
+| 7 | Önbellek sürümleme tanımlı | **Kapatıldı** — aşağıya bakın |
+| 8 | Her dosya mevcut ve özeti kayıtlı | **Kapatıldı** — `assets/brand/MANIFEST.md` |
+
+## Kontrol 1 — başlık kilidi kullanmıyor, bilinçli
+
+Başlıkta `qblogg-lockup-horizontal.svg` dosyası değil, **satır içi SVG sembol +
+metin** var. Üç gerekçe:
+
+1. **Tema.** Satır içi SVG `currentColor` kullanabiliyor; halka `--logo-ink`
+   ile dönüyor, aqua köprü sabit kalıyor. `<img>` ile gelen kilit dosyası
+   dönemez — koyu temada ayrı dosya yüklemek gerekirdi.
+2. **İstek sayısı.** Site hiçbir dış isteğe çıkmıyor; logoyu ayrı dosya
+   yapmak her sayfaya bir istek daha eklerdi.
+3. **Wordmark metin olarak kalıyor.** Ekran okuyucu "QBLOGG" okuyor;
+   ana hatlaştırılmış kilit dosyasında bu ancak `alt` ile taklit edilir.
+
+Kilit dosyaları duruyor ve rolleri var: sunum, imza, basılı iş, üçüncü
+tarafa gönderilen marka paketi. Sitede kullanılmıyor olmaları eksiklik değil.
+
+## Kontrol 7 — kapatıldı
+
+Önceden `assets/brand/` için ne önbellek kuralı ne sürüm parametresi vardı;
+favicon iki kez değişti ve tarayıcılar favicon'u agresif önbellekler.
+
+- `vercel.json` → `/assets/brand/(.*)` için `max-age=31536000, immutable`
+- Altı sayfadaki üç ikon bağlantısına `?v=2026-08-22` eklendi
+
+Uzun önbellek ancak sürümle birlikte güvenlidir: dosya değişip adres
+değişmezse tarayıcı eskisini göstermeye devam eder. İkon değiştiğinde bu
+tarih güncellenir.
+
+`check.mjs`'in kırık bağlantı denetimi sorgu dizesiyle de çalışıyor — kasten
+bozuk bir `?v=` bağlantısı konup sınandı, yakaladı (çıkış kodu 1).
+
+## Kontrol 8 — kapatıldı
+
+`assets/brand/MANIFEST.md`: 13 varlığın adı, rolü, boyutu ve SHA-256 özeti.
+`marka-uret.py` üretiyor, elle düzenlenmiyor. Manifesto dışı dosya varsa
+ayrıca listeliyor.
+
+## OUT-011 — "on birinci SVG" kimdi
+
+Denetim on SVG rolü sayıp on bir SVG olduğunu söylüyordu ve on birincinin
+kim olduğunu soruyordu. Cevap: **`qblogg-symbol.svg`** — tam renkli ana
+sembol. Denetim `-navy`, `-white`, `-black`, `-reverse` varyantlarını saymış
+ama varyantsız aslını atlamış. MANIFEST.md'de "birincil varlık" olarak
+işaretli.
