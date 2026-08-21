@@ -125,6 +125,22 @@ tanımlayıcı markalar reddedilir. "QBLOGG" içerik/blog hizmetinde "blog"
 kelimesini taşıyor — bu, tanımlayıcılık itirazına açık bir noktadır ve
 başvurudan önce değerlendirilmelidir. Bu bir gözlemdir, hukuki görüş değildir.
 
+## Kendi kendine inceleme yapıldı
+
+`docs/denetim/EUIPO-inceleme-simulasyonu.md` — EUIPO ölçütleri markamıza
+uygulandı. Özet:
+
+- **Şeklî inceleme: geçti (4/4).** İlk koşumda dördü de kalmıştı; sebep
+  çözünürlük beyan edilmemesiydi, düzeltildi.
+- **Şekil unsuru: düşük risk.** Soyut, tanımlayıcı değil.
+- **Kelime unsuru "QBLOGG": yüksek risk.** "BLOGG" İsveççe ve Norveççe
+  "blog" demek; içerik hizmetlerinde tanımlayıcılık itirazına açık.
+  İsveççe AB resmî dili ve inceleme dil bazlı yürütülüyor.
+- **Nispi nedenler: incelenmedi.** Kayıtlara erişilemiyor.
+
+Tavsiye: şekil markasıyla başvurun, kelime markası için önce vekil görüşü
+alın.
+
 ## Karar
 
 **Başvuru beklemede.** Biçim tarafı hazır ve otomatik denetleniyor; hukuk

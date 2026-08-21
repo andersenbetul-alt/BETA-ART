@@ -127,7 +127,10 @@ maliyet.
 | 75 | **Font lisans metni (R05)** | **Açık** | `assets/fonts/OFL.txt` yok. OFL yeniden dağıtımda metni şart koşuyor. Bu ortamdan indirilemiyor |
 | 76 | **Tanınırlık testi (R07)** | **Açık** | Protokol yazılı, katılımcı yok. Uydurulmayacak |
 | 77 | **Marka araştırması (R08)** | **Açık** | EUIPO, Patentstyret, WIPO, şirket adı — hiçbiri yapılmadı. Kurum siteleri bu ortamda engelli |
-| 78 | Nice sınıfı ve mal/hizmet listesi | **Karar bekliyor** | Hukukçu işi. "blog" kelimesi tanımlayıcılık itirazına açık olabilir |
+| 78 | Nice sınıfı ve mal/hizmet listesi | **Karar bekliyor** | Hukukçu işi |
+| 80 | EUIPO inceleme simülasyonu | **Bitti** 22.08 | Şeklî 4/4 geçti (ilk koşumda 0/4 — DPI beyan edilmiyordu). Şekil unsuru düşük risk, **kelime unsuru yüksek risk** |
+| 81 | Üretim testleri — teknik yarısı | **Bitti** 22.08 | Faks/tek renk, siluet, ters, gri, 16/24/32 px ölçüldü. Nakış, gravür, büyük format yapılmadı |
+| 82 | **Kelime markası kararı** | **Karar bekliyor** | "BLOGG" İsveççe/Norveççe "blog". Kelime markası için vekil görüşü alınmadan başvurulmamalı |
 | 79 | Renkli mi siyah-beyaz mı başvuru | **Karar bekliyor** | İkisi de üretiliyor; koruma kapsamı tercihi |
 
 ## Konu havuzu (blog)

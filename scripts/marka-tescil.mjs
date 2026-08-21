@@ -53,6 +53,60 @@ const VARYANT = [
 ];
 
 const BOY = 1600;   // zarfın içinde, 250×250'ye ölçeklenince bozulmayacak kadar büyük
+const DPI = 300;    // zarfın üst sınırı; baskıya da yeter
+
+/* Chromium'un ürettiği JPEG, JFIF APP0 bloğunda birim=0 ("yalnızca en-boy
+   oranı") ve yoğunluk 1:1 yazıyor — yani fiziksel çözünürlük beyan edilmiyor.
+   EUIPO 96–300 DPI istiyor. Üç baytı yerinde düzeltiyoruz; görüntü verisine
+   dokunulmuyor, yalnızca üstbilgi. */
+function dpiYaz(yol, dpi) {
+  const b = readFileSync(yol);
+  for (let i = 2; i < b.length - 1; ) {
+    if (b[i] !== 0xff) { i++; continue; }
+    const m = b[i + 1];
+    if (m === 0xd8 || m === 0xd9 || m === 0x01 || (m >= 0xd0 && m <= 0xd7)) { i += 2; continue; }
+    const uz = b.readUInt16BE(i + 2);
+    if (m === 0xe0 && b.subarray(i + 4, i + 9).toString('latin1') === 'JFIF\0') {
+      b[i + 11] = 1;                       // birim: 1 = inç
+      b.writeUInt16BE(dpi, i + 12);        // X yoğunluğu
+      b.writeUInt16BE(dpi, i + 14);        // Y yoğunluğu
+      writeFileSync(yol, b);
+      return true;
+    }
+    i += 2 + uz;
+  }
+  return false;
+}
+
+/* Dosyayı iddiaya göre değil, baytlarına bakarak inceler. Önceki sürüm
+   yalnızca dosya boyutuna ve kaba bir progressive taramasına bakıyordu ve
+   çözünürlüğü hiç denetlemiyordu — dört dosyaya da "zarfa uygun" demişti,
+   oysa dördü de çözünürlük beyan etmiyordu. */
+function jpegIncele(yol) {
+  const b = readFileSync(yol);
+  const r = { bayt: b.length, gecerli: b[0] === 0xff && b[1] === 0xd8,
+              progressive: false, en: 0, boy: 0, bilesen: 0, renk: '?', dpi: null, birim: null };
+  for (let i = 2; i < b.length - 1; ) {
+    if (b[i] !== 0xff) { i++; continue; }
+    const m = b[i + 1];
+    if (m === 0xd8 || m === 0xd9 || m === 0x01 || (m >= 0xd0 && m <= 0xd7)) { i += 2; continue; }
+    const uz = b.readUInt16BE(i + 2);
+    if (m === 0xe0 && b.subarray(i + 4, i + 9).toString('latin1') === 'JFIF\0') {
+      r.birim = b[i + 11];
+      r.dpi = [b.readUInt16BE(i + 12), b.readUInt16BE(i + 14)];
+    }
+    if (m === 0xc0 || m === 0xc1 || m === 0xc2 || m === 0xc3) {
+      r.progressive = m === 0xc2;
+      r.boy = b.readUInt16BE(i + 5);
+      r.en = b.readUInt16BE(i + 7);
+      r.bilesen = b[i + 9];
+      r.renk = { 1: 'Gri', 3: 'YCbCr (RGB)', 4: 'CMYK' }[r.bilesen] || '?';
+      break;
+    }
+    i += 2 + uz;
+  }
+  return r;
+}
 
 async function main() {
   mkdirSync(CIKTI, { recursive: true });
@@ -75,17 +129,20 @@ async function main() {
       clip: { x: 0, y: 0, width: BOY, height: BOY } });
     await sayfa.close();
 
-    const bayt = statSync(hedef).size;
-    const bas = readFileSync(hedef);
-    const progressive = bas.includes(Buffer.from([0xff, 0xc2]));   // SOF2 = progressive
+    dpiYaz(hedef, DPI);            // Chromium çözünürlük yazmıyor; EUIPO 96–300 DPI istiyor
+    const d = jpegIncele(hedef);
     const sorun = [];
-    if (BOY > ZARF.enBoyEn || BOY > ZARF.enBoyBoy) sorun.push('boyut zarfın dışında');
-    if (bayt > ZARF.enBuyukBayt) sorun.push(`${(bayt / 1024 / 1024).toFixed(2)} MB — 2 MB üstü`);
-    if (progressive) sorun.push('progressive JPEG — EUIPO kabul etmiyor');
-    if (bas[0] !== 0xff || bas[1] !== 0xd8) sorun.push('geçerli JPEG değil');
-    rapor.push({ ...v, bayt, sorun });
-    console.log(`  ${sorun.length ? '✗' : '✓'} ${v.ad}.jpg  ${BOY}×${BOY}  ${(bayt / 1024).toFixed(0)} KB` +
-      (sorun.length ? '  → ' + sorun.join(', ') : ''));
+    if (!d.gecerli) sorun.push('geçerli JPEG değil');
+    if (d.en > ZARF.enBoyEn || d.boy > ZARF.enBoyBoy) sorun.push(`${d.en}×${d.boy} — zarfın dışında`);
+    if (d.bayt > ZARF.enBuyukBayt) sorun.push(`${(d.bayt / 1024 / 1024).toFixed(2)} MB — 2 MB üstü`);
+    if (d.progressive) sorun.push('progressive JPEG — kabul edilmiyor');
+    if (d.bilesen !== 3) sorun.push(`renk modu ${d.renk} — RGB bekleniyor`);
+    if (!d.dpi || d.birim !== 1) sorun.push('çözünürlük beyan edilmemiş');
+    else if (d.dpi[0] < ZARF.dpi[0] || d.dpi[0] > ZARF.dpi[1]) sorun.push(`${d.dpi[0]} DPI — 96–300 dışında`);
+    const bayt = d.bayt;
+    rapor.push({ ...v, bayt, dpi: d.dpi ? d.dpi[0] : null, sorun });
+    console.log(`  ${sorun.length ? '✗' : '✓'} ${v.ad}.jpg  ${d.en}×${d.boy}  ${d.dpi ? d.dpi[0] : '?'} DPI  ` +
+      `${d.renk}  ${(bayt / 1024).toFixed(0)} KB` + (sorun.length ? '  → ' + sorun.join(', ') : ''));
   }
 
   /* Sicil görüntüsü 250×250. Marka o boyutta ne oluyor, ayrıca kaydedilir. */
@@ -105,8 +162,8 @@ async function main() {
     'Üretici: `node scripts/marka-tescil.mjs`. Bu rapor yalnızca **biçim**\n' +
     'uygunluğunu söyler. Ayırt edicilik, tanımlayıcılık, önceki haklar ve\n' +
     'Nice sınıfı burada denetlenmez — bunlar hukuki değerlendirmedir.\n\n' +
-    '| Dosya | Açıklama | Boyut | Durum |\n|---|---|---|---|\n' +
-    rapor.map((r) => `| \`${r.ad}.jpg\` | ${r.not} | ${(r.bayt / 1024).toFixed(0)} KB | ` +
+    '| Dosya | Açıklama | Boyut | DPI | Durum |\n|---|---|---|---:|---|\n' +
+    rapor.map((r) => `| \`${r.ad}.jpg\` | ${r.not} | ${(r.bayt / 1024).toFixed(0)} KB | ${r.dpi || '?'} | ` +
       `${r.sorun.length ? '✗ ' + r.sorun.join(', ') : '✓ zarfa uygun'} |`).join('\n') +
     `\n\nZarf: JPEG · en fazla ${ZARF.enBoyEn}×${ZARF.enBoyBoy} px · ${ZARF.dpi[0]}–${ZARF.dpi[1]} DPI · ` +
     'RGB · progressive değil · 2 MB altı.\n\n' +
