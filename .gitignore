@@ -42,3 +42,6 @@ next-env.d.ts
 
 # örnek ortam dosyası sürüm kontrolünde kalsın
 !.env.example
+
+# CLAUDE.md kaynağı olarak klonlandı; kendi .git'i olduğu için depoya girmemeli
+/andrej-karpathy-skills/
