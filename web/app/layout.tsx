@@ -24,7 +24,10 @@ export const metadata = {
     url: siteUrl,
     locale: 'en',
   },
-  twitter: { card: 'summary', title: 'COBBAN', description },
+  /* Görseller app/ altındaki dosya adı sözleşmesinden geliyor (opengraph-image.png,
+     twitter-image.png): Next boyutu, tipi ve önbellek anahtarını kendi üretiyor.
+     Kart tipi 1200×630 için summary_large_image olmalı. */
+  twitter: { card: 'summary_large_image', title: 'COBBAN', description },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

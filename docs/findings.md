@@ -38,6 +38,13 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
 
 ## Marka
 
+- [x] **Favicon ve OG görseli yoktu.** KAPANDI — `/favicon.ico`, `/icon.png`,
+      `/apple-icon.png`, `/opengraph-image.png`, `/twitter-image.png` üretildi
+      ve sunuluyor (5×200). Paylaşılan bağlantı artık önizlemeli.
+      Not: OG alt metni eklenemedi — Next'in dosya adı sözleşmesi
+      `metadata.images` tanımını geçersiz kılıyor, `.alt.txt` de işlemiyor.
+
+
 - [ ] **`brand.json` ürünle çelişiyor.** Slogan hâlâ *"Nordic simplicity,
       handpicked quality"*, birincil alan adı `cobban.com` (başkasında).
       Ürün seyahat asistanı, alan adı `cobban.eu`.
