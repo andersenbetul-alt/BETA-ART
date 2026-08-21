@@ -56,6 +56,19 @@ The catalogue in `assets/js/config.js` is the single source of truth for
 prices. The server recomputes every amount from it; nothing the browser sends
 about money is trusted.
 
+### What v2.0 changed, and what it did not
+
+The v2.0 model document is the **career line's** specification, not a
+replacement for the catalogue. "High risk" there is the AI Act's term for
+employment AI systems — candidate scoring, automated rejection, emotion
+analysis, biometrics — and what it removes is that class of feature, none of
+which NAVIAR ever had.
+
+Praktisk veiviser and private language support stay. They are not AI systems,
+and they sit inside the same boundary the rest of this file draws. Decided by
+the business owner on 21 August 2026; do not re-derive it from §1 of the model
+document, which lists only the career services because that is its subject.
+
 ### The career rules
 
 What NAVIAR is, in one sentence: **career tools a job seeker uses on their own
