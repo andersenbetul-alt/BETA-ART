@@ -13,7 +13,13 @@
   var Data = window.NaviarData;
   var Engine = window.NaviarTriage;
 
-  var state = { focus: [], languages: [], jurisdictions: [] };
+  var state = { focus: [], languages: [], jurisdictions: [], referees: [] };
+
+  /* A referee is only useful if we can actually reach them and know how they
+     know the applicant. Anything less is a name on a form. */
+  function blankReferee() {
+    return { name: "", role: "", institution: "", relationship: "", email: "", phone: "" };
+  }
 
   var els = {
     country: form.querySelector("[data-join-country]"),
@@ -27,7 +33,13 @@
     langResults: document.getElementById("j-lang-results"),
     langList: form.querySelector("[data-join-languages]"),
     declarationsError: form.querySelector("[data-error-declarations]"),
-    status: form.querySelector("[data-join-status]")
+    status: form.querySelector("[data-join-status]"),
+    registerBox: form.querySelector("[data-join-register]"),
+    registerChecks: form.querySelector("[data-join-register-checks]"),
+    registerNote: form.querySelector("[data-join-register-note]"),
+    referees: form.querySelector("[data-join-referees]"),
+    addReferee: form.querySelector("[data-join-add-referee]"),
+    refereesError: form.querySelector("[data-error-referees]")
   };
 
   function countryName(code) { return UI.countryName(code); }
@@ -237,6 +249,119 @@
     return valid;
   }
 
+  /* ----------------------------------------------------------- referees */
+
+  function refereeField(idx, key, labelKey, fallback, type) {
+    var wrap = UI.el("div", "field");
+    var id = "j-ref-" + idx + "-" + key;
+    var label = UI.el("label", null, UI.t(labelKey, fallback));
+    label.setAttribute("for", id);
+    var input = document.createElement("input");
+    input.className = "input";
+    input.id = id;
+    input.type = type || "text";
+    input.value = state.referees[idx][key] || "";
+    input.addEventListener("input", function () {
+      state.referees[idx][key] = input.value;
+    });
+    wrap.appendChild(label);
+    wrap.appendChild(input);
+    return wrap;
+  }
+
+  function renderReferees() {
+    if (!els.referees) return;
+    els.referees.innerHTML = "";
+
+    for (var i = 0; i < state.referees.length; i++) {
+      (function (idx) {
+        var card = UI.el("div", "card card--inset");
+        card.style.marginBottom = "1rem";
+
+        var head = UI.el("div");
+        head.style.display = "flex";
+        head.style.justifyContent = "space-between";
+        head.style.alignItems = "baseline";
+        head.appendChild(UI.el("span", "card__meta",
+          UI.format("join.referee.n", { n: idx + 1 }, "Referee {n}")));
+
+        /* Below the minimum, removal would only put the form back into an
+           invalid state — so the control is not offered. */
+        if (state.referees.length > Data.MIN_REFERENCES) {
+          var remove = document.createElement("button");
+          remove.type = "button";
+          remove.className = "btn btn--ghost btn--sm";
+          remove.textContent = UI.t("join.referee.remove", "Remove");
+          remove.addEventListener("click", function () {
+            state.referees.splice(idx, 1);
+            renderReferees();
+          });
+          head.appendChild(remove);
+        }
+        card.appendChild(head);
+
+        var g1 = UI.el("div", "grid grid--2");
+        g1.style.gap = "1rem";
+        g1.appendChild(refereeField(idx, "name", "join.referee.name", "Referee's full name"));
+        g1.appendChild(refereeField(idx, "role", "join.referee.role", "Their role or title"));
+        card.appendChild(g1);
+
+        var g2 = UI.el("div", "grid grid--2");
+        g2.style.gap = "1rem";
+        g2.appendChild(refereeField(idx, "institution", "join.referee.institution", "Hospital or institution"));
+        g2.appendChild(refereeField(idx, "relationship", "join.referee.relationship", "How they know your work"));
+        card.appendChild(g2);
+
+        var g3 = UI.el("div", "grid grid--2");
+        g3.style.gap = "1rem";
+        g3.appendChild(refereeField(idx, "email", "join.referee.email", "Their email address", "email"));
+        g3.appendChild(refereeField(idx, "phone", "join.referee.phone", "Their phone number", "tel"));
+        card.appendChild(g3);
+
+        els.referees.appendChild(card);
+      })(i);
+    }
+  }
+
+  /* A referee counts only when we can identify them and contact them. */
+  function refereeComplete(r) {
+    return !!(r && r.name.trim() && r.institution.trim() &&
+              r.relationship.trim() && isEmail(r.email));
+  }
+
+  function completeReferees() {
+    return state.referees.filter(refereeComplete).length;
+  }
+
+  /* ------------------------------------------------------- register panel */
+
+  function renderRegister() {
+    if (!els.registerBox || !Data.requiredChecks) return;
+    var code = els.country ? els.country.value : "";
+    if (!code) { els.registerBox.hidden = true; return; }
+
+    els.registerBox.hidden = false;
+    els.registerChecks.innerHTML = "";
+
+    var checks = Data.requiredChecks(code);
+    for (var i = 0; i < checks.length; i++) {
+      var li = UI.el("li", null, checks[i].label +
+        (checks[i].count ? " (" + checks[i].count + ")" : ""));
+      /* Say plainly which steps a person still has to do by hand — an
+         applicant reading this should know what the wait depends on. */
+      if (!checks[i].automatable) {
+        var badge = UI.el("span", "tag",
+          UI.t("join.register.manual", "checked by a person"));
+        badge.style.marginInlineStart = ".5rem";
+        li.appendChild(badge);
+      }
+      els.registerChecks.appendChild(li);
+    }
+
+    var route = Data.reviewRoute(code);
+    els.registerNote.textContent = route.reason;
+  }
+
   function validate() {
     var ok = true;
     var first = null;
@@ -266,6 +391,15 @@
     var langsOk = state.languages.length > 0;
     if (langField) langField.classList.toggle("has-error", !langsOk);
     if (!langsOk) { ok = false; if (!first) first = els.langSearch; }
+
+    /* Referees are not optional. A licence says the applicant may practise;
+       referees are the only part of this form another human vouches for. */
+    var refereesOk = completeReferees() >= Data.MIN_REFERENCES;
+    if (els.refereesError) els.refereesError.style.display = refereesOk ? "none" : "block";
+    if (!refereesOk) {
+      ok = false;
+      if (!first) first = document.getElementById("j-ref-0-name");
+    }
 
     var declarations = ["j-truth", "j-scope", "j-privacy", "j-emergency"];
     var allDeclared = true;
@@ -375,6 +509,13 @@
         state.jurisdictions.push(els.country.value);
       }
       renderJurisdictions();
+      renderRegister();
+    });
+  }
+  if (els.addReferee) {
+    els.addReferee.addEventListener("click", function () {
+      state.referees.push(blankReferee());
+      renderReferees();
     });
   }
   document.addEventListener("click", function (event) {
@@ -390,6 +531,13 @@
     renderJurisdictions();
     renderFocus();
     renderLanguages();
+    /* Start with the minimum on screen, so the requirement is visible
+       before the applicant reaches the end and is told about it. */
+    while (state.referees.length < Data.MIN_REFERENCES) {
+      state.referees.push(blankReferee());
+    }
+    renderReferees();
+    renderRegister();
   }
 
   renderAll();

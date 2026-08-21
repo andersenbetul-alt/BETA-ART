@@ -160,6 +160,24 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
             <span data-i18n="join.indemnity">I hold professional indemnity insurance that covers telemedicine, and I will keep it valid for as long as I consult through Naviar Care.</span>
           </label>
 
+          <!-- Which register we will check, and how far we can automate it.
+               Filled from data-registers.js once a country is chosen. -->
+          <div class="card card--inset" data-join-register hidden style="margin-bottom:1.5rem">
+            <span class="card__meta" data-i18n="join.register.title">How we will check this</span>
+            <ul class="list" data-join-register-checks></ul>
+            <p class="card__meta" data-join-register-note></p>
+          </div>
+
+          <!-- ----------------------------------------------- referees -->
+          <h3 style="margin-top:2rem" data-i18n="join.s2b.title">Professional referees</h3>
+          <p class="card__meta" data-i18n="join.s2b.help">A valid licence tells us you may practise. Referees tell us how you work. We contact both before your profile goes live, and we will tell you before we do.</p>
+
+          <div data-join-referees></div>
+
+          <button type="button" class="btn btn--ghost" data-join-add-referee
+                  data-i18n="join.referee.add">Add another referee</button>
+          <p class="field__error" data-error-referees style="display:none" data-i18n="join.err.referees">Please give at least two referees we can contact.</p>
+
           <!-- ------------------------------------------------ expertise -->
           <h3 style="margin-top:2rem" data-i18n="join.s3.title">What you treat</h3>
 
@@ -360,6 +378,7 @@ document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
 <script src="assets/js/data-symptoms.js"></script>
 <script src="assets/js/data-languages.js"></script>
 <script src="assets/js/data-countries.js"></script>
+<script src="assets/js/data-registers.js"></script>
 <script src="assets/js/data-retention.js"></script>
 <script src="assets/js/data-doctors.js"></script>
 <script src="assets/js/triage-engine.js"></script>
