@@ -67,7 +67,12 @@ def build(sub):
         url = canonical(os.path.join(base, name))
         if not url:
             url = host + "/" + name
-        elif name.endswith("index.html"):
+        elif name == "index.html":
+            # only the property's own front door collapses to the bare host.
+            # This used to be endswith(), which quietly folded every nested
+            # index.html — no/index.html among them — onto the root URL: the
+            # language page vanished from the sitemap and the root appeared
+            # twice.
             url = host + "/"
         freq, pri = rank(name)
         rows.append((url, freq, pri))
@@ -83,13 +88,32 @@ def build(sub):
                 "    <priority>%s</priority>" % pri,
                 "  </url>"]
     out.append("</urlset>")
+
+    # A URL listed twice is not a warning, it is a bug upstream: two different
+    # pages resolved to one address, so one of them is not in the sitemap at
+    # all. That is exactly how no/index.html went missing while the root
+    # appeared twice, and nothing caught it.
+    seen = [u for u, _f, _p in rows]
+    dupes = sorted({u for u in seen if seen.count(u) > 1})
+    if dupes:
+        for u in dupes:
+            print("  %s: %s is listed %d times — two pages share one address, "
+                  "so one of them is missing" % (sub or "hub", u, seen.count(u)))
+        return None
+
     return "\n".join(out) + "\n", len(rows)
 
 
 def main():
+    # build() returns None when it could not produce a sitemap it trusts — a
+    # missing canonical, or two pages sharing one address. That used to print
+    # and carry on, so this exited zero while a property had no sitemap at
+    # all. A gate that cannot fail is not a gate.
+    failed = []
     for sub in PROPS:
         result = build(sub)
         if not result:
+            failed.append(sub or "hub")
             continue
         xml, n = result
         target = os.path.join(ROOT, sub, "sitemap.xml")
@@ -98,6 +122,9 @@ def main():
             fh.write(xml)
         state = "unchanged" if old == xml else "rewritten"
         print("  %-18s %2d url(s)  %s" % (sub or "hub", n, state))
+    if failed:
+        print("\nno sitemap written for: %s" % ", ".join(failed))
+        return 1
     return 0
 
 

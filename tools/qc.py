@@ -3,8 +3,8 @@
 
 tools/audit.py checks the HTML: links, anchors, headings, metadata, JSON-LD.
 This checks everything around it — the JavaScript, the stylesheets, the
-twelve translations, the prices, the encoding, and whether each property
-still fits in a single deploy.
+twelve translations, the prices, the encoding, and whether anything has
+landed in a published folder that was never meant to ship.
 
 Run both. Either one exiting non-zero means something needs fixing before
 the site goes out.
@@ -27,8 +27,14 @@ PROPS = {
     "business": "beta-art-business",
     "journal": "beta-art-blog",
 }
-# a single inline deploy call tops out around here
+# a single inline deploy call tops out around here — kept for the reference
+# figure only; the site deploys git-backed (docs/05)
 DEPLOY_CEILING = 100 * 1024
+
+# nothing this big belongs in a published folder. A photography archive's
+# realistic deploy accident is an original RAW or a full-resolution export
+# landing in a property directory instead of staying in the archive.
+OVERSIZE = 10 * 1024 * 1024
 
 findings = defaultdict(list)
 
@@ -505,11 +511,24 @@ BINARY = (".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".woff", ".woff2")
 
 
 def check_deployability():
-    """An inline deploy sends file contents as text, so it has two ceilings:
-    the payload size, and the fact that a binary file cannot go through it
-    at all. Report both rather than one misleading number."""
-    print("  deploy size (an inline deploy sends text only, and tops out near %d KB)"
-          % (DEPLOY_CEILING // 1024))
+    """Whether each property can actually be deployed, by the method chosen.
+
+    This used to fail whenever a property could not go out through a single
+    inline deploy. That check could never pass, and never will: `blocked` was
+    true if a property held any binary file at all, and every property holds
+    its og.png. A gate that cannot go green is not a gate — it is noise that
+    teaches everyone to skip the whole run.
+
+    It was also measuring the wrong thing. `docs/05` records the decision:
+    the four websites stay on Vercel, which is git-backed. Inline capacity is
+    a fact about a route this project does not take, so it is reported here
+    as information rather than as a fault.
+
+    What can still go wrong on a git-backed deploy of a photography site is a
+    file nobody meant to publish — an original RAW, a full-resolution TIFF, a
+    video dropped into a property folder. That is worth failing on, because
+    the archive's own rule is that originals are kept and not shipped."""
+    print("  deploy size (git-backed, per docs/05; inline capacity shown for reference)")
     for label, sub in PROPS.items():
         base = os.path.join(ROOT, sub)
         text_bytes = bin_bytes = 0
@@ -518,22 +537,19 @@ def check_deployability():
             p = os.path.join(base, f)
             if not os.path.isfile(p) or f.startswith("."):
                 continue
+            size = os.path.getsize(p)
             if f.lower().endswith(BINARY):
-                bin_bytes += os.path.getsize(p); bin_n += 1
+                bin_bytes += size; bin_n += 1
             else:
-                text_bytes += os.path.getsize(p); text_n += 1
-        blocked = text_bytes > DEPLOY_CEILING or bin_n > 0
-        why = []
-        if text_bytes > DEPLOY_CEILING:
-            why.append("%.0f KB of text" % (text_bytes / 1024.0))
-        if bin_n:
-            why.append("%d binary file(s)" % bin_n)
+                text_bytes += size; text_n += 1
+            if size > OVERSIZE:
+                note("deploy", "%s/%s is %.1f MB. Nothing that large belongs in a "
+                     "published folder — an original stays in the archive, not on the "
+                     "site." % (sub.rstrip("/") or ".", f, size / 1048576.0))
+        fits = text_bytes <= DEPLOY_CEILING and bin_n == 0
         print("    %-9s %2d text %6.1f KB · %d binary %5.1f KB   %s"
               % (label, text_n, text_bytes / 1024.0, bin_n, bin_bytes / 1024.0,
-                 "needs git deploy (" + ", ".join(why) + ")" if blocked else "fits inline"))
-        if blocked:
-            note("deploy", "%s cannot go out through an inline deploy: %s. Deploying it "
-                 "needs git-backed deployment." % (label, " and ".join(why)))
+                 "fits inline too" if fits else "git deploy"))
 
 
 def check_copyright():
