@@ -43,6 +43,22 @@ window.QB_CONFIG = {
   newsletterEndpoint: 'https://buttondown.com/api/emails/embed-subscribe/tatil',
   newsletterField: 'email',
 
+  /* Brief ve yazar başvuru formunun gideceği adres.
+     Boş bırakılırsa formlar eskisi gibi davranır: ziyaretçinin kendi e-posta
+     uygulamasında hazır bir taslak açılır (mailTo adresine). Bu, sunucu
+     gerektirmez ama ziyaretçinin göndere basmasına bağlıdır — yani bazı
+     başvurular hiç ulaşmaz.
+
+     Formspree adresini buraya yazın; adresi panonuzdaki şablondan değil,
+     Formspree panelindeki formun Integration sekmesinden alın. Şablondaki
+     {form_id} bir yer tutucudur, gerçek kimlik sekiz karakterlidir.
+     Örnek: 'https://formspree.io/f/mzbqwxyz'
+
+     DİKKAT: yeni bir adres girdiğinizde vercel.json içindeki CSP
+     connect-src'ye de eklenmesi gerekir, yoksa istek sessizce engellenir.
+     `npm run guvenlik` bunu denetliyor. */
+  formEndpoint: '',
+
   /* Ortaklık (affiliate) bağlantıları.
      disclosure: true ise, ortaklık bağlantısı içeren her yazının başında
      otomatik bir bildirim kutusu çıkar. Bunu kapatmayın: AB tüketici

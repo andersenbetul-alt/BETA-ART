@@ -610,8 +610,30 @@
     if (checked.length) lines.push(t('wc.services') + ': ' + checked.join(', '));
 
     var body = lines.join('\n');
-    // Statik site: gönderim, ziyaretçinin kendi e-posta uygulamasında hazır bir taslak olarak açılır.
-    // Sunucu tarafı bir forma (Formspree, Netlify Forms) bağlarken burayı fetch çağrısıyla değiştirin.
+
+    var endpoint = CFG.formEndpoint;
+    if (endpoint) {
+      // Sunucu tarafı form. Formspree CORS'a izin verir ve JSON döner, yani
+      // no-cors gerekmez: gerçekten başarılı mı, okuyabiliyoruz.
+      var mailEl = $('[type="email"]', form);
+      say(msgEl, 'wc.sending');
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: subject,
+          email: mailEl ? (mailEl.value || '').trim() : '',
+          message: body
+        })
+      }).then(function (res) {
+        if (res.ok) { form.reset(); say(msgEl, 'wc.sent'); }
+        else say(msgEl, 'wc.error');
+      }, function () { say(msgEl, 'wc.error'); });
+      return;
+    }
+
+    // Adres girilmemiş: gönderim ziyaretçinin kendi e-posta uygulamasında hazır
+    // bir taslak olarak açılır. Sunucu gerektirmez ama göndermesine bağlıdır.
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(body).catch(function () {});
     window.location.href = 'mailto:' + MAIL_TO +
       '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
