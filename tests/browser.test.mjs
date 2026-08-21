@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 const PORT = 8792;
 const BASE = `http://127.0.0.1:${PORT}`;
 const PAGES = ['index.html?lang=no', 'index.html?lang=ar', 'personvern.html', 'vilkar.html',
-               'hva-vi-gjor.html', 'admin.html'];
+               'hva-vi-gjor.html', 'karriere.html', 'admin.html'];
 const WCAG = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
 function playwright() {
@@ -52,7 +52,7 @@ export default async function () {
         const p = await ctx.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
-        await p.locator('#bkBody .service-opt').nth(1).click();
+        await p.locator('#bkBody .service-opt').nth(3).click();
         await p.waitForTimeout(400);
         const small = await p.evaluate(() => {
           const out = [];
@@ -73,7 +73,7 @@ export default async function () {
         const p = await ctx.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
-        await p.locator('#bkBody .service-opt').nth(1).click();
+        await p.locator('#bkBody .service-opt').nth(3).click();   // a delivery service goes straight to the details form
         await p.waitForTimeout(400);
         const size = await p.evaluate(() => {
           const cb = document.querySelector('#bkBody input[type=checkbox]');
@@ -96,17 +96,17 @@ export default async function () {
         return { p, errors };
       };
 
-      await test('four offers are shown, and only four', async () => {
+      await test('six offers are shown, and only six', async () => {
         const { p, errors } = await open();
-        equal(await p.locator('#bkBody .service-opt').count(), 4);
-        equal(await p.locator('#priceCards .card').count(), 4);
+        equal(await p.locator('#bkBody .service-opt').count(), 6);
+        equal(await p.locator('#priceCards .card').count(), 6);
         assert(!errors.length, errors.join('; '));
         await p.close();
       });
 
       await test('a delivery service skips the time step', async () => {
         const { p } = await open();
-        await p.locator('#bkBody .service-opt').nth(1).click();
+        await p.locator('#bkBody .service-opt').nth(3).click();   // AI Career Kit
         await p.waitForTimeout(300);
         const steps = await p.locator('#bkSteps li').count();
         equal(steps, 3, 'a delivery service should have three steps, not four');
@@ -115,7 +115,7 @@ export default async function () {
 
       await test('the interpreter step says the agency should pay', async () => {
         const { p } = await open();
-        await p.locator('#bkBody .service-opt').nth(3).click();
+        await p.locator('#bkBody .service-opt').nth(5).click();   // private language support
         await p.waitForTimeout(400);
         await p.locator('#bkBody .slot:not([disabled])').first().click();
         await p.locator('#bkBody .btn-primary').click();
@@ -127,7 +127,7 @@ export default async function () {
 
       await test('the consent box links to the privacy notice', async () => {
         const { p } = await open();
-        await p.locator('#bkBody .service-opt').nth(1).click();
+        await p.locator('#bkBody .service-opt').nth(3).click();
         await p.waitForTimeout(300);
         await p.locator('#bkBody .btn-primary').click();
         await p.waitForTimeout(300);
@@ -139,7 +139,7 @@ export default async function () {
          helper walks it: service -> details -> confirm. */
       const reachConfirm = async () => {
         const { p } = await open();
-        await p.locator('#bkBody .service-opt').nth(1).click();
+        await p.locator('#bkBody .service-opt').nth(3).click();
         await p.waitForTimeout(300);
         await p.locator('#bkBody .btn-primary').click();
         await p.waitForTimeout(300);

@@ -59,23 +59,23 @@ export default async function () {
       await test('the server answers', () => assert(up, 'never became healthy'));
 
       await test('a delivery booking needs no time slot', async () => {
-        const r = await booking({ serviceId: 'v01', payment: 'invoice', lang: 'no', details: customer() });
+        const r = await booking({ serviceId: 'career_kit', payment: 'invoice', lang: 'no', details: customer() });
         equal(r.status, 200);
         assert(/^NAV-[A-F0-9]{6}$/.test(r.body.reference), 'reference: ' + r.body.reference);
       });
 
       await test('the price comes from the catalogue, not the browser', async () => {
-        const r = await booking({ serviceId: 'v01', payment: 'invoice', lang: 'no',
+        const r = await booking({ serviceId: 'career_kit', payment: 'invoice', lang: 'no',
                                   amount: 1, price: 1, details: customer() });
         equal(r.status, 200);
         const q = await admin('/api/admin/queue');
         const row = q.body.bookings.find(b => b.reference === r.body.reference);
-        equal(row.amount, 590, 'a tampered price must be ignored');
+        equal(row.amount, 299, 'a tampered price must be ignored');
       });
 
       await test('every request arrives as a scope check, whatever the browser asks for', async () => {
         for (const payment of ['card', 'vipps', 'invoice']) {
-          const r = await booking({ serviceId: 'v01', payment, lang: 'no', details: customer() });
+          const r = await booking({ serviceId: 'career_kit', payment, lang: 'no', details: customer() });
           const q = await admin('/api/admin/queue');
           const row = q.body.bookings.find(b => b.reference === r.body.reference);
           equal(row.status, 'new', payment + ' must still be reviewed first');
@@ -84,21 +84,21 @@ export default async function () {
       });
 
       await test('consent is required', async () => {
-        const r = await booking({ serviceId: 'v01', payment: 'invoice', details: customer({ consent: false }) });
+        const r = await booking({ serviceId: 'career_kit', payment: 'invoice', details: customer({ consent: false }) });
         equal(r.status, 400);
         equal(r.body.error, 'consent_required');
       });
 
       await test('a request that never confirmed its scope is refused', async () => {
         const r = await booking({
-          serviceId: 'v01', lang: 'no', details: customer({ lowRisk: undefined })
+          serviceId: 'career_kit', lang: 'no', details: customer({ lowRisk: undefined })
         });
         equal(r.status, 400);
         equal(r.body.error, 'scope_confirmation_required');
       });
 
       await test('the confirmation is recorded against the case, not just checked', async () => {
-        const r = await booking({ serviceId: 'v01', lang: 'no', details: customer() });
+        const r = await booking({ serviceId: 'career_kit', lang: 'no', details: customer() });
         const q = await admin('/api/admin/queue');
         equal(q.body.bookings.find(b => b.reference === r.body.reference).low_risk, 1);
       });
@@ -115,13 +115,13 @@ export default async function () {
 
       await test('a slot inside the lead time is refused', async () => {
         const today = new Date().toISOString().slice(0, 10);
-        const r = await booking({ serviceId: 'v02', payment: 'invoice', date: today, time: '09:00',
+        const r = await booking({ serviceId: 'career_review', payment: 'invoice', date: today, time: '09:00',
                                   details: customer() });
         equal(r.body.error, 'inside_lead_time');
       });
 
       await test('nothing in the browser can mark a case paid', async () => {
-        const r = await booking({ serviceId: 'v01', payment: 'invoice', lang: 'no', details: customer() });
+        const r = await booking({ serviceId: 'career_kit', payment: 'invoice', lang: 'no', details: customer() });
         const q = await admin('/api/admin/queue');
         equal(q.body.bookings.find(b => b.reference === r.body.reference).paid_at, null);
       });
@@ -132,7 +132,7 @@ export default async function () {
         method: 'POST', body: JSON.stringify({ reference, status })
       });
       const fresh = async () => (await booking({
-        serviceId: 'v01', payment: 'invoice', lang: 'no', details: customer()
+        serviceId: 'career_kit', payment: 'invoice', lang: 'no', details: customer()
       })).body.reference;
 
       await test('a case cannot jump straight to delivered', async () => {

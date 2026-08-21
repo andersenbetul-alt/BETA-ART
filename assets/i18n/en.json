@@ -19,7 +19,8 @@
     "cta": "Start a free check",
     "menu": "Menu",
     "language": "Language",
-    "limits": "What we do"
+    "limits": "What we do",
+    "career": "Career"
   },
   "hero": {
     "eyebrow": "Practical guidance",
@@ -248,7 +249,8 @@
       "Private language support instead of an official interpreter in meetings with a public body"
     ],
     "riskConfirm": "I confirm that my request is for practical help only, and for nothing on the list above.",
-    "noPayNow": "You pay nothing now. If we can help, we send the scope, the price and the terms in writing — and only then a payment link."
+    "noPayNow": "You pay nothing now. If we can help, we send the scope, the price and the terms in writing — and only then a payment link.",
+    "groupCareer": "Career"
   },
   "faq": {
     "eyebrow": "Questions",
@@ -315,7 +317,8 @@
     "rights": "All rights reserved.",
     "note": "Information on this site is general guidance and does not constitute legal advice.",
     "pilot": "Pilot service. We give practical guidance, not legal, medical or financial advice. Do not use this service in an emergency.",
-    "limits": "What we do"
+    "limits": "What we do",
+    "career": "Career"
   },
   "catalog": {
     "sjekk": {
@@ -324,11 +327,19 @@
     },
     "v01": {
       "n": "Practical guide",
-      "d": "We find the right public channel for your matter. You get a list of questions and a practical checklist."
+      "d": "30 minutes together and a short guide: the right public channel, a list of questions and a practical checklist. One follow-up."
     },
-    "v02": {
-      "n": "Job application support",
-      "d": "Help with your CV, application, LinkedIn profile and interview preparation."
+    "career_free": {
+      "n": "AI Career Starter",
+      "d": "Free: one CV checklist, five basic prompts and a simple job tracker."
+    },
+    "career_kit": {
+      "n": "AI Career Kit",
+      "d": "CV templates in Norwegian and English, prompts for tailoring a CV and application, interview preparation, a LinkedIn checklist, a job tracker and a weekly plan."
+    },
+    "career_review": {
+      "n": "Personal CV review",
+      "d": "45 minutes in which a person goes through one CV and one targeted application, with a prioritised list of improvements and one short follow-up."
     },
     "sprak": {
       "n": "Private language support",

@@ -153,11 +153,14 @@
   function stepService(host) {
     host.appendChild(el('h3', null, I18n.t('booking.chooseService')));
 
-    ['advice', 'tolk'].forEach(function (group) {
+    ['advice', 'karriere', 'tolk'].forEach(function (group) {
       var items = CFG.services.filter(function (s) { return s.group === group; });
       if (!items.length) return;
-      var label = el('p', 'eyebrow',
-        I18n.t(group === 'advice' ? 'booking.groupAdvice' : 'booking.groupTolk'));
+      var label = el('p', 'eyebrow', I18n.t({
+        advice:   'booking.groupAdvice',
+        karriere: 'booking.groupCareer',
+        tolk:     'booking.groupTolk'
+      }[group]));
       label.style.marginTop = '22px';
       host.appendChild(label);
 

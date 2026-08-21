@@ -19,7 +19,8 @@
     "cta": "Bezpłatne sprawdzenie",
     "menu": "Menu",
     "language": "Język",
-    "limits": "Co robimy"
+    "limits": "Co robimy",
+    "career": "Kariera"
   },
   "hero": {
     "eyebrow": "Praktyczne wskazówki",
@@ -248,7 +249,8 @@
       "Prywatne wsparcie językowe zamiast oficjalnego tłumacza na spotkaniach z urzędem"
     ],
     "riskConfirm": "Potwierdzam, że moje zgłoszenie dotyczy wyłącznie pomocy praktycznej i niczego z powyższej listy.",
-    "noPayNow": "Teraz nie płacisz nic. Jeśli możemy pomóc, wyślemy zakres, cenę i warunki na piśmie — a link do płatności dopiero potem."
+    "noPayNow": "Teraz nie płacisz nic. Jeśli możemy pomóc, wyślemy zakres, cenę i warunki na piśmie — a link do płatności dopiero potem.",
+    "groupCareer": "Kariera"
   },
   "faq": {
     "eyebrow": "Pytania",
@@ -315,7 +317,8 @@
     "rights": "Wszelkie prawa zastrzeżone.",
     "note": "Informacje na tej stronie mają charakter ogólny i nie stanowią porady prawnej.",
     "pilot": "Usługa pilotażowa. Dajemy praktyczne wskazówki, a nie porady prawne, medyczne czy finansowe. Nie korzystaj z niej w sytuacji zagrożenia.",
-    "limits": "Co robimy"
+    "limits": "Co robimy",
+    "career": "Kariera"
   },
   "catalog": {
     "sjekk": {
@@ -324,11 +327,19 @@
     },
     "v01": {
       "n": "Praktyczny przewodnik",
-      "d": "Znajdujemy właściwy kanał urzędowy dla Twojej sprawy. Otrzymujesz listę pytań i praktyczną listę kontrolną."
+      "d": "30 minut razem i krótki przewodnik: właściwy kanał urzędowy, lista pytań i praktyczna lista kontrolna. Jedno przypomnienie."
     },
-    "v02": {
-      "n": "Wsparcie przy aplikacji o pracę",
-      "d": "Pomoc z CV, podaniem, profilem LinkedIn i przygotowaniem do rozmowy."
+    "career_free": {
+      "n": "AI Career Starter",
+      "d": "Bezpłatnie: lista kontrolna CV, pięć podstawowych promptów i prosty tracker ofert."
+    },
+    "career_kit": {
+      "n": "AI Career Kit",
+      "d": "Szablony CV po norwesku i angielsku, prompty do dopasowania CV i podania, przygotowanie do rozmowy, lista kontrolna LinkedIn, tracker ofert i plan tygodnia."
+    },
+    "career_review": {
+      "n": "Osobisty przegląd CV",
+      "d": "45 minut, w których człowiek przechodzi przez jedno CV i jedno dopasowane podanie, z listą priorytetowych poprawek i jednym krótkim przypomnieniem."
     },
     "sprak": {
       "n": "Prywatne wsparcie językowe",

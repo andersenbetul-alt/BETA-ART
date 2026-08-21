@@ -19,7 +19,8 @@
     "cta": "Ücretsiz kontrol",
     "menu": "Menü",
     "language": "Dil",
-    "limits": "Ne yapıyoruz"
+    "limits": "Ne yapıyoruz",
+    "career": "Kariyer"
   },
   "hero": {
     "eyebrow": "Pratik rehberlik",
@@ -248,7 +249,8 @@
       "Kamu kurumlarıyla görüşmelerde resmî tercüman yerine özel dil desteği"
     ],
     "riskConfirm": "Talebimin yalnızca pratik yardım için olduğunu, yukarıdaki listedeki hiçbir konuyu içermediğini onaylıyorum.",
-    "noPayNow": "Şimdi hiçbir ödeme yapmıyorsunuz. Yardımcı olabilirsek kapsamı, fiyatı ve koşulları yazılı gönderiririz — ödeme bağlantısı ancak ondan sonra gelir."
+    "noPayNow": "Şimdi hiçbir ödeme yapmıyorsunuz. Yardımcı olabilirsek kapsamı, fiyatı ve koşulları yazılı gönderiririz — ödeme bağlantısı ancak ondan sonra gelir.",
+    "groupCareer": "Kariyer"
   },
   "faq": {
     "eyebrow": "Sorular",
@@ -315,7 +317,8 @@
     "rights": "Tüm hakları saklıdır.",
     "note": "Bu sitedeki bilgiler genel yönlendirme niteliğindedir ve hukuki danışmanlık teşkil etmez.",
     "pilot": "Pilot hizmet. Pratik rehberlik veririz; hukuki, tıbbi veya mali danışmanlık değil. Acil tehlike durumunda bu hizmeti kullanmayın.",
-    "limits": "Ne yapıyoruz"
+    "limits": "Ne yapıyoruz",
+    "career": "Kariyer"
   },
   "catalog": {
     "sjekk": {
@@ -324,11 +327,19 @@
     },
     "v01": {
       "n": "Pratik yönlendirme",
-      "d": "Konunuz için doğru resmî kanalı buluruz. Bir soru listesi ve pratik bir kontrol listesi alırsınız."
+      "d": "30 dakikalık görüşme ve kısa bir rehber: doğru resmî kanal, soru listesi ve pratik kontrol listesi. Bir takip."
     },
-    "v02": {
-      "n": "İş başvurusu desteği",
-      "d": "CV, başvuru, LinkedIn profili ve mülakat hazırlığı konusunda yardım."
+    "career_free": {
+      "n": "AI Career Starter",
+      "d": "Ücretsiz: bir CV kontrol listesi, beş temel prompt ve basit bir iş takip tablosu."
+    },
+    "career_kit": {
+      "n": "AI Career Kit",
+      "d": "Norveççe ve İngilizce CV şablonları, hedefe yönelik CV ve başvuru promptları, mülakat hazırlığı, LinkedIn kontrol listesi, iş takip tablosu ve haftalık plan."
+    },
+    "career_review": {
+      "n": "Kişisel CV incelemesi",
+      "d": "Bir insanın 45 dakika boyunca bir CV ve bir hedefli başvuruyu incelemesi; öncelikli iyileştirme listesi ve kısa bir takip."
     },
     "sprak": {
       "n": "Özel dil desteği",

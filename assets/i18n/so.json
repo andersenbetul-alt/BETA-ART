@@ -19,7 +19,8 @@
     "cta": "Hubin bilaash ah",
     "menu": "Menu",
     "language": "Luqadda",
-    "limits": "Waxa aan qabanno"
+    "limits": "Waxa aan qabanno",
+    "career": "Xirfad"
   },
   "hero": {
     "eyebrow": "Hagid wax ku ool ah",
@@ -248,7 +249,8 @@
       "Taageero luqadeed gaar ah oo lagu beddelo turjubaan rasmi ah kulamada dawladda"
     ],
     "riskConfirm": "Waxaan xaqiijinayaa in codsigaygu yahay caawimaad wax ku ool ah oo keliya, oo aan ahayn wax ka mid ah liiska kore.",
-    "noPayNow": "Hadda waxba ma bixinaysid. Haddii aan ku caawin karno, waxaan qoraal ahaan kuu soo dirnaa baaxadda, qiimaha iyo shuruudaha — kaddibna xiriiriyaha lacag-bixinta."
+    "noPayNow": "Hadda waxba ma bixinaysid. Haddii aan ku caawin karno, waxaan qoraal ahaan kuu soo dirnaa baaxadda, qiimaha iyo shuruudaha — kaddibna xiriiriyaha lacag-bixinta.",
+    "groupCareer": "Xirfad"
   },
   "faq": {
     "eyebrow": "Su'aalo",
@@ -315,7 +317,8 @@
     "rights": "Dhammaan xuquuqda way dhowran yihiin.",
     "note": "Macluumaadka boggan waa hagitaan guud, mana aha talo sharci.",
     "pilot": "Adeeg tijaabo ah. Waxaan bixinnaa hagid wax ku ool ah, ma aha talo sharci, caafimaad ama maaliyadeed. Ha isticmaalin marka khatar degdeg ah jirto.",
-    "limits": "Waxa aan qabanno"
+    "limits": "Waxa aan qabanno",
+    "career": "Xirfad"
   },
   "catalog": {
     "sjekk": {
@@ -324,11 +327,19 @@
     },
     "v01": {
       "n": "Hage wax ku ool ah",
-      "d": "Waxaan u helnaa kanaalka dawladeed ee saxda ah. Waxaad heshaa liis su’aalo iyo liis hubin oo wax ku ool ah."
+      "d": "30 daqiiqo wadajir ah iyo hage gaaban: kanaalka dawladeed ee saxda ah, liis su’aalo iyo liis hubin. Hal xusuusin."
     },
-    "v02": {
-      "n": "Taageero codsi shaqo",
-      "d": "Caawimaad CV, codsi, astaanta LinkedIn iyo diyaargarowga wareysiga."
+    "career_free": {
+      "n": "AI Career Starter",
+      "d": "Bilaash: liis hubin CV ah, shan prompt oo aasaasi ah iyo raad-raac shaqo oo fudud."
+    },
+    "career_kit": {
+      "n": "AI Career Kit",
+      "d": "Qaabab CV oo Norwiiji iyo Ingiriisi ah, prompts lagu habeeyo CV iyo codsi, diyaargarow wareysi, liis hubin LinkedIn, raad-raac shaqo iyo qorshe toddobaadle ah."
+    },
+    "career_review": {
+      "n": "Dib u eegis CV oo shakhsi ah",
+      "d": "45 daqiiqo oo qof dib u eegayo hal CV iyo hal codsi bartilmaameedsan, liis horudhac ah oo hagaajin ah iyo hal xusuusin gaaban."
     },
     "sprak": {
       "n": "Taageero luqadeed gaar ah",

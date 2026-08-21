@@ -64,14 +64,16 @@ window.NAVIAR_CONFIG = {
      check; the price is agreed in writing and the payment link is sent by a
      person, afterwards. That is why there are no payment links below. */
   services: [
-    { id: 'sjekk', code: '—',   price: 0,   net: 0,   minutes: 0,  type: 'delivery', group: 'advice', free: true, sla: '1 virkedag' },
-    { id: 'v01',   code: 'V01', price: 590, net: 472, minutes: 0,  type: 'delivery', group: 'advice', sla: '2 virkedager' },
-    { id: 'v02',   code: 'V02', price: 790, net: 632, minutes: 60, type: 'meeting',  group: 'advice' },
+    { id: 'sjekk',         code: '—',   price: 0,    net: 0,    minutes: 0,  type: 'delivery', group: 'advice',  free: true, sla: '1 virkedag' },
+    { id: 'v01',           code: 'V01', price: 590,  net: 472,  minutes: 30, type: 'meeting',  group: 'advice' },
+    { id: 'career_free',   code: '—',   price: 0,    net: 0,    minutes: 0,  type: 'delivery', group: 'karriere', free: true, sla: '1 virkedag' },
+    { id: 'career_kit',    code: 'K01', price: 299,  net: 239,  minutes: 0,  type: 'delivery', group: 'karriere', sla: '1 virkedag' },
+    { id: 'career_review', code: 'K02', price: 790,  net: 632,  minutes: 45, type: 'meeting',  group: 'karriere' },
     /* `tolk: true` asks the customer which language they need. It does NOT mean
        official interpreting: a public body assesses and orders a qualified
        interpreter for its own meetings (tolkeloven). This is private, everyday
        conversation only, and the form says so. */
-    { id: 'sprak', code: 'S',   price: null, net: null, minutes: 60, type: 'meeting', group: 'tolk', tolk: true }
+    { id: 'sprak',         code: 'S',   price: null, net: null, minutes: 60, type: 'meeting',  group: 'tolk',    tolk: true }
   ],
 
   /* Surcharges (§12.2). Shown before purchase, never added afterwards. */

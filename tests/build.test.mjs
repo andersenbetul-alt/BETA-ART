@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { suite, test, assert, equal } from './harness.mjs';
 
-const HTML = ['index.html', 'admin.html', 'personvern.html', 'vilkar.html', 'hva-vi-gjor.html'];
+const HTML = ['index.html', 'admin.html', 'personvern.html', 'vilkar.html', 'hva-vi-gjor.html', 'karriere.html'];
 const VOID = new Set(['area','base','br','col','embed','hr','img','input','link','meta',
                       'param','source','track','wbr','path','rect','line','circle',
                       'polygon','polyline','use','stop','ellipse']);
@@ -97,7 +97,7 @@ export default async function () {
       const url = site[1];
       assert(!url.endsWith('/'), 'siteUrl must not end in a slash');
 
-      for (const file of ['index.html', 'personvern.html', 'vilkar.html', 'hva-vi-gjor.html']) {
+      for (const file of ['index.html', 'personvern.html', 'vilkar.html', 'hva-vi-gjor.html', 'karriere.html']) {
         const html = fs.readFileSync(file, 'utf8');
         const canonical = html.match(/rel="canonical"\s+href="([^"]+)"/);
         assert(canonical, `${file} has no canonical link`);
@@ -129,7 +129,7 @@ export default async function () {
        this catches. */
     await test('every public page has an icon and a share image that exist', () => {
       const site = fs.readFileSync('assets/js/config.js', 'utf8').match(/siteUrl:\s*'([^']+)'/)[1];
-      for (const file of ['index.html', 'personvern.html', 'vilkar.html', 'hva-vi-gjor.html']) {
+      for (const file of ['index.html', 'personvern.html', 'vilkar.html', 'hva-vi-gjor.html', 'karriere.html']) {
         const html = fs.readFileSync(file, 'utf8');
         assert(/rel="icon" href="favicon\.ico"/.test(html), `${file} has no favicon.ico`);
         assert(/rel="apple-touch-icon"/.test(html), `${file} has no apple-touch-icon`);

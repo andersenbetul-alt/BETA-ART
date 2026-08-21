@@ -19,7 +19,8 @@
     "cta": "Nemokamas patikrinimas",
     "menu": "Meniu",
     "language": "Kalba",
-    "limits": "Ką darome"
+    "limits": "Ką darome",
+    "career": "Karjera"
   },
   "hero": {
     "eyebrow": "Praktinės gairės",
@@ -248,7 +249,8 @@
       "Privati kalbos pagalba vietoj oficialaus vertėjo susitikimuose su valstybės įstaiga"
     ],
     "riskConfirm": "Patvirtinu, kad mano užklausa yra tik dėl praktinės pagalbos ir nesusijusi su nė vienu punktu iš sąrašo.",
-    "noPayNow": "Dabar nieko nemokate. Jei galime padėti, atsiųsime apimtį, kainą ir sąlygas raštu – ir tik po to mokėjimo nuorodą."
+    "noPayNow": "Dabar nieko nemokate. Jei galime padėti, atsiųsime apimtį, kainą ir sąlygas raštu – ir tik po to mokėjimo nuorodą.",
+    "groupCareer": "Karjera"
   },
   "faq": {
     "eyebrow": "Klausimai",
@@ -315,7 +317,8 @@
     "rights": "Visos teisės saugomos.",
     "note": "Šioje svetainėje pateikiama bendro pobūdžio informacija, kuri nėra teisinė konsultacija.",
     "pilot": "Bandomoji paslauga. Teikiame praktines gaires, o ne teisines, medicinines ar finansines konsultacijas. Nesinaudokite ja kilus tiesioginiam pavojui.",
-    "limits": "Ką darome"
+    "limits": "Ką darome",
+    "career": "Karjera"
   },
   "catalog": {
     "sjekk": {
@@ -324,11 +327,19 @@
     },
     "v01": {
       "n": "Praktinis vadovas",
-      "d": "Randame tinkamą viešąjį kanalą jūsų reikalui. Gaunate klausimų sąrašą ir praktinį kontrolinį sąrašą."
+      "d": "30 minučių kartu ir trumpas vadovas: tinkamas viešasis kanalas, klausimų sąrašas ir praktinis kontrolinis sąrašas. Vienas priminimas."
     },
-    "v02": {
-      "n": "Pagalba ieškant darbo",
-      "d": "Pagalba rengiant CV, prašymą, LinkedIn profilį ir ruošiantis pokalbiui."
+    "career_free": {
+      "n": "AI Career Starter",
+      "d": "Nemokamai: CV kontrolinis sąrašas, penki pagrindiniai promptai ir paprastas darbo paieškos sekiklis."
+    },
+    "career_kit": {
+      "n": "AI Career Kit",
+      "d": "CV šablonai norvegų ir anglų kalbomis, promptai CV ir prašymui pritaikyti, pasiruošimas pokalbiui, LinkedIn kontrolinis sąrašas, darbo sekiklis ir savaitės planas."
+    },
+    "career_review": {
+      "n": "Asmeninė CV peržiūra",
+      "d": "45 minutės, per kurias žmogus peržiūri vieną CV ir vieną tikslinį prašymą, su prioritetiniu patobulinimų sąrašu ir vienu trumpu priminimu."
     },
     "sprak": {
       "n": "Privati kalbos pagalba",

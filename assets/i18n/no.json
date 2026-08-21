@@ -19,7 +19,8 @@
     "cta": "Start gratis sjekk",
     "menu": "Meny",
     "language": "Språk",
-    "limits": "Hva vi gjør"
+    "limits": "Hva vi gjør",
+    "career": "Karriere"
   },
   "hero": {
     "eyebrow": "Praktisk veiledning",
@@ -248,7 +249,8 @@
       "Privat språkstøtte i stedet for offentlig tolk i møter med det offentlige"
     ],
     "riskConfirm": "Jeg bekrefter at forespørselen min bare gjelder praktisk hjelp, og ikke noe på listen over.",
-    "noPayNow": "Du betaler ingenting nå. Kan vi hjelpe, sender vi omfang, pris og vilkår skriftlig — og først deretter en betalingslenke."
+    "noPayNow": "Du betaler ingenting nå. Kan vi hjelpe, sender vi omfang, pris og vilkår skriftlig — og først deretter en betalingslenke.",
+    "groupCareer": "Karriere"
   },
   "faq": {
     "eyebrow": "Spørsmål",
@@ -315,7 +317,8 @@
     "rights": "Alle rettigheter forbeholdt.",
     "note": "Informasjonen på dette nettstedet er generell veiledning og utgjør ikke juridisk rådgivning.",
     "pilot": "Pilottjeneste. Vi gir praktisk veiledning, ikke juridisk, helsefaglig eller økonomisk rådgivning. Ikke bruk tjenesten ved akutt fare.",
-    "limits": "Hva vi gjør"
+    "limits": "Hva vi gjør",
+    "career": "Karriere"
   },
   "catalog": {
     "sjekk": {
@@ -324,11 +327,19 @@
     },
     "v01": {
       "n": "Praktisk veiviser",
-      "d": "Vi finner riktig offentlig kanal for saken din. Du får en spørsmålsliste og en praktisk sjekkliste."
+      "d": "30 minutter sammen, og en kort veiviser: riktig offentlig kanal, en spørsmålsliste og en praktisk sjekkliste. Én oppfølging."
     },
-    "v02": {
-      "n": "Jobbsøknadsstøtte",
-      "d": "Hjelp med CV, søknad, LinkedIn-profil og forberedelse til intervju."
+    "career_free": {
+      "n": "AI Career Starter",
+      "d": "Gratis: én CV-sjekkliste, fem grunnprompts og en enkel jobbtracker."
+    },
+    "career_kit": {
+      "n": "AI Career Kit",
+      "d": "CV-maler på norsk og engelsk, prompts for målrettet CV og søknad, intervjuforberedelse, LinkedIn-sjekkliste, jobbtracker og ukeplan."
+    },
+    "career_review": {
+      "n": "Personlig CV-gjennomgang",
+      "d": "45 minutter der et menneske går gjennom én CV og én målrettet søknad, med en prioritert forbedringsliste og én kort oppfølging."
     },
     "sprak": {
       "n": "Privat språkstøtte",

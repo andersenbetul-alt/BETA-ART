@@ -155,9 +155,14 @@ The site sells **practical help only**. `price` is the customer total including
 | Code | Offer | Price | Delivery |
 | --- | --- | --- | --- |
 | — | Gratis omfangskontroll | Free | 1 working day, honest yes or no |
-| V01 | Praktisk veiviser | 590 NOK | 2 working days — right channel, questions, checklist |
-| V02 | Jobbsøknadsstøtte | 790 NOK | 60 min — CV, application, LinkedIn, interview prep |
+| V01 | Praktisk veiviser | 590 NOK | 30 min + a written guide, one follow-up |
+| — | AI Career Starter | Free | Checklist, five prompts, job tracker |
+| K01 | AI Career Kit | 299 NOK | CV templates NO/EN, prompts, interview kit, LinkedIn, tracker, weekly plan |
+| K02 | Personlig CV-gjennomgang | 790 NOK | 45 min on one CV and one application |
 | S | Privat språkstøtte | By quote | Private, everyday conversations only |
+
+The career deliverables are real files in `leveranser/karriere/`, and a test
+fails if a paid service ever points at one that is missing or empty.
 
 **Nothing on this list is bought directly.** Every request is a free scope
 check; a person reads it, and the scope, the price and the payment link go out

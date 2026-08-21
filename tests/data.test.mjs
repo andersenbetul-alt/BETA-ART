@@ -108,18 +108,45 @@ export default async function () {
     });
 
     await test('the catalogue is the low-risk offer', () => {
-      equal(CFG.services.length, 4, 'service count');
-      equal(CFG.services.find(s => s.id === 'sjekk').price, 0, 'the scope check is free');
-      equal(CFG.services.find(s => s.id === 'v01').price, 590, 'practical guide');
-      equal(CFG.services.find(s => s.id === 'v02').price, 790, 'job application support');
-      equal(CFG.services.find(s => s.id === 'sprak').price, null, 'language support is by quote');
+      const price = id => CFG.services.find(s => s.id === id)?.price;
+      equal(CFG.services.length, 6, 'service count');
+      equal(price('sjekk'), 0, 'the scope check is free');
+      equal(price('v01'), 590, 'practical guide');
+      equal(price('career_free'), 0, 'the career starter is free');
+      equal(price('career_kit'), 299, 'career kit');
+      equal(price('career_review'), 790, 'personal CV review');
+      equal(price('sprak'), null, 'language support is by quote');
+    });
+
+    /* A price on the page with nothing behind it is the worst kind of promise.
+       Every paid career service names the folder it actually ships. */
+    await test('nothing is sold that has no deliverable behind it', () => {
+      const shipped = {
+        career_free: ['leveranser/karriere/gratis/cv-sjekkliste.md',
+                      'leveranser/karriere/gratis/fem-prompts.md',
+                      'leveranser/karriere/gratis/jobbtracker.csv'],
+        career_kit:  ['leveranser/karriere/kit/cv-mal-no.md',
+                      'leveranser/karriere/kit/cv-template-en.md',
+                      'leveranser/karriere/kit/prompts.md',
+                      'leveranser/karriere/kit/intervju.md',
+                      'leveranser/karriere/kit/linkedin-sjekkliste.md',
+                      'leveranser/karriere/kit/jobbtracker.csv',
+                      'leveranser/karriere/kit/ukeplan.md']
+      };
+      for (const [id, files] of Object.entries(shipped)) {
+        assert(CFG.services.some(s => s.id === id), `${id} is not in the catalogue`);
+        for (const f of files) {
+          assert(fs.existsSync(f), `${id} is sold but ${f} does not exist`);
+          assert(fs.statSync(f).size > 400, `${id} ships ${f}, which is nearly empty`);
+        }
+      }
     });
 
     /* The work the model refuses to take must not be back on the price list by
        accident. These ids sold exactly that: reading a decision letter, an
        advice call about a case, official interpreting. */
     await test('the refused services are not sold anywhere', () => {
-      for (const id of ['k01', 'k02', 'tolk', 'h01', 'o01', 's01', 't30', 't60', 'tf']) {
+      for (const id of ['k01', 'k02', 'tolk', 'v02', 'h01', 'o01', 's01', 't30', 't60', 'tf']) {
         assert(!CFG.services.some(s => s.id === id), `${id} is back in the catalogue`);
         assert(!catalog[id], `${id} still has a translation, so it can be sold again by mistake`);
       }

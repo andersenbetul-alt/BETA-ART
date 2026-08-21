@@ -41,13 +41,35 @@ by implication.
 | | Price | What the customer gets |
 |---|---|---|
 | Scope check | free | We say whether we can help, within one working day |
-| V01 — practical guide | 590 NOK | The right public channel, a list of questions, a practical checklist |
-| V02 — job application support | 790 NOK | CV, application, LinkedIn profile, interview preparation |
+| V01 — practical guide | 590 NOK | 30 minutes together, plus a short guide: the right public channel, a list of questions, a practical checklist, one follow-up |
+| AI Career Starter | free | A CV checklist, five prompts, a job tracker |
+| AI Career Kit | 299 NOK | CV templates (NO/EN), prompts, interview preparation, LinkedIn checklist, tracker, weekly plan |
+| Personal CV review | 790 NOK | 45 minutes with a person on one CV and one targeted application, plus one follow-up |
 | Private language support | by quote | Private, everyday conversations only |
+
+Every paid career service ships files that exist in `leveranser/karriere/`, and
+a test fails if one of them goes missing or turns up nearly empty. A price on
+the page with nothing behind it is the worst kind of promise this business can
+make.
 
 The catalogue in `assets/js/config.js` is the single source of truth for
 prices. The server recomputes every amount from it; nothing the browser sends
 about money is trusted.
+
+### The career rules
+
+AI-assisted career work carries its own line, on top of the list below:
+
+- We never invent experience, education, results or references. The facts come
+  from the customer.
+- A person reads through every AI-assisted deliverable before it goes out.
+- No promise of a job and no promise of an interview.
+- NAVIAR does not apply for jobs, contact employers, or act as the candidate.
+  The customer approves and sends every application themselves.
+- Nothing goes into an open AI tool that should not: national ID numbers,
+  health data, credentials, or a referee's private contact details.
+- Out of scope, and referred on: employment-law disputes, dismissal,
+  discrimination assessments, sickness-absence cases, salary and tax advice.
 
 ### What we will not take
 
@@ -69,7 +91,7 @@ public body assesses and orders the interpreter for its own meetings
 (tolkeloven); and a BankID password is never to be shared with anyone.
 
 `hva-vi-gjor.html` is this list, written for the customer, in Norwegian and
-English. A test fails if the catalogue ever sells one of the withdrawn
+English; `karriere.html` is the career half of it. A test fails if the catalogue ever sells one of the withdrawn
 services again.
 
 ## 4. The revenue split
