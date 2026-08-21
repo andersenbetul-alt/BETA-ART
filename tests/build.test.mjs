@@ -90,6 +90,52 @@ export default async function () {
       assert(/name="robots"[^>]*noindex/.test(html), 'admin.html is missing its noindex');
     });
 
+    await test('the site points at one domain everywhere', () => {
+      const cfg = fs.readFileSync('assets/js/config.js', 'utf8');
+      const site = cfg.match(/siteUrl:\s*'([^']+)'/);
+      assert(site, 'config.js has no siteUrl');
+      const url = site[1];
+      assert(!url.endsWith('/'), 'siteUrl must not end in a slash');
+
+      for (const file of ['index.html', 'personvern.html', 'vilkar.html']) {
+        const html = fs.readFileSync(file, 'utf8');
+        const canonical = html.match(/rel="canonical"\s+href="([^"]+)"/);
+        assert(canonical, `${file} has no canonical link`);
+        assert(canonical[1].startsWith(url), `${file} is canonical to ${canonical[1]}, not ${url}`);
+      }
+      for (const file of ['robots.txt', 'sitemap.xml']) {
+        const text = fs.readFileSync(file, 'utf8');
+        const others = [...text.matchAll(/https?:\/\/[^\s<"]+/g)].map(m => m[0])
+          .filter(u => !u.startsWith(url) && !u.includes('sitemaps.org'));
+        equal(others.length, 0, `${file} points somewhere else: ${others.join(', ')}`);
+      }
+    });
+
+    await test('every page in the sitemap exists and is not hidden', () => {
+      const xml = fs.readFileSync('sitemap.xml', 'utf8');
+      const robots = fs.readFileSync('robots.txt', 'utf8');
+      const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+      assert(locs.length > 0, 'the sitemap is empty');
+      for (const loc of locs) {
+        const file = new URL(loc).pathname.replace(/^\//, '') || 'index.html';
+        assert(fs.existsSync(file), `the sitemap lists ${file}, which does not exist`);
+        assert(!robots.includes('Disallow: /' + file), `${file} is in the sitemap and disallowed in robots.txt`);
+      }
+      assert(/Disallow:\s*\/admin\.html/.test(robots), 'robots.txt must keep the case queue out');
+    });
+
+    await test('the service model and the code agree on the workflow', () => {
+      const doc = fs.readFileSync('docs/tjenestemodell.md', 'utf8');
+      const src = fs.readFileSync('server/db.js', 'utf8');
+      const listed = src.match(/const BOOKING_STATUS = \[([\s\S]*?)\];/);
+      assert(listed, 'could not find BOOKING_STATUS in server/db.js');
+      const codeStatuses = [...listed[1].matchAll(/'([a-z_]+)'/g)].map(m => m[1]);
+      assert(codeStatuses.length >= 8, 'BOOKING_STATUS looks wrong: ' + codeStatuses.join(','));
+      for (const st of codeStatuses) {
+        assert(doc.includes('`' + st + '`'), `docs/tjenestemodell.md never mentions ${st}`);
+      }
+    });
+
     await test('no placeholder secret is committed', () => {
       for (const file of ['server/server.js', 'assets/js/config.js']) {
         const src = fs.readFileSync(file, 'utf8');

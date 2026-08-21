@@ -1,0 +1,8 @@
+# NAVIAR CONSULT — https://naviarconsult.com
+# The case queue holds real people's names, contact details and situations.
+# It is behind a token, but keep it out of every index as well.
+User-agent: *
+Disallow: /admin.html
+Allow: /
+
+Sitemap: https://naviarconsult.com/sitemap.xml

@@ -109,6 +109,71 @@ export default async function () {
       });
     });
 
+    await suite('case workflow', async () => {
+      const move = (reference, status) => admin('/api/admin/booking', {
+        method: 'POST', body: JSON.stringify({ reference, status })
+      });
+      const fresh = async () => (await booking({
+        serviceId: 'k01', payment: 'invoice', lang: 'no', details: customer()
+      })).body.reference;
+
+      await test('a case cannot jump straight to delivered', async () => {
+        const r = await move(await fresh(), 'delivered');
+        equal(r.status, 409);
+        equal(r.body.error, 'bad_transition');
+      });
+
+      await test('quality control cannot be skipped', async () => {
+        const ref = await fresh();
+        await move(ref, 'assigning');
+        await move(ref, 'in_progress');
+        const r = await move(ref, 'delivered');
+        equal(r.status, 409, 'in_progress → delivered must be refused');
+      });
+
+      await test('the whole workflow runs end to end', async () => {
+        const ref = await fresh();
+        for (const s of ['in_review', 'assigning', 'in_progress', 'quality_check', 'delivered']) {
+          const r = await move(ref, s);
+          equal(r.status, 200, 'move to ' + s);
+          equal(r.body.booking.status, s);
+        }
+      });
+
+      await test('quality control can send the work back', async () => {
+        const ref = await fresh();
+        for (const s of ['assigning', 'in_progress', 'quality_check', 'in_progress']) {
+          equal((await move(ref, s)).status, 200, 'move to ' + s);
+        }
+      });
+
+      await test('a delivered case is finished', async () => {
+        const ref = await fresh();
+        for (const s of ['assigning', 'in_progress', 'quality_check', 'delivered']) await move(ref, s);
+        equal((await move(ref, 'in_progress')).status, 409);
+        equal((await move(ref, 'cancelled')).status, 409);
+      });
+
+      await test('a case we will not take is declined, not cancelled', async () => {
+        const ref = await fresh();
+        equal((await move(ref, 'in_review')).status, 200);
+        const r = await move(ref, 'declined');
+        equal(r.status, 200);
+        equal(r.body.booking.status, 'declined');
+      });
+
+      await test('an internal note saves without moving the case', async () => {
+        const ref = await fresh();
+        const r = await admin('/api/admin/booking', {
+          method: 'POST',
+          body: JSON.stringify({ reference: ref, status: 'new', note: 'called, waiting on the letter' })
+        });
+        equal(r.status, 200);
+        equal(r.body.booking.status, 'new');
+        equal(r.body.booking.internal_note, 'called, waiting on the letter');
+      });
+    });
+
     await suite('admin door', async () => {
       await test('no token is rejected', async () => equal((await api('/api/admin/queue')).status, 401));
 
@@ -131,7 +196,7 @@ export default async function () {
       await test('a status change is recorded as an event', async () => {
         const q = await admin('/api/admin/queue');
         const ref = q.body.bookings[0].reference;
-        await admin('/api/admin/booking', { method: 'POST', body: JSON.stringify({ reference: ref, status: 'in_progress' }) });
+        await admin('/api/admin/booking', { method: 'POST', body: JSON.stringify({ reference: ref, status: 'in_review' }) });
         const ev = await admin('/api/admin/events?subject=' + ref);
         assert(ev.body.events.some(e => e.kind === 'status'), 'no status event logged');
       });

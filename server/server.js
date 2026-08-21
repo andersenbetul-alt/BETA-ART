@@ -399,6 +399,7 @@ app.get('/api/admin/queue', throttle(60, 60 * 1000), requireAdmin, (req, res) =>
   res.json({
     counts: DB.counts(db),
     statuses: { booking: DB.BOOKING_STATUS, enquiry: DB.ENQUIRY_STATUS },
+    transitions: DB.BOOKING_TRANSITIONS,
     services: CFG.services.map((s) => ({ id: s.id, code: s.code, price: s.price })),
     bookings: q.bookings,
     enquiries: q.enquiries
@@ -420,6 +421,9 @@ app.post('/api/admin/booking', throttle(120, 60 * 1000), requireAdmin, (req, res
   }
   const note = typeof b.note === 'string' ? str(b.note, 2000) : undefined;
   const row = DB.setBookingStatus(db, reference, status || null, note);
+  if (row === 'bad_transition') {
+    return res.status(409).json({ error: 'bad_transition' });
+  }
   if (!row) return res.status(404).json({ error: 'not_found' });
   res.json({ booking: row });
 });

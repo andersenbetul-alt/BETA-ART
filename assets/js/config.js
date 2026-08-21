@@ -10,8 +10,12 @@ window.NAVIAR_CONFIG = {
     legalName: 'NAVIAR CONSULT AS',
     brand: 'NAVIAR',
     descriptor: 'CONSULTING',
+    /* The address the site is published under. Used for canonical links, the
+       sitemap and the Stripe return URLs. No trailing slash. */
+    domain: 'naviarconsult.com',
+    siteUrl: 'https://naviarconsult.com',
     orgNumber: '000 000 000',          // TODO: Brønnøysundregistrene org.nr
-    email: 'post@naviar.no',           // TODO: real address
+    email: 'post@naviarconsult.com',   // TODO: create the mailbox on the domain
     phone: '+47 000 00 000',           // TODO: real number
     phoneHref: '+4700000000',
     address: ['Gateadresse 1', '0000 Oslo, Norge'],
@@ -83,7 +87,7 @@ window.NAVIAR_CONFIG = {
   },
 
   /* ---------------------------------------------------------- integrations */
-  /* apiBase: '' -> demo mode (no backend). Set to e.g. 'https://api.naviar.no'
+  /* apiBase: '' -> demo mode (no backend). Set to e.g. 'https://api.naviarconsult.com'
      once server/ is deployed, and bookings + payments go live.               */
   apiBase: '',
 

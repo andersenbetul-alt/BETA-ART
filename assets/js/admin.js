@@ -110,6 +110,7 @@
     host.innerHTML = '';
     var c = data.counts;
     [
+      ['Waiting on us', c.onUs],
       ['Open cases', c.open],
       ['Paid', c.paid],
       ['Revenue', c.revenue.toLocaleString('nb-NO') + ' kr'],
@@ -163,13 +164,18 @@
       card.appendChild(el('div', 'case-text', b.case_text));
 
       var actions = el('div', 'case-actions');
+      /* Only the moves the workflow allows, so the operator cannot be told
+         'no' after the fact. A finished case has nowhere to go, so the menu
+         holds its own status alone. */
       var select = el('select');
-      data.statuses.booking.forEach(function (s) {
+      var allowed = [b.status].concat((data.transitions && data.transitions[b.status]) || []);
+      allowed.forEach(function (s) {
         var o = el('option', null, s.replace(/_/g, ' '));
         o.value = s;
         if (s === b.status) o.selected = true;
         select.appendChild(o);
       });
+      select.disabled = allowed.length < 2;
       var note = el('input');
       note.type = 'text';
       note.placeholder = 'Internal note (never shown to the customer)';

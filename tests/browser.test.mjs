@@ -199,7 +199,8 @@ export default async function () {
         await p.waitForTimeout(400);
         const org = (await p.locator('[data-company="orgNumber"]').first().textContent()).trim();
         assert(org && org !== '—', 'org number not filled');
-        equal(await p.locator('a[data-company-mail]').first().getAttribute('href'), 'mailto:post@naviar.no');
+        const email = await p.evaluate(() => window.NAVIAR_CONFIG.company.email);
+        equal(await p.locator('a[data-company-mail]').first().getAttribute('href'), 'mailto:' + email);
         await p.close();
       });
     });
@@ -212,7 +213,7 @@ export default async function () {
         const text = await p.locator('body').innerText();
         await ctx.close();
         assert(/JavaScript/i.test(text), 'no noscript notice');
-        assert(/post@naviar\.no/.test(text), 'no email offered');
+        assert(/post@naviarconsult\.com/.test(text), 'no email offered');
         assert(/\+47/.test(text), 'no phone number offered');
       });
     });

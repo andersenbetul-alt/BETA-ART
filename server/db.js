@@ -86,18 +86,49 @@ const SCHEMA = [
     detail    TEXT NOT NULL DEFAULT ''
   );
   CREATE INDEX idx_events_subject ON events(subject, id);
+  `,
+  /* v2 — the case workflow gained the steps that were being done off the books:
+     a review before money changes hands, a search for the right consultant, and
+     a read-through before anything reaches the customer. 'fit_checked' said
+     only that the review had happened, so it becomes 'in_review'. */
+  `
+  UPDATE bookings SET status = 'in_review' WHERE status = 'fit_checked';
   `
 ];
 
-/* The statuses a case can hold. The order is the order of the pilot workflow. */
+/* The statuses a case can hold, in the order of the workflow. */
 const BOOKING_STATUS = [
-  'awaiting_payment',   // Stripe session created, money not in
-  'new',                // paid or invoice-agreed, not yet looked at
-  'fit_checked',        // we have confirmed we can help
-  'in_progress',        // the work is being done
+  'new',                // arrived, nobody has looked at it yet
+  'in_review',          // the free fit check: can we help, and may we
+  'awaiting_payment',   // scope agreed, money not in
+  'assigning',          // paid; a person is choosing the consultant
+  'in_progress',        // the consultant is doing the work
+  'quality_check',      // read through before it goes out
   'delivered',          // the customer has the answer
+  'declined',           // we will not take it — referred on
   'cancelled'
 ];
+
+/* Which moves are allowed. This is a guard, not paperwork: it is what stops a
+   case reaching the customer without passing quality control, and stops one
+   being marked delivered without having been paid for. A case can be abandoned
+   from anywhere it is still open; nothing leaves 'delivered' or 'declined'. */
+const BOOKING_TRANSITIONS = {
+  new:              ['in_review', 'awaiting_payment', 'assigning', 'declined', 'cancelled'],
+  in_review:        ['awaiting_payment', 'assigning', 'declined', 'cancelled'],
+  awaiting_payment: ['assigning', 'cancelled'],
+  assigning:        ['in_progress', 'cancelled'],
+  in_progress:      ['quality_check', 'cancelled'],
+  quality_check:    ['delivered', 'in_progress', 'cancelled'],   // back for rework
+  delivered:        [],
+  declined:         [],
+  cancelled:        []
+};
+
+/* Where the case is waiting on us rather than on the customer, the consultant
+   or the bank. These are the ones the queue puts at the top. */
+const BOOKING_ON_US = ['new', 'in_review', 'assigning', 'quality_check'];
+
 const ENQUIRY_STATUS = ['new', 'answered', 'closed'];
 
 function open(dataDir) {
@@ -200,19 +231,31 @@ function logEvent(db, subject, kind, detail) {
     .run(new Date().toISOString(), subject, kind, String(detail || '').slice(0, 200));
 }
 
+/* Payment moves a case out of limbo and into the consultant search — and only
+   from limbo. A case already being worked on keeps its place in the workflow;
+   the payment is still stamped on it. */
 function markPaid(db, reference) {
   const changed = db.prepare(`
-    UPDATE bookings SET status = 'new', paid_at = ?
+    UPDATE bookings
+    SET paid_at = ?,
+        status  = CASE WHEN status = 'awaiting_payment' THEN 'assigning' ELSE status END
     WHERE reference = ? AND paid_at IS NULL
   `).run(new Date().toISOString(), reference).changes;
   if (changed) logEvent(db, reference, 'paid', '');
   return changed > 0;
 }
 
+function nextStatuses(from) {
+  return BOOKING_TRANSITIONS[from] || [];
+}
+
+/* Returns null when there is no such case, and the string 'bad_transition' when
+   the move is not one the workflow allows. */
 function setBookingStatus(db, reference, status, note) {
   const row = db.prepare('SELECT status FROM bookings WHERE reference = ?').get(reference);
   if (!row) return null;
   if (status && status !== row.status) {
+    if (!nextStatuses(row.status).includes(status)) return 'bad_transition';
     db.prepare('UPDATE bookings SET status = ? WHERE reference = ?').run(status, reference);
     logEvent(db, reference, 'status', row.status + ' → ' + status);
   }
@@ -243,13 +286,13 @@ function referenceTaken(db, reference) {
 function takenSlots(db, date) {
   return db.prepare(`
     SELECT time FROM bookings
-    WHERE date = ? AND time IS NOT NULL AND status <> 'cancelled'
+    WHERE date = ? AND time IS NOT NULL AND status NOT IN ('cancelled', 'declined')
   `).all(date).map((r) => r.time);
 }
 
 function slotClash(db, date, time) {
   return db.prepare(`
-    SELECT 1 FROM bookings WHERE date = ? AND time = ? AND status <> 'cancelled' LIMIT 1
+    SELECT 1 FROM bookings WHERE date = ? AND time = ? AND status NOT IN ('cancelled', 'declined') LIMIT 1
   `).get(date, time) !== undefined;
 }
 
@@ -258,8 +301,16 @@ function queue(db, limit) {
   return {
     bookings: db.prepare(`
       SELECT * FROM bookings ORDER BY
-        CASE status WHEN 'new' THEN 0 WHEN 'fit_checked' THEN 1 WHEN 'in_progress' THEN 2
-                    WHEN 'awaiting_payment' THEN 3 WHEN 'delivered' THEN 4 ELSE 5 END,
+        CASE status
+          WHEN 'new'              THEN 0
+          WHEN 'quality_check'    THEN 1
+          WHEN 'assigning'        THEN 2
+          WHEN 'in_review'        THEN 3
+          WHEN 'in_progress'      THEN 4
+          WHEN 'awaiting_payment' THEN 5
+          WHEN 'delivered'        THEN 6
+          ELSE 7
+        END,
         created_at DESC
       LIMIT ?
     `).all(n),
@@ -286,7 +337,10 @@ function counts(db) {
   return {
     bookings:  one('SELECT COUNT(*) AS n FROM bookings'),
     paid:      one("SELECT COUNT(*) AS n FROM bookings WHERE paid_at IS NOT NULL"),
-    open:      one("SELECT COUNT(*) AS n FROM bookings WHERE status IN ('new','fit_checked','in_progress')"),
+    open:      one("SELECT COUNT(*) AS n FROM bookings WHERE status IN"
+                   + " ('new','in_review','assigning','in_progress','quality_check')"),
+    onUs:      one("SELECT COUNT(*) AS n FROM bookings WHERE status IN"
+                   + " ('new','in_review','assigning','quality_check')"),
     delivered: one("SELECT COUNT(*) AS n FROM bookings WHERE status = 'delivered'"),
     enquiries: one('SELECT COUNT(*) AS n FROM enquiries'),
     needs:     one('SELECT COUNT(*) AS n FROM needs'),
@@ -297,7 +351,7 @@ function counts(db) {
 }
 
 module.exports = {
-  open, BOOKING_STATUS, ENQUIRY_STATUS,
+  open, BOOKING_STATUS, BOOKING_TRANSITIONS, BOOKING_ON_US, ENQUIRY_STATUS, nextStatuses,
   insertBooking, insertEnquiry, insertNeed,
   markPaid, setBookingStatus, setEnquiryStatus,
   referenceTaken, takenSlots, slotClash, queue, events, tally, counts, logEvent
