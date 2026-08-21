@@ -5,10 +5,10 @@ No build step, no framework. The only external dependency is Google Fonts.
 
 | Directory | Property | Live |
 |---|---|---|
-| `/` | Hub and the single legal notice | https://beta-art-bet-art.vercel.app/ |
-| `beta-art/` | The verified photography archive | https://beta-art-archive-bet-art.vercel.app/ |
-| `beta-art-business/` | Beta Art Business, the digital studio | https://beta-art-business-bet-art.vercel.app/ |
-| `beta-art-blog/` | Field Notes, the journal | https://beta-art-journal-bet-art.vercel.app/ |
+| `/` | Hub and the single legal notice | https://start.beta-art.com/ |
+| `beta-art/` | The verified photography archive | https://beta-art.com/ |
+| `beta-art-business/` | Beta Art Business, the digital studio | https://business.beta-art.com/ |
+| `beta-art-blog/` | Field Notes, the journal | https://notater.beta-art.com/ |
 
 ## Structure of the Business property
 

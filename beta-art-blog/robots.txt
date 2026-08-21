@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://beta-art-journal-bet-art.vercel.app/sitemap.xml
+Sitemap: https://notater.beta-art.com/sitemap.xml
 
 # Rights reserved against text and data mining under Article 4(3) of
 # Directive (EU) 2019/790 and the corresponding provision of åndsverkloven.
