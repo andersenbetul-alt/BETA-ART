@@ -129,6 +129,11 @@ person and is a term nobody searches for. It now says "Norwegian Drift Phonk".
 This is HXI's own rule, not one invented here — his brand review counts the two words and
 checks that every "Nordic" on the page is regional. Count them when you touch the hero copy.
 
+The share card kept saying "Nordic Phonk" long after the hero stopped, because it was a PNG
+and nothing here could read it. It is generated from `scripts/og-image.html` now, and
+`npm run check` scans that file along with the markup and the dictionaries, so the two can no
+longer drift apart. Regenerate the card with `node scripts/og.mjs` after editing it.
+
 ## The H1 says what he is
 
 The heading is the wordmark and the tagline together, so the first heading on the page reads

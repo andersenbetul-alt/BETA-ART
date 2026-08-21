@@ -246,6 +246,10 @@ for (const entry of ['assets', 'robots.txt', '.well-known', '.nojekyll', '404.ht
   if (existsSync(from)) cpSync(from, join(dist, entry), { recursive: true });
 }
 
+// Crawlers and older browsers ask for /favicon.ico at the web root whatever the page's own
+// <link> says, so the file the icon generator wrote is published there too.
+cpSync(join(root, 'assets/favicon.ico'), join(dist, 'favicon.ico'));
+
 // index.html and, when it exists, privacy.html — English at the root, one directory each
 // for the twelve languages. The privacy page takes its head copy from the dictionary rather
 // than a second META table, so there is one place to translate it.

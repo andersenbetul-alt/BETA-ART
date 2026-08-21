@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Source for assets/og-image.png. Rendered at 1200×630 by scripts/og.mjs, which is the
+     only way to get the real Barlow Condensed metrics into the card. Keep the wording in
+     step with the hero: the tagline is "Norwegian Drift Phonk" (see docs/BRAND.md). -->
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<style>
+  :root{--bg:#08080f;--accent:#ef2b2d;--text:#f4f4f6;--muted:#8b8b9a}
+  *{margin:0;box-sizing:border-box}
+  body{width:1200px;height:630px;background:var(--bg);position:relative;overflow:hidden;
+       display:grid;place-items:center;text-align:center}
+  .glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(239,43,45,.28),transparent 62%)}
+  .inner{position:relative}
+  .eyebrow{font-family:"Space Mono",ui-monospace,monospace;font-size:22px;letter-spacing:.34em;
+           color:var(--muted);text-transform:uppercase}
+  .word{font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:240px;line-height:.8;
+        letter-spacing:-.04em;color:var(--text);margin:26px 0 10px}
+  /* The hero sets the tagline at a tenth of the wordmark. Held a little larger here so it
+     still reads when a timeline shows the card at half size. */
+  .tagline{font-family:"Barlow Condensed",sans-serif;font-weight:300;font-size:38px;
+           letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+  .url{position:absolute;bottom:44px;left:0;right:0;font-family:"Space Mono",ui-monospace,monospace;
+       font-size:20px;letter-spacing:.22em;color:var(--accent)}
+</style>
+<div class="glow"></div>
+<div class="inner">
+  <p class="eyebrow">Oslo, Norway · Est. 2021</p>
+  <p class="word">HXI</p>
+  <p class="tagline">Norwegian Drift Phonk</p>
+</div>
+<p class="url">HXIMUSIC.COM</p>

@@ -369,6 +369,29 @@ const htmlClasses = new Set(
 const unstyled = [...htmlClasses].filter((c) => !cssClasses.has(c));
 if (unstyled.length) notes.push(`class(es) with no CSS rule: ${unstyled.join(', ')}`);
 
+/* ---------- 9. "Nordic" is only ever regional ----------
+
+   HXI's own rule, written down in docs/BRAND.md: the positioning term is "Norwegian".
+   "Nordic" describes the region, so it is right in a sentence about the region and wrong
+   as a label for him. The hero carried "Nordic Phonk" until August 2026 and the share card
+   kept it for longer still, because nothing here was reading the card. It is text now, so
+   it is checked with everything else. */
+
+const REGIONAL = [
+  'Nordic and Brazilian',   // scene_p1 — genuinely about the region
+  'Nordic Drift',           // a track title, which does not change
+];
+const nordicSources = ['index.html', 'assets/js/i18n.js', 'scripts/og-image.html']
+  .filter((f) => existsSync(join(root, f)));
+for (const file of nordicSources) {
+  for (const [, context] of read(file).matchAll(/(.{0,40}Nordic.{0,40})/g)) {
+    if (!REGIONAL.some((ok) => context.includes(ok))) {
+      fail(`${file} calls something "Nordic" where the term is HXI's: …${context.trim()}… ` +
+        'The positioning term is "Norwegian" — see docs/BRAND.md.');
+    }
+  }
+}
+
 /* ---------- report ---------- */
 
 const langCount = codes.length;

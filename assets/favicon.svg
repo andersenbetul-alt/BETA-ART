@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" fill="#08080f"/>
-  <text x="16" y="23" text-anchor="middle" fill="#ef2b2d" font-family="Georgia, serif" font-size="20" font-weight="900" letter-spacing="-1">X</text>
+  <path fill="#ef2b2d" d="M16 1.92 30.08 16 16 30.08 1.92 16Zm0 3.85L5.77 16 16 26.23 26.23 16Z"/>
+  <path fill="#ef2b2d" d="M16 9.6 22.4 16 16 22.4 9.6 16Z"/>
 </svg>
