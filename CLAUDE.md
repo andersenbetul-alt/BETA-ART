@@ -89,7 +89,7 @@ company registration. Those live in `tools/launch.py` under PERSON, and that lis
 is where a question belongs instead of a halted turn.
 
 **Guideline 4 says "write a test."** There is no test suite here and one would be
-the wrong shape. Verification is the ten gates below. "Make it pass" means *the
+the wrong shape. Verification is the gates below. "Make it pass" means *the
 gates exit zero*, and a new class of mistake means *a new gate*, not a new test
 file.
 
