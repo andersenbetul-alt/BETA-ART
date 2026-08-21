@@ -52,6 +52,48 @@ no CI workflows, no tests.
 D-002 and D-003 are hard blockers; D-004 and D-005 can be worked around with
 placeholders if needed.
 
+## Dependency graph
+
+How the open decisions gate the navbar work. Everything downstream of D-002
+and D-003 is unreachable until those two are answered.
+
+```mermaid
+graph TD
+    D002["D-002 · Stack<br/>OPEN — hard blocker"]
+    D003["D-003 · Page list<br/>OPEN — hard blocker"]
+    D004["D-004 · What is 'Cobban'<br/>OPEN — soft"]
+    D005["D-005 · Design reference<br/>OPEN — soft"]
+
+    SCAFFOLD["Scaffold: manifest + entry point"]
+    MARKUP["Navbar markup"]
+    LINKS["Nav links"]
+    BRAND["Brand / site title"]
+    STYLE["Navbar styling"]
+    RESP["Responsive + mobile menu"]
+    A11Y["Accessibility pass"]
+    TESTS["Tests"]
+    DONE["Navbar shippable"]
+
+    D002 --> SCAFFOLD --> MARKUP
+    D003 --> LINKS --> MARKUP
+    D004 -.placeholder ok.-> BRAND --> MARKUP
+    D005 -.originate if none.-> STYLE
+    MARKUP --> STYLE --> RESP --> A11Y --> DONE
+    D002 --> TESTS --> DONE
+
+    classDef blocker fill:#7f1d1d,stroke:#ef4444,color:#fff
+    classDef soft fill:#78350f,stroke:#f59e0b,color:#fff
+    classDef work fill:#1e3a5f,stroke:#3b82f6,color:#fff
+    classDef goal fill:#14532d,stroke:#22c55e,color:#fff
+    class D002,D003 blocker
+    class D004,D005 soft
+    class SCAFFOLD,MARKUP,LINKS,BRAND,STYLE,RESP,A11Y,TESTS work
+    class DONE goal
+```
+
+**Critical path:** D-002 → scaffold → markup → styling → responsive →
+accessibility. D-003 joins at markup. Nothing on this graph has been started.
+
 ## Open questions
 
 1. What stack should BETA-ART use (static HTML/CSS, React, Next.js, other)?

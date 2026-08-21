@@ -29,6 +29,8 @@ Changes landed:
   as open with options and a recommendation on the stack
 - Rewrote `README.md` — project overview, status pointers, repository layout,
   and a note that there is nothing to build yet
+- Added a mermaid dependency graph to `STATUS.md` showing how the open
+  decisions gate each piece of navbar work, and what the critical path is
 
 **Navbar progress: 0% — not started.** Blocked on D-002 (stack) and D-003
 (page list). No code has been written for it, and none can be until those two
