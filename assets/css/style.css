@@ -55,6 +55,10 @@
   --sp-9:48px;
   --sp-10:64px;
 
+  /* Display leading. The Latin lockup is set tight on purpose; scripts whose
+     glyphs carry matras above and descenders below need their own value or
+     the ink is cut off by the line box. See the html[lang] block below. */
+  --lead-display:.95;
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -65,7 +69,7 @@ body{
 }
 img,iframe{max-width:100%;display:block;border:0}
 a{color:inherit}
-h1,h2,h3{margin:0;font-weight:400;line-height:.95}
+h1,h2,h3{margin:0;font-weight:400;line-height:var(--lead-display)}
 p{margin:0 0 1em}
 ul,ol,dl{margin:0;padding:0;list-style:none}
 
@@ -276,6 +280,10 @@ h2.label,h3.label{font-weight:400;line-height:1.6}
 html[lang="ar"],html[lang="ur"]{--display:"Noto Kufi Arabic","Segoe UI",system-ui,sans-serif}
 html[lang="zh"]{--display:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
 html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,sans-serif}
+/* Arabic, Urdu, Devanagari and Bengali need their own display leading: at .95
+   the descenders of one line are clipped by the box and the matras of the next
+   run into them. 1.2 clears the ink these fonts actually paint. */
+html[lang="ar"],html[lang="ur"],html[lang="hi"],html[lang="bn"]{--lead-display:1.2}
 .wordmark,.logo,.stem-title,.release{font-family:"Barlow Condensed","Oswald","Arial Narrow",system-ui,sans-serif}
 
 /* ---------- motion / responsive ---------- */
