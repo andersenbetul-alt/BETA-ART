@@ -488,6 +488,139 @@ if (!pw) {
     })(SIDER[j][0], flyter);
   }
 
+
+  /* ---------------- Naviar Care (besok/) ----------------
+
+     Produktet vi faktisk selger. Fram til nå hadde det null nettlesertester:
+     alle 60 dekket den parkerte markedsplassen. Sidene under er endret mye –
+     nytt merke, ny palett, fritekstsperre, femte utfall – uten at noe fanget
+     det opp. */
+
+  t.gruppe('Naviar Care – sidene laster');
+
+  var BESOK = [
+    ['besok/index.html',     'Naviar Care'],
+    ['besok/logg-inn.html',  'Logg inn'],
+    ['besok/nytt.html',      'Nytt besøk'],
+    ['besok/oversikt.html',  'Oversikt'],
+    ['besok/historikk.html', 'Historikk'],
+    ['besok/utfor.html',     'besøk']
+  ];
+
+  for (var b = 0; b < BESOK.length; b++) {
+    var bside = await nySide();
+    await bside.goto(BASE + BESOK[b][0], { waitUntil: 'domcontentloaded' });
+    var btittel = await bside.title();
+    await bside.close();
+    (function (fil, tittel) {
+      t.test(fil, function () { t.erSann(tittel.length > 0, 'siden har ingen tittel'); });
+    })(BESOK[b][0], btittel);
+  }
+
+  /* ---------------- hele flyten ---------------- */
+
+  t.gruppe('Naviar Care – ett besøk fra start til familiemelding');
+
+  var flyt = await nySide();
+  await flyt.goto(BASE + 'besok/nytt.html', { waitUntil: 'domcontentloaded' });
+  await flyt.waitForSelector('#oppgaveliste input');
+
+  await flyt.fill('#kunde', 'Ingrid');
+  await flyt.check('#oppgaveliste input[value="handling"]');
+  await flyt.fill('#dato', '2026-09-01');
+  await flyt.fill('#tid', '14:00');
+  var ansatte = await flyt.$$eval('#ansatt option', function (o) {
+    return o.map(function (x) { return x.value; }).filter(Boolean);
+  });
+  await flyt.selectOption('#ansatt', ansatte[0]);
+  await flyt.fill('#parorende', 'datter@epost.no');
+
+  /* Fritekstsperren: helseopplysning skal stoppe innsending. */
+  await flyt.fill('#notat', 'Husk å gi henne tabletten klokka to');
+  await flyt.click('#nytt-skjema button[type="submit"]');
+  var sperret = await flyt.isVisible('#kvittering').catch(function () { return false; });
+  t.test('helseopplysning i beskjeden stopper innsending', function () {
+    t.erUsann(sperret, 'besøket ble opprettet med helseopplysning i notatet');
+  });
+
+  var feilTekst = await flyt.textContent('[data-error-for="notat"]').catch(function () { return ''; });
+  t.test('sperren forklarer hva man skal skrive i stedet', function () {
+    t.erSann((feilTekst || '').length > 20, 'ingen forklaring vist');
+  });
+
+  /* Praktisk beskjed skal gå gjennom. */
+  await flyt.fill('#notat', 'Ring på hos naboen hvis hun ikke åpner');
+  await flyt.click('#nytt-skjema button[type="submit"]');
+  await flyt.waitForSelector('#kvittering:not([hidden])', { timeout: 5000 });
+
+  var lenke = await flyt.textContent('#k-lenke');
+  t.test('praktisk beskjed slipper gjennom og gir arbeiderlenke', function () {
+    t.erSann((lenke || '').indexOf('utfor.html') !== -1, 'ingen arbeiderlenke: ' + lenke);
+  });
+
+  var token = ((lenke || '').match(/[?&]t=([a-z0-9]+)/) || [])[1];
+  t.test('lenken inneholder en engangskode', function () {
+    t.erSann(!!token && token.length > 8, 'token mangler');
+  });
+
+  /* Arbeideren utfører besøket. */
+  await flyt.goto(BASE + 'besok/utfor.html?t=' + token, { waitUntil: 'domcontentloaded' });
+  await flyt.waitForSelector('#skjema:not([hidden])', { timeout: 5000 });
+
+  var utfallKnapper = await flyt.$$eval('[data-utfall]', function (k) {
+    return k.map(function (x) { return x.getAttribute('data-utfall'); });
+  });
+  t.test('alle fem utfall er tilgjengelige', function () {
+    ['utfort', 'delvis', 'ikke_utfort', 'oppfolging', 'kontakt_familie'].forEach(function (u) {
+      t.erSann(utfallKnapper.indexOf(u) !== -1, 'mangler utfall: ' + u);
+    });
+  });
+
+  await flyt.click('[data-utfall="utfort"]');
+  await flyt.fill('#kommentar', 'Hun falt ikke, men hun var litt ustø');
+  await flyt.click('#send');
+  var slappGjennom = await flyt.isVisible('#ferdig:not([hidden])').catch(function () { return false; });
+  t.test('melding om fall stoppes også i arbeiderskjemaet', function () {
+    t.erUsann(slappGjennom, 'rapport med «falt» ble sendt inn');
+  });
+
+  await flyt.fill('#kommentar', 'Varene er satt på plass');
+  await flyt.click('#send');
+  await flyt.waitForSelector('#ferdig:not([hidden])', { timeout: 5000 });
+
+  var melding = await flyt.textContent('#f-melding').catch(function () { return ''; });
+  t.test('familiemeldingen er klar etter fullført besøk', function () {
+    t.erSann((melding || '').length > 20, 'ingen familiemelding');
+  });
+  t.test('familiemeldingen sier ikke at noen er trygg', function () {
+    t.erSann(!/trygg|i sikkerhet/i.test(melding || ''), 'meldingen lover trygghet: ' + melding);
+  });
+
+  /* Lenken er brukt opp. */
+  await flyt.goto(BASE + 'besok/utfor.html?t=' + token, { waitUntil: 'domcontentloaded' });
+  await flyt.waitForTimeout(300);
+  var sperre = await flyt.isVisible('#sperret:not([hidden])').catch(function () { return false; });
+  t.test('lenken kan ikke brukes to ganger', function () {
+    t.erSann(sperre, 'lenken virket fortsatt etter innsending');
+  });
+  await flyt.close();
+
+  /* ---------------- mobil ---------------- */
+
+  t.gruppe('Naviar Care på mobil');
+
+  var bmobil = await nySide(390, 844);
+  for (var c = 0; c < BESOK.length; c++) {
+    await bmobil.goto(BASE + BESOK[c][0], { waitUntil: 'domcontentloaded' });
+    var bflyter = await bmobil.evaluate(function () {
+      return document.documentElement.scrollWidth > window.innerWidth + 1;
+    });
+    (function (fil, flyter) {
+      t.test(fil + ' uten horisontal rulling', function () { t.erUsann(flyter, 'siden flyter utover skjermen'); });
+    })(BESOK[c][0], bflyter);
+  }
+  await bmobil.close();
+
   t.gruppe('Ingen JavaScript-feil');
   t.test('konsollen er ren på alle sider', function () {
     t.erLik(jsFeil, [], 'feil funnet');
