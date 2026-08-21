@@ -34,7 +34,7 @@ maliyet.
 |---|---|---|---|
 | 7 | 2–3 gerçek örnek iş / vaka çalışması ekle | Bekliyor | Yoksa kendi blog yazılarımız portföy olarak kullanılır |
 | 8 | Hakkımızda bölümü (kim yazıyor, hangi deneyim) | Bekliyor | Anonim stüdyo dönüşümü düşürür |
-| 9 | Gizlilik ve koşullar sayfaları | Bekliyor | Altbilgideki bağlantılar şu an boş |
+| 9 | Gizlilik ve koşullar sayfaları | **Bitti** 21.08 | `gizlilik.html` + `kosullar.html` (TR+EN). Altbilgi bağlantıları altı sayfada canlı. Koşullar: kapsam, fiyat/ödeme, iptal, revizyon, fikri mülkiyet, AI Act 50(4) editoryal sorumluluk, sorumluluk sınırı, Norveç hukuku. **10 `[DOLDURULACAK]` alanı var — yasal kimlik, MVA, ödeme vadesi, editoryal sorumlu adı, yetkili mahkeme** |
 | 10 | Örnek teslimat (bir makale + türetilmiş 5 içerik) PDF'i | Bekliyor | Brief formunda "örnek gör" olarak kullanılabilir |
 | 41 | **Lead magnet: Otomasyon Keşif Kontrol Listesi** | **Bitti** 18.08 | Bülten kaydı karşılığı indirilir; PDF'e yazdırılabilir |
 | 42 | Kendimizi ilk vaka çalışması yapmak | **Bitti** 18.08 | `ai-icerik-studyosu` yazısı: kendi hattımızın ölçülmüş rakamları, TR 1.045 / EN 1.358 |

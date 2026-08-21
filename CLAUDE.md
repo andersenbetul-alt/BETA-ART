@@ -23,6 +23,7 @@ index.html          Tanıtım: hero, hizmetler, içerik akışı, paketler, son 
 work.html           Bizimle çalışın: marka briefi + yazar başvurusu, süreç, SSS
 blog.html           Yazı listesi: arama + kategori filtresi
 gizlilik.html       Gizlilik ve veri koruma metni (TR + EN)
+kosullar.html       Kullanım ve hizmet koşulları (TR + EN)
 post.html           Yazı detayı (?slug=... ile)
 assets/js/config.js Yayın ayarları: e-posta, alan adı, sosyal hesaplar, fiyatlar, lead magnet
 assets/css/main.css Tek stil dosyası; tüm renkler :root değişkenlerinden gelir
@@ -66,8 +67,8 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    Midnight Navy `#082C54` ve Electric Aqua `#00D8C2`. **Aqua beyaz üzerinde 1,8:1'dir
    ve metinde kullanılamaz**; açık zeminde metin için `var(--brand-2-ink)` (`#0a7d72`,
    5,0:1). Logo halkası `var(--logo-ink)` ile temaya göre döner, aqua köprü sabittir.
-6. **Sayfa iskeleti beş dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
-   beşini birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`). `check.mjs` çiftlenen
+6. **Sayfa iskeleti altı dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
+   altısını birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`). `check.mjs` çiftlenen
    id ve script'leri yakalar ama eksik menü bağlantısını yakalamaz.
 7. **Rakamlar örnek olarak işaretlenir.** Paket fiyatları ve blog yazılarındaki ücret
    bilgileri araştırma/örnek veridir. Kesin vaat gibi sunmayın; abartılı iddia bu işte
@@ -85,7 +86,7 @@ denetler (tek yazı: `node scripts/gorunurluk.mjs <slug>`). Motorun taslaklara u
 ölçütü sitenin kendi yazılarına da uygular — kendi kuralımıza uymayan bir hattı
 kimseye satamayız.
 
-`npm run onizleme` beş sayfayı, yazı tipleri dahil her şeyi tek dosyaya gömüp
+`npm run onizleme` altı sayfayı, yazı tipleri dahil her şeyi tek dosyaya gömüp
 `onizleme/qblogg.html` üretir: sunucu kurmadan, dışarıya hiç istek atmadan
 tıklanabilir bir önizleme. Birine site göstermek gerektiğinde bunu kullanın.
 Yönlendirme `?page=` ile; `slug` ve `lang` gerçek sorgu dizesinde kaldığı için
