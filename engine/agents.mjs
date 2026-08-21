@@ -9,7 +9,7 @@
  */
 import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
+import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
 
 const MODEL = 'claude-opus-5';
 const client = new Anthropic();
@@ -31,10 +31,10 @@ const QuestionSchema = z.object({
 
 /** İnsanların bu konuda tam olarak neyi sorduğunu çıkarır ve kümeler. */
 export async function questionAgent(topicTitle, signalTitles) {
-  const res = await client.messages.parse({
+  const res = await client.beta.messages.parse({
     model: MODEL, max_tokens: 8000,
     thinking: { type: 'adaptive' },
-    output_config: { effort: 'medium', format: zodOutputFormat(QuestionSchema) },
+    output_config: { effort: 'medium', format: betaZodOutputFormat(QuestionSchema) },
     system: 'Arama niyeti analisti gibi çalış. Eş anlamlı ifadeleri tek konuda topla; '
           + 'aynı soruyu farklı kelimelerle soranları aynı kümeye koy. Uydurma soru ekleme.',
     messages: [{ role: 'user', content:
@@ -64,10 +64,10 @@ const ResearchSchema = z.object({
 
 /** Konuyu web'de araştırır, kaynaklı bir paket çıkarır. */
 export async function researchAgent(topic, questions = []) {
-  const res = await client.messages.parse({
+  const res = await client.beta.messages.parse({
     model: MODEL, max_tokens: 16000,
     thinking: { type: 'adaptive' },
-    output_config: { effort: 'high', format: zodOutputFormat(ResearchSchema) },
+    output_config: { effort: 'high', format: betaZodOutputFormat(ResearchSchema) },
     tools: [WEB_SEARCH],
     system: 'Araştırmacısın. Web araması yaparak güncel ve doğrulanabilir bilgi topla. '
           + 'Her iddianın kaynağını ver. Kaynak bulamadığın şeyi yazma. Fiyat ve tarih '
@@ -129,9 +129,9 @@ const SeoSchema = z.object({
 });
 
 export async function seoAgent(article, existingSlugs = []) {
-  const res = await client.messages.parse({
+  const res = await client.beta.messages.parse({
     model: MODEL, max_tokens: 8000,
-    output_config: { effort: 'medium', format: zodOutputFormat(SeoSchema) },
+    output_config: { effort: 'medium', format: betaZodOutputFormat(SeoSchema) },
     system: 'SEO editörüsün. Amaç arama motorunu kandırmak değil, soruya en iyi cevabı '
           + 'bulunabilir kılmak. Anahtar kelime tıkıştırma yapma.',
     messages: [{ role: 'user', content:
@@ -152,9 +152,9 @@ const MoneySchema = z.object({
 });
 
 export async function moneyAgent(article, offerings) {
-  const res = await client.messages.parse({
+  const res = await client.beta.messages.parse({
     model: MODEL, max_tokens: 4000,
-    output_config: { effort: 'medium', format: zodOutputFormat(MoneySchema) },
+    output_config: { effort: 'medium', format: betaZodOutputFormat(MoneySchema) },
     system: 'Gelir stratejistisin. Bu makaleyi okuyan kişi bizden ne satın alabilir? '
           + 'Zorlama satış önerme; okuyucuya gerçekten yardımcı olacak yerleşim öner.',
     messages: [{ role: 'user', content: `Sattıklarımız:\n${offerings}\n\nMAKALE:\n${article}` }]
@@ -175,10 +175,10 @@ const QualitySchema = z.object({
 
 /** Yayın kapısı. İnsan onayının yerine geçmez; insana ne bakacağını söyler. */
 export async function qualityGate(article, research) {
-  const res = await client.messages.parse({
+  const res = await client.beta.messages.parse({
     model: MODEL, max_tokens: 6000,
     thinking: { type: 'adaptive' },
-    output_config: { effort: 'high', format: zodOutputFormat(QualitySchema) },
+    output_config: { effort: 'high', format: betaZodOutputFormat(QualitySchema) },
     system: 'Sert bir editörsün. Makaledeki her sayısal iddiayı araştırma paketiyle karşılaştır. '
           + 'Pakette olmayan bir iddia varsa bunu sorun olarak işaretle.',
     messages: [{ role: 'user', content:

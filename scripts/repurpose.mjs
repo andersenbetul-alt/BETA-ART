@@ -19,7 +19,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
+import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const MODEL = 'claude-opus-5';
@@ -110,11 +110,11 @@ Kurallar:
 
 const client = new Anthropic();
 
-const response = await client.messages.parse({
+const response = await client.beta.messages.parse({
   model: MODEL,
   max_tokens: 16000,
   thinking: { type: 'adaptive' },
-  output_config: { effort: 'high', format: zodOutputFormat(Schema) },
+  output_config: { effort: 'high', format: betaZodOutputFormat(Schema) },
   system: SYSTEM,
   messages: [{ role: 'user', content: `Aşağıdaki yazıdan türev içerikleri üret.\n\n---\n\n${article}` }]
 });
