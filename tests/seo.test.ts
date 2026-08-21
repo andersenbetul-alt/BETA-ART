@@ -4,7 +4,7 @@ import robots from "@/app/robots";
 import { pageMetadata } from "@/lib/metadata";
 import { articleIds } from "@/content/articles";
 import { jobIds } from "@/content/jobs";
-import { locales, path, routeKeys, siteUrl } from "@/lib/i18n";
+import { locales, ogImage, path, routeKeys, siteUrl } from "@/lib/i18n";
 
 const entries = sitemap();
 
@@ -105,14 +105,23 @@ describe("sayfa metadatası", () => {
   });
 
   it("Open Graph görseli dile göre değişir", () => {
-    const tr = pageMetadata({ key: "home", locale: "tr", title: "t", description: "d" });
-    const en = pageMetadata({ key: "home", locale: "en", title: "t", description: "d" });
-    expect(tr.openGraph?.images).toEqual([
-      { url: "/og-tr.png", width: 1200, height: 630, alt: "NAVIAR" },
-    ]);
-    expect(en.openGraph?.images).toEqual([
-      { url: "/og-en.png", width: 1200, height: 630, alt: "NAVIAR" },
-    ]);
+    // Metnin kendisine değil, sözleşmeye bakılır: doğru dosya, LinkedIn'in
+    // istediği ölçü ve dile göre farklılaşan açıklayıcı bir alt metin.
+    // Cümlenin birebir kendisini beklemek, metin iyileştirilince testi kırardı.
+    for (const [locale, dict] of [
+      ["tr", ogImage("tr")],
+      ["en", ogImage("en")],
+    ] as const) {
+      const meta = pageMetadata({ key: "home", locale, title: "t", description: "d" });
+      expect(meta.openGraph?.images).toEqual([dict]);
+      expect(dict.url).toBe(`/og-${locale}.png`);
+      // LinkedIn en az 1200×627 ister; altına düşersek önizleme küçük kart olur.
+      expect(dict.width).toBeGreaterThanOrEqual(1200);
+      expect(dict.height).toBeGreaterThanOrEqual(627);
+      // Alt metin görseli anlatmalı; yalnızca marka adı bilgi taşımaz.
+      expect(dict.alt.length).toBeGreaterThan(40);
+    }
+    expect(ogImage("tr").alt).not.toBe(ogImage("en").alt);
   });
 });
 

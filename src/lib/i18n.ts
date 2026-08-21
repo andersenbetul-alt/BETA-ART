@@ -82,12 +82,22 @@ export function absoluteUrl(pathname: string): string {
   return `${siteUrl}${pathname}`;
 }
 
-/** Dile göre sosyal paylaşım görseli (public/ altında). */
+/**
+ * Dile göre sosyal paylaşım görseli (`public/` altında,
+ * `npm run assets:social` ile üretilir).
+ *
+ * `alt` görselin içeriğini anlatır: paylaşımı ekran okuyucuyla duyan kişi
+ * yalnızca "NAVIAR" duyuyordu, bu da bağlantının neden paylaşıldığını
+ * söylemiyor.
+ */
 export function ogImage(locale: Locale) {
   return {
     url: `/og-${locale}.png`,
     width: 1200,
     height: 630,
-    alt: "NAVIAR",
+    alt:
+      locale === "tr"
+        ? "NAVIAR — Stratejiniz sunumda kalıyorsa sorun strateji değil. Yönetim & strateji, insan kaynakları ve kurumsal eğitim danışmanlığı."
+        : "NAVIAR — If your strategy stays in the deck, the strategy is not the problem. Management and strategy, HR and corporate learning consultancy.",
   };
 }
