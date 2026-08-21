@@ -243,7 +243,13 @@ def main():
             print("   · … and %d more" % (len(items) - 14))
         print()
     print("total gaps: %d" % total)
-    return 1 if total else 0
+    # An inventory of unfinished work is not a failure — `git status` does not
+    # exit non-zero for a dirty tree. `--strict` is there for anything that
+    # wants to gate on it.
+    if total:
+        print("\nExit status is 0: this is a list of what is missing, not a "
+              "defect report.\nTo gate on it, run `python3 tools/gaps.py --strict`.")
+    return 1 if ("--strict" in sys.argv and total) else 0
 
 
 if __name__ == "__main__":

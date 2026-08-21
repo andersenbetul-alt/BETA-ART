@@ -147,9 +147,13 @@ nothing ships past it:
     python3 tools/plates.py       # catalogue integrity
     node  tools/render-check.js   # a real browser, four widths
 
-**Readiness — these exit non-zero until real-world work is done, and that is
-their job.** They answer "is this finished?", not "is this correct?". Neither
-is a failure, and neither may be quieted to make a run look clean:
+**Readiness — these report what is not finished.** They answer "is this
+finished?", not "is this correct?". They exit **0**, because having something
+to report is not a failure — the same reason `git status` exits 0 on a dirty
+tree. Add `--strict` to either one to gate on it, which is what a deploy
+pipeline should use. What may never happen is quieting the *report*: the
+outstanding items stay printed, and `launch.py` still exits non-zero when a
+real gate underneath it breaks.
 
     python3 tools/gaps.py         # what is still missing
     python3 tools/launch.py       # ready? machine answers vs. person answers

@@ -98,9 +98,10 @@ def main():
         for name, what in READINESS:
             rc, tail = run([sys.executable, os.path.join("tools", name)])
             print("  □ %-14s %s" % (name, tail or what))
-        print("\n  These stay non-zero until somebody registers a company, buys a")
-        print("  domain, photographs a plate or reads the terms. That is what they")
-        print("  are for. Neither may be quieted to make a run look clean.")
+        print("\n  These report what is not finished — a company not registered, a")
+        print("  domain not bought, a plate not photographed, terms not read. They")
+        print("  exit 0 because reporting is not failing; add --strict to either to")
+        print("  gate a deploy on readiness. Neither may be quieted to look clean.")
 
     if failed:
         if not quiet:

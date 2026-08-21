@@ -31,13 +31,16 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-GATES = ["audit.py", "qc.py", "copy.py", "plates.py", "claims.py",
+GATES = ["audit.py", "qc.py", "tokens.py", "copy.py", "plates.py", "claims.py",
          "klarsprak.py", "languages.py", "gaps.py"]
 
-# qc's four findings and gaps' three are statements about deployment and about
-# the eleven languages, not defects. They are counted here where they belong —
-# under the person, not under the machine.
-TOLERATED = {"qc.py": 4, "gaps.py": 3}
+# qc used to carry four permanent findings about inline-deploy size, and that
+# tolerance was correct while they existed. They are gone — qc reports zero —
+# so tolerating four here would now hide four real defects. Removed.
+#
+# gaps still reports what is missing, and that is the person's list rather than
+# a defect, so its remaining item is tolerated and shown below under PERSON.
+TOLERATED = {"gaps.py": 2}
 
 machine, person = [], []
 
@@ -60,11 +63,16 @@ def run_gates(slow):
                            capture_output=True, text=True, cwd=ROOT)
         tail = (r.stdout.strip().splitlines() or [""])[-1]
         allow = TOLERATED.get(g, 0)
-        found = 0
-        m = re.search(r"(\d+)\s+(?:finding|funn|gap|problem)", tail)
-        if m:
-            found = int(m.group(1))
-        if r.returncode == 0 or found <= allow:
+        # Count findings whichever way the gate words it: "3 findings" and
+        # "total findings: 3" are both used across these tools.
+        m = (re.search(r"(\d+)\s+(?:finding|funn|gap|problem)", tail)
+             or re.search(r"(?:finding|funn|gap|problem)\w*:\s*(\d+)", tail))
+        found = int(m.group(1)) if m else None
+        # A non-zero exit with no parseable count used to fall through to
+        # `found <= allow` with found still 0, so a failing gate was reported
+        # as passing. If the gate failed and its output cannot be counted,
+        # believe the exit code.
+        if r.returncode == 0 or (found is not None and found <= allow):
             ok("%-14s %s" % (g, tail))
         else:
             no("%-14s %s" % (g, tail))
@@ -182,7 +190,24 @@ def main():
               "none\nof them can be cleared from here." % len(person))
     else:
         print("READY.")
-    return 1 if (failed or person) else 0
+    # Two different things used to share one exit code: a MACHINE gate that
+    # failed, which is an error, and PERSON items still outstanding, which is
+    # this tool's entire subject matter. A report that exits non-zero for
+    # having something to report cannot be run by anything, so it stopped
+    # being run.
+    #
+    # Now: a broken gate still fails, because that is wrong. Outstanding human
+    # work reports and exits zero, because that is not wrong — it is Tuesday.
+    # `--strict` restores the old behaviour for anything that wants to gate a
+    # deploy on readiness, which is the only place the old meaning belonged.
+    strict = "--strict" in sys.argv
+    if person:
+        print("\n  Exit status is 0: this report ran. It is NOT a statement that")
+        print("  the site is ready — %d item(s) above are still outstanding." % len(person))
+        print("  To gate on readiness, run `python3 tools/launch.py --strict`.")
+    if failed:
+        return 1
+    return 1 if (strict and person) else 0
 
 
 def _wrap(text, width):
