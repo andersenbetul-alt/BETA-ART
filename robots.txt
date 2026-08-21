@@ -1,0 +1,17 @@
+# Naviar Care
+#
+# FØR LANSERING: alt er stengt. Vi har kjøpt domenet, men siden skal ikke
+# dukke opp i søk før produktet faktisk selges. Bytt til blokken under når
+# dere går live.
+
+User-agent: *
+Disallow: /
+
+# VED LANSERING - erstatt alt over med dette:
+#
+# User-agent: *
+# Allow: /$
+# Allow: /assets/
+# Disallow: /besok/
+#
+# Sitemap: https://naviarcare.com/sitemap.xml

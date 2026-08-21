@@ -865,4 +865,73 @@ t.test('svarverdiene er tre, ikke en terning', function () {
   t.erLik(KV.VERDI.ikke, 0);
 });
 
+
+/* ---------------- før lansering ----------------
+
+   Domenet er kjøpt, men produktet skal ikke ut før det er bestemt. Disse
+   testene holder den beslutningen fast, slik at ingen går live ved et uhell.
+   Ved lansering skal de tre første feile - da er det tid for å endre dem. */
+
+t.gruppe('Ikke publisert ennå');
+
+var fs = require('fs');
+var sti = require('path');
+var ROT = sti.join(__dirname, '..');
+function les(f) { return fs.readFileSync(sti.join(ROT, f), 'utf8'); }
+
+t.test('robots.txt stenger alt', function () {
+  var r = les('robots.txt');
+  var linjer = r.split('\n').filter(function (l) { return l.trim() && l.trim()[0] !== '#'; });
+  t.erSann(linjer.some(function (l) { return /^Disallow:\s*\/\s*$/.test(l.trim()); }),
+           'robots.txt slipper noe gjennom: ' + linjer.join(' | '));
+});
+
+t.test('landingssiden er merket noindex', function () {
+  t.erSann(/name="robots"\s+content="noindex/.test(les('besok/index.html')),
+           'landingssiden kan indekseres');
+});
+
+t.test('appskjermene er noindex, uansett lansering', function () {
+  ['logg-inn', 'nytt', 'oversikt', 'historikk', 'utfor'].forEach(function (n) {
+    t.erSann(/name="robots"\s+content="noindex/.test(les('besok/' + n + '.html')),
+             n + '.html mangler noindex');
+  });
+});
+
+t.test('sitemap peker bare på landingssiden', function () {
+  var s = les('sitemap.xml');
+  var loc = (s.match(/<loc>([^<]+)<\/loc>/g) || []).map(function (m) {
+    return m.replace(/<\/?loc>/g, '');
+  });
+  t.erLik(loc.length, 1);
+  /* Bare adressene teller - kommentaren over dem forklarer nettopp hvorfor
+     appskjermene holdes utenfor, og skal ikke felle testen. */
+  t.erSann(loc.every(function (u) { return u.indexOf('/besok/') === -1; }),
+           'sitemap eksponerer appskjermene: ' + loc.join(', '));
+  t.erSann(s.indexOf('sitemaps.org/schemas/sitemap/0.9') !== -1, 'feil navnerom');
+});
+
+t.test('delingsbildet finnes og er 1200x630', function () {
+  var b = fs.readFileSync(sti.join(ROT, 'assets/img/naviar-og.png'));
+  /* PNG: bredde og høyde ligger som 32-bit big endian fra byte 16 */
+  t.erLik(b.readUInt32BE(16), 1200);
+  t.erLik(b.readUInt32BE(20), 630);
+});
+
+t.test('alle ikonfilene som meta-taggene lover, finnes', function () {
+  ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png',
+   'android-chrome-192x192.png', 'android-chrome-512x512.png', 'naviar-og.png'
+  ].forEach(function (f) {
+    t.erSann(fs.existsSync(sti.join(ROT, 'assets/img', f)), 'mangler ' + f);
+  });
+});
+
+t.test('canonical og og:url peker på samme domene', function () {
+  var h = les('besok/index.html');
+  var c = (h.match(/rel="canonical" href="([^"]+)"/) || [])[1];
+  var o = (h.match(/property="og:url" content="([^"]+)"/) || [])[1];
+  t.erLik(c, o);
+  t.erSann(/^https:\/\/naviarcare\.com\//.test(c || ''), 'uventet domene: ' + c);
+});
+
 t.oppsummer('Enhetstester');
