@@ -95,9 +95,12 @@ docs/business-review.md         İş geliştirme incelemesi ve karar noktaları
 db/schema.sql                   Ödeme veritabanı şeması
 db/seed.sql                     Ürün kataloğu ve kredi fiyatları
 db/functions.sql                consume_credits, has_entitlement, grant_period_credits
-db/test.sql                     Kredi ve erişim mantığı testleri
+db/test.sql                     Kredi ve erişim mantığı testleri (14 assertion)
 build.py                        JSON'lardan index.html, work.html ve team.html üretir
 build_review.py                 review.html (incelemenin görsel özeti) üretir
+run-tests.sh                    Tüm testleri çalıştırır
+tests/test_data.py              Veri bütünlüğü testleri
+tests/test_build.py             Build ve sayfa değişmezleri
 index.html                      Kategori sayfası (üretilen)
 work.html                       AI Workforce sayfası (üretilen)
 team.html                       Ekip ve organizasyon sayfası (üretilen)
@@ -109,7 +112,35 @@ team.html                       Ekip ve organizasyon sayfası (üretilen)
 yeniden üretin:
 
 ```bash
-python3 build.py
+python3 build.py         # index.html, work.html, team.html
+python3 build_review.py  # review.html
+```
+
+## Testler
+
+```bash
+./run-tests.sh
+```
+
+Altı adım çalışır ve herhangi biri düşerse koşum sıfırdan farklı kodla çıkar:
+
+| Adım | Ne doğrular |
+| --- | --- |
+| build (3 sayfa) · build (review) | Üreticiler hatasız çalışıyor |
+| veri bütünlüğü | JSON alanları, tekrar eden id yok, rollerin referans verdiği iş alanları gerçekten var |
+| build değişmezleri | Build tekrarlanabilir, işlenmemiş şablon kalıntısı yok, iki tema tanımlı, sayfa içi çapalar hedefsiz değil |
+| sürükleme kontrolü | Üretilen HTML commit edilenle aynı |
+| sql (14 kontrol) | Kredi FIFO sırası, idempotency, kovalar arası taşma, yetersiz bakiye hatası, süresi dolmuş kredi, erişim verme ve iade sonrası iptal |
+
+`review.html` için erişilebilirlik değişmezleri de test edilir: tipografi
+rem tabanlı kalmalı, boşluklar 4pt ızgarada olmalı, açık moddaki `--muted`
+kontrast eşiğinin altına dönmemeli, grafik isabet alanları yerinde durmalı.
+
+SQL testleri çalışan bir PostgreSQL ister. Yoksa o adım **atlandı** olarak
+işaretlenir; sessizce geçilmez.
+
+```bash
+PGTEST_ARGS='-h /var/tmp -p 55432 -U postgres' ./run-tests.sh
 ```
 
 Sayfalar tek dosyadır, harici bağımlılığı yoktur ve doğrudan tarayıcıda

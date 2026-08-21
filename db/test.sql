@@ -1,90 +1,129 @@
 -- Kredi ve erişim mantığının doğrulama testleri.
--- Çalıştırma: psql -f db/schema.sql -f db/seed.sql -f db/functions.sql -f db/test.sql
--- Hepsi transaction içinde çalışır ve rollback eder; veri bırakmaz.
+--
+-- Çalıştırma:
+--   psql -v ON_ERROR_STOP=1 -f db/schema.sql -f db/seed.sql -f db/functions.sql -f db/test.sql
+--
+-- Her kontrol ASSERT ile yapılır: bir beklenti tutmazsa psql hata verip
+-- sıfırdan farklı kodla çıkar. Testler transaction içinde çalışır ve geri
+-- alınır; veritabanında iz bırakmaz.
 
+\set ON_ERROR_STOP on
 begin;
 
--- Senaryo: Creator planı (1.000 kredi/ay) + 1.000 satın alınmış kredi
-insert into account (id, email, billing_country)
-  values ('11111111-1111-1111-1111-111111111111', 'test@beta.no', 'NO');
+do $$
+declare
+  v_acct  uuid := '11111111-1111-1111-1111-111111111111';
+  v_sub   uuid := '22222222-2222-2222-2222-222222222222';
+  v_empty uuid := '33333333-3333-3333-3333-333333333333';
+  v_exp   uuid := '44444444-4444-4444-4444-444444444444';
+  v_n     integer;
+  v_bal   bigint;
+  v_row   record;
+  v_ok    boolean;
+begin
+  insert into account (id, email, billing_country) values (v_acct, 'test@beta.no', 'NO');
 
-insert into subscription (id, account_id, product_id, price_id, provider,
-                          current_period_start, current_period_end)
-  select '22222222-2222-2222-2222-222222222222',
-         '11111111-1111-1111-1111-111111111111',
-         p.id, pr.id, 'stripe', now(), now() + interval '30 days'
-    from product p join price pr on pr.product_id = p.id
-   where p.slug = 'curiosity-creator';
+  insert into subscription (id, account_id, product_id, price_id, provider,
+                            current_period_start, current_period_end)
+    select v_sub, v_acct, p.id, pr.id, 'stripe', now(), now() + interval '30 days'
+      from product p join price pr on pr.product_id = p.id
+     where p.slug = 'curiosity-creator';
 
-\echo '--- 1. Dönem kredisi verilir (1000, 30 gün sonra yanar) ---'
-select grant_period_credits('22222222-2222-2222-2222-222222222222') as verilen;
+  -- 1. Dönem kredisi verilir
+  v_n := grant_period_credits(v_sub);
+  assert v_n = 1000, format('T1 dönem kredisi: beklenen 1000, gelen %s', v_n);
 
-\echo '--- 2. Aynı dönem için tekrar çağrılır: 0 dönmeli ---'
-select grant_period_credits('22222222-2222-2222-2222-222222222222') as tekrar;
+  -- 2. Aynı dönem için tekrar çağrılırsa kredi verilmez
+  v_n := grant_period_credits(v_sub);
+  assert v_n = 0, format('T2 çift kredi verildi: %s', v_n);
 
-\echo '--- 3. Satın alınmış 1000 kredi (süresiz) eklenir ---'
-insert into credit_grant (account_id, source, amount, remaining, expires_at)
-  values ('11111111-1111-1111-1111-111111111111', 'purchase', 1000, 1000, null);
+  -- 3. Satın alınmış süresiz kredi eklenince bakiye toplanır
+  insert into credit_grant (account_id, source, amount, remaining, expires_at)
+    values (v_acct, 'purchase', 1000, 1000, null);
+  select balance into v_bal from credit_balance where account_id = v_acct;
+  assert v_bal = 2000, format('T3 bakiye: beklenen 2000, gelen %s', v_bal);
 
-select balance as toplam_bakiye from credit_balance
- where account_id = '11111111-1111-1111-1111-111111111111';
+  -- 4. Tüketim doğru tutarı düşer
+  select charged, balance into v_n, v_bal
+    from consume_credits(v_acct, 'blog_article', 'req-001');
+  assert v_n = 20 and v_bal = 1980, format('T4 tüketim: %s kredi, bakiye %s', v_n, v_bal);
 
-\echo '--- 4. Blog makalesi (20 kredi) üretilir ---'
-select * from consume_credits('11111111-1111-1111-1111-111111111111', 'blog_article', 'req-001');
+  -- 5. FIFO: önce süresi dolacak kovadan düşer
+  select remaining into v_n from credit_grant
+   where account_id = v_acct and source = 'subscription_period';
+  assert v_n = 980, format('T5 FIFO bozuk: dönem kovasında %s kaldı (980 olmalı)', v_n);
+  select remaining into v_n from credit_grant
+   where account_id = v_acct and source = 'purchase';
+  assert v_n = 1000, format('T5 FIFO bozuk: satın alınan kovadan düşüldü (%s)', v_n);
 
-\echo '--- 5. FIFO kontrolü: düşüş SÜRESİ DOLACAK kovadan olmalı ---'
-select g.source, g.amount, g.remaining, (g.expires_at is null) as suresiz
-  from credit_grant g
- where g.account_id = '11111111-1111-1111-1111-111111111111'
- order by g.expires_at nulls last;
+  -- 6. Idempotency: aynı request_id iki kez düşmez
+  select charged, balance into v_n, v_bal
+    from consume_credits(v_acct, 'blog_article', 'req-001');
+  assert v_bal = 1980, format('T6 idempotency bozuk: bakiye %s', v_bal);
+  select count(*) into v_n from credit_consumption where request_id = 'req-001';
+  assert v_n = 1, format('T6 çift tüketim kaydı: %s', v_n);
 
-\echo '--- 6. Idempotency: aynı request_id tekrar gönderilir, bakiye düşmemeli ---'
-select * from consume_credits('11111111-1111-1111-1111-111111111111', 'blog_article', 'req-001');
+  -- 7. Dağıtım izi tutulur ve tüketimle eşleşir
+  select sum(a.credits) into v_n
+    from credit_consumption c join credit_allocation a on a.consumption_id = c.id
+   where c.request_id = 'req-001';
+  assert v_n = 20, format('T7 dağıtım izi: %s (20 olmalı)', v_n);
 
-\echo '--- 7. Dağıtım izi ---'
-select c.operation, c.credits, a.credits as kovadan_dusen, (g.expires_at is null) as suresiz_kova
-  from credit_consumption c
-  join credit_allocation a on a.consumption_id = c.id
-  join credit_grant g on g.id = a.grant_id;
+  -- 8. Kovalar arası taşma
+  for i in 1..25 loop
+    perform consume_credits(v_acct, 'deep_report', 'bulk-' || i);
+  end loop;
+  select remaining into v_n from credit_grant
+   where account_id = v_acct and source = 'subscription_period';
+  assert v_n = 0, format('T8 dönem kovası tükenmeliydi: %s kaldı', v_n);
+  select balance into v_bal from credit_balance where account_id = v_acct;
+  assert v_bal = 730, format('T8 bakiye: beklenen 730, gelen %s', v_bal);
 
-\echo '--- 8. Derin rapor x 25 = 1250 kredi: iki kovaya taşmalı ---'
-select sum(c.charged) as toplam
-  from generate_series(1,25) i,
-       lateral consume_credits('11111111-1111-1111-1111-111111111111','deep_report','bulk-'||i) c;
+  -- 9. Yetersiz kredi hata verir
+  insert into account (id, email, billing_country) values (v_empty, 'bos@beta.no', 'NO');
+  insert into credit_grant (account_id, source, amount, remaining)
+    values (v_empty, 'purchase', 30, 30);
+  begin
+    perform consume_credits(v_empty, 'deep_report', 'x-1');
+    assert false, 'T9 yetersiz kredide hata beklenirdi';
+  exception when insufficient_privilege then null;
+  end;
 
-select g.source, g.remaining, (g.expires_at is null) as suresiz
-  from credit_grant g where g.account_id = '11111111-1111-1111-1111-111111111111'
- order by g.expires_at nulls last;
+  -- 10. Süresi dolmuş kredi bakiyeye sayılmaz
+  insert into account (id, email, billing_country) values (v_exp, 'x@beta.no', 'NO');
+  insert into credit_grant (account_id, source, amount, remaining, expires_at)
+    values (v_exp, 'subscription_period', 100, 100, now() - interval '1 day');
+  select coalesce((select balance from credit_balance where account_id = v_exp), 0) into v_bal;
+  assert v_bal = 0, format('T10 süresi dolmuş kredi sayıldı: %s', v_bal);
 
-\echo '--- 10. Erişim kontrolü ---'
-select has_entitlement('11111111-1111-1111-1111-111111111111','curiosity.creator') as erisim_yok_once;
-insert into entitlement (account_id, feature_key, source_type, source_id, expires_at)
-  values ('11111111-1111-1111-1111-111111111111','curiosity.creator','subscription',
-          '22222222-2222-2222-2222-222222222222', now() + interval '30 days');
-select has_entitlement('11111111-1111-1111-1111-111111111111','curiosity.creator') as erisim_var;
+  -- 11. Erişim: verilmeden yok, verilince var, iade sonrası iptal
+  v_ok := has_entitlement(v_acct, 'curiosity.creator');
+  assert not v_ok, 'T11 erişim yokken var göründü';
+  insert into entitlement (account_id, feature_key, source_type, source_id, expires_at)
+    values (v_acct, 'curiosity.creator', 'subscription', v_sub, now() + interval '30 days');
+  v_ok := has_entitlement(v_acct, 'curiosity.creator');
+  assert v_ok, 'T11 erişim verildi ama görünmüyor';
+  update entitlement set revoked_at = now(), revoke_reason = 'refund' where account_id = v_acct;
+  v_ok := has_entitlement(v_acct, 'curiosity.creator');
+  assert not v_ok, 'T11 iade sonrası erişim geri alınmadı';
 
-\echo '--- 11. İade sonrası erişim geri alınır ---'
-update entitlement set revoked_at = now(), revoke_reason = 'refund'
- where account_id = '11111111-1111-1111-1111-111111111111';
-select has_entitlement('11111111-1111-1111-1111-111111111111','curiosity.creator') as erisim_iptal;
+  -- 12. Süresi geçmiş erişim kapanır
+  insert into entitlement (account_id, feature_key, source_type, expires_at)
+    values (v_acct, 'blog_pro', 'order', now() - interval '1 hour');
+  v_ok := has_entitlement(v_acct, 'blog_pro');
+  assert not v_ok, 'T12 süresi geçmiş erişim hâlâ açık';
 
-rollback;
+  -- 13. Katalog bütünlüğü: her abonelik ürününün fiyatı var
+  select count(*) into v_n
+    from product p left join price pr on pr.product_id = p.id and pr.active
+   where p.kind = 'subscription' and pr.id is null;
+  assert v_n = 0, format('T13 fiyatsız abonelik ürünü: %s', v_n);
 
-begin;
-insert into account (id, email, billing_country)
-  values ('33333333-3333-3333-3333-333333333333', 'bos@beta.no', 'NO');
-insert into credit_grant (account_id, source, amount, remaining)
-  values ('33333333-3333-3333-3333-333333333333', 'purchase', 30, 30);
+  -- 14. Kredi operasyonlarının hepsi pozitif
+  select count(*) into v_n from credit_operation where credits <= 0;
+  assert v_n = 0, format('T14 geçersiz kredi bedeli: %s', v_n);
 
-\echo '--- 12. Yetersiz kredi hatası: bakiye 30, derin rapor 50 kredi istiyor ---'
-select * from consume_credits('33333333-3333-3333-3333-333333333333','deep_report','x-1');
-rollback;
+  raise notice 'TÜM TESTLER GEÇTİ (14 kontrol)';
+end $$;
 
-begin;
-insert into account (id, email, billing_country) values ('44444444-4444-4444-4444-444444444444','x@b.no','NO');
-insert into credit_grant (account_id, source, amount, remaining, expires_at)
-  values ('44444444-4444-4444-4444-444444444444','subscription_period',100,100, now() - interval '1 day');
-\echo '--- 13. Süresi dolmuş kredi bakiyeye sayılmamalı ---'
-select coalesce((select balance from credit_balance where account_id='44444444-4444-4444-4444-444444444444'),0) as bakiye;
-select * from consume_credits('44444444-4444-4444-4444-444444444444','trend_scan','y-1');
 rollback;
