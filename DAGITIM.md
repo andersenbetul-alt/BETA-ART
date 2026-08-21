@@ -57,10 +57,6 @@ GoDaddy'de ayrıca **Forwarding** (yönlendirme) açıksa kapatın — açık ka
 A kaydını ezip park sayfasını göstermeye devam eder. En sık gözden kaçan adım
 budur.
 
-**CNAME değerini panelden okuyun, buraya yazmayın.** Vercel bu hedefi projeye
-göre veriyor (`cname.vercel-dns.com` ya da `cname.vercel-dns-N.com` olabilir);
-yanlış değer sessizce çalışmaz.
-
 Alternatif — alan adının ad sunucularını (nameserver) tamamen Vercel'e
 devrederseniz DNS'i Vercel yönetir ve tek tek kayıt girmezsiniz. Daha kolay,
 ama e-posta kayıtlarınızı (MX) da oraya taşımanız gerekir.
