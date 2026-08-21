@@ -131,6 +131,7 @@ Not optional, and quick. Each exits non-zero when it finds something:
     python3 tools/enrich.py       # breadcrumb and FAQ structured data
     python3 tools/audit.py        # HTML
     python3 tools/qc.py           # JS, CSS, i18n, prices, deployability
+    python3 tools/tokens.py       # a custom property is defined once, and resolves
     python3 tools/copy.py         # conversion copy
     python3 tools/claims.py       # a promise on a page is a promise in the notice
     python3 tools/klarsprak.py    # Norwegian against Språkrådet's klarspråk rules

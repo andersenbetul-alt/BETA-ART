@@ -43,7 +43,9 @@ text below a legibility threshold.
 
 ### Observation 2: Adding tokens to an existing `:root` can silently redefine one
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-21) — became `tools/tokens.py`, which fails on a
+custom property defined twice in one block. Verified against the original bug:
+reintroducing the duplicate `--ease` is caught at the line.
 **Date:** 2026-08-21
 **Session context:** Appending a spacing/type/motion token block to the `:root`
 of three stylesheets that already had their own tokens.
