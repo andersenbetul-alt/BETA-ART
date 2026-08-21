@@ -124,22 +124,39 @@ it is lost silently. `tools/generators/README.md` says which builder writes what
 
 ## The gates
 
-Not optional, and quick. Each exits non-zero when it finds something:
+Two lists, and the difference matters. Mixing them makes "the gates pass"
+sound impossible when it is not.
 
-    python3 tools/sitemap.py      # URLs follow the pages
+**Correctness — these must all exit zero.** A non-zero here is a defect, and
+nothing ships past it:
+
+    python3 tools/sitemap.py      # URLs follow the pages, and no two share one
     python3 tools/feed.py         # the two feeds follow the articles
     python3 tools/enrich.py       # breadcrumb and FAQ structured data
     python3 tools/audit.py        # HTML
-    python3 tools/qc.py           # JS, CSS, i18n, prices, deployability
+    python3 tools/qc.py           # JS, CSS, i18n, prices, nothing oversized shipped
     python3 tools/tokens.py       # a custom property is defined once, and resolves
     python3 tools/copy.py         # conversion copy
     python3 tools/claims.py       # a promise on a page is a promise in the notice
     python3 tools/klarsprak.py    # Norwegian against Språkrådet's klarspråk rules
     python3 tools/languages.py    # the notice says what languages.json records
-    python3 tools/launch.py       # ready? machine answers vs. person answers
-    python3 tools/gaps.py         # what is still missing
     python3 tools/plates.py       # catalogue integrity
     node  tools/render-check.js   # a real browser, four widths
+
+**Readiness — these exit non-zero until real-world work is done, and that is
+their job.** They answer "is this finished?", not "is this correct?". Neither
+is a failure, and neither may be quieted to make a run look clean:
+
+    python3 tools/gaps.py         # what is still missing
+    python3 tools/launch.py       # ready? machine answers vs. person answers
+    python3 tools/launch.py --slow    # the same, with the browser gate included
+
+`launch.py` says it of itself: the person list is *"never marked done here."*
+Registering a company, buying a domain, photographing a plate and reading law
+are not things a tool can settle, and a tool that claimed otherwise would be
+lying about whether the site is ready. The same is true of the last item in
+`gaps.py` — see `skill-observations/log.md`, observation 5, for why the
+archive's Norwegian page waits on a lawyer rather than on somebody's time.
 
 `render-check.js` blocks font requests — Chromium cannot reach
 fonts.googleapis.com from this environment — so its text measurements are taken
