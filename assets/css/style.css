@@ -113,7 +113,10 @@ h2.label,h3.label{font-weight:400;line-height:1.6}
   border:1px solid var(--border);padding:7px 8px;cursor:pointer;max-width:9.5rem;
 }
 .book-btn{font-size:0.6875rem;padding:9px 16px}
-.burger{display:none;flex-direction:column;gap:4px;background:none;border:0;padding:8px;cursor:pointer}
+.burger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  background:none;border:0;cursor:pointer;
+  /* 44px square, the platform minimum. The bars stay 22px wide — only the hit area grew. */
+  min-width:44px;min-height:44px;padding:0}
 .burger span{width:22px;height:2px;background:var(--text)}
 
 /* ---------- hero ---------- */
@@ -398,10 +401,30 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
 /* Touch. Fingers are not cursors: on a coarse pointer the hit areas grow to the 44px the
    platform guidelines ask for, and the hover-only affordances stop pretending to work. */
 @media (pointer:coarse){
+  /* Fingers are not cursors. Two ways to reach 44px, picked per element by whether growing
+     it would collide with its neighbour — an invisible hit area that overlaps the next row
+     is worse than a small one, because the tap lands somewhere unpredictable.
+
+     (a) Room to grow: the control gets a real 44px box. */
   .btn{padding:15px 28px}
-  .copy-btn{padding:11px 14px}
   .nav a{padding-block:14px}
   .faq-item summary{padding-block:18px}
+  .copy-btn,.share-btn{min-height:44px;padding-inline:16px}
+  .lang select{min-height:44px}
+  /* min-width too: the shortest social label is "X", which was 37px wide. */
+  .socials a,.follow a,.card-links a,.logo{
+    min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;
+  }
+  .product-specs summary,.product-delivery summary{min-height:44px;display:flex;align-items:center}
+  .use-list li{padding-block:12px}          /* row pitch was 36px — too tight to overlay */
+
+  /* (b) No room to pad without wrecking the row rhythm: grow the hit area behind the link.
+     Only used where the row pitch already exceeds 44px, so these cannot collide. */
+  .rows a,.rows-compact a,.contacts a,.dl-list a,.use-terms a{position:relative}
+  .rows a::after,.rows-compact a::after,.contacts a::after,.dl-list a::after,.use-terms a::after{
+    content:"";position:absolute;top:50%;inset-inline:0;
+    height:44px;min-width:44px;transform:translateY(-50%);
+  }
 }
 
 /* Print. The press section is the reason this exists: a journalist who prints the page
@@ -412,7 +435,7 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
   :root{--bg:#fff;--panel:#fff;--panel-2:#fff;--text:#000;--text-2:#000;--muted:#333;--border:#999}
   body{background:var(--bg);color:var(--text);font-size:11pt;line-height:1.5}
   .site-header,.burger,.lang,.skip,.hero-glow,.strip,.copy-btn,.share-btn,
-  .yt-facade,.sp-facade,.signup,.section-cta,.follow-list{display:none!important}
+  .yt-facade,.sp-facade,.signup,.section-cta,.follow{display:none!important}
   .section,.section.alt{padding:12pt 0;background:none;border:0}
   .wrap{width:auto;padding:0}
   .faq-item{break-inside:avoid}
