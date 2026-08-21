@@ -16,6 +16,7 @@ to use, and what pages the site will have (which determines the nav links).
 ## Repository layout
 
 ```
+CLAUDE.md     — project memory (read this first)
 README.md     — this file
 STATUS.md     — project and navbar status
 PROGRESS.md   — dated work log

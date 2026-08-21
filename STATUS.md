@@ -17,6 +17,7 @@ the repo so the navbar work has a documented starting point.
 
 | File | State |
 | ---- | ----- |
+| `CLAUDE.md` | Project memory — durable facts, conventions, doc map |
 | `README.md` | Project overview, status pointers, layout |
 | `STATUS.md` | This file |
 | `PROGRESS.md` | Dated work log |

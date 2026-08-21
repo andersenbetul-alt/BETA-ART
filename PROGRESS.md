@@ -21,6 +21,8 @@ The term "Cobban" appears only in the branch name — in no file.
 
 Changes landed:
 
+- Added `CLAUDE.md` — project memory: durable facts, conventions, and the
+  map of which file holds which record
 - Added `STATUS.md` — real state of the navbar work, blockers, open questions
 - Added `PROGRESS.md` — this log
 - Added `DECISIONS.md` — decision log; D-001 accepted, D-002…D-005 recorded
