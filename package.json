@@ -10,7 +10,10 @@
     "repurpose": "node scripts/repurpose.mjs",
     "gorunurluk": "node scripts/gorunurluk.mjs",
     "guvenlik": "node scripts/guvenlik.mjs",
-    "onizleme": "node scripts/onizleme.mjs"
+    "onizleme": "node scripts/onizleme.mjs",
+    "marka": "python3 scripts/marka-uret.py",
+    "marka-paket": "node scripts/marka-paket.mjs",
+    "tescil": "node scripts/marka-tescil.mjs"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.70.0",

@@ -1,0 +1,10 @@
+# scripts/marka-uret.py için. R04 (kaynak kod denetimi v0.3) gereği sabitlendi:
+# denetim ortamında brotli eksikti ve WOFF2 açılamadığı için birebir yeniden
+# üretim kanıtlanamamıştı.
+#
+#   pip install -r scripts/requirements.txt
+#
+# brotli, fontTools'un WOFF2 açması için zorunlu — eksikse hata mesajı
+# "Extension module 'brotli' not installed" olur ve üretim başlamaz.
+fonttools==4.63.0
+brotli>=1.1.0

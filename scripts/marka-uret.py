@@ -279,7 +279,10 @@ def _ikon_uret(ad, boy):
                 for poli in _yollari_coz(d)]
 
     zemin = _ortu(_yuvarlak_kare(boy, 224 * k), boy, boy)
-    aqua = _ortu(don(SYM_AQUA), boy, boy)
+    # ICON_AQUA — SYM_AQUA değil. qblogg-icon-app.svg 100u köprüyü kullanıyor;
+    # burada 86u kullanılırsa PNG'ler app ikonunun aynısı olmaz. Denetimde
+    # yakalandı (R01): önce SYM_AQUA yazılmıştı ve 'birebir aynı' denmişti.
+    aqua = _ortu(don(ICON_AQUA), boy, boy)
     halka = _ortu(don(SYM_NAVY), boy, boy)
 
     NV, AQ, BZ = (8, 44, 84), (0, 216, 194), (255, 255, 255)

@@ -125,10 +125,24 @@ aqua pratikte kaybolur; o boyutta `symbol-navy` kullanın.
 - Beş saniyelik hafıza testi protokolü yazıldı ama **uygulanmadı**; katılımcı
   sonucu üretilmemiştir.
 
+## Renk: dosyalar sabit, sitedeki satır içi SVG döner
+
+Denetim v0.3 / R02 bu ikisini karıştırmıştı; ayrımı burada yazıyoruz.
+
+**`assets/brand/` içindeki SVG dosyaları sabit renk kullanır** (`#082C54`,
+`#00D8C2`, `#000000`, `#FFFFFF`). `currentColor` yok ve olmamalı: bunlar
+dağıtım ve başvuru masterı; renkleri çağıran ortama göre değişen bir dosya
+tescil masterı olamaz.
+
+**Sitenin HTML'ine gömülü satır içi SVG ayrı bir şeydir.** Orada halka
+`fill="currentColor"` kullanır ve `--logo-ink` ile temaya göre döner; aqua
+köprü her iki temada sabit kalır. Tema desteği iddiası buna aittir.
+
 ## Hukuki
 
 Marka müsaitliği veya tescil edilebilirliği konusunda **hiçbir iddia
-üretilmemiştir**. Norveç (Patentstyret), EUIPO ve WIPO araştırması yapılmadı;
+üretilmemiştir**. Başvuru kapısı, biçim şartları ve boş kalan hukuki alanlar:
+`docs/marka-tescili.md`. Denetim yanıtı: `docs/denetim/YANIT.md`. Norveç (Patentstyret), EUIPO ve WIPO araştırması yapılmadı;
 bu araştırma tamamlanmadan marka ticari kullanıma alınmamalıdır.
 
 ## Figma

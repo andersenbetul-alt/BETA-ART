@@ -115,6 +115,21 @@ maliyet.
 | 18 | Müşteri paneli / teslim takibi | Fikir | Erken; önce 3 düzenli müşteri |
 | 19 | Ücretli bülten katmanı (Substack) | Fikir | Kitle oluşmadan açılmaz |
 
+### 3. Marka tescili (öncelik: yüksek — ticari kullanım öncesi)
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 70 | Dış denetim yanıtı | **Bitti** 22.08 | `docs/denetim/YANIT.md` — 6 madde kapandı, 3 açık |
+| 71 | R01 PNG/app ikonu geometri uyuşmazlığı | **Bitti** 22.08 | `_ikon_uret` yanlış köprüyü kullanıyordu; aqua alan farkı artık 0/2 piksel |
+| 72 | R04 birebir yeniden üretim + sürüm sabitleme | **Bitti** 22.08 | `scripts/requirements.txt`; paket boşaltılıp sınandı, 13/13 bayt bayt aynı |
+| 73 | R03 paket yolları | **Bitti** 22.08 | `npm run marka-paket` belgeyi paket düzenine çeviriyor, elle kopyalama yok |
+| 74 | EUIPO biçim üreticisi | **Bitti** 22.08 | `npm run tescil` — zarf denetimli JPEG + 250×250 sicil önizlemesi |
+| 75 | **Font lisans metni (R05)** | **Açık** | `assets/fonts/OFL.txt` yok. OFL yeniden dağıtımda metni şart koşuyor. Bu ortamdan indirilemiyor |
+| 76 | **Tanınırlık testi (R07)** | **Açık** | Protokol yazılı, katılımcı yok. Uydurulmayacak |
+| 77 | **Marka araştırması (R08)** | **Açık** | EUIPO, Patentstyret, WIPO, şirket adı — hiçbiri yapılmadı. Kurum siteleri bu ortamda engelli |
+| 78 | Nice sınıfı ve mal/hizmet listesi | **Karar bekliyor** | Hukukçu işi. "blog" kelimesi tanımlayıcılık itirazına açık olabilir |
+| 79 | Renkli mi siyah-beyaz mı başvuru | **Karar bekliyor** | İkisi de üretiliyor; koruma kapsamı tercihi |
+
 ## Konu havuzu (blog)
 
 Yayınlanan 6 yazı: platform karşılaştırması, Upwork, nDash, Medium, Substack, AI içerik

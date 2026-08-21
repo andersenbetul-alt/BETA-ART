@@ -73,7 +73,23 @@ engine/             Curiosity Engine (site değil, üretim hattı)
 6. **Sayfa iskeleti altı dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
    altısını birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`). `check.mjs` çiftlenen
    id ve script'leri yakalar ama eksik menü bağlantısını yakalamaz.
-7. **Rakamlar örnek olarak işaretlenir.** Paket fiyatları ve blog yazılarındaki ücret
+7. **Kimlik işi tescil standardına göre yapılır.** Üretilen her logo, ikon ve
+   marka varlığı şu üç kapıdan geçmek zorunda; "sonra bakarız" denmez:
+   **(a) Yeniden üretilebilirlik.** Varlık bir betikten çıkar, elle çizilmez.
+   Betik boş bir klasörde çalıştırılınca aynı dosyaları bayt bayt üretmeli.
+   Bağımlılık sürümleri sabit (`scripts/requirements.txt`).
+   **(b) Kaynak ve hak kaydı.** Kullanılan her yazı tipi ve dış varlık için
+   sürüm, telif, kaynak adresi, lisans ve dosya özeti kayıtlı olmalı
+   (`assets/fonts/KAYNAK.md`). Lisans metni ezberden yazılmaz, indirilir.
+   **(c) Başvuru biçimi.** `node scripts/marka-tescil.mjs` şekil markası
+   dosyalarını EUIPO zarfına göre üretir ve denetler: JPEG, en fazla
+   2835×2010 px, 96–300 DPI, RGB, progressive değil, 2 MB altı; sicilde
+   250×250 görünür. Zarf dışına çıkan dosya varsa çıkış kodu 1.
+   Detay ve kapalı kalan hukuk maddeleri: `docs/marka-tescili.md`.
+   **Uydurma yasak.** Marka müsaitliği, tescil edilebilirlik, kullanıcı testi
+   sonucu ve kurum ücreti hakkında doğrulanmamış hiçbir şey yazılmaz. Kurum
+   siteleri bu ortamda engelli; her rakam "doğrulanmadı" diye işaretlenir.
+8. **Rakamlar örnek olarak işaretlenir.** Paket fiyatları ve blog yazılarındaki ücret
    bilgileri araştırma/örnek veridir. Kesin vaat gibi sunmayın; abartılı iddia bu işte
    en pahalı hatadır.
 
