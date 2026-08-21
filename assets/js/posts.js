@@ -140,8 +140,8 @@ window.QB_POSTS = [
   src: [
     {"t": "Anthropic Economic Index — gözlemlenmiş Claude kullanımı, Mayıs 2026 dönemi (CC BY 4.0)", "u": "https://www.anthropic.com/economic-index"},
     {"t": "Upwork — Upwork Hourly Rate: Rates by Skill & Experience (platformun kendi işlem verisi)", "u": "https://www.upwork.com/resources/upwork-hourly-rates"},
-    {"t": "Medium — Partner Program katılım şartları (yardım merkezi)"},
-    {"t": "beehiiv 2026 bülten karşılaştırma verisi — ücretsizden ücretliye geçiş medyanı"},
+    {"t": "Medium — Partner Program katılım şartları (yardım merkezi)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
+    {"t": "beehiiv 2026 bülten karşılaştırma verisi — ücretsizden ücretliye geçiş medyanı", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
     {"t": "EU AI Act, Madde 50 — şeffaflık yükümlülüğü, yürürlük 2 Ağustos 2026", "u": "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"}
   ],
   t: {
@@ -285,7 +285,7 @@ window.QB_POSTS = [
     {"t": "Anthropic Economic Index — gözlemlenmiş Claude kullanımı, Mayıs 2026 dönemi (CC BY 4.0)", "u": "https://www.anthropic.com/economic-index"},
     {"t": "Anthropic Economic Index — Norveç ülke profili: kullanım endeksi 4,04, 121 ülke içinde 7. sıra", "u": "https://www.anthropic.com/economic-index"},
     {"t": "EU AI Act, Madde 50 — insanlarla etkileşen sistemler için şeffaflık yükümlülüğü, yürürlük 2 Ağustos 2026", "u": "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"},
-    {"t": "QBLOGG deposu — docs/ai-workforce/README.md: ürün merdiveni ve keşif yöntemi"}
+    {"t": "QBLOGG deposu — docs/ai-workforce/README.md: ürün merdiveni ve keşif yöntemi", "nu": "depo içi dosya — genel bir adresi yok"}
   ],
   t: {
     tr: "KOBİ'de AI'a nereden başlanır: veriye bakarak",
@@ -421,11 +421,11 @@ window.QB_POSTS = [
   category: 'business', date: '2026-08-18', accent: 3, icon: '☎️',
   orig: "Piyasada dolaşan \"kaçan çağrı\" istatistiklerinin kaynağını sürdük ve hepsinin çözümü satan firmaların bloglarına çıktığını gösterdik; yerine yedi günlük kendi ölçüm yöntemini ve dakika başı maliyet hesabını verdik.",
   src: [
-    {"t": "EU AI Act, Madde 50 — belirli yapay zekâ sistemleri için şeffaflık yükümlülükleri (yürürlük: 2 Ağustos 2026)"},
+    {"t": "EU AI Act, Madde 50 — belirli yapay zekâ sistemleri için şeffaflık yükümlülükleri (yürürlük: 2 Ağustos 2026)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
     {"t": "Avrupa Komisyonu, Shaping Europe’s digital future — Madde 50 şeffaflık yükümlülükleri SSS", "u": "https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act"},
     {"t": "SSB Statbank tablo 11418 — yrkesfordelt månedslønn (meslek bazında aylık ücret, Norveç)", "u": "https://www.ssb.no/statbank/table/11418"},
     {"t": "SSB Statbank tablo 12521 — månedslønn etter år, kjønn, sektor og desil", "u": "https://www.ssb.no/statbank/table/12521"},
-    {"t": "AI resepsiyonist ve ses ajanı sağlayıcılarının 2026 fiyat sayfaları ve maliyet analizleri (arama sonuçları üzerinden derlendi; sayfalar bu ortamdan açılamadı)"}
+    {"t": "AI resepsiyonist ve ses ajanı sağlayıcılarının 2026 fiyat sayfaları ve maliyet analizleri (arama sonuçları üzerinden derlendi; sayfalar bu ortamdan açılamadı)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"}
   ],
   t: {
     tr: "AI resepsiyonist gerçekte ne kadar tutuyor?",
@@ -565,7 +565,7 @@ window.QB_POSTS = [
     {"t": "Upwork — Upwork Hourly Rate: Rates by Skill & Experience (platformun kendi işlem verisi)", "u": "https://www.upwork.com/resources/upwork-hourly-rates"},
     {"t": "Nettscore — Hva koster SEO? Prisguide for norske bedrifter 2026", "u": "https://nettscore.no/blogg/hva-koster-seo.html"},
     {"t": "Byråmatch — Hva koster digital markedsføring i Norge?", "u": "https://www.xn--byrmatch-c0a.no/fagbloggen/hva-koster-digital-markedsfoering-i-norge"},
-    {"t": "Medium — Partner Program katılım şartları (yardım merkezi)"}
+    {"t": "Medium — Partner Program katılım şartları (yardım merkezi)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"}
   ],
   orig: "Yedi platformun ücretini Norveç ajans saat ücretiyle (800–1.500 kr) ve yerel aylık paket bandıyla (8.000–25.000 kr) yan yana koyduk; platformu gelir kaynağı değil müşteri bulma maliyeti olarak değerlendiren bir ölçüt verdik.",
   t: {
@@ -979,8 +979,8 @@ window.QB_POSTS = [
   slug: 'medium-partner-program-2026',
   category: 'money', date: '2026-07-26', accent: 4, icon: '📈',
   src: [
-    {"t": "Medium — Partner Program katılım şartları (yardım merkezi)"},
-    {"t": "Medium — Partner Program genel bakış: okuma süresine dayalı kazanç modeli"},
+    {"t": "Medium — Partner Program katılım şartları (yardım merkezi)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
+    {"t": "Medium — Partner Program genel bakış: okuma süresine dayalı kazanç modeli", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
     {"t": "Nettscore — Hva koster SEO? Prisguide for norske bedrifter 2026", "u": "https://nettscore.no/blogg/hva-koster-seo.html"},
     {"t": "Anthropic Economic Index — gözlemlenmiş kullanım, Mayıs 2026 (CC BY 4.0)", "u": "https://www.anthropic.com/economic-index"}
   ],
@@ -1102,8 +1102,8 @@ window.QB_POSTS = [
   slug: 'substack-abonelik-matematigi',
   category: 'business', date: '2026-07-19', accent: 5, icon: '✉️',
   src: [
-    {"t": "beehiiv 2026 bülten karşılaştırma verisi — ücretsizden ücretliye geçiş medyanı %0,62"},
-    {"t": "Substack — ödeme altyapısı ve yayıncı komisyon yapısı (platform belgeleri)"},
+    {"t": "beehiiv 2026 bülten karşılaştırma verisi — ücretsizden ücretliye geçiş medyanı %0,62", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
+    {"t": "Substack — ödeme altyapısı ve yayıncı komisyon yapısı (platform belgeleri)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
     {"t": "Nettscore — Hva koster SEO? Prisguide for norske bedrifter 2026", "u": "https://nettscore.no/blogg/hva-koster-seo.html"},
     {"t": "Byråmatch — Hva koster digital markedsføring i Norge?", "u": "https://www.xn--byrmatch-c0a.no/fagbloggen/hva-koster-digital-markedsfoering-i-norge"}
   ],
@@ -1234,10 +1234,10 @@ window.QB_POSTS = [
   category: 'ai', date: '2026-07-12', accent: 6, icon: '⚙️',
   orig: 'Kendi hattımızın ölçülmüş rakamları: 2.312 kelimelik yedi türev, 30 sinyal → 16 konu, puanlama eşikleri ve on altı maddelik görünürlük denetimi.',
   src: [
-    {"t": "Google Search Central — Spam policies for Google web search (“scaled content abuse” bölümü)"},
-    {"t": "QBLOGG deposu — engine/score.mjs: puanlama ağırlıkları ve eşikleri"},
-    {"t": "QBLOGG deposu — engine/visibility.mjs: on altı maddelik görünürlük denetimi"},
-    {"t": "QBLOGG deposu — content/yazarak-para-kazanma-platformlari/tr/: yedi türev, 2.312 kelime"}
+    {"t": "Google Search Central — Spam policies for Google web search (“scaled content abuse” bölümü)", "nu": "adres doğrulanmadı; uydurma bağlantı yerine kaynak adıyla yazıldı"},
+    {"t": "QBLOGG deposu — engine/score.mjs: puanlama ağırlıkları ve eşikleri", "nu": "depo içi dosya — genel bir adresi yok"},
+    {"t": "QBLOGG deposu — engine/visibility.mjs: on altı maddelik görünürlük denetimi", "nu": "depo içi dosya — genel bir adresi yok"},
+    {"t": "QBLOGG deposu — content/yazarak-para-kazanma-platformlari/tr/: yedi türev, 2.312 kelime", "nu": "depo içi dosya — genel bir adresi yok"}
   ],
   t: {
     tr: 'AI destekli içerik stüdyosu: bir araştırmadan yedi çıktı',

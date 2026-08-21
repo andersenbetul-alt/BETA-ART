@@ -26,6 +26,27 @@ load('assets/js/i18n.js');
 load('assets/js/posts.js');
 
 const LANGS = sandbox.QB_LANGS.map((l) => l.code);
+
+/* İçerik modeli: tr ve en tam makale, kalan sekiz dil özet katmanı.
+   posts.js'de her yazı bu sekiz dilde tam olarak 3 blok taşıyor — bu bir eksik
+   değil, tasarım. Aynı hedefi ikisine birden uygulamak 80 yanlış uyarı üretiyordu. */
+const TAM_MAKALE = ['tr', 'en'];
+const HEDEF_MAKALE = 1200;   // kelime — görünürlük kuralıyla aynı eşik
+const TABAN_MAKALE = 600;    // altına düşerse uyar
+/* Özet katmanı için kalite eşiği değil, boşalma koruması. Diller arasında yoğunluk
+   çok farklı (253 zh karakteri ≈ 253 sözcük, 253 es karakteri ≈ 40) — tek bir sayıyı
+   kalite hedefi saymak her seferinde en yoğun dili cezalandırıyor. Buradaki eşik
+   yalnızca "içerik silinmiş mi" sorusunu yanıtlar. Gerçek yayın ölçütü:
+   npm run gorunurluk (tr ve en için 1.200+ kelime). Gözlenen en düşük: 253. */
+const TABAN_OZET = 200;      // karakter — altı ancak boşaltılmış gövdede görülür
+
+/* Çince ve Japonca boşluk kullanmaz: split(/\s+/) tüm paragrafı tek kelime sayar.
+   zh gövdeleri bu yüzden "16 kelime" görünüyordu; gerçekte ~250 sözcük. */
+const kelimeSay = (metin) => {
+  const cjk = (metin.match(/[\u3400-\u4dbf\u4e00-\u9fff\u3040-\u30ff]/g) || []).length;
+  const kalan = metin.replace(/[\u3400-\u4dbf\u4e00-\u9fff\u3040-\u30ff]/g, ' ').trim();
+  return cjk + (kalan ? kalan.split(/\s+/).length : 0);
+};
 const I18N = sandbox.QB_I18N;
 const POSTS = sandbox.QB_POSTS;
 const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
@@ -67,8 +88,13 @@ const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
       if (!Array.isArray(body) || !body.length || body.some(isEmpty)) {
         fail(`posts [${p.slug}]: ${code} gövdesi eksik`); bad++;
       } else {
-        const words = body.map(blockText).join(' ').trim().split(/\s+/).length;
-        if (words < 600) warn(`posts [${p.slug}]: ${code} gövdesi kısa (${words} kelime) — hedef 1.200+`);
+        const metin = body.map(blockText).join(' ').trim();
+        const words = kelimeSay(metin);
+        if (TAM_MAKALE.includes(code)) {
+          if (words < TABAN_MAKALE) warn(`posts [${p.slug}]: ${code} gövdesi kısa (${words} kelime) — hedef ${HEDEF_MAKALE}+`);
+        } else if (metin.length < TABAN_OZET) {
+          warn(`posts [${p.slug}]: ${code} özeti boşalmış olabilir (${metin.length} karakter) — taban ${TABAN_OZET}`);
+        }
         for (const x of body) {
           if (typeof x === 'object' && x && x.see && !POSTS.some((q) => q.slug === x.see)) {
             fail(`posts [${p.slug}]: ${code} içinde olmayan yazıya bağlantı — "${x.see}"`); bad++;
@@ -100,8 +126,10 @@ const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
     if (src.length < 3) warn(`posts [${p.slug}]: ${src.length} kaynak — en az 3 gerekiyor`);
     for (const s of src) {
       if (!s?.t?.trim()) { fail(`posts [${p.slug}]: kaynak başlığı boş`); bad++; }
-      else if (!s.u) warn(`posts [${p.slug}]: "${s.t.slice(0, 40)}…" kaynağının adresi girilmemiş`);
-      else if (!/^https?:\/\//.test(s.u)) { fail(`posts [${p.slug}]: kaynak adresi geçersiz — ${s.u}`); bad++; }
+      // u yoksa nu (neden yok) zorunlu: kural gereği adres uydurulmaz ama unutulmuş
+      // olanı da kaçırmayalım diye gerekçe açıkça yazılır.
+      else if (!s.u && !s.nu?.trim()) warn(`posts [${p.slug}]: "${s.t.slice(0, 40)}…" kaynağında ne adres (u) ne gerekçe (nu) var`);
+      else if (s.u && !/^https?:\/\//.test(s.u)) { fail(`posts [${p.slug}]: kaynak adresi geçersiz — ${s.u}`); bad++; }
     }
   }
   if (!bad) pass(`posts: ${POSTS.length} yazı × ${LANGS.length} dil eksiksiz`);

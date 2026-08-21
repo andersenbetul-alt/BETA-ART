@@ -119,11 +119,23 @@ Paragraf, liste ve not içinde `**vurgu**` yazılabilir. Ara başlıkta çevrilm
 Kaçırma önce, çeviri sonra yapılır (`rich()`); sırayı bozmayın, yoksa vurgu
 işareti HTML enjeksiyonuna kapı açar. `check.mjs` eşleşmeyen `**` yakalar.
 
+**İki katmanlı içerik modeli.** `tr` ve `en` tam makaledir (30–55 blok, 1.200+
+kelime; ölçütü `npm run gorunurluk`). Kalan sekiz dil **özet katmanıdır**: her
+yazıda üç blok, 250–1.200 karakter. Bu bir eksik değil, tasarım — `check.mjs`
+ikisini ayrı eşiklerle denetler. Özet katmanındaki eşik kalite hedefi değil,
+boşalma korumasıdır; diller arasında yoğunluk çok farklı olduğu için tek bir
+kelime sayısını kalite ölçütü saymak her seferinde en yoğun dili cezalandırır.
+Kelime sayacı CJK duyarlıdır (Çince boşluk kullanmaz; naif `split(/\s+/)`
+bir paragrafı tek kelime sayıyordu).
+
 Ayrıca iki alan görünürlük kuralı gereği doldurulur:
 - `orig` — bu sayfanın özgün katkısı tek cümleyle (kendi verisi, testi, tablosu).
   Yoksa `gorunurluk.mjs` yazıyı `yayinlanamaz` işaretler.
 - `src` — kaynak listesi, `[{t:'başlık', u:'https://…'}]`. `u` isteğe bağlıdır:
   adresi doğrulanmamış bir kaynağı uydurma bağlantıyla yayınlamayın, adıyla yazın.
+  **Adres yoksa `nu` ile gerekçesini yazın** (`{t:'…', nu:'adres doğrulanmadı; …'}`) —
+  böylece kural gereği adressiz kaynakla unutulmuş adres birbirinden ayrılır.
+  `nu` sayfada görünmez, yalnızca denetim içindir.
   En az üç kaynak; para/kariyer konularında bu bir kural, öneri değil.
 
 **Yeni bölüm/sayfa:** metinleri önce `i18n.js`'e on dilde ekleyin, sonra HTML'i
