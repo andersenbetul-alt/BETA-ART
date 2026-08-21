@@ -111,7 +111,7 @@ p { margin: 0 0 1em; }
 .nav-tools { margin-inline-start: auto; display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
 
 .icon-btn {
-  width: 38px; height: 38px; display: grid; place-items: center; cursor: pointer;
+  width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer;
   background: transparent; border: 1px solid var(--border); border-radius: 10px;
   color: var(--text); font-size: 1rem;
 }
@@ -119,7 +119,7 @@ p { margin: 0 0 1em; }
 
 .lang { position: relative; }
 .lang-btn {
-  display: flex; align-items: center; gap: 6px; height: 38px; padding-inline: 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 6px; height: 44px; padding-inline: 12px; cursor: pointer;
   background: transparent; border: 1px solid var(--border); border-radius: 10px;
   color: var(--text); font: inherit; font-size: .88rem; font-weight: 600;
 }
@@ -337,9 +337,10 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--border); background: var(--bg-soft); padding-block: 50px 30px; }
 .footer-grid { display: grid; gap: 30px; grid-template-columns: 1.6fr repeat(auto-fit, minmax(140px, 1fr)); }
-.footer-grid h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); margin: 0 0 12px; }
-.footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.footer-grid a { color: var(--text-muted); text-decoration: none; font-size: .92rem; }
+.footer-grid h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); margin: 0 0 12px; }
+.footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; }
+.footer-grid a { color: var(--text-muted); text-decoration: none; font-size: .92rem;
+  display: inline-block; padding-block: 10px; }  /* dokunma hedefi 30px -> 44px */
 .footer-grid a:hover { color: var(--text); }
 .footer-bottom {
   margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border);
@@ -355,6 +356,8 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 }
 .to-top.show { opacity: 1; pointer-events: auto; }
 
+/* Giriş animasyonu. Betik yüklenmezse bu kural içeriği tamamen gizler; her sayfanın
+   <head>'inde bunu iptal eden bir <noscript> bloğu var. */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
 .reveal.in { opacity: 1; transform: none; }
 
