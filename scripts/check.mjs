@@ -27,7 +27,13 @@ const i18nJs = read('assets/js/i18n.js');
 
 /* ---------- 1. JavaScript parses ---------- */
 
-for (const file of ['assets/js/app.js', 'assets/js/i18n.js', 'scripts/check.mjs']) {
+// Every JavaScript file the repo ships, not a hand-kept three. shop.js renders the store,
+// build.mjs and sync-spotify.mjs run in CI, and a syntax error in any of them would have got
+// past this check and failed in a workflow instead.
+const JS_FILES = execFileSync('git', ['ls-files', '*.js', '*.mjs'], { cwd: root, encoding: 'utf8' })
+  .split('\n').filter(Boolean);
+if (JS_FILES.length < 5) fail(`Only ${JS_FILES.length} JavaScript file(s) found to syntax-check — git ls-files looks wrong.`);
+for (const file of JS_FILES) {
   try {
     execFileSync(process.execPath, ['--check', join(root, file)], { stdio: 'pipe' });
   } catch (e) {
