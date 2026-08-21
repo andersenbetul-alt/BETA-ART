@@ -7,15 +7,12 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
 
 ## Erişilebilirlik — kaynak: apple-design
 
-- [ ] **Dokunma hedefleri eşiğin altında.** 16 çipin 16'sı 40,3px, eşik 44
-      (HIG mobil 44×44pt). `.back` 22px, konum butonu 22px, marka linki 27px.
-      Çip ana gezinme öğesi — her ekranda ülke ve şehir seçimi ondan geçiyor.
-      Ölçüm: Playwright, 390×844.
-      Doğrulama: viewport 390 genişlikte tüm `.chip` yüksekliği ≥ 44.
-
-- [ ] **Dokunmada geri bildirim yok.** `:active` sayısı 0. Dokunmatikte hover
-      yok, yani çipe basınca yeni sayfa boyanana kadar hiçbir şey olmuyor.
-      Doğrulama: `grep -c ":active" web/app/globals.css` > 0.
+- [x] **Dokunma hedefleri eşiğin altında.** KAPANDI — ölçüm 19 → 0.
+      Çipler 40,3 → 44px (`min-height:2.75rem` + inline-flex). `.back`,
+      konum butonu ve marka bağlantısı da 44px. 16 çipin 16'sı 40,3px, eşik 44
+- [x] **Dokunmada geri bildirim yok.** KAPANDI — `:active` 0 → 7 kural.
+      `scale(.985)` + arka plan değişimi; `prefers-reduced-motion` ile
+      kapatılıyor.
 
 - [ ] **Kopyalama onayı geçişsiz.** "✓ Copied" anlık yer değiştiriyor —
       uygulamanın "DONE" dediği an en zayıf geri bildirime sahip.
@@ -37,8 +34,7 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
 
 - [ ] **Boşluk ölçeği yok.** 22 farklı rem değeri; komşular 0,8px farkla.
 - [ ] **Tipografi ölçeği yok.** 11 boyut; `.85`/`.875`/`.9` ayırt edilemiyor.
-- [ ] **`min-height` piksel.** 64px/44px sabit — kullanıcı yazı boyutunu
-      büyütünce metin taşıyor. `rem` olmalı.
+- [x] **`min-height` piksel.** KAPANDI — 64px → 4rem, 44px → 2.75rem.
 
 ## Marka
 

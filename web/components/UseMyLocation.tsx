@@ -57,6 +57,7 @@ export default function UseMyLocation(
             style={{
               background: 'none', border: 0, padding: 0, color: 'inherit',
               textDecoration: 'underline', font: 'inherit',
+              minHeight: '2.75rem', display: 'inline-flex', alignItems: 'center',
             }}
           >
             {state === 'working' ? 'Finding you…' : '📍 Use my location'}
