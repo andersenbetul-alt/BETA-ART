@@ -134,6 +134,16 @@ and nothing here could read it. It is generated from `scripts/og-image.html` now
 `npm run check` scans that file along with the markup and the dictionaries, so the two can no
 longer drift apart. Regenerate the card with `node scripts/og.mjs` after editing it.
 
+## Phonk Productions is the company, HXI is the artist
+
+The site is the artist's. "Phonk Productions" is HXI's own company, and it belongs where a
+company belongs on an artist site: small, in the footer, beside the rights line — not in the
+header, and never in place of the ◈ HXI lockup. A visitor arriving on the page is looking for
+HXI; a second name in a logo position reads as a label deal that does not exist.
+
+Its mark is AI-generated, so it is labelled where it appears. See docs/AI-USE.md, which keeps
+the register of what is labelled and why.
+
 ## Origin is not reach
 
 "Norwegian" says where he is from. It has never been a claim about who listens, and the page
