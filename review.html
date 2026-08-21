@@ -9,17 +9,18 @@
   --border: #e4e3df;
   --ink: #16150f;
   --ink-2: #52514e;
-  --muted: #898781;
+  --muted: #6b6a63;
   --grid: #e1e0d9;
   --axis: #c3c2b7;
   --series: #c8552a;
   --band-1: #e39a7c;
-  --band-2: #c8552a;
+  --band-2: #bd4d24;
   --band-3: #8f3818;
   --on-band: #ffffff;
   --critical: #d03b3b;
   --serious: #b8541f;
   --warning: #8a6a12;
+  --sel: #f3ddd2;
   --tip-bg: #16150f;
   --tip-ink: #f6f6f4;
 }
@@ -43,6 +44,7 @@
     --critical: #e66767;
     --serious: #ec835a;
     --warning: #fab219;
+    --sel: #3a2418;
     --tip-bg: #f2f1ea;
     --tip-ink: #14140f;
   }
@@ -66,11 +68,15 @@
   --critical: #e66767;
   --serious: #ec835a;
   --warning: #fab219;
+  --sel: #3a2418;
   --tip-bg: #f2f1ea;
   --tip-ink: #14140f;
 }
 
 * { box-sizing: border-box; }
+::selection { background: var(--sel); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--series); outline-offset: 2px; border-radius: 3px; }
+html { scrollbar-color: var(--axis) transparent; }
 body {
   margin: 0;
   background: var(--bg);
@@ -81,73 +87,76 @@ body {
 }
 .wrap { max-width: 940px; margin: 0 auto; padding: 0 24px; }
 
-header { padding: 72px 0 44px; border-bottom: 1px solid var(--border); }
+header { padding: 72px 0 48px; border-bottom: 1px solid var(--border); }
 .eyebrow {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; letter-spacing: .18em; text-transform: uppercase;
   color: var(--muted); margin-bottom: 24px;
 }
 .eyebrow::before {
   content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--series);
 }
 h1 {
-  margin: 0 0 20px; font-size: clamp(30px, 5vw, 46px); font-weight: 600;
+  margin: 0 0 20px; font-size: clamp(1.875rem, 5vw, 2.875rem); font-weight: 600;
   letter-spacing: -.022em; line-height: 1.1; text-wrap: balance;
 }
-.lede { margin: 0; max-width: 62ch; font-size: clamp(16px, 2vw, 18px); color: var(--ink-2); }
+.lede { margin: 0; max-width: 62ch; font-size: clamp(1rem, 2vw, 1.125rem); color: var(--ink-2); }
 
 .hero {
-  display: flex; flex-wrap: wrap; gap: 28px 44px; align-items: flex-end;
-  margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-end;
+  margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);
 }
 .hero__fig {
-  font-size: clamp(40px, 8vw, 62px); font-weight: 600; line-height: 1;
+  font-size: clamp(2.5rem, 8vw, 3.875rem); font-weight: 600; line-height: 1;
   letter-spacing: -.03em; color: var(--series);
 }
-.hero__unit { font-size: .42em; font-weight: 500; color: var(--ink-2); margin-left: 6px; }
-.hero__note { margin: 0; max-width: 42ch; font-size: 14.5px; color: var(--ink-2); }
+.hero__unit { font-size: .42em; font-weight: 500; color: var(--ink-2); margin-left: 8px; }
+.hero__note { margin: 0; max-width: 42ch; font-size: 0.875rem; color: var(--ink-2); }
 
 section { padding: 56px 0 0; }
 .label {
-  margin: 0 0 8px; font-size: 12px; letter-spacing: .16em;
+  margin: 0 0 8px; font-size: 0.75rem; letter-spacing: .16em;
   text-transform: uppercase; color: var(--muted);
 }
-h2 { margin: 0 0 8px; font-size: clamp(21px, 3vw, 26px); font-weight: 600; letter-spacing: -.015em; }
-.intro { margin: 0 0 26px; max-width: 66ch; color: var(--ink-2); font-size: 15.5px; }
+h2 { margin: 0 0 8px; line-height: 1.2; font-size: clamp(1.3125rem, 3vw, 1.625rem); font-weight: 600; letter-spacing: -.015em; }
+.intro { margin: 0 0 24px; max-width: 66ch; color: var(--ink-2); font-size: 1rem; }
 
 .panel {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 14px; padding: 24px 22px 18px;
+  border-radius: 14px; padding: 24px 24px 16px;
 }
 .chart { width: 100%; height: auto; display: block; overflow: visible; }
 .grid { stroke: var(--grid); stroke-width: 1; }
 .axis { stroke: var(--axis); stroke-width: 1; }
-.bar { fill: var(--series); }
-.bar:hover, .bar:focus { fill: var(--series); opacity: .82; outline: none; }
+.bar { fill: var(--series); transition: fill-opacity 120ms ease-out; pointer-events: none; }
+.hit { fill: transparent; cursor: default; }
+.hit:hover { fill: var(--series); fill-opacity: .07; }
+.hit:focus-visible { fill: var(--series); fill-opacity: .12; outline: none;
+  stroke: var(--series); stroke-width: 2; }
 .bar:focus-visible { stroke: var(--ink); stroke-width: 2; }
 .target { stroke: var(--ink-2); stroke-width: 2; stroke-dasharray: 5 4; }
-.target-label { fill: var(--ink-2); font-size: 12px; font-weight: 500; }
-.tick { fill: var(--muted); font-size: 11.5px; font-variant-numeric: tabular-nums; }
-.val { fill: var(--ink); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.cat { fill: var(--ink); font-size: 13px; }
-.cat.sub { fill: var(--muted); font-size: 11.5px; }
+.target-label { fill: var(--ink-2); font-size: 0.75rem; font-weight: 500; }
+.tick { fill: var(--muted); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.val { fill: var(--ink); font-size: 0.8125rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cat { fill: var(--ink); font-size: 0.8125rem; }
+.cat.sub { fill: var(--muted); font-size: 0.75rem; }
 
-.table-view { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 12px; }
+.table-view { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 12px; }
 .table-view summary {
-  cursor: pointer; font-size: 13px; color: var(--ink-2);
+  cursor: pointer; font-size: 0.8125rem; color: var(--ink-2);
 }
 .scroll { overflow-x: auto; }
 .table-view .scroll { margin-top: 12px; }
 table { min-width: 420px; }
-table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
-th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); }
-th { color: var(--muted); font-weight: 500; font-size: 12px;
+table { border-collapse: collapse; width: 100%; font-size: 0.875rem; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 500; font-size: 0.75rem;
       letter-spacing: .06em; text-transform: uppercase; }
 td { color: var(--ink-2); }
 td:first-child { color: var(--ink); }
 
-.bands { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
-.band { border-radius: 12px; padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+.bands { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.band { border-radius: 12px; padding: 16px 16px 20px; display: flex; flex-direction: column; gap: 8px; }
 .band--1 { background: var(--band-1); }
 .band--2 { background: var(--band-2); }
 .band--3 { background: var(--band-3); }
@@ -159,10 +168,10 @@ td:first-child { color: var(--ink); }
   :root:not([data-theme="light"]) .band--1,
   :root:not([data-theme="light"]) .band--2 { color: #14140f; }
 }
-.band__range { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; opacity: .78;
+.band__range { font-size: 0.75rem; letter-spacing: .1em; text-transform: uppercase; opacity: .78;
                 font-variant-numeric: tabular-nums; }
-.band__title { font-size: 17px; font-weight: 600; letter-spacing: -.01em; }
-.band__note { font-size: 13.5px; line-height: 1.5; opacity: .92; }
+.band__title { font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; }
+.band__note { font-size: 0.875rem; line-height: 1.5; opacity: .92; }
 
 .phases { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .phase {
@@ -170,44 +179,44 @@ td:first-child { color: var(--ink); }
   background: var(--soft); border: 1px solid var(--border);
   border-radius: 12px; padding: 20px;
 }
-.phase__when { font-size: 13px; font-weight: 600; color: var(--series);
+.phase__when { font-size: 0.8125rem; font-weight: 600; color: var(--series);
                 font-variant-numeric: tabular-nums; }
-.phase__name { margin: 0 0 3px; font-size: 16.5px; font-weight: 600; }
-.phase__goal { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
-.phase__body { margin: 0; font-size: 14.5px; color: var(--ink-2); max-width: 70ch; }
+.phase__name { margin: 0 0 4px; font-size: 1.0625rem; font-weight: 600; }
+.phase__goal { margin: 0 0 8px; font-size: 0.8125rem; color: var(--muted); }
+.phase__body { margin: 0; font-size: 0.875rem; color: var(--ink-2); max-width: 70ch; }
 
 .pill {
-  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
-  font-size: 12px; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  font-size: 0.75rem; font-weight: 500;
 }
 .pill--critical { color: var(--critical); }
 .pill--serious { color: var(--serious); }
 .pill--warning { color: var(--warning); }
 
-.decisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; counter-reset: d; }
+.decisions { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: d; }
 .decisions li {
-  counter-increment: d; position: relative; padding-left: 38px;
-  font-size: 15.5px; color: var(--ink-2); max-width: 74ch;
+  counter-increment: d; position: relative; padding-left: 40px;
+  font-size: 1rem; color: var(--ink-2); max-width: 74ch;
 }
 .decisions li::before {
   content: counter(d); position: absolute; left: 0; top: 1px;
   width: 24px; height: 24px; border-radius: 50%;
   background: var(--soft); border: 1px solid var(--border);
-  color: var(--ink); font-size: 12px; font-weight: 600;
+  color: var(--ink); font-size: 0.75rem; font-weight: 600;
   display: grid; place-items: center; font-variant-numeric: tabular-nums;
 }
 .decisions b { color: var(--ink); font-weight: 600; }
 
 footer {
-  margin-top: 68px; padding: 24px 0 46px; border-top: 1px solid var(--border);
-  font-size: 13px; color: var(--muted);
+  margin-top: 64px; padding: 24px 0 48px; border-top: 1px solid var(--border);
+  font-size: 0.8125rem; color: var(--muted);
 }
-footer p { margin: 0 0 6px; max-width: 76ch; }
+footer p { margin: 0 0 8px; max-width: 76ch; }
 
 #tip {
   position: fixed; z-index: 10; pointer-events: none; opacity: 0;
   background: var(--tip-bg); color: var(--tip-ink);
-  font-size: 12.5px; padding: 7px 11px; border-radius: 7px;
+  font-size: 0.8125rem; padding: 8px 12px; border-radius: 7px;
   transition: opacity .12s ease; max-width: 260px;
 }
 #tip[data-show="1"] { opacity: 1; }
@@ -243,7 +252,7 @@ footer p { margin: 0 0 6px; max-width: 76ch; }
         yarısının satış ile idari işe gittiği varsayımıyla. Playbook'ta kurulum süresi
         1-3 hafta yazıyor — yani üç senaryonun üçü de mütevazı bir hedefin altında kalıyor.</p>
       <div class="panel">
-        <svg viewBox="0 0 660 320" class="chart" role="img" aria-label="Kurulum süresine göre yıllık gelir tavanı"><line class="grid" x1="58" y1="262.0" x2="640" y2="262.0"/><text class="tick" x="48" y="266.0" text-anchor="end">0k</text><line class="grid" x1="58" y1="208.4" x2="640" y2="208.4"/><text class="tick" x="48" y="212.4" text-anchor="end">250k</text><line class="grid" x1="58" y1="154.7" x2="640" y2="154.7"/><text class="tick" x="48" y="158.7" text-anchor="end">500k</text><line class="grid" x1="58" y1="101.1" x2="640" y2="101.1"/><text class="tick" x="48" y="105.1" text-anchor="end">750k</text><line class="grid" x1="58" y1="47.5" x2="640" y2="47.5"/><text class="tick" x="48" y="51.5" text-anchor="end">1000k</text><line class="target" x1="58" y1="47.5" x2="640" y2="47.5"/><text class="target-label" x="640" y="38.5" text-anchor="end">1.000.000 NOK · mütevazı hedef</text><path class="bar" d="M112.0,262.0 V142.6 Q112.0,138.6 116.0,138.6 H194.0 Q198.0,138.6 198.0,142.6 V262.0 Z" tabindex="0" role="img" aria-label="1 hafta kurulum: yılda 23 kurulum, 575.000 NOK" data-tip="1 hafta kurulum · yılda 23 kurulum · 575.000 NOK"/><text class="val" x="155.0" y="128.6" text-anchor="middle">575.000</text><text class="cat" x="155.0" y="284.0" text-anchor="middle">1 hafta</text><text class="cat sub" x="155.0" y="301.0" text-anchor="middle">23 kurulum/yıl</text><path class="bar" d="M306.0,262.0 V204.3 Q306.0,200.3 310.0,200.3 H388.0 Q392.0,200.3 392.0,204.3 V262.0 Z" tabindex="0" role="img" aria-label="2 hafta kurulum: yılda 12 kurulum, 287.500 NOK" data-tip="2 hafta kurulum · yılda 12 kurulum · 287.500 NOK"/><text class="val" x="349.0" y="190.3" text-anchor="middle">287.500</text><text class="cat" x="349.0" y="284.0" text-anchor="middle">2 hafta</text><text class="cat sub" x="349.0" y="301.0" text-anchor="middle">12 kurulum/yıl</text><path class="bar" d="M500.0,262.0 V224.9 Q500.0,220.9 504.0,220.9 H582.0 Q586.0,220.9 586.0,224.9 V262.0 Z" tabindex="0" role="img" aria-label="3 hafta kurulum: yılda 8 kurulum, 191.667 NOK" data-tip="3 hafta kurulum · yılda 8 kurulum · 191.667 NOK"/><text class="val" x="543.0" y="210.9" text-anchor="middle">191.667</text><text class="cat" x="543.0" y="284.0" text-anchor="middle">3 hafta</text><text class="cat sub" x="543.0" y="301.0" text-anchor="middle">8 kurulum/yıl</text><line class="axis" x1="58" y1="262" x2="640" y2="262"/></svg>
+        <svg viewBox="0 0 660 320" class="chart" role="img" aria-label="Kurulum süresine göre yıllık gelir tavanı"><line class="grid" x1="58" y1="262.0" x2="640" y2="262.0"/><text class="tick" x="48" y="266.0" text-anchor="end">0k</text><line class="grid" x1="58" y1="208.4" x2="640" y2="208.4"/><text class="tick" x="48" y="212.4" text-anchor="end">250k</text><line class="grid" x1="58" y1="154.7" x2="640" y2="154.7"/><text class="tick" x="48" y="158.7" text-anchor="end">500k</text><line class="grid" x1="58" y1="101.1" x2="640" y2="101.1"/><text class="tick" x="48" y="105.1" text-anchor="end">750k</text><line class="grid" x1="58" y1="47.5" x2="640" y2="47.5"/><text class="tick" x="48" y="51.5" text-anchor="end">1000k</text><line class="target" x1="58" y1="47.5" x2="640" y2="47.5"/><text class="target-label" x="640" y="38.5" text-anchor="end">1.000.000 NOK · mütevazı hedef</text><path class="bar" d="M112.0,262.0 V142.6 Q112.0,138.6 116.0,138.6 H194.0 Q198.0,138.6 198.0,142.6 V262.0 Z"/><rect class="hit" x="64.0" y="26" width="182.0" height="236" tabindex="0" role="img" aria-label="1 hafta kurulum: yılda 23 kurulum, 575.000 NOK" data-tip="1 hafta kurulum · yılda 23 kurulum · 575.000 NOK"/><text class="val" x="155.0" y="128.6" text-anchor="middle">575.000</text><text class="cat" x="155.0" y="284.0" text-anchor="middle">1 hafta</text><text class="cat sub" x="155.0" y="301.0" text-anchor="middle">23 kurulum/yıl</text><path class="bar" d="M306.0,262.0 V204.3 Q306.0,200.3 310.0,200.3 H388.0 Q392.0,200.3 392.0,204.3 V262.0 Z"/><rect class="hit" x="258.0" y="26" width="182.0" height="236" tabindex="0" role="img" aria-label="2 hafta kurulum: yılda 12 kurulum, 287.500 NOK" data-tip="2 hafta kurulum · yılda 12 kurulum · 287.500 NOK"/><text class="val" x="349.0" y="190.3" text-anchor="middle">287.500</text><text class="cat" x="349.0" y="284.0" text-anchor="middle">2 hafta</text><text class="cat sub" x="349.0" y="301.0" text-anchor="middle">12 kurulum/yıl</text><path class="bar" d="M500.0,262.0 V224.9 Q500.0,220.9 504.0,220.9 H582.0 Q586.0,220.9 586.0,224.9 V262.0 Z"/><rect class="hit" x="452.0" y="26" width="182.0" height="236" tabindex="0" role="img" aria-label="3 hafta kurulum: yılda 8 kurulum, 191.667 NOK" data-tip="3 hafta kurulum · yılda 8 kurulum · 191.667 NOK"/><text class="val" x="543.0" y="210.9" text-anchor="middle">191.667</text><text class="cat" x="543.0" y="284.0" text-anchor="middle">3 hafta</text><text class="cat sub" x="543.0" y="301.0" text-anchor="middle">8 kurulum/yıl</text><line class="axis" x1="58" y1="262" x2="640" y2="262"/></svg>
         <details class="table-view"><summary>Veriyi tablo olarak gör</summary><div class="scroll"><table><thead><tr><th>Kurulum süresi</th><th>Yılda kurulum</th><th>Yıllık gelir (NOK)</th></tr></thead><tbody><tr><td>1 hafta</td><td>23</td><td>575.000</td></tr><tr><td>2 hafta</td><td>12</td><td>287.500</td></tr><tr><td>3 hafta</td><td>8</td><td>191.667</td></tr></tbody></table></div></details>
       </div>
     </div>
@@ -271,7 +280,7 @@ footer p { margin: 0 0 6px; max-width: 76ch; }
         Agency kademesi ancak white-label olarak, ajansın kendi gelir kalemine
         dönüştüğünde bu fiyatı taşır.</p>
       <div class="panel">
-        <svg viewBox="0 0 660 254" class="chart" role="img" aria-label="1 milyon NOK yıllık gelir için gereken abone sayısı"><path class="bar" d="M150,10 H600.0 Q604.0,10 604.0,14 V40 Q604.0,44 600.0,44 H150 Z" tabindex="0" role="img" aria-label="Blog Pro, 149 NOK/ay: 559 müşteri" data-tip="Blog Pro · 149 NOK/ay · 559 müşteri gerekir"/><text class="cat" x="138" y="31.0" text-anchor="end">Blog Pro</text><text class="val" x="614.0" y="31.0">559</text><path class="bar" d="M150,56 H281.6 Q285.6,56 285.6,60 V86 Q285.6,90 281.6,90 H150 Z" tabindex="0" role="img" aria-label="Curiosity Starter, 499 NOK/ay: 167 müşteri" data-tip="Curiosity Starter · 499 NOK/ay · 167 müşteri gerekir"/><text class="cat" x="138" y="77.0" text-anchor="end">Curiosity Starter</text><text class="val" x="295.6" y="77.0">167</text><path class="bar" d="M150,102 H191.5 Q195.5,102 195.5,106 V132 Q195.5,136 191.5,136 H150 Z" tabindex="0" role="img" aria-label="Curiosity Creator, 1.499 NOK/ay: 56 müşteri" data-tip="Curiosity Creator · 1.499 NOK/ay · 56 müşteri gerekir"/><text class="cat" x="138" y="123.0" text-anchor="end">Curiosity Creator</text><text class="val" x="205.5" y="123.0">56</text><path class="bar" d="M150,148 H159.8 Q163.8,148 163.8,152 V178 Q163.8,182 159.8,182 H150 Z" tabindex="0" role="img" aria-label="Curiosity Business, 4.999 NOK/ay: 17 müşteri" data-tip="Curiosity Business · 4.999 NOK/ay · 17 müşteri gerekir"/><text class="cat" x="138" y="169.0" text-anchor="end">Curiosity Business</text><text class="val" x="173.8" y="169.0">17</text><path class="bar" d="M150,194 H150.9 Q154.9,194 154.9,198 V224 Q154.9,228 150.9,228 H150 Z" tabindex="0" role="img" aria-label="Curiosity Agency, 14.999 NOK/ay: 6 müşteri" data-tip="Curiosity Agency · 14.999 NOK/ay · 6 müşteri gerekir"/><text class="cat" x="138" y="215.0" text-anchor="end">Curiosity Agency</text><text class="val" x="164.9" y="215.0">6</text></svg>
+        <svg viewBox="0 0 660 254" class="chart" role="img" aria-label="1 milyon NOK yıllık gelir için gereken abone sayısı"><path class="bar" d="M150,10 H600.0 Q604.0,10 604.0,14 V40 Q604.0,44 600.0,44 H150 Z"/><rect class="hit" x="150" y="10" width="454" height="34" tabindex="0" role="img" aria-label="Blog Pro, 149 NOK/ay: 559 müşteri" data-tip="Blog Pro · 149 NOK/ay · 559 müşteri gerekir"/><text class="cat" x="138" y="31.0" text-anchor="end">Blog Pro</text><text class="val" x="614.0" y="31.0">559</text><path class="bar" d="M150,56 H281.6 Q285.6,56 285.6,60 V86 Q285.6,90 281.6,90 H150 Z"/><rect class="hit" x="150" y="56" width="454" height="34" tabindex="0" role="img" aria-label="Curiosity Starter, 499 NOK/ay: 167 müşteri" data-tip="Curiosity Starter · 499 NOK/ay · 167 müşteri gerekir"/><text class="cat" x="138" y="77.0" text-anchor="end">Curiosity Starter</text><text class="val" x="295.6" y="77.0">167</text><path class="bar" d="M150,102 H191.5 Q195.5,102 195.5,106 V132 Q195.5,136 191.5,136 H150 Z"/><rect class="hit" x="150" y="102" width="454" height="34" tabindex="0" role="img" aria-label="Curiosity Creator, 1.499 NOK/ay: 56 müşteri" data-tip="Curiosity Creator · 1.499 NOK/ay · 56 müşteri gerekir"/><text class="cat" x="138" y="123.0" text-anchor="end">Curiosity Creator</text><text class="val" x="205.5" y="123.0">56</text><path class="bar" d="M150,148 H159.8 Q163.8,148 163.8,152 V178 Q163.8,182 159.8,182 H150 Z"/><rect class="hit" x="150" y="148" width="454" height="34" tabindex="0" role="img" aria-label="Curiosity Business, 4.999 NOK/ay: 17 müşteri" data-tip="Curiosity Business · 4.999 NOK/ay · 17 müşteri gerekir"/><text class="cat" x="138" y="169.0" text-anchor="end">Curiosity Business</text><text class="val" x="173.8" y="169.0">17</text><path class="bar" d="M150,194 H150.9 Q154.9,194 154.9,198 V224 Q154.9,228 150.9,228 H150 Z"/><rect class="hit" x="150" y="194" width="454" height="34" tabindex="0" role="img" aria-label="Curiosity Agency, 14.999 NOK/ay: 6 müşteri" data-tip="Curiosity Agency · 14.999 NOK/ay · 6 müşteri gerekir"/><text class="cat" x="138" y="215.0" text-anchor="end">Curiosity Agency</text><text class="val" x="164.9" y="215.0">6</text></svg>
         <details class="table-view"><summary>Veriyi tablo olarak gör</summary><div class="scroll"><table><thead><tr><th>Model</th><th>Fiyat</th><th>Gereken müşteri</th></tr></thead><tbody><tr><td>Blog Pro</td><td>149 NOK/ay</td><td>559</td></tr><tr><td>Curiosity Starter</td><td>499 NOK/ay</td><td>167</td></tr><tr><td>Curiosity Creator</td><td>1.499 NOK/ay</td><td>56</td></tr><tr><td>Curiosity Business</td><td>4.999 NOK/ay</td><td>17</td></tr><tr><td>Curiosity Agency</td><td>14.999 NOK/ay</td><td>6</td></tr></tbody></table></div></details>
       </div>
     </div>
@@ -351,16 +360,18 @@ footer p { margin: 0 0 6px; max-width: 76ch; }
     tip.style.left = x + 'px';
     tip.style.top = y + 'px';
   }
-  function hide() { tip.dataset.show = '0'; }
+  var current = null;
+  function hide(el) { if (el && el !== current) return; current = null; tip.dataset.show = '0'; }
   document.querySelectorAll('[data-tip]').forEach(function (el) {
-    el.addEventListener('mousemove', function (e) { show(e, el.dataset.tip); });
-    el.addEventListener('mouseleave', hide);
+    el.addEventListener('mousemove', function (e) { current = el; show(e, el.dataset.tip); });
+    el.addEventListener('mouseleave', function () { hide(el); });
     el.addEventListener('focus', function () {
       var b = el.getBoundingClientRect();
+      current = el;
       show({ clientX: b.left + b.width / 2, clientY: b.top }, el.dataset.tip);
     });
-    el.addEventListener('blur', hide);
+    el.addEventListener('blur', function () { hide(el); });
   });
-  window.addEventListener('scroll', hide, { passive: true });
+  window.addEventListener('scroll', function () { hide(current); }, { passive: true });
 })();
 </script>

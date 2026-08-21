@@ -103,8 +103,10 @@ def chart_kapasite():
         path = (f'M{x:.1f},{T+ph:.1f} V{yy+r:.1f} Q{x:.1f},{yy:.1f} {x+r:.1f},{yy:.1f} '
                 f'H{x+bw-r:.1f} Q{x+bw:.1f},{yy:.1f} {x+bw:.1f},{yy+r:.1f} '
                 f'V{T+ph:.1f} Z')
+        parts.append(f'<path class="bar" d="{path}"/>')
         parts.append(
-            f'<path class="bar" d="{path}" tabindex="0" role="img" '
+            f'<rect class="hit" x="{cx-slot/2+6:.1f}" y="{T}" width="{slot-12:.1f}" height="{ph}" '
+            f'tabindex="0" role="img" '
             f'aria-label="{esc(d["etiket"])} kurulum: yılda {d["kurulum"]} kurulum, '
             f'{nok(d["gelir"])} NOK" '
             f'data-tip="{esc(d["etiket"])} kurulum · yılda {d["kurulum"]} kurulum · '
@@ -139,8 +141,12 @@ def chart_musteri():
         r = 4
         path = (f'M{L},{yy} H{L+w-r:.1f} Q{L+w:.1f},{yy} {L+w:.1f},{yy+r} '
                 f'V{yy+row-r} Q{L+w:.1f},{yy+row} {L+w-r:.1f},{yy+row} H{L} Z')
+        parts.append(f'<path class="bar" d="{path}"/>')
+        # Isabet alani cubugun kendisi degil, satirin tamami: en kucuk cubuk 6px
+        # genisligindeydi ve fareyle vurulamiyordu (HIG masaustu asgari 20pt).
         parts.append(
-            f'<path class="bar" d="{path}" tabindex="0" role="img" '
+            f'<rect class="hit" x="{L}" y="{yy}" width="{pw}" height="{row}" '
+            f'tabindex="0" role="img" '
             f'aria-label="{esc(d["ad"])}, {esc(d["fiyat"])}: {d["adet"]} müşteri" '
             f'data-tip="{esc(d["ad"])} · {esc(d["fiyat"])} · {d["adet"]} müşteri gerekir"/>')
         parts.append(f'<text class="cat" x="{L-12}" y="{yy+row/2+4:.1f}" text-anchor="end">'
@@ -194,17 +200,18 @@ def build():
   --border: #e4e3df;
   --ink: #16150f;
   --ink-2: #52514e;
-  --muted: #898781;
+  --muted: #6b6a63;
   --grid: #e1e0d9;
   --axis: #c3c2b7;
   --series: #c8552a;
   --band-1: #e39a7c;
-  --band-2: #c8552a;
+  --band-2: #bd4d24;
   --band-3: #8f3818;
   --on-band: #ffffff;
   --critical: #d03b3b;
   --serious: #b8541f;
   --warning: #8a6a12;
+  --sel: #f3ddd2;
   --tip-bg: #16150f;
   --tip-ink: #f6f6f4;
 }}
@@ -228,6 +235,7 @@ def build():
     --critical: #e66767;
     --serious: #ec835a;
     --warning: #fab219;
+    --sel: #3a2418;
     --tip-bg: #f2f1ea;
     --tip-ink: #14140f;
   }}
@@ -251,11 +259,15 @@ def build():
   --critical: #e66767;
   --serious: #ec835a;
   --warning: #fab219;
+  --sel: #3a2418;
   --tip-bg: #f2f1ea;
   --tip-ink: #14140f;
 }}
 
 * {{ box-sizing: border-box; }}
+::selection {{ background: var(--sel); color: var(--ink); }}
+:focus-visible {{ outline: 2px solid var(--series); outline-offset: 2px; border-radius: 3px; }}
+html {{ scrollbar-color: var(--axis) transparent; }}
 body {{
   margin: 0;
   background: var(--bg);
@@ -266,73 +278,76 @@ body {{
 }}
 .wrap {{ max-width: 940px; margin: 0 auto; padding: 0 24px; }}
 
-header {{ padding: 72px 0 44px; border-bottom: 1px solid var(--border); }}
+header {{ padding: 72px 0 48px; border-bottom: 1px solid var(--border); }}
 .eyebrow {{
-  display: inline-flex; align-items: center; gap: 9px;
-  font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; letter-spacing: .18em; text-transform: uppercase;
   color: var(--muted); margin-bottom: 24px;
 }}
 .eyebrow::before {{
   content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--series);
 }}
 h1 {{
-  margin: 0 0 20px; font-size: clamp(30px, 5vw, 46px); font-weight: 600;
+  margin: 0 0 20px; font-size: clamp(1.875rem, 5vw, 2.875rem); font-weight: 600;
   letter-spacing: -.022em; line-height: 1.1; text-wrap: balance;
 }}
-.lede {{ margin: 0; max-width: 62ch; font-size: clamp(16px, 2vw, 18px); color: var(--ink-2); }}
+.lede {{ margin: 0; max-width: 62ch; font-size: clamp(1rem, 2vw, 1.125rem); color: var(--ink-2); }}
 
 .hero {{
-  display: flex; flex-wrap: wrap; gap: 28px 44px; align-items: flex-end;
-  margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-end;
+  margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);
 }}
 .hero__fig {{
-  font-size: clamp(40px, 8vw, 62px); font-weight: 600; line-height: 1;
+  font-size: clamp(2.5rem, 8vw, 3.875rem); font-weight: 600; line-height: 1;
   letter-spacing: -.03em; color: var(--series);
 }}
-.hero__unit {{ font-size: .42em; font-weight: 500; color: var(--ink-2); margin-left: 6px; }}
-.hero__note {{ margin: 0; max-width: 42ch; font-size: 14.5px; color: var(--ink-2); }}
+.hero__unit {{ font-size: .42em; font-weight: 500; color: var(--ink-2); margin-left: 8px; }}
+.hero__note {{ margin: 0; max-width: 42ch; font-size: 0.875rem; color: var(--ink-2); }}
 
 section {{ padding: 56px 0 0; }}
 .label {{
-  margin: 0 0 8px; font-size: 12px; letter-spacing: .16em;
+  margin: 0 0 8px; font-size: 0.75rem; letter-spacing: .16em;
   text-transform: uppercase; color: var(--muted);
 }}
-h2 {{ margin: 0 0 8px; font-size: clamp(21px, 3vw, 26px); font-weight: 600; letter-spacing: -.015em; }}
-.intro {{ margin: 0 0 26px; max-width: 66ch; color: var(--ink-2); font-size: 15.5px; }}
+h2 {{ margin: 0 0 8px; line-height: 1.2; font-size: clamp(1.3125rem, 3vw, 1.625rem); font-weight: 600; letter-spacing: -.015em; }}
+.intro {{ margin: 0 0 24px; max-width: 66ch; color: var(--ink-2); font-size: 1rem; }}
 
 .panel {{
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 14px; padding: 24px 22px 18px;
+  border-radius: 14px; padding: 24px 24px 16px;
 }}
 .chart {{ width: 100%; height: auto; display: block; overflow: visible; }}
 .grid {{ stroke: var(--grid); stroke-width: 1; }}
 .axis {{ stroke: var(--axis); stroke-width: 1; }}
-.bar {{ fill: var(--series); }}
-.bar:hover, .bar:focus {{ fill: var(--series); opacity: .82; outline: none; }}
+.bar {{ fill: var(--series); transition: fill-opacity 120ms ease-out; pointer-events: none; }}
+.hit {{ fill: transparent; cursor: default; }}
+.hit:hover {{ fill: var(--series); fill-opacity: .07; }}
+.hit:focus-visible {{ fill: var(--series); fill-opacity: .12; outline: none;
+  stroke: var(--series); stroke-width: 2; }}
 .bar:focus-visible {{ stroke: var(--ink); stroke-width: 2; }}
 .target {{ stroke: var(--ink-2); stroke-width: 2; stroke-dasharray: 5 4; }}
-.target-label {{ fill: var(--ink-2); font-size: 12px; font-weight: 500; }}
-.tick {{ fill: var(--muted); font-size: 11.5px; font-variant-numeric: tabular-nums; }}
-.val {{ fill: var(--ink); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }}
-.cat {{ fill: var(--ink); font-size: 13px; }}
-.cat.sub {{ fill: var(--muted); font-size: 11.5px; }}
+.target-label {{ fill: var(--ink-2); font-size: 0.75rem; font-weight: 500; }}
+.tick {{ fill: var(--muted); font-size: 0.75rem; font-variant-numeric: tabular-nums; }}
+.val {{ fill: var(--ink); font-size: 0.8125rem; font-weight: 600; font-variant-numeric: tabular-nums; }}
+.cat {{ fill: var(--ink); font-size: 0.8125rem; }}
+.cat.sub {{ fill: var(--muted); font-size: 0.75rem; }}
 
-.table-view {{ margin-top: 14px; border-top: 1px solid var(--border); padding-top: 12px; }}
+.table-view {{ margin-top: 16px; border-top: 1px solid var(--border); padding-top: 12px; }}
 .table-view summary {{
-  cursor: pointer; font-size: 13px; color: var(--ink-2);
+  cursor: pointer; font-size: 0.8125rem; color: var(--ink-2);
 }}
 .scroll {{ overflow-x: auto; }}
 .table-view .scroll {{ margin-top: 12px; }}
 table {{ min-width: 420px; }}
-table {{ border-collapse: collapse; width: 100%; font-size: 13.5px; }}
-th, td {{ text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); }}
-th {{ color: var(--muted); font-weight: 500; font-size: 12px;
+table {{ border-collapse: collapse; width: 100%; font-size: 0.875rem; }}
+th, td {{ text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }}
+th {{ color: var(--muted); font-weight: 500; font-size: 0.75rem;
       letter-spacing: .06em; text-transform: uppercase; }}
 td {{ color: var(--ink-2); }}
 td:first-child {{ color: var(--ink); }}
 
-.bands {{ display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }}
-.band {{ border-radius: 12px; padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 6px; }}
+.bands {{ display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }}
+.band {{ border-radius: 12px; padding: 16px 16px 20px; display: flex; flex-direction: column; gap: 8px; }}
 .band--1 {{ background: var(--band-1); }}
 .band--2 {{ background: var(--band-2); }}
 .band--3 {{ background: var(--band-3); }}
@@ -344,10 +359,10 @@ td:first-child {{ color: var(--ink); }}
   :root:not([data-theme="light"]) .band--1,
   :root:not([data-theme="light"]) .band--2 {{ color: #14140f; }}
 }}
-.band__range {{ font-size: 12px; letter-spacing: .1em; text-transform: uppercase; opacity: .78;
+.band__range {{ font-size: 0.75rem; letter-spacing: .1em; text-transform: uppercase; opacity: .78;
                 font-variant-numeric: tabular-nums; }}
-.band__title {{ font-size: 17px; font-weight: 600; letter-spacing: -.01em; }}
-.band__note {{ font-size: 13.5px; line-height: 1.5; opacity: .92; }}
+.band__title {{ font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; }}
+.band__note {{ font-size: 0.875rem; line-height: 1.5; opacity: .92; }}
 
 .phases {{ list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }}
 .phase {{
@@ -355,44 +370,44 @@ td:first-child {{ color: var(--ink); }}
   background: var(--soft); border: 1px solid var(--border);
   border-radius: 12px; padding: 20px;
 }}
-.phase__when {{ font-size: 13px; font-weight: 600; color: var(--series);
+.phase__when {{ font-size: 0.8125rem; font-weight: 600; color: var(--series);
                 font-variant-numeric: tabular-nums; }}
-.phase__name {{ margin: 0 0 3px; font-size: 16.5px; font-weight: 600; }}
-.phase__goal {{ margin: 0 0 8px; font-size: 13px; color: var(--muted); }}
-.phase__body {{ margin: 0; font-size: 14.5px; color: var(--ink-2); max-width: 70ch; }}
+.phase__name {{ margin: 0 0 4px; font-size: 1.0625rem; font-weight: 600; }}
+.phase__goal {{ margin: 0 0 8px; font-size: 0.8125rem; color: var(--muted); }}
+.phase__body {{ margin: 0; font-size: 0.875rem; color: var(--ink-2); max-width: 70ch; }}
 
 .pill {{
-  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
-  font-size: 12px; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  font-size: 0.75rem; font-weight: 500;
 }}
 .pill--critical {{ color: var(--critical); }}
 .pill--serious {{ color: var(--serious); }}
 .pill--warning {{ color: var(--warning); }}
 
-.decisions {{ list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; counter-reset: d; }}
+.decisions {{ list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: d; }}
 .decisions li {{
-  counter-increment: d; position: relative; padding-left: 38px;
-  font-size: 15.5px; color: var(--ink-2); max-width: 74ch;
+  counter-increment: d; position: relative; padding-left: 40px;
+  font-size: 1rem; color: var(--ink-2); max-width: 74ch;
 }}
 .decisions li::before {{
   content: counter(d); position: absolute; left: 0; top: 1px;
   width: 24px; height: 24px; border-radius: 50%;
   background: var(--soft); border: 1px solid var(--border);
-  color: var(--ink); font-size: 12px; font-weight: 600;
+  color: var(--ink); font-size: 0.75rem; font-weight: 600;
   display: grid; place-items: center; font-variant-numeric: tabular-nums;
 }}
 .decisions b {{ color: var(--ink); font-weight: 600; }}
 
 footer {{
-  margin-top: 68px; padding: 24px 0 46px; border-top: 1px solid var(--border);
-  font-size: 13px; color: var(--muted);
+  margin-top: 64px; padding: 24px 0 48px; border-top: 1px solid var(--border);
+  font-size: 0.8125rem; color: var(--muted);
 }}
-footer p {{ margin: 0 0 6px; max-width: 76ch; }}
+footer p {{ margin: 0 0 8px; max-width: 76ch; }}
 
 #tip {{
   position: fixed; z-index: 10; pointer-events: none; opacity: 0;
   background: var(--tip-bg); color: var(--tip-ink);
-  font-size: 12.5px; padding: 7px 11px; border-radius: 7px;
+  font-size: 0.8125rem; padding: 8px 12px; border-radius: 7px;
   transition: opacity .12s ease; max-width: 260px;
 }}
 #tip[data-show="1"] {{ opacity: 1; }}
@@ -540,17 +555,19 @@ footer p {{ margin: 0 0 6px; max-width: 76ch; }}
     tip.style.left = x + 'px';
     tip.style.top = y + 'px';
   }}
-  function hide() {{ tip.dataset.show = '0'; }}
+  var current = null;
+  function hide(el) {{ if (el && el !== current) return; current = null; tip.dataset.show = '0'; }}
   document.querySelectorAll('[data-tip]').forEach(function (el) {{
-    el.addEventListener('mousemove', function (e) {{ show(e, el.dataset.tip); }});
-    el.addEventListener('mouseleave', hide);
+    el.addEventListener('mousemove', function (e) {{ current = el; show(e, el.dataset.tip); }});
+    el.addEventListener('mouseleave', function () {{ hide(el); }});
     el.addEventListener('focus', function () {{
       var b = el.getBoundingClientRect();
+      current = el;
       show({{ clientX: b.left + b.width / 2, clientY: b.top }}, el.dataset.tip);
     }});
-    el.addEventListener('blur', hide);
+    el.addEventListener('blur', function () {{ hide(el); }});
   }});
-  window.addEventListener('scroll', hide, {{ passive: true }});
+  window.addEventListener('scroll', function () {{ hide(current); }}, {{ passive: true }});
 }})();
 </script>
 """
