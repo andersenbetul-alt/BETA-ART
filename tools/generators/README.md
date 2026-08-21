@@ -37,7 +37,8 @@ They run from this directory and write straight into the property folders.
 
 ## After running any of them
 
-The gates are not optional, and they are quick:
+The gates are not optional, and they are quick. `python3 tools/check.py` runs
+the correctness set in one go and exits on it:
 
     python3 tools/sitemap.py     # URLs follow the pages
     python3 tools/feed.py        # the two feeds follow the articles

@@ -127,6 +127,10 @@ it is lost silently. `tools/generators/README.md` says which builder writes what
 Two lists, and the difference matters. Mixing them makes "the gates pass"
 sound impossible when it is not.
 
+One command runs the correctness set and exits on it:
+
+    python3 tools/check.py        # all of the below, plus the readiness summary
+
 **Correctness — these must all exit zero.** A non-zero here is a defect, and
 nothing ships past it:
 
