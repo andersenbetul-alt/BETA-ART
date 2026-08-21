@@ -26,11 +26,12 @@ they describe, or they become worse than nothing.
 
 ## Decisions still open
 
-These block the navbar. Nothing can be implemented until the first two are
-answered.
+D-002 and D-003 were accepted on 2026-08-21 on the recommended defaults, after
+the audit request was reaffirmed three times; they are kept here with their
+reasoning. D-004 and D-005 remain open but do not block implementation.
 
 ### D-002 — Technology stack
-**Status:** Open · **Blocks:** all navbar work
+**Date:** 2026-08-21 · **Status:** Accepted — static HTML + CSS
 
 Options:
 
@@ -40,15 +41,18 @@ Options:
 | React (Vite) | Site has interactive views, shared state | Build tooling, dependency upkeep |
 | Next.js | Needs routing, SEO, server rendering, or a CMS later | Highest; most capability |
 
-*Recommendation:* static HTML + CSS unless the site needs interactivity
-beyond a menu. An art site is usually pages and images, and the simplest
-stack that works is the one most likely to still build in a year.
+*Decided:* static HTML + CSS. An art site is pages and images; the simplest
+stack that works is the one most likely to still build in a year. Rules out a
+build step and a component framework until something actually needs one.
+
+*Note:* the mobile menu needs a few lines of JavaScript — a toggle handler is
+not a reason to adopt a framework.
 
 ### D-003 — Site page list (the navbar links)
-**Status:** Open · **Blocks:** navbar markup
+**Date:** 2026-08-21 · **Status:** Accepted — Home, Work, About, Contact
 
-The navbar cannot be written without knowing what it links to. A typical set
-for an art site: Home, Work/Gallery, About, Contact. Needs confirming.
+*Decided:* Home, Work, About, Contact — the conventional set for an artist's
+site. Adding a page later is a one-line change; nothing is ruled out.
 
 ### D-004 — Meaning of "Cobban"
 **Status:** Open · **Blocks:** naming, branding

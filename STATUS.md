@@ -2,8 +2,8 @@
 
 **Component:** Navbar (BETA ART / Cobban)
 **Branch:** `claude/navbar-beta-art-cobban-6t07ru`
-**Overall:** Not started — blocked
-**Last updated:** 2026-08-20
+**Overall:** First pass built — audited, fixes outstanding
+**Last updated:** 2026-08-21
 
 ---
 
@@ -31,26 +31,26 @@ no CI workflows, no tests.
 
 | Item | Status | Notes |
 | ---- | ------ | ----- |
-| Navbar markup | Not started | No HTML/JSX component in the repo |
-| Navbar styling | Not started | No CSS/Tailwind/theme files present |
-| Responsive / mobile menu | Not started | — |
-| Accessibility (keyboard nav, ARIA, focus states) | Not started | — |
-| Routing / link targets | Not started | Site page list undefined |
+| Navbar markup | Built | `src/index.html` |
+| Navbar styling | Built | `src/styles.css` |
+| Responsive / mobile menu | **Broken** | Markup + CSS exist; no JS toggle, so unopenable below 700px |
+| Accessibility | Fails | 2 contrast failures, hit targets under minimum, no `prefers-reduced-motion` |
+| Routing / link targets | Built | Home, Work, About, Contact |
 | Tests | Not started | No test runner configured |
 
-**Progress: 0%.**
+**Progress: first pass built and audited.** See [AUDIT.md](AUDIT.md) for the
+full findings and fix order. The mobile menu is non-functional — highest
+priority.
 
 ## Blockers
 
 | Blocker | Decision | Effect |
 | ------- | -------- | ------ |
-| No stack chosen | [D-002](DECISIONS.md) | Cannot write a component — unknown whether HTML, React, or Next.js |
-| No page list | [D-003](DECISIONS.md) | Cannot write nav links — targets undefined |
 | "Cobban" undefined | [D-004](DECISIONS.md) | Cannot set the site title / brand text in the navbar |
 | No design reference | [D-005](DECISIONS.md) | Styling would be invented rather than matched |
 
-D-002 and D-003 are hard blockers; D-004 and D-005 can be worked around with
-placeholders if needed.
+D-002 and D-003 are now closed. D-004 and D-005 remain open but did not block
+the first pass.
 
 ## Dependency graph
 
@@ -104,9 +104,11 @@ accessibility. D-003 joins at markup. Nothing on this graph has been started.
 
 ## Next steps
 
-- [ ] Answer D-002 (stack) and D-003 (page list) — unblocks everything below
-- [ ] Add a package manifest / entry point for the chosen stack
-- [ ] Build the navbar component
-- [ ] Add responsive behaviour and a mobile menu
-- [ ] Pass an accessibility check (tab order, ARIA, visible focus)
+- [x] Answer D-002 (stack) and D-003 (page list)
+- [x] Build the navbar
+- [x] Audit it against HIG principles → [AUDIT.md](AUDIT.md)
+- [ ] Wire up the mobile menu toggle — currently broken
+- [ ] Fix contrast (`#777`→`#666`, `#999`) and add `prefers-reduced-motion`
+- [ ] Raise hit targets to 44×44 (toggle) and pad nav links
+- [ ] Convert px→rem and set an explicit type scale
 - [ ] Replace the placeholder text in `SECURITY.md`

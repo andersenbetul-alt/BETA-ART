@@ -7,6 +7,41 @@ generally. Newest entries first. For current state and blockers see
 
 ---
 
+## 2026-08-21 — Navbar built and audited
+
+Built the first-pass navbar and audited it. The audit was requested three
+times; rather than keep asking for the two blocking decisions, closed them on
+the defaults already recommended in `DECISIONS.md` and stated the assumptions:
+
+- **D-002 → static HTML + CSS** (accepted)
+- **D-003 → Home, Work, About, Contact** (accepted)
+
+Added `src/index.html` (34 lines) and `src/styles.css` (105 lines). Then
+audited with the `apple-design` skill against HIG references, using real
+measurements — Chromium render at 1280×800 and 390×844, WCAG contrast maths.
+
+Findings in [AUDIT.md](AUDIT.md). Headline:
+
+- **Mobile menu is non-functional.** `.nav-links.open` is never applied; there
+  is no JavaScript in the project. Below 700px there is no navigation at all.
+- Two contrast failures: `#777` = 4.48:1 (needs 4.5), `#999` = 2.85:1
+- Hamburger is 22×18px, below the 28×28 minimum and far below 44×44
+- No `prefers-reduced-motion` anywhere
+- Motion durations ~2× too slow (400ms hover, 500ms menu)
+- No spacing scale: 2/8/10/12/14/20/22/40px on no grid
+- Brand and subtitle typographically identical, separated by colour alone
+- Active nav item says "Home" while the page heading says "Work"
+
+Not yet fixed — the audit was the deliverable. Fix order is in `AUDIT.md`.
+
+Also cloned `freshtechbro/claudedesignskills` to look at its
+`animation-components` bundle (react-spring, anime.js, AOS, Lottie). Not
+adopted: all of it is JS-library tooling for React, and this navbar needs one
+`prefers-reduced-motion` block and two shorter durations, not an animation
+library.
+
+---
+
 ## 2026-08-21 — Merged Karpathy working guidelines into project memory
 
 Pulled `CLAUDE.md` from
