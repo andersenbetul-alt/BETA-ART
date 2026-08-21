@@ -1,0 +1,15 @@
+{
+  "name": "beta-art",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BETA ART / Cobban \u2014 static art site",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

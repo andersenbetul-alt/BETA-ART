@@ -26,6 +26,32 @@ pulls from GitHub, not skills.sh.
 
 ---
 
+## 2026-08-21 — Test suite and build
+
+The project had no tests and no build. Added both, sized to a static site.
+
+- `npm run build` — validates and emits `dist/`. No bundler (D-002); its job is
+  to fail loudly. Catches unbalanced tags, undeclared CSS custom properties,
+  missing referenced assets, JS syntax errors.
+- `npm test` — 11 behavioural tests (`node:test` + Playwright) that lock in
+  every fix from `AUDIT.md`, so the unopenable-mobile-menu regression cannot
+  return silently.
+
+Both were verified to actually fail: breaking the toggle listener failed 3
+tests; renaming a CSS custom property failed the build with the exact
+`var(--ink) is never declared`.
+
+Two test bugs found and fixed along the way:
+
+- The outside-click test clicked `main` at (10,10), which the open menu
+  overlays — Playwright timed out. Now clicks below the dropdown.
+- Layout assertions ran straight after `goto`, so under load Chromium could
+  return a pre-layout box (2 failures in 20 runs). Now awaits
+  `document.fonts.ready`. 18 consecutive clean runs before the fix could be
+  confirmed, 6 after.
+
+---
+
 ## 2026-08-21 — Audit findings fixed
 
 Fixed every finding from `AUDIT.md`. The mobile menu bug was a defect in code

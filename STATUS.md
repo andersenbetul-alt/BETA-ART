@@ -36,7 +36,7 @@ no CI workflows, no tests.
 | Responsive / mobile menu | Working | `src/nav.js`; verified opening and closing at 390px |
 | Accessibility | Passes | All contrast ≥ AA, 44×44 targets, reduced-motion honoured, focus rings, ARIA state |
 | Routing / link targets | Built | Home, Work, About, Contact |
-| Tests | Not started | No test runner configured |
+| Tests | Passing | 11 behavioural tests, `npm test` |
 
 **Progress: complete for this scope.** All audit findings fixed and
 re-verified — see the Resolution table in [AUDIT.md](AUDIT.md).
@@ -100,6 +100,18 @@ accessibility. D-003 joins at markup. Nothing on this graph has been started.
 3. What does "Cobban" refer to — a brand name, a theme variant, or a
    person/owner? It appears only in the branch name, nowhere in the code.
 4. Is there an existing design (Figma, mockup, reference site) to match?
+
+## Build and test
+
+```
+npm run build   # validate sources, emit dist/
+npm test        # 11 behavioural tests (Playwright + node:test)
+npm run check   # both
+```
+
+There is no bundler by design (D-002) — the build validates and copies. It
+fails on unbalanced tags, undeclared CSS custom properties, missing assets,
+and JS syntax errors.
 
 ## Next steps
 
