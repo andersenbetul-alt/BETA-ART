@@ -158,6 +158,7 @@
       fact(facts, 'Channel', b.channel);
       fact(facts, 'Source', b.source);
       fact(facts, 'Interpreter', b.tolk_lang ? b.tolk_lang + (b.tolk_dialect ? ' / ' + b.tolk_dialect : '') : null);
+      fact(facts, 'Scope confirmed', b.low_risk ? 'yes — practical help only' : 'NO — do not start work');
       fact(facts, 'Created', new Date(b.created_at).toLocaleString('nb-NO'));
       card.appendChild(facts);
 

@@ -242,6 +242,11 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
     return res.status(400).json({ error: 'missing_fields' });
   }
   if (details.consent !== true) return res.status(400).json({ error: 'consent_required' });
+  /* The customer has to say their request is practical help only. Checking it
+     in the browser is not checking it — anything can post to this endpoint —
+     and the answer is also the record that they were shown the refusal list
+     before they asked. Both reasons put it here. */
+  if (details.lowRisk !== true) return res.status(400).json({ error: 'scope_confirmation_required' });
   if (service.tolk && !str(details.tolkLang, 60)) {
     return res.status(400).json({ error: 'tolk_language_required' });
   }
@@ -298,6 +303,7 @@ app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
       ? { language: str(details.tolkLang, 60), dialect: str(details.tolkDialect, 60) }
       : null,
     caseText,
+    lowRisk: true,
     paidAt: null
   };
 

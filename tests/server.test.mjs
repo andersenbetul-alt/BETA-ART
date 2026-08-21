@@ -34,7 +34,7 @@ function customer(extra = {}) {
   return {
     name: 'Test Testesen', email: 'test@example.com', phone: '+4740000000',
     caseText: 'Fikk et vedtak fra NAV og forstår ikke fristen.',
-    consent: true, lang: 'no', channel: 'phone', ...extra
+    consent: true, lowRisk: true, lang: 'no', channel: 'phone', ...extra
   };
 }
 
@@ -87,6 +87,20 @@ export default async function () {
         const r = await booking({ serviceId: 'v01', payment: 'invoice', details: customer({ consent: false }) });
         equal(r.status, 400);
         equal(r.body.error, 'consent_required');
+      });
+
+      await test('a request that never confirmed its scope is refused', async () => {
+        const r = await booking({
+          serviceId: 'v01', lang: 'no', details: customer({ lowRisk: undefined })
+        });
+        equal(r.status, 400);
+        equal(r.body.error, 'scope_confirmation_required');
+      });
+
+      await test('the confirmation is recorded against the case, not just checked', async () => {
+        const r = await booking({ serviceId: 'v01', lang: 'no', details: customer() });
+        const q = await admin('/api/admin/queue');
+        equal(q.body.bookings.find(b => b.reference === r.body.reference).low_risk, 1);
       });
 
       await test('an unknown service is refused', async () => {

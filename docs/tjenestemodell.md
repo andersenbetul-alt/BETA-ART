@@ -106,6 +106,12 @@ check, and the site cannot create one: every request the server accepts is
 recorded as `new` whatever the browser sends, and `paymentLinks` in the config
 is empty and tested for.
 
+Step 2 is also a record, not only a gate. The server refuses a request that
+does not carry the confirmation (`scope_confirmation_required`) and stores it
+on the case as `low_risk`, and the queue shows it against every case. A check
+that only ran in a browser would be no check at all — anything can post to the
+endpoint — and it would leave nothing to point at afterwards.
+
 ## 6. The case workflow
 
 The states below are the ones in `BOOKING_STATUS`, and the arrows are the ones

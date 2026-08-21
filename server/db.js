@@ -93,6 +93,13 @@ const SCHEMA = [
      only that the review had happened, so it becomes 'in_review'. */
   `
   UPDATE bookings SET status = 'in_review' WHERE status = 'fit_checked';
+  `,
+  /* v3 — the customer's confirmation that their request is practical help only.
+     It is the record that they were shown the list of work we refuse and said
+     their case was none of it, so it belongs on the case and not in a browser
+     that has already closed. */
+  `
+  ALTER TABLE bookings ADD COLUMN low_risk INTEGER NOT NULL DEFAULT 0;
   `
 ];
 
@@ -201,8 +208,8 @@ function insertBooking(db, b) {
       reference, created_at, status, service_id, service_code, date, time, minutes,
       express, amount, net, currency, commission, payment, lang, source,
       name, email, phone, customer_lang, channel, tolk_lang, tolk_dialect,
-      case_text, checkout_id, paid_at
-    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+      case_text, checkout_id, paid_at, low_risk
+    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
   `).run(
     b.reference, b.createdAt, b.status, b.serviceId, b.serviceCode,
     b.date ?? null, b.time ?? null, b.minutes ?? null,
@@ -210,7 +217,8 @@ function insertBooking(db, b) {
     b.commission ?? null, b.payment, b.lang ?? null, b.source ?? null,
     c.name ?? '', c.email ?? '', c.phone ?? null, c.lang ?? null, c.channel ?? null,
     t.language ?? null, t.dialect ?? null,
-    b.caseText ?? '', b.checkoutId ?? null, b.paidAt ?? null
+    b.caseText ?? '', b.checkoutId ?? null, b.paidAt ?? null,
+    b.lowRisk ? 1 : 0
   );
   logEvent(db, b.reference, 'created', b.serviceCode);
   return b;
