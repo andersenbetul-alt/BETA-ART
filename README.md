@@ -99,6 +99,47 @@ at the site's real origin and `PUBLIC_SITE_URL` back at the site.
 
 ---
 
+## Tests
+
+```bash
+npm install        # axe-core, the only dependency, and only for tests
+npm test           # everything — build, data, server, browser
+npm run test:build # ~1s   files, links, markup, no committed secrets
+npm run test:data  # ~1s   translation parity, catalogue integrity
+npm run test:server# ~10s  boots the API against a throwaway database
+npm run test:browser # ~2min real Chromium: WCAG, targets, booking, Stripe return
+```
+
+51 tests, no framework — the harness is 40 lines, because the site has no build
+step and no runtime dependencies and the tests should not be the first thing to
+break that. Playwright comes from the environment; `axe-core` is the single
+devDependency.
+
+What is actually protected:
+
+- **Accessibility is a test, not a checklist.** All five pages must report zero
+  axe-core violations across `wcag2a`, `wcag2aa`, `wcag21a` and `wcag21aa`, and
+  every interactive target must clear 24px on a phone. Norway requires WCAG 2.1
+  AA of public-facing sites; a regression here is a legal problem, not a
+  cosmetic one.
+- **Price integrity.** A booking that carries a tampered `amount` must still be
+  charged the catalogue price. Nothing reachable from the browser may mark a
+  case paid — only Stripe's webhook.
+- **The admin door.** Wrong token rejected, five wrong answers lock the address
+  out for fifteen minutes including the correct token, invalid statuses refused.
+- **Translation parity.** Identical key sets, no empty strings, matching
+  interpolation placeholders, and the independence notice (`brand.disclaimer`)
+  present and naming both NAVIAR and NAV in all ten languages.
+- **The return from Stripe.** Paid and cancelled returns show the reference and
+  say which happened; a malformed reference falls through to the booking form
+  rather than faking a confirmation.
+- **No JavaScript.** The page must still offer a phone number and an email.
+
+There is no build step — the site is static on purpose — so `test:build` checks
+what a build would otherwise catch: referenced files that do not exist, dead
+anchors, unclosed markup, a locale named in config without a file, and the
+admin page losing its `noindex`.
+
 ## Configuring the business
 
 Everything a non-developer needs to change lives in `assets/js/config.js`.

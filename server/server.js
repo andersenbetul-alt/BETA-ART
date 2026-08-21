@@ -23,7 +23,9 @@ const express = require('express');
 const cors = require('cors');
 
 const PORT = Number(process.env.PORT || 8787);
-const DATA_DIR = path.join(__dirname, 'data');
+/* Overridable so the test suite can run against a throwaway directory
+   instead of the pilot's real cases. */
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 
 /* ---------------------------------------------------------------------------
    The price catalogue lives in assets/js/config.js so the site and the server

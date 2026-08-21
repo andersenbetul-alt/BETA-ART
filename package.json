@@ -1,0 +1,19 @@
+{
+  "name": "naviar-pilot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NAVIAR pilot site — static, no build step",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/run.mjs",
+    "test:build": "node tests/run.mjs build",
+    "test:data": "node tests/run.mjs data",
+    "test:server": "node tests/run.mjs server",
+    "test:browser": "node tests/run.mjs browser",
+    "lix": "node tools/lix.mjs",
+    "i18n": "node tools/check-i18n.js"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.2"
+  }
+}
