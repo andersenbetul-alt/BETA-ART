@@ -110,10 +110,13 @@
       if (value.indexOf('{') !== -1) {
         if (!FIGURES) return;
         var missing = false;
-        value = value.replace(/\{([a-z_]+)\}/g, function (match, name) {
+        // {name} prints the exact number; {name:compact} prints the short form. Headings need
+        // the short one — "From Norway. 43M+ streams." reads; the full count does not — but
+        // both come from figures.json, so a heading can never quote a stale number.
+        value = value.replace(/\{([a-z_]+)(:compact)?\}/g, function (match, name, short) {
           var figure = FIGURES[name];
           if (!figure) { missing = true; return match; }
-          return full(figure.value, code);
+          return short ? compact(figure.value, code) + '+' : full(figure.value, code);
         });
         if (missing) return;
       }

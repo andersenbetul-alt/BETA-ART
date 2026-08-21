@@ -104,8 +104,13 @@ const unescape = (s) => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/
 const enFigures = existsSync(join(root, 'assets/data/figures.json'))
   ? JSON.parse(read('assets/data/figures.json'))
   : null;
-const fillTokens = (text) => text.replace(/\{([a-z_]+)\}/g, (token, name) =>
-  enFigures && enFigures[name] ? new Intl.NumberFormat('en').format(enFigures[name].value) : token);
+const fillTokens = (text) => text.replace(/\{([a-z_]+)(:compact)?\}/g, (token, name, short) => {
+  if (!enFigures || !enFigures[name]) return token;
+  const v = enFigures[name].value;
+  return short
+    ? new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(v) + '+'
+    : new Intl.NumberFormat('en').format(v);
+});
 
 for (const [, , , key, , text] of html.matchAll(fallbackRe)) {
   let expected = DICTS.en?.[key];
@@ -132,6 +137,31 @@ for (const [, , , key, , text] of html.matchAll(fallbackRe)) {
   if (literals.length) {
     fail(`style.css has ${literals.length} colour value(s) outside :root — move them to tokens: ` +
          [...new Set(literals)].join(', '));
+  }
+}
+
+/* ---------- 3c. Spacing comes from the scale ----------
+   Thirty-five ad-hoc pixel values, twenty-one of them off any grid, was the finding HXI's own
+   design-system audit called the single biggest consistency lift. Eleven tokens replaced them.
+   This keeps the thirty-sixth from appearing: a padding, margin or gap outside :root has to
+   use var(--sp-*), a clamp() for fluid spacing, or one of the values that is deliberately not
+   on the scale — hairlines at 1-2px, and 44px, which is the touch minimum and not a rhythm. */
+
+{
+  const outside = css.replace(/:root\s*\{[^}]*\}/g, '');
+  const offending = [];
+  const re = /(?:padding|margin|gap|row-gap|column-gap)(?:-(?:top|bottom|left|right|inline|block)(?:-(?:start|end))?)?\s*:([^;{}]+)/g;
+  for (const [, value] of outside.matchAll(re)) {
+    if (value.includes('clamp(') || value.includes('calc(')) continue;
+    for (const [, n] of value.matchAll(/(\d+(?:\.\d+)?)px/g)) {
+      const v = Number(n);
+      if (v <= 2 || v === 44) continue;
+      offending.push(`${v}px`);
+    }
+  }
+  if (offending.length) {
+    fail(`style.css has ${offending.length} spacing value(s) off the scale — use var(--sp-*): ` +
+         [...new Set(offending)].join(', '));
   }
 }
 
@@ -234,10 +264,16 @@ if (existsSync(figuresPath)) {
     music_help_streams: 'streams_help_urself',
     music_xp_sub: 'streams_x_pirata',
     break_p1: 'streams_help_urself',
+    video_title: 'streams_help_urself',
+    video_p: 'streams_help_urself',
+    about_title: 'streams_help_urself',
+    about_p2: 'streams_help_urself',
+    music_xp_tag: 'streams_x_pirata',
   };
   for (const [code, dict] of Object.entries(DICTS)) {
     for (const [key, figure] of Object.entries(TOKENED)) {
-      if (dict[key] && !dict[key].includes(`{${figure}}`)) {
+      // either form counts: {name} prints the exact number, {name:compact} the short one
+      if (dict[key] && !dict[key].includes(`{${figure}}`) && !dict[key].includes(`{${figure}:compact}`)) {
         fail(`[${code}] ${key} has a number typed into it — use {${figure}} so figures.json stays the only source.`);
       }
     }
