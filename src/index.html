@@ -9,16 +9,17 @@
 <body>
 
 <header class="site-header">
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main">
     <a class="brand" href="/">BETA ART <span class="brand-sub">Cobban</span></a>
 
-    <button class="nav-toggle" aria-label="Menu">
-      <span></span><span></span><span></span>
+    <button class="nav-toggle" type="button"
+            aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
     </button>
 
-    <ul class="nav-links">
-      <li><a href="/" class="active">Home</a></li>
-      <li><a href="/work">Work</a></li>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/work" class="active" aria-current="page">Work</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/contact">Contact</a></li>
     </ul>
@@ -30,5 +31,6 @@
   <p>Selected pieces.</p>
 </main>
 
+<script src="nav.js"></script>
 </body>
 </html>

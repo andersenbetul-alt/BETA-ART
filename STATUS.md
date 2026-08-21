@@ -2,7 +2,7 @@
 
 **Component:** Navbar (BETA ART / Cobban)
 **Branch:** `claude/navbar-beta-art-cobban-6t07ru`
-**Overall:** First pass built — audited, fixes outstanding
+**Overall:** Built, audited, and fixed — all findings resolved
 **Last updated:** 2026-08-21
 
 ---
@@ -33,14 +33,13 @@ no CI workflows, no tests.
 | ---- | ------ | ----- |
 | Navbar markup | Built | `src/index.html` |
 | Navbar styling | Built | `src/styles.css` |
-| Responsive / mobile menu | **Broken** | Markup + CSS exist; no JS toggle, so unopenable below 700px |
-| Accessibility | Fails | 2 contrast failures, hit targets under minimum, no `prefers-reduced-motion` |
+| Responsive / mobile menu | Working | `src/nav.js`; verified opening and closing at 390px |
+| Accessibility | Passes | All contrast ≥ AA, 44×44 targets, reduced-motion honoured, focus rings, ARIA state |
 | Routing / link targets | Built | Home, Work, About, Contact |
 | Tests | Not started | No test runner configured |
 
-**Progress: first pass built and audited.** See [AUDIT.md](AUDIT.md) for the
-full findings and fix order. The mobile menu is non-functional — highest
-priority.
+**Progress: complete for this scope.** All audit findings fixed and
+re-verified — see the Resolution table in [AUDIT.md](AUDIT.md).
 
 ## Blockers
 
@@ -107,8 +106,10 @@ accessibility. D-003 joins at markup. Nothing on this graph has been started.
 - [x] Answer D-002 (stack) and D-003 (page list)
 - [x] Build the navbar
 - [x] Audit it against HIG principles → [AUDIT.md](AUDIT.md)
-- [ ] Wire up the mobile menu toggle — currently broken
-- [ ] Fix contrast (`#777`→`#666`, `#999`) and add `prefers-reduced-motion`
-- [ ] Raise hit targets to 44×44 (toggle) and pad nav links
-- [ ] Convert px→rem and set an explicit type scale
+- [x] Wire up the mobile menu toggle
+- [x] Fix contrast and add `prefers-reduced-motion`
+- [x] Raise hit targets to 44×44
+- [x] Convert px→rem and set an explicit type scale
+- [ ] Build the actual pages the navbar links to (Work, About, Contact)
+- [ ] Resolve D-004 ("Cobban") and D-005 (design reference)
 - [ ] Replace the placeholder text in `SECURITY.md`

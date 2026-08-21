@@ -7,6 +7,30 @@ generally. Newest entries first. For current state and blockers see
 
 ---
 
+## 2026-08-21 — Audit findings fixed
+
+Fixed every finding from `AUDIT.md`. The mobile menu bug was a defect in code
+written earlier the same day, so this closes it out rather than leaving broken
+markup in the tree.
+
+- `src/nav.js` (new, 19 lines) — toggles the menu, keeps `aria-expanded` in
+  sync, Escape closes and returns focus to the toggle
+- `src/styles.css` rewritten on custom properties: 4px spacing scale, Major
+  Third type scale in `rem`, motion durations, and a colour set where every
+  text pair clears AA
+- `src/index.html` — `aria-controls`/`aria-current`/`<nav aria-label>`, and the
+  active item corrected to Work
+
+Verified the same way the audit was: Chromium at 1280×800 and 390×844, real
+clicks, WCAG maths. Toggle 44×44, menu `none`→`flex`, `aria-expanded`
+false→true→false, reduced-motion measured at `1e-05s`.
+
+One thing the audit missed and this pass caught: the divider at `#c9c9c9` was
+still only 1.66:1, under the 3:1 needed for non-text UI. Moved to `#8f8f8f`
+(3.23:1). Also added `:focus-visible` rings, which had been absent entirely.
+
+---
+
 ## 2026-08-21 — Navbar built and audited
 
 Built the first-pass navbar and audited it. The audit was requested three

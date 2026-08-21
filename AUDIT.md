@@ -203,3 +203,45 @@ bound to a `display` switch it cannot be interrupted mid-flight.
 and motion guidance transfers cleanly to the web and is what this audit rests
 on. Its platform conventions — tab bars, navigation stacks, safe areas — do
 not apply to a web navbar and were not used.
+
+---
+
+# Resolution — 2026-08-21
+
+All findings above are fixed. Re-verified by the same method: Chromium
+render at 1280×800 and 390×844, real interaction, WCAG maths.
+
+| § | Finding | Before | After |
+| - | ------- | ------ | ----- |
+| 0 | Mobile menu unopenable | no JS, `display:none` forever | `src/nav.js` toggles it; verified `none`→`flex` on click |
+| 0 | No ARIA state | `aria-label` only | `aria-expanded` flips false→true→false; `aria-controls`, `aria-current`, `<nav aria-label>` |
+| 0 | Active item wrong | "Home" active on the Work page | `Work` active, `aria-current="page"` |
+| 1 | No spacing scale | 2/8/10/12/14/20/22/40px | 4px scale as custom properties |
+| 1 | Hamburger 22×18 | below 28×28 minimum | **44×44** |
+| 1 | Nav link 41×20 | at the absolute floor | **65×44** |
+| 2 | Brand = subtitle | both 19px/700, colour-only difference | 20px/700 vs 16px/400 — survives greyscale |
+| 2 | `h1` only 1.58× brand | 30px vs 19px | 39px vs 20px (**1.95×**) |
+| 2 | Divider 1.16:1 | `#eee` | `#8f8f8f` = **3.23:1** |
+| 3 | Hard-coded px | ignored user font size | `rem` throughout, Major Third scale |
+| 3 | `#777` = 4.48:1 | failed AA | `#666` = **5.74:1** |
+| 3 | `#999` = 2.85:1 | failed AA | `#666` = **5.74:1** |
+| 3 | All-caps at 13px | poor word-shape recognition | sentence case |
+| 3 | No system font | `Helvetica, Arial` | `system-ui` stack |
+| 4 | 400ms hover | too slow, frequent interaction | **150ms** |
+| 4 | 500ms menu | too slow | **220ms** |
+| 4 | No reduced-motion | absent | honoured — measured `1e-05s` under `reducedMotion:'reduce'` |
+
+Added beyond the findings: `:focus-visible` rings (there were none), and
+Escape closes the menu and returns focus to the toggle.
+
+**Verified output**
+
+```
+DESKTOP  link 65.3×44, nav 14px, h1 39.056px, brand 20px, sub 16px/400
+MOBILE   toggle 44×44, display none→flex, aria-expanded false→true,
+         row 44px, Escape → none / false
+REDUCED  display flex, animation-duration 1e-05s
+```
+
+Contrast, all on white: `#666` 5.74:1 · `#333` 12.63:1 · `#111` 18.88:1 ·
+`#8f8f8f` 3.23:1 (non-text, needs 3:1). All pass.
