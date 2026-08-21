@@ -23,6 +23,20 @@ site navigation bar, referred to as the "BETA ART / Cobban" navbar.
 Update these in the **same commit** as the work they describe. Records kept
 in a separate commit, or in chat, drift and stop being trustworthy.
 
+## Session start
+
+At the start of any task-oriented session — any interaction where you will use
+tools and produce deliverables — invoke the `task-observer` skill before
+beginning work, so skill-improvement opportunities are captured throughout.
+
+When loading any skill, check the observation log for OPEN observations tagged
+to that skill and apply their insights to the current work, even if the skill
+file has not been updated yet.
+
+Note for this repository: observations are written to `skill-observations/`.
+In an ephemeral container that directory does not survive the session, so the
+log is only durable when this repo is checked out somewhere persistent.
+
 ## Established facts
 
 - The repository is a scaffold. As of 2026-08-20 it contains only markdown —
