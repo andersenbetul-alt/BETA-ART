@@ -187,6 +187,45 @@ export default async function () {
       });
     });
 
+    await suite('career', async () => {
+      await test('the career form asks for a goal and refuses documents', async () => {
+        const p = await browser.newPage();
+        await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
+        await p.waitForTimeout(900);
+        await p.locator('#bkBody .service-opt').nth(3).click();   // AI Career Kit
+        await p.waitForTimeout(400);
+        const placeholder = await p.locator('#bkBody [name="caseText"]').getAttribute('placeholder');
+        assert(!/vedtak|brev/i.test(placeholder), 'the career form still asks about a case: ' + placeholder);
+        const notice = (await p.locator('#bkBody .status.info').allTextContents()).join(' ');
+        assert(/CV/.test(notice) && /sikker lenke/i.test(notice),
+          'nothing tells the customer not to send a CV here: ' + notice);
+        await p.close();
+      });
+
+      await test('the career page states the limits it has to state', async () => {
+        const p = await browser.newPage();
+        await p.goto(`${BASE}/karriere.html`, { waitUntil: 'load' });
+        await p.waitForTimeout(500);
+        /* A fresh browser reports en-US, so the page opens in English. The
+           Norwegian text is the one that governs, so test that one. */
+        await p.locator('[data-legal-lang="no"]').click();
+        await p.waitForTimeout(200);
+        const text = (await p.locator('main:not([hidden])').innerText()).toLowerCase();
+        for (const must of ['utkast', 'rangering', 'biometrisk', 'fødselsnummer',
+                            'abonnement', 'angreretten', 'trene ai-modeller']) {
+          assert(text.includes(must), `karriere.html never mentions ${must}`);
+        }
+        await p.locator('[data-legal-lang="en"]').click();
+        await p.waitForTimeout(200);
+        const english = (await p.locator('main:not([hidden])').innerText()).toLowerCase();
+        for (const must of ['draft', 'ranking', 'biometric', 'national id',
+                            'subscription', 'right of withdrawal', 'train ai models']) {
+          assert(english.includes(must), `the English half never mentions ${must}`);
+        }
+        await p.close();
+      });
+    });
+
     await suite('out of scope', async () => {
       await test('a decision or an appeal is referred on, not sold to', async () => {
         const p = await browser.newPage();

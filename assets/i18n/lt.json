@@ -250,7 +250,10 @@
     ],
     "riskConfirm": "Patvirtinu, kad mano užklausa yra tik dėl praktinės pagalbos ir nesusijusi su nė vienu punktu iš sąrašo.",
     "noPayNow": "Dabar nieko nemokate. Jei galime padėti, atsiųsime apimtį, kainą ir sąlygas raštu – ir tik po to mokėjimo nuorodą.",
-    "groupCareer": "Karjera"
+    "groupCareer": "Karjera",
+    "goal": "Ko norite pasiekti?",
+    "goalPlaceholder": "Pavyzdžiui: noriu pakeisti sritį arba negaunu atsakymų į prašymus. Nerašykite asmens kodų ar sveikatos duomenų.",
+    "noDocs": "Nesiųskite čia CV ar kitų dokumentų. Jei CV prireiks asmeninei peržiūrai, vėliau gausite atskirą saugią nuorodą."
   },
   "faq": {
     "eyebrow": "Klausimai",
@@ -330,12 +333,12 @@
       "d": "30 minučių kartu ir trumpas vadovas: tinkamas viešasis kanalas, klausimų sąrašas ir praktinis kontrolinis sąrašas. Vienas priminimas."
     },
     "career_free": {
-      "n": "AI Career Starter",
-      "d": "Nemokamai: CV kontrolinis sąrašas, penki pagrindiniai promptai ir paprastas darbo paieškos sekiklis."
+      "n": "Career Starter",
+      "d": "Nemokamai: CV kontrolinis sąrašas, penki pagrindiniai promptai, darbo sekiklis ir savaitės paieškos planas."
     },
     "career_kit": {
       "n": "AI Career Kit",
-      "d": "CV šablonai norvegų ir anglų kalbomis, promptai CV ir prašymui pritaikyti, pasiruošimas pokalbiui, LinkedIn kontrolinis sąrašas, darbo sekiklis ir savaitės planas."
+      "d": "CV šablonai norvegų ir anglų kalbomis, promptai CV pritaikyti, prašymų rašymo sistema, pasiruošimas pokalbiui, STAR darbalapis, LinkedIn kontrolinis sąrašas, darbo sekiklis ir 30 dienų planas. Vienas mokėjimas, be prenumeratos."
     },
     "career_review": {
       "n": "Asmeninė CV peržiūra",

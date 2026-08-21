@@ -250,7 +250,10 @@
     ],
     "riskConfirm": "Jeg bekrefter at forespørselen min bare gjelder praktisk hjelp, og ikke noe på listen over.",
     "noPayNow": "Du betaler ingenting nå. Kan vi hjelpe, sender vi omfang, pris og vilkår skriftlig — og først deretter en betalingslenke.",
-    "groupCareer": "Karriere"
+    "groupCareer": "Karriere",
+    "goal": "Hva vil du oppnå?",
+    "goalPlaceholder": "For eksempel: jeg vil bytte bransje, eller jeg får ikke svar på søknadene mine. Ikke skriv fødselsnummer eller helseopplysninger.",
+    "noDocs": "Ikke send CV eller andre dokumenter her. Trenger vi CV-en din til en personlig gjennomgang, får du en egen sikker lenke etterpå."
   },
   "faq": {
     "eyebrow": "Spørsmål",
@@ -330,12 +333,12 @@
       "d": "30 minutter sammen, og en kort veiviser: riktig offentlig kanal, en spørsmålsliste og en praktisk sjekkliste. Én oppfølging."
     },
     "career_free": {
-      "n": "AI Career Starter",
-      "d": "Gratis: én CV-sjekkliste, fem grunnprompts og en enkel jobbtracker."
+      "n": "Career Starter",
+      "d": "Gratis: CV-sjekkliste, fem grunnprompts, jobbtracker og en ukentlig søkeplan."
     },
     "career_kit": {
       "n": "AI Career Kit",
-      "d": "CV-maler på norsk og engelsk, prompts for målrettet CV og søknad, intervjuforberedelse, LinkedIn-sjekkliste, jobbtracker og ukeplan."
+      "d": "CV-maler på norsk og engelsk, prompts for målrettet CV, søknadssystem, intervjuforberedelse, STAR-arbeidsark, LinkedIn-sjekkliste, jobbtracker og 30-dagers plan. Engangsbeløp, ingen abonnement."
     },
     "career_review": {
       "n": "Personlig CV-gjennomgang",

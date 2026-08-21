@@ -250,7 +250,10 @@
     ],
     "riskConfirm": "I confirm that my request is for practical help only, and for nothing on the list above.",
     "noPayNow": "You pay nothing now. If we can help, we send the scope, the price and the terms in writing — and only then a payment link.",
-    "groupCareer": "Career"
+    "groupCareer": "Career",
+    "goal": "What do you want to achieve?",
+    "goalPlaceholder": "For example: I want to change industry, or I get no reply to my applications. Do not write national ID numbers or health information.",
+    "noDocs": "Do not send a CV or any other document here. If we need your CV for a personal review, you get a separate secure link afterwards."
   },
   "faq": {
     "eyebrow": "Questions",
@@ -330,12 +333,12 @@
       "d": "30 minutes together and a short guide: the right public channel, a list of questions and a practical checklist. One follow-up."
     },
     "career_free": {
-      "n": "AI Career Starter",
-      "d": "Free: one CV checklist, five basic prompts and a simple job tracker."
+      "n": "Career Starter",
+      "d": "Free: a CV checklist, five basic prompts, a job tracker and a weekly search plan."
     },
     "career_kit": {
       "n": "AI Career Kit",
-      "d": "CV templates in Norwegian and English, prompts for tailoring a CV and application, interview preparation, a LinkedIn checklist, a job tracker and a weekly plan."
+      "d": "CV templates in Norwegian and English, prompts for a targeted CV, an application system, interview preparation, a STAR worksheet, a LinkedIn checklist, a job tracker and a 30-day plan. One payment, no subscription."
     },
     "career_review": {
       "n": "Personal CV review",

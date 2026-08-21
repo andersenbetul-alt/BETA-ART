@@ -58,11 +58,20 @@ about money is trusted.
 
 ### The career rules
 
-AI-assisted career work carries its own line, on top of the list below:
+What NAVIAR is, in one sentence: **career tools a job seeker uses on their own
+application, plus a human review — not a recruitment system that decides
+anything on an employer's behalf.** That distinction is the whole risk
+position, and every rule below protects it.
 
 - We never invent experience, education, results or references. The facts come
   from the customer.
-- A person reads through every AI-assisted deliverable before it goes out.
+- The customer is always told when AI has been used. Everything AI produces is
+  labelled a **draft** until a person has read it.
+- A person checks every personalised deliverable before it goes out.
+- AI uses only what the customer supplied. A CV that must pass through an AI
+  tool is anonymised as far as it can be first.
+- Customer CVs are never used to train models, and never shared with employers
+  or third parties.
 - No promise of a job and no promise of an interview.
 - NAVIAR does not apply for jobs, contact employers, or act as the candidate.
   The customer approves and sends every application themselves.
@@ -70,6 +79,66 @@ AI-assisted career work carries its own line, on top of the list below:
   health data, credentials, or a referee's private contact details.
 - Out of scope, and referred on: employment-law disputes, dismissal,
   discrimination assessments, sickness-absence cases, salary and tax advice.
+
+### What the product must never contain
+
+Not "not yet" — these are outside the product:
+
+- ranking or scoring candidates for employers
+- automatic selection or rejection of applicants
+- sending an application, or contacting an employer, for the customer
+- emotion or personality analysis from video or audio
+- facial recognition or other biometric analysis
+- assessment based on health, disability, ethnicity or religion
+- selling CV data to employers or third parties
+
+A data test fails if any of those words turns up in what the catalogue sells.
+
+### The data floor
+
+The first form collects **name, email, language and what the customer wants to
+achieve. Nothing else, and no documents.** A CV, where one is needed at all,
+arrives afterwards over a separate secure link, for the personal review only —
+seen by the person assigned to that case, and deleted after delivery.
+
+Never asked for, and never to be received:
+
+national ID numbers · BankID, PIN or passwords · health data · ethnicity,
+religion, political opinion or trade-union membership · a referee's contact
+details without their agreement · passports or identity documents ·
+confidential documents from a former employer
+
+### Payment and consumer terms
+
+- Career Starter free, Career Kit 299, personal review 790. All one-off.
+- No subscription, no automatic renewal, no hidden charges.
+- Full contents and full price shown before purchase.
+- Stripe or PayPal; NAVIAR never holds card details.
+- A digital pack delivered immediately needs the customer's explicit consent to
+  immediate delivery and their acknowledgement that the withdrawal right ends
+  once delivery is complete. A customer who would rather wait keeps the usual
+  14 days.
+- **One payment product per price.** Do not reuse a link built for a different
+  amount.
+
+### Affiliate income
+
+Not built, and not the pilot's income model. If it is ever added:
+
+- every link marked as advertising (*Reklamelenke*)
+- the commission relationship stated plainly, not buried inside a review
+- no customer CV or personal data passed to the affiliate
+
+### The pilot organisation
+
+No open consultant marketplace in the pilot. Personal reviews are done by a
+small number of career advisers NAVIAR has chosen and contracted, who:
+
+- sign a confidentiality agreement
+- are trained on the AI and data rules before taking a case
+- see only the file assigned to them
+- never take payment from a customer outside the system
+- never promise a job and never give legal advice
 
 ### What we will not take
 
@@ -205,12 +274,30 @@ The same reasoning is why the launch kit's *do not build yet* list still holds:
 no adviser marketplace, no customer accounts, no subscriptions, no reviews, no
 document upload, no AI legal advice, no app, no commission accounting.
 
+## 7a. Sources
+
+The rules above were set by the business owner, who cited Datatilsynet on data
+minimisation and on databehandleravtaler, the EU AI Act's employment
+provisions, digitalytelsesloven and angrerettloven on digital delivery and
+withdrawal, Forbrukertilsynet on marking advertising, and Nkom on AI labelling.
+
+Those citations have not been read from this repository — the network here
+blocks the sources — so this file records **what NAVIAR has committed to**, not
+an interpretation of what the law requires. The lawyer review below is where
+the two get reconciled.
+
 ## 7a. What this model does not fix
 
 It lowers the risk considerably. It does not remove it. Before this goes public
 a Norwegian lawyer needs to read the customer contract, the right-of-withdrawal
 handling, the privacy notice, the adviser agreement and the insurance cover.
 Nothing in this repository is a substitute for that.
+
+Still outstanding, and none of it is code: databehandleravtaler with the AI and
+cloud providers actually used, a written retention and deletion schedule, an
+incident procedure, professional and cyber liability insurance, and the adviser
+training and confidentiality agreements. The first twenty cases should be
+audited by hand.
 
 ## 8. The rules that do not bend
 

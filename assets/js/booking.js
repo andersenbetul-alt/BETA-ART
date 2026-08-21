@@ -344,14 +344,22 @@
       form.appendChild(field(I18n.t('booking.channel'), chan));
     }
 
+    /* A career request asks what the customer wants to achieve, not what their
+       case is about — and it says outright that no CV belongs here. The CV, if
+       one is needed at all, comes later over a separate secure link, and only
+       for the personal review. */
+    var career = Boolean(s && s.group === 'karriere');
+
     var ta = el('textarea');
     ta.name = 'caseText';
     ta.required = true;
-    ta.placeholder = I18n.t('booking.casePlaceholder');
+    ta.placeholder = I18n.t(career ? 'booking.goalPlaceholder' : 'booking.casePlaceholder');
     if (d.caseText) ta.value = d.caseText;
-    form.appendChild(field(I18n.t('booking.case'), ta, I18n.t('booking.noSensitive')));
+    form.appendChild(field(I18n.t(career ? 'booking.goal' : 'booking.case'), ta,
+                           I18n.t('booking.noSensitive')));
 
-    var upload = el('p', 'status info show', I18n.t('booking.uploadNote'));
+    var upload = el('p', 'status info show',
+                    I18n.t(career ? 'booking.noDocs' : 'booking.uploadNote'));
     form.appendChild(upload);
 
     /* Express is a real +25% surcharge, shown before purchase (Blueprint 12.2) */

@@ -250,7 +250,10 @@
     ],
     "riskConfirm": "Talebimin yalnızca pratik yardım için olduğunu, yukarıdaki listedeki hiçbir konuyu içermediğini onaylıyorum.",
     "noPayNow": "Şimdi hiçbir ödeme yapmıyorsunuz. Yardımcı olabilirsek kapsamı, fiyatı ve koşulları yazılı gönderiririz — ödeme bağlantısı ancak ondan sonra gelir.",
-    "groupCareer": "Kariyer"
+    "groupCareer": "Kariyer",
+    "goal": "Neyi başarmak istiyorsunuz?",
+    "goalPlaceholder": "Örneğin: sektör değiştirmek istiyorum ya da başvurularıma yanıt alamıyorum. Kimlik numarası veya sağlık bilgisi yazmayın.",
+    "noDocs": "Buraya CV veya başka belge göndermeyin. Kişisel inceleme için CV’nize ihtiyacımız olursa size ayrı bir güvenli bağlantı gönderilir."
   },
   "faq": {
     "eyebrow": "Sorular",
@@ -330,12 +333,12 @@
       "d": "30 dakikalık görüşme ve kısa bir rehber: doğru resmî kanal, soru listesi ve pratik kontrol listesi. Bir takip."
     },
     "career_free": {
-      "n": "AI Career Starter",
-      "d": "Ücretsiz: bir CV kontrol listesi, beş temel prompt ve basit bir iş takip tablosu."
+      "n": "Career Starter",
+      "d": "Ücretsiz: CV kontrol listesi, beş temel prompt, iş takip tablosu ve haftalık arama planı."
     },
     "career_kit": {
       "n": "AI Career Kit",
-      "d": "Norveççe ve İngilizce CV şablonları, hedefe yönelik CV ve başvuru promptları, mülakat hazırlığı, LinkedIn kontrol listesi, iş takip tablosu ve haftalık plan."
+      "d": "Norveççe ve İngilizce CV şablonları, hedefe yönelik CV promptları, başvuru mektubu sistemi, mülakat hazırlığı, STAR çalışma sayfası, LinkedIn kontrol listesi, iş takip tablosu ve 30 günlük plan. Tek ödeme, abonelik yok."
     },
     "career_review": {
       "n": "Kişisel CV incelemesi",

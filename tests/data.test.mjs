@@ -124,20 +124,43 @@ export default async function () {
       const shipped = {
         career_free: ['leveranser/karriere/gratis/cv-sjekkliste.md',
                       'leveranser/karriere/gratis/fem-prompts.md',
-                      'leveranser/karriere/gratis/jobbtracker.csv'],
+                      'leveranser/karriere/gratis/jobbtracker.csv',
+                      'leveranser/karriere/gratis/ukeplan.md'],
         career_kit:  ['leveranser/karriere/kit/cv-mal-no.md',
                       'leveranser/karriere/kit/cv-template-en.md',
                       'leveranser/karriere/kit/prompts.md',
+                      'leveranser/karriere/kit/soknadssystem.md',
                       'leveranser/karriere/kit/intervju.md',
+                      'leveranser/karriere/kit/star-arbeidsark.md',
                       'leveranser/karriere/kit/linkedin-sjekkliste.md',
                       'leveranser/karriere/kit/jobbtracker.csv',
-                      'leveranser/karriere/kit/ukeplan.md']
+                      'leveranser/karriere/kit/30-dagers-plan.md']
       };
       for (const [id, files] of Object.entries(shipped)) {
         assert(CFG.services.some(s => s.id === id), `${id} is not in the catalogue`);
         for (const f of files) {
           assert(fs.existsSync(f), `${id} is sold but ${f} does not exist`);
           assert(fs.statSync(f).size > 400, `${id} ships ${f}, which is nearly empty`);
+        }
+      }
+
+      /* The kit is the paid tier: it must contain everything the free one does. */
+      for (const f of shipped.career_free) {
+        const inKit = f.replace('/gratis/', '/kit/');
+        assert(fs.existsSync(f) || fs.existsSync(inKit), `the kit is missing ${f}`);
+      }
+    });
+
+    /* The product line is career tools for one job seeker. Anything that judges
+       people for an employer is a different, far riskier product, and the words
+       for it must not creep into what we sell. */
+    await test('nothing in the catalogue offers to assess anyone for an employer', () => {
+      const forbidden = /rangering|poengsetting|scoring|screening|automatisk (utvelgelse|avvisning)|biometri|ansiktsgjenkjenning|garanterer (jobb|intervju)|jobbgaranti/i;
+      for (const file of LOCALES) {
+        const cat = load(file).catalog;
+        for (const [id, entry] of Object.entries(cat)) {
+          const text = entry.n + ' ' + entry.d;
+          assert(!forbidden.test(text), `${file} ${id}: ${text}`);
         }
       }
     });

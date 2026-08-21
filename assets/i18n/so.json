@@ -250,7 +250,10 @@
     ],
     "riskConfirm": "Waxaan xaqiijinayaa in codsigaygu yahay caawimaad wax ku ool ah oo keliya, oo aan ahayn wax ka mid ah liiska kore.",
     "noPayNow": "Hadda waxba ma bixinaysid. Haddii aan ku caawin karno, waxaan qoraal ahaan kuu soo dirnaa baaxadda, qiimaha iyo shuruudaha — kaddibna xiriiriyaha lacag-bixinta.",
-    "groupCareer": "Xirfad"
+    "groupCareer": "Xirfad",
+    "goal": "Maxaad rabtaa inaad gaadho?",
+    "goalPlaceholder": "Tusaale: waxaan rabaa inaan beddelo qaybta shaqada, ama jawaab kama helo codsiyadayda. Ha qorin lambar aqoonsi ama macluumaad caafimaad.",
+    "noDocs": "Halkan ha ku soo dirin CV ama dukumeenti kale. Haddii aan CV-gaaga ugu baahanno dib u eegis shakhsi ah, waxaad kadib heli doontaa xiriiriye gaar ah oo ammaan ah."
   },
   "faq": {
     "eyebrow": "Su'aalo",
@@ -330,12 +333,12 @@
       "d": "30 daqiiqo wadajir ah iyo hage gaaban: kanaalka dawladeed ee saxda ah, liis su’aalo iyo liis hubin. Hal xusuusin."
     },
     "career_free": {
-      "n": "AI Career Starter",
-      "d": "Bilaash: liis hubin CV ah, shan prompt oo aasaasi ah iyo raad-raac shaqo oo fudud."
+      "n": "Career Starter",
+      "d": "Bilaash: liis hubin CV ah, shan prompt oo aasaasi ah, raad-raac shaqo iyo qorshe raadin toddobaadle ah."
     },
     "career_kit": {
       "n": "AI Career Kit",
-      "d": "Qaabab CV oo Norwiiji iyo Ingiriisi ah, prompts lagu habeeyo CV iyo codsi, diyaargarow wareysi, liis hubin LinkedIn, raad-raac shaqo iyo qorshe toddobaadle ah."
+      "d": "Qaabab CV oo Norwiiji iyo Ingiriisi ah, prompts lagu habeeyo CV, nidaam warqad codsi, diyaargarow wareysi, warqad shaqo STAR, liis hubin LinkedIn, raad-raac shaqo iyo qorshe 30 maalmood ah. Hal bixin, rukumaad ma jirto."
     },
     "career_review": {
       "n": "Dib u eegis CV oo shakhsi ah",

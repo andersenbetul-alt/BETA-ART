@@ -250,7 +250,10 @@
     ],
     "riskConfirm": "Potwierdzam, że moje zgłoszenie dotyczy wyłącznie pomocy praktycznej i niczego z powyższej listy.",
     "noPayNow": "Teraz nie płacisz nic. Jeśli możemy pomóc, wyślemy zakres, cenę i warunki na piśmie — a link do płatności dopiero potem.",
-    "groupCareer": "Kariera"
+    "groupCareer": "Kariera",
+    "goal": "Co chcesz osiągnąć?",
+    "goalPlaceholder": "Na przykład: chcę zmienić branżę albo nie dostaję odpowiedzi na podania. Nie wpisuj numerów ewidencyjnych ani danych o zdrowiu.",
+    "noDocs": "Nie przesyłaj tutaj CV ani żadnych dokumentów. Jeśli będziemy potrzebować CV do osobistego przeglądu, otrzymasz osobny bezpieczny link."
   },
   "faq": {
     "eyebrow": "Pytania",
@@ -330,12 +333,12 @@
       "d": "30 minut razem i krótki przewodnik: właściwy kanał urzędowy, lista pytań i praktyczna lista kontrolna. Jedno przypomnienie."
     },
     "career_free": {
-      "n": "AI Career Starter",
-      "d": "Bezpłatnie: lista kontrolna CV, pięć podstawowych promptów i prosty tracker ofert."
+      "n": "Career Starter",
+      "d": "Bezpłatnie: lista kontrolna CV, pięć podstawowych promptów, tracker ofert i tygodniowy plan poszukiwań."
     },
     "career_kit": {
       "n": "AI Career Kit",
-      "d": "Szablony CV po norwesku i angielsku, prompty do dopasowania CV i podania, przygotowanie do rozmowy, lista kontrolna LinkedIn, tracker ofert i plan tygodnia."
+      "d": "Szablony CV po norwesku i angielsku, prompty do dopasowania CV, system pisania podań, przygotowanie do rozmowy, arkusz STAR, lista kontrolna LinkedIn, tracker ofert i plan 30-dniowy. Jedna płatność, bez abonamentu."
     },
     "career_review": {
       "n": "Osobisty przegląd CV",
