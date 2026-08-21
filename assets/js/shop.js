@@ -35,7 +35,9 @@ window.HXI_SHOP = [
   {
     id: 'stems-help-urself',
     specs: ['shop_s_stems_1', 'shop_s_stems_2'],
-    delivery: 'shop_dl_instant',
+    // "Ödemeden sonra hemen indir" değil: ürün ücretsiz, yani ödeme yok, ve dosya henüz
+    // hazır değil. Use-it bölümü zaten "stem'ler çıkmadı" diyor; kart da aynısını demeli.
+    delivery: 'shop_dl_pending',
     kind: 'digital',
     name: 'HELP URSELF — Official Stems',
     desc: 'shop_d_stems',
