@@ -6,6 +6,11 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://beta-art-journal-bet-art.vercel.app/no/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://beta-art-journal-bet-art.vercel.app/j-accession-label.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
