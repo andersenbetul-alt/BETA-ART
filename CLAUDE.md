@@ -170,6 +170,30 @@ its own copy. `klarsprak.py` splits its findings: kansellistil, abbreviations,
 substantivsjuke and «man» are **feil** and fail the gate; passive voice, long
 sentences and long words are advisory and do not.
 
+## Noticing what should have been a gate
+
+At the start of any task-oriented session — any interaction where you will use
+tools and produce deliverables — invoke the **task-observer** skill before
+beginning work, so that what is learned during the session is captured rather
+than lost at the end of it.
+
+When loading any skill, check the observation log for OPEN observations tagged to
+that skill and apply their insights to the current work, even if the skill file
+has not been updated yet.
+
+This is not bookkeeping, and it is the same conviction as the gates. Every gate
+in the list above exists because something went wrong once and nobody wanted it
+to go wrong silently a second time. `claims.py` exists because a page promised
+what the notice only described. The 1024px width was added to `render-check.js`
+because every business page scrolled sideways in a band no one was measuring.
+The observation log is where a mistake waits between being made and becoming a
+gate.
+
+The log lives at `skill-observations/log.md`. Note that a session container here
+is ephemeral: an observation that is not committed does not survive the session,
+which is the same reason the generators live in this repository rather than in a
+temporary directory.
+
 ## Committing
 
 Clear messages, on the designated branch. **Never put a model identifier in a
