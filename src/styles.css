@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   /* type scale (Major Third, 1.25) on a 16px root */
   --text-sm: 0.875rem;   /* 14px */
   --text-base: 1rem;     /* 16px */
@@ -27,6 +28,21 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* Visible only once focused — first stop for keyboard users. */
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: -3rem;
+  z-index: 10;
+  padding: var(--space-2) var(--space-3);
+  background: var(--page);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  text-decoration: none;
+  transition: top var(--dur-fast) var(--ease);
+}
+.skip-link:focus { top: var(--space-2); }
+
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: var(--page);
@@ -47,7 +63,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-2) max(var(--space-4), env(safe-area-inset-left));
   max-width: 68.75rem;
   margin: 0 auto;
 }
@@ -55,6 +71,8 @@ body {
 /* Brand: size and weight carry the hierarchy, so it survives in greyscale. */
 .brand {
   font-size: var(--text-lg);
+  touch-action: manipulation;
+  transition: color var(--dur-fast) var(--ease);
   font-weight: 700;
   letter-spacing: 0.03em;
   color: var(--ink);
@@ -78,6 +96,8 @@ body {
 
 .nav-links a {
   display: flex;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   align-items: center;
   min-height: 2.75rem;              /* 44px */
   padding: 0 var(--space-3);
@@ -90,6 +110,7 @@ body {
 }
 
 .nav-links a:hover { color: var(--ink); }
+.brand:hover .brand-sub { color: var(--ink-body); }
 
 .nav-links a:focus-visible {
   outline: 2px solid var(--ink);
@@ -105,6 +126,8 @@ body {
 
 .nav-toggle {
   display: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   width: 2.75rem;                   /* 44px */
   height: 2.75rem;
   align-items: center;
@@ -152,6 +175,7 @@ body {
 
   .nav-links.open {
     display: flex;
+    overscroll-behavior: contain;
     animation: menu-in var(--dur-menu) var(--ease);
   }
 
@@ -186,6 +210,7 @@ main {
 
 h1 {
   font-size: var(--text-3xl);
+  text-wrap: balance;
   color: var(--ink);
   margin-bottom: var(--space-2);
 }

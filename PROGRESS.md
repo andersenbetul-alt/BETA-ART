@@ -7,6 +7,25 @@ generally. Newest entries first. For current state and blockers see
 
 ---
 
+## 2026-08-21 — Second review (Vercel guidelines) and fixes
+
+Installed `web-design-guidelines` from `vercel-labs/agent-skills` and ran it
+over the navbar as an independent check on the earlier HIG audit. It found
+eight issues the first pass missed, two of them real bugs: no skip link, and
+the mobile menu staying open on outside click and after following a link.
+
+All fixed and verified by interaction test — outside click closes, link click
+closes, toggle still round-trips, skip link reachable on first Tab.
+
+Also worked around `skills.sh` being unreachable behind the proxy: `npx skills
+find` silently returns zero results for every query, which reads as "no skills
+exist" rather than "cannot reach registry". Built a local catalog (44 skills,
+6 sources) and a search script at `~/.claude/skills/find-skills/`, and noted
+the trap in that skill's own SKILL.md. Installing was never affected — `add`
+pulls from GitHub, not skills.sh.
+
+---
+
 ## 2026-08-21 — Audit findings fixed
 
 Fixed every finding from `AUDIT.md`. The mobile menu bug was a defect in code

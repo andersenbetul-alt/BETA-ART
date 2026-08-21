@@ -245,3 +245,46 @@ REDUCED  display flex, animation-duration 1e-05s
 
 Contrast, all on white: `#666` 5.74:1 · `#333` 12.63:1 · `#111` 18.88:1 ·
 `#8f8f8f` 3.23:1 (non-text, needs 3:1). All pass.
+
+---
+
+# Second review — Vercel Web Interface Guidelines, 2026-08-21
+
+An independent pass with the `web-design-guidelines` skill (Vercel's rules,
+fetched fresh), over the already-HIG-audited code. It found eight things the
+first audit missed — mostly web-specific concerns the HIG has no equivalent
+for — including two real bugs.
+
+| Finding | Fix |
+| ------- | --- |
+| **No skip link** — keyboard users must tab the whole nav to reach content | `.skip-link` → `#main`, revealed on focus |
+| **Menu stayed open** on outside click and after following a link | outside-click and link-click handlers in `nav.js` |
+| No `touch-action: manipulation` | added to nav links, toggle, brand — removes 300ms tap delay |
+| No `-webkit-tap-highlight-color` | set to transparent |
+| No `color-scheme` | `light` declared on `:root` |
+| No `theme-color` meta | `#ffffff` |
+| `h1` widow risk | `text-wrap: balance` |
+| Open menu could rubber-band the page | `overscroll-behavior: contain` |
+| Sticky header ignored notches | `max(--space-4, env(safe-area-inset-left))` |
+| Brand link had no hover state | `.brand:hover .brand-sub` |
+
+**Verified**
+
+```
+1 open via toggle       -> flex true
+2 toggle again closes   -> none false
+3 outside click closes  -> none false
+4 reopens after outside -> flex true
+5 link click closes     -> none false
+6 first Tab             -> .skip-link "Skip to content", top 8px, on screen
+```
+
+Two notes from testing. The open menu legitimately covers the page content,
+so an "outside click" has to land below it — the first test attempt failed
+because it aimed at an element the menu was correctly covering. And the skip
+link measures off-screen if read before its 150ms transition finishes; both
+were faults in the test, not the code.
+
+**Takeaway:** neither reviewer caught the other's blind spot. The HIG pass
+found the contrast and hit-target failures; the Vercel pass found the missing
+skip link and the menu-close bug. Running both was worth it.
