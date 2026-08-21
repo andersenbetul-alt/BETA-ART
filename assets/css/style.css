@@ -62,7 +62,6 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
   margin:0;background:var(--bg);color:var(--text);
   font-family:var(--body);font-weight:300;line-height:1.75;
-  overflow-x:hidden;
 }
 img,iframe{max-width:100%;display:block;border:0}
 a{color:inherit}
@@ -289,7 +288,10 @@ html[lang="hi"],html[lang="bn"]{--display:"Noto Sans","Nirmala UI",system-ui,san
 @media (max-width:900px){
   .prose-grid{grid-template-columns:1fr}
 }
-@media (max-width:760px){
+/* The nav carries nine items and the language names are set in twelve languages;
+   the widest (ru) needs 1150px before logo + nav + actions fit on one row.
+   Below that the burger takes over, so nothing is ever clipped. */
+@media (max-width:1150px){
   .burger{display:flex}
   .book-btn{display:none}
   .nav{
