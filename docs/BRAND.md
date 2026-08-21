@@ -134,6 +134,24 @@ and nothing here could read it. It is generated from `scripts/og-image.html` now
 `npm run check` scans that file along with the markup and the dictionaries, so the two can no
 longer drift apart. Regenerate the card with `node scripts/og.mjs` after editing it.
 
+## Origin is not reach
+
+"Norwegian" says where he is from. It has never been a claim about who listens, and the page
+should not let a skimmer read it as one — the audience for this music is not Nordic. The
+evidence is in the page already: "help urself" spread through the anime and gaming edit
+communities on TikTok and YouTube with no PR behind it, the NCS catalogue reaches 34.3M
+subscribers, the Fast & Furious and BODYCAM placements are international, and the collaborator
+list runs from Brazil to the US.
+
+What was missing was any of that in a heading. The body said it; the two headings a skimmer
+actually reads said only origin. They now carry both: "From Norway. 43.4M+ streams worldwide."
+and "The scene is Norwegian. The audience is everywhere."
+
+No count of countries goes on the page. The "180+ countries" figure in the archive is a
+poisoned source — see docs/RESEARCH.md — and Spotify for Artists country data has not been
+supplied. Until it is, reach is stated in words, backed by the placements, and never as a
+number.
+
 ## The H1 says what he is
 
 The heading is the wordmark and the tagline together, so the first heading on the page reads
