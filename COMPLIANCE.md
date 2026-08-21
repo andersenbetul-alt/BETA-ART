@@ -144,6 +144,59 @@ KVKK.
 **HIPAA (US)** applies where the platform acts as a covered entity or business
 associate — largely a function of how billing and provider relationships are arranged.
 
+### Moving a patient's record from the EEA to Türkiye
+
+This deserves its own treatment because the medical-tourism route depends on it, and
+because the answer most operators assume is wrong.
+
+**Türkiye has no EU adequacy decision.** On 13 December 2023 the Commission found Turkish
+data protection law not sufficiently aligned with the GDPR. Türkiye is not among the
+countries covered by an adequacy decision. Every transfer of an EEA patient's record to a
+Turkish clinic therefore engages **GDPR Chapter V**, and separately engages **KVKK** on
+the Turkish side. One flow, two regimes, both of which must be satisfied.
+
+**Consent is not the mechanism.** The common assumption — the patient agrees, so the
+transfer is fine — does not survive the EDPB's reading of Article 49. The derogations are
+exceptional: they must be interpreted restrictively, are meant for processing that is
+*occasional and non-repetitive* and concerns a limited number of data subjects, and are
+"not intended to become the rule in practice." The EDPB states plainly that consent to a
+**permanent** transfer for one or more purposes cannot be justified under Article
+49(1)(a). A business model means systematic transfers, and systematic transfers cannot
+rest on a derogation. Build on Article 46, not Article 49.
+
+What the stack actually has to look like:
+
+1. **EU Standard Contractual Clauses with each clinic, plus a transfer impact
+   assessment.** Article 46(2)(c) is the backbone. Post-*Schrems II* the SCCs are not
+   self-sufficient — each destination needs a documented TIA covering local access laws
+   and any supplementary measures. Used unmodified, SCCs need no prior authorisation from
+   the supervisory authority.
+2. **Turkish SCCs, notified to the KVKK within five business days of signature.** Law
+   7499 (March 2024) and the by-law in force from 10 July 2024 replaced the old
+   case-by-case undertaking regime with a three-tier framework — adequacy, appropriate
+   safeguards, limited exceptions. The published Turkish standard clauses must be used
+   **without modification**, and the five-business-day notification is a hard deadline,
+   not a formality.
+3. **Explicit consent — for Article 9, not for Chapter V.** Health data still needs its
+   special-category condition. Consent belongs there. Do not let it do double duty as the
+   transfer mechanism; that is the error above.
+4. **Minimise, so that less crosses the border.** The strongest and cheapest control is
+   not transferring the record at all. Send the clinic a structured referral summary —
+   what it needs to decide and prepare — and keep the record in the EEA under scoped
+   access. If Naviar is not the exporter of a full medical file, the size of the problem
+   drops accordingly.
+
+**Norway**, as an EEA state, applies the GDPR through the EEA agreement, so nothing above
+softens there. `pasientjournalloven` § 22 adds its own duty on the controller to implement
+technical and organisational measures appropriate to the risk.
+
+**The commercial consequence, which belongs in the plan and not only in this file:** an
+SCC pack plus a TIA is recurring legal work *per clinic*, and it lands directly on the
+onboarding step. It also means the medical-tourism route is materially cheaper with
+**non-EEA source markets** — a patient travelling from the Gulf, Central Asia or North
+Africa does not bring Chapter V with them, and a Norwegian or German patient does. Choose
+the first corridor with that in mind rather than discovering it at the first contract.
+
 ### What this repository already does well
 
 The symptom intake runs **entirely client-side**. Nothing is transmitted while the
@@ -361,11 +414,17 @@ These apply to the platform as a business, beyond the clinical questions above.
    The boundary between "information" and "practising medicine" is drawn differently
    from country to country, and this mode is what makes worldwide reach lawful.
 4. Complete a DPIA and appoint a DPO.
-5. Stand up licence verification against the relevant medical registers.
-6. Have local counsel review all marketing claims, especially efficacy and speed.
-7. Put clinical governance in place: a named responsible clinician, an incident
+5. Stand up licence verification against the relevant medical registers. Norway is
+   mapped in `assets/js/data-registers.js`; every other country is an unverified lead
+   and routes to manual review until someone confirms it.
+6. Put the Chapter V stack in place before the first clinic contract, not after: EU
+   SCCs and a transfer impact assessment per destination, Turkish SCCs filed with the
+   KVKK inside five business days, and a referral summary narrow enough that a full
+   record never leaves the EEA.
+7. Have local counsel review all marketing claims, especially efficacy and speed.
+8. Put clinical governance in place: a named responsible clinician, an incident
    procedure, and scheduled review of the routing table by practising clinicians.
-8. Decide the retention schedule per jurisdiction.
+9. Decide the retention schedule per jurisdiction.
 
 ---
 
@@ -384,6 +443,18 @@ These apply to the platform as a business, beyond the clinical questions above.
 - [Telemedicine across national borders — key regulations](https://doctorshome.com/telemedicine-across-national-borders-key-regulations/)
 - [Cross-state licensing and professional requirements (CCHP)](https://www.cchpca.org/topic/cross-state-licensing-professional-requirements/)
 - [Cross-border prescribing — legal and logistical challenges](https://securemedical.com/telemedicine/cross-border-prescribing-legal-and-logistical-challenges-in-international-telehealth/)
+- [EU adequacy decisions — current list (European Commission)](https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en)
+- [European Commission rejects Türkiye's data protection adequacy](https://marpatas.com/en/european-commission-rejects-turkeys-data-protection-adequacy-impacts-and-future/)
+- [GDPR Article 49 — derogations for specific situations](https://gdpr-info.eu/art-49-gdpr/)
+- [EDPB guidelines on Article 49 derogations (ICTLC)](https://www.ictlc.com/european-data-protection-board-guidelines-of-article-49/?lang=en)
+- [Article 49 derogations — time for a reassessment? (Arthur Cox)](https://www.arthurcox.com/knowledge/article-49-derogations-for-data-transfers-time-for-a-reassessment/)
+- [Turkish DPA issues new regulation on cross-border data transfers (Paksoy)](https://paksoy.av.tr/en/2024/07/turkish-data-protection-authority-issues-new-regulation-on-cross-border-data-transfers/)
+- [What the guideline on transfer of personal data abroad regulates (Erdem & Erdem)](https://www.erdem-erdem.av.tr/en/insights/what-does-the-guideline-on-transfer-of-personal-data-abroad-regulate)
+- [Overføring av personopplysninger ut av EØS (Datatilsynet)](https://www.datatilsynet.no/rettigheter-og-plikter/virksomhetenes-plikter/overforing-av-personopplysninger-ut-av-eos/eksempelsaker/)
+- [Pasientjournalloven (Lovdata)](https://lovdata.no/lov/2014-06-20-42)
+- [Autorisasjon og lisens (Helsedirektoratet)](https://www.helsedirektoratet.no/autorisasjon-og-spesialistutdanning/autorisasjon-og-lisens)
+- [Helsepersonellregisteret offentlig API (NHN Utviklerportal)](https://utviklerportal.nhn.no/informasjonstjenester/helsepersonellregisteret)
+- [Oversikt over helsepersonell (Statens helsetilsyn)](https://www.helsetilsynet.no/tilsyn/om-tilsynssaker/oversikt-over-helsepersonell/)
 - [GDPR Article 9 — special categories of data](https://www.legiscope.com/blog/gdpr-article-9-special-categories.html)
 - [GDPR compliance for cross-border patient platforms](https://www.patientpartner.com/blog/gdpr-compliance-for-cross-border-patient-platforms)
 - [Corporate practice of medicine and fee-splitting (American Bar Association)](https://www.americanbar.org/groups/health_law/resources/health-lawyer/archive/what-corporate-practice-medicine-fee-splitting-fee-splitting-prohibitions/)
