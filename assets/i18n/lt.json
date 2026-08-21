@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "NAVIAR — Praktinės gairės viešosiose įstaigose",
-    "description": "NAVIAR teikia praktines gaires: tinkamas kanalas, tinkami klausimai ir kontrolinis sąrašas. Neaiškiname sprendimų ir neteikiame teisinių patarimų."
+    "title": "NAVIAR — Karjeros pagalba su AI kaip įrankiu",
+    "description": "CV, prašymas, LinkedIn ir pokalbis. Praktinė sistema su AI kaip įrankiu, ne autopilotu. Tekstą visada patvirtinate patys."
   },
   "brand": {
     "tagline": "Aiškumas sudėtingose sistemose.",
@@ -20,31 +20,31 @@
     "menu": "Meniu",
     "language": "Kalba",
     "limits": "Ką darome",
-    "career": "Karjera"
+    "career": "Paslaugos"
   },
   "hero": {
-    "eyebrow": "Praktinės gairės",
-    "title": "Praktinė pagalba susigaudyti viešosiose įstaigose",
-    "sub": "Parodome, kuriam kanalui priklauso jūsų reikalas, kokius klausimus užduoti ir ką pasiruošti. Neaiškiname sprendimų ir neteikiame teisinių, medicininių ar finansinių patarimų.",
-    "sales": "Pradėkite nuo nemokamo apimties patikrinimo.",
-    "cta1": "Nemokamas patikrinimas",
-    "cta2": "Ką galime ir ko negalime",
-    "cardTitle": "Jūsų praktinis vadovas",
+    "eyebrow": "Karjera ir darbo paieška",
+    "title": "Teikite prašymus protingiau. Daugiau progų.",
+    "sub": "Praktinė sistema CV pritaikyti, geresniems prašymams rašyti, pokalbiams ruoštis ir viskam sekti – su AI kaip įrankiu, ne autopilotu. Tekstą visada patvirtinate patys.",
+    "sales": "Pradėkite nuo nemokamo rinkinio.",
+    "cta1": "Nemokamas pradinis rinkinys",
+    "cta2": "Pažiūrėkite, ką galime ir ko negalime",
+    "cardTitle": "Kaip dirbate",
     "card": [
       {
-        "t": "Tinkamas kanalas",
-        "d": "Kuriai įstaigai ar formai priklauso jūsų reikalas."
+        "t": "Pasirinkite skelbimą",
+        "d": "Įklijuokite skelbimo reikalavimus į šabloną."
       },
       {
-        "t": "Klausimų sąrašas",
-        "d": "Ko paklausti — suformuluota iš anksto."
+        "t": "Pritaikykite su AI",
+        "d": "Paruošti promptai CV, prašymui ir pokalbiui."
       },
       {
-        "t": "Kontrolinis sąrašas",
-        "d": "Ką pasiruošti prieš kreipiantis."
+        "t": "Patikrinkite patys",
+        "d": "Palikite tik tai, kas tiesa, ir patvirtinkite rezultatą."
       }
     ],
-    "cardBadge": "2 darbo dienos",
+    "cardBadge": "Pradėti nemokamai",
     "cardFoot": "Jokio BankID. Jokių kortelės duomenų. Jokių dokumentų įkėlimo."
   },
   "stats": {
@@ -56,31 +56,32 @@
   "finder": {
     "eyebrow": "Pradėkite čia",
     "title": "Kokios pagalbos jums reikia?",
-    "lead": "Trys trumpi klausimai. Gausite rekomendaciją arba nukreipimą kitur, jei reikalas priklauso kitai įstaigai.",
+    "lead": "Trys trumpi klausimai. Gausite rekomendaciją arba nukreipimą, jei tai, ko reikia, yra už mūsų veiklos ribų.",
     "back": "Atgal",
     "restart": "Pradėti iš naujo",
     "progress": "Klausimas {n} iš {total}",
     "questions": [
       {
-        "q": "Kur reikia pagalbos?",
-        "hint": "Pasirinkite tinkamiausią.",
+        "q": "Kur užstrigote?",
+        "hint": "Pasirinkite artimiausią.",
         "options": [
-          "Nežinau, į kurią įstaigą ar formą kreiptis",
-          "Reikia pagalbos su CV ar darbo prašymu",
-          "Reikia kalbos pagalbos privačiame pokalbyje",
-          "Turiu sprendimą, atsisakymą ar skundo terminą",
-          "Padedu šeimos nariui praktiniu klausimu"
+          "Į mano CV neatsako",
+          "Nežinau, ką rašyti prašyme",
+          "Mano LinkedIn profilis nepakankamai geras",
+          "Netrukus turiu pokalbį",
+          "Nerandu tinkamų skelbimų",
+          "Kažkas kita – darbo teisė, atleidimas, atlyginimas ar nedarbingumas"
         ]
       },
       {
-        "q": "Kuri įstaiga susijusi?",
-        "hint": "Pasirinkite vieną. Daugiau papasakosite vėliau.",
+        "q": "Kuriame etape esate?",
+        "hint": "Pasirinkite vieną.",
         "options": [
-          "NAV",
-          "Savivaldybė (kommune)",
-          "Mokesčių inspekcija arba Altinn",
-          "Helfo, sveikata ar pensija",
-          "Nesu tikras"
+          "Dar nepradėjau",
+          "Teikiu prašymus, bet atsakymo negaunu",
+          "Atsako, bet nekviečia",
+          "Esu pakviestas į pokalbį",
+          "Keičiu sritį"
         ]
       },
       {
@@ -99,25 +100,25 @@
     "ctaAlt": "Pirma pasiklausti",
     "saved": "Ačiū. Jūsų atsakymai padeda mums nustatyti, kokios pagalbos žmonėms reikia labiausiai.",
     "referTitle": "Tai priklauso kitai įstaigai",
-    "referText": "Neimame sprendimų, atsisakymų, skundų ar teisinių terminų. Kreipkitės į laišką atsiuntusią įstaigą arba į advokatą. Jei abejojate, paklauskite mūsų – klausti nemokama.",
+    "referText": "Neimame darbo teisės klausimų, atleidimo, diskriminacijos, nedarbingumo, atlyginimo ar mokesčių. Kreipkitės į profsąjungą, advokatą arba tinkamą įstaigą. Jei abejojate, paklauskite mūsų – klausti nemokama.",
     "referCta": "Pažiūrėkite, ką galime ir ko negalime"
   },
   "process": {
     "eyebrow": "Kaip dirbame",
-    "title": "Nuo klausimo iki kito žingsnio",
-    "lead": "Nedidelė paslauga su aiškiomis ribomis. Jokių prenumeratų, jokių paslėptų paketų.",
+    "title": "Nuo skelbimo iki priminimo",
+    "lead": "Jums nereikia šimto atsitiktinių promptų. Reikia vieno proceso, kuris kaskart duoda geresnę kokybę.",
     "steps": [
       {
-        "t": "Parašykite, ko jums reikia",
-        "d": "Užpildykite nemokamą apimties patikrinimą. Rašykite savais žodžiais – nesiųskite neskelbtinų duomenų."
+        "t": "Pasirinkite skelbimą",
+        "d": "Įklijuokite skelbimo reikalavimus į šabloną."
       },
       {
-        "t": "Įvertiname, ar galime padėti",
-        "d": "Perskaito žmogus. Jei netinka, nukreipiame kitur – tai nieko nekainuoja."
+        "t": "Pritaikykite ir patikrinkite",
+        "d": "Naudokite promptus ir palikite tik tai, kas tiesa apie jus."
       },
       {
-        "t": "Apimtį ir kainą gaunate raštu",
-        "d": "Mokėjimo nuoroda ateina tik po to. Nieko nemokate, kol nesutikote."
+        "t": "Sekite",
+        "d": "Įrašykite prašymą ir kitą veiksmą į sekiklį."
       }
     ]
   },
@@ -133,22 +134,21 @@
   },
   "areas": {
     "eyebrow": "Aprėptis",
-    "title": "Kur galime parodyti kelią",
-    "lead": "Padedame rasti tinkamą kanalą ir pasiruošti klausimus. Nekonsultuojame dėl reikalo esmės – tai daro pati įstaiga arba specialistas.",
+    "title": "Kur padedame",
+    "lead": "Dirbame su jūsų pačių prašymu. Nieko nevertiname darbdavio vardu ir nieko už jus nesiunčiame.",
     "items": [
-      "NAV – tinkamos įstaigos, formos ir kanalo paieška",
-      "Savivaldybės paslaugos – į ką kreiptis",
-      "Skatteetaten ir Altinn – kuriam kanalui priklauso reikalas",
-      "Helfo, sveikata ir pensijos – kur kreiptis",
-      "Viešosios paslaugos neseniai į Norvegiją atvykusiems",
-      "Darbo paieška – CV, prašymas ir pokalbis",
-      "Privatūs pokalbiai, kuriuose reikia kalbos pagalbos"
+      "CV norvegų ir anglų kalbomis",
+      "Prašymas, pritaikytas konkrečiam skelbimui",
+      "Jūsų LinkedIn profilis",
+      "Pokalbio praktika ir STAR atsakymai",
+      "Paieškos ir pranešimai Arbeidsplassen, Finn ir LinkedIn",
+      "Paieškos planas, kurio pajėgsite laikytis"
     ]
   },
   "pricing": {
     "eyebrow": "Kainos",
     "title": "Aiškios kainos, sutartos prieš pradedant",
-    "lead": "Apimtį ir kainą gaunate raštu prieš mokėdami. Niekada nesiunčiame mokėjimo nuorodos, kol nesutinkame imtis darbo.",
+    "lead": "Apimtį ir kainą gaunate raštu prieš mokėdami. Viskas vienkartinai – jokių prenumeratų, jokio automatinio atnaujinimo.",
     "from": "nuo",
     "quote": "Pagal pasiūlymą",
     "vat": "Kainos NOK. Bandomosios kainos, gali keistis.",
@@ -160,7 +160,7 @@
     "delivery": "Pristatymas",
     "perHour": "už valandą",
     "inclVat": "su PVM",
-    "later": "Imamės tik praktinių užduočių. Reikalus dėl sprendimų, skundų, terminų, sveikatos, mokesčių, skolų ar leidimo gyventi nukreipiame kitur."
+    "later": "Daugiau paslaugų atsiras, kai jų paprašys. Pradedame siaurai, kad tiksliai žinotumėte, ką perkate."
   },
   "safety": {
     "eyebrow": "Saugumas ir etika",
@@ -292,8 +292,8 @@
   },
   "contact": {
     "eyebrow": "Kontaktai",
-    "title": "Parašykite, ko jums reikia",
-    "lead": "Trumpai aprašykite, kur reikia pagalbos – atsakome per vieną darbo dieną.",
+    "title": "Parašykite, ko norite pasiekti",
+    "lead": "Trumpai aprašykite, kur reikia pagalbos ieškant darbo – atsakome per vieną darbo dieną.",
     "email": "El. paštas",
     "phone": "Telefonas",
     "office": "Biuras",
@@ -307,9 +307,9 @@
     "note": "Jūsų užklausa konfidenciali ir niekada neperduodama tretiesiems asmenims."
   },
   "band": {
-    "title": "Pradėkite nuo nemokamo apimties patikrinimo",
-    "sub": "Sąžiningai pasakome taip arba ne. Jei netinka, nemokamai nukreipiame kitur.",
-    "cta": "Nemokamas patikrinimas",
+    "title": "Pasiruošę pirmam prašymui?",
+    "sub": "Pradėkite nuo nemokamo rinkinio. Jokių prenumeratų, nieko mokėti už išbandymą.",
+    "cta": "Nemokamas pradinis rinkinys",
     "cta2": "Parašyti mums"
   },
   "footer": {
@@ -322,17 +322,9 @@
     "note": "Šioje svetainėje pateikiama bendro pobūdžio informacija, kuri nėra teisinė konsultacija.",
     "pilot": "Bandomoji paslauga. Teikiame praktines gaires, o ne teisines, medicinines ar finansines konsultacijas. Nesinaudokite ja kilus tiesioginiam pavojui.",
     "limits": "Ką darome",
-    "career": "Karjera"
+    "career": "Paslaugos"
   },
   "catalog": {
-    "sjekk": {
-      "n": "Nemokamas apimties patikrinimas",
-      "d": "Perskaitome jūsų užklausą ir pasakome, ar ji mums tinka. Jei ne — nukreipiame kitur. Atsakymas per vieną darbo dieną."
-    },
-    "v01": {
-      "n": "Praktinis vadovas",
-      "d": "30 minučių kartu ir trumpas vadovas: tinkamas viešasis kanalas, klausimų sąrašas ir praktinis kontrolinis sąrašas. Vienas priminimas."
-    },
     "career_free": {
       "n": "Career Starter",
       "d": "Nemokamai: CV kontrolinis sąrašas, penki pagrindiniai promptai, darbo sekiklis ir savaitės paieškos planas."
@@ -341,9 +333,27 @@
       "n": "AI Career Kit",
       "d": "CV šablonai norvegų ir anglų kalbomis, promptai CV pritaikyti, prašymų rašymo sistema, pasiruošimas pokalbiui, STAR darbalapis, LinkedIn kontrolinis sąrašas, darbo sekiklis ir 30 dienų planas. Vienas mokėjimas, be prenumeratos."
     },
+    "linkedin": {
+      "n": "LinkedIn peržiūra",
+      "d": "Antraštė, „Apie“ skiltis ir patirtis peržiūrėtos raštu, su trimis dalykais, kuriuos verta pakeisti pirmiausia."
+    },
+    "digital": {
+      "n": "Skaitmeninės darbo paieškos nustatymas",
+      "d": "45 minutės nustatant paieškas ir pranešimus Arbeidsplassen, Finn ir LinkedIn – jūsų pačių ekrane."
+    },
+    "interview": {
+      "n": "Bandomasis pokalbis",
+      "d": "45 minutės praktikos pagal konkretų skelbimą, su atsiliepimu apie kiekvieną atsakymą."
+    },
     "career_review": {
-      "n": "Asmeninė CV peržiūra",
-      "d": "45 minutės, per kurias žmogus peržiūri vieną CV ir vieną tikslinį prašymą, su prioritetiniu patobulinimų sąrašu ir vienu trumpu priminimu."
+      "n": "CV ir prašymo peržiūra",
+      "d": "45 minutės, per kurias žmogus peržiūri vieną CV ir vieną prašymą pagal konkretų skelbimą. Prioritetinis patobulinimų sąrašas ir vienas priminimas."
+    }
+  },
+  "shelved": {
+    "v01": {
+      "n": "Praktinis vadovas",
+      "d": "30 minučių kartu ir trumpas vadovas: tinkamas viešasis kanalas, klausimų sąrašas ir praktinis kontrolinis sąrašas. Vienas priminimas."
     },
     "sprak": {
       "n": "Privati kalbos pagalba",

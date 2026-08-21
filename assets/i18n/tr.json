@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "NAVIAR — Kamu hizmetlerinde pratik rehberlik",
-    "description": "NAVIAR pratik rehberlik verir: doğru kanal, doğru sorular ve bir kontrol listesi. Kararları yorumlamaz, hukuki tavsiye vermeyiz."
+    "title": "NAVIAR — AI’yı araç olarak kullanan kariyer desteği",
+    "description": "CV, başvuru, LinkedIn ve mülakat. AI otomatik pilot değil araç olarak kullanılan pratik bir sistem. Metni her zaman siz onaylarsınız."
   },
   "brand": {
     "tagline": "Karmaşık sistemlerde açıklık.",
@@ -20,31 +20,31 @@
     "menu": "Menü",
     "language": "Dil",
     "limits": "Ne yapıyoruz",
-    "career": "Kariyer"
+    "career": "Hizmetler"
   },
   "hero": {
-    "eyebrow": "Pratik rehberlik",
-    "title": "Kamu hizmetlerinde yolunuzu bulmanız için pratik yardım",
-    "sub": "Konunuzun hangi kanala ait olduğunu, hangi soruları sormanız gerektiğini ve neleri hazır bulundurmanız gerektiğini gösteririz. Kararları yorumlamayız; hukuki, tıbbi veya mali tavsiye vermeyiz.",
-    "sales": "Ücretsiz kapsam kontrolüyle başlayın.",
-    "cta1": "Ücretsiz kontrol",
+    "eyebrow": "Kariyer ve iş arama",
+    "title": "Daha akıllı başvurun. Daha çok şans.",
+    "sub": "CV uyarlamak, daha iyi başvuru yazmak, mülakata hazırlanmak ve takip etmek için pratik bir sistem — AI otomatik pilot değil, araç olarak. Metni her zaman siz onaylarsınız.",
+    "sales": "Ücretsiz paketle başlayın.",
+    "cta1": "Ücretsiz başlangıç paketi",
     "cta2": "Neyi yapabilir, neyi yapamayız",
-    "cardTitle": "Pratik yol haritanız",
+    "cardTitle": "Nasıl çalışırsınız",
     "card": [
       {
-        "t": "Doğru kanal",
-        "d": "Konunuzun ait olduğu daire veya form."
+        "t": "Bir ilan seçin",
+        "d": "İlandaki kriterleri şablona yapıştırın."
       },
       {
-        "t": "Soru listesi",
-        "d": "Önceden hazırlanmış, sormanız gereken sorular."
+        "t": "AI ile uyarlayın",
+        "d": "CV, başvuru ve mülakat için hazır promptlar."
       },
       {
-        "t": "Kontrol listesi",
-        "d": "Başvurmadan önce hazır etmeniz gerekenler."
+        "t": "Kendiniz kontrol edin",
+        "d": "Yalnızca doğru olanı bırakın ve sonucu onaylayın."
       }
     ],
-    "cardBadge": "2 iş günü",
+    "cardBadge": "Başlaması ücretsiz",
     "cardFoot": "BankID yok. Kart bilgisi yok. Belge yükleme yok."
   },
   "stats": {
@@ -56,31 +56,32 @@
   "finder": {
     "eyebrow": "Buradan başlayın",
     "title": "Hangi konuda yardıma ihtiyacınız var?",
-    "lead": "Üç kısa soru. Bir öneri alırsınız — konu başka bir yere aitse yönlendirme alırsınız.",
+    "lead": "Üç kısa soru. Bir öneri alırsınız — ihtiyacınız yaptığımız işin dışındaysa yönlendirme alırsınız.",
     "back": "Geri",
     "restart": "Baştan başla",
     "progress": "Soru {n} / {total}",
     "questions": [
       {
-        "q": "Neye yardım gerekiyor?",
+        "q": "Nerede takıldınız?",
         "hint": "En yakın olanı seçin.",
         "options": [
-          "Hangi daireye veya forma başvuracağımı bilmiyorum",
-          "CV veya iş başvurusu konusunda yardım gerekiyor",
-          "Özel bir görüşmede dil yardımı gerekiyor",
-          "Bir karar, ret veya itiraz süresi var",
-          "Bir aile üyesine pratik bir konuda yardım ediyorum"
+          "CV’me yanıt gelmiyor",
+          "Başvuruda ne yazacağımı bilmiyorum",
+          "LinkedIn profilim yeterli değil",
+          "Mülakata gireceğim",
+          "Uygun ilan bulamıyorum",
+          "Başka bir şey — iş hukuku, işten çıkarma, maaş veya hastalık izni"
         ]
       },
       {
-        "q": "Hangi kurumla ilgili?",
-        "hint": "Birini seçin. Ayrıntıyı sonra anlatabilirsiniz.",
+        "q": "İş aramada neredesiniz?",
+        "hint": "Birini seçin.",
         "options": [
-          "NAV",
-          "Belediye (kommune)",
-          "Vergi dairesi veya Altinn",
-          "Helfo, sağlık veya emeklilik",
-          "Emin değilim"
+          "Henüz başlamadım",
+          "Başvuruyorum ama yanıt alamıyorum",
+          "Yanıt alıyorum ama mülakata çağrılmıyorum",
+          "Mülakata çağrıldım",
+          "Sektör değiştiriyorum"
         ]
       },
       {
@@ -99,25 +100,25 @@
     "ctaAlt": "Önce sorayım",
     "saved": "Teşekkürler. Yanıtlarınız, en çok ihtiyaç duyulan yardımı önceliklendirmemize yardımcı oluyor.",
     "referTitle": "Bu konu başka bir yere ait",
-    "referText": "Karar, ret, itiraz ve hukuki süreleri kabul etmiyoruz. Mektubu gönderen kuruma ya da bir avukata başvurun. Emin değilseniz bize sorun — sormak ücretsizdir.",
+    "referText": "İş hukuku, işten çıkarma, ayrımcılık, hastalık izni, maaş ve vergi konularını almıyoruz. Sendikanıza, bir avukata ya da doğru kuruma başvurun. Emin değilseniz bize sorun — sormak ücretsizdir.",
     "referCta": "Neyi yapabilir, neyi yapamayız"
   },
   "process": {
     "eyebrow": "Nasıl çalışıyoruz",
-    "title": "Sorudan bir sonraki adıma",
-    "lead": "Sınırları açık, küçük bir hizmet. Abonelik yok, gizli paket yok.",
+    "title": "İlandan takibe",
+    "lead": "Yüzlerce dağınık AI promptuna ihtiyacınız yok. Her seferinde kaliteyi artıran tek bir akışa ihtiyacınız var.",
     "steps": [
       {
-        "t": "Neye ihtiyacınız olduğunu yazın",
-        "d": "Ücretsiz kapsam kontrolünü doldurun. Kendi cümlelerinizle yazın — hassas bilgi göndermeyin."
+        "t": "Bir ilan seçin",
+        "d": "İlandaki kriterleri şablona yapıştırın."
       },
       {
-        "t": "Yardımcı olabilir miyiz diye bakarız",
-        "d": "Bir insan okur. Uygun değilse sizi doğru yere yönlendiririz — ücretsizdir."
+        "t": "Uyarlayın ve kontrol edin",
+        "d": "Promptları kullanın, yalnızca sizin için doğru olan bilgileri bırakın."
       },
       {
-        "t": "Kapsam ve fiyat yazılı gelir",
-        "d": "Ödeme bağlantısı ancak ondan sonra gelir. Onay vermeden hiçbir şey ödemezsiniz."
+        "t": "Takip edin",
+        "d": "Başvuruyu ve sonraki adımı takip tablosuna yazın."
       }
     ]
   },
@@ -133,22 +134,21 @@
   },
   "areas": {
     "eyebrow": "Kapsam",
-    "title": "Nerede yol gösterebiliriz",
-    "lead": "Doğru kanalı bulmanıza ve sorularınızı hazırlamanıza yardım ederiz. Konunun içeriği hakkında tavsiye vermeyiz — bunu kurumun kendisi veya bir uzman yapar.",
+    "title": "Nelerde yardımcı oluyoruz",
+    "lead": "Sizin kendi başvurunuz üzerinde çalışırız. Kimseyi işveren adına değerlendirmeyiz ve sizin yerinize hiçbir şey göndermeyiz.",
     "items": [
-      "NAV — doğru daireyi, formu ve kanalı bulmak",
-      "Belediye hizmetleri — kiminle görüşmeniz gerektiği",
-      "Skatteetaten ve Altinn — konunun ait olduğu kanal",
-      "Helfo, sağlık ve emeklilik — nereye başvurmanız gerektiği",
-      "Norveç’e yeni gelenler için kamu hizmetleri",
-      "İş arama — CV, başvuru ve mülakat",
-      "Dil yardımı gereken özel görüşmeler"
+      "Norveççe ve İngilizce CV",
+      "Gerçek bir ilana uyarlanmış başvuru",
+      "LinkedIn profiliniz",
+      "Mülakat pratiği ve STAR cevapları",
+      "Arbeidsplassen, Finn ve LinkedIn’de arama ve bildirimler",
+      "Sürdürebileceğiniz bir arama planı"
     ]
   },
   "pricing": {
     "eyebrow": "Fiyatlar",
     "title": "Net fiyatlar, işe başlamadan önce anlaşılır",
-    "lead": "Ödeme yapmadan önce kapsamı ve fiyatı yazılı olarak alırsınız. İşi kabul etmeden asla ödeme bağlantısı göndermeyiz.",
+    "lead": "Ödemeden önce kapsamı ve fiyatı yazılı alırsınız. Hepsi tek seferlik — abonelik yok, otomatik yenileme yok.",
     "from": "başlangıç",
     "quote": "Teklife göre",
     "vat": "Fiyatlar NOK cinsindendir. Pilot fiyatlar olup değişebilir.",
@@ -160,7 +160,7 @@
     "delivery": "Teslim",
     "perHour": "saat başına",
     "inclVat": "KDV dahil",
-    "later": "Yalnızca pratik işler alıyoruz. Karar, itiraz, süre, sağlık, vergi, borç veya oturum konularını doğru kuruma yönlendiririz."
+    "later": "Talep geldikçe yeni hizmetler ekleriz. Ne satın aldığınızı tam olarak bilin diye dar başlıyoruz."
   },
   "safety": {
     "eyebrow": "Güvenlik ve etik",
@@ -292,8 +292,8 @@
   },
   "contact": {
     "eyebrow": "İletişim",
-    "title": "Neye ihtiyacınız olduğunu yazın",
-    "lead": "Neye yardım gerektiğini kısaca anlatın; bir iş günü içinde yanıtlarız.",
+    "title": "Neyi başarmak istediğinizi yazın",
+    "lead": "İş aramanızda neye yardım gerektiğini kısaca anlatın; bir iş günü içinde yanıtlarız.",
     "email": "E-posta",
     "phone": "Telefon",
     "office": "Ofis",
@@ -307,9 +307,9 @@
     "note": "Başvurunuz gizlidir ve üçüncü taraflarla asla paylaşılmaz."
   },
   "band": {
-    "title": "Ücretsiz kapsam kontrolüyle başlayın",
-    "sub": "Dürüstçe evet ya da hayır deriz. Uygun değilse sizi ücretsiz yönlendiririz.",
-    "cta": "Ücretsiz kontrol",
+    "title": "İlk başvuruya hazır mısınız?",
+    "sub": "Ücretsiz paketle başlayın. Abonelik yok, denemek için ödeme yok.",
+    "cta": "Ücretsiz başlangıç paketi",
     "cta2": "E-posta gönderin"
   },
   "footer": {
@@ -322,17 +322,9 @@
     "note": "Bu sitedeki bilgiler genel yönlendirme niteliğindedir ve hukuki danışmanlık teşkil etmez.",
     "pilot": "Pilot hizmet. Pratik rehberlik veririz; hukuki, tıbbi veya mali danışmanlık değil. Acil tehlike durumunda bu hizmeti kullanmayın.",
     "limits": "Ne yapıyoruz",
-    "career": "Kariyer"
+    "career": "Hizmetler"
   },
   "catalog": {
-    "sjekk": {
-      "n": "Ücretsiz kapsam kontrolü",
-      "d": "Talebinizi okur ve bize uygun olup olmadığını söyleriz. Uygun değilse sizi doğru yere yönlendiririz. Bir iş günü içinde yanıt."
-    },
-    "v01": {
-      "n": "Pratik yönlendirme",
-      "d": "30 dakikalık görüşme ve kısa bir rehber: doğru resmî kanal, soru listesi ve pratik kontrol listesi. Bir takip."
-    },
     "career_free": {
       "n": "Career Starter",
       "d": "Ücretsiz: CV kontrol listesi, beş temel prompt, iş takip tablosu ve haftalık arama planı."
@@ -341,9 +333,27 @@
       "n": "AI Career Kit",
       "d": "Norveççe ve İngilizce CV şablonları, hedefe yönelik CV promptları, başvuru mektubu sistemi, mülakat hazırlığı, STAR çalışma sayfası, LinkedIn kontrol listesi, iş takip tablosu ve 30 günlük plan. Tek ödeme, abonelik yok."
     },
+    "linkedin": {
+      "n": "LinkedIn incelemesi",
+      "d": "Başlık, özet ve deneyim bölümü yazılı olarak incelenir; önce değiştirmeniz gereken üç şeyle birlikte."
+    },
+    "digital": {
+      "n": "Dijital iş arama kurulumu",
+      "d": "45 dakikada Arbeidsplassen, Finn ve LinkedIn’de arama ve bildirimleri kendi ekranınızda kurarsınız."
+    },
+    "interview": {
+      "n": "Deneme mülakatı",
+      "d": "Gerçek bir ilana karşı 45 dakika mülakat pratiği; her cevap için ayrı geri bildirim."
+    },
     "career_review": {
-      "n": "Kişisel CV incelemesi",
-      "d": "Bir insanın 45 dakika boyunca bir CV ve bir hedefli başvuruyu incelemesi; öncelikli iyileştirme listesi ve kısa bir takip."
+      "n": "CV ve başvuru incelemesi",
+      "d": "Bir insanın 45 dakika boyunca bir CV ve bir başvuruyu gerçek bir ilana göre incelemesi. Öncelikli iyileştirme listesi ve bir takip."
+    }
+  },
+  "shelved": {
+    "v01": {
+      "n": "Pratik yönlendirme",
+      "d": "30 dakikalık görüşme ve kısa bir rehber: doğru resmî kanal, soru listesi ve pratik kontrol listesi. Bir takip."
     },
     "sprak": {
       "n": "Özel dil desteği",

@@ -38,14 +38,29 @@ by implication.
 
 ## 3. What a case costs
 
-| | Price | What the customer gets |
-|---|---|---|
-| Scope check | free | We say whether we can help, within one working day |
-| V01 — practical guide | 590 NOK | 30 minutes together, plus a short guide: the right public channel, a list of questions, a practical checklist, one follow-up |
-| AI Career Starter | free | A CV checklist, five prompts, a job tracker |
-| AI Career Kit | 299 NOK | CV templates (NO/EN), prompts, interview preparation, LinkedIn checklist, tracker, weekly plan |
-| Personal CV review | 790 NOK | 45 minutes with a person on one CV and one targeted application, plus one follow-up |
-| Private language support | by quote | Private, everyday conversations only |
+| Code | | Price | What the customer gets |
+|---|---|---|---|
+| — | Career Starter | free | CV checklist, five prompts, job tracker, weekly plan |
+| K01 | AI Career Kit | 299 NOK | CV templates (NO/EN), prompt pack, application system, interview prep, STAR worksheet, LinkedIn checklist, tracker, 30-day plan |
+| K02 | LinkedIn review | 390 NOK | Headline, About and experience in writing, with the three things to change first |
+| K03 | Digital job-search setup | 390 NOK | 45 min setting up searches and alerts on Arbeidsplassen, Finn and LinkedIn — on the customer's own screen |
+| K04 | Mock interview | 590 NOK | 45 min against a real advert, feedback answer by answer |
+| K05 | CV and application review | 790 NOK | 45 min on one CV and one application, prioritised improvements, one follow-up |
+
+Six services and no more. Not because the rest is risky — practical guidance,
+language help, digital admin support and small-business work would all sit
+inside the same boundary — but because a customer has to be able to tell what
+NAVIAR does at a glance, and because a narrow line is one you can actually
+deliver well twenty times. The others come back when someone asks for them.
+
+**Shelved, not dropped:** Praktisk veiviser (public-service navigation) and
+private language support. Their translations stay in `assets/i18n/*.json` under
+`shelved`, a test keeps them from rotting, and another test makes sure they
+cannot be booked by id while they are off the list.
+
+Each paid human service has a written scope in `leveranser/karriere/tjenester/`
+saying what the adviser does and where they stop. That is what makes two
+advisers deliver the same 790 kr review.
 
 Every paid career service ships files that exist in `leveranser/karriere/`, and
 a test fails if one of them goes missing or turns up nearly empty. A price on
@@ -56,18 +71,19 @@ The catalogue in `assets/js/config.js` is the single source of truth for
 prices. The server recomputes every amount from it; nothing the browser sends
 about money is trusted.
 
-### What v2.0 changed, and what it did not
+### How the catalogue got to six
 
-The v2.0 model document is the **career line's** specification, not a
-replacement for the catalogue. "High risk" there is the AI Act's term for
-employment AI systems — candidate scoring, automated rejection, emotion
-analysis, biometrics — and what it removes is that class of feature, none of
-which NAVIAR ever had.
+Two decisions, a day apart, and the second replaced the first.
 
-Praktisk veiviser and private language support stay. They are not AI systems,
-and they sit inside the same boundary the rest of this file draws. Decided by
-the business owner on 21 August 2026; do not re-derive it from §1 of the model
-document, which lists only the career services because that is its subject.
+**21 August, first:** v2.0 of the model was read as the career line's spec
+rather than a replacement catalogue, so Praktisk veiviser and private language
+support stayed and the catalogue held six mixed services.
+
+**21 August, second — and this is the one that holds:** the owner set the
+starting portfolio explicitly at six career services, with the reasoning that
+low risk is not a reason to sell everything at once. Praktisk veiviser and
+language support were shelved. The earlier reading is recorded here only so
+nobody re-derives it from the model document and undoes this.
 
 ### The career rules
 

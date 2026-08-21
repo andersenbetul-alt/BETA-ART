@@ -256,10 +256,9 @@
   /* ----------------------------------------------------------- need finder */
   /* Maps the first answer to what actually fits it. 'refer' is not a service:
      it is the answer 'we do not take this', which the fourth option — a
-     decision, a refusal, an appeal deadline — always gets. Sending that
-     person to a booking form would be selling them work we have said we will
-     not do. */
-  var FINDER_MAP = ['v01', 'v02', 'sprak', 'refer', 'sjekk'];
+     employment-law question — always gets. Sending that person to a booking
+     form would be selling them work we have said we will not do. */
+  var FINDER_MAP = ['career_review', 'career_kit', 'linkedin', 'interview', 'digital', 'refer'];
   var finderState = { step: 0, answers: [] };
 
   /* What the finder shows when the answer is out of scope. No price, no
@@ -295,7 +294,7 @@
       situation: answers[0],
       office: answers[1],
       urgency: answers[2],
-      recommended: FINDER_MAP[answers[0]] || 'sjekk',
+      recommended: FINDER_MAP[answers[0]] || 'career_free',
       source: global.naviarSource
     };
     if (CFG.apiBase) {
@@ -372,7 +371,7 @@
     }
 
     /* ---- result ---- */
-    var serviceId = FINDER_MAP[finderState.answers[0]] || 'sjekk';
+    var serviceId = FINDER_MAP[finderState.answers[0]] || 'career_free';
 
     if (serviceId === 'refer') {
       host.appendChild(referralBox());

@@ -107,15 +107,29 @@ export default async function () {
       }
     });
 
-    await test('the catalogue is the low-risk offer', () => {
-      const price = id => CFG.services.find(s => s.id === id)?.price;
-      equal(CFG.services.length, 6, 'service count');
-      equal(price('sjekk'), 0, 'the scope check is free');
-      equal(price('v01'), 590, 'practical guide');
-      equal(price('career_free'), 0, 'the career starter is free');
-      equal(price('career_kit'), 299, 'career kit');
-      equal(price('career_review'), 790, 'personal CV review');
-      equal(price('sprak'), null, 'language support is by quote');
+    /* The starting portfolio: six career services, in the order the customer
+       meets them, cheapest first. */
+    await test('the catalogue is the starting portfolio', () => {
+      equal(CFG.services.map(s => s.id).join(','),
+        'career_free,career_kit,linkedin,digital,interview,career_review');
+      equal(CFG.services.map(s => s.price).join(','), '0,299,390,390,590,790');
+      assert(CFG.services.every(s => s.group === 'karriere'),
+        'something outside the career line is on sale');
+    });
+
+    /* Shelved, not deleted. They come back when someone asks for them, and
+       until then their translations must not rot. */
+    await test('the shelved services keep their translations', () => {
+      for (const file of LOCALES) {
+        const shelved = load(file).shelved || {};
+        for (const id of ['v01', 'sprak']) {
+          assert(shelved[id]?.n && shelved[id]?.d, `${file}: ${id} lost its translation`);
+        }
+      }
+      const CFGids = CFG.services.map(s => s.id);
+      for (const id of ['v01', 'sprak', 'sjekk']) {
+        assert(!CFGids.includes(id), `${id} is still on sale`);
+      }
     });
 
     /* A price on the page with nothing behind it is the worst kind of promise.

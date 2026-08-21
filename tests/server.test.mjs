@@ -42,7 +42,7 @@ export default async function () {
   const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'naviar-test-'));
   const server = spawn('node', ['server.js'], {
     cwd: 'server',
-    env: { ...process.env, PORT: String(PORT), DATA_DIR: dataDir, ADMIN_TOKEN: TOKEN,
+    env: { ...process.env, PORT: String(PORT), DATA_DIR: dataDir, ADMIN_TOKEN: TOKEN, BOOKING_RATE_LIMIT: '200',
            ALLOWED_ORIGINS: '', STRIPE_SECRET_KEY: '' },
     stdio: 'ignore'
   });
@@ -107,10 +107,42 @@ export default async function () {
         equal((await booking({ serviceId: 'nope', details: customer() })).status, 400);
       });
 
-      await test('an interpreter booking must name a language', async () => {
-        const r = await booking({ serviceId: 'sprak', payment: 'invoice', date: '2026-09-01', time: '10:00',
-                                  details: customer() });
-        equal(r.body.error, 'tolk_language_required');
+      /* Shelved is shelved. A service that is not in the catalogue must not be
+         bookable by anyone who remembers its id. */
+      await test('a shelved service cannot be booked by id', async () => {
+        for (const id of ['v01', 'sprak', 'sjekk', 'k01', 'k02']) {
+          const r = await booking({ serviceId: id, payment: 'invoice', lang: 'no', details: customer() });
+          equal(r.status, 400, id + ' was accepted');
+        }
+      });
+
+      /* Abuse protection nobody had checked. The suite raises the limit so it
+         can run at all, which is exactly why the limit needs a test of its own. */
+      await test('the booking endpoint rate-limits one address', async () => {
+        const port = PORT + 1;
+        const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'naviar-rate-'));
+        const child = spawn(process.execPath, ['server/server.js'], {
+          env: { ...process.env, PORT: String(port), DATA_DIR: dir, ADMIN_TOKEN: TOKEN, BOOKING_RATE_LIMIT: '3' },
+          stdio: 'ignore'
+        });
+        try {
+          const base = `http://127.0.0.1:${port}`;
+          for (let i = 0; i < 40; i += 1) {
+            try { if ((await fetch(base + '/api/health')).ok) break; } catch { /* not yet */ }
+            await new Promise(r => setTimeout(r, 250));
+          }
+          const send = () => fetch(base + '/api/bookings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ serviceId: 'career_kit', payment: 'invoice', lang: 'no', details: customer() })
+          });
+          const codes = [];
+          for (let i = 0; i < 4; i += 1) codes.push((await send()).status);
+          equal(codes.join(','), '200,200,200,429', 'the fourth request should be refused');
+        } finally {
+          child.kill();
+          fs.rmSync(dir, { recursive: true, force: true });
+        }
       });
 
       await test('a slot inside the lead time is refused', async () => {

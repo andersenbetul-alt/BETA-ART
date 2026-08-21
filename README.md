@@ -154,15 +154,22 @@ The site sells **practical help only**. `price` is the customer total including
 
 | Code | Offer | Price | Delivery |
 | --- | --- | --- | --- |
-| — | Gratis omfangskontroll | Free | 1 working day, honest yes or no |
-| V01 | Praktisk veiviser | 590 NOK | 30 min + a written guide, one follow-up |
-| — | AI Career Starter | Free | Checklist, five prompts, job tracker |
-| K01 | AI Career Kit | 299 NOK | CV templates NO/EN, prompts, interview kit, LinkedIn, tracker, weekly plan |
-| K02 | Personlig CV-gjennomgang | 790 NOK | 45 min on one CV and one application |
-| S | Privat språkstøtte | By quote | Private, everyday conversations only |
+| — | Career Starter | Free | Checklist, five prompts, tracker, weekly plan |
+| K01 | AI Career Kit | 299 NOK | Templates NO/EN, prompts, application system, interview kit, STAR, LinkedIn, tracker, 30-day plan |
+| K02 | LinkedIn-gjennomgang | 390 NOK | Written, 2 working days |
+| K03 | Digitalt jobbsøk-oppsett | 390 NOK | 45 min — Arbeidsplassen, Finn, LinkedIn |
+| K04 | Prøveintervju | 590 NOK | 45 min against a real advert |
+| K05 | CV- og søknadsgjennomgang | 790 NOK | 45 min, one CV and one application |
 
-The career deliverables are real files in `leveranser/karriere/`, and a test
-fails if a paid service ever points at one that is missing or empty.
+Six career services and no more — a narrow line a customer can understand and
+a pilot can deliver well. Praktisk veiviser and private language support are
+**shelved, not dropped**: their translations live under `shelved` in the locale
+files, tests keep them alive and keep them unbookable, and they return when
+someone asks.
+
+Files in `leveranser/karriere/` are what the packs actually contain;
+`leveranser/karriere/tjenester/` is the written scope of each paid human
+service. Tests fail if a sold service points at a missing or empty file.
 
 **Nothing on this list is bought directly.** Every request is a free scope
 check; a person reads it, and the scope, the price and the payment link go out

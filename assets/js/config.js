@@ -40,7 +40,7 @@ window.NAVIAR_CONFIG = {
 
   /* ----------------------------------------------------------- key figures */
   /* Only verifiable facts. No invented client counts or success rates.       */
-  stats: { languages: '10', areas: '7', reply: '24t', written: '100%' },
+  stats: { languages: '10', areas: '6', reply: '24t', written: '100%' },
 
   /* -------------------------------------------------------- price catalogue
      Pilot catalogue from the NAVIAR System Blueprint v1.0 §12.1.
@@ -54,26 +54,23 @@ window.NAVIAR_CONFIG = {
   commissionRate: 0.20,          // pilot platform commission on the net fee
   currency: 'NOK',
 
-  /* The low-risk catalogue. Every one of these is practical help: finding the
-     right channel, preparing questions, writing a CV. None of it interprets a
-     decision, judges a right, or touches health, tax, debt or residency — see
-     docs/tjenestemodell.md §3 for the line and hva-vi-gjor.html for how it is
-     put to the customer.
+  /* The starting portfolio. Six career services, nothing else — not because
+     the rest is risky, but because a customer has to be able to tell what
+     NAVIAR does in one glance. Praktisk veiviser (public-service navigation)
+     and private language support are shelved, not dropped: their translations
+     are still in assets/i18n/*.json under `shelved`, and they come back when
+     someone actually asks for them.
 
      Nothing here is bought directly. Every request starts as a free scope
-     check; the price is agreed in writing and the payment link is sent by a
-     person, afterwards. That is why there are no payment links below. */
+     check that a person reads; the price is agreed in writing and the payment
+     link is sent afterwards. That is why there are no payment links below. */
   services: [
-    { id: 'sjekk',         code: '—',   price: 0,    net: 0,    minutes: 0,  type: 'delivery', group: 'advice',  free: true, sla: '1 virkedag' },
-    { id: 'v01',           code: 'V01', price: 590,  net: 472,  minutes: 30, type: 'meeting',  group: 'advice' },
-    { id: 'career_free',   code: '—',   price: 0,    net: 0,    minutes: 0,  type: 'delivery', group: 'karriere', free: true, sla: '1 virkedag' },
-    { id: 'career_kit',    code: 'K01', price: 299,  net: 239,  minutes: 0,  type: 'delivery', group: 'karriere', sla: '1 virkedag' },
-    { id: 'career_review', code: 'K02', price: 790,  net: 632,  minutes: 45, type: 'meeting',  group: 'karriere' },
-    /* `tolk: true` asks the customer which language they need. It does NOT mean
-       official interpreting: a public body assesses and orders a qualified
-       interpreter for its own meetings (tolkeloven). This is private, everyday
-       conversation only, and the form says so. */
-    { id: 'sprak',         code: 'S',   price: null, net: null, minutes: 60, type: 'meeting',  group: 'tolk',    tolk: true }
+    { id: 'career_free',   code: '—',   price: 0,   net: 0,   minutes: 0,  type: 'delivery', group: 'karriere', free: true, sla: '1 virkedag' },
+    { id: 'career_kit',    code: 'K01', price: 299, net: 239, minutes: 0,  type: 'delivery', group: 'karriere', sla: '1 virkedag' },
+    { id: 'linkedin',      code: 'K02', price: 390, net: 312, minutes: 0,  type: 'delivery', group: 'karriere', sla: '2 virkedager' },
+    { id: 'digital',       code: 'K03', price: 390, net: 312, minutes: 45, type: 'meeting',  group: 'karriere' },
+    { id: 'interview',     code: 'K04', price: 590, net: 472, minutes: 45, type: 'meeting',  group: 'karriere' },
+    { id: 'career_review', code: 'K05', price: 790, net: 632, minutes: 45, type: 'meeting',  group: 'karriere' }
   ],
 
   /* Surcharges (§12.2). Shown before purchase, never added afterwards. */

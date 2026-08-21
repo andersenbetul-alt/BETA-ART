@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "NAVIAR — Praktisk veiledning i offentlige tjenester",
-    "description": "NAVIAR gir praktisk veiledning: riktig kanal, riktige spørsmål og en sjekkliste. Vi tolker ikke vedtak og gir ikke juridiske råd."
+    "title": "NAVIAR — Karrierehjelp med AI som verktøy",
+    "description": "CV, søknad, LinkedIn og intervju. Et praktisk system med AI som verktøy, ikke som autopilot. Du godkjenner alltid teksten selv."
   },
   "brand": {
     "tagline": "Klarhet i komplekse systemer.",
@@ -20,31 +20,31 @@
     "menu": "Meny",
     "language": "Språk",
     "limits": "Hva vi gjør",
-    "career": "Karriere"
+    "career": "Tjenester"
   },
   "hero": {
-    "eyebrow": "Praktisk veiledning",
-    "title": "Praktisk hjelp til å finne fram i offentlige tjenester",
-    "sub": "Vi viser deg hvilken kanal saken hører hjemme i, hvilke spørsmål du bør stille, og hva du bør ha klart. Vi tolker ikke vedtak, og vi gir ikke juridiske, helsefaglige eller økonomiske råd.",
-    "sales": "Start med en gratis omfangskontroll.",
-    "cta1": "Start gratis sjekk",
-    "cta2": "Hva vi kan og ikke kan gjøre",
-    "cardTitle": "Din praktiske veiviser",
+    "eyebrow": "Karriere og jobbsøk",
+    "title": "Søk smartere. Få flere sjanser.",
+    "sub": "Et praktisk system for å tilpasse CV, skrive bedre søknader, forberede intervju og holde oversikt — med AI som verktøy, ikke som autopilot. Du godkjenner alltid teksten selv.",
+    "sales": "Start med den gratis pakken.",
+    "cta1": "Få gratis startpakke",
+    "cta2": "Se hva vi kan og ikke kan gjøre",
+    "cardTitle": "Slik jobber du",
     "card": [
       {
-        "t": "Riktig kanal",
-        "d": "Hvilket kontor eller skjema saken hører hjemme i."
+        "t": "Velg en stilling",
+        "d": "Lim kravene fra annonsen inn i arbeidsmalen."
       },
       {
-        "t": "Spørsmålsliste",
-        "d": "Hva du bør spørre om, formulert på forhånd."
+        "t": "Tilpass med AI",
+        "d": "Ferdige prompts til CV, søknad og intervju."
       },
       {
-        "t": "Sjekkliste",
-        "d": "Hva du bør ha klart før du tar kontakt."
+        "t": "Kontroller selv",
+        "d": "Behold bare det som er sant, og godkjenn resultatet."
       }
     ],
-    "cardBadge": "2 virkedager",
+    "cardBadge": "Gratis å starte",
     "cardFoot": "Ingen BankID. Ingen kortopplysninger. Ingen dokumentopplasting."
   },
   "stats": {
@@ -56,31 +56,32 @@
   "finder": {
     "eyebrow": "Start her",
     "title": "Hva trenger du hjelp med?",
-    "lead": "Tre korte spørsmål. Du får en anbefaling — eller en henvisning videre hvis saken hører hjemme et annet sted.",
+    "lead": "Tre korte spørsmål. Du får en anbefaling — eller en henvisning videre hvis det du trenger ligger utenfor det vi gjør.",
     "back": "Tilbake",
     "restart": "Start på nytt",
     "progress": "Spørsmål {n} av {total}",
     "questions": [
       {
-        "q": "Hva trenger du hjelp med?",
+        "q": "Hva står du fast på?",
         "hint": "Velg det som passer best.",
         "options": [
-          "Jeg vet ikke hvilket kontor eller skjema jeg skal bruke",
-          "Jeg trenger hjelp med CV eller jobbsøknad",
-          "Jeg trenger språkhjelp i en privat samtale",
-          "Jeg har fått et vedtak, et avslag eller en klagefrist",
-          "Jeg hjelper et familiemedlem med noe praktisk"
+          "CV-en min får ikke svar",
+          "Jeg vet ikke hva jeg skal skrive i søknaden",
+          "LinkedIn-profilen min er ikke god nok",
+          "Jeg skal på intervju",
+          "Jeg finner ikke relevante stillinger",
+          "Noe annet — arbeidsrett, oppsigelse, lønn eller sykefravær"
         ]
       },
       {
-        "q": "Hvilken instans gjelder det?",
-        "hint": "Velg én. Du kan fortelle mer senere.",
+        "q": "Hvor er du i jobbsøkingen?",
+        "hint": "Velg én.",
         "options": [
-          "NAV",
-          "Kommunen",
-          "Skatteetaten eller Altinn",
-          "Helfo, helse eller pensjon",
-          "Jeg er usikker"
+          "Jeg har ikke begynt",
+          "Jeg søker, men får ikke svar",
+          "Jeg får svar, men ikke intervju",
+          "Jeg er innkalt til intervju",
+          "Jeg bytter bransje"
         ]
       },
       {
@@ -99,25 +100,25 @@
     "ctaAlt": "Spør oss først",
     "saved": "Takk. Svarene dine hjelper oss å prioritere den hjelpen folk trenger mest.",
     "referTitle": "Dette hører hjemme hos noen andre",
-    "referText": "Vedtak, avslag, klager og juridiske frister tar vi ikke. Kontakt instansen som sendte brevet, eller en advokat. Er du usikker, spør oss — å spørre koster ingenting.",
+    "referText": "Arbeidsrettslige spørsmål, oppsigelse, diskriminering, sykefravær og lønn eller skatt tar vi ikke. Kontakt fagforeningen din, en advokat eller rett instans. Er du usikker, spør oss — å spørre koster ingenting.",
     "referCta": "Se hva vi kan og ikke kan gjøre"
   },
   "process": {
     "eyebrow": "Slik jobber vi",
-    "title": "Fra spørsmål til neste steg",
-    "lead": "En liten tjeneste med tydelige grenser. Ingen abonnement, ingen skjulte pakker.",
+    "title": "Fra stillingsannonse til oppfølging",
+    "lead": "Du trenger ikke hundre løse AI-prompts. Du trenger én arbeidsflyt som gir bedre kvalitet hver gang.",
     "steps": [
       {
-        "t": "Fortell hva du trenger",
-        "d": "Fyll ut en gratis omfangskontroll. Skriv med egne ord — ikke send sensitive opplysninger."
+        "t": "Velg en stilling",
+        "d": "Lim kravene fra annonsen inn i arbeidsmalen."
       },
       {
-        "t": "Vi vurderer om vi kan hjelpe",
-        "d": "Et menneske leser den. Passer den ikke, henviser vi deg videre — det koster ingenting."
+        "t": "Tilpass og kontroller",
+        "d": "Bruk promptene, og behold bare opplysninger som er sanne om deg."
       },
       {
-        "t": "Du får omfang og pris skriftlig",
-        "d": "Betalingslenken kommer først etterpå. Du betaler ingenting før du har sagt ja."
+        "t": "Følg opp",
+        "d": "Registrer søknaden og neste handling i jobbtrackeren."
       }
     ]
   },
@@ -133,22 +134,21 @@
   },
   "areas": {
     "eyebrow": "Dekning",
-    "title": "Hvor vi kan vise vei",
-    "lead": "Vi hjelper deg å finne riktig kanal og forberede spørsmålene dine. Vi gir ikke råd om innholdet i saken — det gjør instansen selv eller en fagperson.",
+    "title": "Hva vi hjelper med",
+    "lead": "Vi jobber med din egen søknad. Vi vurderer ingen på vegne av en arbeidsgiver, og vi sender ingenting for deg.",
     "items": [
-      "NAV — finne riktig kontor, skjema og kanal",
-      "Kommunale tjenester — hvem du skal kontakte",
-      "Skatteetaten og Altinn — hvilken kanal saken hører hjemme i",
-      "Helfo, helse og pensjon — hvor du skal henvende deg",
-      "Offentlige tjenester for nyankomne til Norge",
-      "Jobbsøking — CV, søknad og intervju",
-      "Private samtaler der du trenger språkstøtte"
+      "CV på norsk og engelsk",
+      "Søknad tilpasset en konkret annonse",
+      "LinkedIn-profilen din",
+      "Intervjutrening og STAR-svar",
+      "Søk og varsler på Arbeidsplassen, Finn og LinkedIn",
+      "En søkeplan du klarer å holde"
     ]
   },
   "pricing": {
     "eyebrow": "Priser",
     "title": "Tydelige priser, avtalt før vi starter",
-    "lead": "Du får omfang og pris skriftlig før du betaler. Vi sender aldri en betalingslenke før vi har sagt ja til oppdraget.",
+    "lead": "Du får omfang og pris skriftlig før du betaler. Alt er engangsbeløp — ingen abonnement, ingen automatisk fornyelse.",
     "from": "fra",
     "quote": "Etter tilbud",
     "vat": "Priser i NOK. Pilotpriser, kan bli justert.",
@@ -160,7 +160,7 @@
     "delivery": "Levering",
     "perHour": "per time",
     "inclVat": "inkl. mva.",
-    "later": "Vi tar bare praktiske oppgaver. Saker som gjelder vedtak, klage, frister, helse, skatt, gjeld eller opphold henviser vi videre."
+    "later": "Flere tjenester kommer når noen spør etter dem. Vi starter smalt så du vet nøyaktig hva du kjøper."
   },
   "safety": {
     "eyebrow": "Trygghet og etikk",
@@ -292,8 +292,8 @@
   },
   "contact": {
     "eyebrow": "Kontakt",
-    "title": "Fortell oss hva du trenger",
-    "lead": "Beskriv kort hva du trenger hjelp til, så svarer vi innen én virkedag.",
+    "title": "Fortell oss hva du vil oppnå",
+    "lead": "Beskriv kort hva du trenger hjelp til i jobbsøkingen, så svarer vi innen én virkedag.",
     "email": "E-post",
     "phone": "Telefon",
     "office": "Kontor",
@@ -307,9 +307,9 @@
     "note": "Henvendelsen din er konfidensiell og deles aldri med tredjeparter."
   },
   "band": {
-    "title": "Start med en gratis omfangskontroll",
-    "sub": "Vi sier ærlig ja eller nei. Passer saken ikke, henviser vi deg videre — gratis.",
-    "cta": "Start gratis sjekk",
+    "title": "Klar for første søknad?",
+    "sub": "Start med den gratis pakken. Ingen abonnement, ingen betaling for å prøve.",
+    "cta": "Få gratis startpakke",
     "cta2": "Send oss en e-post"
   },
   "footer": {
@@ -322,17 +322,9 @@
     "note": "Informasjonen på dette nettstedet er generell veiledning og utgjør ikke juridisk rådgivning.",
     "pilot": "Pilottjeneste. Vi gir praktisk veiledning, ikke juridisk, helsefaglig eller økonomisk rådgivning. Ikke bruk tjenesten ved akutt fare.",
     "limits": "Hva vi gjør",
-    "career": "Karriere"
+    "career": "Tjenester"
   },
   "catalog": {
-    "sjekk": {
-      "n": "Gratis omfangskontroll",
-      "d": "Vi leser forespørselen din og sier om den passer for oss. Passer den ikke, henviser vi deg videre. Svar innen én virkedag."
-    },
-    "v01": {
-      "n": "Praktisk veiviser",
-      "d": "30 minutter sammen, og en kort veiviser: riktig offentlig kanal, en spørsmålsliste og en praktisk sjekkliste. Én oppfølging."
-    },
     "career_free": {
       "n": "Career Starter",
       "d": "Gratis: CV-sjekkliste, fem grunnprompts, jobbtracker og en ukentlig søkeplan."
@@ -341,9 +333,27 @@
       "n": "AI Career Kit",
       "d": "CV-maler på norsk og engelsk, prompts for målrettet CV, søknadssystem, intervjuforberedelse, STAR-arbeidsark, LinkedIn-sjekkliste, jobbtracker og 30-dagers plan. Engangsbeløp, ingen abonnement."
     },
+    "linkedin": {
+      "n": "LinkedIn-gjennomgang",
+      "d": "Overskrift, om-seksjon og erfaring gjennomgått skriftlig, med tre ting du bør endre først."
+    },
+    "digital": {
+      "n": "Digitalt jobbsøk-oppsett",
+      "d": "45 minutter der du setter opp søk og varsler på Arbeidsplassen, Finn og LinkedIn — på din egen skjerm."
+    },
+    "interview": {
+      "n": "Prøveintervju",
+      "d": "45 minutter intervjutrening mot en konkret annonse, med tilbakemelding svar for svar."
+    },
     "career_review": {
-      "n": "Personlig CV-gjennomgang",
-      "d": "45 minutter der et menneske går gjennom én CV og én målrettet søknad, med en prioritert forbedringsliste og én kort oppfølging."
+      "n": "CV- og søknadsgjennomgang",
+      "d": "45 minutter der et menneske går gjennom én CV og én søknad mot en konkret annonse. Prioritert forbedringsliste og én oppfølging."
+    }
+  },
+  "shelved": {
+    "v01": {
+      "n": "Praktisk veiviser",
+      "d": "30 minutter sammen, og en kort veiviser: riktig offentlig kanal, en spørsmålsliste og en praktisk sjekkliste. Én oppfølging."
     },
     "sprak": {
       "n": "Privat språkstøtte",

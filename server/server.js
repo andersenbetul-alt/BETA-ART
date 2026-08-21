@@ -227,7 +227,13 @@ app.get('/api/availability', (req, res) => {
   res.json({ date, taken: DB.takenSlots(db, date) });
 });
 
-app.post('/api/bookings', throttle(20, 60 * 60 * 1000), async (req, res) => {
+/* How many requests one address may send in an hour. Twenty is plenty for a
+   real customer and low enough to be a nuisance to a script. It is a knob
+   because the test suite needs headroom, and because a busier deployment may
+   want a different number — not because the limit is optional. */
+const BOOKING_LIMIT = Math.max(1, Number(process.env.BOOKING_RATE_LIMIT) || 20);
+
+app.post('/api/bookings', throttle(BOOKING_LIMIT, 60 * 60 * 1000), async (req, res) => {
   const body = req.body || {};
   const service = serviceById(str(body.serviceId, 20));
   if (!service) return res.status(400).json({ error: 'unknown_service' });

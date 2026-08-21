@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "NAVIAR — Praktyczne wskazówki w sprawach urzędowych",
-    "description": "NAVIAR daje praktyczne wskazówki: właściwy kanał, właściwe pytania i listę kontrolną. Nie interpretujemy decyzji i nie udzielamy porad prawnych."
+    "title": "NAVIAR — Pomoc w karierze z AI jako narzędziem",
+    "description": "CV, podanie, LinkedIn i rozmowa. Praktyczny system z AI jako narzędziem, nie autopilotem. Tekst zawsze zatwierdzasz sam."
   },
   "brand": {
     "tagline": "Jasność w złożonych systemach.",
@@ -20,31 +20,31 @@
     "menu": "Menu",
     "language": "Język",
     "limits": "Co robimy",
-    "career": "Kariera"
+    "career": "Usługi"
   },
   "hero": {
-    "eyebrow": "Praktyczne wskazówki",
-    "title": "Praktyczna pomoc w poruszaniu się po urzędach",
-    "sub": "Pokazujemy, do którego kanału należy Twoja sprawa, o co zapytać i co przygotować. Nie interpretujemy decyzji i nie udzielamy porad prawnych, medycznych ani finansowych.",
-    "sales": "Zacznij od bezpłatnego sprawdzenia zakresu.",
-    "cta1": "Bezpłatne sprawdzenie",
-    "cta2": "Co możemy, a czego nie",
-    "cardTitle": "Twój praktyczny przewodnik",
+    "eyebrow": "Kariera i poszukiwanie pracy",
+    "title": "Aplikuj mądrzej. Miej więcej szans.",
+    "sub": "Praktyczny system do dopasowania CV, pisania lepszych podań, przygotowania do rozmowy i panowania nad całością — z AI jako narzędziem, nie autopilotem. Tekst zawsze zatwierdzasz sam.",
+    "sales": "Zacznij od bezpłatnego pakietu.",
+    "cta1": "Bezpłatny pakiet startowy",
+    "cta2": "Zobacz, co możemy, a czego nie",
+    "cardTitle": "Jak pracujesz",
     "card": [
       {
-        "t": "Właściwy kanał",
-        "d": "Który urząd lub formularz dotyczy Twojej sprawy."
+        "t": "Wybierz ofertę",
+        "d": "Wklej wymagania z ogłoszenia do szablonu."
       },
       {
-        "t": "Lista pytań",
-        "d": "O co zapytać — sformułowane z wyprzedzeniem."
+        "t": "Dopasuj z AI",
+        "d": "Gotowe prompty do CV, podania i rozmowy."
       },
       {
-        "t": "Lista kontrolna",
-        "d": "Co przygotować przed kontaktem z urzędem."
+        "t": "Sprawdź sam",
+        "d": "Zostaw tylko to, co prawdziwe, i zatwierdź wynik."
       }
     ],
-    "cardBadge": "2 dni robocze",
+    "cardBadge": "Start bezpłatny",
     "cardFoot": "Bez BankID. Bez danych karty. Bez przesyłania dokumentów."
   },
   "stats": {
@@ -56,31 +56,32 @@
   "finder": {
     "eyebrow": "Zacznij tutaj",
     "title": "W czym potrzebujesz pomocy?",
-    "lead": "Trzy krótkie pytania. Otrzymasz rekomendację — albo skierowanie dalej, jeśli sprawa należy gdzie indziej.",
+    "lead": "Trzy krótkie pytania. Otrzymasz rekomendację — albo skierowanie dalej, jeśli to, czego potrzebujesz, jest poza tym, co robimy.",
     "back": "Wstecz",
     "restart": "Zacznij od nowa",
     "progress": "Pytanie {n} z {total}",
     "questions": [
       {
-        "q": "W czym potrzebujesz pomocy?",
+        "q": "Na czym utknąłeś?",
         "hint": "Wybierz najbliższą odpowiedź.",
         "options": [
-          "Nie wiem, do którego urzędu albo formularza się zwrócić",
-          "Potrzebuję pomocy z CV lub podaniem o pracę",
-          "Potrzebuję pomocy językowej w prywatnej rozmowie",
-          "Mam decyzję, odmowę albo termin odwołania",
-          "Pomagam członkowi rodziny w sprawie praktycznej"
+          "Moje CV nie dostaje odpowiedzi",
+          "Nie wiem, co napisać w podaniu",
+          "Mój profil LinkedIn jest za słaby",
+          "Mam wkrótce rozmowę",
+          "Nie znajduję odpowiednich ofert",
+          "Coś innego — prawo pracy, zwolnienie, wynagrodzenie lub chorobowe"
         ]
       },
       {
-        "q": "Którego urzędu dotyczy sprawa?",
-        "hint": "Wybierz jeden. Więcej powiesz nam później.",
+        "q": "Na jakim etapie jesteś?",
+        "hint": "Wybierz jedno.",
         "options": [
-          "NAV",
-          "Gmina (kommune)",
-          "Urząd skarbowy lub Altinn",
-          "Helfo, zdrowie lub emerytura",
-          "Nie jestem pewien"
+          "Jeszcze nie zacząłem",
+          "Aplikuję, ale nie dostaję odpowiedzi",
+          "Dostaję odpowiedzi, ale nie zaproszenia",
+          "Mam umówioną rozmowę",
+          "Zmieniam branżę"
         ]
       },
       {
@@ -99,25 +100,25 @@
     "ctaAlt": "Najpierw zapytam",
     "saved": "Dziękujemy. Twoje odpowiedzi pomagają nam ustalić, jakiej pomocy ludzie potrzebują najbardziej.",
     "referTitle": "To należy do kogoś innego",
-    "referText": "Nie zajmujemy się decyzjami, odmowami, odwołaniami ani terminami prawnymi. Skontaktuj się z urzędem, który wysłał pismo, albo z prawnikiem. Jeśli nie masz pewności, zapytaj nas — pytanie nic nie kosztuje.",
+    "referText": "Nie zajmujemy się prawem pracy, zwolnieniami, dyskryminacją, zwolnieniami chorobowymi ani wynagrodzeniem czy podatkami. Skontaktuj się ze związkiem, prawnikiem albo właściwym urzędem. Jeśli nie masz pewności, zapytaj nas — pytanie nic nie kosztuje.",
     "referCta": "Zobacz, co możemy, a czego nie"
   },
   "process": {
     "eyebrow": "Jak pracujemy",
-    "title": "Od pytania do następnego kroku",
-    "lead": "Mała usługa o jasnych granicach. Bez abonamentów, bez ukrytych pakietów.",
+    "title": "Od ogłoszenia do przypomnienia",
+    "lead": "Nie potrzebujesz stu luźnych promptów. Potrzebujesz jednego procesu, który za każdym razem daje lepszą jakość.",
     "steps": [
       {
-        "t": "Napisz, czego potrzebujesz",
-        "d": "Wypełnij bezpłatne sprawdzenie zakresu. Pisz własnymi słowami — nie przesyłaj danych wrażliwych."
+        "t": "Wybierz ofertę",
+        "d": "Wklej wymagania z ogłoszenia do szablonu."
       },
       {
-        "t": "Sprawdzamy, czy możemy pomóc",
-        "d": "Czyta to człowiek. Jeśli sprawa nie pasuje, kierujemy Cię dalej — to nic nie kosztuje."
+        "t": "Dopasuj i sprawdź",
+        "d": "Użyj promptów i zostaw tylko to, co jest o Tobie prawdą."
       },
       {
-        "t": "Zakres i cenę dostajesz na piśmie",
-        "d": "Link do płatności przychodzi dopiero potem. Nic nie płacisz, zanim się nie zgodzisz."
+        "t": "Przypilnuj",
+        "d": "Zapisz podanie i następny krok w trackerze."
       }
     ]
   },
@@ -133,22 +134,21 @@
   },
   "areas": {
     "eyebrow": "Zakres",
-    "title": "Gdzie możemy wskazać drogę",
-    "lead": "Pomagamy znaleźć właściwy kanał i przygotować pytania. Nie doradzamy w meritum sprawy — robi to sam urząd albo specjalista.",
+    "title": "W czym pomagamy",
+    "lead": "Pracujemy nad Twoim własnym podaniem. Nikogo nie oceniamy w imieniu pracodawcy i niczego za Ciebie nie wysyłamy.",
     "items": [
-      "NAV — znalezienie właściwego urzędu, formularza i kanału",
-      "Usługi gminne — z kim się kontaktować",
-      "Skatteetaten i Altinn — do którego kanału należy sprawa",
-      "Helfo, zdrowie i emerytury — gdzie się zwrócić",
-      "Usługi publiczne dla osób nowych w Norwegii",
-      "Szukanie pracy — CV, podanie i rozmowa",
-      "Prywatne rozmowy, w których potrzebujesz pomocy językowej"
+      "CV po norwesku i angielsku",
+      "Podanie dopasowane do prawdziwego ogłoszenia",
+      "Twój profil LinkedIn",
+      "Ćwiczenie rozmowy i odpowiedzi STAR",
+      "Wyszukiwania i powiadomienia w Arbeidsplassen, Finn i LinkedIn",
+      "Plan poszukiwań, którego da się trzymać"
     ]
   },
   "pricing": {
     "eyebrow": "Ceny",
     "title": "Jasne ceny, ustalone zanim zaczniemy",
-    "lead": "Zakres i cenę otrzymujesz na piśmie przed zapłatą. Nigdy nie wysyłamy linku do płatności, zanim nie przyjmiemy zlecenia.",
+    "lead": "Zakres i cenę dostajesz na piśmie przed zapłatą. Wszystko jednorazowo — bez abonamentu, bez automatycznego odnawiania.",
     "from": "od",
     "quote": "Na podstawie oferty",
     "vat": "Ceny w NOK. Ceny pilotażowe, mogą ulec zmianie.",
@@ -160,7 +160,7 @@
     "delivery": "Realizacja",
     "perHour": "za godzinę",
     "inclVat": "z VAT",
-    "later": "Przyjmujemy wyłącznie zadania praktyczne. Sprawy dotyczące decyzji, odwołań, terminów, zdrowia, podatków, długów lub pobytu kierujemy dalej."
+    "later": "Kolejne usługi pojawią się, gdy ktoś o nie poprosi. Zaczynamy wąsko, żebyś dokładnie wiedział, co kupujesz."
   },
   "safety": {
     "eyebrow": "Bezpieczeństwo i etyka",
@@ -292,8 +292,8 @@
   },
   "contact": {
     "eyebrow": "Kontakt",
-    "title": "Napisz, czego potrzebujesz",
-    "lead": "Opisz krótko, w czym potrzebujesz pomocy — odpowiadamy w jeden dzień roboczy.",
+    "title": "Napisz, co chcesz osiągnąć",
+    "lead": "Opisz krótko, w czym potrzebujesz pomocy w szukaniu pracy — odpowiadamy w jeden dzień roboczy.",
     "email": "E-mail",
     "phone": "Telefon",
     "office": "Biuro",
@@ -307,9 +307,9 @@
     "note": "Twoje zgłoszenie jest poufne i nigdy nie jest przekazywane osobom trzecim."
   },
   "band": {
-    "title": "Zacznij od bezpłatnego sprawdzenia zakresu",
-    "sub": "Mówimy uczciwie tak albo nie. Jeśli sprawa nie pasuje, kierujemy Cię dalej — bezpłatnie.",
-    "cta": "Bezpłatne sprawdzenie",
+    "title": "Gotowy na pierwsze podanie?",
+    "sub": "Zacznij od bezpłatnego pakietu. Bez abonamentu, bez opłaty za wypróbowanie.",
+    "cta": "Bezpłatny pakiet startowy",
     "cta2": "Napisz do nas"
   },
   "footer": {
@@ -322,17 +322,9 @@
     "note": "Informacje na tej stronie mają charakter ogólny i nie stanowią porady prawnej.",
     "pilot": "Usługa pilotażowa. Dajemy praktyczne wskazówki, a nie porady prawne, medyczne czy finansowe. Nie korzystaj z niej w sytuacji zagrożenia.",
     "limits": "Co robimy",
-    "career": "Kariera"
+    "career": "Usługi"
   },
   "catalog": {
-    "sjekk": {
-      "n": "Bezpłatne sprawdzenie zakresu",
-      "d": "Czytamy Twoje zgłoszenie i mówimy, czy do nas pasuje. Jeśli nie, kierujemy Cię dalej. Odpowiedź w jeden dzień roboczy."
-    },
-    "v01": {
-      "n": "Praktyczny przewodnik",
-      "d": "30 minut razem i krótki przewodnik: właściwy kanał urzędowy, lista pytań i praktyczna lista kontrolna. Jedno przypomnienie."
-    },
     "career_free": {
       "n": "Career Starter",
       "d": "Bezpłatnie: lista kontrolna CV, pięć podstawowych promptów, tracker ofert i tygodniowy plan poszukiwań."
@@ -341,9 +333,27 @@
       "n": "AI Career Kit",
       "d": "Szablony CV po norwesku i angielsku, prompty do dopasowania CV, system pisania podań, przygotowanie do rozmowy, arkusz STAR, lista kontrolna LinkedIn, tracker ofert i plan 30-dniowy. Jedna płatność, bez abonamentu."
     },
+    "linkedin": {
+      "n": "Przegląd LinkedIn",
+      "d": "Nagłówek, sekcja „O mnie” i doświadczenie omówione na piśmie, z trzema rzeczami do zmiany w pierwszej kolejności."
+    },
+    "digital": {
+      "n": "Konfiguracja cyfrowego poszukiwania pracy",
+      "d": "45 minut na ustawienie wyszukiwań i powiadomień w Arbeidsplassen, Finn i LinkedIn — na Twoim własnym ekranie."
+    },
+    "interview": {
+      "n": "Próbna rozmowa",
+      "d": "45 minut ćwiczeń przed prawdziwym ogłoszeniem, z informacją zwrotną do każdej odpowiedzi."
+    },
     "career_review": {
-      "n": "Osobisty przegląd CV",
-      "d": "45 minut, w których człowiek przechodzi przez jedno CV i jedno dopasowane podanie, z listą priorytetowych poprawek i jednym krótkim przypomnieniem."
+      "n": "Przegląd CV i podania",
+      "d": "45 minut, w których człowiek analizuje jedno CV i jedno podanie pod kątem prawdziwego ogłoszenia. Priorytetowa lista poprawek i jedno przypomnienie."
+    }
+  },
+  "shelved": {
+    "v01": {
+      "n": "Praktyczny przewodnik",
+      "d": "30 minut razem i krótki przewodnik: właściwy kanał urzędowy, lista pytań i praktyczna lista kontrolna. Jedno przypomnienie."
     },
     "sprak": {
       "n": "Prywatne wsparcie językowe",

@@ -52,7 +52,7 @@ export default async function () {
         const p = await ctx.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
-        await p.locator('#bkBody .service-opt').nth(3).click();
+        await p.locator('#bkBody .service-opt').nth(1).click();
         await p.waitForTimeout(400);
         const small = await p.evaluate(() => {
           const out = [];
@@ -73,7 +73,7 @@ export default async function () {
         const p = await ctx.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
-        await p.locator('#bkBody .service-opt').nth(3).click();   // a delivery service goes straight to the details form
+        await p.locator('#bkBody .service-opt').nth(1).click();   // a delivery service goes straight to the details form
         await p.waitForTimeout(400);
         const size = await p.evaluate(() => {
           const cb = document.querySelector('#bkBody input[type=checkbox]');
@@ -106,28 +106,25 @@ export default async function () {
 
       await test('a delivery service skips the time step', async () => {
         const { p } = await open();
-        await p.locator('#bkBody .service-opt').nth(3).click();   // AI Career Kit
+        await p.locator('#bkBody .service-opt').nth(1).click();   // AI Career Kit
         await p.waitForTimeout(300);
         const steps = await p.locator('#bkSteps li').count();
         equal(steps, 3, 'a delivery service should have three steps, not four');
         await p.close();
       });
 
-      await test('the interpreter step says the agency should pay', async () => {
+      await test('a meeting service still asks for a time', async () => {
         const { p } = await open();
-        await p.locator('#bkBody .service-opt').nth(5).click();   // private language support
+        await p.locator('#bkBody .service-opt').nth(5).click();   // CV and application review
         await p.waitForTimeout(400);
-        await p.locator('#bkBody .slot:not([disabled])').first().click();
-        await p.locator('#bkBody .btn-primary').click();
-        await p.waitForTimeout(300);
-        const notices = await p.locator('#bkBody .status.info').allTextContents();
-        assert(notices.some(t => /tolk/i.test(t)), 'interpreter notice missing');
+        equal(await p.locator('#bkSteps li').count(), 4, 'a meeting should have four steps');
+        assert(await p.locator('#bkBody .slot').count() > 0, 'no times offered');
         await p.close();
       });
 
       await test('the consent box links to the privacy notice', async () => {
         const { p } = await open();
-        await p.locator('#bkBody .service-opt').nth(3).click();
+        await p.locator('#bkBody .service-opt').nth(1).click();
         await p.waitForTimeout(300);
         await p.locator('#bkBody .btn-primary').click();
         await p.waitForTimeout(300);
@@ -139,7 +136,7 @@ export default async function () {
          helper walks it: service -> details -> confirm. */
       const reachConfirm = async () => {
         const { p } = await open();
-        await p.locator('#bkBody .service-opt').nth(3).click();
+        await p.locator('#bkBody .service-opt').nth(1).click();
         await p.waitForTimeout(300);
         await p.locator('#bkBody .btn-primary').click();
         await p.waitForTimeout(300);
@@ -192,7 +189,7 @@ export default async function () {
         const p = await browser.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
-        await p.locator('#bkBody .service-opt').nth(3).click();   // AI Career Kit
+        await p.locator('#bkBody .service-opt').nth(1).click();   // AI Career Kit
         await p.waitForTimeout(400);
         const placeholder = await p.locator('#bkBody [name="caseText"]').getAttribute('placeholder');
         assert(!/vedtak|brev/i.test(placeholder), 'the career form still asks about a case: ' + placeholder);
@@ -206,7 +203,7 @@ export default async function () {
         const p = await browser.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
-        await p.locator('#bkBody .service-opt').nth(2).click();   // Career Starter
+        await p.locator('#bkBody .service-opt').nth(0).click();   // Career Starter
         await p.waitForTimeout(400);
         equal(await p.locator('#bkBody [name="phone"]').getAttribute('required'), null,
           'the phone field is still required for a career request');
@@ -246,11 +243,11 @@ export default async function () {
     });
 
     await suite('out of scope', async () => {
-      await test('a decision or an appeal is referred on, not sold to', async () => {
+      await test('an employment-law question is referred on, not sold to', async () => {
         const p = await browser.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
-        await p.locator('#finderBody .opt').nth(3).click();   // a decision, refusal or appeal deadline
+        await p.locator('#finderBody .opt').nth(5).click();   // employment law, dismissal, pay
         await p.waitForTimeout(200);
         await p.locator('#finderBody .opt').first().click();
         await p.waitForTimeout(200);
@@ -266,7 +263,7 @@ export default async function () {
         await p.close();
       });
 
-      await test('a practical answer still leads to the free scope check', async () => {
+      await test('an in-scope answer leads to a service we actually sell', async () => {
         const p = await browser.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
@@ -275,8 +272,8 @@ export default async function () {
           await p.waitForTimeout(250);
         }
         const box = await p.locator('#finderBody .finder-result').innerText();
-        assert(/590/.test(box), 'the practical guide price is missing: ' + box);
-        equal(await p.locator('#finderBody a[href="#booking"]').count(), 1, 'no way to start the check');
+        assert(/790/.test(box), 'the review price is missing: ' + box);
+        equal(await p.locator('#finderBody a[href="#booking"]').count(), 1, 'no way to book it');
         await p.close();
       });
     });

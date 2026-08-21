@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "NAVIAR — Practical guidance for public services",
-    "description": "NAVIAR gives practical guidance: the right channel, the right questions and a checklist. We do not interpret decisions and give no legal advice."
+    "title": "NAVIAR — Career help with AI as a tool",
+    "description": "CV, application, LinkedIn and interview. A practical system with AI as a tool, not an autopilot. You always approve the text yourself."
   },
   "brand": {
     "tagline": "Clarity in complex systems.",
@@ -20,31 +20,31 @@
     "menu": "Menu",
     "language": "Language",
     "limits": "What we do",
-    "career": "Career"
+    "career": "Services"
   },
   "hero": {
-    "eyebrow": "Practical guidance",
-    "title": "Practical help finding your way through public services",
-    "sub": "We show you which channel your matter belongs in, which questions to ask, and what to have ready. We do not interpret decisions, and we give no legal, medical or financial advice.",
-    "sales": "Start with a free scope check.",
-    "cta1": "Start a free check",
-    "cta2": "What we can and cannot do",
-    "cardTitle": "Your practical guide",
+    "eyebrow": "Career and job search",
+    "title": "Apply smarter. Get more chances.",
+    "sub": "A practical system for tailoring a CV, writing better applications, preparing for interviews and keeping track — with AI as a tool, not an autopilot. You always approve the text yourself.",
+    "sales": "Start with the free pack.",
+    "cta1": "Get the free starter pack",
+    "cta2": "See what we can and cannot do",
+    "cardTitle": "How you work",
     "card": [
       {
-        "t": "The right channel",
-        "d": "Which office or form your matter belongs to."
+        "t": "Pick a job",
+        "d": "Paste the advert’s requirements into the template."
       },
       {
-        "t": "A list of questions",
-        "d": "What to ask, written out in advance."
+        "t": "Tailor with AI",
+        "d": "Ready-made prompts for CV, application and interview."
       },
       {
-        "t": "A checklist",
-        "d": "What to have ready before you make contact."
+        "t": "Check it yourself",
+        "d": "Keep only what is true, and approve the result."
       }
     ],
-    "cardBadge": "2 working days",
+    "cardBadge": "Free to start",
     "cardFoot": "No BankID. No card details. No document uploads."
   },
   "stats": {
@@ -56,31 +56,32 @@
   "finder": {
     "eyebrow": "Start here",
     "title": "What do you need help with?",
-    "lead": "Three short questions. You get a recommendation — or a referral onwards if your matter belongs somewhere else.",
+    "lead": "Three short questions. You get a recommendation — or a referral onwards if what you need is outside what we do.",
     "back": "Back",
     "restart": "Start over",
     "progress": "Question {n} of {total}",
     "questions": [
       {
-        "q": "What do you need help with?",
+        "q": "What are you stuck on?",
         "hint": "Pick the closest match.",
         "options": [
-          "I do not know which office or form to use",
-          "I need help with a CV or job application",
-          "I need language help in a private conversation",
-          "I have a decision, a refusal or an appeal deadline",
-          "I am helping a family member with something practical"
+          "My CV gets no replies",
+          "I do not know what to write in the application",
+          "My LinkedIn profile is not good enough",
+          "I have an interview coming up",
+          "I cannot find relevant vacancies",
+          "Something else — employment law, dismissal, pay or sick leave"
         ]
       },
       {
-        "q": "Which office is involved?",
-        "hint": "Choose one. You can tell us more later.",
+        "q": "Where are you in the search?",
+        "hint": "Pick one.",
         "options": [
-          "NAV",
-          "The municipality (kommune)",
-          "The Tax Administration or Altinn",
-          "Helfo, health or pension",
-          "I am not sure"
+          "I have not started",
+          "I apply but get no reply",
+          "I get replies but no interview",
+          "I have an interview booked",
+          "I am changing industry"
         ]
       },
       {
@@ -99,25 +100,25 @@
     "ctaAlt": "Ask us first",
     "saved": "Thank you. Your answers help us prioritise the help people need most.",
     "referTitle": "This belongs with someone else",
-    "referText": "We do not take decisions, refusals, appeals or legal deadlines. Contact the body that sent the letter, or a lawyer. If you are unsure, ask us — asking costs nothing.",
+    "referText": "We do not take employment-law questions, dismissal, discrimination, sickness absence, or salary and tax. Contact your union, a lawyer or the right body. If you are unsure, ask us — asking costs nothing.",
     "referCta": "See what we can and cannot do"
   },
   "process": {
     "eyebrow": "How it works",
-    "title": "From a question to a next step",
-    "lead": "A small service with clear limits. No subscriptions, no hidden bundles.",
+    "title": "From advert to follow-up",
+    "lead": "You do not need a hundred loose AI prompts. You need one workflow that gives better quality every time.",
     "steps": [
       {
-        "t": "Tell us what you need",
-        "d": "Fill in a free scope check. Write in your own words — do not send sensitive information."
+        "t": "Pick a job",
+        "d": "Paste the advert’s requirements into the template."
       },
       {
-        "t": "We decide whether we can help",
-        "d": "A person reads it. If it does not fit, we refer you onwards — that costs nothing."
+        "t": "Tailor and check",
+        "d": "Use the prompts, and keep only what is true of you."
       },
       {
-        "t": "You get the scope and price in writing",
-        "d": "The payment link comes only afterwards. You pay nothing before you have agreed."
+        "t": "Follow up",
+        "d": "Record the application and the next action in the tracker."
       }
     ]
   },
@@ -133,22 +134,21 @@
   },
   "areas": {
     "eyebrow": "Coverage",
-    "title": "Where we can point the way",
-    "lead": "We help you find the right channel and prepare your questions. We do not advise on the substance of your matter — the body itself or a qualified professional does that.",
+    "title": "What we help with",
+    "lead": "We work on your own application. We assess nobody on an employer’s behalf, and we send nothing for you.",
     "items": [
-      "NAV — finding the right office, form and channel",
-      "Municipal services — who to contact",
-      "Skatteetaten and Altinn — which channel your matter belongs to",
-      "Helfo, health and pensions — where to turn",
-      "Public services for people new to Norway",
-      "Job seeking — CV, application and interview",
-      "Private conversations where you need language help"
+      "CVs in Norwegian and English",
+      "An application tailored to a real advert",
+      "Your LinkedIn profile",
+      "Interview practice and STAR answers",
+      "Searches and alerts on Arbeidsplassen, Finn and LinkedIn",
+      "A search plan you can keep to"
     ]
   },
   "pricing": {
     "eyebrow": "Prices",
     "title": "Clear prices, agreed before we start",
-    "lead": "You get the scope and the price in writing before you pay. We never send a payment link before we have accepted the work.",
+    "lead": "You get the scope and the price in writing before you pay. Everything is one-off — no subscription, no automatic renewal.",
     "from": "from",
     "quote": "By quote",
     "vat": "Prices in NOK. Pilot pricing, subject to change.",
@@ -160,7 +160,7 @@
     "delivery": "Delivery",
     "perHour": "per hour",
     "inclVat": "incl. VAT",
-    "later": "We take practical tasks only. Anything about decisions, appeals, deadlines, health, tax, debt or residency we refer onwards."
+    "later": "More services follow when someone asks for them. We start narrow so you know exactly what you are buying."
   },
   "safety": {
     "eyebrow": "Safety and ethics",
@@ -292,8 +292,8 @@
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Tell us what you need",
-    "lead": "Describe briefly what you need help with and we answer within one working day.",
+    "title": "Tell us what you want to achieve",
+    "lead": "Describe briefly what you need help with in your job search and we answer within one working day.",
     "email": "Email",
     "phone": "Phone",
     "office": "Office",
@@ -307,9 +307,9 @@
     "note": "Your enquiry is confidential and is never shared with third parties."
   },
   "band": {
-    "title": "Start with a free scope check",
-    "sub": "We give you an honest yes or no. If it does not fit, we refer you onwards — free.",
-    "cta": "Start a free check",
+    "title": "Ready for the first application?",
+    "sub": "Start with the free pack. No subscription, nothing to pay to try it.",
+    "cta": "Get the free starter pack",
     "cta2": "Email us"
   },
   "footer": {
@@ -322,17 +322,9 @@
     "note": "Information on this site is general guidance and does not constitute legal advice.",
     "pilot": "Pilot service. We give practical guidance, not legal, medical or financial advice. Do not use this service in an emergency.",
     "limits": "What we do",
-    "career": "Career"
+    "career": "Services"
   },
   "catalog": {
-    "sjekk": {
-      "n": "Free scope check",
-      "d": "We read your request and say whether it suits us. If it does not, we point you somewhere better. Answer within one working day."
-    },
-    "v01": {
-      "n": "Practical guide",
-      "d": "30 minutes together and a short guide: the right public channel, a list of questions and a practical checklist. One follow-up."
-    },
     "career_free": {
       "n": "Career Starter",
       "d": "Free: a CV checklist, five basic prompts, a job tracker and a weekly search plan."
@@ -341,9 +333,27 @@
       "n": "AI Career Kit",
       "d": "CV templates in Norwegian and English, prompts for a targeted CV, an application system, interview preparation, a STAR worksheet, a LinkedIn checklist, a job tracker and a 30-day plan. One payment, no subscription."
     },
+    "linkedin": {
+      "n": "LinkedIn review",
+      "d": "Headline, About section and experience gone through in writing, with the three things to change first."
+    },
+    "digital": {
+      "n": "Digital job-search setup",
+      "d": "45 minutes setting up searches and alerts on Arbeidsplassen, Finn and LinkedIn — on your own screen."
+    },
+    "interview": {
+      "n": "Mock interview",
+      "d": "45 minutes of interview practice against a real advert, with feedback answer by answer."
+    },
     "career_review": {
-      "n": "Personal CV review",
-      "d": "45 minutes in which a person goes through one CV and one targeted application, with a prioritised list of improvements and one short follow-up."
+      "n": "CV and application review",
+      "d": "45 minutes in which a person goes through one CV and one application against a real advert. A prioritised list of improvements and one follow-up."
+    }
+  },
+  "shelved": {
+    "v01": {
+      "n": "Practical guide",
+      "d": "30 minutes together and a short guide: the right public channel, a list of questions and a practical checklist. One follow-up."
     },
     "sprak": {
       "n": "Private language support",
