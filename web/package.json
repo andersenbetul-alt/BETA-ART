@@ -2,6 +2,7 @@
   "name": "cobban",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "COBBAN \u2014 Europe is complicated. COBBAN makes it simple.",
   "scripts": {
     "dev": "next dev",
