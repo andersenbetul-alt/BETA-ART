@@ -1,0 +1,52 @@
+# The suite is the only thing standing between an edit and a site that quietly
+# sells work the model refuses to do. It runs on every push and every PR.
+name: tests
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # node:sqlite is built in from Node 22 — the server layer needs it, and
+      # there is no native module to compile because of that choice.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            server/package-lock.json
+
+      - name: Install test dependencies
+        run: npm ci
+
+      - name: Install server dependencies
+        run: npm ci --prefix server
+
+      # The static, data and API suites need no browser; run them first so a
+      # broken catalogue or a broken workflow fails in seconds rather than
+      # after a Chromium download.
+      - name: Static build
+        run: npm run test:build
+
+      - name: Translations and catalogue
+        run: npm run test:data
+
+      - name: API and case workflow
+        run: npm run test:server
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      # Accessibility is a legal requirement in Norway, not a preference, so
+      # axe runs in CI and not from memory.
+      - name: Accessibility and browser flows
+        run: npm run test:browser

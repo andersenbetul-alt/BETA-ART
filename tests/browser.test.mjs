@@ -12,9 +12,16 @@ const PAGES = ['index.html?lang=no', 'index.html?lang=ar', 'personvern.html', 'v
                'hva-vi-gjor.html', 'karriere.html', 'admin.html'];
 const WCAG = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
+/* playwright is a devDependency, so `npm ci` provides it. The absolute path is
+   a fallback for a sandbox that has it installed globally and nowhere else;
+   without the explicit error, a missing browser fails as a confusing
+   MODULE_NOT_FOUND several frames deep. */
 function playwright() {
-  try { return require('playwright'); } catch { /* not local */ }
-  return require('/opt/node22/lib/node_modules/playwright');
+  try { return require('playwright'); } catch { /* not installed locally */ }
+  try { return require('/opt/node22/lib/node_modules/playwright'); } catch { /* nor globally */ }
+  throw new Error(
+    'playwright is missing. Run: npm ci && npx playwright install --with-deps chromium'
+  );
 }
 
 export default async function () {

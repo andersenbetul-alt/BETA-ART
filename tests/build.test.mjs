@@ -190,6 +190,23 @@ export default async function () {
         'the paid kit moved; check .vercelignore still points at it');
     });
 
+    /* The suite is only a guard if it actually runs somewhere other than one
+       laptop. CI has to install what the tests import and run every suite. */
+    await test('CI installs what the tests need and runs all of them', () => {
+      const wf = fs.readFileSync('.github/workflows/test.yml', 'utf8');
+      const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+
+      assert(pkg.devDependencies.playwright, 'playwright is imported but not a dependency');
+      assert(pkg.devDependencies['axe-core'], 'axe-core is imported but not a dependency');
+
+      for (const suite of ['test:build', 'test:data', 'test:server', 'test:browser']) {
+        assert(wf.includes(suite), `CI never runs ${suite}`);
+      }
+      assert(/npm ci --prefix server/.test(wf), 'CI does not install the server dependencies');
+      assert(/playwright install/.test(wf), 'CI does not install a browser');
+      assert(/node-version: '22'/.test(wf), 'CI must run Node 22 — node:sqlite is built in there');
+    });
+
     await test('no placeholder secret is committed', () => {
       for (const file of ['server/server.js', 'assets/js/config.js']) {
         const src = fs.readFileSync(file, 'utf8');
