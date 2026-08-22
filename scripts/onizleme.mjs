@@ -104,7 +104,7 @@ const cikti = `<!DOCTYPE html>
 <title>QBLOGG — önizleme</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="./index.html">
-<link rel="icon" href="data:image/svg+xml;base64,${b64('assets/brand/qblogg-icon-small.svg')}" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml;base64,${b64('assets/brand/qblogg-favicon.svg')}" type="image/svg+xml">
 <style>${fontCss}</style>
 <style>${anaCss}</style>
 </head>

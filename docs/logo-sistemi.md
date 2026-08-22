@@ -207,7 +207,8 @@ Seçilen: **B3c** — yuvarlak kâse, yumuşak-köşeli sayaç, 86u köprü.
 | `qblogg-symbol.svg` | Ana sembol, full-color |
 | `qblogg-symbol-navy/black/white.svg` | Tek renk |
 | `qblogg-symbol-reverse.svg` | Koyu zeminde, yuvarlatılmış alan |
-| `qblogg-icon-small.svg` | 16–32 px; sayaç ×1,16 + köprü 160u |
+| `qblogg-icon-small.svg` | 16–32 px; sembolle aynı geometri (ölçek testleri bunu kullanır) |
+| `qblogg-favicon.svg` | Tarayıcı sekmesi; `favicon-32.png` ile aynı kompozisyon |
 | `qblogg-icon-app.svg` | 1024×1024 uygulama ikonu |
 | `qblogg-lockup-horizontal[-white].svg` | Yatay kilit |
 | `qblogg-lockup-stacked[-white].svg` | Dikey kilit |
@@ -362,6 +363,33 @@ sayacın içinde görünüyordu — Ø okumasının doğrudan kaynağı buydu. K
 dışarı taştığı için **üstte** çizilmeli. Dört yerde düzeltildi: `sym()`,
 `icon-small`, `icon-app` ve PNG birleştirmesi. Sonuncusu 180 px'te SVG ile
 PNG karşılaştırılarak doğrulandı: fark >32 olan piksel %0,2 (kenar yumuşatma).
+
+### Favicon tutarsızlığı kapatıldı — 22.08.2026
+
+Sayfalar iki favicon bildiriyordu ve **ikisi farklı markaydı**:
+
+| Yuva | Önceki |
+|---|---|
+| `rel="icon"` SVG | `icon-small.svg` — saydam zeminde navy halka |
+| `rel="icon"` PNG | `favicon-32.png` — navy zeminde beyaz halka |
+
+Tarayıcı hangisini seçerse farklı marka görünüyordu. Ayrıca saydam zeminli
+SVG, koyu tarayıcı temasında navy halkayı neredeyse görünmez kılıyordu.
+
+> **HIG — App Icons > Design:** *"Provide a visually consistent icon design
+> across all the platforms your app supports… prevents people from mistaking
+> your app for multiple apps."*
+
+`icon-small.svg` değiştirilmedi: o dosya `uretim-testi.mjs`'nin 16/24/32/48 px
+ölçek testlerinde **çıplak sembol** olarak kullanılıyor, rolü farklı. Bunun
+yerine `qblogg-favicon.svg` üretildi — PNG ile aynı kompozisyon.
+
+Doğrulandı: 32 px'te ikisi beyaz zemine bindirilip karşılaştırıldı, fark >32
+olan piksel **%3,4** (kenar yumuşatma).
+
+> **Ölçüt notu.** İlk karşılaştırma alpha'yı yok sayıyordu ve köşede sahte bir
+> uyuşmazlık üretti: PNG'de o piksel saydam (RGB navy, alpha 0), SVG'de beyaz
+> zemin görünüyordu. Saydam PNG karşılaştırılırken zemine bindirmek şart.
 
 ## Kalan üretim notları
 

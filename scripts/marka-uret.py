@@ -188,6 +188,26 @@ w['qblogg-icon-small.svg'] = svg(VB,
     f'  <path fill-rule="evenodd" d="{ICON_NAVY}" fill="{NAVY}"/>\n'
     f'  <path d="{ICON_AQUA}" fill="{AQUA}"/>', 24, 24)
 
+# --- Tarayıcı sekmesi favicon'u: PNG ile BİREBİR aynı kompozisyon.
+#
+# Önce sekmede iki farklı marka görünüyordu: SVG favicon saydam zeminde navy
+# halka, favicon-32.png ise navy zeminde beyaz halka. Tarayıcı hangisini
+# seçerse farklı marka. HIG: "Provide a visually consistent icon design across
+# all the platforms your app supports… prevents people from mistaking your app
+# for multiple apps."
+#
+# Ayrıca saydam zeminli SVG, koyu tarayıcı temasında navy halkayı neredeyse
+# görünmez kılıyordu. Dolu marka zemini her iki temada da ayakta duruyor.
+#
+# icon-small.svg'yi değiştirmek yerine ayrı varlık: o dosya uretim-testi.mjs'nin
+# 16/24/32/48 px ölçek testlerinde çıplak sembol olarak kullanılıyor, rolü farklı.
+_FR = 1000 / 1000 * 0.78
+w['qblogg-favicon.svg'] = svg('0 0 1000 1000',
+    f'  <rect width="1000" height="1000" rx="219" fill="{NAVY}"/>\n'
+    f'  <g transform="translate(110 110) scale({_FR:.5f})">\n'
+    f'    <path fill-rule="evenodd" d="{ICON_NAVY}" fill="#FFFFFF"/>\n'
+    f'    <path d="{ICON_AQUA}" fill="{AQUA}"/>\n  </g>', 32, 32)
+
 R = 1024 / 1000 * 0.78
 w['qblogg-icon-app.svg'] = svg('0 0 1024 1024',
     # Kendi köşe yuvarlatmamız YOK — sistem kendi maskesini uyguluyor.
@@ -404,6 +424,7 @@ _ROL = {
     'qblogg-lockup-stacked-white.svg': 'Dikey kilit, koyu zemin',
     'qblogg-icon-app.svg': '1024×1024 uygulama ikonu — köprü 100u',
     'qblogg-icon-small.svg': '16–32 px ikon — sembolle aynı geometri',
+    'qblogg-favicon.svg': 'Tarayıcı sekmesi SVG — favicon-32.png ile aynı kompozisyon',
     'favicon-32.png': 'Tarayıcı sekmesi, 32×32 — app ikonundan',
     'apple-touch-icon.png': 'iOS ana ekran, 180×180 — app ikonundan',
 }

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="32" height="32" role="img" aria-label="QBLOGG">
+  <rect width="1000" height="1000" rx="219" fill="#082C54"/>
+  <g transform="translate(110 110) scale(0.78000)">
+    <path fill-rule="evenodd" d="M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z M463 251 L537 251 Q742 251 742 456 L742 530 Q742 735 537 735 L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z" fill="#FFFFFF"/>
+    <path d="M610.2 539.5 L539.5 610.2 L817.7 888.4 L888.4 817.7 Z" fill="#00D8C2"/>
+  </g>
+</svg>
