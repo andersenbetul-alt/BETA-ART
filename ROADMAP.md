@@ -17,7 +17,15 @@ maliyet.
 
 ## Aşamalar
 
-### 1. Yayına alma (öncelik: yüksek — bunlar bitmeden site gelir üretemez)
+### 1. Yayına alma — **ERTELENDİ** (22.08.2026 kararı)
+
+> Kullanıcı kararı: **site şimdi yayınlanmıyor, önce logo bitirilecek.**
+> Aşağıdaki maddeler kapanmadı, sırası geldi diye beklemiyor — bilinçli
+> olarak beklemede. Yayın gündeme gelince buradan devam edilir; dağıtım
+> paketi ve adımlar hazır (`DAGITIM.md`, `qblogg-yayin.zip`).
+>
+> Not: bu erteleme, sitenin gelir üretmediği gerçeğini değiştirmiyor.
+> Karar kullanıcınındır ve kayıt için buraya yazıldı.
 
 | # | İş | Durum | Not |
 |---|---|---|---|
@@ -130,6 +138,7 @@ maliyet.
 | 78 | Nice sınıfı ve mal/hizmet listesi | **Karar bekliyor** | Hukukçu işi |
 | 80 | EUIPO inceleme simülasyonu | **Bitti** 22.08 | Şeklî 4/4 geçti (ilk koşumda 0/4 — DPI beyan edilmiyordu). Şekil unsuru düşük risk, **kelime unsuru yüksek risk** |
 | 81 | Üretim testleri — teknik yarısı | **Bitti** 22.08 | Faks/tek renk, siluet, ters, gri, 16/24/32 px ölçüldü. Nakış, gravür, büyük format yapılmadı |
+| 83 | **Q kuyruğu: ters sarım + kör uç** | **Bitti** 22.08 | Kuyruk halkayı DELİYORDU (ters sarım, nonzero kuralında siler). Ayrıca iç ucu sayacın ortasında asılıydı. İkisi de düzeltildi, dış uzatma 55 birim ölçümle seçildi. **Kusur tüm yayınlanmış kilit dosyalarında vardı** |
 | 82 | **Kelime markası kararı** | **Karar bekliyor** | "BLOGG" İsveççe/Norveççe "blog". Kelime markası için vekil görüşü alınmadan başvurulmamalı |
 | 79 | Renkli mi siyah-beyaz mı başvuru | **Karar bekliyor** | İkisi de üretiliyor; koruma kapsamı tercihi |
 

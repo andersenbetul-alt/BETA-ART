@@ -87,10 +87,31 @@ adv = lambda c: hm[gn(c)][0] * K
 
 # Q'nun özel terminali: 31°, sembolün köprü açısını yineler, taban altına inmez
 S = 715.0 / 2048.0
-# Klasik Q kuyruğu: sayacın sağ-altından başlar, 31° ile halkayı keser, dış konturun
-# 22u ötesinde biter. Sembolün köprü açısını yineler; taban çizgisinin altına inmez,
-# sohbet-kuyruğu oluşturmaz, tam kiriş olmadığı için Ø ile karışmaz.
-QUAD = [(320.1, 346.6), (279.9, 413.4), (418.2, 496.5), (458.4, 429.7)]
+# Klasik Q kuyruğu: sayacın sağ-alt iç konturundan başlar, 31° ile halkayı keser.
+# Sembolün köprü açısını yineler; taban çizgisinin altına inmez, sohbet-kuyruğu
+# oluşturmaz, tam kiriş olmadığı için Ø ile karışmaz.
+#
+# 22.08.2026 — kuyruk baştan kuruldu. İki ayrı kusur vardı:
+#
+# 1) SARIM YÖNÜ TERSTİ. Nokta sırası, O'nun dış konturuyla ters yönde
+#    dönüyordu; nonzero dolgu kuralında ters sarım siler, birleştirmez.
+#    Yani kuyruk halkayı BOYAMIYOR, DELİYORDU — büyük ölçekte Q'nun
+#    sağ-altında beyaz bir yarık görünüyordu. Küçük boyutta yarık göze
+#    çarpmadığı için fark edilmemişti. Ölçümle doğrulandı: kuyruk
+#    merkezindeki piksel RGB(255,255,255) idi, şimdi RGB(8,44,84).
+#
+# 2) İÇ UÇ SAYACIN ORTASINDA ASILIYDI. O glifinin iç ve dış konturları
+#    font dosyasından okunup kuyruk ekseni nokta-poligon testiyle tarandı:
+#    iç uç, sayaç kenarından 58,7 birim içerideydi — uzunluğun %36'sı beyaz
+#    alanda kör uçla duruyordu. Belgedeki "sayacın sağ-altından başlar"
+#    tanımına da aykırıydı.
+#
+# Yeni geometri: iç uç sayaç kenarına oturur (10 birim bindirme, kaynak izi
+# kalmasın), dış uç 55 birim uzatılır. 55 ölçüyle seçildi: 0/32/55/80
+# adayları 110/200/340 px'te karşılaştırıldı. 0'da marka "OBLOGG" okunuyor,
+# 80'de kuyruk halkadan kopuk bir çubuğa dönüşüyor. 55'te Q 110 px'te bile
+# okunuyor ve kuyruk halkayla bütünleşik kalıyor.
+QUAD = [(505.5, 458.0), (465.4, 524.9), (321.7, 438.5), (361.8, 371.7)]
 TERM = [((oB[0] + x / S) * K, -((oB[3] - y / S) * K)) for x, y in QUAD]
 
 SP = [0.0, 0.0, -0.045, -0.020, -0.025, 0.0]   # Q-B, B-L, L-O, O-G, G-G optik düzeltme
