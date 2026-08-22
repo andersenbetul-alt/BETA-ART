@@ -50,6 +50,13 @@ değiştirmiyoruz, adını da kullanmıyoruz.
 bugün hangi sürümü sunduğu — bu ortamdan dış ağa çıkılamıyor. Metin, fontun
 kendi dağıtımından geldiği için bu artık kapatıcı bir eksik değil.
 
+## Resmi dağıtımın tamamı depoda
+
+`vendor/inter-4.001/` — Inter'in resmi dağıtımı (152 dosya, 60 MB) 22.08.2026'da
+depoya kondu. **Site bu dosyaları kullanmıyor**; yükte değişiklik yok, yayına
+çıkan hâlâ bu klasördeki dört alt küme. Amaç hak paketi ve soy zinciri
+kanıtı. Ayrıntı: `vendor/inter-4.001/KAYNAK.md`.
+
 ## Wordmark ana hatlarının kökeni — doğrulandı (22.08.2026)
 
 Soru şuydu: logodaki harfler gerçekten resmi Inter dağıtımından mı geliyor,
