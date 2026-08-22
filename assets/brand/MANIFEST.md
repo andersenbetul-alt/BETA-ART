@@ -8,10 +8,10 @@ değişikliğin kaynağı bulunmalıdır.
 
 | Dosya | Rol | Bayt | SHA-256 |
 |---|---|---:|---|
-| `apple-touch-icon.png` | iOS ana ekran, 180×180 — app ikonundan | 4.367 | `0ccdc359e5f52320` |
-| `favicon-32.png` | Tarayıcı sekmesi, 32×32 — app ikonundan | 759 | `55a69d34d05e3595` |
-| `qblogg-icon-app.svg` | 1024×1024 uygulama ikonu — köprü 100u | 584 | `c7c9dd1a8e871781` |
-| `qblogg-icon-small.svg` | 16–32 px ikon — köprü 100u | 454 | `1380ecf6ea2b8364` |
+| `apple-touch-icon.png` | iOS ana ekran, 180×180 — app ikonundan | 4.677 | `149ea54ee3e6c4ca` |
+| `favicon-32.png` | Tarayıcı sekmesi, 32×32 — app ikonundan | 808 | `d5be592d549a3d46` |
+| `qblogg-icon-app.svg` | 1024×1024 uygulama ikonu — köprü 100u | 636 | `1459fdf3f3385ea9` |
+| `qblogg-icon-small.svg` | 16–32 px ikon — köprü 100u | 506 | `ca6023183cb40b72` |
 | `qblogg-lockup-horizontal-white.svg` | Yatay kilit, koyu zemin | 10.501 | `0518d08f919846ce` |
 | `qblogg-lockup-horizontal.svg` | Yatay kilit (sembol + wordmark) | 10.501 | `c8a33a863d2c8725` |
 | `qblogg-lockup-stacked-white.svg` | Dikey kilit, koyu zemin | 10.510 | `5fb13e7b381f7d51` |

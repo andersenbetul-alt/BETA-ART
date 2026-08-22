@@ -133,7 +133,7 @@ maliyet.
 | 73 | R03 paket yolları | **Bitti** 22.08 | `npm run marka-paket` belgeyi paket düzenine çeviriyor, elle kopyalama yok |
 | 74 | EUIPO biçim üreticisi | **Bitti** 22.08 | `npm run tescil` — zarf denetimli JPEG + 250×250 sicil önizlemesi |
 | 75 | **Font lisans metni (R05)** | **Kapandı** | `assets/fonts/OFL.txt` eklendi, OFL-1.1 bölüm bölüm doğrulandı; wordmark ana hatları resmi `InterVariable.ttf` ile `wght=700`'de birebir eşleşti; `marka-dogrula` özetleri denetliyor |
-| 76 | **Tanınırlık testi (R07)** | **Açık** | Protokol yazılı, katılımcı yok. Uydurulmayacak |
+| 76 | **Tanınırlık testi (R07)** | **Açık** | Protokol yazılı, katılımcı yok. Uydurulmayacak. Küçük boy varyantı 22.08'de ölçülüp yeniden tasarlandı (sayaç ×1,16, köprü 160u) — ama makine ölçümü insan tanınırlığının yerine geçmez |
 | 77 | **Marka araştırması (R08)** | **Kısmen** | Açık web, alan adı ekseni, ABD sicil aynaları ve Norveç ajans alanı tarandı (22.08) — QBLOGG için sıfır; QBLOG kalabalık. **AB + Norveç sicilleri hâlâ yapılmadı**; TMview/EUIPO/Patentstyret/Brønnøysund bu ortamda engelli |
 | 78 | Nice sınıfı ve mal/hizmet listesi | **Karar bekliyor** | Hukukçu işi |
 | 80 | EUIPO inceleme simülasyonu | **Bitti** 22.08 | Şeklî 4/4 geçti (ilk koşumda 0/4 — DPI beyan edilmiyordu). Şekil unsuru düşük risk, **kelime unsuru yüksek risk** |

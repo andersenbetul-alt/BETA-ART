@@ -58,9 +58,27 @@ SYM_NAVY = ("M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 10
             "L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z")
 SYM_AQUA = "M368.6 722.4 L412.9 796.1 L808.5 558.4 L764.2 484.7 Z"
 
-# --- küçük boy ikonu: köprü 100u'ya kalınlaştırılır, 16 px'te ayakta kalsın diye
-ICON_NAVY = SYM_NAVY
-ICON_AQUA = "M369.7 723.0 L421.2 808.7 L815.7 571.6 L764.2 485.9 Z"
+# --- küçük boy ikonu (16-32 px). Bir önceki sürüm köprüyü 86u'dan 100u'ya
+# kalınlaştırıyordu ve gerekçesi "16 px'te ayakta kalsın" idi. 22.08.2026'da
+# ölçüldü: 16 px'te iki varyant arasındaki fark **tek piksel** (aqua 24 vs 25).
+# 16 px'te 1 CSS pikseli 62,5 birim; 14 birimlik kalınlaşma 0,22 piksel demek.
+# Yani varyantın gerekçesi sayısal olarak boştu.
+#
+# Kalınlığı artırmak da çözmüyor: 86u -> 190u (%121) yalnızca 19 -> 25 piksel
+# veriyor ve büyük boyda şekli hantallaştırıyor. Okunurluğu taşıyan öğe köprü
+# değil **sayaç** — "bu delikli bir harf" mesajını o veriyor.
+#
+# Bu yüzden küçük boy varyantı iki eksende birden değişti: sayaç merkez
+# etrafında 1,16 katına ölçeklendi (yan şerit 158u -> 119u) ve köprü 160u'ya
+# çıktı. 16 px'te ölçülen kazanç: sayaç 135 -> 143 piksel, aqua 19 -> 28 (%47).
+# Aqua çubuk artık halkayı sol altta gerçekten kesip çıkıyor; Q'yu O'dan ayıran
+# şey bu. Ana sembol DEĞİŞMEDİ — kilitler, tescil dosyaları ve belgedeki
+# ölçüler ona bağlı.
+ICON_NAVY = ("M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z "
+             "M457.1 212.3 L542.9 212.3 Q780.7 212.3 780.7 450.1 L780.7 535.9 "
+             "Q780.7 773.7 542.9 773.7 L457.1 773.7 Q219.3 773.7 219.3 535.9 "
+             "L219.3 450.1 Q219.3 212.3 457.1 212.3 Z")
+ICON_AQUA = "M349.6 690.7 L431.9 827.8 L827.6 590.1 L745.1 453.0 Z"
 
 # --- wordmark ana hatları
 font = instantiateVariableFont(TTFont(FONT), {'wght': 700}, inplace=True)
@@ -300,11 +318,13 @@ def _ikon_uret(ad, boy):
                 for poli in _yollari_coz(d)]
 
     zemin = _ortu(_yuvarlak_kare(boy, 224 * k), boy, boy)
-    # ICON_AQUA — SYM_AQUA değil. qblogg-icon-app.svg 100u köprüyü kullanıyor;
-    # burada 86u kullanılırsa PNG'ler app ikonunun aynısı olmaz. Denetimde
-    # yakalandı (R01): önce SYM_AQUA yazılmıştı ve 'birebir aynı' denmişti.
+    # ICON_* çifti — SYM_* değil. qblogg-icon-app.svg küçük boy geometrisini
+    # kullanıyor; burada sembolünki kullanılırsa PNG'ler app ikonunun aynısı
+    # olmaz. Denetimde bir kez yakalandı (R01): köprü SYM_AQUA yazılmıştı ve
+    # 'birebir aynı' denmişti. 22.08.2026'da halka için aynı hata yeniden
+    # doğdu: ICON_NAVY sembolden ayrılınca bu satır SYM_NAVY'de kalmıştı.
     aqua = _ortu(don(ICON_AQUA), boy, boy)
-    halka = _ortu(don(SYM_NAVY), boy, boy)
+    halka = _ortu(don(ICON_NAVY), boy, boy)
 
     NV, AQ, BZ = (8, 44, 84), (0, 216, 194), (255, 255, 255)
     satirlar = []

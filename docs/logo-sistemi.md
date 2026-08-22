@@ -207,19 +207,83 @@ Seçilen: **B3c** — yuvarlak kâse, yumuşak-köşeli sayaç, 86u köprü.
 | `qblogg-symbol.svg` | Ana sembol, full-color |
 | `qblogg-symbol-navy/black/white.svg` | Tek renk |
 | `qblogg-symbol-reverse.svg` | Koyu zeminde, yuvarlatılmış alan |
-| `qblogg-icon-small.svg` | 16–32 px; köprü 100u'ya kalınlaştırılmış |
+| `qblogg-icon-small.svg` | 16–32 px; sayaç ×1,16 + köprü 160u |
 | `qblogg-icon-app.svg` | 1024×1024 uygulama ikonu |
 | `qblogg-lockup-horizontal[-white].svg` | Yatay kilit |
 | `qblogg-lockup-stacked[-white].svg` | Dikey kilit |
 
 Ölçek testi 16/24/32/48/64 px'te yapıldı. 24 px'te navy en ince yeri ~3,6 px,
-sayaç ~11,6 px; **aqua ~2,1 px ile 3 px hedefinin altında**. Bu yüzden
-`icon-small` ayrı bir varyant olarak köprüyü 100u'ya kalınlaştırır. 16 px'te
-aqua pratikte kaybolur; o boyutta `symbol-navy` kullanın.
+sayaç ~11,6 px; **aqua ~2,1 px ile 3 px hedefinin altında**.
+
+### Küçük boy varyantı yeniden ölçüldü — 22.08.2026
+
+`icon-small` daha önce köprüyü 86u'dan **100u'ya** kalınlaştırıyordu ve gerekçe
+"16 px'te ayakta kalsın" diye yazılmıştı. Gerekçe **ölçülmemişti**. Ölçüldü:
+
+| 16 px'te | aqua piksel |
+|---|---|
+| `symbol` (86u) | 24 |
+| `icon-small` (100u) | 25 |
+
+**Tek piksel.** 16 px'te bir CSS pikseli 62,5 birime karşılık gelir; 14 birimlik
+kalınlaşma 0,22 piksel demektir. Varyantın tüm gerekçesi sayısal olarak boştu.
+
+Kalınlığı artırmak da çözmüyor. Altı kalınlık 16/24/32 px'te ölçüldü:
+
+| Köprü | 16 px aqua | 32 px aqua |
+|---|---|---|
+| 86u | 19 | 54 |
+| 130u | 21 | 67 |
+| 160u | 23 | 77 |
+| 190u | 25 | 84 |
+| 220u | 26 | 90 |
+
+86u → 190u, yani **%121 kalınlaşma**, 16 px'te yalnızca 6 piksel getiriyor ve
+büyük boyda şekli hantallaştırıyor. Okunurluğu taşıyan öğe köprü değil,
+**sayaç** — "bu delikli bir harf" mesajını o veriyor.
+
+Bu yüzden varyant iki eksende birden değişti. Sayaç merkez etrafında (500, 493)
+**1,16 katına** ölçeklendi — yan şerit 158u → 119u — ve köprü **160u**'ya çıktı:
+
+| 16 px | sayaç | aqua |
+|---|---|---|
+| Önceki (k1,00 · 86u) | 135 | 19 |
+| **Seçilen (k1,16 · 160u)** | **143** | **28** |
+| Elenen (k1,24 · 160u) | 147 | 27 |
+
+Seçilen aday sayaçta +8, aqua'da **+%47** kazandırıyor. k1,24 sayaçta biraz
+daha iyi ama aqua'da geriliyor ve halka 100u'nun altına inip kırılganlaşıyor.
+
+Kazanılan asıl şey sayı değil: köprü artık halkayı **sol altta gerçekten kesip
+dışarı çıkıyor**. Q'yu O'dan ayıran özellik budur ve 86u'da zar zor görünüyordu.
+
+**Ana sembol değişmedi.** Kilitler, tescil başvuru dosyaları ve bu belgedeki
+27 ölçü ana sembole bağlıdır; küçük boy varyantı bağımsız bir dosyadır.
+
+### Beraberinde çıkan hata — PNG halkası
+
+`ICON_NAVY` sembolden ayrılınca `_ikon_uret` içindeki halka satırı `SYM_NAVY`'de
+kalmıştı; PNG favicon'lar SVG app ikonundan farklı çıkacaktı. R01'in aynısı,
+ikinci kez. Piksel piksel ölçülüp düzeltildi:
+
+| 32 px'te SVG ↔ PNG | fark > 32 olan piksel |
+|---|---|
+| Düzeltilmemiş hâli | 155 |
+| Düzeltilmiş hâli | **94** |
+
+Kalan 94 piksel iki rasterleştiricinin kenar yumuşatma farkıdır; değişiklikten
+önceki taban da aynı büyüklükteydi.
+
+> **Ölçüt notu.** İlk denemede üç toplam renk sayısı (navy/aqua/beyaz)
+> kullanıldı ve bu ölçüt iki geometriyi **ayırt edemedi** — hatalı hâl
+> düzeltilmiş hâlden daha iyi göründü. Toplam sayımlar yer değiştiren pikselleri
+> görmez. Piksel piksel karşılaştırmaya geçildi.
 
 ## Kalan üretim notları
 
-- 16 px'te aqua ayırt edilemiyor; tek renk varyantı zorunlu.
+- 16 px'te aqua zayıf kalıyor ama artık seçiliyor (28 piksel). Harf kimliği bu
+  boyutta yine de tam okunmaz; o boyutta marka rengi ve siluetiyle çalışır.
+  Bu **bilinçli bir ödünleşimdir**, fark edilmemiş bir kusur değil.
 - ~~Q kuyruğunun sayaç içindeki kör ucu~~ — **kapandı 22.08.2026.** Kör uç
   kaldırıldı; ayrıca ters sarımdan doğan ve kuyruğu halkayı delen ayrı bir
   kusur bulunup düzeltildi. Detay yukarıda.

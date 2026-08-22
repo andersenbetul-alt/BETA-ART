@@ -139,6 +139,36 @@ else:
         kontrol(f'{f.name} özeti KAYNAK.md ile aynı', ozet,
                 ozet if ozet in kayit else 'kayıtta yok')
 
+# --- küçük boy varyantı: sabitler belgedeki parametrelerden türetilebilmeli ---
+# ICON_AQUA, sembol köprüsünün merkez çizgisi üzerinde T=160u simetrik bar;
+# ICON_NAVY'nin sayacı, sembol sayacının (500, 493) etrafında k=1,16 ölçeklisi.
+# Biri elle kurcalanırsa burası kırmızıya döner.
+A, B, PX, PY = (390.75, 759.25), (786.35, 521.55), 0.515, 0.857
+
+
+def _bar(T):
+    h = T / 2.0
+    q = [(A[0] - h * PX, A[1] - h * PY), (A[0] + h * PX, A[1] + h * PY),
+         (B[0] + h * PX, B[1] + h * PY), (B[0] - h * PX, B[1] - h * PY)]
+    return [round(v, 1) for pt in q for v in pt]
+
+
+def _sayac(k):
+    pts = [(463, 251), (537, 251), (742, 251), (742, 456), (742, 530), (742, 735),
+           (537, 735), (463, 735), (258, 735), (258, 530), (258, 456), (258, 251)]
+    return [round(v, 1) for x, y in pts
+            for v in ((x - 500.0) * k + 500.0, (y - 493.0) * k + 493.0)]
+
+
+SY_AQUA = re.search(r'SYM_AQUA = "([^"]*)"', src).group(1)
+IC_AQUA = re.search(r'ICON_AQUA = "([^"]*)"', src).group(1)
+IC_NAVY = ''.join(re.findall(r'"([^"]*)"', re.search(r'ICON_NAVY = \((.*?)\)\n', src, re.S).group(1)))
+kontrol('sembol köprüsü T=86 formülden türüyor', sayilar(SY_AQUA), _bar(86))
+kontrol('küçük boy köprüsü T=160', sayilar(IC_AQUA), _bar(160))
+kontrol('küçük boy sayacı k=1,16', sayilar(IC_NAVY[IC_NAVY.index('M457'):])[:24], _sayac(1.16))
+kontrol('küçük boy halkası sembolle aynı dış kâse',
+        sayilar(SYM[:i]), sayilar(IC_NAVY[:IC_NAVY.index('M457')]))
+
 print('QBLOGG marka ölçü doğrulaması')
 print('─' * 62)
 for ad, b, o in gecti:
