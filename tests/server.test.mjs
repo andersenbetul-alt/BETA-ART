@@ -145,9 +145,37 @@ export default async function () {
         }
       });
 
+      await test('a weekend slot is refused', async () => {
+        const d = new Date();
+        while (d.getDay() !== 0) d.setDate(d.getDate() + 1);   // the next Sunday
+        const r = await booking({
+          serviceId: 'career_review', payment: 'invoice',
+          date: d.toISOString().slice(0, 10), time: '10:00', details: customer()
+        });
+        equal(r.status, 400);
+        equal(r.body.error, 'not_a_workday');
+      });
+
+      /* This one used to book "today" and expect inside_lead_time, which is
+         wrong every Saturday and Sunday: the server rejects a weekend date as
+         not_a_workday before it ever looks at the clock. Find a workday that is
+         genuinely inside the lead time instead — and when the calendar offers
+         none, say so rather than assert the wrong error. */
       await test('a slot inside the lead time is refused', async () => {
-        const today = new Date().toISOString().slice(0, 10);
-        const r = await booking({ serviceId: 'career_review', payment: 'invoice', date: today, time: '09:00',
+        const leadMs = 24 * 3600 * 1000;
+        let date = null;
+        for (let i = 0; i <= 7 && !date; i += 1) {
+          const d = new Date(Date.now() + i * 86400000);
+          const day = d.getDay();
+          if (day === 0 || day === 6) continue;
+          const iso = d.toISOString().slice(0, 10);
+          if (new Date(iso + 'T09:00:00Z').getTime() - Date.now() < leadMs) date = iso;
+        }
+        if (!date) {
+          assert(true, 'no workday falls inside the lead time today — nothing to assert');
+          return;
+        }
+        const r = await booking({ serviceId: 'career_review', payment: 'invoice', date, time: '09:00',
                                   details: customer() });
         equal(r.body.error, 'inside_lead_time');
       });
