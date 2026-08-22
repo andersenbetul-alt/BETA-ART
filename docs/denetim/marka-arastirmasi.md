@@ -38,9 +38,34 @@ ekleyin — içerik ve yayıncılık hizmetleri genelde bu sınıflarda.
 | # | Terim | Bölge | Sınıf filtresi | Sonuç sayısı | Yakın marka var mı | Tarih |
 |---|---|---|---|---|---|---|
 | 1 | `QBLOGG` | 43 ofis / 57 bölge | yok | | | |
-| 2 | `BLOGG` | 43 ofis / 57 bölge | 35, 41, 42 | | | |
+| 2 | `BLOGG` | 43 ofis / 57 bölge | 35, 41, 42 | **sayı bekleniyor** | **35'te var; 41 ve 42'de yok** (kullanıcı bildirimi) | 22.08.2026 |
 | 3 | `Q BLOGG` | 43 ofis / 57 bölge | yok | | | |
 | 4 | `QBLOG` | 43 ofis / 57 bölge | yok | | | |
+
+> **2 numaralı satır kullanıcı tarafından bildirildi, bu ortamdan
+> doğrulanmadı.** Sonuç sayısı henüz girilmedi; sayı olmadan bulgunun
+> ağırlığı ölçülemez (1 tescil ile 50 tescil aynı şey değildir).
+
+### 2 numaralı bulgunun okunuşu — ön değerlendirme
+
+Sınıf dağılımı anlamlı: **35 dolu, 41 ve 42 boş.**
+
+- **Sınıf 35** reklam, iş yönetimi ve pazarlama hizmetlerini kapsar. QBLOGG'un
+  sattığı iş (şirketler için içerik üretimi ve dağıtımı) büyük ölçüde buraya
+  düşer. Yani **çakışma riski en yüksek sınıf, dolu olan sınıf.**
+- **Sınıf 41** eğitim ve eğlence, **42** teknoloji hizmetleridir; ikisi de
+  QBLOGG'un ana faaliyeti değil.
+
+Bu, kelime unsurunun zayıflığı savını **güçlendirir**: başkaları "BLOGG"
+içeren markaları tam da bizim satacağımız sınıfta tescil ettirmiş.
+
+Ayrıca "blogg" Norveççe ve İsveççede günlük bir sözcük ve yaygın biçimde
+jenerik kullanılıyor (`blogg.no` Norveç'te bir blog platformu; kurumsal
+sitelerde bölüm adı olarak "Blogg" standart). Bu kullanım yaygınlığı,
+sözcüğün ayırt edici değil tanımlayıcı algılandığı yönünde bir göstergedir.
+
+**Yine de bu bir hukuki görüş değildir.** Sayı girilmeden ve bulunan
+markalar listelenmeden sonuç bağlanmamalıdır.
 
 ### Bulunan yakın markalar
 
