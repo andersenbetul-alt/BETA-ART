@@ -47,17 +47,22 @@ def seal_svg(path):
     favicon is its mark. Either way the icon comes from the page rather than
     from a copy that can drift.
     """
-    from urllib.parse import unquote
     src = open(path, encoding="utf-8").read()
     m = re.search(r'<svg[^>]*class="seal-mark".*?</svg>', src, re.S)
     if not m:
-        f = re.search(r'rel="icon"[^>]*href="data:image/svg\+xml,([^"]+)"', src)
-        if not f:
-            return None
-        svg = unquote(f.group(1))
-        # the favicon is drawn for 32px with a background rect of its own;
-        # that rect is what the ground colour is for here, so drop it
-        return re.sub(r"<rect[^>]*/>", "", svg, count=1)
+        # The journal has no seal, and that is deliberate: its masthead is a
+        # newspaper wordmark with a dateline, not a logo. But an icon does a
+        # different job — it identifies one of four properties on a home
+        # screen, and the guidance is explicit that inconsistent icons make
+        # people mistake one product for several. The journal's own dateline
+        # says "Beta Art", so it gets the Beta Art seal here while its
+        # masthead stays exactly as designed.
+        #
+        # Falling back to the favicon was the first attempt and it was wrong:
+        # that mark is drawn on a 32px canvas with r=4, so scaled to 180 it
+        # filled 24x22 of the tile against the seal's 92x94, and its detail
+        # collapsed at small sizes (luminance spread 212 against 255).
+        return seal_svg(os.path.join(ROOT, "index.html"))
     svg = m.group(0)
     # the mark inherits its stroke from the page; state it so a standalone
     # render is not black-on-black
