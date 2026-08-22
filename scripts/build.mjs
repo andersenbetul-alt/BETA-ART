@@ -50,15 +50,15 @@ const META = {
   en: ['HXI — Norwegian Drift Phonk Producer', 'Norwegian phonk producer from Oslo. 43M+ Spotify streams. Drift phonk, phonk house, montagem. Two tracks free for creators, with credit.'],
   zh: ['HXI — 挪威 Drift Phonk 制作人', '来自奥斯陆的挪威 phonk 制作人，Spotify 播放量超过 4300 万。Drift phonk、phonk house、montagem。 两首作品创作者可免费使用，署名即可。'],
   hi: ['HXI — नॉर्वेजियन ड्रिफ्ट फोंक प्रोड्यूसर', 'ओस्लो के नॉर्वेजियन फोंक प्रोड्यूसर। 4.3 करोड़+ स्पॉटिफ़ाई स्ट्रीम। ड्रिफ्ट फोंक, फोंक हाउस, मोंटाजेम। दो ट्रैक क्रिएटर्स के लिए मुफ़्त, श्रेय के साथ।'],
-  es: ['HXI — Productor noruego de drift phonk', 'Productor noruego de phonk desde Oslo. Más de 43 M de reproducciones en Spotify. Drift phonk, phonk house, montagem. Dos temas libres para creadores, con crédito.'],
+  es: ['HXI — Productor noruego de drift phonk', 'Productor noruego de phonk desde Oslo. 43 M+ reproducciones en Spotify. Drift phonk, phonk house, montagem. Dos temas libres para creadores, con crédito.'],
   ar: ['HXI — منتج درفت فونك نرويجي', 'منتج فونك نرويجي من أوسلو. أكثر من 43 مليون استماع على سبوتيفاي. دريفت فونك، فونك هاوس، مونتاجيم. مقطوعتان مجانيتان لصنّاع المحتوى، مع النسبة.'],
-  fr: ['HXI — Producteur de drift phonk norvégien', 'Producteur de phonk norvégien basé à Oslo. Plus de 43 M d’écoutes sur Spotify. Drift phonk, phonk house, montagem. Deux titres libres pour les créateurs, avec crédit.'],
+  fr: ['HXI — Producteur de drift phonk norvégien', 'Producteur de phonk norvégien basé à Oslo. 43 M+ écoutes sur Spotify. Drift phonk, phonk house, montagem. Deux titres libres pour les créateurs, avec crédit.'],
   bn: ['HXI — নরওয়েজিয়ান ড্রিফট ফোংক প্রযোজক', 'অসলোর নরওয়েজিয়ান ফোংক প্রযোজক। ৪.৩ কোটির বেশি স্পটিফাই স্ট্রিম। ড্রিফট ফোংক, ফোংক হাউস, montagem। দুটি ট্র্যাক নির্মাতাদের জন্য বিনামূল্যে, কৃতিত্ব সহ।'],
   pt: ['HXI — Produtor norueguês de drift phonk', 'Produtor norueguês de phonk, de Oslo. Mais de 43 mi de streams no Spotify. Drift phonk, phonk house, montagem. Duas faixas livres para criadores, com crédito.'],
   ru: ['HXI — норвежский дрифт-фонк-продюсер', 'Норвежский фонк-продюсер из Осло. Более 43 млн прослушиваний в Spotify. Дрифт-фонк, фонк-хаус, montagem. Два трека бесплатны для авторов — с указанием.'],
   ur: ['HXI — نارویجن ڈرفٹ فونک پروڈیوسر', 'اوسلو سے نارویجن فونک پروڈیوسر۔ اسپاٹیفائی پر 4.3 کروڑ سے زائد اسٹریمز۔ ڈرفٹ فونک، فونک ہاؤس، montagem۔ دو ٹریک تخلیق کاروں کے لیے مفت، کریڈٹ کے ساتھ۔'],
   no: ['HXI — norsk drift phonk-produsent', 'Norsk phonk-produsent fra Oslo. Over 43 millioner strømminger på Spotify. Drift phonk, phonk house, montagem. To låter er gratis for skapere, med kreditering.'],
-  tr: ['HXI — Norveçli drift phonk prodüktörü', 'Oslo’dan Norveçli phonk prodüktörü. 43 milyondan fazla Spotify dinlenmesi. Drift phonk, phonk house, montagem. İki parça üreticiler için ücretsiz, kredi vererek.'],
+  tr: ['HXI — Norveçli drift phonk prodüktörü', 'Oslo’dan Norveçli phonk prodüktörü. 43 Mn+ Spotify dinlenmesi. Drift phonk, phonk house, montagem. İki parça üreticiler için ücretsiz, kredi vererek.'],
 };
 
 const l = (code) => `${code}/`;
