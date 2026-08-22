@@ -182,7 +182,8 @@ async function main() {
     rapor.map((r) => `| \`${r.ad}.jpg\` | ${r.not} | ${(r.bayt / 1024).toFixed(0)} KB | ${r.dpi || '?'} | ` +
       `${r.sorun.length ? '✗ ' + r.sorun.join(', ') : '✓'} | ${RISK[r.risk]} |`).join('\n') +
     `\n\nZarf: JPEG · en fazla ${ZARF.enBoyEn}×${ZARF.enBoyBoy} px · ${ZARF.dpi[0]}–${ZARF.dpi[1]} DPI · ` +
-    'RGB · progressive değil · 2 MB altı.\n\n' +
+    'RGB/Gri/S-B/CMYK · 2 MB altı.\n\n' +
+    '_Progressive JPEG yasağı EUIPO kuralı değildir; kendi tedbirimizdir ve\nuyarı olarak raporlanır._\n\n' +
     '**Başvuru öncesi bu rakamları EUIPO\'nun kendi sayfasından doğrulayın.**\n' +
     'Kurum şartlarını değiştirebilir; buradaki değerler yazıldığı gündeki\n' +
     'kaynaklara dayanıyor.\n\n' +

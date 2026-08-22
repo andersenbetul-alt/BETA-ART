@@ -31,8 +31,8 @@ ikisi birden.
 | Biçim | JPEG |
 | En büyük boyut | 2835 × 2010 piksel |
 | Çözünürlük | 96–300 DPI |
-| Renk modu | RGB (CMYK dönüştürülür, renkler kayabilir) |
-| Progressive JPEG | **kabul edilmiyor** |
+| Renk modu | RGB, Gri, S/B **veya** CMYK — dördü de kabul |
+| Progressive JPEG | EUIPO kuralı değil; bizim tedbirimiz, uyarı verilir |
 | En büyük dosya | 2 MB |
 | Sicilde görünen boyut | 250 × 250 piksel |
 

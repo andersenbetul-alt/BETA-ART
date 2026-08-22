@@ -83,8 +83,9 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    (`assets/fonts/KAYNAK.md`). Lisans metni ezberden yazılmaz, indirilir.
    **(c) Başvuru biçimi.** `node scripts/marka-tescil.mjs` şekil markası
    dosyalarını EUIPO zarfına göre üretir ve denetler: JPEG, en fazla
-   2835×2010 px, 96–300 DPI, RGB, progressive değil, 2 MB altı; sicilde
-   250×250 görünür. Zarf dışına çıkan dosya varsa çıkış kodu 1.
+   2835×2010 px, 96–300 DPI, 2 MB altı, renk modu RGB/Gri/S-B/CMYK; sicilde
+   250×250 görünür. Renk modu kuralı `RENK_MODLARI` dizisinde tek kaynakta
+   durur ve `npm run tescil-testi` onu sınar. Zarf dışına çıkan dosya varsa çıkış kodu 1.
    Detay ve kapalı kalan hukuk maddeleri: `docs/marka-tescili.md`.
    **(d) Belge varlığı anlatır.** `npm run marka-dogrula` belgedeki her ölçüyü
    üretilen dosyalardan yeniden ölçüp karşılaştırır; uyuşmazlıkta çıkış kodu 1.

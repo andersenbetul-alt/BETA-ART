@@ -26,7 +26,11 @@ doğrulandı.
 | `kilit-renkli.jpg` | 1600×1600 | 300 | YCbCr (RGB) | ✓ | 71 KB | ✓ |
 | `kilit-siyah.jpg` | 1600×1600 | 300 | YCbCr (RGB) | ✓ | 59 KB | ✓ |
 
-Zarf: JPEG · ≤ 2835×2010 px · 96–300 DPI · RGB · progressive değil · < 2 MB.
+Zarf: JPEG · ≤ 2835×2010 px · 96–300 DPI · RGB/Gri/S-B/CMYK · < 2 MB.
+
+> **Düzeltme 22.08.2026.** Bu satır önce "RGB · progressive değil" diyordu.
+> EUIPO dört renk modunu da kabul ediyor ve progressive yasağı EUIPO kuralı
+> değil, bizim tedbirimiz. Kaynaklar: `docs/marka-tescili.md`.
 
 ### Bu incelemede bulunan kusur
 
