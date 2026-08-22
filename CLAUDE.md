@@ -27,6 +27,7 @@ kosullar.html       Kullanım ve hizmet koşulları (TR + EN)
 post.html           Yazı detayı (?slug=... ile)
 assets/js/config.js Yayın ayarları: e-posta, alan adı, sosyal hesaplar, fiyatlar, lead magnet
 assets/css/main.css Tek stil dosyası; tüm renkler :root değişkenlerinden gelir
+docs/tasarim-sistemi.md Belirteçler, ikon kuralı, RTL, dış tasarım çeviri listesi
 assets/brand/       Kimlik: sembol, kilitler, ikonlar, favicon (scripts/marka-uret.py üretir)
 assets/js/i18n.js   Dil listesi (QB_LANGS) + 10 dilde metinler (QB_I18N)
 assets/js/posts.js  Blog içeriği (QB_POSTS): her yazı 10 dilde
