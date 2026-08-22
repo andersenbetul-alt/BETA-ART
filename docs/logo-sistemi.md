@@ -8,6 +8,12 @@ betiğin içindeki stdlib rasterleştirici üretiyor (çift-tek tarama, y'de 8 k
 çözer, yani depo kökünden de kaynak paketinden de çalışır. Wordmark ana hatları deponun kendi Inter değişken
 fontundan `wght=700`'de örneklenir — dış servis, kurulu font veya Figma gerekmez.
 
+Doğrulama: `npm run marka-dogrula` — bu belgedeki her ölçüyü üretilen
+dosyalardan yeniden ölçer ve karşılaştırır. 16 ölçü denetleniyor:
+ayak izi, sayaç, üç şerit, sayaç kayması, köprünün üç ölçüsü, kuyruğun
+üç ölçüsü, kuyruk sarımı ve SVG'lerde yasak öğe taraması. Uyuşmazlıkta
+çıkış kodu 1.
+
 Kanıt: `docs/gorseller/logo-kanit-panosu.png` (ölçek testi, varyantlar, kilitler,
 Reality Board) · `docs/gorseller/logo-aday-karsilastirma.png` (aday elemesi).
 

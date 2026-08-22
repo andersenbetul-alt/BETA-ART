@@ -86,6 +86,10 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    2835×2010 px, 96–300 DPI, RGB, progressive değil, 2 MB altı; sicilde
    250×250 görünür. Zarf dışına çıkan dosya varsa çıkış kodu 1.
    Detay ve kapalı kalan hukuk maddeleri: `docs/marka-tescili.md`.
+   **(d) Belge varlığı anlatır.** `npm run marka-dogrula` belgedeki her ölçüyü
+   üretilen dosyalardan yeniden ölçüp karşılaştırır; uyuşmazlıkta çıkış kodu 1.
+   Gerekçe: belgede iki yanlış ölçü bulundu, biri var olmayan bir işlemi
+   anlatıyordu. Yapım kaydı yanlışsa tescil dosyası da yanlıştır.
    **Uydurma yasak.** Marka müsaitliği, tescil edilebilirlik, kullanıcı testi
    sonucu ve kurum ücreti hakkında doğrulanmamış hiçbir şey yazılmaz. Kurum
    siteleri bu ortamda engelli; her rakam "doğrulanmadı" diye işaretlenir.

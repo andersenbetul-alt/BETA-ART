@@ -22,6 +22,7 @@ const P = join(ROOT, 'paket');
 
 const KOPYA = [
   ['scripts/marka-uret.py',      'uretici/marka-uret.py'],
+  ['scripts/marka-dogrula.py',   'uretici/marka-dogrula.py'],
   ['scripts/requirements.txt',   'uretici/requirements.txt'],
   ['docs/marka-testleri.md',     'belge/marka-testleri.md'],
   ['docs/marka-tescili.md',      'belge/marka-tescili.md'],
