@@ -89,7 +89,33 @@ gerçek ve hesaba katılması gereken bir risktir.
 fiilen şekle dayanır, kelimeye değil. Yani başkası "Blogg" içeren başka bir
 adı farklı bir sembolle kullanabilir.
 
-## C. Nispi ret nedenleri — **İNCELENMEDİ**
+## C. Nispi ret nedenleri — **KISMEN İNCELENDİ (22.08.2026)**
+
+`BLOGG` araması TMview'da yapıldı (kullanıcı tarafından; 29 kayıt).
+Tam liste ve okunuşu: `docs/denetim/marka-arastirmasi.md`.
+
+**Özet: AB ve Norveç'te sınıf 35'te yaşayan bir `BLOGG` engeli görünmüyor.**
+O sınıftaki kayıtların hepsi ölü (Fransa, Çekya, Norveç `Bloggr`, Almanya).
+Yaşayan `BLOGG` tescilleri mobilya sınıflarında (11/20/21) ve tek sahipte:
+Leiner & kika Möbelhandels GmbH.
+
+İzlenecek iki kayıt, ikisi de Birleşik Krallık (AB dışı ama pazar olabilir):
+`BLOGGI` (sınıf 35 dahil, tescilli) ve `BLOGG OFF` (35/41, 01.08.2026'da
+başvurulmuş, derdest).
+
+Yapılmayan aramalar: `QBLOGG`, `Q BLOGG`, `QBLOG`, WIPO Global Brand
+Database, şirket adı ve alan adı. Bu bölüm hâlâ eksik.
+
+### Bu bulgunun B2'ye etkisi
+
+B2'deki tanımlayıcılık uyarısı **duruyor** ve veri onu çürütmüyor:
+EUIPO'nun `BLOGG`'u tescil etmiş olması mobilya içindir; orada sözcük
+keyfîdir. Ayırt edicilik mal ve hizmete göre değerlendirilir.
+
+Değişen şey riskin **kaynağı**: engel başkasının önceki hakkı değil,
+markanın kendi ayırt ediciliği. Bu, mutlak ret sorunudur — nispi değil.
+
+## C-eski. Nispi ret nedenleri — genel çerçeve
 
 Önceki haklar araştırması yapılmadı. EUIPO nispi nedenleri kendiliğinden
 incelemez (itiraz üzerine bakar) ama başvuru sahibine bir araştırma raporu
