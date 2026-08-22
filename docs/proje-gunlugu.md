@@ -15,6 +15,57 @@ Sitenin tek işi ziyaretçiye **brief formunu doldurtmak**. Gelir modeli: proje
 bazlı (tek makale) + tekrarlayan (aylık paketler) + ortaklık bağlantıları.
 Paket fiyatları örnek başlangıç fiyatıdır ve sitede böyle işaretlenir.
 
+## Web sayfası nasıl planlandı
+
+**Tek dönüşüm hedefi.** Site trafik toplamak için değil, ziyaretçiye **brief
+formunu doldurtmak** için planlandı. Her sayfanın bu hedefe giden yolda bir
+rolü var; hedefe hizmet etmeyen özellik eklenmedi ("önce sadelik" ilkesi).
+
+**Bilgi mimarisi — 7 sayfa, 7 rol:**
+
+| Sayfa | Rolü |
+|---|---|
+| `index` | İkna hattı: hero (vaat) → hizmetler → "tek araştırmadan yedi çıktı" akışı → paketler → son yazılar (kanıt) → bülten |
+| `work` | Dönüşüm noktası: marka briefi + yazar başvurusu, süreç, SSS |
+| `blog` | Trafik ve güven: arama + kategori filtresiyle yazı listesi |
+| `post` | Derinlik: tek yazı, kaynakça, benzer yazılar, yazı sonu teklif köprüsü |
+| `gizlilik` / `kosullar` | Güven ve hukuk (TR + EN) |
+| `404` | Kaybolan ziyaretçiyi ana sayfaya döndürür |
+
+Ana sayfadaki sıralama bilinçli: önce vaat, sonra somut hizmetler, sonra
+işleyiş kanıtı, en son fiyat — ziyaretçi fiyatı gördüğünde değeri zaten
+görmüş oluyor.
+
+**Teknik plan — neden çatısız?** Saf HTML+CSS+JS, sıfır bağımlılık:
+site her statik sunucuya olduğu gibi yüklenir, kırılacak derleme zinciri
+yok, bakım maliyeti sıfıra yakın, sayfa yükü küçük (ana sayfa tel üzerinden
+~170 KB). Ödünleşim de bilinçli kabul edildi: dil değişimi istemcide
+kaldığı için çok dilli SEO tam verim vermiyor; kalıcı çözüm (ön-render)
+ROADMAP'te.
+
+**Çok dillilik planı.** 10 dil; görünen her metin sözlükten (`data-i18n`),
+HTML'deki Türkçe yalnızca JavaScript kapalıyken görünen yedek. İki katmanlı
+içerik: tr/en tam makale, kalan sekiz dil özet katmanı — bu bir eksik değil
+tasarım; on dilde tam makale bakım yükü kaliteyi düşürürdü. Arapça için tam
+RTL: yön bağımlı CSS yazılmaz (`margin-inline-start` gibi mantıksal
+özellikler).
+
+**Tasarım sistemi planı.** Renkler ve yazı boyutları tek yerden
+(`:root` değişkenleri) — koyu tema kendiliğinden çalışır. Emoji yasak, her
+ikon satır içi SVG (marka üç işletim sisteminde aynı görünür). Kontrast
+kuralları ölçülüdür: aqua beyaz üzerinde metin olamaz (1,8:1), metin için
+koyulaştırılmış ton var. Ayrıntı: `docs/tasarim-sistemi.md`.
+
+**Güven katmanı planı.** İddia varsa kaynak görünür (yazı başına en az üç
+kaynak zorunlu), her yazının özgün katkısı tek cümleyle işaretli, fiyatlar
+"örnek" ibaresiyle sunulur — abartılı iddia bu işte en pahalı hata sayıldı.
+Ortaklık bağlantıları bildirimli ve gerekçeli.
+
+**Doğrulanabilirlik planın parçası.** "Çalışıyor" demek yetmez; her kural
+bir betikle denetlenir (`check`, `guvenlik`, `gorunurluk`, `marka-dogrula`).
+Kural betiğe girmeden iş bitmiş sayılmaz — bugünkü 56 marka ölçüsü ve
+8+14 site kontrolü bu planın sonucu.
+
 ## Aşama kayıtları
 
 ### 1. Temel site (önceki oturumlar)
