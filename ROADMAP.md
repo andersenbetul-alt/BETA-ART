@@ -139,6 +139,8 @@ maliyet.
 | 80 | EUIPO inceleme simülasyonu | **Bitti** 22.08 | Şeklî 4/4 geçti (ilk koşumda 0/4 — DPI beyan edilmiyordu). Şekil unsuru düşük risk, **kelime unsuru yüksek risk** |
 | 81 | Üretim testleri — teknik yarısı | **Bitti** 22.08 | Faks/tek renk, siluet, ters, gri, 16/24/32 px ölçüldü. Nakış, gravür, büyük format yapılmadı |
 | 83 | **Q kuyruğu: ters sarım + kör uç** | **Bitti** 22.08 | Kuyruk halkayı DELİYORDU (ters sarım, nonzero kuralında siler). Ayrıca iç ucu sayacın ortasında asılıydı. İkisi de düzeltildi, dış uzatma 55 birim ölçümle seçildi. **Kusur tüm yayınlanmış kilit dosyalarında vardı** |
+| 84 | **Kilit optik açıklığı** | **Bitti** 22.08 | Satır taramasıyla ölçüldü: optik açıklık 288,1u, sınır kutusu 288,0u, kuyruğun daralttığı 0,0u. Düzeltme gerekmedi. İlk yapılan tarayıcı render ölçümü (292,0u) yanlıştı — piksel kuantalaması ±3,4u; geometrik tarama denetleyiciye girdi |
+| 85 | **Nakış/ters kullanım: serbest uç** | **Bitti** 22.08 | Boyun 100,0u (kuyruk kalınlığının tamamı, daralma yok), serbest uç eksene tam dik (0,00°). İkisi de kurgunun sonucuydu; geometri değişmedi, koşul ölçülüp `marka-dogrula` içinde sabitlendi. Asgari üretim boyu kuralı yazıldı: 12 mm altında saten yok — **bu bizim tedbirimiz, sektör şartı değil** |
 | 82 | **Kelime markası kararı** | **Karar bekliyor** | "BLOGG" İsveççe/Norveççe "blog". Kelime markası için vekil görüşü alınmadan başvurulmamalı |
 | 79 | Renkli mi siyah-beyaz mı başvuru | **Karar bekliyor** | İkisi de üretiliyor; koruma kapsamı tercihi |
 

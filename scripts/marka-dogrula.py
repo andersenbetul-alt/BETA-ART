@@ -242,6 +242,109 @@ _app = (MARKA / 'qblogg-icon-app.svg').read_text(encoding='utf-8')
 kontrol('app ikonu zemini yuvarlatılmamış', 'rx yok',
         'rx yok' if 'rx=' not in _app.split('<g')[0] else 'rx var')
 
+# --- Üretim koşulları: nakış ve ters kullanım ---
+# Saten dikiş SERBEST UÇTAN sökülür ve ters kullanımda (navy zeminde beyaz
+# kuyruk) uç iki yandan yenir. İki koşul _kuyruk() kurgusunun doğal sonucu
+# ama sessizce bozulabilir; burada ölçülüp sabitleniyor:
+#   (1) uç kenarı eksene DİK olmalı — eğik uç daha ince biter,
+#   (2) kuyruğun halkayı kestiği BOYUN kuyruktan ince olmamalı.
+_K = list(zip(sayilar(SY_AQUA)[0::2], sayilar(SY_AQUA)[1::2]))
+_d = (math.cos(math.radians(ACI)), math.sin(math.radians(ACI)))
+_sira = sorted(range(4), key=lambda i: _K[i][0] * _d[0] + _K[i][1] * _d[1])
+_ic_k, _uc_k = [_K[_sira[0]], _K[_sira[1]]], [_K[_sira[2]], _K[_sira[3]]]
+_uv = (_uc_k[1][0] - _uc_k[0][0], _uc_k[1][1] - _uc_k[0][1])
+_ul = math.hypot(*_uv)
+_sapma = abs(math.degrees(math.asin(min(1.0, abs(_uv[0] * _d[0] + _uv[1] * _d[1]) / _ul))))
+kontrol('serbest uç eksene dik (nakış/ters)',
+        sayilar(belge_satiri('Serbest uç sapması'))[0], round(_sapma, 2), 0.05)
+
+
+def _kesim(poly, p, v):
+    """p→p+v doğru parçasının poligonu kestiği t değerleri."""
+    out = []
+    for i in range(len(poly)):
+        a, b = poly[i], poly[(i + 1) % len(poly)]
+        ex, ey = b[0] - a[0], b[1] - a[1]
+        den = v[0] * ey - v[1] * ex
+        if abs(den) < 1e-9:
+            continue
+        wx, wy = a[0] - p[0], a[1] - p[1]
+        t = (wx * ey - wy * ex) / den
+        u = (wx * v[1] - wy * v[0]) / den
+        if 0 <= u <= 1 and 0 <= t <= 1:
+            out.append(t)
+    return out
+
+
+_yan = lambda pt: -pt[0] * _d[1] + pt[1] * _d[0]
+_boyun = []
+for _i, _u in zip(sorted(_ic_k, key=_yan), sorted(_uc_k, key=_yan)):
+    _v = (_u[0] - _i[0], _u[1] - _i[1])
+    _t = _kesim(_DIS, _i, _v)
+    if _t:
+        _boyun.append((_i[0] + _v[0] * max(_t), _i[1] + _v[1] * max(_t)))
+_bg = math.dist(*_boyun) if len(_boyun) == 2 else 0.0
+kontrol('boyun genişliği', sayilar(belge_satiri('Boyun genişliği'))[0], round(_bg, 1))
+kontrol('boyun kuyruktan ince değil (nakış)', 'evet',
+        'evet' if _bg >= _ul - 0.05 else 'HAYIR')
+
+# --- Yatay kilit: optik açıklık gerçekten sınır kutusu boşluğu kadar mı ---
+# Yeni kuyruk sembolün sağ-alt köşesine uzuyor; wordmark'a sokulup açıklığı
+# daraltıyor olabilirdi. Sınır kutusu bunu göstermez, satır taraması gösterir:
+# her y'de sembolün en sağ mürekkebi ile wordmark'ın en solu.
+_L = (MARKA / 'qblogg-lockup-horizontal.svg').read_text(encoding='utf-8')
+_tx, _ty = (float(v) for v in re.search(r'translate\(([\d.]+) ([\d.]+)\)', _L).groups())
+_bol = _L.index('<g transform')
+
+
+def _yollar(parca, dx=0.0, dy=0.0):
+    cikti = []
+    for d in re.findall(r'<path[^>]*d="([^"]+)"', parca):
+        pts, cur = [], (0.0, 0.0)
+        for k, a in re.findall(r'([MLQZ])([^MLQZ]*)', d):
+            n = [float(x) + (dx if j % 2 == 0 else dy) for j, x
+                 in enumerate(re.findall(r'-?\d*\.?\d+(?:e-?\d+)?', a))]
+            if k == 'M':
+                if len(pts) > 2:
+                    cikti.append(pts)
+                cur = (n[0], n[1])
+                pts = [cur]
+            elif k == 'L':
+                cur = (n[0], n[1])
+                pts.append(cur)
+            elif k == 'Q':
+                pts += _quad(cur, (n[0], n[1]), (n[2], n[3]))
+                cur = pts[-1]
+            elif k == 'Z':
+                if len(pts) > 2:
+                    cikti.append(pts)
+                pts = []
+        if len(pts) > 2:
+            cikti.append(pts)
+    return cikti
+
+
+def _satir(polys, y):
+    return [a[0] + (y - a[1]) * (b[0] - a[0]) / (b[1] - a[1])
+            for P in polys for a, b in zip(P, P[1:] + P[:1])
+            if (a[1] > y) != (b[1] > y)]
+
+
+_sem, _soz = _yollar(_L[:_bol]), _yollar(_L[_bol:], _tx, _ty)
+_bbox = min(x for P in _soz for x, _ in P) - max(x for P in _sem for x, _ in P)
+_dar = min(min(_satir(_soz, y) or [1e9]) - max(_satir(_sem, y) or [-1e9])
+           for y in (100 + i * 0.25 for i in range(1, 3200)))
+_darsiz = min(min(_satir(_soz, y) or [1e9]) - max(_satir(_sem[:2], y) or [-1e9])
+              for y in (100 + i * 0.25 for i in range(1, 3200)))
+kontrol('kilit sınır kutusu boşluğu',
+        sayilar(belge_satiri('Sınır kutusu boşluğu'))[0], round(_bbox, 1))
+kontrol('kilit optik açıklığı', sayilar(belge_satiri('Optik açıklık'))[0], round(_dar, 1))
+kontrol('kuyruğun daralttığı', sayilar(belge_satiri('Kuyruğun daralttığı'))[0],
+        round(_darsiz - _dar, 1))
+kontrol('optik açıklık sınır kutusundan dar değil', 'evet',
+        'evet' if _dar >= _bbox - 0.5 else 'HAYIR')
+
+
 print('QBLOGG marka ölçü doğrulaması')
 print('─' * 62)
 for ad, b, o in gecti:

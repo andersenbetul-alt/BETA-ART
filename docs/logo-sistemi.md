@@ -420,6 +420,74 @@ köprüsünde, (3) burada. Ortak nedeni aynı: **sarım gözle görülmez, ölç
 İşaretli alan hesabı `marka-dogrula.py`'de zaten vardı ve bu seferkini de
 yakaladı.
 
+### Kilit optik açıklığı ölçüldü — 22.08.2026
+
+Yeni kuyruk sembolün **sağ-alt** köşesine uzuyor; wordmark de sağda duruyor.
+Soru: kuyruk yatay kilitte wordmark'a sokulup açıklığı daraltıyor mu? Sınır
+kutusu bunu göstermez — sembolün kutusu kâseyle zaten 900'e gidiyor, kuyruk
+888,4'te bitiyor, yani kutu hiç değişmiyor.
+
+Ölçüm `qblogg-lockup-horizontal.svg` düzleştirilip **satır satır** tarandı:
+her *y* değerinde sembolün en sağ mürekkebi ile wordmark'ın en solu.
+
+| Ölçü | Değer |
+|---|---|
+| Sınır kutusu boşluğu | 288,0u |
+| Optik açıklık | 288,1u |
+| Kuyruğun daralttığı | 0,0u |
+
+En dar satır **y = 500**, yani kâsenin en sağ noktası. Kuyruk hiçbir satırda
+belirleyici değil: sağ ucu (888,4) kâsenin sağ ucundan 11,6u geride ve
+wordmark'ın harf gövdesinin altında kalıyor. **Düzeltme gerekmiyor.**
+
+> **Düzeltme.** Bu ölçüm ilk kez 1200×240 px tarayıcı render'ı üzerinden
+> yapıldı ve **292,0u** çıktı. O sayı yanlıştı: 1u ≈ 0,298 px olduğu için tek
+> piksellik kenar yumuşatma belirsizliği ±3,4u demektir. Geometrik tarama
+> tam değeri veriyor, tarayıcı gerektirmiyor ve denetleyiciye o girdi.
+
+### Nakış ve ters kullanım — serbest uç ölçüldü
+
+Üretim tarafının iki itirazı vardı:
+
+- **Nakış.** Saten dikiş **serbest uçtan** sökülür. Kuyruğun halkayı kestiği
+  yerdeki *boyun* kuyruğun kendisinden ince olursa zayıf nokta orasıdır.
+- **Ters kullanım.** Navy zeminde beyaz kuyruk iki yandan yenir; **eğik kesilmiş
+  bir uç, dik kesilmiş uçtan daha ince biter.**
+
+| Ölçü | Değer |
+|---|---|
+| Boyun genişliği | 100,0u |
+| Serbest uç sapması | 0,00° |
+
+Boyun, kuyruğun iki uzun kenarının dış konturu kestiği noktalar arasıdır:
+(832,2 · 761,5) ile (761,5 · 832,2) — arası **100,0u**, kuyruğun tam kalınlığı.
+Daralma yok. Nedeni kurgusal: dış kontur 45° köşegenine göre simetrik olduğu
+için iki kesişim birbirinin aynası, aradaki kiriş eksene dik.
+
+Serbest uç kenarı eksene **tam dik** (sapma 0,00°). Bu da kurgunun sonucu:
+`_kuyruk()` dörtgeni eksene dik iki kenarla kapatıyor, ışının eğik bitişini
+kullanmıyor. Yani "ucu dik kesin" koşulu zaten sağlanmıştı — **geometri
+değişmedi, koşul kanıtlandı.** İkisi de artık `marka-dogrula.py` içinde sabit;
+biri bozulursa çıkış kodu 1.
+
+#### Asgari üretim boyu — bu bizim kuralımız
+
+Sembol S mm basıldığında 1u = S/800 mm:
+
+| Sembol boyu | Kuyruk kalınlığı | Taşma |
+|---|---|---|
+| 10 mm | 1,25 mm | 0,94 mm |
+| 12 mm | 1,50 mm | 1,13 mm |
+| 20 mm | 2,50 mm | 1,88 mm |
+
+**Kural: 12 mm altında kuyruk saten dikişle işlenmez.** O boyutta sembol tek
+renk düz dolgu olarak, aqua ayrımı yapılmadan uygulanır.
+
+Bu eşik **bizim tedbirimizdir; bir kurum ya da sektör şartı değildir.** Aranan
+kaynaklar forum ve sosyal medya gönderileriydi, alıntılanabilir bir standart
+bulunamadı. Eşik, ölçülen 1,50 mm kalınlığın yuvarlak bir sınır olmasından
+geliyor — sökülme deneyinden değil. **Sipariş öncesi işlemeciye teyit ettirin.**
+
 ## Kalan üretim notları
 
 - 16 px'te aqua zayıf kalıyor ama artık seçiliyor (28 piksel). Harf kimliği bu
