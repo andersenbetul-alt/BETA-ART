@@ -10,6 +10,7 @@ değişikliğin kaynağı bulunmalıdır.
 |---|---|---:|---|
 | `apple-touch-icon.png` | iOS ana ekran, 180×180 — app ikonundan | 3.196 | `4552ccf1f9e2969a` |
 | `favicon-32.png` | Tarayıcı sekmesi, 32×32 — app ikonundan | 740 | `e31d63378d480303` |
+| `og-image.png` | Sosyal paylaşım kartı, 1200×630 — yatay kilitten | 19.657 | `b2b5776a6b2c94cc` |
 | `qblogg-favicon.svg` | Tarayıcı sekmesi SVG — favicon-32.png ile aynı kompozisyon | 576 | `c1a599fe554ec490` |
 | `qblogg-icon-app.svg` | 1024×1024 uygulama ikonu — köprü 100u | 575 | `7269da8c8bc0dfd1` |
 | `qblogg-icon-small.svg` | 16–32 px ikon — sembolle aynı geometri | 454 | `23f2e4f81c769e94` |

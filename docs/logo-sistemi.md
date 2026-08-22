@@ -1,7 +1,7 @@
 # QBLOGG kimlik sistemi
 
 Üretim: `python3 scripts/marka-uret.py` (gereken: `pip install fonttools brotli`).
-Çıktılar `assets/brand/` — **13 varlığın hepsi**: 11 SVG + 2 PNG (favicon-32,
+Çıktılar `assets/brand/` — **14 varlığın hepsi**: 11 SVG + 3 PNG (favicon-32, og-image,
 apple-touch-icon). PNG'ler önce elle yapılmıştı ve yeniden üretilemiyordu; artık
 betiğin içindeki stdlib rasterleştirici üretiyor (çift-tek tarama, y'de 8 kat
 örnekleme, x'te tam örtüşme). Yeni bağımlılık yok. Betik yolları kendi konumundan

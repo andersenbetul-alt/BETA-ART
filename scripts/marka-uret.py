@@ -171,15 +171,24 @@ TERM = [((oB[0] + x / S) * K, -((oB[3] - y / S) * K)) for x, y in QUAD]
 
 SP = [0.0, 0.0, -0.045, -0.020, -0.025, 0.0]   # Q-B, B-L, L-O, O-G, G-G optik düzeltme
 parts, boxes, x = [], [], 0.0
+# parts_ayrik: rasterleştirme için harf ve Q kuyruğu AYRI yollar olarak da
+# tutulur. Rasterleştirici çift-tek kuralı kullanır; Q'da glif + kuyruk tek
+# yolda birleşince kuyruğun halkayla örtüşen kısmı XOR'lanıp DELİK açar
+# (SVG'de aynı tuzak sarım yönüyle yaşandı, 22.08 kaydına bakın). Ayrı
+# yollar ayrı ayrı taranıp örtüleri BİRLEŞTİRİLİNCE (max) sorun kalmaz.
+parts_ayrik = []
 for i, ch in enumerate('QBLOGG'):
     src = 'O' if ch == 'Q' else ch
     d, b = gpath(src, x), gbounds(src, x)
+    ayrik = [d]
     if ch == 'Q':
         tp = [(px + x, py) for px, py in TERM]
-        d += ' M' + ' L'.join(f'{a:.2f} {c:.2f}' for a, c in tp) + ' Z'
+        kuyruk = 'M' + ' L'.join(f'{a:.2f} {c:.2f}' for a, c in tp) + ' Z'
+        d += ' ' + kuyruk
+        ayrik.append(kuyruk)
         b = [min(b[0], *[p[0] for p in tp]), min(b[1], *[p[1] for p in tp]),
              max(b[2], *[p[0] for p in tp]), max(b[3], *[p[1] for p in tp])]
-    parts.append(d); boxes.append(b)
+    parts.append(d); boxes.append(b); parts_ayrik.append(ayrik)
     x += adv(src) + SP[i] * EM
 WORD = ' '.join(parts)
 WX0, WX1 = min(b[0] for b in boxes), max(b[2] for b in boxes)
@@ -292,10 +301,11 @@ _QSEG = 24       # kuadratik eğri kaç doğru parçasına bölünüyor
 
 
 def _yollari_coz(d):
-    """SVG yol dizesini poligon listesine çevirir (M/L/Q/Z destekli)."""
+    """SVG yol dizesini poligon listesine çevirir (M/L/H/V/Q/Z destekli).
+    H/V font ana hatları için gerekli: SVGPathPen dik çizgileri H/V yazar."""
     polis, cur = [], []
     x = y = 0.0
-    for komut, arg in _re.findall(r'([MLQZ])([^MLQZ]*)', d, _re.I):
+    for komut, arg in _re.findall(r'([MLHVQZ])([^MLHVQZ]*)', d, _re.I):
         s = [float(v) for v in _re.findall(r'-?\d*\.?\d+', arg)]
         k = komut.upper()
         if k == 'M':
@@ -306,6 +316,14 @@ def _yollari_coz(d):
         elif k == 'L':
             for i in range(0, len(s), 2):
                 x, y = s[i], s[i + 1]
+                cur.append((x, y))
+        elif k == 'H':
+            for v in s:
+                x = v
+                cur.append((x, y))
+        elif k == 'V':
+            for v in s:
+                y = v
                 cur.append((x, y))
         elif k == 'Q':
             for i in range(0, len(s), 4):
@@ -428,6 +446,68 @@ _ikon_uret('apple-touch-icon.png', 180)
 
 
 # ---------------------------------------------------------------------------
+# og-image.png (1200×630) — sosyal paylaşım kartı.
+#
+# Bağlantı LinkedIn/WhatsApp/X'te paylaşılınca görünen görsel. Metin YOK:
+# görsel on dilin hepsinde aynı bağlantıyla kullanılıyor, dile bağlı metin
+# hangi dilde olsa dokuzuna yanlış olurdu. Navy zemin + beyaz yatay kilit;
+# koyu/açık her akışta ayakta durur (reverse varyantla aynı mantık).
+#
+# Kompozisyon parametreleri: kilit genişliği tuval eninin %62'si, dikeyde
+# merkezli. %62, 630 yükseklikte 120 px üstü cap yüksekliği bırakıyor —
+# küçük önizlemede (WhatsApp ~110 px) bile wordmark okunur kalıyor.
+# ---------------------------------------------------------------------------
+def _og_uret(ad, en, boy):
+    NV, AQ, BZ = (8, 44, 84), (0, 216, 194), (255, 255, 255)
+    kilit_w = 800 + GAP_H + WW                 # u — sembol + boşluk + wordmark
+    k = (en * 0.62) / kilit_w
+    ox = (en - kilit_w * k) / 2
+    oy = (boy - 800 * k) / 2                   # sembol yüksekliği 800u
+
+    def don(d, dx=0.0, dy=0.0):
+        # Rasterleştirici yalnızca M/L/Q/Z tanır; sessiz eksik çizim olmasın.
+        komutlar = set(_re.findall(r'[A-Za-z]', d))
+        assert komutlar <= set('MLHVQZmlhvqz'), f'desteklenmeyen yol komutu: {komutlar}'
+        return [[(ox + (px + dx - 100) * k, oy + (py + dy - 100) * k)
+                 for px, py in poli] for poli in _yollari_coz(d)]
+
+    # Wordmark, lockup_h ile AYNI yerleşimle taşınır (tek kaynak: aynı formül).
+    tx = (900 + GAP_H) - WX0
+    ty = 500 - (WY0 + WH / 2)
+
+    beyaz = [[0.0] * en for _ in range(boy)]
+    def birlestir(o):
+        for s in range(boy):
+            bs, os_ = beyaz[s], o[s]
+            for p in range(en):
+                if os_[p] > bs[p]:
+                    bs[p] = os_[p]
+
+    birlestir(_ortu(don(SYM_NAVY), en, boy))               # halka (çift-tek: sayaç delik)
+    for ayrik in parts_ayrik:                              # harfler; Q kuyruğu ayrı
+        for d in ayrik:
+            birlestir(_ortu(don(d, tx, ty), en, boy))
+    aqua = _ortu(don(SYM_AQUA), en, boy)                   # sembol kuyruğu en üstte
+
+    satirlar = []
+    for s in range(boy):
+        row = bytearray()
+        for p in range(en):
+            renk = NV
+            for ust, ustrenk in ((beyaz[s][p], BZ), (aqua[s][p], AQ)):
+                o = min(1.0, ust)
+                if o > 0:
+                    renk = tuple(round(r * (1 - o) + u * o) for r, u in zip(renk, ustrenk))
+            row += bytes((renk[0], renk[1], renk[2], 255))
+        satirlar.append(row)
+    _png_yaz(OUT / ad, en, boy, satirlar)
+    print(f'  ✓ {OUT.name}/{ad}  ({en}x{boy})')
+
+
+_og_uret('og-image.png', 1200, 630)
+
+
+# ---------------------------------------------------------------------------
 # MANIFEST.md — hangi dosya, hangi rol, hangi özet.
 # Çıktı-entegrasyon denetimi v0.2, kabul kontrolü 8: "her başvurulan dosya
 # mevcut ve özeti kayıtlı olmalı". Özet burada üretilir ki elle güncellenmesin.
@@ -449,6 +529,7 @@ _ROL = {
     'qblogg-favicon.svg': 'Tarayıcı sekmesi SVG — favicon-32.png ile aynı kompozisyon',
     'favicon-32.png': 'Tarayıcı sekmesi, 32×32 — app ikonundan',
     'apple-touch-icon.png': 'iOS ana ekran, 180×180 — app ikonundan',
+    'og-image.png': 'Sosyal paylaşım kartı, 1200×630 — yatay kilitten',
 }
 
 _satir = []

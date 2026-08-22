@@ -145,7 +145,7 @@ Hepsi `window.QB_*` küresel değişkenleri üzerinden konuşuyor. Modül yok.
 |---|---|---|
 | `assets/fonts/` | 204 KB | Inter, dört alt küme + `inter.css` + `OFL.txt` |
 | `assets/js/` | 460 KB | Dört dosya; büyüğü `posts.js` (10 yazı × 10 dil) |
-| `assets/brand/` | 96 KB | 13 kimlik varlığı — **betikten üretilir, elle düzenlenmez** |
+| `assets/brand/` | 116 KB | 14 kimlik varlığı — **betikten üretilir, elle düzenlenmez** |
 | `assets/css/` | 36 KB | Tek dosya |
 | `assets/downloads/` | 12 KB | Lead magnet |
 | `assets/img/` | 4 KB | |
@@ -273,7 +273,7 @@ assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak
 assets/js/i18n.js       10 dil × 209 anahtar
 assets/js/posts.js      blog içeriği, her yazı 10 dilde
 assets/js/app.js        dil, tema, liste, yazı sayfası, formlar
-assets/brand/           13 kimlik varlığı (üretilir)
+assets/brand/           14 kimlik varlığı (üretilir)
 assets/fonts/           Inter alt kümeleri + lisans
 scripts/                doğrulama ve üretim betikleri
 engine/                 Curiosity Engine — site değil, üretim hattı

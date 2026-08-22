@@ -124,8 +124,8 @@ tıklanabilir bir önizleme. Birine site göstermek gerektiğinde bunu kullanın
 Yönlendirme `?page=` ile; `slug` ve `lang` gerçek sorgu dizesinde kaldığı için
 `app.js` değişmeden çalışır. Gövde değiştikten sonra `window.QB_BOOT()` çağrılır.
 
-`python3 scripts/marka-uret.py` 13 kimlik varlığının hepsini yeniden üretir —
-11 SVG + 2 PNG (favicon-32, apple-touch-icon). Rasterleştirici stdlib ile yazılı,
+`python3 scripts/marka-uret.py` 14 kimlik varlığının hepsini yeniden üretir —
+11 SVG + 3 PNG (favicon-32, apple-touch-icon, og-image). Rasterleştirici stdlib ile yazılı,
 yeni bağımlılık yok. Betik hangi klasörden çağrılırsa çağrılsın çalışır (gereken:
 `pip install fonttools brotli`). Wordmark ana hatları deponun kendi Inter değişken
 fontundan `wght=700`'de örneklenir; dış servis gerekmez. Geometri, ölçümler ve
@@ -251,9 +251,10 @@ açık talebi.
   korunarak ağaç QBLOGG yapıldı. Geliştirme dalı `claude/qblogg-web-sayfasi-upcarm`.
 - **Site Vercel'de yayında (22.08.2026).** Proje `qblogg`, takım "BET - ART"
   (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg-flame.vercel.app.
-  Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir;
-  `buildCommand` public depoyu (`main`) klonlayıp 6 sayfa + `sitemap.xml` +
-  `robots.txt` + `assets/`i `dist/`e kopyalar. Yani **siteyi güncellemek =
+  Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir (depodaki
+  dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`)
+  klonlayıp 6 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
+  `dist/`e kopyalar. Yani **siteyi güncellemek =
   main'e push + aynı dağıtımı yeniden tetiklemek.** Vercel'in GitHub
   entegrasyonu `andersenbetul-alt` hesabına yetkili değil (`repo_no_access`,
   entegrasyon `betulandersen-droid`a bağlı); kullanıcı yetkiyi verirse

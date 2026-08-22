@@ -210,7 +210,11 @@ const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
   let bad = 0;
   for (const file of HTML_FILES) {
     const html = read(file);
-    for (const need of ['assets/js/i18n.js', 'assets/js/posts.js', 'assets/js/app.js', 'assets/css/main.css']) {
+    // 404.html bilinçli olarak posts.js yüklemez: sayfada yazı listesi yok,
+    // 300 KB veri boşuna inmesin (app.js QB_POSTS yoksa boş listeyle çalışır).
+    const gerekli = ['assets/js/i18n.js', 'assets/js/app.js', 'assets/css/main.css'];
+    if (file !== '404.html') gerekli.push('assets/js/posts.js');
+    for (const need of gerekli) {
       if (!html.includes(need)) { fail(`${file}: ${need} yüklenmiyor`); bad++; }
     }
     if (!/<html[^>]+lang=/.test(html)) { fail(`${file}: <html lang> yok`); bad++; }

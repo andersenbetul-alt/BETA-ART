@@ -351,11 +351,13 @@ kontrol('optik açıklık sınır kutusundan dar değil', 'evet',
 # Kural: her sayfada kuyruk yolu SYM_AQUA ile bire bir ve navy'den SONRA
 # çizilmeli (kuyruk üstte). Sayfalar depo kökünde; paket düzeninde bu blok atlanır.
 _SAYFALAR = ['index', 'work', 'blog', 'post', 'gizlilik', 'kosullar']
+_LOGO_SAYISI = {'404': 1}          # 404 menüsüz/altbilgisiz: tek logo
 if (ROOT / 'index.html').exists():
-    for _ad in _SAYFALAR:
+    for _ad in _SAYFALAR + ['404']:
         _h = (ROOT / f'{_ad}.html').read_text(encoding='utf-8')
         _n = _h.count(f'<path d="{SY_AQUA}" fill="#00D8C2"/>')
-        kontrol(f'{_ad}.html satır içi logo kuyruğu üreticiyle aynı (2 yerde)', 2, _n, 0)
+        _bekle = _LOGO_SAYISI.get(_ad, 2)
+        kontrol(f'{_ad}.html satır içi logo kuyruğu üreticiyle aynı ({_bekle} yerde)', _bekle, _n, 0)
         _i_navy = _h.find('M500 100 Q900 100')
         _i_aqua = _h.find(SY_AQUA)
         kontrol(f'{_ad}.html kuyruk navy üstünde çiziliyor', 'evet',
