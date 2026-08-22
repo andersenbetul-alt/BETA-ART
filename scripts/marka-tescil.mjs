@@ -45,12 +45,18 @@ const ZARF = { enBoyEn: 2835, enBoyBoy: 2010, enBuyukBayt: 2 * 1024 * 1024, dpi:
 /* Başvuruya giden varyantlar. EUIPO şekil markasında renk beyanı yapılırsa
    renkler koruma kapsamına girer; siyah-beyaz başvuru daha geniş korur ama
    renk iddiasını bırakır. İkisini de üretip kararı hukukçuya bırakıyoruz. */
+/* risk: mutlak ret nedenleri bakımından ön değerlendirme (kendi kendine
+   inceleme — docs/denetim/EUIPO-inceleme-simulasyonu.md). Kelime taşıyan
+   dosyalar ayrıca işaretleniyor: "BLOGG" İsveççe ve Norveççe "blog" demek,
+   içerik hizmetlerinde tanımlayıcılık itirazına açık. Biçim raporunda bu
+   uyarı görünmezse birileri kilidi farkında olmadan başvuruya koyar. */
 const VARYANT = [
-  { ad: 'sekil-markasi-renkli',   dosya: 'qblogg-symbol.svg',            not: 'Sembol, marka renkleriyle' },
-  { ad: 'sekil-markasi-siyah',    dosya: 'qblogg-symbol-black.svg',      not: 'Sembol, tek renk siyah' },
-  { ad: 'kilit-renkli',           dosya: 'qblogg-lockup-horizontal.svg', not: 'Yatay kilit, marka renkleriyle' },
-  { ad: 'kilit-siyah',            dosya: 'qblogg-lockup-horizontal.svg', not: 'Yatay kilit, tek renk', siyah: true }
+  { ad: 'sekil-markasi-renkli', dosya: 'qblogg-symbol.svg',            not: 'Sembol, marka renkleriyle',  risk: 'dusuk', kelime: false },
+  { ad: 'sekil-markasi-siyah',  dosya: 'qblogg-symbol-black.svg',      not: 'Sembol, tek renk siyah',     risk: 'dusuk', kelime: false },
+  { ad: 'kilit-renkli',         dosya: 'qblogg-lockup-horizontal.svg', not: 'Yatay kilit, marka renkleriyle', risk: 'yuksek', kelime: true },
+  { ad: 'kilit-siyah',          dosya: 'qblogg-lockup-horizontal.svg', not: 'Yatay kilit, tek renk',      risk: 'yuksek', kelime: true, siyah: true }
 ];
+const RISK = { dusuk: '🟢 düşük', yuksek: '🔴 yüksek — kelime unsuru' };
 
 const BOY = 1600;   // zarfın içinde, 250×250'ye ölçeklenince bozulmayacak kadar büyük
 const DPI = 300;    // zarfın üst sınırı; baskıya da yeter
@@ -142,7 +148,8 @@ async function main() {
     const bayt = d.bayt;
     rapor.push({ ...v, bayt, dpi: d.dpi ? d.dpi[0] : null, sorun });
     console.log(`  ${sorun.length ? '✗' : '✓'} ${v.ad}.jpg  ${d.en}×${d.boy}  ${d.dpi ? d.dpi[0] : '?'} DPI  ` +
-      `${d.renk}  ${(bayt / 1024).toFixed(0)} KB` + (sorun.length ? '  → ' + sorun.join(', ') : ''));
+      `${d.renk}  ${(bayt / 1024).toFixed(0)} KB  ${RISK[v.risk]}` +
+      (sorun.length ? '  → ' + sorun.join(', ') : ''));
   }
 
   /* Sicil görüntüsü 250×250. Marka o boyutta ne oluyor, ayrıca kaydedilir. */
@@ -162,14 +169,24 @@ async function main() {
     'Üretici: `node scripts/marka-tescil.mjs`. Bu rapor yalnızca **biçim**\n' +
     'uygunluğunu söyler. Ayırt edicilik, tanımlayıcılık, önceki haklar ve\n' +
     'Nice sınıfı burada denetlenmez — bunlar hukuki değerlendirmedir.\n\n' +
-    '| Dosya | Açıklama | Boyut | DPI | Durum |\n|---|---|---|---:|---|\n' +
+    '| Dosya | Açıklama | Boyut | DPI | Biçim | Esas risk |\n|---|---|---|---:|---|---|\n' +
     rapor.map((r) => `| \`${r.ad}.jpg\` | ${r.not} | ${(r.bayt / 1024).toFixed(0)} KB | ${r.dpi || '?'} | ` +
-      `${r.sorun.length ? '✗ ' + r.sorun.join(', ') : '✓ zarfa uygun'} |`).join('\n') +
+      `${r.sorun.length ? '✗ ' + r.sorun.join(', ') : '✓'} | ${RISK[r.risk]} |`).join('\n') +
     `\n\nZarf: JPEG · en fazla ${ZARF.enBoyEn}×${ZARF.enBoyBoy} px · ${ZARF.dpi[0]}–${ZARF.dpi[1]} DPI · ` +
     'RGB · progressive değil · 2 MB altı.\n\n' +
     '**Başvuru öncesi bu rakamları EUIPO\'nun kendi sayfasından doğrulayın.**\n' +
     'Kurum şartlarını değiştirebilir; buradaki değerler yazıldığı gündeki\n' +
-    'kaynaklara dayanıyor.\n', 'utf8');
+    'kaynaklara dayanıyor.\n\n' +
+    '## Esas risk uyarısı — biçimden bağımsız\n\n' +
+    '"Biçim: ✓" bu dosyanın **tescil edilebileceği anlamına gelmez**; yalnızca\n' +
+    'yüklenebileceği anlamına gelir.\n\n' +
+    '**Kilit dosyaları (`kilit-*.jpg`) kelime unsuru taşıyor.** "BLOGG"\n' +
+    'İsveççede ve Norveççede "blog" demektir; İsveççe bir AB resmî dilidir ve\n' +
+    'tanımlayıcılık her dil için ayrı değerlendirilir. İçerik ve yayıncılık\n' +
+    'hizmetlerinde bu dosyalarla başvuru, tanımlayıcılık itirazına açıktır.\n\n' +
+    '**Bu dosyalarla marka vekiline danışmadan başvurmayın.** Sembol dosyaları\n' +
+    '(`sekil-markasi-*.jpg`) bu riski taşımıyor.\n\n' +
+    'Gerekçe ve ölçütler: `docs/denetim/EUIPO-inceleme-simulasyonu.md`.\n', 'utf8');
   console.log(`\n${VARYANT.length} dosya + sicil önizlemesi: tescil/`);
   console.log('Biçim raporu: tescil/RAPOR.md');
   const kotu = rapor.filter((r) => r.sorun.length).length;

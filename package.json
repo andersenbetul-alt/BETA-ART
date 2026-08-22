@@ -13,7 +13,8 @@
     "onizleme": "node scripts/onizleme.mjs",
     "marka": "python3 scripts/marka-uret.py",
     "marka-paket": "node scripts/marka-paket.mjs",
-    "tescil": "node scripts/marka-tescil.mjs"
+    "tescil": "node scripts/marka-tescil.mjs",
+    "uretim-testi": "node scripts/uretim-testi.mjs"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.70.0",

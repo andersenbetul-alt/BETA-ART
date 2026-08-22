@@ -109,19 +109,29 @@ Bu bölüm doldurulmadan hiçbir başvuru yapılmamalıdır.
 
 Kanıt: `docs/gorseller/uretim-testleri.png`
 
-| Test | Sonuç |
-|---|---|
-| **Faks / tek renk (1 bit)** | ✓ Ayakta duruyor. Halka ve çapraz okunuyor. Q olarak okunmuyor — şekil markası için sorun değil |
-| **Siluet (6 px bulanık)** | ~ Silüet yuvarlatılmış bir halka; jenerik. Çapraz zayıf da olsa görünüyor |
-| **Ters çevirme** | ✓ Form korunuyor |
-| **Gri tonlama** | ✓ Aqua griye düşüyor ama ayrım kalıyor |
-| **16 px** | ✗ Aqua bir leke; sayaç ~4 px. **Tek renk varyantı zorunlu** |
-| **24 px** | ~ Aqua ~2,1 px — 3 px hedefinin altında. `icon-small` (100u köprü) kullanılıyor |
-| **32 px** | ✓ Net |
+Üretim: `npm run uretim-testi` — pano ve ölçümler betikten çıkar.
 
-Ara ton (antialiasing) oranı ölçüldü: 16 px'te %17,6, 24 px'te %12,8,
-32 px'te %10,5. Küçüldükçe markanın giderek daha büyük bölümü belirsiz
-piksele dönüşüyor — 16 px kuralının sayısal karşılığı budur.
+| Test | Mürekkep | Ara ton | Sonuç |
+|---|---:|---:|---|
+| **Faks / tek renk (1 bit)** | %55,6 | %0,7 | ✓ Ayakta. Ara ton neredeyse sıfır — eşiklemede kayıp yok. Halka ve çapraz okunuyor; Q okunmuyor, şekil markası için sorun değil |
+| **Siluet (6 px bulanık)** | %45,5 | %15,3 | ~ Silüet yuvarlatılmış halka; jenerik. Çapraz zayıf da olsa duruyor |
+| **Ters çevirme** | %4,6 | %0,2 | ✓ Form korunuyor |
+| **Gri tonlama** | %50,7 | %5,4 | ✓ Aqua griye düşüyor, ayrım kalıyor |
+| **16 px** | %45,3 | **%17,6** | ✗ Aqua bir leke, sayaç ~4 px. **Tek renk varyantı zorunlu** |
+| **24 px** | %47,4 | %12,8 | ~ Aqua ~2,1 px, 3 px hedefinin altında. `icon-small` (100u köprü) kullanılıyor |
+| **32 px** | %49,0 | %10,5 | ✓ Net |
+| **48 px** | %48,8 | %9,1 | ✓ Net |
+
+**Ara ton** = ne koyu ne açık pikseller, yani belirsizleşen alan. 16 px'te
+%17,6'dan 48 px'te %9,1'e düşüyor: küçüldükçe markanın giderek daha büyük
+bölümü bulanık piksele dönüşüyor. 16 px kuralının sayısal karşılığı budur.
+
+> **Ölçüm düzeltmesi.** Bu tablonun ilk sürümünde siluet, ters ve gri
+> satırları yanlıştı: CSS filtresi ekran görüntüsüne uygulanıyordu ama
+> ölçümün yapıldığı canvas'a uygulanmıyordu, yani o üç satır filtresiz
+> aslın sayılarını raporluyordu. Betik `scripts/uretim-testi.mjs`'ye
+> taşınırken filtre ölçüm tarafına da uygulandı; yukarıdaki değerler
+> düzeltilmiş olanlardır.
 
 **Yapılmayanlar:** nakış, gravür, 100 mm üzeri büyük format baskı, gerçek
 ekran testi. Bunlar fiziksel üretim gerektiriyor.
@@ -143,3 +153,13 @@ ekran testi. Bunlar fiziksel üretim gerektiriyor.
 
 **Karar: TESCİL BEKLEMESİ SÜRÜYOR.** Şeklî kapı açıldı; esas ve araştırma
 kapıları kapalı.
+
+## Bu incelemenin ardından yapılan düzeltmeler
+
+| Bulgu | Düzeltme |
+|---|---|
+| Dört dosya da DPI beyan etmiyordu | Üretici JFIF bloğunu düzeltip 300 DPI yazıyor |
+| Denetleyici DPI'yı hiç kontrol etmiyordu — yanlış geçer notu | JPEG artık baytlarına bakılarak inceleniyor |
+| Kelime unsurunun riski dosya adından anlaşılmıyordu | `tescil/RAPOR.md` her dosyaya esas risk sütunu koyuyor; kilit dosyaları 🔴 işaretli ve rapor sonunda uyarı var |
+| Üretim testleri geçici dosyada elle koşulmuştu | `npm run uretim-testi` — betikten çıkıyor, pano depoda |
+| Siluet/ters/gri ölçümleri filtresiz aslı raporluyordu | Filtre ölçüm tarafına da uygulandı |
