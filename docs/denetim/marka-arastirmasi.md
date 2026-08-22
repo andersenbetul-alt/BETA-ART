@@ -282,6 +282,64 @@ sektör taraması.
 Brønnøysund sicil taramaları. Sicilde tescilli olup açık webde hiç
 görünmeyen marka olağandır. Tescil kararı bu bölüme dayandırılamaz.
 
+## Marka veritabanı aynaları — 22.08.2026
+
+TMview, EUIPO, WIPO Global Brand Database ve Patentstyret bu ortamdan
+engelli (hepsi tekrar denendi). Ama bazı ticari marka arama servisleri
+kayıtlarını **indekslenebilir sayfalar** olarak yayımlıyor; onlara
+erişilebiliyor. Bu bir ara katman: sicilin kendisi değil, aynası.
+
+### Yöntem yine önce sınandı
+
+| Kontrol | Sorgu | Sonuç |
+|---|---|---|
+| Filtre çalışıyor mu | `NIKE trademark` (5 ayna alan adında) | 5 sonuç — Justia kayıt no 1441334, Trademarkia kayıt no 7401694 |
+
+Alan adı filtresi çalışıyor ve gerçek sicil kayıtlarına iniyor. Sıfır
+sonuçlar delil sayılabilir — **kapsam sınırı içinde.**
+
+### Sonuçlar
+
+| Terim | Aynalarda sonuç |
+|---|---|
+| `QBLOGG` | **0** |
+| `QBLOG` | **0** |
+| `BLOGG` | Çift G'li marka yok; tek G'li ABD kayıtları çıktı (aşağıda) |
+
+### Kapsam sınırı — bu bölümün en önemli satırı
+
+`BLOGG` araması çift G'li hiçbir marka döndürmedi. Oysa kullanıcının
+TMview'dan getirdiği 29 kayıt, AB ve Norveç'te çift G'li `BLOGG`
+markalarının var olduğunu (ve süresinin dolduğunu) gösteriyor.
+
+Demek ki bu aynalar **ABD sicilini (USPTO) kapsıyor, AB ve Norveç'i
+kapsamıyor.** Dolayısıyla:
+
+> `QBLOGG` ve `QBLOG` için bulunan sıfır, **ABD sicili** için geçerlidir.
+> AB ve Norveç sicilleri hakkında hiçbir şey söylemez. Bizim pazarımız
+> Norveç ve AB — yani bu bulgu rahatlatıcı değil, yalnızca bir köşeyi
+> kapatıyor.
+
+### Yan bulgu — `BLOG` öğesi ABD'de tescil edilebilmiş
+
+Aramada çıkan gerçek kayıtlar:
+
+| Marka | Sahip | Kapsam |
+|---|---|---|
+| MAGAZINE BLOG | magazines.com, Inc. | Kayıt no 3091628 |
+| PATENT PENDING BLOG | Robert L. Shaver | "Online journals, namely blogs" |
+| THE BIG FAT MARKETING BLOG | Access Intelligence LLC | "On-line journals" |
+| CB CIGAR BLOGS | — | USPTO seri 85088992 |
+
+Bunlar tanımlayıcı `BLOG` öğesinin ayırt edici bir önekle birleştiğinde
+ABD'de tescil edilebildiğini gösteriyor. QBLOGG'un yapısı da aynı:
+tanımlayıcı gövde + tek harflik ayırt edici önek.
+
+**Bu bir emsal değildir.** ABD (Lanham Act) ile AB (EUTMR 7(1)(b)-(c))
+ayırt edicilik eşikleri farklıdır ve EUIPO her AB resmî dilinde ayrı
+değerlendirir. Yalnızca yapının hiç görülmemiş bir şey olmadığını
+gösterir.
+
 ## Diğer kayıtlar
 
 | Kayıt | Ne aranacak | Adres | Sonuç | Tarih |
