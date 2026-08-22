@@ -14,6 +14,9 @@ ayak izi, sayaç, üç şerit, sayaç kayması, köprünün üç ölçüsü, kuy
 üç ölçüsü, kuyruk sarımı ve SVG'lerde yasak öğe taraması. Uyuşmazlıkta
 çıkış kodu 1.
 
+Güncel hâl: `docs/gorseller/logo-son-hali.png` — kilitler, sembol varyantları,
+tek renk sınaması, ölçek merdiveni ve uygulama ikonları tek sayfada.
+
 Kanıt: `docs/gorseller/logo-kanit-panosu.png` (ölçek testi, varyantlar, kilitler,
 Reality Board) · `docs/gorseller/logo-aday-karsilastirma.png` (aday elemesi).
 
