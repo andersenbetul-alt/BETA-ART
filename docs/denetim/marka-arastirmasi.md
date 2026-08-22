@@ -9,29 +9,38 @@ sonuçları buraya yazar; **boş kalan satır "temiz" demek değildir.**
 Kural: bulunmayan bir sonuç "sonuç yok" diye yazılır, "çakışma yok" diye
 yorumlanmaz. Yorum marka vekilinin işidir.
 
-## Nasıl aranır — TMview
+## Hazır sorgular — tıklayın, sonucu yazın
 
-1. https://www.tmdn.org/tmview/ adresini açın
-2. Arama kutusuna **yalnızca kelimeyi** yazın: `QBLOGG`
-   (tırnak, ok işareti, "EU + NO" gibi ekler yazmayın — arama kutusu bunları
-   metin sanır ve sonuç bulamaz)
-3. **Filters** → **Territories** → `European Union` ve `Norway` seçin
-4. Sonuç sayısını ve varsa yakın markaları aşağıdaki tabloya yazın
-5. Aynısını `BLOGG` için tekrarlayın
-6. Aynısını `Q BLOGG` (boşluklu) için tekrarlayın
+Ofis ve bölge kümesi kullanıcı tarafından kuruldu: 43 ofis (AB üyeleri +
+EFTA + EUIPO/`EM` + WIPO/`WO`) ve 57 bölge. Norveç (`NO`) her ikisinde de
+var. Aşağıdaki dört bağlantı yalnızca aranan terimde ayrışıyor.
 
-Nice sınıfı filtresi de uygulayabilirsiniz; içerik/yayıncılık hizmetleri
-genelde **35, 41, 42** sınıflarında olur.
+1. **`QBLOGG`** — [TMview'da aç](https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&offices=AL,AT,BA,BG,BX,CH,CY,CZ,DE,DK,EE,ES,FI,FR,GB,GE,GR,HR,HU,IE,IS,IT,LI,LT,LV,MC,MD,ME,MK,MT,NO,PL,PT,RO,RS,RU,SE,SI,SK,SM,UA,EM,WO&territories=AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE,AX,AL,AD,BY,BQ,BA,CW,FO,GE,GI,GG,IS,IM,JE,LI,MD,MC,ME,MK,NO,RU,SH,SM,RS,SX,SJ,CH,UA,GB,VA&basicSearch=QBLOGG)
+2. **`BLOGG`** — [TMview'da aç](https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&offices=AL,AT,BA,BG,BX,CH,CY,CZ,DE,DK,EE,ES,FI,FR,GB,GE,GR,HR,HU,IE,IS,IT,LI,LT,LV,MC,MD,ME,MK,MT,NO,PL,PT,RO,RS,RU,SE,SI,SK,SM,UA,EM,WO&territories=AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE,AX,AL,AD,BY,BQ,BA,CW,FO,GE,GI,GG,IS,IM,JE,LI,MD,MC,ME,MK,NO,RU,SH,SM,RS,SX,SJ,CH,UA,GB,VA&basicSearch=BLOGG)
+3. **`Q BLOGG`** — [TMview'da aç](https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&offices=AL,AT,BA,BG,BX,CH,CY,CZ,DE,DK,EE,ES,FI,FR,GB,GE,GR,HR,HU,IE,IS,IT,LI,LT,LV,MC,MD,ME,MK,MT,NO,PL,PT,RO,RS,RU,SE,SI,SK,SM,UA,EM,WO&territories=AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE,AX,AL,AD,BY,BQ,BA,CW,FO,GE,GI,GG,IS,IM,JE,LI,MD,MC,ME,MK,NO,RU,SH,SM,RS,SX,SJ,CH,UA,GB,VA&basicSearch=Q%20BLOGG)
+4. **`QBLOG`** — [TMview'da aç](https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&offices=AL,AT,BA,BG,BX,CH,CY,CZ,DE,DK,EE,ES,FI,FR,GB,GE,GR,HR,HU,IE,IS,IT,LI,LT,LV,MC,MD,ME,MK,MT,NO,PL,PT,RO,RS,RU,SE,SI,SK,SM,UA,EM,WO&territories=AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE,AX,AL,AD,BY,BQ,BA,CW,FO,GE,GI,GG,IS,IM,JE,LI,MD,MC,ME,MK,NO,RU,SH,SM,RS,SX,SJ,CH,UA,GB,VA&basicSearch=QBLOG)
+
+`QBLOG` (tek G) de listede: yakın yazımlar karıştırılma değerlendirmesinde
+sayılır, birebir aynı olmaları gerekmez.
+
+Sonuç sayısı yüksek çıkarsa **Nice Class** filtresine `35`, `41`, `42`
+ekleyin — içerik ve yayıncılık hizmetleri genelde bu sınıflarda.
+
+### Sonuç yazarken
+
+- Sonuç sayısını **olduğu gibi** yazın; sıfırsa sıfır yazın.
+- Yakın gördüğünüz her markayı ikinci tabloya ekleyin — benzer olup
+  olmadığına siz karar vermeyin, kaydedin.
+- Ekran görüntüsü alıp `docs/gorseller/` altına koyabilirsiniz.
 
 ## Sonuçlar
 
 | # | Terim | Bölge | Sınıf filtresi | Sonuç sayısı | Yakın marka var mı | Tarih |
 |---|---|---|---|---|---|---|
-| 1 | `QBLOGG` | EU | yok | | | |
-| 2 | `QBLOGG` | NO | yok | | | |
-| 3 | `BLOGG` | EU | 35, 41, 42 | | | |
-| 4 | `BLOGG` | NO | 35, 41, 42 | | | |
-| 5 | `Q BLOGG` | EU + NO | yok | | | |
+| 1 | `QBLOGG` | 43 ofis / 57 bölge | yok | | | |
+| 2 | `BLOGG` | 43 ofis / 57 bölge | 35, 41, 42 | | | |
+| 3 | `Q BLOGG` | 43 ofis / 57 bölge | yok | | | |
+| 4 | `QBLOG` | 43 ofis / 57 bölge | yok | | | |
 
 ### Bulunan yakın markalar
 
@@ -47,6 +56,20 @@ genelde **35, 41, 42** sınıflarında olur.
 | Brønnøysundregistrene | QBLOGG (şirket adı) | brreg.no | | |
 | Alan adı `.no` | qblogg.no | norid.no | | |
 | Alan adı `.eu` | qblogg.eu | eurid.eu | | |
+
+## Yapılan denemeler — kayıt
+
+| Tarih | Ne denendi | Sonuç |
+|---|---|---|
+| 22.08.2026 | `tmdn.org` ve `www.tmdn.org` doğrudan bağlantı | **000** — ağ politikası engelliyor |
+| 22.08.2026 | `euipo.europa.eu/eSearch/` | **000** — engelli |
+| 22.08.2026 | `patentstyret.no` | **000** — engelli |
+| 22.08.2026 | Genel web araması: `"QBLOGG" trademark` | QBLOGG için kayıt **bulunamadı**; çıkanlar ilgisiz "QB" markaları |
+
+> **Son satır bir müsaitlik sonucu DEĞİLDİR.** Açık web araması marka sicili
+> araması yerine geçmez: siciller aramaya kapalıdır, yayınlanmamış başvurular
+> görünmez ve arama motoru eşleşmeyi hukuki benzerlik ölçütüyle yapmaz.
+> "Bulunamadı" yalnızca "arama motoru göstermedi" demektir.
 
 ## Sonuç
 
