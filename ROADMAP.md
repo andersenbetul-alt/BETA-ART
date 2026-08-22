@@ -17,20 +17,16 @@ maliyet.
 
 ## Aşamalar
 
-### 1. Yayına alma — **ERTELENDİ** (22.08.2026 kararı)
+### 1. Yayına alma — **YAYINDA** (22.08.2026 akşamı; süreç: `docs/proje-gunlugu.md`)
 
-> Kullanıcı kararı: **site şimdi yayınlanmıyor, önce logo bitirilecek.**
-> Aşağıdaki maddeler kapanmadı, sırası geldi diye beklemiyor — bilinçli
-> olarak beklemede. Yayın gündeme gelince buradan devam edilir; dağıtım
-> paketi ve adımlar hazır (`DAGITIM.md`, `qblogg-yayin.zip`).
->
-> Not: bu erteleme, sitenin gelir üretmediği gerçeğini değiştirmiyor.
-> Karar kullanıcınındır ve kayıt için buraya yazıldı.
+> Erteleme kararı aynı gün kalktı: logo bitti, kullanıcı "yayına al" dedi.
+> Site qblogg-bet-art.vercel.app adresinde üretimde; güncelleme yolu =
+> main'e push + Vercel dağıtımını yeniden tetikleme (CLAUDE.md'de kayıtlı).
 
 | # | İş | Durum | Not |
 |---|---|---|---|
-| 1 | Depoya yazma izni ver, dalı push et | **Engelli** | git ve GitHub App 403; izin kullanıcıda |
-| 2 | Alan adı bağla ve yayına al | **Engelli** | Bu oturumun ağ politikası `*.vercel.com`'u kapatıyor: `api.vercel.com`, `vercel.com` ve claim-deploy uç noktası CONNECT 403 döndürüyor (`$HTTPS_PROXY/__agentproxy/status` → recentRelayFailures). Vercel CLI 59.3.0 kurulu ama dışarı çıkamıyor. Çözüm: ortamın ağ politikasına `*.vercel.com` eklensin ya da dağıtım yerelden yapılsın. `vercel.json` + `DAGITIM.md` hazır |
+| 1 | Depoya yazma izni ver, dalı push et | **Bitti** 22.08 | Kullanıcı GitHub App'i kurdu; dal + main push edildi |
+| 2 | Alan adı bağla ve yayına al | **Yarım** 22.08 | Site Vercel'de yayında (MCP üzerinden; sandbox ağı hâlâ `*.vercel.com`'u kapatıyor ama MCP kanalı çalışıyor). qblogg.com DNS'i doğru; alan adı ikinci Vercel hesabından taşınmak için TXT sahiplik doğrulaması bekliyor (`_vercel` kaydı + Verify & Claim) |
 | 3 | Gerçek e-posta, alan adı ve fiyatlar | **Hazır — senden veri bekliyor** | Hepsi tek dosyada: `assets/js/config.js` |
 | 4 | ~~Paket fiyatlarını güncelle~~ | Birleşti → #3 | Fiyat da config.js'ten geliyor (NOK yazılabilir) |
 | 5 | Formu Formspree/Netlify Forms'a bağla | Bekliyor | `composeMail` içindeki `mailto` bloğu |

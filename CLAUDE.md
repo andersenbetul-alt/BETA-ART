@@ -268,4 +268,6 @@ açık talebi.
   Fiyatlandırma bu rakamla yapılmalı; stripe.com bu ortamda engelli, karar öncesi
   kaynağı kendiniz doğrulayın.
 
-Öncelik sırası ve iş listesi için `ROADMAP.md`.
+Öncelik sırası ve iş listesi için `ROADMAP.md`. **Projenin her aşaması ve
+yapılanlar `docs/proje-gunlugu.md`'ye işlenir** (kullanıcı talimatı,
+22.08.2026): yeni bir aşama kapandığında oraya tarihle kısa kayıt düşün.
