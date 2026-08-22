@@ -244,17 +244,22 @@ açık talebi.
 - Ortaklık bağlantısı `{aff:{t,u,why}}` bloğuyla eklenir; bildirim kutusu,
   `rel="sponsored nofollow noopener"` ve gerekçe denetimi kendiliğinden çalışır.
   Gelir katmanlarının tamamı için `docs/gelir-sistemi.md`.
-- Depoya push izni yok (22.08.2026'da yeniden ölçüldü). `git push` → 403;
-  GitHub MCP yazma çağrısı → "token expired, requires re-authorization".
-  **Okuma çalışıyor**: `git fetch` ve MCP okuma çağrıları geçiyor. İş yerelde
-  commit'leniyor — 69 commit uzak depoya hiç gitmedi.
-- **Uzak depo boş değil ve QBLOGG'un deposu değil.** Önceki kayıt "hiç commit
-  yok" diyordu; yanlıştı. `andersenbetul-alt/BETA-ART` içinde başka bir proje
-  var: çok saat dilimli dijital saat uygulaması (`index.html`, `script.js`,
-  `styles.css`) + Node CI iş akışı, `main`'de 6 commit, ayrıca
-  `claude/hxi-icin-web-sayfasi-vn2n78` dalı. QBLOGG geçmişiyle **ortak atası
-  yok** (`git merge-base` boş döndü). Push edilirse depo iki ilgisiz proje
-  taşır; bu bilinçli bir karar olmalı.
+- Push artık çalışıyor (22.08.2026 akşamı: kullanıcı GitHub App'i kurdu; önceki
+  "push izni yok / 69 commit yerelde" kaydı o günün öğleden önceki durumuydu).
+  `main` kullanıcının açık izniyle QBLOGG sitesine çevrildi: `-s ours
+  --allow-unrelated-histories` merge'ü ile eski saat uygulamasının geçmişi
+  korunarak ağaç QBLOGG yapıldı. Geliştirme dalı `claude/qblogg-web-sayfasi-upcarm`.
+- **Site Vercel'de yayında (22.08.2026).** Proje `qblogg`, takım "BET - ART"
+  (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg-flame.vercel.app.
+  Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir;
+  `buildCommand` public depoyu (`main`) klonlayıp 6 sayfa + `sitemap.xml` +
+  `robots.txt` + `assets/`i `dist/`e kopyalar. Yani **siteyi güncellemek =
+  main'e push + aynı dağıtımı yeniden tetiklemek.** Vercel'in GitHub
+  entegrasyonu `andersenbetul-alt` hesabına yetkili değil (`repo_no_access`,
+  entegrasyon `betulandersen-droid`a bağlı); kullanıcı yetkiyi verirse
+  `create_git_project` ile push başına otomatik dağıtıma geçilebilir.
+  qblogg.com alan adının bağlanması kullanıcı tarafında (Vercel panel +
+  GoDaddy DNS; ad sunucuları taşınmaz, e-posta MX kayıtları GoDaddy'de kalmalı).
 - Haftalık SEO/AI görünürlük izlemesi kurulu: pazartesi 07:00 (Norveç saati).
 - FAQPage şeması duruyor ama Google 7 Mayıs 2026'da FAQ zengin sonuçlarını kaldırdı.
   Yapay zekâ aramaları için tutuluyor; zengin sonuç beklemeyin.
