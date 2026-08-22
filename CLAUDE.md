@@ -235,9 +235,17 @@ açık talebi.
 - Ortaklık bağlantısı `{aff:{t,u,why}}` bloğuyla eklenir; bildirim kutusu,
   `rel="sponsored nofollow noopener"` ve gerekçe denetimi kendiliğinden çalışır.
   Gelir katmanlarının tamamı için `docs/gelir-sistemi.md`.
-- Depoya push izni yok. İki ayrı sorun: (1) uzak depo tamamen boş — hiç commit yok;
-  (2) GitHub App'in yazma izni yok, yazma çağrıları "Resource not accessible by
-  integration" döndürüyor. Okuma çalışıyor. İş yerelde commit'leniyor.
+- Depoya push izni yok (22.08.2026'da yeniden ölçüldü). `git push` → 403;
+  GitHub MCP yazma çağrısı → "token expired, requires re-authorization".
+  **Okuma çalışıyor**: `git fetch` ve MCP okuma çağrıları geçiyor. İş yerelde
+  commit'leniyor — 69 commit uzak depoya hiç gitmedi.
+- **Uzak depo boş değil ve QBLOGG'un deposu değil.** Önceki kayıt "hiç commit
+  yok" diyordu; yanlıştı. `andersenbetul-alt/BETA-ART` içinde başka bir proje
+  var: çok saat dilimli dijital saat uygulaması (`index.html`, `script.js`,
+  `styles.css`) + Node CI iş akışı, `main`'de 6 commit, ayrıca
+  `claude/hxi-icin-web-sayfasi-vn2n78` dalı. QBLOGG geçmişiyle **ortak atası
+  yok** (`git merge-base` boş döndü). Push edilirse depo iki ilgisiz proje
+  taşır; bu bilinçli bir karar olmalı.
 - Haftalık SEO/AI görünürlük izlemesi kurulu: pazartesi 07:00 (Norveç saati).
 - FAQPage şeması duruyor ama Google 7 Mayıs 2026'da FAQ zengin sonuçlarını kaldırdı.
   Yapay zekâ aramaları için tutuluyor; zengin sonuç beklemeyin.
