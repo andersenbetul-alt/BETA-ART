@@ -93,8 +93,24 @@ kontrol('köprü uzunluğu', sayilar(belge_satiri('Köprü uzunluğu'))[0], ku, 
 kontrol('köprü açısı', sayilar(belge_satiri('Köprü açısı'))[0], aci, 0.5)
 
 # --- Q kuyruğu ---
-QU = sayilar(re.search(r'QUAD = \[([^\]]*)\]', src).group(1))
-Q = list(zip(QU[0::2], QU[1::2]))
+# Kuyruk artık elle yazılı dörtgen değil; _wquad() açıdan türetiyor. Denetim de
+# aynı parametrelerden türetip karşılaştırır — kaynaktan düz liste okumaz.
+_WA, _WU, _WK = (float(re.search(r'W_ACI, W_UZUNLUK, W_KALINLIK = ([\d.]+), ([\d.]+), ([\d.]+)', src).group(i))
+                 for i in (1, 2, 3))
+_WIC = tuple(float(v) for v in re.search(r'W_IC = \(([\d.]+), ([\d.]+)\)', src).groups())
+
+
+def _wq(aci, uz, kal, ic):
+    a = math.radians(aci)
+    d = (math.cos(a), math.sin(a))
+    ds = (ic[0] + uz * d[0], ic[1] + uz * d[1])
+    px, py = -d[1], d[0]
+    h = kal / 2
+    return [(ds[0] - h * px, ds[1] - h * py), (ds[0] + h * px, ds[1] + h * py),
+            (ic[0] + h * px, ic[1] + h * py), (ic[0] - h * px, ic[1] - h * py)]
+
+
+Q = [(round(x, 1), round(y, 1)) for x, y in _wq(_WA, _WU, _WK, _WIC)]
 q_dis = ((Q[0][0] + Q[1][0]) / 2, (Q[0][1] + Q[1][1]) / 2)
 q_ic = ((Q[2][0] + Q[3][0]) / 2, (Q[2][1] + Q[3][1]) / 2)
 kontrol('kuyruk uzunluğu', sayilar(belge_satiri('Uzunluk'))[0],
@@ -210,6 +226,9 @@ kontrol('dış kontur 45° ışında', 424.3, round(_td, 1))
 _uc = max((x - 500.0) ** 2 + (y - 500.0) ** 2
           for x, y in zip(sayilar(SY_AQUA)[0::2], sayilar(SY_AQUA)[1::2])) ** 0.5
 kontrol('kuyruk dış konturu aşıyor (Q şartı)', 'evet', 'evet' if _uc > _td else 'HAYIR')
+
+# Sembol ile wordmark aynı harfin iki hâli — kuyruk açıları eşit olmalı.
+kontrol('wordmark kuyruğu sembolle kafiyeli', ACI, _WA)
 
 # Küçük boy ikonu artık sembolün aynısı — iki geometri ayrı tutulunca
 # bu oturumda iki kez R01 sınıfı hata doğdu (köprü, sonra halka).

@@ -14,6 +14,7 @@ from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.pens.boundsPen import BoundsPen
 from fontTools.misc.transform import Transform
+import math
 from pathlib import Path
 
 NAVY, AQUA = '#082C54', '#00D8C2'
@@ -144,7 +145,28 @@ S = 715.0 / 2048.0
 # adayları 110/200/340 px'te karşılaştırıldı. 0'da marka "OBLOGG" okunuyor,
 # 80'de kuyruk halkadan kopuk bir çubuğa dönüşüyor. 55'te Q 110 px'te bile
 # okunuyor ve kuyruk halkayla bütünleşik kalıyor.
-QUAD = [(505.5, 458.0), (465.4, 524.9), (321.7, 438.5), (361.8, 371.7)]
+# --- Wordmark Q kuyruğu. Elle yazılmış dörtgen değil, parametreden türer.
+# Sembol kuyruğu 22.08.2026'da 45°'ye alındı; wordmark 31°'de kalınca sistem
+# kendi harfiyle kafiyesiz kaldı. İkisi aynı açıda olmalı: sembolün Q'su ile
+# wordmark'ın Q'su aynı markanın aynı harfi.
+# İç uç sabit (kâsenin içinde), dış uç açıyla döner. Uzunluk ve kalınlık aynı.
+W_ACI, W_UZUNLUK, W_KALINLIK = 45.0, 167.6, 78.0
+W_IC = (341.8, 405.1)                     # kâse içindeki çapa — değişmedi
+
+
+def _wquad(aci=W_ACI, uz=W_UZUNLUK, kal=W_KALINLIK, ic=W_IC):
+    a = math.radians(aci)
+    d = (math.cos(a), math.sin(a))
+    ds = (ic[0] + uz * d[0], ic[1] + uz * d[1])
+    px, py = -d[1], d[0]
+    h = kal / 2
+    # Sarım CCW — O'nun dış konturuyla aynı yönde. Ters sarım nonzero kuralında
+    # birleştirmez, SİLER; bu hata 22.08'de bir kez yaşandı ve halkayı deliyordu.
+    return [(ds[0] - h * px, ds[1] - h * py), (ds[0] + h * px, ds[1] + h * py),
+            (ic[0] + h * px, ic[1] + h * py), (ic[0] - h * px, ic[1] - h * py)]
+
+
+QUAD = [(round(x, 1), round(y, 1)) for x, y in _wquad()]
 TERM = [((oB[0] + x / S) * K, -((oB[3] - y / S) * K)) for x, y in QUAD]
 
 SP = [0.0, 0.0, -0.045, -0.020, -0.025, 0.0]   # Q-B, B-L, L-O, O-G, G-G optik düzeltme

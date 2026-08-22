@@ -90,20 +90,33 @@ Tümü büyük harf. Optik çift düzeltmesi, em yüzdesi:
 | O–G | −%2,5 |
 | G–G | 0 |
 
-**Q**, Inter'in 45° taban-altı kuyruğu yerine özel kuyrukla kurulur: sayacın
-sağ-alt **iç konturundan** başlar, **31°** ile (sembolün köprü açısı) halkayı
-keser ve dış konturun ötesinde biter. Taban çizgisinin altına inmez — wordmark
-tek cap satırında kalır (534u). Tam kiriş değildir; bu bilinçli, çünkü tam
-kiriş denendiğinde marka **Ø** olarak okundu (Norveç pazarı için kabul
-edilemez).
+**Q**, Inter'in kendi kuyruğu yerine özel kuyrukla kurulur: sayacın sağ-alt
+**iç konturundan** başlar, **45°** ile (sembolün kuyruk açısı) halkayı keser ve
+dış konturun ötesinde biter. Tam kiriş değildir; bu bilinçli, çünkü tam kiriş
+denendiğinde marka **Ø** olarak okundu (Norveç pazarı için kabul edilemez).
+
+> **Not.** Ø riski wordmark için 22.08 sabahı biliniyordu ve bu satıra
+> yazılmıştı — ama aynı içgörü **sembole hiç uygulanmadı**. Sembolün köprüsü
+> tam kirişti ve tam da bu yüzden Ø okunuyordu. Bir belgede yazılı olan uyarı,
+> kardeş varlığa taşınmadıkça koruma sağlamıyor.
+
+Kuyruk 22.08.2026'da **31°'den 45°'ye** alındı: sembolün kuyruğu 45°'ye
+taşınınca wordmark 31°'de kalırsa sistem kendi harfiyle kafiyesiz olur —
+sembolün Q'su ile wordmark'ın Q'su aynı markanın aynı harfidir.
+
+Bunun bir bedeli var ve kabul edildi: kuyruk artık **taban çizgisinin altına
+iniyor**, wordmark bandı 534u → **551u** (+%3,2). Önceki "tek cap satırında
+kalır" özelliği terk edildi. Gerçek Q'lar zaten taban altına iner; kafiye bu
+kısıttan daha değerli.
 
 | Ölçüt | Değer |
 |---|---|
 | Uzunluk | 167,6u |
 | Genişlik | 78,0u |
-| Açı | 31,0° (sembolün köprü açısıyla aynı) |
+| Açı | 45,0° (sembolün kuyruk açısıyla aynı) |
 | Sarım | CCW — O'nun dış konturuyla aynı yönde |
-| İç uç | sayaç kenarında, 10u bindirme |
+| İç uç | sayaç kenarında, 10u bindirme — çapa (341,8 · 405,1) |
+| Kurgu | elle yazılı dörtgen değil; `_wquad()` açıdan türetir |
 
 ### 22.08.2026 — kuyruk baştan kuruldu, iki kusur vardı
 
@@ -390,6 +403,22 @@ olan piksel **%3,4** (kenar yumuşatma).
 > **Ölçüt notu.** İlk karşılaştırma alpha'yı yok sayıyordu ve köşede sahte bir
 > uyuşmazlık üretti: PNG'de o piksel saydam (RGB navy, alpha 0), SVG'de beyaz
 > zemin görünüyordu. Saydam PNG karşılaştırılırken zemine bindirmek şart.
+
+### Wordmark kuyruğu kurgusu — üçüncü kez aynı sarım hatası
+
+Kuyruk artık elle yazılmış dörtgen değil, `_wquad(açı, uzunluk, kalınlık, çapa)`
+işlevinden türüyor. Kurgu, 31°'de eski dörtgeni **birebir** üretiyor (dört nokta
+da ±0,2u içinde) — yani türetme doğrulanmış.
+
+Kurguyu yazarken **ters sarım hatasını yeniden yaptım.** Nokta sırasını CW
+üretiyordu; `nonzero` kuralında ters sarım birleştirmez, siler. Sonuç: 45°'de
+kuyruk O'dan koptu ve altında ayrı bir baklava olarak durdu. Üstelik kodun
+yorumunda "Sarım CCW" yazıyordu — kontrol etmeden yazmıştım.
+
+Bu hatanın üçüncü tekrarı: (1) 22.08 sabahı wordmark kuyruğunda, (2) sembol
+köprüsünde, (3) burada. Ortak nedeni aynı: **sarım gözle görülmez, ölçülmelidir.**
+İşaretli alan hesabı `marka-dogrula.py`'de zaten vardı ve bu seferkini de
+yakaladı.
 
 ## Kalan üretim notları
 
