@@ -1,5 +1,11 @@
 # The suite is the only thing standing between an edit and a site that quietly
 # sells work the model refuses to do. It runs on every push and every PR.
+#
+# Two jobs on purpose. The static, data and API suites finish in about a
+# second, so they report in well under a minute; the browser suite needs
+# Chromium and takes roughly forty-five seconds more. Running them in parallel
+# means a broken catalogue is red long before the browser job has finished
+# downloading anything.
 name: tests
 
 on:
@@ -7,16 +13,22 @@ on:
     branches: ['**']
   pull_request:
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+# A second push supersedes the first. Without this, pushing three times in a
+# row pays for three full runs of a suite whose answer is already stale.
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
 
+jobs:
+  fast:
+    name: static, data, API
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
-      # node:sqlite is built in from Node 22 — the server layer needs it, and
-      # there is no native module to compile because of that choice.
+      # node:sqlite is built in from Node 22 — the storage layer needs it, and
+      # that is why there is no native module to compile.
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -25,15 +37,9 @@ jobs:
             package-lock.json
             server/package-lock.json
 
-      - name: Install test dependencies
-        run: npm ci
+      - run: npm ci
+      - run: npm ci --prefix server
 
-      - name: Install server dependencies
-        run: npm ci --prefix server
-
-      # The static, data and API suites need no browser; run them first so a
-      # broken catalogue or a broken workflow fails in seconds rather than
-      # after a Chromium download.
       - name: Static build
         run: npm run test:build
 
@@ -43,10 +49,43 @@ jobs:
       - name: API and case workflow
         run: npm run test:server
 
+  browser:
+    name: accessibility and flows
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - run: npm ci
+
+      # Chromium is ~150 MB to fetch and does not change between runs. Key the
+      # cache on the resolved Playwright version so a bump invalidates it.
+      - name: Resolve Playwright version
+        id: pw
+        run: echo "version=$(node -p "require('playwright/package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache@v4
+        id: chromium
+        with:
+          path: ~/.cache/ms-playwright
+          key: chromium-${{ runner.os }}-${{ steps.pw.outputs.version }}
+
       - name: Install Chromium
+        if: steps.chromium.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
 
+      # The browser is cached but its OS libraries are not part of that cache.
+      - name: Install Chromium system libraries
+        if: steps.chromium.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
       # Accessibility is a legal requirement in Norway, not a preference, so
-      # axe runs in CI and not from memory.
+      # axe runs here and not from memory.
       - name: Accessibility and browser flows
         run: npm run test:browser

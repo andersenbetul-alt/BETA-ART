@@ -205,6 +205,20 @@ export default async function () {
       assert(/npm ci --prefix server/.test(wf), 'CI does not install the server dependencies');
       assert(/playwright install/.test(wf), 'CI does not install a browser');
       assert(/node-version: '22'/.test(wf), 'CI must run Node 22 — node:sqlite is built in there');
+      assert(/cancel-in-progress: true/.test(wf), 'a superseded run should be cancelled');
+      assert(/ms-playwright/.test(wf), 'Chromium is re-downloaded on every run');
+    });
+
+    /* The browser suite loaded Google Fonts on every page, which cost 12.6
+       seconds per goto where that host is slow or blocked, against 50 ms with
+       the request refused. Nothing under test depends on the webfont. */
+    await test('the browser suite does not wait on a font CDN', () => {
+      const src = fs.readFileSync('tests/browser.test.mjs', 'utf8');
+      assert(/fonts\\\.\(googleapis\|gstatic\)\\\.com/.test(src) || /googleapis/.test(src),
+        'no route blocks the font CDN');
+      assert(/route\.abort\(\)/.test(src), 'the font requests are not aborted');
+      const direct = [...src.matchAll(/browser\.new(Page|Context)\(/g)].length;
+      equal(direct, 2, 'a test opens a page outside the routed helpers: ' + direct + ' direct calls');
     });
 
     await test('no placeholder secret is committed', () => {

@@ -36,13 +36,41 @@ export default async function () {
   }
 
   const browser = await chromium.launch();
+
+  /* The pages link Google Fonts. Nothing under test depends on the webfont —
+     the stylesheet uses display=swap, so text paints immediately in the
+     fallback either way — but every goto waited on those two requests. Where
+     the network is slow or the host is unreachable that wait was 12.6 seconds
+     per page load, against 50 ms with the requests refused. A suite that is
+     eight minutes on one machine and one minute on another, because of a CDN
+     it does not test, is a suite nobody runs. */
+  async function openPage(opts) {
+    const p = await browser.newPage(opts);
+    await p.route('**/*', (route) => (
+      /fonts\.(googleapis|gstatic)\.com/.test(route.request().url())
+        ? route.abort()
+        : route.continue()
+    ));
+    return p;
+  }
+
+  async function openContext(opts) {
+    const ctx = await browser.newContext(opts);
+    await ctx.route('**/*', (route) => (
+      /fonts\.(googleapis|gstatic)\.com/.test(route.request().url())
+        ? route.abort()
+        : route.continue()
+    ));
+    return ctx;
+  }
+
   try {
     await suite('accessibility', async () => {
       await test('the site is served', () => assert(up, 'static server never came up'));
 
       for (const page of PAGES) {
         await test(`${page} has no WCAG 2.1 AA violations`, async () => {
-          const p = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+          const p = await openPage({ viewport: { width: 1280, height: 900 } });
           await p.goto(`${BASE}/${page}`, { waitUntil: 'load' });
           await p.waitForTimeout(900);
           await p.addScriptTag({ content: axe });
@@ -55,7 +83,7 @@ export default async function () {
       }
 
       await test('every interactive target clears 24px on a phone', async () => {
-        const ctx = await browser.newContext({ viewport: { width: 393, height: 852 }, isMobile: true, hasTouch: true });
+        const ctx = await openContext({ viewport: { width: 393, height: 852 }, isMobile: true, hasTouch: true });
         const p = await ctx.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
@@ -76,7 +104,7 @@ export default async function () {
       });
 
       await test('the consent checkbox is a real touch target', async () => {
-        const ctx = await browser.newContext({ viewport: { width: 393, height: 852 }, isMobile: true, hasTouch: true });
+        const ctx = await openContext({ viewport: { width: 393, height: 852 }, isMobile: true, hasTouch: true });
         const p = await ctx.newPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
@@ -95,7 +123,7 @@ export default async function () {
 
     await suite('booking flow', async () => {
       const open = async (url = '/index.html?lang=no') => {
-        const p = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+        const p = await openPage({ viewport: { width: 1280, height: 900 } });
         const errors = [];
         p.on('pageerror', e => errors.push(e.message));
         await p.goto(BASE + url, { waitUntil: 'load' });
@@ -193,7 +221,7 @@ export default async function () {
 
     await suite('career', async () => {
       await test('the career form asks for a goal and refuses documents', async () => {
-        const p = await browser.newPage();
+        const p = await openPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
         await p.locator('#bkBody .service-opt').nth(1).click();   // AI Career Kit
@@ -207,7 +235,7 @@ export default async function () {
       });
 
       await test('a career request goes through without a phone number', async () => {
-        const p = await browser.newPage();
+        const p = await openPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
         await p.locator('#bkBody .service-opt').nth(0).click();   // Career Starter
@@ -226,7 +254,7 @@ export default async function () {
       });
 
       await test('the career page states the limits it has to state', async () => {
-        const p = await browser.newPage();
+        const p = await openPage();
         await p.goto(`${BASE}/karriere.html`, { waitUntil: 'load' });
         await p.waitForTimeout(500);
         /* A fresh browser reports en-US, so the page opens in English. The
@@ -251,7 +279,7 @@ export default async function () {
 
     await suite('out of scope', async () => {
       await test('an employment-law question is referred on, not sold to', async () => {
-        const p = await browser.newPage();
+        const p = await openPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
         await p.locator('#finderBody .opt').nth(5).click();   // employment law, dismissal, pay
@@ -271,7 +299,7 @@ export default async function () {
       });
 
       await test('an in-scope answer leads to a service we actually sell', async () => {
-        const p = await browser.newPage();
+        const p = await openPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
         for (const n of [0, 0, 0]) {
@@ -287,7 +315,7 @@ export default async function () {
 
     await suite('return from Stripe', async () => {
       const confirm = async (query) => {
-        const p = await browser.newPage();
+        const p = await openPage();
         await p.goto(`${BASE}/index.html?lang=no&${query}#booking`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
         const out = {
@@ -323,7 +351,7 @@ export default async function () {
 
     await suite('legal pages', async () => {
       await test('Norwegian is shown to a Norwegian reader', async () => {
-        const ctx = await browser.newContext({ locale: 'nb-NO' });
+        const ctx = await openContext({ locale: 'nb-NO' });
         const p = await ctx.newPage();
         await p.goto(`${BASE}/personvern.html`, { waitUntil: 'load' });
         await p.waitForTimeout(400);
@@ -333,7 +361,7 @@ export default async function () {
       });
 
       await test('a reader who chose another language gets English', async () => {
-        const ctx = await browser.newContext({ locale: 'nb-NO' });
+        const ctx = await openContext({ locale: 'nb-NO' });
         const p = await ctx.newPage();
         await p.goto(`${BASE}/index.html?lang=tr`, { waitUntil: 'load' });
         await p.waitForTimeout(700);
@@ -344,7 +372,7 @@ export default async function () {
       });
 
       await test('company details are filled from config, not hardcoded', async () => {
-        const p = await browser.newPage();
+        const p = await openPage();
         await p.goto(`${BASE}/personvern.html`, { waitUntil: 'load' });
         await p.waitForTimeout(400);
         const org = (await p.locator('[data-company="orgNumber"]').first().textContent()).trim();
@@ -357,7 +385,7 @@ export default async function () {
 
     await suite('without JavaScript', async () => {
       await test('a visitor still gets a way to reach a human', async () => {
-        const ctx = await browser.newContext({ javaScriptEnabled: false });
+        const ctx = await openContext({ javaScriptEnabled: false });
         const p = await ctx.newPage();
         await p.goto(`${BASE}/index.html`, { waitUntil: 'load' });
         const text = await p.locator('body').innerText();
