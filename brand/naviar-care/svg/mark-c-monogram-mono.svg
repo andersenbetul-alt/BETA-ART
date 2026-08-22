@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Naviar Care N monogram">
+  <title>Naviar Care — Monogram</title>
+  <g fill="none" stroke-width="8" stroke-linecap="round">
+    <path d="M15 50 V17" stroke="#0E4F52"/>
+    <path d="M49 50 V17" stroke="#0E4F52"/>
+    <path d="M15 17 L49 50" stroke="#0E4F52"/>
+  </g>
+</svg>

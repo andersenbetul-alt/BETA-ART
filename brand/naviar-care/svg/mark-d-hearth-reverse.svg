@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Naviar Care hearth mark">
+  <title>Naviar Care — Hearth</title>
+  <path d="M16 30 V47 Q16 51 20 51 H44 Q48 51 48 47 V30" fill="none" stroke="#F7F3EE" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M11 31 L32 13 L53 31" fill="none" stroke="#F7F3EE" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M32 43.5 C24 38 23 36 23 33.5 A4.5 4.5 0 0 1 32 32.5 A4.5 4.5 0 0 1 41 33.5 C41 36 40 38 32 43.5 Z" fill="#F2A87A"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80" role="img" aria-label="Naviar Care">
+  <title>Naviar Care</title>
+  <g transform="translate(6,12) scale(0.875)">
+  <path d="M16 30 V47 Q16 51 20 51 H44 Q48 51 48 47 V30" fill="none" stroke="#0E4F52" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M11 31 L32 13 L53 31" fill="none" stroke="#0E4F52" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M32 43.5 C24 38 23 36 23 33.5 A4.5 4.5 0 0 1 32 32.5 A4.5 4.5 0 0 1 41 33.5 C41 36 40 38 32 43.5 Z" fill="#E9915E"/>
+  </g>
+  <text x="76" y="43" font-family="Fraunces, Georgia, serif" font-size="31" font-weight="600" fill="#0E4F52" letter-spacing="-0.4">Naviar</text>
+  <text x="78" y="61" font-family="Manrope, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#2E7D77" letter-spacing="4.6">CARE</text>
+</svg>
