@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512">
+  <rect width="100" height="100" fill="#08080f"/>
+  <!-- The X, caught mid-rotation: the two strokes are NOT at mirrored angles.
+       One holds 45 degrees, the other is pushed to 63. That asymmetry is the drift —
+       the mark is visibly off, and visibly held. -->
+  <g stroke="#f2f2f5" stroke-width="11" stroke-linecap="butt">
+    <line x1="26" y1="24" x2="74" y2="76"/>
+    <line x1="76" y1="27" x2="30" y2="74"/>
+  </g>
+  <!-- the pivot: the one point the whole mark turns about -->
+  <circle cx="50.6" cy="50.2" r="5.4" fill="#ef2b2d"/>
+</svg>

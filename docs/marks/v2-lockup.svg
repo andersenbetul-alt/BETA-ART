@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 64" width="528" height="256">
+  <!-- Three letters read as three states: the H stands, the X breaks traction, the I exits.
+       Only the X is rotated, and only the X is red — one accent, doing one job. -->
+  <g fill="#f2f2f5">
+    <rect x="6"  y="8" width="11" height="48"/>
+    <rect x="30" y="8" width="11" height="48"/>
+    <rect x="6"  y="26.5" width="35" height="11"/>
+    <rect x="115" y="8" width="11" height="48"/>
+  </g>
+  <!-- the X: one white stroke on the true axis, one red stroke pushed 17 degrees past it -->
+  <g stroke-width="11" stroke-linecap="butt">
+    <line x1="57" y1="9" x2="97" y2="55" stroke="#f2f2f5"/>
+    <line x1="99" y1="7" x2="55" y2="57" stroke="#ef2b2d"/>
+  </g>
+</svg>
