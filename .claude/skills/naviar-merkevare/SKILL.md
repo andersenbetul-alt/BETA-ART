@@ -62,45 +62,67 @@ hva den løser.
 
 ## Merket
 
-`naviar-mark.svg` i denne mappen – varden fra A-en i ordmerket, tegnet som fylte
-flater og ikke streker. Grunnen: ordmerket bruker hårstreker som forsvinner
-under ca. 40 px, og 16 px er favicon. Det er den størrelsen merket oftest sees i,
-sammen med avsenderikonet i e-posten til pårørende.
+`naviar-mark.svg` i denne mappen – varden fra A-en i ordmerket, tegnet som
+fylte flater og ikke streker. Grunnen: ordmerket bruker hårstreker som
+forsvinner under ca. 40 px, og 16 px er favicon. Det er den størrelsen merket
+oftest sees i, sammen med avsenderikonet i e-posten til pårørende.
+
+Bandet nederst er et **hull i flata** (`fill-rule="evenodd"`), ikke en flate
+som ligger gjennomsiktig oppå. Gjennomsiktighet finnes ikke i ett trykkfarge,
+og ved 16 px ble 45 % opasitet en grå klump i stedet for en strek. Et hull
+virker begge steder, og det virker også når merket snus til sand på blekket.
 
 | Flate | Hva som brukes |
 |---|---|
-| Favicon, appikon | Merket, hvitt på marineblå flate med runde hjørner |
-| Topp på siden | Samme flate, 34 px |
-| E-post til familien | Samme flate |
-| Over ca. 40 px | Fullt ordmerke |
-
-Favicon har **egen flate**, ikke gjennomsiktig bakgrunn: marineblått på en mørk
-fanelinje er usynlig. En flate virker uansett hva nettleseren har bak seg.
+| Favicon, appikon | Merket, sand på blekk med runde hjørner |
+| Topp på siden | Liggende lås, 34 px høy |
+| E-post til familien | Merket alene |
+| Over ca. 40 px | Liggende eller stående lås |
 
 Merket bruker `currentColor`, så det arver farge og virker på begge grunner.
 
-## Det som mangler
+## Logofilene
 
-Vektorfilen til **ordmerket** finnes ikke i repoet – merket er levert som
-raster. Legges den inn som `assets/img/naviar-care-logo.svg`, er den eneste
-endringen som trengs å bytte `.logo-mark`-flaten mot en `<img>` i toppen.
+Ordmerket er satt i Inter og gjort om til flater. En logo som er avhengig av at
+en skrift er installert der den vises, er ikke en logo – den er en forhåpning.
+Inter er lisensiert under SIL Open Font License, som tillater dette.
 
-Ordmerket skal **ikke** tegnes på nytt for hånd. En logotype som er 95 % riktig
-er verre enn en raster: den sprer seg overalt, og feilen følger med.
+NAVIAR står i 700 med 55/1000 em sporing. CARE står i 400 med 140, fordi mager
+tekst i versaler trenger mer luft for å ikke klumpe seg. Ordmellomrommet er
+430 – tydelig større enn sporingen inne i CARE, ellers leses de to ordene som
+ett. Merket står **på grunnlinja** og rager bare oppover, slik en varde ville
+gjort. En varde som svever over skriftlinja ser ut som en feil, uansett hvor
+pent den er tegnet.
 
-## Payoff
+| Fil | Når |
+|---|---|
+| `naviar-care-logo.svg` | Liggende lås. Førstevalget. `currentColor` |
+| `naviar-care-logo-blekk.svg` | Samme, låst til blekket. Der ingen farge kan arves |
+| `naviar-care-logo-negativ.svg` | Samme, låst til sanden. Mørke flater |
+| `naviar-care-ordmerke.svg` | Uten merket. Der merket allerede står i nærheten |
+| `naviar-care-logo-staaende.svg` | Merket over to linjer. Smale flater, avatarer |
 
-«Clarity in complex systems» er **Naviars** payoff, ikke Naviar Cares. Kjøperen
-driver et selskap med tolv ansatte og setter opp vaktlista selv. Hun har ikke
-komplekse systemer; hun har familier som ringer og spør om mor fikk besøk.
+I den stående låsen er CARE sporet ut til nøyaktig samme bredde som NAVIAR.
+To ord som ender på samme loddrette linje leses som én form, ikke som to.
 
-Produktets egen setning er:
+**Bruk `currentColor`-utgaven i alt som er HTML.** De to med fast farge finnes
+for trykk, e-postmaler og andres presentasjonsverktøy, som ikke arver noe.
 
-> Ett besøk. Én bekreftelse. Alle vet det.
+Skal sporingen eller mellomrommene endres, gjøres det i `verktoy/lag-logo.py`
+og filene bygges på nytt. Ikke rediger banedata for hånd.
 
-## Før du innfører en ny farge
+## Frisonen
 
-Regn kontrasten mot flaten den skal stå på, og ta med tallet. En farge uten et
-tall er en gjetning.
+Rundt logoen skal det ligge minst én versalhøyde tom flate på alle fire kanter.
+Det er avstanden i logoen selv mellom merket og N-en, ganget med halvannet, og
+den er lett å måle uten linjal: like mye luft som høyden på en N.
 
-Fullstendig begrunnelse: `docs/team/MERKEVARE.md`.
+## Minste størrelse
+
+| Lås | Minste bredde |
+|---|---|
+| Liggende | 96 px på skjerm, 26 mm i trykk |
+| Stående | 78 px på skjerm, 22 mm i trykk |
+| Merket alene | 16 px |
+
+Under dette forsvinner hullet i varden, og merket blir en trekant.

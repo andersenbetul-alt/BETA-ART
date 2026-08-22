@@ -934,4 +934,56 @@ t.test('canonical og og:url peker på samme domene', function () {
   t.erSann(/^https:\/\/naviarcare\.com\//.test(c || ''), 'uventet domene: ' + c);
 });
 
+t.gruppe('Logoen');
+
+t.test('alle fem logofilene finnes og er gyldig XML', function () {
+  ['naviar-care-logo.svg', 'naviar-care-logo-blekk.svg', 'naviar-care-logo-negativ.svg',
+   'naviar-care-ordmerke.svg', 'naviar-care-logo-staaende.svg', 'naviar-mark.svg'
+  ].forEach(function (f) {
+    var s = fs.readFileSync(sti.join(ROT, 'assets/img', f), 'utf8');
+    t.erSann(/^<svg[\s\S]*<\/svg>\s*$/.test(s), f + ' er ikke en hel SVG');
+    /* To bindestreker etter hverandre er ulovlig inne i en XML-kommentar.
+       Det var feilen som gjorde de første filene uleselige for nettleseren. */
+    (s.match(/<!--[\s\S]*?-->/g) || []).forEach(function (k) {
+      t.erUsann(k.slice(4, -3).indexOf('--') !== -1, f + ' har -- inne i en kommentar');
+    });
+  });
+});
+
+t.test('merket er ett hull, ikke en gjennomsiktig flate oppå', function () {
+  /* Opasitet finnes ikke i ett trykkfarge, og ved 16 px blir 45 % en grå
+     klump i stedet for en strek. Regelen holdes her så den ikke kan snike
+     seg inn igjen neste gang noen tegner om merket. */
+  ['naviar-care-logo.svg', 'naviar-care-logo-blekk.svg', 'naviar-care-logo-negativ.svg',
+   'naviar-care-logo-staaende.svg', 'naviar-mark.svg'
+  ].forEach(function (f) {
+    var s = fs.readFileSync(sti.join(ROT, 'assets/img', f), 'utf8');
+    t.erUsann(/opacity/.test(s), f + ' bruker opacity');
+    t.erSann(/fill-rule="evenodd"/.test(s), f + ' mangler utsparingen');
+  });
+});
+
+t.test('sidene bruker samme merke som logofilene', function () {
+  fs.readdirSync(ROT).filter(function (f) { return /\.html$/.test(f); })
+    .map(function (f) { return f; })
+    .concat(fs.readdirSync(sti.join(ROT, 'besok')).filter(function (f) {
+      return /\.html$/.test(f);
+    }).map(function (f) { return 'besok/' + f; }))
+    .forEach(function (f) {
+      var h = les(f);
+      if (h.indexOf('M16 3.2 3.4 28.8') === -1) return;   // siden viser ikke merket
+      t.erUsann(/opacity="\.45"/.test(h), f + ' har det gamle bandet');
+      t.erSann(/fill-rule="evenodd"/.test(h), f + ' mangler utsparingen');
+    });
+});
+
+t.test('currentColor-utgaven arver farge, de faste gjør det ikke', function () {
+  var arver = fs.readFileSync(sti.join(ROT, 'assets/img/naviar-care-logo.svg'), 'utf8');
+  t.erSann(/fill="currentColor"/.test(arver), 'logoen arver ikke farge');
+  var blekk = fs.readFileSync(sti.join(ROT, 'assets/img/naviar-care-logo-blekk.svg'), 'utf8');
+  var sand = fs.readFileSync(sti.join(ROT, 'assets/img/naviar-care-logo-negativ.svg'), 'utf8');
+  t.erSann(/fill="#101a2e"/.test(blekk), 'blekkutgaven har feil farge');
+  t.erSann(/fill="#fbf6ee"/.test(sand), 'negativutgaven har feil farge');
+});
+
 t.oppsummer('Enhetstester');
