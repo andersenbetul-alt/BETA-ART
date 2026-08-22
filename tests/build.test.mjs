@@ -177,6 +177,19 @@ export default async function () {
       }
     });
 
+    /* Deploying this repo as-is would publish the paid kit and the case queue.
+       The ignore file is the only guard, so it is worth a test of its own. */
+    await test('nothing that must stay private can be deployed', () => {
+      const ignored = fs.readFileSync('.vercelignore', 'utf8')
+        .split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#'));
+      for (const secret of ['leveranser/', 'server/', 'admin.html', 'assets/js/admin.js']) {
+        assert(ignored.includes(secret), `.vercelignore does not exclude ${secret}`);
+      }
+      /* And the thing it is protecting has to still be there to protect. */
+      assert(fs.existsSync('leveranser/karriere/kit/prompts.md'),
+        'the paid kit moved; check .vercelignore still points at it');
+    });
+
     await test('no placeholder secret is committed', () => {
       for (const file of ['server/server.js', 'assets/js/config.js']) {
         const src = fs.readFileSync(file, 'utf8');

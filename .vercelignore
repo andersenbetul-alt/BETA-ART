@@ -1,0 +1,22 @@
+# What must never reach a public host.
+#
+# leveranser/ is the product. The AI Career Kit is 299 kr; publishing the folder
+# hands it to anyone who guesses the URL. This line is the only thing standing
+# between `vercel deploy` and giving it away.
+leveranser/
+
+# The case queue and its door. The API cannot run on Vercel anyway — it keeps
+# its data in a SQLite file, which a serverless host discards between deploys —
+# and there is no reason to advertise that an admin page exists.
+server/
+admin.html
+assets/js/admin.js
+
+# Not part of the site.
+tests/
+tools/
+docs/
+node_modules/
+*.bundle
+CLAUDE.md
+SECURITY.md
