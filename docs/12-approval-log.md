@@ -60,6 +60,39 @@ Neither is built. These are decisions about what will be built.
 
 ---
 
+## 2026-08-21 — the mark, and the line that goes with it
+
+**Approved by:** Betül Öner, owner.
+**How it was reviewed:** the seal rendered from the page's own SVG at 200, 96,
+48 and 24 px, on paper and on ink, and in the header lockup beside the
+wordmark. The four home-screen icons were reviewed at actual size.
+
+**What this approval covers**
+
+- **The seal**: a ring, six rays, and a filled mark in seal red at the centre —
+  `circle r=46`, six ray strokes, `circle r=7 fill #8B1A1A`, on a 100×100
+  viewBox. One colour plus the seal red, no gradient, no photograph.
+- **The lockup**: the seal beside `BETA ART` set in the mono face at .26em
+  tracking, as it already appears in every header.
+- **The slagord**: *Made by a human. Verified at the source.* — with
+  *Laget av et menneske. Verifisert ved kilden.* and *Bir insan yaptı.
+  Kaynağında doğrulandı.* Recorded in `docs/15-slagord.md` with the shorter
+  lines that hang off it.
+
+**What this approval does not cover, and cannot**
+
+- **Any registration.** This is the owner accepting the mark for use on the
+  site. It is not a trade mark filing, not a search for earlier rights, and not
+  an opinion that the mark is registrable. `betaart.com` without the hyphen is
+  registered to somebody else — that is a finding for a lawyer, not a blocker
+  cleared here.
+- **The journal's mark.** `beta-art-blog/index.html` carries no inline seal, so
+  its home-screen icon is generated from the favicon and shows the centre mark
+  without the rays. The three other properties are consistent; the journal is
+  not, and this approval does not pretend otherwise.
+
+---
+
 ## What would change this record
 
 Each of these is one line in this file when it happens, and none of them are
