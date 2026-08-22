@@ -15,7 +15,8 @@
     "marka-paket": "node scripts/marka-paket.mjs",
     "tescil": "node scripts/marka-tescil.mjs",
     "uretim-testi": "node scripts/uretim-testi.mjs",
-    "marka-dogrula": "python3 scripts/marka-dogrula.py"
+    "marka-dogrula": "python3 scripts/marka-dogrula.py",
+    "tescil-testi": "node scripts/tescil-testi.mjs"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.70.0",

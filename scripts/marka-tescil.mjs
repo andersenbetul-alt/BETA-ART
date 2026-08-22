@@ -42,6 +42,12 @@ const CIKTI = join(ROOT, 'tescil');
    doğrulanmalı; burada denetlenen şey bizim dosyamızın zarfa uyduğudur. */
 const ZARF = { enBoyEn: 2835, enBoyBoy: 2010, enBuyukBayt: 2 * 1024 * 1024, dpi: [96, 300] };
 
+/* EUIPO'nun kabul ettiği renk modları, JPEG bileşen sayısı olarak:
+   1 = Gri / S-B · 3 = RGB (YCbCr) · 4 = CMYK.
+   Kaynak ve gerekçe: docs/marka-tescili.md. Tek yer burası — scripts/tescil-testi.mjs
+   bu diziyi içeri aktarıp sınar, yani kural kopyalanmıyor. */
+export const RENK_MODLARI = [1, 3, 4];
+
 /* Başvuruya giden varyantlar. EUIPO şekil markasında renk beyanı yapılırsa
    renkler koruma kapsamına girer; siyah-beyaz başvuru daha geniş korur ama
    renk iddiasını bırakır. İkisini de üretip kararı hukukçuya bırakıyoruz. */
@@ -88,7 +94,7 @@ function dpiYaz(yol, dpi) {
    yalnızca dosya boyutuna ve kaba bir progressive taramasına bakıyordu ve
    çözünürlüğü hiç denetlemiyordu — dört dosyaya da "zarfa uygun" demişti,
    oysa dördü de çözünürlük beyan etmiyordu. */
-function jpegIncele(yol) {
+export function jpegIncele(yol) {
   const b = readFileSync(yol);
   const r = { bayt: b.length, gecerli: b[0] === 0xff && b[1] === 0xd8,
               progressive: false, en: 0, boy: 0, bilesen: 0, renk: '?', dpi: null, birim: null };
@@ -145,8 +151,7 @@ async function main() {
        Kendi tedbirimiz: bazı eski ayrıştırıcılar progressive JPEG'i açamıyor ve
        başvuruyu riske atmanın anlamı yok. Uyarı olarak veriliyor, ret değil. */
     if (d.progressive) uyari.push('progressive JPEG — EUIPO kuralı değil, kendi tedbirimiz');
-    /* EUIPO renk modu olarak RGB, Gri, S-B ve CMYK'yı kabul ediyor. */
-    if (![1, 3, 4].includes(d.bilesen)) sorun.push(`renk modu ${d.renk} — RGB/Gri/CMYK bekleniyor`);
+    if (!RENK_MODLARI.includes(d.bilesen)) sorun.push(`renk modu ${d.renk} — RGB/Gri/CMYK bekleniyor`);
     if (!d.dpi || d.birim !== 1) sorun.push('çözünürlük beyan edilmemiş');
     else if (d.dpi[0] < ZARF.dpi[0] || d.dpi[0] > ZARF.dpi[1]) sorun.push(`${d.dpi[0]} DPI — 96–300 dışında`);
     const bayt = d.bayt;
