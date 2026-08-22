@@ -410,20 +410,35 @@
       : '<p class="empty">' + esc(t('posts.empty')) + '</p>';
     revealInit();
   }
+  // Filtre durumu adreste yaşar: sayfa yenilense de, bağlantı paylaşılsa da korunur.
+  function syncBlogUrl() {
+    var u = new URL(window.location.href);
+    if (blogState.q.trim()) u.searchParams.set('q', blogState.q.trim());
+    else u.searchParams.delete('q');
+    if (blogState.cat !== 'all') u.searchParams.set('cat', blogState.cat);
+    else u.searchParams.delete('cat');
+    history.replaceState(null, '', u);
+  }
   function initBlog() {
     var box = $('#postList');
     if (!box) return;
     var input = $('#searchInput');
-    if (input) input.addEventListener('input', function () { blogState.q = this.value; renderBlog(); });
+    if (input) input.addEventListener('input', function () { blogState.q = this.value; syncBlogUrl(); renderBlog(); });
     var chips = $('#catChips');
     if (chips) chips.addEventListener('click', function (e) {
       var b = e.target.closest('button[data-cat]');
       if (!b) return;
       blogState.cat = b.dataset.cat;
+      syncBlogUrl();
       renderBlog();
     });
     var preset = param('cat');
     if (preset) blogState.cat = preset;
+    var presetQ = param('q');
+    if (presetQ) {
+      blogState.q = presetQ;
+      if (input) input.value = presetQ;
+    }
   }
 
   /* ---------- sayfa: yazı ---------- */
@@ -538,8 +553,16 @@
       var input = $('#subscribeEmail');
       var msg = $('#formMsg');
       var val = (input.value || '').trim();
-      var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
+      var ok = EMAIL_RE.test(val);
       say(msg, ok ? 'cta.success' : 'cta.invalid');
+      if (!ok) {
+        input.setAttribute('aria-invalid', 'true');
+        input.focus();
+        input.addEventListener('input', function tidy() {
+          input.removeAttribute('aria-invalid');
+          input.removeEventListener('input', tidy);
+        });
+      }
       if (ok) {
         var done = function () {
           form.reset();
@@ -601,6 +624,32 @@
     el.textContent = t(key);
   }
 
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  // Alan yanı doğrulama: hatalı girdiyi işaretler, altına kısa mesaj koyar,
+  // ziyaretçi yazmaya başlayınca ikisini de temizler.
+  function markInvalid(el, key) {
+    if (!el) return;
+    el.setAttribute('aria-invalid', 'true');
+    var host = el.closest('.field') || el.parentElement;
+    var note = host.querySelector('.field-msg');
+    if (!note) {
+      note = document.createElement('p');
+      note.className = 'field-msg';
+      host.appendChild(note);
+    }
+    say(note, key);
+    el.addEventListener('input', function tidy() {
+      el.removeAttribute('aria-invalid');
+      note.remove();
+      el.removeEventListener('input', tidy);
+    });
+  }
+  function clearInvalid(form) {
+    $$('[aria-invalid]', form).forEach(function (el) { el.removeAttribute('aria-invalid'); });
+    $$('.field-msg', form).forEach(function (el) { el.remove(); });
+  }
+
   function composeMail(form, subject, msgEl, successKey) {
     var lines = [];
     $$('[data-field]', form).forEach(function (el) {
@@ -647,31 +696,57 @@
 
   function initWorkForms() {
     var client = $('#clientForm');
+    var writer = $('#writerForm');
+
+    // Uzun formda yazılanlar, sekme yanlışlıkla kapanırsa sorulmadan gitmesin.
+    var dirty = false;
+    [client, writer].forEach(function (f) {
+      if (f) f.addEventListener('input', function () { dirty = true; });
+    });
+    window.addEventListener('beforeunload', function (e) {
+      if (!dirty) return;
+      e.preventDefault();
+      e.returnValue = '';
+    });
+
+    // Doğrulama: her hatalı alan yerinde işaretlenir, odak ilk hataya gider.
+    function validate(form, msg, fields) {
+      clearInvalid(form);
+      var bad = [];
+      fields.forEach(function (f) {
+        var el = $(f.sel);
+        var val = (el.value || '').trim();
+        if (f.email ? !EMAIL_RE.test(val) : !val) {
+          markInvalid(el, f.email ? 'form.email' : 'form.required');
+          bad.push(el);
+        }
+      });
+      if (bad.length) {
+        say(msg, 'wc.invalid');
+        bad[0].focus();
+        return false;
+      }
+      return true;
+    }
+
     if (client) client.addEventListener('submit', function (e) {
       e.preventDefault();
       var msg = $('#clientMsg');
-      var name = $('#cName').value.trim();
-      var mail = $('#cEmail').value.trim();
-      var text = $('#cMsg').value.trim();
-      if (!name || !text || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) {
-        say(msg, 'wc.invalid');
-        return;
-      }
-      composeMail(client, 'QBLOGG — ' + t('wc.title') + ' · ' + name, msg, 'wc.success');
+      if (!validate(client, msg, [
+        { sel: '#cName' }, { sel: '#cEmail', email: true }, { sel: '#cMsg' }
+      ])) return;
+      dirty = false;
+      composeMail(client, 'QBLOGG — ' + t('wc.title') + ' · ' + $('#cName').value.trim(), msg, 'wc.success');
     });
 
-    var writer = $('#writerForm');
     if (writer) writer.addEventListener('submit', function (e) {
       e.preventDefault();
       var msg = $('#writerMsg');
-      var name = $('#wName').value.trim();
-      var mail = $('#wEmail').value.trim();
-      var text = $('#wMsg').value.trim();
-      if (!name || !text || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) {
-        say(msg, 'wc.invalid');
-        return;
-      }
-      composeMail(writer, 'QBLOGG — ' + t('ww.title') + ' · ' + name, msg, 'ww.success');
+      if (!validate(writer, msg, [
+        { sel: '#wName' }, { sel: '#wEmail', email: true }, { sel: '#wMsg' }
+      ])) return;
+      dirty = false;
+      composeMail(writer, 'QBLOGG — ' + t('ww.title') + ' · ' + $('#wName').value.trim(), msg, 'ww.success');
     });
   }
 

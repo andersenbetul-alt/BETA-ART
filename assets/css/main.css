@@ -2,6 +2,7 @@
    Not: Yön bağımsız (logical) özellikler kullanıldı; Arapça RTL modunda düzen otomatik dönüyor. */
 
 :root {
+  color-scheme: light;            /* kaydırma çubuğu ve yerleşik denetimler temayı izlesin */
   --bg: #ffffff;
   --bg-soft: #f6f7fb;
   --bg-card: #ffffff;
@@ -15,6 +16,7 @@
   --logo-ink: #082C54;            /* logo halkası; aqua köprü her iki temada sabit */
   /* Aqua beyaz üzerinde 1.9:1 — metinde kullanılamaz. Metin için koyulaştırılmış ton. */
   --brand-2-ink: #0a7d72;         /* beyaz üzerinde 4.4:1 */
+  --danger: #b3261e;              /* form hataları; beyaz üzerinde 6.3:1 */
   --shadow: 0 1px 2px rgba(16, 20, 40, .04), 0 12px 32px rgba(16, 20, 40, .07);
   --shadow-lg: 0 2px 4px rgba(16, 20, 40, .05), 0 24px 60px rgba(16, 20, 40, .12);
   /* Yazı ölçeği. Önce 21 farklı boyut vardı, 53 beyanda dağılmış: .92 ile .93
@@ -39,6 +41,7 @@
 }
 
 html[data-theme="dark"] {
+  color-scheme: dark;
   --bg: #0c0e14;
   --bg-soft: #12141c;
   --bg-card: #151823;
@@ -53,6 +56,7 @@ html[data-theme="dark"] {
   --on-brand: #08202f;
   --logo-ink: #ffffff;
   --brand-2-ink: var(--brand-2);  /* koyu zeminde parlak aqua zaten okunuyor */
+  --danger: #f28b82;              /* koyu zeminde okunur açık kırmızı */
   --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .35);
   --shadow-lg: 0 2px 4px rgba(0, 0, 0, .45), 0 24px 60px rgba(0, 0, 0, .5);
 }
@@ -80,8 +84,11 @@ body {
 
 img { max-width: 100%; display: block; }
 a { color: inherit; }
+/* Mobil tarayıcının çift-dokunma yakınlaştırma beklemesini kaldırır (300ms gecikme). */
+a, button, input, select, textarea { touch-action: manipulation; }
 
 h1, h2, h3 { line-height: 1.18; letter-spacing: -.02em; margin: 0 0 .5em; font-weight: 700; }
+h1, h2 { text-wrap: balance; }  /* uzun başlıkta tek kelimelik yetim satırı önler */
 h1 { font-size: clamp(2.1rem, 5.4vw, 3.6rem); }
 h2 { font-size: clamp(1.6rem, 3.4vw, 2.35rem); }
 h3 { font-size: var(--fs-xl); }
@@ -333,11 +340,15 @@ html[lang="hi"] .article-body p:first-of-type::first-letter {
 
 .article-foot { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-top: 40px; padding-top: 26px; border-top: 1px solid var(--border); }
 .toast {
-  position: fixed; inset-block-end: 24px; inset-inline-start: 50%; transform: translateX(-50%) translateY(20px);
+  /* inset-inline-start:50% + translateX(-50%) RTL'de kutuyu kendi genişliği kadar
+     kaydırıyordu; yön bağımsız merkezleme inset-inline + margin-inline ile. */
+  position: fixed; inset-block-end: 24px; inset-inline: 0; margin-inline: auto;
+  width: fit-content; max-width: calc(100vw - 32px); transform: translateY(20px);
   background: var(--text); color: var(--bg); padding: 11px 20px; border-radius: 10px;
-  font-size: var(--fs-md); font-weight: 600; opacity: 0; pointer-events: none; transition: all .25s ease; z-index: 80;
+  font-size: var(--fs-md); font-weight: 600; opacity: 0; pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease; z-index: 80;
 }
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.show { opacity: 1; transform: translateY(0); }
 
 /* ---------- Newsletter ---------- */
 .cta-box {
@@ -355,6 +366,9 @@ html[lang="hi"] .article-body p:first-of-type::first-letter {
 .subscribe .btn { background: #14161c; color: #fff; }
 html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 .form-msg { font-size: var(--fs-md); min-height: 1.2em; opacity: .95; }
+/* Alan yanı doğrulama: hatalı girdi kenarlığı + altındaki kısa mesaj (app.js üretir). */
+.field [aria-invalid="true"], .subscribe [aria-invalid="true"] { border-color: var(--danger); }
+.field-msg { color: var(--danger); font-size: var(--fs-sm); margin: 6px 0 0; }
 .cta-note { font-size: var(--fs-sm); opacity: .8; }
 
 /* ---------- Footer ---------- */

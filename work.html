@@ -93,10 +93,10 @@
         </div>
         <form id="clientForm" novalidate>
           <div class="form-grid">
-            <div class="field"><label for="cName" data-i18n="wc.name">Ad soyad</label><input id="cName" name="name" required data-field="wc.name"></div>
-            <div class="field"><label for="cEmail" data-i18n="wc.email">E-posta</label><input id="cEmail" type="email" name="email" required data-field="wc.email"></div>
-            <div class="field"><label for="cCompany" data-i18n="wc.company">Şirket</label><input id="cCompany" data-field="wc.company"></div>
-            <div class="field"><label for="cSite" data-i18n="wc.site">Web siteniz</label><input id="cSite" type="url" placeholder="https://" data-field="wc.site"></div>
+            <div class="field"><label for="cName" data-i18n="wc.name">Ad soyad</label><input id="cName" name="name" autocomplete="name" required data-field="wc.name"></div>
+            <div class="field"><label for="cEmail" data-i18n="wc.email">E-posta</label><input id="cEmail" type="email" name="email" autocomplete="email" spellcheck="false" required data-field="wc.email"></div>
+            <div class="field"><label for="cCompany" data-i18n="wc.company">Şirket</label><input id="cCompany" name="organization" autocomplete="organization" data-field="wc.company"></div>
+            <div class="field"><label for="cSite" data-i18n="wc.site">Web siteniz</label><input id="cSite" type="url" name="url" autocomplete="url" spellcheck="false" placeholder="https://" data-field="wc.site"></div>
             <div class="field"><label for="cGoal" data-i18n="wc.goal">Öncelikli hedefiniz</label>
               <select id="cGoal" data-field="wc.goal">
                 <option value="g1" data-i18n="wc.g1"></option>
@@ -140,12 +140,12 @@
         </div>
         <form id="writerForm" novalidate>
           <div class="form-grid">
-            <div class="field"><label for="wName" data-i18n="ww.name">Ad soyad</label><input id="wName" required data-field="ww.name"></div>
-            <div class="field"><label for="wEmail" data-i18n="ww.email">E-posta</label><input id="wEmail" type="email" required data-field="ww.email"></div>
+            <div class="field"><label for="wName" data-i18n="ww.name">Ad soyad</label><input id="wName" name="name" autocomplete="name" required data-field="ww.name"></div>
+            <div class="field"><label for="wEmail" data-i18n="ww.email">E-posta</label><input id="wEmail" type="email" name="email" autocomplete="email" spellcheck="false" required data-field="ww.email"></div>
             <div class="field"><label for="wLangs" data-i18n="ww.langs">Yazabildiğiniz diller</label><input id="wLangs" data-field="ww.langs"></div>
             <div class="field"><label for="wNiche" data-i18n="ww.niche">Uzmanlık alanınız</label><input id="wNiche" data-field="ww.niche"></div>
             <div class="field"><label for="wRate" data-i18n="ww.rate">Ücretiniz</label><input id="wRate" data-field="ww.rate"></div>
-            <div class="field"><label for="wSamples" data-i18n="ww.samples">Örnek yazı bağlantıları</label><input id="wSamples" placeholder="https://" data-field="ww.samples"></div>
+            <div class="field"><label for="wSamples" data-i18n="ww.samples">Örnek yazı bağlantıları</label><input id="wSamples" autocomplete="url" spellcheck="false" placeholder="https://" data-field="ww.samples"></div>
             <div class="field field--wide"><label for="wMsg" data-i18n="ww.message">Kendinizden kısaca bahsedin</label><textarea id="wMsg" required data-field="ww.message"></textarea></div>
           </div>
           <div class="form-actions">
