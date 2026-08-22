@@ -28,12 +28,12 @@ Reality Board) · `docs/gorseller/logo-aday-karsilastirma.png` (aday elemesi).
 | Sayaç | 484×484, yumuşak-köşeli (r=205) | ≥330, daire/kare değil ✓ |
 | Sayaç merkezi | 7u yukarıda | 10–15 ✗ (2 birim; üst şerit 150'nin altına düşmesin diye) |
 | Sağ-alt optik telafi | +%4,4 (alt şerit / yan şerit) | 4–6 ✓ |
-| Köprü açısı | 31° | 28–34 ✓ |
-| Köprü genişliği | 86u | şerit ±%5 ✗ **gevşetildi** |
-| Köprü uzunluğu | 461,5u | 235–270 ✗ **gevşetildi** |
-| Köprü konumu | normal 59° (≈4:50) | ≈4:30 ~ |
+| Köprü açısı | 45° | 28–34 ✗ **kasıtlı** — kanonik Q açısı |
+| Köprü genişliği | 100u | şerit ±%5 ✗ **gevşetildi** |
+| Köprü uzunluğu | 393,4u | 235–270 ✗ **gevşetildi** |
+| Köprü konumu | 4:30 | ≈4:30 ✓ |
 | Örtüşme kesimi | tam 2 adet | 2 ✓ |
-| Köprü siluetin içinde | evet, dış kuyruk yok | ✓ |
+| Köprü siluetin içinde | **hayır — 75u dışarı taşıyor** | brief "dış kuyruk yok" diyordu ✗ **kasıtlı** |
 | Yol yapısı | 1 kapalı navy (evenodd) + 1 kapalı aqua | ✓ |
 | Gradyan / gölge / maske / kontur / raster | 0 / 0 / 0 / 0 / 0 | ✓ |
 | Renk | yalnızca `#082C54` ve `#00D8C2` | ✓ |
@@ -278,6 +278,90 @@ Kalan 94 piksel iki rasterleştiricinin kenar yumuşatma farkıdır; değişikli
 > kullanıldı ve bu ölçüt iki geometriyi **ayırt edemedi** — hatalı hâl
 > düzeltilmiş hâlden daha iyi göründü. Toplam sayımlar yer değiştiren pikselleri
 > görmez. Piksel piksel karşılaştırmaya geçildi.
+
+## Q kuyruğu yeniden tasarlandı — 22.08.2026
+
+Bu, projedeki en büyük geometri değişikliği. Gerekçesi ölçümdür.
+
+### Teşhis
+
+Üç bağımsız değerlendirme (harf biçimi, marka anlamı, üretim) aynı yere
+işaret etti. Ölçütü harf biçimi uzmanı verdi:
+
+> *"16 px'te, tek renk navy, aqua olmadan render alın. Orada Q değilse hiçbir
+> yerde Q değildir."*
+
+Uygulandı. Aqua kaldırılınca geriye **düz bir O** kalıyordu. Yani harf
+kimliğinin tamamı renk katmanındaydı.
+
+Üç sonuç, üçü de ölçüldü:
+
+1. **Ø okuması.** Sayacı boydan boya kesen çubuk, Latin alfabesinde yerleşik
+   bir işarettir: çizili O, çizili sıfır ve **Norveççe/Danca ø**. Norveç
+   merkezli bir marka için tesadüfi benzerlik değil.
+2. **Renk bağımlılığı.** Tek renk baskı, gravür, nakış ve tescilin siyah
+   dosyası tam olarak aqua'sız hâli kullanır.
+3. **Mono varyant farklı şekildi.** `qblogg-symbol-black.svg`'de köprü,
+   sayacın sağ alt yarısını dolduran katı bir kamaya dönüşüyordu — mono
+   varyant renkli varyantla aynı şekil bile değildi.
+
+Kök sebep tekti: **kuyruk kâseden hiç çıkmıyordu.** Kalınlık ve yön
+denemelerinin hepsi belirtiyi tedavi ediyordu.
+
+### Yeni geometri
+
+Kuyruk artık siluetin parçası: sayacın içinden başlar, dış konturu 4:30
+yönünde deler, 75u dışarı taşar.
+
+| Parametre | Değer | Nasıl bulundu |
+|---|---|---|
+| Açı | 45° | Kanonik Q açısı; 31° de denendi, elendi |
+| Kalınlık | 100u | Şerit 158u'nun %63'ü |
+| İç uç | sayaç kenarının %40'ı | Sol duvara değmiyor — Ø okumasını kıran şey bu |
+| Merkez | ikisi de kâse merkezi (500·500) | İç uç sayaç merkezinden alınınca açı 45,7° çıkıyordu |
+| Taşma | 75u | Dış kontur 424,3u → uç 499,3u |
+| İç uç | (574,9 · 574,9) | Işın–poligon kesişimi |
+| Dış uç | (853,0 · 853,0) | Aynı |
+
+Sayısal çözüm elle tahmin değil: dış kâse ve sayaç poligona düzleştirilip
+45° ışınla kesiştirildi.
+
+### Ölçülen kazanç
+
+Tek renk render, 30–60° bandında siluetin kâse konturunu aşma oranı:
+
+| | 16 px | 24 px | 32 px |
+|---|---|---|---|
+| Önceki kiriş | 1,03 | 1,03 | 1,06 |
+| 31° kuyruk (elendi) | 1,09 | 1,10 | 1,12 |
+| **45° kuyruk** | **1,24** | **1,24** | **1,24** |
+
+1,24 üç boyutta da sabit — piksel tesadüfü değil, yapısal aşma. 31° adayı
+ayrıca sembolü genişletiyordu (849×800), kare kabulünü bozuyordu.
+
+**Sınır kutusu değişmedi:** kuyruk 888,4'te bitiyor, kâse zaten 900'e gidiyor.
+Kilitler, boşluklar ve tescil zarfı yeniden türetilmeden çalışıyor.
+
+### Brief'ten beşinci sapma
+
+`docs/marka-testleri.md` "köprü siluetin içinde, dış kuyruk yok" diyordu. Bu
+madde **bilinçli olarak terk edildi** — maddenin kendisi Ø okumasının
+kaynağıydı. Diğer dört sapma aşağıda kayıtlı.
+
+### Yan etki: küçük boy varyantı sadeleşti
+
+`qblogg-icon-small.svg` artık sembolün aynısı. Ayrı varyantın gerekçesi
+kuyruk sayacın içindeyken vardı; kuyruk dışarı çıkınca harfi siluet taşıyor
+ve siluet her boyda aynı. İki geometriyi ayrı tutmak yalnızca R01 sınıfı
+hata üretiyordu — bu oturumda iki kez oldu (köprü, sonra halka).
+
+### Çizim sırası kritik
+
+Eski kirişte aqua **altta** çiziliyordu ve halka onu örtüyordu; çubuk yalnızca
+sayacın içinde görünüyordu — Ø okumasının doğrudan kaynağı buydu. Kuyruk artık
+dışarı taştığı için **üstte** çizilmeli. Dört yerde düzeltildi: `sym()`,
+`icon-small`, `icon-app` ve PNG birleştirmesi. Sonuncusu 180 px'te SVG ile
+PNG karşılaştırılarak doğrulandı: fark >32 olan piksel %0,2 (kenar yumuşatma).
 
 ## Kalan üretim notları
 

@@ -56,29 +56,44 @@ OUT.mkdir(parents=True, exist_ok=True)
 SYM_NAVY = ("M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z "
             "M463 251 L537 251 Q742 251 742 456 L742 530 Q742 735 537 735 "
             "L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z")
-SYM_AQUA = "M368.6 722.4 L412.9 796.1 L808.5 558.4 L764.2 484.7 Z"
+# --- Q kuyruğu. 22.08.2026'da yeniden tasarlandı.
+#
+# Önceki kuyruk sayacı boydan boya kesen bir KİRİŞTİ ve kâsenin dışına hiç
+# çıkmıyordu. Üç sonucu vardı, üçü de ölçüldü:
+#  (a) Sembol Q değil Ø okunuyordu — çizili O, Norveççenin yaşayan bir harfi.
+#      Norveç merkezli bir marka için bu tesadüfi benzerlik değil.
+#  (b) Harf kimliği tamamen RENK katmanındaydı: aqua kaldırılınca geriye düz
+#      bir O kalıyordu. Tek renk baskı, gravür, nakış ve tescilin siyah
+#      dosyası tam olarak o hâli kullanır.
+#  (c) Tek renk varyantında köprü sayacın sağ alt yarısını dolduran katı bir
+#      kamaya dönüşüyordu — yani mono varyant renkli varyantla aynı şekil
+#      bile değildi.
+#
+# Kuyruk artık siluetin parçası: sayacın içinden başlar, dış konturu saat
+# 4:30 yönünde deler ve 75u dışarı taşar. Harf renkten değil biçimden okunur.
+#
+# Sayısal çözüm (ışın–poligon kesişimi, elle tahmin değil):
+#   açı 45° · kalınlık 100u · iç uç sayaç kenarının %40'ında · taşma 75u
+#   Her iki uç da KÂSE merkezinden (500·500) ışınlanır. Önce iç uç sayaç
+#   merkezinden (500·493) alınmıştı; iki ışın paralel ama 7u kaymış olduğu
+#   için birleştiren doğru 45,7° çıkıyordu. Tek merkez → tam 45,00°.
+#   sayaç kenarı 264,6u → iç uç (574,9 · 574,9)
+#   dış kontur  424,3u → uç    (853,0 · 853,0)
+# Ölçülen kazanç (tek renk, 30-60° bandında siluetin kâseyi aşma oranı):
+#   önceki 1,03/1,03/1,06 → yeni 1,24/1,24/1,24 (16/24/32 px)
+# Sınır kutusu DEĞİŞMEDİ: kuyruk 888,4'te bitiyor, kâse zaten 900'e gidiyor.
+SYM_AQUA = "M610.2 539.5 L539.5 610.2 L817.7 888.4 L888.4 817.7 Z"
 
-# --- küçük boy ikonu (16-32 px). Bir önceki sürüm köprüyü 86u'dan 100u'ya
-# kalınlaştırıyordu ve gerekçesi "16 px'te ayakta kalsın" idi. 22.08.2026'da
-# ölçüldü: 16 px'te iki varyant arasındaki fark **tek piksel** (aqua 24 vs 25).
-# 16 px'te 1 CSS pikseli 62,5 birim; 14 birimlik kalınlaşma 0,22 piksel demek.
-# Yani varyantın gerekçesi sayısal olarak boştu.
+# --- küçük boy ikonu: artık sembolün AYNISI.
 #
-# Kalınlığı artırmak da çözmüyor: 86u -> 190u (%121) yalnızca 19 -> 25 piksel
-# veriyor ve büyük boyda şekli hantallaştırıyor. Okunurluğu taşıyan öğe köprü
-# değil **sayaç** — "bu delikli bir harf" mesajını o veriyor.
-#
-# Bu yüzden küçük boy varyantı iki eksende birden değişti: sayaç merkez
-# etrafında 1,16 katına ölçeklendi (yan şerit 158u -> 119u) ve köprü 160u'ya
-# çıktı. 16 px'te ölçülen kazanç: sayaç 135 -> 143 piksel, aqua 19 -> 28 (%47).
-# Aqua çubuk artık halkayı sol altta gerçekten kesip çıkıyor; Q'yu O'dan ayıran
-# şey bu. Ana sembol DEĞİŞMEDİ — kilitler, tescil dosyaları ve belgedeki
-# ölçüler ona bağlı.
-ICON_NAVY = ("M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z "
-             "M457.1 212.3 L542.9 212.3 Q780.7 212.3 780.7 450.1 L780.7 535.9 "
-             "Q780.7 773.7 542.9 773.7 L457.1 773.7 Q219.3 773.7 219.3 535.9 "
-             "L219.3 450.1 Q219.3 212.3 457.1 212.3 Z")
-ICON_AQUA = "M349.6 690.7 L431.9 827.8 L827.6 590.1 L745.1 453.0 Z"
+# Ayrı bir varyantın gerekçesi kuyruk sayacın içindeyken vardı: köprü 16 px'te
+# kayboluyordu, bu yüzden sayaç büyütülüp köprü kalınlaştırılmıştı. Kuyruk
+# kâsenin dışına çıkınca o gerekçe düştü — harfi artık siluet taşıyor ve
+# siluet her boyda aynı. İki geometriyi ayrı tutmak yalnızca R01 sınıfı
+# hatalar üretiyordu (biri güncellenip diğeri unutuluyordu; bu oturumda iki
+# kez oldu). Tek kaynak daha güvenli.
+ICON_NAVY = SYM_NAVY
+ICON_AQUA = SYM_AQUA
 
 # --- wordmark ana hatları
 font = instantiateVariableFont(TTFont(FONT), {'wght': 700}, inplace=True)
@@ -155,8 +170,11 @@ def svg(vb, body, w=None, h=None):
             f'role="img" aria-label="QBLOGG">\n{body}\n</svg>\n')
 
 def sym(navy=NAVY, aqua=AQUA):
-    a = f'  <path d="{SYM_AQUA}" fill="{aqua}"/>\n' if aqua else ''
-    return a + f'  <path fill-rule="evenodd" d="{SYM_NAVY}" fill="{navy}"/>'
+    """Kâse önce, kuyruk ÜSTÜNE. Sıra kritik: eski kirişte aqua altta çiziliyordu
+    ve halka onu örttüğü için çubuk yalnızca sayacın içinde görünüyordu — Ø
+    okumasının kaynağı buydu. Kuyruk artık dışarı taştığı için üstte olmalı."""
+    k = f'  <path fill-rule="evenodd" d="{SYM_NAVY}" fill="{navy}"/>'
+    return k + (f'\n  <path d="{SYM_AQUA}" fill="{aqua}"/>' if aqua else '')
 
 VB = '100 100 800 800'
 w = {}
@@ -167,8 +185,8 @@ w['qblogg-symbol-white.svg']    = svg(VB, sym('#FFFFFF', '#FFFFFF'))
 w['qblogg-symbol-reverse.svg']  = svg('0 0 1000 1000',
     f'  <rect width="1000" height="1000" rx="190" fill="{NAVY}"/>\n' + sym('#FFFFFF', AQUA))
 w['qblogg-icon-small.svg'] = svg(VB,
-    f'  <path d="{ICON_AQUA}" fill="{AQUA}"/>\n'
-    f'  <path fill-rule="evenodd" d="{ICON_NAVY}" fill="{NAVY}"/>', 24, 24)
+    f'  <path fill-rule="evenodd" d="{ICON_NAVY}" fill="{NAVY}"/>\n'
+    f'  <path d="{ICON_AQUA}" fill="{AQUA}"/>', 24, 24)
 
 R = 1024 / 1000 * 0.78
 w['qblogg-icon-app.svg'] = svg('0 0 1024 1024',
@@ -181,8 +199,8 @@ w['qblogg-icon-app.svg'] = svg('0 0 1024 1024',
     # background layer, make sure it's full-bleed and opaque."
     f'  <rect width="1024" height="1024" fill="{NAVY}"/>\n'
     f'  <g transform="translate(113.6 113.6) scale({R:.5f})">\n'
-    f'    <path d="{ICON_AQUA}" fill="{AQUA}"/>\n'
-    f'    <path fill-rule="evenodd" d="{ICON_NAVY}" fill="#FFFFFF"/>\n  </g>', 1024, 1024)
+    f'    <path fill-rule="evenodd" d="{ICON_NAVY}" fill="#FFFFFF"/>\n'
+    f'    <path d="{ICON_AQUA}" fill="{AQUA}"/>\n  </g>', 1024, 1024)
 
 GAP_H, GAP_V = 0.36 * 800, 0.32 * 800          # 288u ve 256u
 def lockup_h(navy):
@@ -350,7 +368,10 @@ def _ikon_uret(ad, boy):
         for p in range(boy):
             a = min(1.0, zemin[s][p])
             renk = NV
-            for ust, ustrenk in ((aqua[s][p], AQ), (halka[s][p], BZ)):
+            # Sıra: halka önce, kuyruk ÜSTÜNE — SVG'lerdeki sırayla aynı.
+            # Ters olursa kuyruğun kâse dışına taşan kısmı halka tarafından
+            # örtülür ve PNG, SVG'den farklı çıkar.
+            for ust, ustrenk in ((halka[s][p], BZ), (aqua[s][p], AQ)):
                 o = min(1.0, ust)
                 if o > 0:
                     renk = tuple(round(r * (1 - o) + u * o) for r, u in zip(renk, ustrenk))
@@ -382,7 +403,7 @@ _ROL = {
     'qblogg-lockup-stacked.svg': 'Dikey kilit',
     'qblogg-lockup-stacked-white.svg': 'Dikey kilit, koyu zemin',
     'qblogg-icon-app.svg': '1024×1024 uygulama ikonu — köprü 100u',
-    'qblogg-icon-small.svg': '16–32 px ikon — köprü 100u',
+    'qblogg-icon-small.svg': '16–32 px ikon — sembolle aynı geometri',
     'favicon-32.png': 'Tarayıcı sekmesi, 32×32 — app ikonundan',
     'apple-touch-icon.png': 'iOS ana ekran, 180×180 — app ikonundan',
 }
