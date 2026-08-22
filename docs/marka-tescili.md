@@ -118,7 +118,7 @@ iddia üretilmedi:
 | Norveç marka sicili | Patentstyret | **yapılmadı** |
 | Uluslararası | WIPO Global Brand Database | **yapılmadı** |
 | Şirket adı çakışması | Brønnøysundregistrene (Norveç) | **yapılmadı** |
-| Alan adı | `qblogg.com` sizde; `.no`, `.eu` bakılmadı | **kısmi** |
+| Alan adı | `qblogg.com` sizde. **`.no` alınmayacak** (22.08.2026 kararı). `.eu` bakılmadı | **kısmi** |
 
 Ayrıca **mutlak ret nedenleri** başvuruda incelenir: ayırt edici olmayan ya da
 tanımlayıcı markalar reddedilir. "QBLOGG" içerik/blog hizmetinde "blog"

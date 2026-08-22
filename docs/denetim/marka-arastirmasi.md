@@ -171,7 +171,7 @@ ediciliğiniz** — ve bu, vekilin cevaplaması gereken soru.
 |---|---|---|---|---|
 | WIPO Global Brand Database | QBLOGG, BLOGG | branddb.wipo.int | | |
 | Brønnøysundregistrene | QBLOGG (şirket adı) | brreg.no | | |
-| Alan adı `.no` | qblogg.no | norid.no | | |
+| ~~Alan adı `.no`~~ | — | — | **Kapsam dışı** — `.no` alınmayacağına karar verildi (22.08.2026) | 22.08.2026 |
 | Alan adı `.eu` | qblogg.eu | eurid.eu | | |
 
 ## Yapılan denemeler — kayıt
