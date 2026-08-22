@@ -4,7 +4,7 @@
  *   node scripts/marka-tescil.mjs
  *
  * EUIPO şekil markası görselini biçim şartlarına bağlıyor: JPEG, en fazla
- * 2835×2010 piksel, 96–300 DPI, RGB, progressive olmayan, 2 MB altı. Görsel
+ * 2835×2010 piksel, 96–300 DPI, 2 MB altı, renk modu RGB/Gri/S-B/CMYK. Görsel
  * sicilde 250×250'ye ölçekleniyor, yani markanın o boyutta ayakta kalması
  * gerekiyor — üretici bunu da ayrıca kaydediyor.
  *
@@ -137,16 +137,20 @@ async function main() {
 
     dpiYaz(hedef, DPI);            // Chromium çözünürlük yazmıyor; EUIPO 96–300 DPI istiyor
     const d = jpegIncele(hedef);
-    const sorun = [];
+    const sorun = [], uyari = [];
     if (!d.gecerli) sorun.push('geçerli JPEG değil');
     if (d.en > ZARF.enBoyEn || d.boy > ZARF.enBoyBoy) sorun.push(`${d.en}×${d.boy} — zarfın dışında`);
     if (d.bayt > ZARF.enBuyukBayt) sorun.push(`${(d.bayt / 1024 / 1024).toFixed(2)} MB — 2 MB üstü`);
-    if (d.progressive) sorun.push('progressive JPEG — kabul edilmiyor');
-    if (d.bilesen !== 3) sorun.push(`renk modu ${d.renk} — RGB bekleniyor`);
+    /* Progressive yasağı EUIPO kuralı DEĞİL — kaynaklarda böyle bir madde yok.
+       Kendi tedbirimiz: bazı eski ayrıştırıcılar progressive JPEG'i açamıyor ve
+       başvuruyu riske atmanın anlamı yok. Uyarı olarak veriliyor, ret değil. */
+    if (d.progressive) uyari.push('progressive JPEG — EUIPO kuralı değil, kendi tedbirimiz');
+    /* EUIPO renk modu olarak RGB, Gri, S-B ve CMYK'yı kabul ediyor. */
+    if (![1, 3, 4].includes(d.bilesen)) sorun.push(`renk modu ${d.renk} — RGB/Gri/CMYK bekleniyor`);
     if (!d.dpi || d.birim !== 1) sorun.push('çözünürlük beyan edilmemiş');
     else if (d.dpi[0] < ZARF.dpi[0] || d.dpi[0] > ZARF.dpi[1]) sorun.push(`${d.dpi[0]} DPI — 96–300 dışında`);
     const bayt = d.bayt;
-    rapor.push({ ...v, bayt, dpi: d.dpi ? d.dpi[0] : null, sorun });
+    rapor.push({ ...v, bayt, dpi: d.dpi ? d.dpi[0] : null, sorun, uyari });
     console.log(`  ${sorun.length ? '✗' : '✓'} ${v.ad}.jpg  ${d.en}×${d.boy}  ${d.dpi ? d.dpi[0] : '?'} DPI  ` +
       `${d.renk}  ${(bayt / 1024).toFixed(0)} KB  ${RISK[v.risk]}` +
       (sorun.length ? '  → ' + sorun.join(', ') : ''));

@@ -163,3 +163,86 @@ Kaynaklar: EUIPO "Get the image right", FAQ: Attachments, FAQ: Nice
 classification, Fees and payments · Patentstyret "How much does a trademark
 application cost", "Requirements for registration", "Distinctive character",
 "Application process step by step".
+
+## EUIPO kriterleri — kaynaklı, 22.08.2026
+
+**Erişim durumu.** `euipo.europa.eu`, `guidelines.euipo.europa.eu`,
+`eur-lex.europa.eu`, `wipo.int` ve kılavuz aynası `euipo01app.sdlproducts.com`
+bu ortamdan **engelli**; hepsi bugün tek tek denendi. Aşağıdaki maddeler
+EUIPO'nun kendi sayfalarının **arama sonucu alıntılarından** okundu. Yani
+kaynak EUIPO'nun kendisi, ama sayfa doğrudan açılıp teyit edilemedi.
+**Başvurudan önce elle doğrulanmalı.**
+
+### Şekil markası görseli — teknik zarf
+
+Kaynak: `euipo.europa.eu/en/help-centre/forms/faq-apply-for-a-trade-mark`
+ve `euipo.europa.eu/news/practice-tips/get-the-image-right`
+
+| Kriter | EUIPO'nun dediği | Bizim dosyalar | Denetleyen |
+|---|---|---|---|
+| Dosya biçimi | JPEG | JPEG | `marka-tescil.mjs` |
+| En büyük boyut | 2835 × 2010 piksel | 1600 × 1600 | ✅ |
+| Baskı çözünürlüğü | en az 96, en çok 300 DPI | 300 DPI | ✅ |
+| Renk modu | RGB, Gri, S/B **veya CMYK** | RGB | ✅ |
+| Dosya boyutu | en çok 2 MB | 59–85 KB | ✅ |
+| Sicilde görünüm | 250 × 250'ye ölçekleniyor | önizleme üretiliyor | ✅ |
+| Ek toplamı | en çok 20 MB | 285 KB | ✅ |
+
+### Düzeltilen iki hatam
+
+**Renk modu.** Denetleyicim yalnızca RGB'ye izin veriyordu ve hata mesajı
+"RGB bekleniyor" diyordu. EUIPO dördünü de kabul ediyor. Kural yanlış
+aktarılmıştı; düzeltildi.
+
+**Progressive JPEG.** Dosyanın başında "progressive olmayan" bir EUIPO şartı
+gibi yazılmıştı. **Kaynaklarda böyle bir madde yok.** Bu bizim kendi
+tedbirimiz — bazı eski ayrıştırıcılar progressive JPEG'i açamıyor. Artık ret
+değil, uyarı olarak veriliyor ve gerekçesi kodda yazılı.
+
+### Temsil kuralı — kılavuz
+
+Kaynak: EUIPO Guidelines 9.1 ve 9.3.2 (alıntı)
+
+- Şekil markası, işaretin bir reprodüksiyonu sunularak temsil edilir.
+- Temsil **tek bir JPEG dosyasında** ya da **tek bir A4 sayfasında** sunulur.
+- Sayfa DIN A4'ü aşamaz; **her yönden en az 2,5 cm kenar boşluğu** bırakılır.
+- JPEG ya da A4 sayfa **yalnızca bir temsil** içerir; başka hiçbir bilgi
+  bulunmaz.
+
+> Kenar boşluğu maddesi A4 sayfa yolu içindir. Biz JPEG yolunu kullanıyoruz;
+> yine de dosyalarımızda marka kenara yapışmıyor. Bu **doğrulanmadı**, göz
+> kararıdır.
+
+### Ücretler
+
+Kaynak: `euipo.europa.eu/en/trade-marks/before-applying/fees-payments`
+(alıntı) ve EUIPO Guidelines 7.5.1
+
+| Kalem | Ücret |
+|---|---|
+| Temel çevrimiçi başvuru (1 sınıf) | **850 €** |
+| 2. sınıf | **50 €** |
+| 3. ve sonraki her sınıf | **150 €** |
+| Yenileme (10 yılda bir) | başvuruyla aynı |
+
+Tescil sonrası ayrı bir ücret yok; başvuru ücreti inceleme ve tescil sürecinin
+tamamını kapsıyor. Ortak/garanti markaları için temel ücret 1.500 €.
+
+**QBLOGG için tahmini:** hizmetler 35 (reklam/işletme), 41 (yayıncılık) ve
+42 (yazılım) sınıflarına dağılıyor. Üç sınıf = 850 + 50 + 150 = **1.050 €**.
+Bu bir hesaptır, teklif değil — sınıf seçimi marka vekiliyle netleşmeli.
+
+> **Doğrulanmadı:** bu rakamlar bugün geçerli mi. Ücret tarifeleri değişir.
+> Başvurudan önce EUIPO'nun ücret hesaplayıcısından teyit edin.
+
+### Hâlâ kapalı olan
+
+- **Ayırt edicilik / mutlak ret** (EUTMR md. 7(1)(b)-(c)) — her AB resmî
+  dilinde ayrı değerlendirilir. İsveççede `blogg` = blog; asıl risk burada.
+  Değerlendirme marka vekilinin işidir, bu belge iddia etmez.
+- **Nispi ret / önceki haklar** — AB ve Norveç sicil taraması yapılmadı,
+  siciller engelli. Detay: `docs/denetim/marka-arastirmasi.md`.
+- **Kelime unsuru.** `kilit-*.jpg` dosyaları wordmark içerdiği için şekil
+  markası başvurusunda risk taşır; denetleyici bunu 🔴 ile işaretliyor.
+  Şekil markası için `sekil-markasi-*.jpg` kullanılmalı.
+

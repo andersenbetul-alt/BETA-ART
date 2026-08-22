@@ -90,9 +90,16 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    üretilen dosyalardan yeniden ölçüp karşılaştırır; uyuşmazlıkta çıkış kodu 1.
    Gerekçe: belgede iki yanlış ölçü bulundu, biri var olmayan bir işlemi
    anlatıyordu. Yapım kaydı yanlışsa tescil dosyası da yanlıştır.
-   **Uydurma yasak.** Marka müsaitliği, tescil edilebilirlik, kullanıcı testi
-   sonucu ve kurum ücreti hakkında doğrulanmamış hiçbir şey yazılmaz. Kurum
-   siteleri bu ortamda engelli; her rakam "doğrulanmadı" diye işaretlenir.
+   **Uydurma yasak.** Marka müsaitliği, tescil edilebilirlik ve kullanıcı testi
+   sonucu hakkında doğrulanmamış hiçbir şey yazılmaz. Kurum siteleri bu ortamda
+   engelli (`euipo.europa.eu`, `guidelines.euipo.europa.eu`, `eur-lex.europa.eu`,
+   `wipo.int`, `tmdn.org`, `patentstyret.no`, `brreg.no` — 22.08.2026'da yeniden
+   ölçüldü). **Ama alıntı yoluyla okunabiliyor:** Firecrawl aramasının sonuç
+   açıklamaları EUIPO'nun kendi sayfalarının metnini taşıyor. Bu yolla elde
+   edilen kriterler ve ücretler `docs/marka-tescili.md`'de kaynağıyla kayıtlı;
+   hepsi "sayfa doğrudan açılamadı, başvuru öncesi elle teyit edilmeli" notuyla.
+   **Kendi tedbirimizi kurum şartı gibi yazmak da uydurmadır** — progressive
+   JPEG yasağı bu şekilde yanlış yazılmıştı, 22.08'de düzeltildi.
 8. **Rakamlar örnek olarak işaretlenir.** Paket fiyatları ve blog yazılarındaki ücret
    bilgileri araştırma/örnek veridir. Kesin vaat gibi sunmayın; abartılı iddia bu işte
    en pahalı hatadır.
