@@ -8,9 +8,9 @@ değişikliğin kaynağı bulunmalıdır.
 
 | Dosya | Rol | Bayt | SHA-256 |
 |---|---|---:|---|
-| `apple-touch-icon.png` | iOS ana ekran, 180×180 — app ikonundan | 4.677 | `149ea54ee3e6c4ca` |
+| `apple-touch-icon.png` | iOS ana ekran, 180×180 — app ikonundan | 3.907 | `52fc70a8b1aeacec` |
 | `favicon-32.png` | Tarayıcı sekmesi, 32×32 — app ikonundan | 808 | `d5be592d549a3d46` |
-| `qblogg-icon-app.svg` | 1024×1024 uygulama ikonu — köprü 100u | 636 | `1459fdf3f3385ea9` |
+| `qblogg-icon-app.svg` | 1024×1024 uygulama ikonu — köprü 100u | 627 | `3151d9723a30bbd4` |
 | `qblogg-icon-small.svg` | 16–32 px ikon — köprü 100u | 506 | `ca6023183cb40b72` |
 | `qblogg-lockup-horizontal-white.svg` | Yatay kilit, koyu zemin | 10.501 | `0518d08f919846ce` |
 | `qblogg-lockup-horizontal.svg` | Yatay kilit (sembol + wordmark) | 10.501 | `c8a33a863d2c8725` |

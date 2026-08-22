@@ -172,7 +172,14 @@ w['qblogg-icon-small.svg'] = svg(VB,
 
 R = 1024 / 1000 * 0.78
 w['qblogg-icon-app.svg'] = svg('0 0 1024 1024',
-    f'  <rect width="1024" height="1024" rx="224" fill="{NAVY}"/>\n'
+    # Kendi köşe yuvarlatmamız YOK — sistem kendi maskesini uyguluyor.
+    # Bizimki rx=224 (%21,9), iOS süperelipsi ~%18,1: bizimki daha yuvarlak
+    # olduğu için maskenin gösterdiği alanın köşelerinde bizim ikonumuz
+    # yoktu. apple-touch-icon.png'de ölçüldü: (3,3) (6,6) (9,9) alpha=0.
+    # iOS saydam apple-touch-icon'u SİYAH üzerine bindirir — lacivert
+    # ikonun köşelerinde siyah çentikler. HIG: "If you do import a
+    # background layer, make sure it's full-bleed and opaque."
+    f'  <rect width="1024" height="1024" fill="{NAVY}"/>\n'
     f'  <g transform="translate(113.6 113.6) scale({R:.5f})">\n'
     f'    <path d="{ICON_AQUA}" fill="{AQUA}"/>\n'
     f'    <path fill-rule="evenodd" d="{ICON_NAVY}" fill="#FFFFFF"/>\n  </g>', 1024, 1024)
@@ -317,7 +324,17 @@ def _ikon_uret(ad, boy):
         return [[(kaydir + olcek * x, kaydir + olcek * y) for x, y in poli]
                 for poli in _yollari_coz(d)]
 
-    zemin = _ortu(_yuvarlak_kare(boy, 224 * k), boy, boy)
+    # Zemin iki bağlamda farklı olmalı:
+    #  · apple-touch-icon — iOS KENDİ maskesini uygular ve saydam pikselleri
+    #    SİYAH üzerine bindirir. Kendi köşemizi yuvarlatırsak maskenin
+    #    gösterdiği alanın köşelerinde siyah çentik çıkar. Ölçüldü: eski
+    #    dosyada (3,3) (6,6) (9,9) alpha=0. Bu yüzden TAM KARE, TAM OPAK.
+    #  · favicon — tarayıcı sekmesinde maskeleme YOK. Orada yuvarlak köşe
+    #    doğru ve daha iyi durur; saydamlık da sorun değil.
+    if boy >= 120:                       # apple-touch-icon (180) ve üstü
+        zemin = [[1.0] * boy for _ in range(boy)]
+    else:                                # favicon (32)
+        zemin = _ortu(_yuvarlak_kare(boy, 224 * k), boy, boy)
     # ICON_* çifti — SYM_* değil. qblogg-icon-app.svg küçük boy geometrisini
     # kullanıyor; burada sembolünki kullanılırsa PNG'ler app ikonunun aynısı
     # olmaz. Denetimde bir kez yakalandı (R01): köprü SYM_AQUA yazılmıştı ve
