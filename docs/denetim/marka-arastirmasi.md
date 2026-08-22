@@ -1,6 +1,9 @@
 # Marka araştırması — kayıt sayfası
 
-**Durum: BOŞ. Hiçbir arama yapılmadı.**
+**Durum: sicil aramaları hâlâ YAPILMADI. Açık web taraması 22.08.2026'da
+yapıldı — aşağıda ayrı bölümde.** İkisi aynı şey değildir: sicilde olmayan bir
+marka açık webde görünebilir, açık webde görünmeyen bir marka sicilde
+tescilli olabilir. Biri diğerinin yerine geçmez.
 
 Bu ortamdan kurum sitelerine erişilemiyor (`tmdn.org`, `euipo.europa.eu`,
 `patentstyret.no` — hepsi denendi, hiçbiri açılmadı). Aramayı yapan kişi
@@ -164,6 +167,120 @@ WIPO — hepsi süresi dolmuş ya da sona ermiş.
 **Tavsiye değişmedi ama gerekçesi netleşti:** şekil markasıyla başvurun.
 Kelime markası için engel *başkasının hakkı* değil, **kendi ayırt
 ediciliğiniz** — ve bu, vekilin cevaplaması gereken soru.
+
+## Açık web taraması — 22.08.2026, bu ortamdan yapıldı
+
+Sicillere hâlâ erişilemiyor. Ama marka değerlendirmesinin ikinci ayağı
+**fiilî kullanım**dır (Norveç hukukunda *innarbeidelse*, tescilsiz hak) ve o
+açık webden ölçülebilir. Bu bölüm onu ölçer. **Sicil taramasının yerine
+geçmez.**
+
+Araç: Firecrawl web arama (sunucu tarafında çalışır, benim ağ kısıtlarım
+dışında). GoDaddy alan adı müsaitlik sorgusu.
+
+### Önce yöntem sınandı
+
+Boş sonucu "bulgu yok" diye yazmadan önce aracın seyrek terimleri görüp
+görmediğini ölçtüm:
+
+| Kontrol | Sorgu | Sonuç | Anlamı |
+|---|---|---|---|
+| Temel | `"Wikipedia"` | 3 sonuç, 2 kredi | Tırnaklı arama çalışıyor |
+| Nadirlik | `"InterDisplayExtraLightItalic"` | 5 sonuç, 2 kredi | 24 karakterlik teknik dizeyi, Çince font aynalarına kadar buluyor |
+
+İndeks seyrek terimlerde kör değil. Bu yüzden sıfır sonuçlar delil sayılabilir
+— **ama aşağıdaki düzeltme okunmadan değil.**
+
+### Kendi yöntemimin hatası — kayda geçiyor
+
+`"QBLOGG"` tırnaklı araması **sıfır** döndü. Bunu "QBLOGG hiçbir yerde
+kullanılmıyor" diye yazacaktım. Yanlış olurdu.
+
+`"Q BLOGG"` araması `stagidi.qblogg.se` ve `oldidi.qblogg.se` adreslerini
+çıkardı. Yani **qblogg.se diye bir alan adı vardı** ve ilk arama onu kaçırdı:
+dize sayfa metninde değil, yalnızca alan adında geçiyor. Tırnaklı metin
+araması alan adlarını taramıyor.
+
+Ders: marka taramasında metin araması tek başına yetmez, **alan adı ekseni
+ayrı taranmalı**. Aşağıdaki tablo iki ekseni de içeriyor.
+
+### Bulgu 1 — `QBLOGG` (birebir yazım)
+
+| Eksen | Sorgu | Sonuç |
+|---|---|---|
+| Metin | `"QBLOGG"` | 0 sonuç |
+| Alan adı | `site:qblogg.se` | 5 sayfa — hepsi alt alan adı |
+| Kök alan | `https://qblogg.se/` | **çözülmüyor** (`ENOTFOUND`) |
+| Sektör | `qblogg content studio agency Norway innhold byrå` | QBLOGG geçmiyor; Norveç içerik ajansı listelerinde yok |
+
+`qblogg.se` altındaki sayfalar **IDI Profiling** adlı İsveçli bir kişilik
+envanteri/insan gelişimi platformuna ait. Alt alan adları `stagidi` ve
+`oldidi` — "staging IDI" ve "old IDI" okunuyor; yani bir ajansın müşteri
+sitesini barındırdığı teknik alan adı, marka değil. QBLOGG adı sayfaların
+kendisinde marka olarak kullanılmıyor, yalnızca adreste geçiyor.
+
+Kök alan adı bugün çözülmüyor ve GoDaddy `qblogg.se`'yi **müsait**
+gösteriyor. İkisi birlikte okunduğunda: kayıt düşmüş, indeksteki sayfalar
+bayat. Yani bu **geçmiş kullanım**, süregelen kullanım değil.
+
+> **Doğrulanmadı:** `.se` müsaitliğini GoDaddy üzerinden okudum. ccTLD
+> müsaitlik bilgisi kayıt kuruluşuna göre eksik olabilir. Karar öncesi
+> `internetstiftelsen.se` whois'inden teyit edilmeli.
+
+### Bulgu 2 — `QBLOG` (tek G) alanı kalabalık
+
+`"QBLOG"` araması 15 sonuç verdi ve **çoğu doğrudan bizim alanımızda** —
+blog, bülten, içerik yazılımı:
+
+| Kullanım | Nerede | Ne |
+|---|---|---|
+| qBlog | `sociolutions.de` | QUAMP modülü — haber toplama/dağıtma, ticari ürün (Almanya) |
+| QBlog | `qworld.net` | Kuantum eğitim ağının blogu |
+| QBlog | LinkedIn bülteni | "official newsletter of One Quantum Tablet Per Child" |
+| QBlog | `jorgefuertes.com` | Blog yazılımı, özgür yazılım olarak yayınlanmış |
+| QBlog | `karriere.quirlsberg.de` | Sağlık kampüsünün kurumsal blogu |
+| Qblog | `qoqa.ch` | İsviçreli e-ticaret sitesinin blogu |
+| qblog | GitHub ×3, npm ×1, Go paketi ×1 | Yazılım projeleri |
+| qblog | Flickr, `qtnx.ai`, `youhaventlived.com` | Kişisel bloglar |
+
+`qblog.com` alan adı da **alınmış**.
+
+Bunların hiçbirinin tescilli marka olduğu **gösterilmedi** — bu ayrı bir
+soru ve sicil taraması gerektirir. Ama karıştırılma değerlendirmesinde
+kalabalık bir alan iki yönlü çalışır: bir yandan tek bir güçlü hak sahibi
+yoktur, öte yandan ayırt edicilik zayıflar.
+
+### Bulgu 3 — alan adları
+
+GoDaddy sorgusu, 22.08.2026:
+
+| Alan adı | Durum |
+|---|---|
+| `qblogg.com` | **Alınmış** — bizim |
+| `qblog.com` | **Alınmış** — üçüncü kişi |
+| `qblogg.no` | Müsait |
+| `qblogg.se` | Müsait (yukarıdaki uyarıyla) |
+| `qblogg.eu` | Müsait |
+| `qblogg.net` `.org` `.io` `.ai` | Müsait |
+
+Norveç'te iş yapacak bir marka için `.no`'nun boş olması iyi haber. Tescil
+başvurusundan önce alınması akıllıca olur — başvuru yayımlandığında ad
+görünür hâle gelir.
+
+### Bulgu 4 — Norveç içerik ajansı alanı
+
+Norveç içerik pazarlama ajansı listelerinde (Clutch, Sortlist, Semrush,
+Manifest, ensun) QBLOGG **yok**. Bu beklenen sonuç — henüz yayında değiliz —
+ama aynı zamanda alanda aynı adı taşıyan bir rakip olmadığını gösteriyor.
+
+### Bu bölümün sınırı
+
+Yapılan: açık web metin araması, alan adı ekseni, alan adı müsaitliği,
+sektör taraması.
+
+**Yapılmayan ve bu bölümün yerine geçmediği:** EUIPO, Patentstyret, WIPO ve
+Brønnøysund sicil taramaları. Sicilde tescilli olup açık webde hiç
+görünmeyen marka olağandır. Tescil kararı bu bölüme dayandırılamaz.
 
 ## Diğer kayıtlar
 
