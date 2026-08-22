@@ -32,8 +32,28 @@ Reality Board) · `docs/gorseller/logo-aday-karsilastirma.png` (aday elemesi).
 | Gradyan / gölge / maske / kontur / raster | 0 / 0 / 0 / 0 / 0 | ✓ |
 | Renk | yalnızca `#082C54` ve `#00D8C2` | ✓ |
 
-Overshoot kilitte uygulanır: sembol, wordmark'ın cap çizgisini alttan ve üstten
-10u aşar (yuvarlak formun düz forma göre optik küçülmesini telafi eder).
+### Kilitte sembol–wordmark ilişkisi — ölçülen
+
+| Ölçüt | Değer |
+|---|---|
+| Sembol yüksekliği | 800u (y 100 → 900) |
+| Wordmark yüksekliği | 534u (y 233 → 767) — cap 520u + Q kuyruğu |
+| Sembolün wordmark'ı aşması | **133u** üstten, **133u** alttan |
+| Cap / sembol oranı | 520 / 800 = **%65** (hedef 62–68 ✓) |
+
+Sembol wordmark'a göre dikey ortalanır; aşma iki yönde eşittir. Bu, yuvarlak
+formun düz forma göre optik olarak küçük görünmesini telafi eden **%65 cap
+oranı** kuralının sonucudur — ayrıca uygulanan bir overshoot değildir.
+
+> **22.08.2026 düzeltmesi.** Bu belgede önceden "sembol, wordmark'ın cap
+> çizgisini alttan ve üstten **10u** aşar" yazıyordu. **Yanlıştı.** Üretilen
+> kilit dosyası ölçüldüğünde aşma 133u çıktı. Ayrıca "overshoot kilitte
+> uygulandı, sembolün kendi konturunda uygulanmadı" notu da gerçeği
+> anlatmıyordu: kodda ayrı bir overshoot adımı hiç yok, ilişki tamamen %65
+> cap oranından doğuyor.
+>
+> Bu, tescil başvurusuna eşlik edecek bir yapım kaydında bulunmaması gereken
+> türden bir hatadır: belge, varlıkta olmayan bir işlemi anlatıyordu.
 
 ### Ölçülen alan dağılımı
 
@@ -118,6 +138,34 @@ karşılaştırıldı:
 | **55** | **Q okunuyor** | **Q okunuyor, bütünleşik** | **✓ seçildi** |
 | 80 | Q okunuyor | kuyruk kopuk çubuk | ✗ ağır |
 
+## Beşinci çelişki: sayaç kayması 10–15u imkânsız
+
+Brief sayaç merkezinin kâse merkezinden **10–15u yukarıda** olmasını, aynı
+zamanda tüm şeritlerin **150–165u** arasında kalmasını istiyor. İkisi birlikte
+sağlanamaz — ve bu, sayaç boyutundan bağımsızdır.
+
+Kâse yüksekliği *K*, sayaç yüksekliği *S*, kayma *X* olsun:
+
+```
+üst şerit = (K − S)/2 − X
+alt şerit = (K − S)/2 + X
+```
+
+İki denklem çıkarılınca *K* ve *S* düşer:
+
+```
+alt − üst = 2X
+üst ≥ 150  ve  alt ≤ 165   ⟹   2X ≤ 15   ⟹   X ≤ 7,5u
+```
+
+Yani **hiçbir sayaç ölçüsünde 10u'ya çıkılamaz.** Şerit aralığı 15u genişliğinde
+olduğu için kayma en fazla onun yarısı olabilir.
+
+Uygulanan değer **7u** — ulaşılabilir azaminin (7,5u) hemen altında, tam sayı.
+Ölçülen şeritler: üst 151u · alt 165u · yan 158u. Üçü de aralıkta.
+
+Bu bir taviz değil, sınırın kendisidir.
+
 ## Neden dört kural gevşetildi
 
 Brief'in sayısal zarfı kendi içinde tutarsız. Dördü de ölçümle kanıtlandı:
@@ -169,8 +217,10 @@ aqua pratikte kaybolur; o boyutta `symbol-navy` kullanın.
 - ~~Q kuyruğunun sayaç içindeki kör ucu~~ — **kapandı 22.08.2026.** Kör uç
   kaldırıldı; ayrıca ters sarımdan doğan ve kuyruğu halkayı delen ayrı bir
   kusur bulunup düzeltildi. Detay yukarıda.
-- Sayaç merkezi 7u (hedef 10–15); 10u'da üst şerit 146u'ya düşüyor.
-- Overshoot kilitte uygulandı, sembolün kendi konturunda uygulanmadı.
+- ~~Sayaç merkezi 7u (hedef 10–15)~~ — **kapandı 22.08.2026: hedef imkânsız.**
+  Cebirsel kanıt aşağıda; 7u ulaşılabilir azami değer, eksik değil sınır.
+- ~~Overshoot kilitte uygulandı, sembolün kendi konturunda uygulanmadı~~ —
+  **kapandı 22.08.2026: böyle bir adım hiç yok.** Belge hatası düzeltildi.
 - Beş saniyelik hafıza testi protokolü yazıldı ama **uygulanmadı**; katılımcı
   sonucu üretilmemiştir.
 
