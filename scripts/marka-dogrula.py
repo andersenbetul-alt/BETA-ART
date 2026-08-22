@@ -345,6 +345,22 @@ kontrol('optik açıklık sınır kutusundan dar değil', 'evet',
         'evet' if _dar >= _bbox - 0.5 else 'HAYIR')
 
 
+# --- Site başlıklarındaki satır içi logo üreticiyle aynı mı ---
+# 22.08.2026: sembol yeniden tasarlandı ama altı sayfadaki satır içi SVG eski
+# geometride (kiriş köprü, Ø okunan hâl) kaldı — R01 sınıfının bir örneği daha.
+# Kural: her sayfada kuyruk yolu SYM_AQUA ile bire bir ve navy'den SONRA
+# çizilmeli (kuyruk üstte). Sayfalar depo kökünde; paket düzeninde bu blok atlanır.
+_SAYFALAR = ['index', 'work', 'blog', 'post', 'gizlilik', 'kosullar']
+if (ROOT / 'index.html').exists():
+    for _ad in _SAYFALAR:
+        _h = (ROOT / f'{_ad}.html').read_text(encoding='utf-8')
+        _n = _h.count(f'<path d="{SY_AQUA}" fill="#00D8C2"/>')
+        kontrol(f'{_ad}.html satır içi logo kuyruğu üreticiyle aynı (2 yerde)', 2, _n, 0)
+        _i_navy = _h.find('M500 100 Q900 100')
+        _i_aqua = _h.find(SY_AQUA)
+        kontrol(f'{_ad}.html kuyruk navy üstünde çiziliyor', 'evet',
+                'evet' if 0 <= _i_navy < _i_aqua else 'HAYIR')
+
 print('QBLOGG marka ölçü doğrulaması')
 print('─' * 62)
 for ad, b, o in gecti:
