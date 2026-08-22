@@ -53,6 +53,11 @@ inside the same boundary — but because a customer has to be able to tell what
 NAVIAR does at a glance, and because a narrow line is one you can actually
 deliver well twenty times. The others come back when someone asks for them.
 
+The rest of what NAVIAR could sell inside the same boundary — some forty
+services across career, language, digital admin, digital products and small
+business — is written down in `tjenestekatalog.md` with prices, so "add it when
+someone asks" has something to add from.
+
 **Shelved, not dropped:** Praktisk veiviser (public-service navigation) and
 private language support. Their translations stay in `assets/i18n/*.json` under
 `shelved`, a test keeps them from rotting, and another test makes sure they

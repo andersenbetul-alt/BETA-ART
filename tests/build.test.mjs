@@ -151,6 +151,20 @@ export default async function () {
       }
     });
 
+    /* The backlog exists so a deferred service is not lost, and so nobody
+       re-invents one that was already thought through. It is only useful if it
+       still lists the live six as live. */
+    await test('the backlog marks the live services as live', () => {
+      const doc = fs.readFileSync('docs/tjenestekatalog.md', 'utf8');
+      const cfg = fs.readFileSync('assets/js/config.js', 'utf8');
+      const listed = cfg.match(/services: \[([\s\S]*?)\n  \],/)[1];
+      const paid = [...listed.matchAll(/price: (\d+)/g)].map(m => m[1]).filter(p => p !== '0');
+      for (const price of new Set(paid)) {
+        const line = doc.split('\n').find(l => l.includes('**' + price + ' — live**'));
+        assert(line, `the backlog does not mark ${price} as live`);
+      }
+    });
+
     await test('the service model and the code agree on the workflow', () => {
       const doc = fs.readFileSync('docs/tjenestemodell.md', 'utf8');
       const src = fs.readFileSync('server/db.js', 'utf8');
