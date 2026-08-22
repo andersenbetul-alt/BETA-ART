@@ -61,19 +61,30 @@ Ayrıca `scripts/requirements.txt` eklendi — sürümler sabitlendi
 
 Çıktı özetleri `tescil/` üretiminde ve `assets/fonts/KAYNAK.md`'de kayıtlı.
 
-## R05 — Font lisans kanıtı yok · **AÇIK**
+## R05 — Font lisans kanıtı yok · **KAPANDI (22.08.2026)**
 
 Haklı ve önemli. `assets/fonts/KAYNAK.md` eklendi: sürüm, telif, proje adresi
-ve dört dosyanın SHA-256 özeti — hepsi **fontun kendi `name` tablosundan**
+ve dosyaların SHA-256 özeti — hepsi **fontun kendi `name` tablosundan**
 okundu, dışarıdan getirilmedi.
 
-**Kapanmadı**, çünkü lisans metninin kendisi hâlâ depoda yok. OFL, yeniden
-dağıtılan yazı tipiyle lisans metninin de dağıtılmasını şart koşuyor. Metni
-ezberden yazmıyoruz: yanlış lisans metni, eksik olandan kötüdür. Bu ortamdan
-dış ağa çıkılamadığı için indirilemedi.
+Kapatan adım: Inter dağıtımının kendi `LICENSE.txt` dosyası sağlandı ve
+`assets/fonts/OFL.txt` olarak depoya kondu (4.380 bayt, SHA-256
+`262481e844521b32`). Metnin gerçekten OFL-1.1 olduğu bölüm bölüm doğrulandı ve
+telif satırının fontun kendi kaydıyla eşleştiği görüldü. **Ezberden
+yazılmadı** — bu maddede tuttuğumuz tavır buydu ve bozulmadı.
 
-Yapılacak: `github.com/rsms/inter` üzerinden `OFL.txt` indirilip
-`assets/fonts/OFL.txt` olarak konacak.
+Ayrıca soy zinciri de kapandı: resmi `InterVariable.ttf` ile depo alt kümesi
+`wght=700`'de harf harf karşılaştırıldı; `Q B L O G` ana hatları — ilerleme ve
+sol kenar dahil — aynı çıktı. Wordmark resmi dağıtımdan geliyor, yolda
+değişmemiş. Ölçüler ve iki küçük fark (yapım kimliği, `opsz` ekseni)
+`assets/fonts/KAYNAK.md`'de.
+
+Sürekli denetim: `npm run marka-dogrula` artık OFL.txt'nin varlığını, zorunlu
+bölümlerini ve her yazı tipi dosyasının özetinin `KAYNAK.md` ile eşleştiğini
+kontrol ediyor. Kayıt güncellenmeden bir font değişirse çıkış kodu 1.
+
+**Doğrulanmadı:** `openfontlicense.org` / `scripts.sil.org/OFL` adreslerinin
+bugün hangi sürümü sunduğu — bu ortamdan dış ağa çıkılamıyor.
 
 ## R06 — Küçük boyutta aqua ayrımı zayıf · **KAPANDI (kural olarak)**
 

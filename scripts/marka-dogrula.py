@@ -14,6 +14,7 @@ Uyuşmazlık varsa çıkış kodu 1. Böylece belge sessizce kayamaz.
 Ölçüler varlıklardan ve üreticinin kendi sabitlerinden okunur; elle girilen
 beklenen değer yok.
 """
+import hashlib
 import math
 import re
 import sys
@@ -21,9 +22,21 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-BELGE = ROOT / 'docs' / 'logo-sistemi.md'
+
+
+def _bul(*adaylar):
+    """Depo düzeni ile paket düzeni arasında yol ayrımı yapar."""
+    for a in adaylar:
+        if a.exists():
+            return a
+    return adaylar[0]
+
+
+BELGE = _bul(ROOT / 'docs' / 'logo-sistemi.md',      # depo
+             ROOT / 'belge' / 'logo-sistemi.md')     # paket
 URETICI = HERE / 'marka-uret.py'
-MARKA = ROOT / 'assets' / 'brand'
+MARKA = _bul(ROOT / 'assets' / 'brand', ROOT / 'varliklar')
+FONT = _bul(ROOT / 'assets' / 'fonts', ROOT / 'font')
 
 hata, gecti = [], []
 
@@ -109,6 +122,22 @@ for f in sorted(MARKA.glob('*.svg')):
         if fazla:
             hata.append((f'{f.name}: palet dışı renk', 'yok', ', '.join(sorted(fazla))))
 gecti.append(('SVG dosyalarında gradyan/filtre/maske/kontur/metin', 'yok', 'yok'))
+
+# --- hak paketi: lisans metni ve dosya kaydı yerinde mi (kural 7-b) ---
+KAYNAK = FONT / 'KAYNAK.md'
+OFL = FONT / 'OFL.txt'
+kayit = KAYNAK.read_text(encoding='utf-8') if KAYNAK.exists() else ''
+if not OFL.exists():
+    hata.append(('OFL.txt', 'var', 'yok'))
+else:
+    ofl = OFL.read_text(encoding='utf-8')
+    for bolum in ('SIL OPEN FONT LICENSE Version 1.1', 'PREAMBLE', 'DEFINITIONS',
+                  'PERMISSION AND CONDITIONS', 'TERMINATION', 'DISCLAIMER'):
+        kontrol(f'OFL bölümü: {bolum[:34]}', bolum, bolum if bolum in ofl else 'eksik')
+    for f in sorted(FONT.glob('*.woff2')) + [OFL]:
+        ozet = hashlib.sha256(f.read_bytes()).hexdigest()[:16]
+        kontrol(f'{f.name} özeti KAYNAK.md ile aynı', ozet,
+                ozet if ozet in kayit else 'kayıtta yok')
 
 print('QBLOGG marka ölçü doğrulaması')
 print('─' * 62)

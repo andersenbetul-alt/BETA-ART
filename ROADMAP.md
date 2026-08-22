@@ -132,7 +132,7 @@ maliyet.
 | 72 | R04 birebir yeniden üretim + sürüm sabitleme | **Bitti** 22.08 | `scripts/requirements.txt`; paket boşaltılıp sınandı, 13/13 bayt bayt aynı |
 | 73 | R03 paket yolları | **Bitti** 22.08 | `npm run marka-paket` belgeyi paket düzenine çeviriyor, elle kopyalama yok |
 | 74 | EUIPO biçim üreticisi | **Bitti** 22.08 | `npm run tescil` — zarf denetimli JPEG + 250×250 sicil önizlemesi |
-| 75 | **Font lisans metni (R05)** | **Açık** | `assets/fonts/OFL.txt` yok. OFL yeniden dağıtımda metni şart koşuyor. Bu ortamdan indirilemiyor |
+| 75 | **Font lisans metni (R05)** | **Kapandı** | `assets/fonts/OFL.txt` eklendi, OFL-1.1 bölüm bölüm doğrulandı; wordmark ana hatları resmi `InterVariable.ttf` ile `wght=700`'de birebir eşleşti; `marka-dogrula` özetleri denetliyor |
 | 76 | **Tanınırlık testi (R07)** | **Açık** | Protokol yazılı, katılımcı yok. Uydurulmayacak |
 | 77 | **Marka araştırması (R08)** | **Açık** | EUIPO, Patentstyret, WIPO, şirket adı — hiçbiri yapılmadı. Kurum siteleri bu ortamda engelli |
 | 78 | Nice sınıfı ve mal/hizmet listesi | **Karar bekliyor** | Hukukçu işi |

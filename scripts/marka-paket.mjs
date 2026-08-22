@@ -27,6 +27,7 @@ const KOPYA = [
   ['docs/marka-testleri.md',     'belge/marka-testleri.md'],
   ['docs/marka-tescili.md',      'belge/marka-tescili.md'],
   ['assets/fonts/KAYNAK.md',     'font/KAYNAK.md'],
+  ['assets/fonts/OFL.txt',       'font/OFL.txt'],
   ['assets/fonts/inter-latin.woff2', 'font/inter-latin.woff2'],
   ['assets/fonts/inter.css',     'font/inter.css']
 ];
@@ -94,8 +95,6 @@ yeniden adlandırmanız da gerekmez.
 
 ## Açık maddeler
 
-- **Font lisans metni pakette yok** (\`font/KAYNAK.md\` → R05). OFL, yeniden
-  dağıtımda lisans metninin de bulunmasını şart koşuyor.
 - Beş saniyelik tanınırlık testi **uygulanmadı**.
 - Marka araştırması **yapılmadı**; tescil edilebilirlik hakkında iddia yok.
 
