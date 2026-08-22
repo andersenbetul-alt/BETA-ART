@@ -1,0 +1,12 @@
+{
+  "name": "global-digital-clock",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Current time across 24 time zones. Plain HTML, CSS and JavaScript — no dependencies.",
+  "scripts": {
+    "test": "node test/clock.test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
