@@ -32,6 +32,7 @@ require('../assets/js/sprak-ui.js');
 require('../assets/js/ekspertbistand.js');
 require('../assets/js/klarhet.js');
 require('../assets/js/klarsprak.js');
+require('../assets/js/betaling.js');
 require('../assets/js/besok-klage.js');
 require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
@@ -1912,6 +1913,87 @@ t.test('en annen tid velges, den begrunnes ikke i fritekst', function () {
   // Hun har en kalender. Den er ikke tom fordi hun er åtti.
   var navn = EK.ANNEN_TID.grunner.map(function (g) { return g.navn; }).join(' ');
   t.erSann(navn.indexOf('noe fast') !== -1, navn);
+});
+
+/* ---------------- Betaling ---------------- */
+
+var BET = window.PP_BETALING;
+
+t.gruppe('Betaling');
+
+t.test('klarhet-strømmen er ikke åpen, og sier hva som mangler', function () {
+  // Klarhet er begge strømmene PP_ABONNEMENT holder stengt: familien betaler,
+  // og pengene går videre til en tredjepart.
+  var d = BET.bestill({ strom: 'klarhet', belop: 599, forbruker: true });
+  t.erUsann(d.ok);
+  t.erLik(d.regel, 'ikke_avklart');
+  t.erSann(d.krever.length >= 4);
+  t.erSann(d.krever.join(' ').indexOf('J11') !== -1);
+});
+
+t.test('de to gamle strømmene er fortsatt sperret', function () {
+  t.erLik(BET.bestill({ strom: 'familie', belop: 100 }).regel, 'sperret');
+  t.erLik(BET.bestill({ strom: 'mellom', belop: 100 }).regel, 'sperret');
+});
+
+t.test('angreretten er en betingelse, ikke en formalitet', function () {
+  // Fjernsalg til forbruker: uten uttrykkelig anmodning om å starte før
+  // fristen, har vi levert noe vi ikke kan kreve betalt for.
+  var uten = BET.bestill({ strom: 'leverandor', belop: 2690, forbruker: true,
+                           vist: ['pris','innhold','selger','angrerett','klage','grenser'] });
+  t.erLik(uten.regel, 'angrerett');
+  t.erSann(uten.tekst.indexOf('angrefristen') !== -1);
+
+  var med = BET.bestill({ strom: 'leverandor', belop: 2690, forbruker: true,
+                          angrerettBekreftet: true,
+                          vist: ['pris','innhold','selger','angrerett','klage','grenser'] });
+  t.erSann(med.ok, med.grunn);
+});
+
+t.test('avkrysningen er aldri forhåndskrysset', function () {
+  t.erUsann(BET.ANGRERETT.forhandskrysset);
+  t.erLik(BET.ANGRERETT.dager, 14);
+});
+
+t.test('opplysningene skal stå før knappen', function () {
+  var d = BET.bestill({ strom: 'leverandor', belop: 2690, forbruker: true,
+                        angrerettBekreftet: true, vist: ['pris'] });
+  t.erLik(d.regel, 'opplysningsplikt');
+  t.erSann(d.mangler.indexOf('grenser') !== -1);
+  t.erSann(BET.FOR_AVTALE.length >= 6);
+});
+
+t.test('en virksomhet har ikke angrerett', function () {
+  // B2B-strømmen er ikke forbrukersalg. Da gjelder ikke angrerettloven.
+  t.erSann(BET.bestill({ strom: 'leverandor', belop: 2690 }).ok);
+});
+
+t.test('penger trekkes etter, ikke før', function () {
+  t.erSann(BET.kanGaaTil('reservert', 'trukket').ok);
+  t.erUsann(BET.kanGaaTil('reservert', 'utbetalt').ok);
+  t.erUsann(BET.kanGaaTil('ingen', 'trukket').ok);
+  t.erSann(BET.kanGaaTil('trukket', 'refundert').ok);
+  // En frigitt reservasjon er slutten. Den kan ikke vekkes til live igjen.
+  t.erLik(BET.LOVLIGE_OVERGANGER.frigitt, []);
+});
+
+t.test('en reservasjon står ikke for evig', function () {
+  t.erLik(BET.FRIGIS_ETTER_TIMER, 48);
+});
+
+t.test('kortopplysninger passerer aldri gjennom oss', function () {
+  ['kortnummer', 'CVC', 'BankID', 'fødselsnummer'].forEach(function (x) {
+    t.erSann(BET.LAGRES_ALDRI.indexOf(x) !== -1, x + ' mangler i lista');
+    t.erSann(BET.LAGRES.indexOf(x) === -1, x + ' står i LAGRES');
+  });
+});
+
+t.test('valget av betalingsprodukt er ikke tatt, og sier hvorfor', function () {
+  // Connect finnes for å betale ut til selvstendige. Er eksperten ansatt,
+  // skal hun ha lønn. Å velge produkt er å svare på arbeidsrettsspørsmålet.
+  t.erUsann(BET.LEVERANDORVALG.avklart);
+  t.erSann(BET.LEVERANDORVALG.avhengerAv.indexOf('ansatt') !== -1);
+  t.erSann(BET.LEVERANDORVALG.uansett.indexOf('server') !== -1);
 });
 
 /* ---------------- Klart språk ---------------- */
