@@ -971,9 +971,16 @@ t.test('sidene bruker samme merke som logofilene', function () {
     }).map(function (f) { return 'besok/' + f; }))
     .forEach(function (f) {
       var h = les(f);
-      if (h.indexOf('M16 3.2 3.4 28.8') === -1) return;   // siden viser ikke merket
-      t.erUsann(/opacity="\.45"/.test(h), f + ' har det gamle bandet');
-      t.erSann(/fill-rule="evenodd"/.test(h), f + ' mangler utsparingen');
+      /* Merket finnes to steder på hver side: innfelt SVG i topplinja, og som
+         data-URI i favicon-lenka. De har ulike banedata, så et søk etter den
+         ene formen fanger ikke den andre. Her sjekkes bandet i seg selv. */
+      t.erUsann(/opacity=["'][.]45["']/.test(h), f + ' har det gamle bandet');
+      if (h.indexOf('M16 3.2 3.4 28.8') !== -1) {
+        t.erSann(/fill-rule="evenodd"/.test(h), f + ' mangler utsparingen i topplinja');
+      }
+      if (h.indexOf('M16 6.4 6.2 26.4') !== -1) {
+        t.erSann(/fill-rule='evenodd'/.test(h), f + ' mangler utsparingen i favicon-lenka');
+      }
     });
 });
 
