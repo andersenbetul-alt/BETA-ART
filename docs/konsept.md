@@ -57,9 +57,12 @@ değişir — bu ibare sitenin kendisinde de yazılıdır):
 QBLOGG'un ayırt edici iddiası "daha çok içerik" değil, **denetlenebilir
 içerik**tir. Kurallar yazılıdır ve makinece denetlenir:
 
-- **Görünürlük kapısı:** her yazı yayına girmeden 16 maddelik denetimden
-  geçer (`engine/visibility.mjs`); aynı ölçüt sitenin kendi yazılarına da
-  uygulanır (`npm run gorunurluk`). Kendi kuralına uymayan hat satılmaz.
+- **Görünürlük kapısı:** her yazı yayına girmeden 16 maddelik otomatik
+  denetimden geçer (denetim kodu: `engine/visibility.mjs`). Maddeler
+  başlık, "önce cevap" yapısı, konu kümesi bağlantıları, tekrar, özgün
+  katkı, meta/adres, okunabilirlik, yapılandırılmış veri, görsel ve
+  kaynak/yazar/tarih ölçütlerini kapsar. Aynı ölçüt sitenin kendi
+  yazılarına da uygulanır — kendi kuralına uymayan hat satılmaz.
 - **Özgün katkı zorunlu:** her yazıda `orig` alanı (kendi verisi, testi,
   tablosu) yoksa yazı "yayınlanamaz" işaretlenir.
 - **Kaynak kuralı:** en az üç kaynak; adresi doğrulanmamış kaynak uydurma
@@ -86,15 +89,19 @@ uzun vadede ürünleşebilir.
 Site ve içerik 10 dildedir (tr, en, zh, hi, es, ar, fr, pt, ru, no; Arapça
 RTL). Bilinçli tasarım: **tr + en tam makale** (1.200+ kelime), kalan sekiz
 dil **özet katmanı** (yazı başına üç blok). Bu, "10 dilde yayın" vaadini
-maliyeti kontrol ederek doğru kılar; eşikler `check.mjs` ile ayrı ayrı
-denetlenir.
+maliyeti kontrol ederek doğru kılar; eşikler otomatik denetlenir.
+
+Müşteri işinde hedef diller ve her dilin derinliği (tam makale mi, özet
+katmanı mı) brief'te kararlaştırılır; yukarıdaki iki katmanlı model
+QBLOGG'un kendi yayınının uyguladığı ve önerdiği varsayılan yaklaşımdır.
 
 ## Gelir katmanları
 
 1. Paket satışı (ana gelir; brief formu → e-posta).
 2. Ortaklık bağlantıları — yazı içinde `{aff:…}` bloğu; bildirim kutusu ve
    `rel="sponsored"` kendiliğinden (`docs/gelir-sistemi.md`).
-3. Bülten + lead magnet (Buttondown; indirilebilir otomasyon keşif listesi).
+3. Bülten + lead magnet (bülten servisi Buttondown; kayıt karşılığı
+   indirilebilir otomasyon keşif listesi).
 4. Kart ile ödeme: Stripe Payment Link entegrasyonu site tarafında hazır
    hâle getiriliyor; bağlantılar `config.js`'e yapıştırıldığında paket
    kartlarında "Kartla öde" düğmesi belirir (`docs/odeme-sistemi.md`).
@@ -113,19 +120,22 @@ dağıtımın yeniden tetiklenmesi.
 
 Kimlik betikle üretilir, elle çizilmez (`scripts/marka-uret.py`, 14 varlık,
 bayt bayt yeniden üretilebilir). Renkler: Midnight Navy `#082C54` +
-Electric Aqua `#00D8C2`. EUIPO şekil markası başvuru dosyaları zarf
+Electric Aqua `#00D8C2`. EUIPO (Avrupa Birliği Fikri Mülkiyet Ofisi)
+şekil markası başvuru dosyaları zarf
 denetiminden geçmiş hâlde hazırdır; sınıf seçimi ve benzerlik taraması
 marka vekili işidir ve dosyada açıkça öyle işaretlenmiştir
 (`docs/marka-tescili.md`).
 
 ## Bugünkü durum (23.08.2026)
 
-- Site 7 sayfa + 404 ile yayında; tüm denetimler yeşil.
-- Alan adı: DNS doğrulama TXT kayıtları yayıldı; Vercel'de "Verify & Claim"
-  bekleniyor.
-- Profesyonelleştirme paketi yürüyor: yazdırma CSS'i + security.txt,
-  İçindekiler, paket karşılaştırma tablosu, RSS, kalite ve örnek teslimat
-  sayfaları, ödeme düğmeleri.
+**Bitti:** site 7 sayfa + 404 ile yayında, tüm denetimler yeşil; yazdırma
+CSS'i + security.txt; yazı sayfalarına İçindekiler.
+
+**Yapılıyor:** paket karşılaştırma tablosu, RSS beslemesi, kalite güvencesi
+sayfası, örnek teslimat sayfası, "Kartla öde" düğmeleri.
+
+**Bekleyen (dış adım):** alan adı — DNS doğrulama TXT kayıtları yayıldı,
+Vercel'de "Verify & Claim" onayı bekleniyor.
 - Kullanıcı tarafında bekleyenler: hukuki alan bilgileri, Buttondown
   hesabı, hello@qblogg.com kutusu, sosyal hesap adresleri, EUIPO gönderimi,
   Stripe panelinde ürün/Payment Link oluşturma.
