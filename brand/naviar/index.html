@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NAVIAR — Identity Contact Sheet</title>
+<style>
+ :root{--bg:#F5F6F8;--card:#fff;--line:#dde2e8;--ink:#0A1628;--mut:#5b6876;--gold:#D4AF37}
+ @media (prefers-color-scheme:dark){:root:not([data-t=light]){
+   --bg:#080f1a;--card:#0f1b2b;--line:#1e2d42;--ink:#F5F6F8;--mut:#8a9bb0}}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--bg);color:var(--ink);
+      font:15px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+ .wrap{max-width:1120px;margin:0 auto;padding:48px 24px 96px}
+ header{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:8px}
+ h1{margin:0 0 6px;font-size:26px;letter-spacing:-.01em}
+ .sub{color:var(--mut);font-size:14px;margin:0}
+ h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);
+    margin:44px 0 14px;font-weight:600}
+ .grid{display:flex;flex-wrap:wrap;gap:16px}
+ .c{background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:22px;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:12px;min-width:0}
+ .c.rev{background:#0A1628;border-color:#1b2b44}
+ .lab{font:11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--mut);
+      letter-spacing:.04em;text-align:center}
+ .c.rev .lab{color:#8a9bb0}
+ img{display:block;max-width:100%;height:auto}
+ table{border-collapse:collapse;width:100%;font-size:13.5px;margin-top:4px}
+ th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+ th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+ td.ok{color:#1a7f4b;font-weight:600}
+ td.no{color:#b4341f;font-weight:600}
+ .warn{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+       border-radius:8px;padding:18px 20px;margin-top:16px;font-size:14px}
+ .warn b{display:block;margin-bottom:6px}
+ .sw{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+ .sw div{font:11px/1.4 ui-monospace,monospace;color:var(--mut);text-align:center}
+ .sw i{display:block;width:78px;height:52px;border-radius:6px;
+       border:1px solid var(--line);margin-bottom:6px}
+</style></head><body><div class="wrap">
+
+<header>
+  <h1>NAVIAR — Master Identity System</h1>
+  <p class="sub">Flat wordmark + iki tonlu N monogram. Tüm geometri spec'ten hesaplanmıştır.</p>
+</header>
+
+<h2>Wordmark</h2>
+<div class="grid">
+  <div class="c" style="flex:1 1 520px"><img src="master/naviar-wordmark.svg" width="460">
+    <span class="lab">master · 557 × 100 · stroke %15</span></div>
+  <div class="c rev" style="flex:1 1 320px"><img src="master/naviar-wordmark-white.svg" width="300">
+    <span class="lab">reverse</span></div>
+</div>
+<div class="grid" style="margin-top:16px">
+  <div class="c"><img src="master/naviar-wordmark-responsive.svg" width="300">
+    <span class="lab">responsive · tracking −%17</span></div>
+  <div class="c"><img src="master/naviar-wordmark.svg" width="200"><span class="lab">200 px</span></div>
+  <div class="c"><img src="master/naviar-wordmark-responsive.svg" width="130"><span class="lab">130 px</span></div>
+  <div class="c"><img src="master/naviar-wordmark-responsive.svg" width="96"><span class="lab">96 px · minimum</span></div>
+</div>
+
+<h2>Monogram ve ikonlar</h2>
+<div class="grid">
+  <div class="c"><img src="master/naviar-monogram.svg" width="133"><span class="lab">two-tone · altın %14,1</span></div>
+  <div class="c"><img src="master/naviar-monogram-mono-dark.svg" width="133"><span class="lab">tek renk</span></div>
+  <div class="c"><img src="master/naviar-icon-app.svg" width="104"><span class="lab">app icon</span></div>
+  <div class="c"><img src="master/naviar-icon-favicon.svg" width="64"><span class="lab">64</span></div>
+  <div class="c"><img src="master/naviar-icon-favicon.svg" width="32"><span class="lab">32</span></div>
+  <div class="c"><img src="master/naviar-icon-favicon.svg" width="16"><span class="lab">16</span></div>
+</div>
+
+<h2>Lockup</h2>
+<div class="grid">
+  <div class="c" style="flex:1 1 460px"><img src="master/naviar-lockup-horizontal.svg" width="420">
+    <span class="lab">horizontal</span></div>
+  <div class="c" style="flex:0 1 240px"><img src="master/naviar-lockup-stacked.svg" width="180">
+    <span class="lab">stacked</span></div>
+</div>
+<div class="grid" style="margin-top:16px">
+  <div class="c rev" style="flex:1 1 460px"><img src="master/naviar-lockup-horizontal-reverse.svg" width="420">
+    <span class="lab">reverse</span></div>
+</div>
+
+<h2>Descriptor sistemi</h2>
+<div class="grid">
+  <div class="c" style="flex:1 1 340px"><img src="descriptors/naviar-consulting.svg" width="320"><span class="lab">CONSULTING</span></div>
+  <div class="c" style="flex:1 1 340px"><img src="descriptors/naviar-ai.svg" width="320"><span class="lab">AI</span></div>
+  <div class="c" style="flex:1 1 340px"><img src="descriptors/naviar-platform.svg" width="320"><span class="lab">PLATFORM</span></div>
+  <div class="c" style="flex:1 1 340px"><img src="descriptors/naviar-research-institute.svg" width="320"><span class="lab">RESEARCH INSTITUTE</span></div>
+  <div class="c" style="flex:1 1 340px"><img src="descriptors/naviar-academy.svg" width="320"><span class="lab">ACADEMY</span></div>
+  <div class="c" style="flex:1 1 340px"><img src="descriptors/naviar-labs.svg" width="320"><span class="lab">LABS</span></div>
+  <div class="c" style="flex:1 1 340px;opacity:.62"><img src="descriptors/naviar-care-PENDING-APPROVAL.svg" width="320">
+    <span class="lab">CARE · ONAY BEKLİYOR — mimaride yok</span></div>
+</div>
+
+<h2>Arşiv çalışmaları — master değildir</h2>
+<div class="grid">
+  <div class="c" style="flex:0 1 auto"><img src="studies/study-p6-r-comparison.svg" width="134">
+    <span class="lab">P6 · açık R (üst, reddedildi) /<br>kapalı R (alt, master) · 1:1 @ 24 cap</span></div>
+  <div class="c" style="flex:0 1 auto"><img src="studies/study-p7-monogram-scale.svg" width="192">
+    <span class="lab">P7 · 16 / 24 / 32 / 48 px · 1:1</span></div>
+  <div class="c" style="flex:0 1 auto"><img src="studies/study-p1-sculptural-n-flat.svg" width="124">
+    <span class="lab">P1 · sculptural N, düz vektör</span></div>
+</div>
+<div class="grid" style="margin-top:16px">
+  <div class="c" style="flex:1 1 100%;align-items:flex-start">
+    <img src="studies/study-p4-dot-a-scale.svg" width="557">
+    <span class="lab" style="align-self:center">P4 · Dot-A · 100 / 48 / 24 cap height, 1:1 — noktalar 24'te kayboluyor</span></div>
+</div>
+
+<h2>Renkler</h2>
+<div class="sw">
+  <div><i style="background:#0A1628"></i>Midnight Navy<br>#0A1628</div>
+  <div><i style="background:#D4AF37"></i>Premium Gold<br>#D4AF37</div>
+  <div><i style="background:#F5F6F8"></i>Off White<br>#F5F6F8</div>
+  <div><i style="background:#1E1E1E"></i>Graphite<br>#1E1E1E</div>
+  <div><i style="background:#00B2E3"></i>Accent Cyan<br>#00B2E3</div>
+</div>
+<div class="warn"><b>Altın, açık zeminde metin olarak kullanılmaz.</b>
+  #D4AF37 beyaz üzerinde 2,10:1 kontrast verir — WCAG AA eşiği 4,5:1. Altın yalnız
+  yapısal aksandır. Accent Cyan yalnız veri görselleştirme ve dijital UI içindir,
+  master markada asla yer almaz.</div>
+
+<h2>Ölçüm kanıtı</h2>
+<table>
+ <tr><th>Kriter</th><th>Spec</th><th>Üretilen</th><th>Durum</th></tr>
+ <tr><td>Wordmark stroke</td><td>H'nin %14–16'sı</td><td>%15</td><td class="ok">✔</td></tr>
+ <tr><td>Çift aralıkları</td><td>0,30 / 0,24 / 0,32 / 0,34 / 0,26 H</td><td>30 / 24 / 32 / 34 / 26</td><td class="ok">✔</td></tr>
+ <tr><td>A crossbar</td><td>≥ 0,14H</td><td>0,15H</td><td class="ok">✔</td></tr>
+ <tr><td>A counter</td><td>≥ 0,20H</td><td>0,27H</td><td class="ok">✔</td></tr>
+ <tr><td>R</td><td>kapalı bowl + diyagonal bacak</td><td>kapalı bowl + bacak</td><td class="ok">✔</td></tr>
+ <tr><td>Responsive tracking</td><td>−%15–20</td><td>−%17</td><td class="ok">✔</td></tr>
+ <tr><td>Monogram footprint</td><td>~760 × 800</td><td>760 × 800</td><td class="ok">✔</td></tr>
+ <tr><td>Ribbon</td><td>145–160</td><td>150</td><td class="ok">✔</td></tr>
+ <tr><td>Altın aksan</td><td>%12–16</td><td>%14,1</td><td class="ok">✔</td></tr>
+ <tr><td>Descriptor cap</td><td>%24–30</td><td>%27</td><td class="ok">✔</td></tr>
+ <tr><td>Efektler</td><td>gradient/gölge/3D yok</td><td>yok</td><td class="ok">✔</td></tr>
+ <tr><td>Diyagonal açı</td><td>38–42°</td><td>29,9° (dikeyden)</td><td class="no">✘</td></tr>
+</table>
+<div class="warn"><b>Tek sapma: diyagonal açı — onay bekliyor.</b>
+  Spec'in üç monogram sayısı birbiriyle çelişiyor. 760 × 800 footprint ve 150 birim
+  ribbon sabitken diyagonale kalan yatay açıklık 460 birimdir; bu da dikeyden 29,9°
+  verir. 38–42° için footprint'in ~971 birime çıkması, yani "~760 × 800" şartının
+  bozulması gerekir. Footprint ve ribbon korundu, açı sapması bilerek bırakıldı.</div>
+
+</div></body></html>

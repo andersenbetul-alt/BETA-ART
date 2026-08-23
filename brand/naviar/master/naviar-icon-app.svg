@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="NAVIAR icon">
+  <title>NAVIAR icon</title>
+  <rect width="1024" height="1024" rx="224" fill="#0A1628"/>
+  <g transform="translate(239.62 225.28) scale(0.72)">
+    <path d="M0 0 H150.0 L610.0 626.97 V200.0 L760.0 461.0 V800.0 H610.0 L150.0 173.03 V800.0 H0 Z" fill="#F5F6F8"/>
+    <path d="M610.0 0 H760.0 V461.0 L610.0 200.0 Z" fill="#D4AF37"/>
+  </g>
+</svg>
