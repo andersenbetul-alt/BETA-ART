@@ -1433,4 +1433,30 @@ t.test('hver målgruppe har sin egen setning', function () {
   t.erLik(MS.selger('ukjent'), null);
 });
 
+t.test('posisjonen svarer på hvem som ordner og hvem som bestemmer', function () {
+  /* Spenningen tjenesten faktisk må løse. Svarer en skjerm «familien» på
+     begge, er skjermen feil. */
+  t.erSann(MS.POSISJON.stor.indexOf('ordne') !== -1);
+  t.erSann(MS.POSISJON.stor.indexOf('bestemmer') !== -1);
+  t.erSann(MS.sjekk(MS.POSISJON.stor, 'forside').ok);
+  t.erSann(MS.sjekk(MS.POSISJON.full, 'forside').ok);
+});
+
+t.test('ingen av de tre heltene er oss', function () {
+  t.erLik(MS.POSISJON.helter.length, 3);
+  MS.POSISJON.helter.forEach(function (h) {
+    t.erUsann(/naviar/i.test(h), 'Naviar er ikke helten: ' + h);
+  });
+});
+
+t.test('hvert løfte har et bevis', function () {
+  /* Et løfte uten bevis er en tekst. Med bevis er det en funksjon noen kan
+     etterprøve. */
+  t.erSann(MS.BEVIS.length >= 6);
+  MS.BEVIS.forEach(function (b) {
+    t.erSann(b.lofte && b.lofte.length > 10, 'løfte mangler');
+    t.erSann(b.bevis && b.bevis.length > 15, b.lofte + ' mangler bevis');
+  });
+});
+
 t.oppsummer('Enhetstester');

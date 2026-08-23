@@ -19,9 +19,30 @@
 window.PP_MERKESPRAK = (function () {
   'use strict';
 
+  /* Spenningen tjenesten faktisk må løse: familien vil ha mer kontroll, den
+     eldre vil ikke miste sin. De to trekker i hver sin retning, og de fleste
+     i denne bransjen løser det ved å love familien kontroll og la være å
+     nevne den andre halvdelen.
+
+     Setningen under løser den i stedet for å skjule den. Den er også en test
+     man kan holde en hvilken som helst skjerm opp mot: hvem ordner, og hvem
+     bestemmer? Svarer skjermen «familien» på begge, er den feil. */
+  var POSISJON = {
+    stor: 'Familien kan ordne. Den eldre bestemmer.',
+    full: 'Naviar gjør det enkelt for familier å organisere trygg, ' +
+          'ikke-medisinsk hverdagshjelp – uten å ta kontrollen fra den som ' +
+          'mottar hjelpen.',
+    kategori: 'Trygg hverdagshjelp, organisert på ett sted.',
+    /* Historien har tre helter, og ingen av dem er oss. */
+    helter: ['den eldre som beholder selvstendigheten',
+             'familien som tar ansvar på avstand',
+             'medarbeideren som bruker tiden på noe som betyr noe']
+  };
+
   var KJERNE = {
     nb: 'Trygg hjelp når du ikke kan være der – på den eldres premisser.',
     kort: 'Naviar gjør avstanden mindre.',
+    folelse: 'Nær, selv på avstand.',
     /* Halen er ikke pynt. Uten den blir setningen et løfte om at noen passer
        på; med den sier den hvem som bestemmer.
 
@@ -93,8 +114,20 @@ window.PP_MERKESPRAK = (function () {
       istedenfor: 'Avtalte besøk innenfor åpningstiden' }
   ];
 
-  var HELLER = ['selvstendighet', 'valg', 'respekt', 'tillit',
-                'åpenhet', 'nærhet', 'enklere hverdag'];
+  var HELLER = ['selvstendighet', 'valgfrihet', 'hverdagshjelp',
+                'på den eldres premisser', 'ID-verifisert', 'tydelig oppdrag',
+                'familien informert', 'lokal hjelp', 'trygg oppfølging'];
+
+  /* Hvert løfte i budskapet må ha noe som viser det. Et løfte uten bevis er
+     en tekst; med bevis er det en funksjon noen kan etterprøve. */
+  var BEVIS = [
+    { lofte: 'Den eldre beholder kontrollen', bevis: 'Godkjenner eller avviser hvert oppdrag' },
+    { lofte: 'Familien følger prosessen', bevis: 'Status og beskjed når oppdraget er fullført' },
+    { lofte: 'Riktig medarbeider velges', bevis: 'ID-verifisering og faste oppgavekategorier' },
+    { lofte: 'Bare det nødvendige deles', bevis: 'Kun opplysningene oppdraget krever' },
+    { lofte: 'Noen svarer når det butter', bevis: 'Operasjon og støtte på telefon' },
+    { lofte: 'Grensen er tydelig', bevis: 'Medisinske og akutte oppdrag finnes ikke i katalogen' }
+  ];
 
   /* Steder der ordet «trygg» ikke kan brukes i det hele tatt, uansett hvordan
      setningen er bygget. En melding om ett besøk handler om en person; da er
@@ -139,8 +172,10 @@ window.PP_MERKESPRAK = (function () {
   }
 
   return {
+    POSISJON: POSISJON,
     KJERNE: KJERNE,
     SELGER: SELGER,
+    BEVIS: BEVIS,
     ALDRI: ALDRI,
     HELLER: HELLER,
     UTEN_TRYGG: UTEN_TRYGG,
