@@ -61,7 +61,7 @@
 
   document.getElementById('o-kunde').textContent = b.kunde;
   document.getElementById('o-nar').textContent = b.dato + ' kl. ' + b.tid;
-  document.getElementById('o-oppgaver').textContent = oppgaver.map(function (o) { return o.ikon + ' ' + o.navn; }).join(' · ');
+  document.getElementById('o-oppgaver').textContent = oppgaver.map(function (o) { return o.navn; }).join(' · ');
 
   /* Varselet står over oppgavelista, ikke under. Det som kommer etter
      handlingen, er ikke et varsel – det er en unnskyldning. Språket følger
@@ -78,7 +78,7 @@
 
   document.getElementById('sjekkliste').innerHTML = oppgaver.map(function (o) {
     return '<label><input type="checkbox" name="sjekk" value="' + o.id + '">' +
-           '<span>' + o.ikon + ' ' + o.navn + '</span></label>';
+           '<span>' + L.ikonMarkup(o) + ' ' + o.navn + '</span></label>';
   }).join('');
 
   vis('skjema');

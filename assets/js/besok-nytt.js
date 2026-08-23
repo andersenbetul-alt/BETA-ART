@@ -25,7 +25,7 @@
   // Oppgavene er faste og kommer fra datalaget, ikke fra markupen.
   document.getElementById('oppgaveliste').innerHTML = L.OPPGAVER.map(function (o) {
     return '<label class="option"><input type="checkbox" name="oppgaver" value="' + o.id + '">' +
-           '<span class="option-text">' + o.ikon + ' ' + o.navn + '</span></label>';
+           '<span class="option-text">' + L.ikonMarkup(o) + ' ' + o.navn + '</span></label>';
   }).join('');
 
   document.getElementById('ansatt').innerHTML =

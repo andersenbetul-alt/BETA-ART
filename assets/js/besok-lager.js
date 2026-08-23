@@ -27,17 +27,33 @@ window.PP_BESOK = (function () {
      Katalogen er bevisst kort. «Alt et menneske kan trenge» er ikke et
      produkt – det er en ansvarsflukt. Riktig behov til riktig kompetanse. */
 
-  var OPPGAVER = [
-    { id: 'samvaer',  navn: 'Besøk og samvær',  ikon: '☕', risiko: 'gronn',
+  /* Hver oppgave bærer to ikoner, og det er ikke rot.
+
+   svg tegnes der flaten kan ta markup. Emojien blir stående fordi to av
+   stedene setter ren tekst – en oppsummeringslinje og en tabellcelle som
+   escaper alt – og der er markup ikke et alternativ. Der brukes navnet
+   alene, uten ikon: en emoji i en kommaliste tilfører ingenting og ser
+   forskjellig ut på hver telefon.
+
+   Grunnen til at svg finnes i det hele tatt: emoji rendres av
+   operativsystemet. En kaffekopp ser ulik ut på iPhone, Android og
+   Windows, og flere emoji er ansikter eller hender med hudtone. Et ansikt
+   på en oppgavekategori er en tolkning ingen har bedt om. */
+var OPPGAVER = [
+    { id: 'samvaer',
+    svg: 'M5 9h10.4v5.6a4.4 4.4 0 0 1-4.4 4.4H9.4A4.4 4.4 0 0 1 5 14.6Z" /><path d="M15.4 10.6h2.4a2.2 2.2 0 0 1 0 4.4h-2.4M8.4 3.4v2.4M12 3.4v2.4',  navn: 'Besøk og samvær',  ikon: '☕', risiko: 'gronn',
       forklaring: 'Prat, kaffe, høytlesing, kortspill, hobby',
       ikke: 'Ikke terapi, ikke vurdering av helsetilstand, ikke tilsyn om natten' },
-    { id: 'digital',  navn: 'Digital hjelp',    ikon: '📱', risiko: 'gronn',
+    { id: 'digital',
+    svg: 'M7.4 2.8h9.2a1.8 1.8 0 0 1 1.8 1.8v14.8a1.8 1.8 0 0 1-1.8 1.8H7.4a1.8 1.8 0 0 1-1.8-1.8V4.6a1.8 1.8 0 0 1 1.8-1.8Z" /><path d="M10.4 5.4h3.2M10.8 18.4h2.4',  navn: 'Digital hjelp',    ikon: '📱', risiko: 'gronn',
       forklaring: 'Telefon, nettbrett, TV, videosamtale, vise hvordan en app brukes',
       ikke: 'Ikke BankID, passord, betaling, gjenoppretting av konto eller fjernstyring' },
-    { id: 'hjemme',   navn: 'Lett hjemmehjelp', ikon: '🧹', risiko: 'gul',
+    { id: 'hjemme',
+    svg: 'M7.2 8.2h5.6a1.9 1.9 0 0 1 1.9 1.9v9.2a1.9 1.9 0 0 1-1.9 1.9H7.2a1.9 1.9 0 0 1-1.9-1.9v-9.2a1.9 1.9 0 0 1 1.9-1.9Z" /><path d="M8.8 8.2V5.4h3.2v2.8M12 4.6h3.6l-1.7 2.6M5.3 12.6h9.4',   navn: 'Lett hjemmehjelp', ikon: '🧹', risiko: 'gul',
       forklaring: 'Oppvask, klesvask, skifte sengetøy, rydde lett',
       ikke: 'Ikke stige, ikke tunge løft, ikke sterke kjemikalier, ikke hovedrengjøring' },
-    { id: 'hent',     navn: 'Hent og lever',    ikon: '📦', risiko: 'gul',
+    { id: 'hent',
+    svg: 'M3.6 7.8 12 3.6l8.4 4.2v8.4L12 20.4l-8.4-4.2Z" /><path d="M3.6 7.8 12 12l8.4-4.2M12 12v8.4',     navn: 'Hent og lever',    ikon: '📦', risiko: 'gul',
       forklaring: 'Hente en pakke, eller en handel familien har valgt og betalt på forhånd',
       ikke: 'Ikke kontanter, ikke bytte av varer, ikke medisin, alkohol, tobakk eller papirer fra banken' }
   ];
@@ -342,8 +358,22 @@ window.PP_BESOK = (function () {
     return linjer.join('\n');
   }
 
+  /* Tegner et oppgaveikon som SVG. Returnerer tom streng hvis oppgaven
+     mangler bane – da faller flaten tilbake til bare navnet, som er riktig:
+     et ikon som ikke finnes, skal ikke bli et tomt hull. */
+  function ikonMarkup(oppgave, storrelse) {
+    var o = oppgave || {};
+    if (!o.svg) return '';
+    var s = storrelse || 20;
+    return '<svg class="oppgaveikon" viewBox="0 0 24 24" width="' + s + '" height="' + s +
+           '" fill="none" stroke="currentColor" stroke-width="1.6" ' +
+           'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+           '<path d="' + o.svg + '" /></svg>';
+  }
+
   return {
     OPPGAVER: OPPGAVER,
+    ikonMarkup: ikonMarkup,
     SENERE: SENERE,
     SAMTALE: SAMTALE,
     UTENFOR: UTENFOR,

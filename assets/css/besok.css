@@ -131,3 +131,8 @@ body.arbeider { background: var(--bg-sand); }
 
 .b-tom { text-align: center; padding: 44px 20px; color: var(--ink-faint); }
 .b-tom .stor { font-size: 2.2rem; display: block; margin-bottom: 10px; }
+
+/* Oppgaveikonene. Tegnet som SVG og ikke satt som emoji: emoji rendres av
+   operativsystemet, så den samme kaffekoppen ser ulik ut på iPhone, Android
+   og Windows – og flere emoji er ansikter eller hender med hudtone. */
+.oppgaveikon { vertical-align: -3px; color: var(--brand); flex: none; }

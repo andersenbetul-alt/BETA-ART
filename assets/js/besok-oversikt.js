@@ -31,7 +31,9 @@
   function oppgavenavn(ider) {
     return ider.map(function (id) {
       var o = L.OPPGAVER.filter(function (x) { return x.id === id; })[0];
-      return o ? o.ikon + ' ' + o.navn : id;
+      /* Ren tekst inn i en escapet tabellcelle. En emoji i en kommaliste
+         tilfører ingenting og ser forskjellig ut på hver telefon. */
+      return o ? o.navn : id;
     }).join(', ');
   }
 

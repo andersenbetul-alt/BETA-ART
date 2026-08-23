@@ -1204,6 +1204,33 @@ if (!pw) {
 
   await ks.close();
 
+  t.gruppe('Oppgaveikoner');
+
+  var ik = await nySide();
+  await ik.goto(BASE + 'besok/nytt.html', { waitUntil: 'domcontentloaded' });
+  await ik.waitForTimeout(900);
+  var ikDom = await ik.evaluate(function () {
+    var liste = document.getElementById('oppgaveliste');
+    return {
+      svg: liste ? liste.querySelectorAll('svg.oppgaveikon').length : 0,
+      valg: liste ? liste.querySelectorAll('label.option').length : 0,
+      /* Emoji rendres av operativsystemet og ser ulik ut på hver telefon.
+         Flere av dem er ansikter eller hender med hudtone. */
+      emoji: liste ? /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u.test(liste.textContent) : true
+    };
+  });
+
+  t.test('oppgavevalgene tegner ikoner som SVG', function () {
+    t.erSann(ikDom.valg >= 4, 'fant ' + ikDom.valg + ' valg');
+    t.erLik(ikDom.svg, ikDom.valg, 'hvert valg skal ha sitt ikon');
+  });
+
+  t.test('ingen emoji i oppgavelista', function () {
+    t.erUsann(ikDom.emoji, 'emoji funnet i oppgavelista');
+  });
+
+  await ik.close();
+
   t.gruppe('Ingen JavaScript-feil');
   t.test('konsollen er ren på alle sider', function () {
     t.erLik(jsFeil, [], 'feil funnet');
