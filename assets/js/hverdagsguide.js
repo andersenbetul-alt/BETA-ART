@@ -96,6 +96,78 @@ window.PP_GUIDE = (function () {
     medarbeider: 'Vil du gjøre hverdagen enklere for noen i nærheten? Slik blir du medarbeider.'
   };
 
+
+  /* Henvisningene.
+
+     Dette er guidens sterkeste del, og den er ikke innholdsmarkedsføring. Et
+     nei uten en adresse er et nei som sender folk tilbake til Google, og det
+     neste treffet der har ingen grense.
+
+     Vi kan ikke gi helsehjelp. Vi kan si nøyaktig hvem som kan – og det er
+     den eneste versjonen av «nei» som faktisk hjelper noen. */
+  var HENVISNING = [
+    { id: 'medisin', behov: 'Hjelp med medisiner',
+      vi_gjor_ikke: 'Sette doser, gi medisin eller endre på noe',
+      til: ['Fastlegen', 'Apoteket', 'Hjemmesykepleien i kommunen'],
+      hast: null },
+    { id: 'saar', behov: 'Sår, bandasje eller sprøyte',
+      vi_gjor_ikke: 'Sårstell, injeksjon, noe medisinsk',
+      til: ['Fastlegen', 'Hjemmesykepleien'],
+      hast: null },
+    { id: 'fall', behov: 'Noen har falt',
+      vi_gjor_ikke: 'Løfte personen opp eller vurdere skaden',
+      til: ['113 ved fare for liv og helse', '116 117 når det ikke kan vente til fastlegen åpner'],
+      hast: '113' },
+    { id: 'stell', behov: 'Dusj, toalett, påkledning',
+      vi_gjor_ikke: 'Personlig stell og tunge forflytninger',
+      til: ['Hjemmetjenesten i kommunen'],
+      hast: null },
+    { id: 'hukommelse', behov: 'Hukommelsen svikter',
+      vi_gjor_ikke: 'Stille en diagnose eller vurdere helsetilstand',
+      til: ['Fastlegen', 'Demensteamet i kommunen'],
+      hast: null },
+    { id: 'bank', behov: 'BankID, PIN eller nettbank',
+      vi_gjor_ikke: 'Røre koder, konto eller BankID. Aldri, uansett hvem som spør',
+      til: ['Bankens egen kundeservice'],
+      hast: null },
+    { id: 'fagarbeid', behov: 'Elektrisk, rørlegger, tunge løft',
+      vi_gjor_ikke: 'Fagarbeid, stiger, tunge løft',
+      til: ['Autorisert håndverker'],
+      hast: null },
+    { id: 'trygghet', behov: 'Trenger tilsyn eller alarm',
+      vi_gjor_ikke: 'Overvåking eller beredskap. Vi er ikke en nødtjeneste',
+      til: ['Trygghetsalarm fra kommunen'],
+      hast: null }
+  ];
+
+  /* Lesestandard. Tallene er ikke en stilpreferanse – de er hva som gjør at
+     en tekst kan leses av noen som er bekymret, eller sliten, eller åtti. */
+  var LESESTANDARD = {
+    ettSporsmaal: true,
+    ordMaks: 300,
+    lesetidMinutter: 3,
+    kortSvarSekunder: 20,
+    stegMaks: 3,
+    telefonStort: true,
+    valg: ['Lytt', 'Skriv ut', 'Send til familien min'],
+    gjentaTilSlutt: true
+  };
+
+  /* Under hver artikkel, og den er ikke en formalitet. */
+  var FORBEHOLD = 'Dette er generell informasjon. Det erstatter ikke en ' +
+    'medisinsk vurdering eller en helsetjeneste. Sist gjennomgått: ';
+
+  /* Før publisering: medisinske temaer av helsepersonell, grensene av jurist.
+     Vi skriver om hvor grensen går, ikke om hva som er på den andre siden. */
+  var GODKJENNES_AV = [
+    { tema: 'Medisinsk innhold', av: 'helsepersonell' },
+    { tema: 'Grensene for tjenesten', av: 'jurist eller personvernrådgiver' }
+  ];
+
+  function henvisning(id) {
+    return HENVISNING.filter(function (h) { return h.id === id; })[0] || null;
+  }
+
   var STI = '/hverdagsguide';
 
   function kategori(id) {
@@ -145,6 +217,11 @@ window.PP_GUIDE = (function () {
     KATEGORI: KATEGORI,
     ARTIKLER: ARTIKLER,
     PUBLISERES_IKKE: PUBLISERES_IKKE,
+    HENVISNING: HENVISNING,
+    LESESTANDARD: LESESTANDARD,
+    FORBEHOLD: FORBEHOLD,
+    GODKJENNES_AV: GODKJENNES_AV,
+    henvisning: henvisning,
     AVSLUTNING: AVSLUTNING,
     kategori: kategori,
     artiklerFor: artiklerFor,

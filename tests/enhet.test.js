@@ -27,6 +27,7 @@ require('../assets/js/hjelper-base.js');
 require('../assets/js/maling.js');
 require('../assets/js/merkesprak.js');
 require('../assets/js/hverdagsguide.js');
+require('../assets/js/ki-port.js');
 require('../assets/js/besok-klage.js');
 require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
@@ -1522,6 +1523,122 @@ t.test('utkastet arver sperrene fra resten av tjenesten', function () {
   var helse = GD.sjekkUtkast('Har hun høyt blodtrykk, bør hun bytte medisin.');
   t.erUsann(helse.ok);
   t.erSann(helse.funn.some(function (f) { return f.id === 'helseraad'; }));
+});
+
+t.gruppe('KI-porten');
+
+var KP = window.PP_KI_PORT;
+
+function forslag(endringer) {
+  return Object.assign({ agent: 'familie', handling: 'familiemelding',
+                         begrunnelse: 'Besøket er huket av som utført',
+                         sikkerhet: 0.95, grunnlag: ['oppgave', 'dato og tid'] },
+                       endringer || {});
+}
+
+t.test('modellen foreslår, systemet avgjør', function () {
+  /* Risikoen kommer fra kallstedet, ikke fra forslaget. Sier modellen at alt
+     er grønt mens vi vet at det er nød, er det nøden som gjelder. */
+  var gronn = KP.vurder(forslag(), 'gronn', {});
+  var nod = KP.vurder(forslag(), 'nod', {});
+  t.erLik(gronn.autonomi, 'auto');
+  t.erLik(nod.autonomi, 'menneske');
+  t.erLik(nod.regel, 'nod');
+});
+
+t.test('ufullstendig forslag avvises, det gjettes ikke', function () {
+  var r = KP.vurder(forslag({ begrunnelse: null }), 'gronn', {});
+  t.erLik(r.utfall, 'avvist');
+  t.erSann(r.grunn.indexOf('begrunnelse') !== -1, r.grunn);
+});
+
+t.test('ukjent agent slipper ikke inn', function () {
+  /* En modell som kaller seg «akuttagent» har ikke dermed blitt en. */
+  var r = KP.vurder(forslag({ agent: 'akuttagent' }), 'gronn', {});
+  t.erLik(r.utfall, 'avvist');
+  t.erLik(r.regel, 'ukjent_agent');
+});
+
+t.test('sikkerhet må være et tall mellom null og en', function () {
+  ['høy', -1, 2, null].forEach(function (v) {
+    var r = KP.vurder(forslag({ sikkerhet: v }), 'gronn', {});
+    t.erLik(r.utfall, 'avvist', 'slapp gjennom: ' + v);
+  });
+});
+
+t.test('en modell i tvil avgjør ikke alene, selv om den har lov', function () {
+  var r = KP.vurder(forslag({ sikkerhet: 0.5 }), 'gronn', {});
+  t.erLik(r.utfall, 'til_godkjenning');
+  t.erLik(r.regel, 'lav_sikkerhet');
+  t.erSann(KP.SIKKERHETSGRENSE > 0.5);
+});
+
+t.test('fritekst fra en modell går gjennom samme sperre som all annen', function () {
+  var r = KP.vurder(forslag(), 'gronn', { tekst: 'Hun virket forvirret og hadde vondt' });
+  t.erLik(r.utfall, 'til_godkjenning');
+  t.erLik(r.regel, 'personvern');
+  t.erSann(r.kategorier.indexOf('helse') !== -1);
+});
+
+t.test('loggposten får alle sju feltene', function () {
+  var dom = KP.vurder(forslag(), 'gronn', {});
+  var post = KP.loggfor(forslag(), dom, null);
+  ['agent', 'grunnlag', 'sikkerhet', 'regel', 'godkjenning', 'endretAv', 'melding']
+    .forEach(function (f) {
+      t.erSann(post[f] !== undefined, 'mangler ' + f);
+    });
+});
+
+t.test('oppdiktede felter i grunnlaget kommer ikke inn i loggen', function () {
+  /* Modeller finner på felter. Bare de vi kjenner slipper videre. */
+  var f = forslag({ grunnlag: ['oppgave', 'humoer', 'diagnose'] });
+  var post = KP.loggfor(f, KP.vurder(f, 'gronn', {}), null);
+  t.erSann(post.grunnlag.indexOf('oppgave') !== -1, post.grunnlag.join(','));
+  t.erUsann(post.grunnlag.indexOf('humoer') !== -1, post.grunnlag.join(','));
+  t.erUsann(post.grunnlag.indexOf('diagnose') !== -1, post.grunnlag.join(','));
+});
+
+t.test('kallet skjer fra server, aldri fra nettleseren', function () {
+  /* En nøkkel i assets/js/ er en nøkkel hos hver eneste besøkende. */
+  t.erLik(KP.OPPSETT.kallesFra, 'server');
+  ['kunde', 'parorendeEpost', 'ansattNavn', 'token'].forEach(function (felt) {
+    t.erSann(KP.OPPSETT.sendAldri.indexOf(felt) !== -1, 'mangler: ' + felt);
+  });
+});
+
+t.test('hver grense har en adresse å sende folk til', function () {
+  /* Et nei uten en adresse sender folk tilbake til Google, og det neste
+     treffet der har ingen grense. */
+  t.erSann(GD.HENVISNING.length >= 8);
+  GD.HENVISNING.forEach(function (h) {
+    t.erSann(h.vi_gjor_ikke && h.vi_gjor_ikke.length > 15, h.id + ' mangler grensen');
+    t.erSann(h.til && h.til.length >= 1, h.id + ' har ingen å henvise til');
+  });
+});
+
+t.test('fall henviser til nødnummeret, ikke til oss', function () {
+  var f = GD.henvisning('fall');
+  t.erLik(f.hast, '113');
+  t.erSann(f.til.join(' ').indexOf('113') !== -1);
+  t.erSann(f.til.join(' ').indexOf('116 117') !== -1);
+});
+
+t.test('bank og trygghetsalarm peker ut av tjenesten', function () {
+  t.erSann(GD.henvisning('bank').til.join(' ').indexOf('ank') !== -1);
+  t.erSann(GD.henvisning('trygghet').vi_gjor_ikke.indexOf('nødtjeneste') !== -1);
+});
+
+t.test('lesestandarden er tall, ikke smak', function () {
+  t.erSann(GD.LESESTANDARD.ettSporsmaal);
+  t.erLik(GD.LESESTANDARD.ordMaks, 300);
+  t.erLik(GD.LESESTANDARD.stegMaks, 3);
+  t.erSann(GD.LESESTANDARD.valg.length >= 3);
+});
+
+t.test('forbeholdet og godkjenningene står skrevet', function () {
+  t.erSann(GD.FORBEHOLD.indexOf('erstatter ikke') !== -1);
+  t.erLik(GD.GODKJENNES_AV.length, 2);
+  t.erSann(GD.GODKJENNES_AV.some(function (g) { return /helsepersonell/.test(g.av); }));
 });
 
 t.oppsummer('Enhetstester');
