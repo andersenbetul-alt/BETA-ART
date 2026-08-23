@@ -152,6 +152,7 @@ Tarayıcı testi gerektiğinde Playwright, Chromium ile kullanılabilir
 (sözlükte `cat.<ad>` olmalı), `date` (YYYY-AA-GG), `accent` (1–6: navy–teal kapak
 rampası), `icon` (`app.js` → `ICONS` kaydındaki ad), sonra
 `t` / `e` / `b` alanlarını on dilde doldurun. `sitemap.xml`'e de ekleyin.
+Sonra `npm run rss` ile `feed.xml`'i yenileyin.
 
 Gövde blokları: düz dize (paragraf), `{h:'…'}` (ara başlık), `{ul:[…]}` (liste),
 `{note:'…'}` (uyarı kutusu), `{see:'slug'}` (metin içi yazı bağlantısı — küme

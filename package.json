@@ -5,6 +5,7 @@
   "description": "QBLOGG — on dilde yayın yapan içerik stüdyosunun tanıtım ve blog sitesi (statik, derleme adımı yok)",
   "scripts": {
     "check": "node scripts/check.mjs",
+    "rss": "node scripts/rss-uret.mjs",
     "test": "node scripts/check.mjs",
     "dev": "python3 -m http.server 8000",
     "repurpose": "node scripts/repurpose.mjs",
