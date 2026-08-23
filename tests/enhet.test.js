@@ -993,4 +993,18 @@ t.test('currentColor-utgaven arver farge, de faste gjør det ikke', function () 
   t.erSann(/fill="#fbf6ee"/.test(sand), 'negativutgaven har feil farge');
 });
 
+t.gruppe('Prisen på siden');
+
+t.test('landingssiden oppgir ingen pris før den er testet', function () {
+  /* Prisen skal settes etter de ti betalende pilotene, ikke fra et regneark.
+     Til den er satt, skal ingen tall stå på siden: et tall som er ute, er
+     vanskeligere å heve enn et tall som aldri ble sagt. Testen holder det
+     fast, så prisen ikke sniker seg inn igjen fra en gammel utgave. */
+  var h = les('besok/index.html');
+  var pris = h.slice(h.indexOf('<section id="pris"'));
+  pris = pris.slice(0, pris.indexOf('</section>'));
+  var tall = pris.match(/\b\d{3,4}\s*kr\b/g);
+  t.erUsann(!!tall, 'pris på siden: ' + (tall || []).join(', '));
+});
+
 t.oppsummer('Enhetstester');

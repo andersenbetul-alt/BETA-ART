@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/", "destination": "/besok/index.html" },
+    { "source": "/index.html", "destination": "/besok/index.html" },
+    { "source": "/logg-inn.html", "destination": "/besok/logg-inn.html" },
+    { "source": "/oversikt.html", "destination": "/besok/oversikt.html" },
+    { "source": "/nytt.html", "destination": "/besok/nytt.html" },
+    { "source": "/historikk.html", "destination": "/besok/historikk.html" },
+    { "source": "/utfor.html", "destination": "/besok/utfor.html" }
+  ]
+}
