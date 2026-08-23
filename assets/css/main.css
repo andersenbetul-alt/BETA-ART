@@ -555,6 +555,14 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 .article-body .article-see span { color: var(--text-muted); font-weight: 700; }
 .article-body .article-see a { color: var(--brand); font-weight: 600; }
 
+/* Örnek teslimat sayfası: üretim dosyasından birebir alınan alıntı bloğu */
+.article-body .sample-quote {
+  margin: 0 0 1.4em; padding: 14px 18px; border-radius: var(--radius-sm);
+  background: var(--bg-soft, var(--bg-card)); border: 1px solid var(--border);
+  font-size: var(--fs-base);
+}
+.article-body .sample-quote > :last-child { margin-bottom: 0; }
+
 /* Ortaklık bildirimi: yazının başında, gözden kaçmayacak ama bağırmayacak */
 .article-body .article-disclosure {
   margin: 0 0 1.8em; padding: 10px 14px; border-radius: 10px;

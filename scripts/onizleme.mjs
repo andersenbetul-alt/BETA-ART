@@ -25,7 +25,8 @@ const SAYFALAR = [
   ['post',     'post.html'],
   ['gizlilik', 'gizlilik.html'],
   ['kosullar', 'kosullar.html'],
-  ['kalite', 'kalite.html']
+  ['kalite', 'kalite.html'],
+  ['ornek', 'ornek.html']
 ];
 
 /* --- yazı tiplerini CSS'in içine göm --- */

@@ -112,6 +112,7 @@ window.QB_I18N.tr = {
   'footer.nav': 'Site', 'footer.social': 'Sosyal', 'footer.legal': 'Yasal',
   'footer.privacy': 'Gizlilik', 'footer.terms': 'Koşullar',
   'footer.quality': 'Kalite güvencesi',
+  'footer.sample': 'Örnek teslimat',
   'footer.rights': 'Tüm hakları saklıdır.',
   'ui.theme': 'Temayı değiştir', 'ui.lang': 'Dil', 'ui.menu': 'Menü', 'ui.top': 'Yukarı çık'
 };
@@ -209,6 +210,7 @@ window.QB_I18N.en = {
   'footer.nav': 'Site', 'footer.social': 'Social', 'footer.legal': 'Legal',
   'footer.privacy': 'Privacy', 'footer.terms': 'Terms',
   'footer.quality': 'Quality assurance',
+  'footer.sample': 'Sample deliverable',
   'footer.rights': 'All rights reserved.',
   'ui.theme': 'Toggle theme', 'ui.lang': 'Language', 'ui.menu': 'Menu', 'ui.top': 'Back to top'
 };
@@ -306,6 +308,7 @@ window.QB_I18N.zh = {
   'footer.nav': '网站', 'footer.social': '社交', 'footer.legal': '法律',
   'footer.privacy': '隐私', 'footer.terms': '条款',
   'footer.quality': '质量保障',
+  'footer.sample': '交付示例',
   'footer.rights': '版权所有。',
   'ui.theme': '切换主题', 'ui.lang': '语言', 'ui.menu': '菜单', 'ui.top': '回到顶部'
 };
@@ -403,6 +406,7 @@ window.QB_I18N.hi = {
   'footer.nav': 'साइट', 'footer.social': 'सोशल', 'footer.legal': 'कानूनी',
   'footer.privacy': 'गोपनीयता', 'footer.terms': 'शर्तें',
   'footer.quality': 'गुणवत्ता आश्वासन',
+  'footer.sample': 'नमूना डिलीवरी',
   'footer.rights': 'सर्वाधिकार सुरक्षित।',
   'ui.theme': 'थीम बदलें', 'ui.lang': 'भाषा', 'ui.menu': 'मेन्यू', 'ui.top': 'ऊपर जाएँ'
 };
@@ -500,6 +504,7 @@ window.QB_I18N.es = {
   'footer.nav': 'Sitio', 'footer.social': 'Redes', 'footer.legal': 'Legal',
   'footer.privacy': 'Privacidad', 'footer.terms': 'Términos',
   'footer.quality': 'Garantía de calidad',
+  'footer.sample': 'Ejemplo de entrega',
   'footer.rights': 'Todos los derechos reservados.',
   'ui.theme': 'Cambiar tema', 'ui.lang': 'Idioma', 'ui.menu': 'Menú', 'ui.top': 'Volver arriba'
 };
@@ -597,6 +602,7 @@ window.QB_I18N.ar = {
   'footer.nav': 'الموقع', 'footer.social': 'التواصل', 'footer.legal': 'قانوني',
   'footer.privacy': 'الخصوصية', 'footer.terms': 'الشروط',
   'footer.quality': 'ضمان الجودة',
+  'footer.sample': 'نموذج تسليم',
   'footer.rights': 'جميع الحقوق محفوظة.',
   'ui.theme': 'تبديل السمة', 'ui.lang': 'اللغة', 'ui.menu': 'القائمة', 'ui.top': 'العودة إلى الأعلى'
 };
@@ -694,6 +700,7 @@ window.QB_I18N.fr = {
   'footer.nav': 'Site', 'footer.social': 'Réseaux', 'footer.legal': 'Mentions légales',
   'footer.privacy': 'Confidentialité', 'footer.terms': 'Conditions',
   'footer.quality': 'Garantie qualité',
+  'footer.sample': 'Exemple de livrable',
   'footer.rights': 'Tous droits réservés.',
   'ui.theme': 'Changer de thème', 'ui.lang': 'Langue', 'ui.menu': 'Menu', 'ui.top': 'Haut de page'
 };
@@ -791,6 +798,7 @@ window.QB_I18N.pt = {
   'footer.nav': 'Site', 'footer.social': 'Social', 'footer.legal': 'Jurídico',
   'footer.privacy': 'Privacidade', 'footer.terms': 'Termos',
   'footer.quality': 'Garantia de qualidade',
+  'footer.sample': 'Exemplo de entrega',
   'footer.rights': 'Todos os direitos reservados.',
   'ui.theme': 'Alternar tema', 'ui.lang': 'Idioma', 'ui.menu': 'Menu', 'ui.top': 'Voltar ao topo'
 };
@@ -888,6 +896,7 @@ window.QB_I18N.ru = {
   'footer.nav': 'Сайт', 'footer.social': 'Соцсети', 'footer.legal': 'Правовое',
   'footer.privacy': 'Конфиденциальность', 'footer.terms': 'Условия',
   'footer.quality': 'Гарантия качества',
+  'footer.sample': 'Пример поставки',
   'footer.rights': 'Все права защищены.',
   'ui.theme': 'Сменить тему', 'ui.lang': 'Язык', 'ui.menu': 'Меню', 'ui.top': 'Наверх'
 };
@@ -985,6 +994,7 @@ window.QB_I18N.no = {
   'footer.nav': 'Nettsted', 'footer.social': 'Sosialt', 'footer.legal': 'Juridisk',
   'footer.privacy': 'Personvern', 'footer.terms': 'Vilkår',
   'footer.quality': 'Kvalitetssikring',
+  'footer.sample': 'Eksempel på leveranse',
   'footer.rights': 'Alle rettigheter forbeholdt.',
   'ui.theme': 'Bytt tema', 'ui.lang': 'Språk', 'ui.menu': 'Meny', 'ui.top': 'Til toppen'
 };
