@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
-const HTML = ['index.html', 'work.html', 'blog.html', 'post.html', 'gizlilik.html']
+const HTML = ['index.html', 'work.html', 'blog.html', 'post.html', 'gizlilik.html', 'kalite.html']
   .filter((f) => existsSync(join(ROOT, f)));
 
 const bulgular = [];
