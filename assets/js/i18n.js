@@ -21,7 +21,7 @@ window.QB_I18N = {};
 
 window.QB_I18N.tr = {
   'meta.title': 'QBLOGG — AI destekli içerik stüdyosu',
-  'meta.desc': 'QBLOGG; SEO blog yazısı, LinkedIn serisi, newsletter ve çok dilli içerik üreten bir içerik stüdyosudur. Tek araştırmadan beş farklı çıktı.',
+  'meta.desc': 'QBLOGG; SEO blog yazısı, LinkedIn serisi, newsletter ve çok dilli içerik üreten bir içerik stüdyosudur. Tek araştırmadan yedi farklı çıktı.',
   'nav.home': 'Ana Sayfa', 'nav.services': 'Hizmetler', 'nav.flow': 'Nasıl Çalışır',
   'nav.packages': 'Paketler', 'nav.blog': 'Blog', 'nav.contact': 'İletişim', 'nav.cta': 'Teklif al',
   'hero.badge': 'AI + araştırma + SEO + insan editörlüğü',
@@ -102,7 +102,7 @@ window.QB_I18N.tr = {
 
 window.QB_I18N.en = {
   'meta.title': 'QBLOGG — an AI-assisted content studio',
-  'meta.desc': 'QBLOGG produces SEO blog posts, LinkedIn series, newsletters and multilingual content. One piece of research, five different outputs.',
+  'meta.desc': 'QBLOGG produces SEO blog posts, LinkedIn series, newsletters and multilingual content. One piece of research, seven different outputs.',
   'nav.home': 'Home', 'nav.services': 'Services', 'nav.flow': 'How it works',
   'nav.packages': 'Packages', 'nav.blog': 'Blog', 'nav.contact': 'Contact', 'nav.cta': 'Get a quote',
   'hero.badge': 'AI + research + SEO + human editing',
@@ -183,7 +183,7 @@ window.QB_I18N.en = {
 
 window.QB_I18N.zh = {
   'meta.title': 'QBLOGG — AI 驱动的内容工作室',
-  'meta.desc': 'QBLOGG 为企业提供 SEO 博客、LinkedIn 系列、邮件通讯与多语言内容。一次研究，五种产出。',
+  'meta.desc': 'QBLOGG 为企业提供 SEO 博客、LinkedIn 系列、邮件通讯与多语言内容。一次研究，七种产出。',
   'nav.home': '首页', 'nav.services': '服务', 'nav.flow': '运作方式',
   'nav.packages': '套餐', 'nav.blog': '博客', 'nav.contact': '联系我们', 'nav.cta': '获取报价',
   'hero.badge': 'AI + 研究 + SEO + 人工编辑',
@@ -264,7 +264,7 @@ window.QB_I18N.zh = {
 
 window.QB_I18N.hi = {
   'meta.title': 'QBLOGG — AI-सहायित कंटेंट स्टूडियो',
-  'meta.desc': 'QBLOGG कंपनियों के लिए SEO ब्लॉग, LinkedIn सीरीज़, न्यूज़लेटर और बहुभाषी कंटेंट बनाता है। एक शोध, पाँच आउटपुट।',
+  'meta.desc': 'QBLOGG कंपनियों के लिए SEO ब्लॉग, LinkedIn सीरीज़, न्यूज़लेटर और बहुभाषी कंटेंट बनाता है। एक शोध, सात आउटपुट।',
   'nav.home': 'होम', 'nav.services': 'सेवाएँ', 'nav.flow': 'यह कैसे काम करता है',
   'nav.packages': 'पैकेज', 'nav.blog': 'ब्लॉग', 'nav.contact': 'संपर्क', 'nav.cta': 'कोटेशन लें',
   'hero.badge': 'AI + शोध + SEO + मानवीय संपादन',
@@ -345,7 +345,7 @@ window.QB_I18N.hi = {
 
 window.QB_I18N.es = {
   'meta.title': 'QBLOGG — estudio de contenidos asistido por IA',
-  'meta.desc': 'QBLOGG crea artículos SEO, series de LinkedIn, newsletters y contenido multilingüe. Una investigación, cinco salidas.',
+  'meta.desc': 'QBLOGG crea artículos SEO, series de LinkedIn, newsletters y contenido multilingüe. Una investigación, siete salidas.',
   'nav.home': 'Inicio', 'nav.services': 'Servicios', 'nav.flow': 'Cómo funciona',
   'nav.packages': 'Paquetes', 'nav.blog': 'Blog', 'nav.contact': 'Contacto', 'nav.cta': 'Pedir presupuesto',
   'hero.badge': 'IA + investigación + SEO + edición humana',
@@ -426,7 +426,7 @@ window.QB_I18N.es = {
 
 window.QB_I18N.ar = {
   'meta.title': 'QBLOGG — استوديو محتوى مدعوم بالذكاء الاصطناعي',
-  'meta.desc': 'ينتج QBLOGG مقالات SEO وسلاسل LinkedIn ونشرات بريدية ومحتوى متعدد اللغات. بحث واحد، خمسة مخرجات.',
+  'meta.desc': 'ينتج QBLOGG مقالات SEO وسلاسل LinkedIn ونشرات بريدية ومحتوى متعدد اللغات. بحث واحد، سبعة مخرجات.',
   'nav.home': 'الرئيسية', 'nav.services': 'الخدمات', 'nav.flow': 'كيف نعمل',
   'nav.packages': 'الباقات', 'nav.blog': 'المدونة', 'nav.contact': 'تواصل معنا', 'nav.cta': 'اطلب عرض سعر',
   'hero.badge': 'ذكاء اصطناعي + بحث + SEO + تحرير بشري',
@@ -507,7 +507,7 @@ window.QB_I18N.ar = {
 
 window.QB_I18N.fr = {
   'meta.title': 'QBLOGG — studio de contenu assisté par IA',
-  'meta.desc': 'QBLOGG produit des articles SEO, des séries LinkedIn, des newsletters et du contenu multilingue. Une recherche, cinq livrables.',
+  'meta.desc': 'QBLOGG produit des articles SEO, des séries LinkedIn, des newsletters et du contenu multilingue. Une recherche, sept livrables.',
   'nav.home': 'Accueil', 'nav.services': 'Services', 'nav.flow': 'Comment ça marche',
   'nav.packages': 'Forfaits', 'nav.blog': 'Blog', 'nav.contact': 'Contact', 'nav.cta': 'Demander un devis',
   'hero.badge': 'IA + recherche + SEO + relecture humaine',
@@ -588,7 +588,7 @@ window.QB_I18N.fr = {
 
 window.QB_I18N.pt = {
   'meta.title': 'QBLOGG — estúdio de conteúdo assistido por IA',
-  'meta.desc': 'A QBLOGG produz artigos de SEO, séries de LinkedIn, newsletters e conteúdo multilíngue. Uma pesquisa, cinco entregas.',
+  'meta.desc': 'A QBLOGG produz artigos de SEO, séries de LinkedIn, newsletters e conteúdo multilíngue. Uma pesquisa, sete entregas.',
   'nav.home': 'Início', 'nav.services': 'Serviços', 'nav.flow': 'Como funciona',
   'nav.packages': 'Pacotes', 'nav.blog': 'Blog', 'nav.contact': 'Contato', 'nav.cta': 'Pedir orçamento',
   'hero.badge': 'IA + pesquisa + SEO + edição humana',
@@ -669,7 +669,7 @@ window.QB_I18N.pt = {
 
 window.QB_I18N.ru = {
   'meta.title': 'QBLOGG — контент-студия с поддержкой ИИ',
-  'meta.desc': 'QBLOGG создаёт SEO-статьи, серии постов для LinkedIn, рассылки и многоязычный контент. Одно исследование — пять результатов.',
+  'meta.desc': 'QBLOGG создаёт SEO-статьи, серии постов для LinkedIn, рассылки и многоязычный контент. Одно исследование — семь результатов.',
   'nav.home': 'Главная', 'nav.services': 'Услуги', 'nav.flow': 'Как это работает',
   'nav.packages': 'Пакеты', 'nav.blog': 'Блог', 'nav.contact': 'Контакты', 'nav.cta': 'Запросить смету',
   'hero.badge': 'ИИ + исследование + SEO + человеческая редактура',
@@ -750,7 +750,7 @@ window.QB_I18N.ru = {
 
 window.QB_I18N.no = {
   'meta.title': 'QBLOGG — et AI-støttet innholdsstudio',
-  'meta.desc': 'QBLOGG lager SEO-artikler, LinkedIn-serier, nyhetsbrev og flerspråklig innhold. Ett researcharbeid, fem leveranser.',
+  'meta.desc': 'QBLOGG lager SEO-artikler, LinkedIn-serier, nyhetsbrev og flerspråklig innhold. Ett researcharbeid, sju leveranser.',
   'nav.home': 'Hjem', 'nav.services': 'Tjenester', 'nav.flow': 'Slik jobber vi',
   'nav.packages': 'Pakker', 'nav.blog': 'Blogg', 'nav.contact': 'Kontakt', 'nav.cta': 'Få et tilbud',
   'hero.badge': 'KI + research + SEO + menneskelig redigering',

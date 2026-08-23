@@ -10,7 +10,7 @@ maliyet.
 |---|---|
 | **Hedef** | Yazılı içerikten hem proje bazlı hem tekrarlayan gelir üretmek |
 | **Müşteri** | İçerik ekibi olmayan KOBİ ve SaaS şirketleri; ikincil: stüdyoya katılacak yazarlar |
-| **Teklif** | Tek araştırmadan beş çıktı: blog + LinkedIn + sosyal + newsletter + SEO makalesi |
+| **Teklif** | Tek araştırmadan yedi çıktı: blog + LinkedIn + sosyal + newsletter + SEO makalesi + kısa video senaryosu + YouTube taslağı |
 | **Gelir** | Tek makale (€150) · Büyüme (€900/ay) · Stüdyo (€2.500/ay) — hepsi örnek başlangıç fiyatı |
 | **Kanallar** | Kendi sitesi · Upwork/nDash/ProBlogger · Medium · Substack |
 | **Sahip olunan varlık** | Site + e-posta listesi. Platformlar dağıtım kanalıdır, iş değil. |
@@ -73,7 +73,7 @@ maliyet.
 | 14 | Her yazının sonuna ilgili pakete bağlantı | **Bitti** 18.08 | Yazı sonunda brief + paket köprüsü, 10 dilde |
 | 15 | Analitik (gizlilik dostu) ve dönüşüm ölçümü | Bekliyor | Hangi yazı brief getiriyor? |
 | 22 | Sayfa ağırlığını böl | Bekliyor | 236 KB'ın 183 KB'ı i18n+posts; ziyaretçi on dilin tamamını indiriyor |
-| 23 | Sosyal paylaşım görseli (og:image) ve 404 sayfası | Bekliyor | Paylaşılan bağlantı şu an önizlemesiz görünüyor |
+| 23 | ~~Sosyal paylaşım görseli (og:image) ve 404 sayfası~~ | **Bitti** 22.08 | → satır 86–87 |
 
 ### 3.5. AI Workforce (yeni ürün hattı — bkz. `docs/ai-workforce/`)
 
