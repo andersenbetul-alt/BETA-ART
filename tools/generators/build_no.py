@@ -20,8 +20,8 @@ from data import S
 from data_no import NO
 
 OUT = "/home/user/BETA-ART/beta-art-business/no"
-SITE = "https://beta-art-business-bet-art.vercel.app"
-HUB = "https://beta-art-bet-art.vercel.app"
+SITE = "https://business.beta-art.com"
+HUB = "https://start.beta-art.com"
 os.makedirs(OUT, exist_ok=True)
 
 BY = {s["slug"]: s for s in S}
@@ -313,13 +313,15 @@ skriftlig etter en brief, og vi sender ingen faktura før dere har godkjent omfa
 </div>
 </section>
 
+<section class="section svc-next">
+<div class="wrap">
 <nav class="pager" aria-label="Andre tjenester">
-<div class="wrap pager-inner">
 <a class="pager-prev" href="s-{prev}.html"><span class="tag">Forrige</span>{strip(NO[prev]['title'])}</a>
 <a class="pager-all" href="index.html">Alle tjenester</a>
 <a class="pager-next" href="s-{nxt}.html"><span class="tag">Neste</span>{strip(NO[nxt]['title'])}</a>
-</div>
 </nav>
+</div>
+</section>
 
 </main>
 <script type="application/ld+json">

@@ -37,7 +37,7 @@ if "guar-actions" in h:
 else:
     h = h.replace('    </section>\n  </div>\n</main>',
       '''      <p class="guar-actions">
-        <a class="btn" href="https://beta-art-archive-bet-art.vercel.app/#collection" data-i18n="guar.cta1">See the twelve plates</a>
+        <a class="btn" href="https://beta-art.com/#collection" data-i18n="guar.cta1">See the twelve plates</a>
         <a class="btn btn-quiet" href="legal.html#licence" data-i18n="guar.cta2">Read the licence terms</a>
       </p>
     </section>\n  </div>\n</main>''', 1)

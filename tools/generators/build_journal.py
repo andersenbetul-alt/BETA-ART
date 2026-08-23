@@ -16,7 +16,7 @@ import journal
 
 ROOT = "/home/user/BETA-ART"
 BLOG = os.path.join(ROOT, "beta-art-blog")
-HOST = "https://beta-art-journal-bet-art.vercel.app"
+HOST = "https://notater.beta-art.com"
 
 LEAD = dict(slug="picture-is-not-the-proof", topic="provenance", date="2026-07-28",
             shown="28 July 2026", read="9 min",
@@ -129,7 +129,7 @@ def essay_foot(e):
         in between.</p>
         <p class="essay-end-actions">
           <a class="btn" href="index.html#subscribe">Get the next entry by email</a>
-          <a class="btn btn-quiet" href="https://beta-art-archive-bet-art.vercel.app/#collection">See the collection</a>
+          <a class="btn btn-quiet" href="https://beta-art.com/#collection">See the collection</a>
         </p>
       </div>
 
@@ -144,7 +144,7 @@ def essay_foot(e):
         </ul>
       </nav>
 
-      <p class="cross-link">Licensing a plate for commercial use? <a href="https://beta-art-archive-bet-art.vercel.app/#licensing">The archive</a> handles licence tiers and quotes; <a href="https://beta-art-business-bet-art.vercel.app/">Beta Art Business</a> handles commissions, framework agreements and the wider digital work.</p>
+      <p class="cross-link">Licensing a plate for commercial use? <a href="https://beta-art.com/#licensing">The archive</a> handles licence tiers and quotes; <a href="https://business.beta-art.com/">Beta Art Business</a> handles commissions, framework agreements and the wider digital work.</p>
     </footer>""" % ("\n        ".join(steps), further)
 
 
@@ -155,7 +155,7 @@ def build(e):
 <meta name="description" content="%s">
 <meta name="robots" content="index,follow,noai,noimageai">
 <link rel="canonical" href="%s">
-<link rel="alternate" type="application/rss+xml" title="Field Notes" href="https://beta-art-journal-bet-art.vercel.app/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Field Notes" href="https://notater.beta-art.com/feed.xml">
 <meta name="theme-color" content="#FBFAF7">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Field Notes &mdash; The Beta Art Journal">
@@ -186,7 +186,7 @@ def build(e):
   "copyrightHolder": { "@type": "Person", "name": "Bet\\u00fcl \\u00d6ner" },
   "copyrightYear": 2026,
   "isPartOf": { "@type": "Blog", "@id": "%s/#blog" },
-  "publisher": { "@type": "Organization", "name": "Beta Art", "url": "https://beta-art-bet-art.vercel.app/" },
+  "publisher": { "@type": "Organization", "name": "Beta Art", "url": "https://start.beta-art.com/" },
   "mainEntityOfPage": "%s"
 }
 </script>""" % (jsonstr(plain(e["title"])), jsonstr(desc), e["date"],

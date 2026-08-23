@@ -18,8 +18,8 @@ import html
 
 ROOT = "/home/user/BETA-ART"
 OUT = os.path.join(ROOT, "beta-art")
-SITE = "https://beta-art-archive-bet-art.vercel.app"
-HUB = "https://beta-art-bet-art.vercel.app"
+SITE = "https://beta-art.com"
+HUB = "https://start.beta-art.com"
 
 src = open(os.path.join(OUT, "index.html"), encoding="utf-8").read()
 i = src.find('id="collection"')

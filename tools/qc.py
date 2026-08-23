@@ -552,6 +552,54 @@ def check_deployability():
                  "fits inline too" if fits else "git deploy"))
 
 
+def check_generator_hosts():
+    """A generator must not hold a host the shipped pages have moved off.
+
+    The four properties were once on Vercel preview addresses and were later
+    given their real subdomains. Every shipped page was updated. None of the
+    generators were — and most pages here are generated, so eleven builders
+    sat holding `*-bet-art.vercel.app` in canonicals, hreflang, og:url and
+    cross-property links, waiting.
+
+    Running two of them put five hundred preview URLs back into the site in
+    one command. It was silent, and it was the correct output of the builder:
+    the data table said so. `launch.py` already reports preview hosts on
+    shipped pages, but only after the damage is committed, and it is a
+    readiness report rather than a gate.
+
+    The rule is simply that a generator's hosts must be the hosts the site
+    actually uses. If a property moves again, this fails until the builder
+    moves with it — which is the whole point of keeping the source of truth
+    in a data table."""
+    live = set()
+    for sub in PROPS.values():
+        p = os.path.join(ROOT, sub, "index.html")
+        if not os.path.exists(p):
+            continue
+        m = re.search(r'<link rel="canonical" href="https?://([^/"]+)', text(p))
+        if m:
+            live.add(m.group(1))
+    if not live:
+        note("hosts", "no canonical host found on any property home page")
+        return
+    gen = os.path.join(ROOT, "tools")
+    for d, dirs, files in os.walk(gen):
+        dirs[:] = [x for x in dirs if x != "__pycache__"]
+        for fn in sorted(files):
+            if not fn.endswith((".py", ".js")):
+                continue
+            p = os.path.join(d, fn)
+            if os.path.samefile(p, os.path.abspath(__file__)):
+                continue
+            for line_no, line in enumerate(text(p).splitlines(), 1):
+                for host in re.findall(r'https?://([a-z0-9.-]+\.beta-art\.com|'
+                                       r'[a-z0-9-]+\.vercel\.app)', line):
+                    if host not in live:
+                        note("hosts", "%s:%d writes %s, which is not a host this "
+                             "site serves. The live hosts are %s."
+                             % (rel(p), line_no, host, ", ".join(sorted(live))))
+
+
 def check_copyright():
     """The standing requirement: every page must assert Beta Art's rights."""
     for path in walk(".html"):
@@ -575,6 +623,7 @@ def main():
     check_links()
     check_head()
     check_sitemaps()
+    check_generator_hosts()
     check_copyright()
     check_deployability()
 

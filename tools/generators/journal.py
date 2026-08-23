@@ -128,7 +128,7 @@ add(slug="accession-label", topic="provenance", date="2026-06-30", shown="30 Jun
          "<strong>Release on file,</strong> with a date and the four separate "
          "consents it covers: the archive, commercial licensing, promotion, and use "
          "of the person's name. The form this archive uses is "
-         "<a href=\"https://beta-art-archive-bet-art.vercel.app/release.html\">published "
+         "<a href=\"https://beta-art.com/release.html\">published "
          "in full</a>, in Norwegian, so anyone can read it before agreeing to anything.",
          "<strong>Property, artwork and heritage permissions,</strong> where a "
          "building, a work of art or a protected site is the subject rather than the "
@@ -206,7 +206,7 @@ add(slug="two-days-aboard", topic="method", date="2026-06-12", shown="12 June 20
          "more often than photographers expect.",
          "Spend the first block without the camera, visibly. It is read as respect, "
          "and it is meant as respect.",
-         "Get the <a href=\"https://beta-art-archive-bet-art.vercel.app/release.html\">release</a> "
+         "Get the <a href=\"https://beta-art.com/release.html\">release</a> "
          "signed early, in person, while there is time to explain it properly "
          "&mdash; not by email a fortnight later.",
          "Write the capture record the same evening, aboard or ashore, before the "

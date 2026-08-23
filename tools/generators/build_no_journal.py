@@ -27,8 +27,8 @@ from data_no_journal import NO  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SUB = "beta-art-blog"
-EN_URL = "https://beta-art-journal-bet-art.vercel.app/"
-NO_URL = "https://beta-art-journal-bet-art.vercel.app/no/"
+EN_URL = "https://notater.beta-art.com/"
+NO_URL = "https://notater.beta-art.com/no/"
 
 
 def build():

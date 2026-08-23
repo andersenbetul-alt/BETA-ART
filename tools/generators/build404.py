@@ -12,35 +12,35 @@ ROOT = "/home/user/BETA-ART"
 
 SITES = {
  "": dict(
-   host="https://beta-art-bet-art.vercel.app", title="BETA ART", css=None,
+   host="https://start.beta-art.com", title="BETA ART", css=None,
    back="index.html", back_label="Back to the three properties",
-   c_tag="label", c_fine="footnote", c_btn="btn", c_rule="--rule",
+   c_tag="label", c_fine="footnote", c_btn="btn", c_rule="--rule", c_lead="lead",
    heading="This page is not in the archive.",
    body="The address you followed does not exist here. Nothing has been removed — "
         "the link was probably mistyped, or it points at a page that was never published.",
    theme="#FBFAF7"),
  "beta-art": dict(
-   host="https://beta-art-archive-bet-art.vercel.app", title="BETA ART — Archive",
+   host="https://beta-art.com", title="BETA ART — Archive",
    css="styles.css", back="index.html", back_label="Back to the collection",
-   c_tag="eyebrow", c_fine="fine-print", c_btn="btn btn-solid", c_rule="--rule",
+   c_tag="eyebrow", c_fine="fine-print", c_btn="btn btn-solid", c_rule="--rule", c_lead="lead",
    heading="No plate at this accession.",
    body="Every plate in this archive has a permanent number and a permanent address. "
         "This is not one of them. Either the number was mistyped, or the plate has not "
         "been catalogued yet — nothing that was published here has been taken down.",
    theme="#FBFAF7"),
  "beta-art-business": dict(
-   host="https://beta-art-business-bet-art.vercel.app", title="BETA ART BUSINESS",
+   host="https://business.beta-art.com", title="BETA ART BUSINESS",
    css="styles.css", back="index.html", back_label="Back to the studio",
-   c_tag="tag", c_fine="footnote", c_btn="btn btn-seal", c_rule="--edge",
+   c_tag="tag", c_fine="footnote", c_btn="btn btn-seal", c_rule="--edge", c_lead="lead",
    heading="No page at this address.",
    body="The link you followed does not point at anything. If you were looking for a "
         "particular service, every one of them has its own page and they are all listed "
         "in one place.",
    theme="#0F0F0F"),
  "beta-art-blog": dict(
-   host="https://beta-art-journal-bet-art.vercel.app", title="BETA ART — Field Notes",
+   host="https://notater.beta-art.com", title="BETA ART — Field Notes",
    css="styles.css", back="index.html", back_label="Back to Field Notes",
-   c_tag="kicker", c_fine="byline", c_btn="btn", c_rule="--rule",
+   c_tag="kicker", c_fine="byline", c_btn="btn", c_rule="--rule", c_lead="standfirst",
    heading="This entry is not here.",
    body="Nothing has been deleted. Entries keep their addresses once published, so a "
         "missing page means the link was wrong rather than that something was withdrawn.",
@@ -62,6 +62,7 @@ EXTRA_LINKS = {
 FALLBACK_CSS = """
   :root { --paper:#FBFAF7; --ink:#0F0F0F; --ink-2:#1F1D1B; --muted:#67635B;
     --rule:#E4E0D8; --seal:#8B1A1A; --on-seal:#FBFAF7;
+    --mono-sm:.75rem; --mono-md:.8125rem;
     --f-display:"Fraunces",Georgia,serif;
     --f-body:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
     --f-mono:"JetBrains Mono","SFMono-Regular",Menlo,monospace; }
@@ -71,6 +72,36 @@ FALLBACK_CSS = """
     justify-content:center; }
   .wrap { width:min(100% - 3rem, 720px); margin-inline:auto; }
   a { color: var(--seal); }
+
+  /* The other three properties link a stylesheet that already carries these.
+     The hub's lives inline in index.html and this page cannot reach it, so
+     every shared class it uses has to be restated here. Left out, the
+     headline came up in Inter on the one page in the site where that
+     happened, and the approval mark — the promise the whole archive rests
+     on — rendered as an unspaced tick beside plain body text. */
+  h1 { font-family: var(--f-display); font-weight: 300; font-size: clamp(2.4rem, 6vw, 4.2rem);
+    margin: 0 0 1.5rem; letter-spacing: -.02em; line-height: 1.05; }
+  .label { font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .24em;
+    text-transform: uppercase; color: var(--muted); margin: 0 0 1rem; }
+  .lead { max-width: 60ch; color: var(--ink-2); margin: 0; }
+  .human-mark {
+    display: inline-flex; align-items: center; gap: .55rem;
+    margin: 0 0 .55rem; padding: .4rem .8rem;
+    border: 1px solid var(--seal); color: var(--seal);
+    font-family: var(--f-mono); font-size: var(--mono-md); letter-spacing: .12em;
+    text-transform: uppercase; line-height: 1;
+  }
+  .human-mark svg { flex: none; }
+  .footnote { font-family: var(--f-mono); font-size: var(--mono-md); letter-spacing: .06em;
+    color: var(--muted); line-height: 1.7; }
+  /* The way back was marked .btn on a page whose stylesheet never defined one,
+     so it rendered as 17px of plain link text — the smallest target on the
+     site, on the page most likely to be reached by accident. */
+  .btn { display: inline-block; padding: .85rem 1.5rem; background: var(--ink); color: var(--paper);
+    border: 1px solid var(--ink); text-decoration: none; font-family: var(--f-mono);
+    font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
+  .btn:hover { background: var(--seal); border-color: var(--seal); color: var(--on-seal); }
+  .btn:focus-visible { outline: 2px solid var(--seal); outline-offset: 3px; }
 """
 
 PAGE = """<!DOCTYPE html>
@@ -96,7 +127,7 @@ PAGE = """<!DOCTYPE html>
 <div class="wrap">
 <p class="{c_tag} not-found-code">Error 404</p>
 <h1>{heading}</h1>
-<p class="lead">{body}</p>
+<p class="{c_lead}">{body}</p>
 <p class="not-found-back"><a class="{c_btn}" href="{back}">{back_label}</a></p>
 <nav class="not-found-links" aria-label="Where to go instead">
 {links}
@@ -123,7 +154,7 @@ CSS_404 = """
   text-transform: uppercase; text-decoration: none; padding-block: .5rem; }
 """
 
-HUB = "https://beta-art-bet-art.vercel.app/legal.html"
+HUB = "https://start.beta-art.com/legal.html"
 
 for sub, cfg in SITES.items():
     links = "\n".join('<a href="%s">%s</a>' % (h, t) for h, t in EXTRA_LINKS[sub])
@@ -134,6 +165,7 @@ for sub, cfg in SITES.items():
         fav=cfg["theme"].lstrip("#"), css=css,
         heading=cfg["heading"], body=cfg["body"],
         c_tag=cfg["c_tag"], c_fine=cfg["c_fine"], c_btn=cfg["c_btn"],
+        c_lead=cfg["c_lead"],
         back=cfg["back"], back_label=cfg["back_label"], links=links,
         legal="legal.html" if sub == "" else HUB)
     open(os.path.join(ROOT, sub, "404.html"), "w", encoding="utf-8").write(html)

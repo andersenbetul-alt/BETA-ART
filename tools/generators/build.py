@@ -3,10 +3,10 @@ sys.path.insert(0, os.path.dirname(__file__))
 from data import S
 
 OUT = "/home/user/BETA-ART/beta-art-business"
-SITE = "https://beta-art-business-bet-art.vercel.app"
-HUB  = "https://beta-art-bet-art.vercel.app"
-ARCH = "https://beta-art-archive-bet-art.vercel.app"
-JRNL = "https://beta-art-journal-bet-art.vercel.app"
+SITE = "https://business.beta-art.com"
+HUB  = "https://start.beta-art.com"
+ARCH = "https://beta-art.com"
+JRNL = "https://notater.beta-art.com"
 
 def strip(t): return re.sub(r"<[^>]+>", "", t).replace("&amp;", "&")
 

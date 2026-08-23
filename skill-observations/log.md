@@ -161,3 +161,77 @@ the words commit to, not by how hard they are to write. A gate that stays red
 for a documented reason is worth more than a gate turned green by authoring
 promises nobody has approved.
 
+
+---
+
+## 2026-08-23
+
+### Observation 6: A class name travels between properties; the rule behind it does not
+
+**Status:** ACTIONED (2026-08-23) — became `tools/classes.py`, which fails on a
+class used by a page with no rule reachable from that page.
+**Date:** 2026-08-23
+**Session context:** Screenshotting all four properties to show the owner the
+finished site.
+**Skill:** Any "copy this component to the other property" workflow
+**Type:** internal
+**Phase/Area:** Four properties sharing a vocabulary but not a stylesheet
+
+**Issue:** The hub's Norwegian page shipped with `EnglishNorsk` — two words, no
+separator, default browser blue, underlined, on a site with no blue and no
+underlined links. The markup was copied from the desk's Norwegian pages, where
+`.lang-pair` is styled. The hub keeps its CSS inline and had no such rule.
+
+It passed every gate. It is valid HTML referencing a class, and nothing had an
+opinion about whether the class meant anything. It was caught by looking at a
+screenshot — which is not a method, because there are 102 pages.
+
+Looking for the same shape found four more, one of them five months old: the
+hub's 404 restated `.btn` but not `h1`, so the page most likely to be reached
+by accident had its headline in Inter while the whole rest of the site is
+Fraunces; the journal's 404 used `.lead`, which the archive and desk define and
+the journal calls `.standfirst`; 25 Norwegian service pages wrapped their pager
+in `.pager-inner`, an archive class, collapsing a three-column grid into one;
+and the journal's Norwegian page had the same unstyled language pair as the hub.
+
+**Suggested improvement:** When moving markup between properties, move the rule
+with it or rename to the class the destination already has. Never assume a
+shared vocabulary means a shared stylesheet.
+
+**Principle:** Four properties that share class names but not stylesheets will
+leak markup between themselves, and the leak is invisible to HTML validation.
+The check is per-page and cheap: collect the classes a page uses and the rules
+it can actually reach.
+
+### Observation 7: A generator kept a host the site had already left
+
+**Status:** ACTIONED (2026-08-23) — became `check_generator_hosts` in
+`tools/qc.py`, which fails when a builder writes a host no property serves.
+**Date:** 2026-08-23
+**Session context:** Re-running two builders to fix the class defects above.
+**Skill:** Any "single source of truth" / code-generation workflow
+**Type:** internal
+**Phase/Area:** Generated pages, host migration
+
+**Issue:** The four properties moved from Vercel preview addresses to their real
+subdomains. Every shipped page was updated. **None of the eleven generators
+were.** Running two of them put 500 preview URLs back into canonicals, hreflang,
+`og:url` and cross-property links — in one command, silently, and correctly, in
+the sense that the builder faithfully emitted what its data table said.
+
+HEAD had zero preview hosts in shipped files. Two builder runs made it 500. The
+regression was found only because the diff was read afterwards.
+
+`launch.py` already detects preview hosts on shipped pages, but it is a
+readiness report that exits 0, and it only speaks after the damage is committed.
+
+**Suggested improvement:** When a value is changed in generated output, change
+it in the generator in the same commit, or the output is not generated — it is
+hand-maintained with extra steps. Where a project claims a single source of
+truth, add a gate that asserts the source still agrees with what shipped.
+
+**Principle:** "Never hand-edit a generated page" has a mirror image nobody
+writes down: never hand-edit generated *output* without editing the generator.
+A builder that has drifted from the site is a landmine that goes off the next
+time anyone runs it, and it goes off silently because the builder is working
+exactly as written.

@@ -164,8 +164,8 @@ training-excluded or enterprise mode is used, and we name the service.</li>
 <p class="prose">Beta Art is the trading name of a sole enterprise established in Norway and owned
 by <strong>Betül Öner</strong> — photographer, proprietor, and the person who answers the email.
 The studio runs three connected properties: this one, the
-<a href="https://beta-art-archive-bet-art.vercel.app/">photography archive</a>, and
-<a href="https://beta-art-journal-bet-art.vercel.app/">Field Notes</a>, the journal that documents
+<a href="https://beta-art.com/">photography archive</a>, and
+<a href="https://notater.beta-art.com/">Field Notes</a>, the journal that documents
 how the archive is built.</p>
 <p class="prose">Small is a deliberate choice, and it has a cost we will name: we cannot take
 everything, and we will say no to work that needs a team we do not have. What you get in exchange
@@ -204,8 +204,8 @@ stage rather than at the deadline.</li>
 <p class="tag">The three properties</p>
 <ul class="side-list">
 <li><a href="index.html">Beta Art Business</a> — the digital studio</li>
-<li><a href="https://beta-art-archive-bet-art.vercel.app/">The archive</a> — verified human photography</li>
-<li><a href="https://beta-art-journal-bet-art.vercel.app/">Field Notes</a> — the journal</li>
+<li><a href="https://beta-art.com/">The archive</a> — verified human photography</li>
+<li><a href="https://notater.beta-art.com/">Field Notes</a> — the journal</li>
 </ul>
 </div>
 <div class="side-card">

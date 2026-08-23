@@ -32,10 +32,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # property directory → (preview host, subdomain under a real domain)
 PROPS = [
-    ("beta-art",          "beta-art-archive-bet-art.vercel.app",  ""),          # apex
-    ("beta-art-business", "beta-art-business-bet-art.vercel.app", "business"),
-    ("beta-art-blog",     "beta-art-journal-bet-art.vercel.app",  "notater"),
-    ("",                  "beta-art-bet-art.vercel.app",          "start"),     # the hub
+    ("beta-art",          "beta-art.com",  ""),          # apex
+    ("beta-art-business", "business.beta-art.com", "business"),
+    ("beta-art-blog",     "notater.beta-art.com",  "notater"),
+    ("",                  "start.beta-art.com",          "start"),     # the hub
 ]
 
 EXT = (".html", ".xml", ".txt", ".js", ".json", ".md")

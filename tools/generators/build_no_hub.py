@@ -24,8 +24,8 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-EN_URL = "https://beta-art-bet-art.vercel.app/"
-NO_URL = "https://beta-art-bet-art.vercel.app/no/"
+EN_URL = "https://start.beta-art.com/"
+NO_URL = "https://start.beta-art.com/no/"
 
 
 def read_array(src, after):

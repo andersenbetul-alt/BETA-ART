@@ -109,6 +109,25 @@
   .lang-select:hover, .lang-select:focus-visible { border-color: var(--seal); }
   [dir="rtl"] .lang-select { padding: .5rem .7rem .5rem 1.8rem; background-position: 13px 52%, 8px 52%; }
 
+  /* The Norwegian hub has no switcher — a page whose body is Norwegian should
+     not have its chrome silently become Turkish. It gets two addresses
+     instead, and it has to read as the same control the English page shows in
+     that corner, or the two pages look like two sites. */
+  .lang-pair {
+    display: flex; align-items: center; gap: var(--space-2); margin: 0;
+    font-family: var(--f-mono); font-size: var(--mono-sm); letter-spacing: .14em;
+    text-transform: uppercase;
+    border: 1px solid var(--rule); padding: 0 .7rem;
+  }
+  /* The links carry the box's vertical padding rather than the box doing it,
+     so the tap target is the full height of the control and not the 19px of
+     the text inside it. */
+  .lang-pair a, .lang-pair span { padding-block: .5rem; }
+  .lang-pair a { color: var(--muted); text-decoration: none; }
+  .lang-pair a:hover { color: var(--seal); }
+  .lang-pair a::after { content: "·"; margin-left: var(--space-2); color: var(--rule); }
+  .lang-pair span { color: var(--ink); }
+
   /* The mark: a person looked at this page and approved it. Not decoration —
      it is the promise the whole archive rests on, so it says so in words too. */
   .human-mark {
