@@ -347,14 +347,25 @@
     return esc(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   }
 
-  function blockHTML(block) {
+  function blockHTML(block, i) {
     if (typeof block === 'string') return '<p>' + rich(block) + '</p>';
-    if (block.h) return '<h2>' + esc(block.h) + '</h2>';
+    if (block.h) return '<h2 id="b-' + i + '">' + esc(block.h) + '</h2>';
     if (block.note) return '<p class="article-note">' + rich(block.note) + '</p>';
     if (block.ul) return '<ul>' + block.ul.map(function (li) { return '<li>' + rich(li) + '</li>'; }).join('') + '</ul>';
     if (block.see) return seeHTML(block.see);
     if (block.aff) return affHTML(block.aff);
     return '';
+  }
+
+  // Gövdede 3 veya daha çok ara başlık varsa İçindekiler kartı basılır; özet
+  // katmanı dillerinde (3 blok) TOC hiç görünmez.
+  function tocHTML(blocks) {
+    var items = blocks.map(function (b, i) { return b && b.h ? { i: i, h: b.h } : null; }).filter(Boolean);
+    if (items.length < 3) return '';
+    return '<nav class="article-toc" aria-label="' + esc(t('posts.toc')) + '">' +
+      '<h2>' + esc(t('posts.toc')) + '</h2>' +
+      '<ol>' + items.map(function (it) { return '<li><a href="#b-' + it.i + '">' + esc(it.h) + '</a></li>'; }).join('') + '</ol>' +
+      '</nav>';
   }
 
   // Kaynak listesi. u (adres) isteğe bağlı: adresi doğrulanmamış bir kaynağı
@@ -453,7 +464,9 @@
       return;
     }
     var c = ACCENTS[post.accent] || ACCENTS[1];
-    var body = (pick(post.b) || []).map(blockHTML).join('');
+    var blocks = pick(post.b) || [];
+    var body = blocks.map(blockHTML).join('');
+    var toc = tocHTML(blocks);
     var related = sorted().filter(function (p) { return p.slug !== post.slug && p.category === post.category; }).slice(0, 2);
     if (related.length < 2) {
       related = related.concat(sorted().filter(function (p) {
@@ -474,6 +487,7 @@
         '<p class="muted">' + esc(pick(post.e)) + '</p>' +
       '</div>' +
       '<div class="article-cover" style="--c1:' + c[0] + ';--c2:' + c[1] + '">' + iconSVG(post.icon) + '</div>' +
+      toc +
       '<div class="article-body">' + affDisclosureHTML(post) + body + sourcesHTML(post) + '</div>' +
       '<div class="article-foot">' +
         '<a class="btn btn--ghost" href="blog.html">← ' + esc(t('posts.back')) + '</a>' +
