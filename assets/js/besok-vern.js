@@ -145,10 +145,24 @@ window.PP_VERN = (function () {
      bevis på at vi nektet å ta imot en helseopplysning, er å ta imot den. */
   var STOPP = [
     { id: 'helse',   navn: 'Helseopplysning',
+      /* Funksjonsnedsettelser hørte ikke med i den første lista, og det var
+         en glipp med følger: en tjeneste som handler om eldre mennesker, får
+         nettopp disse ordene skrevet inn. «Hun hører dårlig» er like mye en
+         helseopplysning som «hun har diabetes», og den er langt lettere å
+         skrive uten å tenke over det – fordi den føles som en praktisk
+         opplysning.
+
+         Den praktiske opplysningen finnes et annet sted: kanalpreferansen i
+         PP_EKSPERT.TILGJENGELIGHET. Vi spør hva hun vil ha, ikke hvorfor. */
       ord: ['diagnose', 'demens', 'kreft', 'diabetes', 'blodtrykk', 'blodsukker',
             'medisin', 'tablett', 'insulin', 'dose', 'sår', 'infeksjon', 'smerte',
             'fastlege', 'sykehus', 'utskrevet', 'journal', 'resept',
-            'vondt', 'feber', 'svimmel', 'kvalm', 'forvirret', 'pustet', 'hoven'],
+            'vondt', 'feber', 'svimmel', 'kvalm', 'forvirret', 'pustet', 'hoven',
+            'hørsel', 'hørselstap', 'tunghørt', 'døv', 'høreapparat',
+            'syn', 'synshemmet', 'blind', 'briller',
+            'rullestol', 'rullator', 'krykker', 'gåstol', 'protese',
+            'lammelse', 'slag', 'parkinson', 'skjelv', 'afasi',
+            'funksjonsnedsettelse', 'uføre', 'psykisk'],
       beskjed: 'Dette ser ut som en helseopplysning. Skriv hva som ble gjort, ikke hvordan personen har det.' },
 
     /* Ikke det samme som resten. Dette er ting som MÅ fram – de skal bare ikke

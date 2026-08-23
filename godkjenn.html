@@ -31,28 +31,46 @@
   <div class="g-kort">
 
     <p class="g-fra" id="fra">Lars har funnet en tid til deg.</p>
-    <h1>Vil du snakke med Kari Hansen?</h1>
 
-    <!-- Det hun godkjenner, står før knappene. Et samtykke til noe man må
-         bla for å se, er ikke et samtykke. -->
-    <dl class="g-detaljer" id="detaljer"></dl>
+    <!-- Mennesket først. Spørsmålet er «vil du snakke med henne», og da skal
+         hun se hvem det er før hun leser noe som helst annet. -->
+    <div class="g-person">
+      <span class="g-portrett" id="portrett" aria-hidden="true"></span>
+      <div>
+        <h1 id="tittel">Vil du snakke med Kari Hansen?</h1>
+        <p class="g-rolle" id="rolle"></p>
+      </div>
+    </div>
 
-    <!-- Hun skal vite hva samtalen kan og ikke kan gi henne. De samme
-         grensene som står i bestillingen, med hennes ord. -->
-    <section class="g-grenser" aria-labelledby="h-grenser">
-      <h2 id="h-grenser">Hva Kari kan hjelpe deg med</h2>
-      <p id="kan"></p>
-      <h2>Dette kan hun ikke</h2>
-      <ul id="kan-ikke"></ul>
-    </section>
+    <!-- Fire fakta som ikoner. Én linje hver, ingen setninger å lese seg
+         gjennom for å finne klokkeslettet. -->
+    <ul class="g-fakta" id="fakta"></ul>
 
-    <div class="g-sporsmaal">
-      <label for="sprakvalg">Hvilket språk vil du snakke?</label>
-      <select id="sprakvalg"></select>
+    <!-- Hva hun får og ikke får, side om side. To lister under hverandre
+         leses som én lang liste; ved siden av hverandre leses de som et
+         valg med to sider. -->
+    <div class="g-grenser">
+      <section class="g-kan" aria-labelledby="h-kan">
+        <h2 id="h-kan"><span class="g-tegn" aria-hidden="true">✓</span> Kari kan</h2>
+        <ul id="kan"></ul>
+      </section>
+      <section class="g-kan-ikke" aria-labelledby="h-kan-ikke">
+        <h2 id="h-kan-ikke"><span class="g-tegn" aria-hidden="true">✕</span> Kari kan ikke</h2>
+        <ul id="kan-ikke"></ul>
+      </section>
     </div>
 
     <!-- Ingen forhåndsvalgt knapp, og de to er like store. Et ja som allerede
          står der, er ikke et samtykke; en blek nei-knapp er ikke et valg. -->
+    <!-- Kanalen er en av de to tingene hun faktisk godkjenner, og for den som
+         hører dårlig er det den viktigste. Vi spør hva hun vil ha – aldri
+         hvorfor. Grunnen er en helseopplysning og finnes ikke som felt. -->
+    <fieldset class="g-kanal">
+      <legend id="kanal-sporsmaal">Hvordan vil du helst snakke?</legend>
+      <div class="g-kanalvalg" id="kanalvalg" role="radiogroup" aria-labelledby="kanal-sporsmaal"></div>
+      <p class="g-skriftlig" id="skriftlig"></p>
+    </fieldset>
+
     <div class="g-svar" role="group" aria-label="Ditt svar">
       <button class="g-knapp g-ja" type="button" id="ja">
         <span class="g-ikon" aria-hidden="true">
@@ -70,7 +88,18 @@
 
     <p class="g-fritt">Du trenger ikke si hvorfor. Sier du nei, skjer ingenting.</p>
 
-    <button class="g-endre" type="button" id="endre">Jeg vil heller ha en annen tid eller måte</button>
+    <!-- De to mindre valgene ligger etter avgjørelsen. Foran den konkurrerer
+         de med spørsmålet hun faktisk skal svare på. -->
+    <div class="g-mindre">
+      <details class="g-endre">
+        <summary id="endre-sporsmaal">Passer det ikke?</summary>
+        <div class="g-endregrunner" id="endregrunner"></div>
+      </details>
+      <div class="g-sporsmaal">
+        <label for="sprakvalg">Språk i samtalen</label>
+        <select id="sprakvalg"></select>
+      </div>
+    </div>
 
     <div class="g-utfall" id="utfall" hidden role="status"></div>
 

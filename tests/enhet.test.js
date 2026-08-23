@@ -1687,6 +1687,18 @@ t.test('grensene er skrevet til den de gjelder, ikke om henne', function () {
   });
 });
 
+t.test('hver kategori har tre punkter skrevet til den eldre', function () {
+  // Setningen til familien og lista til henne er to registre, ikke to
+  // sannheter. En setning delt på komma blir to halve setninger.
+  EK.KATEGORI.forEach(function (k) {
+    t.erLik(k.kanHjelpeDegMed.length, 3, k.id);
+    k.kanHjelpeDegMed.forEach(function (p) {
+      t.erSann(/^[A-ZÆØÅ]/.test(p), k.id + ': «' + p + '» begynner ikke med stor bokstav');
+      t.erSann(p.split(/\s+/).length <= 9, k.id + ': «' + p + '» er for langt');
+    });
+  });
+});
+
 t.test('helseveiledning kan ikke vurdere symptomer', function () {
   var h = EK.kategori('helseveiledning');
   t.erSann(h.girIkkeRett.join(' ').indexOf('symptom') !== -1);
@@ -1858,6 +1870,47 @@ t.test('hun kan be om noe annet uten å si nei', function () {
 
 t.test('et ukjent svar er ikke et ja', function () {
   t.erUsann(EK.godkjenn({ svar: 'kanskje', ekspert: 'K', kanal: 'telefon' }).ok);
+});
+
+t.gruppe('Funksjonsnedsettelser er helseopplysninger');
+
+t.test('hørsel, syn og hjelpemidler stoppes som helseopplysning', function () {
+  // Glippen var reell: en tjeneste om eldre får nettopp disse ordene skrevet
+  // inn, og de føles som praktiske opplysninger. Det er de ikke.
+  ['Hun har hørselstap', 'Han er tunghørt', 'Bruker høreapparat',
+   'Hun er synshemmet', 'Han bruker rullator', 'Hun har parkinson'
+  ].forEach(function (t2) {
+    t.erUsann(window.PP_VERN.sjekk(t2).ok, 'slapp gjennom: ' + t2);
+  });
+});
+
+t.test('den praktiske opplysningen finnes et annet sted', function () {
+  var T = EK.TILGJENGELIGHET;
+  t.erSann(T.lagres.indexOf('foretrukket kanal') !== -1);
+  t.erSann(T.lagresAldri.indexOf('hørsel') !== -1);
+  t.erSann(T.lagresAldri.indexOf('grunn til valget') !== -1);
+  // Vi spør hva hun vil ha, ikke hvorfor.
+  t.erSann(T.spor.indexOf('Hvordan vil du') === 0);
+  t.erSann(T.sporIkke.indexOf('Hører du') === 0);
+});
+
+t.test('det skriftlige loves før hun svarer, ikke etterpå', function () {
+  t.erSann(EK.TILGJENGELIGHET.skriftlig.alltid);
+  t.erSann(EK.TILGJENGELIGHET.skriftlig.lovesFor.indexOf('skriftlig') !== -1);
+});
+
+t.test('video står før telefon, og oppmøte er ikke åpent', function () {
+  var v = EK.TILGJENGELIGHET.valg;
+  t.erLik(v[0].id, 'video', 'den som ser ansiktet, forstår mer');
+  t.erLik(v[2].pilot, false);
+});
+
+t.test('en annen tid velges, den begrunnes ikke i fritekst', function () {
+  t.erSann(EK.ANNEN_TID.grunner.length >= 3);
+  t.erSann(EK.ANNEN_TID.lagres.indexOf('ikke en fritekst') !== -1);
+  // Hun har en kalender. Den er ikke tom fordi hun er åtti.
+  var navn = EK.ANNEN_TID.grunner.map(function (g) { return g.navn; }).join(' ');
+  t.erSann(navn.indexOf('noe fast') !== -1, navn);
 });
 
 /* ---------------- Naviar Klarhet ---------------- */

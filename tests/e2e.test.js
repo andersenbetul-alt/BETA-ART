@@ -955,9 +955,10 @@ if (!pw) {
     var jr = ja.getBoundingClientRect();
     var nr = nei.getBoundingClientRect();
     return {
-      detaljer: document.querySelectorAll('#detaljer div').length,
+      fakta: document.querySelectorAll('#fakta li').length,
       grenser: document.querySelectorAll('#kan-ikke li').length,
-      pris: document.getElementById('detaljer').textContent,
+      pris: document.getElementById('fakta').textContent,
+      kan: document.querySelectorAll('#kan li').length,
       /* Ingen forhåndsvalgt knapp: et ja som allerede står der, er ikke et
          samtykke. */
       jaValgt: ja.getAttribute('aria-pressed'),
@@ -972,7 +973,8 @@ if (!pw) {
   });
 
   t.test('hun ser hva hun godkjenner før knappene', function () {
-    t.erLik(goStart.detaljer, 5);
+    t.erLik(goStart.fakta, 4);
+    t.erSann(goStart.kan >= 1, 'hun skal se hva samtalen faktisk gir');
     t.erSann(goStart.grenser >= 3, 'grensene skal stå på hennes skjerm også');
     t.erSann(goStart.pris.indexOf('599') !== -1, 'prisen skal stå selv om hun ikke betaler');
   });
@@ -991,6 +993,77 @@ if (!pw) {
 
   t.test('det står at hun ikke trenger å begrunne', function () {
     t.erSann(goStart.fritt.indexOf('hvorfor') !== -1, goStart.fritt);
+  });
+
+
+  /* Kanalvalget er for den som hører dårlig. Hjelpeteksten skal si hva
+     kanalen gir, ikke hvem den er for – og ingen skjerm skal spørre om
+     hørsel. */
+  var goKanal = await go.evaluate(function () {
+    var boks = document.getElementById('kanalvalg');
+    var valgt = boks.querySelectorAll('[aria-checked="true"]').length;
+    return {
+      antall: boks.querySelectorAll('.g-kanalknapp').length,
+      forst: boks.querySelector('.g-kanalknapp strong').textContent,
+      valgt: valgt,
+      hjelp: boks.textContent,
+      skriftlig: document.getElementById('skriftlig').textContent,
+      /* Ingen fritekst noe sted på hennes skjerm. */
+      fritekst: document.querySelectorAll('.g-kort textarea, .g-kort input[type="text"]').length,
+      sidetekst: document.querySelector('.g-kort').textContent
+    };
+  });
+
+  t.test('video står først blant kanalene', function () {
+    t.erSann(goKanal.antall >= 2);
+    t.erLik(goKanal.forst, 'Video', 'den som ser ansiktet, forstår mer');
+    t.erLik(goKanal.valgt, 1, 'kanalen familien valgte, skal stå merket');
+  });
+
+  t.test('hjelpeteksten sier hva kanalen gir, ikke hvem den er for', function () {
+    t.erSann(goKanal.hjelp.indexOf('lettere å følge med') !== -1, goKanal.hjelp);
+    t.erSann(goKanal.hjelp.indexOf('hørsel') === -1, 'skal ikke peke henne ut');
+  });
+
+  t.test('skjermen spør aldri om hørsel, syn eller diagnose', function () {
+    ['hørsel', 'tunghørt', 'syn', 'diagnose', 'sykdom'].forEach(function (ord) {
+      t.erSann(goKanal.sidetekst.toLowerCase().indexOf(ord) === -1,
+               'fant «' + ord + '» på hennes skjerm');
+    });
+  });
+
+  t.test('det skriftlige loves før hun svarer', function () {
+    t.erSann(goKanal.skriftlig.indexOf('skriftlig') !== -1, goKanal.skriftlig);
+  });
+
+  t.test('ingen fritekst på hennes skjerm', function () {
+    t.erLik(goKanal.fritekst, 0);
+  });
+
+  await go.click('#kanalvalg .g-kanalknapp');
+  var goBytte = await go.evaluate(function () {
+    return {
+      fakta: document.getElementById('fakta').textContent,
+      valgt: document.querySelector('#kanalvalg [aria-checked="true"] strong').textContent
+    };
+  });
+  t.test('bytte av kanal endrer det hun godkjenner', function () {
+    t.erLik(goBytte.valgt, 'Video');
+    t.erSann(goBytte.fakta.indexOf('Video') !== -1, goBytte.fakta);
+  });
+
+  /* «Passer det ikke?» er faste valg. Et fritekstfelt her ville invitert til
+     å skrive den helseopplysningen vi ikke kan ta imot. */
+  var goEndre = await go.evaluate(function () {
+    document.querySelector('.g-endre').open = true;
+    return {
+      grunner: document.querySelectorAll('.g-endreknapp').length,
+      felt: document.querySelectorAll('.g-endre textarea, .g-endre input').length
+    };
+  });
+  t.test('en annen tid velges, den skrives ikke', function () {
+    t.erSann(goEndre.grunner >= 3, 'fant ' + goEndre.grunner);
+    t.erLik(goEndre.felt, 0);
   });
 
   await go.click('#nei');

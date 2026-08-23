@@ -50,33 +50,106 @@
   line-height: 1.2; letter-spacing: -.02em; margin: 0 0 28px;
 }
 
-/* ---------- det hun godkjenner ---------- */
-.g-detaljer { margin: 0 0 30px; }
-.g-detaljer div {
-  display: flex; gap: 18px; align-items: baseline;
-  padding: 15px 0; border-bottom: 1px solid var(--line);
-}
-.g-detaljer div:last-child { border-bottom: 0; }
-.g-detaljer dt { flex: none; width: 8.5ch; color: var(--ink-faint); font-size: 1rem; }
-.g-detaljer dd { margin: 0; font-weight: 600; }
-.g-detaljer .g-liten { display: block; font-weight: 400; font-size: 1rem; color: var(--ink-soft); }
+/* ---------- mennesket først ----------
 
-/* ---------- grensene ---------- */
-.g-grenser {
-  background: var(--bg-soft); border-radius: 14px; padding: 22px 24px; margin-bottom: 30px;
+   Spørsmålet er «vil du snakke med henne». Da skal hun se hvem det er før
+   hun leser noe annet. Initialene er store nok til å fungere som et ansikt
+   på avstand – det er ikke et bilde, men det er en person. */
+.g-person { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+.g-portrett {
+  flex: none; width: 84px; height: 84px; border-radius: 50%;
+  background: var(--brand-light); color: var(--brand-dark);
+  display: grid; place-items: center; font-size: 1.7rem; font-weight: 600; letter-spacing: .03em;
 }
-.g-grenser h2 { font-size: 1.08rem; margin: 0 0 8px; }
-.g-grenser h2 + h2, .g-grenser p + h2 { margin-top: 20px; }
-.g-grenser p { margin: 0; color: var(--ink-soft); font-size: 1.05rem; }
-.g-grenser ul { margin: 0; padding-left: 24px; color: var(--ink-soft); font-size: 1.05rem; }
-.g-grenser li { margin-bottom: 6px; }
+.g-rolle { margin: 6px 0 0; color: var(--ink-soft); font-size: 1.02rem; }
+
+/* ---------- fire fakta, ett ikon hver ----------
+
+   Ikonet er ikke pynt. Det lar øyet finne klokkeslettet uten å lese, og det
+   er forskjellen på å skanne fire linjer og å lese fire setninger. */
+.g-fakta { list-style: none; margin: 0 0 30px; padding: 0; display: grid; gap: 4px; }
+.g-fakta li {
+  display: flex; align-items: center; gap: 18px;
+  padding: 14px 0; border-bottom: 1px solid var(--line);
+}
+.g-fakta li:last-child { border-bottom: 0; }
+.g-fakta-ikon {
+  flex: none; width: 50px; height: 50px; border-radius: 50%;
+  background: var(--bg-soft); color: var(--ink-soft);
+  display: grid; place-items: center;
+}
+.g-fakta-tekst { min-width: 0; }
+.g-fakta-tekst strong { display: block; font-weight: 600; }
+.g-liten { display: block; font-weight: 400; font-size: 1rem; color: var(--ink-soft); }
+
+/* ---------- hva hun får, og ikke får ----------
+
+   Side om side. To lister under hverandre leses som én lang liste; ved siden
+   av hverandre leses de som et valg med to sider – og det er det de er. */
+.g-grenser {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 30px;
+}
+.g-kan, .g-kan-ikke { border-radius: 14px; padding: 20px; }
+.g-kan { background: var(--brand-light); }
+.g-kan-ikke { background: var(--bg-soft); }
+.g-grenser h2 {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 1.05rem; margin: 0 0 12px;
+}
+.g-kan h2 { color: var(--brand-dark); }
+/* Tegnet står i tillegg til plasseringen og overskriften – aldri farge alene. */
+.g-tegn {
+  flex: none; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center; font-size: .9rem; font-weight: 700;
+}
+.g-kan .g-tegn { background: var(--brand-dark); color: #fff; }
+.g-kan-ikke .g-tegn { background: var(--ink); color: #fff; }
+.g-grenser ul { margin: 0; padding-left: 22px; color: var(--ink-soft); font-size: 1.02rem; }
+.g-grenser li { margin-bottom: 8px; }
+.g-grenser li:last-child { margin-bottom: 0; }
 
 /* ---------- språk ---------- */
-.g-sporsmaal { margin-bottom: 30px; }
-.g-sporsmaal label { display: block; font-weight: 600; margin-bottom: 10px; }
+.g-mindre { margin-top: 22px; display: grid; gap: 14px; }
+.g-sporsmaal label { display: block; color: var(--ink-soft); font-size: 1.02rem; margin-bottom: 8px; }
 .g-sporsmaal select {
   font: inherit; width: 100%; min-height: 62px; padding: 14px 16px;
   border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink);
+}
+
+/* ---------- kanalvalget ----------
+
+   Står før avgjørelsen fordi det er en av de to tingene hun godkjenner. For
+   den som hører dårlig, er dette det viktigste valget på skjermen. */
+.g-kanal { border: 0; padding: 0; margin: 0 0 30px; }
+.g-kanal legend { font-weight: 600; padding: 0; margin-bottom: 14px; }
+.g-kanalvalg { display: grid; gap: 12px; }
+.g-kanalknapp {
+  display: flex; align-items: center; gap: 16px; width: 100%; text-align: left;
+  font: inherit; cursor: pointer; min-height: 78px;
+  background: #fff; border: 2px solid var(--line); border-radius: 14px; padding: 14px 18px;
+  color: var(--ink);
+}
+.g-kanalknapp:hover { border-color: var(--brand); }
+.g-kanalknapp[aria-checked="true"] { border-color: var(--brand-dark); background: #f4faf7; }
+.g-kanalikon {
+  flex: none; width: 52px; height: 52px; border-radius: 50%;
+  background: var(--bg-soft); color: var(--ink-soft); display: grid; place-items: center;
+}
+.g-kanalknapp[aria-checked="true"] .g-kanalikon { background: var(--brand-light); color: var(--brand-dark); }
+.g-kanaltekst { flex: 1; min-width: 0; }
+.g-kanaltekst strong { display: block; font-weight: 600; }
+/* Haken er tom til den er valgt – tilstanden bæres av tegn, ikke av farge. */
+.g-hake {
+  flex: none; width: 30px; height: 30px; border-radius: 50%;
+  border: 2px solid var(--line); display: grid; place-items: center;
+  color: transparent; font-weight: 700; font-size: .95rem;
+}
+.g-kanalknapp[aria-checked="true"] .g-hake {
+  background: var(--brand-dark); border-color: var(--brand-dark); color: #fff;
+}
+.g-skriftlig {
+  margin: 14px 0 0; padding: 14px 18px; border-radius: 12px;
+  background: var(--bg-soft); color: var(--ink-soft); font-size: 1.02rem;
 }
 
 /* ---------- de to svarene ---------- */
@@ -97,13 +170,22 @@
 
 .g-fritt { margin: 18px 0 0; color: var(--ink-soft); font-size: 1.02rem; text-align: center; }
 
-.g-endre {
-  display: block; width: 100%; margin-top: 22px; min-height: 62px;
-  font: inherit; font-size: 1.05rem; cursor: pointer;
-  background: none; border: 1px solid var(--line); border-radius: 12px;
-  color: var(--ink); padding: 16px;
+/* «Passer det ikke?» er faste valg, ikke et fritekstfelt. Et felt her ville
+   invitert til å skrive nettopp den helseopplysningen vi ikke kan ta imot –
+   og hun skylder oss ingen forklaring. */
+.g-endre { border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.g-endre summary {
+  min-height: 62px; display: flex; align-items: center; padding: 16px 18px;
+  cursor: pointer; font-size: 1.05rem;
 }
-.g-endre:hover { border-color: var(--brand); }
+.g-endre summary::marker { color: var(--ink-faint); }
+.g-endregrunner { display: grid; gap: 10px; padding: 0 18px 18px; }
+.g-endreknapp {
+  font: inherit; font-size: 1.02rem; text-align: left; cursor: pointer;
+  min-height: 58px; padding: 14px 16px; color: var(--ink);
+  background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px;
+}
+.g-endreknapp:hover { border-color: var(--brand); background: #fff; }
 
 /* ---------- utfallet ---------- */
 .g-utfall {
@@ -124,9 +206,30 @@
 @media (max-width: 560px) {
   .g-kort { padding: 26px 20px; border-radius: 14px; }
   .g-svar { grid-template-columns: 1fr; }
-  .g-detaljer div { flex-direction: column; gap: 4px; }
-  .g-detaljer dt { width: auto; }
+  /* På telefon står de to sidene under hverandre, men beholder hver sin
+     flate og hvert sitt tegn – rekkefølgen bærer da det plasseringen gjorde. */
+  .g-grenser { grid-template-columns: 1fr; }
+  .g-person { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .g-portrett { width: 66px; height: 66px; font-size: 1.35rem; }
+  .g-kanalknapp { padding: 12px 14px; gap: 12px; }
+  .g-kanalikon { width: 46px; height: 46px; }
   .g-flate { padding: 22px 14px 50px; }
+}
+
+/* Tastaturfokus. Nettleserens standardring forsvinner mot en lys flate, og
+   den som ikke bruker mus, mister da hvor hun er på skjermen. */
+.b-godkjenn :focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Noen har systemet satt til høy kontrast eller tvunget farger. Da skal
+   tilstanden fortsatt bæres av noe annet enn farge. */
+@media (forced-colors: active) {
+  .g-knapp, .g-kanalknapp, .g-endreknapp { border: 2px solid ButtonText; }
+  .g-kanalknapp[aria-checked="true"] { border-width: 4px; }
+  .g-hake, .g-tegn { forced-color-adjust: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -68,6 +68,11 @@ window.PP_EKSPERT = (function () {
 
   var KATEGORI = [
     { id: 'nav',
+      kanHjelpeDegMed: [
+        'Forstå hvilken ytelse som gjelder for deg',
+        'Vite hvordan saken din behandles',
+        'Vite hvilke frister som løper'
+      ],
       pilot: true,
       navn: 'NAV og pensjon',
       bakgrunn: ['Tidligere NAV-rådgiver', 'Saksbehandler pensjon', 'Ansatt i pensjonskasse'],
@@ -80,6 +85,11 @@ window.PP_EKSPERT = (function () {
       verifiseres: 'referanse' },
 
     { id: 'kommune',
+      kanHjelpeDegMed: [
+        'Vite hvilket kontor som avgjør saken din',
+        'Vite hvordan du ber om en vurdering',
+        'Forstå hva du kan søke om'
+      ],
       pilot: true,
       navn: 'Kommune og omsorg',
       bakgrunn: ['Tidligere kommunal rådgiver', 'Tildelingskontor', 'Servicekontor'],
@@ -92,6 +102,11 @@ window.PP_EKSPERT = (function () {
       verifiseres: 'referanse' },
 
     { id: 'helseveiledning',
+      kanHjelpeDegMed: [
+        'Vite hvem du skal kontakte først',
+        'Vite hva du bør si når du ringer',
+        'Forstå rekkefølgen i helsetjenesten'
+      ],
       pilot: false,
       senere: 'Verifisering mot HPR og grensen mot helsehjelp må avklares først',
       navn: 'Helseveiledning',
@@ -123,6 +138,11 @@ window.PP_EKSPERT = (function () {
       maaAvklares: 'Om veiledningen utløser dokumentasjonsplikt etter helsepersonelloven' },
 
     { id: 'bolig',
+      kanHjelpeDegMed: [
+        'Vite hvilke hjelpemidler som finnes',
+        'Vite hvem som søker om hva',
+        'Forstå hva som kan tilpasses hjemme'
+      ],
       pilot: false,
       senere: 'Liten etterspørsel alene. Kommer oftest opp inne i en kommunesamtale',
       navn: 'Bolig og hjelpemidler',
@@ -136,6 +156,11 @@ window.PP_EKSPERT = (function () {
       verifiseres: 'referanse' },
 
     { id: 'digital',
+      kanHjelpeDegMed: [
+        'Komme gjennom en innlogging',
+        'Finne fram i Altinn eller Helsenorge',
+        'Fylle ut et skjema uten å spørre familien'
+      ],
       pilot: true,
       navn: 'Digital offentlig hjelp',
       bakgrunn: ['IT-veileder', 'Rådgiver digitale offentlige tjenester', 'Seniornett-erfaring'],
@@ -150,6 +175,11 @@ window.PP_EKSPERT = (function () {
       verifiseres: 'referanse' },
 
     { id: 'parorende',
+      kanHjelpeDegMed: [
+        'Forstå hvilke rettigheter pårørende har',
+        'Vite hva en fullmakt dekker',
+        'Vite hvem som kan bestemme hva'
+      ],
       pilot: false,
       senere: 'Overlapper med kommune i pilotfasen',
       navn: 'Pårørende og fullmakt',
@@ -163,6 +193,11 @@ window.PP_EKSPERT = (function () {
       verifiseres: 'referanse' },
 
     { id: 'skatt',
+      kanHjelpeDegMed: [
+        'Lese skattemeldingen din',
+        'Forstå hvilke fradrag som gjelder',
+        'Vite hvilken frist som løper'
+      ],
       pilot: false,
       senere: 'Sesongtopp i mars og april. Krever egen bemanningsplan',
       navn: 'Skatt og økonomisk oversikt',
@@ -176,6 +211,11 @@ window.PP_EKSPERT = (function () {
       verifiseres: 'referanse' },
 
     { id: 'juridisk',
+      kanHjelpeDegMed: [
+        'Forstå hva slags sak dette er',
+        'Vite hvilke frister som gjelder',
+        'Vite om du trenger advokat'
+      ],
       pilot: false,
       senere: 'Ansvarsforsikring og bevillingskontroll koster mer enn kategorien gir i pilot',
       navn: 'Juridisk veiledning',
@@ -189,6 +229,11 @@ window.PP_EKSPERT = (function () {
       verifiseres: 'tilsynsradet' },
 
     { id: 'aktivitet',
+      kanHjelpeDegMed: [
+        'Finne noe å gjøre i nærheten',
+        'Vite hva som finnes av lag og senter',
+        'Vite hvordan du kommer i gang'
+      ],
       pilot: false,
       senere: 'Løses billigere av Hverdagsguiden enn av en betalt samtale',
       navn: 'Aktivitet og mestring',
@@ -546,6 +591,75 @@ window.PP_EKSPERT = (function () {
              grenser: k.girIkkeRett };
   }
 
+  /* ---------- kanal, hørsel og det vi ikke får vite ----------
+
+     Produktet vårt er en 45 minutters telefonsamtale, og en stor del av dem
+     som skal ta den, hører dårlig. Det er ikke en kantsak – det er
+     hovedkanalen som møter den vanligste funksjonsnedsettelsen i målgruppa.
+
+     Her går det en linje vi ikke kan krysse: nedsatt hørsel er en
+     helseopplysning. Vi kan ikke spørre om den, ikke lagre den og ikke la
+     eksperten se den. PP_VERN ville stoppet ordet uansett.
+
+     Løsningen er å be om noe annet. Vi spør ikke hvorfor hun vil ha video –
+     vi spør bare hva hun vil ha. En preferanse er ikke en diagnose, og den
+     gjør nøyaktig den samme jobben i systemet.
+
+     Derfor står det tre ting her:
+
+     - Kanalpreferansen, som lagres.
+     - Grunnen, som ikke finnes som felt.
+     - At planen alltid kommer skriftlig. For den som hører dårlig, er det
+       skriftlige ikke et vedlegg til samtalen. Det er samtalen. */
+  var TILGJENGELIGHET = {
+    spor: 'Hvordan vil du helst snakke?',
+    sporIkke: 'Hører du dårlig?',
+    hvorfor: 'Hvordan hun vil snakke, er en preferanse. Hvorfor hun vil det, ' +
+             'er en helseopplysning – og den har vi verken grunnlag for eller ' +
+             'bruk for',
+    lagres: ['foretrukket kanal', 'foretrukket språk'],
+    lagresAldri: ['hørsel', 'syn', 'diagnose', 'hjelpemidler', 'grunn til valget'],
+
+    /* Rekkefølgen er ikke tilfeldig. Video står først fordi den som ser
+       ansiktet, forstår mer – munnavlesning og mimikk bærer mye når lyden
+       er dårlig. Telefonen står ikke sist fordi den er dårligst, men fordi
+       den er standardvalget alle likevel havner på. */
+    valg: [
+      { id: 'video',   navn: 'Video',   hjelper: 'Du ser ansiktet, og det er lettere å følge med' },
+      { id: 'telefon', navn: 'Telefon', hjelper: 'Enklest hvis du ikke bruker video' },
+      { id: 'oppmote', navn: 'Oppmøte', hjelper: 'Vi kommer hjem til deg',
+        pilot: false, senere: 'Krever reisetid og en annen pris' }
+    ],
+
+    /* Det skriftlige er ikke en kvittering. Det er produktet, og for den som
+       hører dårlig er det den delen som faktisk virker. Derfor står løftet
+       på hennes skjerm, før hun svarer – ikke i en e-post etterpå. */
+    skriftlig: {
+      alltid: true,
+      lovesFor: 'Uansett hva som blir sagt, får du det skriftlig etterpå.',
+      hvorfor: 'Den som ikke fikk med seg alt i samtalen, skal ikke måtte be om det'
+    }
+  };
+
+  /* Hun har en kalender. Den er ikke tom fordi hun er åtti.
+
+     Lista under er grunner hun kan velge når hun vil ha en annen tid, og de
+     er formulert som opptatt – ikke som unnskyldninger. «Jeg har kor» er
+     ikke en forklaring hun skylder oss; det er en opplysning om at tiden
+     allerede er brukt. */
+  var ANNEN_TID = {
+    sporsmaal: 'Passer det ikke?',
+    grunner: [
+      { id: 'opptatt',  navn: 'Jeg har noe fast den dagen' },
+      { id: 'tidspunkt', navn: 'Jeg vil heller ha formiddag' },
+      { id: 'kanal',    navn: 'Jeg vil heller ha video' },
+      { id: 'ingen',    navn: 'Bare en annen tid' }
+    ],
+    lagres: 'valget, ikke en fritekst',
+    hvorfor: 'Faste grunner kan brukes til å finne en bedre tid. Fritekst blir ' +
+             'en forklaring hun ikke skylder noen'
+  };
+
   /* ---------- den eldres svar ----------
 
      Her ligger hele setningen «den eldre bestemmer» som kode. Tre ting som
@@ -638,6 +752,8 @@ window.PP_EKSPERT = (function () {
     BUFFER_MIN: BUFFER_MIN,
     STEG: STEG,
     SAMTYKKE: SAMTYKKE,
+    TILGJENGELIGHET: TILGJENGELIGHET,
+    ANNEN_TID: ANNEN_TID,
     OPPSUMMERING: OPPSUMMERING,
     UAVKLART: UAVKLART,
     kategori: kategori,
