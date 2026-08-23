@@ -27,7 +27,7 @@
 .x-ordmerke { font-weight: 700; letter-spacing: .1em; font-size: 1.08rem; }
 .x-ordmerke span { font-weight: 400; letter-spacing: .2em; color: var(--ink-faint); }
 
-.x-tjenestevalg { margin: 0 auto; display: flex; gap: 14px; }
+.x-tjenestevalg { margin: 0 auto; display: flex; gap: 14px; flex-wrap: wrap; }
 .x-tjenestevalg a {
   color: var(--ink-soft); text-decoration: none; font-weight: 500;
   padding: 26px 8px 24px; border-bottom: 3px solid transparent;
@@ -53,11 +53,15 @@
 
 /* ---------- oppsett ---------- */
 .x-oppsett { display: grid; grid-template-columns: minmax(0, 1fr) 420px; align-items: start; }
+/* Samme grunn som i senior.css: grid-barn krymper ikke under innholdet
+   sitt av seg selv, og ved stor brukerskrift blir det for bredt. */
+.x-oppsett > *, .x-omraaderad > *, .x-tidrad > * { min-width: 0; }
 .x-hoved { padding: 40px 34px 70px; }
 .x-innhold { max-width: 880px; }
 
 /* ---------- fremdrift ---------- */
-.x-fremdrift { list-style: none; display: flex; align-items: start; margin: 0 0 40px; padding: 0; }
+.x-fremdrift { list-style: none; display: flex; align-items: start; margin: 0 0 40px;
+                padding: 0; flex-wrap: wrap; row-gap: 12px; }
 .x-fremdrift li { display: flex; align-items: center; }
 .x-trinn { display: grid; justify-items: center; gap: 9px; }
 .x-trinn-nr {
@@ -65,7 +69,9 @@
   font-weight: 600; font-size: .95rem;
   background: #fff; border: 1px solid var(--line); color: var(--ink-faint);
 }
-.x-trinn-navn { font-size: .88rem; color: var(--ink-faint); white-space: nowrap; }
+/* Ikke nowrap: ved stor brukerskrift blir «Ekspert og tid» bredere enn
+   telefonen, og raden dyttet sida ut i stedet for å bryte. */
+.x-trinn-navn { font-size: .88rem; color: var(--ink-faint); text-align: center; }
 .x-trinn[data-tilstand="naa"] .x-trinn-nr { background: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
 .x-trinn[data-tilstand="naa"] .x-trinn-navn { color: var(--brand-dark); font-weight: 600; }
 .x-trinn[data-tilstand="ferdig"] .x-trinn-nr { background: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
@@ -74,7 +80,11 @@
 .x-strek[data-ferdig="ja"] { background: var(--brand-dark); }
 
 /* ---------- overskrifter ---------- */
-.x-hoved h1 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem); letter-spacing: -.03em; margin: 0 0 8px; }
+/* Nedre grense senket fra 2rem: ved 200 % brukerskrift er 2rem 64 px, og
+   «Velg ekspert og tid» ble bredere enn telefonen. min() lar den krympe
+   i forhold til skjermen i stedet for å skyve sida ut. */
+.x-hoved h1 { font-size: clamp(1.6rem, min(1.2rem + 2.4vw, 9vw), 3.2rem);
+              letter-spacing: -.03em; margin: 0 0 8px; }
 .x-slagord { margin: 0 0 30px; font-size: 1.1rem; color: var(--ink-soft); }
 .x-underoverskrift { font-size: 1.22rem; margin: 34px 0 16px; letter-spacing: -.015em; }
 

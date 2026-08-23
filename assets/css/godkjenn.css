@@ -17,7 +17,9 @@
 
 .b-godkjenn {
   background: var(--bg-sand);
-  font-size: 20px;
+  /* 1.25rem = 20 px ved standard 16, og følger brukeren derfra.
+     Se merknaden i styles.css. */
+  font-size: 1.25rem;
   line-height: 1.6;
   min-height: 100vh;
 }

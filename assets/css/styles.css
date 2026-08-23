@@ -53,9 +53,19 @@
 html { scroll-behavior: smooth; }
 
 body {
+  /* Norsk setter sammen lange ord: «pårørendepanelet», «Ekspertbistand».
+     Ved 200 % brukerskrift er de bredere enn en telefon, og uten dette
+     skyver de hele sida sidelengs. Det er ikke et hjørnetilfelle – det er
+     det som skjer når noen har skrudd opp skriften for å kunne lese. */
+  overflow-wrap: break-word;
   margin: 0;
   font-family: var(--font);
-  font-size: 17px;
+  /* rem og ikke px: en bruker som har satt opp skriftstørrelsen i
+     nettleseren, skal få større tekst. px overser den innstillingen helt.
+     Resten av typeskalaen sto allerede i rem – det var bare roten som
+     var spikret, og da vokste alt rundt brødteksten mens brødteksten
+     ble stående. 1.0625rem = 17 px ved standard 16. */
+  font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--ink);
   background: var(--bg);
@@ -136,6 +146,10 @@ a  { color: var(--brand-dark); }
   font: inherit; font-weight: 600; font-size: .98rem;
   padding: 12px 20px; border-radius: 10px; border: 1px solid transparent;
   cursor: pointer; text-decoration: none; transition: background .15s, border-color .15s, transform .05s;
+  /* En inline-flex-knapp er minst like bred som sitt lengste ord. Ved 200 %
+     brukerskrift er «pårørendepanelet» bredere enn en telefon, og knappen
+     dyttet sida sidelengs. max-width holder den innenfor, teksten bryter. */
+  max-width: 100%; text-align: center;
 }
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--brand); color: #fff; }

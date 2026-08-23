@@ -3,7 +3,9 @@
    ingen skjulte menyer. Alt kan også betjenes av en pårørende. */
 
 .senior {
-  font-size: 21px;
+  /* 1.3125rem = 21 px ved standard 16, og følger brukerens egen
+     skriftinnstilling derfra. Se merknaden i styles.css. */
+  font-size: 1.3125rem;
   background: var(--bg-sand);
 }
 .senior .wrap { max-width: 820px; }
@@ -25,11 +27,16 @@
 .senior .lead-big { font-size: 1.25rem; color: var(--ink-soft); margin-bottom: 32px; }
 
 /* Store valgknapper */
+/* min-width: 0 paa barna: et grid-barn nekter som standard aa krympe under
+   innholdets minstebredde, og ved 200 % brukerskrift er ikon + tekst
+   bredere enn kolonnen. Uten dette dytter knappen sida sidelengs. */
 .big-choices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.big-choices > * { min-width: 0; }
 @media (max-width: 620px) { .big-choices { grid-template-columns: 1fr; } }
 
 .big-choice {
   display: flex; align-items: center; gap: 18px; width: 100%; text-align: left;
+  min-width: 0;
   background: #fff; border: 3px solid var(--line); border-radius: 16px;
   padding: 22px 24px; font: inherit; font-size: 1.15rem; font-weight: 600; color: var(--ink);
   cursor: pointer; min-height: 96px; transition: border-color .12s, background .12s;
