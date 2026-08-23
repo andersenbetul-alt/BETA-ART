@@ -46,7 +46,7 @@ html[data-theme="dark"] {
   --bg-soft: #12141c;
   --bg-card: #151823;
   --text: #eef0f6;
-  --text-muted: #9aa1b5;
+  --text-muted: #9ea5b9;      /* kart zemininde 7,2:1 — koyu modda küçük metin için 7:1 hedefi */
   --border: #242838;
   /* Koyu temada navy zeminden ayrışmıyor; kimliğin ikinci rengi öne geçiyor. */
   --brand: #00D8C2;
