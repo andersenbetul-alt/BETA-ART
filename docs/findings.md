@@ -48,11 +48,21 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
 
 ## Marka
 
-- [x] **Favicon ve OG görseli yoktu.** KAPANDI — `/favicon.ico`, `/icon.png`,
-      `/apple-icon.png`, `/opengraph-image.png`, `/twitter-image.png` üretildi
-      ve sunuluyor (5×200). Paylaşılan bağlantı artık önizlemeli.
-      Not: OG alt metni eklenemedi — Next'in dosya adı sözleşmesi
-      `metadata.images` tanımını geçersiz kılıyor, `.alt.txt` de işlemiyor.
+- [x] **Favicon ve OG görseli yoktu.** KAPANDI — `/icon`, `/apple-icon`,
+      `/opengraph-image`, `/twitter-image` üretiliyor ve sunuluyor (4×200,
+      512×512 / 180×180 / 1200×630 / 1200×675). Paylaşılan bağlantı önizlemeli.
+
+- [x] **OG alt metni çıkmıyordu.** KAPANDI — `.alt.txt` yan dosyası işlemiyor,
+      ama görsel üreteci `.tsx` olunca `export const alt` işliyor:
+      `og:image:alt` ve `twitter:image:alt` artık HTML'de.
+
+- [x] **İkili görseller Vercel'e taşınamıyordu.** KAPANDI — MCP kanalı yalnızca
+      metin taşıyor. Görseller `next/og` `ImageResponse` ile derleme anında
+      üretiliyor; depoda tek bir ikili dosya kalmadı (ölçüm: `find` → 0).
+
+- [x] **İşaret 16px'te okunmuyordu.** KAPANDI — `fontWeight: 700` sessizce yok
+      sayılıyordu, çünkü next/og'un varsayılan yazı tipinde kalın kesim yok.
+      "C" harf yerine SVG yayı olarak çiziliyor; kalınlık artık bizim elimizde.
 
 
 - [ ] **`brand.json` ürünle çelişiyor.** Slogan hâlâ *"Nordic simplicity,
