@@ -31,6 +31,7 @@ require('../assets/js/ki-port.js');
 require('../assets/js/sprak-ui.js');
 require('../assets/js/ekspertbistand.js');
 require('../assets/js/klarhet.js');
+require('../assets/js/klarsprak.js');
 require('../assets/js/besok-klage.js');
 require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
@@ -1911,6 +1912,74 @@ t.test('en annen tid velges, den begrunnes ikke i fritekst', function () {
   // Hun har en kalender. Den er ikke tom fordi hun er åtti.
   var navn = EK.ANNEN_TID.grunner.map(function (g) { return g.navn; }).join(' ');
   t.erSann(navn.indexOf('noe fast') !== -1, navn);
+});
+
+/* ---------------- Klart språk ---------------- */
+
+var KS = window.PP_KLARSPRAK;
+
+t.gruppe('Klart språk');
+
+t.test('LIX regnes ikke av for kort tekst', function () {
+  // Et LIX-tall regnet av én setning er støy, ikke måling.
+  t.erLik(KS.lix('Kort tekst.'), null);
+  t.erSann(KS.lix(new Array(30).join('ordet ') + '.') !== null);
+});
+
+t.test('kanselli-ord får et vanlig ord ved siden av seg', function () {
+  var d = KS.sjekk('Vi behandler saken i henhold til gjeldende rutiner.');
+  t.erUsann(d.ok);
+  var f = d.funn.filter(function (x) { return x.id === 'kanselli'; })[0];
+  t.erSann(!!f, 'kanselli ikke funnet');
+  t.erLik(f.istedenfor, 'etter');
+  // Et funn uten alternativ blir stående – forfatteren vet ikke hva hun skal gjøre.
+  KS.ORD.forEach(function (o) { t.erSann(!!o.til, o.fra + ' mangler alternativ'); });
+});
+
+t.test('passiv fanges, fordi den skjuler hvem som gjør det', function () {
+  t.erUsann(KS.sjekk('Oppdraget vil bli vurdert av en saksbehandler.').ok);
+  t.erUsann(KS.sjekk('Kontoen suspenderes umiddelbart.').ok);
+  t.erSann(KS.sjekk('Kari godkjenner oppdraget. Du får beskjed.').ok);
+});
+
+t.test('substantivsykdom fanges', function () {
+  var d = KS.sjekk('Vi vil foreta en vurdering av søknaden din innen tre dager.');
+  t.erSann(d.funn.some(function (f) { return f.id === 'substantivsykdom'; }));
+});
+
+t.test('grensa følger teksttypen, og hver type har en grunn', function () {
+  // Én grense for alt var feil: personvern.html har sju ord per setning og
+  // LIX 44, fordi norsk lager lange ord ved å sette dem sammen.
+  ['beslutning', 'informasjon', 'juridisk'].forEach(function (id) {
+    var r = KS.TYPE[id];
+    t.erSann(!!r, id + ' mangler');
+    t.erSann(!!r.hvorfor, id + ' mangler begrunnelse');
+    t.erSann(r.lix > 0 && r.snitt > 0, id);
+  });
+  // En beslutningsskjerm skal være lettere enn en personvernerklæring.
+  t.erSann(KS.TYPE.beslutning.lix < KS.TYPE.juridisk.lix);
+});
+
+t.test('setningslengden rapporteres for seg, fordi den er den som kan rettes', function () {
+  var lang = 'Dette er en setning som er skrevet med mange ord etter hverandre ' +
+             'slik at den blir lang nok til at den overstiger grensen for hvor ' +
+             'mange ord en setning kan ha uten å bli delt i to.';
+  var d = KS.sjekk(lang, 'beslutning');
+  t.erSann(d.funn.some(function (f) { return f.id === 'snitt' || f.id === 'lang_setning'; }));
+  t.erSann(d.snittSetning > 0);
+});
+
+t.test('en tekst med lange fagord får vite at det er ordene, ikke setningene', function () {
+  var t2 = 'Vi lagrer personopplysninger. Behandlingsgrunnlaget er samtykke. ' +
+           'Personvernforordningen gjelder. Posisjonsopplysninger slettes raskt. ' +
+           'Opplysningene anonymiseres. Behandlingsansvarlig er leverandøren. ' +
+           'Databehandleravtalen regulerer dette. Personvernerklæringen oppdateres.';
+  var d = KS.sjekk(t2, 'beslutning');
+  var lix = d.funn.filter(function (f) { return f.id === 'lix'; })[0];
+  if (lix) {
+    t.erSann(lix.andelLangeOrd > 30, 'andelen lange ord skal stå i funnet');
+  }
+  t.erSann(d.snittSetning <= 14, 'setningene her er korte: ' + d.snittSetning);
 });
 
 /* ---------------- Naviar Klarhet ---------------- */

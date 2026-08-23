@@ -84,6 +84,37 @@ antakelse i løpet av noen uker.
 - Om 45 minutter er riktig når det er tre parter i samtalen
 - Hvilke ti språk som er de riktige ti, målt mot SSB og ikke mot magefølelse
 
+## Klart språk
+
+Målt, ikke ment. `PP_KLARSPRAK` regner LIX og setningslengde, og fanger
+kanselli-ord, passiv og substantivsykdom. En test i `tests/e2e.test.js`
+kjører den mot ni sider ved hver testkjøring – uten den er klarspråk en
+intensjon, og intensjoner overlever ikke neste hastverk.
+
+Grensa følger teksttypen, og det er en rettelse av en feil vi gjorde først:
+
+| Type | LIX | Snitt per setning | Hvorfor |
+|---|---|---|---|
+| Skjerm der noen bestemmer | 35 | 14 ord | Leses én gang, valget tas rett etterpå |
+| Forside og informasjon | 42 | 18 ord | Leseren skanner |
+| Personvern og vilkår | 50 | 15 ord | Fagordene er lange og kan ikke byttes |
+
+Første utgave hadde én grense: 40, for alt. `personvern.html` lå på 44 med
+en gjennomsnittlig setning på **sju ord**. Sju. Teksten var ikke tung – 37 %
+av ordene var over seks bokstaver, og ordene var «samtykke», «oppdrag»,
+«posisjon», «opplysninger», «hjelper». Ingen av dem er kanselli, og det
+finnes ikke noe kortere og korrekt ord for «personopplysninger».
+
+Norsk lager lange ord ved å sette dem sammen. LIX straffer da
+sammensetningen, ikke uklarheten, og en forfatter som jager tallet skriver
+dårligere norsk for å score bedre. Derfor rapporteres de to halvdelene hver
+for seg: setningslengden kan rettes, ordlengden er som regel gitt av faget.
+
+Kanselli, passiv og substantivsykdom er strenge uansett type. De er alltid
+mulige å rette – og passiv er den viktigste her, fordi «oppdraget godkjennes»
+ikke sier hvem som godkjenner. I en tjeneste der hele spørsmålet er hvem som
+bestemmer, er passiv ikke en stilfeil. Den er en unnvikelse.
+
 ## Hvem som eier hva
 
 `.claude/agents/ux-forskning.md` avgjør om et funn er et mønster eller en

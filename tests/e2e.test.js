@@ -1165,6 +1165,45 @@ if (!pw) {
 
   await og.close();
 
+  t.gruppe('Klart språk på sidene');
+
+  /* Standarden håndheves her og ikke i et dokument. Uten denne testen er
+     klarspråk en intensjon, og intensjoner overlever ikke neste hastverk. */
+  var ks = await nySide();
+  await ks.addScriptTag({ path: 'assets/js/klarsprak.js' });
+
+  var KS_SIDER = [
+    ['godkjenn.html', 'beslutning'],
+    ['bestill.html', 'beslutning'],
+    ['klarhet.html', 'informasjon'],
+    ['index.html', 'informasjon'],
+    ['familie.html', 'informasjon'],
+    ['trenger-hjelp.html', 'informasjon'],
+    ['bli-hjelper.html', 'informasjon'],
+    ['trygghet.html', 'informasjon'],
+    ['personvern.html', 'juridisk']
+  ];
+
+  for (var ki = 0; ki < KS_SIDER.length; ki++) {
+    var ksFil = KS_SIDER[ki][0], ksType = KS_SIDER[ki][1];
+    await ks.goto(BASE + ksFil, { waitUntil: 'domcontentloaded' });
+    await ks.addScriptTag({ path: 'assets/js/klarsprak.js' });
+    var ksDom = await ks.evaluate(function (type) {
+      var hoved = document.querySelector('main') || document.body;
+      var d = window.PP_KLARSPRAK.sjekk(hoved.innerText, type);
+      return { ok: d.ok, lix: d.lix, snitt: d.snittSetning,
+               funn: d.funn.map(function (f) { return f.id + ': ' + f.hva; }) };
+    }, ksType);
+
+    (function (fil, type, dom) {
+      t.test(fil + ' (' + type + ') LIX ' + dom.lix + ', snitt ' + dom.snitt, function () {
+        t.erSann(dom.ok, dom.funn.join(' | '));
+      });
+    })(ksFil, ksType, ksDom);
+  }
+
+  await ks.close();
+
   t.gruppe('Ingen JavaScript-feil');
   t.test('konsollen er ren på alle sider', function () {
     t.erLik(jsFeil, [], 'feil funnet');

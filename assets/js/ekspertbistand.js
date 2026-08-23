@@ -636,7 +636,7 @@ window.PP_EKSPERT = (function () {
        på hennes skjerm, før hun svarer – ikke i en e-post etterpå. */
     skriftlig: {
       alltid: true,
-      lovesFor: 'Uansett hva som blir sagt, får du det skriftlig etterpå.',
+      lovesFor: 'Uansett hva dere snakker om, får du det skriftlig etterpå.',
       hvorfor: 'Den som ikke fikk med seg alt i samtalen, skal ikke måtte be om det'
     }
   };
