@@ -157,3 +157,46 @@ adımını bekliyor.
 5. Sosyal hesap adresleri (`config.js`)
 
 Teknik sıradaki büyük iş: her dili ayrı URL'de üreten ön-render (ROADMAP).
+
+## 23.08.2026 — Profesyonelleştirme paketi (SDD ile 8 görev)
+
+Kullanıcının onayladığı 7 fikirlik liste, alt-ajan güdümlü geliştirmeyle
+(her görev: taze uygulayıcı → bağımsız inceleme → onay) tamamlandı;
+kapanışta en güçlü modelle tüm-dal incelemesi CLEAN verdi.
+
+1. **security.txt + yazdırma CSS'i** — RFC 9116 dosyası; makale sayfaları
+   temiz yazdırılıyor (başlık/altbilgi/düğmeler gizli, dış bağlantı adresleri
+   dipnot).
+2. **İçindekiler (TOC)** — 3+ ara başlıklı yazılarda otomatik; özet katmanı
+   dilleri bilinçli muaf; `posts.toc` 10 dilde.
+3. **Paket karşılaştırma tablosu** — 8 satır, hücre verileri yalnız mevcut
+   paket metinlerinden; kümülatif kapsam tek dipnotla (uydurma hücre yok);
+   SVG onay işaretleri, sr-only erişilebilirlik, RTL/390px doğrulandı.
+   13 yeni `cmp.*` anahtarı × 10 dil.
+4. **RSS** — `npm run rss` → deterministik `feed.xml` (10 öğe); üç sayfada
+   autodiscovery; dağıtım kopyasına eklendi.
+5. **kalite.html** — kalite güvencesi sayfası (TR+EN): 16 kural, orig/kaynak
+   zorunluluğu, iki katmanlı dil modeli, revizyon; her iddia depoya izlenebilir.
+6. **ornek.html** — örnek teslimat sayfası: gerçek üretimden 7 türevin birebir
+   alıntıları (alıntı sadakati programatik + bağımsız incelemeyle doğrulandı).
+7. **Ödeme (site tarafı)** — `config.js → payLinks` doldurulunca paket
+   kartlarında "Kartla öde" (Stripe Payment Link) düğmesi; gizlilik metnine
+   ödeme paragrafı; kullanıcı için `docs/odeme-sistemi.md` panel kılavuzu.
+   Not: Stripe MCP anahtarı salt-okunur — ürün/bağlantı oluşturma kullanıcıda.
+8. **Arayüz denetimi düzeltmeleri** — marka adına `translate="no"`, form
+   `name` öznitelikleri, paylaşım düğmeleri satır içi SVG'ye, hata mesajı
+   `aria-describedby`+`aria-live`, fetch yolunda düğme kilidi, tabular-nums,
+   safe-area payları, EN bloklarına `lang="en" dir="ltr"` (dört sayfa),
+   `guvenlik.mjs` kapsamına kosullar/kalite/ornek.
+
+Ayrıca: proje konsept belgesi yazıldı (`docs/konsept.md`, okur testinden
+geçti; Word kopyası kullanıcıya verildi), Figma tasarım kuralları belgesi
+(`docs/figma-tasarim-kurallari.md`), blog yazım yöntemi becerisi
+(`.claude/skills/qblogg-blog-yazisi/`), beceri gözlem günlüğü
+(`skill-observations/`). Alan adında ilerleme: kullanıcı TXT kayıtlarını
+GoDaddy'ye ekledi, DNS'e yayıldı — Vercel'de "Verify & Claim" bekliyor.
+
+Gün sonu denetim durumu: check 8/8 (10 dil × 233 anahtar, 9 sayfa,
+sitemap 17 URL), güvenlik 13/13, görünürlük 10/10, marka 56 ölçü,
+RSS determinizmi, Playwright akış testleri — hepsi yeşil. Dal:
+`claude/qblogg-web-sayfasi-upcarm`; yayına alma kullanıcı onayı bekliyor.
