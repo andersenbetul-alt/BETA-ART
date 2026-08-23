@@ -29,7 +29,13 @@
     chart:    '<path d="M3.5 20.5V4"/><path d="M3.5 20.5H21"/><path d="m7 15.5 3.6-4.2 3 2.6L20 7"/><path d="M16.4 7H20v3.6"/>',
     envelope: '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.8 7.5 7.1 5a2 2 0 0 0 2.2 0l7.1-5"/>',
     link:     '<path d="M10.2 13.8a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 1 0-5.7-5.7l-1.3 1.3"/><path d="M13.8 10.2a4 4 0 0 0-5.7 0l-2.8 2.8a4 4 0 1 0 5.7 5.7l1.3-1.3"/>',
-    gear:     '<circle cx="12" cy="12" r="3.1"/><path d="M19.6 14.5a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7h-.3a2 2 0 0 1 0-4h.2a1.6 1.6 0 0 0 1.1-2.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1v-.3a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 2.8 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7h.3a2 2 0 0 1 0 4h-.2a1.6 1.6 0 0 0-1.4 1Z"/>'
+    gear:     '<circle cx="12" cy="12" r="3.1"/><path d="M19.6 14.5a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7h-.3a2 2 0 0 1 0-4h.2a1.6 1.6 0 0 0 1.1-2.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1v-.3a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 2.8 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7h.3a2 2 0 0 1 0 4h-.2a1.6 1.6 0 0 0-1.4 1Z"/>',
+    /* Paylaşım kanalları — marka glifleri emoji/metin işareti değil, ikon çizim
+       kuralına uyan sadeleştirilmiş çizgi diliyle. */
+    linkedin: '<circle cx="7" cy="6.7" r="1"/><path d="M7 10v7.3"/><path d="M11.5 17.3v-4.1a2.6 2.6 0 0 1 5.2 0v4.1"/><path d="M11.5 17.3v-7.3"/>',
+    x:        '<path d="M5 5l14 14"/><path d="M19 5 5 19"/>',
+    facebook: '<path d="M15 4h-1.8A3.7 3.7 0 0 0 9.5 7.7V11"/><path d="M6.2 11h6.8"/><path d="M9.5 11v9"/>',
+    whatsapp: '<path d="M12 3.6a8.4 8.4 0 0 0-7.2 12.7L4 20.4l4.2-1.1A8.4 8.4 0 1 0 12 3.6Z"/><path d="M9.1 9.4c.1-.5.5-.8 1-.8h.4c.3 0 .5.2.6.4l.5 1.3c.1.3 0 .6-.2.8l-.4.4c.4.9 1.1 1.6 2 2l.4-.4c.2-.2.5-.3.8-.2l1.3.5c.3.1.4.4.4.6-.1.5-.5.9-1 1-2.9.3-5.5-2.3-5.8-5.6Z"/>'
   };
   function iconSVG(name) {
     var body = ICONS[name];
@@ -528,15 +534,15 @@
     var u = encodeURIComponent(url);
     var tt = encodeURIComponent(title);
     var targets = [
-      { id: 'linkedin', label: 'in', href: 'https://www.linkedin.com/sharing/share-offsite/?url=' + u },
-      { id: 'x', label: '𝕏', href: 'https://twitter.com/intent/tweet?text=' + tt + '&url=' + u },
-      { id: 'facebook', label: 'f', href: 'https://www.facebook.com/sharer/sharer.php?u=' + u },
-      { id: 'whatsapp', label: '✆', href: 'https://wa.me/?text=' + tt + '%20' + u },
-      { id: 'mail', label: '✉', href: 'mailto:?subject=' + tt + '&body=' + u }
+      { id: 'linkedin', icon: 'linkedin', href: 'https://www.linkedin.com/sharing/share-offsite/?url=' + u },
+      { id: 'x', icon: 'x', href: 'https://twitter.com/intent/tweet?text=' + tt + '&url=' + u },
+      { id: 'facebook', icon: 'facebook', href: 'https://www.facebook.com/sharer/sharer.php?u=' + u },
+      { id: 'whatsapp', icon: 'whatsapp', href: 'https://wa.me/?text=' + tt + '%20' + u },
+      { id: 'mail', icon: 'envelope', href: 'mailto:?subject=' + tt + '&body=' + u }
     ];
     return targets.map(function (s) {
       return '<a class="share-btn" href="' + s.href + '" target="_blank" rel="noopener noreferrer" ' +
-             'title="' + esc(s.id) + '" aria-label="' + esc(s.id) + '">' + s.label + '</a>';
+             'title="' + esc(s.id) + '" aria-label="' + esc(s.id) + '">' + iconSVG(s.icon) + '</a>';
     }).join('');
   }
 
@@ -620,11 +626,16 @@
           // izin vermez; no-cors ile gönderiyoruz — yanıtı okuyamayız ama
           // kayıt düşer. Servis JSON API sunuyorsa burayı ona göre değiştirin.
           var body = encodeURIComponent(CFG.newsletterField || 'email') + '=' + encodeURIComponent(val);
+          var submitBtn = form.querySelector('[type="submit"]');
+          if (submitBtn) { submitBtn.disabled = true; submitBtn.setAttribute('aria-busy', 'true'); }
+          var unlock = function () {
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.removeAttribute('aria-busy'); }
+          };
           fetch(endpoint, {
             method: 'POST', mode: 'no-cors',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: body
-          }).then(done, function () { say(msg, 'cta.error'); });
+          }).then(function () { unlock(); done(); }, function () { unlock(); say(msg, 'cta.error'); });
         } else {
           // Servis bağlanmamış: kayıt yalnızca bu tarayıcıda kalır, yani
           // liste gerçekte oluşmuyor. config.js → newsletterEndpoint.
@@ -672,6 +683,7 @@
 
   // Alan yanı doğrulama: hatalı girdiyi işaretler, altına kısa mesaj koyar,
   // ziyaretçi yazmaya başlayınca ikisini de temizler.
+  var invalidMsgSeq = 0;
   function markInvalid(el, key) {
     if (!el) return;
     el.setAttribute('aria-invalid', 'true');
@@ -680,17 +692,24 @@
     if (!note) {
       note = document.createElement('p');
       note.className = 'field-msg';
+      note.id = 'msg-' + (el.id || ++invalidMsgSeq);
+      note.setAttribute('aria-live', 'polite');
       host.appendChild(note);
     }
     say(note, key);
+    el.setAttribute('aria-describedby', note.id);
     el.addEventListener('input', function tidy() {
       el.removeAttribute('aria-invalid');
+      el.removeAttribute('aria-describedby');
       note.remove();
       el.removeEventListener('input', tidy);
     });
   }
   function clearInvalid(form) {
-    $$('[aria-invalid]', form).forEach(function (el) { el.removeAttribute('aria-invalid'); });
+    $$('[aria-invalid]', form).forEach(function (el) {
+      el.removeAttribute('aria-invalid');
+      el.removeAttribute('aria-describedby');
+    });
     $$('.field-msg', form).forEach(function (el) { el.remove(); });
   }
 
@@ -715,6 +734,11 @@
       // no-cors gerekmez: gerçekten başarılı mı, okuyabiliyoruz.
       var mailEl = $('[type="email"]', form);
       say(msgEl, 'wc.sending');
+      var submitBtn = form.querySelector('[type="submit"]');
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.setAttribute('aria-busy', 'true'); }
+      var unlock = function () {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.removeAttribute('aria-busy'); }
+      };
       fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -724,9 +748,10 @@
           message: body
         })
       }).then(function (res) {
+        unlock();
         if (res.ok) { form.reset(); say(msgEl, 'wc.sent'); }
         else say(msgEl, 'wc.error');
-      }, function () { say(msgEl, 'wc.error'); });
+      }, function () { unlock(); say(msgEl, 'wc.error'); });
       return;
     }
 

@@ -42,7 +42,7 @@
 
 <header class="site-header">
   <div class="wrap nav">
-    <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true"><svg viewBox="100 100 800 800" xmlns="http://www.w3.org/2000/svg" focusable="false"><path fill-rule="evenodd" d="M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z M463 251 L537 251 Q742 251 742 456 L742 530 Q742 735 537 735 L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z" fill="currentColor"/><path d="M610.2 539.5 L539.5 610.2 L817.7 888.4 L888.4 817.7 Z" fill="#00D8C2"/></svg></span>QBLOGG</a>
+    <a class="logo" href="index.html" translate="no"><span class="logo-mark" aria-hidden="true"><svg viewBox="100 100 800 800" xmlns="http://www.w3.org/2000/svg" focusable="false"><path fill-rule="evenodd" d="M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z M463 251 L537 251 Q742 251 742 456 L742 530 Q742 735 537 735 L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z" fill="currentColor"/><path d="M610.2 539.5 L539.5 610.2 L817.7 888.4 L888.4 817.7 Z" fill="#00D8C2"/></svg></span>QBLOGG</a>
     <nav class="nav-links" id="navLinks" aria-label="QBLOGG">
       <a href="index.html" data-i18n="nav.home">Ana Sayfa</a>
       <a href="index.html#services" data-i18n="nav.services">Hizmetler</a>
@@ -105,7 +105,7 @@
             <div class="field"><label for="cCompany" data-i18n="wc.company">Şirket</label><input id="cCompany" name="organization" autocomplete="organization" data-field="wc.company"></div>
             <div class="field"><label for="cSite" data-i18n="wc.site">Web siteniz</label><input id="cSite" type="url" name="url" autocomplete="url" spellcheck="false" placeholder="https://" data-field="wc.site"></div>
             <div class="field"><label for="cGoal" data-i18n="wc.goal">Öncelikli hedefiniz</label>
-              <select id="cGoal" data-field="wc.goal">
+              <select id="cGoal" name="cGoal" data-field="wc.goal">
                 <option value="g1" data-i18n="wc.g1"></option>
                 <option value="g2" data-i18n="wc.g2"></option>
                 <option value="g3" data-i18n="wc.g3"></option>
@@ -113,12 +113,12 @@
               </select>
             </div>
             <div class="field"><label for="cBudget" data-i18n="wc.budget">Aylık bütçe</label>
-              <select id="cBudget" data-field="wc.budget">
+              <select id="cBudget" name="cBudget" data-field="wc.budget">
                 <option>€150 – €500</option><option>€500 – €1.500</option>
                 <option>€1.500 – €3.000</option><option>€3.000+</option>
               </select>
             </div>
-            <div class="field"><label for="cDate" data-i18n="wc.deadline">Başlangıç tarihi</label><input id="cDate" type="date" data-field="wc.deadline"></div>
+            <div class="field"><label for="cDate" data-i18n="wc.deadline">Başlangıç tarihi</label><input id="cDate" name="cDate" type="date" data-field="wc.deadline"></div>
             <div class="field field--wide">
               <label data-i18n="wc.services">İhtiyacınız olan hizmetler</label>
               <div class="checks">
@@ -149,9 +149,9 @@
           <div class="form-grid">
             <div class="field"><label for="wName" data-i18n="ww.name">Ad soyad</label><input id="wName" name="name" autocomplete="name" required data-field="ww.name"></div>
             <div class="field"><label for="wEmail" data-i18n="ww.email">E-posta</label><input id="wEmail" type="email" name="email" autocomplete="email" spellcheck="false" required data-field="ww.email"></div>
-            <div class="field"><label for="wLangs" data-i18n="ww.langs">Yazabildiğiniz diller</label><input id="wLangs" data-field="ww.langs"></div>
-            <div class="field"><label for="wNiche" data-i18n="ww.niche">Uzmanlık alanınız</label><input id="wNiche" data-field="ww.niche"></div>
-            <div class="field"><label for="wRate" data-i18n="ww.rate">Ücretiniz</label><input id="wRate" data-field="ww.rate"></div>
+            <div class="field"><label for="wLangs" data-i18n="ww.langs">Yazabildiğiniz diller</label><input id="wLangs" name="wLangs" data-field="ww.langs"></div>
+            <div class="field"><label for="wNiche" data-i18n="ww.niche">Uzmanlık alanınız</label><input id="wNiche" name="wNiche" data-field="ww.niche"></div>
+            <div class="field"><label for="wRate" data-i18n="ww.rate">Ücretiniz</label><input id="wRate" name="wRate" data-field="ww.rate"></div>
             <div class="field"><label for="wSamples" data-i18n="ww.samples">Örnek yazı bağlantıları</label><input id="wSamples" autocomplete="url" spellcheck="false" placeholder="https://" data-field="ww.samples"></div>
             <div class="field field--wide"><label for="wMsg" data-i18n="ww.message">Kendinizden kısaca bahsedin</label><textarea id="wMsg" required data-field="ww.message"></textarea></div>
           </div>
@@ -201,7 +201,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true"><svg viewBox="100 100 800 800" xmlns="http://www.w3.org/2000/svg" focusable="false"><path fill-rule="evenodd" d="M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z M463 251 L537 251 Q742 251 742 456 L742 530 Q742 735 537 735 L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z" fill="currentColor"/><path d="M610.2 539.5 L539.5 610.2 L817.7 888.4 L888.4 817.7 Z" fill="#00D8C2"/></svg></span>QBLOGG</a>
+        <a class="logo" href="index.html" translate="no"><span class="logo-mark" aria-hidden="true"><svg viewBox="100 100 800 800" xmlns="http://www.w3.org/2000/svg" focusable="false"><path fill-rule="evenodd" d="M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z M463 251 L537 251 Q742 251 742 456 L742 530 Q742 735 537 735 L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z" fill="currentColor"/><path d="M610.2 539.5 L539.5 610.2 L817.7 888.4 L888.4 817.7 Z" fill="#00D8C2"/></svg></span>QBLOGG</a>
         <p class="muted" style="margin-top:10px" data-i18n="footer.tagline">AI destekli içerik stüdyosu.</p>
       </div>
       <div>
@@ -235,7 +235,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year">2026</span> QBLOGG. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span></span>
+      <span>© <span id="year">2026</span> <span translate="no">QBLOGG</span>. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span></span>
       <a data-mailto href="mailto:hello@qblogg.com">hello@qblogg.com</a>
     </div>
   </div>
