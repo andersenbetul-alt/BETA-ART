@@ -23,6 +23,7 @@ require('../assets/js/besok-sprakkrav.js');
 require('../assets/js/besok-agenter.js');
 require('../assets/js/besok-vern.js');
 require('../assets/js/hjelper-opptak.js');
+require('../assets/js/hjelper-base.js');
 require('../assets/js/besok-klage.js');
 require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
@@ -1128,6 +1129,140 @@ t.test('de fire hendelsesnivåene har en handling hver', function () {
     var h = HO.hendelse(n);
     t.erSann(h && h.gjor.length > 10, 'mangler handling for ' + n);
   });
+});
+
+t.test('prøven har tjue spørsmål, fire per modul', function () {
+  t.erLik(HO.PROVESPORSMAL.length, HO.PROVE.antall);
+  [1, 2, 3, 4, 5].forEach(function (m) {
+    var n = HO.PROVESPORSMAL.filter(function (s) { return s.modul === m; }).length;
+    t.erLik(n, 4);
+  });
+});
+
+t.test('hvert spørsmål har et gyldig fasitsvar og en begrunnelse', function () {
+  /* Begrunnelsen er ikke pynt. Regelen som står uten grunn, blir borte
+     hos den neste som synes den er i veien. */
+  HO.PROVESPORSMAL.forEach(function (s) {
+    t.erSann(s.valg.length >= 3, 'spørsmål ' + s.nr + ' har for få valg');
+    t.erSann(s.riktig >= 0 && s.riktig < s.valg.length, 'spørsmål ' + s.nr + ' peker utenfor');
+    t.erSann(s.hvorfor && s.hvorfor.length > 20, 'spørsmål ' + s.nr + ' mangler begrunnelse');
+  });
+});
+
+t.test('spørsmålsnumrene er sammenhengende', function () {
+  HO.PROVESPORSMAL.forEach(function (s, i) { t.erLik(s.nr, i + 1); });
+});
+
+t.test('de farlige situasjonene er merket kritiske', function () {
+  var kritiske = HO.PROVESPORSMAL.filter(function (s) { return s.kritisk; })
+    .map(function (s) { return s.nr; });
+  [9, 10, 13, 18, 19].forEach(function (nr) {
+    t.erSann(kritiske.indexOf(nr) !== -1, 'spørsmål ' + nr + ' burde vært kritisk');
+  });
+});
+
+t.test('referansesamtalen lagrer konklusjon, ikke referat', function () {
+  t.erSann(HO.REFERANSE.kandidatenVet);
+  t.erSann(HO.REFERANSE.lagresAldri.indexOf('ordrett referat') !== -1);
+  t.erSann(HO.REFERANSE.sporsmal.length >= 4);
+  HO.REFERANSE.sporsmal.forEach(function (q) {
+    t.erSann(q.indexOf('?') !== -1, 'ikke et spørsmål: ' + q);
+  });
+});
+
+t.test('prøveoppdraget har både det som vurderes og det som stopper', function () {
+  t.erLik(HO.PROVEOPPDRAG.antall, 1);
+  t.erSann(HO.PROVEOPPDRAG.vurderes.length >= 4);
+  t.erSann(HO.PROVEOPPDRAG.stopper.length >= 3);
+});
+
+t.gruppe('Basen over kandidater');
+
+var HB = window.PP_HJELPERBASE;
+
+t.test('hvert felt har både en grunn og en frist', function () {
+  /* Samme regel som for besøkene: legger noen til et felt, må de si hvorfor
+     det finnes og når det forsvinner. */
+  HB.FELT.forEach(function (f) {
+    t.erSann(f.hvorfor && f.hvorfor.length > 10, f.id + ' mangler begrunnelse');
+    t.erSann(!!f.frist, f.id + ' mangler frist');
+    t.erSann(!!HB.FRISTER[f.frist], f.id + ' peker på en frist som ikke finnes: ' + f.frist);
+  });
+});
+
+t.test('feltene som ikke finnes, har en begrunnelse hver', function () {
+  t.erSann(HB.FINNES_IKKE.length >= 10);
+  HB.FINNES_IKKE.forEach(function (f) {
+    t.erSann(f.hvorfor && f.hvorfor.length > 15, f.hva + ' mangler begrunnelse');
+  });
+});
+
+t.test('fødselsdato, bilde og legitimasjon finnes ikke som felt', function () {
+  ['fodselsdato', 'fodselsnummer', 'adresse', 'bilde', 'legitimasjon', 'sivilstand']
+    .forEach(function (id) {
+      t.erUsann(!!HB.felt(id), id + ' finnes som felt');
+    });
+});
+
+t.test('alder spørres som ja eller nei, ikke som dato', function () {
+  t.erLik(HB.ALDER.lagres, 'ja/nei');
+  t.erLik(HB.ALDER.lagresIkke, 'fødselsdato');
+});
+
+t.test('vedlegg tas ikke imot', function () {
+  t.erUsann(HB.VEDLEGG.tas_imot);
+  t.erSann(HB.VEDLEGG.beskjed.length > 20);
+});
+
+t.test('ukjente felter faller bort før lagring, ikke etterpå', function () {
+  var r = HB.taImot({ fornavn: 'Sofia', bydel: 'Sagene',
+                      fodselsnummer: '01019012345', bilde: 'data:image/png;base64,AAA' });
+  t.erSann(r.ok);
+  t.erLik(r.kandidat.fornavn, 'Sofia');
+  t.erUsann('fodselsnummer' in r.kandidat);
+  t.erUsann('bilde' in r.kandidat);
+  t.erSann(r.avvist.indexOf('fodselsnummer') !== -1);
+  t.erSann(r.avvist.indexOf('bilde') !== -1);
+});
+
+t.test('helseopplysning i erfaringsfeltet stopper hele søknaden', function () {
+  var r = HB.taImot({ fornavn: 'Lena', erfaring: 'Jobbet med demens og medisinutdeling' });
+  t.erUsann(r.ok);
+  t.erSann(r.kategorier.indexOf('helse') !== -1, r.kategorier.join(','));
+});
+
+t.test('kandidat uten opptak slettes etter fristen', function () {
+  var laget = new Date('2026-01-01T09:00:00Z').toISOString();
+  var k = { fornavn: 'Ida', status: 'avslag', opprettet: laget };
+  t.erUsann(HB.skalSlettes(k, '2026-03-01T09:00:00Z'));
+  t.erSann(HB.skalSlettes(k, '2026-05-01T09:00:00Z'));
+});
+
+t.test('aktiv medarbeider slettes ikke av basen', function () {
+  var k = { fornavn: 'Sofia', status: 'aktiv', opprettet: '2020-01-01T09:00:00Z' };
+  t.erUsann(HB.skalSlettes(k, '2026-01-01T09:00:00Z'));
+  t.erSann(HB.FRISTER.ansatt.maaAvklares, 'fristen for ansatte skal være merket som uavklart');
+});
+
+t.test('ryddingen fjerner det som har gått ut på dato', function () {
+  var base = { kandidater: [
+    { fornavn: 'A', status: 'avslag', opprettet: '2026-01-01T09:00:00Z' },
+    { fornavn: 'B', status: 'ny',     opprettet: '2026-05-01T09:00:00Z' },
+    { fornavn: 'C', status: 'aktiv',  opprettet: '2020-01-01T09:00:00Z' }
+  ] };
+  var etter = HB.rydd(base, '2026-05-10T09:00:00Z');
+  t.erLik(etter.kandidater.length, 2);
+  t.erUsann(etter.kandidater.some(function (k) { return k.fornavn === 'A'; }));
+});
+
+t.test('det går ikke an å søke på noe som ikke gjelder arbeidet', function () {
+  /* Feltene finnes ikke, men søket sperrer også - ellers blir en framtidig
+     kolonne søkbar bare fordi noen la den til. */
+  var base = { kandidater: [{ fornavn: 'A', bydel: 'Sagene' }] };
+  t.erLik(HB.sok(base, { bydel: 'Sagene' }).length, 1);
+  var feilet = false;
+  try { HB.sok(base, { fornavn: 'A' }); } catch (e) { feilet = true; }
+  t.erSann(feilet, 'søk på fornavn burde vært sperret');
 });
 
 t.oppsummer('Enhetstester');

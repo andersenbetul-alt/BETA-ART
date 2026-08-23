@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bli medarbeider – Naviar Care</title>
+<meta name="description" content="Registrer deg som medarbeider. Vi ber om det vi trenger for å vurdere søknaden, og ingenting mer.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/besok.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23101a2e'/><path fill='%23ffffff' fill-rule='evenodd' d='M16 6.4 6.2 26.4h4.3L16 15.1l5.5 11.3h4.3L16 6.4ZM12.4 22.3h7.2l2 4.1h-11.2l2-4.1Z'/></svg>">
+</head>
+<body class="besok">
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="b-topp">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="20" height="20"><path fill="currentColor" fill-rule="evenodd" d="M16 3.2 3.4 28.8h5.1L16 13.6l7.5 15.2h5.1L16 3.2ZM11.1 23.6h9.8l2.2 4.4H8.9l2.2-4.4Z"/></svg></span> Naviar Care</a>
+    <nav aria-label="Hovedmeny">
+      <a href="index.html">Slik virker det</a>
+      <a href="bli-medarbeider.html" aria-current="page">Bli medarbeider</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="b-flate">
+  <div class="wrap" style="max-width:720px">
+    <h1>Bli medarbeider</h1>
+    <p class="lede">
+      Vi ber om det vi trenger for å vurdere søknaden, og ingenting mer.
+      Det tar rundt fem minutter, og du trenger ikke å laste opp noe.
+    </p>
+
+    <div class="b-kort" id="hvorfor-kort">
+      <h2 style="margin-top:0">Hvorfor vi ikke ber om CV</h2>
+      <p class="muted">
+        En CV inneholder alltid mer enn vi trenger: fødselsdato, bilde, sivilstand,
+        noen ganger helseopplysninger. Alt vi mottar, blir vårt å sikre og vårt å
+        slette. Derfor spør vi i stedet om de tingene som faktisk avgjør om du kan
+        ta et oppdrag.
+      </p>
+      <p class="muted" id="ikke-lagres"></p>
+    </div>
+
+    <div class="b-kort">
+      <form id="soknad-skjema" novalidate>
+
+        <div class="field">
+          <label for="fornavn">Fornavn <span class="req">*</span></label>
+          <input type="text" id="fornavn" name="fornavn" autocomplete="given-name" required>
+          <p class="error-text" data-error-for="fornavn">Fyll inn fornavn.</p>
+        </div>
+
+        <div class="field">
+          <label for="etternavn">Etternavn <span class="req">*</span></label>
+          <input type="text" id="etternavn" name="etternavn" autocomplete="family-name" required>
+          <p class="error-text" data-error-for="etternavn">Fyll inn etternavn.</p>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="telefon">Telefon <span class="req">*</span></label>
+            <input type="tel" id="telefon" name="telefon" inputmode="tel" autocomplete="tel" placeholder="900 00 000" required>
+            <p class="error-text" data-error-for="telefon">Skriv inn et norsk telefonnummer.</p>
+          </div>
+          <div class="field">
+            <label for="epost">E-post <span class="req">*</span></label>
+            <input type="email" id="epost" name="epost" inputmode="email" autocomplete="email" required>
+            <p class="error-text" data-error-for="epost">Skriv inn en gyldig e-postadresse.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="bydel">Bydel eller område du kan ta oppdrag i <span class="req">*</span></label>
+          <span class="hint">Vi spør ikke om adressen din. Bydel er nok til å tildele oppdrag.</span>
+          <input type="text" id="bydel" name="bydel" placeholder="F.eks. Sagene" required>
+          <p class="error-text" data-error-for="bydel">Fyll inn bydel eller område.</p>
+        </div>
+
+        <div class="field">
+          <label for="transport">Hvordan kommer du deg dit? <span class="req">*</span></label>
+          <select id="transport" name="transport" required>
+            <option value="">Velg</option>
+            <option value="gange">Til fots</option>
+            <option value="sykkel">Sykkel</option>
+            <option value="kollektiv">Kollektivt</option>
+            <option value="bil">Egen bil</option>
+          </select>
+          <span class="hint">Egen bil brukes til å komme fram. Kunder kjøres aldri i medarbeiderens bil.</span>
+          <p class="error-text" data-error-for="transport">Velg ett alternativ.</p>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Dager du kan arbeide <span class="req">*</span></span>
+          <div class="option-grid" id="dagerliste"></div>
+          <p class="error-text" data-error-for="dager">Velg minst én dag.</p>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Tider på dagen <span class="req">*</span></span>
+          <div class="option-grid" id="tiderliste"></div>
+          <p class="error-text" data-error-for="tider">Velg minst ett tidsrom.</p>
+        </div>
+
+        <div class="field">
+          <label for="norsknivaa">Norsk, muntlig <span class="req">*</span></label>
+          <span class="hint">
+            Minstekravet er B1: du forstår klare instrukser, kan forklare et problem
+            og skrive en enkel rapport. Nivået bekreftes av oss, ikke av søknaden.
+          </span>
+          <select id="norsknivaa" name="norsknivaa" required>
+            <option value="">Velg</option>
+            <option value="A2">A2 eller lavere</option>
+            <option value="B1">B1</option>
+            <option value="B2">B2</option>
+            <option value="C1">C1 eller høyere</option>
+            <option value="morsmal">Morsmål</option>
+          </select>
+          <p class="error-text" data-error-for="norsknivaa">Velg ett nivå.</p>
+        </div>
+
+        <div class="field">
+          <label for="andreSprak">Andre språk du snakker <span class="optional">(valgfritt)</span></label>
+          <span class="hint">Noen kunder ønsker en medarbeider som snakker deres språk.</span>
+          <input type="text" id="andreSprak" name="andreSprak" placeholder="F.eks. polsk, somali">
+        </div>
+
+        <div class="field">
+          <label for="erfaring">Kort om erfaringen din <span class="optional">(valgfritt)</span></label>
+          <textarea id="erfaring" name="erfaring" maxlength="400"
+            placeholder="F.eks. «Har hjulpet naboen min med handling og turer i to år.»"></textarea>
+          <p class="hint">
+            Skriv om arbeidet, ikke om helse – verken din egen eller andres.
+            Ikke skriv fødselsnummer, kontonummer eller koder.
+          </p>
+          <p class="error-text" data-error-for="erfaring">Denne teksten kan ikke lagres.</p>
+          <p class="b-helsevarsel">
+            Feltet stopper helseopplysninger før de lagres. Det er ikke mistillit til deg –
+            det er den samme sperren som gjelder rapportene fra besøkene.
+          </p>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Referanser <span class="req">*</span></span>
+          <span class="hint">
+            To personer som kjenner deg fra arbeid eller frivillighet. Ikke familie.
+            Vi ringer dem, og du vet at vi gjør det. Vi lagrer konklusjonen fra
+            samtalen, ikke hva som ble sagt.
+          </span>
+          <input type="text" id="ref1" name="ref1" placeholder="Referanse 1 – navn, relasjon og telefon" required>
+          <p class="error-text" data-error-for="ref1">Fyll inn den første referansen.</p>
+          <input type="text" id="ref2" name="ref2" placeholder="Referanse 2 – navn, relasjon og telefon" required
+                 style="margin-top:10px">
+          <p class="error-text" data-error-for="ref2">Fyll inn den andre referansen.</p>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Bekreftelser <span class="req">*</span></span>
+          <div class="option-grid" id="bekreftelser"></div>
+          <p class="error-text" data-error-for="bekreftelser">Alle punktene må bekreftes.</p>
+        </div>
+
+        <button class="btn btn-primary" type="submit" style="width:100%">Send søknaden</button>
+        <p class="hint" style="text-align:center;margin-top:10px" id="slettefrist"></p>
+      </form>
+
+      <div id="kvittering" hidden>
+        <h2 style="margin-top:0">Søknaden er registrert</h2>
+        <p class="muted" id="kvittering-tekst"></p>
+        <h3>Slik går det videre</h3>
+        <ol class="muted" id="kvittering-trinn"></ol>
+      </div>
+    </div>
+
+    <div class="b-kort">
+      <h2 style="margin-top:0">Dette lagrer vi, og hvor lenge</h2>
+      <div class="table-scroll" style="border:none">
+        <table class="b-tabell" id="felttabell" style="min-width:480px">
+          <thead><tr><th scope="col">Opplysning</th><th scope="col">Hvorfor, og hvor lenge</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/besok-vern.js"></script>
+<script src="../assets/js/besok-sprakkrav.js"></script>
+<script src="../assets/js/hjelper-opptak.js"></script>
+<script src="../assets/js/hjelper-base.js"></script>
+<script src="../assets/js/hjelper-registrering.js"></script>
+</body>
+</html>

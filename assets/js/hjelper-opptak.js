@@ -192,7 +192,186 @@ window.PP_HJELPER = (function () {
       'Prosedyre for nødhjelp og hendelsesmelding' ] }
   ];
 
-  var PROVE = { terskel: 85, gjentak: 'Kan tas om igjen etter fornyet gjennomgang' };
+  var PROVE = {
+    terskel: 85,
+    antall: 20,
+    /* 17 av 20 er 85 %. Terskelen fanger slurv. De kritiske spørsmålene
+       fanger noe annet: et galt svar der betyr at noen kan bli skadet eller
+       svindlet, og da hjelper det ikke at resten satt. */
+    gjentak: 'Kan tas om igjen etter fornyet gjennomgang av modulen'
+  };
+
+  var PROVESPORSMAL = [
+    { nr: 1, modul: 1, kritisk: true,
+      sporsmal: 'Hva er Naviar Care?',
+      valg: ['En helsetjeneste', 'En nødtjeneste',
+             'Praktisk og sosial hjelp til eldre som klarer seg selv',
+             'Hjemmesykepleie'],
+      riktig: 2,
+      hvorfor: 'Tror medarbeideren at hun leverer helsehjelp, gjør hun det før eller siden.' },
+    { nr: 2, modul: 1, kritisk: false,
+      sporsmal: 'Du får spørsmål om noe som ikke står i oppdraget. Hva gjør du?',
+      valg: ['Gjør det hvis det er raskt', 'Gjør det ikke, og gir beskjed til kontoret',
+             'Spør familien på telefon og gjør det', 'Noterer det i rapporten og gjør det'],
+      riktig: 1,
+      hvorfor: 'Oppdraget er avgrenset på forhånd. Det er avgrensningen som er sikkerheten.' },
+    { nr: 3, modul: 1, kritisk: true,
+      sporsmal: 'Familien spør om du kan komme privat neste uke, utenom løsningen.',
+      valg: ['Ja, hvis prisen er den samme', 'Ja, det er opp til meg',
+             'Nei. Alt går gjennom løsningen', 'Ja, men jeg sier fra etterpå'],
+      riktig: 2,
+      hvorfor: 'Utenfor løsningen finnes ingen forsikring, ingen logg og ingen som svarer.' },
+    { nr: 4, modul: 1, kritisk: false,
+      sporsmal: 'Hun spør deg om hun bør ta den nye tabletten legen ga henne.',
+      valg: ['Si hva du selv ville gjort', 'Slå det opp på telefonen',
+             'Si at du ikke kan svare på det, og vis til fastlegen', 'Spør familien'],
+      riktig: 2,
+      hvorfor: 'Et helseråd er helsehjelp, uansett hvor vennlig det er ment.' },
+
+    { nr: 5, modul: 2, kritisk: true,
+      sporsmal: 'Du kommer, og den eldre sier hun ikke vil ha besøk.',
+      valg: ['Går inn, siden familien har bestilt', 'Venter utenfor til hun ombestemmer seg',
+             'Går igjen og gir beskjed til kontoret', 'Ringer familien og går inn hvis de sier ja'],
+      riktig: 2,
+      hvorfor: 'Hjemmet er hennes. Familien kan bestille, men bare hun kan slippe deg inn.' },
+    { nr: 6, modul: 2, kritisk: false,
+      sporsmal: 'Hun hører dårlig. Hva gjør du?',
+      valg: ['Snakker høyere og fortere', 'Snakker tydelig, vendt mot henne, i vanlig tempo',
+             'Skriver alt ned i stedet', 'Ber familien være med'],
+      riktig: 1,
+      hvorfor: 'Å rope gjør ikke ordene tydeligere. Det gjør bare samtalen ubehagelig.' },
+    { nr: 7, modul: 2, kritisk: false,
+      sporsmal: 'Hun vil noe annet enn det familien har sagt at hun burde.',
+      valg: ['Følger familiens ønske', 'Følger hennes ønske innenfor oppdraget',
+             'Avbryter oppdraget', 'Lar være å si noe til noen'],
+      riktig: 1,
+      hvorfor: 'Hun er myndig. Familien betaler, men bestemmer ikke over henne.' },
+    { nr: 8, modul: 2, kritisk: false,
+      sporsmal: 'Hvordan tiltaler du henne?',
+      valg: ['Som et barn, det virker vennlig', 'Som en voksen',
+             'Med kjælenavn', 'Så kort som mulig'],
+      riktig: 1,
+      hvorfor: 'Barnespråk er den vanligste måten å krenke noen på uten å mene det.' },
+
+    { nr: 9, modul: 3, kritisk: true,
+      sporsmal: 'Hun ber deg gi henne medisinen som ligger på bordet.',
+      valg: ['Gir den, hun har jo bedt om det', 'Gir den hvis familien sier ja på telefon',
+             'Gjør det ikke, forklarer grensen og melder fra', 'Legger den nærmere henne'],
+      riktig: 2,
+      hvorfor: 'Medisinering er helsehjelp. Grensen gjelder også når den virker liten.' },
+    { nr: 10, modul: 3, kritisk: true,
+      sporsmal: 'Hun ber om hjelp til å komme seg i dusjen.',
+      valg: ['Hjelper forsiktig', 'Hjelper hvis hun holder seg selv',
+             'Gjør det ikke, og melder fra', 'Henter en stol'],
+      riktig: 2,
+      hvorfor: 'Personlig stell krever opplært pleiepersonell. Fallrisikoen er reell for begge.' },
+    { nr: 11, modul: 3, kritisk: false,
+      sporsmal: 'Hun ber deg flytte en tung kommode.',
+      valg: ['Gjør det alene', 'Gjør det ikke, og sier det på en måte som ikke gjør henne flau',
+             'Gjør det hvis den ikke er for tung', 'Ber naboen hjelpe'],
+      riktig: 1,
+      hvorfor: 'Et nei kan gis uten at noen føler seg til bry.' },
+    { nr: 12, modul: 3, kritisk: true,
+      sporsmal: 'Hun ber deg skrive under som vitne på et dokument.',
+      valg: ['Skriver under', 'Skriver under hvis hun forklarer hva det er',
+             'Gjør det ikke, uansett hva dokumentet er', 'Tar bilde av det og spør kontoret'],
+      riktig: 2,
+      hvorfor: 'Et vitne i en arvesak er en part i en konflikt. Aldri.' },
+
+    { nr: 13, modul: 4, kritisk: true,
+      sporsmal: 'Hun gir deg BankID-koden sin og ber om hjelp til å betale en regning.',
+      valg: ['Hjelper, hun har jo gitt koden', 'Hjelper og sletter koden etterpå',
+             'Bruker den ikke, forklarer hvorfor, og melder fra', 'Ber henne gjøre det mens du ser på'],
+      riktig: 2,
+      hvorfor: 'Med koden er du inne i hele økonomien hennes. Det finnes ingen trygg versjon av dette.' },
+    { nr: 14, modul: 4, kritisk: true,
+      sporsmal: 'Familien ber om et bilde fra stua for å se at det er ryddig.',
+      valg: ['Tar bildet', 'Tar bildet hvis hun sier ja',
+             'Tar det ikke. Bilder fra hjemmet finnes ikke i tjenesten', 'Tar det uten ansikter'],
+      riktig: 2,
+      hvorfor: 'Bilder fra et hjem er overvåking av et hjem. Ikke i noen versjon.' },
+    { nr: 15, modul: 4, kritisk: false,
+      sporsmal: 'Kan du lagre et dokument fra henne på din egen telefon?',
+      valg: ['Ja, hvis du sletter det etterpå', 'Ja, hvis det er nødvendig for oppdraget',
+             'Nei', 'Ja, hvis familien ber om det'],
+      riktig: 2,
+      hvorfor: 'Telefonen din er ikke en del av tjenesten, og har ikke tjenestens sletting.' },
+    { nr: 16, modul: 4, kritisk: false,
+      sporsmal: 'Hun vil ha ditt private telefonnummer.',
+      valg: ['Gir det, det er hyggeligere', 'Bruker meldingene i løsningen i stedet',
+             'Gir det bare til familien', 'Gir et gammelt nummer'],
+      riktig: 1,
+      hvorfor: 'Kontakt utenfor løsningen er kontakt uten logg og uten noen som kan hjelpe.' },
+
+    { nr: 17, modul: 5, kritisk: true,
+      sporsmal: 'Du kommer fram, og situasjonen i boligen virker utrygg.',
+      valg: ['Går inn, oppdraget er bestilt', 'Går inn og holder deg nær døra',
+             'Går ikke inn. Melder fra og venter på beskjed', 'Ringer familien og går inn'],
+      riktig: 2,
+      hvorfor: 'Din egen sikkerhet er ikke forhandlingsbar, og et avbrutt oppdrag koster lite.' },
+    { nr: 18, modul: 5, kritisk: true,
+      sporsmal: 'Hun har falt og kommer seg ikke opp.',
+      valg: ['Løfter henne opp', 'Ringer familien først',
+             'Ringer 113 først, deretter Naviar og familien', 'Skriver det i rapporten'],
+      riktig: 2,
+      hvorfor: 'Ved fare for liv og helse går nødetaten først. Alt annet kan vente noen minutter.' },
+    { nr: 19, modul: 5, kritisk: true,
+      sporsmal: 'Noen i boligen truer deg.',
+      valg: ['Prøver å roe situasjonen', 'Fullfører oppdraget raskt',
+             'Går, og melder fra', 'Ringer familien og spør hva du skal gjøre'],
+      riktig: 2,
+      hvorfor: 'Du skal gå. Ingen oppgave i katalogen er verdt å bli stående for.' },
+    { nr: 20, modul: 5, kritisk: false,
+      sporsmal: 'Når deles posisjonen din?',
+      valg: ['Hele arbeidsdagen', 'Bare mens oppdraget pågår',
+             'Aldri', 'Når kontoret ber om det'],
+      riktig: 1,
+      hvorfor: 'Sporing utenfor oppdraget er sporing av en ansatt, og det er noe annet.' }
+  ];
+
+  /* Referansesamtalen. Åpne spørsmål, fordi ja/nei gir ja/nei. Kandidaten skal
+     vite at samtalen skjer – det er en forutsetning, ikke en høflighet. */
+  var REFERANSE = {
+    antall: 2,
+    kandidatenVet: true,
+    lagres: ['at samtalen er gjennomført', 'dato', 'hvem som snakket', 'konklusjon'],
+    lagresAldri: ['ordrett referat', 'opplysninger om helse eller familie',
+                  'noe som ikke gjelder arbeidet'],
+    sporsmal: [
+      'I hvilken sammenheng kjenner du kandidaten, og hvor lenge?',
+      'Hvordan er hun med mennesker som trenger tid?',
+      'Har du sett henne håndtere at noe gikk galt? Hva gjorde hun?',
+      'Møter hun opp til avtalt tid?',
+      'Er det noe du mener vi bør vite før hun arbeider alene hos en eldre person?'
+    ]
+  };
+
+  /* Prøveoppdraget. Ett oppdrag, i kontortiden, med en operatør tilgjengelig
+     på telefon. Hensikten er ikke å teste om hun kan vaske opp. */
+  var PROVEOPPDRAG = {
+    antall: 1,
+    krav: [
+      'Grønn oppgave fra katalogen',
+      'Kunde som har sagt ja til at det er et prøveoppdrag',
+      'Innenfor kontortiden til operasjon',
+      'Operatør tilgjengelig på telefon hele oppdraget',
+      'Kort samtale med kandidaten før og etter'
+    ],
+    vurderes: [
+      'Kom hun til avtalt tid',
+      'Presenterte hun seg og forklarte hva hun skulle gjøre',
+      'Holdt hun seg innenfor oppdraget',
+      'Ga hun beskjed om det som ikke gikk',
+      'Er rapporten konkret og uten helseopplysninger'
+    ],
+    stopper: [
+      'Gikk inn uten at den eldre ville ha besøk',
+      'Utførte noe utenfor oppdraget',
+      'Skrev en helseopplysning i rapporten',
+      'Kom ikke, uten å gi beskjed'
+    ]
+  };
+
 
   /* ---------------------------------------------------------------
      4. Risiko på oppdraget
@@ -341,6 +520,9 @@ window.PP_HJELPER = (function () {
     SCENARIER: SCENARIER,
     MODULER: MODULER,
     PROVE: PROVE,
+    PROVESPORSMAL: PROVESPORSMAL,
+    REFERANSE: REFERANSE,
+    PROVEOPPDRAG: PROVEOPPDRAG,
     RISIKONIVA: RISIKONIVA,
     GUL_UTLOSER: GUL_UTLOSER,
     HENDELSE: HENDELSE,

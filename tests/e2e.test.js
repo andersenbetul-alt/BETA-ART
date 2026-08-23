@@ -504,7 +504,8 @@ if (!pw) {
     ['besok/nytt.html',      'Nytt besøk'],
     ['besok/oversikt.html',  'Oversikt'],
     ['besok/historikk.html', 'Historikk'],
-    ['besok/utfor.html',     'besøk']
+    ['besok/utfor.html',     'besøk'],
+    ['besok/bli-medarbeider.html', 'Bli medarbeider']
   ];
 
   for (var b = 0; b < BESOK.length; b++) {
@@ -606,6 +607,73 @@ if (!pw) {
   await flyt.close();
 
   /* ---------------- mobil ---------------- */
+
+
+  t.gruppe('Registrering av medarbeider');
+
+  var reg = await nySide();
+  await reg.goto(BASE + 'besok/bli-medarbeider.html', { waitUntil: 'domcontentloaded' });
+  await reg.waitForSelector('#bekreftelser input');
+
+  var harFil = await reg.$$eval('input[type="file"]', function (a) { return a.length; });
+  t.test('skjemaet tar ikke imot filer', function () {
+    /* En CV vi har mottatt, er vår å sikre og slette - også når vi ikke ba
+       om den. Sperren skal stå i skjemaet, ikke i en instruks. */
+    t.erLik(harFil, 0);
+  });
+
+  var tekst = await reg.textContent('#ikke-lagres');
+  t.test('siden sier hva den ikke spør om', function () {
+    t.erSann(/fødselsdato/i.test(tekst || ''), tekst);
+    t.erSann(/cv/i.test(tekst || ''), tekst);
+  });
+
+  var frist = await reg.textContent('#slettefrist');
+  t.test('slettefristen står før knappen, ikke i en erklæring', function () {
+    t.erSann(/90 dager/.test(frist || ''), frist);
+  });
+
+  await reg.fill('#fornavn', 'Sofia');
+  await reg.fill('#etternavn', 'Hansen');
+  await reg.fill('#telefon', '90000000');
+  await reg.fill('#epost', 'sofia@example.no');
+  await reg.fill('#bydel', 'Sagene');
+  await reg.selectOption('#transport', 'kollektiv');
+  await reg.selectOption('#norsknivaa', 'B1');
+  await reg.check('#dagerliste input[value="Tirsdag"]');
+  await reg.check('#tiderliste input[value="formiddag"]');
+  await reg.fill('#ref1', 'Kari Nordmann, tidligere leder, 90000001');
+  await reg.fill('#ref2', 'Per Olsen, frivilligsentralen, 90000002');
+  var bokser = await reg.$$('#bekreftelser input');
+  for (var bi = 0; bi < bokser.length; bi++) await bokser[bi].check();
+
+  await reg.fill('#erfaring', 'Har hjulpet naboen med medisiner og blodtrykk');
+  await reg.click('#soknad-skjema button[type="submit"]');
+  await reg.waitForTimeout(200);
+  var stoppet = await reg.isVisible('[data-error-for="erfaring"].show');
+  t.test('helseopplysning i fritekst stopper søknaden', function () {
+    t.erSann(stoppet, 'søknaden gikk gjennom med en helseopplysning');
+  });
+
+  await reg.fill('#erfaring', 'Har handlet og gått turer med naboen min i to år');
+  await reg.click('#soknad-skjema button[type="submit"]');
+  await reg.waitForSelector('#kvittering:not([hidden])', { timeout: 4000 });
+  var kvitt = await reg.textContent('#kvittering-tekst');
+  t.test('gyldig søknad gir kvittering med kontaktinformasjonen', function () {
+    t.erSann(/Sofia/.test(kvitt || ''), kvitt);
+    t.erSann(/sofia@example\.no/.test(kvitt || ''), kvitt);
+  });
+
+  var lagret = await reg.evaluate(function () {
+    var b = JSON.parse(localStorage.getItem('pp_hjelperbase_v1') || '{}');
+    return (b.kandidater || [])[0] || {};
+  });
+  t.test('bare de kjente feltene ligger i basen', function () {
+    t.erSann(!('fodselsdato' in lagret) && !('bilde' in lagret) && !('adresse' in lagret),
+      Object.keys(lagret).join(', '));
+    t.erLik(lagret.status, 'ny');
+  });
+  await reg.close();
 
   t.gruppe('Naviar Care på mobil');
 
