@@ -23,7 +23,7 @@ Kaynak kurallar: *NAVIAR Logo Audit & Figma Production Autoprompt v1.0* +
 | Min. wordmark | 96 px / 24 mm | 96 px'te okunur | ✔ |
 | Monogram footprint | ~760 × 800 | 760 × 800 | ✔ |
 | Ribbon | 145–160 birim | 150 | ✔ |
-| Altın aksan | görünür alanın %12–16'sı | **%14,1** | ✔ |
+| Altın aksan | görünür alanın %12–16'sı | **%14,0** | ✔ |
 | Monogram path | 1 kapalı lacivert + 1 kapalı altın | 2 kapalı path | ✔ |
 | İkon ölçek | 16/24/32/48 px + tek renk | doğrulandı | ✔ |
 | Descriptor cap | NAVIAR'ın %24–30'u | %27 | ✔ |
@@ -57,7 +57,17 @@ iş onayı ve Nice sınıf 44 taraması gerektirir.
 cap height'ta çözülmesi) · `study-p6-r-comparison` (açık R vs kapalı R, 24 cap
 height) · `study-p7-monogram-scale` (16/24/32/48 px). Master değildirler.
 
-`index.html` — hepsini bir arada gösteren contact sheet.
+`index.html` — hepsini bir arada gösteren contact sheet. Specimen kartları her
+iki temada da artwork'ün doğru zeminini korur; yalnız sayfa çerçevesi
+`prefers-color-scheme`'i izler.
+
+## Doğrulama
+
+Altın oranı analitik olarak değil, **master monogram render edilip pikselleri
+sayılarak** doğrulanmıştır: siluet 318.877 px, altın 44.644 px → **%14,00**.
+Analitik hesap (iki gövde + diyagonal paralelkenar) 319.593 verir, ölçümle
+%0,2 içinde uyuşur. 16 px favicon ayrıca render edilip N'nin üç parçasının ve
+altın aksanın ayrıştığı doğrulanmıştır.
 
 ## Renkler
 

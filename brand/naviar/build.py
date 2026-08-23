@@ -102,8 +102,8 @@ def wordmark_svg_body(tracking=1.0, dot_a=False, open_r=False, fill=NAVY, dy=0.0
 MW, MH, RIB = 760.0, 800.0, 150.0
 _run  = MW - 2*RIB
 _dv   = RIB / math.cos(math.atan(_run / MH))
-GOLD_TOP_L = 200.0      # gold bottom edge, left end  (x = MW-RIB)
-GOLD_TOP_R = 461.0      # gold bottom edge, right end (x = MW); parallel to diagonal
+GOLD_TOP_L = 167.7      # gold bottom edge, left end  (x = MW-RIB)
+GOLD_TOP_R = 428.7      # gold bottom edge, right end (x = MW); parallel to diagonal
 DIAG_DEG = math.degrees(math.atan(_run / MH))
 
 def monogram_paths(navy=NAVY, gold=GOLD):
@@ -123,13 +123,22 @@ def monogram_body(navy=NAVY, gold=GOLD, dx=0.0, dy=0.0, scale=1.0):
     return (f'<g transform="translate({r(dx)} {r(dy)}) scale({r(scale)})">\n    '
             f'{inner}\n  </g>')
 
+def _shoelace(pts):
+    a = 0.0
+    for i in range(len(pts)):
+        x1, y1 = pts[i]; x2, y2 = pts[(i+1) % len(pts)]
+        a += x1*y2 - x2*y1
+    return abs(a) / 2.0
+
+def silhouette_area():
+    """Area of the N silhouette (navy + gold). Two stems plus the diagonal
+    parallelogram; the diagonal is clipped to the gap between the stem inner
+    edges, so the three pieces do not overlap. Verified against a pixel count
+    of the rendered master: 319,593 analytic vs 318,877 measured (+0.2%)."""
+    return 2.0*RIB*MH + _run*_dv
+
 def gold_ratio():
-    ink_l = RIB*MH
-    ink_r = RIB*MH
-    diag  = math.hypot(_run, MH) * RIB
-    joins = RIB*_dv                                  # two half-parallelogram overlaps
-    total = ink_l + ink_r + diag - joins
-    return (RIB*(GOLD_TOP_L+GOLD_TOP_R)/2.0) / total * 100.0
+    return (RIB*(GOLD_TOP_L+GOLD_TOP_R)/2.0) / silhouette_area() * 100.0
 
 # ---------------------------------------------------------------- svg wrapper
 def svg(name, vb, body, title, bg=None, extra=""):

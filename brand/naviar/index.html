@@ -16,11 +16,14 @@
  h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);
     margin:44px 0 14px;font-weight:600}
  .grid{display:flex;flex-wrap:wrap;gap:16px}
- .c{background:var(--card);border:1px solid var(--line);border-radius:10px;
+ /* Specimen cards keep the artwork's intended ground in BOTH themes --
+    navy artwork on light, reverse artwork on navy. Only the page chrome
+    follows prefers-color-scheme. */
+ .c{background:#fff;border:1px solid #dfe3e8;border-radius:10px;
     padding:22px;display:flex;flex-direction:column;align-items:center;
     justify-content:center;gap:12px;min-width:0}
  .c.rev{background:#0A1628;border-color:#1b2b44}
- .lab{font:11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--mut);
+ .lab{font:11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#5b6876;
       letter-spacing:.04em;text-align:center}
  .c.rev .lab{color:#8a9bb0}
  img{display:block;max-width:100%;height:auto}
@@ -60,7 +63,7 @@
 
 <h2>Monogram ve ikonlar</h2>
 <div class="grid">
-  <div class="c"><img src="master/naviar-monogram.svg" width="133"><span class="lab">two-tone · altın %14,1</span></div>
+  <div class="c"><img src="master/naviar-monogram.svg" width="133"><span class="lab">two-tone · altın %14,0</span></div>
   <div class="c"><img src="master/naviar-monogram-mono-dark.svg" width="133"><span class="lab">tek renk</span></div>
   <div class="c"><img src="master/naviar-icon-app.svg" width="104"><span class="lab">app icon</span></div>
   <div class="c"><img src="master/naviar-icon-favicon.svg" width="64"><span class="lab">64</span></div>
