@@ -28,6 +28,11 @@ window.QB_CONFIG = {
     p3: ''    // Stüdyo
   },
 
+  /* Stripe Payment Link adresleri. Dolu olan pakette "Kartla öde" düğmesi
+     çıkar; boş bırakılan pakette yalnız brief akışı kalır.
+     Bağlantı üretimi: docs/odeme-sistemi.md */
+  payLinks: { p1: '', p2: '', p3: '' },
+
   /* Bültene kayıt karşılığında verilen indirilebilir dosya (lead magnet) */
   leadMagnet: 'assets/downloads/otomasyon-kesif-listesi.html',
 

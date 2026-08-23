@@ -188,6 +188,7 @@
   var CFG = window.QB_CONFIG || {};
   var SITE_URL = CFG.siteUrl || 'https://qblogg.com';
   var SOCIAL = CFG.social || {};
+  var PAY = CFG.payLinks || {};
 
   function setJsonLd(id, data) {
     var el = document.getElementById(id);
@@ -549,6 +550,35 @@
     });
   }
 
+  // Paket kartlarındaki "Kartla öde" düğmesi: adresi config.js → payLinks'te
+  // dolu olan pakette CTA'nın altına eklenir, boş pakette hiç eklenmez
+  // (sosyal bağlantılarla aynı gerekçe — ölü bağlantı istemiyoruz).
+  function applyPayLinks() {
+    var plans = $$('#packages .plan');
+    ['p1', 'p2', 'p3'].forEach(function (k, i) {
+      var plan = plans[i];
+      if (!plan) return;
+      var url = PAY[k];
+      var btn = plan.querySelector('[data-pay]');
+      if (url) {
+        if (!btn) {
+          btn = document.createElement('a');
+          btn.className = 'btn btn--ghost btn--block';
+          btn.setAttribute('data-pay', '');
+          btn.setAttribute('rel', 'noopener');
+          btn.setAttribute('data-i18n', 'pay.card');
+          plan.appendChild(btn);
+        }
+        btn.href = url;
+        btn.textContent = t('pay.card');
+      } else if (btn) {
+        btn.remove();
+      }
+    });
+    var note = $('#payNote');
+    if (note) note.hidden = !(PAY.p1 || PAY.p2 || PAY.p3);
+  }
+
   function toast(msg) {
     var el = $('#toast');
     if (!el) return;
@@ -791,7 +821,7 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  function renderAll() { renderHome(); renderBlog(); renderPost(); renderSchema(); applySocial(); }
+  function renderAll() { renderHome(); renderBlog(); renderPost(); renderSchema(); applySocial(); applyPayLinks(); }
   window.QB_RENDER = renderAll; // tek dosyalık önizleme için dışa açıldı
 
   // Altbilgideki telif yılı. Daha önce her sayfada satır içi <script> ile
