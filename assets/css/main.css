@@ -566,3 +566,23 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 /* Bülten karşılığı indirme bağlantısı */
 .magnet-link { margin-top: 4px; background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.5); color: #fff; }
 .magnet-link:hover { background: rgba(255,255,255,.26); }
+
+/* ---------- Yazdırma CSS'i ---------- */
+@media print {
+  .site-header,
+  .site-footer,
+  .skip,
+  #toast,
+  .post-cta,
+  .article-foot,
+  .btn,
+  #themeToggle { display: none !important; }
+
+  .reveal { opacity: 1 !important; transform: none !important; }
+
+  body { background: #fff; color: #000; }
+
+  .article-cover { display: none; }
+
+  .article-body a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .85em; }
+}

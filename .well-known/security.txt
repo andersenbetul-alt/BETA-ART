@@ -1,0 +1,4 @@
+Contact: mailto:hello@qblogg.com
+Expires: 2027-08-23T00:00:00.000Z
+Preferred-Languages: tr, en, no
+Canonical: https://qblogg.com/.well-known/security.txt
