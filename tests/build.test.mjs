@@ -165,6 +165,39 @@ export default async function () {
       }
     });
 
+    /* i18n rewrites document.title and the description once the page runs. No
+       crawler and no link unfurler runs JavaScript, so what LinkedIn, Slack and
+       WhatsApp show is whatever is in the raw <head>. That text had drifted two
+       pivots behind and was advertising "send oss brevet" — the one thing the
+       model refuses to do. It has to match the Norwegian copy, and stay
+       matching. */
+    await test('the static head says what the site actually sells', () => {
+      const no = JSON.parse(fs.readFileSync('assets/i18n/no.json', 'utf8'));
+      const html = fs.readFileSync('index.html', 'utf8');
+      const tag = (re) => (html.match(re) || [])[1];
+
+      equal(tag(/<title>([^<]*)<\/title>/), no.meta.title, '<title>');
+      equal(tag(/<meta name="description" content="([^"]*)"/), no.meta.description, 'description');
+      for (const key of ['og:title', 'twitter:title']) {
+        equal(tag(new RegExp(`"${key}" content="([^"]*)"`)), no.meta.title, key);
+      }
+      for (const key of ['og:description', 'twitter:description']) {
+        equal(tag(new RegExp(`"${key}" content="([^"]*)"`)), no.meta.description, key);
+      }
+    });
+
+    /* The withdrawn services must not survive in metadata either — that is the
+       copy a share preview shows, and nobody reads it while editing a page. */
+    await test('no page advertises a withdrawn service in its metadata', () => {
+      const gone = /send oss brevet|brev forklart|klarhetsplan|clarity in complex systems|forstå brev/i;
+      for (const file of ['index.html', 'karriere.html', 'hva-vi-gjor.html',
+                          'personvern.html', 'vilkar.html']) {
+        const head = fs.readFileSync(file, 'utf8').split('</head>')[0];
+        const hit = head.split('\n').find(l => gone.test(l));
+        assert(!hit, `${file}: ${hit && hit.trim()}`);
+      }
+    });
+
     await test('the service model and the code agree on the workflow', () => {
       const doc = fs.readFileSync('docs/tjenestemodell.md', 'utf8');
       const src = fs.readFileSync('server/db.js', 'utf8');
