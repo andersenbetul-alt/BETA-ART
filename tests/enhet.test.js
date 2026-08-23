@@ -28,6 +28,9 @@ require('../assets/js/maling.js');
 require('../assets/js/merkesprak.js');
 require('../assets/js/hverdagsguide.js');
 require('../assets/js/ki-port.js');
+require('../assets/js/sprak-ui.js');
+require('../assets/js/ekspertbistand.js');
+require('../assets/js/klarhet.js');
 require('../assets/js/besok-klage.js');
 require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
@@ -1639,6 +1642,368 @@ t.test('forbeholdet og godkjenningene står skrevet', function () {
   t.erSann(GD.FORBEHOLD.indexOf('erstatter ikke') !== -1);
   t.erLik(GD.GODKJENNES_AV.length, 2);
   t.erSann(GD.GODKJENNES_AV.some(function (g) { return /helsepersonell/.test(g.av); }));
+});
+
+/* ---------------- Ekspertbistand ---------------- */
+
+var EK = window.PP_EKSPERT;
+
+t.gruppe('Ekspertbistand – grensene');
+
+t.test('legekonsultasjon finnes ikke som kategori', function () {
+  t.erLik(EK.KATEGORI.filter(function (k) { return k.id === 'legekonsultasjon'; }).length, 0);
+  t.erUsann(EK.LEGEKONSULTASJON.bygges);
+  t.erSann(EK.LEGEKONSULTASJON.forutsetninger.length >= 5);
+  t.erSann(/helsehjelp/.test(EK.LEGEKONSULTASJON.hvorfor));
+});
+
+t.test('å be om legekonsultasjon gir grunnen, ikke «ukjent»', function () {
+  var d = EK.sjekkKategorier(['legekonsultasjon']);
+  t.erUsann(d.ok);
+  t.erLik(d.grunn, EK.LEGEKONSULTASJON.hvorfor);
+});
+
+t.test('høyst to fagområder per ekspert', function () {
+  t.erLik(EK.MAKS_KATEGORIER, 2);
+  t.erSann(EK.sjekkKategorier(['nav', 'kommune']).ok);
+  t.erUsann(EK.sjekkKategorier(['nav', 'kommune', 'digital']).ok);
+  t.erUsann(EK.sjekkKategorier([]).ok);
+});
+
+t.test('hver kategori sier hva den ikke gir rett til', function () {
+  EK.KATEGORI.forEach(function (k) {
+    t.erSann(k.girIkkeRett && k.girIkkeRett.length >= 3, k.id + ' mangler grenser');
+    t.erSann(!!k.gjorLettere, k.id + ' mangler hva den gjør lettere');
+  });
+});
+
+t.test('helseveiledning kan ikke vurdere symptomer', function () {
+  var h = EK.kategori('helseveiledning');
+  t.erSann(h.girIkkeRett.join(' ').indexOf('symptom') !== -1);
+  t.erSann(h.girIkkeRett.join(' ').indexOf('diagnose') !== -1);
+  t.erSann(h.akuttvarsel);
+  t.erSann(!!h.maaAvklares);
+  t.erSann(h.sporsmaalViIkkeSvarerPaa.length >= 3);
+});
+
+t.test('digital hjelp rører ikke BankID, heller ikke her', function () {
+  var d = EK.kategori('digital');
+  t.erSann(d.girIkkeRett.join(' ').indexOf('BankID') !== -1);
+});
+
+t.test('harRettTil svarer med grunn, ikke med taushet', function () {
+  var nei = EK.harRettTil('nav', 'Å søke på kundens vegne');
+  t.erUsann(nei.rett);
+  t.erSann(nei.grunn.length > 0);
+  t.erSann(EK.harRettTil('nav', 'forklare saksgangen').rett);
+  t.erUsann(EK.harRettTil('finnesikke', 'noe').rett);
+});
+
+t.test('akuttvarselet har begge numrene', function () {
+  t.erSann(EK.AKUTTVARSEL.tekst.indexOf('116 117') !== -1);
+  t.erSann(EK.AKUTTVARSEL.tekst.indexOf('113') !== -1);
+});
+
+t.gruppe('Ekspertbistand – piloten');
+
+t.test('tre kategorier er åpne, resten har en grunn til å vente', function () {
+  t.erLik(EK.pilotKategorier().length, 3);
+  t.erLik(EK.pilotKategorier().map(function (k) { return k.id; }), ['nav', 'kommune', 'digital']);
+  EK.KATEGORI.filter(function (k) { return !k.pilot; }).forEach(function (k) {
+    t.erSann(!!k.senere, k.id + ' er stengt uten grunn');
+  });
+});
+
+t.test('bare 45 minutter i piloten', function () {
+  t.erLik(EK.pilotLengder().length, 1);
+  t.erLik(EK.pilotLengder()[0].minutter, 45);
+});
+
+t.test('bestilling i en stengt kategori sier hvorfor', function () {
+  var d = EK.bestill({ kategori: 'juridisk', kanal: 'telefon', minutter: 45,
+                       pris: 599, eldreGodkjent: true });
+  t.erUsann(d.ok);
+  t.erLik(d.regel, 'ikke_apen');
+  t.erSann(d.grunn.indexOf('Juridisk') !== -1);
+});
+
+t.test('uten den eldres godkjenning skjer ingenting', function () {
+  var d = EK.bestill({ kategori: 'nav', kanal: 'telefon', minutter: 45, pris: 599 });
+  t.erUsann(d.ok);
+  t.erLik(d.regel, 'venter_godkjenning');
+  t.erSann(d.mangler.indexOf('hvilken ekspert') !== -1);
+  t.erSann(d.mangler.indexOf('hvilken kanal') !== -1);
+});
+
+t.test('prisen må stå før bestillingen', function () {
+  var d = EK.bestill({ kategori: 'nav', kanal: 'telefon', minutter: 45, eldreGodkjent: true });
+  t.erLik(d.regel, 'pris');
+});
+
+t.test('en gyldig bestilling går gjennom, med grensene i svaret', function () {
+  var d = EK.bestill({ kategori: 'nav', kanal: 'video', minutter: 45,
+                       pris: 599, eldreGodkjent: true });
+  t.erSann(d.ok);
+  t.erSann(d.grenser.length >= 3);
+  t.erLik(d.akuttvarsel, null);
+});
+
+t.test('helseveiledning bærer akuttvarselet med seg – men er ikke åpen ennå', function () {
+  t.erUsann(EK.kategori('helseveiledning').pilot);
+});
+
+t.gruppe('Ekspertbistand – verifisering og profil');
+
+t.test('«verifisert» betyr én ting, og den står skrevet', function () {
+  var v = EK.verifisering('nav');
+  t.erLik(v.metode, 'referanse');
+  t.erSann(v.betyrIkke.length > 0);
+  t.erSann(EK.verifisering('helseveiledning').metode === 'hpr');
+  t.erSann(EK.verifisering('juridisk').metode === 'tilsynsradet');
+});
+
+t.test('ingen verifisering lagrer et dokument', function () {
+  Object.keys(EK.VERIFISERING).forEach(function (id) {
+    var v = EK.VERIFISERING[id];
+    t.erSann(v.lagres.length > 0, id);
+    t.erSann(v.lagresIkke.length > 0, id + ' mangler lista over det vi ikke lagrer');
+  });
+  t.erUsann(EK.DOKUMENTER.tas_imot);
+});
+
+t.test('profilen sier «tidligere» og «uavhengig»', function () {
+  var tittel = EK.PROFILTITTEL.mal.replace('{rolle}', 'NAV-rådgiver');
+  t.erSann(tittel.indexOf('Tidligere') === 0);
+  t.erSann(tittel.indexOf('uavhengig') !== -1);
+  t.erSann(EK.PROFILTITTEL.aldri.indexOf('Godkjent av NAV') !== -1);
+});
+
+t.test('kalenderen holder av buffer på begge sider', function () {
+  var e = { apen: true, buffer: 10, ukesmaks: 5,
+            tider: ['2026-09-01T10:00:00Z', '2026-09-01T12:00:00Z'] };
+  var opptatt = [{ start: '2026-09-01T10:30:00Z', minutter: 45 }];
+  var ledig = EK.ledigeTider(e, opptatt, 45);
+  t.erLik(ledig.length, 1);
+  t.erLik(ledig[0], '2026-09-01T12:00:00Z');
+});
+
+t.test('stengt kalender eller full uke gir ingen tider', function () {
+  var e = { apen: false, tider: ['2026-09-01T10:00:00Z'] };
+  t.erLik(EK.ledigeTider(e, [], 45).length, 0);
+  var full = { apen: true, ukesmaks: 1, tider: ['2026-09-01T10:00:00Z'] };
+  t.erLik(EK.ledigeTider(full, [{ start: '2026-09-02T10:00:00Z', minutter: 45 }], 45).length, 0);
+});
+
+t.test('oppsummeringen kan ikke bli en journal', function () {
+  var lang = new Array(160).join('ord ');
+  t.erUsann(EK.sjekkOppsummering(lang).ok);
+  t.erSann(EK.sjekkOppsummering('Ring tildelingskontoret og be om en vurdering.').ok);
+});
+
+/* ---------------- Naviar Klarhet ---------------- */
+
+var KL = window.PP_KLARHET;
+
+t.gruppe('Klarhet – tilbudet');
+
+t.test('én pakke, én pris, ingen abonnement', function () {
+  t.erLik(KL.PAKKE.minutter, 45);
+  t.erLik(KL.PAKKE.pris, 599);
+  t.erLik(KL.PAKKE.tilEkspert, 449);
+  t.erUsann(KL.PAKKE.abonnement);
+  t.erSann(KL.PAKKE.ingenSkjulteTillegg);
+});
+
+t.test('regnestykket tar med kortgebyret', function () {
+  var o = KL.okonomi();
+  t.erLik(o.brutto, 150);
+  t.erSann(o.netto < o.brutto, 'kortgebyret må trekkes fra');
+  t.erLik(o.andel, 25);
+});
+
+t.test('målet om 150 kr per samtale er ikke nådd av dagens deling', function () {
+  // Står som en test og ikke som et notat, fordi 150 er både delingen og
+  // målet. Endres den ene uten den andre, skal noe si fra.
+  var o = KL.okonomi();
+  var mal = KL.MAL30.filter(function (m) { return m.id === 'inntekt'; })[0].mal;
+  t.erSann(o.netto < mal, 'netto ' + o.netto + ' mot mål ' + mal);
+});
+
+t.test('garantien dekker bare det vi styrer over', function () {
+  t.erLik(KL.GARANTI.id, 'riktig_ekspert');
+  t.erSann(KL.GARANTI.garantererIkke.length >= 4);
+  var hva = KL.GARANTI.garantererIkke.map(function (g) { return g.hva; }).join(' ');
+  t.erSann(hva.indexOf('ytelse') !== -1);
+  t.erSann(hva.indexOf('medisinsk') !== -1);
+  KL.GARANTI.garantererIkke.forEach(function (g) {
+    t.erSann(!!g.hvorfor, g.hva + ' mangler begrunnelse');
+  });
+});
+
+t.test('påfunnet knapphet står på forbudslista', function () {
+  t.erSann(KL.ALDRI_SELG.length >= 4);
+  var hva = KL.ALDRI_SELG.map(function (a) { return a.hva; }).join(' ');
+  t.erSann(hva.indexOf('Nedtelling') !== -1);
+  KL.ALDRI_SELG.forEach(function (a) { t.erSann(!!a.hvorfor, a.hva); });
+});
+
+t.test('oppfølgingen er ett spørsmål etter sju dager', function () {
+  t.erLik(KL.OPPFOLGING.dager, 7);
+  t.erLik(KL.OPPFOLGING.svar.length, 3);
+});
+
+t.gruppe('Klarhet – Navigator');
+
+t.test('haster det, får kunden et nummer og ingen bestillingsknapp', function () {
+  var d = KL.navigator({ tema: 'penger', hast: 'akutt' });
+  t.erLik(d.utfall, 'offentlig');
+  t.erUsann(d.bestilling);
+  t.erSann(d.svar.indexOf('113') !== -1);
+});
+
+t.test('helse går ut av tjenesten, ikke inn i en kategori', function () {
+  var d = KL.navigator({ tema: 'helse', hast: 'uker' });
+  t.erLik(d.utfall, 'helsehjelp');
+  t.erUsann(d.bestilling);
+  t.erLik(d.kategori, null);
+});
+
+t.test('haster går foran helse – rekkefølgen er selve regelen', function () {
+  var d = KL.navigator({ tema: 'helse', hast: 'akutt' });
+  t.erLik(d.utfall, 'offentlig');
+});
+
+t.test('skal noen komme hjem, er det praktisk hjelp', function () {
+  var d = KL.navigator({ tema: 'hjelp', hast: 'uker', form: 'hjemme' });
+  t.erLik(d.utfall, 'praktisk');
+  t.erSann(d.bestilling);
+});
+
+t.test('penger på telefon blir Klarhet i NAV-kategorien', function () {
+  var d = KL.navigator({ tema: 'penger', hast: 'uker', form: 'telefon' });
+  t.erLik(d.utfall, 'klarhet');
+  t.erLik(d.kategori, 'nav');
+  t.erSann(d.bestilling);
+  t.erSann(d.gjorIkke.length >= 3, 'grensene skal følge med i svaret');
+});
+
+t.test('fire utfall, og to av dem selger ingenting', function () {
+  t.erLik(KL.UTFALL.length, 4);
+  t.erLik(KL.UTFALL.filter(function (u) { return !u.selger; }).length, 2);
+});
+
+t.test('Navigator svarer uten at noen har betalt', function () {
+  t.erSann(KL.NAVIGATOR.gratis);
+  t.erSann(KL.NAVIGATOR.svarUtenBestilling);
+  t.erLik(KL.NAVIGATOR.sporsmaal.length, 5);
+});
+
+t.gruppe('Klarhet – de tre stegene');
+
+var STEG_OK = [
+  { hvem: 'NAV Kontaktsenter', hva: 'Be om en oversikt over løpende ytelser', telefon: '55 55 33 33' },
+  { hvem: 'Tildelingskontoret i bydelen', hva: 'Søk om vurdering av hjemmetjenester', lenke: 'https://www.oslo.kommune.no' },
+  { hvem: 'Fastlegen', hva: 'Bestill en time for en samlet gjennomgang', telefon: '—' }
+];
+
+t.test('tre steg, hvert med hvem, hva og en vei dit', function () {
+  t.erSann(KL.sjekkTreSteg(STEG_OK).ok);
+});
+
+t.test('to steg er ikke tre', function () {
+  var d = KL.sjekkTreSteg(STEG_OK.slice(0, 2));
+  t.erUsann(d.ok);
+  t.erSann(d.funn.some(function (f) { return f.id === 'antall'; }));
+});
+
+t.test('et steg uten kontaktvei er et råd, ikke et steg', function () {
+  var uten = [{ hvem: 'NAV', hva: 'Ring dem' }, STEG_OK[1], STEG_OK[2]];
+  var d = KL.sjekkTreSteg(uten);
+  t.erUsann(d.ok);
+  t.erSann(d.funn.some(function (f) { return f.id === 'kontaktvei'; }));
+});
+
+t.test('helseopplysninger stoppes i stegene, som overalt ellers', function () {
+  var med = [{ hvem: 'Fastlegen', hva: 'Fortell at hun har diabetes og høyt blodtrykk', telefon: '—' },
+             STEG_OK[1], STEG_OK[2]];
+  var d = KL.sjekkTreSteg(med);
+  t.erUsann(d.ok);
+  t.erSann(d.funn.some(function (f) { return f.id === 'personvern'; }));
+});
+
+t.test('piloten er ikke bedømt før 20 betalte samtaler', function () {
+  t.erLik(KL.pilotdom({ samtaler: 9 }).kode, 'for_tidlig');
+  t.erLik(KL.pilotdom({ samtaler: 20, fullfort: 40 }).kode, 'under_mal');
+  t.erSann(KL.pilotdom({ samtaler: 20, eksperter: 5, fullfort: 75,
+                         igjen: 35, inntekt: 155, klarhet: 85 }).ok);
+});
+
+/* ---------------- Språk ---------------- */
+
+var SP = window.PP_SPRAK_UI;
+
+t.gruppe('Språk på flaten');
+
+t.test('ti språk, og norsk er kilden', function () {
+  t.erLik(SP.SPRAK.length, 10);
+  t.erLik(SP.SPRAK.filter(function (s) { return s.kilde; }).length, 1);
+  t.erLik(SP.SPRAK[0].kode, 'nb');
+});
+
+t.test('ingen oversettelse mangler en streng', function () {
+  var n = SP.nokler();
+  SP.SPRAK.forEach(function (s) {
+    var mangler = n.filter(function (k) { return SP.T[s.kode][k] === undefined; });
+    t.erLik(mangler, [], s.kode + ' mangler strenger');
+  });
+});
+
+t.test('nødnumrene står uendret i hvert eneste språk', function () {
+  SP.SPRAK.forEach(function (s) {
+    SP.NUMRE.forEach(function (nr) {
+      t.erSann(SP.T[s.kode][SP.KRITISK].indexOf(nr) !== -1,
+               s.kode + ' mangler ' + nr + ' i akuttsetningen');
+    });
+  });
+});
+
+t.test('et språk åpnes ikke før akuttsetningen er lest av et menneske', function () {
+  t.erSann(SP.kanApnes('nb').ok);
+  var d = SP.kanApnes('pl');
+  t.erUsann(d.ok);
+  t.erLik(d.regel, 'ikke_godkjent');
+});
+
+t.test('arabisk skrives fra høyre', function () {
+  t.erLik(SP.sprak('ar').dir, 'rtl');
+  t.erLik(SP.sprak('nb').dir, 'ltr');
+});
+
+t.test('språkvalget følger med til SMS, e-post og oppsummering', function () {
+  t.erSann(SP.FLATER.indexOf('sms') !== -1);
+  t.erSann(SP.FLATER.indexOf('epost') !== -1);
+  t.erSann(SP.FLATER.indexOf('oppsummering') !== -1);
+  var m = SP.melding('pl', 'sms', 'sms');
+  t.erLik(m.sprak, 'pl');
+  t.erLik(m.flate, 'sms');
+  t.erSann(m.tekst.length > 0);
+});
+
+t.test('en ukjent flate er en feil, ikke en stille norsk melding', function () {
+  var kastet = false;
+  try { SP.melding('nb', 'brevpost', 'sms'); } catch (e) { kastet = true; }
+  t.erSann(kastet);
+});
+
+t.test('manglende nøkkel faller tilbake til norsk, ikke til tomt', function () {
+  t.erLik(SP.t('finnesikke', 'pl'), null);
+  t.erLik(SP.t('knapp', 'zz'), SP.T.nb.knapp);
+});
+
+t.test('siden lover ikke en samtale på språket', function () {
+  SP.SPRAK.forEach(function (s) {
+    t.erSann(SP.T[s.kode].samtalesprak.length > 0, s.kode);
+  });
 });
 
 t.oppsummer('Enhetstester');

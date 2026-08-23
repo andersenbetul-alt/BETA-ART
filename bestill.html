@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velg ekspert og tid – Ekspertbistand – Naviar Care</title>
+<meta name="description" content="Velg fagområde, ekspert og tid. Én samtale, tre tydelige neste steg. Fast pris 599 kr.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/bestill.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23101a2e'/><path fill='%23ffffff' fill-rule='evenodd' d='M16 6.4 6.2 26.4h4.3L16 15.1l5.5 11.3h4.3L16 6.4ZM12.4 22.3h7.2l2 4.1h-11.2l2-4.1Z'/></svg>">
+</head>
+<body class="b-bestill">
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="x-topp">
+  <div class="x-topp-rad">
+    <a class="x-logo" href="index.html">
+      <span aria-hidden="true"><svg viewBox="0 0 32 32" width="24" height="24"><path fill="currentColor" fill-rule="evenodd" d="M16 3.2 3.4 28.8h5.1L16 13.6l7.5 15.2h5.1L16 3.2ZM11.1 23.6h9.8l2.2 4.4H8.9l2.2-4.4Z"/></svg></span>
+      <span class="x-ordmerke">NAVIAR <span>CARE</span></span>
+    </a>
+
+    <!-- De to tjenestene står atskilt her, ikke bare i teksten. En kunde som
+         tror hun bestiller hjelp og får en samtale, har kjøpt noe annet. -->
+    <nav class="x-tjenestevalg" aria-label="Tjeneste">
+      <a href="trenger-hjelp.html">Praktisk hjelp</a>
+      <a href="bestill.html" aria-current="page">Ekspertbistand</a>
+    </nav>
+
+    <div class="x-topp-hoyre">
+      <a class="x-topplenke" href="familie.html">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3.2"/><path d="M3.4 19.5c.5-3.1 2.9-5 5.6-5s5.1 1.9 5.6 5"/><path d="M16.2 6.6a3 3 0 0 1 0 5.6M18.4 19.5c-.2-1.6-.8-2.9-1.7-3.8"/></svg>
+        For familien
+      </a>
+      <span class="x-skille" aria-hidden="true"></span>
+      <label class="x-sprak">
+        <span class="x-skjult">Språk</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.4"/><path d="M3.6 12h16.8M12 3.6c2.1 2.3 3.2 5.3 3.2 8.4S14.1 18.1 12 20.4c-2.1-2.3-3.2-5.3-3.2-8.4S9.9 5.9 12 3.6Z"/></svg>
+        <select id="sprakvalg"></select>
+      </label>
+    </div>
+  </div>
+</header>
+
+<div class="x-oppsett">
+  <main id="main" class="x-hoved">
+    <div class="x-innhold">
+
+      <ol class="x-fremdrift" id="fremdrift" aria-label="Fremdrift"></ol>
+
+      <h1 id="sidetittel">Velg ekspert og tid</h1>
+      <p class="x-slagord" data-t="slagord">Én samtale. Tre tydelige neste steg.</p>
+
+      <!-- Steg 1 ligger igjen på skjermen som en rad. Den som ombestemmer seg,
+           skal slippe å gå tilbake for å se hva hun valgte. -->
+      <div class="x-omraaderad" id="omraadeliste" role="radiogroup" aria-label="Fagområde"></div>
+      <p class="x-grenser" id="omraade-grenser" hidden></p>
+
+      <h2 class="x-underoverskrift">Velg ekspert</h2>
+      <div class="x-ekspertliste" id="ekspertliste" role="radiogroup" aria-label="Ekspert"></div>
+
+      <!-- Steg 3. Bestillingen ender her og ikke i en kvittering, fordi den
+           eldre ikke har svart ennå. -->
+      <section class="x-bekreft" id="bekreft" hidden aria-labelledby="h-bekreft">
+        <h2 id="h-bekreft">Bekreft</h2>
+        <p class="x-venter" id="venter"></p>
+      </section>
+
+      <p class="x-akutt" id="akutt"></p>
+    </div>
+  </main>
+
+  <!-- Sammendraget står synlig hele veien. Prisen skal aldri dukke opp
+       først på siste skjerm – da er den en overraskelse, og en overraskelse
+       i pris er det samme som et skjult gebyr. -->
+  <aside class="x-panel" aria-labelledby="h-panel">
+    <div class="x-panel-innhold">
+      <h2 id="h-panel">Din konsultasjon</h2>
+      <dl class="x-sammendrag" id="sammendrag"></dl>
+
+      <button class="x-bestill" type="button" id="bestill" disabled>
+        <span id="bestill-tekst">Bestill konsultasjon</span>
+        <span aria-hidden="true">→</span>
+      </button>
+
+      <ul class="x-tillit">
+        <li>
+          <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20.2s-6.8-4-6.8-8.6a3.7 3.7 0 0 1 6.8-2.1 3.7 3.7 0 0 1 6.8 2.1c0 4.6-6.8 8.6-6.8 8.6Z"/></svg>
+          Familien kan bestille.
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5.6 20c.6-3.4 3.3-5.4 6.4-5.4s5.8 2 6.4 5.4"/></svg>
+          Den eldre bestemmer.
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6.5h3M4 12h3M4 17.5h3M10 6.5h10M10 12h10M10 17.5h10"/></svg>
+          Du får tre tydelige neste steg.
+        </li>
+      </ul>
+
+      <!-- Opplesning er ikke pynt for denne målgruppa. Den bruker
+           nettleserens egen stemme, så den koster ingen avhengighet – og
+           knappen finnes bare når nettleseren faktisk kan lese. -->
+      <button class="x-les" type="button" id="les" hidden>
+        <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9.5h3.4L12 5.6v12.8L7.4 14.5H4z"/><path d="M16 9.4a3.6 3.6 0 0 1 0 5.2M18.4 7a7 7 0 0 1 0 10"/></svg>
+        <span id="les-tekst">Les opp siden</span>
+      </button>
+    </div>
+  </aside>
+</div>
+
+<script src="assets/js/besok-vern.js"></script>
+<script src="assets/js/sprak-ui.js"></script>
+<script src="assets/js/ekspertbistand.js"></script>
+<script src="assets/js/klarhet.js"></script>
+<script src="assets/js/bestill-skjerm.js"></script>
+</body>
+</html>

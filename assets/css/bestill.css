@@ -1,0 +1,245 @@
+/* Naviar – bestillingsskjermen for Ekspertbistand.
+
+   Målgruppa er delt: familien bestiller ofte, den eldre godkjenner. Derfor er
+   flatene store, tekstene korte og valgene få. En eldre bruker skal kunne se
+   hva som er valgt uten å lene seg fram, og uten å skille to grønnfarger fra
+   hverandre – valgt tilstand bæres av ramme, ✓ og aria-checked.
+
+   Én farge er verdt en forklaring. Bestillingsknappen står på det mørke
+   panelet, og --brand gir 2,9:1 mot blekket. Fyllet er likevel --brand, fordi
+   hvit tekst på den gir 6,0:1 – lesbarheten er i orden. Det som mangler, er
+   kanten: derfor har knappen en ramme i --brand-pa-mork, som gir 7,2:1 mot
+   panelet. Da er både teksten og formen synlig. */
+
+.b-bestill { background: var(--bg-sand); min-height: 100vh; }
+.x-skjult {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ---------- topp ---------- */
+.x-topp { background: var(--bg-sand); border-bottom: 1px solid var(--line); }
+.x-topp-rad {
+  display: flex; align-items: center; gap: 24px; min-height: 78px;
+  padding: 0 34px; flex-wrap: wrap;
+}
+.x-logo { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+.x-ordmerke { font-weight: 700; letter-spacing: .1em; font-size: 1.08rem; }
+.x-ordmerke span { font-weight: 400; letter-spacing: .2em; color: var(--ink-faint); }
+
+.x-tjenestevalg { margin: 0 auto; display: flex; gap: 14px; }
+.x-tjenestevalg a {
+  color: var(--ink-soft); text-decoration: none; font-weight: 500;
+  padding: 26px 8px 24px; border-bottom: 3px solid transparent;
+}
+.x-tjenestevalg a:hover { color: var(--ink); }
+/* Aktiv fane har både vekt og strek. Streken alene forsvinner for den som
+   ser dårlig; vekten alene forsvinner i en skjermleser. */
+.x-tjenestevalg a[aria-current="page"] {
+  color: var(--ink); font-weight: 700; border-bottom-color: var(--brand);
+}
+
+.x-topp-hoyre { display: flex; align-items: center; gap: 16px; color: var(--ink-soft); }
+.x-topplenke { display: flex; align-items: center; gap: 9px; color: var(--ink-soft);
+               text-decoration: none; font-size: .96rem; }
+.x-topplenke:hover { color: var(--ink); }
+.x-skille { width: 1px; height: 26px; background: var(--line); }
+.x-sprak { display: flex; align-items: center; gap: 8px; }
+.x-sprak select {
+  background: transparent; border: 1px solid transparent; color: var(--ink-soft);
+  font: inherit; font-size: .96rem; padding: 7px 4px; border-radius: 8px; cursor: pointer;
+}
+.x-sprak select:hover, .x-sprak select:focus { border-color: var(--line); background: #fff; }
+
+/* ---------- oppsett ---------- */
+.x-oppsett { display: grid; grid-template-columns: minmax(0, 1fr) 420px; align-items: start; }
+.x-hoved { padding: 40px 34px 70px; }
+.x-innhold { max-width: 880px; }
+
+/* ---------- fremdrift ---------- */
+.x-fremdrift { list-style: none; display: flex; align-items: start; margin: 0 0 40px; padding: 0; }
+.x-fremdrift li { display: flex; align-items: center; }
+.x-trinn { display: grid; justify-items: center; gap: 9px; }
+.x-trinn-nr {
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  font-weight: 600; font-size: .95rem;
+  background: #fff; border: 1px solid var(--line); color: var(--ink-faint);
+}
+.x-trinn-navn { font-size: .88rem; color: var(--ink-faint); white-space: nowrap; }
+.x-trinn[data-tilstand="naa"] .x-trinn-nr { background: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
+.x-trinn[data-tilstand="naa"] .x-trinn-navn { color: var(--brand-dark); font-weight: 600; }
+.x-trinn[data-tilstand="ferdig"] .x-trinn-nr { background: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
+.x-trinn[data-tilstand="ferdig"] .x-trinn-navn { color: var(--ink-soft); }
+.x-strek { width: clamp(60px, 16vw, 240px); height: 2px; background: var(--line); margin: 17px 12px 0; }
+.x-strek[data-ferdig="ja"] { background: var(--brand-dark); }
+
+/* ---------- overskrifter ---------- */
+.x-hoved h1 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem); letter-spacing: -.03em; margin: 0 0 8px; }
+.x-slagord { margin: 0 0 30px; font-size: 1.1rem; color: var(--ink-soft); }
+.x-underoverskrift { font-size: 1.22rem; margin: 34px 0 16px; letter-spacing: -.015em; }
+
+/* ---------- fagområdene ---------- */
+.x-omraaderad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+                border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #fff; }
+.x-omraade {
+  display: flex; align-items: center; gap: 14px; font: inherit; cursor: pointer;
+  background: #fff; border: 0; border-right: 1px solid var(--line);
+  padding: 20px 18px; min-height: 84px; text-align: left; color: var(--ink);
+}
+.x-omraade:last-child { border-right: 0; }
+.x-omraade:hover { background: var(--bg-soft); }
+.x-omraade[aria-checked="true"] {
+  background: #f4faf7; box-shadow: inset 0 0 0 2px var(--brand-dark); border-radius: 13px;
+}
+.x-omraade-navn { flex: 1; font-weight: 600; font-size: 1.02rem; }
+
+/* Ringen er tom til den er valgt, og fylles med et ✓ – ikke med en farge. */
+.x-ring {
+  flex: none; width: 27px; height: 27px; border-radius: 50%;
+  border: 2px solid var(--line); display: grid; place-items: center;
+  color: transparent; font-size: .85rem; font-weight: 700; background: #fff;
+}
+[aria-checked="true"] > .x-ring, [aria-checked="true"] .x-ring {
+  background: var(--brand-dark); border-color: var(--brand-dark); color: #fff;
+}
+.x-ikon {
+  flex: none; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--brand-light); color: var(--brand-dark);
+  display: grid; place-items: center;
+}
+
+.x-grenser {
+  margin: 16px 0 0; font-size: .89rem; color: var(--ink-faint); line-height: 1.55;
+  border-left: 3px solid var(--line); padding-left: 14px;
+}
+
+/* ---------- ekspertene ---------- */
+.x-ekspertliste { display: grid; gap: 14px; }
+.x-ekspert {
+  background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px 24px;
+}
+.x-ekspert[data-valgt="ja"] { box-shadow: inset 0 0 0 2px var(--brand-dark); border-color: var(--brand-dark); }
+
+.x-ekspert-knapp {
+  display: flex; align-items: center; gap: 20px; width: 100%;
+  background: none; border: 0; padding: 0; font: inherit; cursor: pointer;
+  text-align: left; color: var(--ink);
+}
+.x-initialer {
+  flex: none; width: 62px; height: 62px; border-radius: 50%;
+  background: var(--brand-light); color: var(--brand-dark);
+  display: grid; place-items: center; font-size: 1.2rem; font-weight: 600; letter-spacing: .03em;
+}
+.x-ekspert-navn { flex: 1; min-width: 0; }
+.x-ekspert-navn strong { display: block; font-size: 1.2rem; font-weight: 600; letter-spacing: -.01em; }
+.x-ekspert-navn small { display: block; color: var(--ink-soft); font-size: .96rem; margin-top: 3px; }
+.x-ekspert-fakta { display: grid; gap: 9px; min-width: 12rem; }
+.x-fakta { display: flex; align-items: center; gap: 10px; color: var(--ink-soft); font-size: .95rem; }
+.x-fakta svg { flex: none; color: var(--ink-faint); }
+.x-fakta.x-verifisert { color: var(--brand-dark); font-weight: 500; }
+.x-fakta.x-verifisert svg { color: var(--brand-dark); }
+
+/* Tidene ligger inne i eksperten, ikke i en egen kolonne. En ledig tid hører
+   til én person – vises de hver for seg, må kunden holde koblingen i hodet. */
+.x-tider { margin-top: 20px; }
+.x-tider h3 { font-size: 1.02rem; margin: 0 0 12px; }
+.x-tidrad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.x-tid {
+  display: flex; align-items: center; gap: 12px; font: inherit; cursor: pointer;
+  background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  padding: 16px 18px; min-height: 62px; color: var(--ink);
+}
+.x-tid:hover { border-color: var(--brand); }
+.x-tid[aria-checked="true"] {
+  background: #f4faf7; border-color: var(--brand-dark);
+  box-shadow: inset 0 0 0 1px var(--brand-dark); font-weight: 600;
+}
+.x-tid svg { flex: none; color: var(--ink-faint); }
+.x-tid[aria-checked="true"] svg { color: var(--brand-dark); }
+.x-ingen-tider { margin: 12px 0 0; color: var(--ink-faint); font-size: .93rem; }
+
+/* ---------- bekreft ---------- */
+.x-bekreft { margin-top: 34px; background: #fff; border: 1px solid var(--line);
+             border-radius: 14px; padding: 24px; }
+.x-bekreft h2 { margin: 0 0 14px; font-size: 1.2rem; }
+.x-venter {
+  margin: 0; background: var(--accent-light); color: #7a4514;
+  border-radius: 10px; padding: 15px 18px; font-size: .97rem;
+}
+.x-akutt { margin: 26px 0 0; font-size: .88rem; color: var(--ink-faint);
+           border-top: 1px solid var(--line); padding-top: 18px; }
+
+/* ---------- panelet ---------- */
+.x-panel { background: var(--ink); color: var(--bg-sand); min-height: 100vh;
+           position: sticky; top: 0; }
+.x-panel-innhold { padding: 44px 38px; }
+.x-panel h2 { font-size: 1.62rem; margin: 0 0 26px; letter-spacing: -.02em; color: #fff; }
+
+.x-sammendrag { margin: 0 0 26px; }
+.x-sammendrag div {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.x-sammendrag div:last-child { border-bottom: 0; }
+.x-sammendrag dt {
+  flex: none; width: 46px; height: 46px; border-radius: 50%;
+  background: rgba(255,255,255,.09); color: var(--brand-pa-mork);
+  display: grid; place-items: center; font-size: .84rem; font-weight: 600;
+}
+.x-sammendrag dd { margin: 0; font-size: 1.06rem; font-weight: 600; color: #fff; }
+.x-sammendrag .x-tom dd { color: #8b95a8; font-weight: 400; }
+.x-sammendrag .x-tom dt { color: #8b95a8; }
+
+/* Fyll --brand (hvit tekst 6,0:1), kant --brand-pa-mork (7,2:1 mot panelet). */
+.x-bestill {
+  display: flex; align-items: center; justify-content: center; gap: 14px; width: 100%;
+  font: inherit; font-size: 1.08rem; font-weight: 600; cursor: pointer;
+  background: var(--brand); color: #fff; border: 1px solid var(--brand-pa-mork);
+  border-radius: 12px; padding: 19px 26px;
+}
+.x-bestill:hover:not(:disabled) { background: #26886f; }
+.x-bestill:disabled { opacity: .42; cursor: not-allowed; }
+
+.x-tillit { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 14px; }
+.x-tillit li { display: flex; align-items: center; gap: 13px; color: #cfd6e2; font-size: .98rem; }
+.x-tillit svg { flex: none; color: var(--brand-pa-mork); }
+
+.x-les {
+  display: flex; align-items: center; gap: 12px; margin-top: 28px; padding: 14px 0 0;
+  background: none; border: 0; border-top: 1px solid rgba(255,255,255,.14);
+  width: 100%; font: inherit; font-size: .98rem; color: #cfd6e2; cursor: pointer;
+}
+.x-les:hover { color: #fff; }
+.x-les span { text-decoration: underline; }
+
+/* ---------- smalt ---------- */
+@media (max-width: 1080px) {
+  .x-oppsett { grid-template-columns: 1fr; }
+  .x-panel { position: static; min-height: 0; }
+  .x-panel-innhold { padding: 30px 20px 40px; max-width: 620px; margin: 0 auto; }
+  .x-hoved { padding: 26px 20px 34px; }
+  .x-topp-rad { padding: 0 18px; }
+  .x-tjenestevalg { margin: 0; order: 3; width: 100%; }
+  .x-tjenestevalg a { padding: 12px 4px; }
+  .x-topp-hoyre { margin-left: auto; }
+  .x-omraaderad { grid-template-columns: 1fr; }
+  .x-omraade { border-right: 0; border-bottom: 1px solid var(--line); }
+  .x-omraade:last-child { border-bottom: 0; }
+  .x-ekspert-knapp { flex-wrap: wrap; gap: 14px; }
+  .x-ekspert-fakta { min-width: 0; width: 100%; }
+  .x-tidrad { grid-template-columns: 1fr; }
+  .x-fremdrift { margin-bottom: 26px; }
+  .x-strek { width: auto; flex: 1; margin: 17px 8px 0; }
+  .x-fremdrift li { flex: 1; }
+  .x-fremdrift li:last-child { flex: none; }
+  .x-trinn-navn { font-size: .8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+[dir="rtl"] .x-omraade, [dir="rtl"] .x-grenser, [dir="rtl"] .x-ekspert-knapp { text-align: right; }
+[dir="rtl"] .x-grenser { border-left: 0; border-right: 3px solid var(--line);
+                         padding-left: 0; padding-right: 14px; }

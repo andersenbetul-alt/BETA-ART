@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naviar Klarhet – én samtale, tre tydelige neste steg</title>
+<meta name="description" content="Snakk med en verifisert fagperson i 45 minutter og få tre tydelige neste steg. Fast pris 599 kr. Ikke akutt hjelp eller medisinsk rådgivning.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/klarhet.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23101a2e'/><path fill='%23ffffff' fill-rule='evenodd' d='M16 6.4 6.2 26.4h4.3L16 15.1l5.5 11.3h4.3L16 6.4ZM12.4 22.3h7.2l2 4.1h-11.2l2-4.1Z'/></svg>">
+</head>
+<body>
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="k-topp">
+  <div class="k-wrap k-topp-rad">
+    <a class="k-logo" href="index.html">
+      <span class="k-merke" aria-hidden="true"><svg viewBox="0 0 32 32" width="22" height="22"><path fill="currentColor" fill-rule="evenodd" d="M16 3.2 3.4 28.8h5.1L16 13.6l7.5 15.2h5.1L16 3.2ZM11.1 23.6h9.8l2.2 4.4H8.9l2.2-4.4Z"/></svg></span>
+      <span class="k-ordmerke">NAVIAR <span>care</span></span>
+    </a>
+    <div class="k-topp-hoyre">
+      <label class="k-sprakvelger">
+        <span class="k-visuelt-skjult" data-t="sprakvalg">Språk</span>
+        <select id="sprakvalg"></select>
+      </label>
+      <a class="k-lenke" href="bli-hjelper.html">Jeg er ekspert</a>
+      <a class="btn btn-primary k-btn-liten" href="#navigator" data-t="knapp">Finn riktig ekspert</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero. Overskriften er kundens eget spørsmål, ikke vår kategori. -->
+  <section class="k-hero">
+    <div class="k-wrap k-hero-rutenett">
+      <div>
+        <p class="k-oyenbryn">Enklere neste steg for familien</p>
+
+        <!-- Tre inngangar, fordi tre ulike personer leser den samme sida med
+             kvart sitt spørsmål. Den eldre spør ikkje «kva kostar det» – ho
+             spør «kven er dette, og må eg». -->
+        <div class="k-maalgruppe" role="tablist" aria-label="Hvem er du?">
+          <button class="k-fane" type="button" role="tab" id="fane-familie"
+                  aria-selected="true" aria-controls="hero-tekst" data-rolle="familie">Jeg er familie</button>
+          <button class="k-fane" type="button" role="tab" id="fane-eldre"
+                  aria-selected="false" aria-controls="hero-tekst" data-rolle="eldre">Jeg er den eldre</button>
+          <button class="k-fane" type="button" role="tab" id="fane-ekspert"
+                  aria-selected="false" aria-controls="hero-tekst" data-rolle="ekspert">Jeg er ekspert</button>
+        </div>
+
+        <div id="hero-tekst" role="tabpanel" aria-labelledby="fane-familie">
+          <p class="k-oyenbryn-tynn" id="hero-oyenbryn">For deg som hjelper en forelder</p>
+          <h1 id="hero-tittel">Usikker på hvem dere skal kontakte?</h1>
+          <p class="k-ingress" id="hero-ingress">Snakk med en erfaren fagperson og få tre tydelige neste steg.</p>
+          <div class="k-knapperad">
+            <a class="btn btn-primary" href="#navigator" id="hero-knapp" data-t="knapp">Finn riktig ekspert</a>
+            <a class="btn btn-ghost" href="#slik">Se hvordan det fungerer</a>
+          </div>
+        </div>
+        <p class="k-altmelding" data-t="alt">Familien kan bestille. Den eldre bestemmer.</p>
+      </div>
+
+      <aside class="k-tilbudskort" aria-labelledby="tilbud-tittel">
+        <p class="k-kort-merke">Naviar Navigator</p>
+        <h2 id="tilbud-tittel" class="k-kort-tittel">Klarhet 45</h2>
+        <p class="k-kort-slagord" data-t="slagord">Én samtale. Tre tydelige neste steg.</p>
+        <ol class="k-tretrinn">
+          <li><span class="k-nr" aria-hidden="true">1</span> Finn riktig fagperson</li>
+          <li><span class="k-nr" aria-hidden="true">2</span> Bestill en ledig tid</li>
+          <li><span class="k-nr" aria-hidden="true">3</span> Få planen skriftlig</li>
+        </ol>
+        <p class="k-pris"><span class="k-pris-merkelapp">Fast pris</span> <strong id="pris-tall">599 NOK</strong></p>
+        <p class="k-grensetekst">Ikke akutt hjelp eller medisinsk rådgivning</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Tre løfter, og hvert av dem har noe bak seg. Se PP_MERKESPRAK.BEVIS. -->
+  <section class="k-wrap k-lofter">
+    <div class="k-lofte">
+      <h2>Verifiserte fagpersoner</h2>
+      <p>Erfaring og fagområde er kontrollert.</p>
+    </div>
+    <div class="k-lofte">
+      <h2>Telefon eller video</h2>
+      <p>Velg tid og språk som passer.</p>
+    </div>
+    <div class="k-lofte">
+      <h2 id="lofte-pris">599 NOK, alt inkludert</h2>
+      <p>Ingen skjulte gebyrer.</p>
+    </div>
+  </section>
+
+  <!-- Navigator. Kunden skal ikke måtte vite hvilken kategori hun trenger. -->
+  <section id="navigator" class="k-navigator">
+    <div class="k-wrap">
+      <h2 class="k-sekjsonstittel">Naviar Navigator</h2>
+      <p class="k-sekjsonsingress" data-t="navigator-sporsmaal">Hva trenger du hjelp med?</p>
+      <p class="k-hjelpetekst">Velg det som ligner mest. Du kan alltid endre senere.</p>
+
+      <div class="k-valgrutenett" id="kategorivalg" role="group" aria-label="Fagområde"></div>
+
+      <div class="k-svar" id="navigator-svar" hidden></div>
+
+      <div class="k-bestillkort" id="bestillkort" hidden>
+        <div>
+          <h3>Klarhet 45</h3>
+          <p class="k-bestill-meta"><span data-t="minutter">45 min</span> · <span data-t="telefon">Telefon</span> eller <span data-t="video">video</span></p>
+          <p class="k-bestill-hva">Du får en skriftlig plan med tre neste steg.</p>
+        </div>
+        <div class="k-bestill-hoyre">
+          <p class="k-bestill-pris" id="bestill-pris">599 NOK</p>
+          <button class="btn btn-primary" type="button" id="finn-tider">Finn tilgjengelige tider</button>
+        </div>
+      </div>
+
+      <div class="k-eksperter" id="ekspertliste" hidden></div>
+    </div>
+  </section>
+
+  <!-- Slik fungerer det -->
+  <section id="slik" class="k-wrap k-slik">
+    <h2 class="k-sekjsonstittel">Slik fungerer det</h2>
+    <p class="k-sekjsonsingress">Naviar bestemmer ikke for deg. Vi gjør neste steg tydelig.</p>
+    <ol class="k-stegliste" id="stegliste"></ol>
+  </section>
+
+  <!-- Fagpersoner. Ekte kalender, ingen påfunnet knapphet. Se PP_KLARHET.ALDRI_SELG. -->
+  <section class="k-fagfolk">
+    <div class="k-wrap">
+      <div class="k-seksjonshode">
+        <div>
+          <p class="k-kort-merke">NAV og pensjon <span class="k-pilotmerke">pilot</span></p>
+          <h2 class="k-sekjsonstittel">Erfaring som gjør det lettere å komme videre.</h2>
+        </div>
+        <a class="k-lenke" href="#navigator">Finn din ekspert</a>
+      </div>
+      <div class="k-kortrad" id="utvalg"></div>
+    </div>
+  </section>
+
+  <!-- Grensen. Den står på forsiden fordi den er en del av tilbudet. -->
+  <section class="k-grense">
+    <div class="k-wrap">
+      <p class="k-kort-merke">Vår grense</p>
+      <h2 class="k-sekjsonstittel k-lys">Trygghet handler også om å si hva vi ikke gjør.</h2>
+      <div class="k-grenserutenett">
+        <div class="k-grensekort k-gir-ikke">
+          <h3><span aria-hidden="true">✕</span> Naviar gir ikke</h3>
+          <p>Akutt hjelp, diagnoser, juridisk representasjon eller garanti for offentlig vedtak.</p>
+        </div>
+        <div class="k-grensekort k-gir">
+          <h3><span aria-hidden="true">✓</span> Naviar gir deg</h3>
+          <p>Verifisert matching, en rolig samtale og neste steg samlet på ett sted.</p>
+        </div>
+      </div>
+      <p class="k-akutt" id="akuttvarsel"></p>
+    </div>
+  </section>
+  <!-- Svar fra Naviar. Hvert spørsmål er ett ekte spørsmål, og svaret er
+       gratis. Den som får svaret sitt uten å betale, er den som kommer
+       tilbake når saken faktisk er vår. -->
+  <section class="k-svar-fra">
+    <div class="k-wrap">
+      <h2 class="k-sekjsonstittel">Svar fra Naviar</h2>
+      <p class="k-sekjsonsingress">Korte svar på spørsmålene folk faktisk stiller.</p>
+      <ul class="k-sporsmaalsliste" id="sporsmaal"></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="k-bunn">
+  <div class="k-wrap">
+    <p class="k-bunn-merke">© 2026 Naviar Care</p>
+    <p>Familien kan ordne. Den eldre bestemmer.</p>
+    <p class="k-bunn-lenker">
+      <a href="personvern.html">Personvern</a> ·
+      <a href="personvern.html">Vilkår</a> ·
+      <a href="index.html">Kontakt</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/besok-vern.js"></script>
+<script src="assets/js/besok-lager.js"></script>
+<script src="assets/js/hverdagsguide.js"></script>
+<script src="assets/js/sprak-ui.js"></script>
+<script src="assets/js/ekspertbistand.js"></script>
+<script src="assets/js/klarhet.js"></script>
+<script src="assets/js/klarhet-skjerm.js"></script>
+</body>
+</html>

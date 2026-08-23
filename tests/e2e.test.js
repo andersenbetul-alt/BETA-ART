@@ -63,7 +63,9 @@ if (!pw) {
     ['oppdrag.html', 'Oppdragstavla'],
     ['drift.html', 'Driftskonsoll'],
     ['trygghet.html', 'Trygghet'],
-    ['personvern.html', 'Personvernerklæring']
+    ['personvern.html', 'Personvernerklæring'],
+    ['klarhet.html', 'Naviar Klarhet'],
+    ['bestill.html', 'Velg ekspert og tid']
   ];
 
   var side = await nySide();
@@ -688,6 +690,258 @@ if (!pw) {
     })(BESOK[c][0], bflyter);
   }
   await bmobil.close();
+
+  t.gruppe('Naviar Klarhet');
+
+  var kl = await nySide();
+  await kl.goto(BASE + 'klarhet.html', { waitUntil: 'domcontentloaded' });
+
+  var klForside = await kl.evaluate(function () {
+    return {
+      kategorier: document.querySelectorAll('#kategorivalg .k-valg').length,
+      faner: document.querySelectorAll('.k-fane').length,
+      eksperter: document.querySelectorAll('#utvalg .k-ekspert').length,
+      steg: document.querySelectorAll('#stegliste li').length,
+      sporsmaal: document.querySelectorAll('#sporsmaal .k-sporsmaal').length,
+      pris: (document.getElementById('pris-tall') || {}).textContent || '',
+      akutt: (document.getElementById('akuttvarsel') || {}).textContent || '',
+      /* Bare språk som faktisk kan åpnes, skal stå i nedtrekket. */
+      spraakvalg: document.querySelectorAll('#sprakvalg option').length,
+      tittelTekst: document.body.textContent
+    };
+  });
+
+  t.test('de tre pilotkategoriene vises, ikke alle ni', function () {
+    t.erLik(klForside.kategorier, 3);
+  });
+
+  t.test('tre målgruppefaner', function () {
+    t.erLik(klForside.faner, 3);
+  });
+
+  t.test('fire steg og tre spørsmål er tegnet fra modulene', function () {
+    t.erLik(klForside.steg, 4);
+    t.erLik(klForside.sporsmaal, 3);
+  });
+
+  t.test('pilotkategorien har eksperter', function () {
+    t.erSann(klForside.eksperter >= 3, 'fant ' + klForside.eksperter);
+  });
+
+  t.test('prisen kommer fra modulen, ikke fra siden', function () {
+    t.erSann(klForside.pris.indexOf('599') !== -1, klForside.pris);
+  });
+
+  t.test('akuttsetningen står på forsiden med begge numrene', function () {
+    t.erSann(klForside.akutt.indexOf('116 117') !== -1);
+    t.erSann(klForside.akutt.indexOf('113') !== -1);
+  });
+
+  t.test('bare godkjente språk står i nedtrekket', function () {
+    t.erLik(klForside.spraakvalg, 1, 'bare norsk er godkjent ennå');
+  });
+
+  t.test('ingen pris eller nedtelling som ikke finnes i modulen', function () {
+    t.erSann(klForside.tittelTekst.indexOf('plasser igjen') === -1);
+    t.erSann(klForside.tittelTekst.indexOf('Kun i dag') === -1);
+  });
+
+  /* Fanene bytter faktisk innhold – ellers er de tre knapper som ser ut som
+     et valg. */
+  await kl.click('#fane-ekspert');
+  var klEkspert = await kl.evaluate(function () {
+    return {
+      tittel: document.getElementById('hero-tittel').textContent,
+      valgt: document.getElementById('fane-ekspert').getAttribute('aria-selected')
+    };
+  });
+  t.test('fanen «Jeg er ekspert» bytter budskapet', function () {
+    t.erLik(klEkspert.valgt, 'true');
+    t.erSann(klEkspert.tittel.indexOf('erfaring') !== -1, klEkspert.tittel);
+  });
+
+  await kl.click('#fane-familie');
+
+  /* Navigator: et valg skal gi et svar med grensene i, og en bestillingsknapp. */
+  await kl.click('#kategorivalg .k-valg');
+  var klValg = await kl.evaluate(function () {
+    return {
+      svarSynlig: !document.getElementById('navigator-svar').hidden,
+      grenser: document.querySelectorAll('#navigator-svar li').length,
+      bestillSynlig: !document.getElementById('bestillkort').hidden,
+      eksperter: document.querySelectorAll('#ekspertliste .k-ekspert').length
+    };
+  });
+
+  t.test('et kategorivalg gir svar, grenser og ledige eksperter', function () {
+    t.erSann(klValg.svarSynlig);
+    t.erSann(klValg.grenser >= 3, 'grensene skal stå i svaret');
+    t.erSann(klValg.bestillSynlig);
+    t.erSann(klValg.eksperter >= 3);
+  });
+
+  /* Bestillingen stopper på den eldres godkjenning. Gjør den ikke det, er
+     «den eldre bestemmer» en setning i bunnteksten. */
+  await kl.click('#ekspertliste .k-ekspert .btn');
+  var klSamtykke = await kl.evaluate(function () {
+    return document.getElementById('navigator-svar').textContent;
+  });
+  t.test('bestilling stopper uten den eldres godkjenning', function () {
+    t.erSann(klSamtykke.indexOf('godkjenn') !== -1, klSamtykke.slice(0, 120));
+  });
+
+  await kl.close();
+
+  var klMobil = await nySide(390, 844);
+  await klMobil.goto(BASE + 'klarhet.html', { waitUntil: 'domcontentloaded' });
+  var klFlyter = await klMobil.evaluate(function () {
+    return document.documentElement.scrollWidth > window.innerWidth + 1;
+  });
+  t.test('klarhet.html uten horisontal rulling på mobil', function () {
+    t.erUsann(klFlyter, 'siden flyter utover skjermen');
+  });
+  await klMobil.close();
+
+  t.gruppe('Bestilling av ekspertbistand');
+
+  var be = await nySide(1440, 900);
+  await be.goto(BASE + 'bestill.html', { waitUntil: 'domcontentloaded' });
+
+  var beStart = await be.evaluate(function () {
+    return {
+      omraader: document.querySelectorAll('#omraadeliste .x-omraade').length,
+      trinn: document.querySelectorAll('#fremdrift .x-trinn').length,
+      knappSperret: document.getElementById('bestill').disabled,
+      grenserSkjult: document.getElementById('omraade-grenser').hidden,
+      /* Prisen står i panelet fra første skjerm. Dukker den opp til slutt,
+         er den en overraskelse – og en overraskelse i pris er et skjult gebyr. */
+      panel: document.getElementById('sammendrag').textContent,
+      akutt: document.getElementById('akutt').textContent
+    };
+  });
+
+  t.test('tre fagområder, tre trinn', function () {
+    t.erLik(beStart.omraader, 3);
+    t.erLik(beStart.trinn, 3);
+  });
+
+  t.test('bestillingsknappen er sperret før alt er valgt', function () {
+    t.erSann(beStart.knappSperret);
+  });
+
+  t.test('prisen står i panelet fra første skjerm', function () {
+    t.erSann(beStart.panel.indexOf('599') !== -1, beStart.panel);
+    t.erSann(beStart.panel.indexOf('45') !== -1);
+  });
+
+  t.test('akuttsetningen står med begge numrene', function () {
+    t.erSann(beStart.akutt.indexOf('116 117') !== -1);
+    t.erSann(beStart.akutt.indexOf('113') !== -1);
+  });
+
+  t.test('grensene vises først når et område er valgt', function () {
+    t.erSann(beStart.grenserSkjult);
+  });
+
+  await be.click('#omraadeliste .x-omraade');
+  var beOmraade = await be.evaluate(function () {
+    return {
+      grenser: document.getElementById('omraade-grenser').textContent,
+      eksperter: document.querySelectorAll('#ekspertliste .x-ekspert').length,
+      tiderFor: document.querySelectorAll('.x-tid').length,
+      knappSperret: document.getElementById('bestill').disabled
+    };
+  });
+
+  t.test('et valgt område viser grensene og ekspertene', function () {
+    t.erSann(beOmraade.grenser.length > 20, beOmraade.grenser);
+    t.erSann(beOmraade.eksperter >= 2, 'fant ' + beOmraade.eksperter);
+  });
+
+  t.test('tidene vises ikke før en ekspert er valgt', function () {
+    t.erLik(beOmraade.tiderFor, 0);
+    t.erSann(beOmraade.knappSperret);
+  });
+
+  await be.click('#ekspertliste .x-ekspert-knapp');
+  var beEkspert = await be.evaluate(function () {
+    return {
+      tider: document.querySelectorAll('.x-tid').length,
+      tittel: document.querySelector('#ekspertliste .x-ekspert-navn small').textContent,
+      knappSperret: document.getElementById('bestill').disabled
+    };
+  });
+
+  t.test('tidene ligger inne i den valgte eksperten', function () {
+    t.erSann(beEkspert.tider >= 2, 'fant ' + beEkspert.tider);
+  });
+
+  t.test('profilen sier «tidligere» og «uavhengig»', function () {
+    t.erSann(beEkspert.tittel.indexOf('Tidligere') === 0, beEkspert.tittel);
+    t.erSann(beEkspert.tittel.indexOf('uavhengig') !== -1, beEkspert.tittel);
+  });
+
+  t.test('knappen er fortsatt sperret uten en tid', function () {
+    t.erSann(beEkspert.knappSperret);
+  });
+
+  await be.click('.x-tid');
+  var beTid = await be.evaluate(function () {
+    return {
+      knappSperret: document.getElementById('bestill').disabled,
+      panel: document.getElementById('sammendrag').textContent,
+      ferdige: document.querySelectorAll('#fremdrift .x-trinn[data-tilstand="ferdig"]').length
+    };
+  });
+
+  t.test('valgt tid åpner knappen og fyller panelet', function () {
+    t.erUsann(beTid.knappSperret);
+    t.erSann(beTid.panel.indexOf('Kari Hansen') !== -1, beTid.panel);
+    t.erLik(beTid.ferdige, 2, 'to trinn skal være ferdige');
+  });
+
+  /* Selve regelen: bestillingen stopper på den eldres godkjenning. */
+  await be.click('#bestill');
+  var beSvar = await be.evaluate(function () {
+    return {
+      synlig: !document.getElementById('bekreft').hidden,
+      tekst: document.getElementById('venter').textContent
+    };
+  });
+
+  t.test('bestillingen stopper på den eldres godkjenning', function () {
+    t.erSann(beSvar.synlig);
+    t.erSann(beSvar.tekst.indexOf('godkjenn') !== -1, beSvar.tekst);
+    t.erSann(beSvar.tekst.indexOf('Bestillingen er sendt') === -1,
+             'skjermen skal ikke love noe systemet har sagt nei til');
+  });
+
+  /* Bytter kunden område, skal ekspert og tid falle bort – ellers står det
+     en tid i panelet som hun tror hun har. */
+  await be.click('#omraadeliste .x-omraade:nth-child(2)');
+  var beBytte = await be.evaluate(function () {
+    return {
+      knappSperret: document.getElementById('bestill').disabled,
+      panel: document.getElementById('sammendrag').textContent
+    };
+  });
+
+  t.test('bytte av område nullstiller ekspert og tid', function () {
+    t.erSann(beBytte.knappSperret);
+    t.erSann(beBytte.panel.indexOf('Kari Hansen') === -1, beBytte.panel);
+  });
+
+  await be.close();
+
+  var beMobil = await nySide(390, 844);
+  await beMobil.goto(BASE + 'bestill.html', { waitUntil: 'domcontentloaded' });
+  var beFlyter = await beMobil.evaluate(function () {
+    return document.documentElement.scrollWidth > window.innerWidth + 1;
+  });
+  t.test('bestill.html uten horisontal rulling på mobil', function () {
+    t.erUsann(beFlyter, 'siden flyter utover skjermen');
+  });
+  await beMobil.close();
 
   t.gruppe('Ingen JavaScript-feil');
   t.test('konsollen er ren på alle sider', function () {
