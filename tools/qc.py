@@ -12,6 +12,7 @@ the site goes out.
     python3 tools/audit.py && python3 tools/qc.py
 """
 
+import ast
 import json
 import os
 import re
@@ -552,6 +553,35 @@ def check_deployability():
                  "fits inline too" if fits else "git deploy"))
 
 
+def emitted_strings(src, filename):
+    """(line, text) for everything a file could actually put on a page.
+
+    For Python that is its string literals and nothing else, read with `ast`
+    so a comment cannot be mistaken for output. A file that will not parse
+    falls back to whole lines — a broken builder should still be checked, and
+    noisily.
+    """
+    if filename.endswith(".py"):
+        try:
+            tree = ast.parse(src)
+        except SyntaxError:
+            return list(enumerate(src.splitlines(), 1))
+        # a docstring is the file talking about itself, not output
+        docs = set()
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.Module, ast.ClassDef,
+                                 ast.FunctionDef, ast.AsyncFunctionDef)):
+                body = getattr(node, "body", None)
+                if (body and isinstance(body[0], ast.Expr)
+                        and isinstance(body[0].value, ast.Constant)
+                        and isinstance(body[0].value.value, str)):
+                    docs.add(id(body[0].value))
+        return [(n.lineno, n.value) for n in ast.walk(tree)
+                if isinstance(n, ast.Constant) and isinstance(n.value, str)
+                and id(n) not in docs]
+    return list(enumerate(src.splitlines(), 1))
+
+
 def check_generator_hosts():
     """A generator must not hold a host the shipped pages have moved off.
 
@@ -570,7 +600,13 @@ def check_generator_hosts():
     The rule is simply that a generator's hosts must be the hosts the site
     actually uses. If a property moves again, this fails until the builder
     moves with it — which is the whole point of keeping the source of truth
-    in a data table."""
+    in a data table.
+
+    Only what a builder can actually emit counts, so Python files are read as
+    string literals rather than as lines. The first version scanned lines and
+    failed a comment recording where a property used to live — a note about
+    history is not a URL anybody ships, and a gate that fails on one teaches
+    people to stop reading it."""
     live = set()
     for sub in PROPS.values():
         p = os.path.join(ROOT, sub, "index.html")
@@ -591,7 +627,7 @@ def check_generator_hosts():
             p = os.path.join(d, fn)
             if os.path.samefile(p, os.path.abspath(__file__)):
                 continue
-            for line_no, line in enumerate(text(p).splitlines(), 1):
+            for line_no, line in emitted_strings(text(p), fn):
                 for host in re.findall(r'https?://([a-z0-9.-]+\.beta-art\.com|'
                                        r'[a-z0-9-]+\.vercel\.app)', line):
                     if host not in live:
