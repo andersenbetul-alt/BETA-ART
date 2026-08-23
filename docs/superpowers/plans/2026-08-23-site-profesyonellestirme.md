@@ -328,3 +328,43 @@ config'e yapıştırıldığı anda çalışır hâle getirilir.
    düğme YOK; scratch'te config'e sahte `https://buy.stripe.com/test` doldurup
    düğmenin çıktığını ve `pay.note`un göründüğünü doğrula, sonra config'i boş
    hâline GERİ AL (commit'e boş hâli girer).
+
+## Task 8 — Arayüz kuralları denetimi düzeltmeleri (toplu iş)
+
+Kaynak: Vercel Web Interface Guidelines denetimi (23.08, bulgular birebir).
+**Dosyalar:** 8 HTML sayfası, `assets/css/main.css`, `assets/js/app.js`,
+`assets/js/i18n.js` (yalnız gerekirse).
+
+1. **Marka adına `translate="no"`:** başlık ve altbilgideki QBLOGG kelime
+   markası metnine (`.logo` içindeki metin ve altbilgi © satırındaki QBLOGG)
+   `translate="no"` ekle — 8 sayfada birden (index, work, blog, post,
+   gizlilik, kosullar, kalite yoksa atla, 404).
+2. **work.html form alanlarına `name`:** `cGoal`, `cBudget`, `cDate`,
+   `wLangs`, `wNiche`, `wRate` — id ile aynı ada `name` ekle.
+3. **main.css:**
+   - `.plan .price` ve `.cmp-table td` → `font-variant-numeric: tabular-nums;`
+   - gövde düzeyinde bilinçli `-webkit-tap-highlight-color: transparent;`
+     (dokunma geri bildirimi :active stilleriyle veriliyor)
+   - `.toast` ve `.to-top` alt konumuna `env(safe-area-inset-bottom)` payı:
+     `bottom: calc(<mevcut> + env(safe-area-inset-bottom, 0px))` benzeri —
+     mevcut değeri koru, mantıksal özellik kuralı geçerli.
+4. **Paylaşım düğmeleri SVG:** `app.js → shareLinks()` içindeki metin
+   işaretleri (`in`, `𝕏`, `f`, `✆`, `✉`) CLAUDE.md kural 4 istisnasında
+   değil → beş kanal için 24×24 `stroke="currentColor"` `stroke-width="1.7"`
+   `fill="none"` satır içi SVG'ye çevir (ICONS kaydına `linkedin`, `x`,
+   `facebook`, `whatsapp`, `mail` ekle ya da shareLinks içinde yerel sabit —
+   mevcut ICONS deseni neyse ona uy). `aria-label` zaten var; SVG'lere
+   `aria-hidden="true"`.
+5. **Alan hata mesajı erişilebilirliği:** `markInvalid()` mesaj öğesine
+   benzersiz `id` ver, girdiye `aria-describedby` bağla, mesaj kapsayıcısına
+   `aria-live="polite"` (ya da `role="status"`); `clearInvalid` bağı geri alsın.
+6. **Gönderim sırasında düğme kilidi:** bülten formu ve `composeMail` fetch
+   yolunda submit düğmesi istek başlarken `disabled` + istek bitince geri;
+   düğme metnini değiştirme (spinner şart değil; `aria-busy="true"` yeterli).
+7. Kabul edilen sapmalar (DÜZELTME YAPMA, not düş): hukuk sayfalarındaki EN
+   bölümlerine `lang="en"` sarmalayıcı eklenebilir — bunu YAP (tek satırlık
+   `<div lang="en">` sarmalı, gizlilik + kosullar); listbox/tablist ok-tuşu
+   gezinmesi ve `.lang-menu` overscroll-behavior İSTEĞE BAĞLI, yapma.
+8. Doğrulama: `npm run check` + `npm run guvenlik` yeşil; Playwright:
+   work formunda geçersiz e-posta → mesaj `aria-describedby` ile bağlı;
+   paylaşım satırında 5 SVG; 390px'te taşma yok.
