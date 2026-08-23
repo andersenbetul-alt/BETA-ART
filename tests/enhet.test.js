@@ -26,6 +26,7 @@ require('../assets/js/hjelper-opptak.js');
 require('../assets/js/hjelper-base.js');
 require('../assets/js/maling.js');
 require('../assets/js/merkesprak.js');
+require('../assets/js/hverdagsguide.js');
 require('../assets/js/besok-klage.js');
 require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
@@ -1457,6 +1458,70 @@ t.test('hvert løfte har et bevis', function () {
     t.erSann(b.lofte && b.lofte.length > 10, 'løfte mangler');
     t.erSann(b.bevis && b.bevis.length > 15, b.lofte + ' mangler bevis');
   });
+});
+
+t.gruppe('Hverdagsguiden');
+
+var GD = window.PP_GUIDE;
+
+t.test('guiden ligger på samme nettsted, ikke et eget domene', function () {
+  t.erLik(GD.STI, '/hverdagsguide');
+});
+
+t.test('hver artikkel peker på en kategori som finnes', function () {
+  GD.ARTIKLER.forEach(function (a) {
+    t.erSann(!!GD.kategori(a.kategori), 'ukjent kategori: ' + a.kategori);
+    t.erSann(a.tittel.length > 20, 'for kort tittel: ' + a.tittel);
+  });
+});
+
+t.test('artikkelnumrene er sammenhengende', function () {
+  GD.ARTIKLER.forEach(function (a, i) { t.erLik(a.nr, i + 1); });
+});
+
+t.test('fordelingen mellom målgrupper holder planen', function () {
+  /* Skriver vi mest til eldre, får vi lesere som ikke bestiller. Skriver vi
+     bare til familien, blir den eldre et objekt i vår egen tekst. */
+  var f = GD.fordeling();
+  t.erLik(f.reduce(function (a, x) { return a + x.antall; }, 0), GD.ARTIKLER.length);
+  f.forEach(function (x) {
+    t.erSann(Math.abs(x.avvik) <= 15,
+      x.id + ' er ' + x.faktisk + ' %, planlagt ' + x.planlagt + ' %');
+  });
+});
+
+t.test('hver målgruppe har sin egen avslutning', function () {
+  ['familie', 'eldre', 'medarbeider'].forEach(function (m) {
+    t.erSann(GD.AVSLUTNING[m] && GD.AVSLUTNING[m].length > 25, 'mangler: ' + m);
+  });
+});
+
+t.test('det som ikke publiseres, har grunn og alternativ', function () {
+  t.erSann(GD.PUBLISERES_IKKE.length >= 6);
+  GD.PUBLISERES_IKKE.forEach(function (r) {
+    t.erSann(r.hvorfor && r.hvorfor.length > 20, r.hva + ' mangler grunn');
+    t.erSann(r.istedenfor && r.istedenfor.length > 15, r.hva + ' mangler alternativ');
+  });
+});
+
+t.test('åpent kommentarfelt står på lista over det vi ikke gjør', function () {
+  /* Et kommentarfelt gjør oss til vert for andres innhold, med moderering,
+     sletteplikt og ansvar. */
+  t.erSann(GD.PUBLISERES_IKKE.some(function (r) {
+    return /kommentarfelt|forum/i.test(r.hva);
+  }));
+});
+
+t.test('utkastet arver sperrene fra resten av tjenesten', function () {
+  t.erSann(GD.sjekkUtkast('Ti små oppgaver som gjør hverdagen enklere hjemme.').ok);
+
+  var paastand = GD.sjekkUtkast('Vi følger med på foreldrene dine hele dagen.');
+  t.erUsann(paastand.ok);
+  t.erSann(paastand.funn.some(function (f) { return f.kilde === 'merkespråk'; }));
+
+  var helse = GD.sjekkUtkast('Har hun høyt blodtrykk, bør hun bytte medisin.');
+  t.erUsann(helse.ok);
+  t.erSann(helse.funn.some(function (f) { return f.id === 'helseraad'; }));
 });
 
 t.oppsummer('Enhetstester');
