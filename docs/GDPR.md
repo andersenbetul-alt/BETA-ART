@@ -38,7 +38,7 @@ første utkast, og er lagt til etter den juridiske gjennomgangen:
 | Referansepersoner | Navn, telefon, relasjon, vurdering av søkeren | Berettiget interesse – egnethetsvurdering | 12 måneder | Informeres ved første kontakt |
 | Avviste søkere | Søknadsopplysninger og avslagsgrunn | Berettiget interesse – hindre omgåelse | 6 måneder | Får begrunnelsen, kan klage |
 
-For referansepersoner noteres en **vurdering, ikke et ordrett sitat**. Søkeren som
+For referansepersoner noterer vi en **vurdering, ikke et ordrett sitat**. Søkeren som
 avvises har innsynsrett i begrunnelsen; et sitat ville røpet hvem som sa hva, og
 satt oss mellom to personer som begge har innsynsrett.
 

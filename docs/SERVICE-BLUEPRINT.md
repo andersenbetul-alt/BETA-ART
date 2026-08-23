@@ -128,8 +128,8 @@ Implementert i `assets/js/pris.js`. Kundens pris består av:
 Eksempel (Norge, 1,5 t handling, «i dag», dagtid): 390 + 33 + 25 + 22 = 470 kr til
 hjelperen, 85 kr i serviceavgift, 554 kr for kunden.
 
-Betalingen reserveres når hjelperen takker ja, og trekkes først etter bekreftet
-utført oppdrag. Hjelperen skal aldri lure på om pengene kommer, og kunden skal aldri
+Betalingsleverandøren reserverer beløpet når hjelperen takker ja, og trekker det
+først etter bekreftet utført oppdrag. Hjelperen skal aldri lure på om pengene kommer, og kunden skal aldri
 betale for et oppdrag som ikke ble utført.
 
 ## System 7 – Kvalitet

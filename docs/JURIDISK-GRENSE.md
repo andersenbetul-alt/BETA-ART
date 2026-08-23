@@ -251,7 +251,7 @@ har egne språk. Resten av Europa har ingen slik gjensidighet.
 Kontrollert i denne gjennomgangen. Kildene er offentlige, men Datatilsynets og
 Lovdatas sider var ikke direkte tilgjengelige fra utviklingsmiljøet, så
 henvisningene er lest gjennom søkeresultater og andrehåndskilder. **Alt under
-skal verifiseres mot primærkilden av advokat før første betalende kunde.**
+skal en advokat verifisere mot primærkilden før første betalende kunde.**
 
 | Område | Regelverk | Hva det betyr for oss |
 |---|---|---|

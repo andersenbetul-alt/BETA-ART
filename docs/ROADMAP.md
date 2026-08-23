@@ -74,8 +74,8 @@ til en fungerende markedsplass.
 
 ## Juridiske porter
 
-Fire spørsmål må besvares før trinnet de påvirker. De sendes samlet til rådgiver
-før fase 2 startes, slik at svartiden blir en del av byggetiden.
+Fire spørsmål må ha svar før trinnet de påvirker. Vi sender dem samlet til en
+rådgiver før vi starter fase 2, slik at svartiden blir en del av byggetiden.
 
 | Port | Blokkerer | Konsekvens hvis vi bygger først |
 |---|---|---|

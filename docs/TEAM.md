@@ -59,6 +59,6 @@ saken tilbake til `tjenestedesign`, ikke til en prisøkning alene.
 
 ## Koordinering
 
-Arbeid som krever flere roller samtidig, koordineres i hovedøkten: hver rolle
-leverer sitt bidrag i `docs/team/`, og syntesen — der rollene er uenige og hva
-som velges — skrives i `docs/team/SYNTESE.md`.
+Arbeid som krever flere roller samtidig, tar vi i hovedøkten: hver rolle leverer
+sitt bidrag i `docs/team/`, og syntesen — der rollene er uenige, og hva vi
+velger — skriver vi i `docs/team/SYNTESE.md`.

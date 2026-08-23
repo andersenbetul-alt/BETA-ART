@@ -33,7 +33,7 @@ ikke i driftssystemet. Alle oppslag i saker logges, og loggen er en del av verkt
 | **P3 – Klage** | 1 virkedag | Klage på utførelse, betalingssak, tvist om varighet |
 | **P4 – Søknad** | 3 virkedager | Søknadsbehandling, referansesjekk, purring |
 
-Oversittet frist skjules aldri. Den vises i konsollen og eskaleres automatisk til driftsleder.
+Vi skjuler aldri en oversittet frist. Konsollen viser den, og systemet varsler driftslederen.
 
 ## 3. Eskaleringsstige
 
@@ -139,8 +139,8 @@ Konsollen viser oppdragsstatus, ikke hjelperens bevegelser.
 | Innsyn fra referanseperson | 30 dager | Personvernansvarlig |
 | Sletting av avvist søknad | 6 måneder automatisk | Automatisk |
 
-Enkelte opplysninger må beholdes tross slettekrav, for eksempel regnskapsbilag. Det
-forklares konkret for den som spør, ikke med en generell henvisning til «lovkrav».
+Noen opplysninger må vi beholde tross slettekrav, for eksempel regnskapsbilag. Da
+sier vi konkret hvilke og hvorfor, ikke bare «lovkrav».
 
 ## 10. Nøkkeltall som følges ukentlig
 

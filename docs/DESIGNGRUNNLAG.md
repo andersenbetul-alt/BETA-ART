@@ -107,8 +107,8 @@ finnes ikke noe kortere og korrekt ord for «personopplysninger».
 
 Norsk lager lange ord ved å sette dem sammen. LIX straffer da
 sammensetningen, ikke uklarheten, og en forfatter som jager tallet skriver
-dårligere norsk for å score bedre. Derfor rapporteres de to halvdelene hver
-for seg: setningslengden kan rettes, ordlengden er som regel gitt av faget.
+dårligere norsk for å score bedre. Derfor rapporterer modulen de to halvdelene
+hver for seg: setningslengden kan rettes, ordlengden er som regel gitt av faget.
 
 Kanselli, passiv og substantivsykdom er strenge uansett type. De er alltid
 mulige å rette – og passiv er den viktigste her, fordi «oppdraget godkjennes»
