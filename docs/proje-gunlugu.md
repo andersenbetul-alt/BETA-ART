@@ -200,3 +200,18 @@ Gün sonu denetim durumu: check 8/8 (10 dil × 233 anahtar, 9 sayfa,
 sitemap 17 URL), güvenlik 13/13, görünürlük 10/10, marka 56 ölçü,
 RSS determinizmi, Playwright akış testleri — hepsi yeşil. Dal:
 `claude/qblogg-web-sayfasi-upcarm`; yayına alma kullanıcı onayı bekliyor.
+
+## 23.08.2026 (akşam) — Yeni iş modeli çalışması başladı
+
+Kullanıcı üç ayrı yapay zekâ analizini iletti (Norveç fagblog temaları;
+gelir sistemi; TIGER 21/Campden/Long Angle/Oxford Analytica/GLG/HBR/Project
+Syndicate kıyaslaması ve "Q Private Intelligence" taslağı) ve QBLOGG için
+yeni iş modelinin birlikte kurulacağını bildirdi. İlk sentez `docs/is-modeli.md`
+(v1 taslak) olarak yazıldı: çift katlı model (Studio bugünü öder,
+Intelligence yarını kurar), B0–B4 güven merdiveni ve geçiş eşikleri,
+ürün formatları (Q Answer/Brief/Risk Radar/Decision Defense…), profesör
+ücret modeli, üyelik kabul çerçevesi, hukuk sınırları. Belgede her rakam
+kanıt sınıfıyla işaretli: [V] doğrulanmış / [H] hipotez / [D] dış iddia —
+dış araçlardan gelen rakip verileri teyit edilmeden karar dayanağı
+yapılmayacak. Altı açık karar kullanıcıya listelendi (§13).
+
