@@ -26,6 +26,29 @@ pulls from GitHub, not skills.sh.
 
 ---
 
+## 2026-08-22 — İş modeli seçenekleri
+
+`BUSINESS.md` eklendi. Açıkça öneri olarak işaretlendi: depoda fiyat, kitle,
+ürün veya satış kanalı verisi yok, dolayısıyla bir model *çıkarılamaz*.
+
+Depodan çıkan tek gerçek gözlem: navigasyon `Home · Work · About · Contact`
+— `Shop` yok. Bu, talep üzerine satışı ima ediyor. D-003 verilirken bu
+düşünülmedi, konvansiyonel set seçildi; ama şu an mimaride yazılı olan model
+budur.
+
+Dört model karşılaştırıldı. Baskı/edisyon satışı (B) tek başına D-002'yi
+yeniden açıyor — statik HTML sepet ve ödeme taşımıyor; Stripe Payment Links
+ile iliştirilebilir ama bu bilinçli alınması gereken bir mimari borç.
+
+Öneri: A (orijinal eser) + C (komisyon) ile başla — mevcut mimariye uyar, ek
+maliyet yok. Sabit gider yıllık ~15 USD alan adı; acele karar gerekmiyor.
+
+Belge D-004 ("Cobban" nedir) cevaplanmadan tamamlanamaz.
+
+Ayrıca `deploy-to-vercel` skill'i kuruldu.
+
+---
+
 ## 2026-08-21 — Test suite and build
 
 The project had no tests and no build. Added both, sized to a static site.

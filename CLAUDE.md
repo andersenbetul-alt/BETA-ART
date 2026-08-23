@@ -18,6 +18,7 @@ site navigation bar, referred to as the "BETA ART / Cobban" navbar.
 | `PROGRESS.md` | Dated log, newest first — what actually changed and when | Every commit that changes behaviour or docs |
 | `DECISIONS.md` | Numbered decisions (D-001…): the choice, the reasoning, what it rules out | A decision is made, opened, or superseded |
 | `README.md` | Outward-facing overview and repository layout | Layout or entry points change |
+| `BUSINESS.md` | İş modeli seçenekleri — öneri, karar değil | A revenue model is chosen (then record as D-006) |
 | `SECURITY.md` | Security policy — currently GitHub's unedited template | A real contact and version table are set |
 
 Update these in the **same commit** as the work they describe. Records kept
