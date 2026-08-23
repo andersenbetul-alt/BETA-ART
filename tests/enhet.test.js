@@ -22,6 +22,7 @@ require('../assets/js/besok-behov.js');
 require('../assets/js/besok-sprakkrav.js');
 require('../assets/js/besok-agenter.js');
 require('../assets/js/besok-vern.js');
+require('../assets/js/hjelper-opptak.js');
 require('../assets/js/besok-klage.js');
 require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
@@ -1005,6 +1006,128 @@ t.test('landingssiden oppgir ingen pris før den er testet', function () {
   pris = pris.slice(0, pris.indexOf('</section>'));
   var tall = pris.match(/\b\d{3,4}\s*kr\b/g);
   t.erUsann(!!tall, 'pris på siden: ' + (tall || []).join(', '));
+});
+
+t.gruppe('Opptak av medarbeidere');
+
+var HO = window.PP_HJELPER;
+
+function ferdigHjelper(endringer) {
+  var h = { arbeidsforhold: 'ansatt', soknad: true, identitet: true, status: true,
+            referanse: true, intervju: true, opplaering: true, proveoppdrag: true,
+            proveperiode: true, prove: 90, taushetsavtale: true };
+  return Object.assign(h, endringer || {});
+}
+
+t.test('ingen kan aktiveres før arbeidsforholdet er avklart', function () {
+  /* Porten som står før alt annet. Setter vi pris, definerer oppdrag, lærer
+     opp og kan stenge profilen, avgjøres statusen av det reelle forholdet -
+     ikke av hva avtalen kalles. Da kan ikke opptaket åpne først. */
+  t.erUsann(HO.ARBEIDSFORHOLD.avklart);
+  var r = HO.kanAktiveres(ferdigHjelper());
+  t.erUsann(r.ok);
+  t.erSann(r.mangler.join(' ').indexOf('arbeidsforholdet') !== -1, r.mangler.join(', '));
+});
+
+t.test('styrt frilans er ikke en gyldig modell', function () {
+  t.erLik(HO.ARBEIDSFORHOLD.avvist.id, 'styrt_frilans');
+  var r = HO.kanAktiveres(ferdigHjelper({ arbeidsforhold: 'styrt_frilans' }));
+  t.erUsann(r.ok);
+});
+
+t.test('hvert manglende trinn navngis', function () {
+  var r = HO.kanAktiveres(ferdigHjelper({ referanse: false, opplaering: false }));
+  var tekst = r.mangler.join(' ');
+  t.erSann(tekst.indexOf('referanser') !== -1, tekst);
+  t.erSann(tekst.indexOf('opplæring') !== -1, tekst);
+});
+
+t.test('prøven må være bestått med terskelen', function () {
+  t.erLik(HO.PROVE.terskel, 85);
+  var r = HO.kanAktiveres(ferdigHjelper({ prove: 84 }));
+  t.erSann(r.mangler.join(' ').indexOf('prøven') !== -1);
+});
+
+t.test('ett farlig svar stopper opptaket, uansett poengsum', function () {
+  /* En sum kan skjule det ene svaret som betyr noe. */
+  var svar = {};
+  HO.SCENARIER.forEach(function (s) { svar[s.id] = true; });
+  svar.bankid = false;
+  var r = HO.vurderIntervju(svar);
+  t.erUsann(r.ok);
+  t.erSann(r.poeng >= 85, 'poeng: ' + r.poeng);
+  t.erSann(r.kritiskeFeil.indexOf('bankid') !== -1);
+});
+
+t.test('en ikke-kritisk feil felles ikke alene', function () {
+  var svar = {};
+  HO.SCENARIER.forEach(function (s) { svar[s.id] = true; });
+  svar.tungt = false;
+  t.erSann(HO.vurderIntervju(svar).ok);
+});
+
+t.test('politiattest kan ikke kreves uten hjemmel', function () {
+  /* Verre å love enn å la være: sier vi at alle er kontrollert av politiet,
+     har vi gitt en garanti vi ikke kan holde. */
+  t.erUsann(HO.POLITIATTEST.kanKreves);
+  t.erSann(HO.POLITIATTEST.hvorfor.indexOf('hjemmel') !== -1);
+});
+
+t.test('legitimasjon bekreftes, den arkiveres ikke', function () {
+  t.erSann(HO.IDENTITET.lagres.indexOf('bekreftet') !== -1);
+  ['kopi av legitimasjon', 'fødselsnummer'].forEach(function (f) {
+    t.erSann(HO.IDENTITET.lagresAldri.indexOf(f) !== -1, 'mangler: ' + f);
+  });
+  HO.IDENTITET.lagres.forEach(function (f) {
+    t.erUsann(HO.IDENTITET.lagresAldri.indexOf(f) !== -1, f + ' står begge steder');
+  });
+});
+
+t.test('personlige egenskaper er aldri et kriterium', function () {
+  ['alder', 'opprinnelse', 'kjønn'].forEach(function (k) {
+    t.erSann(HO.IKKE_KRITERIUM.indexOf(k) !== -1, 'mangler: ' + k);
+  });
+});
+
+t.test('et vanlig oppdrag fra katalogen går automatisk', function () {
+  var r = HO.risikoFor('samvaer', 'Kaffe og en prat', {});
+  t.erLik(r.niva, 'gronn');
+  t.erLik(r.handling, 'automatisk');
+});
+
+t.test('oppgave utenfor katalogen avvises', function () {
+  t.erLik(HO.risikoFor('stell', '', {}).niva, 'rod');
+});
+
+t.test('fritekst om medisin gjør oppdraget rødt', function () {
+  var r = HO.risikoFor('samvaer', 'Hun trenger hjelp med medisinen sin', {});
+  t.erLik(r.niva, 'rod');
+  t.erLik(r.handling, 'avvises');
+});
+
+t.test('fritekst om fall stopper oppdraget i stedet for å avvise det', function () {
+  /* Det som haster skal meldes, ikke skrives - og ikke bare avvises. */
+  var r = HO.risikoFor('samvaer', 'Hun har falt på badet', {});
+  t.erLik(r.niva, 'nod');
+  t.erLik(r.handling, 'stopp');
+});
+
+t.test('første besøk krever menneskelig godkjenning', function () {
+  var r = HO.risikoFor('samvaer', '', { forste_besok: true });
+  t.erLik(r.niva, 'gul');
+  t.erLik(r.handling, 'operator');
+});
+
+t.test('permanent stenging kan ikke skje automatisk', function () {
+  t.erSann(HO.STENGING.permanent.indexOf('menneskelig') !== -1);
+  t.erSann(HO.STENGING.permanent.indexOf('aldri automatisk') !== -1);
+});
+
+t.test('de fire hendelsesnivåene har en handling hver', function () {
+  ['P0', 'P1', 'P2', 'P3'].forEach(function (n) {
+    var h = HO.hendelse(n);
+    t.erSann(h && h.gjor.length > 10, 'mangler handling for ' + n);
+  });
 });
 
 t.oppsummer('Enhetstester');
