@@ -121,7 +121,7 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
   position:absolute; width:1px; height:1px; padding:0; margin:-1px;
   overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
 }
-.skeleton { background:var(--track); border-radius:8px; margin-bottom:1rem; }
+.skeleton { background:var(--border); border-radius:8px; margin-bottom:1rem; }
 .skeleton-title  { height:2.6rem; width:70%; }
 .skeleton-chips  { height:9.5rem; }
 .skeleton-answer { height:7rem; }
