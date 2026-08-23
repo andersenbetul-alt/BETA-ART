@@ -14,12 +14,14 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
       `scale(.985)` + arka plan değişimi; `prefers-reduced-motion` ile
       kapatılıyor.
 
-- [ ] **Kopyalama onayı geçişsiz.** "✓ Copied" anlık yer değiştiriyor —
-      uygulamanın "DONE" dediği an en zayıf geri bildirime sahip.
+- [x] **Kopyalama onayı geçişsiz.** KAPANDI — buton `is-done` sınıfıyla
+      yeşile geçiyor (`--done` jetonu, .12s). Metin anlık değişiyor, renk
+      geçişle. `aria-live="polite"` eklendi.
 
-- [ ] **`loading.tsx` yok.** Ulaşım ekranı sunucuda Entur'a gidiyor; kötü
-      sinyalde kullanıcı eski sayfada bekliyor, hiçbir işaret yok.
-      Doğrulama: `ls web/app/sorun/[kind]/loading.tsx`.
+- [x] **Yükleniyor durumu yoktu.** KAPANDI — `loading.tsx` DEĞİL, ulaşım
+      dalının etrafında `<Suspense>`. `loading.tsx` denendi ve geri alındı:
+      akış başlayınca HTTP durumu yazılıyor, `notFound()` geç kalıyor ve
+      bilinmeyen sorun türü 404 yerine 200 dönüyordu (duman testi yakaladı).
 
 ## Tasarım — kaynak: impeccable (deterministik dedektör)
 
@@ -29,6 +31,14 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
 
 - [ ] **Krem palet.** `--fog #F4F1EC` sayfa arka planı.
       Doğrulama: URL taraması `cream-palette` vermemeli.
+
+## Yeni bulgu — kontrast ölçümünden
+
+- [ ] **`.pill.live` koyu temada zeminden ayrılmıyor.** `--moss` #3F5B4C,
+      koyu yüzey #171E23 → **2,26:1**, bileşen sınırı eşiği 3,0. Kopyalama
+      butonunu düzeltirken aynı kökten çıktı; `--done` jetonu buton için
+      çözdü ama pill hâlâ `--moss` kullanıyor. Önceden var olan sorun,
+      bilerek ayrı bırakıldı.
 
 ## Ölçek — kaynak: kendi denetimim
 

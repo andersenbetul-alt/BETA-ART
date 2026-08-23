@@ -41,7 +41,8 @@ export default function FixItNow({
       <p className="fix-msg" lang={language}>{message.local}</p>
 
       <div className="fix-actions">
-        <button className="btn-primary" onClick={copy}>
+        <button className={`btn-primary${copied ? ' is-done' : ''}`}
+                onClick={copy} aria-live="polite">
           {copied ? '✓ Copied' : message.action}
         </button>
         {phone && (

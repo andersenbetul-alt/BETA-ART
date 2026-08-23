@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import {
@@ -93,7 +94,14 @@ export default async function ProblemPage({
       <CountryPicker active={country.code} basePath={`/sorun/${k}`} />
 
       {isTransport
-        ? <TransportAnswer country={country} kind={k} from={from} to={to} />
+        ? (
+          /* Sadece bu dal sunucuda Entur'a gidiyor. İskeleti sayfanın
+             tamamına koymak 404'ü bozuyordu: akış başlayınca HTTP durumu
+             yazılıyor, notFound() artık geç kalıyor. */
+          <Suspense fallback={<TransportSkeleton />}>
+            <TransportAnswer country={country} kind={k} from={from} to={to} />
+          </Suspense>
+        )
         : k === 'car'
           ? <CarAnswer country={country} situation={car} />
           : k === 'eat'
@@ -108,6 +116,18 @@ export default async function ProblemPage({
 }
 
 /* ------------------------------------------------------------- ulaşım */
+
+/** Entur yanıtı beklenirken. Ölçüler gerçek içeriğinkine yakın: düzen zıplamasın. */
+function TransportSkeleton() {
+  return (
+    <div aria-busy="true" aria-live="polite">
+      <span className="sr-only">Finding your options…</span>
+      <div className="skeleton skeleton-chips" />
+      <div className="skeleton skeleton-answer" />
+      <div className="skeleton skeleton-answer" />
+    </div>
+  );
+}
 
 async function TransportAnswer({
   country, kind, from, to,
