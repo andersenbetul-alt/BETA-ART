@@ -23,3 +23,24 @@ konturene brukes slik.
 
 Endres sporingen eller ordmellomrommet, er det her det gjøres – ikke ved å
 redigere banedata i SVG-filene for hånd.
+
+## Delingsbildene
+
+`lag-og.js` tegner `naviar-og.png`, `naviar-twitter.png` og
+`naviar-og-kvadrat.png` fra `og.html`, med Playwright fra global sti.
+
+```
+node verktoy/lag-og.js
+```
+
+Ordene hentes fra `PP_KLARHET`, ikke skrevet inn i skriptet. Grunnen er at et
+delingsbilde er det siste noen oppdager er feil – det vises jo bare utenfor
+sida. Sier produktet noe annet i morgen, sier bildet det samme etter én
+kommando.
+
+Hvorfor nettleser og ikke et bildeprogram: teksten skal settes i den ekte
+Inter, og fargene skal komme fra de samme tokenene som resten av siden.
+Skriptet venter på at skrifta er lastet før det tegner – uten det ville
+bildet blitt satt i en reservefont og sett ut som en annen merkevare.
+
+`godkjenn.html` har med vilje ingen `og:`-merkelapper. Se merknaden i fila.

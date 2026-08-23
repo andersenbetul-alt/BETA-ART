@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<title>Naviar – delingsbilder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Delingsbildene tegnes her og ikke i et bildeprogram, av samme grunn som
+     filmen: teksten skal settes i den ekte Inter, fargene skal komme fra de
+     samme tokenene som siden, og resultatet skal bli likt hver gang.
+
+     Ordene hentes fra PP_KLARHET, ikke skrevet inn her. Et delingsbilde som
+     sier noe annet enn produktet, er det siste noen oppdager – det vises jo
+     bare utenfor sida. */
+  :root{
+    --ink:#101a2e; --sand:#fbf6ee; --brand-pa-mork:#4cb99b; --damp:#8b95a8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#333;font-family:Inter,"Segoe UI",system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased}
+
+  .flate{position:relative;background:var(--ink);color:var(--sand);
+         display:flex;flex-direction:column;justify-content:space-between;
+         overflow:hidden}
+  .flate[data-format="og"]     {width:1200px;height:630px;padding:64px 72px}
+  .flate[data-format="twitter"]{width:1200px;height:675px;padding:70px 72px}
+  .flate[data-format="kvadrat"]{width:1200px;height:1200px;padding:96px 88px}
+
+  .merke{display:flex;align-items:center;gap:16px}
+  .merke svg{color:var(--sand)}
+  .ordmerke{font-size:30px;font-weight:700;letter-spacing:.1em}
+  .ordmerke span{font-weight:400;letter-spacing:.22em;color:var(--damp)}
+
+  .midt{display:flex;flex-direction:column;gap:22px}
+  h1{font-weight:700;letter-spacing:-.035em;line-height:1.04}
+  .flate[data-format="og"] h1     {font-size:86px;max-width:15ch}
+  .flate[data-format="twitter"] h1{font-size:90px;max-width:15ch}
+  .flate[data-format="kvadrat"] h1{font-size:112px;max-width:12ch}
+  .under{color:var(--brand-pa-mork);font-weight:600}
+  .flate[data-format="og"] .under     {font-size:34px}
+  .flate[data-format="twitter"] .under{font-size:36px}
+  .flate[data-format="kvadrat"] .under{font-size:46px}
+
+  .bunn{display:flex;align-items:baseline;gap:14px;color:var(--damp)}
+  .flate[data-format="og"] .bunn     {font-size:22px}
+  .flate[data-format="twitter"] .bunn{font-size:23px}
+  .flate[data-format="kvadrat"] .bunn{font-size:30px}
+  .prikk{color:#3d4761}
+
+  /* Varden i stort format, svakt nedfelt i flata. Den er merket, ikke et
+     dekorelement – derfor samme form som faviconet, bare skalert. */
+  .vakt{position:absolute;right:-90px;bottom:-140px;opacity:.07;
+        color:var(--sand);pointer-events:none}
+  .flate[data-format="kvadrat"] .vakt{right:-120px;bottom:-180px}
+</style>
+</head>
+<body>
+<div id="scene"></div>
+<script>
+var MERKE = '<svg viewBox="0 0 32 32" width="34" height="34" fill="currentColor">' +
+  '<path fill-rule="evenodd" d="M16 3.2 3.4 28.8h5.1L16 13.6l7.5 15.2h5.1L16 3.2ZM11.1 23.6h9.8l2.2 4.4H8.9l2.2-4.4Z"/></svg>';
+var VAKT = '<svg viewBox="0 0 32 32" width="520" height="520" fill="currentColor">' +
+  '<path fill-rule="evenodd" d="M16 3.2 3.4 28.8h5.1L16 13.6l7.5 15.2h5.1L16 3.2ZM11.1 23.6h9.8l2.2 4.4H8.9l2.2-4.4Z"/></svg>';
+
+window.tegn = function (format, tekst) {
+  var t = tekst || {};
+  document.getElementById('scene').innerHTML =
+    '<div class="flate" data-format="' + format + '">' +
+      '<div class="merke">' + MERKE +
+        '<span class="ordmerke">NAVIAR <span>CARE</span></span></div>' +
+      '<div class="midt">' +
+        '<h1>' + t.tittel + '</h1>' +
+        '<p class="under">' + t.under + '</p>' +
+      '</div>' +
+      '<div class="bunn"><span>' + t.bunn + '</span>' +
+        '<span class="prikk">·</span><span>' + t.adresse + '</span></div>' +
+      '<div class="vakt">' + VAKT + '</div>' +
+    '</div>';
+  document.documentElement.dataset.klar = '1';
+};
+</script>
+</body>
+</html>

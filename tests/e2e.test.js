@@ -1111,6 +1111,60 @@ if (!pw) {
 
   await go.close();
 
+  t.gruppe('Delingsbilder');
+
+  var og = await nySide();
+  await og.goto(BASE + 'klarhet.html', { waitUntil: 'domcontentloaded' });
+  var ogData = await og.evaluate(function () {
+    function m(sel) { var n = document.querySelector(sel); return n ? n.content : null; }
+    return {
+      bilde: m('meta[property="og:image"]'),
+      twitter: m('meta[name="twitter:image"]'),
+      alt: m('meta[property="og:image:alt"]'),
+      kort: m('meta[name="twitter:card"]'),
+      tittel: m('meta[property="og:title"]')
+    };
+  });
+
+  t.test('klarhet.html har delingsbilde med alternativ tekst', function () {
+    t.erSann(/^https:\/\//.test(ogData.bilde), 'må være absolutt: ' + ogData.bilde);
+    t.erSann(/^https:\/\//.test(ogData.twitter));
+    t.erSann(ogData.alt && ogData.alt.length > 20, 'alt-tekst mangler');
+    t.erLik(ogData.kort, 'summary_large_image');
+  });
+
+  /* Bildefilene må finnes. Et og:image som peker på ingenting, vises som en
+     tom flate i meldingsappen – og ingen oppdager det, fordi det bare skjer
+     utenfor sida. */
+  /* fetch og ikke goto: en nettleser som navigerer til en PNG, starter en
+     nedlasting i stedet for a vise den, og testkjoringen stopper. */
+  var ogFiler = await og.evaluate(async function () {
+    var ut = {};
+    for (var f of ['naviar-og.png', 'naviar-twitter.png', 'naviar-og-kvadrat.png']) {
+      try {
+        var r = await fetch('assets/img/' + f, { method: 'HEAD' });
+        ut[f] = r.status;
+      } catch (e) { ut[f] = 0; }
+    }
+    return ut;
+  });
+
+  Object.keys(ogFiler).forEach(function (fil) {
+    t.test(fil + ' finnes', function () { t.erLik(ogFiler[fil], 200); });
+  });
+
+  /* Samtykkeskjermen skal ikke ha forhåndsvisning. Lenka sendes på SMS til én
+     person, og et delingsbilde ville vist navnet hennes til meldingsappen. */
+  await og.goto(BASE + 'godkjenn.html', { waitUntil: 'domcontentloaded' });
+  var utenOg = await og.evaluate(function () {
+    return document.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]').length;
+  });
+  t.test('samtykkeskjermen har ingen forhåndsvisning', function () {
+    t.erLik(utenOg, 0, 'et samtykke skal ikke ha delingsbilde');
+  });
+
+  await og.close();
+
   t.gruppe('Ingen JavaScript-feil');
   t.test('konsollen er ren på alle sider', function () {
     t.erLik(jsFeil, [], 'feil funnet');
