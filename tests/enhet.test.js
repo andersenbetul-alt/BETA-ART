@@ -24,6 +24,7 @@ require('../assets/js/besok-agenter.js');
 require('../assets/js/besok-vern.js');
 require('../assets/js/hjelper-opptak.js');
 require('../assets/js/hjelper-base.js');
+require('../assets/js/maling.js');
 require('../assets/js/besok-klage.js');
 require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
@@ -1263,6 +1264,94 @@ t.test('det går ikke an å søke på noe som ikke gjelder arbeidet', function (
   var feilet = false;
   try { HB.sok(base, { fornavn: 'A' }); } catch (e) { feilet = true; }
   t.erSann(feilet, 'søk på fornavn burde vært sperret');
+});
+
+t.gruppe('Målingene');
+
+var ML = window.PP_MALING;
+
+/* Tellere som treffer alle mål med god margin. */
+function godePilot(endringer) {
+  var t = { gjennomforte: 40, iTide: 38, utenAvvik: 39, klager: 1,
+            alvorligeHendelser: 0, antallSvar: 40, sumSvartidTimer: 60,
+            antallTilbakemeldinger: 36, sumTilfredshet: 68,
+            besokAvFastMedarbeider: 35,
+            familierMedMinstEtt: 10, familierMedToEllerFlere: 5 };
+  return Object.assign(t, endringer || {});
+}
+
+t.test('hvert mål har kilde, tall og begrunnelse', function () {
+  t.erLik(ML.MAL.length, 8);
+  ML.MAL.forEach(function (m) {
+    t.erSann(m.kilde && m.kilde.length > 10, m.id + ' mangler kilde');
+    t.erSann(m.hvorfor && m.hvorfor.length > 20, m.id + ' mangler begrunnelse');
+    t.erSann(m.retning === 'hoy' || m.retning === 'lav', m.id + ' mangler retning');
+  });
+});
+
+t.test('status har alltid et ord, ikke bare en farge', function () {
+  /* En som ikke skiller farger, skal få den samme beskjeden som alle andre. */
+  var m = ML.mal('presis');
+  [null, 95, 80, 40].forEach(function (v) {
+    var s = ML.status(m, v);
+    t.erSann(s.navn && s.navn.length > 5, 'status uten ord for ' + v);
+  });
+});
+
+t.test('retningen snus for målene der lavt er bra', function () {
+  t.erLik(ML.status(ML.mal('klager'), 2).id, 'naadd');
+  t.erLik(ML.status(ML.mal('klager'), 20).id, 'under');
+  t.erLik(ML.status(ML.mal('presis'), 95).id, 'naadd');
+  t.erLik(ML.status(ML.mal('presis'), 40).id, 'under');
+});
+
+t.test('null målinger gir «ikke målt», ikke null prosent', function () {
+  /* Ingen data og et dårlig resultat er ikke det samme, og skal ikke se likt ut. */
+  var v = ML.beregn({ gjennomforte: 0 });
+  t.erLik(v.presis, null);
+  t.erLik(ML.status(ML.mal('presis'), v.presis).id, 'ukjent');
+});
+
+t.test('en god pilot består', function () {
+  var d = ML.pilotdom(godePilot());
+  t.erSann(d.ok, d.grunn);
+  t.erLik(d.kode, 'bestatt');
+});
+
+t.test('for få oppdrag gir ingen dom, verken ja eller nei', function () {
+  var d = ML.pilotdom(godePilot({ gjennomforte: 12, iTide: 12, utenAvvik: 12 }));
+  t.erUsann(d.ok);
+  t.erLik(d.kode, 'for_tidlig');
+  t.erLik(d.brutt.length, 0);
+});
+
+t.test('én alvorlig hendelse stopper piloten', function () {
+  /* Det eneste målet der ett er for mange. */
+  var d = ML.pilotdom(godePilot({ alvorligeHendelser: 1 }));
+  t.erUsann(d.ok);
+  t.erSann(d.brutt.indexOf('hendelser') !== -1, d.grunn);
+});
+
+t.test('for lav andel samme medarbeider stopper piloten', function () {
+  var d = ML.pilotdom(godePilot({ besokAvFastMedarbeider: 20 }));
+  t.erUsann(d.ok);
+  t.erSann(d.brutt.indexOf('samme') !== -1, d.grunn);
+});
+
+t.test('hvert stopp-punkt peker på et mål som finnes', function () {
+  ML.STOPPUNKT.forEach(function (p) {
+    t.erSann(!!ML.mal(p.id), 'stopp-punkt uten mål: ' + p.id);
+    t.erSann(p.gjor && p.gjor.length > 20, p.id + ' mangler en handling');
+  });
+});
+
+t.test('oversikten viser stopp-punktet bare når målet er langt under', function () {
+  var bra = ML.oversikt(godePilot());
+  t.erSann(bra.every(function (x) { return !x.stoppunkt; }));
+  var daarlig = ML.oversikt(godePilot({ besokAvFastMedarbeider: 20 }));
+  var samme = daarlig.filter(function (x) { return x.id === 'samme'; })[0];
+  t.erSann(!!samme.stoppunkt, 'stopp-punktet mangler');
+  t.erSann(samme.stoppunkt.gjor.length > 20);
 });
 
 t.oppsummer('Enhetstester');
