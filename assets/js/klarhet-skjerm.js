@@ -320,8 +320,9 @@
   var HERO = {
     familie: {
       oyenbryn: 'For deg som hjelper en forelder',
-      tittel: 'Usikker på hvem dere skal kontakte?',
-      ingress: 'Snakk med en erfaren fagperson og få tre tydelige neste steg.',
+      tittel: 'Fra usikkerhet til et konkret neste steg.',
+      ingress: 'Fortell hva dere trenger. Naviar finner riktig fagperson, ' +
+               'bestiller samtalen og sender familien planen etterpå.',
       knapp: 'Finn riktig ekspert', maal: '#navigator'
     },
     eldre: {

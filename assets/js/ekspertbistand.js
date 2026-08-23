@@ -74,7 +74,7 @@ window.PP_EKSPERT = (function () {
       gjorLettere: 'Forstå hvilken ytelse som gjelder, hvordan en sak behandles og hvilke frister som løper',
       girIkkeRett: [
         'Å behandle eller påvirke en sak',
-        'Å søke på kundens vegne eller logge inn for henne',
+        'Å søke på dine vegne eller logge inn for deg',
         'Å si hva utfallet av en søknad blir'
       ],
       verifiseres: 'referanse' },
@@ -86,8 +86,8 @@ window.PP_EKSPERT = (function () {
       gjorLettere: 'Vite hvilket kontor som avgjør hva, og hvordan man ber om en vurdering',
       girIkkeRett: [
         'Å love at en tjeneste blir innvilget',
-        'Å vurdere kundens hjelpebehov på kommunens vegne',
-        'Å klage på vegne av kunden uten skriftlig fullmakt'
+        'Å vurdere hjelpebehovet ditt på kommunens vegne',
+        'Å klage på dine vegne uten skriftlig fullmakt'
       ],
       verifiseres: 'referanse' },
 
@@ -101,7 +101,7 @@ window.PP_EKSPERT = (function () {
          om symptomer innen fem minutter, hver gang. Da er skriptet det eneste
          som står mellom veiledning og helsehjelp. */
       girIkkeRett: [
-        'Å vurdere symptomer eller helsetilstanden til kunden',
+        'Å vurdere symptomene eller helsetilstanden din',
         'Å stille eller antyde en diagnose',
         'Å anbefale, endre eller seponere medisin',
         'Å si om noe «ser alvorlig ut» eller «kan vente»'
@@ -129,7 +129,7 @@ window.PP_EKSPERT = (function () {
       bakgrunn: ['Tidligere ansatt i Hjelpemiddelsentralen', 'Ergoterapeut', 'Boligrådgiver'],
       gjorLettere: 'Vite hva som finnes av hjelpemidler og tilpasninger, og hvem som søker om hva',
       girIkkeRett: [
-        'Å vurdere om kunden har rett på et hjelpemiddel',
+        'Å vurdere om du har rett på et hjelpemiddel',
         'Å bestille eller montere noe',
         'Å gjøre en befaring som erstatter kommunens egen'
       ],
@@ -144,7 +144,7 @@ window.PP_EKSPERT = (function () {
          og BankID røres ikke, heller ikke når kunden ber om det selv. */
       girIkkeRett: [
         'Å be om, motta eller bruke BankID, passord eller koder',
-        'Å fjernstyre kundens maskin eller telefon',
+        'Å fjernstyre maskinen eller telefonen din',
         'Å gjennomføre en betaling eller opprette en konto'
       ],
       verifiseres: 'referanse' },
@@ -156,7 +156,7 @@ window.PP_EKSPERT = (function () {
       bakgrunn: ['Pårørendekoordinator', 'Sosionom', 'Pasient- og brukerombud'],
       gjorLettere: 'Forstå hvilke rettigheter pårørende har, og hva en fullmakt faktisk dekker',
       girIkkeRett: [
-        'Å skrive en fullmakt eller et vergemål for kunden',
+        'Å skrive en fullmakt eller et vergemål for deg',
         'Å avgjøre hvem som skal bestemme',
         'Å mekle i en familiekonflikt'
       ],
@@ -169,8 +169,8 @@ window.PP_EKSPERT = (function () {
       bakgrunn: ['Tidligere ansatt i Skatteetaten', 'Regnskapsfører', 'Økonomirådgiver'],
       gjorLettere: 'Lese skattemeldingen, forstå fradrag og vite hvilken frist som gjelder',
       girIkkeRett: [
-        'Å levere skattemeldingen for kunden',
-        'Å få innsyn i kundens konto eller skatteopplysninger',
+        'Å levere skattemeldingen for deg',
+        'Å få innsyn i kontoen eller skatteopplysningene dine',
         'Å gi råd om plassering av penger'
       ],
       verifiseres: 'referanse' },
@@ -182,8 +182,8 @@ window.PP_EKSPERT = (function () {
       bakgrunn: ['Advokat med bevilling', 'Jurist'],
       gjorLettere: 'Vite hva slags sak dette er, hvilke frister som gjelder og om man trenger advokat',
       girIkkeRett: [
-        'Å opptre som kundens advokat i en sak',
-        'Å skrive et prosesskriv eller en avtale som binder kunden',
+        'Å opptre som din advokat i en sak',
+        'Å skrive et prosesskriv eller en avtale som binder deg',
         'Å kalle seg advokat uten bevilling'
       ],
       verifiseres: 'tilsynsradet' },
@@ -197,7 +197,7 @@ window.PP_EKSPERT = (function () {
       girIkkeRett: [
         'Å drive terapi eller behandling',
         'Å vurdere funksjonsnivå',
-        'Å melde kunden på noe uten at hun har sagt ja'
+        'Å melde deg på noe uten at du har sagt ja'
       ],
       verifiseres: 'referanse' }
   ];
@@ -546,6 +546,59 @@ window.PP_EKSPERT = (function () {
              grenser: k.girIkkeRett };
   }
 
+  /* ---------- den eldres svar ----------
+
+     Her ligger hele setningen «den eldre bestemmer» som kode. Tre ting som
+     ser ut som detaljer, og som er det motsatte:
+
+     1. Ingen forhåndsvalgt knapp. Et ja som allerede står der, er ikke et
+        samtykke – det er en bekreftelse av noe andre har bestemt.
+     2. Nei krever ingen begrunnelse. Ber vi om en grunn, har vi laget en
+        terskel foran det ene svaret, og da er de to svarene ikke like.
+     3. Nei lagres som nei, ikke som «ikke besvart». Et avslag som ser ut som
+        en glemsel, blir purret på.
+
+     Funksjonen tar imot svaret og sier hva som da gjelder. Den lagrer ikke
+     hvorfor, fordi det ikke finnes noe felt for det. */
+  function godkjenn(svar) {
+    var s = svar || {};
+
+    if (s.svar !== 'ja' && s.svar !== 'nei' && s.svar !== 'endre') {
+      return { ok: false, tilstand: 'venter',
+               grunn: SAMTYKKE.utenGodkjenning,
+               mangler: SAMTYKKE.eldreMaaGodkjenne };
+    }
+
+    if (s.svar === 'nei') {
+      return { ok: false, tilstand: 'avslatt',
+               grunn: 'Hun har sagt nei. Avtalen gjennomføres ikke, og ingen ' +
+                      'purring sendes',
+               /* Familien får vite utfallet, ikke hvorfor. Grunnen er hennes. */
+               tilFamilien: 'Avtalen ble ikke noe av.' };
+    }
+
+    if (s.svar === 'endre') {
+      return { ok: false, tilstand: 'endring_onsket',
+               grunn: 'Hun vil ha noe annet. Familien får forslaget, og ' +
+                      'avtalen står til hun har sagt ja',
+               onske: s.onske || null };
+    }
+
+    /* Ja. Da må begge de to tingene være valgt – ikke fordi skjemaet krever
+       det, men fordi det er de to hun faktisk godkjenner. */
+    if (!s.ekspert || !s.kanal) {
+      return { ok: false, tilstand: 'venter',
+               grunn: 'Hun må vite hvem hun snakker med, og på hvilken måte',
+               mangler: SAMTYKKE.eldreMaaGodkjenne };
+    }
+
+    return { ok: true, tilstand: 'godkjent',
+             ekspert: s.ekspert, kanal: s.kanal,
+             sprak: s.sprak || 'nb',
+             /* Angreretten er ikke et unntak. Den står i svaret, hver gang. */
+             angre: 'Hun kan avlyse fram til samtalen starter, uten grunn og uten kostnad' };
+  }
+
   /* Oppsummeringen etter samtalen. Samme sperre som besøksrapportene, og en
      lengdegrense i tillegg: den som skriver langt, skriver journal. */
   function sjekkOppsummering(tekst) {
@@ -596,6 +649,7 @@ window.PP_EKSPERT = (function () {
     verifisering: verifisering,
     ledigeTider: ledigeTider,
     bestill: bestill,
+    godkjenn: godkjenn,
     sjekkOppsummering: sjekkOppsummering
   };
 })();

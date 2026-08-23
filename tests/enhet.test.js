@@ -1677,6 +1677,16 @@ t.test('hver kategori sier hva den ikke gir rett til', function () {
   });
 });
 
+t.test('grensene er skrevet til den de gjelder, ikke om henne', function () {
+  // Samme liste vises til familien og til den eldre. «Kundens vegne» på
+  // hennes egen skjerm gjør henne til en tredjeperson i sin egen sak.
+  EK.KATEGORI.forEach(function (k) {
+    k.girIkkeRett.forEach(function (g) {
+      t.erSann(!/\bkunden(s)?\b/i.test(g), k.id + ': «' + g + '»');
+    });
+  });
+});
+
 t.test('helseveiledning kan ikke vurdere symptomer', function () {
   var h = EK.kategori('helseveiledning');
   t.erSann(h.girIkkeRett.join(' ').indexOf('symptom') !== -1);
@@ -1692,7 +1702,7 @@ t.test('digital hjelp rører ikke BankID, heller ikke her', function () {
 });
 
 t.test('harRettTil svarer med grunn, ikke med taushet', function () {
-  var nei = EK.harRettTil('nav', 'Å søke på kundens vegne');
+  var nei = EK.harRettTil('nav', 'søke på dine vegne');
   t.erUsann(nei.rett);
   t.erSann(nei.grunn.length > 0);
   t.erSann(EK.harRettTil('nav', 'forklare saksgangen').rett);
@@ -1798,6 +1808,56 @@ t.test('oppsummeringen kan ikke bli en journal', function () {
   var lang = new Array(160).join('ord ');
   t.erUsann(EK.sjekkOppsummering(lang).ok);
   t.erSann(EK.sjekkOppsummering('Ring tildelingskontoret og be om en vurdering.').ok);
+});
+
+t.gruppe('Den eldres godkjenning');
+
+t.test('uten svar står avtalen og venter', function () {
+  var d = EK.godkjenn({ ekspert: 'Kari Hansen', kanal: 'telefon' });
+  t.erUsann(d.ok);
+  t.erLik(d.tilstand, 'venter');
+  t.erSann(d.mangler.length === 2);
+});
+
+t.test('nei er nei, ikke «ikke besvart»', function () {
+  var d = EK.godkjenn({ svar: 'nei' });
+  t.erUsann(d.ok);
+  t.erLik(d.tilstand, 'avslatt');
+  t.erSann(d.grunn.indexOf('ingen purring') !== -1);
+});
+
+t.test('nei krever ingen begrunnelse, og lagrer ingen', function () {
+  var d = EK.godkjenn({ svar: 'nei' });
+  t.erLik(d.grunn && d.begrunnelse, undefined, 'det finnes ikke noe begrunnelsesfelt');
+  // Familien får utfallet. Grunnen er hennes.
+  t.erLik(d.tilFamilien, 'Avtalen ble ikke noe av.');
+});
+
+t.test('ja krever at hun vet hvem og hvordan', function () {
+  var uten = EK.godkjenn({ svar: 'ja' });
+  t.erUsann(uten.ok);
+  t.erLik(uten.tilstand, 'venter');
+
+  var med = EK.godkjenn({ svar: 'ja', ekspert: 'Kari Hansen', kanal: 'telefon' });
+  t.erSann(med.ok);
+  t.erLik(med.tilstand, 'godkjent');
+});
+
+t.test('angreretten står i hvert eneste ja', function () {
+  var d = EK.godkjenn({ svar: 'ja', ekspert: 'Kari Hansen', kanal: 'video' });
+  t.erSann(d.angre.indexOf('uten grunn') !== -1);
+  t.erSann(d.angre.indexOf('uten kostnad') !== -1);
+});
+
+t.test('hun kan be om noe annet uten å si nei', function () {
+  var d = EK.godkjenn({ svar: 'endre', onske: 'video i stedet' });
+  t.erUsann(d.ok);
+  t.erLik(d.tilstand, 'endring_onsket');
+  t.erLik(d.onske, 'video i stedet');
+});
+
+t.test('et ukjent svar er ikke et ja', function () {
+  t.erUsann(EK.godkjenn({ svar: 'kanskje', ekspert: 'K', kanal: 'telefon' }).ok);
 });
 
 /* ---------------- Naviar Klarhet ---------------- */

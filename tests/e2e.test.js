@@ -65,7 +65,8 @@ if (!pw) {
     ['trygghet.html', 'Trygghet'],
     ['personvern.html', 'Personvernerklæring'],
     ['klarhet.html', 'Naviar Klarhet'],
-    ['bestill.html', 'Velg ekspert og tid']
+    ['bestill.html', 'Velg ekspert og tid'],
+    ['godkjenn.html', 'Kari Hansen']
   ];
 
   var side = await nySide();
@@ -942,6 +943,100 @@ if (!pw) {
     t.erUsann(beFlyter, 'siden flyter utover skjermen');
   });
   await beMobil.close();
+
+  t.gruppe('Den eldres godkjenningsskjerm');
+
+  var go = await nySide(430, 932);
+  await go.goto(BASE + 'godkjenn.html', { waitUntil: 'domcontentloaded' });
+
+  var goStart = await go.evaluate(function () {
+    var ja = document.getElementById('ja');
+    var nei = document.getElementById('nei');
+    var jr = ja.getBoundingClientRect();
+    var nr = nei.getBoundingClientRect();
+    return {
+      detaljer: document.querySelectorAll('#detaljer div').length,
+      grenser: document.querySelectorAll('#kan-ikke li').length,
+      pris: document.getElementById('detaljer').textContent,
+      /* Ingen forhåndsvalgt knapp: et ja som allerede står der, er ikke et
+         samtykke. */
+      jaValgt: ja.getAttribute('aria-pressed'),
+      neiValgt: nei.getAttribute('aria-pressed'),
+      /* De to svarene skal ha samme størrelse. En blek eller mindre
+         nei-knapp er ikke et valg. */
+      jaHoyde: Math.round(jr.height), neiHoyde: Math.round(nr.height),
+      jaBredde: Math.round(jr.width), neiBredde: Math.round(nr.width),
+      utfallSkjult: document.getElementById('utfall').hidden,
+      fritt: document.querySelector('.g-fritt').textContent
+    };
+  });
+
+  t.test('hun ser hva hun godkjenner før knappene', function () {
+    t.erLik(goStart.detaljer, 5);
+    t.erSann(goStart.grenser >= 3, 'grensene skal stå på hennes skjerm også');
+    t.erSann(goStart.pris.indexOf('599') !== -1, 'prisen skal stå selv om hun ikke betaler');
+  });
+
+  t.test('ingen knapp er valgt på forhånd', function () {
+    t.erLik(goStart.jaValgt, null);
+    t.erLik(goStart.neiValgt, null);
+    t.erSann(goStart.utfallSkjult);
+  });
+
+  t.test('ja og nei er like store', function () {
+    t.erLik(goStart.jaHoyde, goStart.neiHoyde);
+    t.erLik(goStart.jaBredde, goStart.neiBredde);
+    t.erSann(goStart.jaHoyde >= 90, 'knappene er ' + goStart.jaHoyde + ' px høye');
+  });
+
+  t.test('det står at hun ikke trenger å begrunne', function () {
+    t.erSann(goStart.fritt.indexOf('hvorfor') !== -1, goStart.fritt);
+  });
+
+  await go.click('#nei');
+  var goNei = await go.evaluate(function () {
+    var u = document.getElementById('utfall');
+    return { tilstand: u.dataset.tilstand, tekst: u.textContent,
+             felt: document.querySelectorAll('#utfall textarea, #utfall input').length };
+  });
+
+  t.test('nei gir et utfall, ikke et oppfølgingsspørsmål', function () {
+    t.erLik(goNei.tilstand, 'avslatt');
+    t.erSann(goNei.tekst.indexOf('blir det ikke noe av') !== -1, goNei.tekst);
+    t.erLik(goNei.felt, 0, 'ingen skal spørre henne hvorfor');
+  });
+
+  t.test('familien får utfallet, ikke grunnen', function () {
+    t.erSann(goNei.tekst.indexOf('Avtalen ble ikke noe av') !== -1);
+  });
+
+  await go.click('#ja');
+  var goJa = await go.evaluate(function () {
+    var u = document.getElementById('utfall');
+    return { tilstand: u.dataset.tilstand, tekst: u.textContent };
+  });
+
+  t.test('ja bekrefter, og nevner angreretten', function () {
+    t.erLik(goJa.tilstand, 'godkjent');
+    t.erSann(goJa.tekst.indexOf('avlyse') !== -1, goJa.tekst);
+  });
+
+  var goFlyter = await go.evaluate(function () {
+    return document.documentElement.scrollWidth > window.innerWidth + 1;
+  });
+  t.test('godkjenn.html uten horisontal rulling på mobil', function () {
+    t.erUsann(goFlyter, 'siden flyter utover skjermen');
+  });
+
+  /* Skriften skal være stor nok for målgruppa. 20 px er ikke pynt her. */
+  var goSkrift = await go.evaluate(function () {
+    return parseFloat(getComputedStyle(document.body).fontSize);
+  });
+  t.test('grunnskriften er minst 20 px', function () {
+    t.erSann(goSkrift >= 20, 'fant ' + goSkrift + ' px');
+  });
+
+  await go.close();
 
   t.gruppe('Ingen JavaScript-feil');
   t.test('konsollen er ren på alle sider', function () {

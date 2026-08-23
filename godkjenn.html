@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vil du snakke med Kari Hansen? – Naviar Care</title>
+<meta name="description" content="Familien har funnet en tid. Du bestemmer om den skal bli noe av.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/godkjenn.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23101a2e'/><path fill='%23ffffff' fill-rule='evenodd' d='M16 6.4 6.2 26.4h4.3L16 15.1l5.5 11.3h4.3L16 6.4ZM12.4 22.3h7.2l2 4.1h-11.2l2-4.1Z'/></svg>">
+</head>
+<body class="b-godkjenn">
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="g-topp">
+  <span class="g-logo">
+    <span aria-hidden="true"><svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" fill-rule="evenodd" d="M16 3.2 3.4 28.8h5.1L16 13.6l7.5 15.2h5.1L16 3.2ZM11.1 23.6h9.8l2.2 4.4H8.9l2.2-4.4Z"/></svg></span>
+    <span class="g-ordmerke">NAVIAR <span>CARE</span></span>
+  </span>
+  <button class="g-les" type="button" id="les" hidden>
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.4L12 5.6v12.8L7.4 14.5H4z"/><path d="M16 9.4a3.6 3.6 0 0 1 0 5.2M18.4 7a7 7 0 0 1 0 10"/></svg>
+    <span id="les-tekst">Les opp</span>
+  </button>
+</header>
+
+<main id="main" class="g-flate">
+  <div class="g-kort">
+
+    <p class="g-fra" id="fra">Lars har funnet en tid til deg.</p>
+    <h1>Vil du snakke med Kari Hansen?</h1>
+
+    <!-- Det hun godkjenner, står før knappene. Et samtykke til noe man må
+         bla for å se, er ikke et samtykke. -->
+    <dl class="g-detaljer" id="detaljer"></dl>
+
+    <!-- Hun skal vite hva samtalen kan og ikke kan gi henne. De samme
+         grensene som står i bestillingen, med hennes ord. -->
+    <section class="g-grenser" aria-labelledby="h-grenser">
+      <h2 id="h-grenser">Hva Kari kan hjelpe deg med</h2>
+      <p id="kan"></p>
+      <h2>Dette kan hun ikke</h2>
+      <ul id="kan-ikke"></ul>
+    </section>
+
+    <div class="g-sporsmaal">
+      <label for="sprakvalg">Hvilket språk vil du snakke?</label>
+      <select id="sprakvalg"></select>
+    </div>
+
+    <!-- Ingen forhåndsvalgt knapp, og de to er like store. Et ja som allerede
+         står der, er ikke et samtykke; en blek nei-knapp er ikke et valg. -->
+    <div class="g-svar" role="group" aria-label="Ditt svar">
+      <button class="g-knapp g-ja" type="button" id="ja">
+        <span class="g-ikon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6 10 17.6 19.4 7"/></svg>
+        </span>
+        Ja, det er greit
+      </button>
+      <button class="g-knapp g-nei" type="button" id="nei">
+        <span class="g-ikon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.6 6.6 17.4 17.4M17.4 6.6 6.6 17.4"/></svg>
+        </span>
+        Nei takk
+      </button>
+    </div>
+
+    <p class="g-fritt">Du trenger ikke si hvorfor. Sier du nei, skjer ingenting.</p>
+
+    <button class="g-endre" type="button" id="endre">Jeg vil heller ha en annen tid eller måte</button>
+
+    <div class="g-utfall" id="utfall" hidden role="status"></div>
+
+    <p class="g-akutt" id="akutt"></p>
+  </div>
+</main>
+
+<script src="assets/js/sprak-ui.js"></script>
+<script src="assets/js/ekspertbistand.js"></script>
+<script src="assets/js/klarhet.js"></script>
+<script src="assets/js/godkjenn-skjerm.js"></script>
+</body>
+</html>
