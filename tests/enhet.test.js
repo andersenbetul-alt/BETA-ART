@@ -25,6 +25,7 @@ require('../assets/js/besok-vern.js');
 require('../assets/js/hjelper-opptak.js');
 require('../assets/js/hjelper-base.js');
 require('../assets/js/maling.js');
+require('../assets/js/merkesprak.js');
 require('../assets/js/besok-klage.js');
 require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
@@ -1352,6 +1353,84 @@ t.test('oversikten viser stopp-punktet bare når målet er langt under', functio
   var samme = daarlig.filter(function (x) { return x.id === 'samme'; })[0];
   t.erSann(!!samme.stoppunkt, 'stopp-punktet mangler');
   t.erSann(samme.stoppunkt.gjor.length > 20);
+});
+
+t.gruppe('Merkespråket');
+
+var MS = window.PP_MERKESPRAK;
+
+t.test('«trygg hjelp» om tjenesten er tillatt på en forside', function () {
+  /* Sondringen hele modulen hviler på: «trygg hjelp» sier noe om tjenesten,
+     som er avgrenset, utført av en verifisert person og dokumentert. */
+  t.erSann(MS.sjekk(MS.KJERNE.nb, 'forside').ok);
+});
+
+t.test('«er trygg» om en person er aldri tillatt', function () {
+  var r = MS.sjekk('Kari er trygg nå.', 'forside');
+  t.erUsann(r.ok);
+  t.erLik(r.funn[0].id, 'tilstand');
+});
+
+t.test('ordet trygg finnes ikke i en melding om ett besøk', function () {
+  /* Her er det ingen avstand igjen mellom tjenesten og mennesket. */
+  var r = MS.sjekk('Besøket er utført. Trygg hverdag!', 'familiemelding');
+  t.erUsann(r.ok);
+  t.erSann(r.funn.some(function (f) { return f.id === 'trygg_i_melding'; }));
+  t.erSann(MS.sjekk('Besøket er utført klokka 14.10.', 'familiemelding').ok);
+});
+
+t.test('halen må stå på flaten, men ikke i samme setning', function () {
+  /* I meldingssystemet er halen skilt ut som en egen tillitssetning rett
+     under overskriften. Kravet er flaten, ikke setningen. */
+  t.erSann(MS.KJERNE.haleMaaStaaPaaFlaten);
+  t.erSann(MS.kjerneErHel(MS.KJERNE.nb));
+  t.erSann(MS.kjerneErHel('Trygg hjelp når du ikke kan være der. ' + MS.KJERNE.tillitssetning));
+  t.erUsann(MS.kjerneErHel('Trygg hjelp når du ikke kan være der. Kom i gang i dag.'));
+  t.erSann(MS.kjerneErHel('Praktisk hverdagshjelp i nærheten.'));
+});
+
+t.test('norske bokstaver bryter ikke sperren', function () {
+  /* \b bygger på [A-Za-z0-9_]. Sto det etter «på», feilet hele alternativet
+     og påstanden slapp gjennom. Testen holder det fast. */
+  ['Vi følger med på moren din.', 'Vi passer på henne.',
+   'Hjelp til hjelpeløse eldre.', 'Vi driver overvåking av hjemmet.']
+    .forEach(function (linje) {
+      t.erUsann(MS.sjekk(linje, 'forside').ok, 'slapp gjennom: ' + linje);
+    });
+  t.erSann(MS.sjekk('Vi handler på butikken for henne.', 'forside').ok);
+});
+
+t.test('de sju påstandene vi ikke kan stå for, fanges', function () {
+  var prover = [
+    ['Vi følger med på moren din hele dagen.', 'overvaking'],
+    ['Naviar erstatter familien når du er borte.', 'erstatter'],
+    ['Hjelp til hjelpeløse eldre.', 'hjelpelos'],
+    ['Vi tilbyr all slags omsorg.', 'all_omsorg'],
+    ['Vi finner den billigste hjelperen på minutter.', 'billigst'],
+    ['Vi er tilgjengelige døgnet rundt.', 'beredskap']
+  ];
+  prover.forEach(function (par) {
+    var r = MS.sjekk(par[0], 'forside');
+    t.erUsann(r.ok, 'slapp gjennom: ' + par[0]);
+    t.erSann(r.funn.some(function (f) { return f.id === par[1]; }),
+      par[0] + ' ga ' + r.funn.map(function (f) { return f.id; }).join(','));
+  });
+});
+
+t.test('hver forbudt påstand sier hva man skal skrive i stedet', function () {
+  /* En sperre uten alternativ blir omgått, og da har vi verken merket
+     eller beskjeden. */
+  MS.ALDRI.forEach(function (r) {
+    t.erSann(r.hvorfor && r.hvorfor.length > 20, r.id + ' mangler grunn');
+    t.erSann(r.istedenfor && r.istedenfor.length > 10, r.id + ' mangler alternativ');
+  });
+});
+
+t.test('hver målgruppe har sin egen setning', function () {
+  ['familie', 'eldre', 'medarbeider', 'partner'].forEach(function (m) {
+    t.erSann(MS.selger(m) && MS.selger(m).length > 20, 'mangler: ' + m);
+  });
+  t.erLik(MS.selger('ukjent'), null);
 });
 
 t.oppsummer('Enhetstester');
