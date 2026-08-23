@@ -576,7 +576,7 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
   .post-cta,
   .article-foot,
   .btn,
-  #themeToggle { display: none !important; }
+  #themeBtn { display: none !important; }
 
   .reveal { opacity: 1 !important; transform: none !important; }
 
