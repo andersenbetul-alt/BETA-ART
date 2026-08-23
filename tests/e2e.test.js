@@ -526,7 +526,7 @@ if (!pw) {
   await flyt.waitForSelector('#oppgaveliste input');
 
   await flyt.fill('#kunde', 'Ingrid');
-  await flyt.check('#oppgaveliste input[value="handling"]');
+  await flyt.check('#oppgaveliste input[value="hent"]');
   await flyt.fill('#dato', '2026-09-01');
   await flyt.fill('#tid', '14:00');
   var ansatte = await flyt.$$eval('#ansatt option', function (o) {

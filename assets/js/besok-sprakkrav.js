@@ -53,13 +53,20 @@ window.PP_SPRAKKRAV = (function () {
 
   /* Krav per oppgave i katalogen. Nøklene er de samme id-ene som PP_BESOK.OPPGAVER. */
   var OPPGAVEKRAV = {
-    handling: { niva: 'B1', hvorfor: 'Må forstå handlelisten og beskjeder riktig' },
     samvaer:  { niva: 'B1', hvorfor: 'Må kunne føre en samtale uten hjelp' },
-    tur:      { niva: 'B1', hvorfor: 'Må oppfatte behov og problemer underveis' },
     digital:  { niva: 'B1', hvorfor: 'Må forklare framgangsmåten forståelig' },
-    praktisk: { niva: 'B1', hvorfor: 'Må forstå hva som skal gjøres og si fra hvis noe ikke går' },
     hjemme:   { niva: 'B1', hvorfor: 'Må forstå instrukser om hva som ikke skal røres' },
+    hent:     { niva: 'B1', hvorfor: 'Må forstå hva som skal hentes, og kunne si nei i butikken' }
+  };
+
+  /* Kravene til oppgavene som er utsatt til neste fase. De står her fordi de
+     var vurdert, ikke glemt: kommer oppgaven tilbake, kommer nivået med den.
+     Følge til avtale er den eneste som krever B2 – en beskjed fra legen som
+     gjengis feil, får følger. */
+  var SENERE_KRAV = {
+    tur:      { niva: 'B1', hvorfor: 'Må oppfatte behov og problemer underveis' },
     mat:      { niva: 'B1', hvorfor: 'Må forstå allergier og hva personen ikke tåler' },
+    handling: { niva: 'B1', hvorfor: 'Må forstå handlelisten og beskjeder riktig' },
     folge:    { niva: 'B2', hvorfor: 'Må forstå og gjengi det som blir sagt hos legen riktig' }
   };
 
@@ -129,8 +136,12 @@ window.PP_SPRAKKRAV = (function () {
   }
 
   /* Hvilket nivå trengs for en oppgave i et gitt land. */
+  /* Slår opp i begge listene. En oppgave som er utsatt til neste fase, har
+     ikke mistet kravet sitt – den venter bare på at risikoen skal måles.
+     Kommer den tilbake i katalogen, kommer nivået med den. */
   function kravFor(oppgaveId) {
-    return OPPGAVEKRAV[oppgaveId] || { niva: MINIMUM, hvorfor: 'Standardkrav for arbeid alene' };
+    return OPPGAVEKRAV[oppgaveId] || SENERE_KRAV[oppgaveId]
+      || { niva: MINIMUM, hvorfor: 'Standardkrav for arbeid alene' };
   }
 
   /* Høyeste krav i et besøk med flere oppgaver. Et besøk er ikke tryggere enn
@@ -231,6 +242,7 @@ window.PP_SPRAKKRAV = (function () {
     MINIMUM: MINIMUM,
     HVORFOR_IKKE_A2: HVORFOR_IKKE_A2,
     OPPGAVEKRAV: OPPGAVEKRAV,
+    SENERE_KRAV: SENERE_KRAV,
     UTENFOR_KRAV: UTENFOR_KRAV,
     LAND: LAND,
     DOKUMENTASJON: DOKUMENTASJON,

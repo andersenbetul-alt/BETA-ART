@@ -28,32 +28,79 @@ window.PP_BESOK = (function () {
      produkt – det er en ansvarsflukt. Riktig behov til riktig kompetanse. */
 
   var OPPGAVER = [
-    { id: 'handling',  navn: 'Handling og ærend',        ikon: '🛒', risiko: 'gronn',
-      forklaring: 'Dagligvarer, post, hente pakker' },
-    { id: 'samvaer',   navn: 'Sosialt besøk',            ikon: '☕', risiko: 'gronn',
-      forklaring: 'Prat, kaffe, høytlesing, kortspill' },
-    { id: 'tur',       navn: 'Tur og aktivitet',         ikon: '🚶', risiko: 'gronn',
-      forklaring: 'Gåtur, kafé, aktivitetssenter' },
-    { id: 'digital',   navn: 'Hjelp med telefon og TV',  ikon: '📱', risiko: 'gronn',
-      forklaring: 'Videosamtale, wifi, fjernkontroll, gjenkjenne svindel' },
-    { id: 'praktisk',  navn: 'Små praktiske oppgaver',   ikon: '🔧', risiko: 'gronn',
-      forklaring: 'Lyspære, søppel, flytte noe lett, vanne blomster' },
-    { id: 'hjemme',    navn: 'Lett husarbeid',           ikon: '🧹', risiko: 'gul',
-      forklaring: 'Oppvask, klesvask, skifte sengetøy. Ikke høyt eller tungt' },
-    { id: 'mat',       navn: 'Matlaging',                ikon: '🍲', risiko: 'gul',
-      forklaring: 'Lage eller varme et enkelt måltid, spise sammen' },
-    { id: 'folge',     navn: 'Følge til avtale',         ikon: '🤝', risiko: 'gul',
-      forklaring: 'Lege, tannlege, frisør, bank. Medarbeideren venter og følger hjem' }
+    { id: 'samvaer',  navn: 'Besøk og samvær',  ikon: '☕', risiko: 'gronn',
+      forklaring: 'Prat, kaffe, høytlesing, kortspill, hobby',
+      ikke: 'Ikke terapi, ikke vurdering av helsetilstand, ikke tilsyn om natten' },
+    { id: 'digital',  navn: 'Digital hjelp',    ikon: '📱', risiko: 'gronn',
+      forklaring: 'Telefon, nettbrett, TV, videosamtale, vise hvordan en app brukes',
+      ikke: 'Ikke BankID, passord, betaling, gjenoppretting av konto eller fjernstyring' },
+    { id: 'hjemme',   navn: 'Lett hjemmehjelp', ikon: '🧹', risiko: 'gul',
+      forklaring: 'Oppvask, klesvask, skifte sengetøy, rydde lett',
+      ikke: 'Ikke stige, ikke tunge løft, ikke sterke kjemikalier, ikke hovedrengjøring' },
+    { id: 'hent',     navn: 'Hent og lever',    ikon: '📦', risiko: 'gul',
+      forklaring: 'Hente en pakke, eller en handel familien har valgt og betalt på forhånd',
+      ikke: 'Ikke kontanter, ikke bytte av varer, ikke medisin, alkohol, tobakk eller papirer fra banken' }
   ];
+
+  /* Fire oppgaver, ikke åtte.
+
+     Det som er tatt ut, er ikke tatt ut fordi det er urimelig å ønske seg. Det
+     er tatt ut fordi hver av dem bærer en risiko vi ikke kan måle før noen har
+     brukt tjenesten: fall, transport eller mat. De hører til en kontrollert
+     utvidelse, ikke til den første versjonen.
+
+     Tjenesten er ikke en pleietjeneste. Den er praktisk og sosial støtte til
+     eldre som i hovedsak klarer seg selv. Den forskjellen er grunnen til at
+     lista er så kort. */
+  var SENERE = [
+    { hva: 'Kort tur ute',
+      hvorfor: 'Fallrisiko utendørs. Krever egen vurdering per kunde.' },
+    { hva: 'Følge til avtale med taxi eller buss',
+      hvorfor: 'Transportansvar underveis, og en avtale som ikke kan avbrytes halvveis.' },
+    { hva: 'Enkel matlaging',
+      hvorfor: 'Mattrygghet, allergier og risiko på kjøkkenet.' },
+    { hva: 'Følge på kultur- og sosiale arrangementer',
+      hvorfor: 'Samme transport- og fallrisiko som turen.' }
+  ];
+
+  /* Planlagt telefon- eller videosamtale kan legges til et medlemskap.
+     Den selges som sosial kontakt. Den selges aldri som trygghetsovervåking
+     eller som en kontroll av at alt står bra til: det er et løfte om beredskap
+     vi ikke har, og ingen skal tro at de har kjøpt det. */
+  var SAMTALE = {
+    id: 'samtale',
+    navn: 'Planlagt samtale',
+    forklaring: 'Avtalt telefon- eller videosamtale til fast tid',
+    selgesSom: 'sosial kontakt',
+    selgesAldriSom: ['trygghetsovervåking', 'sjekk av at alt står bra til', 'beredskap']
+  };
 
   /* Ikke i katalogen, men søkt om ofte nok til at svaret må stå skrevet. */
   var UTENFOR = [
-    { hva: 'Medisinering, sårstell, personlig stell', hvorfor: 'Helsehjelp. Krever autorisert personell.', niva: 'rod' },
-    { hva: 'Dusjing, bading, toalett, påkledning',    hvorfor: 'Personlig stell. Krever opplært pleiepersonell.', niva: 'rod' },
-    { hva: 'Løfte eller flytte en person',            hvorfor: 'Skaderisiko for begge. Krever opplæring.', niva: 'rod' },
-    { hva: 'Kontanter, bankkort, PIN, BankID',        hvorfor: 'Aldri. Uansett hvem som spør.', niva: 'forbudt' },
-    { hva: 'Verdisaker, testament, fullmakter',       hvorfor: 'Aldri via plattformen.', niva: 'forbudt' },
-    { hva: 'Elektrisk arbeid, rørlegging, stiger',    hvorfor: 'Krever fagbrev eller er for farlig.', niva: 'rod' }
+    { hva: 'Medisinering, dosett, sårstell',
+      hvorfor: 'Helsehjelp. Krever autorisert personell.', niva: 'rod' },
+    { hva: 'Dusjing, bading, toalett, påkledning',
+      hvorfor: 'Personlig stell. Krever opplært pleiepersonell.', niva: 'rod' },
+    { hva: 'Løfte en person, eller hjelpe noen opp av senga',
+      hvorfor: 'Skaderisiko for begge. Krever opplæring.', niva: 'rod' },
+    { hva: 'Vurdere helsetilstand eller ta en medisinsk avgjørelse',
+      hvorfor: 'Helsehjelp, uansett hvor uformelt spørsmålet stilles.', niva: 'rod' },
+    { hva: 'Være alene med en person med demens som tilsyn',
+      hvorfor: 'Tilsynsansvar. Krever kompetanse og en annen bemanning.', niva: 'rod' },
+    { hva: 'Nattevakt eller beredskap',
+      hvorfor: 'Vi er ikke en nødtjeneste, og lover ikke at noen er trygg.', niva: 'rod' },
+    { hva: 'Elektrisk arbeid, rørlegging, stiger',
+      hvorfor: 'Krever fagbrev, eller er for farlig.', niva: 'rod' },
+    { hva: 'Transport i medarbeiderens egen bil',
+      hvorfor: 'Forsikring og ansvar underveis. Aldri.', niva: 'forbudt' },
+    { hva: 'Kontanter, bankkort, PIN, BankID, passord',
+      hvorfor: 'Aldri. Uansett hvem som spør.', niva: 'forbudt' },
+    { hva: 'Fjernstyring av telefon eller PC',
+      hvorfor: 'Gir tilgang til alt. Aldri, heller ikke for å hjelpe.', niva: 'forbudt' },
+    { hva: 'Verdisaker, testament, fullmakter',
+      hvorfor: 'Aldri via plattformen.', niva: 'forbudt' },
+    { hva: 'Posisjonssporing, bilder fra hjemmet, lydopptak',
+      hvorfor: 'Overvåking av et hjem. Ikke i noen versjon.', niva: 'forbudt' }
   ];
 
   var RISIKO = {
@@ -297,6 +344,8 @@ window.PP_BESOK = (function () {
 
   return {
     OPPGAVER: OPPGAVER,
+    SENERE: SENERE,
+    SAMTALE: SAMTALE,
     UTENFOR: UTENFOR,
     RISIKO: RISIKO,
     UTFALL: UTFALL,
