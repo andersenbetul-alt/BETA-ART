@@ -31,7 +31,7 @@ node -e "console.log(require('/opt/node22/lib/node_modules/playwright/package.js
 ```
 
 Playwright is **global**, at `/opt/node22/lib/node_modules/playwright`, and
-`tools/shoot.js` and `tools/render-check.js` both hard-code that path. Chromium
+`tools/shoot.js` and `tools/render-check.js` both try that path first. Chromium
 is already downloaded (`PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers`) — never run
 `playwright install`.
 
@@ -98,7 +98,7 @@ check one end to end. There is no second harness to write.
 Useful hooks, read off the live pages: `#theme-btn`, `#menu-btn`, `#lang-picker`
 on all four properties; `.tag-btn` and `#subscribe-form` on the journal;
 `button.option`, `#finder-result`, `#finder-package`, `#finder-budget` on the
-desk.
+desk; `#enquiry-form` on the desk and `#licence-form` on the archive.
 
 ## Run — the human path
 
@@ -129,7 +129,7 @@ That second command is not optional politeness — see Gotchas.
 ## The gates
 
 ```bash
-python3 tools/check.py            # 13 correctness gates + browser gate  (~82s)
+python3 tools/check.py            # 14 correctness gates + browser gate  (~82s)
 python3 tools/check.py --fast     # skip the browser gate                 (~3s)
 python3 tools/check.py --quiet    # exit status only
 node  tools/render-check.js       # just the browser gate, four widths
@@ -142,6 +142,13 @@ list work only a person can finish, and neither may be quieted to look clean.
 Verified in both directions: adding one unstyled class to `index.html` makes
 `classes.py` report it and `check.py --quiet` exit 1; removing it returns both
 to green.
+
+`.github/workflows/gates.yml` runs the same set on every push, in two jobs
+(~2 min). Its second step is the one you cannot reproduce locally: after the
+gates run it asserts `git diff --exit-code`, which fails when the gates had to
+*repair* the checkout — the signature of a commit taken between a builder and
+the gates. Running a gate locally is what fixes that state, so only a pristine
+checkout can report it.
 
 ## Gotchas
 
@@ -174,7 +181,7 @@ to green.
   gone from each file, no warning. `enrich.py` is a writer, not a checker, and
   `check.py` runs it, which is why "builder, then gates" restores the tree to
   byte-identical. Run the builder alone and commit, and you ship 25 pages with
-  their breadcrumbs stripped.
+  their breadcrumbs stripped — which is what the CI step above exists to catch.
 
 - **The font cache is cold once per container.** First `shoot.js` run prints
   `fetching fonts (once)…` and takes ~3s; after that `tools/.fontcache/` holds
@@ -192,7 +199,7 @@ to green.
 
 | Symptom | Fix |
 |---|---|
-| `Cannot find module '/opt/node22/lib/node_modules/playwright'` | Playwright is not global at that path. Install it there, or edit the `PW` constant at the top of `tools/shoot.js` and `tools/render-check.js`. |
+| `Cannot find module 'playwright'` | Both tools try `/opt/node22/lib/node_modules/playwright` first, then a plain `require`. The fallback resolves only from a **local** `node_modules` — a `--global` install is not on the resolution path for a script inside the repo. `npm install playwright` in the repo root. |
 | `net::ERR_CONNECTION_RESET` on `fonts.googleapis.com` | You are using plain Playwright. Use `shoot.js`, which serves the fonts from cache. |
 | `shoot.js` writes nothing and prints usage | Width comes **first**: `1440 /page`, not `/page 1440`. |
 | Port already in use | `shoot.js` picks `8000 + (pid % 900)`; a leftover server from a killed run is the usual cause. |
