@@ -26,6 +26,35 @@ pulls from GitHub, not skills.sh.
 
 ---
 
+## 2026-08-22 — Supabase browser client
+
+Wrote the client D-006 called for: `src/auth.js`, `src/config.js`,
+`src/auth-ui.js`. supabase-js loads from a CDN as an ES module, so the
+no-build-step constraint holds.
+
+`config.js` documents that the anon key is publishable by design — RLS is
+what protects the data — and that the service_role key must never be served
+to a browser. The build now enforces that second point.
+
+Extending the build surfaced two defects in the build itself, both found by
+running it:
+
+- It executed browser modules via `import()`, which fails in Node on
+  `document is not defined`. Browser modules must be *parsed*, not run — now
+  checked with `node --check` against a temp `.mjs`.
+- The service_role check matched `config.js`'s own comment warning about
+  service_role keys. Comments are now stripped before matching.
+
+Both new checks were then proven to fail on real defects: a genuine
+`service_role` assignment is rejected, and a real syntax error is caught.
+
+Driven in a browser: with no config the control is disabled and titled
+"Authentication is not configured yet", and the mobile menu still opens.
+Sign-in itself is **unverified** — no Supabase project exists and
+supabase.co is unreachable here, so that path has never run.
+
+---
+
 ## 2026-08-22 — evidence-discipline skill created
 
 Turned the three OPEN observations into one skill at

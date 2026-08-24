@@ -3,10 +3,12 @@
 // on anything that would ship broken, not to transform code.
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { execFileSync } from 'node:child_process';
 
 const SRC = 'src';
 const OUT = 'dist';
-const FILES = ['index.html', 'styles.css', 'nav.js'];
+const FILES = ['index.html', 'styles.css', 'nav.js', 'auth.js', 'auth-ui.js', 'config.js'];
 const errors = [];
 
 const fail = (file, msg) => errors.push(`${file}: ${msg}`);
@@ -54,10 +56,38 @@ for (const [, used] of css.matchAll(/var\((--[a-z0-9-]+)/gi)) {
 }
 
 // --- JS ---------------------------------------------------------------
-try {
-  new (async () => {}).constructor(sources['nav.js']);
-} catch (e) {
-  fail('nav.js', `syntax error — ${e.message}`);
+// ES modules cannot be parsed by the Function constructor (import/export are
+// syntax errors there), so check module files with dynamic import instead.
+for (const f of ['nav.js']) {
+  try {
+    new (async () => {}).constructor(sources[f]);
+  } catch (e) {
+    fail(f, `syntax error — ${e.message}`);
+  }
+}
+// Browser modules must be PARSED, not executed: importing them here runs
+// them in Node, where `document` does not exist. `node --check` parses ESM
+// when the file is seen as .mjs, so copy to a temp name and check that.
+for (const f of ['auth.js', 'auth-ui.js', 'config.js']) {
+  const tmp = join(tmpdir(), `beta-art-check-${f}.mjs`);
+  await writeFile(tmp, sources[f]);
+  try {
+    execFileSync(process.execPath, ['--check', tmp], { stdio: 'pipe' });
+  } catch (e) {
+    fail(f, `syntax error — ${String(e.stderr).split('\n').find(Boolean) ?? e.message}`);
+  } finally {
+    await rm(tmp, { force: true });
+  }
+}
+
+// A publishable anon key is fine in the browser; a service_role key is not.
+// Strip comments first — config.js documents the rule, and matching the
+// documentation instead of an actual key is a false positive.
+const configCode = sources['config.js']
+  .replace(/\/\*[\s\S]*?\*\//g, '')
+  .replace(/^\s*\/\/.*$/gm, '');
+if (/service_role|SUPABASE_SERVICE/.test(configCode)) {
+  fail('config.js', 'service_role key must never be served to a browser');
 }
 
 // --- emit -------------------------------------------------------------

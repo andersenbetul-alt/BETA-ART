@@ -107,8 +107,18 @@ Schema in `supabase/migrations/0001_auth_and_app_schema.sql`; RLS suite in
 `supabase/tests/`. Verified against local PostgreSQL 16.13 — 8/8 policy tests
 pass, including two escalation attempts that are correctly denied.
 
-Not yet done: no Supabase project exists, so nothing is deployed. The browser
-client is not written.
+Browser client written: `src/auth.js` (session, sign in/up/out),
+`src/config.js` (placeholders), `src/auth-ui.js` (navbar control). Loads
+supabase-js from a CDN as an ES module, so there is still no build step.
+
+**Verified:** with no config, the control degrades to a disabled "Sign in"
+button titled *Authentication is not configured yet*, and the mobile menu
+still opens — auth does not break the page. Build validates all six source
+files; both new checks were proven to fail on real defects.
+
+**Not verified:** sign-in, sign-up, sign-out, session persistence. No
+Supabase project exists and `supabase.co` is unreachable from this
+container, so the happy path has never been executed. Nothing is deployed.
 
 ## Build and test
 
