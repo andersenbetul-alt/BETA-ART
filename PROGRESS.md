@@ -26,6 +26,28 @@ pulls from GitHub, not skills.sh.
 
 ---
 
+## 2026-08-22 — evidence-discipline skill created
+
+Turned the three OPEN observations into one skill at
+`.claude/skills/evidence-discipline/` (SKILL.md + references/ + LICENSE,
+CC BY 4.0), rather than three thin ones: all three were the same failure —
+the check that ran was not the claim that got made.
+
+Sections: assert the behaviour not a precondition; capture the failure before
+explaining it; run checks at the privilege a real user has; prove the check
+can fail. Plus a pre-flight checklist, since task-observer's own guidance is
+that rules without an enforcement step are not reliably followed.
+
+Followed the Pre-Flight Principle on the skill itself: the JS snippet
+embedded in SKILL.md was executed against the running page before shipping.
+It failed — correctly, because the skip-link bug is still open — while the
+weak precondition version passed. That contrast is the skill's whole thesis,
+now verified rather than asserted.
+
+Observations 1–3 marked ACTIONED.
+
+---
+
 ## 2026-08-22 — task-observer moved into the repo
 
 Installed `task-observer` at `.claude/skills/task-observer/` (project level)

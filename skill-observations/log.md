@@ -12,11 +12,11 @@ resolved statuses always carry their resolution date
 
 ### Observation 1: A passing test suite claimed coverage it did not have
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-22) — folded into `evidence-discipline` §1
 **Date:** 2026-08-22
 **Session context:** Building and auditing a site navbar; later ran `/verify`
 against the running page.
-**Skill:** New skill candidate: assertion-depth-check
+**Skill:** `evidence-discipline` (created 2026-08-22)
 **Type:** open-source
 **Phase/Area:** Test authoring — what an assertion actually proves
 
@@ -41,11 +41,11 @@ test — a missing test is visibly missing.
 
 ### Observation 2: "Flake" was reached for twice before the real cause
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-22) — folded into `evidence-discipline` §2
 **Date:** 2026-08-22
 **Session context:** An intermittent failure (~1 run in 8) in a hit-target
 test measuring 44px touch targets.
-**Skill:** New skill candidate: intermittent-failure-triage
+**Skill:** `evidence-discipline` (created 2026-08-22)
 **Type:** open-source
 **Phase/Area:** Debugging non-deterministic test failures
 
@@ -73,11 +73,11 @@ should be assumed wherever transforms or sub-pixel layout are involved.
 
 ### Observation 3: Security rules that restrict rows do not restrict columns
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-22) — folded into `evidence-discipline` §3
 **Date:** 2026-08-22
 **Session context:** Writing Supabase/PostgreSQL row-level security policies
 for a profiles table carrying a role column.
-**Skill:** New skill candidate: rls-policy-review
+**Skill:** `evidence-discipline` (created 2026-08-22)
 **Type:** open-source
 **Phase/Area:** Authorization schema design
 
