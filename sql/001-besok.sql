@@ -115,3 +115,120 @@ select id, krympet, opprettet from besok where
 --   sikkerhet 90 dager          Innlogging og tilgang – Oppdage misbruk, ikke følge med på folk
 --   lenke     12 timer          Arbeiderlenken – En lenke i en SMS-tråd er en åpen dør
 --   melding   0 dager           Innholdet i familiemeldingen – Sendes og forsvinner. Vi lagrer at den gikk, til hvem og når – ikke teksten
+
+-- GENERERT. Ordlista er STOPP i assets/js/besok-vern.js.
+create or replace function vern_sjekk(t text)
+  returns table (kategori text, beskjed text) as $$
+begin
+  -- helse: 47 ord
+  if lower(t) ~ '(^|[^a-zæøåéèü])diagnose'
+     or lower(t) ~ '(^|[^a-zæøåéèü])demens'
+     or lower(t) ~ '(^|[^a-zæøåéèü])kreft'
+     or lower(t) ~ '(^|[^a-zæøåéèü])diabetes'
+     or lower(t) ~ '(^|[^a-zæøåéèü])blodtrykk'
+     or lower(t) ~ '(^|[^a-zæøåéèü])blodsukker'
+     or lower(t) ~ '(^|[^a-zæøåéèü])medisin'
+     or lower(t) ~ '(^|[^a-zæøåéèü])tablett'
+     or lower(t) ~ '(^|[^a-zæøåéèü])insulin'
+     or lower(t) ~ '(^|[^a-zæøåéèü])dose'
+     or lower(t) ~ '(^|[^a-zæøåéèü])sår'
+     or lower(t) ~ '(^|[^a-zæøåéèü])infeksjon'
+     or lower(t) ~ '(^|[^a-zæøåéèü])smerte'
+     or lower(t) ~ '(^|[^a-zæøåéèü])fastlege'
+     or lower(t) ~ '(^|[^a-zæøåéèü])sykehus'
+     or lower(t) ~ '(^|[^a-zæøåéèü])utskrevet'
+     or lower(t) ~ '(^|[^a-zæøåéèü])journal'
+     or lower(t) ~ '(^|[^a-zæøåéèü])resept'
+     or lower(t) ~ '(^|[^a-zæøåéèü])vondt'
+     or lower(t) ~ '(^|[^a-zæøåéèü])feber'
+     or lower(t) ~ '(^|[^a-zæøåéèü])svimmel'
+     or lower(t) ~ '(^|[^a-zæøåéèü])kvalm'
+     or lower(t) ~ '(^|[^a-zæøåéèü])forvirret'
+     or lower(t) ~ '(^|[^a-zæøåéèü])pustet'
+     or lower(t) ~ '(^|[^a-zæøåéèü])hoven'
+     or lower(t) ~ '(^|[^a-zæøåéèü])hørsel'
+     or lower(t) ~ '(^|[^a-zæøåéèü])hørselstap'
+     or lower(t) ~ '(^|[^a-zæøåéèü])tunghørt'
+     or lower(t) ~ '(^|[^a-zæøåéèü])døv'
+     or lower(t) ~ '(^|[^a-zæøåéèü])høreapparat'
+     or lower(t) ~ '(^|[^a-zæøåéèü])syn'
+     or lower(t) ~ '(^|[^a-zæøåéèü])synshemmet'
+     or lower(t) ~ '(^|[^a-zæøåéèü])blind'
+     or lower(t) ~ '(^|[^a-zæøåéèü])briller'
+     or lower(t) ~ '(^|[^a-zæøåéèü])rullestol'
+     or lower(t) ~ '(^|[^a-zæøåéèü])rullator'
+     or lower(t) ~ '(^|[^a-zæøåéèü])krykker'
+     or lower(t) ~ '(^|[^a-zæøåéèü])gåstol'
+     or lower(t) ~ '(^|[^a-zæøåéèü])protese'
+     or lower(t) ~ '(^|[^a-zæøåéèü])lammelse'
+     or lower(t) ~ '(^|[^a-zæøåéèü])slag'
+     or lower(t) ~ '(^|[^a-zæøåéèü])parkinson'
+     or lower(t) ~ '(^|[^a-zæøåéèü])skjelv'
+     or lower(t) ~ '(^|[^a-zæøåéèü])afasi'
+     or lower(t) ~ '(^|[^a-zæøåéèü])funksjonsnedsettelse'
+     or lower(t) ~ '(^|[^a-zæøåéèü])uføre'
+     or lower(t) ~ '(^|[^a-zæøåéèü])psykisk' then
+    return query select 'helse'::text, 'Dette ser ut som en helseopplysning. Skriv hva som ble gjort, ikke hvordan personen har det.'::text;
+  end if;
+  -- haster: 10 ord
+  if lower(t) ~ '(^|[^a-zæøåéèü])falt'
+     or lower(t) ~ '(^|[^a-zæøåéèü])fall'
+     or lower(t) ~ '(^|[^a-zæøåéèü])skadet'
+     or lower(t) ~ '(^|[^a-zæøåéèü])blør'
+     or lower(t) ~ '(^|[^a-zæøåéèü])brannsår'
+     or lower(t) ~ '(^|[^a-zæøåéèü])bevisstløs'
+     or lower(t) ~ '(^|[^a-zæøåéèü])kom seg ikke opp'
+     or lower(t) ~ '(^|[^a-zæøåéèü])ambulanse'
+     or lower(t) ~ '(^|[^a-zæøåéèü])legevakt'
+     or lower(t) ~ '(^|[^a-zæøåéèü])politi' then
+    return query select 'haster'::text, 'Dette skal ikke skrives her – det skal meldes. Velg «Leverandøren må følge opp», så ringer kontoret deg. Ved fare for liv og helse: ring 113 først.'::text;
+  end if;
+  -- penger: 8 ord
+  if lower(t) ~ '(^|[^a-zæøåéèü])bankid'
+     or lower(t) ~ '(^|[^a-zæøåéèü])pinkode'
+     or lower(t) ~ '(^|[^a-zæøåéèü])pin[- ]?kode'
+     or lower(t) ~ '(^|[^a-zæøåéèü])passord'
+     or lower(t) ~ '(^|[^a-zæøåéèü])kontonummer'
+     or lower(t) ~ '(^|[^a-zæøåéèü])kortnummer'
+     or lower(t) ~ '(^|[^a-zæøåéèü])vipps[- ]?kode'
+     or lower(t) ~ '(^|[^a-zæøåéèü])engangskode' then
+    return query select 'penger'::text, 'Bankopplysninger skal aldri inn her – heller ikke for å hjelpe.'::text;
+  end if;
+  -- nedsett: 8 ord
+  if lower(t) ~ '(^|[^a-zæøåéèü])sur'
+     or lower(t) ~ '(^|[^a-zæøåéèü])vanskelig'
+     or lower(t) ~ '(^|[^a-zæøåéèü])gretten'
+     or lower(t) ~ '(^|[^a-zæøåéèü])sløv'
+     or lower(t) ~ '(^|[^a-zæøåéèü])senil'
+     or lower(t) ~ '(^|[^a-zæøåéèü])masete'
+     or lower(t) ~ '(^|[^a-zæøåéèü])udugelig'
+     or lower(t) ~ '(^|[^a-zæøåéèü])lat' then
+    return query select 'nedsett'::text, 'Beskriv situasjonen, ikke personen. Familien leser dette.'::text;
+  end if;
+  -- Lange tallrekker fanges av mønster, ikke av ordliste. Elleve siffer er
+  -- fødselsnummer eller kontonummer. Åtte får stå – det er et telefonnummer.
+  if t ~ '(\d[ .-]?){11,}' then
+    return query select 'tallrekke'::text, 'Dette ser ut som et fødselsnummer eller et kontonummer.'::text;
+  end if;
+  return;
+end;
+$$ language plpgsql immutable;
+
+-- Én vei inn. Fritekstfeltene slipper ikke forbi uten å ha vært innom.
+create or replace function vern_trigger() returns trigger as $$
+declare funn record;
+begin
+  for funn in
+    select * from vern_sjekk(coalesce(new.notat, ''))
+    union all
+    select * from vern_sjekk(coalesce(new.rapport_kommentar, ''))
+  loop
+    raise exception 'PP_VERN %: %', funn.kategori, funn.beskjed;
+  end loop;
+  return new;
+end;
+$$ language plpgsql;
+
+drop trigger if exists besok_vern on besok;
+create trigger besok_vern before insert or update on besok
+  for each row execute function vern_trigger();

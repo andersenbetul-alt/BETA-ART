@@ -148,3 +148,64 @@ Object.keys(V.FRISTER).forEach(function (k) {
 });
 
 process.stdout.write(ut.join('\n') + '\n');
+
+/* --- Personvernsperra, som trigger ---------------------------------------
+
+   Sperra kjører i nettleseren i dag. Det holder så lenge det ikke finnes et
+   endepunkt å sende til. I det databasen står der, kan hvem som helst sende
+   en rad forbi skjermbildet, og en sperre som bare finnes i frontend er en
+   anbefaling.
+
+   Ordlista hentes fra STOPP, samme sted som nettleseren leser den. Skrives
+   den av for hånd, får vi to lister som glir fra hverandre. */
+
+var g = [];
+function q(l) { g.push(l === undefined ? '' : l); }
+
+q();
+q('-- GENERERT. Ordlista er STOPP i assets/js/besok-vern.js.');
+q('create or replace function vern_sjekk(t text)');
+q('  returns table (kategori text, beskjed text) as $$');
+q('begin');
+V.STOPP.forEach(function (kat) {
+  /* Samme mønster som traff() i JS: ordet må stå først eller etter et tegn
+     som ikke er en bokstav, slik at «sår» ikke treffer inni «forsårsaket». */
+  var uttrykk = kat.ord.map(function (o) {
+    return "'(^|[^a-zæøåéèü])" + o.replace(/'/g, "''").replace('-', '[- ]?') + "'";
+  });
+  q('  -- ' + kat.id + ': ' + kat.ord.length + ' ord');
+  q('  if ' + uttrykk.map(function (u) { return 'lower(t) ~ ' + u; }).join('\n     or ') + ' then');
+  q("    return query select '" + kat.id + "'::text, '" + kat.beskjed.replace(/'/g, "''") + "'::text;");
+  q('  end if;');
+});
+q('  -- Lange tallrekker fanges av mønster, ikke av ordliste. Elleve siffer er');
+q('  -- fødselsnummer eller kontonummer. Åtte får stå – det er et telefonnummer.');
+q("  if t ~ '(\\d[ .-]?){11,}' then");
+q("    return query select 'tallrekke'::text, 'Dette ser ut som et fødselsnummer eller et kontonummer.'::text;");
+q('  end if;');
+q('  return;');
+q('end;');
+q('$$ language plpgsql immutable;');
+q();
+q('-- Én vei inn. Fritekstfeltene slipper ikke forbi uten å ha vært innom.');
+q('create or replace function vern_trigger() returns trigger as $$');
+q('declare funn record;');
+q('begin');
+q('  for funn in');
+q('    select * from vern_sjekk(coalesce(new.notat, %L))');
+q('    union all');
+q('    select * from vern_sjekk(coalesce(new.rapport_kommentar, %L))');
+q('  loop');
+/* plpgsql bruker % som plassholder i RAISE. %% er en literal prosent, og
+     gir «too many parameters specified for RAISE». */
+  q("    raise exception 'PP_VERN %: %', funn.kategori, funn.beskjed;");
+q('  end loop;');
+q('  return new;');
+q('end;');
+q('$$ language plpgsql;');
+q();
+q('drop trigger if exists besok_vern on besok;');
+q('create trigger besok_vern before insert or update on besok');
+q('  for each row execute function vern_trigger();');
+
+process.stdout.write(g.join('\n').replace(/%L/g, "''") + '\n');

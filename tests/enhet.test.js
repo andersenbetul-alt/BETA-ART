@@ -2307,4 +2307,50 @@ t.gruppe('Feilmeldinger nås av skjermleser');
   });
 })();
 
+/* Skjemaet genereres fra reglene. Faller et ord ut av genereringen, er
+   sperra i databasen svakere enn den i nettleseren – og ingen ville sett det.
+   Testen mot en ekte Postgres ligger ikke her; den krever en server. Denne
+   holder at genereringen er komplett. */
+t.gruppe('Generert skjema dekker reglene');
+
+(function () {
+  var fs = require('fs');
+  var path = require('path');
+  var sql = fs.readFileSync(path.join(__dirname, '..', 'sql/001-besok.sql'), 'utf8');
+  var V = window.PP_VERN;
+
+  t.test('hvert stoppord finnes i den genererte sperra', function () {
+    var mangler = [];
+    V.STOPP.forEach(function (kat) {
+      kat.ord.forEach(function (o) {
+        if (sql.indexOf("])" + o.replace('-', '[- ]?')) === -1) mangler.push(kat.id + '/' + o);
+      });
+    });
+    t.erLik(mangler.length, 0, mangler.slice(0, 5).join(', '));
+  });
+
+  t.test('hvert slettetrinn finnes som SQL', function () {
+    var mangler = V.SLETTEPLAN.filter(function (steg) {
+      return sql.indexOf('Trinn ' + steg.steg + ':') === -1;
+    });
+    t.erLik(mangler.length, 0);
+  });
+
+  t.test('siste trinn flytter raden, det nuller den ikke', function () {
+    /* id er primærnøkkel og opprettet er kolonnen krympingen selv leser.
+       En UPDATE som nuller dem, ødelegger sin egen neste kjøring. */
+    t.erSann(sql.indexOf('insert into besok_statistikk') !== -1);
+    t.erSann(sql.indexOf('delete from besok') !== -1);
+  });
+
+  t.test('ingenting som aldri skal lagres har fått en kolonne', function () {
+    var kolonner = (sql.match(/^  ([a-z_]+)\s+(text|date|time|timestamptz|smallint)/gm) || [])
+      .map(function (m) { return m.trim().split(/\s+/)[0]; });
+    var forbudt = ['fodselsnummer', 'etternavn', 'diagnose', 'kontonummer',
+                   'bankid', 'journal', 'adresse', 'posisjon'];
+    var funnet = kolonner.filter(function (k) { return forbudt.indexOf(k) !== -1; });
+    t.erLik(funnet.length, 0, funnet.join(', '));
+  });
+})();
+
 t.oppsummer('Enhetstester');
