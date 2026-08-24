@@ -127,6 +127,9 @@ a  { color: var(--brand-dark); }
 .nav-toggle {
   display: none; margin-left: auto; background: none; border: 1px solid var(--line);
   border-radius: 8px; padding: 8px 10px; font-size: 1rem; cursor: pointer;
+  /* Knapper arver ikke farge; uten denne tegner nettleseren sin egen svarte.
+     Blekket er logoens marineblå, og skal være det også her. */
+  color: var(--ink);
 }
 
 @media (max-width: 860px) {
