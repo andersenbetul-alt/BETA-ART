@@ -15,32 +15,41 @@ insert into auth.users (id, email, raw_user_meta_data) values
   ('aaaaaaaa-0000-0000-0000-000000000001', 'ayse@test.no',  '{"name":"Ayşe","billing_country":"no"}'),
   ('bbbbbbbb-0000-0000-0000-000000000002', 'bjorn@test.no', '{"name":"Bjørn"}');
 
-insert into "order" (id, account_id, status, currency, subtotal_minor, total_minor) values
-  ('11111111-0000-0000-0000-000000000001','aaaaaaaa-0000-0000-0000-000000000001','paid','NOK',49900,49900),
-  ('22222222-0000-0000-0000-000000000002','bbbbbbbb-0000-0000-0000-000000000002','paid','NOK',199900,199900);
-insert into payment (order_id, account_id, provider, status, currency, amount_minor) values
-  ('11111111-0000-0000-0000-000000000001','aaaaaaaa-0000-0000-0000-000000000001','stripe','captured','NOK',49900),
-  ('22222222-0000-0000-0000-000000000002','bbbbbbbb-0000-0000-0000-000000000002','vipps','captured','NOK',199900);
-insert into entitlement (account_id, feature_key, source_type) values
-  ('aaaaaaaa-0000-0000-0000-000000000001','report.ai','order');
+-- account.id artik trigger tarafindan uretiliyor; auth id'sinden cozulur.
+insert into "order" (id, account_id, status, currency, subtotal_minor, total_minor)
+  select '11111111-0000-0000-0000-000000000001'::uuid, id, 'paid'::order_status,'NOK',49900,49900
+    from account where auth_user_id = 'aaaaaaaa-0000-0000-0000-000000000001'
+  union all
+  select '22222222-0000-0000-0000-000000000002'::uuid, id, 'paid'::order_status,'NOK',199900,199900
+    from account where auth_user_id = 'bbbbbbbb-0000-0000-0000-000000000002';
+
+insert into payment (order_id, account_id, provider, status, currency, amount_minor)
+  select o.id, o.account_id,
+         case when o.total_minor = 49900 then 'stripe' else 'vipps' end::payment_provider,
+         'captured'::payment_status,'NOK', o.total_minor
+    from "order" o;
+
+insert into entitlement (account_id, feature_key, source_type)
+  select id, 'report.ai', 'order'::entitlement_source from account
+   where auth_user_id = 'aaaaaaaa-0000-0000-0000-000000000001';
 
 do $$
 declare v_n integer; v_txt text; v_ok boolean;
 begin
   -- A1: kayıt trigger'ı hesabı otomatik açtı
   select count(*) into v_n from account
-   where id in ('aaaaaaaa-0000-0000-0000-000000000001','bbbbbbbb-0000-0000-0000-000000000002');
+   where auth_user_id in ('aaaaaaaa-0000-0000-0000-000000000001','bbbbbbbb-0000-0000-0000-000000000002');
   assert v_n = 2, format('A1 trigger hesap açmadı: %s', v_n);
 
   -- A2: meta veriden isim ve ülke alındı
-  select name into v_txt from account where id = 'aaaaaaaa-0000-0000-0000-000000000001';
+  select name into v_txt from account where auth_user_id = 'aaaaaaaa-0000-0000-0000-000000000001';
   assert v_txt = 'Ayşe', format('A2 isim aktarılmadı: %s', v_txt);
-  select billing_country into v_txt from account where id = 'aaaaaaaa-0000-0000-0000-000000000001';
+  select billing_country into v_txt from account where auth_user_id = 'aaaaaaaa-0000-0000-0000-000000000001';
   assert v_txt = 'NO', format('A2 ülke büyük harfe çevrilmedi: %s', v_txt);
 
   -- A3: e-posta değişimi kopyaya yansıyor
   update auth.users set email = 'ayse.yeni@test.no' where id = 'aaaaaaaa-0000-0000-0000-000000000001';
-  select email into v_txt from account where id = 'aaaaaaaa-0000-0000-0000-000000000001';
+  select email into v_txt from account where auth_user_id = 'aaaaaaaa-0000-0000-0000-000000000001';
   assert v_txt = 'ayse.yeni@test.no', format('A3 e-posta senkronlanmadı: %s', v_txt);
 
   -- A4: service_role her şeyi görür
@@ -105,7 +114,7 @@ begin
   end;
 
   -- W4: başkasının hesabını güncelleyemez (politika 0 satır etkiler)
-  update account set name = 'ele geçirildi' where id = 'bbbbbbbb-0000-0000-0000-000000000002';
+  update account set name = 'ele geçirildi' where auth_user_id = 'bbbbbbbb-0000-0000-0000-000000000002';
   get diagnostics v_n = row_count;
   assert v_n = 0, format('W4 BAŞKA HESAP GÜNCELLENDİ: %s satır', v_n);
 
@@ -114,14 +123,14 @@ begin
   -- numarasını doğrulanmış gösterip reverse charge ile KDV'den kaçabiliyordu.
   begin
     update account set vat_validated_at = now()
-     where id = 'aaaaaaaa-0000-0000-0000-000000000001';
+     where auth_user_id = auth.uid();
     assert false, 'V1 KULLANICI KENDİ KDV''SİNİ DOĞRULANMIŞ İŞARETLEDİ — vergi kaçağı açığı';
   exception when insufficient_privilege then null;
   end;
 
   -- P1: kendi profil alanlarını güncelleyebilmeli
   update account set name = 'Ayşe Y.', company_name = 'Beta AS'
-   where id = 'aaaaaaaa-0000-0000-0000-000000000001';
+   where auth_user_id = auth.uid();
   get diagnostics v_n = row_count;
   assert v_n = 1, format('P1 kullanıcı kendi profilini güncelleyemedi: %s', v_n);
 end $$;
@@ -136,5 +145,47 @@ begin
 end $$;
 
 reset role;
-do $$ begin raise notice 'AUTH/RLS TESTLERİ GEÇTİ (16 kontrol)'; end $$;
+
+-- --- Silme ve saklama: mali kayıt kullanıcıdan uzun yaşar ---
+do $$
+declare v_acct uuid; v_n integer; v_email text; v_link uuid;
+begin
+  select id into v_acct from account where email like 'ayse%';
+
+  -- D1: auth kullanıcısı silinince hesap ve ödemeler DURMALI
+  delete from auth.users where id = 'aaaaaaaa-0000-0000-0000-000000000001';
+
+  select count(*) into v_n from account where id = v_acct;
+  assert v_n = 1, 'D1 HESAP SİLİNDİ — muhasebe kaydı kayboldu';
+
+  select count(*) into v_n from payment where account_id = v_acct;
+  assert v_n = 1, format('D1 ÖDEME KAYDI SİLİNDİ: %s', v_n);
+
+  select count(*) into v_n from "order" where account_id = v_acct;
+  assert v_n = 1, format('D1 SİPARİŞ SİLİNDİ: %s', v_n);
+
+  -- D2: giriş bağlantısı koptu
+  select auth_user_id into v_link from account where id = v_acct;
+  assert v_link is null, format('D2 auth bağlantısı kopmadı: %s', v_link);
+
+  -- D3: anonimleştirme kişisel alanları temizler
+  perform anonymize_account(v_acct);
+  select email into v_email from account where id = v_acct;
+  assert v_email like 'anonim+%@silinmis.invalid',
+         format('D3 e-posta anonimleşmedi: %s', v_email);
+  select count(*) into v_n from account
+   where id = v_acct and (name is not null or org_number is not null
+                          or vat_number is not null or vat_validated_at is not null);
+  assert v_n = 0, 'D3 kişisel alan kaldı';
+
+  -- D4: mali kayıt hâlâ tam
+  select count(*) into v_n from payment where account_id = v_acct and amount_minor = 49900;
+  assert v_n = 1, 'D4 ANONİMLEŞTİRME MALİ KAYDI BOZDU';
+
+  -- D5: erişim kapandı
+  select count(*) into v_n from entitlement where account_id = v_acct and revoked_at is null;
+  assert v_n = 0, format('D5 silinmiş hesabın erişimi açık kaldı: %s', v_n);
+end $$;
+
+do $$ begin raise notice 'AUTH/RLS TESTLERİ GEÇTİ (21 kontrol)'; end $$;
 rollback;

@@ -52,7 +52,7 @@ if command -v psql >/dev/null && psql $PSQL_ARGS -tAc 'select 1' >/dev/null 2>&1
   fi
 
   # Auth + RLS: kimlik ve satir seviyesi guvenlik
-  printf '%-28s' "auth/rls (16 kontrol)"
+  printf '%-28s' "auth/rls (21 kontrol)"
   if out=$(psql $PSQL_ARGS -q -v ON_ERROR_STOP=1 \
              -c 'drop schema if exists auth cascade; drop schema public cascade; create schema public;' \
              -f db/schema.sql -f db/auth_shim_test.sql -f db/auth.sql \
@@ -63,7 +63,7 @@ if command -v psql >/dev/null && psql $PSQL_ARGS -tAc 'select 1' >/dev/null 2>&1
   fi
 else
   echo "ATLANDI (PostgreSQL yok)"
-  printf '%-28s' "auth/rls (16 kontrol)"; echo "ATLANDI (PostgreSQL yok)"
+  printf '%-28s' "auth/rls (21 kontrol)"; echo "ATLANDI (PostgreSQL yok)"
   echo "    Calistirmak icin: PGTEST_ARGS='-h /var/tmp -p 55432 -U postgres' ./run-tests.sh"
 fi
 

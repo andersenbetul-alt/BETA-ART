@@ -1,88 +1,74 @@
 ---
 name: task-observer
-description: Uzun süren veya arka planda çalışan işleri izler ve durumunu raporlar. Test koşumu, build, deploy, veritabanı migrasyonu, PR/CI durumu gibi "başlattım, bitince haber ver" işleri için kullanılır. Ayrıca bir işin gerçekten bitip bitmediğini doğrular — "çalıştı" ile "geçti" arasındaki farkı ayırt eder. Kullanıcı "izle", "takip et", "bitince söyle", "durumu ne", "hâlâ çalışıyor mu" dediğinde veya uzun süren bir komut başlatıldığında devreye girer.
+description: Normal çalışma sırasında tekrar eden kalıpları fark eder, gözlem olarak kaydeder ve bunları beceriye dönüştürmeyi önerir. Aynı düzeltmenin ikinci kez yapılması, aynı sorunun tekrar sorulması, aynı komut dizisinin yeniden yazılması gibi durumlarda devreye girer. Kullanıcı "gözlemleri göster", "ne fark ettin", "bunu beceriye çevir" dediğinde de kullanılır. Gözlemi kullanıcı onaylamadan beceri yazmaz.
 ---
 
 # Task Observer
 
-Bir işin durumunu **ölçerek** raporlar. Tahmin etmez, "muhtemelen bitmiştir"
-demez, çıkış kodu görmeden "geçti" demez.
+Çalışırken tekrarı fark eder, kaydeder, sonra beceriye dönüştürür.
 
-## Temel kural
-
-**Çıkış kodu görülmeden hiçbir iş "başarılı" sayılmaz.**
-
-Bu becerinin var olma sebebi tek bir hata biçimidir: bir komut çalışır, çıktısı
-makul görünür, ve durum "tamam" diye raporlanır — ama komut aslında sıfırdan
-farklı bir kodla çıkmıştır ya da hiç çalışmamıştır. Bu proje bunu iki kez yaşadı:
-
-- Bir test dosyası yalnızca değer yazdırıyordu, doğrulama yapmıyordu; "testler
-  geçiyor" denebilmesi için önce hata durumunda çökebilmesi gerekti.
-- Bir beceri arama komutu bağlantı kuramayınca hata yerine "sonuç yok" dedi;
-  "arama boş döndü" ile "arama çalışmadı" karıştırıldı.
-
-Her ikisinde de çıktı makuldü. Ölçüm makul değildi.
-
-## Nasıl izlenir
-
-### 1. Ne beklediğini önce yaz
-
-İzlemeye başlamadan **bitiş koşulunu** ve **başarı ölçütünü** ayrı ayrı tanımla:
-
-| İş | Bitti mi? | Başarılı mı? |
-| --- | --- | --- |
-| Test koşumu | Süreç sonlandı | Çıkış kodu 0 |
-| Build | Dosya üretildi | Üretilen dosya commit edilenle aynı |
-| Deploy | Durum READY | Sayfalar açılıyor, bağlantılar kırık değil |
-| Migrasyon | psql döndü | Şema beklenen tabloları içeriyor |
-
-"Bitti" ile "başarılı" aynı şey değildir. İkisini ayrı sor.
-
-### 2. Doğru bekleme aracını seç
-
-| Durum | Araç | Neden |
-| --- | --- | --- |
-| Bu oturumda başlattığın arka plan işi | Otomatik bildirim | Harness iş bitince seni zaten uyandırır — yoklama yapma |
-| Bir koşulun sağlanmasını bekleme | `Monitor` | Koşul sağlanınca döner |
-| Dış sistem durumu (CI, deploy, kuyruk) | `/loop` uygun aralıkla | Harness bunları bildiremez |
-| Uzun bekleme, sonra tekrar bak | `send_later` | Oturum bekleyerek boşa harcanmaz |
-| PR olayları | `subscribe_pr_activity` | Olay geldiğinde uyandırır |
-
-**Asla `sleep` ile bekleme.** Beklerken oturum donar ve kullanıcı araya
-giremez.
-
-**Kısa aralıklı yoklama yapma.** Harness'ın takip ettiği iş bitince zaten
-haber verir; 30 saniyede bir kontrol etmek boşa gider. Yalnızca harness'ın
-göremediği dış durum için (CI, deploy) aralık seç ve aralığı işin gerçek
-hızına göre belirle — 8 dakikalık bir CI için tek bir 8 dakikalık kontrol,
-sekiz tane 1 dakikalık kontrolden iyidir.
-
-### 3. Ölçerek doğrula
-
-Bittiğini düşündüğünde, düşünceyi kontrol et:
-
-```bash
-./run-tests.sh; echo "cikis: $?"          # cikis kodu goruldu mu
-git status --porcelain                     # surukleme var mi
+```
+Normal çalışma
+      ↓
+Gözlemci izler
+      ↓
+Tekrar eden kalıbı bulur
+      ↓
+Gözlem kaydeder
+      ↓
+Kullanıcı inceler
+      ↓
+Mevcut beceriyi güncelle  VEYA  yeni beceri yaz
 ```
 
-Bu projenin doğrulanabilir kontrol noktaları: `references/checkpoints.md`
+Son adımdaki "kullanıcı inceler" atlanmaz. Gözlem otomatik beceriye dönmez —
+tekrar eden her şey kural olmayı hak etmez.
 
-### 4. Raporla
+## Ne sayılır
 
-Rapor kısa olmalı ve üç şeyi söylemeli: **ne oldu, kanıt ne, sırada ne var.**
+Kalıp, **en az iki kez** görülen ve **bir sonraki sefere aktarılabilir** olandır.
 
-- Geçtiyse: hangi kontrol, hangi çıkış kodu.
-- Düştüyse: hangi adım, hata satırı, ve düzeltme önerisi.
-- Hâlâ çalışıyorsa: ne kadar süredir, ne bekleniyor, ne zaman tekrar bakılacak.
+| Sayılır | Sayılmaz |
+| --- | --- |
+| Aynı hata biçimi ikinci kez düzeltildi | Tek seferlik hata |
+| Aynı komut dizisi elle yeniden kuruldu | Aynı komutun tekrar çalıştırılması |
+| Aynı soru ikinci kez soruldu | Konuşmanın doğal akışı |
+| Aynı kısıt tekrar keşfedildi | Bilinen ve kayıtlı kısıt |
+| Aynı doğrulama adımı unutuldu | Rutin doğrulama |
 
-Sessizce beklemek de bir rapordur — ama yalnızca bir kez söylenmişse.
-Durum değişmediyse aynı şeyi tekrar söyleme.
+Ölçüt tekrar sayısı değil, **bir dahakine zaman kazandırıp kazandırmayacağıdır.**
 
-Ayrıntı: `references/reporting.md`
+## Gözlem nasıl yazılır
 
-## Ne zaman kullanılmaz
+`references/observations.md` altına, her biri şu üç alanla:
 
-- Anında biten komutlar (`ls`, `git status`) — sadece çalıştır.
-- Tek seferlik iş — izleme kurmaya değmez.
-- Kullanıcının sorusu "bu ne durumda" değil de "şunu yap" ise — işi yap.
+```markdown
+## <kısa başlık>
+- **Kaç kez:** 2  (nerede olduğu: dosya, komut veya konu)
+- **Kalıp:** Ne tekrarlandı — tek cümle, somut
+- **Öneri:** Yeni beceri mi, mevcut becerinin güncellenmesi mi, yoksa
+  sadece CLAUDE.md'ye bir satır mı
+```
+
+Gözlem yorum değil kayıttır: "kullanıcı X istiyor gibi" değil, "X iki kez
+yapıldı" yazılır.
+
+## Beceriye ne zaman dönüşür
+
+Kullanıcı onayladıktan sonra, şu sırayla en ucuz seçenek denenir:
+
+1. **CLAUDE.md'ye bir satır** — kural tek cümleyse burada kalır.
+2. **Mevcut beceriyi güncelle** — konu zaten bir becerinin alanındaysa.
+3. **Yeni beceri** — ancak kendi tetikleyicisi, kendi referansları olan
+   ayrı bir iş alanıysa.
+
+Üçüncüsü en pahalı seçenek: her yeni beceri bakım yükü ve tetikleme
+karmaşası ekler. İlk ikisi denenmeden ona geçilmez.
+
+## Bu projede halihazırda görülenler
+
+`references/observations.md` — bu oturumda tespit edilmiş kalıplar ve
+hangisinin beceriye dönüp dönmediği.
+
+Doğrulama ve raporlama alışkanlıkları ayrı tutuluyor:
+`references/checkpoints.md` · `references/reporting.md`

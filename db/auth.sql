@@ -27,9 +27,32 @@
 -- fazla kullanıcısı olması gerektiğinde araya account_member tablosu girer
 -- (bkz. bölüm 6); o güne kadar bu yapı basit ve doğru.
 
+-- account.id KENDI kimligidir; auth.users'a ayri bir sutunla baglanir.
+--
+-- NEDEN 1:1 aynı UUID DEĞİL: hesabın ve girişin yaşam döngüsü farklıdır.
+-- Kullanıcı GDPR gereği silinme talep edebilir; ama fatura ve ödeme kayıtları
+-- muhasebe mevzuatı gereği yıllarca saklanmalıdır. account.id = auth.users.id
+-- + on delete cascade kurulduğunda ilk silme talebi muhasebe verisini de
+-- götürür. Ayrı sütun + on delete set null bunu ayırır: giriş silinir, kayıt
+-- kalır, hesap anonimleştirilir.
 alter table account
-  add constraint account_id_fk_auth_users
-  foreign key (id) references auth.users(id) on delete cascade;
+  add column if not exists auth_user_id uuid unique
+  references auth.users(id) on delete set null;
+
+comment on column account.auth_user_id is
+  'auth.users bağlantısı. Kullanıcı silinince null olur; hesap ve ona bağlı
+   mali kayıtlar silinmez, anonymize_account() ile anonimleştirilir.';
+
+-- auth.uid() -> account.id çevirisi. stable: planlayıcı sorgu başına bir kez
+-- değerlendirir, her satırda alt sorgu çalıştırmaz.
+create or replace function current_account_id()
+returns uuid
+language sql stable
+security definer
+set search_path = public
+as $$
+  select id from account where auth_user_id = auth.uid();
+$$;
 
 comment on column account.email is
   'auth.users.email''in kopyası. Doğruluk kaynağı auth.users; buradaki kopya
@@ -44,7 +67,7 @@ security definer
 set search_path = public
 as $$
 begin
-  insert into public.account (id, email, name, billing_country)
+  insert into public.account (auth_user_id, email, name, billing_country)
   values (
     new.id,
     new.email,
@@ -53,7 +76,7 @@ begin
     -- kullanıcıya doğrulatılmalı (fatura ülkesi yanlışsa KDV yanlış olur).
     coalesce(upper(new.raw_user_meta_data->>'billing_country'), 'NO')
   )
-  on conflict (id) do nothing;
+  on conflict (auth_user_id) do nothing;
   return new;
 end;
 $$;
@@ -71,7 +94,8 @@ set search_path = public
 as $$
 begin
   if new.email is distinct from old.email then
-    update public.account set email = new.email, updated_at = now() where id = new.id;
+    update public.account set email = new.email, updated_at = now()
+     where auth_user_id = new.id;
   end if;
   return new;
 end;
@@ -128,7 +152,7 @@ create policy credit_operation_read on credit_operation
 -- =============================================================================
 
 create policy account_read_own on account
-  for select using (id = auth.uid());
+  for select using (auth_user_id = auth.uid());
 
 -- Kendi profilini güncelleyebilir — ama HER sütunu değil.
 --
@@ -140,8 +164,8 @@ create policy account_read_own on account
 -- V1). Doğrulama dış bir servisin işidir (VIES); kullanıcı beyan eder,
 -- sunucu doğrular.
 create policy account_update_own on account
-  for update using (id = auth.uid())
-  with check (id = auth.uid());
+  for update using (auth_user_id = auth.uid())
+  with check (auth_user_id = auth.uid());
 
 revoke update on account from authenticated;
 grant update (name, company_name, org_number, vat_number, billing_country)
@@ -153,50 +177,50 @@ comment on column account.billing_country is
    kart ülkesiyle çapraz kontrol edilmeli; tek başına güvenilmez.';
 
 create policy checkout_read_own on checkout_session
-  for select using (account_id = auth.uid());
+  for select using (account_id = current_account_id());
 
 create policy order_read_own on "order"
-  for select using (account_id = auth.uid());
+  for select using (account_id = current_account_id());
 
 create policy order_item_read_own on order_item
   for select using (exists (
-    select 1 from "order" o where o.id = order_item.order_id and o.account_id = auth.uid()));
+    select 1 from "order" o where o.id = order_item.order_id and o.account_id = current_account_id()));
 
 create policy payment_read_own on payment
-  for select using (account_id = auth.uid());
+  for select using (account_id = current_account_id());
 
 create policy refund_read_own on refund
   for select using (exists (
-    select 1 from payment p where p.id = refund.payment_id and p.account_id = auth.uid()));
+    select 1 from payment p where p.id = refund.payment_id and p.account_id = current_account_id()));
 
 create policy subscription_read_own on subscription
-  for select using (account_id = auth.uid());
+  for select using (account_id = current_account_id());
 
 create policy subscription_event_read_own on subscription_event
   for select using (exists (
     select 1 from subscription s
-     where s.id = subscription_event.subscription_id and s.account_id = auth.uid()));
+     where s.id = subscription_event.subscription_id and s.account_id = current_account_id()));
 
 create policy entitlement_read_own on entitlement
-  for select using (account_id = auth.uid());
+  for select using (account_id = current_account_id());
 
 create policy credit_grant_read_own on credit_grant
-  for select using (account_id = auth.uid());
+  for select using (account_id = current_account_id());
 
 create policy credit_consumption_read_own on credit_consumption
-  for select using (account_id = auth.uid());
+  for select using (account_id = current_account_id());
 
 create policy credit_allocation_read_own on credit_allocation
   for select using (exists (
     select 1 from credit_consumption c
-     where c.id = credit_allocation.consumption_id and c.account_id = auth.uid()));
+     where c.id = credit_allocation.consumption_id and c.account_id = current_account_id()));
 
 create policy invoice_read_own on invoice
-  for select using (account_id = auth.uid());
+  for select using (account_id = current_account_id());
 
 create policy invoice_line_read_own on invoice_line
   for select using (exists (
-    select 1 from invoice i where i.id = invoice_line.invoice_id and i.account_id = auth.uid()));
+    select 1 from invoice i where i.id = invoice_line.invoice_id and i.account_id = current_account_id()));
 
 -- =============================================================================
 -- 5. YALNIZCA SERVICE_ROLE: kullanıcıya hiç açılmaz
@@ -224,3 +248,62 @@ comment on table webhook_event is
 -- kullanılır. Politikalar tek kalıpta yazıldığı için bu değişiklik mekaniktir.
 -- Bugün yapılmıyor: B2B müşteri yokken erken soyutlama.
 -- =============================================================================
+
+-- =============================================================================
+-- 7. GDPR SİLME: kişisel veri gider, mali kayıt kalır
+--
+-- Çatışma: GDPR kullanıcıya silinme hakkı verir; muhasebe mevzuatı fatura ve
+-- ödeme kayıtlarının saklanmasını zorunlu kılar. İkisi de yasal yükümlülük.
+--
+-- Çözüm silmek değil, ANONİMLEŞTİRMEK: kişiyi tanımlayan alanlar temizlenir,
+-- tutar/tarih/vergi bilgisi olduğu gibi kalır. Fatura hâlâ denetlenebilir,
+-- ama kime ait olduğu okunamaz.
+--
+-- Saklama süresi ülkeye göre değişir (Norveç'te muhasebe kayıtları için uzun).
+-- Süre dolduğunda gerçek silme ayrı bir işin konusudur; bu fonksiyon o günü
+-- beklemeden GDPR talebini karşılar.
+-- =============================================================================
+
+create or replace function anonymize_account(p_account uuid)
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_n integer;
+begin
+  update account set
+    email           = 'anonim+' || replace(p_account::text, '-', '') || '@silinmis.invalid',
+    name            = null,
+    company_name    = null,
+    org_number      = null,
+    vat_number      = null,
+    vat_validated_at = null,
+    auth_user_id    = null,      -- giriş bağlantısı kopar
+    updated_at      = now()
+  where id = p_account;
+
+  get diagnostics v_n = row_count;
+  if v_n = 0 then
+    raise exception 'anonymize_account: hesap bulunamadı: %', p_account;
+  end if;
+
+  -- Erişim ve abonelikler kapanır: silinmiş kullanıcı hizmet almamalı.
+  update entitlement set revoked_at = coalesce(revoked_at, now()),
+                         revoke_reason = coalesce(revoke_reason, 'account_anonymized')
+   where account_id = p_account and revoked_at is null;
+
+  update subscription set status = 'canceled', canceled_at = coalesce(canceled_at, now())
+   where account_id = p_account and status in ('active','trialing','past_due','paused');
+
+  -- order, payment, invoice, refund: DOKUNULMAZ. Tutar, tarih ve vergi
+  -- bilgisi muhasebe için gerekli; artık kime ait olduğu okunamıyor.
+end;
+$$;
+
+revoke all on function anonymize_account(uuid) from public, authenticated;
+
+comment on function anonymize_account(uuid) is
+  'GDPR silme talebi. Kişisel alanları temizler, erişimi kapatır, mali
+   kayıtlara dokunmaz. Yalnızca service_role çağırabilir.';

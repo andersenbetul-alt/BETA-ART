@@ -3,7 +3,7 @@
 Kimlik Supabase Auth'ta, uygulama verisi PostgreSQL'de. Bu doküman ikisinin
 nasıl bağlandığını ve verinin nasıl korunduğunu tarif eder.
 
-Kod karşılığı: `db/auth.sql` · testler: `db/test_auth.sql` (16 kontrol)
+Kod karşılığı: `db/auth.sql` · testler: `db/test_auth.sql` (21 kontrol)
 
 ---
 
@@ -14,8 +14,8 @@ veritabanı. Bu, aşağıdaki her şeyin dayandığı karardır.
 
 Nedeni: ayrı veritabanları olsaydı iki şey birden imkânsız olurdu.
 
-- `account.id → auth.users.id` foreign key kurulamazdı; kimlik ile fatura
-  kaydı arasındaki bağ uygulama koduna kalırdı ve zamanla kopardı.
+- `account.auth_user_id → auth.users.id` foreign key kurulamazdı; kimlik ile
+  fatura kaydı arasındaki bağ uygulama koduna kalırdı ve zamanla kopardı.
 - `auth.uid()` ile satır seviyesi güvenlik yazılamazdı; her sorguda "bu satır
   bu kullanıcının mı" kontrolünü uygulama yapardı — ve bir yerde unuturdu.
 
@@ -31,8 +31,19 @@ Parola, OAuth, e-posta doğrulama, oturum — hepsi Supabase'in işi. Bizim
 `account` tablomuz kimlik değil, **fatura ve profil kaydıdır.**
 
 ```
-auth.users.id  ──1:1──>  account.id        (foreign key, on delete cascade)
-auth.users.email ──────>  account.email     (kopya, trigger ile senkron)
+auth.users.id  ──1:1──>  account.auth_user_id   (foreign key, on delete set null)
+auth.users.email ──────>  account.email          (kopya, trigger ile senkron)
+```
+
+`account.id` kendi başına bir kimliktir, `auth.users.id`'nin kopyası değil.
+Bu ayrım bilinçli: giriş kaydı silinebilir, mali kayıt silinemez. Bkz. §6.
+
+Politikalar `auth.uid()` yerine `current_account_id()` üzerinden yazılır:
+
+```sql
+create or replace function current_account_id()
+returns uuid language sql stable security definer set search_path = public
+as $$ select id from account where auth_user_id = auth.uid(); $$;
 ```
 
 İki trigger bu bağı canlı tutar:
@@ -46,9 +57,9 @@ auth.users.email ──────>  account.email     (kopya, trigger ile senk
 `auth` şemasına gitmesin diye. Doğruluk kaynağı yine `auth.users`.
 
 **Bugün 1:1.** Bir şirketin birden fazla kullanıcısı gerektiğinde araya
-`account_member` tablosu girer ve politikalardaki `= auth.uid()` ifadesi
-`in (select account_id from account_member where user_id = auth.uid())`
-olur. Politikalar tek kalıpta yazıldığı için bu değişiklik mekaniktir.
+`account_member` tablosu girer ve `current_account_id()` tek bir kimlik yerine
+kimlik kümesi döndüren `current_account_ids()` hâline gelir. Politika metni
+değişmez, yalnızca `=` yerine `in` yazılır. Politikalar tek kalıpta yazıldığı için bu değişiklik mekaniktir.
 Bugün yapılmıyor — B2B müşteri yokken erken soyutlama olurdu.
 
 ---
@@ -73,7 +84,7 @@ kullanıcı için tamamen erişilemez durumdadır — bu bilinçli bir tercih.
 | Sınıf | Tablolar | Kural |
 | --- | --- | --- |
 | **Katalog** | `product`, `price`, `credit_operation` | Herkes okur (yalnızca `active` olanlar) |
-| **Kendi verisi** | `account`, `order`, `payment`, `subscription`, `entitlement`, `credit_*`, `invoice`, `checkout_session` … | Yalnızca `account_id = auth.uid()` — **sadece okuma** |
+| **Kendi verisi** | `account`, `order`, `payment`, `subscription`, `entitlement`, `credit_*`, `invoice`, `checkout_session` … | Yalnızca `account_id = current_account_id()` — **sadece okuma** |
 | **Yalnızca service_role** | `webhook_event`, `reconciliation_run`, `provider_ref` | Politika yok → kullanıcıya kapalı |
 
 ---
@@ -103,7 +114,7 @@ o satırdaki *her* sütunu güncelleyebilir.
 
 ```sql
 update account set vat_number = 'DE999999999', vat_validated_at = now()
- where id = auth.uid();
+ where auth_user_id = auth.uid();
 -- UPDATE 1   ← kullanıcı kendi KDV'sini "doğrulanmış" işaretledi
 ```
 
@@ -138,13 +149,16 @@ karşılaştırılmalı, uyuşmazlık işaretlenmeli. Şema bu kararı kaydediyo
 
 ## 5. Test kapsamı
 
-`db/test_auth.sql` — 16 assertion, `./run-tests.sh` içinde koşar:
+`db/test_auth.sql` — 21 assertion, `./run-tests.sh` içinde koşar:
 
 - **A1-A4** kayıt trigger'ı, meta veri aktarımı, e-posta senkronu, service_role görünürlüğü
 - **R1-R7** izolasyon: her kullanıcı yalnızca kendi hesabını, ödemesini, siparişini, hakkını görür; `webhook_event` erişilemez; katalog açık
 - **W1-W4** yazma engelleri
 - **V1** KDV kendi kendine doğrulama açığı
 - **P1** kendi profilini güncelleyebilme
+- **D1-D5** silme ve saklama: auth kullanıcısı silinince hesap, sipariş ve
+  ödeme ayakta kalır; giriş bağlantısı kopar; anonimleştirme kişisel alanları
+  temizler ama mali kaydı bozmaz; erişim hakları kapanır
 
 Testler Supabase'e deploy etmeden çalışır: `db/auth_shim_test.sql` `auth.users`
 tablosunun ve `auth.uid()` fonksiyonunun minimal taklidini kurar. **Bu dosya
@@ -162,16 +176,37 @@ tablosunun ve `auth.uid()` fonksiyonunun minimal taklidini kurar. **Bu dosya
 3. **`billing_country` çapraz kontrolü** kim yapacak, uyuşmazlıkta ne olacak?
 4. **Oturum süresi ve yenileme** politikası — özellikle BETA SENIOR tarafında
    sık çıkış yaptırmak kullanılabilirliği bozar.
-5. **Hesap silme.** GDPR gereği kullanıcı silinme talep edebilir; ama fatura
-   kayıtları muhasebe gereği saklanmalı. `on delete cascade` bugün her şeyi
-   siler — bu ikisi çelişiyor ve çözülmeli. *(Bu, tespit edilen ikinci açık;
-   bkz. aşağıdaki not.)*
+5. **Saklama süresi.** Anonimleştirilmiş mali kayıt ne kadar tutulacak?
+   Norveç muhasebe mevzuatı beş yıl istiyor; bu süre dolduğunda kaydın
+   gerçekten silinmesi gerekiyor. Bugün silen bir iş yok — takvimli bir
+   temizlik işi yazılmalı.
 
-> **Not — çözülmemiş çelişki:** `account.id` üzerindeki foreign key şu an
-> `on delete cascade`. Supabase'de bir kullanıcı silindiğinde hesabı ve ona
-> bağlı **tüm ödeme, fatura ve abonelik kayıtları da silinir.** Muhasebe
-> mevzuatı bu kayıtların yıllarca saklanmasını istiyor. Doğru davranış
-> muhtemelen `on delete set null` + hesabın anonimleştirilmesi; ama bu, saklama
-> süresi ve GDPR silme hakkı arasındaki dengeyi gerektirir. Muhasebeci ve
-> hukukçuyla netleşmeden değiştirmedim — ama olduğu gibi bırakılırsa ilk
-> hesap silme talebinde muhasebe verisi kaybolur.
+---
+
+## 7. Silme ve saklama çelişkisi — nasıl çözüldü
+
+İlk yazımda `account.id` doğrudan `auth.users.id`'ye `on delete cascade` ile
+bağlıydı. Bunun anlamı: **bir kullanıcı silindiğinde ödemesi, faturası ve
+aboneliği de silinirdi.** Muhasebe mevzuatı bu kayıtların yıllarca saklanmasını
+istiyor; GDPR ise kişisel verinin silinmesini. İkisi aynı satırda duramaz.
+
+Çözüm kimliği fatura yaşam döngüsünden ayırmak:
+
+| Karar | Sonuç |
+| --- | --- |
+| `account.id` kendi başına PK | Mali kayıt kullanıcıdan bağımsız yaşar |
+| `auth_user_id` ayrı sütun, `on delete set null` | Giriş silinir, kayıt kalır |
+| `anonymize_account(uuid)` | Kişisel alanlar temizlenir, tutar/tarih dokunulmaz |
+
+`anonymize_account()` ne yapar: `email`'i `anonim+<id>@silinmis.invalid`
+yapar, `name`, `org_number`, `vat_number`, `vat_validated_at` alanlarını
+boşaltır, `auth_user_id`'yi null'lar, açık hakları geri alır ve abonelikleri
+iptal eder. **`order`, `payment`, `invoice`, `refund` tablolarına hiç
+dokunmaz** — bunlar kime ait olduğu artık okunamayan ama tutarı ve tarihi
+sağlam duran mali kayıtlardır.
+
+Fonksiyon `authenticated`'a kapalı (`revoke all ... from public, authenticated`):
+silme bir destek/uyum işlemidir, kullanıcının doğrudan çağıracağı bir uç değil.
+
+Bu davranış D1-D5 testlerine bağlandı; `on delete cascade`'e dönülürse süit
+düşer.
