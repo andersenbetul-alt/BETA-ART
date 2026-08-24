@@ -89,3 +89,26 @@ Dette krever ingen kode. Det krever tilgang vi ikke har herfra.
 
 Fram til punkt 1 og 2 er gjort, bygger vi kjennskap på et navn vi ikke vet om
 vi får beholde.
+
+## Slagordet
+
+Valgt hovedidé (24.08.2026): kjernen i det tjenesten selger er ikke «hjelp»,
+men vissheten om at noen er der når familien ikke kan være det. Derfor:
+
+- **Norsk (primær):** «Når du ikke kan være der.»
+- Støttelinje: «Trygg hjelp i hverdagen, nær dem du er glad i.»
+- **Engelsk (internasjonal master):** «When you can't be there.»
+- Støttelinje: «Trusted everyday help, close to home.»
+
+Regler for bruk:
+
+- Ordet «care»/«omsorg» gjentas ikke i slagordet – det står allerede i navnet.
+- Slagordet selger aldri tilsyn eller overvåking. «Vi passer på henne» er
+  utenfor; grensen i docs/JURIDISK-GRENSE.md gjelder også markedsspråket.
+- Forkastede retninger: «Care, closer», «Someone nearby. Someone you trust»,
+  «Live independently. Stay connected», «Everyday help. Peace of mind» –
+  gode, men kategorispråk; hovedideen er større enn kategorien.
+
+Slagordet er merkespråk, ikke registrert kjennetegn. Det påvirker ikke
+varemerkestatusen over, og det inngår ikke i den grafiske representasjonen
+som er under clearance (docs/VAREMERKE-STANDARD.md).

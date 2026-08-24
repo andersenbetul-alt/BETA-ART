@@ -245,7 +245,7 @@ s9.addNotes('Klarhet åpner to betalingsstrømmer koden holder stengt. Derfor st
 /* 10 — status */
 var s10 = ark(INK);
 s10.addText('Hvor det står', { x:0.9, y:0.75, w:11.5, h:0.8, fontFace:SERIF, fontSize:38, bold:true, color:LYS, margin:0 });
-[['329','enhetstester'],['153','nettlesertester'],['0','feilende']].forEach(function (r, i) {
+[['337','enhetstester'],['153','nettlesertester'],['0','feilende']].forEach(function (r, i) {
   var x = 0.9 + i*3.9;
   s10.addText(r[0], { x:x, y:1.9, w:3.5, h:0.9, fontFace:SERIF, fontSize:44, bold:true, color:GRONN_MORK, margin:0 });
   s10.addText(r[1], { x:x, y:2.85, w:3.5, h:0.35, fontFace:SANS, fontSize:13, color:SAND, margin:0 });

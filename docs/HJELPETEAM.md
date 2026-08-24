@@ -39,6 +39,28 @@ familiesiden som viser teamet og lar dem sette faste dager.
 Kategoriene er faste utfall i katalogen; etterspørsel oppretter aldri
 kategori (PP_BEHOV-regelen står).
 
+## Pilotutvalget – fire tjenester først
+
+Hele tabellen over er målbildet. Piloten starter smalere: fire tjenester med
+lav risiko, definert i kode i `assets/js/katalog.js` (`PP_KATALOG`), hver med
+faste utfall og sin egen aldri-liste:
+
+| Pilotkategori | Type | Aldri |
+|---|---|---|
+| Besøk og samvær | `samvaer` | Terapi, helsevurdering, nattilsyn |
+| Digital hjelp | `digital` | BankID/passord, betaling, fjernstyring |
+| Lett hjemmehjelp | `praktisk` | Trapp/tunge løft, sterke kjemikalier, hovedrengjøring |
+| Hent og lever | `handling` | Kontanter, medisiner, alkohol/tobakk, økonomiske dokumenter |
+
+Hjelpernes fagområder er de samme kategoriene: `PP_KATALOG.kategorierFor()`
+leser hvilke typer hjelperen har krysset av (`hjelper.oppgaver`), som er
+samme felt matchingmotorens `kvalifisert`-krav filtrerer på. Ett felt, én
+sannhet – katalogen innfører ikke et parallelt kompetanseregister.
+
+Utsatt til kontrollert utvidelse (fall-, transport- og matrisiko): følge til
+avtaler, korte turer, enkel matlaging, kultureskorte. Dørstokken for disse er
+en pilot med egne grenser, ikke et menyvalg.
+
 ## Neste konkrete byggekloss
 
 Familiesiden «Mitt hjelpeteam»: vis teamet, faste dager, siste utførte

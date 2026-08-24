@@ -38,6 +38,7 @@ require('../assets/js/besok-abonnement.js');
 require('../assets/js/besok-kvalitet.js');
 require('../assets/js/besok-sprak.js');
 require('../assets/js/matching.js');
+require('../assets/js/katalog.js');
 require('../assets/js/demodata.js');
 
 var PRIS = window.PP_PRIS;
@@ -2458,5 +2459,77 @@ t.gruppe('Designtokens dekker :root');
     t.erLik(w3c.farge['ok'].$value, '{farge.brand-dark}');
   });
 })();
+
+t.gruppe('Tjenestekatalogen – pilot v1');
+
+t.test('fire tjenester, verken flere eller færre', function () {
+  t.erLik(window.PP_KATALOG.alle().map(function (k) { return k.id; }),
+          ['besok', 'digital', 'lett-hjemmehjelp', 'hent-lever']);
+});
+
+t.test('hver kategori bærer sin egen grense', function () {
+  /* Grensen er del av definisjonen, ikke et vedlegg. En kategori uten
+     aldri-liste kan ikke vises på oppgaveskjermen og skal ikke finnes. */
+  window.PP_KATALOG.alle().forEach(function (k) {
+    t.erSann(k.aldri && k.aldri.length > 0, k.id + ' mangler aldri-liste');
+    t.erSann(k.oppgaver && k.oppgaver.length > 0, k.id + ' mangler faste utfall');
+    t.erLik(k.risiko, 'lav', k.id + ' skal være lav risiko i piloten');
+  });
+});
+
+t.test('digital hjelp er veiledning, aldri BankID i hendene', function () {
+  var aldri = window.PP_KATALOG.hent('digital').aldri.join(' ');
+  t.erSann(aldri.indexOf('BankID') !== -1);
+  t.erSann(aldri.indexOf('Fjernstyring') !== -1);
+});
+
+t.test('hent og lever bærer verken kontanter eller medisiner', function () {
+  var aldri = window.PP_KATALOG.hent('hent-lever').aldri.join(' ');
+  t.erSann(aldri.indexOf('Kontanter') !== -1);
+  t.erSann(aldri.indexOf('Medisiner') !== -1);
+  t.erSann(aldri.indexOf('Alkohol') !== -1);
+});
+
+t.test('kategoriene peker bare på oppgavetyper motoren kjenner', function () {
+  /* Én sannhet: katalogens type er samme felt som kvalifisert-kravet
+     filtrerer på. En kategori med påfunnet type ville aldri matche noen. */
+  var kjente = ['samvaer', 'handling', 'folge', 'digital', 'ute', 'praktisk'];
+  window.PP_KATALOG.alle().forEach(function (k) {
+    t.erSann(kjente.indexOf(k.type) !== -1, k.id + ' peker på ukjent type ' + k.type);
+  });
+});
+
+t.test('hjelperens fagområder følger av avkryssede typer', function () {
+  var hjelper = { oppgaver: ['samvaer', 'digital'] };
+  t.erLik(window.PP_KATALOG.kategorierFor(hjelper).map(function (k) { return k.id; }),
+          ['besok', 'digital']);
+  t.erSann(window.PP_KATALOG.kanTjene(hjelper, 'besok'));
+  t.erUsann(window.PP_KATALOG.kanTjene(hjelper, 'hent-lever'));
+});
+
+t.test('ukjent kategori og hjelper uten typer svarer nei, ikke krasj', function () {
+  t.erUsann(window.PP_KATALOG.kanTjene({ oppgaver: ['samvaer'] }, 'finnes-ikke'));
+  t.erUsann(window.PP_KATALOG.kanTjene({}, 'besok'));
+  t.erLik(window.PP_KATALOG.kategorierFor(null), []);
+});
+
+t.test('katalogen og matchingmotoren forteller samme historie', function () {
+  /* En hjelper uten digital-typen skal både mangle fagområdet i katalogen
+     og få oppdraget sperret av motoren – med kvalifisert som grunn. */
+  var hjelper = {
+    id: 'h-t', oppgaver: ['samvaer'], tilgjengelig: true, tillitsniva: 2,
+    maksAvstandKm: 10, egenskaper: [], tidsrom: ['dag'], iProveperiode: false,
+    tillitsscore: 80, punktlighet: 90, sprak: ['norsk'], transport: ['bil'], timesats: 300
+  };
+  var oppdrag = {
+    type: 'digital', typeNavn: 'Digital hjelp', risiko: 'lav', krevdNiva: 1,
+    avstandKm: 2, reisetidMin: 6, tidsrom: 'dag', tidsromNavn: 'Dag',
+    kravEgenskaper: [], sprakonske: ''
+  };
+  t.erUsann(window.PP_KATALOG.kanTjene(hjelper, 'digital'));
+  var r = window.PP_MATCHING.vurder(hjelper, oppdrag);
+  t.erUsann(r.aktuell);
+  t.erLik(r.sperre.id, 'kvalifisert');
+});
 
 t.oppsummer('Enhetstester');
