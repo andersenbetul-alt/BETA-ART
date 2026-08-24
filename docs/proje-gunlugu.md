@@ -266,3 +266,14 @@ seçenekleri rakamsız [H], hukuk kapıları (tanıtım işareti, koşullar
 güncellemesi, avukat teyidi) ve eşikli pilot planı. Marka çelişkisi ve
 "bir haftada üçüncü yön" riski belgede açıkça kayıtlı. Model + öncelik
 kararı kullanıcıya soruldu; P0 inşası karar sonrası.
+## 24.08.2026 (gece) — Fikir seli tek çerçevede toplandı
+
+Aynı gün içinde dört yön geldi: yazar platformu (karar: davetli model,
+platform önce; şema yazıldı `uye/schema-platform.sql`), ad tartışması
+(QBOOK/QBLOOK — qbook.com dolu, qblook.com/.no müsait [V, GoDaddy]),
+Action Pages hizmet modeli ve SAYFA60 kitap keşif kanalı + çok-format
+merdiveni. Hepsi `docs/yazar-platformu.md`'ye işlendi (§8-10). Birleşik
+tez: ödeyen müşteri okur değil, içeriğini müşteriye dönüştürmek isteyen
+uzman/yazar. Önerilen sıra: önce TEK 30 günlük satış deneyi (3 ücretli
+pilot kapısı), kod ve video kanalı ödeme kanıtından sonra. Panel/keşif
+sayfalarının kodu bilinçli duraklatıldı; karar kullanıcıya soruldu.
