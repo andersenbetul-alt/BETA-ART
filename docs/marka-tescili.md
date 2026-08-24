@@ -246,3 +246,82 @@ Bu bir hesaptır, teklif değil — sınıf seçimi marka vekiliyle netleşmeli.
   markası başvurusunda risk taşır; denetleyici bunu 🔴 ile işaretliyor.
   Şekil markası için `sekil-markasi-*.jpg` kullanılmalı.
 
+
+## Patentstyret başvuru hazırlığı — 24.08.2026
+
+Kullanıcı talimatı: "logonun Patentstyret ve EUIPO kabul görmesi için bütün
+hazırlıkları yap." Biçim hattı bu tarihte yeniden koşuldu ve yeşil:
+`npm run marka` (15 varlık) → `npm run tescil` (4 JPEG + sicil önizleme,
+zarf ✓) → `npm run tescil-testi` (4/4) → `npm run marka-dogrula` (56 ölçü ✓).
+
+Kurum sayfaları hâlâ engelli (patentstyret.no ve lovdata.no bu oturumda da
+denendi: EGRESS_BLOCKED). Aşağıdaki bilgiler web arama özetlerinden alındı —
+**hiçbiri birinci elden okunmadı; başvuru öncesi elle teyit şart.**
+
+### Dosya biçimi — Patentstyret [arama özeti, teyit edilecek]
+
+- Patentstyret marka görseli için **TIF ve JPEG** öneriyor; dosya biçimi
+  kuralları WIPO standardına dayanıyor; **uzantı gerçek biçimle eşleşmeli**
+  (.jpg → JPEG). Kaynak: patentstyret.no "filformater" kılavuzu (PDF,
+  doğrudan açılamadı) + "Start a trademark application" sayfa özeti.
+- Sonuç: `tescil/` klasöründeki baseline JPEG dosyalarımız bu öneriye uyar;
+  EUIPO zarfı (≤2835×2010, 96–300 DPI, <2 MB) Patentstyret için de güvenli
+  taraftadır. **Aynı dosyalar iki kuruma da verilebilir.**
+
+### Başvuru kanalı [arama özeti, teyit edilecek]
+
+- Dijital başvuru **Altinn** üzerinden ("Start a trademark application" →
+  søknadsveiviser). Norveç kimlik numarası yoksa "Start service" →
+  **International** ile e-posta girişli başvuru mümkün.
+- Ücret: bir sınıf **3.800 NOK** (yeniden teyit edildi, özet düzeyinde);
+  1 Mart 2023'ten beri taban ücret TEK sınıf kapsar, ek sınıf ayrı ücret —
+  **ek sınıf tutarı doğrulanamadı** (Lovdata engelli). Yenileme 3.400 NOK'tan.
+
+### Başvuru stratejisi (öneri — hukuki görüş değil)
+
+1. **Önce Patentstyret** (şirket Norveç'te; EUIPO Norveç'i kapsamaz),
+   sonra 6 aylık Paris rüçhan penceresi içinde EUIPO.
+2. **Şekil markası olarak yalnız sembol:** `tescil/sekil-markasi-renkli.jpg`.
+   Kilit dosyaları (🔴 kelime unsuru "QBLOGG" → "BLOGG" tanımlayıcılık riski,
+   Norveç eşiği yüksek) vekil görüşü olmadan kullanılmaz.
+3. **Renk beyanı:** fiili kullanım renkli olduğundan renkli sürümle başvuru
+   önerilir (Midnight Navy #082C54 + Electric Aqua #00D8C2); siyah sürüm
+   ayrı bir başvuru ücreti demektir, vekile sorulacak.
+4. **Nice sınıf TASLAĞI (vekil teyidi olmadan gönderilmez):**
+   - **35** — başkaları için içerik pazarlaması, reklam ve pazarlama
+     hizmetleri (Studio paketleri)
+   - **41** — yayıncılık hizmetleri, çevrim içi (indirilemeyen) yayınlar,
+     eğitim/bilgilendirme içerikleri (blog, Q Brief)
+   - **42 (isteğe bağlı)** — çevrim içi platform/yazılım hizmeti (Action
+     Pages / üye platformu büyürse; şimdi eklemek ücret artırır)
+5. **Başvuru sahibi alanları hâlâ BOŞ** (kişi mi şirket mi, adres, org.nr) —
+   kullanıcı dolduracak. Şirket kurulacaksa başvuru şirket adına atılmalı;
+   sahiplik devri sonradan ek iş çıkarır.
+
+### Kullanıcı adımları (başvuru günü, adım adım)
+
+1. patentstyret.no → "Varemerke" → "Lever søknad om varemerke" (İngilizce:
+   Start a trademark application) → Altinn girişi (BankID; şirketse şirket
+   adına temsil seçin).
+2. Marka türü: **figurmerke** (şekil markası). Görsel: depodan
+   `tescil/sekil-markasi-renkli.jpg` dosyasını yükleyin.
+3. Mal/hizmet listesi: yukarıdaki 35+41 taslağını vekil onayından geçmiş
+   hâliyle girin (Patentstyret'in sınıf sihirbazı önerilerinden seçmek,
+   serbest metinden daha az itiraz riski taşır).
+4. Ücreti kartla ödeyin (bir sınıf 3.800 NOK + ek sınıf; tutarı ödeme
+   ekranında görünce buradaki rakamla karşılaştırın — farklıysa bu belge
+   güncellenmeli).
+5. Başvuru numarasını ve tarihini kaydedin: EUIPO rüçhan başvurusunda
+   (6 ay içinde) bu numara sorulur.
+6. EUIPO tarafı: euipo.europa.eu → Easy Filing → aynı JPEG + rüçhan talebi.
+   Ücret tahmini belgenin EUIPO bölümünde (850/50/150 € — teyitli değil).
+
+### Bu oturumda YAPILAMAYANLAR (dürüst liste)
+
+- Sicil ön araştırması (TMview/Patentstyret søk) — siteler engelli;
+  kullanıcı tarayıcısından yapılmalı: search.patentstyret.no'da "QBLOGG"
+  ve benzer ("Q BLOGG", "KVBLOGG" vb.) aramaları + tmview.org'da
+  figüratif arama. Sonuç ekran görüntüleri bana iletilirse değerlendiririm.
+- Ek sınıf ücretinin tutarı — Lovdata engelli.
+- Vekil görüşü — "BLOGG" tanımlayıcılık riski için başvuru öncesi şart
+  (özellikle kelime markası düşünülüyorsa).

@@ -287,3 +287,16 @@ veri tarayıcıdan çıkmaz; Playwright ile uçtan uca doğrulandı: 8 soru,
 ve `docs/action-pages-teklif.md` (teklif, [H] test fiyatları, Norveççe
 ulaşım mesajı, kullanıcının adım adım satış görevleri). Demoyu yayına
 alma (main + Vercel) kullanıcı onayı bekliyor.
+## 24.08.2026 (gece, tescil) — Patentstyret + EUIPO başvuru hazırlığı tamamlandı
+
+Kullanıcı talimatıyla tescil hattı uçtan uca yeniden koşuldu: marka üretimi
+(15 varlık, bayt-bayt aynı — çalışma ağacında tek fark belge), tescil
+zarfı (4 JPEG + sicil önizleme ✓), zarf testleri 4/4, belge doğrulama
+56 ölçü ✓. Patentstyret tarafı arama özetleriyle dolduruldu (TIF/JPEG
+önerisi, Altinn kanalı, 3.800 NOK/sınıf — hepsi "elle teyit" notuyla;
+patentstyret.no/lovdata.no bu oturumda da EGRESS_BLOCKED). Nice sınıf
+taslağı (35+41, 42 isteğe bağlı), renk beyanı önerisi ve başvuru günü
+adımları docs/marka-tescili.md'ye işlendi. Yapılamayanlar dürüst listede:
+sicil ön araştırması (kullanıcı tarayıcısı), ek sınıf ücreti, vekil görüşü.
+Beceri arama denendi: npx skills tüm sorgularda boş (kontrol sorgusu dahil
+— kayıt defteri erişimi engelli, beceri yokluğu kanıtı değil).
