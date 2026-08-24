@@ -1,0 +1,78 @@
+# Datadog Synthetic tests.
+#
+# Three things about the stock template had to change for this repository, and
+# they are worth stating because each one would have made the file useless
+# rather than merely unconfigured.
+#
+#   1. It triggers on `main`. On this repository `main` holds QBLOGG, a
+#      different project — the site lives on its development branch. Pinning
+#      the trigger to `main` would mean this workflow never ran for Beta Art
+#      at all. It runs on push here, and on demand.
+#
+#   2. It fails without credentials. `DD_API_KEY` and `DD_APP_KEY` do not
+#      exist in this repository, and until somebody creates a Datadog account
+#      they cannot. A workflow that is red on every push for a reason nobody
+#      can fix is the thing `qc.py` warns about in its own docstring: a check
+#      that cannot go green teaches people to ignore the whole run. So this
+#      one looks for the keys, says plainly what is missing, and passes.
+#
+#   3. Synthetic tests drive a *deployed URL*. Nothing is deployed yet —
+#      beta-art.com resolves to GoDaddy parking and the three subdomains do
+#      not resolve at all. Until that changes there is nothing for a Synthetic
+#      test to open, whatever the keys say.
+#
+# What it does NOT replace: `gates.yml` runs the fourteen correctness gates and
+# opens 102 local pages in Chromium at four widths on every push, with no
+# account and no secrets. That is the check that has to pass. This one answers
+# a different question — is the *deployed* site still up and behaving — and it
+# can only answer it once there is a deployment and an account.
+#
+# To turn it on:
+#   1. Create a Datadog account and an API key + Application key
+#      (https://docs.datadoghq.com/account_management/api-app-keys/).
+#   2. Add both as repository secrets, named DD_API_KEY and DD_APP_KEY, at
+#      Settings → Secrets and variables → Actions.
+#   3. Create at least one Synthetic test in Datadog against the deployed URL
+#      and tag it `e2e-tests`, or change test_search_query below to match
+#      whatever tag you use.
+
+name: Datadog Synthetic tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  synthetics:
+    name: deployed-site checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Are the Datadog keys configured?
+        id: creds
+        env:
+          DD_API_KEY: ${{ secrets.DD_API_KEY }}
+          DD_APP_KEY: ${{ secrets.DD_APP_KEY }}
+        run: |
+          if [ -n "$DD_API_KEY" ] && [ -n "$DD_APP_KEY" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            missing=""
+            [ -z "$DD_API_KEY" ] && missing="DD_API_KEY"
+            [ -z "$DD_APP_KEY" ] && missing="${missing:+$missing and }DD_APP_KEY"
+            echo "::notice title=Datadog not configured::Skipped — $missing not set. Add under Settings → Secrets and variables → Actions. The gates workflow is unaffected."
+          fi
+
+      # Pinned to a commit rather than a tag, as the template does: this is a
+      # third-party action and a moving tag is code you did not review.
+      - name: Run Datadog Synthetic tests
+        if: steps.creds.outputs.ready == 'true'
+        uses: DataDog/synthetics-ci-github-action@87b505388a22005bb8013481e3f73a367b9a53eb # v1.4.0
+        with:
+          api_key: ${{ secrets.DD_API_KEY }}
+          app_key: ${{ secrets.DD_APP_KEY }}
+          test_search_query: 'tag:e2e-tests'
