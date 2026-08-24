@@ -314,3 +314,12 @@ becerilerin karşılıkları not edildi. (3) 20 rollük ekip listesi
 değerlendirildi → docs/ekip-modeli.md (roller işe alım değil denetim
 merceği; ilk işe alım ancak pilot gelirle). (4) IQ1000 "güven motoru"
 analizi is-modeli.md §14'e delta olarak işlendi — sıra kararı değişmedi.
+## 24.08.2026 (gece, test mimarisi) — Spec-driven Playwright standardı değerlendirildi
+
+Kullanıcının ilettiği üç katmanlı test mimarisi (specs/tests/agents +
+safety/) docs/test-mimarisi.md'de karara bağlandı: araç sorusunun cevabı
+Playwright (zaten standart); codegen bu konteynerde çalışmaz (etkileşimli
+pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapısı
+kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
+kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
+anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
