@@ -99,6 +99,33 @@ Reglene ligger i `assets/js/besok-vern.js` som `window.PP_VERN`. Modulene er
 IIFE-er uten eksport, så de må kjøres i en side; det er derfor `vern` går via
 nettleseren og ikke via `require`.
 
+### Tavla (oppdrag.html)
+
+Hjelpersiden krever to klikk før den viser noe: bryteren, og et valg i
+posisjonsboksen. Uten dem står tavla på «Du er ikke tilgjengelig nå»:
+
+```bash
+printf 'open /oppdrag.html\neval document.getElementById("tilgjengelig-bryter").click(), document.getElementById("uten-posisjon").click(), "pa"\nss tavla\nquit\n' | node .claude/skills/run-naviar/driver.js
+```
+
+Demodata kan muteres i sida for å prøve motorregler, men tavla tegner seg
+bare om når bryteren endres – slå den av og på etter mutasjonen:
+
+```bash
+printf 'open /oppdrag.html\neval window.PP_DEMO.oppdrag[0].kravEgenskaper = ["ikke-royker"], "satt"\neval document.getElementById("tilgjengelig-bryter").click(), document.getElementById("uten-posisjon").click(), "pa"\neval document.getElementById("skjulte-kort").innerText.slice(0, 300)\nquit\n' | node .claude/skills/run-naviar/driver.js
+```
+
+### Tegne grafikk uten kildefil
+
+`tegn.js` rendrer en SVG til PNG for visuell sammenligning – løkka som
+brukes når grafikk må gjenskapes fra et bilde (logoen v0.4 ble til slik):
+tegn parametrisk, render, sammenlign mot originalen, iterer. To-tre runder
+holder som regel; bokstavformer bommer oftest første gang, ikke merker.
+
+```bash
+node .claude/skills/run-naviar/tegn.js assets/img/naviar-care-logo-v04.svg /tmp/logo.png 1000 305
+```
+
 Annen base-url: `NAVIAR_BASE=http://localhost:9000 node …/driver.js`.
 
 ## Run (human path)
@@ -147,6 +174,14 @@ Uten det ser hver eneste side ut til å ha feil.
 
 **Innlogging er ikke en sperre.** `besok/nytt.html` laster og fungerer uten at
 du har vært innom `logg-inn.html`. `DEMO = true` i `assets/js/api.js`.
+
+**Tavla sorterer etter score, ikke etter datarekkefølge.** `PP_DEMO.oppdrag[1]`
+er ikke kort nummer to på skjermen. Muterer du demodata med `eval` og skal
+sjekke virkningen, match på tittel i `innerText` – aldri på indeks. En probe
+som leser «kort nr. N» validerer feil kort uten å feile.
+
+**`eval`-mutasjoner blir liggende i nettleserkonteksten.** To prober i samme
+driverkjøring forurenser hverandre; en ren probe krever en ny kjøring.
 
 **Tilstand overlever mellom kommandoer, ikke mellom kjøringer.** Besøk ligger
 i `localStorage` i én nettleserkontekst. Hver ny driverkjøring starter tom, og

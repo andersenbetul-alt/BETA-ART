@@ -240,7 +240,7 @@ anta den. En fersk klone har færre referanser enn en arbeidskopi.
 
 ### Observation 11: Logo gjenskapt fra rasterbilde med tegn-render-sammenlign-løkke
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — tegn.js og løkka skrevet inn i run-naviar
 **Date:** 2026-08-24
 **Session context:** Ny merkeidentitet (v0.4) levert som JPEG i chat, vektormaster utilgjengelig
 **Skill:** run-naviar / naviar-merkevare
