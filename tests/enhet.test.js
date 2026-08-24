@@ -2371,4 +2371,37 @@ t.gruppe('Generert skjema dekker reglene');
   });
 })();
 
+/* Tokenfilene er for overlevering til design. Faller et token ut av
+   genereringen, får designeren en palett som ikke er vår – og ingen ser det
+   før noe er tegnet i feil grønn. */
+t.gruppe('Designtokens dekker :root');
+
+(function () {
+  var fs = require('fs');
+  var path = require('path');
+  var ROT = path.join(__dirname, '..');
+  var css = fs.readFileSync(path.join(ROT, 'assets/css/styles.css'), 'utf8');
+  var rot = css.slice(css.indexOf(':root {'), css.indexOf('\n}', css.indexOf(':root {')));
+  var w3c = JSON.parse(fs.readFileSync(path.join(ROT, 'design/naviar.tokens.json'), 'utf8'));
+
+  var iRot = (rot.match(/^\s*--[a-z0-9-]+:\s*(#[0-9a-f]{3,8}|var\(--[a-z0-9-]+\));/gim) || [])
+    .map(function (l) { return l.trim().split(':')[0].replace('--', ''); });
+
+  t.test('hver farge i :root finnes i tokenfila', function () {
+    var mangler = iRot.filter(function (n) { return !w3c.farge[n]; });
+    t.erLik(mangler.length, 0, mangler.join(', '));
+  });
+
+  t.test('de to grønnene bærer hvert sitt kontrasttall', function () {
+    /* Den ene er lesbar på hvitt, den andre på blekket. Blandes de, får
+       brukeren 2,9:1. Tallet skal stå i beskrivelsen, ikke i hukommelsen. */
+    t.erSann(/mot blekket 2\.\d+:1/.test(w3c.farge['brand'].$description));
+    t.erSann(/mot blekket 7\.\d+:1/.test(w3c.farge['brand-pa-mork'].$description));
+  });
+
+  t.test('aliaset er en referanse, ikke en kopi', function () {
+    t.erLik(w3c.farge['ok'].$value, '{farge.brand-dark}');
+  });
+})();
+
 t.oppsummer('Enhetstester');

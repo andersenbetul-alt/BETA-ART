@@ -1,0 +1,107 @@
+{
+  "$description": "Naviar Care. Generert fra assets/css/styles.css av verktoy/lag-tokens.js.",
+  "farge": {
+    "ink": {
+      "$type": "color",
+      "$value": "#101a2e",
+      "$description": "Blekket er logoens marineblå. Den er ikke valgt for å matche logoen – den ER logoen, og det er forskjellen på en identitet og en dekorasjon. Kontrasten mot hvitt er 17,4:1, altså bedre enn den grønnsvarte den erstattet (16,3:1). Byttet koster ingenting og gjør at merket hører hjemme på siden i stedet for å ligge oppå den."
+    },
+    "ink-soft": {
+      "$type": "color",
+      "$value": "#4a5568",
+      "$description": "Kontrast mot hvitt 7.53:1, mot blekket 2.31:1"
+    },
+    "ink-faint": {
+      "$type": "color",
+      "$value": "#657084",
+      "$description": "Kontrast mot hvitt 5.00:1, mot blekket 3.48:1"
+    },
+    "line": {
+      "$type": "color",
+      "$value": "#dde2ea",
+      "$description": "Kontrast mot hvitt 1.30:1, mot blekket 13.35:1"
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "#ffffff",
+      "$description": "Kontrast mot hvitt 1.00:1, mot blekket 17.37:1"
+    },
+    "bg-soft": {
+      "$type": "color",
+      "$value": "#f4f6fa",
+      "$description": "Kontrast mot hvitt 1.08:1, mot blekket 16.05:1"
+    },
+    "bg-sand": {
+      "$type": "color",
+      "$value": "#fbf6ee",
+      "$description": "Kontrast mot hvitt 1.08:1, mot blekket 16.14:1"
+    },
+    "brand": {
+      "$type": "color",
+      "$value": "#1f6f5c",
+      "$description": "Kontrast mot hvitt 6.02:1, mot blekket 2.88:1"
+    },
+    "brand-dark": {
+      "$type": "color",
+      "$value": "#175446",
+      "$description": "Kontrast mot hvitt 8.78:1, mot blekket 1.98:1"
+    },
+    "brand-light": {
+      "$type": "color",
+      "$value": "#e6f1ed",
+      "$description": "Kontrast mot hvitt 1.16:1, mot blekket 15.03:1"
+    },
+    "brand-pa-mork": {
+      "$type": "color",
+      "$value": "#4cb99b",
+      "$description": "Grønnfargen er lesbar på hvitt (6,0:1) og uleselig på marineblått (2,9:1). Mørke flater trenger derfor sin egen grønn. Denne gir 7,2:1 mot blekket, og blekket gir 7,2:1 tilbake som knappetekst. · Kontrast mot hvitt 2.41:1, mot blekket 7.21:1"
+    },
+    "accent": {
+      "$type": "color",
+      "$value": "#c8752a",
+      "$description": "Kontrast mot hvitt 3.48:1, mot blekket 4.99:1"
+    },
+    "accent-light": {
+      "$type": "color",
+      "$value": "#fbeee0",
+      "$description": "Kontrast mot hvitt 1.14:1, mot blekket 15.22:1"
+    },
+    "ok": {
+      "$type": "color",
+      "$value": "{farge.brand-dark}",
+      "$description": "«Dette gikk bra» er merkevarefargen, ikke en egen grønn. En egen grønn ville ligget 1,13 i kontrast mot --brand – altså umulig å skille – og det finnes ingen grønn som både er lesbar på hvitt og skiller seg fra en mørk grønn merkevare. Suksess signaliseres derfor av merkevarefargen pluss et ✓, aldri av farge alene. Unntakene bærer sine egne farger: --warn og --danger. · Kontrast mot hvitt 8.78:1, mot blekket 1.98:1"
+    },
+    "warn": {
+      "$type": "color",
+      "$value": "#9a6a08",
+      "$description": "Kontrast mot hvitt 4.73:1, mot blekket 3.67:1"
+    },
+    "danger": {
+      "$type": "color",
+      "$value": "#a32f24",
+      "$description": "Kontrast mot hvitt 7.02:1, mot blekket 2.47:1"
+    },
+    "danger-light": {
+      "$type": "color",
+      "$value": "#fbeceb",
+      "$description": "Kontrast mot hvitt 1.15:1, mot blekket 15.13:1"
+    }
+  },
+  "maal": {
+    "radius": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$description": ""
+    },
+    "radius-lg": {
+      "$type": "dimension",
+      "$value": "18px",
+      "$description": ""
+    },
+    "maxw": {
+      "$type": "dimension",
+      "$value": "1120px",
+      "$description": ""
+    }
+  }
+}

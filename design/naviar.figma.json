@@ -1,0 +1,265 @@
+{
+  "collections": [
+    {
+      "name": "Naviar farge",
+      "modes": [
+        "standard"
+      ],
+      "variables": [
+        {
+          "name": "farge/ink",
+          "type": "COLOR",
+          "description": "Blekket er logoens marineblå. Den er ikke valgt for å matche logoen – den ER logoen, og det er forskjellen på en identitet og en dekorasjon. Kontrasten mot hvitt er 17,4:1, altså bedre enn den grønnsvarte den erstattet (16,3:1). Byttet koster ingenting og gjør at merket hører hjemme på siden i stedet for å ligge oppå den.",
+          "values": {
+            "standard": {
+              "r": 0.06274509803921569,
+              "g": 0.10196078431372549,
+              "b": 0.1803921568627451,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/ink-soft",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 7.53:1, mot blekket 2.31:1",
+          "values": {
+            "standard": {
+              "r": 0.2901960784313726,
+              "g": 0.3333333333333333,
+              "b": 0.40784313725490196,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/ink-faint",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 5.00:1, mot blekket 3.48:1",
+          "values": {
+            "standard": {
+              "r": 0.396078431372549,
+              "g": 0.4392156862745098,
+              "b": 0.5176470588235295,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/line",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 1.30:1, mot blekket 13.35:1",
+          "values": {
+            "standard": {
+              "r": 0.8666666666666667,
+              "g": 0.8862745098039215,
+              "b": 0.9176470588235294,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/bg",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 1.00:1, mot blekket 17.37:1",
+          "values": {
+            "standard": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/bg-soft",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 1.08:1, mot blekket 16.05:1",
+          "values": {
+            "standard": {
+              "r": 0.9568627450980393,
+              "g": 0.9647058823529412,
+              "b": 0.9803921568627451,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/bg-sand",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 1.08:1, mot blekket 16.14:1",
+          "values": {
+            "standard": {
+              "r": 0.984313725490196,
+              "g": 0.9647058823529412,
+              "b": 0.9333333333333333,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/brand",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 6.02:1, mot blekket 2.88:1",
+          "values": {
+            "standard": {
+              "r": 0.12156862745098039,
+              "g": 0.43529411764705883,
+              "b": 0.3607843137254902,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/brand-dark",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 8.78:1, mot blekket 1.98:1",
+          "values": {
+            "standard": {
+              "r": 0.09019607843137255,
+              "g": 0.32941176470588235,
+              "b": 0.27450980392156865,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/brand-light",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 1.16:1, mot blekket 15.03:1",
+          "values": {
+            "standard": {
+              "r": 0.9019607843137255,
+              "g": 0.9450980392156862,
+              "b": 0.9294117647058824,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/brand-pa-mork",
+          "type": "COLOR",
+          "description": "Grønnfargen er lesbar på hvitt (6,0:1) og uleselig på marineblått (2,9:1). Mørke flater trenger derfor sin egen grønn. Denne gir 7,2:1 mot blekket, og blekket gir 7,2:1 tilbake som knappetekst. · Kontrast mot hvitt 2.41:1, mot blekket 7.21:1",
+          "values": {
+            "standard": {
+              "r": 0.2980392156862745,
+              "g": 0.7254901960784313,
+              "b": 0.6078431372549019,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/accent",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 3.48:1, mot blekket 4.99:1",
+          "values": {
+            "standard": {
+              "r": 0.7843137254901961,
+              "g": 0.4588235294117647,
+              "b": 0.16470588235294117,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/accent-light",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 1.14:1, mot blekket 15.22:1",
+          "values": {
+            "standard": {
+              "r": 0.984313725490196,
+              "g": 0.9333333333333333,
+              "b": 0.8784313725490196,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/ok",
+          "type": "COLOR",
+          "description": "«Dette gikk bra» er merkevarefargen, ikke en egen grønn. En egen grønn ville ligget 1,13 i kontrast mot --brand – altså umulig å skille – og det finnes ingen grønn som både er lesbar på hvitt og skiller seg fra en mørk grønn merkevare. Suksess signaliseres derfor av merkevarefargen pluss et ✓, aldri av farge alene. Unntakene bærer sine egne farger: --warn og --danger. · Kontrast mot hvitt 8.78:1, mot blekket 1.98:1",
+          "values": {
+            "standard": {
+              "r": 0.09019607843137255,
+              "g": 0.32941176470588235,
+              "b": 0.27450980392156865,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/warn",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 4.73:1, mot blekket 3.67:1",
+          "values": {
+            "standard": {
+              "r": 0.6039215686274509,
+              "g": 0.41568627450980394,
+              "b": 0.03137254901960784,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/danger",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 7.02:1, mot blekket 2.47:1",
+          "values": {
+            "standard": {
+              "r": 0.6392156862745098,
+              "g": 0.1843137254901961,
+              "b": 0.1411764705882353,
+              "a": 1
+            }
+          }
+        },
+        {
+          "name": "farge/danger-light",
+          "type": "COLOR",
+          "description": "Kontrast mot hvitt 1.15:1, mot blekket 15.13:1",
+          "values": {
+            "standard": {
+              "r": 0.984313725490196,
+              "g": 0.9254901960784314,
+              "b": 0.9215686274509803,
+              "a": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Naviar mål",
+      "modes": [
+        "standard"
+      ],
+      "variables": [
+        {
+          "name": "maal/radius",
+          "type": "FLOAT",
+          "description": "",
+          "values": {
+            "standard": 12
+          }
+        },
+        {
+          "name": "maal/radius-lg",
+          "type": "FLOAT",
+          "description": "",
+          "values": {
+            "standard": 18
+          }
+        },
+        {
+          "name": "maal/maxw",
+          "type": "FLOAT",
+          "description": "",
+          "values": {
+            "standard": 1120
+          }
+        }
+      ]
+    }
+  ]
+}
