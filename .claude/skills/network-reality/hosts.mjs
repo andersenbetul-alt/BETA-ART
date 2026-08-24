@@ -11,7 +11,7 @@ const KNOWN = {
   'huggingface.co': 'ENGELLI', 'hf.co': 'ENGELLI',
   'api.vercel.com': 'ENGELLI', 'vercel.com': 'ENGELLI',
   'genspark.ai': 'ENGELLI', 'pomelli.com': 'ENGELLI',
-  'stitch.withgoogle.com': 'ENGELLI',
+  'stitch.withgoogle.com': 'ENGELLI', 'skills.sh': 'ENGELLI',
   'api.entur.io': 'ENGELLI', 'api.met.no': 'ENGELLI',
 };
 

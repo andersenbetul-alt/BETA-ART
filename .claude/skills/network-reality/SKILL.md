@@ -23,7 +23,7 @@ node .claude/skills/network-reality/hosts.mjs <host> ...   # bilinmeyeni ölç
 | `pypi.org` | `api.vercel.com`, `vercel.com` |
 | `github.com`, `api.github.com` | `api.entur.io`, `api.met.no` |
 | `objects.githubusercontent.com` | `genspark.ai`, `pomelli.com` |
-| `fonts.googleapis.com`, `crates.io` | `stitch.withgoogle.com` |
+| `fonts.googleapis.com`, `crates.io` | `stitch.withgoogle.com`, `skills.sh` |
 
 ## Bu proje için sonuçları
 
@@ -35,6 +35,20 @@ node .claude/skills/network-reality/hosts.mjs <host> ...   # bilinmeyeni ölç
 - **HuggingFace'e dayanan her şey ölü.** Headroom kurulur, CLI çalışır, ama
   Kompress modeli inemediği için sıkıştırma sessizce %0 döner — hata vermez.
   ML modeli indiren bir araç gördüğünde önce burayı kontrol et.
+
+## Sessiz basarisizliklar
+
+Engelli bir host her zaman hata vermiyor. Bunlar **cevap gibi gorunen
+kesintiler** — en tehlikeli tur:
+
+| komut | engelliyken ne der | gercek |
+|---|---|---|
+| `npx skills find <q>` | `No skills found`, **exit 0** | `skills.sh` engelli; arama hic yapilmadi |
+| `headroom` sikistirma | `%0 tasarruf`, hata yok | HuggingFace engelli, model inemedi |
+| `COBBAN_LIVE_DATA=true` | demo veri + sari serit | Entur/MET engelli, sessizce dusuyor |
+
+Kural: bu ucunden biri "sonuc yok" derse **once host'u olc**, sonra rapor et.
+"Hic skill yok" ile "arayamadim" ayni sey degil.
 
 ## Kurallar
 
