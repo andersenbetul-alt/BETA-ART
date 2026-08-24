@@ -10,7 +10,7 @@ Observations captured during task-oriented work.
 
 ### Observation 1: Search tools that fail silently report "not found" for a blocked backend
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — find-skills Step 3: control-query rule added
 **Date:** 2026-08-21
 **Session context:** Installing agent skills in a network-restricted container; used `npx skills find` (find-skills skill) to locate skills.
 **Skill:** find-skills
@@ -25,7 +25,7 @@ Observations captured during task-oriented work.
 
 ### Observation 2: Package-name collisions across registries silently substitute the wrong software
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — folded into new skill vetted-skill-install (Step 2)
 **Date:** 2026-08-21
 **Session context:** GitHub repo `Manavarya09/design-extract` was unreachable; attempted the npm package of the same name as a fallback.
 **Skill:** New skill candidate: vetted-package-install
@@ -40,7 +40,7 @@ Observations captured during task-oriented work.
 
 ### Observation 3: Aggregator metadata outlives the resource it describes
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — find-skills Step 4: reachability check added as item 1
 **Date:** 2026-08-21
 **Session context:** Determining whether a GitHub repository was public; search results reported 3.4k stars and an MIT license.
 **Skill:** find-skills
@@ -55,7 +55,7 @@ Observations captured during task-oriented work.
 
 ### Observation 4: Repeated clone-scan-install workflow is an unnamed reusable skill
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — new skill vetted-skill-install created
 **Date:** 2026-08-21
 **Session context:** Installed ~10 third-party skill bundles from GitHub across one session, each following an identical unwritten procedure.
 **Skill:** New skill candidate: vetted-skill-install
@@ -70,7 +70,7 @@ Observations captured during task-oriented work.
 
 ### Observation 5: Skills with out-of-directory dependencies install broken and fail silently
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — folded into new skill vetted-skill-install (Step 4)
 **Date:** 2026-08-21
 **Session context:** Installing the `brandkit` skill, distributed as a bare SKILL.md inside a larger repository.
 **Skill:** New skill candidate: vetted-skill-install
@@ -87,7 +87,7 @@ Observations captured during task-oriented work.
 
 ### Observation 6: Environment properties asserted from assumption rather than probed
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — folded into vetted-skill-install anti-patterns
 **Date:** 2026-08-24
 **Session context:** Installing claude-mem in a remote container; later discovered it had been running and persisting for three days.
 **Skill:** New skill candidate: vetted-skill-install
