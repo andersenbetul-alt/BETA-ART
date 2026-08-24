@@ -139,6 +139,9 @@ export default async function () {
           const codes = [];
           for (let i = 0; i < 4; i += 1) codes.push((await send()).status);
           equal(codes.join(','), '200,200,200,429', 'the fourth request should be refused');
+          const refused = await send();
+          assert(Number(refused.headers.get('retry-after')) > 0,
+            'a 429 must say when to come back, or clients retry blindly');
         } finally {
           child.kill();
           fs.rmSync(dir, { recursive: true, force: true });
@@ -264,8 +267,10 @@ export default async function () {
     await suite('admin door', async () => {
       await test('no token is rejected', async () => equal((await api('/api/admin/queue')).status, 401));
 
-      await test('a wrong token is rejected', async () => {
-        equal((await api('/api/admin/queue', { headers: { Authorization: 'Bearer wrong' } })).status, 401);
+      await test('a wrong token is rejected, and the refusal is not cached', async () => {
+        const r = await api('/api/admin/queue', { headers: { Authorization: 'Bearer wrong' } });
+        equal(r.status, 401);
+        equal(r.headers.get('cache-control'), 'no-store');
       });
 
       await test('the right token opens the queue', async () => {
@@ -286,6 +291,11 @@ export default async function () {
         await admin('/api/admin/booking', { method: 'POST', body: JSON.stringify({ reference: ref, status: 'in_review' }) });
         const ev = await admin('/api/admin/events?subject=' + ref);
         assert(ev.body.events.some(e => e.kind === 'status'), 'no status event logged');
+      });
+
+      await test('the queue is never cached', async () => {
+        const q = await admin('/api/admin/queue');
+        equal(q.headers.get('cache-control'), 'no-store', 'customer data must not sit in a cache');
       });
 
       /* Last, because it locks this address out for fifteen minutes. */

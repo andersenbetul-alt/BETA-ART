@@ -141,15 +141,30 @@ app.use(express.json({ limit: '64kb' }));
 /* A crude in-memory throttle. Enough to stop a bored script; replace with a
    real limiter behind a proxy in production. */
 const hits = new Map();
+/* Every distinct address that ever calls gets a row, and nothing removes it.
+   A script walking a /16 would grow this map until the process dies, so sweep
+   the expired rows once the map is larger than any honest traffic explains. */
+const THROTTLE_MAX_KEYS = 5000;
+
+function sweep(map, now, isDead) {
+  for (const [key, value] of map) if (isDead(value, now)) map.delete(key);
+}
+
 function throttle(limit, windowMs) {
   return (req, res, next) => {
     const key = req.ip + ':' + req.path;
     const now = Date.now();
+    if (hits.size > THROTTLE_MAX_KEYS) sweep(hits, now, (v, t) => t > v.reset);
     const entry = hits.get(key) || { count: 0, reset: now + windowMs };
     if (now > entry.reset) { entry.count = 0; entry.reset = now + windowMs; }
     entry.count += 1;
     hits.set(key, entry);
-    if (entry.count > limit) return res.status(429).json({ error: 'too_many_requests' });
+    if (entry.count > limit) {
+      /* Tell an honest caller when to come back instead of leaving it to
+         guess; a client that retries blindly is what fills this map. */
+      res.set('Retry-After', String(Math.max(1, Math.ceil((entry.reset - now) / 1000))));
+      return res.status(429).json({ error: 'too_many_requests' });
+    }
     next();
   };
 }
@@ -173,16 +188,23 @@ function sameToken(given, expected) {
 }
 
 function requireAdmin(req, res, next) {
+  /* Everything behind this door is customer data. Say so before any early
+     return, so a browser's disk cache and any intermediary keep no copy —
+     not of the queue, and not of the refusals either. */
+  res.set('Cache-Control', 'no-store');
+
   if (ADMIN_TOKEN.length < ADMIN_MIN_LENGTH) {
     /* Refusing to run beats running with a guessable door. */
     return res.status(503).json({ error: 'admin_disabled' });
   }
   const now = Date.now();
+  if (failures.size > THROTTLE_MAX_KEYS) sweep(failures, now, (v, t) => t - v.seen > LOCK_MS);
   let state = failures.get(req.ip);
 
-  /* A served lockout clears the record entirely — `lockedUntil: 0` means "has
-     failed before but is not locked", which is not the same as "expired". */
-  if (state && state.lockedUntil && state.lockedUntil <= now) {
+  /* One rule retires both a served lockout and a stale run of typos: a record
+     nobody has added to for a whole lockout window is forgotten. Without the
+     second half, four mistypes spread over a month still lock the fifth. */
+  if (state && now - state.seen > LOCK_MS) {
     failures.delete(req.ip);
     state = undefined;
   }
@@ -196,6 +218,7 @@ function requireAdmin(req, res, next) {
     const count = (state ? state.count : 0) + 1;
     failures.set(req.ip, {
       count,
+      seen: now,
       lockedUntil: count >= LOCK_AFTER ? now + LOCK_MS : 0
     });
     if (count >= LOCK_AFTER) console.warn('[naviar] admin locked out for', req.ip);
