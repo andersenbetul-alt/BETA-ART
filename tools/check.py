@@ -45,7 +45,7 @@ CORRECTNESS = [
     ("copy.py", "conversion copy"),
     ("forms.py", "a form does not report a delivery it did not make"),
     ("claims.py", "a promise on a page is a promise in the notice"),
-    ("klarsprak.py", "Norwegian against Språkrådets klarspråk rules"),
+    ("klarsprak.py", "Norwegian against Språkrådet's klarspråk rules"),
     ("languages.py", "the notice says what languages.json records"),
     ("plates.py", "catalogue integrity"),
 ]
