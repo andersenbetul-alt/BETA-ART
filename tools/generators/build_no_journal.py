@@ -27,6 +27,12 @@ from data_no_journal import NO  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SUB = "beta-art-blog"
+
+# Written, not translated — the same rule the rest of the Norwegian follows.
+NO_DESC = ("Beta Arts tidsskrift om hvordan vi bygger et verifisert fotoarkiv: "
+           "proveniens, de tre testene, opptaksplanlegging, lyset i nord og hva "
+           "det koster å lisensiere.")
+
 EN_URL = "https://notater.beta-art.com/"
 NO_URL = "https://notater.beta-art.com/no/"
 
@@ -68,6 +74,21 @@ def build():
     out = re.sub(r'<link rel="canonical" href="[^"]*">',
                  '<link rel="canonical" href="%s">\n%s' % (NO_URL, alt), out, count=1)
     out = out.replace('<title>', '<meta property="og:locale" content="nb_NO">\n<title>', 1)
+
+    # The title and the description carry no data-i18n key, so the substitution
+    # above never reached them and the Norwegian page went out with an English
+    # title. That is the one string a search engine shows, on the page whose
+    # entire reason for existing is to be found in Norwegian.
+    out = re.sub(r"<title>.*?</title>",
+                 "<title>Field Notes — tidsskriftet til Beta Art</title>", out,
+                 count=1, flags=re.S)
+    out = re.sub(r'<meta name="description" content="[^"]*">',
+                 '<meta name="description" content="%s">' % NO_DESC, out, count=1)
+    out = re.sub(r'<meta property="og:title" content="[^"]*">',
+                 '<meta property="og:title" content="Field Notes — tidsskriftet '
+                 'til Beta Art">', out, count=1)
+    out = re.sub(r'<meta property="og:description" content="[^"]*">',
+                 '<meta property="og:description" content="%s">' % NO_DESC, out, count=1)
 
     d = os.path.join(ROOT, SUB, "no")
     os.makedirs(d, exist_ok=True)

@@ -553,6 +553,45 @@ def check_deployability():
                  "fits inline too" if fits else "git deploy"))
 
 
+def check_translated_meta():
+    """A Norwegian page must not describe itself in English.
+
+    The Norwegian URLs exist for one reason: a search engine sees one English
+    page per address otherwise, and the market this sells to cannot find it in
+    the language it reads. Two of those pages shipped with the English `<title>`
+    and the English description — the only two strings a search result shows.
+
+    The cause is worth stating, because it will recur: the generators swap the
+    text of elements carrying `data-i18n`, and `<title>` and `<meta>` carry no
+    such key, so the swap silently never reached them. Nothing failed. The pages
+    were valid, indexable, and wrong.
+
+    The check is on the description rather than the title. A description is a
+    sentence, and a sentence identical in two languages is always an
+    untranslated string. A title can legitimately match — `s-chatbot.html`
+    is "Chatbot" in both, because that is the Norwegian word too, and hreflang
+    already tells a search engine those are language variants of one page."""
+    desc = re.compile(r'<meta name="description" content="([^"]*)"')
+    for path in walk(".html"):
+        src = text(path)
+        if not re.search(r'<html[^>]+lang="no"', src):
+            continue
+        m = desc.search(src)
+        # every Norwegian page lives in a /no/ directory beside its English
+        # counterpart, so the counterpart is the same filename one level up
+        d, fn = os.path.split(path)
+        if not m or os.path.basename(d) != "no":
+            continue
+        cand = os.path.join(os.path.dirname(d), fn)
+        if not os.path.exists(cand):
+            continue
+        me = desc.search(text(cand))
+        if me and me.group(1).strip() == m.group(1).strip():
+            note("i18n", "%s is a Norwegian page carrying the English description "
+                 "from %s. The generators only swap elements with a data-i18n key, "
+                 "and <meta> has none." % (rel(path), rel(cand)))
+
+
 def emitted_strings(src, filename):
     """(line, text) for everything a file could actually put on a page.
 
@@ -660,6 +699,7 @@ def main():
     check_head()
     check_sitemaps()
     check_generator_hosts()
+    check_translated_meta()
     check_copyright()
     check_deployability()
 

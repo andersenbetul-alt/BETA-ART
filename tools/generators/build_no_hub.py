@@ -24,6 +24,11 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Written, not translated — the same rule the rest of the Norwegian follows.
+NO_TITLE = "BETA ART — tre nettsteder, ett arkiv"
+NO_DESC = ("Inngangen til de tre nettstedene til Beta Art: det verifiserte "
+           "arkivet, rettighetskontoret for bedrifter og tidsskriftet Field Notes.")
+
 EN_URL = "https://start.beta-art.com/"
 NO_URL = "https://start.beta-art.com/no/"
 
@@ -117,6 +122,18 @@ def build():
                       '<link rel="canonical" href="%s">\n%s' % (NO_URL, alt), 1)
     out = out.replace('<meta property="og:locale" content="en_GB">', "", 1)
     out = out.replace('<title>', '<meta property="og:locale" content="nb_NO">\n<title>', 1)
+
+    # The title and the description carry no data-i18n key, so the swap above
+    # never reached them: the Norwegian hub shipped with an English title and
+    # an English description. Those are the two strings a search engine shows,
+    # on the page built specifically to be found in Norwegian.
+    out = re.sub(r"<title>.*?</title>", "<title>%s</title>" % NO_TITLE, out,
+                 count=1, flags=re.S)
+    for prop in ('name="description"', 'property="og:description"'):
+        out = re.sub(r'<meta %s content="[^"]*">' % prop,
+                     '<meta %s content="%s">' % (prop, NO_DESC), out, count=1)
+    out = re.sub(r'<meta property="og:title" content="[^"]*">',
+                 '<meta property="og:title" content="%s">' % NO_TITLE, out, count=1)
 
     d = os.path.join(ROOT, "no")
     os.makedirs(d, exist_ok=True)
