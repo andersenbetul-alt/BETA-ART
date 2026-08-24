@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Naviar Care cradle mark">
+  <title>Naviar Care — Cradle</title>
+  <circle cx="32" cy="18" r="6.5" fill="#C8E8EE"/>
+  <path d="M20 30 A12 12 0 0 0 44 30" fill="none" stroke="#2B795C" stroke-width="6" stroke-linecap="round"/>
+  <path d="M10 30 A22 22 0 0 0 54 30" fill="none" stroke="#014933" stroke-width="6" stroke-linecap="round"/>
+</svg>
