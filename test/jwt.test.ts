@@ -15,11 +15,15 @@ import { createServer, type Server } from 'node:http';
 import { after, before, describe, it } from 'node:test';
 import { SignJWT, exportJWK, generateKeyPair, type JWK } from 'jose';
 
+// Derived from jose rather than pulling in the DOM lib for CryptoKey.
+type KeyPair = Awaited<ReturnType<typeof generateKeyPair>>;
+type PrivateKey = KeyPair['privateKey'];
+
 const KID = 'test-key-1';
 let server: Server;
 let baseUrl: string;
-let privateKey: CryptoKey;
-let otherPrivateKey: CryptoKey;
+let privateKey: PrivateKey;
+let otherPrivateKey: PrivateKey;
 let verifyAccessToken: typeof import('../src/auth/jwt.js').verifyAccessToken;
 
 before(async () => {
@@ -69,7 +73,7 @@ interface TokenOptions {
   issuer?: string;
   expiresIn?: string;
   issuedAt?: number;
-  key?: CryptoKey;
+  key?: PrivateKey;
 }
 
 async function mint(opts: TokenOptions = {}): Promise<string> {
@@ -102,23 +106,25 @@ describe('verifyAccessToken', () => {
 
   it('rejects a token signed by a different key', async () => {
     // The signature is valid ES256 — just not from a key in our JWKS.
-    await assert.rejects(() => verifyAccessToken(await mint({ key: otherPrivateKey })));
+    const token = await mint({ key: otherPrivateKey });
+    await assert.rejects(() => verifyAccessToken(token));
   });
 
   it('rejects a token from a different issuer', async () => {
-    await assert.rejects(() =>
-      verifyAccessToken(await mint({ issuer: 'https://evil.example.com/auth/v1' })),
-    );
+    const token = await mint({ issuer: 'https://evil.example.com/auth/v1' });
+    await assert.rejects(() => verifyAccessToken(token));
   });
 
   it('rejects a token for a different audience', async () => {
-    await assert.rejects(() => verifyAccessToken(await mint({ audience: 'other-service' })));
+    const token = await mint({ audience: 'other-service' });
+    await assert.rejects(() => verifyAccessToken(token));
   });
 
   it('rejects an anon token', async () => {
     // Supabase issues these to signed-out clients. Treating one as a logged-in
     // user would hand every anonymous visitor an authenticated session.
-    await assert.rejects(() => verifyAccessToken(await mint({ role: 'anon' })));
+    const token = await mint({ role: 'anon' });
+    await assert.rejects(() => verifyAccessToken(token));
   });
 
   it('rejects a token with no subject', async () => {
