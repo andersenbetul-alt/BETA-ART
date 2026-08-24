@@ -141,6 +141,11 @@
   var form = document.getElementById("licence-form");
   var status = document.getElementById("form-status");
 
+  // Where a licence enquiry is posted. Empty until a recipient exists, and
+  // while it is empty the form says so. Same constant, same reason, as
+  // release.js on this property and script.js on the other two.
+  var ENDPOINT = "";
+
   function setError(field, message) {
     var box = form.querySelector('[data-error="' + field + '"]');
     var input = form.elements[field];
@@ -181,9 +186,35 @@
         return;
       }
 
-      // No backend here: connect a form endpoint or the licensing inbox before launch.
-      if (status) status.textContent = "Request received. Licence enquiries are answered within 48 hours, at hallo@beta-art.com.";
-      form.reset();
+      if (!ENDPOINT) {
+        // No recipient set up. The preview banner at the top of this page
+        // already says no enquiry is stored anywhere; a form answering
+        // "Request received" contradicts it, and the visitor believes the
+        // form. Say it here too, and leave their text in the fields so there
+        // is something to copy.
+        if (status) {
+          status.textContent = "Nothing was sent — this form has no recipient set up yet, " +
+            "and nothing is stored. Your answers are still in the fields above: copy them " +
+            "into an email to hallo@beta-art.com and the 48-hour reply starts from there.";
+        }
+        return;
+      }
+
+      if (status) status.textContent = "Sending …";
+      fetch(ENDPOINT, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      }).then(function (r) {
+        if (!r.ok) throw new Error(String(r.status));
+        if (status) status.textContent = "Request received. Licence enquiries are answered within 48 hours, at hallo@beta-art.com.";
+        form.reset();
+      }).catch(function () {
+        if (status) {
+          status.textContent = "That did not go through, and nothing is stored. Your answers " +
+            "are still in the fields above — send them to hallo@beta-art.com instead.";
+        }
+      });
     });
   }
 
