@@ -12,6 +12,7 @@ DECLINED = user decided not to pursue
 
 ### Observation 1: Plan spec'leri kaynak doğrulaması olmadan değer anıyor
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** SDD planı yazımı (site profesyonelleştirme, 8 görev)
 **Skill:** subagent-driven-development (kullanım pratiği) / internal
@@ -32,6 +33,7 @@ doğrulanır — inceleme aşamasına bırakılmaz. (Cross-cutting principles #1
 
 ### Observation 2: SDD task-brief betiği başlık biçimine duyarlı
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** `scripts/task-brief PLAN 1` çağrısı "task 1 not found" verdi
 **Skill:** subagent-driven-development
@@ -50,6 +52,7 @@ işaretler araç sözleşmesine göre yazılır; insan dili gövdede serbesttir.
 
 ### Observation 3: Bu ortamda belge render zinciri kırık, doğrulama alternatifi gerekti
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** Konsept belgesinin Word çıktısının görsel doğrulaması
 **Skill:** docx (sistem becerisi — gerekirse docx-extras'a)
@@ -70,6 +73,7 @@ atlanmaz; aynı garantiyi veren en yakın alternatif kurulur ve raporda
 
 ### Observation 4: Scratchpad'e stdlib adıyla dosya bırakmak sonraki işleri kırdı
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** `python3 -c "import xml.etree..."` çağrısı patladı
 **Skill:** Genel çalışma pratiği
@@ -89,6 +93,7 @@ geçici dosya bile ad uzayına saygılı seçilir.
 
 ### Observation 5: Stop-hook, alt-ajanın bitmemiş işini commit'lemeye zorluyor
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** SDD sırasında stop-hook "uncommitted changes" uyarıları
 **Skill:** subagent-driven-development
@@ -112,7 +117,7 @@ doğrulanmadan atılmaz; otomasyon baskısı bunu değiştirmez.
 
 ### Observation 6: Küçük/büyük harf duyarlı grep, "dosya boş" yanılgısı üretti
 
-**Status:** OPEN
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-24
 **Session context:** engine/schema-billing.sql'i doğrulama sırasında
 **Skill:** Genel çalışma pratiği (kesişen ilke 1'in yeni örneği)
@@ -132,7 +137,7 @@ ls + head ile ikinci bakış gerçeği gösterdi.
 
 ### Observation 7: Tek dosyalık dağıtım deseni, silinen projeyi dakikalar içinde geri getirdi
 
-**Status:** OPEN
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-24
 **Session context:** qblogg Vercel projesi panelde yanlışlıkla silinmiş bulundu
 **Skill:** deploy-to-vercel kullanım pratiği / proje CLAUDE.md
@@ -155,7 +160,7 @@ saklanırsa, altyapı kaybı felaket değil yeniden çalıştırma olur.
 
 ### Observation 8: Klon-tabanlı dağıtım, push edilmemiş dosyayı göremez
 
-**Status:** OPEN
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-24
 **Session context:** qblogg-uye ilk dağıtımı ENOENT ile düştü
 **Skill:** deploy-to-vercel kullanım pratiği
