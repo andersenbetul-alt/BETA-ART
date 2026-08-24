@@ -254,3 +254,15 @@ ağacını değil depoyu dağıtır (gözlem #8). Push sonrası yeşil. Örnek t
 brief'i hazır (seed.sql, yayınlanmış yazıdan türetilmiş). Bekleyen: kullanıcı
 Supabase projesi + URL/anon anahtar.
 
+## 24.08.2026 (devam) — Yazar platformu fikri değerlendirildi (taslak)
+
+Kullanıcı yeni yön verdi: QBLOGG, insanların kendi bloglarını yayınlayıp
+kitaplarını tanıtabilecekleri bir platform olsun. Kod yazılmadan önce
+değerlendirme + v1 tasarımı `docs/yazar-platformu.md`'ye yazıldı: üç model
+seçeneği (öneri: davetli/küratörlü), mevcut Supabase üye sistemi üstüne
+şema genişlemesi (authors/books/author_posts + niyet temelli keşif —
+kullanıcının paylaştığı filtre kodu okur tarafının prototipi), gelir
+seçenekleri rakamsız [H], hukuk kapıları (tanıtım işareti, koşullar
+güncellemesi, avukat teyidi) ve eşikli pilot planı. Marka çelişkisi ve
+"bir haftada üçüncü yön" riski belgede açıkça kayıtlı. Model + öncelik
+kararı kullanıcıya soruldu; P0 inşası karar sonrası.
