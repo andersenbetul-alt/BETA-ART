@@ -287,3 +287,18 @@ grensene er uklare.
 
 **Principle:** Avhengighetsgrafen i en byggefri kodebase står eksplisitt i
 HTML-en og i de globale eksportene; hent den derfra før du leser kode.
+
+### Observation 13: Generator-utdata verifiseres billigst ved regenerering + diff
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Pathfinder fase 1 – flytskisser for periferien (landing, klagekanal, SQL-generator)
+**Skill:** claude-mem:pathfinder
+**Type:** open-source
+**Phase/Area:** Kartlegging av kodegeneratorer
+
+**Issue:** Ved kartlegging av verktoy/lag-skjema.js var spørsmålet om innsjekket sql/001-besok.sql faktisk stemmer med kilden. Én kjøring til scratchpad + diff ga byte-likt svar og løftet tillitsnotatet fra antakelse til verifisert funn.
+
+**Suggested improvement:** Pathfinder-rapporter som dekker en generator bør inneholde steget «regenerer til scratchpad og diff mot innsjekket artefakt» som standard verifikasjon.
+
+**Principle:** Når et artefakt hevdes generert fra en kilde, er regenerering + diff den billigste høytillitsverifikasjonen – kjør den i stedet for å lese begge for hånd.
