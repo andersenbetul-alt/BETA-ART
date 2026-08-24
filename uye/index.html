@@ -102,6 +102,7 @@
 </div>
 
 <script src="config.js"></script>
+<script src="lib/supabase.js"></script>
 <script type="module">
   const C = window.UYE_CONFIG || {};
   const el = (id) => document.getElementById(id);
@@ -110,7 +111,8 @@
   if (!C.supabaseUrl || !C.supabaseAnonKey) {
     goster('kurulum');
   } else {
-    const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
+    // lib/supabase.js: vendor'lanmış UMD paketi (bkz. lib/KAYNAK.md) — CDN yok.
+    const { createClient } = window.supabase;
     const sb = createClient(C.supabaseUrl, C.supabaseAnonKey);
 
     async function panel(session) {
