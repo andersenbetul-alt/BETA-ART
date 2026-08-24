@@ -29,6 +29,13 @@ cunku kapali sunucu bir bulgu degil. Baska port icin `COBBAN_SMOKE_PORT`.
 2. `docs/findings.md` içindeki açık bulgular
 3. Doğrulama komutlarının o an geçip geçmediği
 
+## Ölçüm tarifleri
+
+`docs/findings.md` içindeki sayıları yeniden üretmek için:
+**[references/olcum.md](references/olcum.md)** — boşluk/tipografi ölçeği,
+WCAG kontrastı, dokunma hedefi, ikili varlık, görsel yolları, tarayıcıda
+jeton çözümü. Her tarif yazıldığı hâliyle çalıştırılıp doğrulandı.
+
 ## Kurallar
 
 - **İddiadan önce çalıştır.** "Düzeltildi" demeden önce ilgili doğrulama
@@ -37,3 +44,5 @@ cunku kapali sunucu bir bulgu degil. Baska port icin `COBBAN_SMOKE_PORT`.
 - **Bulgu kapatmak commit ister.** `docs/findings.md` içindeki bir madde
   ancak onu kapatan commit varsa `[x]` olur.
 - **Araç kurulumu ilerleme değildir.** Skill eklemek bulguyu kapatmaz.
+- **Sayı tarifsiz yazılmaz.** Bulguya sayı koyuyorsan tarifi
+  `references/olcum.md` içinde olsun; yoksa sessizce eskir.

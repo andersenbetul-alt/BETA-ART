@@ -42,7 +42,10 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
 
 ## Ölçek — kaynak: kendi denetimim
 
-- [ ] **Boşluk ölçeği yok.** 22 farklı rem değeri; komşular 0,8px farkla.
+- [ ] **Boşluk ölçeği yok.** 26 farklı rem değeri (margin/padding/gap);
+      19 komşu çift 2px'ten yakın, en küçüğü 0,5px. Tarif:
+      `.claude/skills/task-observer/references/olcum.md`.
+      Kapanma ölçütü: ≤8 değerlik ölçek, 2px'ten yakın komşu yok.
 - [ ] **Tipografi ölçeği yok.** 11 boyut; `.85`/`.875`/`.9` ayırt edilemiyor.
 - [x] **`min-height` piksel.** KAPANDI — 64px → 4rem, 44px → 2.75rem.
 
