@@ -97,3 +97,51 @@ måleverktøy skal bekreftes med en uavhengig måling før det skrives ned.
 
 **Principle:** Et verktøy som svarer «ingenting» svarer ofte på et annet
 spørsmål enn det du stilte.
+
+---
+
+### Observation 5: Utdata til /dev/null skjuler at ingenting ble opprettet
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Lasting av generert SQL inn i en lokal Postgres
+**Skill:** New skill candidate: verifiser-generert-sql
+**Type:** internal
+**Phase/Area:** Lasting og verifisering
+
+**Issue:** Skjemaet ble lastet med `psql ... >/dev/null 2>&1` for å holde
+utdata kort. Lastingen feilet på siste funksjon – `too many parameters
+specified for RAISE` – uten at det ble sett. Triggeren fantes aldri.
+Etterpå gikk en insert med «diabetes» rett inn, og sperra så ut til å være
+uten virkning. Den var ikke uten virkning; den var ikke der.
+
+**Suggested improvement:** Last alltid generert SQL med `-v ON_ERROR_STOP=1`
+og uten å kaste utdata. Bekreft etterpå at objektene finnes
+(`select tgname from pg_trigger where not tgisinternal`) før noe testes.
+
+**Principle:** Å skjule utdata fra et steg gjør at neste steg tester noe annet
+enn du tror. Et negativt resultat må først forklares med at inngrepet aldri
+skjedde.
+
+---
+
+### Observation 6: Kryssprøv to motorer på samme korpus, ikke på antall
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Samme ordliste håndhevet i JavaScript og i PostgreSQL
+**Skill:** New skill candidate: regler-til-skjema
+**Type:** internal
+**Phase/Area:** Ekvivalenstesting
+
+**Issue:** Begge motorene blokkerte 74 av 79 tekster. Like tall er ikke like
+avgjørelser – de kunne vært uenige om hvilke fem. Først en sammenligning per
+tekst viste at de var enige om alle 79, inkludert grensetilfellene: åtte
+siffer slipper gjennom begge steder, elleve stoppes begge steder.
+
+**Suggested improvement:** Der samme regel skal gjelde i to kjøremiljøer,
+kjør begge over det samme korpuset og diff per element. Ta med grensetilfellene
+som skiller de to reglene fra hverandre.
+
+**Principle:** Et aggregat kan stemme mens hver enkelt avgjørelse er feil.
+Sammenlign avgjørelsene, ikke summen av dem.
