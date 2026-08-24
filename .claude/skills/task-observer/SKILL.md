@@ -36,6 +36,17 @@ cunku kapali sunucu bir bulgu degil. Baska port icin `COBBAN_SMOKE_PORT`.
 WCAG kontrastı, dokunma hedefi, ikili varlık, görsel yolları, tarayıcıda
 jeton çözümü. Her tarif yazıldığı hâliyle çalıştırılıp doğrulandı.
 
+## Skill adayı taraması
+
+```bash
+node .claude/skills/task-observer/patterns.mjs   # depo kokunden
+```
+
+claude-mem gözlemlerinden `gotcha`/`pattern` işaretli olanları getirir.
+**Kümelemez** — otomatik kümeleme denendi ve atıldı: 56 kısa başlıkta terim
+sıklığı anlamlı tema vermiyor, ürettiği "temalar" skill'e çevrilecek şeyler
+değildi (`show`, `runs`, `cache`). Kümeler anlamsal; okunarak bulunuyor.
+
 ## Kurallar
 
 - **İddiadan önce çalıştır.** "Düzeltildi" demeden önce ilgili doğrulama
