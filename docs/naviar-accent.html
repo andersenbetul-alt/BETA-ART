@@ -1,0 +1,264 @@
+<title>Naviar Accent Proposal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  /* The product ships light-only (color-scheme: light), so this mockup commits
+     to its palette rather than inventing a dark counterpart that would
+     misrepresent the colours under discussion. Every value is painted. */
+  :root{
+    --background:#faf7ee; --foreground:#0d251b; --card:#ffffff;
+    --primary:#014933; --primary-foreground:#fdfaf3;
+    --secondary:#c8e8ee; --muted:#f3eee1; --muted-foreground:#597367;
+    --accent:#d0eacf; --border:#cce0d7; --ring:#2b795c;
+    --radius:.75rem;
+    /* proposed */
+    --accent-warm:#e9915e; --accent-warm-ink:#a84a18; --accent-warm-soft:#fbe6d7;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--background); color:var(--foreground);
+    font-family:"DM Sans",-apple-system,"Segoe UI",sans-serif; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px; margin:0 auto; padding:clamp(26px,5vw,56px) clamp(16px,4vw,32px) 80px}
+  .mono{font-family:"DM Mono",ui-monospace,monospace}
+
+  .flag{
+    display:inline-flex; align-items:center; gap:8px; font-family:"DM Mono",monospace;
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent-warm-ink); background:var(--accent-warm-soft);
+    padding:5px 11px; border-radius:999px;
+  }
+  h1{font-family:Fraunces,Georgia,serif; font-weight:600; font-size:clamp(30px,5vw,46px); line-height:1.05; letter-spacing:-.035em; margin:16px 0 0; text-wrap:balance}
+  h2{font-family:Fraunces,Georgia,serif; font-weight:600; font-size:clamp(20px,2.6vw,26px); letter-spacing:-.025em; margin:0}
+  .lede{max-width:62ch; color:var(--muted-foreground); font-size:16.5px; margin:14px 0 0}
+  header.top{padding-bottom:28px; border-bottom:1px solid var(--border)}
+  section{padding-top:46px}
+  .sec-note{margin:8px 0 0; color:var(--muted-foreground); font-size:14.5px; max-width:60ch}
+
+  .compare{display:grid; grid-template-columns:1fr; gap:14px; margin-top:22px}
+  @media (min-width:840px){ .compare{grid-template-columns:1fr 1fr} }
+  .pane{border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--card)}
+  .pane-label{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:9px 14px; border-bottom:1px solid var(--border); background:var(--muted);
+    font-family:"DM Mono",monospace; font-size:10.5px; letter-spacing:.13em; text-transform:uppercase;
+    color:var(--muted-foreground);
+  }
+  .pane-label b{color:var(--foreground); font-weight:500}
+  .pane-body{background:var(--background); padding:0}
+
+  /* --- product header replica --- */
+  .site-head{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 18px; border-bottom:1px solid var(--border); background:var(--background)}
+  .brandbox{display:flex; align-items:center; gap:11px}
+  .tile{display:flex; width:40px; height:40px; align-items:center; justify-content:center; border-radius:11px; background:var(--primary); color:var(--primary-foreground); flex:none}
+  .tile svg{width:21px; height:21px; display:block}
+  .brandtext .n{display:block; font-family:Fraunces,serif; font-size:19px; font-weight:600; letter-spacing:-.03em; line-height:1.1}
+  .brandtext .c{display:block; font-family:"DM Mono",monospace; font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted-foreground)}
+  .navlinks{display:none; gap:20px; font-size:13px; color:var(--muted-foreground)}
+  @media (min-width:640px){ .navlinks{display:flex} }
+  .btn{font-family:"DM Sans",sans-serif; font-size:12.5px; font-weight:600; border:0; border-radius:9px; padding:9px 14px; background:var(--primary); color:var(--primary-foreground); cursor:default}
+  .btn.warm{background:var(--accent-warm); color:#3a1a06}
+
+  /* --- hero replica --- */
+  .hero{padding:24px 18px 28px}
+  .eyebrow-green{font-family:"DM Mono",monospace; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--primary); margin:0 0 10px}
+  .eyebrow-warm{font-family:"DM Mono",monospace; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--accent-warm-ink); margin:0 0 10px}
+  .hero h3{font-family:Fraunces,serif; font-size:clamp(26px,4.4vw,34px); font-weight:600; letter-spacing:-.04em; line-height:.99; margin:0; text-wrap:balance}
+  .hero p{margin:12px 0 0; color:var(--muted-foreground); font-size:14.5px; max-width:34ch}
+  .hero .cta{display:flex; gap:9px; margin-top:18px; flex-wrap:wrap}
+  .ghost{font-size:12.5px; font-weight:600; border:1px solid var(--border); background:var(--card); border-radius:9px; padding:9px 14px}
+
+  .steps{margin-top:22px; background:var(--secondary); border-radius:18px; padding:16px}
+  .stepcard{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px}
+  .stepcard .k{font-family:"DM Mono",monospace; font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted-foreground)}
+  .stepcard h4{font-family:Fraunces,serif; font-size:21px; font-weight:600; letter-spacing:-.03em; line-height:1.15; margin:8px 0 0}
+  .steplist{display:flex; flex-direction:column; gap:8px; margin-top:14px}
+  .step{display:flex; align-items:center; gap:10px; background:var(--muted); border-radius:11px; padding:9px 11px; font-size:13px}
+  .num{display:flex; width:28px; height:28px; align-items:center; justify-content:center; border-radius:8px; background:var(--accent); color:var(--primary); font-weight:600; font-size:13px; flex:none}
+  .num.warm{background:var(--accent-warm-soft); color:var(--accent-warm-ink)}
+  .price{display:flex; align-items:flex-end; justify-content:space-between; border-top:1px solid var(--border); margin-top:14px; padding-top:12px}
+  .price span{font-size:12px; color:var(--muted-foreground)}
+  .price b{font-family:Fraunces,serif; font-size:22px; font-weight:600}
+  .price b i{font-family:"DM Sans",sans-serif; font-style:normal; font-size:12.5px; font-weight:400; color:var(--muted-foreground)}
+
+  /* --- token table --- */
+  .table-scroll{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--card); margin-top:20px}
+  table{border-collapse:collapse; width:100%; min-width:540px; font-size:14px}
+  th,td{text-align:left; padding:11px 16px; border-bottom:1px solid var(--border); vertical-align:top}
+  th{font-family:"DM Mono",monospace; font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted-foreground); font-weight:500}
+  tr:last-child td{border-bottom:0}
+  .sw{display:inline-block; width:15px; height:15px; border-radius:4px; vertical-align:-3px; margin-right:8px; border:1px solid rgba(13,37,27,.12)}
+  code{font-family:"DM Mono",monospace; font-size:.87em; background:var(--muted); padding:1px 5px; border-radius:4px}
+  pre{margin:18px 0 0; background:#04281c; color:#e8f3ec; border-radius:var(--radius); padding:16px 18px; overflow-x:auto; font-family:"DM Mono",monospace; font-size:12.5px; line-height:1.75}
+  pre .c{color:#7fa593}
+  pre .v{color:#f3ab7c}
+
+  .rules{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px; margin-top:20px}
+  .rule{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px}
+  .rule.no{border-left:3px solid var(--accent-warm)}
+  .rule h5{margin:0 0 5px; font-size:14px; font-weight:600}
+  .rule p{margin:0; font-size:13.5px; color:var(--muted-foreground)}
+  footer{margin-top:48px; padding-top:20px; border-top:1px solid var(--border); font-size:13.5px; color:var(--muted-foreground); max-width:68ch}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <span class="flag">Design proposal · not the live site</span>
+  <h1>One warm token</h1>
+  <p class="lede">NAVIAR CARE ships an all-green palette. Its two accent colours are too pale to carry a logo mark — measured, they disappear at header scale. This proposes adding a single warm accent, and shows exactly where it would and would not go.</p>
+</header>
+
+<section>
+  <h2>The header</h2>
+  <p class="sec-note">The logo tile currently holds a stock Lucide <code>heart-handshake</code> icon — the same one shipped with the component library. On the right, the Cradle mark from the identity study, and the warm accent on the primary action.</p>
+
+  <div class="compare">
+    <div class="pane">
+      <div class="pane-label"><span>Now</span> <b>stock icon · all green</b></div>
+      <div class="pane-body">
+        <div class="site-head">
+          <div class="brandbox">
+            <span class="tile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Placeholder icon" role="img"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"/></svg>
+            </span>
+            <span class="brandtext"><span class="n">NAVIAR</span><span class="c">care</span></span>
+          </div>
+          <nav class="navlinks"><span>Slik fungerer det</span><span>Eksperter</span></nav>
+          <button class="btn" type="button">Finn riktig ekspert</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pane">
+      <div class="pane-label"><span>Proposed</span> <b>Cradle mark · warm action</b></div>
+      <div class="pane-body">
+        <div class="site-head">
+          <div class="brandbox">
+            <span class="tile">
+              <svg viewBox="0 0 64 64" fill="none" role="img" aria-label="NAVIAR CARE"><circle cx="32" cy="18" r="6.5" fill="currentColor"/><path d="M20 30 A12 12 0 0 0 44 30" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity=".62"/><path d="M10 30 A22 22 0 0 0 54 30" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
+            </span>
+            <span class="brandtext"><span class="n">NAVIAR</span><span class="c">care</span></span>
+          </div>
+          <nav class="navlinks"><span>Slik fungerer det</span><span>Eksperter</span></nav>
+          <button class="btn warm" type="button">Finn riktig ekspert</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>The hero</h2>
+  <p class="sec-note">The accent appears three times on the right: the eyebrow above the headline, the primary button, and the step numbers in the price card. Everything structural stays green.</p>
+
+  <div class="compare">
+    <div class="pane">
+      <div class="pane-label"><span>Now</span> <b>green only</b></div>
+      <div class="pane-body">
+        <div class="hero">
+          <p class="eyebrow-green">For deg som hjelper en forelder</p>
+          <h3>Fra usikkerhet til et konkret neste steg.</h3>
+          <p>Fortell hva dere trenger. NAVIAR finner riktig fagperson og sender familien planen etterpå.</p>
+          <div class="cta">
+            <button class="btn" type="button">Finn riktig ekspert →</button>
+            <button class="ghost" type="button">Se hvordan det fungerer</button>
+          </div>
+          <div class="steps">
+            <div class="stepcard">
+              <p class="k">Klarhet 45</p>
+              <h4>Én samtale.<br>Tre tydelige neste steg.</h4>
+              <div class="steplist">
+                <div class="step"><span class="num">1</span> Finn riktig fagperson</div>
+                <div class="step"><span class="num">2</span> Bestill en ledig tid</div>
+                <div class="step"><span class="num">3</span> Få planen skriftlig</div>
+              </div>
+              <div class="price"><span>Fast pris</span><b>599 <i>NOK</i></b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pane">
+      <div class="pane-label"><span>Proposed</span> <b>green + one warm accent</b></div>
+      <div class="pane-body">
+        <div class="hero">
+          <p class="eyebrow-warm">For deg som hjelper en forelder</p>
+          <h3>Fra usikkerhet til et konkret neste steg.</h3>
+          <p>Fortell hva dere trenger. NAVIAR finner riktig fagperson og sender familien planen etterpå.</p>
+          <div class="cta">
+            <button class="btn warm" type="button">Finn riktig ekspert →</button>
+            <button class="ghost" type="button">Se hvordan det fungerer</button>
+          </div>
+          <div class="steps">
+            <div class="stepcard">
+              <p class="k">Klarhet 45</p>
+              <h4>Én samtale.<br>Tre tydelige neste steg.</h4>
+              <div class="steplist">
+                <div class="step"><span class="num warm">1</span> Finn riktig fagperson</div>
+                <div class="step"><span class="num warm">2</span> Bestill en ledig tid</div>
+                <div class="step"><span class="num warm">3</span> Få planen skriftlig</div>
+              </div>
+              <div class="price"><span>Fast pris</span><b>599 <i>NOK</i></b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What to add</h2>
+  <p class="sec-note">Three values, because one hue cannot do all three jobs: a fill that reads at small sizes, an ink dark enough for text, and a tint for quiet backgrounds.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Token</th><th>Value</th><th>On <code>#faf7ee</code></th><th>Use for</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>--accent-warm</code></td>
+          <td><span class="sw" style="background:#e9915e"></span>#e9915e</td>
+          <td>2.4:1 — <b>never text</b></td>
+          <td>Shapes and fills: the mark's figure, button grounds, icon strokes</td>
+        </tr>
+        <tr>
+          <td><code>--accent-warm-ink</code></td>
+          <td><span class="sw" style="background:#a84a18"></span>#a84a18</td>
+          <td>5.3:1 — passes AA</td>
+          <td>Text on the warm tint or on paper: eyebrows, small labels, numbers</td>
+        </tr>
+        <tr>
+          <td><code>--accent-warm-soft</code></td>
+          <td><span class="sw" style="background:#fbe6d7"></span>#fbe6d7</td>
+          <td>ground only</td>
+          <td>Chips, step-number tiles, the quiet background behind warm ink</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <pre><span class="c">/* app/globals.css — alongside the existing tokens */</span>
+:root {
+  --accent-warm:      <span class="v">#e9915e</span>;
+  --accent-warm-ink:  <span class="v">#a84a18</span>;
+  --accent-warm-soft: <span class="v">#fbe6d7</span>;
+}</pre>
+</section>
+
+<section>
+  <h2>Where it goes, and where it doesn't</h2>
+  <div class="rules">
+    <div class="rule"><h5>The mark</h5><p>The figure held by the cradle. It is the one element that must read at 20 px, and green-on-green does not.</p></div>
+    <div class="rule"><h5>The one action per screen</h5><p>Whichever button you actually want pressed. If two buttons are warm, neither is.</p></div>
+    <div class="rule"><h5>Progress and sequence</h5><p>Step numbers, the eyebrow above a headline — small marks that say "you are moving forward".</p></div>
+    <div class="rule no"><h5>Not these</h5><p>Body text, links inside paragraphs, borders, card grounds, verification badges, or anything expressing safety. Trust is the green's job; warmth is the accent's. Keep it under a tenth of any screen.</p></div>
+  </div>
+</section>
+
+<footer>
+  <p>The palette values here were read from the live stylesheet at <span class="mono">naviar-care-1.vercel.app</span>, so the left-hand panes match what ships today. Contrast ratios are computed against the product's own <span class="mono">#faf7ee</span> ground, not against white.</p>
+</footer>
+
+</div>
