@@ -514,3 +514,48 @@ at the `Exit status` sign-off, which both tools emit deliberately.
 **Principle:** Heuristic excerpting inverts meaning most reliably on text that
 was written to prevent a misreading, because the hedge and the claim are in the
 same sentence and only the claim survives the cut.
+
+### Observation 15: A search that cannot reach its index reports an empty ecosystem
+
+**Status:** OPEN — no gate; a habit for using any search tool
+**Date:** 2026-08-24
+**Session context:** Asked to find skills for this project, ran `npx skills
+find` across four queries.
+
+**Skill:** find-skills
+**Type:** external
+**Phase/Area:** Trusting a tool's negative answer
+
+**Issue:** Four searches — accessibility, SEO, localization, privacy — each
+returned `No skills found`. Four clean negatives is a finding, and the finding
+would have been written up as "the ecosystem has nothing for this project".
+
+It was false. `npx skills find react` also returned `No skills found`, and a
+React skill with 185,000 installs is the single most-installed thing in that
+ecosystem. The registry host is blocked by this environment's egress policy:
+
+    curl https://skills.sh/  →  curl: (56) CONNECT tunnel failed, response 403
+
+The CLI does not distinguish an unreachable index from an empty one. Both print
+the same sentence. Nothing is logged, nothing exits non-zero, and the message is
+phrased as a fact about the world rather than about the request.
+
+The control that caught it was cheap and generalises: **run a query whose answer
+you already know.** "react" is to a skills index what a known-good sample is to
+an assay. It cost one command and it inverted the conclusion.
+
+Worth recording what is and is not blocked, because the distinction is not
+obvious: discovery is gone, installation is not. `api.github.com` and
+`raw.githubusercontent.com` answer, so `npx skills add owner/repo -l` clones and
+lists fine, and installing by name works. You can fetch any skill here — you
+just cannot ask which ones exist. Same shape as the font problem: `curl` reaches
+`fonts.googleapis.com`, only the browser's tunnel is refused.
+
+**Suggested improvement:** Before reporting that a search found nothing, run a
+positive control. Before reporting that a host is unavailable, check whether it
+is the whole host or one path — this environment blocks tunnels, not domains,
+and the two look identical from inside a tool that only reports success.
+
+**Principle:** An empty result and a broken connection are the same string in
+most tools, and only one of them is information. A negative finding from a
+search is worth exactly as much as the last positive control you ran through it.
