@@ -12,6 +12,7 @@ DECLINED = user decided not to pursue
 
 ### Observation 1: Plan spec'leri kaynak doğrulaması olmadan değer anıyor
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** SDD planı yazımı (site profesyonelleştirme, 8 görev)
 **Skill:** subagent-driven-development (kullanım pratiği) / internal
@@ -32,6 +33,7 @@ doğrulanır — inceleme aşamasına bırakılmaz. (Cross-cutting principles #1
 
 ### Observation 2: SDD task-brief betiği başlık biçimine duyarlı
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** `scripts/task-brief PLAN 1` çağrısı "task 1 not found" verdi
 **Skill:** subagent-driven-development
@@ -50,6 +52,7 @@ işaretler araç sözleşmesine göre yazılır; insan dili gövdede serbesttir.
 
 ### Observation 3: Bu ortamda belge render zinciri kırık, doğrulama alternatifi gerekti
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** Konsept belgesinin Word çıktısının görsel doğrulaması
 **Skill:** docx (sistem becerisi — gerekirse docx-extras'a)
@@ -70,6 +73,7 @@ atlanmaz; aynı garantiyi veren en yakın alternatif kurulur ve raporda
 
 ### Observation 4: Scratchpad'e stdlib adıyla dosya bırakmak sonraki işleri kırdı
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** `python3 -c "import xml.etree..."` çağrısı patladı
 **Skill:** Genel çalışma pratiği
@@ -89,6 +93,7 @@ geçici dosya bile ad uzayına saygılı seçilir.
 
 ### Observation 5: Stop-hook, alt-ajanın bitmemiş işini commit'lemeye zorluyor
 
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
 **Date:** 2026-08-23
 **Session context:** SDD sırasında stop-hook "uncommitted changes" uyarıları
 **Skill:** subagent-driven-development
@@ -107,3 +112,68 @@ ajan farkını bekle. `git add -A` bu kipte yasak.
 
 **Principle:** Paylaşılan çalışma ağacında commit, dosya sahipliği
 doğrulanmadan atılmaz; otomasyon baskısı bunu değiştirmez.
+
+## 2026-08-24 — Üye sistemi + Vercel olayı oturumu
+
+### Observation 6: Küçük/büyük harf duyarlı grep, "dosya boş" yanılgısı üretti
+
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
+**Date:** 2026-08-24
+**Session context:** engine/schema-billing.sql'i doğrulama sırasında
+**Skill:** Genel çalışma pratiği (kesişen ilke 1'in yeni örneği)
+**Type:** internal
+**Phase/Area:** Kaynak doğrulama
+
+**Issue:** `grep "create table"` sıfır sonuç verdi; dosya `CREATE TABLE`
+(büyük harf) kullanıyordu. Bir an "şema yok" sonucuna gidilebilirdi;
+ls + head ile ikinci bakış gerçeği gösterdi.
+
+**Suggested improvement:** SQL/yapılandırma dosyalarında grep her zaman
+`-i` ile yapılmalı; "hiç sonuç yok" bulgusu tek başına kanıt sayılmadan
+önce dosyanın varlığı/başı ikinci bir yöntemle doğrulanmalı.
+
+**Principle:** Sıfır sonuçlu arama, iddianın yokluğunun kanıtı değildir —
+önce arama aracının kendisi doğrulanır.
+
+### Observation 7: Tek dosyalık dağıtım deseni, silinen projeyi dakikalar içinde geri getirdi
+
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
+**Date:** 2026-08-24
+**Session context:** qblogg Vercel projesi panelde yanlışlıkla silinmiş bulundu
+**Skill:** deploy-to-vercel kullanım pratiği / proje CLAUDE.md
+**Type:** internal
+**Phase/Area:** Dağıtım dayanıklılığı
+
+**Issue:** Üretim projesi silinince site yayından düştü; dağıtımın tek
+girdisi vercel.json olduğu ve içerik public git'ten klonlandığı için aynı
+adla yeniden dağıtım ~4 saniyede siteyi geri getirdi. Tek kayıp: eski
+*.vercel.app takma adları (dış bağlantılar öldü) ve yeniden açılan
+Deployment Protection'ın tekrar kapatılması gerekti.
+
+**Suggested improvement:** Kurtarma sonrası kontrol listesi kalıcılaştı:
+(1) yeniden dağıt, (2) protection'ı kapat, (3) canlı içerik doğrula,
+(4) CLAUDE.md/günlükteki adresleri güncelle. Bu dizi CLAUDE.md dağıtım
+notunda artık kayıtlı.
+
+**Principle:** Dağıtım durumu (state) değil tarif (recipe) olarak
+saklanırsa, altyapı kaybı felaket değil yeniden çalıştırma olur.
+
+### Observation 8: Klon-tabanlı dağıtım, push edilmemiş dosyayı göremez
+
+**Status:** ACTIONED — qblogg-operasyon becerisine işlendi (inceleme 24.08.2026)
+**Date:** 2026-08-24
+**Session context:** qblogg-uye ilk dağıtımı ENOENT ile düştü
+**Skill:** deploy-to-vercel kullanım pratiği
+**Type:** internal
+**Phase/Area:** Dağıtım öncesi kontrol
+
+**Issue:** buildCommand depodan klonlar; vendor'lanan lib çalışma ağacında
+duruyordu ama push edilmemişti. Dağıtım "cp: cannot stat" ile düştü.
+
+**Suggested improvement:** Tarif-tabanlı (klonlayan) her dağıtımdan önce
+zorunlu kontrol: `git status --short` boş VE dal push'lu. Bu iki komut
+dağıtım komutunun önüne alışkanlık olarak eklenmeli.
+
+**Principle:** Dağıtım tarifi depoyu okuyorsa, "bende çalışıyor"un birimi
+çalışma ağacı değil push edilmiş commit'tir.
+

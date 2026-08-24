@@ -1,0 +1,19 @@
+{
+ "skill_name": "qblogg-turev",
+ "evals": [
+  {
+   "id": 0,
+   "prompt": "substack-abonelik-matematigi yazısından yedi türev",
+   "expected_output": "Yedi ayrı .md, kanal biçimleri örneklerle uyumlu, emoji yok, rakamlar birebir",
+   "files": [],
+   "assertions": [
+    "Yedi kanal da üretilmiş (linkedin, sosyal, newsletter, kısa video, youtube, podcast, devam yazıları)",
+    "Hiçbir dosyada emoji yok",
+    "LinkedIn serisi ≥5 gönderi ve her gönderi kanca ile açılıyor",
+    "Kısa video senaryoları zaman kodlu (0-3 sn / 3-15 sn deseni)",
+    "Rakamlar kaynak yazıyla birebir (örn. 500 abone × 10 € = 5.000 €); uydurma rakam yok",
+    "Her dosyada kaynak yazı künyesi (başlık+slug) var"
+   ]
+  }
+ ]
+}

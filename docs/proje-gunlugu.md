@@ -200,3 +200,57 @@ Gün sonu denetim durumu: check 8/8 (10 dil × 233 anahtar, 9 sayfa,
 sitemap 17 URL), güvenlik 13/13, görünürlük 10/10, marka 56 ölçü,
 RSS determinizmi, Playwright akış testleri — hepsi yeşil. Dal:
 `claude/qblogg-web-sayfasi-upcarm`; yayına alma kullanıcı onayı bekliyor.
+
+## 23.08.2026 (akşam) — Yeni iş modeli çalışması başladı
+
+Kullanıcı üç ayrı yapay zekâ analizini iletti (Norveç fagblog temaları;
+gelir sistemi; TIGER 21/Campden/Long Angle/Oxford Analytica/GLG/HBR/Project
+Syndicate kıyaslaması ve "Q Private Intelligence" taslağı) ve QBLOGG için
+yeni iş modelinin birlikte kurulacağını bildirdi. İlk sentez `docs/is-modeli.md`
+(v1 taslak) olarak yazıldı: çift katlı model (Studio bugünü öder,
+Intelligence yarını kurar), B0–B4 güven merdiveni ve geçiş eşikleri,
+ürün formatları (Q Answer/Brief/Risk Radar/Decision Defense…), profesör
+ücret modeli, üyelik kabul çerçevesi, hukuk sınırları. Belgede her rakam
+kanıt sınıfıyla işaretli: [V] doğrulanmış / [H] hipotez / [D] dış iddia —
+dış araçlardan gelen rakip verileri teyit edilmeden karar dayanağı
+yapılmayacak. Altı açık karar kullanıcıya listelendi (§13).
+
+## 23.08.2026 (gece) — Vercel projesi silinmiş bulundu, site geri kuruldu
+
+Alan adı kontrolü sırasında `qblogg` Vercel projesinin takım listesinde
+olmadığı görüldü (panelde aynı gün başka projeler oluşturulurken silinmiş
+olmalı; eski adresler qblogg-bet-art/qblogg-flame öldü). Kurulum tek
+dosyalık olduğu için site aynı adla dakikalar içinde geri kuruldu:
+yeni üretim adresi **qblogg.vercel.app** (yeni proje id). Yeni projede
+kendiliğinden açılan Deployment Protection yine kapatıldı; kalite.html
+canlıdan 200 + güncel içerikle doğrulandı. GoDaddy tarafı hazır
+(apex/www A kayıtları Vercel'i gösteriyor, _vercel TXT yayılmış);
+kalan adım: Vercel panelinde qblogg projesine qblogg.com + www ekleyip
+doğrulamak — eski claim akışı silinen projeye bağlıydı, panel yeni kod
+üretirse GoDaddy'deki TXT değeri onunla değiştirilecek.
+
+## 24.08.2026 — Üye sistemi v1 (Supabase auth) kuruldu
+
+Kullanıcı kararıyla (AskUserQuestion: ayrı uygulama · Q Brief Pro kapsamı ·
+magic link) kimlik doğrulama sistemi yazıldı: `uye/` klasörü (tek dosyalık
+istemci + config + kendi vercel.json'u + `schema.sql`), ana siteden tamamen
+ayrı Vercel projesi olarak dağıtılacak — sitenin sıfır bağımlılık vaadi
+bozulmadı. Veri modeli `engine/schema-billing.sql`'in dört tasarım kararına
+referansla sadeleştirildi (entitlement ayrımı v2'ye bilinçli devir,
+belgede kayıtlı). RLS: aktif olmayan üye yalnız örnek brief'leri görür.
+Kurulum kılavuzu `docs/uye-sistemi.md`; kullanıcı adımı: Supabase projesi
+açıp URL + anon anahtarını iletmek. Ayrıca task-observer becerisi
+`.claude/skills/task-observer/` olarak depoya kalıcılaştırıldı (CC BY 4.0,
+atıf korunarak).
+
+## 24.08.2026 (devam) — Üye uygulaması canlıya çıktı (iskelet)
+
+supabase-js CDN yerine depoya vendor'landı (2.112.4, lisans+sha256 kayıtlı) —
+hem konteynerden test edilebilirlik hem CSP daralması. Playwright 7/7.
+`qblogg-uye` Vercel projesi kuruldu: https://qblogg-uye.vercel.app (ayrı
+proje; koruma kapatıldı; noindex). İlk dağıtım "cp: No such file" ile düştü —
+neden: vendor dosyası henüz push'lanmamıştı; klon-tabanlı dağıtım çalışma
+ağacını değil depoyu dağıtır (gözlem #8). Push sonrası yeşil. Örnek tohum
+brief'i hazır (seed.sql, yayınlanmış yazıdan türetilmiş). Bekleyen: kullanıcı
+Supabase projesi + URL/anon anahtar.
+
