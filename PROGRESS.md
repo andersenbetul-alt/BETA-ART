@@ -26,6 +26,34 @@ pulls from GitHub, not skills.sh.
 
 ---
 
+## 2026-08-22 — run-beta-art skill
+
+`.claude/skills/run-beta-art/` — SKILL.md plus a Playwright `driver.mjs` that
+serves `src/` and drives it (`smoke`, `shot`, `eval`, `skiplink`, `repl`).
+`chromium-cli` is not available in this container, so the driver is a real
+script rather than an inline heredoc.
+
+Everything documented was executed here, then re-run in a clean `env -i` shell
+following SKILL.md line by line with no improvisation.
+
+Gotchas found by running it, not by reading docs:
+
+- `file://` silently breaks the app — CORS blocks the ES module, so the nav
+  still works and it *looks* fine while auth never initialises.
+- Bare `chromium.launch()` fails; the container's browser is at
+  `/opt/pw-browsers/chromium`.
+- `node --test tests/` fails — the glob form is required.
+- The RLS suite is not idempotent; re-running hits `users_pkey`.
+- `authenticated` must exist *before* the migration or its column-grant block
+  is skipped.
+
+Also added `driver.mjs skiplink`, because the first draft documented
+`eval "document.activeElement.id"` as evidence of the skip-link defect — it
+returns `""` and demonstrates nothing. The replacement drives Tab/Enter/Tab
+and reports `skip link works: false`.
+
+---
+
 ## 2026-08-22 — Tooling stack verified
 
 `STACK.md` records arrow-by-arrow what was observed, not assumed.

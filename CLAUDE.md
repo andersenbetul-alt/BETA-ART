@@ -20,7 +20,7 @@ site navigation bar, referred to as the "BETA ART / Cobban" navbar.
 | `README.md` | Outward-facing overview and repository layout | Layout or entry points change |
 | `BUSINESS.md` | İş modeli seçenekleri — öneri, karar değil | A revenue model is chosen |
 | `skill-observations/log.md` | Friction noticed during real work, for later skill improvement | An observation is captured or actioned |
-| `.claude/skills/` | Project skills — `task-observer`, `evidence-discipline` | A skill is added or revised |
+| `.claude/skills/` | Project skills — `task-observer`, `evidence-discipline`, `run-beta-art` | A skill is added or revised |
 | `STACK.md` | Agent tooling chain — what was verified vs assumed | A layer is tested or its status changes |
 | `SECURITY.md` | Security policy — currently GitHub's unedited template | A real contact and version table are set |
 
@@ -87,11 +87,14 @@ which is the point: this skill's whole value is memory between sessions.
 
 1. Read this file, then `STATUS.md` for state, `DECISIONS.md` for open
    choices, and `skill-observations/log.md` for OPEN observations.
-2. The smallest useful next step is the skip-link fix (`tabindex="-1"` on
+2. To run or screenshot the app, use the `run-beta-art` skill —
+   `node .claude/skills/run-beta-art/driver.mjs smoke`.
+3. The smallest useful next step is the skip-link fix (`tabindex="-1"` on
    `<main>`) **together with** a test that asserts focus actually moves — the
-   existing test passes on the broken behaviour.
-3. After that: build the pages the navbar links to, or answer D-004.
-4. Update `STATUS.md` and `PROGRESS.md` in the same commit as the work.
+   existing test passes on the broken behaviour. `driver.mjs skiplink`
+   demonstrates it.
+4. After that: build the pages the navbar links to, or answer D-004.
+5. Update `STATUS.md` and `PROGRESS.md` in the same commit as the work.
 
 ---
 
