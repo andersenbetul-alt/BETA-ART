@@ -1,120 +1,117 @@
 ---
 name: task-observer
 description: >-
-  Watch long-running background work — builds, test suites, deploys, background
-  agents, migrations, CI runs — and report what actually happened to it. Use this
-  whenever the user asks you to monitor, watch, babysit, keep an eye on, tail, or
-  check back on something slow, and also whenever you kick off background work
-  yourself and will need to know how it ended. Reach for it too when you are
-  simply deciding *how to wait* for something, since the wrong waiting pattern
-  burns turns and can miss the result entirely.
+  Notice when your own work repeats — the same command sequence run again, the
+  same correction from the user twice, the same thing re-derived from scratch —
+  record it as an observation, and once reviewed, promote it into a new skill or
+  a change to an existing one. Use this after finishing any multi-step task,
+  whenever the user corrects you the same way more than once, whenever you catch
+  yourself redoing a workflow you have already done in this project, and whenever
+  asked to review observations or turn recurring work into a skill.
 ---
 
 # Task Observer
 
-Background work fails quietly. A build dies at minute nine, a test suite hangs on
-a held lock, an agent finishes and nobody reads its output. The cost is rarely the
-failure itself — it is the twenty minutes spent believing something is still
-running when it stopped long ago, or reporting "still going" without having looked.
+Work teaches you things and then you forget them. You figure out that this repo's
+tests need a service running first, that this user always wants the migration
+before the model change, that the deploy silently needs a flag — and then the
+session ends and the next one relearns it from scratch.
 
-This skill is about watching well enough that the answer you give is always backed
-by something you actually observed.
+This skill closes that loop:
 
-## The rule that matters most: do not sleep-poll
+```
+normal work → observe repetition → record observation → user reviews → skill
+```
 
-The instinct is to `sleep 30` in a loop until the thing finishes. Resist it. It
-burns a turn per tick, produces no information between ticks, and blocks the user
-from redirecting you while you sit there.
+The value is entirely in the last two steps. Observations nobody reviews are
+noise, and observations that never become skills are a diary. The point is to
+turn what you learned into something that changes future behavior.
 
-Prefer, in order:
+## What is worth observing
 
-1. **Let the harness wake you.** Work started with `run_in_background`, subagents,
-   and workflows re-invoke you on completion. Nothing to poll — start it, do other
-   useful work, and handle the notification when it lands.
-2. **Wait on a condition, not a duration.** `Monitor` with an until-loop blocks on
-   the thing you actually care about (a port opening, a file appearing, a log line)
-   rather than on a guess about how long it takes.
-3. **Schedule a long fallback.** For work the harness cannot see — a CI run, a
-   remote deploy, an external queue — pick a delay matched to how fast that state
-   really changes. A CI run that takes ~8 minutes deserves one ~8-minute check, not
-   sixteen 30-second ones.
+The signal is **repetition**, not novelty. A thing done once is just work. The
+same thing done a third time is a pattern with a cost attached.
 
-The exception that justifies a real poll is external state with no notification
-path. Even then, size the interval to the work.
+Worth recording:
 
-See `references/waiting.md` for the patterns per work type, including what to do
-when a notification never arrives.
+- **A command sequence you have now run more than twice** — especially one with
+  non-obvious ordering or flags that had to be discovered.
+- **The same correction from the user twice.** This is the highest-value signal
+  available, because it is direct evidence of a gap between what you do by
+  default and what this person actually wants.
+- **Knowledge you re-derived.** If you had to re-read the same three files, or
+  re-discover the same constraint, that rediscovery cost is going to repeat.
+- **A workaround that keeps being necessary** — a flag that must always be
+  passed, a step that always fails first and must be retried a particular way.
+- **A premise that turned out false more than once**, and how you checked it.
 
-## Establish what you are watching
+Not worth recording: one-offs, anything specific to a single file that will not
+recur, and general knowledge that is not particular to this project or person.
+The test is simple — would knowing this in advance have changed what you did?
 
-Before reporting anything, know the inventory. Vague monitoring produces vague
-reports.
+Resist the urge to record everything. An observation log padded with trivia is
+one nobody reads, which defeats the whole mechanism.
 
-For each piece of background work, get concrete about: what was started, how it
-was started (so you know whether a notification is coming), where its output goes,
-and what "done" looks like. A build is done when it exits; a server is done when
-it is listening; a migration is done when the schema matches.
+## Recording an observation
 
-If you cannot state the success condition, you cannot tell success from a hang —
-work that out first, because everything downstream depends on it.
+Write observations to `.claude/observations/` as dated Markdown files, one per
+pattern. Keep them short — an observation is a pointer to evidence, not an essay.
 
-## Triage: four states, not two
+See `references/observations.md` for the record format and worked examples.
 
-The useful distinction is not "running vs finished". It is:
+The one rule that matters: **cite the actual occurrences**. An observation that
+says "the user prefers X" without pointing at the two times they said so is an
+assumption wearing evidence's clothing. Anyone reviewing it later — including you
+— needs to be able to check whether the pattern is real. Vague observations
+produce bad skills, and a bad skill is worse than no skill because it fires
+confidently on the wrong occasions.
 
-- **Finished** — exited. Read the exit code and the tail of the output. An exit
-  code of 0 is not proof of success if the tool reports failures in its output.
-- **Running healthily** — still producing output, or still legitimately blocked on
-  something with a known finish (a large download, a long compile).
-- **Stalled** — the process is alive but nothing is advancing. Output has been
-  static well past its normal cadence, or it is blocked on input that will never
-  come. This is the state people miss, because "alive" looks like "fine".
-- **Dead** — gone without a result: the process vanished, the container was
-  reclaimed, the connection dropped.
+If you noticed something only once but suspect it will recur, record it and say
+so plainly. A observation marked "seen once, watching for more" is honest and
+still useful. One that inflates a single event into a settled pattern is not.
 
-Distinguishing stalled from slow is the hard part, and it is where being wrong is
-expensive. `references/diagnosis.md` covers the evidence to gather for each.
+## The review gate
 
-## Report state changes, not ticks
+Surface observations to the user before promoting any of them. Never create or
+modify a skill from an observation on your own initiative.
 
-Every check does not deserve a message. Narrating "still running" on a loop trains
-the user to ignore you, which is exactly the wrong reflex for the moment something
-does break.
+This gate exists because you are a poor judge of which of your own patterns are
+worth entrenching. You see the repetition; the user knows whether it was
+incidental or fundamental, whether the workaround is permanent or a bug about to
+be fixed, and whether the "preference" you detected was really just two
+coincidences. Entrenching a wrong pattern into a skill means every future session
+inherits your mistake, and it will be applied confidently.
 
-Say something when: the work finishes (with the outcome, not just "done"), it
-fails (with the actual error, not "it errored"), it stalls, or your estimate of
-how long it will take changes materially. Otherwise stay quiet and keep watching.
+Present observations compactly: what recurred, how many times, the evidence, and
+what a skill would change. Let the user pick which to promote.
 
-When work does finish, the useful report is short and specific: what ran, whether
-it succeeded, and the one detail that matters — the failing test name, the error
-line, the deploy URL. Paste the evidence rather than characterizing it.
+## Update existing, or create new
 
-## Never report a status you did not verify
+Once the user approves an observation, the default is to **update an existing
+skill rather than create a new one**. Check what already exists first.
 
-This is the failure mode that makes an observer worse than useless. Under pressure
-to answer, it is tempting to say "the build is still running" when you have not
-checked since the last time you looked, or to infer completion from elapsed time.
+A separate skill is justified when the pattern has its own trigger — a distinct
+situation where it should fire, that no current skill's description covers. If it
+fires in the same situations as an existing skill, it belongs inside that skill,
+because two skills competing for the same trigger means neither fires reliably.
 
-Check before you speak. If you cannot check — the log is gone, the process is
-unreachable, the notification never came — say exactly that. "I can't tell; the
-worker isn't running and its log is empty" is a genuinely useful answer. A
-confident guess that turns out wrong costs the user the debugging session they
-would otherwise have started twenty minutes earlier.
+`references/promotion.md` covers how to decide, and how to hand off to the
+`skill-creator` skill, which owns the actual authoring and testing loop. Do not
+reimplement that here — this skill's job ends at a reviewed, approved observation
+with a clear recommendation.
 
-The same applies when work you were watching disappears. Do not quietly drop it.
-Report that it vanished and what you know about when it was last alive.
+## Keeping the log honest
 
-## Know when to stop watching
+Prune observations once promoted — mark them resolved with a pointer to the skill
+they became, so the log stays a queue of open patterns rather than an archive.
 
-Stop when the work reaches a terminal state and you have reported it, when the
-user says to stop, or when continuing cannot produce new information — a stalled
-job with no output and no way to inspect it will not become clearer by looking
-again. Say what you are stopping and why, so nobody is left assuming you are
-still watching.
+When an observation turns out to be wrong, delete it and say so. Leaving refuted
+patterns in place means they eventually get promoted by someone who did not see
+them refuted.
 
 ## Reference files
 
-- `references/waiting.md` — how to wait for each kind of background work, and
-  what to do when a completion signal never arrives.
-- `references/diagnosis.md` — telling stalled from slow from dead, and the
-  evidence worth gathering for builds, tests, servers, deploys, and agents.
+- `references/observations.md` — the observation record format, what qualifies
+  as evidence, and worked examples of good and bad observations.
+- `references/promotion.md` — deciding between updating an existing skill and
+  creating a new one, and handing off to `skill-creator`.
