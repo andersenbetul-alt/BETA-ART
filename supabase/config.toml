@@ -1,0 +1,137 @@
+# Supabase project configuration.
+#
+# Most authentication security lives here rather than in application code:
+# token lifetimes, OTP expiry, password rules, and which providers exist are
+# all decided at this layer. Application code cannot compensate for a weak
+# setting here, so treat this file as security-relevant.
+#
+# Secrets are referenced as env(VAR) and never written literally — this file
+# is committed.
+
+project_id = "beta-art"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+# Cap on rows a single PostgREST request can return. Without a limit, an
+# unfiltered query against a large table becomes a cheap denial-of-service
+# and an accidental bulk-export path.
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 16
+
+[studio]
+enabled = true
+port = 54323
+
+# Local mail catcher. Signup, magic-link, and recovery mails land here during
+# development instead of being sent to real addresses.
+[inbucket]
+enabled = true
+port = 54324
+
+[auth]
+enabled = true
+# site_url and the redirect allow-list together decide where a user can be
+# sent after clicking a link in an email or completing an OAuth round trip.
+# An over-broad entry here is an open-redirect that turns every auth email
+# into a phishing vector, so keep these exact — no wildcards in production.
+site_url = "http://127.0.0.1:3000"
+additional_redirect_urls = ["http://127.0.0.1:3000/auth/callback"]
+
+# Access tokens are bearer credentials that cannot be revoked before they
+# expire; keep the window short and rely on refresh rotation for continuity.
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+# Grace period for a rotated refresh token, so a request already in flight
+# when rotation happens does not log the user out. Non-zero but small.
+refresh_token_reuse_interval = 10
+
+enable_signup = true
+# Anonymous sign-ins create real rows in auth.users with no verified
+# identity. Off unless a guest flow genuinely needs them.
+enable_anonymous_sign_ins = false
+
+[auth.email]
+# --- Method 1: email + password -----------------------------------------
+enable_signup = true
+# Require the address to be proven before the account is usable. With this
+# off, anyone can register an address they do not control, which also lets
+# them squat an address a real owner later tries to use.
+enable_confirmations = true
+# Changing an email must be confirmed on BOTH addresses. Without the old
+# address in the loop, someone with a briefly-unattended session can move
+# the account to an address the real owner does not hold — and the account
+# recovery path moves with it.
+secure_password_change = true
+double_confirm_changes = true
+
+# 8 is the floor, not a target. Length dominates composition rules for
+# resistance to guessing, so prefer raising this over adding character
+# classes.
+min_password_length = 12
+# Reject passwords found in known breach corpora. This blocks credential
+# stuffing far more effectively than composition requirements do.
+password_requirements = "lower_upper_letters_digits_symbols"
+
+# --- Method 2: magic link / OTP ------------------------------------------
+[auth.email.template.magic_link]
+subject = "Your sign-in link"
+
+[auth.sms]
+enable_signup = false
+enable_confirmations = false
+
+# OTP settings. A long-lived one-time code is a standing credential sitting
+# in an inbox: keep the window short and the code long enough that it cannot
+# be guessed within that window.
+[auth.email.otp]
+# 10 minutes. Supabase's default of 24h is far too generous for something
+# that grants a session.
+exp = 600
+length = 8
+
+# Rate limits exist so a leaked or guessable address cannot be used to spray
+# sign-in mail, and so OTP codes cannot be brute-forced inside their window.
+[auth.rate_limit]
+email_sent = 10
+sign_in_sign_ups = 30
+token_refresh = 150
+token_verifications = 30
+anonymous_users = 10
+
+# --- Method 3: OAuth providers -------------------------------------------
+# Secrets come from the environment. skip_nonce_check stays false: the nonce
+# is what binds an ID token to the request that asked for it, and disabling
+# it permits token replay.
+
+[auth.external.google]
+enabled = true
+client_id = "env(SUPABASE_AUTH_GOOGLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_GOOGLE_SECRET)"
+redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
+skip_nonce_check = false
+
+[auth.external.github]
+enabled = true
+client_id = "env(SUPABASE_AUTH_GITHUB_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_GITHUB_SECRET)"
+redirect_uri = "http://127.0.0.1:54321/auth/v1/callback"
+skip_nonce_check = false
+
+# Multi-factor. Off by default so it can be introduced deliberately with a
+# recovery-code flow rather than silently locking people out.
+[auth.mfa]
+max_enrolled_factors = 10
+
+[auth.mfa.totp]
+enroll_enabled = false
+verify_enabled = false
+
+[analytics]
+enabled = false

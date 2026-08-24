@@ -4,3 +4,8 @@ graphify-out/.graphify_root
 graphify-out/manifest.json
 graphify-out/cost.json
 graphify-out/cache/
+
+# Supabase local secrets — config.toml references these via env()
+supabase/.env
+.env
+.env.local
