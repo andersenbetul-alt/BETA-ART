@@ -300,3 +300,17 @@ adımları docs/marka-tescili.md'ye işlendi. Yapılamayanlar dürüst listede:
 sicil ön araştırması (kullanıcı tarayıcısı), ek sınıf ücreti, vekil görüşü.
 Beceri arama denendi: npx skills tüm sorgularda boş (kontrol sorgusu dahil
 — kayıt defteri erişimi engelli, beceri yokluğu kanıtı değil).
+## 24.08.2026 (gece, denetim + standartlar) — Karma tur
+
+(1) Sezgisel denetim: rakip siteler (Outgrow/ScoreApp/Typeform) proxy
+engelli — canlı rakip ekranı alınamadı, dürüstçe kayıt edildi; kendi üç
+ekranımız (index, work, demo) 13 ölçütle gerçek görüntülerden puanlandı
+(docs/denetim/sezgisel-denetim-2026-08-24.md): en zayıf noktalar work
+bütçe alanının dolu açılması, demoda ilerleme göstergesi yokluğu.
+(2) NAVIAR "Logo Skills and Clearance Stack v1.0" depoya kopyalandı ve
+QBLOGG için benimsenen bölümleri (resmî arama adresleri, kanıt şablonu,
+durdurma koşulları) marka-tescili.md'ye işlendi; bu ortamda var olmayan
+becerilerin karşılıkları not edildi. (3) 20 rollük ekip listesi
+değerlendirildi → docs/ekip-modeli.md (roller işe alım değil denetim
+merceği; ilk işe alım ancak pilot gelirle). (4) IQ1000 "güven motoru"
+analizi is-modeli.md §14'e delta olarak işlendi — sıra kararı değişmedi.

@@ -325,3 +325,46 @@ denendi: EGRESS_BLOCKED). Aşağıdaki bilgiler web arama özetlerinden alındı
 - Ek sınıf ücretinin tutarı — Lovdata engelli.
 - Vekil görüşü — "BLOGG" tanımlayıcılık riski için başvuru öncesi şart
   (özellikle kelime markası düşünülüyorsa).
+
+## Tescil kontrol standardı benimsenmesi — 24.08.2026
+
+Kullanıcı, NAVIAR projeleri için hazırlanmış "Logo Skills and Clearance
+Stack v1.0" standardını iletti (depoya kopyalandı:
+`docs/naviar/LOGO-SKILLS-CLEARANCE-STACK-v1.0.md`). QBLOGG markası için
+şu bölümleri benimsiyoruz:
+
+**1. Resmî arama adresleri** (bu belgedeki "araştırma yapılmadı"
+satırlarının artık hedef adresleri var — hepsi bu ortamdan engelli,
+kullanıcı tarayıcısından açılacak):
+
+- Norveç sicili: https://search.patentstyret.no/advanced/
+- Patentstyret ön araştırma hizmeti: https://www.patentstyret.no/varemerke/tjenester/forundersokelser
+- TMview / müsaitlik: https://www.euipo.europa.eu/en/trade-marks/before-applying/availability
+- TMclass (Nice terim doğrulama): https://euipo.europa.eu/ec2
+- EUIPO temsil kılavuzu: https://guidelines.euipo.europa.eu/2302857/2226461/trade-mark-guidelines/9-1-representation
+- WIPO Global Brand Database: https://www.wipo.int/en/web/global-brand-database
+- WIPO Vienna/görsel benzerlik: https://www.wipo.int/en/web/ai-tools-services
+
+**2. Kanıt kaydı şablonu** — her arama isabeti için: proje · aranan
+işaret · arama varyantı · kaynak · tarih+saat dilimi · bölge · Nice
+sınıfı · Vienna kodu · kayıt no · sahip · durum · benzerlik
+değerlendirmesi (kelime/fonetik/kavramsal/görsel) · mal-hizmet örtüşmesi
+· risk derecesi · kaynak bağlantısı · karar gerekçesi. Sonuçlar
+`docs/denetim/marka-arastirmasi.md`'ye bu şablonla işlenecek.
+
+**3. Durdurma koşulları** — şunlardan biri varken hiçbir dosya "TESCİLE
+HAZIR" işaretlenmez: tarihsiz/eksik sicil araması · belirsiz başvuru
+sahibi · kesinleşmemiş Nice terimleri · değerlendirilmemiş yüksek riskli
+önceki marka · onaylı master'dan farklı başvuru görseli · küçük
+boy/tek renk/ters zemin testinde kalma · belgesiz font/varlık lisansı ·
+güncel teknik şartı geçmeyen dosya. (QBLOGG karşılıkları: küçük boy ve
+tek renk testleri `docs/marka-testleri.md`'de koşulu; lisans kaydı
+`assets/fonts/KAYNAK.md`; teknik zarf `npm run tescil`.)
+
+**4. Bu ortama uymayan kısımlar (dürüst not):** standardın andığı
+`canva:*`, `adobe-*`, `skillquiver:*`, `openai-library` becerileri bu
+oturumda mevcut değil; QBLOGG'daki karşılıkları depo betikleridir
+(marka-uret · tescil · tescil-testi · marka-dogrula · Playwright
+görsel doğrulama). WIPO/TMview görsel-benzerlik aramaları yalnız
+kullanıcı tarayıcısından yapılabilir. Standardın kendi uyarısı aynen
+geçerli: bu akış riski azaltır, tescili garanti etmez.
