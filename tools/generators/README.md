@@ -33,6 +33,7 @@ They run from this directory and write straight into the property folders.
 | `build_plates.py` | The archive's twelve plate pages |
 | `build_journal.py` | The journal essays, and rewrites the index links to match |
 | `build404.py` | A 404 page for each of the four properties |
+| `build_code_doc.py` | `docs/20-kod.md` — the code, read off the tree rather than retold |
 | `apply_hub*.py` | One-time patches to the hub, kept so the change is readable |
 
 ## After running any of them
@@ -49,8 +50,9 @@ the correctness set in one go and exits on it:
     python3 tools/classes.py     # a class on a page has a rule behind it
     python3 tools/cascade.py     # a later rule beats a narrower breakpoint
     python3 tools/copy.py        # conversion copy
+    python3 tools/forms.py       # a form does not report a delivery it did not make
     python3 tools/claims.py      # a promise on a page is a promise in the notice
-    python3 tools/klarsprak.py   # Norwegian against Språkrådet's klarspråk rules
+    python3 tools/klarsprak.py   # Norwegian against Språkrådets klarspråk rules
     python3 tools/languages.py   # the notice says what languages.json records
     python3 tools/plates.py      # catalogue integrity
     node  tools/render-check.js  # a real browser, four widths
@@ -70,3 +72,10 @@ either one to gate a deploy on it.
 `build_journal.py` is safe to re-run: it detects a previous run, does not
 duplicate metadata, and reports any index card it could not match instead of
 guessing.
+
+**A builder does not write back the derived data.** `build.py` rewrites the 25
+service pages without the JSON-LD `enrich.py` had appended — 32 lines gone from
+each file, silently. Running the gates afterwards restores the tree to
+byte-identical, because `enrich.py` is a writer and `check.py` runs it. A commit
+taken between the two steps ships 25 pages with their breadcrumbs stripped, and
+no gate can see that state, because running a gate repairs it.
