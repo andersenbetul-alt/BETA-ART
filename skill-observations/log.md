@@ -387,3 +387,25 @@ er et rødt flagg for at kontrakten har driftet uten feil.
 hver sin fallback) enn i kontrollflyt, og en fallback-verdi ved felt-oppslag
 kan bety at feltet aldri har eksistert – verifiser konsumentens felt mot
 produsentens returform.
+
+### Observation 17: PDF-lesing i containeren krever cffi-reparasjon
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Lesing av opplastede QA-pakke-PDF-er for logo v0.2
+**Skill:** run-naviar
+**Type:** open-source
+**Phase/Area:** Verktøykjeden i containeren
+
+**Issue:** Både `Read` (pdftoppm mangler), `pypdf` og `pdfminer.six` feilet på
+PDF-lesing. Rotårsaken var ikke bibliotekene, men at systemets `cryptography`
+mangler `_cffi_backend` og panikker ved import. `pip install cffi` reparerte
+alt; deretter virket pdfminer.six rett fram.
+
+**Suggested improvement:** Legg gotcha i run-naviar: «PDF i denne containeren:
+pip install cffi pdfminer.six, så extract_text. pdftoppm og LibreOffice finnes
+ikke.»
+
+**Principle:** Når flere uavhengige biblioteker feiler med samme underlige
+importfeil, er feilen i et delt lag under dem – reparer laget, ikke bytt
+bibliotek en gang til.
