@@ -263,3 +263,27 @@ er verifisert.
 **Principle:** Når kildefila ikke kan nås, er en verifiserbar gjengivelse med
 dokumentert avvik bedre enn å vente - merket som midlertidig og byttet byte
 for byte når masteren kommer.
+
+### Observation 12: Script-tagger + globale eksporter er nok til å kartlegge en IIFE-kodebase
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Pathfinder-oppdagelse: kartlegge features i BETA-ART
+**Skill:** claude-mem:pathfinder
+**Type:** open-source
+**Phase/Area:** Discovery-fasen (feature-avgrensning)
+
+**Issue:** I en avhengighetsfri kodebase der moduler er IIFE-er på window,
+ga to grep-kall hele avhengighetsgrafen: (1) `<script`-tagger per HTML-side
+gir side→modul-kanter, (2) `window.PP_* =` / `global.PP_* =` gir eksportene,
+og et tredje grep på bruk av eksportnavnene gir modul→modul-kanter. Ingen
+full fillesning var nødvendig for å avgrense features; headerkommentarene
+(de første 8-12 linjene) ga formålet.
+
+**Suggested improvement:** Legg inn i pathfinder-oppdagelsessteget: for
+rammeverksfrie prosjekter, bygg grafen fra script-tagger og globale
+eksporter først, og les bare filhoder for formål – full lesning kun der
+grensene er uklare.
+
+**Principle:** Avhengighetsgrafen i en byggefri kodebase står eksplisitt i
+HTML-en og i de globale eksportene; hent den derfra før du leser kode.

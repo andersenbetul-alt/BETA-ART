@@ -9,3 +9,7 @@ dist/
 
 # Driverens skjermbilder – lages på nytt hver kjøring
 .claude/skills/run-naviar/skjermbilder/
+
+# Python-artefakter fra skillverktøy
+__pycache__/
+*.pyc
