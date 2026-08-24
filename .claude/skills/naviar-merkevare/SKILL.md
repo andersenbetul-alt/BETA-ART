@@ -126,3 +126,23 @@ den er lett å måle uten linjal: like mye luft som høyden på en N.
 | Merket alene | 16 px |
 
 Under dette forsvinner hullet i varden, og merket blir en trekant.
+
+## v0.4-identiteten (24.08.2026)
+
+Eieren har valgt NAVIAR-001 v0.4 som merke: avbrutt geometrisk N med
+diamanthull i diagonalen, NAVIAR i arkitektoniske versaler med diamantsnitt
+i A-ene, CARE som underordnet beskrivelse. Kildene er EUIPO-kandidaten
+(JPEG 2400x800) og forelderdokumentasjonen; fargene der er grafitt
+#26313B, stålblå #334556 og lys grå #E8E8E6.
+
+`naviar-care-logo-v04.svg` og `-v04-negativ.svg` i assets/img er
+**webgjengivelser tegnet etter kandidat-JPEG-en** – vektormasteren
+(NAVIAR-CARE-001_master_candidate_v0.1.svg) er ikke levert hit ennå.
+Når den kommer, byttes filene byte for byte og denne merknaden fjernes.
+
+Uavklart: forholdet mellom v0.4-grafitten #26313B og sidens blekk
+#101a2e. Regelen «blekket ER logoen» krever at én av dem flytter seg.
+Varden står inntil videre i favicon, appikon og e-post.
+
+Status for varemerket: EUIPO-FORMAT CANDIDATE PASS / FILING HOLD –
+likhetssøk (TMview, Patentstyret, WIPO), klasser og søkereierskap gjenstår.

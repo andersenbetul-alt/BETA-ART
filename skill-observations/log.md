@@ -237,3 +237,29 @@ anta den. En fersk klone har færre referanser enn en arbeidskopi.
 **Suggested improvement:** Regel for slike situasjoner: verifiser påstandene med primærkilder først, finn den ene bærende beslutningen, og lever et triage-dokument der eierens beslutning er et navngitt valg med kostnader — ikke et ja/nei til hele visjonen.
 
 **Principle:** Et visjonsdokument som kolliderer med en etablert grense behandles som råvare, ikke som ordre eller trussel: sorter det etter hva som er uavhengig av konflikten, og gjør konflikten til én eksplisitt beslutning med prislapp.
+
+### Observation 11: Logo gjenskapt fra rasterbilde med tegn-render-sammenlign-løkke
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Ny merkeidentitet (v0.4) levert som JPEG i chat, vektormaster utilgjengelig
+**Skill:** run-naviar / naviar-merkevare
+**Type:** open-source
+**Phase/Area:** Merkevareintegrasjon
+
+**Issue:** Masterfila lå i et annet verktøys sandkasse. Eneste vei til «legg
+dette på nettsiden» var å gjenskape geometrien som SVG og verifisere visuelt:
+tegn parametrisk, render i Chromium, sammenlign mot originalen i konteksten,
+iterer. To iterasjoner holdt; bokstavformene var feilest første gang, ikke
+merket. I tillegg: git add -A fra en undermappe la inn hele treet, mens
+python/grep med relative stier feilet stille - commiten kom uten
+merkevarenotatet den lovte.
+
+**Suggested improvement:** run-naviar bør nevne mønsteret: parametrisk
+SVG-generator + Chromium-render + visuell diff som standardløkke for grafikk
+uten kildefil. Og: skriv aldri commit-tekst som lover innhold før filskrivingene
+er verifisert.
+
+**Principle:** Når kildefila ikke kan nås, er en verifiserbar gjengivelse med
+dokumentert avvik bedre enn å vente - merket som midlertidig og byttet byte
+for byte når masteren kommer.
