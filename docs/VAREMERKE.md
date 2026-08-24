@@ -30,6 +30,12 @@ tjenesteleverandører – ikke helsehjelp. Klassevalget må si det samme:
 TMclass-termene formuleres på engelsk før innsending; utkast ligger i
 tabellen over og spisses når klassevalget er avgjort.
 
+**Overordnet standard:** `docs/VAREMERKE-STANDARD.md` (Clearance Stack
+v1.0) gjelder for NAVIAR-001–026 og alle undermerker. Den utvider
+protokollen under med bevisfeltene per treff (kap. 5), design-QA på
+250/120/32/24/16 px, produksjons-QA og stoppvilkårene. Ved motstrid
+vinner standarden.
+
 ## 3. Søkeprotokollen (må kjøres utenfra – registrene er proxyblokkert her)
 
 Kjør samme dag, lagre PDF/skjermbilde med dato – RT-06 krever *daterte* søk:
