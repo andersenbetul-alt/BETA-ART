@@ -66,7 +66,11 @@ window.PP_KATALOG = (function () {
         'Oppvask',
         'Klesvask og bretting',
         'Skifte sengetøy',
-        'Lett rydding'
+        'Lett rydding',
+        /* Observere og melde, aldri utbedre selv: løse tepper og mørke
+           lamper meldes til familien. Fallforebygging er grunnen til at
+           punktet finnes; grensen mot håndverk er grunnen til ordlyden. */
+        'Si fra til familien om snublefarer og mørk belysning'
       ],
       aldri: [
         'Arbeid i trapp og tunge løft',

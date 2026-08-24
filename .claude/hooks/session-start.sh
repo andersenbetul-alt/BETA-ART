@@ -66,4 +66,4 @@ if [ -d "${CLAUDE_PROJECT_DIR:-.}/node_modules" ]; then
   echo "  begrunn avhengigheten i commit-meldingen."
 fi
 
-echo "Klar. npm test kjører 337 enhetstester og 153 nettlesertester."
+echo "Klar. npm test kjører 339 enhetstester og 153 nettlesertester."

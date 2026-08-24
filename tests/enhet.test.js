@@ -2513,6 +2513,18 @@ t.test('ukjent kategori og hjelper uten typer svarer nei, ikke krasj', function 
   t.erLik(window.PP_KATALOG.kategorierFor(null), []);
 });
 
+t.test('katalogens risikospråk forstås av agentregisteret', function () {
+  /* Katalogen sier «lav», agentene sier «grønn». Uten oversettelsen ville en
+     lav-oppgave stille mistet automatikken sin – trygt, men galt. */
+  var r = window.PP_AGENTER.avgjor('lukk_gronn', 'lav');
+  t.erLik(r.autonomi, 'auto');
+  t.erLik(window.PP_AGENTER.avgjor('lukk_gronn', 'middels').autonomi, 'godkjenning');
+});
+
+t.test('ukjent risikonivå faller fortsatt til menneske, ikke til auto', function () {
+  t.erLik(window.PP_AGENTER.avgjor('lukk_gronn', 'tull').autonomi, 'menneske');
+});
+
 t.test('katalogen og matchingmotoren forteller samme historie', function () {
   /* En hjelper uten digital-typen skal både mangle fagområdet i katalogen
      og få oppdraget sperret av motoren – med kvalifisert som grunn. */

@@ -181,7 +181,19 @@ window.PP_AGENTER = (function () {
 
   /* Hvem avgjør dette? Svaret følger risikonivået fra oppgavekatalogen, ikke
      agentens egen vurdering av seg selv. */
+  /* To vokabularer møtes her: oppgavekatalogen og matchingmotoren sier
+     lav/middels/rod, agentbeskrivelsene sier grønn/gul/rød. Uten oversettelse
+     ville «lav» falt til standardverdien menneske – trygt, men galt: en grønn
+     oppgave mister automatikken sin i stillhet. Oversettelsen står her, én
+     gang, i stedet for i hver kallende modul. */
+  function normaliserRisiko(risiko) {
+    if (risiko === 'lav') return 'gronn';
+    if (risiko === 'middels') return 'gul';
+    return risiko;
+  }
+
   function avgjor(handlingId, risiko) {
+    risiko = normaliserRisiko(risiko);
     if (risiko === 'nod') {
       return { autonomi: 'menneske', grunn: 'Nødsituasjon. Automatikken stanser.', nod: true };
     }
