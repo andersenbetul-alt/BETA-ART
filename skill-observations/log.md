@@ -98,3 +98,90 @@ authorization tests as the unprivileged role the application actually uses.
 **Principle:** Row-level rules answer *which rows*, never *which columns* —
 a privilege-bearing column needs its own control. And every guard against
 privilege escalation must be checked for the bootstrap case it may forbid.
+
+---
+
+### Observation 4: A validator executed what it should have parsed
+
+**Status:** OPEN
+**Date:** 2026-08-22
+**Session context:** Extending the static-site build to validate browser ES
+modules (`auth.js`, `auth-ui.js`).
+**Skill:** `evidence-discipline` — candidate new section
+**Type:** open-source
+**Phase/Area:** Writing build-time validators
+
+**Issue:** The build validated browser modules with `await import(file)`.
+That *runs* them. In Node there is no `document`, so a perfectly valid
+browser module failed with `document is not defined` — a false failure
+reporting a real file as broken. Validation needs the syntax tree, not the
+side effects; the fix was `node --check` against a temp `.mjs`.
+
+**Suggested improvement:** When writing a validator, state which of these you
+need — *parses*, *type-checks*, *runs without error*, *produces correct
+output* — and pick the weakest one that answers the question. Executing to
+prove parseability imports the whole runtime environment as a dependency of
+your check.
+
+**Principle:** Validation and execution are different operations. Reaching
+for execution because it is the easier API couples the check to an
+environment the code was never meant to run in, and produces failures that
+describe the checker rather than the code.
+
+---
+
+### Observation 5: A rule-check matched its own documentation
+
+**Status:** OPEN
+**Date:** 2026-08-22
+**Session context:** Adding a build rule that a `service_role` key must never
+be served to a browser.
+**Skill:** `evidence-discipline` — candidate new section
+**Type:** open-source
+**Phase/Area:** Static checks over source text
+
+**Issue:** The check was `/service_role/.test(configCode)`. It fired on
+`config.js` — not because the file contained a key, but because it contained
+a comment *explaining that such a key must never be added*. The file
+documenting the rule was flagged as violating it. Fixed by stripping comments
+before matching.
+
+**Suggested improvement:** Any textual rule-check needs a negative fixture:
+text that legitimately *mentions* the forbidden thing without being it —
+documentation, tests, changelogs. Run the check against that fixture and
+confirm it stays silent, alongside confirming it fires on a real violation.
+
+**Principle:** A check over source text must distinguish use from mention.
+Without that, the files most likely to discuss a rule — docs, tests, the
+rule's own definition — become its most likely false positives, and the usual
+response is to weaken the rule rather than fix the matcher.
+
+---
+
+### Observation 6: A commit message ran as shell code
+
+**Status:** OPEN
+**Date:** 2026-08-22
+**Session context:** Committing the Supabase client; the message quoted an
+error containing backticks.
+**Skill:** New skill candidate: shell-quoting-hazards
+**Type:** open-source
+**Phase/Area:** Composing shell commands with prose payloads
+
+**Issue:** `git commit -m "...`document is not defined`..."` inside a
+double-quoted string: bash performed command substitution on the backticks
+and tried to run `document`. The command did not fail cleanly — it hung until
+a two-minute timeout, and the commit silently did not happen. Discovered only
+by checking `git log` afterwards.
+
+**Suggested improvement:** Never interpolate prose into a shell command when
+that prose may contain backticks, `$`, or `!`. Write the message to a file
+and use `git commit -F`, or a quoted heredoc (`<<'EOF'`). Applies equally to
+any long text passed through a shell: PR bodies, issue comments, release
+notes.
+
+**Principle:** Prose containing code is data, not command text. Passing it
+through a shell makes the shell an interpreter of your content, and the
+failure mode is a hang plus a silently skipped operation rather than a clear
+error — so verify the operation actually happened, do not infer it from the
+absence of a visible failure.
