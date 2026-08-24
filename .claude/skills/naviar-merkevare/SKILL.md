@@ -144,5 +144,20 @@ Uavklart: forholdet mellom v0.4-grafitten #26313B og sidens blekk
 #101a2e. Regelen «blekket ER logoen» krever at én av dem flytter seg.
 Varden står inntil videre i favicon, appikon og e-post.
 
+Etter red-team-gjennomgangen (NAVIARCARE001_REDTEAM v0.1, 24.08.2026) er
+webglåsen revidert: **ordmerket alene** i topp og bunn – dobbel N (RT-01)
+er ute av sidene, og CARE er sporet ut til nøyaktig samme bredde som
+NAVIAR (RT-03, løsning A – samme regel som den gamle stående låsen).
+Symbolet ligger som egen fil `naviar-mark-v04.svg` til avatar-/
+favicon-bruk, med samme forbehold som varden: diamanten dør først ved
+små størrelser (RT-04) – ikke bruk den under ca. 24 px uten egen kutt.
+A/B-testen for SELVE registreringsmerket (RT-01/RT-03) er eierens
+prosess og gjøres ikke her.
+
+Innleveringskopien må hete noe kort – EX-25-12 setter ifølge
+gjennomgangen en grense på 25 tegn for vedleggsnavn (f.eks.
+`NAVIARCARE_FIG_v01.jpg`). Ikke etterprøvd herfra: euipo.europa.eu er
+blokkert av proxyen.
+
 Status for varemerket: EUIPO-FORMAT CANDIDATE PASS / FILING HOLD –
 likhetssøk (TMview, Patentstyret, WIPO), klasser og søkereierskap gjenstår.
