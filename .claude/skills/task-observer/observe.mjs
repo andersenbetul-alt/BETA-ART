@@ -24,3 +24,23 @@ if (existsSync(f)) {
 } else {
   console.log(`  ${f} yok — bulgu takibi kurulmamis`);
 }
+
+// Dogrulama. Iddiadan once burasi calisir; "gecti" demek icin cikis kodu 0 olmali.
+const run = (cmd) => {
+  try { execSync(cmd, { cwd: 'web', stdio: 'pipe' }); return 'gecti'; }
+  catch { return 'KALDI'; }
+};
+
+console.log('\n  dogrulama');
+for (const [ad, cmd] of [
+  ['typecheck', 'npm run typecheck'],
+  ['test     ', 'npm test'],
+  ['build    ', 'npm run build'],
+]) console.log(`    ${ad}   ${run(cmd)}`);
+
+// Duman testi ayakta bir sunucu ister. Sunucu yoksa "KALDI" demek yaniltici olur.
+const PORT = process.env.COBBAN_SMOKE_PORT ?? '3111';
+const up = sh(`curl -s -o /dev/null -w '%{http_code}' --max-time 3 http://localhost:${PORT}/`);
+console.log(`    smoke       ${up === '200'
+  ? run(`npm run smoke -- http://localhost:${PORT}`)
+  : `atlandi (localhost:${PORT} ayakta degil)`}`);

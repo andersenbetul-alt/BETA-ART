@@ -17,8 +17,11 @@ her tur kendi içinde başarılı görünüyor. Gözlemci bunu görünür kılar
 ## Nasıl çalıştırılır
 
 ```bash
-node .claude/skills/task-observer/observe.mjs
+node .claude/skills/task-observer/observe.mjs   # depo kokunden
 ```
+
+Duman testi ayakta bir sunucu ister; yoksa "KALDI" yerine "atlandi" der,
+cunku kapali sunucu bir bulgu degil. Baska port icin `COBBAN_SMOKE_PORT`.
 
 Çıktı üç şey söyler:
 

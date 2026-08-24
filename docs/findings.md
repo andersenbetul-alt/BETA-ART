@@ -64,6 +64,17 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
       sayılıyordu, çünkü next/og'un varsayılan yazı tipinde kalın kesim yok.
       "C" harf yerine SVG yayı olarak çiziliyor; kalınlık artık bizim elimizde.
 
+- [ ] **`/favicon.ico` 404 veriyor.** `app/favicon.ico` görselleri koda çevirirken
+      silindi, o yolu karşılayan bir şey konmadı. Ölçüm: `curl -o /dev/null -w
+      '%{http_code}' localhost:3111/favicon.ico` → **404**; aynı yol
+      `b05e274`'te 200 idi (`git ls-tree b05e274 web/app/` → `favicon.ico`).
+      Tarayıcılar `<link rel="icon">` kullandığı için sekme ikonu bozulmuyor
+      (gerçek tarayıcıda doğrulandı: 512×512 çözülüyor), ama `/favicon.ico`'yu
+      doğrudan isteyen istemciler — bazı bağlantı önizleyiciler, RSS okuyucular —
+      artık boş dönüyor. Bağlantı paylaşımı bu ürünün dağıtım kanalı olduğu için
+      önemli. Kapanma ölçütü: o yol 200 döndürecek ve depoda ikili dosya
+      kalmayacak (örn. `/icon`'a yönlendiren `app/favicon.ico/route.ts`).
+
 
 - [ ] **`brand.json` ürünle çelişiyor.** Slogan hâlâ *"Nordic simplicity,
       handpicked quality"*, birincil alan adı `cobban.com` (başkasında).
