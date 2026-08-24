@@ -1,0 +1,21 @@
+# Beta Art — how to report a security problem.
+# RFC 9116. Plain text on purpose: this file is read by scanners and by people.
+
+Contact: mailto:hallo@beta-art.com
+Expires: 2027-08-24T00:00:00.000Z
+Preferred-Languages: en, no, tr
+Canonical: https://start.beta-art.com/.well-known/security.txt
+Policy: https://start.beta-art.com/legal.html
+
+# If you have found a vulnerability, a way to reach data that should not be
+# reachable, or a page that discloses something it should not, write to the
+# address above. Say what you found and how to reproduce it. You will get a
+# reply from a person.
+#
+# This site is static: no database, no login, no user accounts, and no
+# server-side code. There is nothing here to log into. The likeliest real
+# findings are a misconfigured header, a leaked file that should not have
+# been published, or a link that discloses something private.
+#
+# Please do not run automated scans that generate load. There is nobody on
+# call, and the site cannot pay for the bandwidth.
