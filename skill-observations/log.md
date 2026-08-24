@@ -235,3 +235,144 @@ writes down: never hand-edit generated *output* without editing the generator.
 A builder that has drifted from the site is a landmine that goes off the next
 time anyone runs it, and it goes off silently because the builder is working
 exactly as written.
+
+---
+
+## 2026-08-24
+
+### Observation 8: Consent given under my own wrong description is not consent
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Preparing to put the site live; the branch carrying it was
+not the repository's default branch.
+**Skill:** Any workflow that overwrites, force-pushes, deletes or migrates
+**Type:** internal
+**Phase/Area:** Destructive operations / obtaining approval
+
+**Issue:** Early in the session I read `origin/main` and reported it held two
+files, README.md and SECURITY.md. On that basis I offered the owner three
+options and they chose "push the site to main". I had their explicit approval.
+
+Before acting I fetched again. `main` had moved — and it held **QBLOGG**: a
+different live project, 278 files, 123 commits, last commit the previous day,
+**no common ancestor** with the branch I was about to push. Pushing would have
+destroyed the main branch of a project that was not mine to touch.
+
+Two failures compounded. The first was staleness: I read the branch once and
+treated that reading as durable. The second is worse — **the owner's approval
+was manufactured by my own incorrect description.** They did not approve
+overwriting QBLOGG; they approved overwriting a two-file stub, because that is
+what I told them was there. An approval is only as good as the facts it was
+given, and I supplied those facts.
+
+**Suggested improvement:** Before a destructive act, re-read the target in the
+same turn as the act — never rely on a reading from earlier in the session. And
+when approval was granted on the strength of something *you* described, treat
+your description as part of what must be re-verified, not as settled ground.
+
+**Principle:** "Look at the target before overwriting it" is usually taught as
+protection against ignorance. The sharper case is protection against your own
+earlier confidence: the more specific the description you gave, the more
+completely the other person delegated the checking to you.
+
+### Observation 9: A scan that measures markup reports defects a reader cannot see
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** An SEO scan across 102 pages, checking title and
+description length.
+**Skill:** Any audit or measurement tool
+**Type:** internal
+**Phase/Area:** Building measuring instruments
+
+**Issue:** The scan flagged two journal titles as over the 65-character limit.
+They were not. Both contain `&mdash;`, which is seven characters in the source
+and one character on the screen. Rendered, they are 60 and 61 — comfortably
+inside the band. I had been about to "fix" two correct titles.
+
+The same shape appeared twice more in one session. The logo lockups shipped on a
+720-wide canvas when the artwork ended at 364, because the width was assumed
+rather than measured from the rendered output — a quarter of every file was
+empty, which throws alignment off wherever the asset is placed. And earlier,
+`viewportSize` instead of `viewport` meant two "different widths" were both
+measured at 1280 (observation 4).
+
+Three different bugs, one family: **the instrument measured a representation
+rather than the thing.**
+
+**Suggested improvement:** Decide explicitly which representation a measurement
+is about — source, rendered, or as-shipped — and convert before comparing.
+Where the artifact is visual, measure the rendered pixels, not the code that
+produced them.
+
+**Principle:** A measuring instrument that is wrong is worse than none, because
+its output is specific, numeric and confident. Before acting on a finding,
+check that the number describes what a person would experience.
+
+### Observation 10: A gate that fails on documentation teaches people to skip the run
+
+**Status:** ACTIONED (2026-08-24) — `check_generator_hosts` now reads Python as
+string literals via `ast`, so comments and docstrings cannot trip it.
+**Date:** 2026-08-24
+**Session context:** Verifying the host gate written earlier the same day.
+**Skill:** Gate and linter design
+**Type:** internal
+**Phase/Area:** Writing new gates
+
+**Issue:** The gate scanned generators line by line for hosts the site no longer
+serves. Probing it, I put an old host inside a **comment** — a note recording
+where a property used to live — and the gate failed the build, claiming the file
+"writes" it. A comment writes nothing.
+
+The consequence is worse than a stray failure: documenting the host migration
+would have failed the gate that exists *because* of the host migration. `qc.py`
+already says why that matters in its own docstring — a gate that cannot go green
+is not a gate, it is noise that teaches everyone to skip the whole run.
+
+Notably, the gate had passed its own verification. I had proved it catches the
+bug; I had not asked what else it catches.
+
+**Suggested improvement:** After proving a new gate fires on the defect, spend
+the same effort proving it stays quiet on the legitimate cases nearest to that
+defect — especially comments, docstrings, test fixtures and historical notes.
+
+**Principle:** A gate is defined by both halves: what it fails, and what it lets
+through. Only testing the first half ships a gate that is right about the bug
+and wrong about the codebase.
+
+### Observation 11: The translation reached the body and stopped at the head
+
+**Status:** ACTIONED (2026-08-24) — `check_translated_meta` in `tools/qc.py`
+fails a Norwegian page whose description matches its English counterpart.
+**Date:** 2026-08-24
+**Session context:** An SEO scan turned up three duplicate titles.
+**Skill:** i18n / generated multilingual pages
+**Type:** internal
+**Phase/Area:** Translation pipelines
+
+**Issue:** The Norwegian hub and the Norwegian journal shipped with the English
+`<title>` and the English `<meta name="description">` — the only two strings a
+search result displays, on the two pages built specifically to be found in
+Norwegian. The entire reason those URLs exist was defeated at the head of the
+document while the body was perfectly translated.
+
+The cause generalises: the generators swap the text of elements carrying a
+`data-i18n` key, and `<title>` and `<meta>` carry no such key, so the swap
+silently never reached them. Nothing failed — the pages were valid, indexable
+and wrong.
+
+One of the three duplicates was **not** a defect: `s-chatbot.html` is "Chatbot"
+in both languages because that is the Norwegian word, and hreflang already tells
+a search engine those are language variants. The gate therefore checks the
+description, not the title — a full sentence identical in two languages is
+always an untranslated string, while a one-word title legitimately can be.
+
+**Suggested improvement:** When a translation mechanism keys off a marker,
+enumerate what carries no marker — `<title>`, `<meta>`, `alt`, `aria-label`,
+`og:*`, JSON-LD — and either give them keys or handle them explicitly.
+
+**Principle:** A translation pipeline covers exactly what it can see. The
+untranslated remainder is not random: it is whatever the mechanism has no
+handle on, which is reliably the metadata a reader never looks at directly and a
+search engine looks at first.
