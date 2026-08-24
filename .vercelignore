@@ -1,0 +1,22 @@
+# Vercel legger ut hele repoet. Nettstedet er bare HTML, CSS, JS og bilder –
+# resten hører ikke hjemme på en offentlig vert. robots.txt stopper søkemotorer,
+# ikke noen som skriver adressen rett inn.
+#
+# Uten denne fila ville blant annet observasjonsloggen, den juridiske
+# grensevurderingen, databaseskjemaet og testene ligget åpent.
+
+docs/
+tests/
+verktoy/
+sql/
+design/
+.agents/
+.claude/
+skill-observations/
+
+CLAUDE.md
+ONBOARDING.md
+README.md
+package.json
+package-lock.json
+skills-lock.json
