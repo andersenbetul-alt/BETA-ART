@@ -14,7 +14,7 @@ bn, ru, ur, no, tr), pre-rendered one directory per language, with its own build
 its own verification suite, a documented design system, an icon and mark system
 generated from code, and a written record of every factual and brand decision.
 
-Live at **hxi-preview.vercel.app**; wired for **hximusic.com** (DNS apex record
+Live at **hximusic.vercel.app**; wired for **hximusic.com** (DNS apex record
 already resolving to the host — see "Handover steps" below).
 
 ## Document register
@@ -55,14 +55,12 @@ already resolving to the host — see "Handover steps" below).
 - Third-party requests on page load — zero, in all twelve languages
 - Structured data — 39 JSON-LD blocks across 27 pages, all parse; FAQPage in every language
 
-## Handover steps (the three clicks that remain)
+## Handover steps (the two clicks that remain)
 
-1. **Attach the domain**: Vercel → project `hxi-preview` → Settings → Domains →
+1. **Attach the domain**: Vercel → project `hximusic` → Settings → Domains →
    add `hximusic.com`. The DNS apex record already resolves to the host; this is
    the click that puts the site on its own address.
-2. **Promote the newest deployment** (Deployments → topmost → Promote to
-   Production) so the font cache headers ship.
-3. Optional tidy-up: add the `www` CNAME at the registrar
+2. Optional tidy-up: add the `www` CNAME at the registrar
    (`cname.vercel-dns.com`, trailing dot if the panel insists), and delete the
    leftover clock-app branch on GitHub.
 
