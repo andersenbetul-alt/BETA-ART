@@ -222,3 +222,18 @@ mangler når ingen av dem finnes.
 
 **Principle:** En ferdighet som forutsetter lokal git-tilstand må lese den, ikke
 anta den. En fersk klone har færre referanser enn en arbeidskopi.
+
+### Observation 10: Blueprint-dumper trenger triage-dokument, ikke motstand eller lydighet
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Eieren limte inn en komplett markedsplass-blueprint i fem meldinger og ba om at den utvikles, i strid med prosjektets dokumenterte modellvalg
+**Skill:** New skill candidate: forretningsmodell-triage
+**Type:** open-source
+**Phase/Area:** Håndtering av store visjonsdokumenter som kolliderer med etablerte beslutninger
+
+**Issue:** Fristelsen står mellom to feil: bygge det som bes om (og undergrave en dokumentert juridisk grense) eller avvise (og miste alt det gode i dokumentet). Det som virket: dele dokumentet i tre bunker — modellnøytralt (bygges nå), modellavhengig (én navngitt beslutning med alternativer og priser), aldri (de faste grensene) — og vise at ~80 % av visjonen overlever i alle utfall.
+
+**Suggested improvement:** Regel for slike situasjoner: verifiser påstandene med primærkilder først, finn den ene bærende beslutningen, og lever et triage-dokument der eierens beslutning er et navngitt valg med kostnader — ikke et ja/nei til hele visjonen.
+
+**Principle:** Et visjonsdokument som kolliderer med en etablert grense behandles som råvare, ikke som ordre eller trussel: sorter det etter hva som er uavhengig av konflikten, og gjør konflikten til én eksplisitt beslutning med prislapp.
