@@ -387,3 +387,43 @@ enumerate what carries no marker — `<title>`, `<meta>`, `alt`, `aria-label`,
 untranslated remainder is not random: it is whatever the mechanism has no
 handle on, which is reliably the metadata a reader never looks at directly and a
 search engine looks at first.
+
+### Observation 12: Thirty-nine throwaway harnesses, one missing tool
+
+**Status:** ACTIONED (2026-08-24) — became `tools/shoot.js`, which caches the
+webfonts once and serves them to the page by route interception.
+**Date:** 2026-08-24
+**Session context:** Asked whether the project needed another skill, I counted
+what I had actually written instead of guessing.
+**Skill:** Any repeated-scaffolding workflow
+**Type:** internal
+**Phase/Area:** Noticing a missing tool
+
+**Issue:** In one session: **39 throwaway Playwright scripts**, and the same
+font-interception boilerplate typed out from scratch **10 separate times**.
+
+Every one existed because of a single environment fact — Chromium here cannot
+CONNECT to `fonts.googleapis.com`, so a page rendered straight from the browser
+measures Georgia and Arial instead of Fraunces and Inter, and every number
+taken that way is quietly wrong. `render-check.js` handles it by blocking fonts
+and saying so, which is right for a gate and wrong for anything you intend to
+look at or quote.
+
+The tell was not that any single script was bad. Each was fine and took two
+minutes. The tell is the **count**, and the count was invisible until somebody
+asked a question that made counting the obvious answer. Ten repetitions of the
+same twelve lines is a missing tool, and it had been missing all session while
+being worked around cheerfully every time.
+
+Worth recording: `curl` reaches `fonts.googleapis.com` fine — only the
+browser's tunnel is refused. The workaround had been treated as a fixed
+constraint rather than a thing with a boundary worth probing.
+
+**Suggested improvement:** When the same scaffolding is written a third time,
+stop and build it. Count rather than estimate: "I keep doing this" is a feeling,
+"ten times in one session" is a decision.
+
+**Principle:** The strongest signal that a tool is missing is not friction —
+each individual instance was frictionless — but repetition. Friction gets
+noticed and fixed; cheap repetition is invisible until counted, and it is
+where most of the waste lives.
