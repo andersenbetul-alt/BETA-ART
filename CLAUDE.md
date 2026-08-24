@@ -42,14 +42,22 @@ which is the point: this skill's whole value is memory between sessions.
 
 ## Established facts
 
-- The repository is a scaffold. As of 2026-08-20 it contains only markdown —
-  no source directories, no package manifest, no CI, no tests.
-- The navbar is **not started**. Nothing in the working tree or in git history
-  implements it.
+- The navbar is **built** (`src/`), audited against three independent design
+  rulebooks, and covered by 11 behavioural tests. `npm run check` builds and
+  tests it.
+- One known defect is open: the skip link does not move focus, because
+  `<main>` has no `tabindex="-1"`. Found by running the page, not by the
+  tests — the test asserts only that the target element exists.
+- An authentication schema exists (`supabase/migrations/`) with RLS verified
+  against local PostgreSQL. **Nothing is deployed**; no Supabase project
+  exists.
 - "Cobban" appears only in the branch name `claude/navbar-beta-art-cobban-6t07ru`.
   It is in no file, and its meaning is not established (see D-004).
-- Two decisions block all navbar work: **D-002** (technology stack) and
-  **D-003** (site page list, which determines the nav links).
+- D-002 and D-003 are decided. **D-006 supersedes part of D-002:** the site is
+  no longer purely static, though the pages remain static HTML/CSS talking to
+  Supabase from the browser.
+- Nothing has ever been pushed. GitHub access for this repo is read-only (403
+  on every attempt), so all work lives in local commits.
 
 ## Conventions
 
@@ -65,19 +73,23 @@ which is the point: this skill's whole value is memory between sessions.
 
 ## Open questions (carry these into the next session)
 
-1. Which stack — static HTML/CSS, React, or Next.js? (D-002)
-2. What pages will the site have, i.e. what does the navbar link to? (D-003)
-3. What is "Cobban" — brand, theme, collection, or person? (D-004)
-4. Is there a design to match, or is the visual design originated here? (D-005)
+1. What is "Cobban" — brand, theme, collection, or person? (D-004) This also
+   blocks `BUSINESS.md`, since the revenue model turns on what is being sold.
+2. Is there a design to match, or is the visual design originated here? (D-005)
+3. Typeface: the current `system-ui` stack was flagged as generic for an art
+   site. A distinctive face is a brand decision, not a technical one.
+4. Do the pages the navbar links to exist? `/work`, `/about`, `/contact` all
+   404 — only `/` is built.
 
 ## When picking work up again
 
-1. Read this file, then `STATUS.md` for state and `DECISIONS.md` for open
-   choices.
-2. If D-002 and D-003 are still open, they are the work — the navbar cannot
-   be built before them.
-3. Once they are answered: scaffold the stack, build the navbar, then update
-   `STATUS.md` and `PROGRESS.md` in the same commit.
+1. Read this file, then `STATUS.md` for state, `DECISIONS.md` for open
+   choices, and `skill-observations/log.md` for OPEN observations.
+2. The smallest useful next step is the skip-link fix (`tabindex="-1"` on
+   `<main>`) **together with** a test that asserts focus actually moves — the
+   existing test passes on the broken behaviour.
+3. After that: build the pages the navbar links to, or answer D-004.
+4. Update `STATUS.md` and `PROGRESS.md` in the same commit as the work.
 
 ---
 
