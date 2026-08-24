@@ -33,8 +33,8 @@
         <div class="field">
           <label for="epost">E-postadressen din</label>
           <input type="email" id="epost" name="epost" inputmode="email" autocomplete="email"
-                 placeholder="deg@firmaet.no" required>
-          <p class="error-text" data-error-for="epost">Skriv inn en gyldig e-postadresse.</p>
+                 placeholder="deg@firmaet.no" required aria-describedby="feil-epost">
+          <p class="error-text" id="feil-epost" role="alert" data-error-for="epost">Skriv inn en gyldig e-postadresse.</p>
         </div>
         <button class="btn btn-primary" type="submit" style="width:100%">Send innloggingslenke</button>
       </form>

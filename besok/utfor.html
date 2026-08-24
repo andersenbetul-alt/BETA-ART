@@ -70,9 +70,9 @@
 
     <div class="field" style="margin-bottom:12px">
       <label for="kommentar" style="font-size:1.02rem">Kort melding <span class="optional">(valgfritt)</span></label>
-      <textarea id="kommentar" maxlength="140" placeholder="F.eks. «Varene er satt på plass.»" style="min-height:80px"></textarea>
+      <textarea id="kommentar" maxlength="140" placeholder="F.eks. «Varene er satt på plass.»" style="min-height:80px" aria-describedby="feil-kommentar"></textarea>
       <p class="hint">Skriv hva du gjorde. Ikke hvordan personen har det.</p>
-      <p class="error-text" data-error-for="kommentar">Denne meldingen kan ikke lagres.</p>
+      <p class="error-text" id="feil-kommentar" role="alert" data-error-for="kommentar">Denne meldingen kan ikke lagres.</p>
       <p class="b-helsevarsel" style="margin-top:6px">
         Ikke skriv om helse, medisiner eller hvordan hun har det. Skriv om oppgaven.
         Er du bekymret, velg <strong>Kontoret bør ringe</strong> i stedet.

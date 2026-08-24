@@ -2270,4 +2270,41 @@ t.test('siden lover ikke en samtale på språket', function () {
   });
 });
 
+/* En feilmelding som bare vises, finnes ikke for den som ikke ser skjermen.
+   Sperra i PP_VERN er den viktigste av dem: den forteller hva man skal skrive
+   i stedet, og en sperre uten alternativ blir omgått. */
+t.gruppe('Feilmeldinger nås av skjermleser');
+
+(function () {
+  var fs = require('fs');
+  var path = require('path');
+  var ROT = path.join(__dirname, '..');
+  var SIDER = ['bli-hjelper.html', 'besok/bli-medarbeider.html',
+               'besok/logg-inn.html', 'besok/nytt.html', 'besok/utfor.html'];
+
+  SIDER.forEach(function (side) {
+    var html = fs.readFileSync(path.join(ROT, side), 'utf8');
+    var alle = html.match(/<p class="error-text"[^>]*>/g) || [];
+
+    t.test(side + ': alle ' + alle.length + ' feilmeldinger har role="alert"', function () {
+      var uten = alle.filter(function (tag) { return tag.indexOf('role="alert"') === -1; });
+      t.erLik(uten.length, 0, uten.join(' '));
+    });
+
+    t.test(side + ': feltet peker på meldinga si', function () {
+      var navn = (html.match(/data-error-for="([^"]+)"/g) || [])
+        .map(function (m) { return m.slice(16, -1); });
+      var mangler = navn.filter(function (n) {
+        /* Bare kontroller som finnes som ett felt. Grupper av avkrysningsbokser
+           har ingen enkelt kontroll å peke fra, og bæres av role="alert". */
+        var kontroll = new RegExp('<(?:input|textarea|select)[^>]*\\bid="' + n + '"[^>]*>');
+        var m = html.match(kontroll);
+        if (!m) return false;
+        return m[0].indexOf('aria-describedby="feil-' + n + '"') === -1;
+      });
+      t.erLik(mangler.length, 0, mangler.join(', '));
+    });
+  });
+})();
+
 t.oppsummer('Enhetstester');

@@ -39,34 +39,34 @@
         <div class="field">
           <label for="kunde">Kunde <span class="req">*</span></label>
           <span class="hint">Fornavn eller kundenummer. Vi ber ikke om etternavn eller adresse.</span>
-          <input type="text" id="kunde" name="kunde" placeholder="Ingrid – eller K-2481" required>
-          <p class="error-text" data-error-for="kunde">Fyll inn fornavn eller kundenummer.</p>
+          <input type="text" id="kunde" name="kunde" placeholder="Ingrid – eller K-2481" required aria-describedby="feil-kunde">
+          <p class="error-text" id="feil-kunde" role="alert" data-error-for="kunde">Fyll inn fornavn eller kundenummer.</p>
         </div>
 
         <div class="field">
           <span class="field-label">Oppgaver <span class="req">*</span></span>
           <span class="hint">Faste kategorier. Helseoppgaver finnes ikke i listen, og skal ikke utføres.</span>
           <div class="option-grid" id="oppgaveliste"></div>
-          <p class="error-text" data-error-for="oppgaver">Velg minst én oppgave.</p>
+          <p class="error-text" id="feil-oppgaver" role="alert" data-error-for="oppgaver">Velg minst én oppgave.</p>
         </div>
 
         <div class="row-2">
           <div class="field">
             <label for="dato">Dato <span class="req">*</span></label>
-            <input type="date" id="dato" name="dato" required>
-            <p class="error-text" data-error-for="dato">Velg dato.</p>
+            <input type="date" id="dato" name="dato" required aria-describedby="feil-dato">
+            <p class="error-text" id="feil-dato" role="alert" data-error-for="dato">Velg dato.</p>
           </div>
           <div class="field">
             <label for="tid">Klokkeslett <span class="req">*</span></label>
-            <input type="time" id="tid" name="tid" value="14:00" required>
-            <p class="error-text" data-error-for="tid">Velg klokkeslett.</p>
+            <input type="time" id="tid" name="tid" value="14:00" required aria-describedby="feil-tid">
+            <p class="error-text" id="feil-tid" role="alert" data-error-for="tid">Velg klokkeslett.</p>
           </div>
         </div>
 
         <div class="field">
           <label for="ansatt">Hvem utfører besøket? <span class="req">*</span></label>
-          <select id="ansatt" name="ansatt" required></select>
-          <p class="error-text" data-error-for="ansatt">Velg en ansatt.</p>
+          <select id="ansatt" name="ansatt" required aria-describedby="feil-ansatt"></select>
+          <p class="error-text" id="feil-ansatt" role="alert" data-error-for="ansatt">Velg en ansatt.</p>
         </div>
 
         <div class="field">
@@ -74,15 +74,15 @@
           <span class="hint">
             E-postadresse. De trenger ingen konto. Kunden må ha sagt ja til at denne personen får beskjed.
           </span>
-          <input type="email" id="parorende" name="parorende" inputmode="email" placeholder="anne@example.no">
-          <p class="error-text" data-error-for="parorende">Skriv inn en gyldig e-postadresse, eller la feltet stå tomt.</p>
+          <input type="email" id="parorende" name="parorende" inputmode="email" placeholder="anne@example.no" aria-describedby="feil-parorende">
+          <p class="error-text" id="feil-parorende" role="alert" data-error-for="parorende">Skriv inn en gyldig e-postadresse, eller la feltet stå tomt.</p>
         </div>
 
         <div class="field">
           <label for="notat">Beskjed til arbeideren <span class="optional">(valgfritt)</span></label>
-          <textarea id="notat" name="notat" maxlength="200" placeholder="F.eks. «Ring på hos naboen hvis hun ikke åpner.»"></textarea>
+          <textarea id="notat" name="notat" maxlength="200" placeholder="F.eks. «Ring på hos naboen hvis hun ikke åpner.»" aria-describedby="feil-notat"></textarea>
           <p class="hint">Praktiske beskjeder. Ikke helseopplysninger, og aldri kontonummer eller koder.</p>
-          <p class="error-text" data-error-for="notat">Denne beskjeden kan ikke lagres.</p>
+          <p class="error-text" id="feil-notat" role="alert" data-error-for="notat">Denne beskjeden kan ikke lagres.</p>
           <p class="b-helsevarsel">
             Ikke skriv diagnoser, medisiner eller andre helseopplysninger. Trenger arbeideren slik
             informasjon, hører oppgaven ikke hjemme her.

@@ -50,39 +50,39 @@
 
         <div class="field">
           <label for="fornavn">Fornavn <span class="req">*</span></label>
-          <input type="text" id="fornavn" name="fornavn" autocomplete="given-name" required>
-          <p class="error-text" data-error-for="fornavn">Fyll inn fornavn.</p>
+          <input type="text" id="fornavn" name="fornavn" autocomplete="given-name" required aria-describedby="feil-fornavn">
+          <p class="error-text" id="feil-fornavn" role="alert" data-error-for="fornavn">Fyll inn fornavn.</p>
         </div>
 
         <div class="field">
           <label for="etternavn">Etternavn <span class="req">*</span></label>
-          <input type="text" id="etternavn" name="etternavn" autocomplete="family-name" required>
-          <p class="error-text" data-error-for="etternavn">Fyll inn etternavn.</p>
+          <input type="text" id="etternavn" name="etternavn" autocomplete="family-name" required aria-describedby="feil-etternavn">
+          <p class="error-text" id="feil-etternavn" role="alert" data-error-for="etternavn">Fyll inn etternavn.</p>
         </div>
 
         <div class="row-2">
           <div class="field">
             <label for="telefon">Telefon <span class="req">*</span></label>
-            <input type="tel" id="telefon" name="telefon" inputmode="tel" autocomplete="tel" placeholder="900 00 000" required>
-            <p class="error-text" data-error-for="telefon">Skriv inn et norsk telefonnummer.</p>
+            <input type="tel" id="telefon" name="telefon" inputmode="tel" autocomplete="tel" placeholder="900 00 000" required aria-describedby="feil-telefon">
+            <p class="error-text" id="feil-telefon" role="alert" data-error-for="telefon">Skriv inn et norsk telefonnummer.</p>
           </div>
           <div class="field">
             <label for="epost">E-post <span class="req">*</span></label>
-            <input type="email" id="epost" name="epost" inputmode="email" autocomplete="email" required>
-            <p class="error-text" data-error-for="epost">Skriv inn en gyldig e-postadresse.</p>
+            <input type="email" id="epost" name="epost" inputmode="email" autocomplete="email" required aria-describedby="feil-epost">
+            <p class="error-text" id="feil-epost" role="alert" data-error-for="epost">Skriv inn en gyldig e-postadresse.</p>
           </div>
         </div>
 
         <div class="field">
           <label for="bydel">Bydel eller område du kan ta oppdrag i <span class="req">*</span></label>
           <span class="hint">Vi spør ikke om adressen din. Bydel er nok til å tildele oppdrag.</span>
-          <input type="text" id="bydel" name="bydel" placeholder="F.eks. Sagene" required>
-          <p class="error-text" data-error-for="bydel">Fyll inn bydel eller område.</p>
+          <input type="text" id="bydel" name="bydel" placeholder="F.eks. Sagene" required aria-describedby="feil-bydel">
+          <p class="error-text" id="feil-bydel" role="alert" data-error-for="bydel">Fyll inn bydel eller område.</p>
         </div>
 
         <div class="field">
           <label for="transport">Hvordan kommer du deg dit? <span class="req">*</span></label>
-          <select id="transport" name="transport" required>
+          <select id="transport" name="transport" required aria-describedby="feil-transport">
             <option value="">Velg</option>
             <option value="gange">Til fots</option>
             <option value="sykkel">Sykkel</option>
@@ -90,19 +90,19 @@
             <option value="bil">Egen bil</option>
           </select>
           <span class="hint">Egen bil brukes til å komme fram. Kunder kjøres aldri i medarbeiderens bil.</span>
-          <p class="error-text" data-error-for="transport">Velg ett alternativ.</p>
+          <p class="error-text" id="feil-transport" role="alert" data-error-for="transport">Velg ett alternativ.</p>
         </div>
 
         <div class="field">
           <span class="field-label">Dager du kan arbeide <span class="req">*</span></span>
           <div class="option-grid" id="dagerliste"></div>
-          <p class="error-text" data-error-for="dager">Velg minst én dag.</p>
+          <p class="error-text" id="feil-dager" role="alert" data-error-for="dager">Velg minst én dag.</p>
         </div>
 
         <div class="field">
           <span class="field-label">Tider på dagen <span class="req">*</span></span>
           <div class="option-grid" id="tiderliste"></div>
-          <p class="error-text" data-error-for="tider">Velg minst ett tidsrom.</p>
+          <p class="error-text" id="feil-tider" role="alert" data-error-for="tider">Velg minst ett tidsrom.</p>
         </div>
 
         <div class="field">
@@ -111,7 +111,7 @@
             Minstekravet er B1: du forstår klare instrukser, kan forklare et problem
             og skrive en enkel rapport. Nivået bekreftes av oss, ikke av søknaden.
           </span>
-          <select id="norsknivaa" name="norsknivaa" required>
+          <select id="norsknivaa" name="norsknivaa" required aria-describedby="feil-norsknivaa">
             <option value="">Velg</option>
             <option value="A2">A2 eller lavere</option>
             <option value="B1">B1</option>
@@ -119,7 +119,7 @@
             <option value="C1">C1 eller høyere</option>
             <option value="morsmal">Morsmål</option>
           </select>
-          <p class="error-text" data-error-for="norsknivaa">Velg ett nivå.</p>
+          <p class="error-text" id="feil-norsknivaa" role="alert" data-error-for="norsknivaa">Velg ett nivå.</p>
         </div>
 
         <div class="field">
@@ -131,12 +131,12 @@
         <div class="field">
           <label for="erfaring">Kort om erfaringen din <span class="optional">(valgfritt)</span></label>
           <textarea id="erfaring" name="erfaring" maxlength="400"
-            placeholder="F.eks. «Har hjulpet naboen min med handling og turer i to år.»"></textarea>
+            placeholder="F.eks. «Har hjulpet naboen min med handling og turer i to år.»" aria-describedby="feil-erfaring"></textarea>
           <p class="hint">
             Skriv om arbeidet, ikke om helse – verken din egen eller andres.
             Ikke skriv fødselsnummer, kontonummer eller koder.
           </p>
-          <p class="error-text" data-error-for="erfaring">Denne teksten kan ikke lagres.</p>
+          <p class="error-text" id="feil-erfaring" role="alert" data-error-for="erfaring">Denne teksten kan ikke lagres.</p>
           <p class="b-helsevarsel">
             Feltet stopper helseopplysninger før de lagres. Det er ikke mistillit til deg –
             det er den samme sperren som gjelder rapportene fra besøkene.
@@ -150,17 +150,17 @@
             Vi ringer dem, og du vet at vi gjør det. Vi lagrer konklusjonen fra
             samtalen, ikke hva som ble sagt.
           </span>
-          <input type="text" id="ref1" name="ref1" placeholder="Referanse 1 – navn, relasjon og telefon" required>
-          <p class="error-text" data-error-for="ref1">Fyll inn den første referansen.</p>
+          <input type="text" id="ref1" name="ref1" placeholder="Referanse 1 – navn, relasjon og telefon" required aria-describedby="feil-ref1">
+          <p class="error-text" id="feil-ref1" role="alert" data-error-for="ref1">Fyll inn den første referansen.</p>
           <input type="text" id="ref2" name="ref2" placeholder="Referanse 2 – navn, relasjon og telefon" required
-                 style="margin-top:10px">
-          <p class="error-text" data-error-for="ref2">Fyll inn den andre referansen.</p>
+                 style="margin-top:10px" aria-describedby="feil-ref2">
+          <p class="error-text" id="feil-ref2" role="alert" data-error-for="ref2">Fyll inn den andre referansen.</p>
         </div>
 
         <div class="field">
           <span class="field-label">Bekreftelser <span class="req">*</span></span>
           <div class="option-grid" id="bekreftelser"></div>
-          <p class="error-text" data-error-for="bekreftelser">Alle punktene må bekreftes.</p>
+          <p class="error-text" id="feil-bekreftelser" role="alert" data-error-for="bekreftelser">Alle punktene må bekreftes.</p>
         </div>
 
         <button class="btn btn-primary" type="submit" style="width:100%">Send søknaden</button>

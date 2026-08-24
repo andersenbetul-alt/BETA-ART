@@ -67,35 +67,35 @@
             <div class="row-2">
               <div class="field">
                 <label for="fornavn">Fornavn <span class="req">*</span></label>
-                <input type="text" id="fornavn" name="fornavn" autocomplete="given-name" required>
-                <p class="error-text" data-error-for="fornavn">Fyll inn fornavn.</p>
+                <input type="text" id="fornavn" name="fornavn" autocomplete="given-name" required aria-describedby="feil-fornavn">
+                <p class="error-text" id="feil-fornavn" role="alert" data-error-for="fornavn">Fyll inn fornavn.</p>
               </div>
               <div class="field">
                 <label for="etternavn">Etternavn <span class="req">*</span></label>
-                <input type="text" id="etternavn" name="etternavn" autocomplete="family-name" required>
-                <p class="error-text" data-error-for="etternavn">Fyll inn etternavn.</p>
+                <input type="text" id="etternavn" name="etternavn" autocomplete="family-name" required aria-describedby="feil-etternavn">
+                <p class="error-text" id="feil-etternavn" role="alert" data-error-for="etternavn">Fyll inn etternavn.</p>
               </div>
             </div>
 
             <div class="field">
               <label for="fodselsdato">Fødselsdato <span class="req">*</span></label>
               <span class="hint">Du må være fylt 18 år for å ta oppdrag. Vi lagrer dato, ikke fødselsnummer.</span>
-              <input type="date" id="fodselsdato" name="fodselsdato" autocomplete="bday" required>
-              <p class="error-text" data-error-for="fodselsdato">Oppgi en gyldig fødselsdato. Du må være minst 18 år.</p>
+              <input type="date" id="fodselsdato" name="fodselsdato" autocomplete="bday" required aria-describedby="feil-fodselsdato">
+              <p class="error-text" id="feil-fodselsdato" role="alert" data-error-for="fodselsdato">Oppgi en gyldig fødselsdato. Du må være minst 18 år.</p>
             </div>
 
             <div class="field">
               <label for="epost">E-post <span class="req">*</span></label>
               <span class="hint">Brukes til innlogging, kvitteringer og varsler om oppdrag.</span>
-              <input type="email" id="epost" name="epost" autocomplete="email" inputmode="email" required>
-              <p class="error-text" data-error-for="epost">Skriv inn en gyldig e-postadresse.</p>
+              <input type="email" id="epost" name="epost" autocomplete="email" inputmode="email" required aria-describedby="feil-epost">
+              <p class="error-text" id="feil-epost" role="alert" data-error-for="epost">Skriv inn en gyldig e-postadresse.</p>
             </div>
 
             <div class="field">
               <label for="telefon">Mobilnummer <span class="req">*</span></label>
               <span class="hint">Norsk mobilnummer, f.eks. +47 400 00 000. Nummeret vises ikke offentlig.</span>
-              <input type="tel" id="telefon" name="telefon" autocomplete="tel" inputmode="tel" placeholder="+47 400 00 000" required>
-              <p class="error-text" data-error-for="telefon">Skriv inn et gyldig norsk mobilnummer.</p>
+              <input type="tel" id="telefon" name="telefon" autocomplete="tel" inputmode="tel" placeholder="+47 400 00 000" required aria-describedby="feil-telefon">
+              <p class="error-text" id="feil-telefon" role="alert" data-error-for="telefon">Skriv inn et gyldig norsk mobilnummer.</p>
             </div>
 
             <div class="notice notice-info">
@@ -108,13 +108,13 @@
               <div class="field" id="otp-field" hidden style="margin-top:14px;margin-bottom:0">
                 <label for="otp">Engangskode fra SMS</label>
                 <div class="row-2">
-                  <input type="text" id="otp" name="otp" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="6 siffer">
+                  <input type="text" id="otp" name="otp" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="6 siffer" aria-describedby="feil-otp">
                   <button class="btn btn-primary" type="button" id="verify-otp">Bekreft kode</button>
                 </div>
-                <p class="error-text" data-error-for="otp">Koden stemmer ikke. Prøv igjen.</p>
+                <p class="error-text" id="feil-otp" role="alert" data-error-for="otp">Koden stemmer ikke. Prøv igjen.</p>
               </div>
             </div>
-            <p class="error-text" data-error-for="telefonVerifisert">Du må bekrefte mobilnummeret før du går videre.</p>
+            <p class="error-text" id="feil-telefonVerifisert" role="alert" data-error-for="telefonVerifisert">Du må bekrefte mobilnummeret før du går videre.</p>
           </fieldset>
 
           <!-- ============ STEG 2: STED OG REISE ============ -->
@@ -125,13 +125,13 @@
             <div class="row-2">
               <div class="field">
                 <label for="by">Sted / kommune <span class="req">*</span></label>
-                <input type="text" id="by" name="by" autocomplete="address-level2" placeholder="f.eks. Oslo" required>
-                <p class="error-text" data-error-for="by">Fyll inn sted eller kommune.</p>
+                <input type="text" id="by" name="by" autocomplete="address-level2" placeholder="f.eks. Oslo" required aria-describedby="feil-by">
+                <p class="error-text" id="feil-by" role="alert" data-error-for="by">Fyll inn sted eller kommune.</p>
               </div>
               <div class="field">
                 <label for="postnummer">Postnummer <span class="req">*</span></label>
-                <input type="text" id="postnummer" name="postnummer" inputmode="numeric" maxlength="4" autocomplete="postal-code" placeholder="0150" required>
-                <p class="error-text" data-error-for="postnummer">Postnummer består av 4 siffer.</p>
+                <input type="text" id="postnummer" name="postnummer" inputmode="numeric" maxlength="4" autocomplete="postal-code" placeholder="0150" required aria-describedby="feil-postnummer">
+                <p class="error-text" id="feil-postnummer" role="alert" data-error-for="postnummer">Postnummer består av 4 siffer.</p>
               </div>
             </div>
 
@@ -143,7 +143,7 @@
                 <label class="option"><input type="radio" name="maksAvstand" value="10"> <span class="option-text">Inntil 10 km <small>Store deler av byen</small></span></label>
                 <label class="option"><input type="radio" name="maksAvstand" value="20"> <span class="option-text">Inntil 20 km <small>Også nabokommuner</small></span></label>
               </div>
-              <p class="error-text" data-error-for="maksAvstand">Velg hvor langt du kan reise.</p>
+              <p class="error-text" id="feil-maksAvstand" role="alert" data-error-for="maksAvstand">Velg hvor langt du kan reise.</p>
             </div>
 
             <div class="field">
@@ -155,7 +155,7 @@
                 <label class="option"><input type="checkbox" name="transport" value="kollektiv"> <span class="option-text">Kollektivtransport</span></label>
                 <label class="option"><input type="checkbox" name="transport" value="bil"> <span class="option-text">Bil <small>Førerkort klasse B</small></span></label>
               </div>
-              <p class="error-text" data-error-for="transport">Velg minst ett alternativ.</p>
+              <p class="error-text" id="feil-transport" role="alert" data-error-for="transport">Velg minst ett alternativ.</p>
             </div>
 
             <div class="notice notice-privacy">
@@ -193,7 +193,7 @@
                 <label class="option"><input type="checkbox" name="dager" value="lordag"> <span class="option-text">Lørdag</span></label>
                 <label class="option"><input type="checkbox" name="dager" value="sondag"> <span class="option-text">Søndag</span></label>
               </div>
-              <p class="error-text" data-error-for="dager">Velg minst én dag.</p>
+              <p class="error-text" id="feil-dager" role="alert" data-error-for="dager">Velg minst én dag.</p>
             </div>
 
             <div class="field">
@@ -204,7 +204,7 @@
                 <label class="option"><input type="checkbox" name="tidsrom" value="ettermiddag"> <span class="option-text">Ettermiddag <small>13–17</small></span></label>
                 <label class="option"><input type="checkbox" name="tidsrom" value="kveld"> <span class="option-text">Kveld <small>17–21</small></span></label>
               </div>
-              <p class="error-text" data-error-for="tidsrom">Velg minst ett tidsrom.</p>
+              <p class="error-text" id="feil-tidsrom" role="alert" data-error-for="tidsrom">Velg minst ett tidsrom.</p>
               <p class="muted" style="margin-top:10px">Nye hjelpere får oppdrag på dagtid i prøveperioden.</p>
             </div>
 
@@ -242,7 +242,7 @@
                 <label class="option"><input type="checkbox" name="oppgaver" value="ute"> <span class="option-text">Ute og sesong <small>Snømåking, plenklipp</small></span></label>
                 <label class="option"><input type="checkbox" name="oppgaver" value="transport"> <span class="option-text">Transport i egen bil <small>Krever førerkort og forsikring</small></span></label>
               </div>
-              <p class="error-text" data-error-for="oppgaver">Velg minst én oppdragstype.</p>
+              <p class="error-text" id="feil-oppgaver" role="alert" data-error-for="oppgaver">Velg minst én oppdragstype.</p>
             </div>
 
             <div class="notice notice-warn">
@@ -361,7 +361,7 @@
                 </div>
                 <div></div>
               </div>
-              <p class="error-text" data-error-for="referanser">Fyll inn navn og telefonnummer for begge referansene.</p>
+              <p class="error-text" id="feil-referanser" role="alert" data-error-for="referanser">Fyll inn navn og telefonnummer for begge referansene.</p>
             </div>
 
             <div class="field">
@@ -375,13 +375,13 @@
                 <label class="option"><input type="radio" name="utbetaling" value="privat" required> <span class="option-text">Privatperson <small>Utbetaling til egen konto</small></span></label>
                 <label class="option"><input type="radio" name="utbetaling" value="foretak"> <span class="option-text">Enkeltpersonforetak / AS <small>Fakturerer med organisasjonsnummer</small></span></label>
               </div>
-              <p class="error-text" data-error-for="utbetaling">Velg hvordan du skal få betalt.</p>
+              <p class="error-text" id="feil-utbetaling" role="alert" data-error-for="utbetaling">Velg hvordan du skal få betalt.</p>
             </div>
 
             <div class="field" id="orgnr-field" hidden>
               <label for="orgnummer">Organisasjonsnummer</label>
-              <input type="text" id="orgnummer" name="orgnummer" inputmode="numeric" maxlength="9" placeholder="9 siffer">
-              <p class="error-text" data-error-for="orgnummer">Organisasjonsnummer består av 9 siffer.</p>
+              <input type="text" id="orgnummer" name="orgnummer" inputmode="numeric" maxlength="9" placeholder="9 siffer" aria-describedby="feil-orgnummer">
+              <p class="error-text" id="feil-orgnummer" role="alert" data-error-for="orgnummer">Organisasjonsnummer består av 9 siffer.</p>
             </div>
 
             <div class="notice notice-warn">
@@ -443,7 +443,7 @@
               </p>
             </div>
 
-            <p class="error-text" data-error-for="samtykker" style="margin-top:8px">Du må godta vilkårene, personvernerklæringen og referansesjekken.</p>
+            <p class="error-text" id="feil-samtykker" role="alert" data-error-for="samtykker" style="margin-top:8px">Du må godta vilkårene, personvernerklæringen og referansesjekken.</p>
           </fieldset>
 
           <!-- ============ KVITTERING ============ -->
