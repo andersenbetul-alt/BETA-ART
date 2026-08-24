@@ -34,6 +34,7 @@ They run from this directory and write straight into the property folders.
 | `build_journal.py` | The journal essays, and rewrites the index links to match |
 | `build404.py` | A 404 page for each of the four properties |
 | `build_code_doc.py` | `docs/20-kod.md` — the code, read off the tree rather than retold |
+| `build_on_brand.py` | The `/on-brand` skill's token reference, read off the four `:root` blocks |
 | `apply_hub*.py` | One-time patches to the hub, kept so the change is readable |
 
 ## After running any of them
