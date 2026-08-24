@@ -3,7 +3,13 @@
 
    Motoren er bevisst forklarbar: hver score kommer med begrunnelse, og hvert
    oppdrag en hjelper IKKE får se, kommer med en grunn. Et oppdrag som stenges
-   ute skal kunne besvares med et svar, ikke med taushet. */
+   ute skal kunne besvares med et svar, ikke med taushet.
+
+   Motoren vet ikke hvem som er arbeidsgiver. Den rangerer lista den får, og
+   hvem som står i lista – leverandørens ansatte, egne ansatte eller begge –
+   er konfigurasjon, ikke motorlogikk (docs/FORRETNINGSMODELL.md kap. 6).
+   Motoren tar heller ingen avgjørelser med store følger: den foreslår og
+   begrunner; suspensjon og avvisning av personer hører hjemme hos mennesker. */
 
 (function (global) {
   'use strict';
@@ -12,6 +18,14 @@
      Dette er filtre, ikke poeng. Et oppdrag som bryter et av dem, tilbys aldri. */
 
   var KRAV = [
+    {
+      id: 'rodkategori',
+      /* Rød kategori (helsehjelp, penger, alt med autorisasjonskrav) formidles
+         ikke her – uansett tillitsnivå, uansett modell. Sperren ligger også i
+         katalogen, men motoren skal stå imot et oppdrag som likevel kommer. */
+      test: function (h, o) { return o.risiko !== 'rod'; },
+      grunn: function () { return 'Dette oppdraget krever autorisert fagperson og formidles ikke i denne tjenesten.'; }
+    },
     {
       id: 'tilgjengelig',
       test: function (h) { return h.tilgjengelig === true; },
@@ -151,10 +165,13 @@
    */
   function tilbudsbolger(oppdrag, hjelpere) {
     var rangert = rangerHjelpere(oppdrag, hjelpere);
+    /* Ventetiden er hvor lenge en bølge har oppdraget for seg selv før neste
+       slippes til. Kontinuitet får forkjørsrett, men kunden skal ikke vente
+       lenge på et nei. */
     var bolger = [
-      { navn: 'Fast hjelper', hjelpere: [] },
-      { navn: 'Familiens krets', hjelpere: [] },
-      { navn: 'Verifiserte hjelpere i nærheten', hjelpere: [] }
+      { navn: 'Fast hjelper', ventetidSek: 60, hjelpere: [] },
+      { navn: 'Familiens krets', ventetidSek: 90, hjelpere: [] },
+      { navn: 'Verifiserte hjelpere i nærheten', ventetidSek: 120, hjelpere: [] }
     ];
     rangert.forEach(function (r) {
       if (oppdrag.fastHjelperId === r.hjelper.id) bolger[0].hjelpere.push(r);

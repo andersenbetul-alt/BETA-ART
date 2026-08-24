@@ -130,6 +130,22 @@ t.test('tidsrom hjelperen ikke er ledig i, sperres', function () {
   t.erLik(r.sperre.id, 'tidsrom');
 });
 
+t.test('rød kategori tilbys aldri – heller ikke til den mest betrodde', function () {
+  // Sperren i katalogen er første forsvar; motoren skal stå imot et rødt
+  // oppdrag som likevel kommer. Uansett tillitsnivå, uansett relasjon.
+  var best = nyHjelper({ tillitsniva: 5, tillitsscore: 100 });
+  var r = M.vurder(best, nyttOppdrag({ risiko: 'rod' }));
+  t.erUsann(r.aktuell);
+  t.erLik(r.sperre.id, 'rodkategori');
+  t.erSann(r.sperre.grunn.indexOf('autorisert') !== -1, 'grunn: ' + r.sperre.grunn);
+});
+
+t.test('rødkategori-sperren står først, foran alle andre krav', function () {
+  // Er oppdraget rødt, skal svaret være rødt – ikke «du er utilgjengelig».
+  var r = M.vurder(nyHjelper({ tilgjengelig: false }), nyttOppdrag({ risiko: 'rod' }));
+  t.erLik(r.sperre.id, 'rodkategori');
+});
+
 t.test('prøveperiode stenger oppdrag med høyere risiko', function () {
   var r = M.vurder(nyHjelper({ iProveperiode: true }), nyttOppdrag({ risiko: 'middels' }));
   t.erUsann(r.aktuell);
@@ -143,6 +159,20 @@ t.test('hvert sperret oppdrag har en lesbar begrunnelse', function () {
 });
 
 t.gruppe('Matching – rangering');
+
+t.test('hver tilbudsbølge bærer sin egen ventetid', function () {
+  // Kontinuitet får forkjørsrett, men kunden skal ikke vente lenge på et nei.
+  var h1 = nyHjelper({ id: 'fast' });
+  var h2 = nyHjelper({ id: 'annen' });
+  var o = nyttOppdrag({ fastHjelperId: 'fast' });
+  var bolger = M.tilbudsbolger(o, [h1, h2]);
+  t.erSann(bolger.length >= 2, 'to bølger: ' + bolger.length);
+  bolger.forEach(function (b) {
+    t.erSann(b.ventetidSek > 0, b.navn + ' mangler ventetid');
+  });
+  t.erLik(bolger[0].navn, 'Fast hjelper');
+});
+
 
 t.test('tidligere relasjon slår kortere avstand', function () {
   var oppdrag = nyttOppdrag({ tidligereOppdragMedHjelper: { 'kjent': 17 } });

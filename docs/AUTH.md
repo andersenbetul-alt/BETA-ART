@@ -102,6 +102,40 @@ Legg en overvåkingsspørring ved siden av – «finnes det rader forbi et trinn
 som ikke er krympet» – som backstop. Hvis den noen gang returnerer noe, er
 lesningen omgått.
 
+### 3.4 BankID og Vipps: hvor identitet hører hjemme, og hvor den ikke gjør det
+
+Spørsmålet «skal de logge inn med BankID?» har fire ulike svar, fordi det er
+fire ulike mennesker:
+
+| Hvem | Daglig innlogging | Identitetskontroll (én gang) |
+|---|---|---|
+| Den eldre | **Ingen.** Godkjenningsskjermen nås via lenke; ingen konto | Ingen – familien eller leverandøren står for relasjonen |
+| Familien | Vipps Login, med e-post som reserve | Ligger i Vipps: verifisert navn og telefon følger med |
+| Hjelperen som søker | Telefon + engangskode (som i dag) | BankID via Vipps Login ved registrering |
+| Arbeideren på oppdrag | **Ingen konto.** Lenke per besøk, 12 timer | Arbeidsgiveren har gjort den – det er ansettelsens jobb |
+
+To regler er ikke til forhandling:
+
+**Den eldre skal aldri møte BankID som krav.** Mange over 80 har ikke BankID
+på egen enhet, og de som har, strever. En innlogging den eldre ikke klarer,
+flytter i praksis kontoen til familien uten at noen har bestemt det. Dagens
+design – godkjenning via lenke, uten konto – står.
+
+**Verifiseringsresultatet lagres, ikke identiteten.** BankID-kontroll gir
+fødselsnummer. Datamodellen har ikke feltet, og skal ikke få det
+(`PP_VERN.LAGRES`). Det som lagres er `identitet_bekreftet: ja/nei` pluss
+navnet – samme mønster som resten av produktet: minst mulig, med grunnlag.
+
+Vipps foran rå BankID OIDC fordi familie og hjelpere alt har appen, fordi
+Vipps Login bygger på BankID under panseret, og fordi integrasjonen er
+lettere å bytte ut. I piloten (`DEMO = true`) er dette en konfigurasjon,
+ikke kode.
+
+Grensen mot den røde kategorien er skarp og må holdes skarp: **vår** bruk av
+BankID til å verifisere en hjelpers identitet er innlogging. **Den eldres**
+BankID, PIN og koder er penger – de rører aldri produktet, uansett modell
+(`docs/JURIDISK-GRENSE.md`).
+
 ## 4. Det som ikke kan endres
 
 - Ingen felter for etternavn, adresse, fødselsdato eller helseopplysninger.
