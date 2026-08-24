@@ -302,3 +302,31 @@ HTML-en og i de globale eksportene; hent den derfra før du leser kode.
 **Suggested improvement:** Pathfinder-rapporter som dekker en generator bør inneholde steget «regenerer til scratchpad og diff mot innsjekket artefakt» som standard verifikasjon.
 
 **Principle:** Når et artefakt hevdes generert fra en kilde, er regenerering + diff den billigste høytillitsverifikasjonen – kjør den i stedet for å lese begge for hånd.
+
+### Observation 14: Policyporten kan ligge i en modul flyten aldri laster
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Pathfinder fase 1: flytdiagram for KLARHET 45 (b-klarhet.md)
+**Skill:** claude-mem:pathfinder
+**Type:** open-source
+**Phase/Area:** Flowchart-fasen (sporing av regler og porter)
+
+**Issue:** Oppgaven ba om å finne betalingssperren «i koden», med seks
+navngitte filer. Sperren lå i en sjuende modul (PP_BETALING) som ingen av
+sidene i flyten laster: strømmen står som 'avklares' og porten nekter, men
+fra skjermkoden er regelen usynlig – den håndheves ved fravær av et
+betalingssteg. Et grep på tvers av hele assets/js etter nøkkelordene
+(sperr/jus/betaling) fant den på første forsøk; å lese bare de navngitte
+filene ville ikke gjort det.
+
+**Suggested improvement:** I pathfinder-flowchartsteget: når en flyt skal
+vise hvor en policy/sperre slår inn, grep etter regelens nøkkelord i hele
+kodebasen før filene i oppdraget leses – og noter eksplisitt i rapporten
+når porten ligger i en modul flyten ikke laster, for det er et
+arkitekturfunn i seg selv (regelen kan ikke omgås fra flaten, men heller
+ikke ses derfra).
+
+**Principle:** En regel som håndheves ved at koden mangler, finnes ikke i
+filene flyten bruker – søk etter regelen i hele kodebasen, og behandle
+«modulen lastes ikke» som et funn, ikke som et blindspor.
