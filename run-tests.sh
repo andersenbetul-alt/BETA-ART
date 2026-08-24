@@ -44,14 +44,26 @@ PSQL_ARGS="${PGTEST_ARGS:--h /var/tmp -p 55432 -U postgres}"
 printf '%-28s' "sql (14 kontrol)"
 if command -v psql >/dev/null && psql $PSQL_ARGS -tAc 'select 1' >/dev/null 2>&1; then
   if out=$(psql $PSQL_ARGS -q -v ON_ERROR_STOP=1 \
-             -c 'drop schema public cascade; create schema public;' \
+             -c 'drop schema if exists auth cascade; drop schema public cascade; create schema public;' \
              -f db/schema.sql -f db/seed.sql -f db/functions.sql -f db/test.sql 2>&1); then
+    echo "OK"
+  else
+    echo "BASARISIZ"; echo "$out" | grep -E 'ERROR|HATA' | sed 's/^/    /'; fail=1
+  fi
+
+  # Auth + RLS: kimlik ve satir seviyesi guvenlik
+  printf '%-28s' "auth/rls (16 kontrol)"
+  if out=$(psql $PSQL_ARGS -q -v ON_ERROR_STOP=1 \
+             -c 'drop schema if exists auth cascade; drop schema public cascade; create schema public;' \
+             -f db/schema.sql -f db/auth_shim_test.sql -f db/auth.sql \
+             -f db/seed.sql -f db/functions.sql -f db/test_auth.sql 2>&1); then
     echo "OK"
   else
     echo "BASARISIZ"; echo "$out" | grep -E 'ERROR|HATA' | sed 's/^/    /'; fail=1
   fi
 else
   echo "ATLANDI (PostgreSQL yok)"
+  printf '%-28s' "auth/rls (16 kontrol)"; echo "ATLANDI (PostgreSQL yok)"
   echo "    Calistirmak icin: PGTEST_ARGS='-h /var/tmp -p 55432 -U postgres' ./run-tests.sh"
 fi
 

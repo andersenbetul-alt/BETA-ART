@@ -55,6 +55,15 @@ altyapısından satılır — ürün başına ayrı ödeme sistemi kurulmaz.
 - İş kuralları: `db/functions.sql` (kredi düşme, erişim kontrolü)
 - Testler: `db/test.sql`
 
+### Kimlik doğrulama
+
+Supabase Auth + PostgreSQL, aynı veritabanında. Kimlik `auth.users`'ta;
+`account` fatura/profil kaydı. 20 tabloda satır seviyesi güvenlik açık.
+
+- Mimari ve kararlar: [`docs/auth-architecture.md`](docs/auth-architecture.md)
+- Entegrasyon ve politikalar: `db/auth.sql`
+- Testler: `db/test_auth.sql` (16 kontrol)
+
 Temel ilke: Stripe ve Vipps tahsilat kanalıdır, muhasebe defteri değil.
 Erişim, abonelik ve kredi doğruluğunun tek kaynağı kendi veritabanımızdır.
 
@@ -92,10 +101,14 @@ docs/payment-architecture.md    Ödeme mimarisi, kararlar, açık sorular
 docs/team-and-org.md            Organizasyon yapısı ve işe alım sırası
 docs/copy-standards.md          Metin standardı, yasak kalıplar, yayın kontrol listesi
 docs/business-review.md         İş geliştirme incelemesi ve karar noktaları
+docs/auth-architecture.md       Kimlik doğrulama mimarisi ve RLS kararları
 db/schema.sql                   Ödeme veritabanı şeması
 db/seed.sql                     Ürün kataloğu ve kredi fiyatları
 db/functions.sql                consume_credits, has_entitlement, grant_period_credits
 db/test.sql                     Kredi ve erişim mantığı testleri (14 assertion)
+db/auth.sql                     Supabase Auth entegrasyonu ve RLS politikaları
+db/auth_shim_test.sql           auth şemasının yerel test taklidi (üretimde kullanılmaz)
+db/test_auth.sql                Kimlik ve RLS testleri (16 assertion)
 build.py                        JSON'lardan index.html, work.html ve team.html üretir
 build_review.py                 review.html (incelemenin görsel özeti) üretir
 run-tests.sh                    Tüm testleri çalıştırır
