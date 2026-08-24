@@ -45,6 +45,22 @@ curl -s http://127.0.0.1:8787/api/health
 
 Expected: `{"ok":true,"services":6,"payments":{"card":false,"vipps":false,"invoice":true}}`
 
+### One-shot alternative
+
+If the user-level `webapp-testing` skill is installed, its helper starts both
+servers, waits for the ports, runs a command and tears everything down:
+
+```bash
+ADMIN_TOKEN=dev-token-long-enough-for-the-24-char-minimum DATA_DIR=/tmp/naviar-data \
+python3 ~/.claude/skills/webapp-testing/scripts/with_server.py \
+  --server "python3 -m http.server 8080 --directory ." --port 8080 \
+  --server "node server/server.js" --port 8787 \
+  -- node .claude/skills/run-naviar/driver.mjs api
+```
+
+That skill is not required — it is installed per user, not per repo, so the two
+commands above stay the primary path.
+
 `ADMIN_TOKEN` must be **24 characters or more** — below that the server refuses
 to serve the admin routes at all and returns `503 admin_disabled` rather than
 running with a guessable door. `DATA_DIR` keeps the throwaway SQLite file out of
