@@ -14,8 +14,11 @@ bn, ru, ur, no, tr), pre-rendered one directory per language, with its own build
 its own verification suite, a documented design system, an icon and mark system
 generated from code, and a written record of every factual and brand decision.
 
-Live at **hximusic.vercel.app**; wired for **hximusic.com** (DNS apex record
-already resolving to the host — see "Handover steps" below).
+Live from the Vercel project **`hximusic`** (temporary address assigned by
+Vercel — `hximusic-theta.vercel.app` at the time of writing; this changes if
+the project is recreated). The permanent address is **hximusic.com**, live
+the moment the domain is attached (DNS apex record already resolving to the
+host — see "Handover steps" below).
 
 ## Document register
 
