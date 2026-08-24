@@ -170,3 +170,14 @@ av en terskel i en algoritme.
 Prosjektet er under utvikling. Innholdet er ikke juridisk rådgivning. Posisjonsdata,
 arbeidsrettslig status for hjelpere, eventuelle helseopplysninger, krav om politiattest
 og betalingsstrømmer må kvalitetssikres med juridisk rådgiver før drift.
+
+## `naviar-care/`
+
+Everything for the NAVIAR CARE identity, in one folder that can be copied
+wholesale into the product repo: the four logo directions as SVG and PNG
+(colour, one-ink mono, reversed, and recoloured to the product's live tokens),
+the React component that replaces the placeholder icon in the site header, the
+`/brand` route, the warm-accent token patch, and `INSTALL.md` with the steps.
+
+`identity.html` and `accent-proposal.html` are standalone pages — open either
+directly, no build step.

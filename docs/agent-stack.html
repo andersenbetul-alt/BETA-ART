@@ -1,0 +1,302 @@
+<title>Agent Stack Audit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#EDF0F4; --surface:#F9FAFC; --surface-2:#F1F4F8;
+    --ink:#121924; --muted:#59646F; --line:#D6DDE5; --line-soft:#E4EAF0;
+    --wire:#3B4FE0;
+    --ok:#12805C; --ok-bg:#E2F2EC;
+    --partial:#8C5D05; --partial-bg:#F7EEDC;
+    --blocked:#AD3327; --blocked-bg:#F8E6E3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0E1319; --surface:#161D26; --surface-2:#1B242E;
+      --ink:#E4EAF1; --muted:#95A2AF; --line:#28323D; --line-soft:#212B35;
+      --wire:#8E9AFF;
+      --ok:#4CC79B; --ok-bg:#123027;
+      --partial:#D8A83E; --partial-bg:#31281332;
+      --blocked:#F0857A; --blocked-bg:#33191A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0E1319; --surface:#161D26; --surface-2:#1B242E;
+    --ink:#E4EAF1; --muted:#95A2AF; --line:#28323D; --line-soft:#212B35;
+    --wire:#8E9AFF;
+    --ok:#4CC79B; --ok-bg:#123027;
+    --partial:#D8A83E; --partial-bg:#312813;
+    --blocked:#F0857A; --blocked-bg:#33191A;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Public Sans",-apple-system,"Segoe UI",sans-serif;
+    font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px; margin:0 auto; padding:clamp(28px,5vw,60px) clamp(18px,4vw,36px) 80px}
+
+  h1,h2,h3{font-family:Archivo,"Helvetica Neue",sans-serif; letter-spacing:-.02em; margin:0; text-wrap:balance}
+  h1{font-size:clamp(32px,5vw,46px); font-weight:700; line-height:1.04}
+  h2{font-size:clamp(20px,2.4vw,25px); font-weight:600}
+  h3{font-size:19px; font-weight:600; letter-spacing:-.015em}
+
+  .eyebrow{
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+    letter-spacing:.15em; text-transform:uppercase; color:var(--muted);
+  }
+  header.top{display:flex; flex-direction:column; gap:16px; padding-bottom:30px; border-bottom:1px solid var(--line)}
+  .lede{margin:0; max-width:64ch; font-size:17px; color:var(--muted)}
+  .meta{display:flex; flex-wrap:wrap; gap:8px 24px; font-size:13.5px}
+  .meta span{color:var(--muted)}
+  .meta b{font-weight:600; color:var(--ink)}
+
+  section{padding-top:48px}
+  .sec-intro{margin:8px 0 0; color:var(--muted); max-width:62ch; font-size:15px}
+
+  figure{margin:26px 0 0; background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:22px 20px 16px}
+  .fig-scroll{overflow-x:auto}
+  figure svg{display:block; width:100%; min-width:600px; max-width:100%; height:auto; color:var(--ink)}
+  figcaption{margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:13.5px; color:var(--muted); max-width:70ch}
+
+  .stations{display:flex; flex-direction:column; gap:14px; margin-top:24px}
+  .station{
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.35fr); gap:clamp(16px,3vw,32px);
+    background:var(--surface); border:1px solid var(--line); border-radius:6px;
+    padding:clamp(16px,2.4vw,24px);
+  }
+  @media (max-width:720px){ .station{grid-template-columns:1fr} }
+  .station-head{display:flex; flex-direction:column; gap:9px}
+  .name-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .role{font-size:14px; color:var(--muted)}
+  .ver{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--muted)}
+
+  .chip{
+    font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.09em;
+    text-transform:uppercase; padding:3px 9px; border-radius:3px; white-space:nowrap; font-weight:500;
+  }
+  .chip.ok{color:var(--ok); background:var(--ok-bg)}
+  .chip.partial{color:var(--partial); background:var(--partial-bg)}
+  .chip.blocked{color:var(--blocked); background:var(--blocked-bg)}
+
+  .findings{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+  .findings li{display:grid; grid-template-columns:88px minmax(0,1fr); gap:14px; padding:8px 0; border-top:1px solid var(--line-soft); font-size:14.5px}
+  .findings li:first-child{border-top:0; padding-top:0}
+  .findings li span:first-child{
+    font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.11em;
+    text-transform:uppercase; color:var(--muted); padding-top:4px;
+  }
+  code{font-family:"JetBrains Mono",monospace; font-size:.88em; background:var(--surface-2); padding:1px 5px; border-radius:3px}
+  pre{
+    margin:16px 0 0; background:var(--surface-2); border:1px solid var(--line); border-radius:6px;
+    padding:16px 18px; overflow-x:auto; font-family:"JetBrains Mono",monospace; font-size:13px; line-height:1.7;
+  }
+  pre code{background:none; padding:0; font-size:inherit}
+  .cmt{color:var(--muted)}
+
+  .decisions{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin-top:24px}
+  .decision{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--wire); border-radius:6px; padding:18px 20px}
+  .decision h3{margin-bottom:6px}
+  .decision p{margin:0; font-size:14.5px; color:var(--muted)}
+
+  footer{margin-top:52px; padding-top:20px; border-top:1px solid var(--line); font-size:14px; color:var(--muted); max-width:70ch}
+  a{color:var(--wire)}
+  a:focus-visible{outline:2px solid var(--wire); outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">Verified in one session · 2026-08-24</p>
+  <h1>Agent Stack Audit</h1>
+  <p class="lede">Four tools layered under Claude Code: model routing, context compression, persistent memory, and pattern capture. All four were installed and exercised. Two of them do not yet do their job — here is exactly which, and why.</p>
+  <div class="meta">
+    <span>Environment <b>ephemeral Linux container, restricted egress</b></span>
+    <span>Working <b>1 of 4</b></span>
+    <span>Partial <b>1</b></span>
+    <span>Not producing value <b>2</b></span>
+  </div>
+</header>
+
+<section>
+  <h2>Where each layer actually sits</h2>
+  <p class="sec-intro">The stack is usually drawn as a single chain, which hides the thing that matters: only two of the four are hops in the request path. The other two never touch a request — they watch it and write back into the next session.</p>
+
+  <figure>
+    <div class="fig-scroll">
+      <svg viewBox="0 0 760 352" role="img" aria-label="Claude Code sends context through Headroom and OmniRoute to the model; Claude-Mem and Task Observer sit outside the request path and feed memory and skills back into Claude Code.">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ah-wire" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#3B4FE0"/>
+          </marker>
+        </defs>
+
+        <g fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="20" y="60" width="130" height="54" rx="4"/>
+          <rect x="215" y="60" width="130" height="54" rx="4"/>
+          <rect x="410" y="60" width="130" height="54" rx="4"/>
+          <rect x="605" y="60" width="130" height="54" rx="4"/>
+          <rect x="20" y="258" width="160" height="54" rx="4"/>
+          <rect x="240" y="258" width="180" height="54" rx="4"/>
+        </g>
+
+        <g font-family="Archivo, sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="currentColor">
+          <text x="85" y="92">Claude Code</text>
+          <text x="280" y="92">Headroom</text>
+          <text x="475" y="92">OmniRoute</text>
+          <text x="670" y="92">Model</text>
+          <text x="100" y="290">Claude-Mem</text>
+          <text x="330" y="290">Task Observer</text>
+        </g>
+
+        <g stroke="currentColor" stroke-width="1.4" marker-end="url(#ah)">
+          <line x1="150" y1="87" x2="209" y2="87"/>
+          <line x1="345" y1="87" x2="404" y2="87"/>
+          <line x1="540" y1="87" x2="599" y2="87"/>
+          <line x1="70" y1="114" x2="70" y2="252"/>
+          <line x1="180" y1="285" x2="234" y2="285"/>
+        </g>
+
+        <g stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)">
+          <line x1="130" y1="252" x2="130" y2="120"/>
+          <line x1="300" y1="252" x2="163" y2="120"/>
+        </g>
+
+        <path d="M215 46 V38 H540 V46" fill="none" stroke="#3B4FE0" stroke-width="1.4"/>
+        <text x="377" y="28" font-family="JetBrains Mono, monospace" font-size="11.5" text-anchor="middle" fill="#3B4FE0">both compress — run one, not both</text>
+
+        <g font-family="JetBrains Mono, monospace" font-size="11" fill="currentColor" opacity=".72">
+          <text x="179" y="76" text-anchor="middle">context</text>
+          <text x="374" y="76" text-anchor="middle">trimmed</text>
+          <text x="569" y="76" text-anchor="middle">routed</text>
+          <text x="62" y="188" text-anchor="end">session</text>
+          <text x="139" y="188">recall</text>
+          <text x="207" y="279" text-anchor="middle">patterns</text>
+          <text x="248" y="176">skills</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Solid arrows are the request path — OmniRoute is also where a failed provider is retried against the next one. Dashed arrows are what gets written back into the next session. Headroom and OmniRoute both compress context, so stacking them compresses the same tokens twice.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>What each one did when run</h2>
+  <p class="sec-intro">Every claim below came from executing the tool in this container, not from its README.</p>
+
+  <div class="stations">
+
+    <article class="station">
+      <div class="station-head">
+        <div class="name-row">
+          <h3>OmniRoute</h3>
+          <span class="chip partial">Routes, cannot reach</span>
+        </div>
+        <p class="role">Model routing with automatic fallback across providers.</p>
+        <p class="ver">v3.8.49 · npm · server on :20128</p>
+      </div>
+      <ul class="findings">
+        <li><span>Works</span><span>Server starts in 6.2 s and serves a 115-model catalog, including <code>auto/best-coding</code> style combos.</span></li>
+        <li><span>Proven</span><span>The fallback really runs: a pool of 11, tried <code>opencode</code> then <code>felo-web</code> twice, excluded the exhausted ones, returned a recovery hint.</span></li>
+        <li><span>Blocked</span><span>Every upstream refused at the network edge — <code>felo.ai</code> and <code>opencode.ai</code> both answer 403 to CONNECT under this container's egress policy.</span></li>
+        <li><span>Missing</span><span><code>nodes list</code> is empty: no provider endpoint registered with your own keys.</span></li>
+      </ul>
+    </article>
+
+    <article class="station">
+      <div class="station-head">
+        <div class="name-row">
+          <h3>Headroom</h3>
+          <span class="chip blocked">No compression</span>
+        </div>
+        <p class="role">Compresses tool output, logs and history before they reach the model.</p>
+        <p class="ver">v0.36.5 · PyPI · cloned at dschumann/headroom</p>
+      </div>
+      <ul class="findings">
+        <li><span>Result</span><span>Four scenarios, zero tokens saved. Every call returned <code>router:noop</code>.</span></li>
+        <li><span>Tried</span><span>120 KB tool output (34,299 tokens); a 13-message agent conversation; <code>compress_user_messages</code> on; <code>model_limit</code> cut to 8,000 to force pressure.</span></li>
+        <li><span>Cause</span><span>Installed as bare <code>headroom-ai</code>; the README asks for <code>headroom-ai[all]</code>. The algorithms live in the extras — a warning about missing ONNX Runtime points the same way.</span></li>
+        <li><span>Next</span><span>Reinstall with the extras and re-measure before trusting any savings figure.</span></li>
+      </ul>
+    </article>
+
+    <article class="station">
+      <div class="station-head">
+        <div class="name-row">
+          <h3>Claude-Mem</h3>
+          <span class="chip blocked">Empty</span>
+        </div>
+        <p class="role">Persistent memory across sessions, built from what Claude reads and runs.</p>
+        <p class="ver">v13.15.3 · worker live on :37700</p>
+      </div>
+      <ul class="findings">
+        <li><span>Works</span><span>Installed cleanly; worker started and stayed up.</span></li>
+        <li><span>Result</span><span><code>search "authentication supabase"</code> returned nothing. The store holds only <code>settings.json</code> and <code>telemetry.json</code>.</span></li>
+        <li><span>Cause</span><span>Memory is built by hooks that attach to sessions started <em>after</em> installation. This session began before it, so nothing was ever recorded.</span></li>
+        <li><span>Next</span><span>It should start filling on the next session in a project — its own docs say injection begins on the second one.</span></li>
+      </ul>
+    </article>
+
+    <article class="station">
+      <div class="station-head">
+        <div class="name-row">
+          <h3>Task Observer</h3>
+          <span class="chip ok">Working</span>
+        </div>
+        <p class="role">Records repeating patterns as reviewable observations that can become a rule, a script or a skill.</p>
+        <p class="ver">built here · committed to BETA-ART</p>
+      </div>
+      <ul class="findings">
+        <li><span>Works</span><span>Five observations logged from real events in this session, deduplicated by pattern similarity.</span></li>
+        <li><span>Top find</span><span>Chromium screenshots clip when the HTML wrapper fixes <code>body</code> height — seen three times, about ten minutes lost. Ready for promotion.</span></li>
+        <li><span>Also</span><span>Bash cwd resets between calls; <code>SendUserFile</code> rejects very tall captures; egress blocks deploy verification by curl.</span></li>
+        <li><span>Design</span><span>Nothing is promoted without review — an unreviewed observation is a hypothesis, and a repo full of confident wrong lessons is worse than none.</span></li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<section>
+  <h2>Running it on your own machine</h2>
+  <p class="sec-intro">Three of the four failures above are environmental, not product defects. On a normal machine with open network access, the same commands should get further.</p>
+  <pre><code><span class="cmt"># routing + fallback</span>
+npm install -g omniroute
+omniroute                      <span class="cmt"># server on :20128</span>
+omniroute nodes add            <span class="cmt"># register a provider with your own key — the step missing here</span>
+omniroute setup-claude         <span class="cmt"># generate Claude Code profiles</span>
+
+<span class="cmt"># context compression — note the extras</span>
+pip install "headroom-ai[all]"
+headroom proxy --port 8787
+
+<span class="cmt"># persistent memory</span>
+npx claude-mem install
+npx claude-mem start           <span class="cmt"># autostart is skipped without a TTY</span>
+
+<span class="cmt"># pattern capture — already in the repo</span>
+python3 .claude/skills/task-observer/scripts/observe.py list</code></pre>
+</section>
+
+<section>
+  <h2>Two things to decide</h2>
+  <div class="decisions">
+    <div class="decision">
+      <h3>Pick one compressor</h3>
+      <p>OmniRoute ships a compression pipeline and Headroom is a compression layer. Chained, they compress the same context twice — paying latency for the second pass and risking the loss of detail the first pass judged safe to keep. Run whichever measures better on your own traffic, and turn the other off.</p>
+    </div>
+    <div class="decision">
+      <h3>Memory needs a clean start</h3>
+      <p>Claude-Mem only records sessions that begin after it is installed, so a session that installs it will always look broken. Install it, then start a fresh session in the project you care about — and expect the first one to write, not read.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Every status here was produced by running the tool, not by reading its documentation. Where something failed, the failure is quoted — a working fallback chain with no reachable upstream is a different problem from a broken router, and the fix is different too.</p>
+</footer>
+
+</div>

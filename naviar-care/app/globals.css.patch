@@ -1,0 +1,17 @@
+/* Add inside the existing :root block in app/globals.css, next to --accent.
+   Three values, because one hue cannot do all three jobs: a fill that reads at
+   small sizes, an ink dark enough for text, and a tint for quiet grounds.
+
+   Contrast is measured against the product's own #faf7ee ground: */
+
+  --accent-warm:      #e9915e;  /* 2.4:1  — shapes and fills only, never text */
+  --accent-warm-ink:  #a84a18;  /* 5.3:1  — passes AA for body text           */
+  --accent-warm-soft: #fbe6d7;  /* ground only                                */
+
+/* If the project maps tokens through @theme (Tailwind v4), also expose them: */
+
+@theme inline {
+  --color-accent-warm: var(--accent-warm);
+  --color-accent-warm-ink: var(--accent-warm-ink);
+  --color-accent-warm-soft: var(--accent-warm-soft);
+}
