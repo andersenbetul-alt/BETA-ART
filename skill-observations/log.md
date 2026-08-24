@@ -107,3 +107,49 @@ ajan farkını bekle. `git add -A` bu kipte yasak.
 
 **Principle:** Paylaşılan çalışma ağacında commit, dosya sahipliği
 doğrulanmadan atılmaz; otomasyon baskısı bunu değiştirmez.
+
+## 2026-08-24 — Üye sistemi + Vercel olayı oturumu
+
+### Observation 6: Küçük/büyük harf duyarlı grep, "dosya boş" yanılgısı üretti
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** engine/schema-billing.sql'i doğrulama sırasında
+**Skill:** Genel çalışma pratiği (kesişen ilke 1'in yeni örneği)
+**Type:** internal
+**Phase/Area:** Kaynak doğrulama
+
+**Issue:** `grep "create table"` sıfır sonuç verdi; dosya `CREATE TABLE`
+(büyük harf) kullanıyordu. Bir an "şema yok" sonucuna gidilebilirdi;
+ls + head ile ikinci bakış gerçeği gösterdi.
+
+**Suggested improvement:** SQL/yapılandırma dosyalarında grep her zaman
+`-i` ile yapılmalı; "hiç sonuç yok" bulgusu tek başına kanıt sayılmadan
+önce dosyanın varlığı/başı ikinci bir yöntemle doğrulanmalı.
+
+**Principle:** Sıfır sonuçlu arama, iddianın yokluğunun kanıtı değildir —
+önce arama aracının kendisi doğrulanır.
+
+### Observation 7: Tek dosyalık dağıtım deseni, silinen projeyi dakikalar içinde geri getirdi
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** qblogg Vercel projesi panelde yanlışlıkla silinmiş bulundu
+**Skill:** deploy-to-vercel kullanım pratiği / proje CLAUDE.md
+**Type:** internal
+**Phase/Area:** Dağıtım dayanıklılığı
+
+**Issue:** Üretim projesi silinince site yayından düştü; dağıtımın tek
+girdisi vercel.json olduğu ve içerik public git'ten klonlandığı için aynı
+adla yeniden dağıtım ~4 saniyede siteyi geri getirdi. Tek kayıp: eski
+*.vercel.app takma adları (dış bağlantılar öldü) ve yeniden açılan
+Deployment Protection'ın tekrar kapatılması gerekti.
+
+**Suggested improvement:** Kurtarma sonrası kontrol listesi kalıcılaştı:
+(1) yeniden dağıt, (2) protection'ı kapat, (3) canlı içerik doğrula,
+(4) CLAUDE.md/günlükteki adresleri güncelle. Bu dizi CLAUDE.md dağıtım
+notunda artık kayıtlı.
+
+**Principle:** Dağıtım durumu (state) değil tarif (recipe) olarak
+saklanırsa, altyapı kaybı felaket değil yeniden çalıştırma olur.
+
