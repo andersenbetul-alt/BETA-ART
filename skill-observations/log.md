@@ -150,7 +150,7 @@ Sammenlign avgjørelsene, ikke summen av dem.
 
 ### Observation 7: Loggen hører hjemme i repoet når konteineren er flyktig
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — Applied to task-observer (prosjektkopien)
 **Date:** 2026-08-24
 **Session context:** Oppsett av task-observer i Claude Code på nett
 **Skill:** task-observer

@@ -43,6 +43,16 @@ and takes the observation log with it. The observation log lives at
 `[workspace folder]/skill-observations/log.md` unless the user's
 configuration pins it elsewhere.
 
+**In a remote/ephemeral container, invert the test.** "Stable" is not a
+property of the directory — it is a property of what survives in the concrete
+environment. Where Claude Code runs in a disposable container (claude.ai/code
+and similar), `~/.claude/` is torn down with the container and takes the log
+with it, while the *checkout* is the durable side because it pushes to a
+remote. There, the log belongs in the version-controlled repository. That is
+where this project keeps it: `skill-observations/` at the repo root, committed
+and pushed. Ask which side outlives the session, not which path the platform
+usually recommends.
+
 ## Reference files — load on demand, not up front
 
 - `references/weekly-review.md` — the comprehensive review procedure
