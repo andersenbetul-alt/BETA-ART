@@ -229,3 +229,17 @@ kalan adım: Vercel panelinde qblogg projesine qblogg.com + www ekleyip
 doğrulamak — eski claim akışı silinen projeye bağlıydı, panel yeni kod
 üretirse GoDaddy'deki TXT değeri onunla değiştirilecek.
 
+## 24.08.2026 — Üye sistemi v1 (Supabase auth) kuruldu
+
+Kullanıcı kararıyla (AskUserQuestion: ayrı uygulama · Q Brief Pro kapsamı ·
+magic link) kimlik doğrulama sistemi yazıldı: `uye/` klasörü (tek dosyalık
+istemci + config + kendi vercel.json'u + `schema.sql`), ana siteden tamamen
+ayrı Vercel projesi olarak dağıtılacak — sitenin sıfır bağımlılık vaadi
+bozulmadı. Veri modeli `engine/schema-billing.sql`'in dört tasarım kararına
+referansla sadeleştirildi (entitlement ayrımı v2'ye bilinçli devir,
+belgede kayıtlı). RLS: aktif olmayan üye yalnız örnek brief'leri görür.
+Kurulum kılavuzu `docs/uye-sistemi.md`; kullanıcı adımı: Supabase projesi
+açıp URL + anon anahtarını iletmek. Ayrıca task-observer becerisi
+`.claude/skills/task-observer/` olarak depoya kalıcılaştırıldı (CC BY 4.0,
+atıf korunarak).
+
