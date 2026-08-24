@@ -330,3 +330,60 @@ ikke ses derfra).
 **Principle:** En regel som håndheves ved at koden mangler, finnes ikke i
 filene flyten bruker – søk etter regelen i hele kodebasen, og behandle
 «modulen lastes ikke» som et funn, ikke som et blindspor.
+
+### Observation 15: Fase 1-diagrammene finner bare en del av dupliseringene
+
+**Status:** OPEN
+**Dato:** 2026-08-24
+**Session context:** Pathfinder fase 2a – duplisering innen område A–D i BETA-ART
+**Skill:** claude-mem:pathfinder
+**Type:** open-source
+**Phase/Area:** Fase 2 (duplication pass)
+
+**Issue:** «Hull og funn»-seksjonene fra fase 1 pekte riktig på tre
+dupliseringer (to DEMO-ekspertlister, PP_RUTER-no-op, bestill-avslag ×2),
+og alle lot seg verifisere raskt. Men flertallet av de reelle
+dupliseringene i område B (byggSprak ×3, tegnAkutt ×3, opplesning ×2,
+SVG-ikonfabrikk ×2, lag/ved ×3) sto ikke i noe fase 1-funn og ble bare
+synlige ved å lese søsterskjermfilene i sin helhet, side om side.
+
+**Suggested improvement:** I pathfinder-skillens fase 2-instruks: si
+eksplisitt at fase 1-funnene er startlista, ikke fasiten, og at
+skjermmoduler som deler prefiks/rolle (søsterskjermer i samme område)
+skal leses i sin helhet parvis før dupliseringslista lukkes.
+
+**Principle:** Flytkartlegging optimerer for kallkjeder og finner derfor
+duplisert *data og regelbruk*; duplisert *hjelpekode* (helpers, oppsett,
+boilerplate) er usynlig i flytdiagrammer og krever parvis fullesing av
+likestilte moduler.
+
+### Observation 16: Kryssduplisering viser seg som parallelle konstant-tabeller, og fallback-verdier skjuler kontraktsdrift
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Pathfinder fase 2 – duplisering på tvers av områdene A/B/C/D
+**Skill:** claude-mem:pathfinder
+**Type:** open-source
+**Phase/Area:** Fase 2 (duplisert bekymring)
+
+**Issue:** De reelle krysdupliseringene i denne kodebasen var nesten aldri
+duplisert flytlogikk – de var parallelle konstant-tabeller med hver sin lille
+fallback-funksjon (fem oversettelsestabeller med hver sin `t[kode] || t.nb`,
+tre prisstrukturer, tre felt-registre med begrunnelse+frist, fire
+localStorage-/minne-konvensjoner). Grep etter tabellsignaturer (språkkoder,
+`pp_*_v1`-nøkler, beløp) fant dem billigere enn flytsammenligning. I tillegg:
+én konsument (ekspertbistand.js:731) leser felter (`f.hva`, `f.istedenfor`)
+som produsentens returobjekt (PP_VERN.sjekk sitt funn: id/navn/beskjed/ord)
+aldri har hatt – `||`-fallbackene gjør at driften er stille og usynlig i
+kjøring.
+
+**Suggested improvement:** I pathfinder fase 2: (1) start dupliseringsjakten
+med grep etter konstant-tabellsignaturer på tvers av områdene, ikke med
+flytlesing; (2) ved delte hjelpefunksjoner, diff konsumentens felt-tilganger
+mot produsentens faktiske returobjekt – fallback-uttrykk (`x.felt || 'tekst'`)
+er et rødt flagg for at kontrakten har driftet uten feil.
+
+**Principle:** Duplisert bekymring bor oftere i data (parallelle tabeller med
+hver sin fallback) enn i kontrollflyt, og en fallback-verdi ved felt-oppslag
+kan bety at feltet aldri har eksistert – verifiser konsumentens felt mot
+produsentens returform.
