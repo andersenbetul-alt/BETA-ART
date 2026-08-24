@@ -66,9 +66,8 @@ palette change instead of drifting from it.
 
 ## Afterwards
 
-- The raw artwork (SVG, PNG, mono and reversed variants) is in
-  `brand/naviar-care/` in this repository. Copy `product-aligned/` across if you
-  want the files as well as the component.
+- Every file referenced here lives in this same folder. Copying the whole
+  folder into the product repo brings the artwork across with the code.
 - Two Vercel projects pointed at this repo. `naviar-care` — the standalone
   static identity page — has been paused; delete it from the Vercel dashboard
   under Settings → Delete Project so only `naviar-care-1` remains.

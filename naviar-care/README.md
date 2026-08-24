@@ -16,11 +16,16 @@ artwork drops below 20 px.
 ## Files
 
 ```
-svg/mark-{a,b,c,d}-*.svg      symbol only, 64x64 viewBox (base / -mono / -reverse)
-lockup/lockup-{a,b,c,d}-*.svg mark + wordmark, 200x80 viewBox
-png/*-1024.png                transparent raster marks
-png/lockup-*-1200.png         transparent raster lockups
-presentation.html             the full study — rationale, palette, scale test
+svg/                    symbol only, 64x64 viewBox (base / -mono / -reverse)
+lockup/                 mark + wordmark, 200x80 viewBox
+png/                    transparent raster marks (1024) and lockups (1200)
+product-aligned/        recoloured to the live product tokens
+components/             naviar-mark.tsx — the React component
+app/                    brand/page.tsx and the globals.css token patch
+tools/svg-to-png.sh     renders any SVG here to a transparent PNG
+identity.html           the full study — rationale, palette, scale test
+accent-proposal.html    the warm-accent before/after on the real header
+INSTALL.md              how to drop all of this into naviar-care-1
 ```
 
 ## Aligned with the live product
@@ -43,7 +48,7 @@ Tokens read from the live stylesheet:
 | Mono face | DM Mono | IBM Plex Mono | Product wins |
 | Warm accent | *none exists* | `#E9915E` apricot | See below |
 
-Recolored artwork is in `product-aligned/`, three variants per mark:
+Recoloured artwork is in `product-aligned/`, three variants per mark:
 `-strict` (product tokens only), `-extended` (product greens plus the apricot),
 and `-reverse` (for the primary green as a ground).
 
@@ -62,7 +67,7 @@ promise is a calmer, more human next step.
 ### Dropping the mark into the site
 
 The header currently uses a placeholder Lucide `heart-handshake` icon inside a
-`bg-primary text-primary-foreground` tile. `NaviarMark.tsx` is a drop-in
+`bg-primary text-primary-foreground` tile. `components/naviar-mark.tsx` is a drop-in
 replacement that paints with `currentColor`, so it inherits that tile's colour
 and keeps following the theme:
 
