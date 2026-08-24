@@ -15,25 +15,27 @@ https://github.com/apps/vercel/installations/select_target → `andersenbetul-al
 → `BETA-ART`. Uten dette finnes ingen automatisk utrulling, og hver endring må
 lastes opp for hånd.
 
-## 1. Hvilken side er inngangsdøra
+## 1. Inngangsdøra — rettet
 
-**Her motsier tre filer hverandre i dag.**
+`vercel.json` sendte `/` videre til `/besok/index.html`, som har `noindex`.
+Den ene adressen som meldes inn til søk, var altså den ene som ba om ikke å
+bli indeksert.
 
-`sitemap.xml` gir søkemotorene én adresse: `https://naviarcare.com/`.
-`vercel.json` sender `/` videre til `/besok/index.html`.
-`besok/index.html` har `noindex`.
+Dette var ikke en avgjørelse som manglet. Tre filer sa allerede hva `/` skal
+være, og `vercel.json` var den som stakk seg ut:
 
-Altså: den ene siden som meldes inn til søk, er den ene siden som ber om ikke
-å bli indeksert. Slik det står nå, blir naviarcare.com usynlig.
+- `robots.txt` sin lanseringsblokk: `Allow: /$` og `Disallow: /besok/`
+- `sitemap.xml` melder inn `naviarcare.com/`, og sier at skjermene under
+  `/besok/` aldri skal indekseres
+- `index.html` er den eneste publikumssida uten `noindex`
 
-To utfall, og de utelukker hverandre:
+De to omskrivingene som kapret roten er fjernet. `/` serverer nå
+`index.html` – «Naviar – hjelp i nabolaget for eldre som vil bo hjemme».
+Snarveiene inn i besøksverktøyet står igjen; de rører ikke forsida.
 
-| Valg | Endring | Følge |
-|---|---|---|
-| Klarhet er inngangsdøra | `"destination": "/klarhet.html"` | Den som slår opp domenet, møter tjenesten |
-| Besøksverktøyet er inngangsdøra | Fjern `naviarcare.com/` fra sitemap | Domenet er en arbeidsflate, ikke en forside |
-
-Dette er ikke en teknisk avgjørelse. Den sier hvem domenet er til for.
+Står det igjen ett spørsmål her, er det om forsida skal være `index.html`
+eller `klarhet.html`. Det er et produktvalg, og det haster ikke: begge er
+indekserbare, og sitemap peker på roten uansett.
 
 ## 2. Åpne for søk
 
