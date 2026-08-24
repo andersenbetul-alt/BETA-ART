@@ -89,6 +89,15 @@ itiraz yazılıp cevaplanır, kanıt bölümüne uydurma ifade girmez.
 - Organizasyon ve işe alım sırası: [`docs/team-and-org.md`](docs/team-and-org.md)
 - Roller ve dalgalar: `data/team.json` → `team.html`
 
+## Proje becerileri
+
+`.claude/skills/` altındaki beceriler depoyla birlikte taşınır:
+
+| Beceri | Ne yapar |
+| --- | --- |
+| `task-observer` | Uzun süren işleri izler, "çalıştı" ile "geçti" farkını ölçerek ayırt eder. Bu projenin doğrulanabilir kontrol noktalarını bilir. |
+| `impeccable` | Arayüz tasarımı, denetim ve anti-pattern tespiti |
+
 ## Yapı
 
 ```
