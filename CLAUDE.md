@@ -216,6 +216,13 @@ because every business page scrolled sideways in a band no one was measuring.
 The observation log is where a mistake waits between being made and becoming a
 gate.
 
+The loop is a project skill: `.claude/skills/task-observer/` holds the Beta
+Art adaptation — where the log lives, when to write an entry, and
+`references/promoting-to-a-gate.md`, which covers the step that gets
+skipped: verifying a new gate on **both** halves, what it fails and what it
+lets through. `references/the-gates.md` lists every gate and the mistake it
+came from.
+
 The log lives at `skill-observations/log.md`. Note that a session container here
 is ephemeral: an observation that is not committed does not survive the session,
 which is the same reason the generators live in this repository rather than in a
