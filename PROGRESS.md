@@ -26,6 +26,28 @@ pulls from GitHub, not skills.sh.
 
 ---
 
+## 2026-08-22 — Tooling stack verified
+
+`STACK.md` records arrow-by-arrow what was observed, not assumed.
+
+The open architectural question turned out to be answerable: OmniRoute does
+expose `/v1/messages`, so Claude Code can point at it. Proved with controls —
+invented routes 404 while `/v1/messages` 500s from an upstream failure, so the
+router discriminates and the request genuinely reached a provider.
+
+Headroom took five attempts. It reported 0 tokens saved four times, and I
+twice said it "compresses nothing". Every zero had a different cause and none
+was the tool: context under the limit, messages under the 250-token floor,
+`protect_analysis_context` shielding everything, and a missing dependency
+(`fastembed`) that the advertised `[ml]` extra does not install. With
+protections lowered it saved 8,192 of 42,100 tokens — 19.5%, via
+`router:code_aware`. Real, but not the advertised 60-95%.
+
+Logged as observation 7: absence of an effect is not evidence of absence of
+capability, and a negative verdict needs the same proof as a positive one.
+
+---
+
 ## 2026-08-22 — Supabase browser client
 
 Wrote the client D-006 called for: `src/auth.js`, `src/config.js`,

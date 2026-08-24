@@ -185,3 +185,37 @@ through a shell makes the shell an interpreter of your content, and the
 failure mode is a hang plus a silently skipped operation rather than a clear
 error — so verify the operation actually happened, do not infer it from the
 absence of a visible failure.
+
+---
+
+### Observation 7: "It does nothing" was my configuration, four times over
+
+**Status:** OPEN
+**Date:** 2026-08-22
+**Session context:** Evaluating whether Headroom actually compresses context.
+**Skill:** `evidence-discipline` — candidate new section
+**Type:** open-source
+**Phase/Area:** Evaluating an unfamiliar tool
+
+**Issue:** Headroom reported 0 tokens saved across four successive attempts,
+and I twice stated it "compresses nothing". Each zero had a different cause,
+none of them the tool being broken: (1) context below the default
+`model_limit`, so nothing needed compressing; (2) messages under the
+`min_tokens_to_compress=250` floor; (3) `protect_analysis_context` shielding
+every message; (4) a missing undocumented dependency (`fastembed`, which the
+advertised `[ml]` extra does not install). With protections lowered it saved
+19.5%. A confident negative verdict was one step away from being published
+four separate times.
+
+**Suggested improvement:** Before reporting that a tool does not work,
+enumerate its defaults and confirm the input actually reaches the code path
+under test — thresholds, floors, protections, optional dependencies. Prefer
+the tool's own diagnostics (here `transforms_applied` said `router:protected`
+and `router:noop`, naming the reason) over the headline number. A null result
+is a claim about the tool *and* about the setup; only the second is usually
+under test.
+
+**Principle:** Absence of an effect is not evidence of absence of capability.
+A negative finding needs the same standard of proof as a positive one — and
+a tool's own trace output usually says which of the two you are looking at,
+if the output is read rather than the summary figure.
