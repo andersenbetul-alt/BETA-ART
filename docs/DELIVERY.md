@@ -76,3 +76,10 @@ Store checkout links, the size chart for fabric, product images, the Phonk
 Productions mark file, Spotify API credentials for the daily sync, a fresh
 monthly-listener figure, and native-speaker sign-off per language (tracked in
 HXI-04).
+
+---
+
+This project is a gift. It was built for its owner and is to be handed over by
+24 February 2027.
+
+**Gratulerer med dagen, Christoffer.**
