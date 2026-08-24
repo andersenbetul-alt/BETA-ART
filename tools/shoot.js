@@ -138,7 +138,12 @@ async function main() {
   }
   if (opt.out) fs.mkdirSync(opt.out, { recursive: true });
 
-  const { chromium } = require(PW);
+  // Same fallback as render-check.js: the container's fixed path, then
+  // whatever node can resolve on a machine that is not this container.
+  const { chromium } = (function () {
+    try { return require(PW); }
+    catch (e) { return require("playwright"); }
+  }());
   const browser = await chromium.launch();
   try {
     for (const width of widths) {
