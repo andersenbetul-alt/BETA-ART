@@ -159,3 +159,32 @@ Fargene er tokens i `assets/css/styles.css`, og de er ikke tilfeldige:
 - Ingen tilstand signaliseres med farge alene
 
 Kontroller kontrast før du innfører en farge, og ta med tallet.
+
+## 8. Ferdigheter
+
+Ferdigheter lastes automatisk når beskrivelsen matcher oppgaven. Der det
+finnes en som eier avgjørelsen, går den foran din egen vurdering.
+
+| Oppgave | Ferdighet |
+|---|---|
+| Kjøre, klikke gjennom eller ta skjermbilde av nettstedet | `run-naviar` |
+| Farge, skrift, merket, hva Naviar viser fram | `naviar-merkevare` |
+| Ny eller endret skjerm | `frontend-design`, deretter `apple-design` |
+| Tekst kunden ser | `writing-guidelines`, og `PP_KLARSPRAK` for LIX |
+| Kontrast, tastatur, skjermleser | `web-design-guidelines`, `ui-ux-pro-max --domain ux` |
+| Noe er ødelagt eller tregt | `diagnosing-bugs` |
+| Begreper og modell | `domain-modeling` |
+| Kilder som må være riktige | `research` |
+
+`naviar-merkevare` går foran `brand-guidelines`. Den siste inneholder
+Anthropics farger, ikke våre.
+
+**Elleve ferdigheter er skjult fra automatisk valg** i
+`.claude/settings.json`, fordi de forutsetter React, et rammeverk eller et
+animasjonsbibliotek. Dette prosjektet har ingen av delene, og en regel derfra
+kan gjøre skade: `js-cache-storage` sier at localStorage-lesninger skal
+mellomlagres, og følger du den, slutter `rydd()` å slette.
+
+De er skjult, ikke slått av. `/react-best-practices` virker fortsatt hvis du
+skriver den selv. Vil du ha dem tilbake i automatikken, fjern linja i
+`skillOverrides`.

@@ -10,5 +10,18 @@
         ]
       }
     ]
+  },
+  "skillOverrides": {
+    "react-best-practices": "user-invocable-only",
+    "vercel-react-best-practices": "user-invocable-only",
+    "react-native-skills": "user-invocable-only",
+    "react-spring-physics": "user-invocable-only",
+    "react-view-transitions": "user-invocable-only",
+    "composition-patterns": "user-invocable-only",
+    "animated-component-libraries": "user-invocable-only",
+    "vercel-optimize": "user-invocable-only",
+    "animejs": "user-invocable-only",
+    "lottie-animations": "user-invocable-only",
+    "scroll-reveal-libraries": "user-invocable-only"
   }
 }
