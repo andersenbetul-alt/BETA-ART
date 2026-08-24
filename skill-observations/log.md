@@ -430,7 +430,12 @@ where most of the waste lives.
 
 ### Observation 13: A builder deletes what a later tool restores, and the gap between them is invisible
 
-**Status:** OPEN — gate candidate: `enrich.py --check`
+**Status:** ACTIONED (2026-08-24) — closed from CI rather than by a gate. The
+proposed `enrich.py --check` was never needed: `.github/workflows/gates.yml`
+runs the gates on a pristine checkout and then asserts `git diff --exit-code`,
+so a commit the gates had to *repair* fails the run. The reason no local gate
+could do it is exactly the reason CI can — CI has an untouched copy to compare
+against, and this working tree does not.
 **Date:** 2026-08-24
 **Session context:** Verifying, for a run skill, the claim that re-running a
 generator is safe.
@@ -457,13 +462,13 @@ housekeeping — it is exactly what happened with the 500 stale preview hosts
 earlier in this project, where a generator run reintroduced something the site
 had already left and the only reason it was caught was a later unrelated audit.
 
-**Why it is not yet a gate:** every gate here answers "is the tree correct
+**Why it could not be a gate:** every gate here answers "is the tree correct
 now?", and by the time a gate has run, `enrich.py` has already made the answer
 yes. A gate cannot see the state it repairs. Catching this needs a *checking*
 mode — `enrich.py --check`, exiting non-zero when a page is missing its derived
 block and writing nothing — so that the question can be asked without being
-answered by the asking. That is the shape to build, and it should be verified on
-both halves: it must fail on a freshly built page and pass on an enriched one.
+answered by the asking. That was the shape proposed; the answer turned out to be
+simpler and to live somewhere else — see the status above.
 
 **Suggested improvement:** Where one tool repairs what another removes, the
 repair must have a read-only mode, or the damage has no observable window.
@@ -471,6 +476,9 @@ repair must have a read-only mode, or the damage has no observable window.
 **Principle:** A self-healing pipeline cannot be audited by running it. Any tool
 that fixes on sight destroys the evidence a gate needs, so a fixer and a checker
 are two tools, not one with a flag nobody passes.
+
+*Closed the same day, from the other side: the checker did not have to be a
+second tool. It had to be a second **copy** — which is what a CI runner is.*
 
 ### Observation 14: A summary picked the line with a number in it, and the number was in a sentence saying the opposite
 
@@ -559,3 +567,109 @@ and the two look identical from inside a tool that only reports success.
 **Principle:** An empty result and a broken connection are the same string in
 most tools, and only one of them is information. A negative finding from a
 search is worth exactly as much as the last positive control you ran through it.
+
+### Observation 16: The comment was addressed to us; the sentence was addressed to the visitor
+
+**Status:** ACTIONED (2026-08-24) — became `tools/forms.py`
+**Date:** 2026-08-24
+**Session context:** Asked what to do next, went to `launch.py`'s costliest
+person-item — "give the 7 forms somewhere to post" — and read what the forms
+actually did instead of what the report said about them.
+
+**Skill:** run-beta-art / the gates
+**Type:** internal
+**Phase/Area:** A promise made by an interface rather than by copy
+
+**Issue:** Three of the site's forms answered a submit with a receipt they
+could not honour. The desk's enquiry form:
+
+    // No backend here: connect a form endpoint or the studio inbox before launch.
+    if (status) status.textContent = "Request received. A written scope and
+      price follow within 48 hours, from hallo@beta-art.com.";
+    form.reset();
+
+The visitor is told their enquiry arrived; `form.reset()` then destroys it. They
+wait 48 hours for a reply nobody can send, because nobody has their message. The
+journal's newsletter form said "check your inbox for the confirmation letter"
+with no list to join. The archive's licence form said "Request received" on a
+page whose own preview banner, forty lines above, reads *"no enquiry sent from
+this site is stored anywhere"* — the page contradicted itself, and the visitor
+believes the form, not the banner.
+
+Every one of the three had a comment above it saying there was no backend. **The
+comment was addressed to us. The sentence was addressed to the visitor**, and
+only one of those two is read by the person the promise is made to. A note to
+the developer is not a disclosure to the user, and putting it in the source is
+what made it feel handled.
+
+`claims.py` did not catch this because it checks that a promise on a *page* is
+an undertaking in the legal notice. This promise was not in the copy. It was
+made at runtime, by JavaScript, only to the people who actually filled the form
+in — the most committed visitors on the site.
+
+And the answer already existed here. `beta-art/release.js`, months older, in
+Norwegian:
+
+    if (!ENDPOINT) {
+      /* Ingen mottaker satt opp. Si det rett ut framfor å vise en hake. */
+
+— *no recipient set up, say it straight out rather than showing a checkmark.*
+One of four forms had the pattern. Three did not. Same shape as observation 6:
+the thing travelled between properties, the rule behind it did not.
+
+**Suggested improvement:** All three now hold their input rather than resetting
+it, say plainly that nothing was sent, and name the address to send it to. Each
+carries an empty `ENDPOINT`; setting it switches on a real POST whose success
+sentence lives in the `.then`, and whose failure sentence says nothing was
+stored. `forms.py` fails any arrival claim that sits outside a `.then`.
+
+The gate found the third form on its first run — one I had not known about
+while writing it.
+
+**Principle:** A comment is a message to whoever edits the file. A status line
+is a message to whoever trusted the form. Explaining a missing backend in the
+source does not disclose it to anybody outside the repository, and the more
+carefully the comment is written the more convincingly it stands in for the
+work.
+
+### Observation 17: I wrote the same gate-fails-on-documentation bug I had documented that morning
+
+**Status:** ACTIONED (2026-08-24) — `forms.py` strips comments before scanning
+**Date:** 2026-08-24
+**Session context:** First run of the new `forms.py`, on the tree it had just
+been written to certify.
+
+**Skill:** task-observer
+**Type:** internal
+**Phase/Area:** Promoting an observation to a gate
+
+**Issue:** `forms.py` came back with five findings on a tree I had just fixed.
+Two were its own explanation: in the repaired files I had quoted the bad
+sentences inside `//` comments, to record why they were bad, and the gate read
+the comments as code.
+
+This is **observation 10, exactly** — a gate failing on documentation — which I
+had written up and fixed in `qc.py` earlier the same day, using `ast` so that
+Python comments and docstrings cannot trip a scan. The principle was recorded.
+It did not transfer, because the new gate scans JavaScript and `ast` does not
+reach it, so the fix was filed as *a Python fix* rather than as *the rule that
+a scanner must not read its own explanation*.
+
+Two of the other three findings were also mine: `\bsendt\b` and `\bregistrert\b`
+matched `release.js` saying "samtykket blir først registrert når teksten under er
+sendt" — the consent is registered *once you have sent* the text. A condition,
+read as a receipt. The pattern was tuned to the words rather than to the claim.
+
+Only the fifth finding was real, and it was the one I had not known about.
+
+**Suggested improvement:** When promoting an observation to a gate, re-read the
+log for observations about *gates*, not only for observations about the subject.
+The half-one/half-two check in `references/promoting-to-a-gate.md` caught this —
+half one failed and said why — but only because the gate was run against a tree
+already known to be clean. A gate first run on a dirty tree would have shown
+five findings and looked correct.
+
+**Principle:** A fix recorded against one language files itself under that
+language. The lesson generalises and the filing does not, so the second
+occurrence looks like a new bug. When a gate is written, the first thing to
+check is whether it fails on the sentence explaining what it checks.
