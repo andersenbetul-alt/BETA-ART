@@ -243,3 +243,14 @@ açıp URL + anon anahtarını iletmek. Ayrıca task-observer becerisi
 `.claude/skills/task-observer/` olarak depoya kalıcılaştırıldı (CC BY 4.0,
 atıf korunarak).
 
+## 24.08.2026 (devam) — Üye uygulaması canlıya çıktı (iskelet)
+
+supabase-js CDN yerine depoya vendor'landı (2.112.4, lisans+sha256 kayıtlı) —
+hem konteynerden test edilebilirlik hem CSP daralması. Playwright 7/7.
+`qblogg-uye` Vercel projesi kuruldu: https://qblogg-uye.vercel.app (ayrı
+proje; koruma kapatıldı; noindex). İlk dağıtım "cp: No such file" ile düştü —
+neden: vendor dosyası henüz push'lanmamıştı; klon-tabanlı dağıtım çalışma
+ağacını değil depoyu dağıtır (gözlem #8). Push sonrası yeşil. Örnek tohum
+brief'i hazır (seed.sql, yayınlanmış yazıdan türetilmiş). Bekleyen: kullanıcı
+Supabase projesi + URL/anon anahtar.
+

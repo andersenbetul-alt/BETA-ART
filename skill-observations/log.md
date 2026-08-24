@@ -153,3 +153,22 @@ notunda artık kayıtlı.
 **Principle:** Dağıtım durumu (state) değil tarif (recipe) olarak
 saklanırsa, altyapı kaybı felaket değil yeniden çalıştırma olur.
 
+### Observation 8: Klon-tabanlı dağıtım, push edilmemiş dosyayı göremez
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** qblogg-uye ilk dağıtımı ENOENT ile düştü
+**Skill:** deploy-to-vercel kullanım pratiği
+**Type:** internal
+**Phase/Area:** Dağıtım öncesi kontrol
+
+**Issue:** buildCommand depodan klonlar; vendor'lanan lib çalışma ağacında
+duruyordu ama push edilmemişti. Dağıtım "cp: cannot stat" ile düştü.
+
+**Suggested improvement:** Tarif-tabanlı (klonlayan) her dağıtımdan önce
+zorunlu kontrol: `git status --short` boş VE dal push'lu. Bu iki komut
+dağıtım komutunun önüne alışkanlık olarak eklenmeli.
+
+**Principle:** Dağıtım tarifi depoyu okuyorsa, "bende çalışıyor"un birimi
+çalışma ağacı değil push edilmiş commit'tir.
+

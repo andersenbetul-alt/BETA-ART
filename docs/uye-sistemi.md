@@ -1,6 +1,7 @@
 # QBLOGG üye sistemi (Q Brief Pro) — kurulum ve mimari
 
-Tarih: 24.08.2026 · Durum: v1 kod hazır, Supabase projesi kullanıcı adımı bekliyor
+Tarih: 24.08.2026 · Durum: v1 CANLI (yapılandırmasız iskelet) — https://qblogg-uye.vercel.app ;
+Supabase projesi kullanıcı adımı bekliyor
 Karar kaydı: kullanıcı onayı ile — ayrı üye uygulaması · kapsam Q Brief Pro ·
 giriş yöntemi magic link (şifresiz). İş modelindeki karşılığı: B1→B2 basamağı
 (`docs/is-modeli.md`).
@@ -24,8 +25,9 @@ Supabase (auth.users + Postgres)
 - Ana sitenin dağıtımı `uye/` klasörünü hiç kopyalamaz; iki uygulama ayrı
   Vercel projeleridir. Sitenin "çerez yok, üçüncü taraf yok" vaadi bozulmaz —
   o vaat qblogg.com içindir, üye uygulamasının kendi gizlilik notu olacaktır.
-- Üye uygulaması bilinçli olarak derlemesizdir: tek HTML + supabase-js'in
-  esm.sh üzerinden ESM importu. CSP yalnız esm.sh ve *.supabase.co'ya izin verir.
+- Üye uygulaması bilinçli olarak derlemesizdir: tek HTML + depoya vendor'lanmış
+  supabase-js (uye/lib/, sürüm+lisans+sha256 kaydı lib/KAYNAK.md'de). CDN yok;
+  CSP yalnız *.supabase.co'ya bağlantıya izin verir.
 - Gövde metinleri `textContent` ile basılır (markdown şimdilik düz metin
   gösterilir) — HTML enjeksiyon yüzeyi yoktur.
 
