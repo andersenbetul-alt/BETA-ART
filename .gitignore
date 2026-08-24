@@ -6,3 +6,6 @@ dist/
 *.log
 .vscode/
 .idea/
+
+# Driverens skjermbilder – lages på nytt hver kjøring
+.claude/skills/run-naviar/skjermbilder/
