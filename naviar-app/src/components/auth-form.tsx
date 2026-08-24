@@ -13,6 +13,14 @@ function Submit({ label }: { label: string }) {
 }
 
 type Action = (prev: string | null, data: FormData) => Promise<string | null>;
+type Mode = "login" | "signup" | "forgot" | "update-password";
+
+const SUBMIT_LABEL: Record<Mode, string> = {
+  login: "Sign in",
+  signup: "Create account",
+  forgot: "Send reset link",
+  "update-password": "Set new password",
+};
 
 export function AuthForm({
   action,
@@ -20,7 +28,7 @@ export function AuthForm({
   next,
 }: {
   action: Action;
-  mode: "login" | "signup";
+  mode: Mode;
   next?: string;
 }) {
   const [error, formAction] = useActionState<string | null, FormData>(
@@ -37,23 +45,40 @@ export function AuthForm({
         </label>
       )}
 
-      <label className="field">
-        <span>Email</span>
-        <input name="email" type="email" required autoComplete="email" />
-      </label>
+      {mode !== "update-password" && (
+        <label className="field">
+          <span>Email</span>
+          <input name="email" type="email" required autoComplete="email" />
+        </label>
+      )}
 
-      <label className="field">
-        <span>Password</span>
-        <input
-          name="password"
-          type="password"
-          required
-          minLength={mode === "signup" ? 8 : undefined}
-          autoComplete={
-            mode === "signup" ? "new-password" : "current-password"
-          }
-        />
-      </label>
+      {mode !== "forgot" && (
+        <label className="field">
+          <span>{mode === "update-password" ? "New password" : "Password"}</span>
+          <input
+            name="password"
+            type="password"
+            required
+            minLength={mode === "login" ? undefined : 8}
+            autoComplete={
+              mode === "login" ? "current-password" : "new-password"
+            }
+          />
+        </label>
+      )}
+
+      {mode === "update-password" && (
+        <label className="field">
+          <span>Confirm new password</span>
+          <input
+            name="confirm"
+            type="password"
+            required
+            minLength={8}
+            autoComplete="new-password"
+          />
+        </label>
+      )}
 
       {next && <input type="hidden" name="next" value={next} />}
 
@@ -63,7 +88,7 @@ export function AuthForm({
         </p>
       )}
 
-      <Submit label={mode === "signup" ? "Create account" : "Sign in"} />
+      <Submit label={SUBMIT_LABEL[mode]} />
     </form>
   );
 }

@@ -57,3 +57,44 @@ export async function signOut() {
   revalidatePath("/", "layout");
   redirect("/login");
 }
+
+export async function requestPasswordReset(
+  _prev: string | null,
+  formData: FormData,
+) {
+  const email = String(formData.get("email") ?? "").trim();
+  if (!email) return "Email is required.";
+
+  const supabase = await createClient();
+  // Reuse the confirm route: it verifies the token server-side, then forwards.
+  await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${siteUrl()}/auth/confirm?next=/update-password`,
+  });
+
+  // Always redirect to the same place whether or not the address exists.
+  // Reporting "no such account" here would turn this form into a way to test
+  // which addresses are registered.
+  redirect("/login?checkEmail=reset");
+}
+
+export async function updatePassword(
+  _prev: string | null,
+  formData: FormData,
+) {
+  const password = String(formData.get("password") ?? "");
+  const confirm = String(formData.get("confirm") ?? "");
+
+  if (password.length < 8) return "Password must be at least 8 characters.";
+  if (password !== confirm) return "Passwords do not match.";
+
+  const supabase = await createClient();
+
+  // updateUser acts on the session established by the recovery link. If that
+  // session is missing or expired, Supabase rejects the call rather than
+  // silently changing nothing.
+  const { error } = await supabase.auth.updateUser({ password });
+  if (error) return error.message;
+
+  revalidatePath("/", "layout");
+  redirect("/dashboard");
+}

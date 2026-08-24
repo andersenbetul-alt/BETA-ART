@@ -2,7 +2,9 @@ import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 /** Routes reachable without a session. Everything else requires auth. */
-const PUBLIC_PATHS = ["/", "/login", "/signup", "/auth"];
+const PUBLIC_PATHS = ["/", "/login", "/signup", "/forgot-password", "/auth"];
+// /update-password is deliberately absent: it is reached through a recovery
+// link, which establishes a session first, so it should stay protected.
 
 function isPublic(pathname: string) {
   return PUBLIC_PATHS.some(
