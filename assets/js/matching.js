@@ -52,6 +52,24 @@
       }
     },
     {
+      id: 'egenskaper',
+      /* Familien kan stille faste krav til hvem som kommer: ikke-røyker, god
+         fysisk form, kan løfte. Kravene er få og faste utfall, ikke fritekst –
+         og de er filtre: mangler ett, hjelper ingen score i verden. */
+      test: function (h, o) {
+        return (o.kravEgenskaper || []).every(function (k) {
+          return (h.egenskaper || []).indexOf(k) !== -1;
+        });
+      },
+      grunn: function (h, o) {
+        var mangler = (o.kravEgenskaper || []).filter(function (k) {
+          return (h.egenskaper || []).indexOf(k) === -1;
+        });
+        return 'Familien har satt krav om «' + mangler.join('», «') +
+               '», som ikke ligger i profilen din.';
+      }
+    },
+    {
       id: 'tidsrom',
       test: function (h, o) { return h.tidsrom.indexOf(o.tidsrom) !== -1; },
       grunn: function (h, o) { return 'Du har ikke oppgitt at du er ledig på ' + o.tidsromNavn.toLowerCase() + '.'; }

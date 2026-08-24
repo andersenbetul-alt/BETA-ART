@@ -130,6 +130,31 @@ t.test('tidsrom hjelperen ikke er ledig i, sperres', function () {
   t.erLik(r.sperre.id, 'tidsrom');
 });
 
+t.test('egenskapskrav filtrerer den nærmeste når profilen mangler kravet', function () {
+  // Scenarioet fra tjenestedesignet: oppdraget krever ikke-røyker og god
+  // fysisk form. Erik bor 600 m unna, men røyker. Sara bor 1,4 km unna og
+  // oppfyller alt. Nærmeste person taper for nærmeste egnede.
+  var krav = { kravEgenskaper: ['ikke-royker', 'god-fysisk-form'] };
+  var erik = nyHjelper({ id: 'erik', egenskaper: ['god-fysisk-form'] });
+  var sara = nyHjelper({ id: 'sara', egenskaper: ['ikke-royker', 'god-fysisk-form'] });
+
+  var rErik = M.vurder(erik, nyttOppdrag(Object.assign({ avstandKm: 0.6 }, krav)));
+  t.erUsann(rErik.aktuell);
+  t.erLik(rErik.sperre.id, 'egenskaper');
+  t.erSann(rErik.sperre.grunn.indexOf('ikke-royker') !== -1, 'grunnen navngir kravet: ' + rErik.sperre.grunn);
+
+  var rangert = M.rangerHjelpere(nyttOppdrag(Object.assign({ avstandKm: 1.4 }, krav)), [sara]);
+  t.erLik(rangert.length, 1);
+  t.erLik(rangert[0].hjelper.id, 'sara');
+});
+
+t.test('oppdrag uten egenskapskrav slipper alle gjennom egenskapsfilteret', function () {
+  var uten = nyHjelper({ id: 'uten-egenskaper' });
+  delete uten.egenskaper;
+  var r = M.vurder(uten, nyttOppdrag());
+  t.erSann(r.aktuell, 'sperret av: ' + (r.sperre && r.sperre.id));
+});
+
 t.test('rød kategori tilbys aldri – heller ikke til den mest betrodde', function () {
   // Sperren i katalogen er første forsvar; motoren skal stå imot et rødt
   // oppdrag som likevel kommer. Uansett tillitsnivå, uansett relasjon.

@@ -30,6 +30,7 @@ aldri – og hjelperen får en lesbar grunn, ikke taushet.
 | `tilgjengelig` | Bare den som selv har sagt seg tilgjengelig |
 | `kvalifisert` | Bare oppgavetyper hjelperen har krysset av for |
 | `tillitsniva` | Oppdragets krav ≤ hjelperens nivå |
+| `egenskaper` | Familiens faste krav (ikke-røyker, god fysisk form) må ligge i profilen – mangler ett, hjelper ingen score. Begrunnelsen navngir kravet |
 | `avstand` | Hjelperens egen maksavstand respekteres |
 | `tidsrom` | Bare tidsrom hjelperen har oppgitt |
 | `proveperiode` | Nye hjelpere: lav risiko, dagtid, til fem fullførte |
