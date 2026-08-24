@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 605" role="img" aria-label="Naviar Care">
+<g transform="translate(135,132)">
+<rect x="0.0" y="0.0" width="86.0" height="340.0" fill="#26313B"/>
+<rect x="214.0" y="0.0" width="86.0" height="340.0" fill="#26313B"/>
+<path fill="#26313B" fill-rule="evenodd" d="M0,0 L86,0 L300,340 L214,340 Z M150.0,130.8 L183.12,176.8 L150.0,222.8 L116.88,176.8 Z"/>
+</g>
+<g transform="translate(590,152)">
+<g transform="translate(0,0)"><rect x="0.0" y="0.0" width="34.0" height="150.0" fill="#26313B"/><polygon points="0.0,0.0 34.0,0.0 126.0,150.0 92.0,150.0" fill="#26313B"/><rect x="92.0" y="0.0" width="34.0" height="150.0" fill="#26313B"/></g>
+<g transform="translate(166,0)"><path fill="#26313B" fill-rule="evenodd" d="M53.15,0 L88.85,0 L142,150 L107.32,150 L71.0,42.5 L34.68,150 L0,150 Z"/><path fill="#26313B" fill-rule="evenodd" d="M28.400000000000002,90.0 L113.60000000000001,90.0 L105.60000000000001,118.9 L36.400000000000006,118.9 Z M71.0,88.0 L88.0,104.45 L71.0,120.9 L54.0,104.45 Z"/></g>
+<g transform="translate(348,0)"><path fill="#26313B" d="M0,0 L34.68,0 L71.0,107.5 L107.32,0 L142,0 L89.7,150 L52.3,150 Z"/></g>
+<g transform="translate(530,0)"><rect x="0.0" y="0.0" width="34.0" height="150.0" fill="#26313B"/></g>
+<g transform="translate(604,0)"><path fill="#26313B" fill-rule="evenodd" d="M53.15,0 L88.85,0 L142,150 L107.32,150 L71.0,42.5 L34.68,150 L0,150 Z"/><path fill="#26313B" fill-rule="evenodd" d="M28.400000000000002,90.0 L113.60000000000001,90.0 L105.60000000000001,118.9 L36.400000000000006,118.9 Z M71.0,88.0 L88.0,104.45 L71.0,120.9 L54.0,104.45 Z"/></g>
+<g transform="translate(786,0)"><path fill="#26313B" fill-rule="evenodd" d="M0,0 L132,0 L132,84.00000000000001 L73.92,84.00000000000001 L132,150 L89.5,150 L58.08,84.00000000000001 L34,84.00000000000001 L34,150 L0,150 Z M34,30.6 L101.4,30.6 L101.4,53.40000000000001 L34,53.40000000000001 Z"/></g>
+</g>
+<g transform="translate(592,345)">
+<g transform="translate(0,0)"><rect x="0.0" y="0.0" width="15.0" height="88.0" fill="#334556"/><rect x="0.0" y="0.0" width="84.0" height="15.0" fill="#334556"/><rect x="0.0" y="73.0" width="84.0" height="15.0" fill="#334556"/></g>
+<g transform="translate(132,0)"><path fill="#334556" fill-rule="evenodd" d="M36.25,0 L55.75,0 L92,88 L75.5,88 L46.0,19.5 L16.5,88 L0,88 Z"/><path fill="#334556" fill-rule="evenodd" d="M20.24,54.56 L71.76,54.56 L65.76,69.56 L26.24,69.56 Z M46.0,52.56 L57.0,62.06 L46.0,71.56 L35.0,62.06 Z"/></g>
+<g transform="translate(272,0)"><path fill="#334556" fill-rule="evenodd" d="M0,0 L80,0 L80,49.28 L44.800000000000004,49.28 L80,88 L57.5,88 L35.2,49.28 L15,49.28 L15,88 L0,88 Z M15,13.5 L66.5,13.5 L66.5,35.78 L15,35.78 Z"/></g>
+<g transform="translate(400,0)"><rect x="0.0" y="0.0" width="15.0" height="88.0" fill="#334556"/><rect x="0.0" y="0.0" width="76.0" height="15.0" fill="#334556"/><rect x="0.0" y="36.5" width="66.9" height="15.0" fill="#334556"/><rect x="0.0" y="73.0" width="76.0" height="15.0" fill="#334556"/></g>
+</g>
+</svg>
