@@ -60,10 +60,6 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
----
-
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
-
 ## 5. Task Observer
 
 At the start of any multi-step task in this project, invoke the
@@ -71,3 +67,7 @@ At the start of any multi-step task in this project, invoke the
 for repeated patterns worth turning into skills and writes them to an
 observation log outside the repo. Observations are proposals — review them
 before acting on any of them.
+
+---
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
