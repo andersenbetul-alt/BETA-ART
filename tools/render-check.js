@@ -13,7 +13,12 @@
  */
 "use strict";
 
-const { chromium } = require("/opt/node22/lib/node_modules/playwright");
+// This container keeps playwright at a fixed global path; a CI runner keeps it
+// wherever its own npm put it. Try the path we know, then let node resolve.
+const { chromium } = (function () {
+  try { return require("/opt/node22/lib/node_modules/playwright"); }
+  catch (e) { return require("playwright"); }
+}());
 const fs = require("fs");
 const path = require("path");
 
