@@ -215,3 +215,17 @@ kanıt sınıfıyla işaretli: [V] doğrulanmış / [H] hipotez / [D] dış iddi
 dış araçlardan gelen rakip verileri teyit edilmeden karar dayanağı
 yapılmayacak. Altı açık karar kullanıcıya listelendi (§13).
 
+## 23.08.2026 (gece) — Vercel projesi silinmiş bulundu, site geri kuruldu
+
+Alan adı kontrolü sırasında `qblogg` Vercel projesinin takım listesinde
+olmadığı görüldü (panelde aynı gün başka projeler oluşturulurken silinmiş
+olmalı; eski adresler qblogg-bet-art/qblogg-flame öldü). Kurulum tek
+dosyalık olduğu için site aynı adla dakikalar içinde geri kuruldu:
+yeni üretim adresi **qblogg.vercel.app** (yeni proje id). Yeni projede
+kendiliğinden açılan Deployment Protection yine kapatıldı; kalite.html
+canlıdan 200 + güncel içerikle doğrulandı. GoDaddy tarafı hazır
+(apex/www A kayıtları Vercel'i gösteriyor, _vercel TXT yayılmış);
+kalan adım: Vercel panelinde qblogg projesine qblogg.com + www ekleyip
+doğrulamak — eski claim akışı silinen projeye bağlıydı, panel yeni kod
+üretirse GoDaddy'deki TXT değeri onunla değiştirilecek.
+
