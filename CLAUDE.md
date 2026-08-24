@@ -179,6 +179,19 @@ finnes en som eier avgjørelsen, går den foran din egen vurdering.
 `naviar-merkevare` går foran `brand-guidelines`. Den siste inneholder
 Anthropics farger, ikke våre.
 
+### Aktivering av task-observer
+
+Ved starten av enhver oppgaveøkt – enhver samtale der du bruker verktøy og
+lager noe – last `task-observer` før du begynner. Da fanges muligheter for
+bedre ferdigheter opp underveis, ikke etterpå.
+
+Når du laster en ferdighet: se etter ÅPNE observasjoner i observasjonsloggen
+som er merket med den ferdigheten, og bruk innsikten med én gang – også før
+ferdighetsfila er oppdatert.
+
+Ferdigheten er CC BY 4.0 av Eoghan Henn. `LICENSE.txt` ligger ved siden av og
+skal bli der.
+
 **Elleve ferdigheter er skjult fra automatisk valg** i
 `.claude/settings.json`, fordi de forutsetter React, et rammeverk eller et
 animasjonsbibliotek. Dette prosjektet har ingen av delene, og en regel derfra
