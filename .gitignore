@@ -2,3 +2,5 @@ tools/.fontcache/
 shots*/
 docs/20-kod.md
 tools/__pycache__/forms.cpython-311.pyc
+node_modules/
+package-lock.json

@@ -1,0 +1,73 @@
+# The fourteen correctness gates, plus the one check only CI can make.
+#
+# Until now the gates ran when somebody remembered to run them. This makes
+# "the gates pass" something the repository establishes rather than something
+# a person asserts.
+#
+# No secrets, no third-party actions, no account anywhere. Everything here is
+# already in the repository; CI only runs it on a machine that has not been
+# touched.
+#
+# The second step of the first job is the interesting one, and it is the reason
+# this file is worth having. `enrich.py` writes the derived structured data,
+# and `check.py` runs it — so on a clean tree the gates change nothing, but on
+# a commit taken between a builder and the gates they *repair* it. No gate can
+# report that state locally, because running the gate is what fixes it. CI has
+# a pristine checkout to compare against, so it can: if the gates modified a
+# tracked file, the commit was taken mid-sequence and is missing the derived
+# data. That is observation 13 in skill-observations/log.md.
+
+name: gates
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  correctness:
+    name: fourteen gates, and nothing repaired
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: The correctness set
+        run: python3 tools/check.py --fast
+
+      - name: Nothing was repaired on the way through
+        run: |
+          if ! git diff --exit-code --stat; then
+            echo
+            echo "The gates modified tracked files, which means this commit was"
+            echo "taken between running a builder and running the gates. The"
+            echo "pages above are missing the structured data enrich.py appends."
+            echo "Re-run the builder, then python3 tools/check.py, then commit."
+            exit 1
+          fi
+
+  browser:
+    name: a real browser, four widths
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # render-check.js asks for playwright at the dev container's fixed path
+      # first and falls back to a plain require. That fallback only resolves
+      # from a *local* node_modules — a --global install is not on the
+      # resolution path for a script inside the repository, which is worth
+      # stating because it is the kind of thing that looks fine until it runs.
+      - name: Chromium
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: 102 pages at 360, 390, 768 and 1024
+        run: node tools/render-check.js
