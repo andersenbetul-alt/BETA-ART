@@ -60,6 +60,19 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+## 5. Measure Before Claiming
+
+**A claim about the world needs a command behind it.**
+
+- **"Couldn't reach it" is not "no results."** A blocked network, a missing
+  credential and a genuinely empty result all look identical. Distinguish
+  them before reporting: `curl -s -o /dev/null -w '%{http_code}'` — `000`
+  means no connection, `200` with an empty body means actually empty. When
+  unsure, run the same probe against a known-good target as a control.
+- **Read the match count before a bulk replace.** Run `grep -c` first and
+  compare it to the number you expect. A pattern that matches more than you
+  intended fails silently at edit time and surfaces later as a broken test.
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.

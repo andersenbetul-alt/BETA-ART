@@ -20,7 +20,7 @@ da kurala dönüştü · `ret` = tekrar etti ama kural olmayı hak etmedi.
   iyi bir hedefle kontrol testi yapılır.
 - **Öneri:** CLAUDE.md satırı — *"erişilemedi" ile "sonuç yok" ayrı raporlanır;
   ayrım ölçülmeden yazılmaz.*
-- **Durum:** açık
+- **Durum:** kabul → `CLAUDE.md` §5, birinci madde
 
 ## 2. Test değer yazdırdı, iddia etmedi
 
@@ -42,7 +42,7 @@ da kurala dönüştü · `ret` = tekrar etti ama kural olmayı hak etmedi.
   anında değil, test düştüğünde görüldü.
 - **Öneri:** CLAUDE.md satırı — *toplu değiştirmeden önce eşleşme sayısı
   okunur (`grep -c`), sonra beklenen sayıyla karşılaştırılır.*
-- **Durum:** açık
+- **Durum:** kabul → `CLAUDE.md` §5, ikinci madde
 
 ## 4. Veri modeli kararı sessizce güvenlik kararıydı
 
@@ -65,8 +65,22 @@ da kurala dönüştü · `ret` = tekrar etti ama kural olmayı hak etmedi.
 
 ---
 
-## Beceriye dönüşmeyi bekleyenler
+## Dönüşüm kaydı
 
-1 ve 3 aynı kökten: **ölçmeden rapor etmek.** İkisi tek bir CLAUDE.md
-maddesinde birleşebilir. Ayrı beceri açmak için erken — kendi tetikleyicisi
-yok, mevcut çalışmanın içinde geçiyor.
+1 ve 3 aynı kökten: **ölçmeden rapor etmek.** İkisi `CLAUDE.md` §5
+*"Measure Before Claiming"* altında birleştirildi.
+
+Merdivenin neresinde durulduğu:
+
+| Basamak | Kullanıldı mı | Neden |
+| --- | --- | --- |
+| CLAUDE.md satırı | **evet** (1, 3) | Kural tek cümleyle yazılabiliyordu |
+| Mevcut beceriyi güncelle | evet (2 → `checkpoints.md`) | Konu zaten o dosyanın alanı |
+| Yeni beceri | **hayır** | Hiçbiri kendi tetikleyicisi olan ayrı bir iş alanı değil |
+
+Yeni beceri açılmadı. Beş gözlemin hiçbiri kendi başına tetiklenen bir iş
+alanı tarif etmiyor; hepsi süregelen çalışmanın içinde geçiyor. Yeni beceri
+bakım yükü ve tetikleme karmaşası ekler — bu bedel bugün karşılanmıyor.
+
+Kalan: 4 test olarak kilitli (`db/test_auth.sql` D1-D5, V1), 5 reddedildi.
+Açık gözlem yok.
