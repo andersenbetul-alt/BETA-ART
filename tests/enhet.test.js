@@ -2343,6 +2343,24 @@ t.gruppe('Generert skjema dekker reglene');
     t.erSann(sql.indexOf('delete from besok') !== -1);
   });
 
+  t.test('innloggingsloggen arver fristen fra reglene', function () {
+    var l = V.LAGRES.filter(function (x) { return x.felt === 'innlogging'; })[0];
+    t.erSann(!!l, 'innlogging mangler i LAGRES');
+    var frist = V.FRISTER[l.frist];
+    t.erSann(!!frist && frist.dager > 0, 'fristen mangler dager');
+    /* Tallet skal komme fra reglene, ikke være skrevet inn i SQL-en. */
+    t.erSann(sql.indexOf("interval '" + frist.dager + " days'") !== -1);
+    t.erSann(sql.indexOf('les_innlogging') !== -1);
+  });
+
+  t.test('innloggingsloggen har ingen kolonne for IP eller enhet', function () {
+    var blokk = sql.slice(sql.indexOf('create table if not exists innlogging'));
+    blokk = blokk.slice(0, blokk.indexOf(');'));
+    ['ip', 'enhet', 'nettleser', 'user_agent'].forEach(function (k) {
+      t.erLik(blokk.indexOf(k), -1, k + ' har fått en kolonne');
+    });
+  });
+
   t.test('ingenting som aldri skal lagres har fått en kolonne', function () {
     var kolonner = (sql.match(/^  ([a-z_]+)\s+(text|date|time|timestamptz|smallint)/gm) || [])
       .map(function (m) { return m.trim().split(/\s+/)[0]; });

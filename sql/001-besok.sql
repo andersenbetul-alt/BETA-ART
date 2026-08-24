@@ -232,3 +232,31 @@ $$ language plpgsql;
 drop trigger if exists besok_vern on besok;
 create trigger besok_vern before insert or update on besok
   for each row execute function vern_trigger();
+
+-- GENERERT. Kilden er LAGRES og FRISTER i assets/js/besok-vern.js.
+-- felt:     innlogging
+-- formål:   Oppdage misbruk
+-- grunnlag: interesse
+-- frist:    sikkerhet – 90 dager. Oppdage misbruk, ikke følge med på folk
+create table if not exists innlogging (
+  id         bigserial primary key,
+  konto      text not null,        -- hvem. Ikke hvem personen er
+  utfall     text not null,        -- ok | feil | sperret
+  tidspunkt  timestamptz not null default now()
+);
+
+-- Ingen kolonne for IP, enhet eller nettleser. Skal en av dem inn, må den
+-- først få formål, grunnlag og frist i PP_VERN.LAGRES – en test krever begge.
+
+-- Samme regel som for besøkene: slettingen kjører når noen leser.
+create or replace function les_innlogging() returns setof innlogging as $$
+begin
+  delete from innlogging
+  where tidspunkt < now() - interval '90 days';
+  return query select * from innlogging;
+end;
+$$ language plpgsql;
+
+-- Backstop. Returnerer denne noe, er lesningen omgått.
+create or replace view innlogging_for_gammel as
+select id, tidspunkt from innlogging where tidspunkt < now() - interval '90 days';

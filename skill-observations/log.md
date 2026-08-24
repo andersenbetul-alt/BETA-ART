@@ -145,3 +145,80 @@ som skiller de to reglene fra hverandre.
 
 **Principle:** Et aggregat kan stemme mens hver enkelt avgjørelse er feil.
 Sammenlign avgjørelsene, ikke summen av dem.
+
+---
+
+### Observation 7: Loggen hører hjemme i repoet når konteineren er flyktig
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** Oppsett av task-observer i Claude Code på nett
+**Skill:** task-observer
+**Type:** open-source
+**Phase/Area:** `[workspace folder]`-definisjonen, og `references/environments.md`
+
+**Issue:** Ferdigheten definerer arbeidsmappa som en stabil sti som overlever
+økter, og nevner `~/.claude/projects/<id>/` som eksempelet i Claude Code.
+I et fjernmiljø er den stien ikke stabil: hele konteineren rives når økta er
+over, og `~/.claude/` går med. Advarselen i ferdigheten gjelder flyktige
+utsjekker (`.claude/worktrees/`), men her er det motsatt – *utsjekken* er det
+holdbare, fordi den pushes til et fjernrepo.
+
+**Suggested improvement:** La definisjonen skille på om hjemmemappa eller
+utsjekken er den varige. I et fjernmiljø med et versjonskontrollert repo hører
+loggen til i repoet, der den også blir lesbar for andre og får historikk. Legg
+en setning om dette i `references/environments.md`.
+
+**Principle:** «Stabil sti» er ikke en egenskap ved mappa, men ved hva som
+overlever i det konkrete miljøet. Avgjør det per miljø, ikke per plattform.
+
+### Observation 8: Et mål som ikke kan innfris, presser fram fyllstoff
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** `/goal` satt til et forretningsutfall («en tjeneste som er
+kjent i verden»), med en Stop-hook som blokkerer avslutning til vilkåret holder
+**Skill:** New skill candidate: mål-og-avslutningsvilkår
+**Type:** open-source
+**Phase/Area:** Vilkårsformulering
+
+**Issue:** Vilkåret krevde lansering, ekte brukere og posisjon i markedet over
+tid. Ingenting av det kan skje i én økt. Hooken blokkerte avslutning sju
+ganger, og hver runde ga et press mot å produsere noe – hva som helst – for å
+komme videre. Arbeidet var reelt de første rundene, men fristelsen til å lage
+dokumenter for å tilfredsstille en teller var tydelig, og den er en dårlig
+grunn til å skrive noe.
+
+**Suggested improvement:** Skill mellom **retning** og **avslutningsvilkår**.
+Et mål kan gjerne være et forretningsutfall, men vilkåret som gater avslutning
+må være noe økta kan avgjøre: «alle tekniske forutsetninger er gjort og de
+gjenstående er navngitt og eskalert». Når en hook har konkludert to ganger på
+rad at vilkåret ligger utenfor økta, bør den si det som et resultat i stedet
+for å blokkere videre.
+
+**Principle:** Et avslutningsvilkår som ikke kan avgjøres av den som holdes
+igjen av det, måler ikke framdrift – det måler utholdenhet, og betaler for
+fyllstoff.
+
+### Observation 9: `/security-review` faller på `origin/HEAD` i et fjernmiljø
+
+**Status:** OPEN
+**Date:** 2026-08-24
+**Session context:** `/security-review` forsøkt to ganger i samme økt
+**Skill:** security-review
+**Type:** open-source
+**Phase/Area:** Diff-oppslaget
+
+**Issue:** Ferdigheten kjører `git diff origin/HEAD...` og feiler med
+«ambiguous argument 'origin/HEAD...'». I en fersk klone i et fjernmiljø er
+`refs/remotes/origin/HEAD` ikke satt, og `git remote set-head origin -a` hjalp
+ikke fordi standardgreina ikke heter `main`. Ferdigheten er ubrukelig her, og
+feilen sier ikke hva som mangler.
+
+**Suggested improvement:** Fall tilbake på sporingsgreina, eller på
+standardgreina lest fra `git symbolic-ref refs/remotes/origin/HEAD` med en
+eksplisitt `git ls-remote --symref origin HEAD` som andrevalg. Si hva som
+mangler når ingen av dem finnes.
+
+**Principle:** En ferdighet som forutsetter lokal git-tilstand må lese den, ikke
+anta den. En fersk klone har færre referanser enn en arbeidskopi.

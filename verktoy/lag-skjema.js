@@ -209,3 +209,50 @@ q('create trigger besok_vern before insert or update on besok');
 q('  for each row execute function vern_trigger();');
 
 process.stdout.write(g.join('\n').replace(/%L/g, "''") + '\n');
+
+/* --- Innloggingsloggen -----------------------------------------------------
+
+   Dette er den ene delen av autentiseringen som er vår uansett hvilken
+   leverandør som velges. Feltet står i PP_VERN.LAGRES med formål «oppdage
+   misbruk», grunnlag «berettiget interesse» og frist «sikkerhet». Velger vi
+   Supabase Auth, fører den sine egne logger – men de bærer ikke vår frist.
+
+   Tabellen sier ingenting om hvordan noen logger inn. Den sier hvor lenge vi
+   husker at de gjorde det. */
+
+var a = [];
+function r(l) { a.push(l === undefined ? '' : l); }
+
+var innlogging = V.LAGRES.filter(function (l) { return l.felt === 'innlogging'; })[0];
+var sikkerhet = V.FRISTER[innlogging.frist];
+
+r();
+r('-- GENERERT. Kilden er LAGRES og FRISTER i assets/js/besok-vern.js.');
+r('-- felt:     ' + innlogging.felt);
+r('-- formål:   ' + innlogging.formal);
+r('-- grunnlag: ' + innlogging.grunnlag);
+r('-- frist:    ' + innlogging.frist + ' – ' + sikkerhet.dager + ' dager. ' + sikkerhet.hvorfor);
+r('create table if not exists innlogging (');
+r('  id         bigserial primary key,');
+r('  konto      text not null,        -- hvem. Ikke hvem personen er');
+r('  utfall     text not null,        -- ok | feil | sperret');
+r('  tidspunkt  timestamptz not null default now()');
+r(');');
+r();
+r('-- Ingen kolonne for IP, enhet eller nettleser. Skal en av dem inn, må den');
+r('-- først få formål, grunnlag og frist i PP_VERN.LAGRES – en test krever begge.');
+r();
+r('-- Samme regel som for besøkene: slettingen kjører når noen leser.');
+r('create or replace function les_innlogging() returns setof innlogging as $$');
+r('begin');
+r('  delete from innlogging');
+r("  where tidspunkt < now() - interval '" + sikkerhet.dager + " days';");
+r('  return query select * from innlogging;');
+r('end;');
+r('$$ language plpgsql;');
+r();
+r('-- Backstop. Returnerer denne noe, er lesningen omgått.');
+r('create or replace view innlogging_for_gammel as');
+r("select id, tidspunkt from innlogging where tidspunkt < now() - interval '" + sikkerhet.dager + " days';");
+
+process.stdout.write(a.join('\n') + '\n');
