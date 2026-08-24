@@ -26,6 +26,18 @@ branddb.wipo.int          000
 Et direkte oppslag mot TMview ga `EGRESS_BLOCKED` i klartekst. Dette er ikke
 «ingen treff». Det er «kom ikke fram», og de to må aldri forveksles.
 
+Også Brønnøysundregistrene er stengt. Det er ikke et varemerkeregister, men
+det svarer på om noen allerede driver under navnet i Norge:
+
+```
+data.brreg.no             000  /  EGRESS_BLOCKED
+```
+
+Et domenebegrenset nettsøk mot brreg.no, proff.no og purehelp.no ga bare
+generelle sider om organisasjonsnummer – ingen selskapsoppføring. Det betyr
+ikke at «Naviar AS» ikke finnes. Det betyr at spørsmålet ikke er stilt til
+registeret.
+
 Nettsøk virker derimot, men er amerikansk orientert og er **ikke et register**.
 Det som står under, er andrehåndsomtale fra en tredjepartsdatabase.
 
@@ -69,6 +81,8 @@ Dette krever ingen kode. Det krever tilgang vi ikke har herfra.
 
 1. Søk «NAVIAR» og «NAVIAR CARE» i [Patentstyrets database](https://search.patentstyret.no),
    klasse 35, 37, 44 og 45
+1b. Slå opp «Naviar» i [Enhetsregisteret](https://www.brreg.no/) – driver noen
+   allerede under navnet i Norge?
 2. Samme søk i [TMview](https://www.tmdn.org/tmview/) for EU og Norden
 3. Søk også de forvekselbare: NAVIA, NAVIGA, NAVIO, NAVIFY
 4. Er navnet ledig: søk registrering før markedsføringen begynner, ikke etter
