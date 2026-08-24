@@ -26,6 +26,28 @@ pulls from GitHub, not skills.sh.
 
 ---
 
+## 2026-08-22 — task-observer moved into the repo
+
+Installed `task-observer` at `.claude/skills/task-observer/` (project level)
+rather than only at user level, and started `skill-observations/log.md`. Both
+are tracked, so they survive the container — the skill's value is memory
+between sessions, which a user-level install in an ephemeral box cannot
+provide.
+
+Three observations captured from this session's actual friction, all OPEN:
+
+1. A test asserted a skip link's *target existed* and passed, while the skip
+   link itself did nothing. Precondition asserted, behaviour claimed.
+2. An intermittent failure was misdiagnosed twice before the raw assertion
+   text revealed floating-point geometry (`43.999996` vs `44`).
+3. An RLS `UPDATE` policy scoped to the owning row still allowed a user to
+   set their own `role` column — rows are not columns. The fix then blocked
+   creating the first owner.
+
+`last-review-date.txt` seeded with `never`; no review has run.
+
+---
+
 ## 2026-08-22 — Authentication schema
 
 Supabase auth + PostgreSQL, recorded as D-006. Note this supersedes part of

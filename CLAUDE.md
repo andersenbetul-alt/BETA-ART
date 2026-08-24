@@ -18,7 +18,8 @@ site navigation bar, referred to as the "BETA ART / Cobban" navbar.
 | `PROGRESS.md` | Dated log, newest first — what actually changed and when | Every commit that changes behaviour or docs |
 | `DECISIONS.md` | Numbered decisions (D-001…): the choice, the reasoning, what it rules out | A decision is made, opened, or superseded |
 | `README.md` | Outward-facing overview and repository layout | Layout or entry points change |
-| `BUSINESS.md` | İş modeli seçenekleri — öneri, karar değil | A revenue model is chosen (then record as D-006) |
+| `BUSINESS.md` | İş modeli seçenekleri — öneri, karar değil | A revenue model is chosen |
+| `skill-observations/log.md` | Friction noticed during real work, for later skill improvement | An observation is captured or actioned |
 | `SECURITY.md` | Security policy — currently GitHub's unedited template | A real contact and version table are set |
 
 Update these in the **same commit** as the work they describe. Records kept
@@ -34,9 +35,10 @@ When loading any skill, check the observation log for OPEN observations tagged
 to that skill and apply their insights to the current work, even if the skill
 file has not been updated yet.
 
-Note for this repository: observations are written to `skill-observations/`.
-In an ephemeral container that directory does not survive the session, so the
-log is only durable when this repo is checked out somewhere persistent.
+The skill is installed at `.claude/skills/task-observer/` (project level, in
+the repo) and observations are written to `skill-observations/log.md`. Both
+are tracked by git, so they survive an ephemeral container once pushed —
+which is the point: this skill's whole value is memory between sessions.
 
 ## Established facts
 
