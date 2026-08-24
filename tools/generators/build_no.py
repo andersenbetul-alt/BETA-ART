@@ -32,6 +32,29 @@ def strip(t):
     return html.unescape(re.sub(r"<[^>]+>", "", t))
 
 
+
+def meta_desc(lead, source, lo=70, hi=165):
+    """The lead, plus as much of the solution as fits in a search result.
+
+    Cut only at a sentence end. Joining a mid-sentence fragment with a full
+    stop produces "One page. built as static HTML." — worse in a result than
+    a short description, which is what the earlier version of this settled
+    for. Where even one more sentence will not fit, the data table carries a
+    written description instead; assembling one is not worth a bad sentence.
+    """
+    d = lead.strip().rstrip(".")
+    if len(d) + 1 >= lo:
+        return d + "."
+    for sent in [x.strip() for x in re.split(r"(?<=\.)\s+", source) if x.strip()]:
+        cand = d + ". " + sent.rstrip(".")
+        if len(cand) + 1 > hi:
+            break
+        d = cand
+        if len(d) + 1 >= lo:
+            break
+    return d + "."
+
+
 def head(title, desc, slug):
     en = "%s/s-%s.html" % (SITE, slug) if slug else "%s/" % SITE
     no = "%s/no/s-%s.html" % (SITE, slug) if slug else "%s/no/" % SITE
@@ -181,15 +204,9 @@ def service(slug, prev, nxt):
     # søkeresultat. Den ble tidligere skrevet rett inn i <p class="lead"> også,
     # så tretten av sidene åpnet med overskriften, en tankestrek og
     # problemavsnittet — fire av dem kuttet midt i en setning med ellipse.
-    desc = lead
-    if len(desc) < 70:
-        # Trettn av de norske ledeavsnittene er kortere enn et søkeresultat.
-        # De fylles ut med den første hele setningen om hva vi gjør — aldri
-        # med et avkuttet fragment. Passer den ikke, står ledeavsnittet alene:
-        # en kort beskrivelse er bedre enn en setning som stopper midt i.
-        neste = no["solution"].split(". ")[0].strip().rstrip(".")
-        if neste and len(desc) + len(neste) + 2 <= 158:
-            desc = desc.rstrip(".") + ". " + neste + "."
+    # En håndskrevet beskrivelse i datatabellen går foran: fire av dem
+    # kunne ikke forlenges uten å kutte midt i en setning.
+    desc = no.get("meta") or meta_desc(lead, no["solution"])
     ld = {"@context": "https://schema.org", "@type": "Service",
           "name": strip(title), "description": desc, "inLanguage": "no",
           "serviceType": strip(title), "areaServed": "NO",

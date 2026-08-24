@@ -108,6 +108,29 @@ Part of Beta Art, the archive of verified human photography.</p>
 </body>
 </html>"""
 
+
+def meta_desc(lead, source, lo=70, hi=165):
+    """The lead, plus as much of the solution as fits in a search result.
+
+    Cut only at a sentence end. Joining a mid-sentence fragment with a full
+    stop produces "One page. built as static HTML." — worse in a result than
+    a short description, which is what the earlier version of this settled
+    for. Where even one more sentence will not fit, the data table carries a
+    written description instead; assembling one is not worth a bad sentence.
+    """
+    d = lead.strip().rstrip(".")
+    if len(d) + 1 >= lo:
+        return d + "."
+    for sent in [x.strip() for x in re.split(r"(?<=\.)\s+", source) if x.strip()]:
+        cand = d + ". " + sent.rstrip(".")
+        if len(cand) + 1 > hi:
+            break
+        d = cand
+        if len(d) + 1 >= lo:
+            break
+    return d + "."
+
+
 def li(items): return "\n".join(f"<li>{x}</li>" for x in items)
 
 def service_page(s, prev, nxt):
@@ -134,7 +157,7 @@ def service_page(s, prev, nxt):
            '<link rel="alternate" hreflang="no" href="%s/no/s-%s.html">\n'
            '<link rel="alternate" hreflang="x-default" href="%s">'
            % (canon, SITE, s["slug"], canon))
-    return head(title, s["lead"], canon, alt=alt) + f"""
+    return head(title, meta_desc(s["lead"], s["solution"]), canon, alt=alt) + f"""
 <main id="main">
 
 <section class="svc-hero">

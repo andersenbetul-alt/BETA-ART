@@ -110,14 +110,14 @@ PAGE = """<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found — {title}</title>
-<meta name="description" content="This page does not exist. Nothing published here has been removed.">
+<meta name="description" content="This address does not exist on this site. Nothing published here has been removed or taken down — the link was most likely mistyped.">
 <meta name="author" content="Betül Öner">
 <meta name="copyright" content="© 2026 Beta Art — Betül Öner. All rights reserved worldwide.">
 <meta name="robots" content="noindex,follow,noai,noimageai">
 <link rel="canonical" href="{host}/404.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Page not found — {title}">
-<meta property="og:description" content="This page does not exist. Nothing published here has been removed.">
+<meta property="og:description" content="This address does not exist on this site. Nothing published here has been removed or taken down — the link was most likely mistyped.">
 <meta property="og:url" content="{host}/404.html">
 <meta property="og:image" content="{host}/og.png">
 <meta name="theme-color" content="{theme}">
