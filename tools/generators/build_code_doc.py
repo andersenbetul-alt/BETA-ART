@@ -1,0 +1,220 @@
+#!/usr/bin/env python3
+"""Write docs/20-kod.md — the site's code, read off the site rather than retold.
+
+Asked for "the site's latest code", the obvious answer is 102 HTML files and
+28,000 lines, and the obvious way to deliver it is to paste them into a
+document. That document would be wrong within a day, because most of those
+lines are not source: they are output, and the thing that produced them is a
+few hundred lines of data in this directory.
+
+So this reads the repository and writes the answer, which means the answer is
+never stale and never a second copy of the truth. Re-run it and it agrees with
+the tree; edit it by hand and the next run throws the edit away, exactly like
+every other generated page here.
+
+What it emits, in order:
+
+  1. what is source and what is output, counted, page by page
+  2. every stylesheet and script in full — this is the part a person wrote
+  3. the data tables that produce the other eighty-six
+
+    python3 tools/generators/build_code_doc.py
+"""
+
+import os
+import re
+
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+OUT = os.path.join(ROOT, "docs", "20-kod.md")
+
+# Which builder writes a page, matched most specific first. Anything that
+# matches nothing here was written by hand and is edited directly.
+ORIGIN = [
+    (r"^beta-art-business/no/s-.*\.html$", "build_no.py", "data_no.py"),
+    (r"^beta-art-business/no/index\.html$", "build_no.py", "data_no.py"),
+    (r"^beta-art-business/s-.*\.html$", "build.py", "data.py"),
+    (r"^beta-art-business/b-.*\.html$", "build5.py", "posts.py"),
+    (r"^beta-art-blog/j-.*\.html$", "build_journal.py", "journal.py"),
+    (r"^beta-art-blog/no/index\.html$", "build_no_journal.py", "data_no_journal.py"),
+    (r"^beta-art/plate-.*\.html$", "build_plates.py", "beta-art/plates.json"),
+    (r"^no/index\.html$", "build_no_hub.py", "hub_guarantee.py"),
+    (r".*404\.html$", "build404.py", "—"),
+]
+
+# The code a person wrote, in the order it is worth reading: the shared
+# behaviour first, then each property's own stylesheet and scripts.
+CODE = [
+    ("The hub", ["index.html:style", "i18n.js"]),
+    ("Beta Art — the archive", [
+        "beta-art/styles.css", "beta-art/script.js", "beta-art/tools.js",
+        "beta-art/release.js", "beta-art/i18n.js"]),
+    ("Beta Art Business — the desk", [
+        "beta-art-business/styles.css", "beta-art-business/script.js",
+        "beta-art-business/quote.js", "beta-art-business/blog.js",
+        "beta-art-business/dashboard.js", "beta-art-business/i18n.js"]),
+    ("Field Notes — the journal", [
+        "beta-art-blog/styles.css", "beta-art-blog/script.js",
+        "beta-art-blog/i18n.js"]),
+]
+
+FENCE = {".css": "css", ".js": "js", ".html": "html", ".json": "json",
+         ".py": "python", ".xml": "xml"}
+
+
+def pages():
+    found = []
+    for dirpath, dirnames, filenames in os.walk(ROOT):
+        dirnames[:] = [d for d in dirnames if d not in
+                       (".git", "tools", "docs", "node_modules", "__pycache__",
+                        "skill-observations", ".claude")]
+        for f in filenames:
+            if f.endswith(".html"):
+                rel = os.path.relpath(os.path.join(dirpath, f), ROOT)
+                found.append(rel.replace(os.sep, "/"))
+    return sorted(found)
+
+
+def origin(rel):
+    for pattern, builder, data in ORIGIN:
+        if re.match(pattern, rel):
+            return builder, data
+    return None, None
+
+
+def read(rel):
+    with open(os.path.join(ROOT, rel), encoding="utf-8") as fh:
+        return fh.read()
+
+
+def inline_style(rel):
+    """The hub has no stylesheet — its CSS lives in one <style> block."""
+    m = re.search(r"<style>(.*?)</style>", read(rel), re.S)
+    return m.group(1).strip() if m else ""
+
+
+def lines_of(text):
+    return len(text.splitlines())
+
+
+def title(rel):
+    """The page's <title>, so a row in the inventory is identifiable."""
+    src = read(rel)
+    t = re.search(r"<title>(.*?)</title>", src, re.S)
+    return (t.group(1).strip().replace("\n", " ") if t else "")
+
+
+def main():
+    all_pages = pages()
+    generated, handwritten = [], []
+    for rel in all_pages:
+        builder, data = origin(rel)
+        (generated if builder else handwritten).append((rel, builder, data))
+
+    code_lines = 0
+    blocks = []
+    for section, files in CODE:
+        entries = []
+        for spec in files:
+            if spec.endswith(":style"):
+                rel = spec.split(":")[0]
+                text, label, ext = inline_style(rel), rel + " — <style> block", ".css"
+            else:
+                rel = spec
+                text, label, ext = read(rel), rel, os.path.splitext(rel)[1]
+            code_lines += lines_of(text)
+            entries.append((label, FENCE.get(ext, ""), text, lines_of(text)))
+        blocks.append((section, entries))
+
+    html_lines = sum(lines_of(read(p)) for p in all_pages)
+
+    w = []
+    a = w.append
+    a("# Kod — the site as it stands\n")
+    a("<!-- generated by tools/generators/build_code_doc.py — do not edit by hand -->\n")
+    a("Read off the working tree, not written down. Re-run the builder and this")
+    a("agrees with the repository again:\n")
+    a("    python3 tools/generators/build_code_doc.py\n")
+    a("## What is source and what is output\n")
+    a("| | Pages | Lines |")
+    a("|---|---:|---:|")
+    a("| Written by hand | %d | — |" % len(handwritten))
+    a("| Written by a generator | %d | — |" % len(generated))
+    a("| **Total HTML** | **%d** | **%s** |" % (len(all_pages), f"{html_lines:,}"))
+    a("| Stylesheets and scripts | — | %s |" % f"{code_lines:,}")
+    a("")
+    a("The second row is the important one. %d of %d pages are output: their text"
+      % (len(generated), len(all_pages)))
+    a("lives in a data table in `tools/generators/`, and a change to a price or a")
+    a("service name lands on every page that mentions it rather than on the pages")
+    a("somebody remembered. **Editing one of them by hand loses the edit** the next")
+    a("time its builder runs, and loses it silently.\n")
+    a("So the code that is actually written here is the %s lines in section 2,"
+      % f"{code_lines:,}")
+    a("plus the data tables in section 3. The rest is derived from them.\n")
+
+    a("### Written by hand — edit these directly\n")
+    a("| Page | Title |")
+    a("|---|---|")
+    for rel, _, _ in handwritten:
+        note = " ¹" if rel == "beta-art-blog/index.html" else ""
+        a("| `%s`%s | %s |" % (rel, note, title(rel)))
+    a("")
+    a("¹ Written by hand, but `build_journal.py` rewrites every entry link on it")
+    a("so the cards point at the essays rather than at `post.html`. Edit the copy")
+    a("freely; leave the links to the builder.\n")
+
+    a("### Written by a generator — edit the data, then re-run\n")
+    a("| Pages | Builder | Data |")
+    a("|---|---|---|")
+    groups = {}
+    for rel, builder, data in generated:
+        groups.setdefault((builder, data), []).append(rel)
+    for (builder, data), rels in sorted(groups.items()):
+        sample = rels[0] if len(rels) == 1 else "%s … (%d)" % (rels[0], len(rels))
+        a("| `%s` | `tools/generators/%s` | `%s` |" % (sample, builder, data))
+    a("")
+    a("After running any builder, run the gates — they re-derive the structured")
+    a("data the builder does not write back:\n")
+    a("    python3 tools/check.py\n")
+
+    a("## The code\n")
+    a("Every stylesheet and script, in full. There is no build step and no")
+    a("bundler: what is here is what the browser receives.\n")
+    for section, entries in blocks:
+        a("### %s\n" % section)
+        for label, fence, text, n in entries:
+            a("#### `%s` — %d lines\n" % (label, n))
+            a("```%s" % fence)
+            a(text.rstrip())
+            a("```\n")
+
+    a("## The data behind the generated pages\n")
+    a("These are the files to edit. Each one is plain Python — a list of records")
+    a("with no logic in it — and its builder turns it into pages.\n")
+    a("| File | Holds | Lines |")
+    a("|---|---|---:|")
+    for f, what in [
+        ("data.py", "the 25 business services — name, slug, price, promise, process, FAQ"),
+        ("data_no.py", "the same 25, written in Norwegian rather than translated"),
+        ("posts.py", "the seven business articles"),
+        ("journal.py", "the Field Notes essays"),
+        ("hub_guarantee.py", "the hub's guarantee section, in all twelve languages"),
+        ("chrome_i18n.py", "the 24 chrome keys shared across the twelve languages"),
+    ]:
+        p = os.path.join("tools", "generators", f)
+        n = lines_of(read(p)) if os.path.exists(os.path.join(ROOT, p)) else 0
+        a("| `%s` | %s | %s |" % (p, what, f"{n:,}"))
+    a("")
+    a("`tools/generators/README.md` says which builder writes what, and")
+    a("`.claude/skills/run-beta-art/` says how to run, screenshot and drive any")
+    a("of it.\n")
+
+    with open(OUT, "w", encoding="utf-8") as fh:
+        fh.write("\n".join(w))
+
+    print("docs/20-kod.md — %d pages (%d generated, %d by hand), %s lines of code"
+          % (len(all_pages), len(generated), len(handwritten), f"{code_lines:,}"))
+
+
+if __name__ == "__main__":
+    main()
