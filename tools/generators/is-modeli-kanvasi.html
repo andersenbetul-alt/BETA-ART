@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Beta Art — İş Modeli Kanvası</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFAF7; --paper-2:#F3F0E9; --ink:#0F0F0F; --ink-2:#1F1D1B;
+  --muted:#67635B; --rule:#E4E0D8; --seal:#8B1A1A;
+  --f-d:"Fraunces",Georgia,serif; --f-b:"Inter",sans-serif;
+  --f-m:"JetBrains Mono",monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;width:1680px;background:var(--paper);color:var(--ink);
+  font-family:var(--f-b);-webkit-font-smoothing:antialiased}
+.sheet{padding:44px 48px 40px}
+
+/* ── başlık ─────────────────────────────────────────── */
+.head{display:flex;align-items:flex-end;gap:20px;border-bottom:1px solid var(--rule);
+  padding-bottom:18px;margin-bottom:22px}
+.seal{width:38px;height:38px;flex:none}
+h1{font-family:var(--f-d);font-weight:300;font-size:2.5rem;letter-spacing:-.02em;
+  margin:0;line-height:1}
+.sub{font-family:var(--f-m);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 4px}
+.stamp{margin-left:auto;text-align:right;font-family:var(--f-m);font-size:.66rem;
+  letter-spacing:.14em;color:var(--muted);line-height:1.7;text-transform:uppercase}
+
+/* ── ızgara ─────────────────────────────────────────── */
+.grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);
+  grid-template-columns:repeat(5,1fr);
+  grid-template-areas:
+    "part act  vp   rel  seg"
+    "part res  vp   ch   seg"
+    "cost cost cost rev  rev";}
+.c{background:var(--paper);padding:16px 18px 18px;min-height:150px}
+.c.vp{background:var(--paper-2)}
+[style*="grid-area"]{}
+.part{grid-area:part} .act{grid-area:act} .res{grid-area:res} .vp{grid-area:vp}
+.rel{grid-area:rel} .ch{grid-area:ch} .seg{grid-area:seg}
+.cost{grid-area:cost} .rev{grid-area:rev}
+
+.n{font-family:var(--f-m);font-size:.62rem;letter-spacing:.2em;color:var(--seal);
+  display:block;margin-bottom:5px}
+h2{font-family:var(--f-b);font-weight:500;font-size:.86rem;margin:0 0 10px;
+  letter-spacing:.01em}
+ul{margin:0;padding:0;list-style:none}
+li{font-size:.72rem;line-height:1.5;color:var(--ink-2);margin-bottom:6px;
+  padding-left:11px;position:relative}
+li::before{content:"";position:absolute;left:0;top:.5em;width:4px;height:1px;
+  background:var(--muted)}
+li b{font-weight:500;color:var(--ink)}
+.kv{font-family:var(--f-m);font-size:.68rem;color:var(--ink)}
+.note{font-size:.66rem;color:var(--muted);line-height:1.5;margin:8px 0 0;
+  padding-top:8px;border-top:1px solid var(--rule)}
+
+/* değer önerisi bloğu */
+.vp h2{font-family:var(--f-d);font-weight:400;font-size:1.35rem;line-height:1.15;
+  letter-spacing:-.01em;margin-bottom:12px}
+.vp .claim{font-size:.76rem;line-height:1.55;color:var(--ink-2);margin:0 0 12px}
+.vp .three{margin:0 0 12px}
+.vp .three li{font-size:.7rem}
+.consq{border-left:2px solid var(--seal);padding:6px 0 6px 11px;font-size:.7rem;
+  line-height:1.5;color:var(--ink)}
+.consq b{font-weight:500}
+
+/* alt sıra */
+.cost .row,.rev .row{display:flex;gap:26px;flex-wrap:wrap}
+.cost .col,.rev .col{flex:1 1 190px;min-width:170px}
+.cost h2,.rev h2{margin-bottom:8px}
+table{border-collapse:collapse;width:100%;margin-top:2px}
+td{font-size:.69rem;padding:2.5px 0;color:var(--ink-2);vertical-align:top}
+td.v{font-family:var(--f-m);text-align:right;white-space:nowrap;color:var(--ink);
+  padding-left:10px}
+.hero-num{font-family:var(--f-d);font-weight:300;font-size:1.5rem;line-height:1;
+  display:block;margin-bottom:3px}
+.hero-k{font-family:var(--f-m);font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+
+footer{display:flex;gap:18px;align-items:baseline;margin-top:18px;
+  padding-top:14px;border-top:1px solid var(--rule);
+  font-family:var(--f-m);font-size:.62rem;letter-spacing:.1em;color:var(--muted);
+  text-transform:uppercase}
+footer .r{margin-left:auto}
+.mark{display:inline-flex;align-items:center;gap:7px;padding:4px 9px;
+  border:1px solid var(--seal);color:var(--seal);font-family:var(--f-m);
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;line-height:1}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="head">
+  <svg class="seal" viewBox="0 0 100 100" aria-hidden="true">
+    <g fill="none" stroke="#0F0F0F" stroke-width="4">
+      <circle cx="50" cy="50" r="46"/>
+      <path d="M50 30 75.81 11.92M67.32 40 84.99 47.86M67.32 60 76.66 84.02M50 70 24.19 88.08M32.68 60 15.01 52.14M32.68 40 23.34 15.98"/>
+    </g><circle cx="50" cy="50" r="7" fill="#8B1A1A"/>
+  </svg>
+  <div>
+    <p class="sub">Beta Art · İş modeli kanvası</p>
+    <h1>Arşiv marka, stüdyo iştir.</h1>
+  </div>
+  <p class="stamp">Betül Öner · Norveç<br>24 Ağustos 2026<br>Her rakam kaynaktan ölçüldü</p>
+</div>
+
+<div class="grid">
+
+  <div class="c part">
+    <span class="n">08</span><h2>Kilit ortaklar</h2>
+    <ul>
+      <li><b>Stripe</b> — tek ödeme işlemcisi. Beta Art kayıtlı satıcı</li>
+      <li><b>Render, Frankfurt</b> — ödeme servisi, AB bölgesi</li>
+      <li><b>Vercel</b> — dört statik mülkün barındırması</li>
+      <li><b>Brønnøysund</b> — şirket kaydı <span class="kv">(bekliyor)</span></li>
+      <li><b>Norveçli avukat</b> — lisans ve model izni <span class="kv">(bekliyor)</span></li>
+      <li><b>Muhasebeci</b> — MVA, non-Union OSS</li>
+      <li><b>Anadili konuşurları</b> — 11 dil incelemesi <span class="kv">(bekliyor)</span></li>
+    </ul>
+    <p class="note">Yedi ortağın dördü henüz yok. Model onlarsız yarım çalışır.</p>
+  </div>
+
+  <div class="c act">
+    <span class="n">07</span><h2>Kilit faaliyetler</h2>
+    <ul>
+      <li>Dijital teslimat — 25 hizmet, 4 paket</li>
+      <li>AI personel kurulumu ve işletimi</li>
+      <li>Fotoğraf çekimi ve <b>provenans kaydı</b></li>
+      <li>Lisans yazımı, fatura, numaralı sertifika</li>
+      <li>İçerik — ayda 2 deneme, 7 makale</li>
+      <li>Kapı bakımı — 14 doğruluk kapısı</li>
+    </ul>
+  </div>
+
+  <div class="c res">
+    <span class="n">06</span><h2>Kilit kaynaklar</h2>
+    <ul>
+      <li><b>Tek kişi.</b> En büyük maliyet ve tek darboğaz</li>
+      <li>RAW arşivi + sağlama toplamları</li>
+      <li>102 sayfa, 70 400 kelime, 12 dil</li>
+      <li>Yazılmış Norveççe <span class="kv">(çeviri değil)</span></li>
+      <li>Üreticiler — tek doğruluk kaynağı</li>
+      <li>30 sektörlük pazar haritası</li>
+    </ul>
+  </div>
+
+  <div class="c vp">
+    <span class="n">02</span>
+    <h2>Bir insan yaptı.<br>Kaynağında doğrulandı.</h2>
+    <p class="claim">Teslimatınızın hangi kısmının makine yapımı olduğunu ve
+    materyalinizin bir modeli eğitip eğitmediğini <b>yazılı</b> söyleyebiliriz.
+    Rakiplerin çoğu söyleyemez — çünkü cevap için bir süreç, bir kayıt ve bir
+    taahhüt gerekir, bir cümle değil.</p>
+    <ul class="three">
+      <li><b>I ·</b> Orijinal dosya saklanır — RAW, bir gün içinde, sağlama toplamıyla</li>
+      <li><b>II ·</b> Çekim kaydı görüntüyle gezer — C2PA kamerada imzalanır</li>
+      <li><b>III ·</b> Lisansı yapan kişi imzalar — aracı yok</li>
+    </ul>
+    <p class="consq">Doğrulanmış diye satılan bir plaka makine üretimi çıkarsa,
+    lisans ücreti tamamen iade edilir. <b>Sonucu olmayan bir garanti,
+    slogandır.</b></p>
+    <p class="note">Bu iddia stok fotoğraf alıcısına zayıf, <b>hizmet alıcısına
+    güçlü</b>. kr 890'lık görsel alan bütçe denetler; kr 34 000'lık marka işi
+    alan yönetim kuruluna hesap verir.</p>
+  </div>
+
+  <div class="c rel">
+    <span class="n">04</span><h2>Müşteri ilişkisi</h2>
+    <ul>
+      <li><b>Yazılı kapsam, sabit fiyat.</b> Saatlik sürpriz yok</li>
+      <li>48 saatte yazılı teklif <span class="kv">(31 sayfada söz)</span></li>
+      <li>Her pakette revizyon dahil</li>
+      <li><b>Sonuç sizindir</b> — dosya, hesap, doküman devredilir</li>
+      <li>Retainer'da adlandırılmış kişi, haftalık kontrol</li>
+      <li><b>Referans yok</b>, ve nedeni sayfada yazıyor</li>
+    </ul>
+  </div>
+
+  <div class="c ch">
+    <span class="n">03</span><h2>Kanallar</h2>
+    <ul>
+      <li>SEO — 102 sayfa, yapılandırılmış veri, 2 besleme</li>
+      <li><b>27 Norveççe URL</b> — tek en büyük kanal kazancı</li>
+      <li>Field Notes → bülten, ayda 2 mektup</li>
+      <li>Tavsiye — tek kişilik stüdyoda gerçekte en büyüğü</li>
+      <li>Kamu ihalesi + çerçeve sözleşme <span class="kv">(açılmadı)</span></li>
+    </ul>
+    <p class="note">CAC ölçülmedi: hiç müşteri edinilmedi, ve uydurmak modeli bozar.</p>
+  </div>
+
+  <div class="c seg">
+    <span class="n">01</span><h2>Müşteri segmentleri</h2>
+    <p class="note" style="margin:0 0 9px;padding:0;border:0">30 sektör,
+    bütçeye göre değil <b>satın alma sıklığına</b> göre sıralı.</p>
+    <ul>
+      <li><b>Kademe 1 · her hafta</b> — ajanslar, e-ticaret, medya, pazarlama,
+      PR. Stok en sert burada rekabet eder; burada güzellik değil provenans satılır</li>
+      <li><b>Kademe 2 · her çeyrek</b> — emlak, sağlık, eğitim, turizm,
+      restoran, finans, teknoloji, <b>kamu</b>. En hafife alınan ve Norveçli bir
+      arşiv için en iyi başlangıç</li>
+      <li><b>Kademe 3 · proje bazlı</b> — offshore, denizcilik, spor, STK,
+      yayıncı, mimarlık. Seyrek, büyük, çoğu zaman münhasır</li>
+    </ul>
+    <p class="note"><b>Privat</b> (9 hizmet) ikinci segment — tavsiye edilen:
+    reklamsız tavsiye hizmeti olarak tutulsun, konumlandırma kendiyle
+    çarpışmasın.</p>
+  </div>
+
+  <div class="c cost">
+    <span class="n">09</span><h2>Maliyet yapısı</h2>
+    <div class="row">
+      <div class="col">
+        <table>
+          <tr><td><b>Emek</b> — tek kişi</td><td class="v">baskın</td></tr>
+          <tr><td>Vercel Pro <span class="kv">(ticari kullanım)</span></td><td class="v">$20 / ay</td></tr>
+          <tr><td>Render, Frankfurt</td><td class="v">değişken</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <table>
+          <tr><td>Stripe, Norveç kartı</td><td class="v">%2,4 + kr 2</td></tr>
+          <tr><td>Alan adı + alt alanlar</td><td class="v">yıllık</td></tr>
+          <tr><td>Muhasebe + MVA beyanı</td><td class="v">sabit</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <span class="hero-num">0</span>
+        <span class="hero-k">Yazılım bağımlılığı</span>
+        <p class="note" style="border:0;padding:0;margin-top:7px">Derleme yok,
+        framework yok, npm install yok. Tek dış istek Google Fonts. Bakım
+        maliyetini sıfıra yakın tutan mimari kararın kendisi.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="c rev">
+    <span class="n">05</span><h2>Gelir akışları</h2>
+    <div class="row">
+      <div class="col">
+        <table>
+          <tr><td colspan="2"><b>Proje — 19 ürün</b></td></tr>
+          <tr><td>Küçük · CV, foto, LinkedIn</td><td class="v">kr 490–2 400</td></tr>
+          <tr><td>Orta · site, SEO, landing</td><td class="v">kr 4 500–9 900</td></tr>
+          <tr><td>Büyük · logo, CRM, chatbot</td><td class="v">kr 12 000–24 000</td></tr>
+          <tr><td>Ağır · marka, e-ticaret</td><td class="v">kr 28 000–39 000</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <table>
+          <tr><td colspan="2"><b>Tekrarlayan — 6 ürün</b></td></tr>
+          <tr><td>Sosyal içerik / medya</td><td class="v">kr 3 900–7 900 / ay</td></tr>
+          <tr><td>Blog &amp; içerik</td><td class="v">kr 5 900 / ay</td></tr>
+          <tr><td><b>AI resepsiyonist</b></td><td class="v">14 000 + 2 900 / ay</td></tr>
+          <tr><td><b>AI ofis asistanı</b></td><td class="v">16 000 + 3 400 / ay</td></tr>
+          <tr><td><b>AI satış asistanı</b></td><td class="v">19 000 + 3 900 / ay</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <table>
+          <tr><td colspan="2"><b>Paket</b></td></tr>
+          <tr><td>Starter</td><td class="v">kr 9 900</td></tr>
+          <tr><td><b>Professional</b></td><td class="v">kr 34 000</td></tr>
+          <tr><td>Premium</td><td class="v">kr 79 000</td></tr>
+          <tr><td colspan="2" style="padding-top:7px"><b>Lisans — arşiv</b></td></tr>
+          <tr><td>Personal · Commercial</td><td class="v">190 · 890</td></tr>
+          <tr><td>Extended</td><td class="v">kr 2 900</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="note"><b>Aritmetik:</b> arşivin yılda kr 500 000 için 562 lisans
+    satması gerekir — günde 1,5, henüz fotoğraflanmamış 12 plakalık bir
+    katalogdan. Stüdyoda aynı hedef <b>26,5 Professional paket</b>: iki haftada
+    bir. Model B ile başlar, retainer omurgasına doğru gider.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="mark">
+    <svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true">
+      <circle cx="8" cy="8" r="7.1" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M4.7 8.2 7 10.5 11.3 5.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/>
+    </svg>Godkjent av menneske
+  </span>
+  <span>Kaynak: data.py · plates.json · languages.json · docs/05 · docs/14 · docs/18</span>
+  <span class="r">Bütün fiyatlar NOK, KDV hariç · Norveç'te %25 eklenir</span>
+</footer>
+
+</div>
+</body>
+</html>

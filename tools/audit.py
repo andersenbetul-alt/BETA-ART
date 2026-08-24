@@ -16,7 +16,11 @@ import sys as _s, os as _o
 ROOT=_o.path.dirname(_o.path.dirname(_o.path.abspath(__file__)))
 pages=[]
 for dp,dn,fn in os.walk(ROOT):
-    dn[:]=[d for d in dn if d!=".git"]
+    # The website, not the toolchain. qc.py has always excluded these;
+    # audit.py did not, so a source document kept anywhere under tools/
+    # or docs/ was graded as a published page and failed on a missing
+    # canonical it has no business carrying.
+    dn[:]=[d for d in dn if d not in (".git","tools","docs","node_modules","__pycache__","skill-observations")]
     for f in sorted(fn):
         if f.endswith(".html"): pages.append(os.path.relpath(os.path.join(dp,f),ROOT))
 pages.sort()
