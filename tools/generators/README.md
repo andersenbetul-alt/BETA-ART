@@ -52,16 +52,20 @@ the correctness set in one go and exits on it:
     python3 tools/claims.py      # a promise on a page is a promise in the notice
     python3 tools/klarsprak.py   # Norwegian against Språkrådet's klarspråk rules
     python3 tools/languages.py   # the notice says what languages.json records
-    python3 tools/i18n_pakke.py tr   # a review packet for one language's strings
+    python3 tools/plates.py      # catalogue integrity
+    node  tools/render-check.js  # a real browser, four widths
 
-The two below are readiness reports, not correctness gates. They exit non-zero
-until real-world work is done — a lawyer, a domain, a photograph — and that is
-what they are for:
+`python3 tools/i18n_pakke.py tr` is not a gate — it writes a review packet for
+one language's strings, for a person to read.
+
+The two below are readiness reports, not correctness gates. They exit **zero**,
+because having something to report is not a failure — the same reason
+`git status` exits zero on a dirty tree. What they report is real-world work
+nobody here can finish: a lawyer, a domain, a photograph. Pass `--strict` to
+either one to gate a deploy on it.
 
     python3 tools/launch.py      # is it ready? machine answers vs. person answers
     python3 tools/gaps.py        # what is still missing
-    python3 tools/plates.py      # catalogue integrity
-    node  tools/render-check.js  # a real browser, four widths
 
 `build_journal.py` is safe to re-run: it detects a previous run, does not
 duplicate metadata, and reports any index card it could not match instead of

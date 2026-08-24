@@ -427,3 +427,90 @@ stop and build it. Count rather than estimate: "I keep doing this" is a feeling,
 each individual instance was frictionless — but repetition. Friction gets
 noticed and fixed; cheap repetition is invisible until counted, and it is
 where most of the waste lives.
+
+### Observation 13: A builder deletes what a later tool restores, and the gap between them is invisible
+
+**Status:** OPEN — gate candidate: `enrich.py --check`
+**Date:** 2026-08-24
+**Session context:** Verifying, for a run skill, the claim that re-running a
+generator is safe.
+
+**Skill:** run-beta-art / the generators
+**Type:** internal
+**Phase/Area:** Generator sequencing
+
+**Issue:** `python3 tools/generators/build.py` on a clean tree modifies all 25
+service pages. Every one loses the same 32 lines: the `BreadcrumbList` JSON-LD
+that carries the comment `derived structured data — tools/enrich.py`. The
+builder writes the page from its data table, and the data table does not contain
+the derived block, so the block is simply not written back. Nothing warns.
+
+Running the gates afterwards returns the tree to **byte-identical**, because
+`enrich.py` is a writer, not a checker, and `check.py` runs it. So the
+round-trip is safe — but only as a round-trip. The intermediate state is a
+working tree where 25 shipped pages have lost their structured data, and there
+is no moment at which any gate reports it: run the gates and they fix it, don't
+run them and nothing looks.
+
+The exposure is a commit taken between the two steps. That is not hypothetical
+housekeeping — it is exactly what happened with the 500 stale preview hosts
+earlier in this project, where a generator run reintroduced something the site
+had already left and the only reason it was caught was a later unrelated audit.
+
+**Why it is not yet a gate:** every gate here answers "is the tree correct
+now?", and by the time a gate has run, `enrich.py` has already made the answer
+yes. A gate cannot see the state it repairs. Catching this needs a *checking*
+mode — `enrich.py --check`, exiting non-zero when a page is missing its derived
+block and writing nothing — so that the question can be asked without being
+answered by the asking. That is the shape to build, and it should be verified on
+both halves: it must fail on a freshly built page and pass on an enriched one.
+
+**Suggested improvement:** Where one tool repairs what another removes, the
+repair must have a read-only mode, or the damage has no observable window.
+
+**Principle:** A self-healing pipeline cannot be audited by running it. Any tool
+that fixes on sight destroys the evidence a gate needs, so a fixer and a checker
+are two tools, not one with a flag nobody passes.
+
+### Observation 14: A summary picked the line with a number in it, and the number was in a sentence saying the opposite
+
+**Status:** ACTIONED (2026-08-24) — `check.py` now cuts each readiness report at
+its sign-off before looking for the count.
+**Date:** 2026-08-24
+**Session context:** Reading `check.py`'s readiness block while documenting it.
+
+**Skill:** task-observer
+**Type:** internal
+**Phase/Area:** Reporting on reports
+
+**Issue:** `check.py` summarises `gaps.py` and `launch.py` by taking the last
+line of their output that contains a digit. Both tools end with a sign-off
+explaining that exiting 0 is not a pass. That paragraph wraps, and its fragments
+carry digits, so the summary showed:
+
+    □ gaps.py        To gate on it, run `python3 tools/gaps.py --strict`.
+
+— the digit being the `3` in `python3`. Removing that line moved the pick to
+another wrapped fragment:
+
+    □ launch.py      the site is ready — 6 item(s) above are still outstanding.
+
+whose full sentence reads *"It is NOT a statement that the site is ready — 6
+item(s) above are still outstanding."* The summary line said the site was ready.
+The source said precisely the reverse, and the summariser could not tell,
+because a fragment of a sentence is a grammatical sentence.
+
+This is the same failure as Observation 9 from the other end: there, an
+instrument measured a representation instead of the thing. Here, an instrument
+measured a *fragment* of a representation, and fragments of careful writing are
+where the qualifications get cut off. The more careful the source — and both
+these tools are careful, at length, about not being read as a pass — the more
+dangerous the excerpt.
+
+**Suggested improvement:** When one tool excerpts another's prose, excerpt at a
+boundary the source declares, not at one the reader guesses. `check.py` now cuts
+at the `Exit status` sign-off, which both tools emit deliberately.
+
+**Principle:** Heuristic excerpting inverts meaning most reliably on text that
+was written to prevent a misreading, because the hedge and the claim are in the
+same sentence and only the claim survives the cut.

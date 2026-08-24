@@ -173,6 +173,12 @@ fonts.googleapis.com from this environment — so its text measurements are take
 in fallback stacks and it says so. Treat a near-miss there as a near-miss, not a
 pass.
 
+To *look* at a page rather than gate it — a screenshot with the real typefaces,
+a computed value, a state reached by clicking — use `tools/shoot.js`, which
+serves the fonts to the browser from a local cache. The `run-beta-art` skill in
+`.claude/skills/` covers it, along with the sequencing trap that a builder
+deletes the structured data `enrich.py` puts back.
+
 ## The discipline the gates enforce
 
 These are the project's actual convictions, and they are why the gates exist:

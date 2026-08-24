@@ -25,6 +25,16 @@
  * Widths come first, comma-separated for more than one. Paths follow. With
  * --measure it prints the value instead of writing a file, which is what you
  * want when the question is "did that CSS change actually take effect".
+ *
+ * --do runs JavaScript in the page before the capture, so a state the visitor
+ * has to reach by clicking can be measured and photographed like any other:
+ *
+ *   node tools/shoot.js --do "document.getElementById('theme-btn').click()" \
+ *     --out shots 1440 /beta-art-blog/
+ *
+ * Every interactive surface here is a language switch, a filter or a picker —
+ * they all leave their result in the DOM, so --do with --measure is enough to
+ * check one end to end without a second harness.
  */
 
 "use strict";
@@ -91,7 +101,7 @@ function serve(port) {
 function usage(msg) {
   process.stderr.write((msg ? msg + "\n\n" : "") +
     "  node tools/shoot.js [--out DIR] [--full] [--dsf N] [--base URL]\n" +
-    "                      [--measure JS] WIDTH[,WIDTH] PATH [PATH…]\n");
+    "                      [--do JS] [--measure JS] WIDTH[,WIDTH] PATH [PATH…]\n");
   process.exit(msg ? 2 : 0);
 }
 
@@ -99,7 +109,7 @@ async function main() {
   const argv = process.argv.slice(2);
   if (!argv.length || argv.includes("-h") || argv.includes("--help")) usage();
 
-  const opt = { out: null, full: false, dsf: 2, base: null, measure: null };
+  const opt = { out: null, full: false, dsf: 2, base: null, measure: null, do: null };
   const rest = [];
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -108,6 +118,7 @@ async function main() {
     else if (a === "--dsf") opt.dsf = Number(argv[++i]);
     else if (a === "--base") opt.base = argv[++i];
     else if (a === "--measure") opt.measure = argv[++i];
+    else if (a === "--do") opt.do = argv[++i];
     else if (a.startsWith("--")) usage("unknown option " + a);
     else rest.push(a);
   }
@@ -149,6 +160,12 @@ async function main() {
         const res = await page.goto(url, { waitUntil: "networkidle", timeout: 40000 });
         await page.evaluate(() => document.fonts.ready);
         await page.waitForTimeout(400);
+
+        if (opt.do) {
+          // eslint-disable-next-line no-eval
+          await page.evaluate((expr) => eval(expr), opt.do);
+          await page.waitForTimeout(400);
+        }
 
         const label = (p.replace(/^\/|\/$/g, "") || "index").replace(/[/.]/g, "-");
 

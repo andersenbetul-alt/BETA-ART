@@ -58,9 +58,15 @@ READINESS = [
 def run(cmd):
     r = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
     lines = [l.strip() for l in r.stdout.strip().splitlines() if l.strip()]
-    # launch.py ends on a wrapped sentence, so the last physical line is a
-    # fragment ("of them can be cleared from here."). Prefer the line that
-    # carries the count.
+    # Both readiness tools close with a sign-off explaining that exit 0 is not
+    # a pass. That paragraph wraps, and its fragments carry digits of their own
+    # — one of them reads "the site is ready — 6 item(s) …", which is the
+    # opposite of what the whole sentence says. Cut the report at the sign-off
+    # first, then take the last line before it that carries a number.
+    for i, l in enumerate(lines):
+        if l.startswith("Exit status"):
+            lines = lines[:i]
+            break
     tail = ""
     for l in reversed(lines):
         if re.search(r"\d", l):
