@@ -63,35 +63,52 @@ kan brukes her. Det som kan brukes, er tokenverdier og målsatt markup.
 `assets/img/`. SVG for merket, PNG for delingsbilder og appikoner.
 
 Delingsbildene tegnes av `verktoy/lag-og.js` i en nettleser, med ordene hentet
-fra `PP_KLARHET`. Logofilene bygges av `verktoy/lag-logo.py`. Ingen av
-skriptene er en del av nettstedet, og de kjøres for hånd.
+fra `PP_KLARHET`. Logofilene bygges av `verktoy/lag-logo.py`. Plate IV
+(`verktoy/lag-plate.js`) hører til `docs/design/RETICENT-SYSTEMS.md` og er
+kunst, ikke merkevare – den låner ikke tokenene og skal ikke gjøre det. Ingen
+av skriptene er en del av nettstedet, og de kjøres for hånd.
 
 Ingen CDN. Ingen bildeoptimalisering i drift – filene sjekkes inn ferdige.
 
-## 5. Ikoner, og en inkonsekvens som står
+## 5. Ikoner
 
 Regelen: **tegn ikoner som inline SVG, aldri emoji.** Emoji ser ulikt ut på
 hver plattform, og flere av dem er ansikter eller hender med hudtone. Et
-ansikt på en kategori er en tolkning ingen har bedt om.
+ansikt på en kategori er en tolkning ingen har bedt om. En tjeneste for eldre
+bør ikke ha ikoner som ser forskjellige ut avhengig av hvilken telefon
+brukeren har.
 
-`bestill-skjerm.js` og `godkjenn-skjerm.js` følger den. De har hvert sitt
-`SVG`-oppslag, 24×24, `stroke-width: 1.6`, avrundede ender.
-
-`besok-lager.js` gjør det ikke. Katalogen bærer emoji:
+Tre steder tegner ikoner, og alle tre følger regelen. `bestill-skjerm.js` og
+`godkjenn-skjerm.js` har hvert sitt `SVG`-oppslag. `besok-lager.js` bærer
+banen på oppgaven selv og tegner den ett sted:
 
 ```js
-{ id: 'samvaer', navn: 'Besøk og samvær', ikon: '☕', … }
-{ id: 'digital', navn: 'Digital hjelp',   ikon: '📱', … }
+{ id: 'samvaer', svg: 'M5 9h10.4v5.6a4.4 4.4 0 0 1-4.4 4.4H9.4A4.4…',
+  navn: 'Besøk og samvær', ikon: '☕', risiko: 'gronn' }
 ```
 
-De vises i fire skjermer: `besok-nytt.js`, `besok-oversikt.js`,
-`besok-utfor.js`, `besok-behov.js`. Regelen står altså skrevet to steder i
-kommentarer, og brytes fire steder i produksjon. Det er ikke en smakssak: en
-tjeneste for eldre bør ikke ha ikoner som ser forskjellige ut avhengig av
-hvilken telefon brukeren har.
+```js
+function ikonMarkup(oppgave, storrelse) {
+  var o = oppgave || {};
+  if (!o.svg) return '';           // ingen bane, ingen ikon – ikke et fallback til emoji
+  return '<svg class="oppgaveikon" viewBox="0 0 24 24" … stroke-width="1.6"
+          stroke-linecap="round" aria-hidden="true"><path d="' + o.svg + '" /></svg>';
+}
+```
 
-Skal dette rettes, er det ett sted: gi `OPPGAVER` en `svg`-nøkkel ved siden av
-`ikon`, og bytt de fire tegnestedene.
+Formatet er fast: 24×24, `viewBox="0 0 24 24"`, `stroke-width: 1.6`,
+avrundede ender, `fill="none"`, `stroke="currentColor"`, `aria-hidden="true"`.
+Ikonet er aldri den eneste bæreren av mening – navnet står ved siden av.
+
+**Én ting står igjen.** `ikon`-nøkkelen med emojien lever fortsatt i
+`OPPGAVER`, og `besok-behov.js` kopierer den videre inn i forslagsobjektet
+sitt. Ingen skjerm tegner den, så den er død data og ikke en regelbrudd – men
+den er en felle for neste person som leter etter «ikonet». Fjernes den, må
+`besok-behov.js:140` fjernes i samme endring.
+
+**Tegn ikonet på 20 px før du godtar det.** Kosten som først ble tegnet her,
+var uleselig i den størrelsen den faktisk vises i, og måtte tegnes om til en
+sprayflaske. Et ikon som bare virker på 48 px, virker ikke.
 
 ## 6. Stiler
 
@@ -111,15 +128,54 @@ elementet – for eksempel en beregnet bredde. Alt som kan gjentas, er en klasse
 - `@media (forced-colors: active)` beholder tilstand som form, ikke farge
 - `[dir="rtl"]` snur retningen der språket krever det
 - Bred kontekst (tabeller, kode) ruller i sin egen `overflow-x: auto`
+- Ingen side flyter vannrett når brukeren setter skriften til 200 %
 
 ### Målte verdier, og hvor de kommer fra
 
 | Hva | Verdi | Hvor | Hvorfor |
 |---|---|---|---|
-| Brødtekst, eldres skjerm | 20 px | `godkjenn.css` | 17 er satt for pårørende på 40–70 |
+| Brødtekst, felles | `1.0625rem` | `styles.css` | 17 px ved standard 16, satt for pårørende på 40–70 |
+| Brødtekst, eldres skjerm | `1.25rem` | `godkjenn.css` | 20 px ved standard 16 |
+| Brødtekst, seniorflaten | `1.3125rem` | `senior.css` | 21 px ved standard 16 |
 | Ja/nei-knapper | 96 px høye | `godkjenn.css` | 44 treffes ikke av en hånd som skjelver |
 | Valgflater, bestilling | 76–78 px | `bestill.css` | Samme grunn, lavere innsats |
 | Kontrast, all tekst | ≥ 4,5:1 | `styles.css` | Tallene per farge står i merkeskillet |
+
+### Figma gir deg px. Ikke skriv dem inn som px
+
+Dette er den enkeltregelen som er lettest å bryte når et design føres hit, og
+den rammer nøyaktig de brukerne tjenesten er for.
+
+En `font-size` i px ignorerer nettleserens egen skriftinnstilling fullstendig.
+`rem` følger den. Målt med standardskriften satt til 32 px:
+
+```
+rot-elementet     : 32 px
+font-size: 20px   : 20 px   ← rører seg ikke
+font-size: 1.25rem: 40 px   ← følger brukeren
+```
+
+På våre egne sider var **bare `body` spikret** – rot, `h1`, knapper og småtekst
+skalerte allerede. Det er det verste tilfellet: alt vokser rundt teksten som
+faktisk skal leses. Derfor er de tre body-størrelsene rem, og derfor skal en
+px-verdi fra Figma deles på 16 før den skrives inn.
+
+Knappehøyder og flatemål kan stå i px – de er treffområder, ikke lesetekst.
+
+### Norsk brekker der engelsk ikke gjør det
+
+Da body ble rem, fløt tre sider vannrett ved 200 %. Årsakene var de samme fire
+hver gang, og alle fire er nå regler:
+
+- `overflow-wrap: break-word` globalt – «funksjonsnedsettelse» og
+  «hjemmehjelpsoppdrag» får ikke plass på en telefon i 200 %
+- `max-width: 100%` på `.btn` og `.big-choice`
+- `min-width: 0` på rutenett- og flexbarn: de nekter som standard å krympe
+  under innholdets egen minstebredde, og skyver forelderen ut i stedet
+- `flex-wrap: wrap` på rader som ellers holder seg på én linje
+
+Et Figma-design er satt på én bredde med engelsk fyllttekst. Ingen av disse
+fire problemene er synlige der.
 
 Se `docs/DESIGNGRUNNLAG.md` for hvordan disse settes og hvilken test som
 holder dem fast.
@@ -165,10 +221,15 @@ Skjermer leser fra regler. Aldri motsatt.
 2. **Del accenten i to** hvis designet har én grønn: en for lys flate, en for
    mørk.
 3. **Gi flaten et klasseprefiks** og et eget stilark.
-4. **Ikoner som SVG**, 24×24, ikke emoji og ikke PNG.
-5. **Tekst i markup, tall i modul.** Priser, kategorier og grenser leses fra
+4. **Del px på 16 for all lesetekst.** Treffområder kan bli px. Se
+   «Figma gir deg px» over – dette er punktet som faktisk rammer brukerne.
+5. **Ikoner som SVG**, 24×24, ikke emoji og ikke PNG. Tegn dem på 20 px før
+   du godtar dem.
+6. **Tekst i markup, tall i modul.** Priser, kategorier og grenser leses fra
    `PP_*` – de skrives ikke inn i skjermen.
-6. **Kjør `npm test`.** Klarspråktesten måler ni sider, og en ny flate som
+7. **Prøv siden på 200 %** før du sier den er ferdig. `min-width: 0` på
+   rutenettbarn og `max-width: 100%` på knapper er nesten alltid det som mangler.
+8. **Kjør `npm test`.** Klarspråktesten måler ni sider, og en ny flate som
    ligger over grensa for sin teksttype, feiler.
 
 Det som ikke kan føres hit: komponenthierarkier, Tailwind-klasser, generert
