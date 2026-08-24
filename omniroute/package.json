@@ -1,0 +1,19 @@
+{
+  "name": "omniroute",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Model routing and auto-fallback in front of Claude Code",
+  "bin": { "omniroute": "./dist/server.js" },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
