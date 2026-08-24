@@ -26,6 +26,38 @@ pulls from GitHub, not skills.sh.
 
 ---
 
+## 2026-08-22 — Authentication schema
+
+Supabase auth + PostgreSQL, recorded as D-006. Note this supersedes part of
+D-002: the site is no longer purely static, though the pages remain static
+HTML/CSS talking to Supabase from the browser.
+
+`supabase/migrations/0001_auth_and_app_schema.sql` — `profiles` (role, FK to
+auth.users), `works` (published flag), `inquiries` (contact-led sales, per
+BUSINESS.md A+C). RLS on every table; Postgres denies access to an RLS table
+with no matching policy, so the default is closed.
+
+Supabase is unreachable from this container, so the schema was verified
+against a **local PostgreSQL 16.13** instead, with an `auth` stub supplying
+`auth.users` and `auth.uid()`. Tested as an unprivileged `authenticated` role
+— testing as superuser proves nothing, since superusers bypass RLS.
+
+Two real defects, both found by the tests and both fixed:
+
+1. **Privilege escalation.** RLS decides which *rows* you may update, never
+   which *columns*. `profiles_update_own` let a collector set `role='owner'`
+   on their own row — confirmed working in the first run. Fixed with
+   column-level grants (`grant update (display_name)`) plus a trigger, so
+   neither guard is load-bearing alone.
+2. **Bootstrap deadlock.** The new trigger then made the first owner
+   impossible to create: nobody was owner, so nobody could promote anyone.
+   Fixed by allowing the change when `auth.uid()` is null — service_role or
+   migration context, already privileged.
+
+8/8 policy tests pass. Nothing is deployed; no Supabase project exists.
+
+---
+
 ## 2026-08-22 — İş modeli seçenekleri
 
 `BUSINESS.md` eklendi. Açıkça öneri olarak işaretlendi: depoda fiyat, kitle,

@@ -101,6 +101,15 @@ accessibility. D-003 joins at markup. Nothing on this graph has been started.
    person/owner? It appears only in the branch name, nowhere in the code.
 4. Is there an existing design (Figma, mockup, reference site) to match?
 
+## Authentication
+
+Schema in `supabase/migrations/0001_auth_and_app_schema.sql`; RLS suite in
+`supabase/tests/`. Verified against local PostgreSQL 16.13 — 8/8 policy tests
+pass, including two escalation attempts that are correctly denied.
+
+Not yet done: no Supabase project exists, so nothing is deployed. The browser
+client is not written.
+
 ## Build and test
 
 ```

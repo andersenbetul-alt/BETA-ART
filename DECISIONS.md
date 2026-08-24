@@ -24,6 +24,26 @@ they describe, or they become worse than nothing.
 
 ---
 
+### D-006 — Authentication: Supabase auth + PostgreSQL
+**Date:** 2026-08-22 · **Status:** Accepted
+
+Identity in Supabase's `auth` schema; application data in `public` in the
+**same** PostgreSQL database.
+
+*Why one database:* Supabase *is* Postgres. Splitting identity and app data
+across two databases loses foreign keys to `auth.users` and `auth.uid()`
+inside RLS — the two things that make Supabase auth worth using.
+
+*Consequence:* **this supersedes part of D-002.** The site is no longer purely
+static — it now has a backend. The pages stay static HTML/CSS and talk to
+Supabase from the browser via `supabase-js`, so there is still no build step
+and no server to run, but "no backend" is no longer true.
+
+*Rules out:* a separate application database, and any scheme where the client
+assigns its own role.
+
+---
+
 ## Decisions still open
 
 D-002 and D-003 were accepted on 2026-08-21 on the recommended defaults, after
