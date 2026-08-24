@@ -73,7 +73,13 @@ covers.
 
 ### Observation 3: Media queries add no specificity, so "later" beats "narrower"
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — became `tools/cascade.py`, which fails when a
+declaration is shadowed by a later, wider `max-width` block **with a different
+value**. Writing it found three such declarations still live in
+`beta-art-business/styles.css`: the header's tightening below 560px had never
+applied, measured at 6.4px where 4.8px was intended. Identical-value repetition
+is counted and deliberately not failed — nineteen of those exist, and a gate
+that fires on correct code is one people learn to skip.
 **Date:** 2026-08-21
 **Session context:** Fixing header overflow at 360px in a stylesheet with
 several overlapping breakpoint blocks.
@@ -100,7 +106,12 @@ result rather than re-reading the source.
 
 ### Observation 4: A wrong option name in a test harness produces confident wrong numbers
 
-**Status:** OPEN
+**Status:** ACTIONED (2026-08-24) — became `check_harness_options` in
+`tools/qc.py`, which fails on any key passed to `newContext`/`newPage` that
+Playwright does not read. Its first version silently missed the *first* key in
+each options object, so it passed its own verification while catching nothing —
+the same class of failure it exists to catch, found only by reintroducing the
+bug and watching it not fire.
 **Date:** 2026-08-21
 **Session context:** Measuring rendered font sizes at 360px and 1280px with
 Playwright to audit a type scale.

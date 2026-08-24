@@ -765,8 +765,6 @@ strong, b { font-weight: 600; }
      edge, and the picker already offers Norwegian — so it steps aside here and
      the footer carries the route instead. */
   .lang-no { display: none; }
-  .bar-actions { gap: .3rem; }
-  .bar-actions .btn-sm { padding: .5rem .6rem; letter-spacing: .06em; }
   .lang-select { padding: .45rem 1.5rem .45rem .5rem; letter-spacing: .06em; }
 }
 @media (max-width: 400px) {
@@ -845,6 +843,20 @@ strong, b { font-weight: 600; }
    wide. Tall enough already; it needed room on the sides. */
 .crumbs a { padding-inline: .4rem; }
 .crumbs a:first-child { padding-inline-start: 0; }
+
+/* ---------------------------------------------------------------------------
+   The 560px tightening of the bar, moved down here to where it can win.
+   It sat in the 560px block at line 768 and lost every time to the 1180px
+   block below it, which sets the same three properties looser. Measured in a
+   browser: between 401px and 560px the gap computed to 6.4px, the .4rem from
+   1180, never the .3rem intended here. Three declarations, dead since they
+   were written.
+   Same trap as the 460px block above, one breakpoint up.
+   --------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .bar-actions { gap: .3rem; }
+  .bar-actions .btn-sm { padding: .5rem .6rem; letter-spacing: .06em; }
+}
 
 /* ---------------------------------------------------------------------------
    Header bar at phone width, after the 12px small-type floor.

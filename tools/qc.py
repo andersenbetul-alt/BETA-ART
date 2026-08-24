@@ -553,6 +553,55 @@ def check_deployability():
                  "fits inline too" if fits else "git deploy"))
 
 
+def check_harness_options():
+    """A measurement harness must not be handed an option Playwright ignores.
+
+    Observation 4. `browser.newPage({ viewportSize: {...} })` was written where
+    the option is `viewport`. Playwright does not complain about an unknown key
+    — it silently used its default 1280px viewport for both runs, and the
+    script reported identical numbers at "360px" and "1280px".
+
+    That the two were identical is what gave it away. Had the widths differed
+    only a little, the wrong numbers would have been indistinguishable from
+    right ones, and they were going into a written audit.
+
+    So: every key in a newContext/newPage options object must be one Playwright
+    actually reads. The list below is not exhaustive of Playwright's API; it is
+    exhaustive of what this project uses. A genuine option missing from it
+    belongs in the list — adding it is the correct fix, and takes one line."""
+    KNOWN = {
+        "viewport", "deviceScaleFactor", "userAgent", "locale", "timezoneId",
+        "colorScheme", "reducedMotion", "forcedColors", "isMobile", "hasTouch",
+        "screen", "baseURL", "extraHTTPHeaders", "offline", "httpCredentials",
+        "ignoreHTTPSErrors", "javaScriptEnabled", "bypassCSP", "permissions",
+        "geolocation", "storageState", "recordVideo", "recordHar",
+        "acceptDownloads", "proxy", "serviceWorkers", "strictSelectors",
+    }
+    call = re.compile(r"new(?:Context|Page)\s*\(\s*\{(.*?)\}\s*\)", re.S)
+    # `^\s*` and not `^`: the first key sits after the opening brace and a
+    # newline, and without the whitespace this regex skipped it silently —
+    # which is the same class of failure the check exists to catch.
+    key = re.compile(r"(?:^\s*|[,{]\s*)([A-Za-z_$][\w$]*)\s*:")
+    for d, dirs, files in os.walk(os.path.join(ROOT, "tools")):
+        dirs[:] = [x for x in dirs if x != "node_modules"]
+        for fn in sorted(files):
+            if not fn.endswith(".js"):
+                continue
+            p = os.path.join(d, fn)
+            src = text(p)
+            for m in call.finditer(src):
+                # the options object may itself contain nested braces
+                body = re.sub(r"\{[^{}]*\}", "", m.group(1))
+                for k in key.findall(body):
+                    if k not in KNOWN:
+                        line = src.count("\n", 0, m.start()) + 1
+                        note("harness", "%s:%d passes `%s` to a browser context. "
+                             "Playwright ignores an unknown key without complaining, "
+                             "so the run silently uses the default. If it is a real "
+                             "option, add it to KNOWN in qc.py."
+                             % (rel(p), line, k))
+
+
 def check_translated_meta():
     """A Norwegian page must not describe itself in English.
 
@@ -700,6 +749,7 @@ def main():
     check_sitemaps()
     check_generator_hosts()
     check_translated_meta()
+    check_harness_options()
     check_copyright()
     check_deployability()
 

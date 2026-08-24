@@ -138,9 +138,10 @@ nothing ships past it:
     python3 tools/feed.py         # the two feeds follow the articles
     python3 tools/enrich.py       # breadcrumb and FAQ structured data
     python3 tools/audit.py        # HTML
-    python3 tools/qc.py           # JS, CSS, i18n, prices, hosts, nothing oversized shipped
+    python3 tools/qc.py           # JS, CSS, i18n, prices, hosts, harness options, nothing oversized
     python3 tools/tokens.py       # a custom property is defined once, and resolves
     python3 tools/classes.py      # a class on a page has a rule behind it
+    python3 tools/cascade.py      # a later rule beats a narrower breakpoint
     python3 tools/copy.py         # conversion copy
     python3 tools/claims.py       # a promise on a page is a promise in the notice
     python3 tools/klarsprak.py    # Norwegian against Språkrådet's klarspråk rules

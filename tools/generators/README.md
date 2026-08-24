@@ -47,6 +47,7 @@ the correctness set in one go and exits on it:
     python3 tools/qc.py          # JS, CSS, i18n, prices, hosts, deployability
     python3 tools/tokens.py      # a custom property is defined once, and resolves
     python3 tools/classes.py     # a class on a page has a rule behind it
+    python3 tools/cascade.py     # a later rule beats a narrower breakpoint
     python3 tools/copy.py        # conversion copy
     python3 tools/claims.py      # a promise on a page is a promise in the notice
     python3 tools/klarsprak.py   # Norwegian against Språkrådet's klarspråk rules
