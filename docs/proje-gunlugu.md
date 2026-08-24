@@ -277,3 +277,13 @@ tez: ödeyen müşteri okur değil, içeriğini müşteriye dönüştürmek iste
 uzman/yazar. Önerilen sıra: önce TEK 30 günlük satış deneyi (3 ücretli
 pilot kapısı), kod ve video kanalı ödeme kanıtından sonra. Panel/keşif
 sayfalarının kodu bilinçli duraklatıldı; karar kullanıcıya soruldu.
+## 24.08.2026 (gece, devam) — İlk ticari deney seçildi: Action Pages pilotu
+
+Kullanıcı kararı (AskUserQuestion): 30 günlük tek deney = Action Pages.
+İlk teslimatlar üretildi: `demo/cv-action-page.html` (Norveççe satış
+demosu — 8 soru, belirlenimci puanlama, kişiye özel iyileştirme listesi,
+veri tarayıcıdan çıkmaz; Playwright ile uçtan uca doğrulandı: 8 soru,
+9/16 orta bant, 5 kişisel madde, eksik-cevap uyarısı, 0 konsol hatası)
+ve `docs/action-pages-teklif.md` (teklif, [H] test fiyatları, Norveççe
+ulaşım mesajı, kullanıcının adım adım satış görevleri). Demoyu yayına
+alma (main + Vercel) kullanıcı onayı bekliyor.
