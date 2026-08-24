@@ -143,6 +143,7 @@ nothing ships past it:
     python3 tools/classes.py      # a class on a page has a rule behind it
     python3 tools/cascade.py      # a later rule beats a narrower breakpoint
     python3 tools/copy.py         # conversion copy
+    python3 tools/forms.py        # a form does not report a delivery it did not make
     python3 tools/claims.py       # a promise on a page is a promise in the notice
     python3 tools/klarsprak.py    # Norwegian against Språkrådet's klarspråk rules
     python3 tools/languages.py    # the notice says what languages.json records
@@ -186,6 +187,10 @@ These are the project's actual convictions, and they are why the gates exist:
 - **A claim on a page must be an undertaking in the legal notice.** Not mentioned
   there — undertaken. `claims.py` fails a page that promises what the notice only
   describes.
+- **A promise made by an interface is still a promise.** `forms.py` fails a form
+  that answers a submit with a receipt when there is nowhere for the message to
+  arrive. A comment in the source saying "no backend yet" is addressed to us; the
+  sentence on the screen is addressed to the visitor.
 - **A review nobody signed is not a review.** `languages.json` will not accept
   `"status": "reviewed"` without a named reviewer and a date, and eleven of the
   twelve languages are still `machine`. The human-approved mark on every page
@@ -234,6 +239,13 @@ The log lives at `skill-observations/log.md`. Note that a session container here
 is ephemeral: an observation that is not committed does not survive the session,
 which is the same reason the generators live in this repository rather than in a
 temporary directory.
+
+`.github/workflows/gates.yml` runs the correctness set on every push, with no
+secrets and no third-party actions. It also does the one check that cannot be
+done here: after the gates run it asserts `git diff --exit-code`, which fails
+when the gates had to *repair* the checkout — the signature of a commit taken
+between a builder and the gates. See observation 13 for why no local gate can
+report that state, and why the answer was not a second tool but a second copy.
 
 ## Committing
 
