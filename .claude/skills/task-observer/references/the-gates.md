@@ -20,7 +20,9 @@ A non-zero here is a defect, and nothing ships past it.
 | `qc.py` | 722 | 2026-08-18 | JS, CSS, i18n, prices, hosts, oversized files |
 | `tokens.py` | 138 | 2026-08-21 | A custom property is defined once, and resolves |
 | `classes.py` | 132 | 2026-08-23 | A class on a page has a rule behind it |
+| `cascade.py` | 151 | 2026-08-23 | A later rule beats a narrower breakpoint |
 | `copy.py` | 195 | 2026-08-19 | Conversion copy |
+| `forms.py` | 171 | 2026-08-24 | A form does not report a delivery it did not make |
 | `claims.py` | 249 | 2026-08-20 | A promise on a page is a promise in the notice |
 | `klarsprak.py` | 446 | 2026-08-20 | Norwegian against Språkrådet's rules |
 | `languages.py` | 172 | 2026-08-20 | The notice says what `languages.json` records |
@@ -62,6 +64,7 @@ These are the proof the loop works. Each traces to a numbered entry in
 | `tokens.py` | 2 | A token block appended to three `:root`s silently redefined `--ease`, changing every transition on the site. Nothing failed; it was caught by reading the diff, which is not a method. |
 | `classes.py` | 6 | Markup moved between properties without its CSS. The hub's Norwegian page shipped `EnglishNorsk` — browser-default blue, underlined, on a site with neither. Four more of the same shape turned up immediately, one of them months old. |
 | `qc.py check_generator_hosts` | 7 | Eleven generators still held Vercel preview hosts after the site moved to real subdomains. Two builder runs put 500 stale URLs back. HEAD had zero. |
+| `forms.py` | 16 | Three forms answered a submit with "Request received" and no recipient existed. The desk's then called `form.reset()`, so the enquiry was destroyed and somebody was left waiting 48 hours for a reply nobody could send. Each had a comment saying there was no backend — addressed to us, while the sentence was addressed to the visitor. |
 | `qc.py check_translated_meta` | 11 | The Norwegian hub and journal shipped with English `<title>` and description — the only two strings a search result shows, on the two pages built to be found in Norwegian. |
 
 ## The 12px floor, and why a gate can reopen an old bug
@@ -85,6 +88,6 @@ cannot reach `fonts.googleapis.com`. Its text measurements are therefore taken
 in the fallback stacks, and it says so in its own output. **Treat a near-miss
 there as a near-miss, not a pass.**
 
-To measure with the real typefaces, serve the site locally and drive it with
-Playwright using route interception against the cached fonts — that is how the
-screenshots in this project are taken.
+To measure with the real typefaces, use `tools/shoot.js`, which caches the fonts
+and serves both hosts to the page by route interception. The `run-beta-art`
+skill covers it.
