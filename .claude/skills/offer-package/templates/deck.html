@@ -1,0 +1,134 @@
+<!-- TEMPLATE: adapt every slide's content to the real role and organisation.
+     Keep the .fill token styling — the dashed box is the contract that nothing
+     unfilled can ship unnoticed. The Norwegian copy below is the worked example
+     this template was extracted from (NAVIAR pilot adviser role). -->
+<title>Offer Call Deck — template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{--ground:#F8F6F3;--surface:#FFFDFB;--ink:#1B1E22;--ink-muted:#5F615F;--ink-faint:#8A8B87;
+    --rule:#E2DCD4;--rule-strong:#CFC7BC;--accent:#A34A38;--accent-soft:#F1E3DE;--fill-bg:#FFF6D6;--fill-bd:#D9B44A;}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ground:#15171A;--surface:#1B1E22;
+    --ink:#E9E5E0;--ink-muted:#A5A49F;--ink-faint:#7C7B77;--rule:#2C3036;--rule-strong:#3D424A;
+    --accent:#D9806C;--accent-soft:#33231F;--fill-bg:#3A3320;--fill-bd:#B39435;}}
+  :root[data-theme="dark"]{--ground:#15171A;--surface:#1B1E22;--ink:#E9E5E0;--ink-muted:#A5A49F;
+    --ink-faint:#7C7B77;--rule:#2C3036;--rule-strong:#3D424A;--accent:#D9806C;--accent-soft:#33231F;
+    --fill-bg:#3A3320;--fill-bd:#B39435;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);
+    font-family:"Source Sans 3",ui-sans-serif,system-ui,sans-serif;font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .slide{min-height:92vh;display:flex;flex-direction:column;justify-content:center;
+    max-width:52rem;margin:0 auto;padding:3rem clamp(1.2rem,4vw,3rem);border-bottom:1px solid var(--rule)}
+  h1,h2{font-family:Newsreader,ui-serif,Georgia,serif;font-weight:500;text-wrap:balance;margin:0}
+  h1{font-size:clamp(2.4rem,6vw,3.6rem);line-height:1.05;letter-spacing:-.02em}
+  h2{font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:1.2rem}
+  .eyebrow{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.75rem;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+  p{margin:0 0 1rem;max-width:40rem}
+  .lede{font-size:1.25rem;color:var(--ink-muted)}
+  ul{margin:.4rem 0 0;padding-inline-start:1.2rem;max-width:40rem}
+  li{margin-bottom:.55rem}
+  li::marker{color:var(--ink-faint)}
+  .fill{display:inline-block;background:var(--fill-bg);border:1.5px dashed var(--fill-bd);
+    border-radius:4px;padding:0 .5rem;font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;
+    font-size:.85em;white-space:nowrap}
+  table{border-collapse:collapse;width:100%;max-width:40rem;font-size:1rem;margin-top:.6rem}
+  th,td{text-align:start;padding:.55rem .8rem .55rem 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+  thead th{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.7rem;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint);font-weight:400;border-bottom-color:var(--rule-strong)}
+  td.num{text-align:end;font-variant-numeric:tabular-nums}
+  .limit{border-inline-start:3px solid var(--accent);padding:.9rem 0 .9rem 1.2rem;
+    background:linear-gradient(90deg,var(--accent-soft),transparent 70%);max-width:40rem}
+  .say{color:var(--ink-muted)}
+  .foot{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.72rem;color:var(--ink-faint);margin-top:2rem}
+</style>
+
+<section class="slide">
+  <div>
+    <p class="eyebrow">NAVIAR CONSULT · tilbudssamtale</p>
+    <h1>Vi vil gjerne jobbe<br>med deg, <span class="fill">[FIRST NAME]</span></h1>
+    <p class="lede" style="margin-top:1.4rem">Karriererådgiver i NAVIAR-piloten — de første
+    kundene, de første leveransene, og en direkte hånd i hvordan tjenesten formes.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div>
+    <p class="eyebrow">Rollen</p>
+    <h2>Hva du faktisk gjør</h2>
+    <ul>
+      <li><strong>CV- og søknadsgjennomgang</strong> — 45 min mot en konkret annonse, prioritert forbedringsliste, én oppfølging</li>
+      <li><strong>Øvingsintervju</strong> — 45 min trening, tilbakemelding svar for svar</li>
+      <li><strong>LinkedIn-gjennomgang</strong> — skriftlig, med de tre tingene som bør endres først</li>
+      <li>Hvert oppdrag har et <strong>skriftlig omfang</strong> — du vet nøyaktig hva som skal leveres, og hvor det stopper</li>
+    </ul>
+    <p class="say" style="margin-top:1rem">Møter per video, telefon eller fysisk — kundens valg, din kalender.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div>
+    <p class="eyebrow">Grensene — en del av tilbudet</p>
+    <h2>Du selger aldri noe du ikke kan stå inne for</h2>
+    <div class="limit">
+      <ul style="margin:.2rem 0">
+        <li>Ingen jobbgaranti å forsvare — vi lover den aldri</li>
+        <li>Ingen juridisk, helse- eller skatterådgivning — utenfor omfanget, alltid</li>
+        <li>AI er verktøy, aldri autopilot: alt du leverer er lest av deg, og kunden vet det</li>
+        <li>Kvalitetssikring før levering — du står aldri alene med et vanskelig tilfelle</li>
+      </ul>
+    </div>
+    <p class="say" style="margin-top:1rem">Grensene står offentlig på naviarconsult.com — kunden
+    har godtatt dem skriftlig før saken når deg.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div>
+    <p class="eyebrow">Tallene</p>
+    <h2>Engasjement og honorar</h2>
+    <table>
+      <thead><tr><th>Vilkår</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Engasjementsform</td><td>Oppdragsavtale — fast honorar per gjennomført oppdrag</td></tr>
+        <tr><td>Honorar, skriftlig gjennomgang (LinkedIn)</td><td class="num"><span class="fill">[AMOUNT ___]</span></td></tr>
+        <tr><td>Honorar, 45-min møteoppdrag (CV/intervju/oppsett)</td><td class="num"><span class="fill">[AMOUNT ___]</span></td></tr>
+        <tr><td>Utbetaling</td><td>Etter levert og kvalitetssikret oppdrag</td></tr>
+        <tr><td>Volum i piloten</td><td>Lavt og ujevnt i starten — dette er en pilot, og vi sier det som det er</td></tr>
+        <tr><td>Binding</td><td>Ingen eksklusivitet, ingen minstetid</td></tr>
+      </tbody>
+    </table>
+    <p class="say" style="margin-top:1rem">Endelige vilkår kommer i den skriftlige oppdragsavtalen
+    etter juridisk gjennomgang — ingenting signeres i dag.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div>
+    <p class="eyebrow">Hvorfor deg</p>
+    <h2>Det vi la merke til</h2>
+    <ul>
+      <li><span class="fill">[SPECIFIC REASON 1 — from the interview/CV]</span></li>
+      <li><span class="fill">[SPECIFIC REASON 2]</span></li>
+      <li><span class="fill">[SPECIFIC REASON 3]</span></li>
+    </ul>
+    <p class="say" style="margin-top:1.2rem">Som en av de første rådgiverne former du
+    omfangsdokumentene like mye som du følger dem — forbedringsforslagene dine går rett inn i
+    hvordan tjenesten leveres.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div>
+    <p class="eyebrow">Veien videre</p>
+    <h2>Tre steg, ingen hastverk</h2>
+    <ul>
+      <li><strong>1.</strong> Du får oppdragsavtalen skriftlig — les den i ro</li>
+      <li><strong>2.</strong> Kort opplæring: AI-reglene, personvern, omfangsdokumentene</li>
+      <li><strong>3.</strong> De to første oppdragene går med tett støtte fra oss</li>
+    </ul>
+    <p class="lede" style="margin-top:1.6rem">Spørsmål? Det er det denne samtalen er til.</p>
+    <p class="foot">NAVIAR er en uavhengig virksomhet og er ikke en del av NAV eller offentlig forvaltning.</p>
+  </div>
+</section>

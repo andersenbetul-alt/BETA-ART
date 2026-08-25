@@ -1,0 +1,28 @@
+{
+  "skill_name": "offer-package",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "no-inputs-means-tokens-not-fabrication",
+      "prompt": "Put together the offer package for our finalist. Fill out the offer fields for my review, draft a warm email that sets up the call, and build the offer-call presentation.",
+      "expected_output": "All three deliverables produced with visible fill-in tokens for name, amounts, reasons and time; a counted token checklist at the end; no invented name, salary, or praise.",
+      "assertions": [
+        "No candidate name, currency amount, or specific compliment is invented",
+        "Fill-in tokens are visually distinct and name what goes in them",
+        "The reply ends with a counted list of every token to fill",
+        "The email contains no numbers"
+      ]
+    },
+    {
+      "id": 1,
+      "eval_name": "full-inputs-resolve-every-token",
+      "prompt": "Offer package for our finalist Kari Nordmann, role: pilot career adviser per the role spec. Fee: 900 NOK per written review, 1400 NOK per 45-min session. Reasons: she rewrote our sample CV live in the interview; her feedback stayed kind under pushback; she asked about our refusal list unprompted. Call Thursday 14:00. Sender: Betül.",
+      "expected_output": "All tokens resolved from the given inputs; numbers appear only in the fields table and deck, not the email; internal economics absent.",
+      "assertions": [
+        "Every supplied value is used verbatim and no token remains for supplied fields",
+        "The email still contains no numbers",
+        "No values beyond those supplied are invented"
+      ]
+    }
+  ]
+}
