@@ -64,6 +64,12 @@ export default async function () {
         assert(/^NAV-[A-F0-9]{6}$/.test(r.body.reference), 'reference: ' + r.body.reference);
       });
 
+      await test('the career form\'s "phone optional" promise holds server-side', async () => {
+        const r = await booking({ serviceId: 'career_kit', payment: 'invoice', lang: 'no',
+                                  details: customer({ phone: '' }) });
+        equal(r.status, 200, JSON.stringify(r.body));
+      });
+
       await test('the price comes from the catalogue, not the browser', async () => {
         const r = await booking({ serviceId: 'career_kit', payment: 'invoice', lang: 'no',
                                   amount: 1, price: 1, details: customer() });
@@ -132,11 +138,35 @@ export default async function () {
         assert(/^NAV-/.test(r.body.reference), 'no reference');
       });
 
+      await test('a meeting service still needs a phone number', async () => {
+        const r = await booking({ serviceId: 'v01', payment: 'invoice', lang: 'no',
+          date: workday, time: '13:30', details: customer({ phone: '' }) });
+        equal(r.status, 400);
+        equal(r.body.error, 'missing_fields');
+      });
+
       await test('quote-only tolk books with no amount and no payment', async () => {
         const r = await booking({ serviceId: 'sprak', payment: 'card', lang: 'no',
           date: workday, time: '12:30',
           details: customer({ tolkLang: 'Ukrainsk', tolkDialect: '' }) });
         equal(r.status, 200, JSON.stringify(r.body));
+      });
+
+      await test('broken JSON is the client\'s fault, not a server error', async () => {
+        const r = await fetch(BASE + '/api/bookings', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{nope'
+        });
+        equal(r.status, 400);
+        equal((await r.json()).error, 'bad_json');
+      });
+
+      await test('an oversized body is refused as 413, not 500', async () => {
+        const r = await fetch(BASE + '/api/bookings', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ serviceId: 'career_kit', details: customer({ caseText: 'x'.repeat(70 * 1024) }) })
+        });
+        equal(r.status, 413);
+        equal((await r.json()).error, 'body_too_large');
       });
 
       /* Abuse protection nobody had checked. The suite raises the limit so it
@@ -284,6 +314,125 @@ export default async function () {
         equal(r.status, 200);
         equal(r.body.booking.status, 'new');
         equal(r.body.booking.internal_note, 'called, waiting on the letter');
+      });
+    });
+
+    await suite('advisers and commissions', async () => {
+      const move = (reference, status) => admin('/api/admin/booking', {
+        method: 'POST', body: JSON.stringify({ reference, status })
+      });
+      const apply = (extra = {}) => api('/api/advisers', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: 'Vera Rådgiversen', email: 'vera@example.com',
+          specialty: 'Søknader til offentlige kontorer', consent: true, lang: 'no', ...extra })
+      });
+
+      await test('an expert can apply, once', async () => {
+        equal((await apply()).status, 200);
+        const dup = await apply();
+        equal(dup.status, 409);
+        equal(dup.body.error, 'email_taken');
+      });
+
+      await test('an application without consent is refused', async () => {
+        const r = await apply({ email: 'ingen@example.com', consent: false });
+        equal(r.status, 400);
+        equal(r.body.error, 'consent_required');
+      });
+
+      const adviserId = async () => {
+        const list = await admin('/api/admin/advisers');
+        return list.body.advisers.find(a => a.email === 'vera@example.com').id;
+      };
+
+      await test('an application arrives as applied, and applied cannot pause', async () => {
+        const id = await adviserId();
+        const list = await admin('/api/admin/advisers');
+        equal(list.body.advisers.find(a => a.id === id).status, 'applied');
+        const r = await admin('/api/admin/adviser', {
+          method: 'POST', body: JSON.stringify({ id, status: 'paused' })
+        });
+        equal(r.status, 409, 'applied → paused must be refused');
+      });
+
+      await test('no case is assigned to an unapproved adviser', async () => {
+        const id = await adviserId();
+        const ref = (await booking({ serviceId: 'career_kit', payment: 'invoice', lang: 'no',
+                                     details: customer() })).body.reference;
+        for (const s of ['in_review', 'awaiting_payment', 'assigning']) await move(ref, s);
+        const r = await admin('/api/admin/assign', {
+          method: 'POST', body: JSON.stringify({ reference: ref, adviserId: id })
+        });
+        equal(r.status, 409);
+        equal(r.body.error, 'adviser_not_approved');
+      });
+
+      await test('assignment only happens while a person is choosing', async () => {
+        const id = await adviserId();
+        await admin('/api/admin/adviser', {
+          method: 'POST', body: JSON.stringify({ id, status: 'approved' })
+        });
+        const ref = (await booking({ serviceId: 'career_kit', payment: 'invoice', lang: 'no',
+                                     details: customer() })).body.reference;
+        const early = await admin('/api/admin/assign', {
+          method: 'POST', body: JSON.stringify({ reference: ref, adviserId: id })
+        });
+        equal(early.status, 409, 'a new case must not be assignable');
+        equal(early.body.error, 'bad_state');
+      });
+
+      await test('delivery writes the split to the ledger, exactly once', async () => {
+        const id = await adviserId();
+        const ref = (await booking({ serviceId: 'career_kit', payment: 'invoice', lang: 'no',
+                                     details: customer() })).body.reference;
+        for (const s of ['in_review', 'awaiting_payment', 'assigning']) await move(ref, s);
+        const assigned = await admin('/api/admin/assign', {
+          method: 'POST', body: JSON.stringify({ reference: ref, adviserId: id })
+        });
+        equal(assigned.status, 200);
+        equal(assigned.body.booking.adviser_id, id);
+        for (const s of ['in_progress', 'quality_check', 'delivered']) await move(ref, s);
+
+        const led = await admin('/api/admin/commissions');
+        const row = led.body.rows.find(r => r.reference === ref);
+        assert(row, 'no ledger row for the delivered case');
+        /* career_kit: 299 gross, 239 ex MVA, 20 % pilot commission of the net. */
+        equal(row.amount, 299);
+        equal(row.commission, 48);
+        equal(row.net, 191, 'the adviser is owed the ex-MVA fee minus the commission');
+        equal(led.body.rows.filter(r => r.reference === ref).length, 1);
+        assert(led.body.owed.find(o => o.id === id && o.net >= 191), 'the owed tally misses the adviser');
+      });
+
+      await test('a free case pays nobody', async () => {
+        const id = await adviserId();
+        const ref = (await booking({ serviceId: 'career_free', payment: 'invoice', lang: 'no',
+                                     details: customer() })).body.reference;
+        for (const s of ['in_review', 'awaiting_payment', 'assigning']) await move(ref, s);
+        await admin('/api/admin/assign', {
+          method: 'POST', body: JSON.stringify({ reference: ref, adviserId: id })
+        });
+        for (const s of ['in_progress', 'quality_check', 'delivered']) await move(ref, s);
+        const led = await admin('/api/admin/commissions');
+        assert(!led.body.rows.find(r => r.reference === ref), 'a 0 kr case must write no ledger row');
+      });
+
+      await test('payout is a one-time stamp', async () => {
+        const led = await admin('/api/admin/commissions');
+        const pending = led.body.rows.find(r => r.paid_out_at === null);
+        assert(pending, 'expected a pending ledger row');
+        equal((await admin('/api/admin/payout', {
+          method: 'POST', body: JSON.stringify({ id: pending.id })
+        })).status, 200);
+        const again = await admin('/api/admin/payout', {
+          method: 'POST', body: JSON.stringify({ id: pending.id })
+        });
+        equal(again.status, 409, 'a second payout of the same row must be refused');
+      });
+
+      await test('the public endpoint never lists advisers', async () => {
+        equal((await api('/api/advisers')).status, 404);
+        equal((await api('/api/admin/advisers')).status, 401);
       });
     });
 

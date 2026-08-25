@@ -267,7 +267,13 @@ app.post('/api/bookings', throttle(BOOKING_LIMIT, 60 * 60 * 1000), async (req, r
   const phone = str(details.phone, 40);
   const caseText = str(details.caseText, 4000);
 
-  if (!name || !EMAIL_RE.test(email) || !phone || !caseText) {
+  /* The career form promises "name, e-post, språk og hva du vil oppnå" and
+     marks phone optional; the server has to keep that promise. Meeting and
+     interpreter services still need a number we can reach the customer on. */
+  if (!name || !EMAIL_RE.test(email) || !caseText) {
+    return res.status(400).json({ error: 'missing_fields' });
+  }
+  if (service.group !== 'karriere' && !phone) {
     return res.status(400).json({ error: 'missing_fields' });
   }
   if (details.consent !== true) return res.status(400).json({ error: 'consent_required' });
@@ -496,6 +502,15 @@ app.get('/api/insights', throttle(60, 60 * 1000), requireAdmin, (req, res) => {
 });
 
 app.use((err, req, res, next) => {   // eslint-disable-line no-unused-vars
+  /* A client that sends broken JSON or an oversized body made a bad request;
+     answering 500 tells our monitoring the server is at fault and tells the
+     client to retry the same bytes. body-parser marks both cases by type. */
+  if (err.type === 'entity.parse.failed') {
+    return res.status(400).json({ error: 'bad_json' });
+  }
+  if (err.type === 'entity.too.large') {
+    return res.status(413).json({ error: 'body_too_large' });
+  }
   console.error('[naviar]', err.message);
   res.status(500).json({ error: 'server_error' });
 });
