@@ -381,3 +381,13 @@ gönderim öncesi kontrol listesi) + docs/teklif-sunumu-editor.html
 doğrulandı, [FYLLES UT] alanları sarı işaretli; "neden sen" sayfası
 görüşme notlarından doldurulacak boş şablon). Dosyalar kullanıcıya
 gönderildi.
+## 25.08.2026 (devam) — Action Pages süreç belgesi: anlatı + risk-kontrol matrisi
+
+"Süreç anlatısı + risk-kontrol matrisi + akış şeması" istemi (süreç
+tarifi eklenmemiş, dört kez yinelendi) gerçek aktif sürece uygulandı:
+docs/surec-action-pages.md — 10 adımlı anlatı, 8 satırlık risk-kontrol
+matrisi, mermaid akış şeması ve 5 bulgu. En kritik bulgular: B1 tahsilat
+kontrolü tamamen tanımsız (ödeme alınmadan yayın yok kuralı + tahsilat
+defteri önerildi), B3 görev ayrılığı (satış/üretim/onay/tahsilat tek
+kişide; ilk ayrıştırma editör rolü), B4 SLA takibi yok. Süreç belgesi
+standart formatı da burada tanımlandı.
