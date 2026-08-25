@@ -334,3 +334,16 @@ kopyalıyor. Canlı doğrulama Vercel araçlarıyla yapıldı (konteynerden
 engeli): / ve /demo/cv-action-page.html + .js 200, içerik ve başlıklar
 doğru. Satış demosu adresi:
 https://qblogg.vercel.app/demo/cv-action-page.html (noindex).
+## 25.08.2026 (devam) — Hukuk kontrol kapısı kuruldu
+
+Kullanıcı kalıcı kural koydu: her konsept tasarımında yasa kontrolü.
+CLAUDE.md'ye kural 8 olarak eklendi; docs/hukuk-kontrol.md açıldı:
+memo standardı (Soru/Kısa cevap/Otoriteye göre tartışma/Açık konular,
+kaynak zorunlu) + Memo 1 (Action Pages): GDPR rol analizi (v0'da veri
+tarayıcıda → databehandler rolü doğmuyor; v1 lead toplama açılırsa
+databehandleravtale şart), markedsføringsloven (gizli reklam yok, işaret
+kuralları danışmana not edilecek), angrerett (danışmanın tüketici
+satışına düşer) ve avukata 5 açık soru. Dürüst sınır kayıtlı: Thomson
+Reuters/Lovdata erişimi yok, kurum siteleri EGRESS_BLOCKED (bu oturumda
+yeniden denendi), içtihat üretilmez — kaynaklar arama özeti düzeyinde
+[D] işaretli.

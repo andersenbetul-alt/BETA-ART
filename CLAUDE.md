@@ -102,7 +102,13 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    hepsi "sayfa doğrudan açılamadı, başvuru öncesi elle teyit edilmeli" notuyla.
    **Kendi tedbirimizi kurum şartı gibi yazmak da uydurmadır** — progressive
    JPEG yasağı bu şekilde yanlış yazılmıştı, 22.08'de düzeltildi.
-8. **Rakamlar örnek olarak işaretlenir.** Paket fiyatları ve blog yazılarındaki ücret
+8. **Konsept tasarımı hukuk kapısından geçer** (kullanıcı talimatı,
+   25.08.2026). Yeni bir konsept/ürün tasarlanırken `docs/hukuk-kontrol.md`
+   formatında memo yazılır: Soru → Kısa cevap → Otoriteye göre tartışma →
+   Açık konular; her önerme kaynağına bağlanır. Bu ortamda hukuk
+   veritabanı erişimi yok: içtihat asla uydurulmaz, kaynaklar arama
+   özetiyse öyle işaretlenir, sonuçlar avukat teyidi ister.
+9. **Rakamlar örnek olarak işaretlenir.** Paket fiyatları ve blog yazılarındaki ücret
    bilgileri araştırma/örnek veridir. Kesin vaat gibi sunmayın; abartılı iddia bu işte
    en pahalı hatadır.
 
