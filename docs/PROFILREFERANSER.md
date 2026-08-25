@@ -89,6 +89,47 @@ helgestillinger), karrierestart.no (hjemmehjelp Vestre Aker; aktivitør Horg
 og Kleppestø), utdanning.no/yrker/beskrivelse/aktivitor, finn.no
 (aktivitørvikariat), oslo.kommune.no (praktisk bistand-tjenesten).
 
+## 4. Indeed-utlysninger, Oslo (25.08.2026)
+
+Tre reelle utlysninger, generalisert. Ingen navn eller kontaktinfo herfra.
+
+**Privat hjemmetjenesteleverandør (praktisk bistand, tilkallingsvikarer).**
+Den største private leverandøren i Oslo – altså nettopp kundetypen Naviar
+selger programvare til. Tre observasjoner:
+
+- Praktisk bistand under kommunalt vedtak regnes hos dem som helsehjelp:
+  journalføring etter lovverk, politiattest før ansettelse (de har hjemmel,
+  vi har ikke). Samme oppgave – støvsuging, klesvask, handling – bytter
+  juridisk kategori etter hvem som leverer den under hvilket vedtak.
+- **Brukerne kjøper private tilleggstjenester** («en ekstra dusj i uken
+  til en tur rundt Akerselva – bruker bestemmer selv»). Markedssignal:
+  leverandørene selger allerede det katalogen vår strukturerer.
+- Kravene deres speiler våre: norsk minimum B1, førerkort «ønskelig, ikke
+  krav». Vår karriereside ligger altså på bransjenivå, ikke under.
+
+**To BPA-utlysninger skrevet i jeg-form av arbeidslederen selv.** Den ene
+fra en blind kunstner, den andre fra en eldre rullestolbruker. Det de
+lærer oss:
+
+- **Etterspørselssiden snakker teamspråk.** «Assistenter som ønsker å være
+  hos meg og med meg … mitt team», fast ukedag med fast tid, «det tar tid
+  før jeg blir trygg på nye mennesker». Hjelpeteam-prinsippet og
+  relasjonsvekten er ikke vår oppfinnelse – det er slik brukerne selv
+  formulerer behovet.
+- **Individuelle preferanser er matchingkriterier**: interesse for kunst
+  og musikk, fast kirkegang, «formidle det du ser» for en blind
+  arbeidsleder. Hos oss: egenskaper og språk i motoren – aldri høyde,
+  helse eller «sterk fysisk og psykisk», som BPA-annonsene ber om.
+- **«Alt må ha sin faste plass i en svaksynts hjem»** – presist eksempel
+  på sikkerhetsnotatet oppgaveskjermen skal vise hjelperen før besøket.
+- **Grensene bekreftes punkt for punkt**: nettbank, regnskap og post
+  (håndtering, ikke veiledning), personlig stell, forflytning, bleieskift,
+  reisefølge på ferie – alt sammen BPA-arbeid under helselovgivning, alt
+  sammen utenfor Naviar.
+- **Språkkravet skalerer med intimiteten**: B1 for praktisk bistand hos
+  leverandøren, B2 for BPA med stell. Vår B1 for praktiske oppgaver er
+  riktig kalibrert.
+
 ## Mønsteret så langt
 
 Annonsene bekrefter to ting uavhengig av hverandre: relasjonen er
