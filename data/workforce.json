@@ -55,17 +55,17 @@
         "meeting"
       ],
       "integrations": [
-        "Telefon / WhatsApp",
-        "Web sitesi canlı destek",
-        "E-posta",
-        "Takvim"
+        "Telefonunuz ve WhatsApp'ınız",
+        "Sitenizdeki sohbet kutusu",
+        "E-postanız",
+        "Takviminiz"
       ],
       "kpi": [
-        "Cevapsız kalan temas sayısı",
-        "İlk yanıt süresi",
-        "Alınan randevu sayısı"
+        "Kaç kişi size ulaşamadan vazgeçti",
+        "Ne kadar sürede yanıt aldıkları",
+        "Kaç randevu alındı"
       ],
-      "handoff": "Şikâyet, iade ve fiyat pazarlığı içeren temaslar insana devredilir.",
+      "handoff": "Şikâyet, iade veya fiyat pazarlığı olduğunda konuyu size aktarır — o konuşmayı siz yaparsınız.",
       "setup": "5-7 gün"
     },
     {
@@ -73,32 +73,32 @@
       "name": "AI Sales Assistant",
       "tr": "AI Satış Asistanı",
       "icon": "◈",
-      "promise": "Gelen her talep nitelenir, takip edilir ve teklife dönüşür.",
-      "role": "Fırsatların soğumasını engeller: talebi niteler, takip mesajını zamanında gönderir, teklif taslağını hazırlar, CRM'i güncel tutar.",
+      "promise": "Gelen her talep değerlendirilir, takip edilir ve teklife dönüşür.",
+      "role": "Fırsatların soğumasını engeller: gelen talebi değerlendirir, takip mesajını zamanında gönderir, teklif taslağını hazırlar, müşteri listenizi güncel tutar.",
       "does": [
-        "Gelen talebi niteler: ihtiyaç, bütçe, aciliyet",
-        "İlk temas ve takip serisini hazırlar, zamanında gönderir",
-        "Teklif taslağını geçmiş tekliflerden üretir",
-        "Görüşme öncesi müşteri ve rakip araştırması yapar, brief hazırlar",
-        "CRM kaydını günceller, sonraki adımı düşer"
+        "Gelen talebi değerlendirir: ne istiyor, bütçesi var mı, ne kadar acil",
+        "İlk yanıtı ve takip mesajlarını hazırlar, zamanında gönderir",
+        "Teklif taslağını geçmiş tekliflerinizden üretir",
+        "Görüşme öncesi müşteri hakkında kısa bir özet hazırlar",
+        "Müşteri listenizi günceller, bir sonraki adımı takvime yazar"
       ],
-      "night": "Mesai dışında gelen talep bekletilmez; niteleme ve ilk yanıt anında yapılır, satışçı sabaha sıcak fırsatla başlar.",
+      "night": "Mesai dışında gelen talep bekletilmez; ilk yanıt anında gider, siz sabaha sıcak bir fırsatla başlarsınız.",
       "modules": [
         "sales",
         "research"
       ],
       "integrations": [
-        "CRM",
-        "E-posta",
-        "Takvim",
-        "Web formu"
+        "Müşteri listeniz",
+        "E-postanız",
+        "Takviminiz",
+        "Sitenizdeki form"
       ],
       "kpi": [
-        "Nitelikli fırsat sayısı",
-        "Takip edilen fırsat oranı",
-        "Teklif hazırlama süresi"
+        "Kaç talep gerçekten fırsat çıktı",
+        "Kaç fırsat takipsiz kaldı",
+        "Teklifin ne kadar sürede hazırlandığı"
       ],
-      "handoff": "İndirim, özel şart ve sözleşme görüşmeleri insana devredilir.",
+      "handoff": "İndirim, özel şart ve sözleşme konuşmalarını size bırakır.",
       "setup": "7-10 gün"
     },
     {
@@ -122,18 +122,18 @@
         "content"
       ],
       "integrations": [
-        "Dosya deposu",
-        "Tablolar",
-        "Muhasebe yazılımı",
-        "Takvim",
-        "Sosyal medya / bülten"
+        "Dosyalarınız",
+        "Tablolarınız",
+        "Muhasebe programınız",
+        "Takviminiz",
+        "Sosyal medya ve bülten"
       ],
       "kpi": [
-        "Zamanında yakalanan son tarih oranı",
-        "Manuel veri girişi süresi",
-        "Kapanan aksiyon oranı"
+        "Kaç son tarih zamanında yakalandı",
+        "Veri girişine giden süre",
+        "Kapanmayan işlerin sayısı"
       ],
-      "handoff": "Ödeme yapma, resmî beyan ve imza gerektiren işlemler insan onayıyla yürür.",
+      "handoff": "Ödeme, resmî beyan ve imza gereken işleri sizin onayınız olmadan yapmaz.",
       "setup": "5-7 gün"
     }
   ],
@@ -241,7 +241,7 @@
       "name": "Sales Agent",
       "tr": "Satış Çalışanı",
       "icon": "◈",
-      "role": "Gelen talepleri niteler, teklif sürecini hazırlar, hiçbir fırsatın soğumasına izin vermez.",
+      "role": "Gelen talepleri değerlendirir, teklif sürecini hazırlar, hiçbir fırsatın soğumasına izin vermez.",
       "does": [
         "Gelen talepleri niteler ve önceliklendirir",
         "İlk temas mesajını ve takip serisini hazırlar",
@@ -409,7 +409,7 @@
       "includes": [
         "Analiz raporu",
         "AI Receptionist + AI Sales Assistant",
-        "Araç entegrasyonları",
+        "Araçlarınıza bağlanır",
         "Aylık rapor ve iyileştirme"
       ],
       "roles": 2
@@ -421,7 +421,7 @@
       "includes": [
         "Analiz raporu",
         "3 AI çalışanı",
-        "Tüm entegrasyonlar",
+        "Tüm araçlarınıza bağlanır",
         "Süreç sahipliği ve sürekli bakım"
       ],
       "roles": 3
@@ -438,7 +438,7 @@
     },
     {
       "q": "Yeni bir yazılım öğrenmek zorunda mıyım?",
-      "a": "Hayır. AI çalışanları bugün kullandığınız araçların içinde çalışır — e-postanız, WhatsApp'ınız, takviminiz, CRM'iniz. Öğrenilecek yeni bir arayüz yok."
+      "a": "Hayır. AI çalışanları bugün kullandığınız araçların içinde çalışır — e-postanız, WhatsApp'ınız, takviminiz, müşteri listeniz. Öğrenilecek yeni bir arayüz yok."
     },
     {
       "q": "Çalışanlarımın yerine mi geçecek?",

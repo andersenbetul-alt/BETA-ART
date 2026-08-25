@@ -357,9 +357,9 @@ def build_work() -> None:
           </ul>
           <p class="card__night">🌙 {esc(r['night'])}</p>
           <div class="card__meta">
-            <p><b>Bağlandığı araçlar:</b> {esc(', '.join(r['integrations']))}</p>
-            <p><b>Ölçülen:</b> {esc(', '.join(r['kpi']))}</p>
-            <p><b>İnsana devir:</b> {esc(r['handoff'])}</p>
+            <p><b>Nerede çalışır:</b> {esc(', '.join(r['integrations']))}</p>
+            <p><b>Neyi fark edersiniz:</b> {esc(', '.join(r['kpi']))}</p>
+            <p><b>Ne zaman size bırakır:</b> {esc(r['handoff'])}</p>
           </div>
         </article>""" for r in data["roles"])
 
