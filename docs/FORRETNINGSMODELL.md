@@ -154,6 +154,11 @@ konfigurasjonsspørsmål: leverandørens ansatte (A), egne ansatte (B) eller
 begge. Da er ikke motoren bundet til modellvalget, og ingenting av arbeidet
 kastes uansett utfall.
 
+**Eierbeslutning tatt 25.08.2026:** A+B som langsiktig retning, men v1.0
+bygges på modell A alene – B krever at forbrukerkontrakt- og GDPR-rolle-
+spørsmålene løses først. Den operative planen står i
+`docs/FORRETNINGSMODELL-V1.md`.
+
 ## Kilder
 
 - Eurostat, *Population structure and ageing* (uttrekk februar 2026)
