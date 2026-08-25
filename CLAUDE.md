@@ -73,6 +73,15 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
   compare it to the number you expect. A pattern that matches more than you
   intended fails silently at edit time and surfaces later as a broken test.
 
+## 6. Gate on the Exit Code, Not the Output
+
+**A test suite that printed something is not a test suite that passed.**
+
+- Chain on the result, not the sequence: `./run-tests.sh || exit 1` before any
+  commit or push. `cmd && git commit` only proves `cmd` ran, not that it passed.
+- Read the per-step lines, not the last line. A suite can exit 0 with steps
+  marked skipped — skipped is not passed, and the two are reported separately.
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.

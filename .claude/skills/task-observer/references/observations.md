@@ -63,6 +63,19 @@ da kurala dönüştü · `ret` = tekrar etti ama kural olmayı hak etmedi.
   benim ürettiğim bir kalıp değil. Çevirisi tek satır.
 - **Durum:** ret
 
+## 6. Testler kırmızıyken push edildi
+
+- **Kaç kez:** 2 — `offer-package` becerisi commit'i, yayın kapısı commit'i
+- **Kalıp:** Komut `./run-tests.sh && git commit && git push` biçiminde
+  yazıldı ama `&&` test sonucuna değil, bir öncekinin çıkışına bağlıydı.
+  Süit "BAŞARISIZ TEST VAR" yazdı, commit yine de gitti.
+- **Not:** İkisinde de düşme sebebi geçiciydi (yeniden üretilen HTML henüz
+  commit edilmemişti) ve commit sonrası süit temizdi. Ama bunu *sonradan*
+  öğrendim — push anında bilmiyordum.
+- **Öneri:** CLAUDE.md satırı — *çıkış kodu okunmadan commit edilmez;
+  `./run-tests.sh || exit` biçimi kullanılır.*
+- **Durum:** kabul → `CLAUDE.md` §6
+
 ---
 
 ## Dönüşüm kaydı
