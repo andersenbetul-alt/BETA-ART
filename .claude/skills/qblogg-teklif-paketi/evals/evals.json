@@ -1,0 +1,23 @@
+{
+  "skill_name": "qblogg-teklif-paketi",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Finalistimiz için teklif paketini hazırla: teklif alanlarını onayıma sun, adaya görüşme ayarlayan sıcak bir e-posta yaz ve görüşmede ekran paylaşabileceğim kısa bir HTML sunum kur.",
+      "expected_output": "AskUserQuestion ile rol/ücret modeli/dil sorulur; teklif alanları tablosu taslak etiketli rakamlarla, rakamsız e-posta taslağı ve 5 sayfalık markalı sunum artifact'i üretilir; uydurulmuş aday bilgisi yoktur.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Ayşe Kaya'ya yazar rolü için teklif götürüyoruz, makale başı 75 euro'da anlaştık, sadece Türkçe olsun. Paketi hazırla.",
+      "expected_output": "Soru sorulmaz (girdiler tam); ad ve €75 birebir kullanılır, yine 'taslak/onayınıza sunulur' çerçevesi korunur; tek dilli e-posta + sunum üretilir.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Draft a warm offer email to our finalist writer and nothing else.",
+      "expected_output": "Yalnız e-posta üretilir ama beceri kuralları uygulanır: rakam e-postaya yazılmaz, kişisel gözlem yer tutucusu ve iki zaman önerisi bulunur, aday adı bilinmiyorsa [Aday Adı] bırakılır.",
+      "files": []
+    }
+  ]
+}

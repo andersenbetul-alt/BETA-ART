@@ -1,0 +1,412 @@
+<title>QBLOGG Teklif Sunumu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f6f7fb;
+    --bg-card: #ffffff;
+    --text: #14161c;
+    --text-muted: #5b6172;
+    --border: #e3e6ee;
+    --brand: #082C54;
+    --brand-2: #00D8C2;
+    --brand-2-ink: #0a7d72;
+    --brand-soft: rgba(8, 44, 84, .08);
+    --on-brand: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0c0e14;
+      --bg-soft: #12141c;
+      --bg-card: #151823;
+      --text: #eef0f6;
+      --text-muted: #9ea5b9;
+      --border: #262b3a;
+      --brand: #00D8C2;
+      --brand-2: #7ce9dd;
+      --brand-2-ink: #7ce9dd;
+      --brand-soft: rgba(0, 216, 194, .13);
+      --on-brand: #08262b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0c0e14;
+    --bg-soft: #12141c;
+    --bg-card: #151823;
+    --text: #eef0f6;
+    --text-muted: #9ea5b9;
+    --border: #262b3a;
+    --brand: #00D8C2;
+    --brand-2: #7ce9dd;
+    --brand-2-ink: #7ce9dd;
+    --brand-soft: rgba(0, 216, 194, .13);
+    --on-brand: #08262b;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: clamp(.95rem, 1.4vw, 1.1rem);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .deck { min-height: 100vh; display: flex; flex-direction: column; }
+
+  .topbar {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border);
+  }
+  .q-mark { width: 30px; height: 30px; flex: none; }
+  .q-mark .ring { fill: var(--brand); }
+  :root[data-theme="dark"] .q-mark .ring { fill: #ffffff; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .q-mark .ring { fill: #ffffff; }
+  }
+  .q-mark .tail { fill: #00D8C2; }
+  .wordmark { font-weight: 800; letter-spacing: -.03em; font-size: 1.05rem; }
+  .langs { margin-inline-start: auto; display: flex; gap: 6px; }
+  .langs button {
+    font: inherit; font-size: .78rem; font-weight: 700;
+    letter-spacing: .06em;
+    background: transparent; color: var(--text-muted);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 5px 12px; cursor: pointer;
+  }
+  .langs button:hover { background: var(--bg-soft); color: var(--text); }
+  .langs button[aria-pressed="true"] {
+    background: var(--brand); color: var(--on-brand); border-color: var(--brand);
+  }
+  :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+
+  .stage { flex: 1; display: grid; }
+  .slide {
+    grid-area: 1 / 1;
+    display: none;
+    padding: clamp(28px, 5vw, 64px);
+    max-width: 1060px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  .slide.on { display: block; }
+
+  .eyebrow {
+    display: block;
+    font-size: .78rem; font-weight: 700;
+    letter-spacing: .13em; text-transform: uppercase;
+    color: var(--brand-2-ink);
+    margin-bottom: 10px;
+  }
+  h1 {
+    margin: 0 0 14px;
+    font-size: clamp(1.7rem, 4.4vw, 2.9rem);
+    font-weight: 800; letter-spacing: -.03em; line-height: 1.12;
+    text-wrap: balance;
+  }
+  h2 {
+    margin: 0 0 18px;
+    font-size: clamp(1.4rem, 3.2vw, 2.1rem);
+    font-weight: 800; letter-spacing: -.025em;
+    text-wrap: balance;
+  }
+  p.lead { font-size: clamp(1rem, 1.8vw, 1.22rem); color: var(--text-muted); max-width: 62ch; margin: 0 0 10px; }
+  .muted { color: var(--text-muted); }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 24px; }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .card h3 { margin: 0 0 8px; font-size: 1.02rem; font-weight: 700; }
+  .card p { margin: 0; color: var(--text-muted); font-size: .92rem; }
+  .card .big {
+    display: block;
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    font-weight: 800; letter-spacing: -.02em;
+    color: var(--brand);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 4px;
+  }
+
+  .flowline { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .chip {
+    background: var(--brand-soft); color: var(--brand);
+    border-radius: 999px; padding: 7px 15px;
+    font-size: .86rem; font-weight: 600;
+  }
+
+  .draftflag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    border-radius: 999px;
+    padding: 5px 14px;
+    font-size: .78rem; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .draftflag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-2); }
+
+  table { border-collapse: collapse; width: 100%; font-size: .94rem; margin-top: 8px; }
+  .table-scroll { overflow-x: auto; }
+  th, td { text-align: start; padding: 11px 14px; border-bottom: 1px solid var(--border); }
+  th { font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+  td:last-child { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+
+  ul.big-list { margin: 20px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  ul.big-list li {
+    display: flex; gap: 14px; align-items: baseline;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 15px 18px;
+    font-size: .98rem;
+  }
+  ul.big-list .tick { flex: none; width: 17px; height: 17px; color: var(--brand-2-ink); transform: translateY(2px); }
+  .fillme { border-style: dashed !important; }
+  .fillme .ph { color: var(--brand-2-ink); font-weight: 700; }
+
+  .navbar {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 22px;
+    border-top: 1px solid var(--border);
+  }
+  .navbar button {
+    font: inherit; font-weight: 700; font-size: .9rem;
+    background: var(--bg-soft); color: var(--text);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 8px 18px; cursor: pointer;
+  }
+  .navbar button:hover { background: var(--brand); color: var(--on-brand); border-color: var(--brand); }
+  .counter { margin-inline-start: auto; color: var(--text-muted); font-size: .84rem; font-variant-numeric: tabular-nums; }
+  .hint { color: var(--text-muted); font-size: .78rem; }
+  @media (max-width: 620px) { .hint { display: none; } }
+</style>
+
+<div class="deck">
+  <div class="topbar">
+    <svg class="q-mark" viewBox="100 100 800 800" role="img" aria-label="QBLOGG">
+      <path class="ring" fill-rule="evenodd" d="M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z M463 251 L537 251 Q742 251 742 456 L742 530 Q742 735 537 735 L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z"/>
+      <path class="tail" d="M610.2 539.5 L539.5 610.2 L817.7 888.4 L888.4 817.7 Z"/>
+    </svg>
+    <span class="wordmark">QBLOGG</span>
+    <div class="langs" role="group" aria-label="Dil / Language / Språk">
+      <button data-lang="tr" aria-pressed="true">TR</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+      <button data-lang="no" aria-pressed="false">NO</button>
+    </div>
+  </div>
+
+  <div class="stage" id="stage"></div>
+
+  <div class="navbar">
+    <button id="prev" type="button">←</button>
+    <button id="next" type="button">→</button>
+    <span class="hint" data-i18n="hint"></span>
+    <span class="counter" id="counter"></span>
+  </div>
+</div>
+
+<script>
+const I18N = {
+  tr: {
+    hint: 'Ok tuşlarıyla da geçebilirsiniz',
+    s1_eyebrow: 'Teklif görüşmesi · 2026',
+    s1_h: 'Hoş geldin, [Aday Adı]',
+    s1_p: 'Bu görüşme bir mülakat değil — seninle çalışmak istiyoruz. Bu birkaç sayfa rolü, rakamları ve neden heyecanlı olduğumuzu açıkça ortaya koymak için.',
+    s2_eyebrow: 'Rol',
+    s2_h: 'İki şapka: Yazar + Uzman katkısı',
+    s2_p: 'Uzaktan, proje bazlı. Özgeçmişten çok yazının kalitesine bakıyoruz — seni de böyle bulduk.',
+    s2c1_t: 'Yazar (Studio)',
+    s2c1_p: 'Tek araştırmadan yedi çıktı üreten hattın kalbi: SEO makalesi, LinkedIn serisi, sosyal içerik, newsletter ve devamı. Kendi uzmanlık alanında, kaynak zorunluluğuyla.',
+    s2c2_t: 'Uzman / Profesör (Intelligence)',
+    s2c2_p: 'Q Answer ve Q Brief formatlarında imzalı, alanında uzman içerik. Yalnız kendi uzmanlık alanın, çıkar beyanı ve son onay sende.',
+    s2c3_t: 'Nasıl çalışırız',
+    s2c3_p: 'Her yazı 16 maddelik görünürlük denetiminden geçer; en az üç kaynak; özgün katkı cümlesi. Yapay zekâ taslakta yardımcı, son söz ve imza insanda.',
+    s3_eyebrow: 'Rakamlar',
+    s3_h: 'Ücret çerçevesi',
+    s3_draft: 'Taslak — görüşmede birlikte netleştireceğiz',
+    s3_p: 'Makale başı model: teslim edilen, denetimden geçen iş üzerinden. Rakamlar başlangıç çerçevesi; kalıcı iş ilişkisinde birlikte gözden geçiririz.',
+    s3_t1: 'İş', s3_t2: 'Kapsam', s3_t3: 'Ücret (taslak)',
+    s3_r1a: 'Standart makale (yazar)', s3_r1b: '1.200+ kelime, kaynaklı, 1 revizyon dahil', s3_r1c: '€[60–90] / makale',
+    s3_r2a: 'Q Answer (uzman imzalı)', s3_r2b: 'Soru → araştırma → okur için anlam yapısı', s3_r2c: '[7.500–12.500] NOK',
+    s3_r3a: 'Q Brief (üyelere özel)', s3_r3b: 'En fazla 2 sayfa, altı bölüm, kaynak zorunlu', s3_r3c: '[15.000–25.000] NOK',
+    s3_r4a: 'Deneme dönemi', s3_r4b: 'İlk 2 makale — ücretli, iki taraf için tanışma', s3_r4c: 'Aynı ücret',
+    s3_note: 'Ödeme: fatura karşılığı, teslim + denetim onayı sonrası [14] gün içinde. Uzman kalemleri iş modelimizde henüz hipotez aşamasında — pazarla birlikte test edeceğiz ve bunu açıkça söylüyoruz.',
+    s4_eyebrow: 'Neden sen',
+    s4_h: 'Neden heyecanlıyız',
+    s4_p: 'Görüşme sahibi: aşağıdaki üç kutuyu adaya özgü somut örneklerle doldurun — genel övgü değil, işine dair gözlem.',
+    s4_i1: '[Örnek yazısından somut bir gözlem — hangi yazı, neyi iyi yapıyor]',
+    s4_i2: '[Uzmanlık alanının içerik planımızdaki karşılığı — hangi sütunu güçlendirir]',
+    s4_i3: '[Süreçte bıraktığı izlenim — iletişim, revizyona yaklaşım, merak]',
+    s5_eyebrow: 'Sonraki adımlar',
+    s5_h: 'Buradan sonrası',
+    s5_i1: 'Bugün: soruların — ücret, kapsam, süreç, ne istersen',
+    s5_i2: '48 saat içinde: yazılı teklif özeti e-postayla',
+    s5_i3: 'Sen "evet" dersen: ilk brief + ilk makale takvimi',
+    s5_i4: 'Acele yok — düşünmek için ihtiyacın kadar zaman',
+    s5_p: 'Sorular için her zaman: hello@qblogg.com'
+  },
+  en: {
+    hint: 'Arrow keys work too',
+    s1_eyebrow: 'Offer call · 2026',
+    s1_h: 'Welcome, [Candidate Name]',
+    s1_p: 'This is not an interview — we want to work with you. These few pages lay out the role, the numbers, and why we are excited, in plain terms.',
+    s2_eyebrow: 'The role',
+    s2_h: 'Two hats: Writer + Expert contributor',
+    s2_p: 'Remote, project-based. We care more about the writing than the CV — that is how we found you.',
+    s2c1_t: 'Writer (Studio)',
+    s2c1_p: 'The heart of a pipeline that turns one research effort into seven outputs: SEO article, LinkedIn series, social content, newsletter and more. In your own specialism, sources required.',
+    s2c2_t: 'Expert / Professor (Intelligence)',
+    s2c2_p: 'Signed expert content in our Q Answer and Q Brief formats. Only your own field, declared interests, and you hold final approval.',
+    s2c3_t: 'How we work',
+    s2c3_p: 'Every piece passes a 16-point visibility audit; at least three sources; a stated original contribution. AI helps with drafts — the final word and the byline are human.',
+    s3_eyebrow: 'The numbers',
+    s3_h: 'Compensation framework',
+    s3_draft: 'Draft — we will finalise together on this call',
+    s3_p: 'Per-article model: paid on delivered work that passes the audit. These figures are a starting frame; in an ongoing relationship we review them together.',
+    s3_t1: 'Work', s3_t2: 'Scope', s3_t3: 'Fee (draft)',
+    s3_r1a: 'Standard article (writer)', s3_r1b: '1,200+ words, sourced, 1 revision included', s3_r1c: '€[60–90] / article',
+    s3_r2a: 'Q Answer (expert-signed)', s3_r2b: 'Question → research → what it means for the reader', s3_r2c: 'NOK [7,500–12,500]',
+    s3_r3a: 'Q Brief (members-only)', s3_r3b: 'Max 2 pages, six sections, sources mandatory', s3_r3c: 'NOK [15,000–25,000]',
+    s3_r4a: 'Trial period', s3_r4b: 'First 2 articles — paid, a mutual test drive', s3_r4c: 'Same rate',
+    s3_note: 'Payment: against invoice, within [14] days of delivery + audit approval. The expert-tier figures are still hypotheses in our business model — we will test them with the market, and we say so openly.',
+    s4_eyebrow: 'Why you',
+    s4_h: 'Why we are excited',
+    s4_p: 'Call host: fill these three boxes with concrete, candidate-specific observations — not generic praise.',
+    s4_i1: '[A concrete observation from their sample work — which piece, what it does well]',
+    s4_i2: '[How their specialism maps to our content plan — which pillar it strengthens]',
+    s4_i3: '[The impression they left in the process — communication, approach to revision, curiosity]',
+    s5_eyebrow: 'Next steps',
+    s5_h: 'From here',
+    s5_i1: 'Today: your questions — fees, scope, process, anything',
+    s5_i2: 'Within 48 hours: the written offer summary by email',
+    s5_i3: 'If you say yes: first brief + schedule for the first article',
+    s5_i4: 'No rush — take the time you need',
+    s5_p: 'Questions anytime: hello@qblogg.com'
+  },
+  no: {
+    hint: 'Piltastene fungerer også',
+    s1_eyebrow: 'Tilbudssamtale · 2026',
+    s1_h: 'Velkommen, [Kandidatnavn]',
+    s1_p: 'Dette er ikke et intervju — vi vil jobbe med deg. Disse sidene legger frem rollen, tallene og hvorfor vi gleder oss, i klartekst.',
+    s2_eyebrow: 'Rollen',
+    s2_h: 'To hatter: Skribent + Fagbidragsyter',
+    s2_p: 'Eksternt, prosjektbasert. Vi bryr oss mer om teksten enn CV-en — det var slik vi fant deg.',
+    s2c1_t: 'Skribent (Studio)',
+    s2c1_p: 'Kjernen i en pipeline som gjør én研 research til sju leveranser: SEO-artikkel, LinkedIn-serie, sosialt innhold, nyhetsbrev og mer. Innen ditt fagfelt, med kildekrav.',
+    s2c2_t: 'Ekspert / Professor (Intelligence)',
+    s2c2_p: 'Signert faginnhold i formatene Q Answer og Q Brief. Kun ditt eget fagfelt, interesseerklæring, og du har siste ord.',
+    s2c3_t: 'Slik jobber vi',
+    s2c3_p: 'Hver tekst går gjennom en 16-punkts synlighetskontroll; minst tre kilder; et uttalt originalbidrag. KI hjelper med utkast — siste ord og byline er menneskelige.',
+    s3_eyebrow: 'Tallene',
+    s3_h: 'Honorarramme',
+    s3_draft: 'Utkast — vi lander det sammen i denne samtalen',
+    s3_p: 'Per artikkel: betaling for levert arbeid som passerer kontrollen. Tallene er en startramme; i et løpende samarbeid ser vi på dem sammen.',
+    s3_t1: 'Arbeid', s3_t2: 'Omfang', s3_t3: 'Honorar (utkast)',
+    s3_r1a: 'Standardartikkel (skribent)', s3_r1b: '1 200+ ord, med kilder, 1 revisjon inkludert', s3_r1c: '€[60–90] / artikkel',
+    s3_r2a: 'Q Answer (ekspertsignert)', s3_r2b: 'Spørsmål → forskning → hva det betyr for leseren', s3_r2c: '[7 500–12 500] kr',
+    s3_r3a: 'Q Brief (kun medlemmer)', s3_r3b: 'Maks 2 sider, seks deler, kildekrav', s3_r3c: '[15 000–25 000] kr',
+    s3_r4a: 'Prøveperiode', s3_r4b: 'De to første artiklene — betalt, en gjensidig test', s3_r4c: 'Samme sats',
+    s3_note: 'Betaling: mot faktura, innen [14] dager etter levering + godkjent kontroll. Ekspertsatsene er fortsatt hypoteser i forretningsmodellen vår — vi tester dem med markedet, og det sier vi åpent.',
+    s4_eyebrow: 'Hvorfor deg',
+    s4_h: 'Hvorfor vi gleder oss',
+    s4_p: 'Vert: fyll disse tre boksene med konkrete observasjoner om kandidaten — ikke generisk ros.',
+    s4_i1: '[En konkret observasjon fra arbeidsprøvene — hvilken tekst, hva den gjør godt]',
+    s4_i2: '[Hvordan fagfeltet passer innholdsplanen vår — hvilken søyle det styrker]',
+    s4_i3: '[Inntrykket fra prosessen — kommunikasjon, holdning til revisjon, nysgjerrighet]',
+    s5_eyebrow: 'Neste steg',
+    s5_h: 'Veien videre',
+    s5_i1: 'I dag: dine spørsmål — honorar, omfang, prosess, hva som helst',
+    s5_i2: 'Innen 48 timer: skriftlig tilbudssammendrag på e-post',
+    s5_i3: 'Sier du ja: første brief + plan for første artikkel',
+    s5_i4: 'Ingen hast — ta den tiden du trenger',
+    s5_p: 'Spørsmål når som helst: hello@qblogg.com'
+  }
+};
+
+const TICK = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5"/></svg>';
+
+function slides(t) {
+  return [
+    `<span class="eyebrow">${t.s1_eyebrow}</span><h1>${t.s1_h}</h1><p class="lead">${t.s1_p}</p>
+     <div class="flowline"><span class="chip">Blog</span><span class="chip">LinkedIn</span><span class="chip">Social</span><span class="chip">Newsletter</span><span class="chip">SEO</span><span class="chip">Video</span><span class="chip">YouTube</span></div>`,
+    `<span class="eyebrow">${t.s2_eyebrow}</span><h2>${t.s2_h}</h2><p class="lead">${t.s2_p}</p>
+     <div class="cards">
+       <div class="card"><h3>${t.s2c1_t}</h3><p>${t.s2c1_p}</p></div>
+       <div class="card"><h3>${t.s2c2_t}</h3><p>${t.s2c2_p}</p></div>
+       <div class="card"><h3>${t.s2c3_t}</h3><p>${t.s2c3_p}</p></div>
+     </div>`,
+    `<span class="eyebrow">${t.s3_eyebrow}</span><h2>${t.s3_h}</h2>
+     <span class="draftflag"><span class="dot"></span>${t.s3_draft}</span>
+     <p class="lead">${t.s3_p}</p>
+     <div class="table-scroll"><table>
+       <thead><tr><th>${t.s3_t1}</th><th>${t.s3_t2}</th><th>${t.s3_t3}</th></tr></thead>
+       <tbody>
+         <tr><td>${t.s3_r1a}</td><td>${t.s3_r1b}</td><td>${t.s3_r1c}</td></tr>
+         <tr><td>${t.s3_r2a}</td><td>${t.s3_r2b}</td><td>${t.s3_r2c}</td></tr>
+         <tr><td>${t.s3_r3a}</td><td>${t.s3_r3b}</td><td>${t.s3_r3c}</td></tr>
+         <tr><td>${t.s3_r4a}</td><td>${t.s3_r4b}</td><td>${t.s3_r4c}</td></tr>
+       </tbody>
+     </table></div>
+     <p class="muted" style="font-size:.86rem;margin-top:14px;max-width:70ch">${t.s3_note}</p>`,
+    `<span class="eyebrow">${t.s4_eyebrow}</span><h2>${t.s4_h}</h2><p class="lead">${t.s4_p}</p>
+     <ul class="big-list">
+       <li class="fillme">${TICK}<span class="ph">${t.s4_i1}</span></li>
+       <li class="fillme">${TICK}<span class="ph">${t.s4_i2}</span></li>
+       <li class="fillme">${TICK}<span class="ph">${t.s4_i3}</span></li>
+     </ul>`,
+    `<span class="eyebrow">${t.s5_eyebrow}</span><h2>${t.s5_h}</h2>
+     <ul class="big-list">
+       <li>${TICK}<span>${t.s5_i1}</span></li>
+       <li>${TICK}<span>${t.s5_i2}</span></li>
+       <li>${TICK}<span>${t.s5_i3}</span></li>
+       <li>${TICK}<span>${t.s5_i4}</span></li>
+     </ul>
+     <p class="lead" style="margin-top:22px">${t.s5_p}</p>`
+  ];
+}
+
+let lang = 'tr', idx = 0;
+try { const v = localStorage.getItem('qb-offer-lang'); if (v && I18N[v]) lang = v; } catch (e) {}
+
+const stage = document.getElementById('stage');
+const counter = document.getElementById('counter');
+
+function render() {
+  const t = I18N[lang];
+  const list = slides(t);
+  stage.innerHTML = list.map((html, i) =>
+    `<section class="slide${i === idx ? ' on' : ''}" aria-hidden="${i !== idx}">${html}</section>`).join('');
+  counter.textContent = (idx + 1) + ' / ' + list.length;
+  document.querySelector('.hint').textContent = t.hint;
+  document.querySelectorAll('.langs button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  document.documentElement.lang = lang === 'no' ? 'nb' : lang;
+}
+
+function go(d) {
+  const n = slides(I18N[lang]).length;
+  idx = Math.min(n - 1, Math.max(0, idx + d));
+  render();
+}
+
+document.getElementById('prev').addEventListener('click', () => go(-1));
+document.getElementById('next').addEventListener('click', () => go(1));
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(1); }
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+});
+document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
+  lang = b.dataset.lang;
+  try { localStorage.setItem('qb-offer-lang', lang); } catch (e) {}
+  render();
+}));
+render();
+</script>
