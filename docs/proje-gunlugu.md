@@ -366,6 +366,36 @@ Harita bu ilkeyle güncellendi (§4.1): öncelik sırası gelire göre değil ö
 yüksek-fayda kümelerinden başlamalı, düşük-fayda/yüksek-rekabet kümeler
 yalnızca kapasite kalırsa ikincil dolgu.
 
+## 25.08.2026 (gece, kapanış) — Q vizyonu duraklatıldı, karar değişmedi
+
+Q — Human Growth Network fikri dokuz turda (çoğu kullanıcının başka AI
+araçlarından aldığı paralel çıktılar) gitgide büyüyerek geldi: vizyon →
+yatırımcı çerçevesi → yatırım kapıları/faz çizelgesi → org tasarımı →
+maaş/bütçe/finansman turları içeren "Q Master Plan v1.0". Her turun kendi
+sonucu aynıydı: "önce kanıt, sonra inşa." Kullanıcı açıkça "önce ucuz
+doğrulama" seçeneğini seçti (`docs/q-validate-materyalleri.md` teslim
+edildi: landing page taslağı + 20 kullanıcı + 10 uzman görüşme sorusu).
+
+Org şeması + maaş/bütçe tabloları içeren tur önce reddedildi — sıfır
+kullanıcı/gelirli bir kurgusal şirket için somut NOK rakamları yazmak
+`CLAUDE.md`'nin "uydurma yasak" ilkesini ihlal eder gerekçesiyle.
+
+Ardından kullanıcı dokuzuncu turun (tüm rakamları "hipotez" diye
+etiketleyen "Q Master Plan v1.0") **resmi referans belgesi** olmasını
+istedi: bundan sonra Q'yla ilgili ürün/işe alım/finans kararları bu
+belgedeki Gate 1-7 (Investment Gates) sırasına göre değerlendirilecek.
+Bu, dokuz turun kendi vardığı disiplinle tutarlı olduğu için kabul edildi
+ve `docs/q-master-plan.md`'ye yazıldı — iki şart korunarak: (1) her rakam
+belgenin kendi ifadesiyle hipotez, taahhüt değil; (2) bu belge QBLOGG'un
+şu anki canlı işini (B2B içerik-hattı stüdyosu) değiştirmiyor, yalnızca
+Q'ya dair gelecek teklifler için süzgeç.
+
+Dokuz tur boyunca hiçbir gerçek dünya eylemi (görüşme, landing page
+yayını) teyit edilmedi — yani Gate 1 hâlâ açık değil. Karar: enerji
+şimdilik zaten canlı olan iki deneye (Action Pages, `docs/icerik-firsat-
+haritasi.md` affiliate içeriği) döndürülüyor. Q'ya sonraki dönüş şartı:
+kullanıcı gerçek bir görüşme/landing page sonucu getirdiğinde.
+
 Kullanıcı bu ilkeyi Meta'nın dikkat-ekonomisi modeliyle karşılaştırarak
 netleştirdi: **"Sana ilgini çekecek şeyi bulayım" (Meta) değil, "Seni
 geliştirecek şeyi bulayım" (QBLOGG)** — temel metrik Dikkat/Engagement değil
