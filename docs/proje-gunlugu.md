@@ -323,3 +323,14 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+## 25.08.2026 — Action Page demosu yayında
+
+Kullanıcı onayıyla dal main'e birleştirildi (973e48e) ve qblogg projesi
+yeniden dağıtıldı (READY, ~4 sn). Yayın öncesi kritik düzeltme: demonun
+satır içi script'i site CSP'sinde (script-src 'self') engellenecekti —
+cv-action-page.js'e çıkarıldı, test yeniden geçti. Tarif dist/demo'yu
+kopyalıyor. Canlı doğrulama Vercel araçlarıyla yapıldı (konteynerden
+*.vercel.app engelli — 000 dönmesi site hatası değil, bilinen proxy
+engeli): / ve /demo/cv-action-page.html + .js 200, içerik ve başlıklar
+doğru. Satış demosu adresi:
+https://qblogg.vercel.app/demo/cv-action-page.html (noindex).
