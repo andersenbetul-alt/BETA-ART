@@ -323,3 +323,25 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+
+## 25.08.2026 (gece) — Beşinci yön teklifi değerlendirildi: B2C affiliate/karşılaştırma medyası
+
+Kullanıcı dışarıdan gelen bir strateji belgesi paylaştı: QBLOGG'u Norveç
+odaklı B2C affiliate/karşılaştırma medyasına (review, "best X", "X vs Y")
+dönüştürme teklifi. Belgenin teknik durum tespiti yanlıştı ("repo'da yalnız
+.github var, Lovable/Vercel kurulmamış") — gerçekte site tam işleyen ve
+canlı. Ayrıca bu, bir haftada dördüncü yön teklifiydi (stüdyo → yazar
+platformu → Action Pages → bu). Kullanıcıya iki karar soruldu: (1) belge
+arşivlensin mi/pivot mı, (2) Action Pages pilotuyla ilişkisi. Kararlar:
+ciddi pivot teklifi olarak ele al + ikisini paralel yürüt.
+
+Action Pages doğrulaması: `qblogg` Vercel projesinin son production
+dağıtımı (`dpl_2s49SpZK31WFJYTnFfJxat7cTQUw`) zaten 973e48e commit'inden
+(demo dahil) yapılmış ve READY durumda — `web_fetch_vercel_url` ile
+`qblogg.vercel.app/demo/cv-action-page.html` içeriği doğrulandı (200,
+doğru CSP/noindex başlıkları). Ek push/redeploy gerekmedi; pilot fiilen
+yayında.
+
+Paralel iz: affiliate niş için "İçerik Fırsat Haritası" araştırması
+başlatıldı (yalnız araştırma, kod yok) — sonucu ayrı günlük kaydına
+işlenecek.
