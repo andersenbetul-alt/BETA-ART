@@ -428,3 +428,13 @@ spec'i Given/When/Then formatında, Supabase anahtarları gelince teste
 çevrilecek. (4) 30. gün karar bloğu deftere kondu. Kullanıcıda kalan ön
 koşullar: org.nr/fatura yetkisi, LinkedIn aday tamamlama, Supabase
 anahtarları, qblogg.com Add Domain.
+## 25.08.2026 (devam) — Commit kapısı kancası kuruldu
+
+Kurs modülünün "taviz verilmez kural hook ile zorlanır" maddesi uygulandı:
+.claude/hooks/commit-kontrol.sh (PreToolUse/Bash) — komut "git commit"
+içeriyorsa npm run check koşar, kırmızıysa commit'i exit 2 ile engeller.
+Üç yol boru testinden geçti (geç/izin/engelle); ayar settings.json'a
+birleştirildi, jq şema doğrulaması yeşil. Geçici işaretle ateşleme kanıtı
+denemesi sınıflandırıcı tarafından engellendi (kayıt: etrafından
+dolanılmadı); kanıt bu commit'in kendisiyle alındı (kanca logu). Ayrıca
+CLAUDE.md'ye gözetimle-orantılı-doğrulama ilkesi eklendi.

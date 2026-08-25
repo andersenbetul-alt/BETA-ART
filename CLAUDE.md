@@ -220,6 +220,12 @@ olmayanı yeniden düzenleme. Kendi tarzın farklı olsa da mevcut tarza uy. İl
 değişkenleri temizle; önceden var olan ölü kodu istenmedikçe kaldırma.
 Ölçüt: değişen her satır doğrudan istenen işe kadar izlenebilmeli.
 
+**Ek ilke — gözetimle orantılı doğrulama:** otonom koşulan işin (tek
+talimatla çok adım) çıktısı, elle adım adım yapılan işten daha sıkı
+denetlenir; ne kadar az izlendiyse o kadar çok kanıt istenir.
+Commit-öncesi `npm run check` artık mekanik olarak da zorlanır
+(`.claude/hooks/commit-kontrol.sh` PreToolUse kancası).
+
 **4. Hedefe göre yürüt.** Başarı ölçütünü tanımla, doğrulanana kadar döngüde kal.
 "Doğrulama ekle" → "geçersiz girdiler için test yaz, sonra geçir". "Hatayı düzelt"
 → "hatayı üreten test yaz, sonra geçir". Bu projede doğrulama katmanı hazır:
