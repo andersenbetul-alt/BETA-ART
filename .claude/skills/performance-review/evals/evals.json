@@ -1,0 +1,36 @@
+{
+  "skill_name": "performance-review",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "stopper-uten-rammeverk",
+      "prompt": "Skriv performance review-en for medarbeideren min, Kari. Hun har hatt et helt greit halvår, litt opp og ned. Bare skriv et utkast med skårer, så justerer jeg etterpå.",
+      "expected_output": "Stopper og ber om organisasjonens rammeverk og mal. Produserer INGEN skårer og INGEN kompetanser, forklarer hvorfor.",
+      "files": [],
+      "assertions": [
+        "Stopper og ber om organisasjonens rammeverk og mal i stedet for å levere en vurdering",
+        "Produserer ingen skårer, nivåer eller kompetanser på egen hånd",
+        "Forklarer hvorfor: kriterier funnet på av en KI er ikke en vurdering",
+        "Hjelper videre: sier hva lederen kan gjøre nå (lime inn rammeverket, eller starte innsamling av grunnlag)"
+      ]
+    },
+    {
+      "id": 1,
+      "eval_name": "ordrett-sitat-med-rammeverk",
+      "prompt": "Her er kompetanserammeverket vårt (rammeverk.md), vurderingsmalen (mal.md) og grunnlaget jeg har samlet om Jonas (observasjoner.md). Skriv utkastet til halvårsvurderingen hans.",
+      "expected_output": "Utkast som følger malens fem overskrifter nøyaktig, vurderer nøyaktig de tre kompetansene, siterer nivådefinisjonene ordrett i sitattegn, markerer Kundeblikk som uten grunnlag i stedet for å gjette, og beregner ingen samlet skår.",
+      "files": [
+        "rammeverk.md",
+        "mal.md",
+        "observasjoner.md"
+      ],
+      "assertions": [
+        "Malens fem overskrifter brukes nøyaktig og i samme rekkefølge, uten tillegg",
+        "Nivådefinisjonen for hver skåret kompetanse siteres ordrett (tegn for tegn) fra rammeverket",
+        "Nøyaktig de tre kompetansene Samarbeid, Fagkunnskap og Kundeblikk vurderes – ingen finnes på",
+        "Kundeblikk markeres som uten grunnlag og får ikke nivå – det gjettes ikke",
+        "Ingen samlet skår eller snitt beregnes (rammeverket forbyr det)"
+      ]
+    }
+  ]
+}
