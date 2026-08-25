@@ -47,9 +47,10 @@ which is the point: this skill's whole value is memory between sessions.
 - The navbar is **built** (`src/`), audited against three independent design
   rulebooks, and covered by 11 behavioural tests. `npm run check` builds and
   tests it.
-- One known defect is open: the skip link does not move focus, because
-  `<main>` has no `tabindex="-1"`. Found by running the page, not by the
-  tests — the test asserts only that the target element exists.
+- **No known defects are open.** The skip link was fixed on 2026-08-25
+  (`tabindex="-1"` on `<main>`), and the test that slept through it now
+  asserts the focus move itself — confirmed to fail with the fix reverted
+  (`landed on BODY#`) before being accepted.
 - An authentication schema exists (`supabase/migrations/`) with RLS verified
   against local PostgreSQL. **Nothing is deployed**; no Supabase project
   exists.
@@ -89,11 +90,11 @@ which is the point: this skill's whole value is memory between sessions.
    choices, and `skill-observations/log.md` for OPEN observations.
 2. To run or screenshot the app, use the `run-beta-art` skill —
    `node .claude/skills/run-beta-art/driver.mjs smoke`.
-3. The smallest useful next step is the skip-link fix (`tabindex="-1"` on
-   `<main>`) **together with** a test that asserts focus actually moves — the
-   existing test passes on the broken behaviour. `driver.mjs skiplink`
-   demonstrates it.
-4. After that: build the pages the navbar links to, or answer D-004.
+3. The smallest useful next step is building the pages the navbar links to —
+   `/work`, `/about` and `/contact` all 404, so three of four nav links are
+   broken. That is now the largest visible defect in the site.
+4. After that: answer D-004, which unblocks both the brand text and
+   `BUSINESS.md`.
 5. Update `STATUS.md` and `PROGRESS.md` in the same commit as the work.
 
 ---

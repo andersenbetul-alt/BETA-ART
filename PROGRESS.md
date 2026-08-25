@@ -7,6 +7,31 @@ generally. Newest entries first. For current state and blockers see
 
 ---
 
+## 2026-08-25 — Skip link fixed; STATUS.md corrected
+
+Closed the last open defect. `<main>` had no `tabindex="-1"`, so activating
+the skip link left focus on `<body>` and the next Tab returned to the skip
+link — the link was decorative.
+
+The test that should have caught it asserted only that the target element
+existed, which is true of the broken page. Replaced with one that presses
+Tab, confirms the skip link is the first stop, presses Enter, and asserts
+`document.activeElement` is the target. Before accepting it, the fix was
+reverted and the test observed failing — `focus should move to #main, but
+landed on BODY#`. A test never seen failing is not evidence, per
+`evidence-discipline`.
+
+11/11 tests pass, build clean.
+
+Also corrected `STATUS.md`, which had drifted into contradicting itself. Its
+Summary claimed the repo was "a bare scaffold" with "no source directories,
+no package manifest, no tests" while its own tables below listed six source
+files and 11 passing tests. The dependency graph marked D-002 and D-003 as
+"OPEN — hard blocker" three lines above a paragraph stating both were closed,
+and the critical path read "nothing on this graph has been started". All
+corrected against what is actually in the repository, and the two answered
+open questions removed.
+
 ## 2026-08-25 — `financial-model-build` skill created
 
 Packaged the method from a private-equity investment model build into a

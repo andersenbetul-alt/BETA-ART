@@ -3,15 +3,17 @@
 **Component:** Navbar (BETA ART / Cobban)
 **Branch:** `claude/navbar-beta-art-cobban-6t07ru`
 **Overall:** Built, audited twice (HIG + Vercel guidelines), all findings fixed
-**Last updated:** 2026-08-21
+**Last updated:** 2026-08-25
 
 ---
 
 ## Summary
 
-The repository is a bare scaffold. No application code, build configuration,
-or navbar implementation exists yet. This file records the actual state of
-the repo so the navbar work has a documented starting point.
+The navbar is built, styled, responsive, accessible, and covered by 11
+behavioural tests. `npm run check` builds and tests it. An authentication
+schema exists and is verified against local PostgreSQL, but nothing is
+deployed. The last known defect — the skip link not moving focus — was fixed
+on 2026-08-25 and is now covered by a test proven to fail without the fix.
 
 ## Repository contents
 
@@ -23,9 +25,16 @@ the repo so the navbar work has a documented starting point.
 | `PROGRESS.md` | Dated work log |
 | `DECISIONS.md` | Decision log — D-001 accepted, D-002…D-005 open |
 | `SECURITY.md` | Unmodified GitHub template — placeholder text, needs a real contact and version table |
+| `AUDIT.md` | Findings from both design audits, with a resolution table |
+| `STACK.md` | Agent tooling chain — verified vs assumed |
+| `BUSINESS.md` | Revenue model options — not a decision |
+| `src/` | Six source files: markup, styles, nav, auth, auth-ui, config |
+| `scripts/build.mjs` | Validating build — emits `dist/` |
+| `tests/navbar.test.mjs` | 11 behavioural tests |
+| `supabase/` | Auth schema and RLS test suite |
+| `.claude/skills/` | `task-observer`, `evidence-discipline`, `run-beta-art`, `financial-model-build` |
 
-No source directories (`src/`, `app/`, `components/`), no package manifest,
-no CI workflows, no tests.
+No CI workflows.
 
 ## Navbar status
 
@@ -37,6 +46,7 @@ no CI workflows, no tests.
 | Accessibility | Passes | All contrast ≥ AA, 44×44 targets, reduced-motion honoured, focus rings, ARIA state |
 | Routing / link targets | Built | Home, Work, About, Contact |
 | Tests | Passing | 11 behavioural tests, `npm test` |
+| Skip link | Fixed 2026-08-25 | `tabindex="-1"` on `<main>`; test asserts the focus move and was confirmed to fail without it |
 
 **Progress: complete for this scope.** All audit findings fixed and
 re-verified — see the Resolution table in [AUDIT.md](AUDIT.md).
@@ -58,8 +68,8 @@ and D-003 is unreachable until those two are answered.
 
 ```mermaid
 graph TD
-    D002["D-002 · Stack<br/>OPEN — hard blocker"]
-    D003["D-003 · Page list<br/>OPEN — hard blocker"]
+    D002["D-002 · Stack<br/>DECIDED"]
+    D003["D-003 · Page list<br/>DECIDED"]
     D004["D-004 · What is 'Cobban'<br/>OPEN — soft"]
     D005["D-005 · Design reference<br/>OPEN — soft"]
 
@@ -80,7 +90,7 @@ graph TD
     MARKUP --> STYLE --> RESP --> A11Y --> DONE
     D002 --> TESTS --> DONE
 
-    classDef blocker fill:#7f1d1d,stroke:#ef4444,color:#fff
+    classDef blocker fill:#14532d,stroke:#22c55e,color:#fff
     classDef soft fill:#78350f,stroke:#f59e0b,color:#fff
     classDef work fill:#1e3a5f,stroke:#3b82f6,color:#fff
     classDef goal fill:#14532d,stroke:#22c55e,color:#fff
@@ -90,16 +100,25 @@ graph TD
     class DONE goal
 ```
 
-**Critical path:** D-002 → scaffold → markup → styling → responsive →
-accessibility. D-003 joins at markup. Nothing on this graph has been started.
+**Critical path:** complete. D-002 and D-003 are decided and every work node
+above is built and tested. D-004 and D-005 remain open but did not block
+delivery — the brand text and the visual design were originated here and are
+replaceable once those are answered.
 
 ## Open questions
 
-1. What stack should BETA-ART use (static HTML/CSS, React, Next.js, other)?
-2. What are the navbar links — what pages will the site have?
-3. What does "Cobban" refer to — a brand name, a theme variant, or a
+1. What does "Cobban" refer to — a brand name, a theme variant, or a
    person/owner? It appears only in the branch name, nowhere in the code.
-4. Is there an existing design (Figma, mockup, reference site) to match?
+   (D-004. Also blocks `BUSINESS.md`.)
+2. Is there an existing design (Figma, mockup, reference site) to match?
+   (D-005.)
+3. The `system-ui` typeface stack was flagged as generic for an art site. A
+   distinctive face is a brand decision, not a technical one.
+4. `/work`, `/about` and `/contact` all 404 — only `/` is built. The navbar
+   links to three pages that do not exist.
+
+Questions 1 and 2 from the previous revision (stack, page list) are answered
+by D-002 and D-003 and have been removed.
 
 ## Authentication
 

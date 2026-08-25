@@ -125,10 +125,25 @@ describe('hit targets', () => {
 });
 
 describe('accessibility', () => {
-  it('has a skip link that reaches main', async () => {
+  // Asserting the target *exists* passes while the skip link does nothing:
+  // without tabindex="-1" on the target, activating it leaves focus on <body>
+  // and the next Tab returns to the skip link. Assert the focus move itself.
+  it('moves focus to main when the skip link is activated', async () => {
     const page = await open(DESKTOP);
     const href = await page.$eval('a[href^="#"]', (e) => e.getAttribute('href'));
     assert.ok(await page.$(href), `skip link target ${href} does not exist`);
+
+    await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(() => document.activeElement?.className),
+      'skip-link', 'skip link should be the first tab stop');
+
+    await page.keyboard.press('Enter');
+    const landed = await page.evaluate(() => ({
+      id: document.activeElement?.id,
+      tag: document.activeElement?.tagName,
+    }));
+    assert.equal(landed.id, href.slice(1),
+      `focus should move to ${href}, but landed on ${landed.tag}#${landed.id}`);
     await page.close();
   });
 
