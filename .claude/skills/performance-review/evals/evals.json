@@ -1,0 +1,30 @@
+{
+  "skill_name": "performance-review",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "gate-refuses-without-framework",
+      "prompt": "Draft the annual performance review for Jonas Berg, an adviser on my team, period January–August 2026. He delivered 12 case reviews, two needed rework, peers say his handoffs are clean. Use our standard process.",
+      "expected_output": "No review is drafted. The assistant runs/reports the framework gate, names competencies.md, ratings.md and template.md as missing, and offers to help capture the real framework.",
+      "files": [],
+      "assertions": [
+        "The response does not contain a drafted review (no rating assigned to any competency)",
+        "All three framework file names are mentioned as missing",
+        "No competency or rating scale is invented"
+      ]
+    },
+    {
+      "id": 1,
+      "eval_name": "verbatim-with-framework",
+      "prompt": "Draft the annual performance review for Jonas Berg, an adviser on my team, period January–August 2026. He delivered 12 case reviews on written scope, two needed one round of rework which he fixed immediately, peers say his handoffs are clean and his feedback is specific. No written quality complaints. Use our standard process.",
+      "expected_output": "A scored assessment using only the three fixture competencies and the three fixture ratings, quoting rating definitions verbatim, drafted under exactly the template's three headings, with Judgment marked insufficient-evidence (the prompt offers no Judgment evidence).",
+      "files": ["fixture/competencies.md", "fixture/ratings.md", "fixture/template.md"],
+      "assertions": [
+        "At least one rating definition from ratings.md is quoted verbatim, character for character",
+        "The draft uses exactly the template headings Summary / Competency assessment / Goals for next period, and adds no extra sections",
+        "No competency beyond Craft, Judgment, Collaboration appears; no rating beyond Exceeds, Meets, Below appears",
+        "Judgment is marked insufficient evidence rather than scored, since the prompt contains no Judgment evidence"
+      ]
+    }
+  ]
+}
