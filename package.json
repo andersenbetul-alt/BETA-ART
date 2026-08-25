@@ -9,6 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "check:launch": "vitest run tests/launch-guard.test.ts --config vitest.launch.mts",
     "test:watch": "vitest",
     "check": "npm run typecheck && npm run lint && npm run test",
     "audit:a11y": "node scripts/a11y.mjs",
