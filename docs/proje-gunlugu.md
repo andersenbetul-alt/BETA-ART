@@ -391,3 +391,13 @@ kontrolü tamamen tanımsız (ödeme alınmadan yayın yok kuralı + tahsilat
 defteri önerildi), B3 görev ayrılığı (satış/üretim/onay/tahsilat tek
 kişide; ilk ayrıştırma editör rolü), B4 SLA takibi yok. Süreç belgesi
 standart formatı da burada tanımlandı.
+## 25.08.2026 (devam) — surec-belgesi becerisi paketlendi (TDD ile)
+
+"Package what we just did into a skill": süreç belgesi işi beceriye
+çevrildi. RED temel çizgisi sürpriz verdi — ajan tarifsiz istekte süreç
+uydurmuyor, SoD analizini beceri olmadan da iyi yapıyor; tek başarısızlık
+ev formatı uyumu. Bu yüzden .claude/skills/surec-belgesi dar kapsamla
+yazıldı (format referansı: başlık alanları, matris kolonları + Durum
+enum, mermaid kuralları, Bx bulgu yapısı, tarifsiz-istek kuralı) ve
+GREEN testinde format uyumu doğrulandı (8 bulgu, mermaid, öncelik
+sırası — hepsi ev yapısında). Gözlem 9 kayıtlı.

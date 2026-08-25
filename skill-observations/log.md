@@ -177,3 +177,23 @@ dağıtım komutunun önüne alışkanlık olarak eklenmeli.
 **Principle:** Dağıtım tarifi depoyu okuyorsa, "bende çalışıyor"un birimi
 çalışma ağacı değil push edilmiş commit'tir.
 
+### Observation 9: Temel çizgi güçlü çıkınca beceri kapsamı daraltıldı
+
+**Status:** ACTIONED — surec-belgesi becerisi dar kapsamla yazıldı
+**Date:** 25.08.2026
+**Session context:** "Package what we just did into a skill" — süreç belgesi işi
+**Skill:** writing-skills uygulaması / surec-belgesi
+**Type:** internal
+**Phase/Area:** RED baseline
+
+**Issue:** Beklenen iki hata temel çizgide ÇIKMADI: ajan tarifsiz istekte
+süreç uydurmadı (tarifi istedi), tarifli istekte sağlam SoD analizi üretti.
+Tek gerçek başarısızlık ev formatına uyumdu (kolonlar, Durum enum,
+mermaid, Bx yapısı).
+
+**Suggested improvement:** writing-skills'in "kontrol hatayı göstermiyorsa
+rehberi yazma" kuralı uygulandı: disiplin becerisi yerine ince format
+referans becerisi yazıldı; GREEN testinde format uyumu doğrulandı.
+
+**Principle:** Beceri, temel çizginin gerçekten başarısız olduğu şeyi
+öğretir — model zaten yapıyorsa kural değil, yalnız ev standardı bağlanır.
