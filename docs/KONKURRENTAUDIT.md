@@ -96,3 +96,44 @@ gjettet.
 3. **Farge som eneste signal + nøkler i appen** (Nursebuddy): fargekodet
    status bryter H12, og lagrede tilgangskoder er H11-gift – døren åpnes av
    relasjonen og leverandørens rutiner, ikke av en kode i en database.
+
+## Det norske markedet leverandørens kunde faktisk velger mellom
+
+Auditen over sammenligner digitale plattformer – samme lag som Naviar selv
+konkurrerer i (programvare til tjenesteleverandører). Familien som til slutt
+betaler for et besøk, velger derimot mellom disse alternativene i Oslo. Dette
+er research med ekte kilder (25.08.2026, forhåndsregistrert hypotese +
+bevislogg + uavhengig verifisering – metoden holder), og konklusjonen er
+ubehagelig ærlig: **kontinuitet og familieoppdatering er ikke unike.**
+
+| Alternativ | Hva det faktisk tilbyr | Kilde |
+|---|---|---|
+| Oslo kommune, praktisk bistand | Handling, vask, klesvask – krever vedtak, ingen valg av hvem som kommer | oslo.kommune.no |
+| Oslo Røde Kors, besøksvenn | Sosial kontakt, ca. annenhver uke, opplærte og taushetsbelagte frivillige | rodekors.no |
+| Nasjonalforeningen Aktivitetsvenn | Aktivitetsvenn matchet på interesse, for personer med demens | nasjonalforeningen.no |
+| **2Care** | **Nærmeste kommersielle konkurrent.** Sosialt samvær, følge til avtaler, **fast person/fast tid**, fra 650 kr/time | 2care.no |
+| Norlandia Care | Bredere privat hjemmehjelp: rengjøring, mat, personlig hygiene, følge | norlandiacare.no |
+| Care.com Norge | Åpen plattform som kobler familie og hjelper – ren formidler, ikke driftet tjeneste | care.com |
+| Helsenorge (Nordstrand hjemmetjeneste) | Pårørende kan allerede se avtaler og få varsel om utført besøk via Helsenorge | oslo.kommune.no |
+
+**Konklusjonen, ordrett verdt å ta med:** *«Present NAVIAR as a narrow,
+managed alternative with a deliberately simple, consent-led family workflow;
+validate whether customers value it before treating it as a durable
+advantage.»* 2Care har allerede fast person/fast tid. Helsenorge har allerede
+familievarsling. Ingen av disse er egnet som hovedbudskap alene.
+
+**Det som fortsatt ikke er dekket av noen kilde over** (altså der en reell
+forskjell kan ligge, ubekreftet): et smalt, eksplisitt begrenset tilbud
+(sosialt besøk, følge, digital hjelp – ingenting annet) kombinert med
+menneskelig vurdering av hver forespørsel og et bevisst *ikke*-medisinsk
+løfte. 2Care og Norlandia velger motsatt strategi – bredere omfang som
+inkluderer personlig hygiene og pleie. Det er en posisjon, ikke et bevist
+konkurransefortrinn, og bør testes med ekte kunder før det brukes som
+markedsføringspåstand.
+
+**Viktig for hvem dette gjelder:** hele tabellen over er leverandørens
+konkurranseflate, ikke Naviars. Naviar selger ikke til familien (modell A,
+`FORRETNINGSMODELL-V1.md`) – det er leverandøren som konkurrerer mot 2Care og
+Norlandia. Det programvaren kan gjøre er å gjøre den smale posisjonen billig
+å levere for en liten leverandør: fast-hjelper-prioritet og familieoppdatering
+er allerede bygget (`HJELPETEAM.md`, `familie.html`) uten 2Cares skala.
