@@ -435,6 +435,35 @@ gösterdiği gibi, jeopolitik/regülasyon riskini hesaba katmalı — özellikle
 Q'nun kendi verisi (Outcome Graph, kullanıcı context'i) GDPR kapsamında
 olacağından, bu risk Q için de geçerli.
 
+## v1.5 — Çözülmemiş çelişki: B2C-önce mi, B2B-önce mi?
+
+Yeni bir tur, gelir motorlarını sıraladı (Q Business Pilot → Q Business
+SaaS → Q+ → Marketplace → Enterprise → Outcome API → Q Talent → Reklam
+"belki hiçbir zaman") ve açıkça şunu söyledi: **"Q'nun ilk gerçek para
+kazanma modeli Q+ değil, 30 günlük ücretli Q Business Pilot olmalı."**
+
+**Bu, v1.2'de kilitlenen sırayla doğrudan çelişiyor:** v1.2 "B2C →
+DATA & PRODUCT DISCOVERY (önce), B2B PILOTS → MONEY & VERIFICATION
+(sonra)" diyordu — yani önce ücretsiz/ucuz B2C testiyle ürünü öğren,
+parayı B2B'den ikinci aşamada al. Bu yeni tur ise B2B'yi **ilk gün**
+gelir kaynağı yapıyor (25.000–75.000 NOK pilot fiyat hipoteziyle).
+
+**Bu çözülmemiş, kullanıcının karar vermesi gereken bir çatal:** İki
+sıra da savunulabilir (B2C-önce: ucuz, hızlı, riski düşük ama gelirsiz;
+B2B-önce: daha zor satış ama gerçek para + gerçek iş verisi aynı anda).
+Belge şu anda ikisini de "doğru" diye işaretli tutuyor — hangisinin
+geçerli olduğu, gerçek 20 görüşmenin sonucuna göre netleşmeli, teoride
+değil.
+
+**Yeni rakamlar (§15'teki gibi, hipotez):** Q Business Start 199–249
+NOK/çalışan/ay, Grow 249–399 NOK, Enterprise özel sözleşme; Pilot
+25.000–75.000 NOK; Q+ 149 NOK/ay; Marketplace komisyonu %15–20.
+Doğrulanmamış kaynaklar: BetterUp enterprise sayfası, Coursera Business
+Teams fiyatı ($399/kullanıcı/yıl), Cabana Studio creator take-rate
+yazısı — bu turda WebSearch ile teyit edilmedi (Meta M&A turundaki
+titizlikle karıştırılmasın; bunlar daha düşük riskli genel pazar
+rakamları, ama karara dayanak yapılmadan önce kontrol edilmeli).
+
 ## Bu belge nasıl kullanılır (operasyonel not)
 
 Bundan sonra Q'yla ilgili her yeni teklif (ürün özelliği, işe alım, harcama,
