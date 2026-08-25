@@ -398,6 +398,43 @@ tanıdık isimler) ama **spesifik rakamlar ve "2026" atfı bu oturumda
 doğrulanmadı** — karara dayanak yapılmadan birincil kaynaktan teyit
 edilmeli.
 
+## v1.4 — "Meta-ready" dağıtım çerçevesi (kullanıcı adı: v2.0) + gerçek doğrulama
+
+Beşinci tur, kilitli çekirdeği bozmuyor (bölüm 4'te "killer behavior
+değişmiyor: 1 Task → 1 Improvement → 1 Proof" diye açıkça teyit ediyor) —
+üzerine bir **dağıtım/konumlandırma stratejisi** ekliyor: Q'yu Meta'ya
+bağımlı değil ama Meta (veya Microsoft/LinkedIn) için "sıfırdan yapmak
+yerine satın almak mantıklı" noktasına getirecek şekilde kurmak.
+
+**Yeni unsurlar:** Kategori "Outcome Intelligence Network"; formül Intent
+→ Action → Proof → Outcome → Intelligence; dağıtım stratejisi "standalone
+core, distribution everywhere" (WhatsApp/Messenger/Instagram/Email/Teams/
+Slack üzerinden, tek platforma bağımlı değil); Q Outcome API (2. aşama,
+Q'yu "app" değil "infrastructure" yapma fikri); "Acquisition-readiness
+dashboard"; **"Q should own the outcome layer"** özet cümlesi.
+
+**Bu oturumun gerçek doğrulaması (önceki turlardan farklı — bu sefer
+isimli/kontrol edilebilir dış olaylar olduğu için WebSearch ile
+gerçekten kontrol edildi):**
+
+| İddia | Durum |
+|---|---|
+| Meta Q2 2026: $60,8 milyar gelir, +%28 YoY, 3,60 milyar DAP, reklam gösterimi +%14/fiyat +%12 | ✅ **Doğru** — [Meta Investor İlişkileri](https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx), [Variety](https://variety.com/2026/digital/news/meta-q2-2026-earnings-results-legal-proceedings-charge-1236823577/) |
+| Meta, Limitless'i (AI kolye/wearable) satın aldı | ✅ **Doğru** (Aralık 2025) — [CNBC](https://www.cnbc.com/2025/12/05/meta-limitless-ai-wearable.html) |
+| Meta, Manus'u (agentic AI) ~$2 milyara satın aldı | ⚠️ **Kısmen doğru, artık güncel değil** — satın alma gerçekten oldu (Aralık 2025/Ocak 2026, [CNBC](https://www.cnbc.com/2025/12/30/meta-acquires-singapore-ai-agent-firm-manus-china-butterfly-effect-monicai.html)) **ama Çin hükümeti baskısıyla 11 Ağustos 2026'da bozuldu**, Manus bağımsız şirkete geri döndü ([CNBC](https://www.cnbc.com/2026/08/11/manus-china-meta-acquisition.html)). Bu belgenin (ve bu turun) "Meta agentic AI şirketlerini kolay satın alıyor" argümanı için artık **zayıflatıcı** bir örnek — büyük platform satın almalarının jeopolitik/regülasyon riski taşıdığını gösteriyor. |
+
+**Doğrulanmayan diğer iddialar** (Meta Business Agent, Creator Assistant,
+Meta AI Muse/Spark, WhatsApp $2 milyar run-rate) bu oturumda kontrol
+edilmedi — önceki turların disipliniyle aynı: karara dayanak yapılmadan
+teyit edilmeli.
+
+**Stratejik çıkarım korunuyor, tek bir düzeltmeyle:** "Meta-ready ama
+Meta-bağımlı değil" ilkesi hâlâ makul bir dağıtım stratejisi. Ama "büyük
+platformlar bizi kolayca satın alır" varsayımı, Manus örneğinin
+gösterdiği gibi, jeopolitik/regülasyon riskini hesaba katmalı — özellikle
+Q'nun kendi verisi (Outcome Graph, kullanıcı context'i) GDPR kapsamında
+olacağından, bu risk Q için de geçerli.
+
 ## Bu belge nasıl kullanılır (operasyonel not)
 
 Bundan sonra Q'yla ilgili her yeni teklif (ürün özelliği, işe alım, harcama,
