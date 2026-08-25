@@ -64,3 +64,34 @@ Bunları CEO sıfatıyla da vermem; veri veya yetki bende değil.
 **Öneri (karar değil):** `business-review.md §8` — ilk 5 müşteri Türkçe
 konuşan çevreden, ürün ve içerik Norveççe kurulsun. Türkçe çevre pazar değil,
 başlangıç rampası. Bu öneriyi onaylarsan karar olarak buraya yazarım.
+
+---
+
+## K4 · Test kapısı kurala değil hook'a bağlandı — 2026-08-25
+
+**Karar:** Süit kırmızıyken `git commit` ve `git push` **engellenir**.
+
+**Neden:** §6'yı önce `CLAUDE.md` kuralı olarak yazmıştım. Kural hatırlamayı
+gerektirir ve iki kez hatırlamadım — kırmızıyken push ettim. Kuralı harness'ın
+uygulaması gerekiyordu.
+
+**Uygulama:** `PreToolUse` / `Bash` hook'u →
+`.claude/hooks/block-commit-on-red.sh`. `PostToolUse` yanlış olurdu: commit
+zaten olmuş olur.
+
+Komut önce `git commit`/`git push` içeriyor mu diye bakar; içermiyorsa `jq`
+maliyetiyle çıkar. İçeriyorsa süiti koşar (0.33 sn) ve düşerse
+`permissionDecision: deny` döndürür.
+
+**Doğrulama — dört senaryo:**
+
+| Senaryo | Beklenen | Sonuç |
+| --- | --- | --- |
+| `ls -la`, süit yeşil | geç | çıkış 0 |
+| `git commit`, süit yeşil | geç | çıkış 0 |
+| `git commit`, süit kırmızı | **engelle** | `deny` + sebep |
+| `git push`, süit kırmızı | **engelle** | `deny` |
+| `cat README.md`, süit kırmızı | geç | çıkış 0 |
+
+Ateşlediği de kanıtlandı: komuta geçici sentinel eklendi, sonraki Bash
+çağrısında `/tmp/hook-fired.txt` oluştu, sentinel geri alındı.
