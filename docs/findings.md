@@ -25,20 +25,30 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
 
 ## Tasarım — kaynak: impeccable (deterministik dedektör)
 
-- [ ] **İki `side-tab`.** `globals.css:53` (`.answer`, moss) ve `:141`
-      (`.fix`, clay) — kartın kenarında 4px renkli şerit.
-      Doğrulama: `node .claude/skills/impeccable/scripts/detector/detect-antipatterns.mjs web/app web/components` → 0 bulgu.
+- [x] **İki `side-tab`.** KAPANDI — 4px sol şerit yerine tam çevre 1px vurgu
+      kenarlığı (`.answer` moss, `.fix` clay). Dedektör **0 bulgu, çıkış 0**.
+      Dedektörün gerçekten yakaladığı kasıtlı bozuk girdiyle kanıtlandı
+      (aynı desen → 1 bulgu, çıkış 2), yani boş çıktı sessiz başarısızlık değil.
+      Tarayıcı ölçümü: `.answer` sol kenarlık 1px = üst kenarlık 1px.
 
 - [ ] **Krem palet.** `--fog #F4F1EC` sayfa arka planı.
       Doğrulama: URL taraması `cream-palette` vermemeli.
 
 ## Yeni bulgu — kontrast ölçümünden
 
-- [ ] **`.pill.live` koyu temada zeminden ayrılmıyor.** `--moss` #3F5B4C,
-      koyu yüzey #171E23 → **2,26:1**, bileşen sınırı eşiği 3,0. Kopyalama
-      butonunu düzeltirken aynı kökten çıktı; `--done` jetonu buton için
-      çözdü ama pill hâlâ `--moss` kullanıyor. Önceden var olan sorun,
-      bilerek ayrı bırakıldı.
+- [x] **`.pill.live` koyu temada zeminden ayrılmıyor.** KAPANDI — koyu temada
+      `--moss` #3F5B4C → **#6E9B7E**, yeni `--on-moss` #141A1F.
+      Tarayıcı ölçümü (koyu): zeminden **5,34:1** (eşik 3,0), üstündeki metin
+      **5,56:1** (eşik 4,5). Aynı jeton düzeltmesi `.answer` kenarlığını ve
+      kopyalama onay butonunu da kapattı; `--done`/`--on-done` bu değişiklikle
+      birebir kopya kaldığı için kaldırıldı (4 jeton → 2).
+
+- [x] **`.pill` varsayılanı koyu temada okunmuyordu.** KAPANDI — listede yoktu,
+      moss düzeltmesi sırasında bulundu. `--sand` koyu temada hiç devredilmiyordu:
+      açık kum zemin #D8CBB8 üzerinde açık `--ink` #F4F1EC = **1,42:1** (eşik 4,5).
+      Koyu tema `--sand` → **#8FA0AA**, metin `--on-sand` #141A1F.
+      Tarayıcı ölçümü: metin **6,50:1**, zeminden **6,24:1**.
+      Açık listedeki hiçbir maddeden daha ciddiydi.
 
 ## Ölçek — kaynak: kendi denetimim
 
@@ -67,7 +77,13 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
       sayılıyordu, çünkü next/og'un varsayılan yazı tipinde kalın kesim yok.
       "C" harf yerine SVG yayı olarak çiziliyor; kalınlık artık bizim elimizde.
 
-- [ ] **`/favicon.ico` 404 veriyor.** `app/favicon.ico` görselleri koda çevirirken
+- [x] **`/favicon.ico` 404 veriyor.** KAPANDI — `app/favicon.ico/route.ts`,
+      `/icon`'a 308 kalıcı yönlendirme. Ölçüm: `curl -w '%{http_code}'
+      localhost:3111/favicon.ico` → **308 → /icon 200**. İkili dosya geri
+      konmadı; ikonun tek kaynağı `app/icon.tsx` kalıyor. Not: bu yol
+      `next build` route tablosunda **görünmüyor** (Next metadata yolunu
+      listelemiyor) — tabloya bakıp "çalışmadı" sanma, ölç.
+      ESKİ KAYIT: `app/favicon.ico` görselleri koda çevirirken
       silindi, o yolu karşılayan bir şey konmadı. Ölçüm: `curl -o /dev/null -w
       '%{http_code}' localhost:3111/favicon.ico` → **404**; aynı yol
       `b05e274`'te 200 idi (`git ls-tree b05e274 web/app/` → `favicon.ico`).
@@ -79,9 +95,28 @@ doğrulama komutunu çalıştır, çıktıyı commit mesajına koy, kutuyu işar
       kalmayacak (örn. `/icon`'a yönlendiren `app/favicon.ico/route.ts`).
 
 
-- [ ] **`brand.json` ürünle çelişiyor.** Slogan hâlâ *"Nordic simplicity,
-      handpicked quality"*, birincil alan adı `cobban.com` (başkasında).
-      Ürün seyahat asistanı, alan adı `cobban.eu`.
+- [x] **`brand.json` ürünle çelişiyor.** KAPANDI — dosya baştan yazıldı, her
+      alan koda karşı çapraz doğrulandı (8/8 renk, alan adı, 13/13 ülke).
+      Düzeltilen çelişkiler: slogan perakende metniydi; `primary` alan adı
+      bize ait olmayan `cobban.com`'du; `markets` uygulamada olmayan TR/GLOBAL
+      içeriyordu; `fonts` Fraunces/Inter diyordu ama kod `system-ui` kullanıyor;
+      `locales` üç dil sayıyordu ama arayüz yalnızca İngilizce; iletişim
+      adresleri çalışmayan alan adındaydı.
+      **En ciddisi:** dosya `legalNameNO: "Cobban AS"` yazıyordu. Kurulmuş
+      şirket yok, organizasyon numarası yok, ENK/AS kararı verilmedi — ve ENK
+      seçilirse ad yasal olarak soyadı içermek zorunda. Yasal isim alanı
+      `status: "KARAR VERİLMEDİ"` ile değiştirildi; karar kurucunun.
+
+## Yeni açık bulgu — kontrast düzeltmesi sırasında ölçüldü
+
+- [ ] **`.pill` varsayılanı AÇIK temada zeminden ayrışmıyor.** Kum #D8CBB8,
+      beyaz yüzey → **1,60:1**, bileşen sınırı eşiği 3,0. Koyu temadaki
+      kardeşinden farkı: metin kontrastı sorunsuz (**10,99:1**), yalnızca
+      rozetin sınırı yumuşak. Koyu temadaki 1,42:1 açık bir metin ihlaliydi ve
+      hemen kapatıldı; bu bir yargı çağrısı olduğu için kapsamı genişletmeden
+      kayda geçiriliyor.
+      Kapanma ölçütü: açık temada `.pill` zemin/yüzey ≥ 3,0 **veya** rozete
+      sınır eklenmesi.
 
 ## Doğrulanamayanlar — bu ortamdan yapılamaz
 

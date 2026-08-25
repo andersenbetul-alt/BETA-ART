@@ -1,19 +1,27 @@
 :root {
   --ink:#141A1F; --fog:#F4F1EC; --clay:#A85835; --moss:#3F5B4C;
   --sand:#D8CBB8; --steel:#5C6B75; --surface:#FFFFFF; --border:#E4DED4;
+  /* Dolgu rengi ustundeki metin. Koyu temada zeminler acildigi icin
+     ikisi de koyu ink kaliyor — bu yuzden dark blogunda tekrar edilmiyor. */
+  --on-moss:#FFFFFF; --on-sand:#141A1F;
   /* "Bilmemenin bedeli" satiri — dikkat cekmeli ama alarm olmamali.
      Acik temada --clay 4.53:1, koyu temada 3.68:1 kaliyordu; koyu icin ayri deger. */
   --cost:#A85835;
-  /* Kopyalama onayi. Koyu temada moss (#3F5B4C) koyu yuzeyden yalnizca
-     2,26:1 ayriliyordu — buton zemine gomuluyordu. Ayri jeton. */
-  --done:#3F5B4C; --on-done:#FFFFFF;
   --radius:10px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --fog:#0F1418; --ink:#F4F1EC; --steel:#9AA7AF; --surface:#171E23; --border:#2A343B;
     --cost:#E08B62;
-    --done:#6E9B7E; --on-done:#141A1F;
+    /* moss #3F5B4C koyu yuzeyden yalnizca 2,26:1 ayrisiyordu — esik 3,0.
+       #6E9B7E: yuzeyden 5,34:1, uzerindeki koyu metin 5,56:1. Ayni duzeltme
+       .pill.live, .answer kenarligi ve kopyalama onay butonunu birlikte
+       kapatiyor; ayri --done jetonuna gerek kalmadi. */
+    --moss:#6E9B7E; --on-moss:#141A1F;
+    /* sand koyu temada hic devredilmiyordu: acik kum zemin (#D8CBB8) uzerinde
+       acik ink (#F4F1EC) = 1,42:1. Notr pill koyu temada okunmuyordu.
+       #8FA0AA: uzerindeki koyu metin 6,50:1, yuzeyden 6,24:1. */
+    --sand:#8FA0AA;
   }
 }
 *,*::before,*::after { box-sizing: border-box; }
@@ -58,8 +66,7 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
 
 /* Cevap kartı — "DONE" hissi veren kısım */
 .answer {
-  background:var(--surface); border:1px solid var(--border);
-  border-left:4px solid var(--moss); border-radius:var(--radius);
+  background:var(--surface); border:1px solid var(--moss); border-radius:var(--radius);
   padding:1rem 1.1rem; margin-bottom:1.25rem;
 }
 .answer strong { display:block; font-size:1.05rem; margin-bottom:.25rem; }
@@ -74,10 +81,10 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
 .leg { display:flex; gap:.55rem; align-items:baseline; font-size:.875rem; padding:.2rem 0; }
 .pill {
   font-size:.7rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
-  padding:.12rem .45rem; border-radius:4px; background:var(--sand); color:var(--ink);
+  padding:.12rem .45rem; border-radius:4px; background:var(--sand); color:var(--on-sand);
   white-space:nowrap;
 }
-.pill.live { background:var(--moss); color:#fff; }
+.pill.live { background:var(--moss); color:var(--on-moss); }
 .pill.cancelled { background:var(--clay); color:#fff; }
 
 .chips { display:flex; flex-wrap:wrap; gap:.5rem; margin:.2rem 0 1.4rem; }
@@ -179,8 +186,7 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
 
 /* "Şimdi hallet" bloğu — bilgiden eyleme geçiş */
 .fix {
-  background:var(--surface); border:1px solid var(--border);
-  border-left:4px solid var(--clay); border-radius:var(--radius);
+  background:var(--surface); border:1px solid var(--clay); border-radius:var(--radius);
   padding:.9rem 1rem; margin:.2rem 0 .7rem;
 }
 .fix-head { margin:0 0 .5rem; font-size:.9rem; }
@@ -199,7 +205,7 @@ h2 { font-size:1.05rem; margin:1.8rem 0 .7rem; }
 .btn-primary { background:var(--clay); color:#fff; }
 /* Uygulamanin "DONE" dedigi an: mesaj panoya gitti. Metin anlik degisiyor,
    renk gecisle degisiyor — onay hissedilir olsun diye. */
-.btn-primary.is-done { background:var(--done); color:var(--on-done); }
+.btn-primary.is-done { background:var(--moss); color:var(--on-moss); }
 .btn-secondary { background:transparent; color:var(--ink); border-color:var(--border); }
 .btn-plain {
   background:none; border:0; padding:.5rem 0; color:var(--steel);

@@ -1,33 +1,79 @@
 {
+  "_note": "Bu dosyayı hiçbir kod okumuyor; tek kaynak referanstır. Kodla çelişen her alan hatadır. Doğrulama: web/lib/site.ts (alan adı), web/app/globals.css (renk/font), web/lib/countries/ (pazarlar).",
+
   "name": "COBBAN",
-  "legalNameNO": "Cobban AS",
-  "legalNameTR": "Cobban Ticaret Limited Şirketi",
+
+  "legalEntity": {
+    "status": "KARAR VERİLMEDİ",
+    "organisasjonsnummer": null,
+    "options": ["ENK (Enkeltpersonforetak)", "AS (Aksjeselskap)"],
+    "recommendationInDocs": "docs/01-norvec-sirket-kurulum.md → önce ENK, ciro 500.000–700.000 NOK'u geçince AS",
+    "note": "Önceki sürüm 'Cobban AS' ve 'Cobban Ticaret Limited Şirketi' adlarını kesin gerçek gibi yazıyordu. Kurulmuş şirket yok, organizasyon numarası yok. ENK seçilirse ad yasal olarak sahibin soyadını içermek zorunda, yani 'Cobban AS' iki kez yanlış. Bu alanı ancak Brønnøysund kaydı geldiğinde doldur.",
+    "decisionOwner": "kurucu — vergi ve sınırsız sorumluluk sonucu olduğu için otomatikleştirilmez"
+  },
+
+  "product": {
+    "what": "Avrupa'da seyahati aksayan turist için tek ekranlık çözüm asistanı",
+    "descriptionEN": "Ferry cancelled, train missed, rain ruining the day? Tell COBBAN what went wrong anywhere in Europe and get the fix — with your hotel, dinner and flight still accounted for.",
+    "source": "web/app/layout.tsx"
+  },
+
   "tagline": {
-    "no": "Nordisk enkelhet, håndplukket kvalitet.",
-    "en": "Nordic simplicity, handpicked quality.",
-    "tr": "İskandinav sadeliği, özenle seçilmiş kalite."
+    "en": "Your trip broke. Here's the next step.",
+    "no": "Reisen sviktet. Her er neste steg.",
+    "tr": "Yolculuk aksadı. Sıradaki adım burada.",
+    "_review": "EN doğrulandı. NO ve TR yayına çıkmadan ana dili konuşan biri tarafından okunmalı — bunlar benim çevirim, kontrol edilmiş kopya değil.",
+    "_replaced": "Eski slogan 'Nordic simplicity, handpicked quality' bir perakende markasını tarif ediyordu; ürün seyahat asistanı."
   },
+
   "domains": {
-    "primary": "cobban.com",
-    "alternatives": ["cobban.no", "cobban.com.tr", "cobban.shop", "cobbanstore.com"]
+    "primary": "cobban.eu",
+    "primarySource": "web/lib/site.ts → siteUrl",
+    "notOwned": ["cobban.com"],
+    "_replaced": "Eski primary 'cobban.com' başkasına ait. cobban.no / cobban.com.tr / cobban.shop / cobbanstore.com perakende dönemine ait, ürünle ilgisi yok."
   },
-  "markets": ["NO", "TR", "EU", "GLOBAL"],
-  "locales": ["no", "en", "tr"],
-  "defaultLocale": "no",
-  "currencies": { "no": "NOK", "tr": "TRY", "en": "EUR" },
+
+  "markets": {
+    "countriesSupportedInApp": ["AT", "DE", "DK", "ES", "FI", "FR", "GR", "IS", "IT", "NL", "NO", "PT", "SE"],
+    "count": 13,
+    "source": "web/lib/countries/",
+    "_replaced": "Eski liste ['NO','TR','EU','GLOBAL'] — TR ve GLOBAL uygulamada yok."
+  },
+
+  "locales": ["en"],
+  "defaultLocale": "en",
+  "_localesNote": "Arayüz şu an yalnızca İngilizce. no/tr çeviri altyapısı yok; eski dosya üçünü de destekleniyormuş gibi listeliyordu.",
+
+  "pricing": {
+    "status": "MODEL VAR, GERÇEK SATIŞ YOK",
+    "model": "docs/birim-ekonomi.csv",
+    "note": "CSV'nin kolon başlığı 'Örnek NOK' — örnek değer. Sıfır sipariş, sıfır kullanıcı. Fiyat ve para birimi kararı verilmedi."
+  },
+
   "colors": {
     "ink": "#141A1F",
     "fog": "#F4F1EC",
-    "clay": "#C4714B",
-    "clayStrong": "#A85835",
+    "clay": "#A85835",
     "moss": "#3F5B4C",
     "sand": "#D8CBB8",
-    "steel": "#5C6B75"
+    "steel": "#5C6B75",
+    "surface": "#FFFFFF",
+    "border": "#E4DED4",
+    "_source": "web/app/globals.css :root",
+    "_removed": "clayStrong #A85835 ile clay #C4714B ayrımı kodda yok — kod tek bir --clay:#A85835 kullanıyor.",
+    "_openFinding": "fog #F4F1EC jenerik krem palet olarak işaretli (docs/findings.md, açık). Koyu tema karşılıkları globals.css içinde."
   },
-  "fonts": { "display": "Fraunces", "body": "Inter" },
+
+  "fonts": {
+    "stack": "system-ui, -apple-system, \"Segoe UI\", sans-serif",
+    "_source": "web/app/globals.css body",
+    "_replaced": "Eski dosya display:Fraunces, body:Inter diyordu. Kodda ne Fraunces ne Inter yükleniyor. Web fontu yok — sayfa ilk boyamada beklemiyor, bu kasıtlı."
+  },
+
   "contact": {
-    "email": "hei@cobban.com",
-    "supportEmail": "support@cobban.com",
-    "instagram": "@cobban"
+    "email": null,
+    "supportEmail": null,
+    "instagram": null,
+    "_note": "Eski adresler hei@cobban.com ve support@cobban.com — bize ait olmayan alan adında, yani çalışmıyor. cobban.eu posta kutusu kurulana kadar null."
   }
 }
