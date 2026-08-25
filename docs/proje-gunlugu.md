@@ -370,3 +370,14 @@ işe alımcıya 6 açık madde (ücret aralığı DOLDURULACAK — rakam
 uydurulmadı; ücretli deneme görevi; sözleşme hukuk kapısına bağlandı).
 Bilinçli itirazlar kayıtlı: hacim dürüstlüğü ilanda kalmalı, dil kapsamı
 kararı (insan editörlüğü yalnız NO+EN önerisi) ilan öncesi onay bekliyor.
+## 25.08.2026 (devam) — Teklif paketi kiti (editör rolü)
+
+"Finalist için teklif paketi" istendi; finalist olmadığı (rol ilanı
+pilot kanıtına bağlı) açıkça söylenerek paket ŞABLON olarak üretildi —
+hiçbir aday/rakam/övgü uydurulmadı: docs/teklif-paketi-editor.md
+(teklif alanları tablosu [DOLDURULACAK], Norveççe arama-daveti e-postası,
+gönderim öncesi kontrol listesi) + docs/teklif-sunumu-editor.html
+(6 sayfalık ekran paylaşım sunumu, ok tuşu navigasyonu Playwright ile
+doğrulandı, [FYLLES UT] alanları sarı işaretli; "neden sen" sayfası
+görüşme notlarından doldurulacak boş şablon). Dosyalar kullanıcıya
+gönderildi.
