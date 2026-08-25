@@ -289,6 +289,57 @@ hafta sonra hâlâ aktif → 60 gerçek outcome bildirdi → 30 evidence-backed
 outcome → 30–40 arkadaş getirdi → 20+ ödeme yaptı. **Bu eşik de hipotez,
 kesin yatırım standardı değil** — önceki turun aynı uyarısı geçerli.
 
+## v1.2 — İkinci red-team turu: kategori değişimi + Q Sprint
+
+Yine daraltma yönünde bir tur (v1.1'in devamı), üç yeni unsur getirdi:
+
+**Kategori tamamen değişti.** "AI + learning + skills" alanına girersek Q
+kaybolur — bu alanda LinkedIn Learning Career Hub'a ek olarak **Workera**
+(iş-benzeri görevlerle beceri doğrulama) ve **BetterUp/CoachHub** (AI+insan
+koçluğu, ölçülebilir performans sonucu) zaten var iddia ediliyor
+(**doğrulanmamış**, bu oturum teyit etmedi). Yeni konumlandırma: Q =
+**Applied Progress Platform**, "AI öğren" değil "AI'ı gerçek işine uygula
+ve sonucu kanıtla."
+
+**Üç-graf modeli:** Context Graph (hangi insan/iş/durum) + Outcome Graph
+(ne işe yaradı) + Trust Graph (kim gerçekten yardımcı oluyor) → Q Engine →
+Next Best Action. v1.1'deki iki-graf modelinin üzerine bir katman daha.
+
+**Q v1, 5 özelliğe indirildi:** Goal, Next Action, Expert Knowledge, Proof,
+Result. v1.1'in 7 adımlık döngüsünden bile daha az.
+
+**"Q Path" → "Q Sprint":** İsim değişikliği kelime oyunu değil — "Path"
+öğrenmeyi çağrıştırıyor, "Sprint" yapmayı. İlk somut ürün birimi: 7–14
+günlük, tek ölçülebilir hedefli sprint (örnek: *"Save 3 Hours a Week with
+AI"*). İlk üç aday: Save 3 Hours a Week with AI, AI-Power Your Office Work,
+Become More Valuable at Work.
+
+**Kesin dondurulanlar (v1.1'e ek):** Q Pro ❌, Academy ❌, Mobile app ❌,
+Ads ❌ — kalıcı olarak şimdilik yok. Community/Marketplace/Q Passport/Q
+Talent ⏸ (donduruldu, iptal değil). Q+ 🟡 (yalnızca test).
+
+**B2C→B2B sırası netleşti:** Önce B2C (100–300 kullanıcı, veri/ürün
+keşfi) → sonra B2B pilot (3–5 şirket, para/doğrulama). İkisi eşzamanlı
+başlamıyor.
+
+**Norveç pazar verisi (kaynak: aktarılan AI çıktısı, doğrulanmadı):** NAV
+2026 araştırması — Norveç işletmelerinin %53'ü iş görevlerinde AI
+kullanıyor iddiası (Oslo %64); NHO — şirketlerin ~6/10'unda karşılanmamış
+yetkinlik ihtiyacı iddiası. **Yayına/karara dayanak yapılmadan birincil
+kaynaktan teyit edilmeli.**
+
+**Daha küçük ve daha keskin 90 günlük test:** 100 kullanıcı, 3 meslek
+grubu (customer service, administration, sales/marketing), 3 Q Sprint,
+10–20 uzman, 30–50 içerik. Devam/pivot eşiği:
+`70 goal → 50 action → 35 hafta-2 aktif → 25 outcome → 15 evidence-backed
+→ 10 referral → 5–10 ödeme` = **devam**; `80 okuma → 10 action → 2 geri
+dönüş` = **pivot**.
+
+**Tek doğrulama sorusu (bu turun vardığı en somut hâli):**
+*"Can Q measurably improve someone's real work within 14 days?"* — bu
+sorunun cevabı önce alınmadan geri kalan vizyonun hiçbir parçası
+inşa edilmiyor.
+
 ## Bu belge nasıl kullanılır (operasyonel not)
 
 Bundan sonra Q'yla ilgili her yeni teklif (ürün özelliği, işe alım, harcama,
