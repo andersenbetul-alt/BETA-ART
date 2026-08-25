@@ -6,6 +6,10 @@ grundig andre steder – hvert kapittel viser til kildedokumentet og skriver
 bare det som mangler: en samlet oversikt, og de to-tre stedene der modellvalget
 faktisk endrer innholdet.
 
+Et alternativt B2C/egenregi-forslag ble vurdert og bevisst ikke valgt
+25.08.2026 – se `docs/arkiv/FORRETNINGSMODELL-B2C-alternativ.md` for forslaget
+og hvorfor det bryter beslutning #1 og #12 i `JURIDISK-GRENSE.md`.
+
 ## 0 · Modellbeslutningen (tatt 25.08.2026)
 
 Eieren valgte **A + B hybrid** som langsiktig retning, men med denne
