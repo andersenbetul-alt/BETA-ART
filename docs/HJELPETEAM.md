@@ -64,7 +64,11 @@ Utsatt til kontrollert utvidelse (fall-, transport- og matrisiko): følge til
 avtaler, korte turer, enkel matlaging, kultureskorte. Dørstokken for disse er
 en pilot med egne grenser, ikke et menyvalg.
 
-## Neste konkrete byggekloss
+## Byggeklossen er bygget (25.08.2026)
 
-Familiesiden «Mitt hjelpeteam»: vis teamet, faste dager, siste utførte
-besøk – lesing fra PP_BESOK + `fastHjelperId`/`krets`. Ingen ny motor.
+Familiesiden finnes: `besok/hjelpeteam.html`, med logikken i
+`assets/js/hjelpeteam.js` (PP_HJELPETEAM). Teamet er en beregning ved
+lesning av besøkslisten – ingen ny lagring, ingen ny motor. To regler med
+begrunnelse i koden: «fast hjelper» krever minst to fullførte besøk (én
+gjennomføring er ikke en relasjon), og en ukedag blir «fast» fra andre
+besøk på samme dag (én gang er en hendelse, to er begynnelsen på en vane).

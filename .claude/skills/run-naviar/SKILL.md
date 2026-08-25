@@ -143,7 +143,7 @@ skjerm gir dette ingenting; bruk driveren.
 npm test
 ```
 
-338 enhetstester og 153 nettlesertester. Testkjøreren starter sin egen server
+344 enhetstester og 153 nettlesertester. Testkjøreren starter sin egen server
 på port 8765, så den kolliderer ikke med 8000.
 
 ```bash

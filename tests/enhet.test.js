@@ -39,6 +39,7 @@ require('../assets/js/besok-kvalitet.js');
 require('../assets/js/besok-sprak.js');
 require('../assets/js/matching.js');
 require('../assets/js/katalog.js');
+require('../assets/js/hjelpeteam.js');
 require('../assets/js/demodata.js');
 
 var PRIS = window.PP_PRIS;
@@ -2539,5 +2540,55 @@ t.test('katalogen og matchingmotoren forteller samme historie', function () {
   t.erUsann(r.aktuell);
   t.erLik(r.sperre.id, 'kvalifisert');
 });
+
+t.gruppe('Mitt hjelpeteam');
+
+(function () {
+  /* Besøkslista er den eneste kilden – modulen lagrer ingenting selv. */
+  var besok = [
+    { kunde: 'Kari', ansattId: 'a1', ansattNavn: 'Sofia H.', dato: '2026-08-04', status: 'fullfort', fullfortTid: '2026-08-04T15:00:00Z', oppgaver: ['samvaer'] },
+    { kunde: 'Kari', ansattId: 'a1', ansattNavn: 'Sofia H.', dato: '2026-08-11', status: 'fullfort', fullfortTid: '2026-08-11T15:00:00Z', oppgaver: ['samvaer', 'hent'] },
+    { kunde: 'Kari', ansattId: 'a1', ansattNavn: 'Sofia H.', dato: '2026-08-18', status: 'planlagt', oppgaver: ['samvaer'] },
+    { kunde: 'Kari', ansattId: 'a2', ansattNavn: 'Daniel R.', dato: '2026-08-13', status: 'fullfort', fullfortTid: '2026-08-13T12:00:00Z', oppgaver: ['digital'] },
+    { kunde: 'Ola',  ansattId: 'a2', ansattNavn: 'Daniel R.', dato: '2026-08-14', status: 'fullfort', fullfortTid: '2026-08-14T12:00:00Z', oppgaver: ['hjemme'] }
+  ];
+
+  t.test('kundelisten er unik og sortert', function () {
+    t.erLik(window.PP_HJELPETEAM.kunder(besok), ['Kari', 'Ola']);
+  });
+
+  t.test('fast hjelper krever minst to fullførte besøk', function () {
+    var r = window.PP_HJELPETEAM.lagTeam(besok, 'Kari');
+    t.erLik(r.fastHjelperId, 'a1');
+    /* Ola har bare ett fullført besøk med Daniel – ingen fast hjelper ennå.
+       Å love kontinuitet etter én gjennomføring ville vært å lyve. */
+    t.erLik(window.PP_HJELPETEAM.lagTeam(besok, 'Ola').fastHjelperId, null);
+  });
+
+  t.test('fast dag blir fast fra andre besøk på samme ukedag', function () {
+    var r = window.PP_HJELPETEAM.lagTeam(besok, 'Kari');
+    /* 4., 11. og 18. august 2026 er alle tirsdager. */
+    t.erLik(r.team[0].fasteDager, ['tirsdag']);
+    t.erLik(r.team[1].fasteDager, []);
+  });
+
+  t.test('teamet teller fullførte og planlagte hver for seg', function () {
+    var r = window.PP_HJELPETEAM.lagTeam(besok, 'Kari');
+    t.erLik(r.team[0].fullfort, 2);
+    t.erLik(r.team[0].antall, 3);
+    t.erLik(r.team[0].sisteFullfort, '2026-08-11T15:00:00Z');
+  });
+
+  t.test('oppgavene samles uten duplikater', function () {
+    var r = window.PP_HJELPETEAM.lagTeam(besok, 'Kari');
+    t.erLik(r.team[0].oppgaver.sort(), ['hent', 'samvaer']);
+  });
+
+  t.test('ukjent kunde og tom liste gir tomt team, ikke krasj', function () {
+    t.erLik(window.PP_HJELPETEAM.lagTeam(besok, 'Ingen').team, []);
+    t.erLik(window.PP_HJELPETEAM.lagTeam(null, 'Kari').team, []);
+    t.erLik(window.PP_HJELPETEAM.kunder(null), []);
+  });
+})();
 
 t.oppsummer('Enhetstester');

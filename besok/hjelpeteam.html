@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mitt hjelpeteam – Naviar Care</title>
+<meta name="description" content="Teamet rundt personen: hvem som kommer, faste dager og siste besøk.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/besok.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23101a2e'/><path fill='%23ffffff' fill-rule='evenodd' d='M16 6.4 6.2 26.4h4.3L16 15.1l5.5 11.3h4.3L16 6.4ZM12.4 22.3h7.2l2 4.1h-11.2l2-4.1Z'/></svg>">
+</head>
+<body class="besok">
+<a class="skip-link" href="#main">Hopp til hovedinnhold</a>
+
+<header class="b-topp">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="../assets/img/naviar-care-logo-v04-negativ.svg" alt="Naviar Care" height="34" style="display:block"></a>
+    <nav aria-label="Hovedmeny">
+      <a href="oversikt.html">Besøk</a>
+      <a href="nytt.html">Nytt besøk</a>
+      <a href="historikk.html">Historikk</a>
+      <a href="hjelpeteam.html" aria-current="page">Hjelpeteam</a>
+    </nav>
+    <span class="org" id="org-navn">–</span>
+  </div>
+</header>
+
+<main id="main" class="b-flate">
+  <div class="wrap" style="max-width:720px">
+    <h1>Mitt hjelpeteam</h1>
+    <p class="lede">
+      Teamet rundt personen: hvem som kommer, hvilke dager som er blitt faste,
+      og når det sist ble utført et besøk. Siden regner ut alt fra besøkene som
+      allerede finnes – ingenting nytt lagres.
+    </p>
+
+    <div class="field" style="max-width:320px">
+      <label for="kundevelger">Vis teamet til</label>
+      <select id="kundevelger"></select>
+    </div>
+
+    <div id="teamflate"></div>
+
+    <div class="b-kort" id="tomt" hidden>
+      <h2 style="margin-top:0">Ingen besøk ennå</h2>
+      <p class="muted">
+        Teamet vokser fram av besøkene: etter det andre fullførte besøket med
+        samme hjelper vises «fast hjelper», og etter to besøk på samme ukedag
+        vises dagen som fast. <a href="nytt.html">Opprett det første besøket.</a>
+      </p>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/js/besok-vern.js" defer></script>
+<script src="../assets/js/besok-lager.js" defer></script>
+<script src="../assets/js/hjelpeteam.js" defer></script>
+<script src="../assets/js/hjelpeteam-skjerm.js" defer></script>
+</body>
+</html>
