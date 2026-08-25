@@ -1361,5 +1361,188 @@ window.QB_POSTS = [
          'Sett opp arbeidsflyten slik: tema- og søkeordsgruppering med KI, kildesjekk og vinkelvalg av et menneske; første utkast med KI, redigering og eksempler av et menneske; kanaltilpasninger med KI, siste kontroll igjen av et menneske. Automatiserer du kvalitetskontrollen, er det ikke produktet som blir billig — det er ryktet ditt.',
          'På salgssiden priser du dette som en pakke, ikke per time. Noe som «fire artikler + tjue LinkedIn-innlegg + ett nyhetsbrev i måneden» gjør budsjettering enkelt for kunden og flytter deg fra skribent til leverandør. Det er nettopp der de gjentakende inntektene kommer fra.']
   }
+},
+{
+  slug: 'icerik-briefi-nasil-yazilir',
+  category: 'guide', date: '2026-08-25', accent: 1, icon: 'blocks',
+  orig: "Stüdyonun kendi kullandığı dokuz alanlık brief şablonu: her alan için kötü–iyi örnek çifti ve aynı briefin iki hâlde yazılmış tam karşılaştırması.",
+  src: [
+    {"t": "BetterBriefs Project × IPA — brief algısı araştırması, 1.700+ katılımcı, 70+ ülke", "u": "https://ipa.co.uk/news/betterbriefs"},
+    {"t": "Semrush — How to Create Content Briefs: A Step-by-Step Guide", "u": "https://www.semrush.com/blog/content-brief/"},
+    {"t": "Backlinko — How to Create a Content Brief: A Step-by-Step Guide", "u": "https://backlinko.com/content-briefs"},
+    {"t": "HubSpot — How to Write a Content Brief [Template + Examples]", "u": "https://blog.hubspot.com/marketing/content-brief"}
+  ],
+  t: {
+    tr: "İçerik briefi nasıl yazılır: dokuz alanlık şablon",
+    en: "How to write a content brief: the nine-field template",
+    zh: "如何撰写内容简报：九栏模板",
+    hi: "कंटेंट ब्रीफ़ कैसे लिखें: नौ-फ़ील्ड टेम्पलेट",
+    es: "Cómo escribir un brief de contenidos: plantilla de nueve campos",
+    ar: "كيف تكتب موجز المحتوى: قالب من تسعة حقول",
+    fr: "Comment rédiger un brief de contenu : le gabarit à neuf champs",
+    pt: "Como escrever um brief de conteúdo: o modelo de nove campos",
+    ru: "Как написать контент-бриф: шаблон из девяти полей",
+    no: "Slik skriver du en innholdsbrief: malen med ni felter"
+  },
+  e: {
+    tr: "Pazarlamacıların %80'i briefini iyi sanıyor; ajansların yalnızca %10'u katılıyor. Aradaki fark dokuz alanlık tek sayfayla kapanır — kötü ve iyi örnekleriyle.",
+    en: "80% of marketers think their briefs are good; only 10% of agencies agree. A nine-field, one-page template closes that gap — with bad and good examples.",
+    zh: "80% 的营销人认为自己的简报写得不错，只有 10% 的代理商同意。一页九栏的模板可以弥合这个差距。",
+    hi: "80% मार्केटर मानते हैं कि उनका ब्रीफ़ अच्छा है; सिर्फ़ 10% एजेंसियाँ सहमत हैं। नौ फ़ील्ड का एक पेज यह अंतर पाटता है।",
+    es: "El 80% de los responsables de marketing cree que sus briefs son buenos; solo el 10% de las agencias coincide. Una página de nueve campos cierra esa brecha.",
+    ar: "‏80% من المسوّقين يظنون أن موجزاتهم جيدة، و10% فقط من الوكالات توافقهم. صفحة واحدة من تسعة حقول تسدّ هذه الفجوة.",
+    fr: "80 % des marketeurs jugent leurs briefs bons ; seules 10 % des agences sont d'accord. Une page à neuf champs comble cet écart.",
+    pt: "80% dos profissionais de marketing acham seus briefs bons; só 10% das agências concordam. Uma página de nove campos fecha essa lacuna.",
+    ru: "80% маркетологов считают свои брифы хорошими; согласны лишь 10% агентств. Одна страница из девяти полей закрывает этот разрыв.",
+    no: "80 % av markedsførere mener briefene deres er gode; bare 10 % av byråene er enige. Én side med ni felter lukker gapet."
+  },
+  b: {
+    tr: [
+      "İyi bir içerik briefi tek sayfadır ve dokuz soruya net cevap verir: amaç, okur, tek çıkarım, anahtar kelime, kapsam, ton, kaynaklar, çağrı, teslim. Bu dokuzu yazmak yarım saat alır; yazmamak revizyon turu, hedefsiz metin ve boşa giden bütçe olarak geri döner. BetterBriefs araştırmasında pazarlamacıların %80'i brieflerini iyi buluyor — ajans tarafında buna katılan yalnızca %10.",
+      {h: "Kısa çıkarımlar"},
+      {ul: [
+        "Brief tek sayfadır: dokuz alan, her biri bir–iki cümle.",
+        "Doldurulamayan alan, işte henüz verilmemiş bir kararı gösterir.",
+        "Revizyon turlarının çoğu yazım hatası değil, brief boşluğu ürünüdür."
+      ]},
+      {h: "Brief nedir, ne değildir"},
+      "Brief, metni yazacak kişiye işin **bağlamını** devreden belgedir: bu metin hangi işi görecek, kimin için, hangi sınırlar içinde. Sözleşme değildir; fiyat, telif ve hukuk maddeleri başka yerde durur. Üslup kılavuzu da değildir; markanın genel ses kuralları ayrı bir belgede yaşar, brief yalnızca bu işe özgü olanı söyler.",
+      "En sık yapılan hata briefi uzatarak iyileştirmeye çalışmaktır. Beş sayfalık brief okunmaz; okunmayan brief yazılmamış brief demektir. Hedef, her alanı bir–iki cümleyle dolduran tek sayfadır. Bir alanı dolduramıyorsanız sorun yazıda değil, işin kendisinde henüz netleşmemiş bir karardadır — ve bunu yazıdan önce fark etmek briefin asıl kazancıdır.",
+      {h: "Kötü brief neye mal olur"},
+      "BetterBriefs Project, IPA ile birlikte 70'ten fazla ülkede 1.700'den fazla pazarlamacı ve ajans çalışanına sordu. Pazarlamacıların %78'i brieflerinin net stratejik yön verdiğini düşünüyor; ajansların yalnızca %5'i katılıyor. Katılımcıların tahminine göre pazarlama bütçesinin yaklaşık üçte biri kötü brief ve yanlış yönlenmiş iş yüzünden boşa gidiyor. Küçük bir içerik bütçesinde bile bu, her üç yazıdan birinin çöpe yazılması demek.",
+      {note: "Bu rakamlar bir algı araştırmasının bulgularıdır; kendi bütçenizdeki kaybı ölçmez, ama iki tarafın aynı belgeye ne kadar farklı baktığını gösterir. Kaynak yazının sonundadır."},
+      "Kaybın mekanizması basit: brief boşluk bırakır, yazar boşluğu tahminle doldurur, tahmin tutmaz, revizyon turu başlar. Her tur hem takvimi hem güveni yer. Dokuz alanlık şablonun işi, tahmine bırakılan alanı sıfıra indirmektir.",
+      "Brief yalnızca işi dışarıya verirken de gerekmez. Yazıyı kendiniz yazıyorsanız da dokuz alanı doldurun: bu kez tahmini yazara değil, iki hafta sonraki kendinize bırakıyorsunuz. Yarıda kalan taslakların çoğu kötü yazıldığı için değil, amacı ve okuru baştan seçilmediği için yarıda kalır. Kendinize yazdığınız brief, yazıya oturduğunuzda karar vermek yerine yalnızca yazmanızı sağlar — üretim temposunu koruyan da budur.",
+      {h: "1. Amaç: bu metin hangi işi görecek"},
+      "Kötü: 'marka bilinirliğine katkı sağlasın'. İyi: 'brief formu dolduran ziyaretçi sayısını artırsın; yazıyı okuyan KOBİ sahibi, içerik işini dışarı vermenin maliyetini netleştirmiş olsun'. Amaç, yazı bittiğinde **neyin değişmiş olacağını** söyler. Ölçülebilir olması şart değil; ama gözlemlenebilir olmalı.",
+      {h: "2. Okur: tek kişi"},
+      "Kötü: 'KOBİ'ler ve girişimciler'. İyi: 'içerik ekibi olmayan, pazarlamayı kendisi yürüten 5–20 kişilik SaaS şirketinin kurucusu; haftada iki saatten az vakti var'. Tek okur seçmek diğerlerini dışlamaz; metne bir ses tonu ve zorluk seviyesi seçtirir. Herkese yazılan metin kimseye değmeden geçer.",
+      {h: "3. Tek çıkarım: okur hangi cümleyle ayrılacak"},
+      "Yazı bittiğinde okurun aklında kalacak tek cümleyi brief yazan kişi baştan yazar. Örnek: 'İyi brief yarım saatlik bir yatırımdır ve ilk revizyon turunda kendini öder.' Bu cümle yazının pusulasıdır: bir bölüm bu cümleye hizmet etmiyorsa yazıdan çıkar.",
+      {h: "4. Anahtar kelime ve arama niyeti"},
+      "Hedef sorguyu ve niyetini yazın: bilgi mi arıyor, karşılaştırma mı yapıyor, satın almaya mı yakın? 'İçerik briefi nasıl yazılır' sorgusunun niyeti nasıl-yapılır'dır; bu sorguya fiyat sayfası çıkarmak da, şablonsuz bir deneme yazısı çıkarmak da niyeti ıskalar. İkincil kelimeler varsa listelenir, yoksa bu satır boş kalabilir — boş bırakılan satır, uydurulan satırdan iyidir.",
+      {h: "5. Kapsam: neler girer, neler girmez"},
+      "Girenler kadar **girmeyenleri** de yazın. Örnek: 'briefin dokuz alanı ve örnekleri girer; brief yazılımı karşılaştırması girmez, ayrı yazının konusu'. Kapsam satırı, yazının mega rehbere şişmesini önleyen tek settir. Hedef uzunluğu da buraya yazın — kelime sayısı bir kalite ölçüsü değil, bir kapsam anlaşmasıdır.",
+      {h: "6. Ton ve örnek metinler"},
+      "Tonu sıfatla değil örnekle anlatın. 'Samimi ama profesyonel' her ajans briefinde durur ve hiçbir şey söylemez. Onun yerine: 'şu iki yazımızın tonunda' deyip bağlantı verin; beğenmediğiniz bir örneği de 'böyle değil' diye ekleyin. Bir olumlu, bir olumsuz örnek; iki bağlantı, iki cümle.",
+      {h: "7. Kaynaklar ve iç bağlantılar"},
+      "Yazarın kullanmasını istediğiniz kaynakları — rapor, veri, müşteri görüşmesi, rakip yazısı — bağlantısıyla listeleyin. Verilecek iç bağlantıları da buraya yazın: hangi sayfaya, hangi bölümden. Kaynak vermeden 'araştırsın' demek, revizyon turunu baştan satın almaktır.",
+      {h: "8. Çağrı: okur sonra ne yapsın"},
+      "Her yazının tek bir sonraki adımı olur: formu doldur, şablonu indir, ilgili yazıyı oku. İki çağrı yarışırsa ikisi de kaybeder. Çağrıyı ve nereye bağlanacağını brief'e yazın; yazar kapanışı ona göre kurar.",
+      {h: "9. Teslim: biçim, tarih, revizyon"},
+      "Biçim (belge mi, doğrudan CMS mi), teslim tarihi ve kaç revizyon turu öngörüldüğü. Tur sayısını baştan yazmak iki tarafı da korur: yazar 'bitmeyen düzeltme' riskinden, işi veren 'ilk taslak = son taslak' sürprizinden kurtulur.",
+      {h: "Kopyalanacak şablon"},
+      {ul: [
+        "**Amaç:** bu metin yayında hangi işi görecek?",
+        "**Okur:** tek kişi — rolü, bağlamı, ayırdığı vakit.",
+        "**Tek çıkarım:** okurun aklında kalacak cümle.",
+        "**Anahtar kelime:** hedef sorgu + arama niyeti.",
+        "**Kapsam:** girenler, girmeyenler, hedef uzunluk.",
+        "**Ton:** 'şunun gibi' bir bağlantı + 'böyle değil' bir bağlantı.",
+        "**Kaynaklar:** kullanılacak kaynaklar ve iç bağlantılar.",
+        "**Çağrı:** okurun tek sonraki adımı.",
+        "**Teslim:** biçim, tarih, revizyon turu sayısı."
+      ]},
+      {h: "Aynı brief, iki hâli"},
+      "Kötü hâli tanıdık gelecek: 'Yapay zekâ hakkında SEO'ya iyi gelecek bir yazı istiyoruz. Herkesin anlayacağı dilde olsun, uzunluk size kalmış, mümkünse bu hafta.' Bu üç cümlede dokuz alanın dokuzu da boş — yazar dokuz tahmin yapacak ve istatistik gereği birkaçı tutmayacak.",
+      "İyi hâli: 'Amaç: brief formuna gelen nitelikli talebi artırmak. Okur: içerik işini dışarı vermeyi düşünen KOBİ sahibi. Çıkarım: iyi brief ilk revizyonda kendini öder. Kelime: içerik briefi nasıl yazılır, niyet nasıl-yapılır. Kapsam: dokuz alan + örnekler; araç karşılaştırması girmez; ~1.200 kelime. Ton: X yazımız gibi, Y gibi değil. Kaynak: BetterBriefs araştırması. Çağrı: brief formu. Teslim: belge, cuma, iki tur.' Dokuz alan, doksan saniyede okunuyor.",
+      {h: "Süreçte briefin yeri"},
+      "Briefi işi veren başlatır ama tek başına bitirmez. İyi işleyen düzen şudur: işi veren dokuz alanı doldurur, yazar ilk okumada belirsiz bulduğu alanları soruyla geri gönderir, yazıya ancak ikisi de aynı sayfayı gördüğünde başlanır. Bu yarım saatlik tur, sonradan yapılacak her revizyon turundan ucuzdur. Biz de her işe aynı kapıdan giriyoruz: formumuz bu şablonun sorularını sorar, ilk taslaktan önce netleşmeyen alan bırakmayız.",
+      "Son bir alışkanlık: briefleri atmayın, arşivleyin. Yayın çıktıktan sonra briefi açıp yazıyla yan yana koyun — amaç tuttu mu, çıkarım cümlesi yazının gerçekten omurgası olmuş mu, kaç revizyon turu gerekti? Üç–beş yazı sonra bu arşiv, hangi alanı hep eksik doldurduğunuzu gösteren bir aynaya dönüşür. Brief yazmayı iyileştirmenin ölçülebilir tek yolu, yazılmış brieflerin sonuçlarına bakmaktır.",
+      "Şablonu bugün bir sonraki yazınızda deneyin: dokuz alanı doldurmak yarım saat sürer ve doldururken işin kendisinde netleşmemiş ne varsa ortaya çıkarır. Yazıyı dışarıya yazdıracaksanız süreci görmek için brief formumuzdan başlayabilirsiniz — form, bu yazıdaki dokuz soruyu sorar."
+    ],
+    en: [
+      "A good content brief is one page long and answers nine questions clearly: goal, reader, single takeaway, keyword, scope, tone, sources, call to action, delivery. Writing those nine takes half an hour; skipping them comes back as revision rounds, aimless copy, and wasted budget. In the BetterBriefs study, 80% of marketers rate their briefs as good — on the agency side, only 10% agree.",
+      {h: "Key takeaways"},
+      {ul: [
+        "A brief is one page: nine fields, one or two sentences each.",
+        "A field you cannot fill points to a business decision not yet made.",
+        "Most revision rounds are caused by brief gaps, not writing mistakes."
+      ]},
+      {h: "What a brief is — and is not"},
+      "A brief is the document that hands the writer the **context** of the job: what this piece of content is supposed to accomplish, for whom, and within which boundaries. It is not a contract — pricing, rights, and legal terms live elsewhere. It is not a style guide either; your brand's general voice rules live in their own document, and the brief only states what is specific to this one job.",
+      "The most common mistake is trying to improve a brief by making it longer. A five-page brief does not get read, and an unread brief is the same as no brief. Aim for a single page where every field is filled with one or two sentences. If you cannot fill a field, the problem is not the article — it is a business decision that has not been made yet. Discovering that before the writing starts is the brief's real payoff.",
+      {h: "What a bad brief costs"},
+      "The BetterBriefs Project, together with the IPA, surveyed more than 1,700 marketers and agency people across 70+ countries. 78% of marketers believe their briefs give clear strategic direction; only 5% of agencies agree. Respondents estimated that roughly a third of marketing budgets is wasted on poor briefs and misdirected work. Even on a small content budget, that means one article in three is written for the bin.",
+      {note: "These figures come from a perception study; they do not measure the leak in your specific budget, but they do show how differently the two sides read the same document. The source is listed at the end of this article."},
+      "The mechanism of the loss is simple: the brief leaves a gap, the writer fills the gap with a guess, the guess misses, and a revision round begins. Every round burns schedule and trust. The job of a nine-field template is to reduce the space left to guessing to zero.",
+      {h: "1. Goal: what job will this piece do"},
+      "Bad: 'support brand awareness'. Good: 'increase the number of visitors who complete the brief form; a small-business owner who reads it should come away knowing what outsourcing content actually costs'. The goal states **what will have changed** once the piece is live. It does not have to be measurable — but it has to be observable.",
+      {h: "2. Reader: one person"},
+      "Bad: 'SMBs and entrepreneurs'. Good: 'the founder of a 5–20 person SaaS company with no content team, who runs marketing personally and has less than two hours a week for it'. Choosing one reader does not exclude the others; it forces the text to pick a register and a difficulty level. Copy written for everyone touches no one.",
+      {h: "3. Single takeaway: the sentence the reader leaves with"},
+      "The person writing the brief writes, in advance, the one sentence the reader should remember when the article ends. For example: 'A good brief is a half-hour investment that pays for itself in the first revision round.' That sentence is the article's compass: any section that does not serve it gets cut.",
+      {h: "4. Keyword and search intent"},
+      "Write the target query and its intent: is the searcher looking for information, comparing options, or close to buying? The intent behind 'how to write a content brief' is how-to; serving that query a pricing page — or a template-free think piece — misses it either way. List secondary keywords if you have them; if you do not, leave the line empty. An empty line is better than an invented one.",
+      {h: "5. Scope: what is in, what is out"},
+      "Write down what stays **out** as explicitly as what goes in. For example: 'the nine fields and their examples are in; a comparison of briefing software is out — that is its own article'. The scope line is the only fence that keeps an article from swelling into a mega-guide. Put the target length here too — a word count is not a measure of quality, it is an agreement about scope.",
+      {h: "6. Tone, shown by example"},
+      "Describe tone with examples, not adjectives. 'Friendly but professional' sits in every agency brief and says nothing. Instead: link two pieces and say 'in the tone of these', then add one counter-example with 'not like this'. One positive, one negative; two links, two sentences.",
+      {h: "7. Sources and internal links"},
+      "List the sources you want the writer to use — reports, data, customer interviews, competitor articles — with links. Add the internal links the piece should carry: which page, from which section. Saying 'they can research it' without handing over sources is buying a revision round in advance.",
+      {h: "8. Call to action: what should the reader do next"},
+      "Every article gets exactly one next step: fill in the form, download the template, read the related piece. When two calls compete, both lose. Write the call and its destination into the brief; the writer will build the closing around it.",
+      {h: "9. Delivery: format, date, revisions"},
+      "Format (a document, or directly in the CMS), the delivery date, and how many revision rounds are planned. Fixing the number of rounds up front protects both sides: the writer from endless polishing, the client from a 'first draft equals final draft' surprise.",
+      {h: "The template, ready to copy"},
+      {ul: [
+        "**Goal:** what job will this piece do once live?",
+        "**Reader:** one person — role, context, time available.",
+        "**Single takeaway:** the sentence the reader should remember.",
+        "**Keyword:** target query + search intent.",
+        "**Scope:** what is in, what is out, target length.",
+        "**Tone:** one 'like this' link + one 'not like this' link.",
+        "**Sources:** materials to use, internal links to include.",
+        "**Call to action:** the reader's one next step.",
+        "**Delivery:** format, date, number of revision rounds."
+      ]},
+      {h: "The same brief, twice"},
+      "The bad version will sound familiar: 'We would like an SEO-friendly article about AI. Keep it accessible to everyone, length is up to you, ideally this week.' In those three sentences, all nine fields are empty — the writer will make nine guesses, and statistically a few of them will miss.",
+      "The good version: 'Goal: more qualified submissions through the brief form. Reader: an SMB owner considering outsourcing content. Takeaway: a good brief pays for itself in the first revision round. Keyword: how to write a content brief; intent: how-to. Scope: nine fields plus examples; tool comparisons are out; about 1,200 words. Tone: like our article X, not like Y. Source: the BetterBriefs study. Call to action: the brief form. Delivery: document, Friday, two rounds.' Nine fields, readable in ninety seconds.",
+      {h: "Where the brief sits in the process"},
+      "The client starts the brief but does not finish it alone. The routine that works is this: the client fills in the nine fields, the writer sends back questions on every field that reads ambiguous, and writing starts only once both sides see the same page. That half-hour loop is cheaper than any revision round bought later. It is also how we take on every job: our own intake form asks exactly these questions, and no field stays vague past the first draft.",
+      "Try the template on your next piece: filling the nine fields takes half an hour, and the filling itself surfaces whatever the business has not yet decided. And if you are planning to have the writing done outside, our brief form is the practical place to start — it walks you through these same nine questions."
+    ],
+    zh: [
+      "内容简报是把工作背景交给写作者的一页文件：这篇内容要完成什么任务、写给谁、边界在哪里。BetterBriefs 与 IPA 的调查覆盖 70 多个国家的 1,700 多名从业者：80% 的营销人认为自己的简报不错，但只有 10% 的代理商同意；受访者估计约三分之一的营销预算因糟糕的简报而浪费。",
+      "好简报只需回答九个问题：目标、读者、核心结论、关键词与搜索意图、范围、语气、素材来源、行动号召、交付方式。每一栏一两句话即可；写不出某一栏，说明业务本身还有未做的决定——在动笔之前发现这一点，正是简报最大的价值。",
+      "实用建议：读者只写一个人；语气用『像这篇、不像那篇』的链接来示范，而不是形容词；修改轮数事先写明。九栏填完约半小时，通常在第一轮修改中就收回成本。想把写作外包，可以从我们的简报表单开始——它问的正是这九个问题。"
+    ],
+    hi: [
+      "कंटेंट ब्रीफ़ वह एक-पेज दस्तावेज़ है जो लेखक को काम का संदर्भ सौंपता है: यह सामग्री क्या हासिल करेगी, किसके लिए है, और सीमाएँ क्या हैं। BetterBriefs और IPA के 70+ देशों के 1,700+ प्रतिभागियों वाले सर्वे में 80% मार्केटर अपने ब्रीफ़ को अच्छा मानते हैं, पर सिर्फ़ 10% एजेंसियाँ सहमत हैं; अनुमान है कि लगभग एक-तिहाई मार्केटिंग बजट ख़राब ब्रीफ़ के कारण बर्बाद होता है।",
+      "अच्छा ब्रीफ़ नौ सवालों के जवाब देता है: लक्ष्य, पाठक, एक मुख्य निष्कर्ष, कीवर्ड और सर्च इंटेंट, दायरा, लहजा, स्रोत, कॉल-टू-एक्शन, डिलीवरी। हर फ़ील्ड में एक-दो वाक्य काफ़ी हैं। कोई फ़ील्ड भर न पाएँ, तो समस्या लेख में नहीं — कारोबार के किसी अनिर्णीत फ़ैसले में है।",
+      "व्यावहारिक सलाह: पाठक सिर्फ़ एक व्यक्ति चुनें; लहजा विशेषणों से नहीं, 'इस जैसा, उस जैसा नहीं' लिंक से बताएँ; संशोधन के दौर पहले से तय करें। नौ फ़ील्ड भरने में आधा घंटा लगता है और यह पहले ही संशोधन दौर में वसूल हो जाता है। लेखन बाहर करवाना हो तो हमारे ब्रीफ़ फ़ॉर्म से शुरू करें — वह यही नौ सवाल पूछता है।"
+    ],
+    es: [
+      "Un brief de contenidos es el documento de una página que entrega al redactor el contexto del encargo: qué debe lograr la pieza, para quién es y dentro de qué límites. En la encuesta de BetterBriefs con el IPA (más de 1.700 participantes en 70+ países), el 80% de los responsables de marketing considera buenos sus briefs; solo el 10% de las agencias coincide, y se estima que un tercio del presupuesto se pierde por briefs deficientes.",
+      "Un buen brief responde nueve preguntas: objetivo, lector, conclusión única, palabra clave e intención de búsqueda, alcance, tono, fuentes, llamada a la acción y entrega. Basta con una o dos frases por campo. Si un campo no se deja rellenar, el problema no está en el artículo, sino en una decisión de negocio aún pendiente — descubrirlo antes de escribir es la verdadera ganancia.",
+      "Consejos prácticos: elija un solo lector; muestre el tono con enlaces ('como este, no como aquel') en vez de adjetivos; fije de antemano las rondas de revisión. Rellenar los nueve campos lleva media hora y se amortiza en la primera ronda. Si va a externalizar la redacción, empiece por nuestro formulario de brief: hace exactamente estas nueve preguntas."
+    ],
+    ar: [
+      "موجز المحتوى وثيقة من صفحة واحدة تسلّم الكاتب سياق العمل: ما الذي يجب أن تحقّقه المادة، ولمن تُكتب، وضمن أي حدود. في استطلاع BetterBriefs مع IPA الذي شمل أكثر من 1,700 مشارك في أكثر من 70 دولة، يرى 80% من المسوّقين أن موجزاتهم جيدة، بينما توافقهم 10% فقط من الوكالات؛ ويقدّر المشاركون أن نحو ثلث ميزانية التسويق يضيع بسبب الموجزات الرديئة.",
+      "الموجز الجيد يجيب عن تسعة أسئلة: الهدف، القارئ، الخلاصة الواحدة، الكلمة المفتاحية ونيّة البحث، النطاق، النبرة، المصادر، دعوة الفعل، والتسليم. تكفي جملة أو جملتان لكل حقل. وإذا تعذّر ملء حقل ما، فالمشكلة ليست في المقال بل في قرارٍ تجاري لم يُحسم بعد — واكتشاف ذلك قبل الكتابة هو المكسب الحقيقي.",
+      "نصائح عملية: اختر قارئًا واحدًا فقط؛ وبيّن النبرة بروابط «مثل هذا، لا مثل ذاك» بدل الصفات؛ وحدّد عدد جولات المراجعة سلفًا. ملء الحقول التسعة يستغرق نصف ساعة ويسترد كلفته من أول جولة مراجعة. وإن كنت ستُسند الكتابة لجهة خارجية، فابدأ بنموذج الموجز لدينا — فهو يطرح هذه الأسئلة التسعة نفسها."
+    ],
+    fr: [
+      "Un brief de contenu est un document d'une page qui transmet au rédacteur le contexte de la mission : ce que la pièce doit accomplir, pour qui, et dans quelles limites. Dans l'enquête BetterBriefs menée avec l'IPA (plus de 1 700 répondants dans 70+ pays), 80 % des marketeurs jugent leurs briefs bons ; seules 10 % des agences sont d'accord, et environ un tiers du budget marketing serait gaspillé à cause de briefs défaillants.",
+      "Un bon brief répond à neuf questions : objectif, lecteur, message unique, mot-clé et intention de recherche, périmètre, ton, sources, appel à l'action, livraison. Une ou deux phrases par champ suffisent. Si un champ résiste, le problème n'est pas l'article mais une décision d'entreprise encore en suspens — le découvrir avant d'écrire est le vrai gain du brief.",
+      "Conseils pratiques : choisissez un seul lecteur ; montrez le ton par des liens (« comme ceci, pas comme cela ») plutôt que par des adjectifs ; fixez d'avance le nombre de tours de révision. Remplir les neuf champs prend une demi-heure et se rembourse dès le premier tour. Pour externaliser la rédaction, commencez par notre formulaire de brief : il pose exactement ces neuf questions."
+    ],
+    pt: [
+      "Um brief de conteúdo é o documento de uma página que entrega ao redator o contexto do trabalho: o que a peça deve alcançar, para quem é e dentro de quais limites. Na pesquisa do BetterBriefs com o IPA (mais de 1.700 participantes em 70+ países), 80% dos profissionais de marketing consideram seus briefs bons; só 10% das agências concordam — e estima-se que um terço do orçamento se perde por causa de briefs ruins.",
+      "Um bom brief responde a nove perguntas: objetivo, leitor, conclusão única, palavra-chave e intenção de busca, escopo, tom, fontes, chamada para ação e entrega. Uma ou duas frases por campo bastam. Se um campo não se deixa preencher, o problema não está no artigo, e sim numa decisão de negócio ainda pendente — descobrir isso antes de escrever é o verdadeiro ganho.",
+      "Conselhos práticos: escolha um único leitor; mostre o tom com links ('como este, não como aquele') em vez de adjetivos; combine de antemão as rodadas de revisão. Preencher os nove campos leva meia hora e se paga na primeira rodada. Se for terceirizar a redação, comece pelo nosso formulário de brief — ele faz exatamente essas nove perguntas."
+    ],
+    ru: [
+      "Контент-бриф — это одностраничный документ, который передаёт автору контекст задачи: что должен сделать текст, для кого он и в каких границах. В исследовании BetterBriefs и IPA (более 1 700 участников из 70+ стран) 80% маркетологов считают свои брифы хорошими, но согласны с ними лишь 10% агентств; по оценке участников, из-за плохих брифов впустую уходит около трети маркетингового бюджета.",
+      "Хороший бриф отвечает на девять вопросов: цель, читатель, главный вывод, ключевое слово и поисковый интент, рамки, тон, источники, призыв к действию, условия сдачи. На каждое поле достаточно одной-двух фраз. Если поле не заполняется — проблема не в статье, а в ещё не принятом бизнес-решении; обнаружить это до написания и есть главная выгода брифа.",
+      "Практические советы: выбирайте одного читателя; показывайте тон ссылками («как это, но не как то»), а не прилагательными; число раундов правок фиксируйте заранее. Заполнение девяти полей занимает полчаса и окупается в первом же раунде правок. Если пишете на стороне — начните с нашей формы брифа: она задаёт те же девять вопросов."
+    ],
+    no: [
+      "En innholdsbrief er et énsides dokument som gir skribenten konteksten for jobben: hva teksten skal oppnå, hvem den er for, og innenfor hvilke rammer. I BetterBriefs-undersøkelsen med IPA (over 1 700 deltakere i 70+ land) mener 80 % av markedsførerne at briefene deres er gode; bare 10 % av byråene er enige — og deltakerne anslår at rundt en tredjedel av markedsbudsjettet sløses bort på dårlige briefer.",
+      "En god brief svarer på ni spørsmål: mål, leser, én hovedinnsikt, søkeord og søkeintensjon, omfang, tone, kilder, handlingsoppfordring og leveranse. Éneller to setninger per felt holder. Får du ikke fylt ut et felt, ligger problemet ikke i artikkelen, men i en forretningsbeslutning som ennå ikke er tatt — å oppdage det før skrivingen er briefens egentlige gevinst.",
+      "Praktiske råd: velg én enkelt leser; vis tonen med lenker («som denne, ikke som denne») i stedet for adjektiver; avtal antall revisjonsrunder på forhånd. Å fylle ut de ni feltene tar en halvtime og betaler seg i første revisjonsrunde. Skal du sette bort skrivingen, start med brief-skjemaet vårt — det stiller nøyaktig disse ni spørsmålene."
+    ]
+  }
 }
 ];

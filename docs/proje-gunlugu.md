@@ -323,3 +323,19 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+## 25.08.2026 — 11. yazı: "İçerik briefi nasıl yazılır: dokuz alanlık şablon"
+
+Konu havuzundan gelire en yakın aday seçildi (okuru brief formunun doğal
+adayı). posts.js'e 10 dilde eklendi (TR 1.091 / EN ~1.340 kelime, 38+38
+blok), kategori `guide`, ikon `blocks`, accent 1. Özgün katkı: stüdyonun
+kendi dokuz alanlık şablonu + her alan için kötü–iyi örnek çifti + aynı
+briefin iki hâlde tam karşılaştırması. Kaynak: BetterBriefs×IPA algı
+araştırması (%80/%10 uçurumu, ~%33 bütçe kaybı tahmini) + Semrush +
+Backlinko + HubSpot rehberleri. Kaynak adresleri arama motoru sonuçlarından
+birebir alındı; semrush/backlinko/hubspot alan adları bu ortamın proxy'sinde
+engelli olduğundan sayfalar doğrudan açılamadı (EUIPO emsalindeki yöntem) —
+adresler yayın öncesi elle teyit edilebilir. sitemap.xml + feed.xml
+güncellendi. Denetimler: check 8/8, gorunurluk 14 geçti · 2 uyarı
+(görsel yok + TR uzunluk bandı — mevcut yazılarla aynı iki uyarı),
+yayinlanabilir. Ayrıca oturum başında tam sağlık turu: guvenlik 13/13,
+engine testleri 3/3, tescil-testi 4/4 (tescil/ yeniden üretildi).

@@ -144,11 +144,9 @@ maliyet.
 
 ## Konu havuzu (blog)
 
-Yayınlanan 6 yazı: platform karşılaştırması, Upwork, nDash, Medium, Substack, AI içerik
-stüdyosu. Sıradaki adaylar — hepsi ticari niyeti olan, aramada karşılığı olan konular:
+Yayınlanan 11 yazı (son: içerik briefi şablonu, 25.08). Sıradaki adaylar — hepsi ticari niyeti olan, aramada karşılığı olan konular:
 
 - Şirketler içerik yazarına ne ödüyor: 2026 ücret aralıkları
-- İçerik briefi nasıl yazılır (şablonla)
 - AI ile yazılan içerik Google'da cezalandırılır mı?
 - Bir blogun ilk 1.000 ziyaretçisi nereden gelir
 - LinkedIn'de kurucu sesiyle yazmak
