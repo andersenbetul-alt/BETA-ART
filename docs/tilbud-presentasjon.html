@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tilbudssamtale – [NAVN]</title>
+<style>
+  /* Fargene er merkets tokens fra assets/css/styles.css – ikke bytt dem her. */
+  :root{ --ink:#101a2e; --ink-soft:#4a5568; --brand:#1f6f5c; --brand-light:#e6f1ed; --flate:#ffffff; }
+  *{ box-sizing:border-box; margin:0; }
+  body{ font-family:Inter,-apple-system,"Segoe UI",sans-serif; background:var(--flate); color:var(--ink); }
+  section{ min-height:100vh; padding:8vh 10vw; display:flex; flex-direction:column; justify-content:center; gap:28px; }
+  section:nth-of-type(2){ background:var(--brand-light); }
+  header{ position:fixed; top:0; left:0; right:0; padding:14px 10vw; background:var(--ink); }
+  header img{ height:30px; display:block; }
+  .merk{ font-size:14px; letter-spacing:.12em; text-transform:uppercase; color:var(--brand); font-weight:600; }
+  h1{ font-size:clamp(34px,5vw,56px); line-height:1.1; max-width:18ch; }
+  h1 em{ font-style:normal; color:var(--brand); }
+  p.stor{ font-size:clamp(18px,2.2vw,24px); color:var(--ink-soft); max-width:55ch; line-height:1.5; }
+  ul{ list-style:none; font-size:clamp(17px,2vw,22px); line-height:1.6; max-width:60ch; }
+  ul li::before{ content:"— "; color:var(--brand); font-weight:700; }
+  table{ border-collapse:collapse; font-size:clamp(17px,2vw,22px); max-width:640px; }
+  td{ padding:10px 24px 10px 0; border-bottom:1px solid #d7dce4; }
+  td:last-child{ font-weight:700; text-align:right; }
+  .felt{ background:#fff3cd; padding:0 6px; border-radius:3px; }
+  footer{ padding:20px 10vw 40px; color:var(--ink-soft); font-size:14px; }
+</style>
+</head>
+<body>
+<header><img src="../assets/img/naviar-care-logo-v04-negativ.svg" alt="Naviar Care"></header>
+
+<section>
+  <p class="merk">Rollen</p>
+  <h1>Vi vil at du skal bli <em>den faste</em> hos oss.</h1>
+  <p class="stor">
+    <span class="felt">[TITTEL]</span> hos <span class="felt">[LEVERANDØR]</span> –
+    faste besøk hos de samme menneskene, i <span class="felt">[OMRÅDE]</span>.
+    Jobben er de små tingene som lar folk bli boende hjemme: selskap,
+    lett hjelp i huset, hjelp med telefonen, en handlepose båret inn.
+  </p>
+  <ul>
+    <li>Faste dager, kjente kunder – kontinuitet er selve tjenesten</li>
+    <li>Klare grenser: aldri helsehjelp, aldri penger, aldri BankID</li>
+    <li>Du melder fra med to trykk – resten av papirarbeidet finnes ikke</li>
+  </ul>
+</section>
+
+<section>
+  <p class="merk">Tallene</p>
+  <h1>Enkelt og skriftlig.</h1>
+  <table>
+    <tr><td>Stillingsprosent</td><td><span class="felt">[%]</span></td></tr>
+    <tr><td>Timelønn</td><td><span class="felt">[KR]</span></td></tr>
+    <tr><td>Tillegg kveld/helg</td><td><span class="felt">[KR/%]</span></td></tr>
+    <tr><td>Startdato</td><td><span class="felt">[DATO]</span></td></tr>
+    <tr><td>Prøvetid</td><td><span class="felt">[MND]</span> – enkle dagtidsoppdrag først</td></tr>
+    <tr><td>Pensjon og forsikring</td><td><span class="felt">[ORDNING]</span></td></tr>
+  </table>
+  <p class="stor">Alt over kommer også skriftlig – dette er samme tall som i
+  tilbudsbrevet, ikke en forhandlingsversjon.</p>
+</section>
+
+<section>
+  <p class="merk">Hvorfor deg</p>
+  <h1>Folk blir trygge på deg.</h1>
+  <p class="stor"><span class="felt">[ÉN KONKRET OBSERVASJON FRA INTERVJU
+  ELLER REFERANSE – skriv den ferdig før samtalen. En mal-kompliment høres
+  ut som en mal-kompliment.]</span></p>
+  <p class="stor">Spørsmålene dine er velkomne – og du trenger ikke svare i dag.</p>
+</section>
+
+<footer>Naviar Care · docs/TILBUDSPAKKE.md er kilden til feltene · [FELT] fylles før samtalen</footer>
+</body>
+</html>
