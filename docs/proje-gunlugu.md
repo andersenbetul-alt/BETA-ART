@@ -345,3 +345,35 @@ yayında.
 Paralel iz: affiliate niş için "İçerik Fırsat Haritası" araştırması
 başlatıldı (yalnız araştırma, kod yok) — sonucu ayrı günlük kaydına
 işlenecek.
+
+## 25.08.2026 (gece, devam) — İçerik Fırsat Haritası tamamlandı + "gerçek fayda" ilkesi
+
+`docs/icerik-firsat-haritasi.md` teslim edildi: 92 aday konu, gerçek web
+araştırmasıyla doğrulanmış affiliate verisi (her iddia kaynaklı veya
+"doğrulanamadı" diye işaretli), ilk 20 gelir-odaklı küme. Kritik bulgu:
+Norveç'e özel "AI araçları" nişi zaten dolu (nordicaitools.com dahil 6
+rakip) — "boş alan" varsayımı çürüdü.
+
+Kullanıcıyla tartışma sonucu bir karar ilkesi benimsendi: **qBLOGG'un gücü
+"daha fazla içerik" değil, "insanların daha iyi karar vermesine ve
+gelişmesine yardım eden içerik" üretmektir.** Haritanın kendi verisi bunu
+destekliyor — "Yüksek fayda" işaretlenen beş kümenin (#11 AI Receptionist,
+#13 Norveç muhasebe yazılımı, #14 iş arayanlar için AI araçları, #16 ucuz
+AI yığını, #19 EU AI Act) dördünde affiliate geliri **yok**; komisyon veren
+şirketler kalabalık/kolay-kararlı ürünler (VPN, hosting), komisyon
+vermeyenler nişleşmiş/gerçekten kafası karışık okuyucunun olduğu alanlar.
+Harita bu ilkeyle güncellendi (§4.1): öncelik sırası gelire göre değil önce
+yüksek-fayda kümelerinden başlamalı, düşük-fayda/yüksek-rekabet kümeler
+yalnızca kapasite kalırsa ikincil dolgu.
+
+Kullanıcı bu ilkeyi Meta'nın dikkat-ekonomisi modeliyle karşılaştırarak
+netleştirdi: **"Sana ilgini çekecek şeyi bulayım" (Meta) değil, "Seni
+geliştirecek şeyi bulayım" (QBLOGG)** — temel metrik Dikkat/Engagement değil
+Gelişim/Outcome olmalı. Bu yeni bir karar değil, mevcut modelin adlandırılmış
+hali: sitenin zaten kurucu ilkesi ("işi trafik toplamak değil, brief formunu
+doldurtmaktır") bir outcome metriği; §4.1'deki gerçek fayda filtresi bunun
+B2C affiliate tarafındaki karşılığı. Üçü aynı ilkenin farklı yüzleri. Ayrıca
+tartışılan "insanları birbirine bağlayan platform" (Meta UGC/sosyal grafik
+modeli) fikri bilinçli olarak uygulanmadı — QBLOGG'da hesap/UGC/moderasyon
+altyapısı yok, bu ayrı ve çok daha büyük bir kapı; kullanıcının asıl vardığı
+sonucun "gelişim/outcome metriği" olduğu değerlendirildi.
