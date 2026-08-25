@@ -254,3 +254,18 @@ ağacını değil depoyu dağıtır (gözlem #8). Push sonrası yeşil. Örnek t
 brief'i hazır (seed.sql, yayınlanmış yazıdan türetilmiş). Bekleyen: kullanıcı
 Supabase projesi + URL/anon anahtar.
 
+
+## 25.08.2026 — Operasyon günü: hukuk muhtıraları, teklif akışı, durum panosu
+
+Oturum çıktıları: (1) iç **proje durum panosu** (Artifact) — canlı sistemler,
+denetimler, açık işler tek sayfada. (2) İki araştırma muhtırası: **tasarım
+hukuku denetimi** (6 alan + tasarım turu kontrol listesi) ve **"QBLOGG" kelime
+markası riski** — ikisi de Thomson Reuters erişimi olmadan, kaynak doğrulama
+dereceleri işaretli; kelime markası bulgusu #82 kararını (vekilsiz başvuru yok)
+güçlendirdi. (3) **Teklif paketi akışı** kuruldu ve
+`.claude/skills/qblogg-teklif-paketi` becerisi olarak kalıcılaştırıldı: teklif
+alanları + rakamsız sıcak e-posta + TR/EN/NO markalı sunum şablonu; aday
+bilgisi/rakam uydurma yasağı beceriye gömülü. (4) Gözlem #9–#10: erişilemeyen
+araştırma kanalı protokolü; arama sonucu örnek/pazarlama sayfası rakamlarını
+gerçek veri sanma tuzağı. Gün sonu denetimler: check 8/8 · güvenlik 13/0 yüksek
+· görünürlük 10/10. Dal: `claude/web-page-artifact-z8oc4e`.
