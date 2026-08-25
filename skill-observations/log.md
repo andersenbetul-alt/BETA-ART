@@ -460,3 +460,18 @@ etter modul- og feltnavnene du selv planlegger å bruke. Pathfinder-kartet
 **Principle:** Duplikater oppstår ikke fordi man ikke leter, men fordi man
 leter med sitt eget planlagte vokabular i stedet for domenets. Søk etter
 tingenes navn, ikke etter strukturen du har tenkt å bygge.
+
+### Observation 20: Malen skal følges nøyaktig, men lederlisten mangler plasseringsregel
+
+**Status:** OPEN
+**Date:** 2026-08-25
+**Session context:** Ikke-interaktiv eval av performance-review-ferdigheten (utkast til halvårsvurdering, iteration-1/eval-1-ordrett-sitat)
+**Skill:** performance-review
+**Type:** open-source
+**Phase/Area:** Steg 3 · Skriv utkastet i malen
+
+**Issue:** Steg 3 krever at malstrukturen følges «nøyaktig – samme overskrifter, samme rekkefølge, ingenting lagt til eller fjernet», og krever samtidig at utkastet avsluttes med en liste til lederen (mangler, temaer utenfor rammeverket, utkast-påminnelse). Ferdigheten sier ikke hvor listen skal stå i forhold til malen. Løst i økten ved å legge listen etter en skillelinje, tydelig merket som «ikke en del av vurderingsdokumentet».
+
+**Suggested improvement:** Legg én setning i steg 3: lederlisten plasseres etter maldokumentet, adskilt og merket som notat til lederen, ikke som en ekstra seksjon i malen.
+
+**Principle:** Når en ferdighet både krever eksakt maltro og ekstra utdata, må den si eksplisitt hvor det ekstra hører hjemme – ellers må hver kjøring improvisere grensen mellom dokument og metatekst.
