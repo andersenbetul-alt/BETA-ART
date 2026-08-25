@@ -513,6 +513,58 @@ yerine ya net bir para yolu ya da net bir farklılaşma taşıyan 20 küme seçi
 
 ---
 
+## 4.1 Karar ilkesi: gerçek fayda filtresi
+
+Kullanıcıyla yapılan değerlendirmede şu ilke benimsendi: **qBLOGG'un gücü "daha
+fazla içerik" değil, "insanların daha iyi karar vermesine ve gelişmesine
+yardım eden içerik" üretmektir.** Bu, yukarıdaki 20 kümeyi salt gelir
+potansiyeline göre değil, **okuyucunun hayatında gerçekten bir şeyi
+değiştirip değiştirmediğine** göre de sınıflandırmayı gerektiriyor.
+
+Ayrım şu: okuyucu zaten "NordVPN mi ExpressVPN mi" diye düşünüyorsa, qBLOGG
+olmasa da bir şekilde bir VPN alacaktı — içerik yalnızca komisyonun kime
+gittiğini değiştirir. Ama okuyucu "bu €900/ay araca gerçekten ihtiyacım var
+mı" ya da "hangi muhasebe yazılımı benim işime uyar" gibi kendi başına kolay
+çözemediği, gerçek maliyetli bir karara sıkışmışsa, içerik onun hayatını
+gerçekten iyileştirir — kararı hızlandırır, yanlış seçimin bedelini önler.
+
+| # | Konu | Gelir yolu | Gerçek fayda | Gerekçe |
+|---|---|---|---|---|
+| 1 | Semrush vs Ahrefs | Affiliate | Orta | Yanlış SEO aracı seçimi gerçek bütçe kaybı; dürüstlük açısı (Ahrefs'i affiliate'i olmadan önermek) kendi başına güven inşa eder |
+| 2 | NordVPN vs ExpressVPN vs Surfshark | Affiliate | Düşük-Orta | VPN seçimi düşük riskli bir karar; Norveç'e özgü coğrafi kilit/hukuk açısı olmasa jenerik kalır |
+| 3 | HeyGen vs Synthesia | Affiliate (kısmen doğrulanmadı) | Orta | Gerçek bir bütçe/kullanım senaryosu kararı |
+| 4 | Best AI Video Generators | Affiliate | Düşük | Jenerik liste, kalabalık pazar |
+| 5 | Jasper vs Copy.ai vs Grammarly | Affiliate | Düşük | Kendi içerik hizmetini kanibalize etme riski taşıyor |
+| 6 | ClickUp vs Monday vs Notion | Affiliate (Notion kapalı) | Orta | Gerçek üretkenlik kararı ama zaten çok yazılmış |
+| 7 | HubSpot vs Nordic CRM | Affiliate | Orta-Yüksek | Nordic pazarına özgü gerçek uyum sorunu |
+| 8 | Fiverr vs Upwork | Affiliate (Upwork doğrulanmadı) | Orta | Gerçek bir iş modeli kararı, bilgi zaten bol |
+| 9 | Best Website Builder | Affiliate | Düşük | Aşırı kalabalık, farklılaşma zayıf |
+| 10 | Bluehost vs Hostinger | Affiliate | Düşük-Orta | Jenerik hosting kararı |
+| 11 | Is an AI Receptionist Worth It | **Yok — kendi ürün** | **Yüksek** | €900/ay gerçek karar; yanlış seçim gerçek para kaybı |
+| 12 | 1Password vs NordPass | Affiliate | Düşük | Jenerik, farklılaşma zayıf |
+| 13 | Best Accounting Software for Norwegian Freelancers | **Yok** | **Yüksek** | Gerçek operasyonel karar, yanlış araç aylarca sürtünme demek |
+| 14 | Best AI Tools for Job Seekers in Norway | **Yok** | **Yüksek** | İş arama gerçek stres/ihtiyaç; Rezi bile affiliate almadığını açıkça yazmış |
+| 15 | ElevenLabs vs Descript | Affiliate (Descript doğrulanmadı) | Orta | Gerçek bir üretim aracı kararı |
+| 16 | Cheapest AI Tool Stack Under $50/Month | Affiliate (birleşik) | **Yüksek** | Bütçe kısıtlı gerçek kullanıcıya doğrudan uygulanabilir yardım |
+| 17 | Notion Alternatives (affiliate kapalıyken) | Affiliate (kısmi) | Orta | Dürüstlük açısı iyi, sonuçta yine araç seçimi |
+| 18 | Canva Alternatives | Affiliate (doğrulanmadı) | Düşük-Orta | Jenerik |
+| 19 | EU AI Act for Norwegian Small Business | **Yok** | **Yüksek** | Hukuki risk/ceza riskinden koruma |
+| 20 | AI Tools With EU Data Residency | Affiliate (doğrulanmadı) | Orta | Gerçek uyum ihtiyacı ama rakip zaten yazmış, ikinci kaynak riski |
+
+**Örüntü açık:** Yüksek-fayda diye işaretlenen beş madde (#11, #13, #14, #16,
+#19) içinde dördünde affiliate geliri **yok**. Bu tesadüf değil — komisyon
+veren şirketler kalabalık, kararı zaten kolay olan ürünler (VPN, hosting,
+website builder); komisyon vermeyenler nişleşmiş, gerçekten kafası karışık
+bir okuyucunun olduğu alanlar.
+
+**Öncelik önerisi:** İçerik sırası salt gelir potansiyeline göre değil, önce
+yüksek-fayda kümelerinden (#11, #13, #14, #16, #19) başlamalı — bunlar zaten
+mevcut B2B modelin "Norveç'e özgü, test edilmiş, dürüst" farkını taşıyor ve
+gelirleri dolaylı (bülten → kendi hizmet/ürün) olsa da güven inşa ediyor.
+Düşük-fayda/yüksek-rekabet kümeler (#2, #4, #5, #9, #10, #12, #18) yalnızca
+kapasite kalırsa, ikincil dolgu içeriği olarak ele alınmalı — asla omurga
+değil.
+
 ## 5. Genel gözlem: affiliate boşluğu nerede gerçek, nerede değil
 
 Araştırma sırasında dikkat çeken bir örüntü var: **"herkesin bildiği" büyük
