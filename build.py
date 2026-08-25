@@ -7,6 +7,7 @@
 
 import html
 import json
+import sys
 import pathlib
 
 ROOT = pathlib.Path(__file__).parent
@@ -342,6 +343,25 @@ def build_index() -> None:
 
 # --- work.html --------------------------------------------------------------
 
+def cta_href(data: dict) -> str:
+    """Birincil CTA hedefini iletisim bilgisinden cozer.
+
+    Sira: rezervasyon baglantisi > e-posta > telefon. Hicbiri yoksa sayfa ici
+    capaya duser ve uyarir — o durumda site YAYINA HAZIR DEGILDIR
+    (bkz. tests/test_deploy_ready.py).
+    """
+    c = data.get("contact", {})
+    if c.get("booking_url"):
+        return c["booking_url"]
+    if c.get("email"):
+        return f"mailto:{c['email']}?subject=Keşif%20görüşmesi"
+    if c.get("phone"):
+        return "tel:" + c["phone"].replace(" ", "")
+    print("UYARI: iletisim bilgisi bos — CTA sayfa ici capaya dusuyor, "
+          "site yayina hazir degil", file=sys.stderr)
+    return data["cta"]["primary_href"]
+
+
 def build_work() -> None:
     data = load("workforce")
     by_id = {m["id"]: m for m in data["modules"]}
@@ -402,9 +422,8 @@ def build_work() -> None:
     <div class="brand"><span class="dot"></span>BETA WORK · AI Workforce</div>
     <h1>{esc(data['headline'])}</h1>
     <p class="lede">Şirketinizde tekrar eden işleri analiz ediyor, bunları göreve özel AI çalışanlarıyla otomatikleştiriyoruz. Yeni yazılım öğrenmenize gerek yok — AI çalışanları bugün kullandığınız araçların içinde çalışır.</p>
-    <!-- TODO: CTA hedefi bağlanmadı. Form, takvim linki veya mailto buraya. -->
     <div class="cta">
-      <a class="btn" href="{esc(data['cta']['primary_href'])}">{esc(data['cta']['primary'])}</a>
+      <a class="btn" href="{esc(cta_href(data))}">{esc(data['cta']['primary'])}</a>
       <a class="btn btn--ghost" href="{esc(data['cta']['secondary_href'])}">{esc(data['cta']['secondary'])}</a>
     </div>
     <p class="cta__support">{esc(data['cta']['support'])}</p>
@@ -488,7 +507,7 @@ def build_work() -> None:
         <h2>{esc(data['cta']['closing_title'])}</h2>
         <p>{esc(data['cta']['closing_body'])}</p>
         <div class="cta">
-          <a class="btn" href="#iletisim">{esc(data['cta']['primary'])}</a>
+          <a class="btn" href="{esc(cta_href(data))}">{esc(data['cta']['primary'])}</a>
         </div>
         <p class="cta__support">{esc(data['cta']['closing_note'])}</p>
       </div>

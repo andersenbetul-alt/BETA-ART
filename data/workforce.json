@@ -13,8 +13,7 @@
     "support": "Görüşmede şirketinizdeki tekrar eden işleri birlikte çıkarıyoruz. Bağlayıcı değil.",
     "closing_title": "Hangi işin sizden en çok zaman aldığını biliyor musunuz?",
     "closing_body": "Çoğu işletme sahibi bilmiyor — tahmin ediyor. Keşif görüşmesinde bunu birlikte ölçüyoruz: hangi iş, kim, günde kaç kez, kaç dakika. Çıkan sayı çoğu zaman beklenenin iki katı oluyor.",
-    "closing_note": "Analiz ücretlidir ve teklife mahsup edilir. Keşif görüşmesi ücretsizdir.",
-    "todo": "primary_href gerçek bir hedefe bağlanmalı: iletişim formu, takvim (Calendly vb.) veya mailto. Şu an sayfa içi çapa."
+    "closing_note": "Analiz ücretlidir ve teklife mahsup edilir. Keşif görüşmesi ücretsizdir."
   },
   "always_on": [
     {
@@ -458,5 +457,10 @@
     "Yetki devri kademelidir; doğruluk ölçülmeden otomatik gönderim açılmaz.",
     "Kritik kararlar (ödeme, sözleşme, şikâyet) her zaman insana devredilir.",
     "Şirket verisi yalnızca kurulan çalışanların işi için kullanılır."
-  ]
+  ],
+  "contact": {
+    "email": "",
+    "booking_url": "",
+    "phone": ""
+  }
 }
