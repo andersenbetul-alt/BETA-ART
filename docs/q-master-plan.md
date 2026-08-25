@@ -448,12 +448,20 @@ DATA & PRODUCT DISCOVERY (önce), B2B PILOTS → MONEY & VERIFICATION
 parayı B2B'den ikinci aşamada al. Bu yeni tur ise B2B'yi **ilk gün**
 gelir kaynağı yapıyor (25.000–75.000 NOK pilot fiyat hipoteziyle).
 
-**Bu çözülmemiş, kullanıcının karar vermesi gereken bir çatal:** İki
-sıra da savunulabilir (B2C-önce: ucuz, hızlı, riski düşük ama gelirsiz;
-B2B-önce: daha zor satış ama gerçek para + gerçek iş verisi aynı anda).
-Belge şu anda ikisini de "doğru" diye işaretli tutuyor — hangisinin
-geçerli olduğu, gerçek 20 görüşmenin sonucuna göre netleşmeli, teoride
-değil.
+**Çözüldü (sonraki tur):** Bir sonraki tur ikisini uzlaştırdı —
+**OUTCOME → RETENTION → NETWORK → REVENUE → SCALE.** Ücretsiz Q Free
+(B2C, hesapsız Work Audit) ile önce outcome kanıtı üretilir; **ilk gerçek
+PARA** ise B2B pilottan gelir (Q+ değil); Q+ ikinci gelir motoru olarak
+sonra açılır. Yani B2C "önce kullanıcı" değil "önce kanıt" için, B2B
+"önce gelir" için — ikisi farklı sorulara cevap veriyormuş, çelişki
+görünüşteydi. Bu hâlâ teori; gerçek sıra 20 görüşmenin sonucuna göre
+netleşir.
+
+**Ek doğrulama (Meta 2026 capex):** "$115-135 milyar" rakamı doğru ama
+eksik — bu Meta'nın Ç4 2025 raporundaki **ilk** tahmindi; yıl içinde
+$125-145 milyara, sonra $130-145 milyara yükseltildi
+([Yahoo Finance](https://finance.yahoo.com/markets/stocks/articles/meta-just-bumped-2026-capex-232250811.html),
+[DCD](https://www.datacenterdynamics.com/en/news/meta-estimates-2026-capex-to-be-between-115-135bn/)).
 
 **Yeni rakamlar (§15'teki gibi, hipotez):** Q Business Start 199–249
 NOK/çalışan/ay, Grow 249–399 NOK, Enterprise özel sözleşme; Pilot
