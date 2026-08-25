@@ -323,3 +323,27 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+## 25.08.2026 — Beta Art konsepti: dördüncü ürün fikri değerlendirildi
+
+Kullanıcı "Beta Art AI" fikrini önce genel hatlarıyla (kredi/abonelik,
+generation studio), sonra kendi hazırladığı ayrıntılı 90 günlük plan
+metniyle getirdi. AskUserQuestion ile kapsam netleştirildi: QBLOGG'un
+YANINA eklenen ayrı ürün, henüz yalnız plan/tasarım dokümanı (kod yok).
+Kullanıcının planı, önceki genel çerçeveyi daralttı: Beta Art ilk
+aşamada herkese açık bir prompt→görsel aracı DEĞİL, küçük işletmelere
+insan seçkili, teslim edilmiş marka görseli satan bir dijital stüdyo
+(Canva/Firefly'a araç olarak değil, sonuç olarak rakip). Plan
+`docs/beta-art-konsept.md`'ye QBLOGG'un kanıt-sınıflandırma biçimiyle
+([V]/[H]/[D]) işlendi; üç dış iddia bu oturumda gerçekten doğrulandı
+(WebSearch): Norveç KDV eşiği 50.000 NOK/12 ay, AB AI Act 50. madde
+şeffaflık yükümlülüğü 2 Ağustos 2026 (işaretleme için önceden piyasada
+olan sistemlere 2 Aralık 2026 ek süre — kullanıcının notunda yoktu, yeni
+bulgu), SSB Q2 2026 17.052 yeni işletme (+%21). Ayrıca Avrupa
+Erişilebilirlik Yasası'nın <10 kişi/<2M€ mikro işletme istisnası
+bulundu — Beta Art büyüklüğünde WCAG 2.2 AA'yı yasal zorunluluktan
+gönüllü hedefe indiriyor. Canva'nın Norveç NOK fiyatı doğrulanamadı,
+[D] işaretlendi. Bu, dördüncü paralel ürün fikri (QBLOGG, AI Workforce,
+Yazar Platformu, şimdi Beta Art) — hiçbiri aynı anda inşa edilmemeli
+uyarısı belgede tekrarlandı. Yedi açık karar kullanıcıda (niş seçimi,
+marka adı/depo ilişkisi, teknik yığın, ödeme sağlayıcı, AI görsel
+sağlayıcısı, NOK fiyat doğrulaması, erişilebilirlik hedefi).

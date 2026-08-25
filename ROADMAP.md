@@ -110,6 +110,20 @@ maliyet.
 | 49 | Kaynak adreslerini doldur | Bekliyor | `check.mjs` adresi eksik kaynakları listeliyor; ortamda dış erişim kapalı |
 | 50 | Depoya ilk push | **Engelli** | Depo boş (hiç commit yok) + GitHub App'in yazma izni yok: "Resource not accessible by integration" |
 
+### 3.7. Beta Art (yeni, ayrı ürün fikri — bkz. `docs/beta-art-konsept.md`)
+
+QBLOGG'un yanına eklenen dördüncü paralel ürün fikri (bkz. AI Workforce ve
+`docs/yazar-platformu.md`). Henüz kod yok; şu an yalnız 90 günlük konsept
+belgesi var, kullanıcıda 7 açık karar bekliyor (niş, marka adı/depo
+ilişkisi, teknik yığın, ödeme sağlayıcı, AI görsel sağlayıcısı, NOK fiyat
+doğrulaması, erişilebilirlik hedefi — belgenin §M'i).
+
+| # | İş | Durum | Not |
+|---|---|---|---|
+| 91 | 90 günlük konsept + kanıt sınıflandırması | **Bitti** 25.08 | `docs/beta-art-konsept.md`; 3 dış iddia doğrulandı (KDV eşiği, AI Act 50. madde, SSB Q2 2026) |
+| 92 | Açık kararları kapat (§M) | Bekliyor | Karar kullanıcıda; kapanmadan kod/tasarım başlamaz |
+| 93 | Landing page + brief formu | Bekliyor | §M karar #3 (teknik yığın) sonrası |
+
 ### 4. Ölçekleme (öncelik: düşük — talep oluştuktan sonra)
 
 | # | İş | Durum | Not |
