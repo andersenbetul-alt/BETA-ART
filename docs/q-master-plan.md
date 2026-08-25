@@ -234,6 +234,61 @@ Forward.**
 
 ---
 
+## v1.1 — Red-team daraltması (rekabet gerçeği + moat düzeltmesi)
+
+Kullanıcının başka bir AI'dan aldığı değerlendirme turu, önceki turlardan
+farklı olarak **genişletme değil daraltma** yaptı — bu yüzden ayrı bir
+bölüm olarak eklendi. Rakamsal skorlar (7,7/10 → 8,8/10 potansiyel) bu
+değerlendirmeyi yapanın öznel görüşüdür, ölçülmüş bir gerçek değil.
+
+**Rekabet gerçeği (kaynak: kullanıcının aktardığı AI çıktısı — bu oturum
+tarafından doğrulanmadı, yayına geçmeden teyit gerekir):** LinkedIn
+Learning Career Hub, Coursera ve Degreed halihazırda "kariyer hedefi →
+beceri değerlendirme → kişiselleştirilmiş öğrenme → skills intelligence"
+alanında çalışıyor iddia ediliyor (LinkedIn: 1 milyar+ profesyonel verisi,
+1.300+ pathway, 26.000+ kurs; Coursera: enterprise GenAI kayıtlarında
+%234 büyüme; Degreed: "Skills Intelligence" konumlandırması). **Bu
+rakamlar teyit edilmeden gerçek kabul edilmemeli** — ama sonucu değiştirmez:
+"Growth Graph" tek başına, generic haliyle, muhtemelen zaten büyük
+oyuncuların çalıştığı bir alan; **tek başına moat iddiası zayıf.**
+
+**Moat yeniden tanımlandı:** Growth Graph yerine **Outcome Graph + Trust
+Graph**. Soru "kim ne biliyor" değil, "ne gerçekten işe yaradı" (Outcome
+Graph) ve "kim gerçekten yardımcı oluyor" (Trust Graph). Rakiplerin
+ölçtüğü şey genelde "tamamlama" (kaç kişi kursu bitirdi); Q'nun iddia
+ettiği fark "gerçek dünyada ne değişti" (kaç kişi gerçekten uyguladı ve
+ölçülebilir bir sonuç aldı) — bu, henüz kanıtlanmamış bir farklılaşma
+tezi, LinkedIn/Coursera'nın bunu yapmadığı doğrulanmadı.
+
+**Kapsam kesin daraltıldı — MVP'de artık bunlar da YOK:** Q Talent, Q
+Academy, Q Pro, tam marketplace, tam community, çoklu ülke, karmaşık
+gamification, gelişmiş Q Score, büyük Growth Graph, mobil uygulama,
+enterprise suite. Geriye kalan: **tek döngü** — Goal → Next Action →
+Expert Knowledge → Do → Proof → Outcome → Next Action.
+
+**İlk hedef kitle daraltıldı:** 25–55 yaş genel tanımından, 30–50 yaş
+**teknik olmayan** bilgi işçilerine (idari işler, müşteri hizmetleri,
+satış, pazarlama, proje koordinasyonu, İK, operasyon) — gerekçe:
+geliştiriciler zaten AI'ı kendiliğinden öğreniyor, asıl boşluk "teknik
+değilim, AI çağında ne yapacağım" diyen kitlede.
+
+**North Star çifti:** WAP (değişmedi) + **VPO — Verified Progress
+Outcomes**, dört güven kademesiyle: self-reported → evidence-backed →
+expert-validated → system-verified. Her outcome iddiası hangi kademede
+olduğu etiketiyle taşınır — bu, projenin kendi `src`/`nu` kaynak-etiketleme
+disipliniyle aynı mantık.
+
+**Tüketiciye dönük konumlandırma sadeleştirildi:** "Human Growth Network"
+soyut kalıyor — yalnızca yatırımcı/vizyon dilinde kullanılır. Tüketiciye
+görünen vaat: *"Become more valuable at work with AI — personalized
+actions, trusted experts and measurable progress."*
+
+**Daha küçük kanıt eşiği (önceki 1.000 kullanıcılık eşiğin yerine):** 300
+gerçek kullanıcı → 200 hedef oluşturdu → 150 ilk eylemi yaptı → 100'ü 4
+hafta sonra hâlâ aktif → 60 gerçek outcome bildirdi → 30 evidence-backed
+outcome → 30–40 arkadaş getirdi → 20+ ödeme yaptı. **Bu eşik de hipotez,
+kesin yatırım standardı değil** — önceki turun aynı uyarısı geçerli.
+
 ## Bu belge nasıl kullanılır (operasyonel not)
 
 Bundan sonra Q'yla ilgili her yeni teklif (ürün özelliği, işe alım, harcama,
