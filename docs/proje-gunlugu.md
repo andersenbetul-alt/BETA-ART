@@ -334,3 +334,12 @@ CONSULTING baz alınarak yapılmıştı, ve isim biçimi diğer descriptor'larla
 (PLATFORM, ACADEMY, LABS) tutarlı. P1/P6/P8'in tarihsel başlıklarındaki
 "NAVIAR CONSULT" ifadesi değiştirilmedi — o, projelerin sunulduğu andaki
 gerçek adı. `brand/naviar/README.md`'deki açık kalem güncellendi.
+
+Aynı oturumda kullanıcı renk sisteminin algı gerekçesini iletti (lacivert →
+güven/kurumsallık/intelligence, altın → premium/stratejik değer, cyan →
+yalnız dijital; hedef konumlandırma: McKinsey tarzı kurumsallık + modern
+teknoloji şirketi + butik strateji firması). Bu, mevcut renk tablosunda
+zaten uygulanan kısıtların (altın kontrollü/yapısal, cyan master markada
+asla) "neden"i olduğu için `brand/naviar/README.md`'ye "Marka dili" alt
+bölümü olarak eklendi — yeni renk veya kural getirmedi, mevcut kısıtların
+gerekçesini yazılı hâle getirdi.

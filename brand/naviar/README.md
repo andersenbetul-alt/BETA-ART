@@ -83,6 +83,23 @@ Altın beyaz zeminde 2,10:1 kontrast verir; WCAG AA'yı geçmez. Bu yüzden alt�
 yalnız yapısal aksandır — açık zeminde metin veya taşıyıcı grafik olarak
 kullanılmaz. Descriptor'lar açık zeminde lacivert, koyu zeminde off-white.
 
+### Marka dili — renklerin algı hedefi
+
+Yukarıdaki roller rastgele seçilmedi; her renk belirli bir algıyı taşıması
+için atandı:
+
+| Renk | Hedeflenen algı |
+|---|---|
+| Midnight Navy (primary) | Güven · kurumsallık · intelligence |
+| Premium Gold (kontrollü vurgu) | Premium · stratejik değer |
+| Accent Cyan (yalnız dijital/veri/UI) | Teknoloji — master markada hiç görünmez |
+
+Genel hedef konumlandırma: **McKinsey tarzı kurumsallık + modern teknoloji
+şirketi + butik strateji firması** kesişimi. Bu, gösterişsiz ama premium bir
+görsel dil demektir — altının kontrollü/yapısal kalması (bkz. yukarıdaki
+%12–16 oranı ve kontrast kısıtı) bu hedefin doğrudan sonucu: "gösterişsiz"
+ile "parlak/lüks" birbiriyle çelişir, altının dozu bu yüzden sıkı tutulur.
+
 ## Kurallar
 
 Clear space: lockup çevresinde ≥ 0,30H; monogram çevresinde ≥ 1 ribbon
