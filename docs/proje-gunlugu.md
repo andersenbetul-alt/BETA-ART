@@ -401,3 +401,10 @@ yazıldı (format referansı: başlık alanları, matris kolonları + Durum
 enum, mermaid kuralları, Bx bulgu yapısı, tarifsiz-istek kuralı) ve
 GREEN testinde format uyumu doğrulandı (8 bulgu, mermaid, öncelik
 sırası — hepsi ev yapısında). Gözlem 9 kayıtlı.
+## 25.08.2026 (devam) — LinkedIn serisinin sade sürümü
+
+"Carousel metni fazla teknik" istemi (metin eklenmemiş, iki kez) depodaki
+gerçek referansa bağlandı: content/.../linkedin.md (5 postluk seri).
+Sade sürüm yazıldı: linkedin-sade.md — post başına tek çıkarım, rakam
+yoğunluğu bire indirildi, yeni iddia eklenmedi (uydurma yasağı); iki
+sürüm kitleye göre seçilecek (uzman → linkedin.md, genel → sade).
