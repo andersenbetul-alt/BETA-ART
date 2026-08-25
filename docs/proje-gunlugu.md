@@ -418,6 +418,32 @@ yayını teyit edilmedi. Ama artık test edilecek şey çok daha net —
 `docs/q-validate-materyalleri.md`'deki 20 soru, bu yeni çekirdeğe göre
 gözden geçirilmeyi hak ediyor (henüz yapılmadı, kullanıcıya soruldu).
 
+## 25.08.2026 (gece, kapanış — TRUTHMODE) — Yaklaşık 20 tur sonunda tam yakınsama
+
+Vizyon v1.0→v1.5'e ulaştı (bkz. `docs/q-master-plan.md`): killer behavior
+kilitlendi (1 Task → 1 Improvement → 1 Proof), moat Outcome+Trust Graph'a
+daraltıldı, B2C/B2B sırası çözüldü (outcome kanıtı B2C'den, ilk para
+B2B'den), üç gerçek Meta M&A iddiası doğrulandı/düzeltildi (Manus
+anlaşması 11.08.2026'da bozuldu, capex rakamı güncellendi). Paralel
+olarak `demo/q-work-audit.html` yazıldı, Playwright ile doğrulandı,
+depoya ve `vercel.json` dağıtım tarifine gömüldü — gerçek mailto CTA'sı
+ile 20 görüşme adayı bulmaya hazır.
+
+Kullanıcı son turda ("TRUTHMODE") dürüst bir öz-değerlendirme yaptı:
+Q bugün "yatırım yapılabilir şirket değil, iyi formüle edilmiş bir tez."
+Eksik liste: gerçek kullanıcı davranışı, retention verisi, ödeyen
+müşteri, outcome verification, benzersiz veri, çalışan recommendation
+engine, kanıtlanmış 10x üstünlük, network effect — hiçbiri yok. Q Talent,
+Passport, Marketplace, Community, API, global expansion, Meta acquisition
+konuları **donduruldu**. Tek kalan iş: 100 kullanıcı → 25-30 gerçek
+iyileşme → tekrar kullanım → ödeme testi → recommendation gerçekten
+iyileşiyor mu — bu sırayla, teoriyle değil.
+
+**Bu, oturumun başından beri savunulan pozisyonla tam örtüşüyor.** Kayıt
+altına alınacak yeni bir kavram yok; sıradaki tek ilerleme kaydı gerçek
+insanlarla temas olacak. Q konusu bu haliyle beklemede — bir sonraki not
+ancak gerçek bir görüşme/deneme sonucu geldiğinde düşülmeli.
+
 Kullanıcı bu ilkeyi Meta'nın dikkat-ekonomisi modeliyle karşılaştırarak
 netleştirdi: **"Sana ilgini çekecek şeyi bulayım" (Meta) değil, "Seni
 geliştirecek şeyi bulayım" (QBLOGG)** — temel metrik Dikkat/Engagement değil
