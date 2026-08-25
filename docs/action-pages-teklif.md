@@ -37,6 +37,14 @@ norske arbeidsmarkedet?" (görüşmede gösterilecek satış demosu).
 Not: Stripe Norveç kesintisi (yurt içi kart %1,5 + 1,80 kr; karar öncesi
 stripe.com'dan teyit) fiyatın içinde düşünülmüştür.
 
+## Tahsilat kuralı (süreç denetimi B1)
+
+Kurulum ücreti **fatura ile peşin** alınır; **ödeme gelmeden sayfa
+yayına alınmaz.** Aylık bakım ücreti her ayın başında faturalanır;
+iki ay ödenmezse sayfa askıya alınır (sözleşmeye yazılır). Kayıt:
+`docs/pilot-defteri.md` tahsilat tablosu. Ön koşul: fatura kesebilmek
+için şirket kaydı/org.nr (kullanıcı adımı — ilk anlaşmadan önce).
+
 ## Hedef müşteri (ilk 10 görüşme)
 
 Norveç'te çalışan kariyer danışmanları ve iş koçları. Neden: müşteri

@@ -416,3 +416,15 @@ taşınabilir bağlam belgesi. Kritik bölümü "KARARA BAĞLI" listesi: başka
 asistanların çoktan verilmiş kararları (tek deney, QBLOGG çatı adı,
 kanıt kapısı) yeniden açmasını önlemek için. Boşluk cümlesinin yaşam
 kalitesi yarısı bilinçli boş — kullanıcının kendi cümlesi.
+## 25.08.2026 (devam) — Operasyon turu: dört süreç ilerletildi
+
+Kullanıcı geniş yetki verdi ("run this company"); rol sınırı kayda
+geçirilerek (karar/imza/satış kullanıcıda) bana düşen dört iş yapıldı:
+(1) Pilot aday araştırması — web'den 9 gerçek aday (siteleriyle) +
+alınmayanlar gerekçeli; docs/pilot-defteri.md. (2) Süreç bulguları B1+B4
+kapatıldı: tahsilat kuralı ("ödeme gelmeden yayın yok") teklife eklendi,
+tahsilat+SLA tabloları defterde. (3) uye/specs/guvenlik.md — 6 RLS
+spec'i Given/When/Then formatında, Supabase anahtarları gelince teste
+çevrilecek. (4) 30. gün karar bloğu deftere kondu. Kullanıcıda kalan ön
+koşullar: org.nr/fatura yetkisi, LinkedIn aday tamamlama, Supabase
+anahtarları, qblogg.com Add Domain.
