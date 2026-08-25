@@ -409,3 +409,26 @@ ikke.»
 **Principle:** Når flere uavhengige biblioteker feiler med samme underlige
 importfeil, er feilen i et delt lag under dem – reparer laget, ikke bytt
 bibliotek en gang til.
+
+### Observation 18: BLOCKED-diagnosen var ufullstendig – prosjektet var pauset
+
+**Status:** OPEN
+**Date:** 2026-08-25
+**Session context:** /versel – ny deploy av Naviar Care
+**Skill:** deploy-naviar
+**Type:** open-source
+**Phase/Area:** Tilstander du vil møte
+
+**Issue:** Skillen forklarte BLOCKED som plattformblokk som «løses bare i
+dashbordet». Den egentlige årsaken var at prosjektet var PAUSET:
+produksjonsdomenet svarte 503 DEPLOYMENT_PAUSED, unpause_project løste alt,
+og neste deploy gikk READY på fire sekunder. Diagnosen ble stående en hel
+dag fordi ingen fetchet produksjonsdomenet – alle så bare på
+deployment-objektet, som ikke nevner pause.
+
+**Suggested improvement:** Gjort: skillen sier nå «sjekk pause først». 
+
+**Principle:** Når et objekt rapporterer en blokktilstand uten årsak, hent
+tilstanden til BEHOLDEREN det ligger i (prosjektet, kontoen) før du
+konkluderer med det uløselige. Og: en diagnose som ender i «kan bare løses
+utenfor systemet» fortjener ett motbevis-forsøk til før den skrives ned.

@@ -54,8 +54,13 @@ slik (`cannot stat '_src/uye/lib/supabase.js'`) og lyktes 45 sekunder senere.
 
 ## Tilstander du vil møte
 
-- **`BLOCKED`, ingen bygglogg:** plattformblokk på kontoen (Hobby), ikke din
-  feil. Løses bare i dashbordet – åpne inspectorUrl-en og se banneret.
+- **`BLOCKED`, ingen bygglogg:** sjekk FØRST om prosjektet er pauset –
+  25.08.2026 var dette hele forklaringen. `web_fetch_vercel_url` mot
+  produksjonsdomenet ga `503 DEPLOYMENT_PAUSED`; ett kall til
+  `unpause_project` (prj_RaYu1oGINXqqCtlwWYsCY4ZWijp0), og neste deploy gikk
+  INITIALIZING → READY på fire sekunder. En allerede-BLOCKED deploy våkner
+  ikke av unpause – deploy på nytt. Først når prosjektet IKKE er pauset og
+  det fortsatt blokkerer, er det kontoblokk som må løses i dashbordet.
 - **Produksjonsdeploy nektet av klassifiseringen:** utoverrettet publisering
   krever brukerens samtykke. Kjør preview, be brukeren om produksjon.
 - **Verifisering:** `curl` mot `*.vercel.app` gir `000` (proxy).
