@@ -188,6 +188,32 @@ koy" kararıyla teknik olarak çelişmiyor, ama yine de gerçek zaman/kullanıc�
 teması ve karar gerektiren bir adım. Bu belge onu otomatik olarak
 başlatmıyor; ayrı bir onay gerekiyor.
 
+## Üçüncü tur: yatırım kapıları ve faz çizelgesi
+
+Aynı vizyonun üçüncü elaborasyonu (kullanıcının birden fazla AI aracıyla
+karşılaştırmalı olarak ürettiği) önceki ikisiyle büyük ölçüde örtüşüyor;
+yalnızca şu iki mekanizma yeni ve kayda değer:
+
+**Yatırım kapıları (her biri geçilmeden bir sonrakine bütçe/kapsam
+açılmaz):**
+1. Problem validation — insan gerçekten bunu istiyor mu? Geçmezse: pivot.
+2. Retention (engagement değil) — insan geri geliyor mu? Geçmezse: büyüme
+   bütçesi yok.
+3. Outcomes — insan gerçekten gelişiyor mu? Geçmezse: temel vaat yanlış.
+4. Monetization — insan/şirket ödüyor mu? Geçmezse: iş modeli revizyonu.
+5. Network effect — daha fazla kullanıcı ürünü daha mı iyi yapıyor? Evetse:
+   ciddi yatırım zamanı.
+
+**6 fazlı zaman çizelgesi (kendi taslağı, tarih değil sıra önemli):**
+Faz 1 Problem (0–3 ay, sadece kanıt) → Faz 2 Retention (3–6 ay, 100–1.000
+kullanıcı) → Faz 3 Monetization (6–12 ay, Q+/marketplace/B2B pilot) →
+Faz 4 Network (12–24 ay, 10K→100K, Growth Graph) → Faz 5 Platform (2–3 yıl,
+Europe/Q Business/Q Passport) → Faz 6 Ecosystem (3–5+ yıl, Q Talent/global).
+
+Bu çizelgenin kendisi de aynı sonuca varıyor: **faz 1 hâlâ "sadece kanıt" —
+kod değil.** Yani üç ayrı elaborasyonun üçü de aynı yere iniyor: önce ucuz
+doğrulama, sonra inşa.
+
 ## Eğer bir gün ciddi olarak ele alınırsa: önerilen en küçük test
 
 Tüm vizyonu değil, tek bir varsayımı test edin: **"hedefe göre kişiselleş-
