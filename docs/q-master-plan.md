@@ -10,6 +10,21 @@ belgeler: `docs/q-growth-network-vizyon.md` (vizyonun ilk üç turu),
 `docs/q-validate-materyalleri.md` (Faz 1 için hazır, kod gerektirmeyen
 doğrulama malzemesi).
 
+## 🔒 Kilitli çekirdek karar (kullanıcı talimatıyla, en son ve en üst öncelikli)
+
+Dört red-team turunun (v1.0→v1.3) vardığı nokta, kullanıcı tarafından
+**çekirdek karar** olarak kilitlendi. Bundan sonraki her ürün/iş modeli
+kararı önce buna göre değerlendirilir — belgenin geri kalanı (bölüm 1-40 +
+v1.1/v1.2/v1.3) bu çekirdeğin etrafındaki daha geniş vizyon/hipotez
+katmanıdır, çekirdekle çelişirse **çekirdek kazanır**.
+
+- **Killer behavior:** 1 Task → 1 Improvement → 1 Proof
+- **Core loop:** Choose → Improve → Prove → Repeat
+- **İlk MVP vaadi:** *"Improve one real task at work."*
+- **Ana kategori:** Applied Progress / Measurable Work Improvement
+- **Q Blogg'un rolü:** trafik değil — kullanıcıyı gerçek bir eyleme geçirmek
+- **Q AI'ın rolü:** cevap vermek değil — Next Best Action önermek
+
 **Rakamlar hakkında zorunlu not:** Bu belgedeki her maaş, bütçe, kullanıcı
 sayısı, gelir ve finansman rakamı **hipotezdir, taahhüt değildir** — bu,
 belgenin kendi metninde tekrar tekrar vurgulanıyor ve burada da geçerli.
@@ -339,6 +354,49 @@ dönüş` = **pivot**.
 *"Can Q measurably improve someone's real work within 14 days?"* — bu
 sorunun cevabı önce alınmadan geri kalan vizyonun hiçbir parçası
 inşa edilmiyor.
+
+## v1.3 — Killer behavior bulundu: "1 Task → 1 Improvement → 1 Proof"
+
+Dördüncü tur, üç önceki turun vardığı en küçük noktayı buldu: Q'nun ilk
+kazanması gereken **tek davranış**. Karşılaştırma tablosuyla (makale
+okuma, Q'ya soru sorma, hedef oluşturma, Sprint tamamlama, günlük
+ilerleme yazma, uzman takip etme — hepsi elendi) seçilen kazanan:
+
+> **Bir gerçek iş görevini seç → Q ile iyileştir → sonucu ölç.**
+> Kısaca: **1 TASK → 1 IMPROVEMENT → 1 PROOF**
+
+**İlk kullanıcı deneyimi:** "Bugün işinde hangi görev zamanını alıyor?"
+(e-posta, haftalık rapor, toplantı notu, Excel işi vb.) → "Şimdi ne kadar
+sürüyor?" (baseline) → Q bir AI yöntemi + uzman rehberi + workflow verir →
+kullanıcı gerçek işinde uygular → "Ne kadar sürdü?" (yeniden ölçüm) →
+sonuç ("28 dakika tasarruf, %47 daha hızlı"). Bu bir **Q Progress Event**.
+Q sonra: "Şimdi ikinci en büyük zaman kaybını bulalım" — döngü tekrarlanır.
+
+**Yeni metrik: QWI (Q Work Improvements)** — Q sayesinde gerçek bir iş
+görevinde tamamlanmış ve sonucu kaydedilmiş iyileştirme sayısı. WAP/VPO'ya
+ek, daha somut bir birim.
+
+**Q Sprint 01 yeniden tanımlandı:** "Save Time at Work With AI" artık
+ders değil — 14 gün boyunca tekrarlayan task→ölç→iyileştir→ölç döngüsü.
+
+**MVP vaadi daha da küçüldü:** "3 saat kazandıracağız" gibi bir söz
+başlangıçta verilmiyor — önce kanıtlanıyor. İlk vaat yalnızca: **"Improve
+one real task at work."**
+
+**Çekirdek formül:** Q = Turn Knowledge Into Progress. Davranış: Choose →
+Improve → Prove → Repeat. Kullanıcıya görünen ifade: *"One task. One
+improvement. Move forward."*
+
+**Kaynak notu (doğrulanmamış, bu oturum teyit etmedi):** Bu turda
+gerekçe olarak McKinsey'nin 2026 bulgusu (bireysel AI kullanımı
+yaygınlaşıyor ama şirket düzeyinde ekonomik etki sınırlı kalıyor; yüksek
+performanslı şirketler workflow'u yeniden tasarlıyor) ve Microsoft'un
+6.000 bilgi çalışanıyla yaptığı iddia edilen randomize saha deneyi
+(AI kullananlarda e-posta süresinde düşüş) kullanıldı. Bunlar gerçek
+araştırma programları olabilir (McKinsey State of AI, Microsoft WorkLab
+tanıdık isimler) ama **spesifik rakamlar ve "2026" atfı bu oturumda
+doğrulanmadı** — karara dayanak yapılmadan birincil kaynaktan teyit
+edilmeli.
 
 ## Bu belge nasıl kullanılır (operasyonel not)
 
