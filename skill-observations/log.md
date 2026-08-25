@@ -177,3 +177,18 @@ dağıtım komutunun önüne alışkanlık olarak eklenmeli.
 **Principle:** Dağıtım tarifi depoyu okuyorsa, "bende çalışıyor"un birimi
 çalışma ağacı değil push edilmiş commit'tir.
 
+
+### Observation 9: Hukuk araştırması talepleri erişilemeyen ticari veri tabanlarına atıf yapıyor
+
+**Status:** OPEN
+**Date:** 2026-08-25
+**Session context:** QBLOGG tasarım konseptleri için hukuk araştırma muhtırası (Thomson Reuters üzerinden istendi)
+**Skill:** qblogg-operasyon
+**Type:** internal
+**Phase/Area:** Kaynak doğrulama bölümü
+
+**Issue:** Kullanıcı araştırmanın Thomson Reuters (Westlaw/Practical Law) üzerinden yapılmasını istedi; bu oturumda böyle bir bağlayıcı yok. Doğru davranış uygulandı: sınır açıkça söylendi, araştırma açık web birincil/ikincil kaynaklarla yapıldı, her kaynak "arama yoluyla teyit edildi, tam metin okunmadı" işaretiyle sunuldu ve TR doğrulama turu açık konu olarak listelendi. Ancak bu protokol hiçbir yerde yazılı değil — her oturum yeniden keşfetmek zorunda.
+
+**Suggested improvement:** qblogg-operasyon becerisinin kaynak doğrulama bölümüne kısa bir kural: "İstenen araştırma kanalı (ör. Thomson Reuters, engelli kurum siteleri) erişilemezse: (1) sınırı çıktının başında açıkça yaz, (2) erişilebilen kanalla devam et, (3) her kaynağı doğrulama derecesiyle işaretle (tam metin okundu / arama alıntısıyla teyit / doğrulanamadı), (4) erişim sağlanınca yapılacak doğrulama turunu açık iş olarak kaydet."
+
+**Principle:** Erişilemeyen araç, işi durdurma veya uydurma gerekçesi değildir; sınırı belgeleyip doğrulama derecesi işaretli kaynaklarla ilerlemek hem işi teslim eder hem dürüstlüğü korur.
