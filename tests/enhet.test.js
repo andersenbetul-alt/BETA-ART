@@ -2462,37 +2462,32 @@ t.gruppe('Designtokens dekker :root');
 
 t.gruppe('Tjenestekatalogen – pilot v1');
 
-t.test('fire tjenester, verken flere eller færre', function () {
-  t.erLik(window.PP_KATALOG.alle().map(function (k) { return k.id; }),
-          ['besok', 'digital', 'lett-hjemmehjelp', 'hent-lever']);
+t.test('katalogen har én sannhet: besok-lagerets fire oppgaver', function () {
+  /* Den første utgaven av PP_KATALOG hadde egne id-er og eget risikonivå,
+     og ga to svar på hva som kan tildeles automatisk (juridisk-memoet).
+     Nå skal hver kategori være besok-lagerets egen, beriket med type. */
+  var ids = window.PP_KATALOG.alle().map(function (k) { return k.id; });
+  t.erLik(ids, window.PP_BESOK.OPPGAVER.map(function (o) { return o.id; }));
+  t.erLik(ids, ['samvaer', 'digital', 'hjemme', 'hent']);
 });
 
-t.test('hver kategori bærer sin egen grense', function () {
-  /* Grensen er del av definisjonen, ikke et vedlegg. En kategori uten
-     aldri-liste kan ikke vises på oppgaveskjermen og skal ikke finnes. */
+t.test('risikonivået leses fra besok-lageret, ikke fra broen', function () {
   window.PP_KATALOG.alle().forEach(function (k) {
-    t.erSann(k.aldri && k.aldri.length > 0, k.id + ' mangler aldri-liste');
-    t.erSann(k.oppgaver && k.oppgaver.length > 0, k.id + ' mangler faste utfall');
-    t.erLik(k.risiko, 'lav', k.id + ' skal være lav risiko i piloten');
+    var kilde = window.PP_BESOK.OPPGAVER.filter(function (o) { return o.id === k.id; })[0];
+    t.erLik(k.risiko, kilde.risiko, k.id);
+    t.erSann(k.ikke && k.ikke.length > 0, k.id + ' mangler ikke-liste');
   });
 });
 
-t.test('digital hjelp er veiledning, aldri BankID i hendene', function () {
-  var aldri = window.PP_KATALOG.hent('digital').aldri.join(' ');
-  t.erSann(aldri.indexOf('BankID') !== -1);
-  t.erSann(aldri.indexOf('Fjernstyring') !== -1);
+t.test('gul oppgave tildeles aldri automatisk, grønn kan', function () {
+  /* Kjernen i memo-funnet: hjemme og hent er gule i katalogen, og gul
+     betyr at leverandøren bestemmer hvem – ikke motoren. */
+  t.erLik(window.PP_AGENTER.avgjor('ranger', window.PP_KATALOG.hent('samvaer').risiko).autonomi, 'auto');
+  t.erLik(window.PP_AGENTER.avgjor('ranger', window.PP_KATALOG.hent('hjemme').risiko).autonomi, 'godkjenning');
+  t.erLik(window.PP_AGENTER.avgjor('ranger', window.PP_KATALOG.hent('hent').risiko).autonomi, 'godkjenning');
 });
 
-t.test('hent og lever bærer verken kontanter eller medisiner', function () {
-  var aldri = window.PP_KATALOG.hent('hent-lever').aldri.join(' ');
-  t.erSann(aldri.indexOf('Kontanter') !== -1);
-  t.erSann(aldri.indexOf('Medisiner') !== -1);
-  t.erSann(aldri.indexOf('Alkohol') !== -1);
-});
-
-t.test('kategoriene peker bare på oppgavetyper motoren kjenner', function () {
-  /* Én sannhet: katalogens type er samme felt som kvalifisert-kravet
-     filtrerer på. En kategori med påfunnet type ville aldri matche noen. */
+t.test('hver kategori peker på en oppgavetype motoren kjenner', function () {
   var kjente = ['samvaer', 'handling', 'folge', 'digital', 'ute', 'praktisk'];
   window.PP_KATALOG.alle().forEach(function (k) {
     t.erSann(kjente.indexOf(k.type) !== -1, k.id + ' peker på ukjent type ' + k.type);
@@ -2502,16 +2497,17 @@ t.test('kategoriene peker bare på oppgavetyper motoren kjenner', function () {
 t.test('hjelperens fagområder følger av avkryssede typer', function () {
   var hjelper = { oppgaver: ['samvaer', 'digital'] };
   t.erLik(window.PP_KATALOG.kategorierFor(hjelper).map(function (k) { return k.id; }),
-          ['besok', 'digital']);
-  t.erSann(window.PP_KATALOG.kanTjene(hjelper, 'besok'));
-  t.erUsann(window.PP_KATALOG.kanTjene(hjelper, 'hent-lever'));
+          ['samvaer', 'digital']);
+  t.erSann(window.PP_KATALOG.kanTjene(hjelper, 'samvaer'));
+  t.erUsann(window.PP_KATALOG.kanTjene(hjelper, 'hent'));
 });
 
 t.test('ukjent kategori og hjelper uten typer svarer nei, ikke krasj', function () {
   t.erUsann(window.PP_KATALOG.kanTjene({ oppgaver: ['samvaer'] }, 'finnes-ikke'));
-  t.erUsann(window.PP_KATALOG.kanTjene({}, 'besok'));
+  t.erUsann(window.PP_KATALOG.kanTjene({}, 'samvaer'));
   t.erLik(window.PP_KATALOG.kategorierFor(null), []);
 });
+
 
 t.test('katalogens risikospråk forstås av agentregisteret', function () {
   /* Katalogen sier «lav», agentene sier «grønn». Uten oversettelsen ville en

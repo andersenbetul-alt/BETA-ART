@@ -1,127 +1,67 @@
-/* Naviar Care – tjenestekatalogen for pilot v1.
+/* Naviar Care – bro mellom oppgavekatalogen og matchingmotoren.
 
-   Fire tjenester, ikke førti. Katalogen er fast av samme grunn som feltene i
-   datamodellen er få: en kunde kan ikke bestille noe som ikke står her, og en
-   hjelper kan ikke si ja til noe som ikke står her. «Skriv hva du trenger» som
-   bestillingsfelt finnes ikke – fritekst gjør omfang og risiko umulig å styre,
-   og PP_BEHOV-regelen (etterspørsel oppretter aldri kategori) står.
+   Katalogen over de fire pilottjenestene bor i besok-lager.js
+   (PP_BESOK.OPPGAVER): navn, forklaring, ikke-liste og risikonivå. Den
+   første utgaven av denne fila gjentok alt dette med egne id-er og eget
+   risikonivå – og ga dermed to svar på spørsmålet «hvilke lavrisikooppdrag
+   kan tildeles automatisk» (docs/team/JURIDISK-MEMO-KONSEPTER.md). Nå
+   definerer fila bare det besok-lager ikke vet: hvilken oppgavetype i
+   matchingmotoren hver katalogoppgave svarer til, og dermed hvilke
+   kategorier en hjelper er kvalifisert for.
 
-   Hver kategori bærer sin egen grense. `aldri`-lista er ikke veiledning til
-   hjelperen – den er del av katalogdefinisjonen, slik at oppgaveskjermen kan
-   vise den og kapsamkontrollen kan peke på den. Grensene under følger
-   docs/JURIDISK-GRENSE.md; er de to uenige, vinner dokumentet.
-
-   Hjelpere kategoriseres etter kompetanse gjennom samme felt som motoren
-   allerede filtrerer på: `hjelper.oppgaver` (typene de har krysset av for).
-   Katalogen legger ikke et nytt kompetansefelt ved siden av – ett felt, én
-   sannhet, og matchingmotorens `kvalifisert`-krav gjelder uendret. */
+   Risikonivået leses alltid fra katalogen i besok-lager. Gul betyr at
+   leverandøren bestemmer hvem – tildelingen er aldri automatisk, uansett
+   hva motoren rangerer (besok-agenter.js, avgjor()). */
 
 window.PP_KATALOG = (function () {
   'use strict';
 
-  var KATEGORIER = [
-    {
-      id: 'besok',
-      navn: 'Besøk og samvær',
-      type: 'samvaer',
-      risiko: 'lav',
-      beskrivelse: 'Selskap i hverdagen – prat, lesing og felles aktivitet.',
-      oppgaver: [
-        'Prat og selskap',
-        'Høytlesing av bok eller avis',
-        'Spill og hobby sammen',
-        'En kopp kaffe i lag'
-      ],
-      aldri: [
-        'Terapi eller vurdering av helsetilstand',
-        'Tilsyn gjennom natten'
-      ]
-    },
-    {
-      id: 'digital',
-      navn: 'Digital hjelp',
-      type: 'digital',
-      risiko: 'lav',
-      beskrivelse: 'Veiledning i telefon, nettbrett, TV og videosamtale.',
-      /* Veiledning, aldri håndtering: hjelperen peker, kunden taster.
-         Regelen står også i docs/HJELPETEAM.md kategori 5. */
-      oppgaver: [
-        'Vise telefon, nettbrett eller TV',
-        'Øve på videosamtale med familien',
-        'Lære en app å kjenne'
-      ],
-      aldri: [
-        'BankID, passord og koder',
-        'Betaling og gjenoppretting av kontoer',
-        'Fjernstyring av kundens utstyr'
-      ]
-    },
-    {
-      id: 'lett-hjemmehjelp',
-      navn: 'Lett hjemmehjelp',
-      type: 'praktisk',
-      risiko: 'lav',
-      beskrivelse: 'Små, lette oppgaver i hjemmet.',
-      oppgaver: [
-        'Oppvask',
-        'Klesvask og bretting',
-        'Skifte sengetøy',
-        'Lett rydding',
-        /* Observere og melde, aldri utbedre selv: løse tepper og mørke
-           lamper meldes til familien. Fallforebygging er grunnen til at
-           punktet finnes; grensen mot håndverk er grunnen til ordlyden. */
-        'Si fra til familien om snublefarer og mørk belysning'
-      ],
-      aldri: [
-        'Arbeid i trapp og tunge løft',
-        'Sterke kjemikalier',
-        'Hovedrengjøring'
-      ]
-    },
-    {
-      id: 'hent-lever',
-      navn: 'Hent og lever',
-      type: 'handling',
-      risiko: 'lav',
-      beskrivelse: 'Hente forhåndsbetalt bestilling eller pakke og levere hjem.',
-      /* Familien velger og betaler på forhånd – hjelperen bærer aldri
-         betalingsmiddel eller ansvar for varevalg. */
-      oppgaver: [
-        'Hente forhåndsbetalt matbestilling',
-        'Hente pakke på utleveringssted'
-      ],
-      aldri: [
-        'Kontanter og bytte av varer',
-        'Medisiner',
-        'Alkohol og tobakk',
-        'Økonomiske dokumenter'
-      ]
-    }
-  ];
+  /* Katalog-id → oppgavetype i matchingmotoren (samme felt som
+     kvalifisert-kravet filtrerer på: hjelper.oppgaver). */
+  var TYPE = {
+    samvaer: 'samvaer',
+    digital: 'digital',
+    hjemme: 'praktisk',
+    hent: 'handling'
+  };
 
-  function alle() { return KATEGORIER.slice(); }
+  function oppgaver() {
+    return (window.PP_BESOK && window.PP_BESOK.OPPGAVER) || [];
+  }
+
+  /** Kategoriene, med matchingtypen lagt på. Alt annet er besok-lagerets. */
+  function alle() {
+    return oppgaver().map(function (o) {
+      return {
+        id: o.id,
+        navn: o.navn,
+        risiko: o.risiko,
+        forklaring: o.forklaring,
+        ikke: o.ikke,
+        type: TYPE[o.id] || null
+      };
+    });
+  }
 
   function hent(id) {
-    for (var i = 0; i < KATEGORIER.length; i++) {
-      if (KATEGORIER[i].id === id) return KATEGORIER[i];
-    }
-    return null;
+    return alle().filter(function (k) { return k.id === id; })[0] || null;
   }
 
   /** Kan denne hjelperen ta oppdrag i kategorien? Samme sannhet som
       matchingmotorens `kvalifisert`-krav: typen må være krysset av. */
   function kanTjene(hjelper, kategoriId) {
-    var k = hent(kategoriId);
-    if (!k) return false;
-    return ((hjelper && hjelper.oppgaver) || []).indexOf(k.type) !== -1;
+    var type = TYPE[kategoriId];
+    if (!type) return false;
+    return ((hjelper && hjelper.oppgaver) || []).indexOf(type) !== -1;
   }
 
   /** Kategoriene en hjelper er kvalifisert for – hjelperens «fagområder». */
   function kategorierFor(hjelper) {
-    return KATEGORIER.filter(function (k) { return kanTjene(hjelper, k.id); });
+    return alle().filter(function (k) { return kanTjene(hjelper, k.id); });
   }
 
   return {
+    TYPE: TYPE,
     alle: alle,
     hent: hent,
     kanTjene: kanTjene,

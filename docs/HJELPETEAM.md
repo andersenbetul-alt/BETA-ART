@@ -41,21 +41,24 @@ kategori (PP_BEHOV-regelen står).
 
 ## Pilotutvalget – fire tjenester først
 
-Hele tabellen over er målbildet. Piloten starter smalere: fire tjenester med
-lav risiko, definert i kode i `assets/js/katalog.js` (`PP_KATALOG`), hver med
-faste utfall og sin egen aldri-liste:
+Hele tabellen over er målbildet. Piloten starter smalere: de fire oppgavene
+i besok-lagerets katalog (`PP_BESOK.OPPGAVER`), som eier navn, forklaring,
+ikke-liste og risikonivå. `assets/js/katalog.js` (`PP_KATALOG`) er broen som
+legger matchingtypen oppå – den definerer ingen egen risiko (det ga to svar
+på hva som kan tildeles automatisk; se `docs/team/JURIDISK-MEMO-KONSEPTER.md`):
 
-| Pilotkategori | Type | Aldri |
-|---|---|---|
-| Besøk og samvær | `samvaer` | Terapi, helsevurdering, nattilsyn |
-| Digital hjelp | `digital` | BankID/passord, betaling, fjernstyring |
-| Lett hjemmehjelp | `praktisk` | Trapp/tunge løft, sterke kjemikalier, hovedrengjøring |
-| Hent og lever | `handling` | Kontanter, medisiner, alkohol/tobakk, økonomiske dokumenter |
+| Katalog-id | Type i motoren | Risiko | Betyr |
+|---|---|---|---|
+| `samvaer` | `samvaer` | grønn | Kan tildeles automatisk |
+| `digital` | `digital` | grønn | Kan tildeles automatisk |
+| `hjemme` | `praktisk` | gul | Leverandøren godkjenner tildelingen |
+| `hent` | `handling` | gul | Leverandøren godkjenner tildelingen |
 
 Hjelpernes fagområder er de samme kategoriene: `PP_KATALOG.kategorierFor()`
 leser hvilke typer hjelperen har krysset av (`hjelper.oppgaver`), som er
 samme felt matchingmotorens `kvalifisert`-krav filtrerer på. Ett felt, én
-sannhet – katalogen innfører ikke et parallelt kompetanseregister.
+sannhet – katalogen innfører ikke et parallelt kompetanseregister, og
+risikonivået står ett sted.
 
 Utsatt til kontrollert utvidelse (fall-, transport- og matrisiko): følge til
 avtaler, korte turer, enkel matlaging, kultureskorte. Dørstokken for disse er

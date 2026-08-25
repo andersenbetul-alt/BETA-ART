@@ -432,3 +432,31 @@ deployment-objektet, som ikke nevner pause.
 tilstanden til BEHOLDEREN det ligger i (prosjektet, kontoen) før du
 konkluderer med det uløselige. Og: en diagnose som ender i «kan bare løses
 utenfor systemet» fortjener ett motbevis-forsøk til før den skrives ned.
+
+### Observation 19: Katalogmodulen gjentok et register som allerede fantes
+
+**Status:** OPEN
+**Date:** 2026-08-25
+**Session context:** PP_KATALOG bygget for pilotkategoriene; juridisk-memoet avdekket duplikatet
+**Skill:** New skill candidate: repo-inventar før ny modul
+**Type:** open-source
+**Phase/Area:** Før-skriving
+
+**Issue:** PP_KATALOG ble skrevet med egne id-er, egne tekster og eget
+risikonivå for fire tjenester som allerede lå fullt definert i
+PP_BESOK.OPPGAVER – med ANDRE id-er og STRENGERE risiko. Modulens egen
+header lovet «ett felt, én sannhet» mens den innførte sannhet nummer to.
+Duplikatet ble ikke oppdaget av meg, men av juridisk-agenten som leste
+koden mot regelverket: «hvilke lavrisikooppdrag kan tildeles automatisk»
+hadde to svar. Jeg grep etter matching.js og demodata.js før jeg skrev,
+men søkte aldri etter selve tjenestenavnene («Digital hjelp», «Hent») på
+tvers av repoet.
+
+**Suggested improvement:** Før en ny regelmodul skrives: grep etter
+DOMENEBEGREPENE (tjenestenavn, kategorinavn) i hele assets/js, ikke bare
+etter modul- og feltnavnene du selv planlegger å bruke. Pathfinder-kartet
+(PATHFINDER-*/00-features.md) lister eierskapet og skal konsulteres.
+
+**Principle:** Duplikater oppstår ikke fordi man ikke leter, men fordi man
+leter med sitt eget planlagte vokabular i stedet for domenets. Søk etter
+tingenes navn, ikke etter strukturen du har tenkt å bygge.
