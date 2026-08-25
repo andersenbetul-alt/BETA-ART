@@ -107,13 +107,36 @@ export default async function () {
         equal((await booking({ serviceId: 'nope', details: customer() })).status, 400);
       });
 
-      /* Shelved is shelved. A service that is not in the catalogue must not be
-         bookable by anyone who remembers its id. */
-      await test('a shelved service cannot be booked by id', async () => {
-        for (const id of ['v01', 'sprak', 'sjekk', 'k01', 'k02']) {
-          const r = await booking({ serviceId: id, payment: 'invoice', lang: 'no', details: customer() });
-          equal(r.status, 400, id + ' was accepted');
+      /* A date the server will accept whatever today is: outside the lead
+         time, and never a weekend. */
+      const workday = (() => {
+        for (let d = 4; ; d += 1) {
+          const t = new Date(Date.now() + d * 864e5);
+          if (t.getDay() !== 0 && t.getDay() !== 6) return t.toISOString().slice(0, 10);
         }
+      })();
+
+      /* sjekk stays retired, and made-up ids stay refused — but the two
+         services the owner took back off the shelf must book. */
+      await test('a retired or unknown service cannot be booked by id', async () => {
+        for (const id of ['sjekk', 'k01', 'k02', 'nonsense']) {
+          const r = await booking({ serviceId: id, payment: 'invoice', lang: 'no', details: customer() });
+          equal(r.status, 400, id);
+        }
+      });
+
+      await test('the un-shelved guidance service books like any meeting', async () => {
+        const r = await booking({ serviceId: 'v01', payment: 'invoice', lang: 'no',
+          date: workday, time: '11:30', details: customer() });
+        equal(r.status, 200, JSON.stringify(r.body));
+        assert(/^NAV-/.test(r.body.reference), 'no reference');
+      });
+
+      await test('quote-only tolk books with no amount and no payment', async () => {
+        const r = await booking({ serviceId: 'sprak', payment: 'card', lang: 'no',
+          date: workday, time: '12:30',
+          details: customer({ tolkLang: 'Ukrainsk', tolkDialect: '' }) });
+        equal(r.status, 200, JSON.stringify(r.body));
       });
 
       /* Abuse protection nobody had checked. The suite raises the limit so it

@@ -107,29 +107,32 @@ export default async function () {
       }
     });
 
-    /* The starting portfolio: six career services, in the order the customer
-       meets them, cheapest first. */
-    await test('the catalogue is the starting portfolio', () => {
+    /* The portfolio as decided 24 Aug 2026: the six career services the pilot
+       started with, plus guidance and interpreting back off the shelf. */
+    await test('the catalogue is the agreed portfolio', () => {
       equal(CFG.services.map(s => s.id).join(','),
-        'career_free,career_kit,linkedin,digital,interview,career_review');
-      equal(CFG.services.map(s => s.price).join(','), '0,299,390,390,590,790');
-      assert(CFG.services.every(s => s.group === 'karriere'),
-        'something outside the career line is on sale');
+        'career_free,career_kit,linkedin,digital,interview,career_review,v01,sprak');
+      equal(CFG.services.map(s => s.price).join(','), '0,299,390,390,590,790,590,');
+      const allowed = new Set(['karriere', 'advice', 'tolk']);
+      assert(CFG.services.every(s => allowed.has(s.group)),
+        'a service outside the three agreed lines is on sale');
     });
 
-    /* Shelved, not deleted. They come back when someone asks for them, and
-       until then their translations must not rot. */
-    await test('the shelved services keep their translations', () => {
+    /* 24 Aug 2026: the owner took v01 and sprak back off the shelf, so their
+       translations now live in the catalog like everyone else's. sjekk stays
+       retired — the wizard's built-in scope check replaced it. */
+    await test('the un-shelved services are on sale with translations intact', () => {
       for (const file of LOCALES) {
-        const shelved = load(file).shelved || {};
+        const catalog = load(file).catalog || {};
         for (const id of ['v01', 'sprak']) {
-          assert(shelved[id]?.n && shelved[id]?.d, `${file}: ${id} lost its translation`);
+          assert(catalog[id]?.n && catalog[id]?.d, `${file}: ${id} has no translation`);
         }
       }
       const CFGids = CFG.services.map(s => s.id);
-      for (const id of ['v01', 'sprak', 'sjekk']) {
-        assert(!CFGids.includes(id), `${id} is still on sale`);
-      }
+      for (const id of ['v01', 'sprak']) assert(CFGids.includes(id), `${id} is not on sale`);
+      assert(!CFGids.includes('sjekk'), 'sjekk is still on sale');
+      const sprak = CFG.services.find(s => s.id === 'sprak');
+      assert(sprak.price === null, 'sprak must stay quote-only until an interpreter bench exists');
     });
 
     /* A price on the page with nothing behind it is the worst kind of promise.

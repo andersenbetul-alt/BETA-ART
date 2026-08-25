@@ -131,17 +131,17 @@ export default async function () {
         return { p, errors };
       };
 
-      await test('six offers are shown, and only six', async () => {
+      await test('all eight offers are shown, and only eight', async () => {
         const { p, errors } = await open();
-        equal(await p.locator('#bkBody .service-opt').count(), 6);
-        equal(await p.locator('#priceCards .card').count(), 6);
+        equal(await p.locator('#bkBody .service-opt').count(), 8);
+        equal(await p.locator('#priceCards .card').count(), 8);
         assert(!errors.length, errors.join('; '));
         await p.close();
       });
 
       await test('a delivery service skips the time step', async () => {
         const { p } = await open();
-        await p.locator('#bkBody .service-opt').nth(1).click();   // AI Career Kit
+        await p.locator('#bkBody .service-opt', { hasText: 'AI Career Kit' }).click();
         await p.waitForTimeout(300);
         const steps = await p.locator('#bkSteps li').count();
         equal(steps, 3, 'a delivery service should have three steps, not four');
@@ -224,7 +224,7 @@ export default async function () {
         const p = await openPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
-        await p.locator('#bkBody .service-opt').nth(1).click();   // AI Career Kit
+        await p.locator('#bkBody .service-opt', { hasText: 'AI Career Kit' }).click();
         await p.waitForTimeout(400);
         const placeholder = await p.locator('#bkBody [name="caseText"]').getAttribute('placeholder');
         assert(!/vedtak|brev/i.test(placeholder), 'the career form still asks about a case: ' + placeholder);
@@ -238,7 +238,7 @@ export default async function () {
         const p = await openPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });
         await p.waitForTimeout(900);
-        await p.locator('#bkBody .service-opt').nth(0).click();   // Career Starter
+        await p.locator('#bkBody .service-opt', { hasText: 'Career Starter' }).click();
         await p.waitForTimeout(400);
         equal(await p.locator('#bkBody [name="phone"]').getAttribute('required'), null,
           'the phone field is still required for a career request');

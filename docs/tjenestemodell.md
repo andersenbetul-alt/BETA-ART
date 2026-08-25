@@ -47,7 +47,10 @@ by implication.
 | K04 | Mock interview | 590 NOK | 45 min against a real advert, feedback answer by answer |
 | K05 | CV and application review | 790 NOK | 45 min on one CV and one application, prioritised improvements, one follow-up |
 
-Six services and no more. Not because the rest is risky — practical guidance,
+Eight services: the six career services the pilot started with, plus the two
+below, taken back off the shelf on the owner's decision of 24 August 2026.
+Six was never a ceiling — the wording that follows explains why it started
+narrow. Not because the rest is risky — practical guidance,
 language help, digital admin support and small-business work would all sit
 inside the same boundary — but because a customer has to be able to tell what
 NAVIAR does at a glance, and because a narrow line is one you can actually
@@ -58,10 +61,21 @@ services across career, language, digital admin, digital products and small
 business — is written down in `tjenestekatalog.md` with prices, so "add it when
 someone asks" has something to add from.
 
-**Shelved, not dropped:** Praktisk veiviser (public-service navigation) and
-private language support. Their translations stay in `assets/i18n/*.json` under
-`shelved`, a test keeps them from rotting, and another test makes sure they
-cannot be booked by id while they are off the list.
+| V01 | Praktisk veiviser | 590 NOK | 30 min together and a short written guide: the right public channel, a question list, a practical checklist. One follow-up. Shows the way — never interprets a vedtak, never contacts anyone on the customer's behalf. |
+| S01 | Privat språkstøtte | quote only | Language help in private, everyday settings. Never a replacement for the official interpreter in meetings with a public body (tolkeloven) — the description says so on the card. Quote-only (`price: null`) until an interpreter bench is contracted, so no checkout exists for it. |
+
+**Un-shelved, 24 August 2026:** the owner re-opened public-services guidance
+and interpreting ("kamu hizmetleri danışmanlığı" + "tolke tjeneste"). The
+shelf mechanism worked as designed: translations for both had been kept in
+all ten locales and moved straight back into the catalogue. `sjekk` (the old
+free advice check) stays retired — the wizard's built-in scope check replaced
+it. The refusal list in `hva-vi-gjor.html` is unchanged and binds these two
+services hardest of all.
+
+**The standing rule, set by the owner the same day:** every new concept gets
+a legal check before it is sold — against the refusal list first, and where
+the refusal list does not answer, it goes on the lawyer's question list
+before launch, not after.
 
 Each paid human service has a written scope in `leveranser/karriere/tjenester/`
 saying what the adviser does and where they stop. That is what makes two

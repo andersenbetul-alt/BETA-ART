@@ -70,7 +70,17 @@ window.NAVIAR_CONFIG = {
     { id: 'linkedin',      code: 'K02', price: 390, net: 312, minutes: 0,  type: 'delivery', group: 'karriere', sla: '2 virkedager' },
     { id: 'digital',       code: 'K03', price: 390, net: 312, minutes: 45, type: 'meeting',  group: 'karriere' },
     { id: 'interview',     code: 'K04', price: 590, net: 472, minutes: 45, type: 'meeting',  group: 'karriere' },
-    { id: 'career_review', code: 'K05', price: 790, net: 632, minutes: 45, type: 'meeting',  group: 'karriere' }
+    { id: 'career_review', code: 'K05', price: 790, net: 632, minutes: 45, type: 'meeting',  group: 'karriere' },
+
+    /* Re-opened 24 Aug 2026 by the owner: public-services guidance and
+       interpreting come off the shelf. Same limits as before — the refusal
+       list in hva-vi-gjor.html binds these two hardest of all: guidance shows
+       the way and prepares questions, it never interprets a vedtak; private
+       language support never replaces the official tolk in meetings with a
+       public body (tolkeloven). sprak is quote-only until an interpreter
+       bench exists (price null = no checkout, scope check first). */
+    { id: 'v01',   code: 'V01', price: 590,  net: 472,  minutes: 30, type: 'meeting', group: 'advice' },
+    { id: 'sprak', code: 'S01', price: null, net: null, minutes: 60, type: 'meeting', group: 'tolk', tolk: true }
   ],
 
   /* Surcharges (§12.2). Shown before purchase, never added afterwards. */

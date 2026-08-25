@@ -155,7 +155,9 @@ async function flow() {
   await page.waitForSelector('#bkBody .service-opt');
   const services = page.locator('#bkBody .service-opt');
   console.log(`step 1: ${await services.count()} services offered`);
-  await services.last().click();                       // CV- og søknadsgjennomgang, 790
+  /* By name, not position: the wizard groups services (Rådgivning first), so
+     indexes move whenever the catalogue does. */
+  await page.locator('#bkBody .service-opt', { hasText: 'CV- og søknadsgjennomgang' }).click();
   await page.waitForTimeout(700);
 
   /* 2 — day and time. A day is preselected; Fortsett stays disabled until a
