@@ -323,3 +323,15 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+## 25.08.2026 — NAVIAR CARE: tasarım düzeltmeleri doğrulandı, karar belgesi güncellendi
+
+`brand/naviar/build.py` yeniden çalıştırılıp çıktısı depodaki
+`naviar-care-PENDING-APPROVAL.svg` ile bayt bayt karşılaştırıldı — fark yok.
+P8/P9 için istenen 4 düzeltmeden ikisi (altın oranı %14,0, descriptor cap
+%27) CARE için üretim tarafında zaten karşılanmış; yan çizgi sorunu hiç yok;
+CONSULT→CONSULTING kararı CARE'e uygulanmıyor. `docs/naviar/NAVIAR-LOGO-KARAR.md`
+§3 (P9) ve §6 (madde 5) bu doğrulamayla güncellendi. CARE için açık kalan tek
+şey tasarım değil: iş onayı, sınıf 44 taraması, ayırt edicilik uyarısı,
+sektörel mevzuat kontrolü, doküman birleştirme (KARAR §3 P9, madde 1–5) —
+artı sistem geneli diyagonal açı sapması (kullanıcı onayı bekliyor, CARE'e
+özgü değil).
