@@ -258,6 +258,17 @@ onay/hukuk maddeleridir**, artı sistem geneli diyagonal açı sapması (bkz. §
 "Karar bekliyor" — CARE'e özgü değil, tüm monogram ailesini etkiliyor, bu
 belgenin M1 Stop Condition'ı gereği onaysız değiştirilmedi).
 
+**Hizmet tanımı geldi (25.08.2026, aynı gün):** kullanıcı NAVIAR CARE'i
+"yaşlılar, aileler ve bakım ihtiyacı" için "güvenli yardımcı ve bakım
+koordinasyonu" — doğrulanmış bağımsız sağlayıcıları eşleştiren bir pazar
+yeri modeli olarak tanımladı, B2B/B2G kanalları dahil. Bu, madde 2 (sınıf
+44 taraması) ve madde 4'ü (sektörel mevzuat) artık yanıtlanabilir kılıyor —
+tam analiz, kaynaklarıyla, `docs/naviar/NAVIAR-CARE-HIZMET-TARAMA.md`'de.
+Özet: sınıf tarafı 44'ten çok 45(+42/35)'e kayıyor ama kesinleşmedi; mevzuat
+tarafı B2C pazar yeri mi B2G sözleşmeli sağlayıcı mı kanalına göre ayrışıyor,
+tek cevap yok. Madde 1 (iş onayı) ve madde 3 (ayırt edicilik) bu belgeyle
+değişmedi, hâlâ açık.
+
 ---
 
 ## 4. Ölçülen bulgular
@@ -358,11 +369,16 @@ inhisari hak doğurmaz.
    bkz. §3 P9 doğrulama notu. CONSULT→CONSULTING kararı CARE'e uygulanmıyor.)*
 6. **CARE için iş onayı al**, mimariye resmen ekle, sınıf 44'ü tarama kapsamına
    dahil et. *(Bu madde hâlâ açık — tasarım tarafı tamam, onay/hukuk taraf
-   bekliyor.)*
+   bekliyor; sınıf tarafında 44 yerine 45/42/35 ağırlıklı bir okuma öne
+   çıktı, bkz. docs/naviar/NAVIAR-CARE-HIZMET-TARAMA.md §2.)*
 7. **Tek tagline seç.** Dolaşımda dört satır var: "Intelligence. Strategy.
    Impact." / "Clarity in complex systems." / "Insight. Strategy. Impact." /
-   "Organizational Intelligence Systems." M1 önerisi: *Clarity in complex
-   systems.* Ve tagline master lockup'ın **dışında** kalır.
+   "Organizational Intelligence Systems." *(25.08.2026: CARE tarafından
+   beşinci bir aday geldi — "İnsanların ihtiyaç duyduğu anda, doğru kişiye,
+   doğru bilgiye ve güvenilir hizmete ulaşmasını sağlayan bir yaşam ve
+   hizmet ekosistemi." Karar hâlâ verilmedi, liste büyüdü.)*
+   M1 önerisi: *Clarity in complex systems.* Ve tagline master lockup'ın
+   **dışında** kalır.
 8. **Minimum ölçü ve clear space kurallarını tek tabloda birleştir**
    (M1 ile M2 arasındaki farkı kapat).
 9. **Profesyonel marka temizliği başlat.** 1–8 arası maddeler bunu beklemeden

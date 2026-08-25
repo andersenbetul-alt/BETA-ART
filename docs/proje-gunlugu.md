@@ -335,3 +335,19 @@ CONSULT→CONSULTING kararı CARE'e uygulanmıyor. `docs/naviar/NAVIAR-LOGO-KARA
 sektörel mevzuat kontrolü, doküman birleştirme (KARAR §3 P9, madde 1–5) —
 artı sistem geneli diyagonal açı sapması (kullanıcı onayı bekliyor, CARE'e
 özgü değil).
+
+## 25.08.2026 (devam) — NAVIAR CARE: hizmet tanımı geldi, sınıf/mevzuat notu yazıldı
+
+Kullanıcı oturum içinde parça parça hizmet tanımını verdi: yaşlı/aile bakım
+koordinasyonu, doğrulanmış bağımsız sağlayıcılarla pazar yeri modeli,
+B2B/B2G gelir kanalları. Bu bilgiyle `docs/naviar/NAVIAR-CARE-HIZMET-TARAMA.md`
+yazıldı: Nice sınıf tarama planı (44'ten çok 45/42/35'e kayan ama
+kesinleşmemiş bir okuma) ve Norveç sektörel mevzuat notu (politiattest
+kapsamı, helse- og omsorgstjenesteloven §12-7/12-8, helsepersonelloven §13
+pazarlama kısıtı — hepsi arama özetinden, resmî sayfalar bu ortamda engelli,
+"elle teyit" notuyla). Açık kalan ve uydurulmayan tek soru: B2C pazar yeri
+kanalı ile B2G belediye-sözleşmeli kanalı farklı mevzuata tabi olabilir,
+hangisinin ne zaman geçerli olduğu netleşmedi. `NAVIAR-LOGO-KARAR.md` P9 ve
+§6 madde 6-7 bu bulgularla çapraz referanslandı; beşinci bir tagline adayı
+("yaşam ve hizmet ekosistemi") da kayda geçti. İş onayı (P9 madde 1) hâlâ
+kullanıcının kararı bekliyor.
