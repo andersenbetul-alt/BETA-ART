@@ -673,3 +673,51 @@ five findings and looked correct.
 language. The lesson generalises and the filing does not, so the second
 occurrence looks like a new bug. When a gate is written, the first thing to
 check is whether it fails on the sentence explaining what it checks.
+
+---
+
+### Observation 18: A gate that judges shipped code judged the tool that reports on it
+
+**Status:** ACTIONED · **Tags:** qc.py, evidence-or-blank, gate design
+**Date:** 2026-08-25
+
+**Issue:** A new skill driver, `.claude/skills/evidence-or-blank/check-blanks.js`,
+failed `qc.py` on two findings: *leaves a console.log in shipped code*, and
+*is not in strict mode*. Both rules are correct rules. Neither applies to the
+file, because the file is not shipped — the site never serves `.claude/`, and
+the driver's entire purpose is to print a report to a terminal. It was failed
+for doing the thing it exists to do.
+
+`walk()` already excluded `.git`, `tools`, `docs` and `__pycache__`, for exactly
+this reason. `.claude` was missing from the list, because when that list was
+written the repository had no skills in it. The exclusion was not wrong when it
+was written; it stopped being complete when the project grew a new kind of
+directory that holds code but ships nothing.
+
+This is the **third** appearance of the family in observations 10 and 17 — a
+scanner reading something addressed to us as though it were addressed to a
+visitor. 10 was a gate reading its own Python docstrings. 17 was the same bug
+rewritten in JavaScript the same day. 18 is the same distinction again, moved up
+a level: not *which lines* in a file are product, but *which directories*.
+
+**What was done:** one word added to the exclusion list, with the reason written
+beside it so the next person adding a directory knows the test to apply. Verified
+on both halves per `references/promoting-to-a-gate.md`: the skill driver now
+passes, and a deliberately planted `beta-art/probe.js` containing a bare
+`console.log` is still caught. The exclusion narrows what is scanned; it does not
+blind the gate.
+
+**Suggested improvement:** The question a scanner must answer first is not "does
+this file break a rule?" but **"is this file addressed to a visitor?"** That
+question is answered by the directory far more often than by the file. When a new
+top-level directory appears that holds code the site does not serve, the
+exclusion lists in `qc.py`, `classes.py` and `tokens.py` are the places to look
+before writing anything in it.
+
+**Principle:** An exclusion list is a claim about the shape of the repository,
+and the repository changes shape. `tools/` and `docs/` were excluded when they
+were the only places code lived that nobody visits. `.claude/` became a third
+such place and inherited nothing, because a list of names cannot notice that a
+new name belongs in it. The rule that generalises is the *reason* for the list —
+addressed to us, not to a visitor — and reasons are what should be written down
+next to lists.

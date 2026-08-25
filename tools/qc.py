@@ -51,7 +51,13 @@ def rel(path):
 def walk(ext):
     out = []
     for base, dirs, files in os.walk(ROOT):
-        dirs[:] = [d for d in dirs if d not in (".git", "tools", "docs", "__pycache__")]
+        # ".claude" joins "tools" and "docs" here for the same reason: it holds
+        # agent tooling, not anything the site serves. A driver script's whole
+        # job is to print a report to a terminal, so the console.log and
+        # strict-mode rules — which are about code shipped to a visitor — fail it
+        # for doing exactly what it is for.
+        dirs[:] = [d for d in dirs
+                   if d not in (".git", ".claude", "tools", "docs", "__pycache__")]
         for f in sorted(files):
             if f.endswith(ext):
                 out.append(os.path.join(base, f))

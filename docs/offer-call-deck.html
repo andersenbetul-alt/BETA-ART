@@ -10,21 +10,28 @@
 
 <script>
 /* ──────────────────────────────────────────────────────────────────
-   FILL THESE IN. Anything left null renders as a red NOT SET block, on
-   purpose — a deck with a plausible-looking number in it is one accidental
-   screenshare away from being an offer nobody made.
+   Anything left null renders as a red NOT SET block, on purpose — a deck
+   with a plausible-looking number in it is one accidental screenshare away
+   from being an offer nobody made.
+
+   The terms below are FILLED and derived — see docs/23-offer-package.md §1
+   for the source and arithmetic behind each one. Change any of them you
+   disagree with; they are a recommendation, not a decision taken for you.
+
+   The two that remain null CANNOT be derived. They need a person who has
+   actually interviewed somebody, and no candidate exists in this repository.
    ────────────────────────────────────────────────────────────────── */
 const FIELDS = {
-  candidate:    null,   // "Ola Nordmann"
-  role:         null,   // "Backend Developer"
-  product:      null,   // "Beta Art — the archive and the desk"
-  engagement:   null,   // "Consultant, day rate" — the only form executable today
-  rate:         null,   // "kr 9 500 / day"  ← no band exists in the repo. Decide it.
-  hours:        null,   // "3 days a week"
-  term:         null,   // "Initial 3 months, reviewed at 90 days"
-  start:        null,   // tie to the lawyer review, not a calendar
+  candidate:    null,   // ← no candidate has ever been named. Only you can fill this.
+  role:         "Backend Developer",
+  product:      "Beta Art — the archive and the desk",
+  engagement:   "Consultant — you invoice from your own company",
+  rate:         "kr 8 000 / day (7,5 t · kr 1 067/t)",
+  hours:        "3 days a week",
+  term:         "13 weeks · 39 days · reviewed at day 90",
+  start:        "On signature of the IP assignment",
   reportsTo:    "Betül Öner",
-  why: [                // why THIS person. Replace with what they actually did.
+  why: [                // ← why THIS person. Replace with what they actually did.
     null,
     null,
     null
