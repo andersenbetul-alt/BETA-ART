@@ -192,3 +192,18 @@ dağıtım komutunun önüne alışkanlık olarak eklenmeli.
 **Suggested improvement:** qblogg-operasyon becerisinin kaynak doğrulama bölümüne kısa bir kural: "İstenen araştırma kanalı (ör. Thomson Reuters, engelli kurum siteleri) erişilemezse: (1) sınırı çıktının başında açıkça yaz, (2) erişilebilen kanalla devam et, (3) her kaynağı doğrulama derecesiyle işaretle (tam metin okundu / arama alıntısıyla teyit / doğrulanamadı), (4) erişim sağlanınca yapılacak doğrulama turunu açık iş olarak kaydet."
 
 **Principle:** Erişilemeyen araç, işi durdurma veya uydurma gerekçesi değildir; sınırı belgeleyip doğrulama derecesi işaretli kaynaklarla ilerlemek hem işi teslim eder hem dürüstlüğü korur.
+
+### Observation 10: Kurgusal şirket verisi arama sonucundan "gerçek" gibi dönebiliyor
+
+**Status:** OPEN
+**Date:** 2026-08-25
+**Session context:** Yatırım analizi istekleri (MediTech, CloudBridge/CLDG) — Daloopa/Kensho/S&P/Box bağlayıcıları yokken
+**Skill:** qblogg-operasyon
+**Type:** internal
+**Phase/Area:** Kaynak doğrulama bölümü
+
+**Issue:** "CloudBridge Technologies (CLDG)" için web araması, claude.com'un "Draft investment memos" kullanım örneği sayfasından gelen ÖRNEK rakamları (gelir 1,8→2,8 milyar $ vb.) gerçek şirket verisi gibi döndürdü. Şirketin gerçekliği önce sorgulanmasaydı bu rakamlar IC memosuna girebilirdi. Ayrıca aynı oturumda veri kaynağı hiç var olmayan beş ayrı istek geldi (anket verisi, driver model, ara-şirket mutabakat dosyaları, süreç anlatımı) — hepsinde doğru davranış: önce girdinin varlığını doğrula, yoksa üretme.
+
+**Suggested improvement:** Kaynak doğrulama bölümüne iki kural: (1) Bir şirket/varlık analiz edilecekse önce bağımsız iki kaynakla varlığını doğrula; arama sonucu bir örnek/demo/pazarlama sayfasına çıkıyorsa rakamlarını asla veri olarak kullanma. (2) İstek belirli bir girdi dosyasına/veri kaynağına dayanıyorsa ve o girdi oturumda yoksa, işi uydurarak değil eksik girdiyi adlandırarak yanıtla.
+
+**Principle:** Arama motoru "veri" döndürmesi verinin gerçek olduğu anlamına gelmez; kaynağın ne olduğu (örnek sayfası mı, birincil kaynak mı) rakamın kendisinden önce doğrulanır.
