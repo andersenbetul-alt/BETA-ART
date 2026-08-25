@@ -152,17 +152,12 @@ human browser talk to the API you have to edit `apiBase` in
   `stripe` live in `server/node_modules`, not the root one — the root has only
   `axe-core`. `npm install` at the root does not install them.
 
-- **`admin.html` renders "FIT CHECKS" on a stat card.** Leftover wording from
-  the v1 `fit_checked` status, renamed to `in_review` in schema v2. Cosmetic.
+- **The admin stat card for the need-finder tally reads "Need-finder answers".**
+  It rendered "FIT CHECKS" (leftover v1 `fit_checked` wording) until 25 Aug 2026.
 
-- **A career booking with no phone number is rejected by the server.** The form
-  marks phone optional ("Valgfritt. Vi trenger bare navn, e-post, språk og hva
-  du vil oppnå") and lets you past step 3 without it, but `server/server.js:270`
-  requires it unconditionally, so submitting returns `400 missing_fields` and
-  the customer sees *"Noe gikk galt."* Reproduce with the `booking without a
-  phone` line of `driver.mjs api`. The test suite cannot see this: the browser
-  suite runs in demo mode so it never posts, and every server test sends a
-  phone. `driver.mjs flow` fills the field so it exercises the path that works.
+- **A career booking without a phone number is accepted** (fixed 25 Aug 2026):
+  the server now mirrors the form and requires a phone only for non-karriere
+  services. `tests/server.test.mjs` covers both directions.
 
 ## Troubleshooting
 

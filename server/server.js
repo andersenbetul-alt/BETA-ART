@@ -438,6 +438,76 @@ app.post('/api/needs', throttle(120, 60 * 60 * 1000), (req, res) => {
   res.json({ ok: true });
 });
 
+/* An expert asks to join. This creates an application, nothing more: no case
+   reaches an adviser before a person has approved them, and the public answer
+   never says who is already registered. Same data floor as everything else —
+   name, contact, what they consult on. Nothing sensitive is asked or kept. */
+app.post('/api/advisers', throttle(10, 60 * 60 * 1000), (req, res) => {
+  const b = req.body || {};
+  const name = str(b.name, 120);
+  const email = str(b.email, 160);
+  const specialty = str(b.specialty, 200);
+  if (!name || !EMAIL_RE.test(email) || !specialty) {
+    return res.status(400).json({ error: 'missing_fields' });
+  }
+  if (b.consent !== true) return res.status(400).json({ error: 'consent_required' });
+  try {
+    DB.insertAdviser(db, {
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+      name, email,
+      phone: str(b.phone, 40) || null,
+      lang: str(b.lang, 5) || null,
+      specialty,
+      bio: str(b.bio, 2000)
+    });
+  } catch (err) {
+    if (/UNIQUE/.test(err.message)) return res.status(409).json({ error: 'email_taken' });
+    throw err;
+  }
+  res.json({ ok: true });
+});
+
+app.get('/api/admin/advisers', throttle(60, 60 * 1000), requireAdmin, (req, res) => {
+  res.json({ statuses: DB.ADVISER_STATUS, transitions: DB.ADVISER_TRANSITIONS,
+             advisers: DB.advisers(db) });
+});
+
+app.post('/api/admin/adviser', throttle(120, 60 * 1000), requireAdmin, (req, res) => {
+  const b = req.body || {};
+  const id = str(b.id, 64);
+  const status = str(b.status, 24);
+  if (status && !DB.ADVISER_STATUS.includes(status)) {
+    return res.status(400).json({ error: 'bad_status' });
+  }
+  const note = typeof b.note === 'string' ? str(b.note, 2000) : undefined;
+  const row = DB.setAdviserStatus(db, id, status || null, note);
+  if (row === 'bad_transition') return res.status(409).json({ error: 'bad_transition' });
+  if (!row) return res.status(404).json({ error: 'not_found' });
+  res.json({ adviser: row });
+});
+
+app.post('/api/admin/assign', throttle(120, 60 * 1000), requireAdmin, (req, res) => {
+  const b = req.body || {};
+  const out = DB.assignAdviser(db, str(b.reference, 32), str(b.adviserId, 64));
+  if (out === 'no_booking' || out === 'no_adviser') return res.status(404).json({ error: out });
+  if (out === 'bad_state' || out === 'adviser_not_approved') return res.status(409).json({ error: out });
+  res.json({ booking: out });
+});
+
+app.get('/api/admin/commissions', throttle(60, 60 * 1000), requireAdmin, (req, res) => {
+  res.json(DB.commissions(db));
+});
+
+/* The stamp that says the adviser has been paid — by a person, from the bank,
+   outside this system. The pilot moves no money on its own. */
+app.post('/api/admin/payout', throttle(120, 60 * 1000), requireAdmin, (req, res) => {
+  const id = Number(req.body && req.body.id);
+  if (!Number.isInteger(id) || id < 1) return res.status(400).json({ error: 'bad_id' });
+  if (!DB.markPaidOut(db, id)) return res.status(409).json({ error: 'not_pending' });
+  res.json({ ok: true });
+});
+
 app.get('/api/admin/queue', throttle(60, 60 * 1000), requireAdmin, (req, res) => {
   const q = DB.queue(db, req.query.limit);
   res.json({

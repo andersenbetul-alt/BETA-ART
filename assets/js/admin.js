@@ -14,6 +14,7 @@
 
   var token = '';
   var data = null;
+  var advisers = null;
   var view = 'cases';
   var finderLabels = null;       // filled from the Norwegian locale
 
@@ -88,10 +89,19 @@
   });
 
   function load() {
-    return call('/api/admin/queue?limit=200').then(function (res) {
-      data = res;
-      return res;
+    return Promise.all([
+      call('/api/admin/queue?limit=200'),
+      call('/api/admin/advisers')
+    ]).then(function (out) {
+      data = out[0];
+      advisers = out[1];
+      return data;
     });
+  }
+
+  function adviserName(id) {
+    var hit = (advisers && advisers.advisers || []).filter(function (a) { return a.id === id; })[0];
+    return hit ? hit.name : id;
   }
 
   /* --------------------------------------------------------------- render */
@@ -102,6 +112,8 @@
     host.innerHTML = '';
     if (view === 'cases') renderCases(host);
     else if (view === 'enquiries') renderEnquiries(host);
+    else if (view === 'advisers') renderAdvisers(host);
+    else if (view === 'payouts') renderPayouts(host);
     else renderInsights(host);
   }
 
@@ -116,7 +128,7 @@
       ['Revenue', c.revenue.toLocaleString('nb-NO') + ' kr'],
       ['Delivered', c.delivered],
       ['Enquiries', c.enquiries],
-      ['Fit checks', c.needs]
+      ['Need-finder answers', c.needs]
     ].forEach(function (pair) {
       var box = el('div', 'count');
       box.appendChild(el('strong', null, String(pair[1])));
@@ -159,8 +171,44 @@
       fact(facts, 'Source', b.source);
       fact(facts, 'Interpreter', b.tolk_lang ? b.tolk_lang + (b.tolk_dialect ? ' / ' + b.tolk_dialect : '') : null);
       fact(facts, 'Scope confirmed', b.low_risk ? 'yes — practical help only' : 'NO — do not start work');
+      fact(facts, 'Adviser', b.adviser_id ? adviserName(b.adviser_id) : null);
       fact(facts, 'Created', new Date(b.created_at).toLocaleString('nb-NO'));
       card.appendChild(facts);
+
+      /* While the case sits in 'assigning', offer exactly the advisers the
+         server would accept: the approved ones. */
+      if (b.status === 'assigning') {
+        var approved = (advisers && advisers.advisers || []).filter(function (a) {
+          return a.status === 'approved';
+        });
+        var row = el('div', 'case-actions');
+        var pick = el('select');
+        var none = el('option', null, approved.length ? 'Choose adviser…' : 'No approved advisers yet');
+        none.value = '';
+        pick.appendChild(none);
+        approved.forEach(function (a) {
+          var o = el('option', null, a.name + ' — ' + a.specialty);
+          o.value = a.id;
+          pick.appendChild(o);
+        });
+        pick.disabled = !approved.length;
+        var assign = el('button', 'btn btn-outline', 'Assign');
+        assign.type = 'button';
+        assign.addEventListener('click', function () {
+          if (!pick.value) return;
+          assign.disabled = true;
+          call('/api/admin/assign', {
+            method: 'POST',
+            body: { reference: b.reference, adviserId: pick.value }
+          }).then(load).then(render).catch(function (err) {
+            assign.disabled = false;
+            show(byId('err'), err.message);
+          });
+        });
+        row.appendChild(pick);
+        row.appendChild(assign);
+        card.appendChild(row);
+      }
 
       card.appendChild(el('div', 'case-text', b.case_text));
 
@@ -278,6 +326,122 @@
     });
   }
 
+  function renderAdvisers(host) {
+    host.appendChild(el('p', 'lead',
+      'Everyone who has asked to consult through NAVIAR. Nobody receives a case ' +
+      'before they are approved here — and approval is a decision, not a click-through: ' +
+      'check who they are first.'));
+    var list = (advisers && advisers.advisers) || [];
+    if (!list.length) {
+      host.appendChild(el('p', 'slots-empty', 'No applications yet.'));
+      return;
+    }
+    list.forEach(function (a) {
+      var card = el('article', 'case');
+      var top = el('div', 'case-top');
+      top.appendChild(el('span', 'ref', a.name));
+      top.appendChild(el('span', 'pill ' + (a.status === 'approved' ? 'delivered' : a.status === 'applied' ? 'new' : 'cancelled'), a.status));
+      card.appendChild(top);
+
+      var facts = el('div', 'facts');
+      fact(facts, 'Consults on', a.specialty);
+      fact(facts, 'Email', a.email);
+      fact(facts, 'Phone', a.phone);
+      fact(facts, 'Language', a.lang);
+      fact(facts, 'Applied', new Date(a.created_at).toLocaleString('nb-NO'));
+      card.appendChild(facts);
+      if (a.bio) card.appendChild(el('div', 'case-text', a.bio));
+
+      var actions = el('div', 'case-actions');
+      var select = el('select');
+      var allowed = [a.status].concat((advisers.transitions && advisers.transitions[a.status]) || []);
+      allowed.forEach(function (s) {
+        var o = el('option', null, s);
+        o.value = s;
+        if (s === a.status) o.selected = true;
+        select.appendChild(o);
+      });
+      select.disabled = allowed.length < 2;
+      var note = el('input');
+      note.type = 'text';
+      note.placeholder = 'Internal note (checks done, agreement state)';
+      note.value = a.internal_note || '';
+      var save = el('button', 'btn btn-outline', 'Save');
+      save.type = 'button';
+      save.addEventListener('click', function () {
+        save.disabled = true;
+        call('/api/admin/adviser', {
+          method: 'POST',
+          body: { id: a.id, status: select.value, note: note.value }
+        }).then(load).then(render).catch(function (err) {
+          save.disabled = false;
+          show(byId('err'), err.message);
+        });
+      });
+      actions.appendChild(select);
+      actions.appendChild(note);
+      actions.appendChild(save);
+      card.appendChild(actions);
+      host.appendChild(card);
+    });
+  }
+
+  function renderPayouts(host) {
+    host.appendChild(el('p', 'lead',
+      'What each delivered case split into, and what is still owed. "Paid out" is a ' +
+      'stamp you set after paying from the bank — nothing here moves money.'));
+    call('/api/admin/commissions').then(function (led) {
+      if (led.owed.length) {
+        var owedBox = el('div');
+        owedBox.appendChild(el('h3', null, 'Owed now'));
+        led.owed.forEach(function (o) {
+          var row = el('div', 'bar-row');
+          row.appendChild(el('span', null, o.name));
+          row.appendChild(el('strong', null, o.net.toLocaleString('nb-NO') + ' kr'));
+          owedBox.appendChild(row);
+        });
+        owedBox.style.marginBottom = '26px';
+        host.appendChild(owedBox);
+      }
+      if (!led.rows.length) {
+        host.appendChild(el('p', 'slots-empty', 'No delivered cases with money on them yet.'));
+        return;
+      }
+      led.rows.forEach(function (r) {
+        var card = el('article', 'case');
+        var top = el('div', 'case-top');
+        top.appendChild(el('span', 'ref', r.reference));
+        top.appendChild(el('span', 'pill ' + (r.paid_out_at ? 'delivered' : 'new'),
+                           r.paid_out_at ? 'paid out' : 'pending'));
+        card.appendChild(top);
+        var facts = el('div', 'facts');
+        fact(facts, 'Adviser', r.adviser_name);
+        fact(facts, 'Customer paid', r.amount + ' kr');
+        fact(facts, 'NAVIAR commission', r.commission + ' kr');
+        fact(facts, 'Owed to adviser', r.net + ' kr');
+        fact(facts, 'Delivered', new Date(r.at).toLocaleString('nb-NO'));
+        fact(facts, 'Paid out', r.paid_out_at ? new Date(r.paid_out_at).toLocaleString('nb-NO') : null);
+        card.appendChild(facts);
+        if (!r.paid_out_at) {
+          var actions = el('div', 'case-actions');
+          var btn = el('button', 'btn btn-outline', 'Mark paid out');
+          btn.type = 'button';
+          btn.addEventListener('click', function () {
+            btn.disabled = true;
+            call('/api/admin/payout', { method: 'POST', body: { id: r.id } })
+              .then(render).catch(function (err) {
+                btn.disabled = false;
+                show(byId('err'), err.message);
+              });
+          });
+          actions.appendChild(btn);
+          card.appendChild(actions);
+        }
+        host.appendChild(card);
+      });
+    }).catch(function (err) { show(byId('err'), err.message); });
+  }
+
   /* The need finder answers arrive as indexes, so borrow the Norwegian labels
      from the site's own translation file rather than duplicating them here. */
   function labels() {
@@ -318,7 +482,7 @@
 
   function renderInsights(host) {
     host.appendChild(el('p', 'lead',
-      'Every fit check answered by a visitor, with no personal data attached. ' +
+      'Every need-finder answer from a visitor, with no personal data attached. ' +
       'This is the honest answer to “what do people actually need help with”.'));
 
     Promise.all([call('/api/insights'), labels()]).then(function (out) {

@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 const PORT = 8792;
 const BASE = `http://127.0.0.1:${PORT}`;
 const PAGES = ['index.html?lang=no', 'index.html?lang=ar', 'personvern.html', 'vilkar.html',
-               'hva-vi-gjor.html', 'karriere.html', 'admin.html'];
+               'hva-vi-gjor.html', 'karriere.html', 'radgiver.html', 'admin.html'];
 const WCAG = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 
 /* playwright is a devDependency, so `npm ci` provides it. The absolute path is
@@ -220,6 +220,15 @@ export default async function () {
     });
 
     await suite('career', async () => {
+      await test('the chosen language survives the walk to the career page', async () => {
+        const p = await openPage();
+        await p.goto(`${BASE}/index.html?lang=en`, { waitUntil: 'load' });
+        await p.waitForTimeout(700);
+        const href = await p.locator('.nav-links a[href*="karriere.html"]').first().getAttribute('href');
+        assert(/[?&]lang=en\b/.test(href), 'career link lost the language: ' + href);
+        await p.close();
+      });
+
       await test('the career form asks for a goal and refuses documents', async () => {
         const p = await openPage();
         await p.goto(`${BASE}/index.html?lang=no`, { waitUntil: 'load' });

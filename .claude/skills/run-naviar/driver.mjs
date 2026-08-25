@@ -35,7 +35,7 @@ function playwright() {
   throw new Error('playwright is missing. Run: npm install playwright');
 }
 
-const PAGES = ['index.html', 'karriere.html', 'hva-vi-gjor.html',
+const PAGES = ['index.html', 'karriere.html', 'radgiver.html', 'hva-vi-gjor.html',
                'personvern.html', 'vilkar.html', 'admin.html'];
 
 function shotPath(name) {
@@ -172,9 +172,8 @@ async function flow() {
   await page.fill('#bkBody [name=name]', 'Driver Testesen');
   await page.fill('#bkBody [name=email]', 'driver@example.com');
   await page.fill('#bkBody [name=caseText]', 'Vil ha gjennomgang av CV og soknad.');
-  /* The field is optional in the form and rejected by the server — see Gotchas.
-     Filled here so this command exercises the path that works; `api` has the
-     one-line reproduction of the path that does not. */
+  /* Optional in the form and (since 25 Aug 2026) accepted without one by the
+     server; filled anyway so the flow exercises the fullest form. */
   await page.fill('#bkBody [name=phone]', '+4740000000');
   await page.check('#bkBody [name=consent]');
   await page.locator('#bkBody .finder-nav .btn-primary').click();
@@ -261,11 +260,11 @@ async function api() {
     post({ serviceId: 'career_review', payment: 'invoice', lang: 'no',
            details: customer({ lowRisk: undefined }) }));
 
-  /* The career form marks phone optional and the data floor says the first
-     form takes name, email, language and goal only — but the server requires
-     it. A customer who follows the form's own hint loses their booking. */
+  /* The career form marks phone optional, and since 25 Aug 2026 the server
+     agrees. career_kit is a delivery service, so no slot is needed and the
+     answer should be a clean 200. A 400 here means the promise broke again. */
   await call('booking without a phone', `${API}/api/bookings`,
-    post({ serviceId: 'career_review', payment: 'invoice', lang: 'no',
+    post({ serviceId: 'career_kit', payment: 'invoice', lang: 'no',
            details: customer({ phone: '' }) }));
 
   /* A meeting service needs a real slot: the server refuses weekends, anything

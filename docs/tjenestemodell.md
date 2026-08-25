@@ -318,9 +318,22 @@ actually pay 800 NOK, and whether advisers deliver reliably. Neither question
 is answered by software. Automatic matching and richer task management come
 after the answers, not before.
 
-The same reasoning is why the launch kit's *do not build yet* list still holds:
-no adviser marketplace, no customer accounts, no subscriptions, no reviews, no
-document upload, no AI legal advice, no app, no commission accounting.
+The same reasoning is why most of the launch kit's *do not build yet* list
+still holds: no customer accounts, no subscriptions, no reviews, no document
+upload, no AI legal advice, no app.
+
+Two items left that list on the owner's decisions of 24–25 August 2026
+(experts register themselves and consult in their own field; NAVIAR takes a
+commission from the payment it collects): the pilot now has an **adviser
+registry** (self-registration on `radgiver.html`, approval by a person,
+assignment only while a case is in `assigning`, and only to an approved
+adviser) and a **commission ledger** (the split of the customer's payment is
+written when the case is delivered; payout to the adviser is a manual stamp).
+Every entry in the list above stays manual: a person approves each adviser,
+chooses the adviser for each case, and releases each payment. Automatic
+matching and automatic payout remain unbuilt on purpose. The commission rate
+is not published; it stands in the written agreement each adviser receives
+before signing.
 
 ## 7a. Sources
 

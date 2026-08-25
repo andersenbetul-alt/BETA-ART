@@ -100,8 +100,52 @@ const SCHEMA = [
      that has already closed. */
   `
   ALTER TABLE bookings ADD COLUMN low_risk INTEGER NOT NULL DEFAULT 0;
+  `,
+  /* v4 — the marketplace foundation (owner's 24/25 Aug 2026 decisions):
+     external advisers register themselves, a person approves them, a case in
+     'assigning' is given to one approved adviser, and the moment the case is
+     delivered the split of the customer's payment is written to a ledger.
+     Payout is a manual stamp for the pilot — no money moves by itself. */
+  `
+  CREATE TABLE advisers (
+    id            TEXT PRIMARY KEY,
+    created_at    TEXT NOT NULL,
+    status        TEXT NOT NULL DEFAULT 'applied',
+    name          TEXT NOT NULL,
+    email         TEXT NOT NULL UNIQUE,
+    phone         TEXT,
+    lang          TEXT,
+    specialty     TEXT NOT NULL,
+    bio           TEXT NOT NULL DEFAULT '',
+    internal_note TEXT NOT NULL DEFAULT ''
+  );
+  CREATE INDEX idx_advisers_status ON advisers(status, created_at);
+
+  ALTER TABLE bookings ADD COLUMN adviser_id TEXT REFERENCES advisers(id);
+
+  CREATE TABLE commissions (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    at          TEXT NOT NULL,
+    reference   TEXT NOT NULL UNIQUE REFERENCES bookings(reference),
+    adviser_id  TEXT NOT NULL REFERENCES advisers(id),
+    amount      INTEGER NOT NULL,
+    commission  INTEGER NOT NULL,
+    net         INTEGER NOT NULL,
+    paid_out_at TEXT
+  );
+  CREATE INDEX idx_commissions_adviser ON commissions(adviser_id, paid_out_at);
   `
 ];
+
+/* An adviser consults nobody until a person has approved them; paused and
+   retired both stop new assignments, and only paused can come back. */
+const ADVISER_STATUS = ['applied', 'approved', 'paused', 'retired'];
+const ADVISER_TRANSITIONS = {
+  applied:  ['approved', 'retired'],
+  approved: ['paused', 'retired'],
+  paused:   ['approved', 'retired'],
+  retired:  []
+};
 
 /* The statuses a case can hold, in the order of the workflow. */
 const BOOKING_STATUS = [
@@ -273,6 +317,7 @@ function setBookingStatus(db, reference, status, note) {
     if (!nextStatuses(row.status).includes(status)) return 'bad_transition';
     db.prepare('UPDATE bookings SET status = ? WHERE reference = ?').run(status, reference);
     logEvent(db, reference, 'status', row.status + ' → ' + status);
+    if (status === 'delivered') recordCommission(db, reference);
   }
   if (typeof note === 'string') {
     db.prepare('UPDATE bookings SET internal_note = ? WHERE reference = ?').run(note, reference);
@@ -291,6 +336,95 @@ function setEnquiryStatus(db, id, status, note) {
     db.prepare('UPDATE enquiries SET internal_note = ? WHERE id = ?').run(note, id);
   }
   return db.prepare('SELECT * FROM enquiries WHERE id = ?').get(id);
+}
+
+/* --------------------------------------------------------------- advisers */
+function insertAdviser(db, a) {
+  db.prepare(`
+    INSERT INTO advisers (id, created_at, status, name, email, phone, lang, specialty, bio)
+    VALUES (?,?,?,?,?,?,?,?,?)
+  `).run(a.id, a.createdAt, 'applied', a.name, a.email,
+         a.phone ?? null, a.lang ?? null, a.specialty, a.bio ?? '');
+  logEvent(db, a.id, 'adviser_applied', a.specialty);
+  return a;
+}
+
+function setAdviserStatus(db, id, status, note) {
+  const row = db.prepare('SELECT status FROM advisers WHERE id = ?').get(id);
+  if (!row) return null;
+  if (status && status !== row.status) {
+    if (!(ADVISER_TRANSITIONS[row.status] || []).includes(status)) return 'bad_transition';
+    db.prepare('UPDATE advisers SET status = ? WHERE id = ?').run(status, id);
+    logEvent(db, id, 'adviser_status', row.status + ' → ' + status);
+  }
+  if (typeof note === 'string') {
+    db.prepare('UPDATE advisers SET internal_note = ? WHERE id = ?').run(note, id);
+  }
+  return db.prepare('SELECT * FROM advisers WHERE id = ?').get(id);
+}
+
+/* A case is given to an adviser only while a person is choosing one — the
+   'assigning' step — and only to an adviser someone has approved. Both are
+   errors, not warnings: an assignment outside these rules is how a case
+   reaches a stranger. */
+function assignAdviser(db, reference, adviserId) {
+  const booking = db.prepare('SELECT status FROM bookings WHERE reference = ?').get(reference);
+  if (!booking) return 'no_booking';
+  if (booking.status !== 'assigning') return 'bad_state';
+  const adviser = db.prepare('SELECT status FROM advisers WHERE id = ?').get(adviserId);
+  if (!adviser) return 'no_adviser';
+  if (adviser.status !== 'approved') return 'adviser_not_approved';
+  db.prepare('UPDATE bookings SET adviser_id = ? WHERE reference = ?').run(adviserId, reference);
+  logEvent(db, reference, 'assigned', adviserId);
+  return db.prepare('SELECT * FROM bookings WHERE reference = ?').get(reference);
+}
+
+/* The split is written when the work is delivered, from the numbers the
+   booking has carried since it was priced from the catalogue: `amount` is the
+   gross the customer paid, `commission` is NAVIAR's cut of the ex-MVA fee,
+   and `net` is what the adviser is owed — the ex-MVA fee minus that cut.
+   One row per case, ever — OR IGNORE keeps a replayed transition from paying
+   twice. A case with no adviser or no money attached (free or quote-only)
+   records nothing. */
+function recordCommission(db, reference) {
+  const b = db.prepare(
+    'SELECT adviser_id, amount, net, commission FROM bookings WHERE reference = ?'
+  ).get(reference);
+  /* !amount covers both the quote-only null and the free service's 0 —
+     a 0 kr ledger row would only be noise in the payout list. */
+  if (!b || !b.adviser_id || !b.amount || b.net == null || b.commission == null) return false;
+  const done = db.prepare(`
+    INSERT OR IGNORE INTO commissions (at, reference, adviser_id, amount, commission, net)
+    VALUES (?,?,?,?,?,?)
+  `).run(new Date().toISOString(), reference, b.adviser_id, b.amount,
+         b.commission, b.net - b.commission).changes;
+  if (done) logEvent(db, reference, 'commission', b.commission + '/' + b.amount);
+  return done > 0;
+}
+
+function markPaidOut(db, id) {
+  return db.prepare(
+    'UPDATE commissions SET paid_out_at = ? WHERE id = ? AND paid_out_at IS NULL'
+  ).run(new Date().toISOString(), id).changes > 0;
+}
+
+function advisers(db) {
+  return db.prepare('SELECT * FROM advisers ORDER BY created_at DESC LIMIT 500').all();
+}
+
+function commissions(db) {
+  return {
+    rows: db.prepare(`
+      SELECT c.*, a.name AS adviser_name FROM commissions c
+      JOIN advisers a ON a.id = c.adviser_id
+      ORDER BY c.paid_out_at IS NOT NULL, c.at DESC LIMIT 500
+    `).all(),
+    owed: db.prepare(`
+      SELECT a.id, a.name, COALESCE(SUM(c.net), 0) AS net
+      FROM commissions c JOIN advisers a ON a.id = c.adviser_id
+      WHERE c.paid_out_at IS NULL GROUP BY a.id ORDER BY net DESC
+    `).all()
+  };
 }
 
 /* ------------------------------------------------------------------ reads */
@@ -367,7 +501,10 @@ function counts(db) {
 
 module.exports = {
   open, BOOKING_STATUS, BOOKING_TRANSITIONS, BOOKING_ON_US, ENQUIRY_STATUS, nextStatuses,
+  ADVISER_STATUS, ADVISER_TRANSITIONS,
   insertBooking, insertEnquiry, insertNeed,
   markPaid, setBookingStatus, setEnquiryStatus,
+  insertAdviser, setAdviserStatus, assignAdviser, recordCommission, markPaidOut,
+  advisers, commissions,
   referenceTaken, takenSlots, slotClash, queue, events, tally, counts, logEvent
 };
