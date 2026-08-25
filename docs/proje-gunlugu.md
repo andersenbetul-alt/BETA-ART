@@ -408,3 +408,11 @@ gerçek referansa bağlandı: content/.../linkedin.md (5 postluk seri).
 Sade sürüm yazıldı: linkedin-sade.md — post başına tek çıkarım, rakam
 yoğunluğu bire indirildi, yeni iddia eklenmedi (uydurma yasağı); iki
 sürüm kitleye göre seçilecek (uzman → linkedin.md, genel → sade).
+## 25.08.2026 (devam) — AI brifing belgesi (kurs alıştırmasından)
+
+AI Fluency kursunun "değer tanımlama" alıştırması proje kayıtlarından
+sentezlendi: docs/ai-brifing.md — diğer AI sohbetlerine yapıştırılacak
+taşınabilir bağlam belgesi. Kritik bölümü "KARARA BAĞLI" listesi: başka
+asistanların çoktan verilmiş kararları (tek deney, QBLOGG çatı adı,
+kanıt kapısı) yeniden açmasını önlemek için. Boşluk cümlesinin yaşam
+kalitesi yarısı bilinçli boş — kullanıcının kendi cümlesi.
