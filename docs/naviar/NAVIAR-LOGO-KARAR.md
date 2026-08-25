@@ -340,7 +340,8 @@ inhisari hak doğurmaz.
    mı — biri master, diğeri arşiv. Seçilen, %12–16 altın oranına çekilir.
 4. **Master NAVIAR'ı üret** (descriptor'suz). Sistem bunsuz yayına alınamaz.
 5. **P8/P9'un 4 düzeltmesini uygula**; descriptor'ü beyaz zeminde lacivert yap
-   (kontrast bulgusu), boyunu %24–30'a çek, CONSULT→CONSULTING kararını ver.
+   (kontrast bulgusu), boyunu %24–30'a çek, CONSULT→CONSULTING kararını ver
+   *(karar verildi: CONSULTING — bkz. §8)*.
 6. **CARE için iş onayı al**, mimariye resmen ekle, sınıf 44'ü tarama kapsamına
    dahil et.
 7. **Tek tagline seç.** Dolaşımda dört satır var: "Intelligence. Strategy.
@@ -363,3 +364,34 @@ inhisari hak doğurmaz.
   yok. İçindeki tek kesişen nokta genel bir ilkedir ve NAVIAR için de geçerlidir:
   *tescil edilmemiş bir isim altında ticari yayılma, en ucuz yüksek değerli
   aksiyonun ertelenmesidir.*
+
+---
+
+## 8. Ek karar (25.08.2026) — CONSULT / CONSULTING adlandırması kapatıldı
+
+§6 madde 5'in beklettiği tek kalem karara bağlandı: **resmi servis seviyesi
+adı CONSULTING'dir.** CONSULT resmi mimariye alınmaz.
+
+Gerekçe:
+
+1. **Mimari zaten CONSULTING üzerine kurulu.** `build.py`'deki onaylı
+   descriptor listesi (`APPROVED`) ve üretilmiş tek dosya
+   (`descriptors/naviar-consulting.svg`) hep CONSULTING'i taşıyor; P8'in
+   kendi metni de "descriptor adı yanlış... CONSULT mimaride yok" diyerek
+   CONSULTING'i esas alıyor. CONSULT'a geçmek üretilmiş tek varlığı da
+   değiştirmeyi gerektirirdi, CONSULTING hiçbirini değiştirmiyor.
+2. **Hukuki tarama zaten CONSULTING baz alınarak yapıldı** (§5, "Navier
+   Consulting" karşılaştırması). CONSULT'a geçmek bu karşılaştırmayı
+   geçersiz kılar ve taramanın yeniden yapılmasını gerektirirdi.
+3. **Ayırt edicilik.** "Consult" tek başına bir fiildir (İngilizce'de daha
+   çıplak/tanımlayıcı); "Consulting" hizmet sınıfı adlandırmasında yerleşik
+   bir isim biçimidir ve NAVIAR'ın diğer descriptor'larıyla (PLATFORM,
+   ACADEMY, LABS — hepsi isim) biçimsel olarak tutarlıdır. CONSULT bu
+   kalıbı bozardı.
+
+**Kapsam:** Bu karar yalnız *ileriye dönük* mimariyi bağlar. P1, P6 ve P8'in
+yukarıdaki başlıklarında geçen "NAVIAR CONSULT" ifadesi, o projelerin
+sunulduğu andaki gerçek adı olduğu için **değiştirilmedi** — tarihsel kayıt
+bozulmaz (bkz. §2 giriş: "Her logo ayrı bir proje olarak... değerlendirilmiştir").
+P8 zaten "descriptor CONSULTING olarak düzeltilir" koşuluyla koşullu kabul
+edilmişti (madde 207-214); bu ek, o koşulu kesinleştirir.

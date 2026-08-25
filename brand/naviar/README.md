@@ -97,7 +97,9 @@ NAVIAR'ı çevirmek, aynalamak, döndürmek.
 1. Diyagonal açı sapması — onay bekliyor (yukarı bkz.).
 2. Descriptor'lar `<text>` olarak yerleştirilmiştir; üretimde outline'a
    çevrilmelidir. Master wordmark ve monogram zaten custom outline vektördür.
-3. CONSULT / CONSULTING adlandırma kararı verilmedi; mimaride CONSULTING geçiyor.
+3. ~~CONSULT / CONSULTING adlandırma kararı verilmedi~~ — 25.08.2026'da karara
+   bağlandı: resmi ad **CONSULTING** (bkz. `docs/naviar/NAVIAR-LOGO-KARAR.md` §8).
+   CONSULT yalnız P1/P6/P8'in arşivlenmiş özgün adı olarak tarihsel kayıtta kalır.
 4. CARE iş onayı ve ayrı marka taraması bekliyor.
 5. Profesyonel marka temizliği yapılmadan tescil, tabela ve rollout yapılamaz.
    Ön risk: orta-yüksek (NAVAIR / NAVIER yakınlığı).

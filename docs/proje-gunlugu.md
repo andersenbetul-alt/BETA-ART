@@ -323,3 +323,14 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+
+## 25.08.2026 — NAVIAR: CONSULT/CONSULTING adlandırma kararı kapatıldı
+
+`docs/naviar/NAVIAR-LOGO-KARAR.md`'nin açık bıraktığı tek adlandırma sorusu
+karara bağlandı: resmi servis seviyesi adı **CONSULTING**. Gerekçe (karar
+dokümanına §8 olarak eklendi): mimari zaten CONSULTING üzerine kurulu
+(`build.py` → `APPROVED`, tek üretilmiş descriptor dosyası), hukuki tarama
+CONSULTING baz alınarak yapılmıştı, ve isim biçimi diğer descriptor'larla
+(PLATFORM, ACADEMY, LABS) tutarlı. P1/P6/P8'in tarihsel başlıklarındaki
+"NAVIAR CONSULT" ifadesi değiştirilmedi — o, projelerin sunulduğu andaki
+gerçek adı. `brand/naviar/README.md`'deki açık kalem güncellendi.
