@@ -396,6 +396,28 @@ yayını) teyit edilmedi — yani Gate 1 hâlâ açık değil. Karar: enerji
 haritasi.md` affiliate içeriği) döndürülüyor. Q'ya sonraki dönüş şartı:
 kullanıcı gerçek bir görüşme/landing page sonucu getirdiğinde.
 
+## 25.08.2026 (gece, son) — Dört red-team turu tek çekirdek karara indi
+
+v1.0'dan sonra üç tur daha geldi (hepsi daraltma yönünde, genişletme
+değil — bu önceki dokuz turdan farklı bir örüntü): v1.1 rekabet
+körlüğünü düzeltti (Growth Graph tek başına moat değil — LinkedIn/
+Coursera/Degreed zaten o alanda, doğrulanmamış), v1.2 kategoriyi
+"Applied Progress Platform"a daraltıp "Q Path"i "Q Sprint"e çevirdi
+(Workera/BetterUp/CoachHub rekabeti gerekçesiyle, doğrulanmamış), v1.3
+en atomik test edilebilir davranışı buldu ve karşılaştırma tablosuyla
+gerekçelendirdi (McKinsey/Microsoft atıfları doğrulanmamış).
+
+Kullanıcı son turu **çekirdek karar** olarak kilitledi:
+**1 Task → 1 Improvement → 1 Proof**, döngü Choose → Improve → Prove →
+Repeat, ilk MVP vaadi "Improve one real task at work." Bu,
+`docs/q-master-plan.md`'nin en üstüne en yüksek öncelikli bölüm olarak
+işlendi — belgenin geri kalanıyla çelişirse çekirdek kazanır.
+
+Durum değişmedi: **Gate 1 hâlâ açık değil**, hiçbir görüşme/landing page
+yayını teyit edilmedi. Ama artık test edilecek şey çok daha net —
+`docs/q-validate-materyalleri.md`'deki 20 soru, bu yeni çekirdeğe göre
+gözden geçirilmeyi hak ediyor (henüz yapılmadı, kullanıcıya soruldu).
+
 Kullanıcı bu ilkeyi Meta'nın dikkat-ekonomisi modeliyle karşılaştırarak
 netleştirdi: **"Sana ilgini çekecek şeyi bulayım" (Meta) değil, "Seni
 geliştirecek şeyi bulayım" (QBLOGG)** — temel metrik Dikkat/Engagement değil
