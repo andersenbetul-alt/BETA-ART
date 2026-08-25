@@ -94,7 +94,10 @@ header{
   position:sticky;top:0;z-index:50;background:rgba(11,31,58,.96);
   backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+/* min-height, not height: the longest locales (ru, so, uk) need more room than
+   the container has, so the link list must be able to wrap onto a second row
+   without overlapping the bar or clipping against a fixed 72px. */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff}
 .brand svg{flex:none}
 .brand-name{font-family:Fraunces,serif;font-size:1.22rem;font-weight:600;letter-spacing:.01em;line-height:1}
@@ -102,8 +105,9 @@ header{
   display:block;font-family:Inter,sans-serif;font-size:.6rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--gold-soft);margin-top:5px;
 }
-.nav-links{display:flex;align-items:center;gap:24px;list-style:none;margin:0;padding:0}
-.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .15s}
+.nav-links{display:flex;align-items:center;flex-wrap:wrap;gap:6px 18px;list-style:none;margin:0;padding:6px 0}
+/* Wrap between items, never inside a label: a two-line link reads as two links. */
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .15s;white-space:nowrap}
 .nav-links a:hover{color:#fff}
 .nav .btn{padding:10px 20px;font-size:.88rem}
 .nav-links a.btn-primary{color:#22190A}   /* beats .nav-links a */
@@ -134,7 +138,7 @@ header{
 .lang-menu button[aria-current="true"]::after{content:"✓";color:var(--gold)}
 .lang-menu .lang-native{color:var(--muted);font-size:.82rem}
 
-@media(max-width:980px){
+@media(max-width:1120px){
   .nav-toggle{display:block}
   .nav-links{
     position:absolute;top:72px;inset-inline:0;flex-direction:column;align-items:stretch;gap:0;

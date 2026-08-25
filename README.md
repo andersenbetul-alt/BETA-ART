@@ -268,10 +268,10 @@ Language is chosen by `?lang=xx` → previous choice → browser language → No
 **Adding a language:** copy `assets/i18n/en.json`, translate the values, save it as
 `<code>.json`, and add an entry to `languages` in `config.js`. Nothing else changes.
 
-Check key parity across locales with `tools/check-i18n.js`:
+Check key parity across locales with `tools/check-i18n.mjs`:
 
 ```bash
-node tools/check-i18n.js
+node tools/check-i18n.mjs
 ```
 
 ### Accessibility

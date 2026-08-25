@@ -11,7 +11,7 @@
     "test:server": "node tests/run.mjs server",
     "test:browser": "node tests/run.mjs browser",
     "lix": "node tools/lix.mjs",
-    "i18n": "node tools/check-i18n.js",
+    "i18n": "node tools/check-i18n.mjs",
     "test:ci": "node tests/run.mjs"
   },
   "devDependencies": {

@@ -3,13 +3,14 @@
    Checks that every locale in assets/i18n has exactly the same key set as the
    English master, and that every language listed in config.js has a file.
 
-   Run before committing a translation change:  node tools/check-i18n.js
+   Run before committing a translation change:  node tools/check-i18n.mjs
    ========================================================================== */
-'use strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
 
-const fs = require('node:fs');
-const path = require('node:path');
-const vm = require('node:vm');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const root = path.join(__dirname, '..');
 const dir = path.join(root, 'assets', 'i18n');

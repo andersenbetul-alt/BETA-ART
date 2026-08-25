@@ -106,6 +106,19 @@
     });
   }
 
+  /* Carry the chosen language across internal page links. localStorage does
+     this for most visitors, but not in private windows, and a copied link
+     should mean the same page in the same language for whoever receives it. */
+  function decorateLinks() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (!/^[\w-]+\.html(\?|#|$)/.test(href)) return;   // internal pages only
+      var url = new URL(href, global.location.href);
+      url.searchParams.set('lang', I18n.lang);
+      a.setAttribute('href', url.pathname.split('/').pop() + url.search + url.hash);
+    });
+  }
+
   function applyDocument() {
     var m = meta(I18n.lang);
     var html = document.documentElement;
@@ -117,6 +130,7 @@
     if (desc) desc.setAttribute('content', I18n.t('meta.description'));
 
     applyDom(document);
+    decorateLinks();
   }
 
   I18n.load = function (code) {
