@@ -20,7 +20,7 @@ site navigation bar, referred to as the "BETA ART / Cobban" navbar.
 | `README.md` | Outward-facing overview and repository layout | Layout or entry points change |
 | `BUSINESS.md` | İş modeli seçenekleri — öneri, karar değil | A revenue model is chosen |
 | `skill-observations/log.md` | Friction noticed during real work, for later skill improvement | An observation is captured or actioned |
-| `.claude/skills/` | Project skills — `task-observer`, `evidence-discipline`, `run-beta-art` | A skill is added or revised |
+| `.claude/skills/` | Project skills — `task-observer`, `evidence-discipline`, `run-beta-art`, `financial-model-build` | A skill is added or revised |
 | `STACK.md` | Agent tooling chain — what was verified vs assumed | A layer is tested or its status changes |
 | `SECURITY.md` | Security policy — currently GitHub's unedited template | A real contact and version table are set |
 

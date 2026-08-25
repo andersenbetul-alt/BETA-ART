@@ -7,6 +7,40 @@ generally. Newest entries first. For current state and blockers see
 
 ---
 
+## 2026-08-25 — `financial-model-build` skill created
+
+Packaged the method from a private-equity investment model build into a
+project skill at `.claude/skills/financial-model-build/`, following the
+structure of `evidence-discipline`: `SKILL.md`, `references/`, `LICENSE`.
+
+The skill is domain-general — quantitative deliverables, not the art site. It
+lives here because this repository is the durable memory across sessions,
+which is the whole reason the memory files exist.
+
+Its central rule came from a real near-miss. A model built exactly to a
+client's stated assumptions returned 8.7x MOIC and 54% IRR. Every formula was
+verified against independent hand math and tied; the recalc was clean. The
+absurdity of the result — not any error in it — was the actual finding, and
+it was nearly presented as the answer. §1 of the skill is that check.
+
+`references/environment.md` records toolchain failures diagnosed the hard way:
+`recalc.py` reporting a missing LibreOffice Calc install as a timeout (two
+wasted retry cycles), `openpyxl` absent despite the xlsx skill stating it is
+preinstalled, annotation strings beginning with `=` silently becoming broken
+formulas, and connectors that appear unavailable when they are merely toggled
+off for the session.
+
+`references/worked-example.md` carries the build end to end, including both
+wrong turns.
+
+Observations 8 and 9 added to `skill-observations/log.md`, both ACTIONED into
+this skill. Doc map in `CLAUDE.md` updated.
+
+Note: `STATUS.md` still describes the repository as "a bare scaffold" with no
+navbar implementation, which contradicts the built and tested `src/`. That
+staleness predates this change and is left untouched rather than rewritten as
+a side effect — flagged here so it is not mistaken for current state.
+
 ## 2026-08-21 — Second review (Vercel guidelines) and fixes
 
 Installed `web-design-guidelines` from `vercel-labs/agent-skills` and ran it

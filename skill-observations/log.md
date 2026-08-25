@@ -219,3 +219,72 @@ under test.
 A negative finding needs the same standard of proof as a positive one — and
 a tool's own trace output usually says which of the two you are looking at,
 if the output is read rather than the summary figure.
+
+---
+
+## 2026-08-25
+
+### Observation 8: A correct model produced an absurd answer, and the answer was the finding
+
+**Status:** ACTIONED (2026-08-25) — folded into `financial-model-build` §1
+**Date:** 2026-08-25
+**Session context:** Building a private-equity investment model from a deal
+team's stated assumptions.
+**Skill:** `financial-model-build` (created 2026-08-25)
+**Type:** open-source
+**Phase/Area:** Quantitative deliverables — validating output, not just formulas
+
+**Issue:** Modelled the client's assumptions exactly as given (3.6x ARR entry,
+7.0x exit, 35% growth, five-year hold). Every formula was verified against
+independent hand math and tied. The recalc was clean. The base case returned
+8.7x MOIC and 54% IRR — a result no practitioner would accept. Formula
+correctness had been checked thoroughly; result *plausibility* had not been
+checked at all, and was one step from being presented as the answer. Working
+backwards from the implausible output located the real finding: 3.6x entry for
+a 35% grower is impossible when the sector's premium public comp trades at
+5.9x on 13% growth, so either the revenue quality or the growth durability is
+misstated.
+
+**Suggested improvement:** Sanity-check the headline against practitioner
+intuition *before* verifying the formulas that produced it — it is the cheaper
+test and it interrogates the inputs, which formula-checking cannot. When the
+output is implausible, add the missing lever as a labelled input rather than
+silently re-engineering the assumptions, and keep the client's literal case
+reproducible so both numbers reach the decision-maker.
+
+**Principle:** Verifying that a calculation is right is not the same as asking
+whether its answer is possible. A spectacular result is evidence about the
+inputs, and burying it by quietly fixing the model destroys the most valuable
+thing the model found.
+
+### Observation 9: A tool reported a load failure as a timeout, and I believed it twice
+
+**Status:** ACTIONED (2026-08-25) — folded into
+`financial-model-build/references/environment.md`
+**Date:** 2026-08-25
+**Session context:** Recalculating a generated Excel workbook.
+**Skill:** `financial-model-build` (created 2026-08-25)
+**Type:** open-source
+**Phase/Area:** Diagnosing toolchain failures
+
+**Issue:** `recalc.py` returned "LibreOffice timed out after 88s; formulas were
+NOT recalculated. Re-run with a longer timeout." I re-ran with a longer
+timeout. It failed again at 419s. The message was false: LibreOffice Calc was
+not installed in the container, so `soffice` could not load *any* spreadsheet,
+and the wrapper reported the load failure as a timeout. Running the conversion
+directly showed "Error: source file could not be loaded" in **one second** —
+and a one-cell workbook failed identically, proving the fault was not in the
+generated file. `apt-get install libreoffice-calc` fixed it. Two cycles were
+spent taking a diagnostic message at face value, and a third nearly went into
+bisecting a workbook that was never the problem.
+
+**Suggested improvement:** Time the underlying operation before accepting a
+timeout diagnosis. A failure that returns instantly is not a timeout whatever
+the wrapper says. When a tool fails on your artefact, test it against the
+most trivial possible artefact first — that one command separates "my output
+is malformed" from "this tool cannot run here", which are opposite
+investigations.
+
+**Principle:** An error message is a claim by the tool about itself, and
+carries no more authority than any other unverified claim. The cheapest check
+on a diagnosis is whether the observed timing matches the diagnosis offered.
