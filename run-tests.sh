@@ -30,11 +30,14 @@ run "build degismezleri"  python3 tests/test_build.py
 
 # Uretilen ciktilar depodakinden farkli mi?
 printf '%-28s' "surukleme kontrolu"
-if [ -z "$(git status --porcelain -- '*.html' 2>/dev/null)" ]; then
+# Yalnizca URETILEN sayfalar. '*.html' globu kullanma: depodaki her HTML
+# uretilmis cikti degil (ornegin .claude/skills/*/templates/*.html).
+GENERATED="index.html work.html team.html review.html"
+if [ -z "$(git status --porcelain -- $GENERATED 2>/dev/null)" ]; then
   echo "OK"
 else
   echo "BASARISIZ"
-  git status --short -- '*.html' | sed 's/^/    /'
+  git status --short -- $GENERATED | sed 's/^/    /'
   echo "    (build ciktisi commit edilenden farkli — yeniden commit gerekiyor)"
   fail=1
 fi
