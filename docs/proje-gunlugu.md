@@ -358,3 +358,15 @@ digitale tjenester 2026 yazından itibaren Norveç hukuku [D — kesin
 yürürlük teyidi açık]; kapak görselleri için forlag izni + yazar hak
 beyanı şart; kitap kartlarının tanıtım işareti markedsføringsloven ile
 uyumlu. İçtihat bölümü dürüstçe boş.
+## 25.08.2026 (devam) — İlk rol tanımı: İçerik Editörü (serbest)
+
+Kullanıcı intake kararları (AskUserQuestion): rol=içerik editörü,
+biçim=serbest/iş başına, açılma tetiği=3 ücretli pilot. Rol tanımı
+docs/rol-icerik-editoru.md'ye yazıldı: sahiplik (Action Page sonuç
+metinleri + Studio teslimatları + görünürlük kapısının insan tarafı),
+must-have (bokmål C1+, iddia-kaynak disiplini, 48 saat SLA), 90 gün
+ölçütleri (ilk turda uzman onayı, sıfır yüksek bulgu, ≥%90 SLA),
+işe alımcıya 6 açık madde (ücret aralığı DOLDURULACAK — rakam
+uydurulmadı; ücretli deneme görevi; sözleşme hukuk kapısına bağlandı).
+Bilinçli itirazlar kayıtlı: hacim dürüstlüğü ilanda kalmalı, dil kapsamı
+kararı (insan editörlüğü yalnız NO+EN önerisi) ilan öncesi onay bekliyor.
