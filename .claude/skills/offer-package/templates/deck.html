@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BETA — Teklif Görüşmesi</title>
+<style>
+  :root{
+    --bg:#faf9f7; --ink:#1a1917; --muted:#6b6a63; --line:#e2e0da;
+    --accent:#c2542a; --accent-soft:#f6ece7; --warn:#b3261e; --warn-bg:#fdecea;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#14130f; --ink:#f2f0ea; --muted:#a8a69d; --line:#33312b;
+    --accent:#e07a4d; --accent-soft:#2a1f19; --warn:#f2b8b5; --warn-bg:#3a1512;
+  }}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--bg);color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased}
+
+  #warn{position:fixed;inset:0 0 auto 0;z-index:99;display:none;
+    background:var(--warn-bg);color:var(--warn);border-bottom:2px solid var(--warn);
+    padding:12px 24px;font-size:15px;font-weight:600;letter-spacing:.01em}
+  #warn.on{display:block}
+
+  .deck{height:100%;overflow-y:auto;scroll-snap-type:y mandatory}
+  section{min-height:100%;scroll-snap-align:start;display:flex;align-items:center;
+    padding:80px 8vw;border-bottom:1px solid var(--line)}
+  .in{width:100%;max-width:960px;margin:0 auto}
+
+  .eyebrow{font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin:0 0 20px}
+  h1{font-size:clamp(40px,6.5vw,76px);line-height:1.05;letter-spacing:-.02em;margin:0 0 24px}
+  h2{font-size:clamp(30px,4.4vw,52px);line-height:1.15;letter-spacing:-.015em;margin:0 0 32px}
+  p{font-size:clamp(17px,1.9vw,22px);color:var(--muted);max-width:62ch;margin:0 0 20px}
+  p.lead{color:var(--ink)}
+
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:8px}
+  .card{border:1px solid var(--line);border-radius:14px;padding:24px;background:transparent}
+  .card .k{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:700}
+  .card .v{font-size:clamp(22px,2.6vw,30px);font-weight:700;letter-spacing:-.01em;line-height:1.2;
+    display:flex;align-items:baseline;gap:6px;flex-wrap:nowrap}
+  .card .u{font-size:.62em;color:var(--muted);font-weight:600}
+
+  ul{margin:0;padding:0;list-style:none}
+  li{font-size:clamp(17px,1.9vw,21px);padding:16px 0;border-bottom:1px solid var(--line);display:flex;gap:16px}
+  li:last-child{border-bottom:0}
+  li b{color:var(--accent);flex:0 0 auto;font-variant-numeric:tabular-nums}
+
+  ph{background:var(--accent-soft);color:var(--accent);border:1px dashed var(--accent);
+    border-radius:6px;padding:1px 8px;font-weight:700;white-space:nowrap;display:inline-block}
+  .nav{position:fixed;bottom:20px;right:24px;font-size:13px;color:var(--muted);
+    background:var(--bg);padding:6px 12px;border:1px solid var(--line);border-radius:20px}
+</style>
+</head>
+<body>
+<div id="warn">⚠ TASLAK — <span id="warnN"></span> alan doldurulmadı. Ekran paylaşmadan önce ⟨…⟩ alanlarını doldur.</div>
+
+<div class="deck">
+  <section><div class="in">
+    <p class="eyebrow">BETA · Teklif görüşmesi</p>
+    <h1><ph>⟨AD⟩</ph>, seninle çalışmak istiyoruz.</h1>
+    <p class="lead"><ph>⟨ROL⟩</ph> · başlangıç <ph>⟨BAŞLANGIÇ⟩</ph></p>
+  </div></section>
+
+  <section><div class="in">
+    <p class="eyebrow">Rol</p>
+    <h2>İlk günden sahipleneceğin iş</h2>
+    <p class="lead"><ph>⟨SORUMLULUK — team.json'daki rol metni buraya⟩</ph></p>
+    <ul>
+      <li><b>0-30 gün</b><span><ph>⟨İLK_AY⟩</ph></span></li>
+      <li><b>30-90 gün</b><span><ph>⟨İLK_ÇEYREK⟩</ph></span></li>
+      <li><b>Kime rapor</b><span><ph>⟨YÖNETİCİ⟩</ph></span></li>
+    </ul>
+  </div></section>
+
+  <section><div class="in">
+    <p class="eyebrow">Rakamlar</p>
+    <h2>Açık ve pazarlıksız değil</h2>
+    <div class="grid">
+      <div class="card"><p class="k">Brüt yıllık</p><div class="v"><ph>⟨BRÜT⟩</ph><span class="u">NOK</span></div></div>
+      <div class="card"><p class="k">Tatil parası</p><div class="v"><ph>⟨ORAN⟩</ph><span class="u">%</span></div></div>
+      <div class="card"><p class="k">Pensiyon (OTP)</p><div class="v"><ph>⟨ORAN⟩</ph><span class="u">%</span></div></div>
+      <div class="card"><p class="k">Ekipman</p><div class="v"><ph>⟨TUTAR⟩</ph><span class="u">NOK</span></div></div>
+      <div class="card"><p class="k">Deneme süresi</p><div class="v"><ph>⟨SÜRE⟩</ph></div></div>
+      <div class="card"><p class="k">Çalışma biçimi</p><div class="v"><ph>⟨BİÇİM⟩</ph></div></div>
+    </div>
+  </div></section>
+
+  <section><div class="in">
+    <p class="eyebrow">Neden sen</p>
+    <h2>Bu üçünü konuşurken fark ettik</h2>
+    <ul>
+      <li><b>1</b><span><ph>⟨SOMUT_AN_1 — görüşmeden hatırladığın bir şey⟩</ph></span></li>
+      <li><b>2</b><span><ph>⟨SOMUT_AN_2⟩</ph></span></li>
+      <li><b>3</b><span><ph>⟨SOMUT_AN_3⟩</ph></span></li>
+    </ul>
+    <p>Genel övgü yazma. Herkese söylenebilecek bir cümle buraya konursa slayt ters teper.</p>
+  </div></section>
+
+  <section><div class="in">
+    <p class="eyebrow">Sıradaki</p>
+    <h2>Bundan sonra ne oluyor</h2>
+    <ul>
+      <li><b>Bugün</b><span>Bu görüşme — soruların için</span></li>
+      <li><b><ph>⟨TARİH⟩</ph></b><span>Yazılı sözleşme <ph>⟨KİM⟩</ph> tarafından gönderilir</span></li>
+      <li><b><ph>⟨TARİH⟩</ph></b><span>Teklifin geçerlilik süresi dolar</span></li>
+    </ul>
+    <p>Acele ettirmiyoruz. Düşünmen için zaman var — ama tarihi netleştirelim ki ikimiz de bekleme durumunda kalmayalım.</p>
+  </div></section>
+</div>
+<div class="nav">↓ kaydır</div>
+
+<script>
+  // Doldurulmamis alan varken sunum "bitmis" gorunmesin.
+  const n = document.querySelectorAll('ph').length;
+  if (n) {
+    document.getElementById('warnN').textContent = n;
+    document.getElementById('warn').classList.add('on');
+  }
+  addEventListener('keydown', e => {
+    const secs = [...document.querySelectorAll('section')];
+    const cur = secs.findIndex(s => s.getBoundingClientRect().top > -100);
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); secs[Math.min(cur+1, secs.length-1)]?.scrollIntoView({behavior:'smooth'}); }
+    if (e.key === 'ArrowUp'   || e.key === 'PageUp')   { e.preventDefault(); secs[Math.max(cur-1, 0)]?.scrollIntoView({behavior:'smooth'}); }
+  });
+</script>
+</body>
+</html>
