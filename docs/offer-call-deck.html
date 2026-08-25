@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offer call — Beta Art</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script>
+/* ──────────────────────────────────────────────────────────────────
+   FILL THESE IN. Anything left null renders as a red NOT SET block, on
+   purpose — a deck with a plausible-looking number in it is one accidental
+   screenshare away from being an offer nobody made.
+   ────────────────────────────────────────────────────────────────── */
+const FIELDS = {
+  candidate:    null,   // "Ola Nordmann"
+  role:         null,   // "Backend Developer"
+  product:      null,   // "Beta Art — the archive and the desk"
+  engagement:   null,   // "Consultant, day rate" — the only form executable today
+  rate:         null,   // "kr 9 500 / day"  ← no band exists in the repo. Decide it.
+  hours:        null,   // "3 days a week"
+  term:         null,   // "Initial 3 months, reviewed at 90 days"
+  start:        null,   // tie to the lawyer review, not a calendar
+  reportsTo:    "Betül Öner",
+  why: [                // why THIS person. Replace with what they actually did.
+    null,
+    null,
+    null
+  ]
+};
+</script>
+
+<style>
+:root{
+  --paper:#FBFAF7; --paper-2:#F3F0E9; --ink:#0F0F0F; --ink-2:#1F1D1B;
+  --muted:#67635B; --rule:#E4E0D8; --rule-strong:#CFC9BC; --seal:#8B1A1A;
+  --f-display:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono","SFMono-Regular",Menlo,monospace;
+  --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-6:1.5rem;
+  --space-8:2rem; --space-10:2.5rem; --space-12:3rem; --space-16:4rem;
+  --mono-sm:.75rem; --mono-md:.8125rem;
+  --measure:62ch; --dur:200ms; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--f-body); font-size:17px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.slide{
+  min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+  padding:var(--space-16) var(--space-8);
+  max-width:1100px; margin:0 auto;
+  border-bottom:1px solid var(--rule);
+}
+.slide:last-child{border-bottom:0}
+.label{
+  font-family:var(--f-mono); font-size:var(--mono-sm); letter-spacing:.22em;
+  text-transform:uppercase; color:var(--muted); margin:0 0 var(--space-6);
+}
+h1{
+  font-family:var(--f-display); font-weight:300; line-height:1.05;
+  font-size:clamp(2.4rem,6vw,4.4rem); margin:0 0 var(--space-6);
+  letter-spacing:-.01em;
+}
+h2{
+  font-family:var(--f-display); font-weight:300; line-height:1.1;
+  font-size:clamp(1.9rem,4vw,3rem); margin:0 0 var(--space-8);
+}
+p{max-width:var(--measure); margin:0 0 var(--space-4)}
+.lead{font-size:1.15rem; color:var(--ink-2)}
+.muted{color:var(--muted)}
+
+/* the seal mark — line drawing, one accent in the centre, once */
+.mark{display:block; margin-bottom:var(--space-8)}
+
+.grid{display:grid; gap:var(--space-6); grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); margin-top:var(--space-8)}
+.cell{border-top:1px solid var(--rule-strong); padding-top:var(--space-3)}
+.cell dt{
+  font-family:var(--f-mono); font-size:var(--mono-sm); letter-spacing:.18em;
+  text-transform:uppercase; color:var(--muted); margin:0 0 var(--space-2);
+}
+.cell dd{margin:0; font-size:1.25rem; font-family:var(--f-display); font-weight:400}
+
+ol.steps{counter-reset:s; list-style:none; padding:0; margin:var(--space-8) 0 0; max-width:var(--measure)}
+ol.steps li{counter-increment:s; position:relative; padding-left:3.2rem; margin-bottom:var(--space-6)}
+ol.steps li::before{
+  content:counter(s,decimal-leading-zero); position:absolute; left:0; top:.15rem;
+  font-family:var(--f-mono); font-size:var(--mono-sm); letter-spacing:.14em; color:var(--seal);
+}
+ol.steps strong{display:block; font-family:var(--f-display); font-weight:400; font-size:1.2rem; margin-bottom:var(--space-2)}
+
+ul.plain{list-style:none; padding:0; margin:var(--space-6) 0 0; max-width:var(--measure)}
+ul.plain li{position:relative; padding-left:1.6rem; margin-bottom:var(--space-3)}
+ul.plain li::before{content:""; position:absolute; left:0; top:.85em; width:9px; height:1px; background:var(--seal)}
+
+.notset{
+  display:inline-block; font-family:var(--f-mono); font-size:var(--mono-md);
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--paper); background:var(--seal);
+  padding:.35rem .7rem;
+}
+.warn{
+  border-left:3px solid var(--seal); background:var(--paper-2);
+  padding:var(--space-4) var(--space-6); margin-top:var(--space-8);
+  max-width:var(--measure);
+}
+.warn strong{font-family:var(--f-mono); font-size:var(--mono-sm); letter-spacing:.16em;
+  text-transform:uppercase; color:var(--seal); display:block; margin-bottom:var(--space-2)}
+.warn p{font-size:.95rem; margin:0}
+
+.foot{
+  font-family:var(--f-mono); font-size:var(--mono-sm); letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); margin-top:var(--space-12);
+}
+@media print{.slide{min-height:auto; page-break-after:always; border:0}}
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <svg class="mark" width="52" height="52" viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="46" fill="none" stroke="#0F0F0F" stroke-width="4"/>
+    <g stroke="#0F0F0F" stroke-width="4">
+      <line x1="50" y1="4" x2="50" y2="22"/><line x1="50" y1="78" x2="50" y2="96"/>
+      <line x1="10.2" y1="27" x2="25.8" y2="36"/><line x1="74.2" y1="64" x2="89.8" y2="73"/>
+      <line x1="10.2" y1="73" x2="25.8" y2="64"/><line x1="74.2" y1="36" x2="89.8" y2="27"/>
+    </g>
+    <circle cx="50" cy="50" r="7" fill="#8B1A1A"/>
+  </svg>
+  <p class="label">Offer · <span data-f="product"></span></p>
+  <h1>We'd like you to build it with us.</h1>
+  <p class="lead muted">For <span data-f="candidate"></span> · <span data-f="role"></span></p>
+</section>
+
+<section class="slide">
+  <p class="label">01 · The role</p>
+  <h2 data-f="role"></h2>
+  <p class="lead">You'd own the part of this that doesn't exist yet — and it is
+    the part everything else is waiting on.</p>
+  <p class="muted">Seven pages carry a form. Four carry an empty endpoint
+    constant. Not one enquiry currently reaches anyone. The forms were rewritten
+    so they no longer claim otherwise — they tell the visitor nothing was sent
+    and hand them their text. That is honest. It is not finished.</p>
+  <ul class="plain">
+    <li>Every form that promises nothing and stores nothing</li>
+    <li>The consent record — a legal document, not a contact form</li>
+    <li>Payments, once the company exists</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <p class="label">02 · The numbers</p>
+  <h2>Terms</h2>
+  <dl class="grid">
+    <div class="cell"><dt>Engagement</dt><dd data-f="engagement"></dd></div>
+    <div class="cell"><dt>Rate</dt><dd data-f="rate"></dd></div>
+    <div class="cell"><dt>Hours</dt><dd data-f="hours"></dd></div>
+    <div class="cell"><dt>Initial term</dt><dd data-f="term"></dd></div>
+    <div class="cell"><dt>Start</dt><dd data-f="start"></dd></div>
+    <div class="cell"><dt>Reports to</dt><dd data-f="reportsTo"></dd></div>
+  </dl>
+  <div class="warn">
+    <strong>Say this out loud on the call</strong>
+    <p>Beta Art is not yet registered. Until there is an organisation number
+      there is no employment contract, no payroll and no shares — so this starts
+      as a consulting engagement and you invoice from your own company. That is
+      a sequencing decision, not a delay, and you should hear it from us rather
+      than find it out.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <p class="label">03 · What good looks like</p>
+  <h2>The first ninety days</h2>
+  <ol class="steps">
+    <li><strong>Day 30 — one form, end to end</strong>
+      It posts, it stores, and the record survives a redeploy.</li>
+    <li><strong>Day 60 — all seven</strong>
+      The model release produces a retrievable, timestamped record. A release
+      that cannot be produced on demand is not a release.</li>
+    <li><strong>Day 90 — retention and erasure, tested</strong>
+      Tested by actually deleting something. The privacy notice updated the same
+      day, so what it says and what runs are the same thing.</li>
+  </ol>
+</section>
+
+<section class="slide">
+  <p class="label">04 · What you're walking into</p>
+  <h2>Honestly</h2>
+  <ul class="plain">
+    <li><strong>102 pages, 14 automated gates, all green.</strong> They run on
+      every push. You inherit them; you don't have to build them.</li>
+    <li><strong>No build step, no framework, no bundler.</strong> That is a
+      decision, not an omission, and we'd want you to keep it.</li>
+    <li><strong>Zero backend.</strong> That's the job.</li>
+    <li><strong>One legal review still open</strong> on the archive's licence
+      terms. It doesn't affect your work. It affects what we can sell, and you
+      should know it exists.</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <p class="label">05 · Why you</p>
+  <h2>Why we're excited</h2>
+  <ul class="plain" id="why"></ul>
+  <p class="foot">Beta Art · Offer call · <span data-f="candidate"></span></p>
+</section>
+
+<script>
+(function(){
+  function set(el, v){
+    if (v === null || v === undefined || v === "") {
+      el.innerHTML = '<span class="notset">not set</span>';
+    } else {
+      el.textContent = v;
+    }
+  }
+  document.querySelectorAll("[data-f]").forEach(function(el){
+    set(el, FIELDS[el.getAttribute("data-f")]);
+  });
+  var why = document.getElementById("why");
+  (FIELDS.why || []).forEach(function(line){
+    var li = document.createElement("li");
+    set(li, line);
+    why.appendChild(li);
+  });
+  // Count what is still empty and say so in the tab title, so a half-filled
+  // deck cannot be opened on a call without somebody noticing.
+  var missing = document.querySelectorAll(".notset").length;
+  if (missing) document.title = "⚠ " + missing + " NOT SET — Offer call";
+})();
+</script>
+</body>
+</html>
