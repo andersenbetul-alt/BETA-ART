@@ -343,3 +343,19 @@ zaten uygulanan kısıtların (altın kontrollü/yapısal, cyan master markada
 asla) "neden"i olduğu için `brand/naviar/README.md`'ye "Marka dili" alt
 bölümü olarak eklendi — yeni renk veya kural getirmedi, mevcut kısıtların
 gerekçesini yazılı hâle getirdi.
+
+## 25.08.2026 (devam) — NAVIAR: bireysel + kamu sektörü segmenti değerlendirildi (taslak)
+
+Kullanıcı üç mesajda parça parça yeni bir iş modeli fikri iletti: bireysel
+hizmet arayanları kamu sektöründe doğru hizmete yönlendirme + koordinasyon;
+merkezi değerler güven/kolaylık/insan odaklı hizmet; karma gelir modeli
+(komisyon + danışmanlık ücreti + abonelik + B2B/B2G + premium paketler) ve
+operasyon (doğrulanmış sağlayıcı ağı + destek + rezervasyon altyapısı +
+kalite kontrolü). AskUserQuestion'da segment/teslimat tercihi "yok" geldiği
+için karar zorlanmadı; `docs/naviar/is-modeli.md` yazıldı — mevcut B2B/
+kurumsal CONSULTING konumlandırmasıyla gerilim, kamu sektörünün kendine
+özgü kısıtları (ihale mevzuatı, tarafsızlık, KVKK, sorumluluk) ve komisyon+
+müşteri-ücreti karma modelinin kendi içindeki tarafsızlık gerilimi [H]
+olarak işaretlendi. Hiçbir marka varlığı/kod üretilmedi — açık sorular
+(descriptor mu yoksa aynı marka hattı mı, B2G mi B2C mi birincil) kullanıcı
+kararını bekliyor.
