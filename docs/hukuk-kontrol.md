@@ -109,3 +109,104 @@ Kaynak listesi (hepsi arama özeti düzeyi, doğrudan açılamadı):
 Forbrukertilsynet someveiledning · Forbrukertilsynet konkurranse
 veilederi · Datatilsynet behandlingsansvarlig/databehandler ·
 Datatilsynet databehandleravtale · Datatilsynet samtykke.
+
+---
+
+## Memo 2 — Yazar platformu: kullanıcı içeriği + kitap tanıtımı (25.08.2026)
+
+Not: Thomson Reuters/Westlaw bu ortamda yok; içtihat bölümü bu yüzden
+"taranamadı" olarak dürüstçe boş. Aşağıdaki kaynakların tamamı web arama
+özeti düzeyindedir [D] ve karar öncesi kurum sayfasından teyit ister.
+
+### Soru
+
+QBLOGG'un davetli yazar platformu (yazar profili + blog yazıları +
+kitap vitrini; editoryal onay kapısı `schema-platform.sql`'de) Norveç
+hukukunda hangi sorumlulukları doğurur; mevcut tasarım bunları
+karşılıyor mu?
+
+### Kısa cevap
+
+Tasarımın iki güçlü yanı (kitap kartlarının açık "tanıtım" işareti ve
+asgari veri) mevzuatla uyumlu görünüyor. İki gerçek risk alanı var:
+(1) **editoryal onay kapısı, "pasif barındırıcı" sorumsuzluğunu
+zayıflatabilir** — içeriği seçip yayımlayan platform, salt depolayandan
+daha yakın bir sorumluluk konumuna kayar; (2) **DSA (lov om digitale
+tjenester) 2026 yazından itibaren Norveç hukuku** — küçük işletme
+muafiyetlerinin kapsamı netleştirilmeden platform büyütülmemeli. Kapak
+görselleri telif izni ister. Üçü de avukat sorusudur; hiçbir kaynak
+birinci elden okunamadı.
+
+### Tartışma (otoriteye göre)
+
+**1. Aracı sorumluluğu — ehandelsloven (otorite: yasa + hazırlık
+çalışmaları)** [D]
+
+- Ehandelsloven'de üç sorumsuzluk hâli düzenlenir: iletim, önbellek,
+  **barındırma (vert)**; koşullara uyan aracı, üçüncü kişinin hukuka
+  aykırı bilgisini depolamaktan ancak kasıtla (ceza) ya da kasıt/ağır
+  ihmalle (tazminat) sorumlu tutulur; istisna kullanıcı içerikli yayın
+  platformlarını kapsar. Kaynaklar: SNL "ehandelsloven", Finansavisen
+  "Ansvarsfrihet for mellommenn" (2021), Ot.prp. nr. 4 (2003–2004)
+  (arama özetleri).
+- **Uygulamadaki gerilim:** bizim modelde yazı ancak yönetici
+  `yayinda` yapınca görünür (RLS ile zorlanmış editoryal kapı). Bu,
+  kalite iddiasını korur AMA "talep üzerine salt depolama" konumundan
+  uzaklaştırır: onayladığın içeriği bilmediğini söyleyemezsin. Avukata
+  net soru: editoryal kapı bu sorumsuzluğu ne ölçüde kaldırır ve onay
+  akışına asgari hangi hukuka aykırılık kontrolü eklenmelidir?
+
+**2. DSA — lov om digitale tjenester (otorite: regjeringen, Nkom,
+Medietilsynet)** [D]
+
+- DSA, AB'de Şubat 2024'ten beri yürürlükte; Norveç uyarlaması için
+  taslak yasa Ekim 2025 høring'inden geçti ve **2026 yazından itibaren
+  Norveç hukuku olarak uygulanması** planlanıyor; koordinatör Nkom
+  (Forbrukertilsynet/Datatilsynet/Medietilsynet ile birlikte).
+  Kaynaklar: regjeringen.no høring duyuruları, Nkom "Hva er DSA?",
+  Medietilsynet DSA sayfası (arama özetleri; bugünkü kesin yürürlük
+  durumu doğrulanamadı — İLK teyit maddesi).
+- Uygulama: platform büyümeden önce netleşmeli — bildirim-ve-eylem
+  (notice-and-action) mekanizması, iletişim noktası ve koşul
+  şeffaflığı DSA tabanıdır; mikro/küçük işletme muafiyetlerinin hangi
+  yükümlülükleri kaldırdığı avukata sorulacak. kosullar.html'e
+  bildir-kaldır süreci zaten planlıydı (yazar-platformu §6) — DSA bunu
+  keyfî iyi niyetten yükümlülük adayına çevirir.
+
+**3. Telif — åndsverkloven (otorite: yasa + üniversite/eğitim
+kaynakları)** [D]
+
+- Başkasının eserini (görsel dahil) kullanmak izin ister; alıntı hakkı
+  (sitatrett, § 29) "iyi uygulamaya uygun ve amacın gerektirdiği
+  ölçüde" sınırlıdır ve ad/eser anmayı gerektirir; haklar yayınevine
+  devredilmişse izin yayınevinden alınır. Kaynaklar: UiB opphavsrett
+  sayfası, NDLA åndsverklov kaynakları (arama özetleri).
+- Uygulama: `books.cover_url` yazarın yüklediği kapak görselini
+  gösterir — kapağın hakları çoğu zaman **forlagdadır**. Yazar
+  sözleşmesine/koşullara: (a) yazarın "yüklediğim içerik ve görseller
+  üzerinde hak sahibiyim veya iznim var" beyanı, (b) ihlalde
+  sorumluluğun yazara ait olduğu, (c) bildir-kaldır taahhüdü.
+
+**4. Pazarlama — markedsføringsloven (otorite: Forbrukertilsynet)**
+
+- Memo 1'deki rehber aynen uygulanır: gizli reklam yasak, tanıtım
+  açıkça işaretli. Platform tasarımı bunu şemadan itibaren karşılıyor
+  (her kitap kartı "tanıtım" işaretli, dış bağlantı
+  `rel="sponsored nofollow noopener"` — yazar-platformu §4/§6).
+
+**5. İçtihat** — taranamadı (veritabanı yok; uydurulmaz). Avukattan
+istenecek: editoryal kontrol ile aracı sorumsuzluğunun sınırına dair
+Norveç/AB kararları (ör. barındırıcı statüsü değerlendirmeleri).
+
+### Açık konular (avukata)
+
+1. Editoryal onay kapısı hosting sorumsuzluğunu kaldırır mı; onay
+   akışına asgari hangi kontrol listesi eklenmeli?
+2. DSA'nın Norveç'te bugünkü kesin yürürlük durumu ve mikro işletme
+   muafiyetlerinin tam listesi.
+3. Bildir-kaldır sürecinin asgari biçimsel gerekleri (süre, kayıt,
+   itiraz yolu).
+4. Yazar sözleşmesi: hak beyanı + tazmin maddesi + kapak görseli için
+   forlag izni pratiği.
+5. Platform "yayıncı" sayılırsa medieansvarsloven kapsamına girer mi
+   (redaktörlü medya tanımı)?

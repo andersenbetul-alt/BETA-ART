@@ -347,3 +347,14 @@ satışına düşer) ve avukata 5 açık soru. Dürüst sınır kayıtlı: Thoms
 Reuters/Lovdata erişimi yok, kurum siteleri EGRESS_BLOCKED (bu oturumda
 yeniden denendi), içtihat üretilmez — kaynaklar arama özeti düzeyinde
 [D] işaretli.
+## 25.08.2026 (devam) — Hukuk memosu 2: yazar platformu
+
+Aynı araştırma-memo şablonu ikinci kez gönderildi; Thomson Reuters
+erişimi olmadığı ve soru bağlanmadığı bir kez daha kayda geçirilerek
+kapı kuralı uygulandı: memosu olmayan aktif konsept (yazar platformu)
+için Memo 2 yazıldı. Bulgular: editoryal onay kapısı ehandelsloven
+hosting-sorumsuzluğunu zayıflatabilir (avukat sorusu); DSA/lov om
+digitale tjenester 2026 yazından itibaren Norveç hukuku [D — kesin
+yürürlük teyidi açık]; kapak görselleri için forlag izni + yazar hak
+beyanı şart; kitap kartlarının tanıtım işareti markedsføringsloven ile
+uyumlu. İçtihat bölümü dürüstçe boş.
