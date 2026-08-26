@@ -4,7 +4,8 @@ Figma MCP entegrasyonu için istendi, ama asıl işlevi daha geniş: bir Figma
 tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
-**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 22.08.2026 itibarıyla.
+**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 26.08.2026 itibarıyla
+(ilk ölçüm 22.08.2026'ydı; dört günlük gelişme satır/sınıf sayısını değiştirdi).
 
 ---
 
@@ -30,8 +31,8 @@ gelen bir bileşen React JSX olarak değil, **düz HTML + satır içi stil** ola
 
 ### Nerede
 
-Tek yer: `assets/css/main.css` içindeki `:root` bloğu (satır 1–40) ve koyu
-tema için `html[data-theme="dark"]` (satır 41–58). Başka hiçbir dosyada
+Tek yer: `assets/css/main.css` içindeki `:root` bloğu (satır 4–41) ve koyu
+tema için `html[data-theme="dark"]` (satır 43–62). Başka hiçbir dosyada
 belirteç tanımı yok.
 
 ### Biçim
@@ -105,7 +106,7 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 
 **Yoktur.** Bileşen mimarisi, Storybook, bileşen dokümantasyonu — hiçbiri yok.
 
-Yerine geçen şey: `assets/css/main.css` içinde **95 sınıf**, altı HTML
+Yerine geçen şey: `assets/css/main.css` içinde **117 sınıf**, altı HTML
 sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi) altı dosyada
 **tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`.
 
@@ -130,7 +131,7 @@ Betik yükleme sırası **anlamlıdır**, değiştirmeyin:
 
 ```html
 <script src="assets/js/config.js"></script>   <!-- yayın ayarları -->
-<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 209 anahtar -->
+<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 233 anahtar -->
 <script src="assets/js/posts.js"></script>    <!-- blog içeriği -->
 <script src="assets/js/app.js"></script>      <!-- hepsini kullanır -->
 ```
@@ -144,11 +145,10 @@ Hepsi `window.QB_*` küresel değişkenleri üzerinden konuşuyor. Modül yok.
 | Klasör | Boyut | İçerik |
 |---|---|---|
 | `assets/fonts/` | 204 KB | Inter, dört alt küme + `inter.css` + `OFL.txt` |
-| `assets/js/` | 460 KB | Dört dosya; büyüğü `posts.js` (10 yazı × 10 dil) |
+| `assets/js/` | 480 KB | Dört dosya; büyüğü `posts.js` (10 yazı × 10 dil) |
 | `assets/brand/` | 116 KB | 14 kimlik varlığı — **betikten üretilir, elle düzenlenmez** |
-| `assets/css/` | 36 KB | Tek dosya |
+| `assets/css/` | 40 KB | Tek dosya |
 | `assets/downloads/` | 12 KB | Lead magnet |
-| `assets/img/` | 4 KB | |
 
 **CDN yok ve olmayacak.** Yazı tipleri kendi sunucumuzda:
 
@@ -222,7 +222,7 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
+Hiçbiri. Düz CSS, tek dosya, 629 satır, 117 sınıf. Sınıf adları anlamsal ve
 kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller
@@ -232,8 +232,11 @@ sıfırlama → tipografi → düzen → bileşenler → medya sorguları.
 
 ### Duyarlılık
 
-**5 medya sorgusu**, hepsi `max-width`. Mobil kırılma noktaları:
+**6 medya sorgusu**: dördü `max-width` kırılma noktası, biri
+`prefers-reduced-motion`, biri `print`. Kırılma noktaları:
 
+- `≤1180px` — menü mobil moda geçer (eşik yüksek: Rusça/Norveççe etiketler uzun)
+- `≤860px` — `.flow` ızgarası tek sütuna düşer
 - `≤620px` — dil seçici ikona düşer, logo yalnızca sembol
 - `≤360px` — tema düğmesi gizlenir
 
@@ -270,7 +273,7 @@ bakın.
 *.html                  6 sayfa — iskelet tekrar eder
 assets/css/main.css     tek stil dosyası
 assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak dosya
-assets/js/i18n.js       10 dil × 209 anahtar
+assets/js/i18n.js       10 dil × 233 anahtar
 assets/js/posts.js      blog içeriği, her yazı 10 dilde
 assets/js/app.js        dil, tema, liste, yazı sayfası, formlar
 assets/brand/           14 kimlik varlığı (üretilir)
