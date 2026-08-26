@@ -388,3 +388,32 @@ için %25 tam oran varsayılmalı, muafiyet değil), doğrudan rakip bulgusu
 iddiası kırılgan), 9 numaralı risk listesi ve 5 hızlı deney. Sonuç: plan
 zaten sağlam, yeniden yazılmadı — üstüne somut rakam ve rakip verisiyle
 eleştiri eklendi.
+
+## 26.08.2026 (devam 2) — NAVIAR Care pilotu uygulandı: docs/naviar/care-pilot/
+
+Kullanıcı planı "uygula" isteğiyle tekrar gönderdi (bir kopyası yanlışlıkla
+tekrar gelmişti, netleştirme soruldu). Onay üzerine 6 görevin tamamı
+`docs/naviar/care-pilot/` altında gerçek dosyalar olarak kuruldu (23 dosya):
+hizmet sınır matrisi, hukuk/muhasebe brief'i, karar günlüğü, yardımcı
+işe alım/el kitabı/olay SOP'u, talep kanıtlama (20 görüşme çerçevesi,
+satış senaryosu, kanal deneyi), MVP veri haritası + rıza modeli + kabul
+testleri, tek sayfalık MVP sitesi (`site/index.html`, Playwright ile
+render doğrulandı, 0 konsol hatası), haftalık pilot kartı + 12 haftalık
+ölçekleme kapısı, pilot-sonrası strateji şablonları.
+
+İki gerçek Excel dosyası (xlsx skill ile, openpyxl + gerçek formüller):
+`finance/pilot-unit-economics.xlsx` (90/120/180 dk ziyaret maliyet modeli,
+AGA/feriepenger/OTP/sigorta/MVA formülleriyle) ve `finance/weekly-cohort-
+p-and-l.xlsx`. Bu ortamda LibreOffice/`recalc.py` 165 saniyede bile
+zaman aşımına uğradı (gözlem 3'ün xlsx için doğrulanmış hâli, gözlem 11
+olarak kaydedildi) — formüller bağımsız Python hesabıyla doğrulandı; bu
+doğrulama gerçek bir hatayı da yakaladı (saatlik maliyet sabiti 214 kr
+değil 321,2 kr olmalıydı, düzeltildi).
+
+Ayrıca kullanıcı Norveççe bağımsız bir "tjenestevurdering" (hizmet
+değerlendirmesi) paylaştı — toplam puan 5,4/10, "Differensiering: Ubevist"
+bulgusu bu depodaki rakip analiziyle (SeniorSupport/VilMer) örtüşüyor.
+Bu, `decisions/tjenestevurdering-2026-08-26.md`'ye birebir kaydedildi ve
+kritik analiz belgesiyle çapraz referanslandı. `docs/naviar/care-pilot/
+README.md` okuma sırasını ve bilinen sınırları (LibreOffice, yer tutucu
+e-posta, doğrulanmamış Norveç rakamları) özetliyor.

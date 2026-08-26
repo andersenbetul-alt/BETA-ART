@@ -236,3 +236,38 @@ mid-turn mesaj), en son mesaj otomatik olarak "düzeltme" sayılmamalı —
 çelişki bir gözlem olarak kayda geçmeli, çünkü aksi hâlde hangi bilginin
 esas alındığı belgenin okuyucusuna kaybolur.
 
+## 2026-08-26 (devam) — NAVIAR Care pilot uygulaması oturumu
+
+### Observation 11: xlsx skill'in recalc.py'si de bu ortamda LibreOffice'e bağımlı olduğu için çalışmıyor
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** NAVIAR Care birim ekonomisi ve haftalık P&L
+xlsx dosyaları üretilirken
+**Skill:** xlsx (sistem becerisi — gerekirse xlsx-extras'a)
+**Type:** internal
+**Phase/Area:** Doğrulama
+
+**Issue:** `scripts/recalc.py`, 165 saniyeye kadar denenen timeout'larda
+bile "LibreOffice timed out" hatası verdi — gözlem 3'te docx için tespit
+edilen "LibreOffice bu konteynerde çalışmıyor" bulgusunun xlsx/openpyxl
+iş akışı için de geçerli olduğunu doğruluyor (aynı kök neden, farklı
+skill). Formüller bu yüzden gerçek bir hesap makinesiyle (LibreOffice)
+değil, formüllerle birebir aynı mantığı taşıyan bağımsız bir Python
+hesabıyla doğrulandı — ve bu doğrulama bir yerde gerçek bir hata da
+yakaladı (saatlik maliyet sabitini yanlış türetmiştim, 214 kr yerine
+321,2 kr olmalıydı).
+
+**Suggested improvement:** xlsx skill'ine (ya da bir xlsx-extras
+tamamlayıcısına) bu ortam için not düşülsün: recalc.py çalışmıyorsa,
+formülle aynı mantığı taşıyan bağımsız bir Python hesabıyla çapraz
+kontrol yapılmalı ve bu doğrulamanın "gerçek Excel/LibreOffice yeniden
+hesaplaması değil, mantık doğrulaması" olduğu teslim edilen dosyanın
+notlarında açıkça belirtilmeli.
+
+**Principle:** Bir doğrulama aracı (recalc.py, pandoc, soffice...) ortamda
+çalışmıyorsa doğrulama atlanmaz — en yakın alternatif kurulur ve neyin
+doğrulanamadığı dürüstçe söylenir (gözlem 3'ün ilkesinin ikinci, bağımsız
+örneği — artık bir "kalıp" sayılabilir: bu ortamda LibreOffice'e dayanan
+HİÇBİR araç güvenilir çalışmıyor, yalnız docx değil).
+

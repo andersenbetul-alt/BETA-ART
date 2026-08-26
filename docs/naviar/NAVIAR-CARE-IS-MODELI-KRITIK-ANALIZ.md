@@ -6,6 +6,16 @@ Plan" (İngilizce, ChatGPT kaynaklı görünüyor — Arbeidstilsynet/Oslo
 kommune/Skatteetaten/Datatilsynet atıflı) + bu depodaki önceki
 `docs/naviar/NAVIAR-CARE-HIZMET-TARAMA.md` (25.08.2026).
 
+> **Güncelleme (26.08.2026, aynı gün):** Kullanıcı planın kendisini
+> "uygulama" isteğiyle tekrar gönderdi ve dosya iskeleti
+> `docs/naviar/care-pilot/` altında gerçekten oluşturuldu (README:
+> `docs/naviar/care-pilot/README.md`). Ayrıca bağımsız bir ikinci
+> değerlendirme ("tjenestevurdering", tjenesteutvikler rolünden) geldi ve
+> bu belgenin §4/§5'teki bulgularını doğruladı — bkz.
+> `docs/naviar/care-pilot/decisions/tjenestevurdering-2026-08-26.md`
+> (toplam puan 5,4/10, "Differensiering: Ubevist" — bu belgedeki rakip
+> bulgusuyla örtüşüyor).
+
 **Bu belge bir hukuki/mali danışmanlık değildir.** Norveç resmî kaynakları
 (Skatteetaten, Arbeidstilsynet, Datatilsynet, Lovdata) bu ortamda erişilemiyor
 (`EGRESS_BLOCKED` — `seniorsupport.no` dahil tüm dış siteler); aşağıdaki
