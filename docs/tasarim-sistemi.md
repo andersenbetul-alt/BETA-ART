@@ -4,7 +4,9 @@ Figma MCP entegrasyonu için istendi, ama asıl işlevi daha geniş: bir Figma
 tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
-**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 22.08.2026 itibarıyla.
+**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 25.08.2026
+itibarıyla yeniden ölçüldü (ilk sürüm 22.08.2026'ydı; site o tarihten beri
+büyüdü — bkz. §2 ve §5 için özellikle değişen sayılar).
 
 ---
 
@@ -105,13 +107,14 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 
 **Yoktur.** Bileşen mimarisi, Storybook, bileşen dokümantasyonu — hiçbiri yok.
 
-Yerine geçen şey: `assets/css/main.css` içinde **95 sınıf**, altı HTML
-sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi) altı dosyada
-**tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`.
+Yerine geçen şey: `assets/css/main.css` içinde **102 sınıf**, sekiz HTML
+sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi) sekiz dosyada
+**tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`,
+`kalite`, `ornek`. (`404.html` menüyü taşımaz — kasıtlı olarak daha sade.)
 
 > **Figma'dan bileşen çevirirken:** menüyü ya da altbilgiyi değiştiriyorsanız
-> **altı dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve script'i
-> yakalar ama eksik menü bağlantısını yakalamaz.
+> **sekiz dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve
+> script'i yakalar ama eksik menü bağlantısını yakalamaz.
 
 JavaScript'te bileşene en yakın şey `assets/js/app.js` içindeki
 `cardHTML(post, seviye)` — dize döndüren bir işlev, sınıf değil.
@@ -130,7 +133,7 @@ Betik yükleme sırası **anlamlıdır**, değiştirmeyin:
 
 ```html
 <script src="assets/js/config.js"></script>   <!-- yayın ayarları -->
-<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 209 anahtar -->
+<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 233 anahtar -->
 <script src="assets/js/posts.js"></script>    <!-- blog içeriği -->
 <script src="assets/js/app.js"></script>      <!-- hepsini kullanır -->
 ```
@@ -182,11 +185,16 @@ Görünen her ikon **satır içi SVG**dir.
 
 ### İki depo
 
-**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, 11 ikon:
+**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, aynı kayıtta
+iki alt grup, toplam 15 ikon:
 
 ```
+11 yazı ikonu:
 question · coin · blocks · phone · banknote · compass · bulb · chart ·
 envelope · link · gear
+
+4 paylaşım kanalı ikonu (marka glifi, emoji değil):
+linkedin · x · facebook · whatsapp
 ```
 
 Yalnızca yol gövdesi saklanır; sarmalayıcıyı `iconSVG(name)` üretir:
@@ -222,7 +230,7 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
+Hiçbiri. Düz CSS, tek dosya, 629 satır, 102 sınıf. Sınıf adları anlamsal ve
 kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller
@@ -267,10 +275,10 @@ bakın.
 ## 7. Proje yapısı
 
 ```
-*.html                  6 sayfa — iskelet tekrar eder
+*.html                  8 sayfa (+ 404.html) — iskelet 8'inde tekrar eder
 assets/css/main.css     tek stil dosyası
 assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak dosya
-assets/js/i18n.js       10 dil × 209 anahtar
+assets/js/i18n.js       10 dil × 233 anahtar
 assets/js/posts.js      blog içeriği, her yazı 10 dilde
 assets/js/app.js        dil, tema, liste, yazı sayfası, formlar
 assets/brand/           14 kimlik varlığı (üretilir)

@@ -25,6 +25,9 @@ blog.html           Yazı listesi: arama + kategori filtresi
 gizlilik.html       Gizlilik ve veri koruma metni (TR + EN)
 kosullar.html       Kullanım ve hizmet koşulları (TR + EN)
 post.html           Yazı detayı (?slug=... ile)
+kalite.html         Kalite güvencesi ve görünürlük kuralları — dışa dönük sayfa
+ornek.html          Tek araştırmadan yedi çıktı — gerçek dosyalarla vitrin
+404.html            Bulunamadı sayfası (menü/altbilgi taşımaz)
 assets/js/config.js Yayın ayarları: e-posta, alan adı, sosyal hesaplar, fiyatlar, lead magnet
 assets/css/main.css Tek stil dosyası; tüm renkler :root değişkenlerinden gelir
 docs/tasarim-sistemi.md Belirteçler, ikon kuralı, RTL, dış tasarım çeviri listesi
@@ -71,9 +74,10 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    Yazı boyutu da aynı kuraldadır: ham `rem` yazmayın, `--fs-2xs`…`--fs-xl`
    basamaklarını kullanın. Başlıkların `clamp()` değerleri ve `em` göreli boyutlar
    (ilk harf, `code`) ölçeğin dışındadır.
-6. **Sayfa iskeleti altı dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
-   altısını birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`). `check.mjs` çiftlenen
-   id ve script'leri yakalar ama eksik menü bağlantısını yakalamaz.
+6. **Sayfa iskeleti sekiz dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
+   sekizini birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`,
+   `kalite`, `ornek`). `404.html` menüyü taşımaz, bu listeye girmez. `check.mjs`
+   çiftlenen id ve script'leri yakalar ama eksik menü bağlantısını yakalamaz.
 7. **Kimlik işi tescil standardına göre yapılır.** Üretilen her logo, ikon ve
    marka varlığı şu üç kapıdan geçmek zorunda; "sonra bakarız" denmez:
    **(a) Yeniden üretilebilirlik.** Varlık bir betikten çıkar, elle çizilmez.
@@ -118,7 +122,7 @@ denetler (tek yazı: `node scripts/gorunurluk.mjs <slug>`). Motorun taslaklara u
 ölçütü sitenin kendi yazılarına da uygular — kendi kuralımıza uymayan bir hattı
 kimseye satamayız.
 
-`npm run onizleme` altı sayfayı, yazı tipleri dahil her şeyi tek dosyaya gömüp
+`npm run onizleme` sekiz sayfayı, yazı tipleri dahil her şeyi tek dosyaya gömüp
 `onizleme/qblogg.html` üretir: sunucu kurmadan, dışarıya hiç istek atmadan
 tıklanabilir bir önizleme. Birine site göstermek gerektiğinde bunu kullanın.
 Yönlendirme `?page=` ile; `slug` ve `lang` gerçek sorgu dizesinde kaldığı için
@@ -183,7 +187,8 @@ Ayrıca iki alan görünürlük kuralı gereği doldurulur:
   En az üç kaynak; para/kariyer konularında bu bir kural, öneri değil.
 
 **Yeni bölüm/sayfa:** metinleri önce `i18n.js`'e on dilde ekleyin, sonra HTML'i
-`data-i18n` ile yazın. Dört sayfanın menüsünü ve altbilgisini güncelleyin.
+`data-i18n` ile yazın. Sekiz sayfanın menüsünü ve altbilgisini güncelleyin
+(bkz. madde 6).
 
 **Yeni dil:** `QB_LANGS`'a `{ code, name, native, dir }` ekleyin, `QB_I18N.<kod>`
 sözlüğünü İngilizcedeki tüm anahtarlarla doldurun, yazılara aynı kodu ekleyin,
@@ -254,7 +259,7 @@ açık talebi.
   (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg.vercel.app (23.08 gecesi proje panelde silinmişti; aynı adla yeniden kuruldu — proje id değişti, eski qblogg-flame/qblogg-bet-art adresleri geçersiz).
   Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir (depodaki
   dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`)
-  klonlayıp 6 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
+  klonlayıp 8 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
   `dist/`e kopyalar. Yani **siteyi güncellemek =
   main'e push + aynı dağıtımı yeniden tetiklemek.** Vercel'in GitHub
   entegrasyonu `andersenbetul-alt` hesabına yetkili değil (`repo_no_access`,

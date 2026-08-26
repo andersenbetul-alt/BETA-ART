@@ -359,3 +359,23 @@ müşteri-ücreti karma modelinin kendi içindeki tarafsızlık gerilimi [H]
 olarak işaretlendi. Hiçbir marka varlığı/kod üretilmedi — açık sorular
 (descriptor mu yoksa aynı marka hattı mı, B2G mi B2C mi birincil) kullanıcı
 kararını bekliyor.
+
+## 25.08.2026 (devam) — Figma tasarım sistemi kuralları yeniden ölçüldü, CLAUDE.md düzeltildi
+
+`/mcp__Figma__create_design_system_rules` çağrıldığında `docs/tasarim-sistemi.md`
+zaten var olduğu görüldü (22.08.2026'da aynı amaçla yazılmış). Yeniden yazmak
+yerine her iddiası bu konteynerde yeniden ölçüldü — site o tarihten beri
+büyümüş, beş sayı gerçekle uyuşmuyordu: `main.css` 553→**629 satır**,
+95→**102 sınıf**; `ICONS` kaydı 11→**15 ikon** (4 paylaşım kanalı eklenmiş);
+i18n 209→**233 anahtar**; sayfa iskeleti 6→**8 dosyada** tekrar ediyor
+(`kalite.html`, `ornek.html` de menü/altbilgi taşıyor ama listeye hiç
+girmemişlerdi). Hepsi `docs/tasarim-sistemi.md`'de düzeltildi.
+
+Aynı "8 sayfa" gerçeği `CLAUDE.md`'nin kendisinde de üç ayrı yerde yanlış
+duruyordu (madde 6 "altı dosya", "Dört sayfanın menüsü", onizleme/Vercel
+açıklamaları "6 sayfa") — hatta ikisi kendi içinde çelişiyordu (altı vs
+dört). `vercel.json`'ın `buildCommand`'ı kontrol edildi: dağıtım zaten
+doğru 8 sayfayı kopyalıyor, yalnızca belge metni gerideydi. Dosya ağacına
+`kalite.html`, `ornek.html`, `404.html` satırları eklendi. `npm run check`
+yeşil (9 sayfa, 233 anahtar doğrulandı) — işlevsel değişiklik yok, yalnız
+belge doğruluğu.
