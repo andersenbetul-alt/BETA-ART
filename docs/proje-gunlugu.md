@@ -351,3 +351,17 @@ hangisinin ne zaman geçerli olduğu netleşmedi. `NAVIAR-LOGO-KARAR.md` P9 ve
 §6 madde 6-7 bu bulgularla çapraz referanslandı; beşinci bir tagline adayı
 ("yaşam ve hizmet ekosistemi") da kayda geçti. İş onayı (P9 madde 1) hâlâ
 kullanıcının kararı bekliyor.
+
+## 26.08.2026 — docs/tasarim-sistemi.md yeniden ölçüldü (Figma MCP rules isteği)
+
+Figma design-system-rules komutu tetiklendi; bu iş için zaten
+`docs/tasarim-sistemi.md` vardı (22.08.2026'da yazılmış), yeniden yazmak
+yerine ölçüp güncelledim. Dört günde gerçek drift bulundu: sayfa iskeleti
+artık 6 değil 8 dosyada tekrar ediyor (`kalite.html` + `ornek.html` eklenmiş,
+`CLAUDE.md`'nin "altı dosya" listesi bunu yansıtmıyor — ayrı bir düzeltme
+gerektirir); ikon kaydı 11'den 15'e çıkmış (4 paylaşım glifi eklenmiş);
+i18n 209'dan 233 anahtara çıkmış; main.css 553'ten 629 satıra, 95'ten 117
+sınıfa çıkmış; medya sorgusu sayısı 5 değil 6 ve hepsi `max-width` değilmiş
+(bir `print`, bir `prefers-reduced-motion` sorgusu da var — önceki metin
+yanlıştı); `assets/img/` klasörü kaldırılmış. Figma koltuğu (`whoami`) hâlâ
+`View` — değişmedi. `npm run check` yeşil.

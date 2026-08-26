@@ -4,7 +4,10 @@ Figma MCP entegrasyonu için istendi, ama asıl işlevi daha geniş: bir Figma
 tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
-**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 22.08.2026 itibarıyla.
+**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 26.08.2026 itibarıyla
+yeniden ölçüldü (önceki ölçüm 22.08.2026'ydı — dört günde sayfa sayısı, ikon
+sayısı, i18n anahtar sayısı ve CSS satır/sınıf sayısı değişti; aşağıdaki
+rakamlar güncel).
 
 ---
 
@@ -30,8 +33,8 @@ gelen bir bileşen React JSX olarak değil, **düz HTML + satır içi stil** ola
 
 ### Nerede
 
-Tek yer: `assets/css/main.css` içindeki `:root` bloğu (satır 1–40) ve koyu
-tema için `html[data-theme="dark"]` (satır 41–58). Başka hiçbir dosyada
+Tek yer: `assets/css/main.css` içindeki `:root` bloğu (satır 4–41) ve koyu
+tema için `html[data-theme="dark"]` (satır 43–62). Başka hiçbir dosyada
 belirteç tanımı yok.
 
 ### Biçim
@@ -105,13 +108,17 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 
 **Yoktur.** Bileşen mimarisi, Storybook, bileşen dokümantasyonu — hiçbiri yok.
 
-Yerine geçen şey: `assets/css/main.css` içinde **95 sınıf**, altı HTML
-sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi) altı dosyada
-**tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`.
+Yerine geçen şey: `assets/css/main.css` içinde **117 sınıf**, sekiz HTML
+sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi, `.site-header`)
+**sekiz dosyada tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`,
+`kosullar`, `kalite`, `ornek` (`404.html` iskeleti taşımıyor — kontrol edildi,
+tek istisna). `kalite.html` ve `ornek.html` 22.08'den sonra eklendi;
+`CLAUDE.md`'nin "altı dosyada tekrar eder" listesi bu ikisini içermiyor —
+o liste de güncellenmeli.
 
 > **Figma'dan bileşen çevirirken:** menüyü ya da altbilgiyi değiştiriyorsanız
-> **altı dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve script'i
-> yakalar ama eksik menü bağlantısını yakalamaz.
+> **sekiz dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve
+> script'i yakalar ama eksik menü bağlantısını yakalamaz.
 
 JavaScript'te bileşene en yakın şey `assets/js/app.js` içindeki
 `cardHTML(post, seviye)` — dize döndüren bir işlev, sınıf değil.
@@ -130,7 +137,7 @@ Betik yükleme sırası **anlamlıdır**, değiştirmeyin:
 
 ```html
 <script src="assets/js/config.js"></script>   <!-- yayın ayarları -->
-<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 209 anahtar -->
+<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 233 anahtar -->
 <script src="assets/js/posts.js"></script>    <!-- blog içeriği -->
 <script src="assets/js/app.js"></script>      <!-- hepsini kullanır -->
 ```
@@ -144,11 +151,12 @@ Hepsi `window.QB_*` küresel değişkenleri üzerinden konuşuyor. Modül yok.
 | Klasör | Boyut | İçerik |
 |---|---|---|
 | `assets/fonts/` | 204 KB | Inter, dört alt küme + `inter.css` + `OFL.txt` |
-| `assets/js/` | 460 KB | Dört dosya; büyüğü `posts.js` (10 yazı × 10 dil) |
+| `assets/js/` | 480 KB | Dört dosya; büyüğü `i18n.js` (1790 satır, 233 anahtar × 10 dil) |
 | `assets/brand/` | 116 KB | 14 kimlik varlığı — **betikten üretilir, elle düzenlenmez** |
-| `assets/css/` | 36 KB | Tek dosya |
-| `assets/downloads/` | 12 KB | Lead magnet |
-| `assets/img/` | 4 KB | |
+| `assets/css/` | 40 KB | Tek dosya, 629 satır |
+| `assets/downloads/` | 12 KB | Lead magnet (`otomasyon-kesif-listesi.html`) |
+
+`assets/img/` artık **yok** — 22.08.2026 ölçümünde vardı, kaldırılmış.
 
 **CDN yok ve olmayacak.** Yazı tipleri kendi sunucumuzda:
 
@@ -182,12 +190,18 @@ Görünen her ikon **satır içi SVG**dir.
 
 ### İki depo
 
-**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, 11 ikon:
+**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, **15 ikon**
+(22.08'de 11'di; dördü sonradan eklendi):
 
 ```
 question · coin · blocks · phone · banknote · compass · bulb · chart ·
-envelope · link · gear
+envelope · link · gear                                         (11 — yazı ikonu)
+linkedin · x · facebook · whatsapp                (4 — paylaşım kanalı glifi)
 ```
+
+Son dördü aynı kayıtta ama ayrı bir yorumla işaretli ("Paylaşım kanalları —
+marka glifleri emoji/metin işareti değil") ve aynı çizim kuralına uyuyor —
+ayrı bir alt sistem değil, aynı `ICONS`/`iconSVG()` mekanizmasının uzantısı.
 
 Yalnızca yol gövdesi saklanır; sarmalayıcıyı `iconSVG(name)` üretir:
 
@@ -222,7 +236,7 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
+Hiçbiri. Düz CSS, tek dosya, 629 satır, 117 sınıf. Sınıf adları anlamsal ve
 kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller
@@ -232,10 +246,18 @@ sıfırlama → tipografi → düzen → bileşenler → medya sorguları.
 
 ### Duyarlılık
 
-**5 medya sorgusu**, hepsi `max-width`. Mobil kırılma noktaları:
+**6 medya sorgusu** — dördü `max-width` genişlik kırılması, biri
+`prefers-reduced-motion`, biri `print` (genişlik değil, çıktı türü sorgusu —
+önceki ölçüm hepsinin `max-width` olduğunu söylüyordu, yanlıştı). Genişlik
+kırılmaları:
 
+- `≤1180px` — menü mobil moda geçer (Rusça/Norveççe etiketler Türkçeden uzun)
+- `≤860px` — `.flow` ızgarası tek sütuna düşer
 - `≤620px` — dil seçici ikona düşer, logo yalnızca sembol
 - `≤360px` — tema düğmesi gizlenir
+
+Ayrıca ayrı bir yazdırma sayfası var (`@media print`): başlık/altbilgi/CTA
+gizlenir, gövde siyah-beyaza döner, dış bağlantılar adresle genişler.
 
 Izgaralar `min()` ile korunur — sabit `minmax` yatay taşma üretiyordu:
 
@@ -267,14 +289,15 @@ bakın.
 ## 7. Proje yapısı
 
 ```
-*.html                  6 sayfa — iskelet tekrar eder
+*.html                  8 sayfa iskelet taşır (+ 404.html taşımaz) — tekrar eder
 assets/css/main.css     tek stil dosyası
 assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak dosya
-assets/js/i18n.js       10 dil × 209 anahtar
+assets/js/i18n.js       10 dil × 233 anahtar
 assets/js/posts.js      blog içeriği, her yazı 10 dilde
 assets/js/app.js        dil, tema, liste, yazı sayfası, formlar
 assets/brand/           14 kimlik varlığı (üretilir)
 assets/fonts/           Inter alt kümeleri + lisans
+brand/naviar/           ayrı marka ailesi (NAVIAR) — QBLOGG'a dahil değil
 scripts/                doğrulama ve üretim betikleri
 engine/                 Curiosity Engine — site değil, üretim hattı
 docs/                   marka, gelir, içerik ve denetim belgeleri
@@ -303,7 +326,8 @@ Sonra: `npm run check` · `npm run guvenlik` · `npm run gorunurluk`.
 
 ## Sınırlar
 
-- **Figma koltuğu `View`** (22.08.2026'da `whoami` ile ölçüldü) — Figma'da
-  dosya oluşturamıyorum, yalnızca okuyabilirim
+- **Figma koltuğu `View`** (22.08.2026'da ve yeniden 26.08.2026'da `whoami`
+  ile ölçüldü, değişmedi) — Figma'da dosya oluşturamıyorum, yalnızca
+  okuyabilirim
 - Belirteçler tek yönlü akar: bu depo kaynaktır, Figma değil. Figma'daki bir
   değişiklik buraya elle taşınır
