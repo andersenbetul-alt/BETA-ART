@@ -5,8 +5,42 @@
 - Public destination: `https://beta-art.com/`
 - Master codebase: `andersenbetul-alt/beta-art-archive`
 - Production branch: `main`
-- Development integration branch: `beta-art-unified-v1`
+- Unified v1 merged to `main` on 2026-08-26.
 - GitHub, Lovable, Adobe, Figma, GoDaddy and Vercel are production tools and source material, not separate Beta Art brands.
+
+## Source map and legacy decisions
+
+### Production source
+- `andersenbetul-alt/beta-art-archive` is the only source-of-truth codebase.
+- `main` is the authoritative implementation branch.
+
+### Lovable
+- Project: `Beta Art Archive` / `human-lens-archive`.
+- Preserve the useful Supabase, RLS, roles, auth/admin and unpublished catalogue infrastructure.
+- The Aug 25, 2026 “AI creative studio / Business + Private / Your idea. Beautifully made.” repositioning is **not** the current Beta Art strategy and must not be used as production truth.
+- Lovable remains a development/prototyping environment. Any customer-facing Lovable work must follow this master model before being promoted to production.
+
+### GitHub repository `andersenbetul-alt/BETA-ART`
+- This repository is **not** the Beta Art production codebase.
+- It contained unrelated/legacy QBlogg content during consolidation and must not be merged blindly into the archive project.
+- Treat it as legacy/unrelated unless a specific file is manually reviewed and intentionally migrated.
+
+### Google Drive
+- Drive documents such as the Beta Art audit, master prompt, mark/identity system and series index are approved research/design sources.
+- They do not override current verified facts, law, this master model or the production repository when conflicts exist.
+
+### GoDaddy Airo
+- Historical builder/content source only.
+- Do not treat the Airo project as a separate production website once `beta-art.com` is migrated to the master deployment.
+
+### Adobe / Figma
+- Brand/design source material.
+- Approved assets/tokens may be brought into the production repo after review.
+- They do not create separate Beta Art products or websites.
+
+### Vercel
+- Intended production hosting/deployment layer for the master repository.
+- Domain migration happens only after the production build passes launch gates.
 
 ## Positioning
 
@@ -72,6 +106,17 @@ Human → Camera → RAW → Edit → Rights → Licence
 - **Commissioned capture** — client briefs delivered to the same provenance standard.
 - Enterprise/API functionality only after real B2B demand validates it.
 
+## Internal platform capabilities
+
+The production codebase may include internal capabilities that are not part of the public buying proposition:
+
+- Supabase authentication and role-based admin access.
+- RLS-protected catalogue data.
+- Unpublished/pending plate management.
+- Server-side administration utilities.
+
+Public licensing should not require customer account creation by default. Internal auth/admin routes should remain restricted and noindex.
+
 ## Rights strategy
 
 - The written licence is the controlling agreement.
@@ -121,8 +166,8 @@ Do not mark the unified build production-ready until all are resolved:
 Source documents and prototypes are evidence and inspiration, not automatically production truth. When sources conflict, prefer:
 
 1. verified real-world facts and current law/standards;
-2. current master product decision;
-3. current master repository implementation;
+2. this master model;
+3. current `main` implementation in `andersenbetul-alt/beta-art-archive`;
 4. latest unique source documents;
 5. older/duplicate prototypes.
 
