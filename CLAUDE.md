@@ -224,6 +224,15 @@ Bu ilkeler işe yarıyorsa: diff'lerde gereksiz değişiklik azalır, fazla
 karmaşıklıktan doğan yeniden yazımlar azalır ve açıklayıcı sorular hatadan sonra
 değil önce gelir.
 
+## Beceri gözlemi
+
+Araç kullanıp çıktı üretilen her göreve başlamadan önce `task-observer` becerisi
+çağrılır. Bu, beceri iyileştirme fırsatlarının oturum boyunca yakalanmasını
+sağlar. Bir beceri yüklenirken `skill-observations/log.md`'de o beceriye
+etiketli açık (OPEN) gözlem var mı diye bakılır; varsa beceri dosyası henüz
+güncellenmemiş olsa bile o gözlemin içgörüsü mevcut işe uygulanır — kalıcı
+entegrasyon haftalık incelemede olur.
+
 ## Kullanıcıya iş devrederken
 
 Kullanıcının kendi yapması gereken bir adım varsa (izin verme, DNS, panel ayarı,
