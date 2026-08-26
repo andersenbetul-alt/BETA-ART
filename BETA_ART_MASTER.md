@@ -1,202 +1,312 @@
 # Beta Art — Master Model
 
-## Single source of truth
+## 1. Single website rule
+
+BETA ART is one brand, one website and one evolving concept.
 
 - Public destination: `https://beta-art.com/`
-- Master codebase: `andersenbetul-alt/beta-art-archive`
+- Visual/concept baseline: the current GoDaddy Airo Beta Art website.
+- Master production codebase: `andersenbetul-alt/beta-art-archive`
 - Production branch: `main`
-- GitHub, Lovable, Adobe, Figma, GoDaddy Airo, Google Drive and Vercel are tools/sources, not separate Beta Art brands.
-- The Aug 25, 2026 `BAB01_035 · BETA ART BUSINESS — MASTER BUSINESS MODEL v1.0` is the highest-current Business source-of-truth candidate for Phase 1.
+- Final hosting target: Vercel.
+- Google Drive, Library, Lovable, Adobe, Figma, GitHub experiments, research and old HTML builds are sources that improve the same website; they are not separate Beta Art websites.
+- Do not create another Beta Art website when a new idea appears. Evaluate it, then place it into the existing site as a section, flow, capability or later-stage module if it strengthens the concept.
 
-## Current Phase-1 decision
+The Airo page controls the visual continuity and recognizable customer-facing experience. GitHub controls production code and version history. This prevents two competing production truths.
 
-**BETA ART Business — Dokumentasjon som overlever prosjektet.**
+## 2. Product principle
 
-Phase 1 is a Norway-first B2B service for construction-project closeout and long-term retrieval. The customer is not buying generic storage, an AI authenticity badge, a stock-photo marketplace or another live project-management tool. The product is the future ability to retrieve the correct original documentation with enough project context to understand and use it after teams, access and project context have changed.
+BETA ART is built around one shared competence:
+
+> **Real-world visual records with context, provenance, rights and retrievability.**
+
+The website can express several applications of that competence without becoming several brands:
+
+1. **Archive / Photography** — human-made photography and curated bodies of work.
+2. **Business / Project Archive** — structured long-term project-documentation retrieval, initially construction-focused.
+3. **Assignments / Commissions** — create new real-world photography when the needed record/image does not exist.
+4. **Verified / Provenance** — original/source discipline, creator/source identity, capture/context, metadata and visible exceptions.
+5. **Rights / AI** — licensing, releases, AI/manipulation disclosure and machine-readable rights reservations where supported.
+6. **Continuity / Retrieval** — preserve context so a future responsible person can find and understand the correct record.
+
+These are sections/capabilities of one Beta Art concept, not separate products with separate websites.
+
+## 3. Commercial Phase 1
+
+The Aug 25, 2026 `BAB01_035 · BETA ART BUSINESS — MASTER BUSINESS MODEL v1.0` remains the highest-current Business decision set for Phase 1.
+
+Commercial Phase 1 is Norway-first and construction-focused:
+
+> **Dokumentasjon som overlever prosjektet.**
 
 Core commercial principle:
 
 > **Retrieval, not storage.**
 
-Approved positioning:
+The first Business offer is a bounded Project Closeout Archive / Completed Project Rescue service. The customer is buying the future ability to retrieve the correct original documentation with enough project context to understand and use it after teams, access and project context have changed.
 
-> **Dokumentasjon som overlever prosjektet.**
+Validation gate:
 
-Approved historic headline:
+> **Deliver three paying archive customers semi-manually before building a large software platform.**
 
-> **Prosjektet avsluttes. Dokumentasjonen skal ikke.**
+Service first, software later.
 
-## Phase-1 customer
+The Business model is the current commercial priority, but it must fit inside the single Airo-based Beta Art website rather than replacing the entire Beta Art identity.
 
-Primary market: Norway · bygg & anlegg.
+## 4. Airo-based website architecture
 
-Primary customer groups:
-- contractors / entreprenører,
-- developers / byggherrer,
-- initially one Norwegian region,
-- project managers,
-- quality/HSE roles,
-- project owner representatives,
-- aftermarket/claims roles,
-- procurement/management stakeholders.
+The website should remain visually editorial, premium and photography-led, while adding clear sections for the Business use case.
 
-## Phase-1 offer
+Recommended one-site architecture:
 
-### Project Closeout Archive
-A bounded service combining:
-1. intake,
-2. original/source preservation,
-3. metadata normalization,
-4. verification/exception recording,
-5. project manifest,
-6. retrieval testing,
-7. retention,
-8. export/continuity.
+### 01 — Hero / Beta Art
+Use the strongest existing Airo visual language. Introduce Beta Art as a trust-led real-world visual/archive company rather than a generic stock site or SaaS.
 
-### Preferred Pilot 01 entry
-**Completed Project Rescue**
+The hero must not attempt to explain every product. It should establish the brand and lead users into the two principal journeys:
+- **Explore real photography / archive**
+- **For Business / project documentation**
 
-The customer chooses one recently completed project, supplies project facts and 3–5 natural retrieval questions, and Beta Art structures the scoped material, records gaps/exceptions and tests whether the correct material can be found.
+### 02 — What Beta Art protects
+A concise shared promise:
+- original/source,
+- context,
+- metadata,
+- rights,
+- verification status,
+- retrieval/continuity.
 
-No project files should be accepted before qualification, scope and readiness/privacy gates are resolved.
+### 03 — Archive / Photography
+Retain the strongest Airo / `beta-art-v3` museum-standard presentation:
+- real photography first,
+- catalogue/accession logic,
+- editorial series,
+- verification status,
+- direct licensing when commercially ready.
 
-## Validation rule
+Do not show placeholders as verified production assets.
 
-Before full platform development:
+### 04 — For Business
+Construction Phase-1 section:
+- `Dokumentasjon som overlever prosjektet.`
+- explain what happens when a project closes,
+- explain why this is not another project-management tool,
+- show Completed Project Rescue / Project Closeout Archive,
+- CTA: `Vurder ett avsluttet prosjekt` / `Book 20 minutter`,
+- first step collects project facts, not project files.
 
-> **Deliver three paying archive customers semi-manually.**
-
-Service first, software later. Build automation only after repeated pilot evidence proves which steps need it.
-
-## Shared trust infrastructure
-
-All previous Beta Art work is consolidated here as capability, not as competing public products:
+### 05 — How it works
+Shared evidence/retrieval chain:
 
 **Source/original → Metadata → Verification/Exception → Rights → Retrieval → Retention → Export/Exit**
 
-Useful retained principles from the photography/provenance work:
-- preserve original files where in scope,
-- record metadata source/context,
-- cryptographic fingerprints/hashes where useful,
-- C2PA only as a supporting signal when genuinely present,
-- clear rights and release status,
-- AI/manipulation disclosure where relevant,
-- auditability,
-- encrypted/private storage,
-- role-based access,
-- secure downloads,
-- visible unknowns and exceptions,
-- never turn missing evidence into a verified claim.
+For photographic assets this may include RAW/capture evidence; for project archives it may include project/source files and contextual metadata.
 
-## Photography / archive strategy
+### 06 — Beta Art Verified
+Use the strongest verification work already developed:
+- evidence before badge,
+- original/source required,
+- identity/source review,
+- capture/context review where relevant,
+- rights/release state,
+- AI/manipulation disclosure,
+- C2PA as supporting evidence only,
+- unknowns remain visible.
 
-The original verified-photography archive, direct licensing, art sales, exhibitions and broad marketplace ideas remain **historical / later-stage directions**, not the Phase-1 Business homepage proposition.
+Never claim that provenance proves universal truth or guarantees a legal outcome.
 
-`Photography with Proof` remains a valid description of Beta Art's provenance competence and future photography/archive layer, but it must not override the current construction-first Business launch thesis.
+### 07 — Assignments / Commissions
+One section, not a separate website:
+- if the archive does not contain what is needed, commission real-world capture,
+- controlled/approved photographer supply,
+- original/capture discipline,
+- rights and project context captured at source.
 
-Photographers remain strategically important as a controlled supply side for assignments and original/capture documentation. No open self-service photographer marketplace in Phase 1.
+### 08 — Rights & AI
+Combine licensing and rights infrastructure:
+- written licence/contract controls,
+- AI training not granted by default unless explicitly agreed,
+- IPTC/PLUS data-mining metadata where implemented,
+- `trust.txt`, TDMRep and other machine-readable signals where appropriate,
+- C2PA/CAWG assertions when genuinely supported.
 
-## Current revenue structure
+Machine-readable signals support contracts; they do not guarantee every downstream crawler will comply.
 
-Structure is current; prices remain pilot hypotheses until validated/reviewed:
-- project archive establishment,
-- retention extension,
-- fee/margin on mediated photography assignments.
+### 09 — Series / Editorial story
+Use the established series framework as curatorial structure for the photography side:
+- Work
+- Craft
+- Land and Light
+- The Table
+- Rooms
+- The Unseen
+- Weather
 
-Current historical pilot hypotheses include 15,000 NOK/project establishment, 2,500 NOK/year extension after the initial retention period, and 11,000 NOK/day mediated photography. Do not present these as final production prices without validation and accounting/legal review.
+A series becomes publicly live only when it contains real work and a finished introduction.
 
-No subscription in Phase 1.
-
-## Public website — Phase 1
-
-Primary language: Norwegian. English may be secondary.
-
-The homepage must move a construction buyer from:
-
-> “I understand the risk.”
-
-to:
-
-> “I understand exactly how to test this on one project.”
-
-Recommended conversion order:
-1. problem,
-2. what Beta Art does,
-3. “not another project tool”,
-4. Completed Project Rescue,
-5. customer gives / Beta Art does / customer receives,
-6. later-retrieval example,
-7. pilot pricing/hypothesis status,
-8. pilot qualification CTA,
-9. concise trust/transparency support.
-
-Do not make a stock-photo archive, art marketplace or general provenance SaaS the Phase-1 homepage.
-
-## Trust / procurement material
-
-Before serious B2B pilots, prepare:
+### 10 — Transparency / Procurement
+Especially for Business buyers, publish what can replace missing social proof:
 - verification methodology,
 - privacy/DPA status,
 - storage/access description,
+- retention/deletion,
 - continuity/export policy,
-- pilot scope,
-- readiness gate,
-- deliverables sample,
-- company/contact/invoice information once finalized.
+- pilot scope/readiness gate,
+- deliverables sample.
 
-Use transparent documents instead of fake logos, fake testimonials, fake customer counts or fake verification percentages.
+No fake client logos, testimonials, customer counts or verification percentages.
 
-## Technology rule
+### 11 — About / Maker
+Human accountability is part of the brand. Use a real photographer/founder story only after details are confirmed. Never invent biography, awards, clients or archive numbers.
 
-**Service first, software later.**
+### 12 — Contact / Qualification
+One contact system with paths for:
+- photography/licensing,
+- Business pilot,
+- assignment/commission,
+- photographer collaboration.
 
-Keep and reuse the existing Supabase/RLS/auth/admin work where it supports the Business archive model. Do not add a complex marketplace, public uploader, AI generator, recommendation engine or subscription system before pilot validation.
+Keep the Business qualification step light and do not request sensitive project files before readiness/privacy gates.
 
-## Source map
+## 5. Visual system
 
-### GitHub
-`andersenbetul-alt/beta-art-archive/main` is the only production code source.
+Preserve the strongest Airo/master-prompt identity:
 
-### Google Drive / Library
-Current BAB-01 Business master, Expert Board decisions, Oppstartspakke, verification/rights framework, audit, brand and older photography materials are research/product sources. Newer explicit BAB-01 Business decisions control Phase 1 when they conflict with older marketplace/archive concepts.
+- Paper: `#FBFAF7`
+- Panel: `#F3F0E9`
+- Ink: `#0F0F0F`
+- Secondary ink: `#1F1D1B`
+- Muted: `#85817A`
+- Rule: `#E4E0D8`
+- Archival seal red: `#8B1A1A`
+- Display: Fraunces
+- Body: Inter
+- Technical/accession: JetBrains Mono
 
-### GoDaddy Airo
-Historical/current builder source. Airo project code may be exported as a ZIP and reviewed for useful components. Airo must not remain a second production truth once the final domain is migrated.
+Rules:
+- photography/real documentation has visual priority,
+- generous whitespace and strict grid,
+- square/minimal-radius geometry,
+- minimal motion,
+- no glassmorphism, gradients, 3D startup decoration or generic AI visuals,
+- verification seal is a signature element, never a decorative sticker over the photograph.
 
-### Lovable
-Preserve useful Supabase, RLS, roles, auth/admin and unpublished catalogue infrastructure. Customer-facing experiments that conflict with this master model are not production truth.
+## 6. Best ideas retained from all sources
 
-### Adobe / Figma
-Brand/design source material only. Approved assets and tokens may be migrated into the master repo after review.
+### From Airo / `beta-art-v3`
+- museum/archive aesthetic,
+- photography-first visual weight,
+- catalogue/accession language,
+- verification seal,
+- direct, restrained editorial voice.
 
-### Vercel
-Intended production hosting for the master repo. Do not deploy the currently photography-led homepage as final production until it has been realigned to the current Phase-1 Business model and passes QA.
+### From `beta-art-master-complete`
+- Archive + Assignments + Verified + Business as one connected journey,
+- search/zero-result → assignment idea,
+- compliance and rights sections,
+- buyer/business procurement logic.
 
-### Legacy `andersenbetul-alt/BETA-ART`
-Not a production Beta Art repo. Review individual files manually before intentional migration.
+### From BAB-01 Business
+- retrieval-first commercial positioning,
+- Completed Project Rescue,
+- project-based pilot rather than subscription,
+- service-first validation,
+- 3 paying pilots before large software build,
+- DPA/EU-EEA storage/continuity as procurement features,
+- transparent exceptions and retrieval tests.
 
-## Launch blockers
+### From Verification & Rights work
+- evidence before badge,
+- original/source + identity/context + rights + disclosure,
+- no unsupported truth score,
+- generative changes disclosed,
+- C2PA as supporting signal.
 
-Do not call Phase 1 production-ready until:
-1. Homepage is realigned to current BAB-01 Business proposition.
-2. Pilot scope and qualification flow are implemented without file upload at the first stage.
-3. Privacy/controller/processor model and DPA are reviewed.
-4. EU/EEA storage/access model is confirmed.
-5. Retention, deletion, export and exit policy are documented.
-6. Legal/accounting/insurance blockers are reviewed where applicable.
-7. One pilot pricing structure is confirmed for testing and labelled accurately.
-8. Company identity, org number, contact and invoice information are real.
-9. Build, accessibility, mobile, security, performance and link QA pass.
-10. Master GitHub repo is connected to Vercel and `beta-art.com` only after the above gates.
+### From Drive brand/series work
+- archival visual identity,
+- aperture/seal motif,
+- curated series rather than stock-keyword clutter,
+- strong maker/about narrative.
 
-## Source conflict rule
+### From Lovable
+- useful Supabase, RLS, roles, auth/admin and catalogue infrastructure may be reused after review,
+- customer-facing experiments do not override this master model.
 
-When sources conflict, prefer:
-1. verified current facts/law,
-2. explicit current BAB-01 Business decisions,
-3. this master model,
-4. production repository implementation,
-5. supporting current product documents,
-6. older photography/marketplace/prototype material.
+### From GitHub
+- production implementation, version control and reusable React/TanStack components,
+- current privacy/licensing/AI-rights technical work,
+- `trust.txt`, crawler rules and sitemap foundations.
 
-Unsupported facts remain OPEN/HOLD. Never invent the missing answer.
+### From current open standards / research
+- use C2PA Conformance/Trust List implementations when relevant rather than treating any C2PA claim as equal,
+- use layered IPTC/rights-reservation techniques rather than relying only on a `robots.txt` line,
+- treat provenance as evidence/context, not automatic proof of scene truth.
+
+## 7. Ideas not allowed to fragment the site
+
+Do not create separate Beta Art websites for:
+- Photography with Proof,
+- Beta Art Business,
+- Beta Passport,
+- Beta Verify,
+- Beta Vault,
+- Beta Rights,
+- Commissions,
+- Verified Photographer,
+- Enterprise/API,
+- art/exhibitions.
+
+If approved, they become sections, routes, internal capabilities or later-stage modules of the same website.
+
+Do not build now:
+- open marketplace uploads,
+- generic stock marketplace scale,
+- AI image generator,
+- proprietary AI detector as the core product,
+- engagement/trending feeds,
+- complex subscriptions before validation,
+- API/enterprise platform without demand evidence.
+
+## 8. Source hierarchy
+
+When sources conflict, use this order:
+
+1. user-approved current direction: one Airo-based Beta Art website,
+2. verified current facts, law and technical standards,
+3. explicit current BAB-01 Business decisions for Business/Phase-1 commercial questions,
+4. this master model,
+5. reviewed Airo export/current live design for UI/visual continuity,
+6. production GitHub implementation,
+7. supporting Drive/Library/Lovable/Adobe/Figma materials,
+8. older prototypes and superseded experiments.
+
+A commercial Business decision does not automatically overwrite the visual identity of the entire Beta Art brand. A historical visual concept does not automatically overwrite current Business validation decisions.
+
+## 9. Development pipeline
+
+Every Beta Art improvement follows one path:
+
+**Airo / Drive / Library / Adobe / Figma / Lovable / research**
+→ evaluate and reconcile
+→ **GitHub `beta-art-archive/main`**
+→ QA
+→ Vercel
+→ **beta-art.com**
+
+No second production website.
+
+## 10. Immediate implementation gates
+
+Before the single site is called production-ready:
+
+1. Obtain/review the current Airo project export or equivalent current source so visual details can be preserved accurately.
+2. Reconcile the Airo homepage with the unified section architecture above.
+3. Replace unverified placeholder imagery/facts.
+4. Implement the Business qualification section without project-file upload at first contact.
+5. Confirm real company/contact/org/VAT details.
+6. Confirm privacy/controller/processor and EU/EEA storage model before Business file intake.
+7. Document retention, deletion, export and exit.
+8. Review commercial pricing and legal/accounting/insurance assumptions.
+9. Run accessibility, mobile, performance, security, link and form QA.
+10. Connect the master repo to Vercel and move `beta-art.com` only when the unified build passes these gates.
+
+Unsupported facts remain OPEN/HOLD. Never invent missing evidence.
