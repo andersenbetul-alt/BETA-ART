@@ -177,3 +177,62 @@ dağıtım komutunun önüne alışkanlık olarak eklenmeli.
 **Principle:** Dağıtım tarifi depoyu okuyorsa, "bende çalışıyor"un birimi
 çalışma ağacı değil push edilmiş commit'tir.
 
+## 2026-08-26 — NAVIAR CARE + Figma design-system-rules oturumu
+
+### Observation 9: Yeni sayfa eklendiğinde tekrarlanan-iskelet belgeleri senkron kalmıyor
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** Figma design-system-rules komutu için docs/tasarim-sistemi.md
+yeniden ölçülürken bulundu
+**Skill:** qblogg-operasyon
+**Type:** internal
+**Phase/Area:** Yeni sayfa/iskelet bakımı
+
+**Issue:** `kalite.html` ve `ornek.html`, 22.08.2026 ölçümünden sonra eklenmiş
+ve ikisi de altı diğer sayfayla aynı `.site-header`/altbilgi iskeletini
+taşıyor — ama CLAUDE.md'nin "sayfa iskeleti altı dosyada tekrar eder" listesi
+ve `docs/tasarim-sistemi.md`'nin sayı/dosya listesi ikisini de atlamış. Aradan
+dört gün geçmiş, `npm run check` yeşil kalmış (çiftlenen id/script yakalıyor,
+eksik menü bağlantısını veya belge listesini yakalamıyor — bu zaten CLAUDE.md'de
+bilinen bir sınır). İki ayrı belge aynı sebepten aynı şekilde eskimiş.
+
+**Suggested improvement:** qblogg-operasyon'a "yeni sayfa ekleme" maddesi
+eklensin: iskelet taşıyan bir HTML dosyası eklendiğinde, aynı commit'te
+CLAUDE.md'nin "Sayfa iskeleti ... dosyada tekrar eder" cümlesi ve
+`docs/tasarim-sistemi.md` §2/§7'deki sayı/liste birlikte güncellenir. İkisi
+tek bir grep ile doğrulanabilir: `ls *.html | wc -l` ve `grep -c site-header
+*.html` sonucu belgelerdeki sayıyla karşılaştırılır.
+
+**Principle:** Kod büyüdükçe onu tarif eden belge sayısı da büyürse (burada
+ikisi), her biri ayrı ayrı eskiyebilir — "kaynaktan doğrula" ilkesi (kesişen
+ilke #1) yalnız yazarken değil, var olan bir belgeyi yeniden kullanırken de
+uygulanmalı; bir belgenin "resmi kılavuz" olması onu güncel yapmaz.
+
+### Observation 10: Kullanıcı, yapılandırılmış bir soruyu yanıtladıktan hemen sonra serbest metinle çelişen bilgi verdi
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** NAVIAR CARE hizmet tanımı toplanırken
+**Skill:** Genel çalışma pratiği (yeni ilke adayı — kesişen olabilir)
+**Type:** internal
+**Phase/Area:** Belirsiz/çelişkili girdi toplama
+
+**Issue:** AskUserQuestion ile "sağlık/bakım dışı, kurumsal danışmanlık"
+seçildi; aynı tur içinde art arda gelen serbest metin mesajları ("yaşlılar,
+aileler ve bakım ihtiyacı", "güvenli yardımcı ve bakım koordinasyonu") bunun
+tam tersini söyledi. Sessizce biri seçilip diğeri atlanabilirdi; onun yerine
+çelişki açıkça kullanıcıya bildirildi ve en spesifik/en son gelen bilgi esas
+alındı, gerekçesiyle birlikte belgeye de not düşüldü.
+
+**Suggested improvement:** Yapılandırılmış soru (AskUserQuestion/seçenek)
+cevabı ile onu hemen izleyen serbest metin çelişirse: (1) çelişkiyi sessizce
+çözme, (2) hangisinin esas alındığını ve neden olduğunu hem kullanıcıya hem
+üretilen belgeye yaz, (3) daha spesifik ve daha sonra gelen bilgiyi tercih et
+ama bunu "kesin" değil "şimdilik esas alınan" olarak işaretle.
+
+**Principle:** Hızlı ve parçalı gelen kullanıcı girdisinde (özellikle çoklu
+mid-turn mesaj), en son mesaj otomatik olarak "düzeltme" sayılmamalı —
+çelişki bir gözlem olarak kayda geçmeli, çünkü aksi hâlde hangi bilginin
+esas alındığı belgenin okuyucusuna kaybolur.
+
