@@ -4,7 +4,7 @@ Figma MCP entegrasyonu için istendi, ama asıl işlevi daha geniş: bir Figma
 tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
-**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 22.08.2026 itibarıyla.
+**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 26.08.2026 itibarıyla.
 
 ---
 
@@ -105,13 +105,16 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 
 **Yoktur.** Bileşen mimarisi, Storybook, bileşen dokümantasyonu — hiçbiri yok.
 
-Yerine geçen şey: `assets/css/main.css` içinde **95 sınıf**, altı HTML
-sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi) altı dosyada
-**tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`.
+Yerine geçen şey: `assets/css/main.css` içinde **119 sınıf**, sekiz HTML
+sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi) sekiz dosyada
+**tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`,
+`kalite`, `ornek` (`404.html` hariç — o ayrı bir iskelet).
 
 > **Figma'dan bileşen çevirirken:** menüyü ya da altbilgiyi değiştiriyorsanız
-> **altı dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve script'i
-> yakalar ama eksik menü bağlantısını yakalamaz.
+> **sekiz dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve
+> script'i yakalar ama eksik menü bağlantısını yakalamaz. (Not: `CLAUDE.md`
+> hâlâ "altı dosya" diyor — kalite.html ve ornek.html eklendiğinde
+> güncellenmemiş; kullanıcıya bildirildi.)
 
 JavaScript'te bileşene en yakın şey `assets/js/app.js` içindeki
 `cardHTML(post, seviye)` — dize döndüren bir işlev, sınıf değil.
@@ -222,7 +225,7 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
+Hiçbiri. Düz CSS, tek dosya, 629 satır, 119 sınıf. Sınıf adları anlamsal ve
 kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller
@@ -267,7 +270,7 @@ bakın.
 ## 7. Proje yapısı
 
 ```
-*.html                  6 sayfa — iskelet tekrar eder
+*.html                  8 sayfa — iskelet tekrar eder (+ 404.html ayrı)
 assets/css/main.css     tek stil dosyası
 assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak dosya
 assets/js/i18n.js       10 dil × 209 anahtar
