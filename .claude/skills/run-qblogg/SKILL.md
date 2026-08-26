@@ -65,6 +65,12 @@ npm run onizleme   # 8 sayfayı tek tıklanabilir HTML'e gömer (paylaşım içi
   (qblogg-operasyon becerisi, madde 3).
 - **LibreOffice/pandoc bu konteynerde çalışmıyor** — belge doğrulaması
   için qblogg-operasyon becerisindeki alternatifi kullan.
+- **8000 portunu `pkill -f http.server` ile kapatma** — bu sandbox'ta
+  Bash aracı arka planda takip ettiği süreci öldürünce komutun kendisi
+  anlamsız bir çıkış koduyla (144) döner; site aslında sağlıklı kalır ama
+  ajan bunu hata sanabilir. Gerekmedikçe portu manuel kapatma: driver
+  zaten `portAcik()` ile var olan sunucuyu yeniden kullanıyor, kendi
+  başlattığını da `process.kill(-srv.pid)` ile kendi kapatıyor.
 
 ## Sorun giderme
 
