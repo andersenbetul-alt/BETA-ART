@@ -100,8 +100,8 @@ http://localhost:8000.
 ## 7. Proje yapısı ve metin kuralı
 
 ```
-index/work/blog/post/gizlilik/kosullar(.html) + 404.html   sayfalar
-assets/css/main.css      tek stil dosyası
+index/work/blog/post/gizlilik/kosullar/kalite/ornek(.html) + 404.html   sayfalar
+assets/css/main.css      tek stil dosyası (bu sayfaların hepsi ortak kullanır)
 assets/js/config.js      yayın ayarları (tek yapılandırma noktası)
 assets/js/i18n.js        10 dil sözlüğü (QB_I18N)
 assets/js/posts.js       blog içeriği (QB_POSTS)
@@ -109,6 +109,14 @@ assets/js/app.js         tüm davranış
 scripts/*.mjs|py         denetim + üretim betikleri
 docs/*.md                sistem belgeleri
 ```
+
+**`uye/` bu sistemin dışındadır.** Üye alanı (`uye/index.html`) ayrı, kendi
+başına duran bir sayfa: `main.css`'i içe aktarmaz, aynı belirteç *adlarının*
+(`--brand`, `--bg-soft`…) küçük bir alt kümesini `<style>` içinde kendi
+kopyalıyor ve vendor'lanmış `uye/lib/supabase.js` kullanıyor. Figma'dan bu
+sayfaya tasarım aktarılacaksa hedef dosya `assets/css/main.css` değil,
+`uye/index.html`'in kendi `<style>` bloğudur — belirteç adları aynı olsa da
+kaynağı ayrı, iki yerde birden güncellenmesi gerekir.
 
 - **Görünen her metin sözlükten gelir:** HTML'e `data-i18n="anahtar"` yazılır,
   Türkçesi yalnız JS-kapalı yedektir. Figma'daki metinler koda alınırken
