@@ -323,3 +323,14 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+
+## 26.08.2026 — "BETA ART BET" konsept notu
+
+Kullanıcıdan tek girdi: isim + slogan ("Turn a memory into art."). Kapsam
+belirsiz olduğu için kod değişikliği yapılmadı; kullanıcının seçimiyle
+yalnızca bir değerlendirme belgesi yazıldı: `docs/beta-art-bet-konsepti.md`.
+Belge varsayımı açıkça işaretliyor: BETA ART zaten gerçek şirket/hesap adı
+(Stripe + Vercel takımı); bu yeni girdi muhtemelen QBLOGG'un yanına, aynı
+şemsiye altına, tüketiciye dönük ayrı bir ürün fikri (anıdan sanat eseri
+üretimi) — ama tek doğru okuma olduğu iddia edilmiyor. Açık sorular ve
+karar kullanıcıya bırakıldı; kapanmış bir aşama değil.
