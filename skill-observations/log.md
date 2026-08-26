@@ -177,3 +177,71 @@ dağıtım komutunun önüne alışkanlık olarak eklenmeli.
 **Principle:** Dağıtım tarifi depoyu okuyorsa, "bende çalışıyor"un birimi
 çalışma ağacı değil push edilmiş commit'tir.
 
+## 2026-08-26 — Çok konulu hafıza kurtarma oturumu
+
+### Observation 9: Etiketlenmemiş çoklu-varlık bilgi akışı, tek dosyada karışma riski taşıyor
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** Kullanıcı art arda gelen mesajlarda üç ayrı, adlandırılmamış
+projeyi (QBLOGG hero metni, "NAVIAR" adlı ayrı bir marka/iş fikri, "Q" adlı
+üçüncü bağımsız bir ürün) hiçbir başlık/ayrım belirtmeden hafızadan parça
+parça anlattı. Hangi cümlenin hangi projeye ait olduğu önceden söylenmedi;
+"NAVIAR" ismi ilk mesajda tek kelime olarak geldi ve anlamı ancak çok sonra
+netleşti.
+**Skill:** New skill candidate: çok-varlıklı bilgi kurtarma / Genel çalışma
+pratiği
+**Type:** internal
+**Phase/Area:** Oturum başlangıcı / kapsam belirleme
+
+**Issue:** İlk birkaç mesaj (kısa slogan parçaları) tek bir konuya ait
+sanılıp aynı hedefe (QBLOGG hero bölümü) yazılmaya başlanmıştı. Yeni bir
+marka adı ("NAVIAR") ve ardından tamamen farklı bir iş modeli (danışmanlık
+vs. platform/pazaryeri) ortaya çıkınca geriye dönüp ayırmak gerekti. Bunu
+önlemek için her yeni varlık/marka adı belirdiğinde ayrı bir kurtarma
+dosyası açıldı (`naviar-hafiza-toplama.md`, `q-work-hafiza-toplama.md`) ve
+çelişen içerik (ör. NAVIAR'ın "butik strateji firması" mı yoksa "hizmet
+sağlayıcı pazaryeri" mi olduğu) sessizce birleştirilmek yerine dosyada açıkça
+işaretlendi.
+
+**Suggested improvement:** Parça parça/hafızadan bilgi aktarımı içeren
+oturumlarda: (1) yeni bir özel isim/marka/proje adı ilk kez geçtiği anda,
+önceki içerikle karıştırılmadan ayrı bir kurtarma dosyası açılmalı; (2) her
+yeni parça mevcut dosyaya eklenmeden önce hangi varlığa ait olduğu teyit
+edilmeli (belirsizse sorulmalı, sessizce en son konuşulan varlığa
+yazılmamalı); (3) iki parça birbiriyle çelişiyorsa (ör. iki farklı gelir
+modeli tarifi) otomatik uzlaştırılmadan "⚠️ çelişki" olarak işaretlenip
+kullanıcıya sorulmalı.
+
+**Principle:** Hafızadan/parça parça gelen bilgi tek bir doğrusal akış
+değildir — her yeni özel isim potansiyel bir kapsam sınırıdır. Varsayılan
+davranış "aynı belgeye ekle" değil, "bu hangi belgeye ait, emin değilsem
+yeni belge aç ya da sor" olmalı.
+
+### Observation 10: Zaten var olan bir belge, yeniden üretmeden önce kontrol edilince tekrar iş önlendi
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** `/mcp__Figma__create_design_system_rules` komutu, depo
+için kapsamlı bir tasarım sistemi kural belgesi istedi
+**Skill:** Genel çalışma pratiği (kesişen ilke adayı)
+**Type:** internal
+**Phase/Area:** Analiz/rapor üretimi öncesi kontrol
+
+**Issue:** Komut sıfırdan bir analiz istiyordu (token'lar, bileşen
+kütüphanesi, ikon sistemi vb. 7 başlık). Depoda bu tam kapsamı zaten
+karşılayan, 22.08.2026'da ölçülerek yazılmış `docs/tasarim-sistemi.md`
+mevcuttu. Sıfırdan yeniden yazmak yerine dosya okunup istenen 7 başlığa
+eşlenerek özetlendi; tekrarlı/muhtemelen tutarsız ikinci bir kaynak
+oluşturulmadı.
+
+**Suggested improvement:** Bir komut/skill "bu konuda kapsamlı bir belge
+üret" istediğinde, üretime başlamadan önce `docs/` (veya proje eşdeğeri)
+içinde aynı konuyu kapsayan bir belge olup olmadığı aranmalı; varsa o
+belge kaynak alınıp istenen biçime eşlenmeli, sıfırdan yazılmamalı.
+
+**Principle:** "Şunun için kapsamlı bir belge üret" isteği, "bu konuda daha
+önce yazılmış bir belge var mı" sorusunu içerir — önce arama, sonra üretim.
+İki ayrı belge aynı gerçeği anlatmaya başlarsa biri güncellenmez ve depo
+kendiyle çelişir.
+
