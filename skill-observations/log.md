@@ -177,3 +177,38 @@ dağıtım komutunun önüne alışkanlık olarak eklenmeli.
 **Principle:** Dağıtım tarifi depoyu okuyorsa, "bende çalışıyor"un birimi
 çalışma ağacı değil push edilmiş commit'tir.
 
+
+## 2026-08-26 — COBBANI intake + Figma design-system-rules oturumu
+
+### Observation 9: AskUserQuestion, serbest metin gerektiren iş fikri intake'inde bilgi üretmedi
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** Kullanıcı "COBBANI" adlı belirsiz bir görev/iş fikri
+gönderdi; içerik yoktu (yalnızca isim, sonra boş placeholder'lı bir brief
+şablonu). AskUserQuestion ile "hangi işi kastediyorsunuz?" diye çoktan
+seçmeli netleştirme soruldu; kullanıcı "[No preference]" seçti — hiçbir
+bilgi gelmedi, bir tur boşa gitti.
+**Skill:** Genel çalışma pratiği (kesişen ilke adayı)
+**Type:** internal
+**Phase/Area:** Belirsiz görev netleştirme
+
+**Issue:** AskUserQuestion, sabit seçenekler arasından seçim gerektiren
+kararlar için tasarlanmış (mimari tercih, evet/hayır vb.). Burada ihtiyaç
+duyulan şey serbest metin — bir iş fikrinin ne olduğu, hangi pazara
+hitap ettiği gibi anlatısal bilgiydi. Seçenek listesi sunmak kullanıcıyı
+"hiçbiri" demeye itti ve asıl bilgiyi vermedi; oysa doğrudan düz metinle
+"şunu şunu anlatır mısınız?" diye sormak muhtemelen aynı turda cevap
+alırdı.
+
+**Suggested improvement:** Netleştirme ihtiyacı **açık uçlu/anlatısal**
+bilgiyse (bir fikrin ne olduğu, bir işin kapsamı, serbest bir açıklama),
+AskUserQuestion yerine doğrudan düz metinle soru sorulmalı.
+AskUserQuestion, gerçekten ayrık ve sınırlı seçenekler arasında karar
+gerektiğinde (A/B mimarisi, evet/hayır, sıralı öncelik) kullanılmalı.
+Bu ayrım qblogg-operasyon'a veya genel bir "belirsiz görev netleştirme"
+kesişen ilkesine eklenebilir.
+
+**Principle:** Soru biçimi, istenen cevabın biçimine uymalı — kapalı uçlu
+bir araç (seçime zorlayan UI) açık uçlu bilgi istemek için kullanılırsa,
+kullanıcıyı "hiçbiri" demeye iter ve turu bilgisiz tüketir.
