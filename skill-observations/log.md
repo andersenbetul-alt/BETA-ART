@@ -177,3 +177,42 @@ dağıtım komutunun önüne alışkanlık olarak eklenmeli.
 **Principle:** Dağıtım tarifi depoyu okuyorsa, "bende çalışıyor"un birimi
 çalışma ağacı değil push edilmiş commit'tir.
 
+## 2026-08-26 — NAVIAR + Figma tasarım sistemi doğrulama oturumu
+
+### Observation 9: Üretim öncesi "zaten var mı?" kontrolü, iki ayrı komutta bağımsız olarak fayda sağladı
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** `/mcp__Figma__create_design_system_rules` çağrısı
+sıfırdan bir tasarım sistemi kuralları belgesi istiyordu; depoda
+`docs/tasarim-sistemi.md` zaten vardı (22.08.2026, aynı amaçla yazılmış).
+Aynı oturumda daha önce `/run-skill-generator` çağrısı da benzer bir
+durumla karşılaşmıştı: `run-qblogg` skill'i zaten mevcuttu.
+**Skill:** Genel çalışma pratiği (kesişen ilke adayı)
+**Type:** internal
+**Phase/Area:** Üretim öncesi kontrol
+
+**Issue:** run-skill-generator bu kontrolü kendi talimatında zaten
+kodluyor ("adım 0: mevcut skill'i bul, varsa yeniden yazma, düzelt").
+Figma'nın `create_design_system_rules` komutunda böyle bir adım yok —
+komut doğrudan "codebase'i analiz et ve bir kurallar belgesi üret" diyor.
+Yine de aynı mantık elle uygulandı (önce `grep -ri` ile depoda böyle bir
+belge arandı) ve gerçek fayda sağladı: mevcut belgede 5 sayı (main.css
+satır/sınıf sayısı, ikon sayısı, i18n anahtar sayısı, sayfa iskeleti dosya
+sayısı) güncelliğini yitirmişti — sıfırdan yazılsaydı bu tutarsızlıklar
+fark edilmeyecek, sadece iki çelişkili belge yan yana duracaktı.
+
+**Suggested improvement:** Kesişen ilke adayı: "Bir dış araç/komut ('X
+için kurallar/tanım/rehber üret' türünden) sıfırdan üretim istediğinde,
+üretmeden önce depoda aynı amaca hizmet eden bir dosya olup olmadığı
+aranır (`grep -ri` veya benzeri); varsa yeniden yazmak yerine her iddiası
+kaynaktan yeniden doğrulanır ve düzeltilir." Bu, run-skill-generator'ın
+zaten kodladığı "adım 0" desenini, üretim isteyen tüm komutlara genelleştirir
+— komutun kendisi bu adımı içermese bile.
+
+**Principle:** "Üret" talimatı, "sıfırdan üret" anlamına gelmez — talimatın
+kendisi bir "zaten var mı?" kontrolü içermese bile, o kontrol talimatın
+gizli ilk adımıdır. Var olan bir belgeyi doğrulayıp düzeltmek, sıfırdan
+yazmaktan hem daha ucuz hem daha güvenilirdir çünkü gerçek drift'i (neyin
+değiştiğini) ortaya çıkarır; sıfırdan yazım drift'i gizler.
+
