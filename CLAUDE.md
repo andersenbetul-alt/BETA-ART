@@ -146,6 +146,13 @@ uyumu. Kontrol kırmızıysa commit etmeyin.
 Tarayıcı testi gerektiğinde Playwright, Chromium ile kullanılabilir
 (`executablePath: '/opt/pw-browsers/chromium'`); ayrıca kurulum yapmayın.
 
+Çok adımlı, araç kullanan her oturumun başında `task-observer` becerisini
+yükleyin — beceri iyileştirme fırsatlarını sessizce `skill-observations/log.md`'ye
+işler. Bir beceri yüklenirken o beceriye etiketli AÇIK gözlem var mı diye
+günlüğe bakın; beceri dosyası henüz güncellenmemiş olsa bile gözlemin
+içgörüsünü uygulayın. Damıtılmış dersler `qblogg-operasyon`'da durur; ham
+gözlemler ve kesişen ilkeler `skill-observations/` içindedir.
+
 ## Sık yapılan işler
 
 **Yeni blog yazısı:** `assets/js/posts.js` dizisine nesne ekleyin — `slug`, `category`

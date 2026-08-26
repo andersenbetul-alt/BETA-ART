@@ -177,3 +177,61 @@ dağıtım komutunun önüne alışkanlık olarak eklenmeli.
 **Principle:** Dağıtım tarifi depoyu okuyorsa, "bende çalışıyor"un birimi
 çalışma ağacı değil push edilmiş commit'tir.
 
+## 2026-08-26 — task-observer kurulum doğrulaması + iki komutlu görev oturumu
+
+### Observation 9: Var olan eşdeğer belge/beceri kontrol edilmeden yeni içerik üretilmiyor
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** İki ayrı komut — run-skill-generator (QBLOGG'u çalıştırma
+becerisi) ve Figma design-system-rules — aynı oturumda art arda çalıştırıldı.
+**Skill:** qblogg-operasyon / All skills
+**Type:** internal
+**Phase/Area:** Üretim öncesi arama
+
+**Issue:** İki görevde de istenen çıktı depoda zaten hazır bulundu:
+`.claude/skills/run-qblogg/` ve `docs/figma-tasarim-kurallari.md`. Sıfırdan
+üretmek yerine önce mevcut olanı koddan doğrulamak (smoke test çalıştırıp
+ekran görüntüsü almak; belirteç/breakpoint/ikon iddialarını `main.css` ve
+`app.js`'e karşı grep'lemek) doğru sonucu verdi — run-qblogg tamamen
+doğruydu, figma-tasarim-kurallari.md'de ise § 7 sayfa listesi eksikti
+(`kalite.html`, `ornek.html`, `uye/` alt uygulaması hiç yoktu) ve bu tek
+bölüm cerrahi olarak düzeltildi.
+
+**Suggested improvement:** qblogg-operasyon'a "kaynak doğrulama" maddesinin
+yanına bir madde daha: yeni belge/beceri/rehber üretme görevi geldiğinde
+ilk adım `docs/` ve `.claude/skills/` içinde eşdeğer arama olmalı; bulunursa
+yeniden yazmak yerine her iddiayı kodla karşılaştırıp yalnız sapanı düzelt.
+
+**Principle:** Üretim görevi geldiğinde ilk adım arama olmalı — var olan
+eserin doğruluğunu koddan denetlemek, sıfırdan üretmekten hem ucuz hem
+güvenilir; ayrıca depoda paralel/çelişen iki belge oluşmasını engeller.
+
+### Observation 10: Hedefsiz içerik yapıştırması, dosya oluşturmadan önce netleştirme gerektirir
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** Kullanıcı NAVIAR TURIST iş modeli analizini (uzun,
+tablo/başlık yapılı Markdown metni) hiçbir "şunu yap" fiili olmadan
+yapıştırdı; konu QBLOGG'un işiyle (içerik stüdyosu) doğrudan ilgisizdi.
+**Skill:** qblogg-operasyon / General
+**Type:** internal
+**Phase/Area:** Görev kapsamı belirleme
+
+**Issue:** İçerik kendi başına bir eylem içermiyordu (ekle/yaz/güncelle/sil
+yok) — yalnızca ham veriydi. Depoda ayrı bir NAVIAR marka klasörü
+(`docs/naviar/`, `brand/naviar/`) zaten vardı ama bu tek başına hedefi
+belirlemeye yetmedi; iki `AskUserQuestion` turu (önce "ne yapılsın", sonra
+"nereye/nasıl kaydedilsin") sonunda hedef netleşti: `docs/naviar/NAVIAR-TURIST-IS-MODELI.md`.
+
+**Suggested improvement:** Büyük, hedefsiz içerik yapıştırmalarında dosya
+oluşturmadan önce (a) depoda ilgili bir klasör/marka var mı diye ara
+(bulgu soruyu daraltır, ortadan kaldırmaz), (b) kullanıcıya nereye/nasıl
+kaydedileceğini sor — özellikle konu ana projenin kapsamı dışındaysa veya
+eylem fiili yoksa.
+
+**Principle:** Görev tanımı yalnızca içerikten ibaretse ve bir eylem fiili
+taşımıyorsa, eylemi varsaymak yerine hedefi sormak doğru ilk adımdır —
+"nereye kaydedileyim" sorusuz geçilen her böyle görev, ya yanlış yere ya
+da yanlış biçimde kaydedilme riski taşır.
+
