@@ -72,7 +72,7 @@ maliyet.
 | 13 | Ayda 2 yeni yazı (10 dilde) | Sürekli | Konu havuzu aşağıda |
 | 14 | Her yazının sonuna ilgili pakete bağlantı | **Bitti** 18.08 | Yazı sonunda brief + paket köprüsü, 10 dilde |
 | 15 | Analitik (gizlilik dostu) ve dönüşüm ölçümü | Bekliyor | Hangi yazı brief getiriyor? |
-| 22 | Sayfa ağırlığını böl | Bekliyor | 236 KB'ın 183 KB'ı i18n+posts; ziyaretçi on dilin tamamını indiriyor |
+| 22 | Sayfa ağırlığını böl | Bekliyor | 26.08.2026 yeniden ölçüldü: ilk yük artık ~526 KB ham / ~194 KB gzip, bunun 439 KB'ı (i18n 142 KB + posts 297 KB) — 10 yazı 10 dile çıktıkça büyüdü, eski "236 KB" rakamı bayatlamıştı. Ziyaretçi hâlâ on dilin tamamını indiriyor |
 | 23 | ~~Sosyal paylaşım görseli (og:image) ve 404 sayfası~~ | **Bitti** 22.08 | → satır 86–87 |
 
 ### 3.5. AI Workforce (yeni ürün hattı — bkz. `docs/ai-workforce/`)
