@@ -365,3 +365,26 @@ sınıfa çıkmış; medya sorgusu sayısı 5 değil 6 ve hepsi `max-width` değ
 (bir `print`, bir `prefers-reduced-motion` sorgusu da var — önceki metin
 yanlıştı); `assets/img/` klasörü kaldırılmış. Figma koltuğu (`whoami`) hâlâ
 `View` — değişmedi. `npm run check` yeşil.
+
+## 26.08.2026 (devam) — NAVIAR Care pilot planı geldi, kritik iş modeli analizi yazıldı
+
+Kullanıcı tam bir "NAVIAR Care Pilot Implementation Plan" paylaştı (İngilizce,
+dış kaynaklı görünüyor — Arbeidstilsynet/Oslo kommune/Skatteetaten/Datatilsynet
+atıflı): iç Oslo'da (Grünerløkka, Sagene, St. Hanshaugen, Frogner) 3 tıbbi
+olmayan hizmetle (sosyal ziyaret, aktivite refakati, dijital destek) sınırlı,
+**istihdam** temelli (pazar yeri değil), insan-onaylı bir concierge pilotu.
+Bu, dün yazılan `NAVIAR-CARE-HIZMET-TARAMA.md`'nin "pazar yeri/eşleştirme"
+varsayımıyla doğrudan çelişiyor — çelişki sessizce çözülmedi, her iki belgeye
+de açık not düşüldü (bkz. o dosyanın başındaki güncelleme kutusu).
+
+Talep üzerine (kullanıcının paylaştığı 13 maddelik "AUTOPROMPT" iş modeli
+kritik analiz çerçevesi) `docs/naviar/NAVIAR-CARE-IS-MODELI-KRITIK-ANALIZ.md`
+yazıldı: müşteri/segment/rakip analizi, BMC, somut rakamlarla birim ekonomisi
+(AGA %14,1 Oslo, feriepenger %10,2, OTP %2 — hepsi arama özetinden, teyit
+edilmedi), MVA riski (hizmet kasıtlı olarak sağlık kapsamı dışı tasarlandığı
+için %25 tam oran varsayılmalı, muafiyet değil), doğrudan rakip bulgusu
+(SeniorSupport "Besøksvenn – Oslo" + "Følgetjenester", VilMer "Hverdagsvenn"
+— ikisi de Oslo'da aynı kategoriyi zaten sunuyor, "kategori sahipliği"
+iddiası kırılgan), 9 numaralı risk listesi ve 5 hızlı deney. Sonuç: plan
+zaten sağlam, yeniden yazılmadı — üstüne somut rakam ve rakip verisiyle
+eleştiri eklendi.

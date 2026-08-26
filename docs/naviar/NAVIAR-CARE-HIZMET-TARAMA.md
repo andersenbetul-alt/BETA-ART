@@ -12,6 +12,18 @@ web arama özetlerinden derlendi, **hiçbiri birinci elden okunmadı**. Başvuru
 veya pazara çıkış öncesi avukat/marka vekili ve ilgili kurum sayfası ile
 teyit şarttır.
 
+> **GÜNCELLEME (26.08.2026): §3.1'in "istihdam mı, eşleştirme mi?" açık
+> sorusu cevaplandı — model istihdam.** Ertesi gün paylaşılan "NAVIAR Care
+> Pilot Implementation Plan", yardımcıları bilinçli olarak **çalışan**
+> (pazar yeri/eşleştirme değil) olarak tasarlıyor ve gerekçesini veriyor:
+> NAVIAR fiyatı/hizmeti/eşleştirmeyi/programı kendisi belirlediği için
+> Norveç iş hukuku bunu istihdam sayma eğiliminde. Bu, aşağıdaki §2 (Nice
+> sınıf — 45/42/35 ağırlıklı okuma) ve §3.1'in "pazar yeri" varsayımına
+> dayanan kısımlarını **geçersiz kılıyor**. Güncel, tam analiz:
+> `docs/naviar/NAVIAR-CARE-IS-MODELI-KRITIK-ANALIZ.md`. Bu dosya tarihsel
+> kayıt olarak kalıyor, silinmedi — ama §2 ve §3.1'i okurken bu notu
+> hesaba katın.
+
 ## 1. Hizmet tanımı (kullanıcı beyanı, 25.08.2026)
 
 Oturum içinde parça parça verilen tanım, tek metinde:
