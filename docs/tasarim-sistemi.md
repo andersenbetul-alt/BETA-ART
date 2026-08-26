@@ -4,7 +4,9 @@ Figma MCP entegrasyonu için istendi, ama asıl işlevi daha geniş: bir Figma
 tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
-**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 22.08.2026 itibarıyla.
+**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 26.08.2026 itibarıyla
+(22.08'den beri main.css'e 6 commit daha girdi: karşılaştırma tablosu, TOC,
+yazdırma CSS'i — sayılar buna göre güncellendi).
 
 ---
 
@@ -105,9 +107,17 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 
 **Yoktur.** Bileşen mimarisi, Storybook, bileşen dokümantasyonu — hiçbiri yok.
 
-Yerine geçen şey: `assets/css/main.css` içinde **95 sınıf**, altı HTML
-sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi) altı dosyada
-**tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`.
+Yerine geçen şey: `assets/css/main.css` içinde **119 benzersiz sınıf** (629
+satır), altı HTML sayfasında elle kullanılıyor. Sayfa iskeleti (menü +
+altbilgi) altı dosyada **tekrar eder**: `index`, `work`, `blog`, `post`,
+`gizlilik`, `kosullar`.
+
+Ayrıca `demo/` dizininde ayrı bir kalıp var: **Action Pages** (`cv-action-page`,
+`q-work-audit`). Bunlar `main.css`'i **yüklemez** — tek dosyalık, kendi
+`<style>` bloğunda aynı marka belirteçlerini (`--brand`, `--brand-2-ink`,
+sekiz basamaklı ölçek yerine sadeleştirilmiş kendi değişkenleri) tekrar tanımlar,
+çünkü bağımsız/paylaşılabilir kalmaları gerekiyor. Figma'dan bir satış/anket
+sayfası çeviriyorsanız hedef `main.css` değil, bu desendir.
 
 > **Figma'dan bileşen çevirirken:** menüyü ya da altbilgiyi değiştiriyorsanız
 > **altı dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve script'i
@@ -130,7 +140,7 @@ Betik yükleme sırası **anlamlıdır**, değiştirmeyin:
 
 ```html
 <script src="assets/js/config.js"></script>   <!-- yayın ayarları -->
-<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 209 anahtar -->
+<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 233 anahtar -->
 <script src="assets/js/posts.js"></script>    <!-- blog içeriği -->
 <script src="assets/js/app.js"></script>      <!-- hepsini kullanır -->
 ```
@@ -270,7 +280,7 @@ bakın.
 *.html                  6 sayfa — iskelet tekrar eder
 assets/css/main.css     tek stil dosyası
 assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak dosya
-assets/js/i18n.js       10 dil × 209 anahtar
+assets/js/i18n.js       10 dil × 233 anahtar
 assets/js/posts.js      blog içeriği, her yazı 10 dilde
 assets/js/app.js        dil, tema, liste, yazı sayfası, formlar
 assets/brand/           14 kimlik varlığı (üretilir)
