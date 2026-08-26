@@ -4,11 +4,12 @@ import { siteConfig } from "@/config/site";
 import { DevelopmentNotice } from "./DevelopmentNotice";
 
 export const primaryNav = [
-  { label: "Collection", href: "/#collection" },
-  { label: "Verification", href: "/#verification" },
-  { label: "Ordering", href: "/#ordering" },
+  { label: "Series", href: "/#series" },
+  { label: "Archive", href: "/#collection" },
+  { label: "Proof", href: "/#proof" },
+  { label: "Passport", href: "/#passport" },
+  { label: "Rights", href: "/#rights" },
   { label: "Licensing", href: "/#licensing" },
-  { label: "FAQ", href: "/#faq" },
 ];
 
 export function SiteHeader() {
@@ -17,8 +18,8 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -29,35 +30,27 @@ export function SiteHeader() {
       <DevelopmentNotice />
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-sm">
         <div className="mx-auto grid max-w-[92rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 sm:px-8 lg:py-5">
-          <Link to="/" className="min-w-0 focus-ring rounded-sm">
-            <span className="display block truncate text-xl tracking-tight sm:text-2xl">
-              {siteConfig.name}
-            </span>
+          <Link to="/" className="min-w-0 rounded-sm focus-ring">
+            <span className="display block truncate text-xl tracking-tight sm:text-2xl">{siteConfig.name}</span>
             <span className="label hidden sm:block">{siteConfig.tagline}</span>
           </Link>
 
           <nav aria-label="Primary" className="shrink-0">
-            <ul className="hidden items-center gap-7 lg:flex">
+            <ul className="hidden items-center gap-6 xl:flex">
               {primaryNav.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="label focus-ring rounded-sm hover:text-foreground">
-                    {item.label}
-                  </a>
+                  <a href={item.href} className="label rounded-sm focus-ring hover:text-foreground">{item.label}</a>
                 </li>
               ))}
-              <li>
-                <Link to="/contact" className="label focus-ring rounded-sm hover:text-foreground">
-                  Contact
-                </Link>
-              </li>
+              <li><Link to="/contact" className="label rounded-sm focus-ring hover:text-foreground">Contact</Link></li>
             </ul>
 
             <button
               type="button"
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setOpen((value) => !value)}
               aria-expanded={open}
               aria-controls={menuId}
-              className="label focus-ring inline-flex items-center gap-2 rounded-sm border border-border px-3 py-2 text-foreground lg:hidden"
+              className="label inline-flex items-center gap-2 rounded-sm border border-border px-3 py-2 text-foreground focus-ring xl:hidden"
             >
               <span>{open ? "Close" : "Menu"}</span>
               <span aria-hidden="true">{open ? "×" : "≡"}</span>
@@ -65,32 +58,16 @@ export function SiteHeader() {
           </nav>
         </div>
 
-        <div
-          id={menuId}
-          hidden={!open}
-          className="border-t border-border bg-background lg:hidden"
-        >
+        <div id={menuId} hidden={!open} className="border-t border-border bg-background xl:hidden">
           <nav aria-label="Mobile">
             <ul className="mx-auto max-w-[92rem] px-5 py-4 sm:px-8">
               {primaryNav.map((item) => (
                 <li key={item.href} className="border-b border-border last:border-0">
-                  <a
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="label focus-ring block py-3 text-foreground"
-                  >
-                    {item.label}
-                  </a>
+                  <a href={item.href} onClick={() => setOpen(false)} className="label block py-3 text-foreground focus-ring">{item.label}</a>
                 </li>
               ))}
               <li>
-                <Link
-                  to="/contact"
-                  onClick={() => setOpen(false)}
-                  className="label focus-ring block py-3 text-foreground"
-                >
-                  Contact
-                </Link>
+                <Link to="/contact" onClick={() => setOpen(false)} className="label block py-3 text-foreground focus-ring">Contact</Link>
               </li>
             </ul>
           </nav>
