@@ -72,7 +72,9 @@ yerine ölçek basamakları.
 | `--on-brand` | `#ffffff` | `#08202f` | Marka üzerindeki metin |
 | `--brand-2-ink` | `#0a7d72` | `var(--brand-2)` | Metinde kullanılacak aqua |
 
-**Aqua tuzağı.** `#00D8C2` beyaz üzerinde **1,9:1**'dir — WCAG AA'nın (4,5:1)
+**Aqua tuzağı.** `#00D8C2` beyaz üzerinde **1,8:1**'dir (WCAG göreli
+parlaklık formülüyle yeniden hesaplandı, 26.08.2026 — önceki "1,9:1" hatalı
+yuvarlamaydı, CLAUDE.md'nin rakamı doğruydu) — WCAG AA'nın (4,5:1)
 çok altında, metinde **kullanılamaz**. Açık zeminde aqua metin gerekiyorsa
 `var(--brand-2-ink)` kullanın. Figma'dan gelen bir tasarımda aqua metin varsa
 bu bir hatadır, çevirmeyin — dönüştürün.
@@ -298,7 +300,7 @@ vendor/                 Inter resmi dağıtımı (yayına çıkmaz)
 ## Figma'dan çeviri yaparken kontrol listesi
 
 1. **Renkler** belirteçten mi geliyor? Ham hex varsa `var(--…)`'ya çevirin
-2. **Aqua metin** var mı? `--brand-2-ink`'e çevirin — `#00D8C2` metinde 1,9:1
+2. **Aqua metin** var mı? `--brand-2-ink`'e çevirin — `#00D8C2` metinde 1,8:1
 3. **Yazı boyutları** sekiz basamağa oturuyor mu? Ham `rem` yazmayın
 4. **İkonlar** satır içi SVG mi, 24×24 / 1.7 / `currentColor` mı?
 5. **Emoji** var mı? Varsa ikona çevirin
