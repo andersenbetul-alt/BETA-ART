@@ -379,3 +379,25 @@ doğru 8 sayfayı kopyalıyor, yalnızca belge metni gerideydi. Dosya ağacına
 `kalite.html`, `ornek.html`, `404.html` satırları eklendi. `npm run check`
 yeşil (9 sayfa, 233 anahtar doğrulandı) — işlevsel değişiklik yok, yalnız
 belge doğruluğu.
+
+## 26.08.2026 — NAVIAR AUTOPROMPT iş modeli analizi + /on-brand skill'i
+
+Kullanıcı, boş kalan bir "AUTOPROMPT" iş modeli şablonunu NAVIAR'ın bireysel+
+kamu sektörü fikrine uygulamamı istedi (varsayımlar açıkça işaretlenerek —
+pazar/ülke, kaynaklar, hedef belirtilmemişti). `docs/naviar/is-modeli-analizi-
+autoprompt.md` yazıldı: 13 bölümlük eleştirici analiz. En önemli bulgu [V,
+arandı]: Norveç'te Norge.no/MinSide/Altinn zaten **ücretsiz** resmi hizmet
+yönlendirmesi sağlıyor — bireyi kamu hizmetine yönlendirme fikrinin en zayıf
+noktası budur. Öneri: MVP'yi KOBİ segmentiyle başlat (QBLOGG kitlesiyle
+örtüşüyor), bireysel/kamu segmentini ücretsiz-alternatif riski test
+edilmeden büyütme; gelir modelini MVP'de karma değil tek akışa indir.
+
+Ardından kullanıcı `brand/naviar/` belgelerinden bir `/on-brand` skill'i
+istedi: renk/spacing/ses tonu kurallarını üretilen her içerik/arayüzde
+zorunlu kılan, marka-dışı isteği tek cümlelik gerekçeyle reddeden bir
+denetim listesi. `.claude/skills/on-brand/SKILL.md` yazıldı — kaynak
+dosyaları (README.md, NAVIAR-LOGO-KARAR.md) özetlemek yerine onlara işaret
+eden, çelişkide kaynağın kazandığı bir kontrol listesi. Bilinen boşluk
+açıkça işaretlendi: NAVIAR'ın body-metin için tanımlı bir yazı tipi yok
+(wordmark özel vektör, Poppins reddedilmiş referans) — skill bunu icat
+etmiyor, geçici nötr sistem fontu öneriyor ve boşluğu kullanıcıya söylüyor.
