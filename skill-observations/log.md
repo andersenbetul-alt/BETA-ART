@@ -106,3 +106,34 @@ pkill'e gerek yok.
 uygulamanın tuhaflıklarını değil, çalıştığı sandbox/harness'ın araç
 davranışındaki tuhaflıkları da kapsamalı — ikisi de "bu konteynerde
 yaşandı" kategorisine girer ve ikisi de sonraki ajanın zamanını çalar.
+
+### Observation 12: Yeni bir belge yazmadan önce docs/ taranmadı, mevcut iki belgeyle çakışan üçüncü bir belge üretildi
+
+**Status:** ACTIONED — kendi hatam bu oturumda düzeltildi (`.claude/figma-design-system.md` silindi, `/on-brand` becerisi mevcut belgelere işaret edecek şekilde yazıldı)
+**Date:** 2026-08-26
+**Session context:** `/mcp__Figma__create_design_system_rules` isteğine cevaben
+Figma entegrasyonu için tasarım sistemi kuralları belgesi yazıldı
+**Skill:** Genel çalışma pratiği (kesişen ilke 1'in yeni örneği)
+**Type:** internal
+**Phase/Area:** Belge/skill yazımı öncesi kaynak taraması
+
+**Issue:** `.claude/figma-design-system.md` sıfırdan yazıldı; ama depoda
+zaten `docs/tasarim-sistemi.md` (kapsamlı, ölçülmüş, "her madde depodan
+ölçüldü" notlu) ve `docs/figma-tasarim-kurallari.md` (Figma'ya özel okuma)
+vardı — ikisi de aynı konuyu, benimkinden daha eksiksiz ve güncel olarak
+kapsıyordu. Sonradan `/on-brand` becerisini yazarken `docs/` klasörünü
+taradığımda bu çakışma ortaya çıktı; kendi yazdığım dosyayı sildim.
+
+**Suggested improvement:** Yeni bir kurallar/rehber belgesi ya da skill
+yazmadan önce zorunlu adım: `ls docs/` ve `grep -rli "<konu anahtar
+kelimesi>" docs/ .claude/skills/` ile aynı konuda mevcut belge olup
+olmadığı taranır. Kesişen ilke 1 (kaynak doğrulama) şu ana kadar "bir
+değeri/adı yazmadan önce doğrula" anlamında uygulanıyordu; bu gözlem
+kapsamı genişletiyor: "bir **belge** yazmadan önce, aynı konuda başka bir
+belge zaten var mı" sorusu da aynı ilkenin parçası.
+
+**Principle:** Kaynak doğrulama yalnızca kod tanımlayıcıları ve çeviri
+terimleri için değil, **belge/skill üretimi** için de geçerli — bir konu
+hakkında yazmaya başlamadan önce o konunun zaten belgeli olup olmadığı
+taranır; aksi hâlde depo aynı gerçeği anlatan, zamanla birbirinden
+sapacak birden fazla belgeyle dolar.
