@@ -117,6 +117,11 @@ NAVIAR'ı çevirmek, aynalamak, döndürmek.
 3. ~~CONSULT / CONSULTING adlandırma kararı verilmedi~~ — 25.08.2026'da karara
    bağlandı: resmi ad **CONSULTING** (bkz. `docs/naviar/NAVIAR-LOGO-KARAR.md` §8).
    CONSULT yalnız P1/P6/P8'in arşivlenmiş özgün adı olarak tarihsel kayıtta kalır.
-4. CARE iş onayı ve ayrı marka taraması bekliyor.
+4. CARE iş onayı ve ayrı marka taraması bekliyor. **30.08.2026 uyarısı:**
+   Vercel'de (`naviar-care-1` projesi) bu depoda hiç üretilmemiş, tam
+   donanımlı bir CARE pazarlama sitesi bulundu — bu onay olmadan yayına
+   alınmıştı, ayrıca doğrulanamayan "koordinatör" profilleri/randevu
+   saatleri içeriyordu. Kullanıcı kararıyla durduruldu (`pause_project`).
+   Bu madde kapanmadan tekrar yayına alınmamalı. Bkz. `docs/proje-gunlugu.md`.
 5. Profesyonel marka temizliği yapılmadan tescil, tabela ve rollout yapılamaz.
    Ön risk: orta-yüksek (NAVAIR / NAVIER yakınlığı).

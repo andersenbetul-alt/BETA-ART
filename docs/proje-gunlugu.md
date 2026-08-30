@@ -401,3 +401,37 @@ eden, çelişkide kaynağın kazandığı bir kontrol listesi. Bilinen boşluk
 açıkça işaretlendi: NAVIAR'ın body-metin için tanımlı bir yazı tipi yok
 (wordmark özel vektör, Poppins reddedilmiş referans) — skill bunu icat
 etmiyor, geçici nötr sistem fontu öneriyor ve boşluğu kullanıcıya söylüyor.
+
+## 30.08.2026 — Vercel keşfi: naviar-care-1 durduruldu, naviar-consult kimlik sayfası yayınlandı
+
+Kullanıcı "@VERSEL" ile başlayan bir talep sonrası BET-ART takımının Vercel
+projeleri tarandı. Üç proje bulundu: `hxi-music` (ilgisiz eski proje),
+`naviar-consult` (boş `<h1>` taslağı), **`naviar-care-1`** — bu depoda hiç
+üretilmemiş, önceden (v0.app ile) yapılmış, **tam donanımlı ve canlı**
+Norveççe bir NAVIAR CARE pazarlama sitesi ("Trygg koordinering for eldre og
+pårørende", 599 NOK sabit fiyat, "Finn riktig tjenesteyter" CTA'sı).
+
+Ciddi bulgu: bu site (a) `NAVIAR-LOGO-KARAR.md`'nin CARE için gerektirdiği
+iş onayı ve sınıf 44 marka taramasını atlayarak yayındaydı, (b) dört
+"koordinatör" için uydurma görünen isim/deneyim/**gerçek zamanlı randevu
+saati** gösteriyordu — doğrulanamaz, muhtemelen sahte veri. Kullanıcıya
+bulgu olduğu gibi raporlandı, ben oluşturmadım. Karar (AskUserQuestion):
+proje durduruldu (`pause_project` — `503 DEPLOYMENT_PAUSED`, veri kaybı
+yok, geri alınabilir).
+
+`naviar-consult` için onaylanan yön: sahte satış vaadi değil, gerçek marka
+kimliğini gösteren dürüst bir sayfa. `brand/naviar/index.html` (contact
+sheet) + 21 SVG varlığı `deploy_to_vercel` ile doğrudan dosya olarak
+`naviar-consult` projesine dağıtıldı (repo bağlantısı yanlış depoyu
+— `eve-slack-agent` — gösteriyordu, git tabanlı dağıtım kullanılmadı).
+Sayfaya "bu bir satış sitesi değil, marka kimliğinin durumu" notu eklendi.
+`naviar-consult-phi.vercel.app` canlı, doğrulandı.
+
+Ayrı bir konu: kullanıcı `vercel.com/andersenbetul-9635s-projects` adresini
+paylaşıp tüm projelerin oraya taşınmasını istedi — bu, bağlı Vercel
+bağlantısının erişemediği **ayrı bir hesap** (muhtemelen qblogg'un yaşadığı
+yer). `list_projects` bu kapsam için "Failed to list projects" döndü.
+Taşıma yapılamadı; kullanıcıya iki şey gerektiği söylendi: (1) o hesabı da
+Claude'a bağlaması (claude.ai bağlayıcı ayarları), (2) Vercel'in proje
+taşımayı yalnızca panelden (Transfer Project, tek tek) desteklediği,
+API'de toplu taşıma olmadığı.
