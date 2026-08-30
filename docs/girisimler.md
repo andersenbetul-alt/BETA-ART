@@ -76,21 +76,49 @@ deployment akışını** yönetir — ortak "pazaryeri" navigasyonuna konulmazla
 formlar tek bir genel gelen kutusuna yönlendirilmez (`BETAARTROUTEMAP.md`
 "Do not do" listesi).
 
-### Privat (BAP-01)
-- **Nerede (muhtemelen):** Lovable, çalışma alanı "Betül's Lovable"
-  (`92fe40bbf478c5479f16`), proje `human-lens-archive` — **yayında**
-  (`is_published: true`) → `https://human-lens-archive.lovable.app`.
-  `PROJECTMANIFEST.md`'deki "Final Work v2" (React + Supabase migrations
-  + Edge Functions) tanımı, bu Lovable projesinin dosya listesiyle
-  (`ProvenancePanel.tsx`, `TrustStrip.tsx`, Supabase entegrasyonu) örtüşüyor
-  — ama bu eşleşme kesin doğrulanmadı.
-  Hedef alan adı: `archive.beta-art.com` (DNS taslağında) ya da
-  `beta-art.com` kökü (eski referanslarda) — **DNS henüz "Draft", hiçbir
-  kayıt yayınlanmadı** (`betaartdnsadministrasjon.html`: "Ingen poster
-  endres eller publiseres fra denne siden").
-- Yedi küratöryel seri (Work, Craft, Land and Light, The Table, Rooms,
-  The Unseen, Weather), en az 24 lisanslı orijinal gerekli (launch gate),
-  "100% verified" gibi iddialar henüz doğrulanmamış/canlı değil.
+### Privat (BAP-01) — **CANLI (30.08.2026 akşamı doğrulandı)**
+
+Önceki kayıt "DNS Draft, hiçbir kayıt yayınlanmadı" diyordu — bu artık
+**yanlış**. Kullanıcı `beta-art.com` ana sayfasının tam metnini bu oturuma
+yapıştırdı; site gerçekten yayında ve içerik "Final Work v2"/Dual
+taslaklarından farklı, üretim (production) hâlinde:
+
+- **Konsept:** "Verified Human Photography" — tek fotoğrafçı, fiziksel
+  kamerayla çekilmiş orijinal fotoğraf arşivi. Kanıt zinciri: RAW dosya
+  saklanır → çekim kaydı (kamera/lens/pozlama/yer/tarih) görselle birlikte
+  taşınır → lisans doğrudan fotoğrafçı tarafından imzalanır. AI-üretim
+  **açıkça reddediliyor** ("No AI training · Verified human photography"
+  altbilgide sabit).
+- **Koleksiyon:** "Volume I", 12 levha (`2026.0142`–`2026.0153` katalog
+  numaraları — `combinedstrategy.md`/`corecanonical.html`'deki eski
+  "2026.0142 Portrait in Amber, 240" örneğiyle aynı numaralandırma ailesi,
+  fiyat güncellenmiş: **"from kr 190"**). **Sadece 2/12 levha "Available"**
+  (Portrait in Amber, The Maker) — kalanı "Awaiting verified original".
+  Bunu olduğu gibi koruyun, hepsini müsait gibi sunmayın.
+- **Lisans katmanları:** Personal (kr 190'dan), Commercial/Extended/Custom
+  & Exclusive (fiyat isteğe bağlı) — talep formu (levha + lisans seçimi)
+  var, gerçek ödeme/checkout akışı bu metinde görünmüyor (kullanıcı `/cart`
+  istedi ama yapıştırdığı içerik ana sayfaydı — `/cart`'a özgü içerik hâlâ
+  doğrulanmadı).
+  16 maddelik SSS: AI kullanılmıyor, "Human Verified" kanıt süreci,
+  Norveç 14 günlük cayma hakkı (peşin teslime onay verilirse feragat
+  ediliyor), fatura/KDV, 72 saatlik indirme linki, iade sınırlı (teknik
+  hata/mükerrer ödeme dışında yok).
+  İletişim: `hallo@beta-art.com` (önceki `hello@betaart.no` — Business/BAB-02
+  ile karıştırmayın, iki ayrı e-posta/marka yazımı).
+- **Sergiler:** Autumn 2026 Oslo (Volume I açılışı), Winter 2026 (Print &
+  Provenance, grup sergisi), Spring 2027 (davetli, Volume II ön izleme).
+- **Fotoğrafçı bio:** 2012'den beri 84.000+ kare, ağırlıklı Norveç/İskandinavya.
+- Bu, `PROJECTMANIFEST.md`'nin "Final Work v2 → Lovable `human-lens-archive`"
+  eşleşmesiyle **tutarlı** (aynı Supabase/RAW-provenance mimarisi
+  betaartaudit.docx'te önerilmişti) ama artık bağımsız doğrulanabilir bir
+  canlı sitesi var — Lovable/Vercel hesap eşleşmesi hâlâ kesinleşmedi.
+- **Bu içerikten üretilen referans artifact** (30.08.2026, bu oturum):
+  https://claude.ai/code/artifact/4891c4bd-69ae-4884-82eb-50153c1a91b5 —
+  kullanıcının yapıştırdığı metin birebir kullanıldı; levha kategorileri
+  (Landscape/City/Portrait filtre etiketleri) gerçek sitede görünmediği
+  için **tahmin edildi**, gerçek veri değil. Ödeme/checkout akışı yok,
+  yalnızca form önizlemesi.
 
 ### Galeri (BAG-03)
 - Ayrı bir gelecek-odaklı kültürel mülk, Business'a katılmıyor. Bu
@@ -194,6 +222,11 @@ uygulaması olarak dosyalıyor, Business ile ilgisi yok.
 - Lovable: `human-lens-archive` projesine tam erişim var (okuma +
   `send_message` ile düzenleme) ama workspace'in kredisi bitti
   (26.08.2026) — düzenleme mesajı gönderilemedi.
+- **`beta-art.com` bu oturumdan erişilemiyor** (30.08.2026, doğrulandı):
+  hem `WebFetch` hem doğrudan `curl` `CONNECT tunnel failed, response 403`
+  / `connect_rejected (organization policy)` döndürdü — `vercel.app` ve
+  `lovable.app` ile aynı türden kurumsal ağ engeli. İçerik yalnızca
+  kullanıcının tarayıcıdan kopyalayıp yapıştırmasıyla elde edilebiliyor.
 
 ## HXI Phonk Studio
 
