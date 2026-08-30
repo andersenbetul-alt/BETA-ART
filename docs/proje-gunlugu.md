@@ -374,3 +374,45 @@ yüzünden ("cross-tier adds are not supported") erişilemedi; ayrıca
 oturumdaki Vercel MCP bağlantısının kapsamı dışında kaldı. CLAUDE.md'ye
 monorepo yapısını ve alt klasörlerin QBLOGG'un "sıfır bağımlılık"
 kuralına tabi olmadığını açıklayan bir bölüm eklendi.
+
+## 30.08.2026 — "Beta AI" bağımsız marka oldu; canlı beta-art.com arşivlendi; @ARTIFACTS taraması
+
+Üç ayrı iş: (1) Kullanıcı "BETA AI CONSEPTİ İÇİN BETA ART DOSYALARINI
+İNCELE" dedi; gerçek Beta Art kaynaklarında (README, BETA_ART_MASTER.md,
+kod) bir AI-görsel-üretim ürününe hiç destek bulunmadı — tam tersine
+"Do not use AI-themed visuals" ve AI-eğitimini yasaklayan lisans
+maddeleri var. Kullanıcı kararı: "Tamamen ayrı, farklı bir marka olarak
+geliştir." `docs/beta-art-konsept.md` içeriği `docs/beta-ai-konsept.md`
+olarak "Beta AI" adıyla yeniden markalandı (Beta Art'tan ve QBLOGG'dan
+bağımsız üçüncü marka); eski dosya silinmedi, üstüne yönlendirme
+notu eklendi. ROADMAP güncellendi. (2) Kullanıcı canlı
+`https://beta-art.com/cart` sayfasının içeriğini yapıştırdı ("BU
+SAYFAYI ORNEK ALARAK KONSEPTI GELISTIR"). İçerik birebir
+`beta-art/source-review/intake-2026-08-30/beta-art-com-live-homepage.md`
+olarak arşivlendi; karşılaştırma `MANIFEST-live-homepage.md`'de: canlı
+site kod tabanından (`beta-art/src`) farklı — ayrı bir "Exhibitions &
+Events" bölümü var (bu, aynı gün gelen `PROJECT-MANIFEST.md`'nin
+G·001/BAG-03 "Galeri" alt-projesini neden ayırmak istediğinin kanıtı
+olabilir), farklı FAQ, ek rotalar (`/categories`, `/industries`,
+`/cart`). Kod değişikliği yapılmadı, dört açık soru kullanıcıya
+bırakıldı (cart/ana-sayfa URL çelişkisi, "84.000 kare" iddiasının
+gerçekliği, `hallo@beta-art.com` adresi, FAQ/Exhibitions'ın nereye
+taşınacağı). (3) `@ARTIFACTS` ile bu oturumun 25 yayınlanmış Claude
+Artifact'i tarandı: "BETA ART — Project Catalogue" adlı artifact Beta
+Art'ı **12 ayrı alt-proje** olarak tanımlıyor (ikisi erişilemeyen
+`project-hxi` Vercel hesabında) ve bu depoyu ("andersenbetul-alt/BETA-ART")
+kendi kanonik evi ilan ediyor; "BETA-ART Design System" adlı bir başka
+artifact ise depoda hiç var olmayan bir `hxi-v6/` alt-projesinden ve
+`beta-art/`'ın (yanlış biçimde) TanStack Start kullandığından bahsediyor.
+İki gerçek statik HTML sayfası ("Beta Art Privat", "BETA ART Business")
+tam okunup frame-runtime sarmalayıcısı soyularak
+`beta-art/source-review/intake-2026-08-30/artifact-beta-art-*.html`
+olarak birebir arşivlendi; `MANIFEST-claude-artifacts.md`'de
+"BETA ART Business" kaynak kalitesinde (BETA_ART_MASTER.md paletiyle
+örtüşüyor), "Beta Art Privat" ise derlenmiş/minify bir SPA çıktısı
+(kaynak değil) olarak işaretlendi. Sonuç: Beta Art'ın klasör yapısı
+için artık **dört** çelişen model var (bu oturumun git-subtree taşıması;
+`PROJECT-MANIFEST.md`'nin üç-klasör modeli; Project Catalogue'nin
+`beta-art-static/` modeli; Design System artifact'inin — güvenilirliği
+şüpheli — `hxi-v6/` modeli). Hiçbir klasör taşınmadı/yeniden
+yapılandırılmadı; yalnızca arşivleme yapıldı. Karar kullanıcıda.
