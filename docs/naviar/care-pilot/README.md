@@ -2,8 +2,10 @@
 
 Bu dizin, kullanıcının paylaştığı "NAVIAR Care Pilot Implementation Plan"ın
 (26.08.2026) `docs/naviar/care-pilot/` altına yerleştirilmiş uygulamasıdır
-— plandaki repo-kökü yolları (`docs/operations/`, `docs/legal/`, `site/`
-vb.) QBLOGG'un kendi `docs/`'uyla karışmasın diye burada toplandı.
+— plandaki repo-kökü yolları (`docs/operations/`, `docs/legal/` vb.)
+QBLOGG'un kendi `docs/`'uyla karışmasın diye burada toplandı.
+MVP web sitesi (`naviar/care-pilot/index.html`) diğer NAVIAR alt-siteleriyle
+aynı dizin kalıbını izlemek için kök altına taşındı.
 
 **Hiçbiri henüz üretimde değil.** Bu belgeler bir pilotun kâğıt üstü
 hazırlığıdır; `decisions/decision-log.md`'deki 🔴 maddeler kapanmadan
@@ -22,7 +24,7 @@ hazırlığıdır; `decisions/decision-log.md`'deki 🔴 maddeler kapanmadan
 5. `operations/` altındaki diğerleri — yardımcı işe alım, el kitabı, olay
    SOP'u
 6. `research/`, `sales/`, `marketing/`, `partnerships/` — talep kanıtlama
-7. `product/` + `site/index.html` — MVP dijital ürün
+7. `product/` + `naviar/care-pilot/index.html` (repo kökünde) — MVP dijital ürün
 8. `finance/*.xlsx` — birim ekonomisi ve haftalık P&L (gerçek formüllerle,
    varsayımlar sarı işaretli)
 9. `operations/weekly-pilot-scorecard.md` + `decisions/scale-gate-review.md`
@@ -46,8 +48,8 @@ care-pilot/
   partnerships/ referral-boundary
   product/      mvp-data-map, consent-and-communication-model,
                 mvp-acceptance-tests, post-pilot-product-requirements
-  site/         index.html — tek sayfalık MVP sitesi (noindex, fiyatsız,
-                mailto: formu — gerçek CRM'e geçiş ayrı bir görev)
+  [naviar/care-pilot/index.html — repo kökünde, diğer NAVIAR alt-siteleriyle
+                aynı kalıpta: naviar/care/, naviar/consult/, naviar/care-pilot/]
   strategy/     year-one-operating-plan, new-area-launch-checklist
 ```
 
@@ -58,8 +60,8 @@ care-pilot/
   **Python'da bağımsız olarak elle doğrulandı**, ama Excel/LibreOffice'in
   kendisiyle canlı yeniden hesaplanamadı. Dosyayı gerçek Excel/LibreOffice
   ile açtığınızda formüller otomatik hesaplanacak — bu normal.
-- `site/index.html`'deki `pilot@naviarcare.example` bir yer tutucudur,
-  gerçek adres netleşmeden değiştirilmedi.
+- `naviar/care-pilot/index.html`'deki `pilot@naviarcare.example` bir yer
+  tutucudur, gerçek adres netleşmeden değiştirilmedi.
 - Tüm Norveç hukuku/vergi rakamları (AGA, feriepenger, OTP, MVA) arama
   motoru özetinden derlendi — resmî sayfalar bu ortamda erişilemedi
   (`EGRESS_BLOCKED`). Muhasebeci/hukuk danışmanı onayı olmadan hiçbiri
