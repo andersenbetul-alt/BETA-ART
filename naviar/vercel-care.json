@@ -1,0 +1,5 @@
+{
+  "buildCommand": "git clone --depth 1 --branch claude/naviar-care-2-lw83yy https://github.com/andersenbetul-alt/BETA-ART.git _repo && mkdir -p dist && cp _repo/naviar/care/* dist/",
+  "outputDirectory": "dist",
+  "framework": null
+}
