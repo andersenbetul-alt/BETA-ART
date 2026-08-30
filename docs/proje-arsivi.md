@@ -127,14 +127,26 @@ satır tahminle doldurulmadı — kaynağı olmayan alan `bilinmiyor` yazar.
 | PROJECTMANIFEST.md'deki durumu | Manifesto bunu zaten biliyor ve **kaynak-inceleme malzemesi** olarak işaretlemiş: "üç proje adlandırmasıyla tam eşleşmiyor çünkü üçüncü mülk Galeri değil Journal... `source-review/intake-2026-08-30/three-sites-latest/` altında saklanıyor, üretim klasörlerine karıştırılmadı" |
 | Durum | **referans**, kaynak sistemde zaten "üretime alınmadı" diye işaretli — yine de üçüncü bir domain (`betaart.no`) ortaya çıkardığı için not edildi |
 
+## 13. BETA ART Private (dördüncü kod tabanı, "Privat" değil "Private")
+
+| Alan | Değer |
+|---|---|
+| Kaynak | `index.html` (madde 4/12'den bağımsız, `../assets/styles.css` + `../assets/app.js` kullanıyor) + `verify/index.html` (BETA-ID doğrulama alt sayfası) — 30.08.2026 paylaşıldı |
+| Yazım farkı | **"Private"**, madde 4'teki "Privat" değil — başlıkta, `<title>`'da, footer'da tutarlı biçimde "Private" yazıyor |
+| Klasör yapısı | `private/index.html`, `private/verify/index.html`, kardeşi `business/`, paylaşılan `assets/styles.css`+`assets/app.js` — madde 4'ün `beta-art-privat/` veya madde 12'nin `beta-art/` adlandırmasından **farklı, dördüncü bir klasör şeması** |
+| Doğrulama kapısı | **Sekiz** adım: Original, Identity, Capture, Rights, AI disclosure, Conflict gate, Provenance, C2PA — `ASSETSTATUS.md`'nin "beş kontrol"ünden ve "Beta proof chain"in altı adımından **farklı, üçüncü bir sayı** |
+| BETA-ID doğrulama | `verify/` sayfası bir demo kayıt numarası (`BETA-PHOTO-DEMO-0001`) sorgulatıyor; sayfa `noindex`, "no production certificates are issued from this prototype" diyor |
+| Durum | **referans** — hiçbir üst-belgede (`PROJECTMANIFEST.md` dahil) bu spesifik varyanttan söz edilmiyor, kaynağı/tarihi bilinmiyor |
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
 
 - **"Privat"** üç farklı şeyde geçiyor: `beta-privat/` (madde 3, muhasebe), "BETA ART Privat" BAP-01 (madde 4, fotoğraf arşivi). Kullanıcı 30.08'de bunların ayrı olduğunu doğruladı.
 - **Barındırma modeli çelişkisi**: madde 4/6/7'nin kendi belgeleri (`ROUTE-CONFIG.md`, `DEPLOYMENT.md`) yol-tabanlı (`/privat/`) diyor; madde 8 (DNS admin) alt-alan-adı-tabanlı (`archive.beta-art.com`) öneriyor. İkisi aynı anda doğru olamaz — birleştirme kararından önce hangisinin geçerli olduğu netleşmeli.
-- **BETA ART Privat için üç ayrı kod tabanı var**: (1) statik HTML prototip, (2) React+Vite+Supabase "Final Work v2" (madde 5), (3) GoDaddy Airo App Builder (Vite+React+TS, kendi içerik eklentisi) — kullanıcı 30.08'de üçüncüsünü temel ilan etti. Diğer ikisinin akıbeti (tamamen bırakılıyor mu, referans mı kalıyor) henüz netleşmedi.
+- **BETA ART Privat/Private için dört ayrı kod tabanı var**: (1) statik HTML prototip "Privat" (madde 4), (2) React+Vite+Supabase "Final Work v2" (madde 5), (3) GoDaddy Airo App Builder (Vite+React+TS, kendi içerik eklentisi, madde 4'e bağlı — kullanıcı 30.08'de bunu temel ilan etti), (4) statik HTML "Private" — `assets/app.js` (madde 13, kaynağı bilinmiyor). Diğer üçünün akıbeti (tamamen bırakılıyor mu, referans mı kalıyor) henüz netleşmedi.
 - **İki farklı domain aynı markayı taşıyor**: `beta-art.com` (madde 4/6/7/8/9) ve `betaart.no` (madde 12, Field Notes). Hangisinin gerçek/kesin alan adı olacağı netleşmedi.
+- **Doğrulama kapısındaki adım sayısı üç kez değişiyor**: `ASSETSTATUS.md` "beş doğrulama kontrolü" diyor, canlı sitedeki "Beta proof chain" altı adım (Human→Camera→RAW→Edit→Rights→Licence), madde 13'teki kapı sekiz adım (Original/Identity/Capture/Rights/AI disclosure/Conflict gate/Provenance/C2PA). Hangisinin kesin liste olduğu hâlâ netleşmedi — kullanıcının daha önce ayrıca paylaşacağını söylediği "beş kontrol" listesi hâlâ gelmedi.
 
 ## Sıradaki adım
 
