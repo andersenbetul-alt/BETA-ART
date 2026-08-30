@@ -4,7 +4,9 @@ Figma MCP entegrasyonu için istendi, ama asıl işlevi daha geniş: bir Figma
 tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
-**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 22.08.2026 itibarıyla.
+**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 30.08.2026 itibarıyla
+yeniden ölçüldü (i18n anahtar sayısı, CSS satır/sınıf sayısı, medya sorgusu
+sayısı değişmişti — bkz. `docs/proje-gunlugu.md`).
 
 ---
 
@@ -105,7 +107,7 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 
 **Yoktur.** Bileşen mimarisi, Storybook, bileşen dokümantasyonu — hiçbiri yok.
 
-Yerine geçen şey: `assets/css/main.css` içinde **95 sınıf**, altı HTML
+Yerine geçen şey: `assets/css/main.css` içinde **117 sınıf**, altı HTML
 sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi) altı dosyada
 **tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`.
 
@@ -130,7 +132,7 @@ Betik yükleme sırası **anlamlıdır**, değiştirmeyin:
 
 ```html
 <script src="assets/js/config.js"></script>   <!-- yayın ayarları -->
-<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 209 anahtar -->
+<script src="assets/js/i18n.js"></script>     <!-- 10 dil × 252 anahtar -->
 <script src="assets/js/posts.js"></script>    <!-- blog içeriği -->
 <script src="assets/js/app.js"></script>      <!-- hepsini kullanır -->
 ```
@@ -222,7 +224,7 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
+Hiçbiri. Düz CSS, tek dosya, 629 satır, 117 sınıf. Sınıf adları anlamsal ve
 kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller
@@ -232,7 +234,8 @@ sıfırlama → tipografi → düzen → bileşenler → medya sorguları.
 
 ### Duyarlılık
 
-**5 medya sorgusu**, hepsi `max-width`. Mobil kırılma noktaları:
+**6 medya sorgusu**: dördü `max-width` (`1180px`, `860px`, `620px`, `360px`),
+ayrıca `prefers-reduced-motion` ve `print`. Mobil kırılma noktaları:
 
 - `≤620px` — dil seçici ikona düşer, logo yalnızca sembol
 - `≤360px` — tema düğmesi gizlenir
@@ -270,7 +273,7 @@ bakın.
 *.html                  6 sayfa — iskelet tekrar eder
 assets/css/main.css     tek stil dosyası
 assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak dosya
-assets/js/i18n.js       10 dil × 209 anahtar
+assets/js/i18n.js       10 dil × 252 anahtar
 assets/js/posts.js      blog içeriği, her yazı 10 dilde
 assets/js/app.js        dil, tema, liste, yazı sayfası, formlar
 assets/brand/           14 kimlik varlığı (üretilir)
