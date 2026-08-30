@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Languages — NaviarCare</title>
+<meta name="description" content="NaviarCare supports 113 languages — 44 natively by doctors, the rest through medical interpreters available 24/7.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.how-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+@media(max-width:640px){.how-cols{grid-template-columns:1fr;}}
+.how-col {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.how-col-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+.how-col-icon.green { background: var(--success-light); color: var(--success); }
+.how-col-icon.blue { background: var(--brand-light); color: var(--brand); }
+.how-col-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.how-col-sub { font-size: 14px; color: var(--text-3); font-weight: 600; margin-bottom: 12px; }
+.how-col-desc { font-size: 14px; color: var(--text-2); line-height: 1.6; }
+.lang-note {
+  background: var(--accent-light);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--accent);
+  margin-bottom: 36px;
+  line-height: 1.5;
+}
+.table-meta { font-size: 13px; color: var(--text-3); margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">N</div>
+      NaviarCare
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="triage.html">Check symptoms</a>
+      <a href="booking.html">Find a doctor</a>
+      <a href="languages.html">Languages</a>
+      <a href="join.html">For doctors</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <select class="lang-select" id="lang-sel" aria-label="Choose your language">
+        <option value="en">English</option>
+        <option value="tr">Türkçe</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Languages</div>
+    <h1>Care in the language you think in</h1>
+    <p class="page-hero-sub">Describing pain is hard enough in your first language. We make sure the language barrier is ours to solve, not yours.</p>
+    <div style="display:flex;gap:24px;margin-top:28px;flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:var(--brand);">113</div>
+        <div style="font-size:13px;color:var(--text-3);">languages we can consult in</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:var(--brand);">44</div>
+        <div style="font-size:13px;color:var(--text-3);">spoken natively by doctors on the platform</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:32px;font-weight:800;color:var(--brand);">24/7</div>
+        <div style="font-size:13px;color:var(--text-3);">medical interpreters on call for the rest</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">How it works</h2>
+    <p class="section-sub">Two ways we get you a consultation in your language</p>
+    <div class="how-cols">
+      <div class="how-col">
+        <div class="how-col-icon green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="how-col-title">Doctor speaks it</div>
+        <div class="how-col-sub">Straight to a doctor who shares your language</div>
+        <div class="how-col-desc">For these languages we have clinicians who consult natively. Nothing is relayed through anyone else — you speak, the doctor answers, in the same language.</div>
+      </div>
+      <div class="how-col">
+        <div class="how-col-icon blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="how-col-title">Interpreter joins</div>
+        <div class="how-col-sub">A medical interpreter on the same call</div>
+        <div class="how-col-desc">For every other language, a trained medical interpreter joins within minutes. They interpret clinical terms accurately — this is not machine translation, and it is never a family member left to explain a diagnosis.</div>
+      </div>
+    </div>
+    <div class="lang-note" id="interpreters">
+      <strong>Your written notes come in your language too.</strong> The summary, the advice and any referral are written in the language you were seen in, so you still have it after the call ends.
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <h2 class="section-title">Full list</h2>
+    <p class="section-sub">Every language we currently cover. If yours is missing, tell us — we add languages as we find interpreters for them.</p>
+
+    <div class="filter-bar">
+      <input type="text" id="lang-search" placeholder="Find your language" aria-label="Search languages">
+      <select id="region-sel" aria-label="Filter by region">
+        <option value="all">Everywhere</option>
+        <option value="europe">Europe</option>
+        <option value="africa">Africa</option>
+        <option value="asia">Asia</option>
+        <option value="middleeast">Middle East</option>
+        <option value="americas">Americas</option>
+        <option value="oceania">Oceania</option>
+      </select>
+    </div>
+    <p class="table-meta">Showing <span id="lang-count">113</span> of 113 languages</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Language</th>
+            <th>In that language</th>
+            <th>How you are seen</th>
+            <th>Book</th>
+          </tr>
+        </thead>
+        <tbody id="lang-tbody">
+          <tr data-region="africa"><td>Afaan Oromoo</td><td>Oromo</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Afrikaans</td><td>Afrikaans</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="americas"><td>Avañe'ẽ</td><td>Guarani</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="americas"><td>Aymar aru</td><td>Aymara</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Azərbaycan dili</td><td>Azerbaijani</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Bahasa Indonesia</td><td>Indonesian</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Bahasa Melayu</td><td>Malay</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Basa Jawa</td><td>Javanese</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Basa Sunda</td><td>Sundanese</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Bosanski</td><td>Bosnian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Català</td><td>Catalan</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Cebuano</td><td>Cebuano</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Čeština</td><td>Czech</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Chichewa</td><td>Chichewa</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>chiShona</td><td>Shona</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Cymraeg</td><td>Welsh</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Dansk</td><td>Danish</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Deutsch</td><td>German</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Eesti</td><td>Estonian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>English</td><td>English</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Español</td><td>Spanish</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Euskara</td><td>Basque</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Filipino</td><td>Filipino</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Français</td><td>French</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Fulfulde</td><td>Fula</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Gaeilge</td><td>Irish</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="oceania"><td>Gagana Samoa</td><td>Samoan</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Galego</td><td>Galician</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Hausa</td><td>Hausa</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Hrvatski</td><td>Croatian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Igbo</td><td>Igbo</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Ikinyarwanda</td><td>Kinyarwanda</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>isiXhosa</td><td>Xhosa</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>isiZulu</td><td>Zulu</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Íslenska</td><td>Icelandic</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Italiano</td><td>Italian</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Kiswahili</td><td>Swahili</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="americas"><td>Kreyòl Ayisyen</td><td>Haitian Creole</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="middleeast"><td>Kurdî</td><td>Kurdish</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Latviešu</td><td>Latvian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="oceania"><td>Lea Faka-Tonga</td><td>Tongan</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Lietuvių</td><td>Lithuanian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Lingála</td><td>Lingala</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Magyar</td><td>Hungarian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Malagasy</td><td>Malagasy</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Malti</td><td>Maltese</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="oceania"><td>Na Vosa Vakaviti</td><td>Fijian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="americas"><td>Nāhuatl</td><td>Nahuatl</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Nederlands</td><td>Dutch</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Norsk</td><td>Norwegian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Oʻzbekcha</td><td>Uzbek</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Polski</td><td>Polish</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Português</td><td>Portuguese</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Română</td><td>Romanian</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="americas"><td>Runa Simi</td><td>Quechua</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Shqip</td><td>Albanian</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Sign language</td><td>Sign language</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Slovenčina</td><td>Slovak</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Slovenščina</td><td>Slovenian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Soomaali</td><td>Somali</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Suomi</td><td>Finnish</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Svenska</td><td>Swedish</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="oceania"><td>Te Reo Māori</td><td>Māori</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Tiếng Việt</td><td>Vietnamese</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="oceania"><td>Tok Pisin</td><td>Tok Pisin</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Türkçe</td><td>Turkish</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Türkmençe</td><td>Turkmen</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Twi</td><td>Twi</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Wolof</td><td>Wolof</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>Yorùbá</td><td>Yoruba</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Ελληνικά</td><td>Greek</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Беларуская</td><td>Belarusian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Български</td><td>Bulgarian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Кыргызча</td><td>Kyrgyz</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Қазақша</td><td>Kazakh</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Македонски</td><td>Macedonian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Монгол</td><td>Mongolian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Русский</td><td>Russian</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Српски</td><td>Serbian</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Тоҷикӣ</td><td>Tajik</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="europe"><td>Українська</td><td>Ukrainian</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>ქართული</td><td>Georgian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>Հայերեն</td><td>Armenian</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="middleeast"><td>עברית</td><td>Hebrew</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>اردو</td><td>Urdu</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="middleeast"><td>العربية</td><td>Arabic</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>پښتو</td><td>Pashto</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>سنڌي</td><td>Sindhi</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="middleeast"><td>فارسی</td><td>Persian</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>ⵜⴰⵎⴰⵣⵉⵖⵜ</td><td>Tamazight</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>ትግርኛ</td><td>Tigrinya</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="africa"><td>አማርኛ</td><td>Amharic</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>नेपाली</td><td>Nepali</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>मराठी</td><td>Marathi</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>हिन्दी</td><td>Hindi</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>অসমীয়া</td><td>Assamese</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>বাংলা</td><td>Bengali</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>ਪੰਜਾਬੀ</td><td>Punjabi</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>ગુજરાતી</td><td>Gujarati</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>ଓଡ଼ିଆ</td><td>Odia</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>தமிழ்</td><td>Tamil</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>తెలుగు</td><td>Telugu</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>ಕನ್ನಡ</td><td>Kannada</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>മലയാളം</td><td>Malayalam</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>සිංහල</td><td>Sinhala</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>ไทย</td><td>Thai</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>ລາວ</td><td>Lao</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>မြန်မာ</td><td>Burmese</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>ខ្មែរ</td><td>Khmer</td><td><span class="tag-interp">Interpreter joins</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>한국어</td><td>Korean</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>中文</td><td>Chinese (Mandarin)</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>日本語</td><td>Japanese</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+          <tr data-region="asia"><td>粵語</td><td>Cantonese</td><td><span class="tag-doctor">Doctor speaks it</span></td><td><a href="booking.html" class="btn btn-sm btn-ghost">Book</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap wrap-narrow" style="text-align:center;">
+    <h2 class="section-title">Ready to speak to someone?</h2>
+    <p style="font-size:16px;color:var(--text-2);margin-bottom:28px;">Pick your language at the top of the page and the whole site — including your consultation notes — follows you.</p>
+    <a href="triage.html" class="btn btn-primary">Describe my symptoms</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><div class="nav-logo-mark">N</div> NaviarCare</div>
+        <p class="footer-tagline">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <div class="footer-warn">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Service</div>
+        <ul class="footer-links">
+          <li><a href="triage.html">Check symptoms</a></li>
+          <li><a href="booking.html">Find a doctor</a></li>
+          <li><a href="languages.html">Languages</a></li>
+          <li><a href="booking.html#available">Doctors available now</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#how">How it works</a></li>
+          <li><a href="about.html#safety">Safety &amp; privacy</a></li>
+          <li><a href="legal.html">Legal &amp; regulatory</a></li>
+          <li><a href="join.html">For doctors</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="about.html#faq">Frequently asked questions</a></li>
+          <li><a href="languages.html#interpreters">Interpreters</a></li>
+          <li><a href="about.html#contact">Support</a></li>
+          <li><a href="feedback.html">Leave feedback</a></li>
+          <li><a href="legal.html#retention">Your records</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span class="footer-copy">Available 24 hours a day, in every language we can reach.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

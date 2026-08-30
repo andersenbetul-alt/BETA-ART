@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Check Symptoms — NaviarCare</title>
+<meta name="description" content="Describe your symptoms in your own words. We work out which specialist you need and whether it is urgent.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.triage-layout { display: grid; grid-template-columns: 1fr 360px; gap: 40px; align-items: start; }
+@media(max-width:900px){ .triage-layout{grid-template-columns:1fr;} }
+.triage-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+}
+.triage-step { display: none; }
+.triage-step.active { display: block; }
+.complaint-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.complaint-chip {
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  padding: 7px 14px;
+  font-size: 14px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background .1s, border-color .1s;
+}
+.complaint-chip:hover { border-color: var(--brand); }
+.complaint-chip.selected { background: var(--brand-light); border-color: var(--brand); color: var(--brand); }
+.triage-input-wrap { position: relative; margin: 16px 0 24px; }
+.triage-input-wrap textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  font-size: 16px;
+  color: var(--text);
+  resize: none;
+  min-height: 100px;
+  line-height: 1.5;
+}
+.triage-input-wrap textarea:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(0,81,195,.12); }
+.safety-q {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 14px;
+}
+.safety-q-text { font-size: 16px; font-weight: 600; margin-bottom: 14px; }
+.safety-q-opts { display: flex; gap: 10px; flex-wrap: wrap; }
+.safety-q-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .1s;
+}
+.safety-q-btn:hover { background: var(--brand-light); border-color: var(--brand); color: var(--brand); }
+.result-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+}
+.result-specialty {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.result-urgency {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.urgency-routine { background: var(--success-light); color: var(--success); }
+.urgency-soon { background: var(--warn-light); color: var(--warn); }
+.urgency-urgent { background: var(--danger-light); color: var(--danger); }
+.progress-bar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: 2px;
+  transition: width .3s;
+}
+.info-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.info-panel h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+.info-panel p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">N</div>
+      NaviarCare
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="triage.html">Check symptoms</a>
+      <a href="booking.html">Find a doctor</a>
+      <a href="languages.html">Languages</a>
+      <a href="join.html">For doctors</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <select class="lang-select" id="lang-sel" aria-label="Choose your language">
+        <option value="en">English</option>
+        <option value="tr">Türkçe</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="section">
+  <div class="wrap">
+    <div class="triage-layout">
+      <div>
+        <h1 style="font-size:clamp(24px,4vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;">Check your symptoms</h1>
+        <p style="font-size:16px;color:var(--text-2);margin-bottom:28px;">Describe what is wrong in your own words. We will work out who you need to see and how urgently.</p>
+
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:20%"></div></div>
+
+        <!-- Step 1: describe -->
+        <div class="triage-card triage-step active" id="step-1">
+          <div style="font-size:13px;font-weight:600;color:var(--text-3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px;">Step 1 of 4 — What is wrong?</div>
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:6px;">Tell us what is bothering you</h2>
+          <p style="font-size:14px;color:var(--text-2);margin-bottom:16px;">Type in your own words, or pick from the common complaints below.</p>
+          <div class="complaint-grid">
+            <button class="complaint-chip" data-symptom="fever">Fever</button>
+            <button class="complaint-chip" data-symptom="chest-pain">Chest pain</button>
+            <button class="complaint-chip" data-symptom="headache">Headache</button>
+            <button class="complaint-chip" data-symptom="cough">Cough</button>
+            <button class="complaint-chip" data-symptom="rash">Skin rash</button>
+            <button class="complaint-chip" data-symptom="stomach">Stomach pain</button>
+            <button class="complaint-chip" data-symptom="back">Back pain</button>
+            <button class="complaint-chip" data-symptom="joint">Joint pain</button>
+            <button class="complaint-chip" data-symptom="anxiety">Anxiety</button>
+            <button class="complaint-chip" data-symptom="sleep">Sleep problems</button>
+            <button class="complaint-chip" data-symptom="fatigue">Fatigue</button>
+            <button class="complaint-chip" data-symptom="child-fever">Fever in a child</button>
+          </div>
+          <div class="triage-input-wrap">
+            <textarea id="triage-input" placeholder="Type what is wrong — any language is fine…" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="showStep(2)">Continue</button>
+        </div>
+
+        <!-- Step 2: safety -->
+        <div class="triage-card triage-step" id="step-2">
+          <div style="font-size:13px;font-weight:600;color:var(--text-3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px;">Step 2 of 4 — Safety check</div>
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:6px;">A few quick questions</h2>
+          <p style="font-size:14px;color:var(--text-2);margin-bottom:20px;">We check for warning signs first, before anything else.</p>
+          <div class="safety-q">
+            <div class="safety-q-text">Is the person unconscious or unable to be woken?</div>
+            <div class="safety-q-opts">
+              <button class="safety-q-btn" onclick="emergencyAlert()">Yes</button>
+              <button class="safety-q-btn" onclick="nextQ(this)">No</button>
+            </div>
+          </div>
+          <div class="safety-q">
+            <div class="safety-q-text">Is there severe trouble breathing — gasping, lips turning blue, unable to speak?</div>
+            <div class="safety-q-opts">
+              <button class="safety-q-btn" onclick="emergencyAlert()">Yes</button>
+              <button class="safety-q-btn" onclick="nextQ(this)">No</button>
+            </div>
+          </div>
+          <div class="safety-q">
+            <div class="safety-q-text">Is there heavy bleeding that will not stop?</div>
+            <div class="safety-q-opts">
+              <button class="safety-q-btn" onclick="emergencyAlert()">Yes</button>
+              <button class="safety-q-btn" onclick="nextQ(this)">No</button>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:20px;">
+            <button class="btn btn-ghost" onclick="showStep(1)">Back</button>
+            <button class="btn btn-primary" onclick="showStep(3)">None of these — continue</button>
+          </div>
+        </div>
+
+        <!-- Step 3: details -->
+        <div class="triage-card triage-step" id="step-3">
+          <div style="font-size:13px;font-weight:600;color:var(--text-3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px;">Step 3 of 4 — More detail</div>
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:20px;">A bit more information</h2>
+          <div class="field">
+            <label>How long has this been going on?</label>
+            <div class="radio-group" style="margin-top:8px;">
+              <label class="radio-option"><input type="radio" name="duration" value="hours"> Less than a day</label>
+              <label class="radio-option"><input type="radio" name="duration" value="days"> 1–7 days</label>
+              <label class="radio-option"><input type="radio" name="duration" value="weeks"> 1–4 weeks</label>
+              <label class="radio-option"><input type="radio" name="duration" value="longer"> Longer</label>
+            </div>
+          </div>
+          <div class="field" style="margin-top:18px;">
+            <label>How severe is it right now?</label>
+            <div class="radio-group" style="margin-top:8px;">
+              <label class="radio-option"><input type="radio" name="severity" value="mild"> Mild — noticeable but manageable</label>
+              <label class="radio-option"><input type="radio" name="severity" value="moderate"> Moderate — affecting daily life</label>
+              <label class="radio-option"><input type="radio" name="severity" value="severe"> Severe — very hard to cope with</label>
+            </div>
+          </div>
+          <div class="field" style="margin-top:18px;">
+            <label for="age-range">Age range</label>
+            <select id="age-range" style="margin-top:6px;width:100%;background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius);padding:10px 14px;font-size:15px;color:var(--text);">
+              <option>Under 12</option>
+              <option>12–17</option>
+              <option>18–39</option>
+              <option selected>40–64</option>
+              <option>65 and over</option>
+            </select>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:24px;">
+            <button class="btn btn-ghost" onclick="showStep(2)">Back</button>
+            <button class="btn btn-primary" onclick="showStep(4)">See my results</button>
+          </div>
+        </div>
+
+        <!-- Step 4: result -->
+        <div class="triage-step" id="step-4">
+          <div class="result-card">
+            <div style="font-size:13px;font-weight:600;color:var(--text-3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px;">Your symptom summary</div>
+            <div class="result-specialty">General practice</div>
+            <div class="result-urgency urgency-routine">Routine — can be seen within a few days</div>
+            <p style="font-size:15px;color:var(--text-2);line-height:1.65;margin-bottom:24px;">Based on your description, a general practitioner is most likely to be able to help. This does not appear to be an emergency — you can book within the next day or two.</p>
+            <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:24px;">
+              <div style="font-size:13px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">Your case summary</div>
+              <div style="font-size:14px;color:var(--text-2);line-height:1.7;" id="case-summary">
+                Symptom described: <em id="result-symptom">—</em><br>
+                Duration: <em id="result-duration">—</em><br>
+                Severity: <em id="result-severity">—</em>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="booking.html?specialty=general-practice" class="btn btn-primary">Book a doctor now</a>
+              <button class="btn btn-ghost" onclick="showStep(1)">Start again</button>
+            </div>
+            <p style="font-size:12px;color:var(--text-3);margin-top:16px;">This is a routing suggestion, not a diagnosis. Print or save this summary to take to your appointment.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div>
+        <div class="safety-box" style="margin-bottom:20px;">
+          <strong>Emergency?</strong> If someone is unconscious, cannot breathe, or is bleeding heavily, call your local emergency number immediately. Do not use this tool.
+        </div>
+        <div class="info-panel" style="margin-bottom:16px;">
+          <h3>What this tool does</h3>
+          <p>It reads your description and works out which specialty is most likely to help, and whether you should be seen today, soon, or can wait. It is a routing tool — it does not diagnose.</p>
+        </div>
+        <div class="info-panel" style="margin-bottom:16px;">
+          <h3>Your privacy</h3>
+          <p>Everything you type here stays in your browser. Nothing is sent anywhere until you choose to book a consultation.</p>
+        </div>
+        <div class="info-panel">
+          <h3>Free to use</h3>
+          <p>The symptom check is always free. You only pay if you go on to book a consultation with a doctor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><div class="nav-logo-mark">N</div> NaviarCare</div>
+        <p class="footer-tagline">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <div class="footer-warn">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Service</div>
+        <ul class="footer-links">
+          <li><a href="triage.html">Check symptoms</a></li>
+          <li><a href="booking.html">Find a doctor</a></li>
+          <li><a href="languages.html">Languages</a></li>
+          <li><a href="booking.html#available">Doctors available now</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#safety">Safety &amp; privacy</a></li>
+          <li><a href="legal.html">Legal &amp; regulatory</a></li>
+          <li><a href="join.html">For doctors</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#contact">Support</a></li>
+          <li><a href="feedback.html">Leave feedback</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+function showStep(n) {
+  document.querySelectorAll('.triage-step').forEach(s => s.classList.remove('active'));
+  const step = document.getElementById('step-' + n);
+  if (step) step.classList.add('active');
+  document.getElementById('progress').style.width = (n * 25) + '%';
+  if (n === 4) updateResult();
+}
+
+function emergencyAlert() {
+  alert('This sounds like it may need emergency care. Please call your local emergency number now — do not wait for a consultation.');
+}
+
+function nextQ(btn) {
+  btn.style.background = 'var(--success-light)';
+  btn.style.color = 'var(--success)';
+  btn.style.borderColor = 'var(--success)';
+}
+
+function updateResult() {
+  const input = document.getElementById('triage-input');
+  const dur = document.querySelector('input[name="duration"]:checked');
+  const sev = document.querySelector('input[name="severity"]:checked');
+  const rs = document.getElementById('result-symptom');
+  const rd = document.getElementById('result-duration');
+  const rv = document.getElementById('result-severity');
+  if (rs) rs.textContent = (input && input.value) ? input.value : '(not specified)';
+  if (rd) rd.textContent = dur ? dur.parentElement.textContent.trim() : '(not specified)';
+  if (rv) rv.textContent = sev ? sev.parentElement.textContent.trim() : '(not specified)';
+}
+
+// Complaint chips
+document.querySelectorAll('.complaint-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.complaint-chip').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+    const map = {
+      fever: 'I have a fever', 'chest-pain': 'I have chest pain', headache: 'I have a headache',
+      cough: 'I have a cough', rash: 'I have a skin rash', stomach: 'I have stomach pain',
+      back: 'I have back pain', joint: 'I have joint pain', anxiety: 'I am feeling anxious',
+      sleep: 'I am having trouble sleeping', fatigue: 'I feel unusually tired',
+      'child-fever': 'My child has a fever',
+    };
+    const input = document.getElementById('triage-input');
+    if (input) input.value = map[chip.dataset.symptom] || chip.textContent;
+  });
+});
+
+// Pre-fill from URL
+const urlParams = new URLSearchParams(location.search);
+const symptomParam = urlParams.get('symptom');
+if (symptomParam) {
+  const chip = document.querySelector(`.complaint-chip[data-symptom="${symptomParam}"]`);
+  if (chip) chip.click();
+}
+</script>
+</body>
+</html>

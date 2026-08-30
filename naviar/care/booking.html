@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Find a Doctor — NaviarCare</title>
+<meta name="description" content="Browse doctors available now. Filter by specialty, language and availability.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.booking-layout { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
+@media(max-width:800px){ .booking-layout{grid-template-columns:1fr;} }
+.filter-panel {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  position: sticky;
+  top: calc(var(--nav-h) + 16px);
+}
+.filter-panel h3 { font-size: 13px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
+.filter-panel select, .filter-panel input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.doctor-grid { display: flex; flex-direction: column; gap: 14px; }
+.doctor-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.doctor-avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 18px; color: var(--brand);
+  flex-shrink: 0;
+}
+.doctor-name { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
+.doctor-specialty { font-size: 14px; color: var(--text-3); margin-bottom: 8px; }
+.doctor-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.doctor-tag {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+.doctor-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.doctor-status.free { color: var(--success); }
+.doctor-status.free::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--success); }
+.doctor-status.soon { color: var(--warn); }
+.doctor-status.soon::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--warn); }
+.doctor-actions { margin-left: auto; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.doctor-fee { font-size: 20px; font-weight: 800; color: var(--text); }
+.doctor-fee-sub { font-size: 11px; color: var(--text-3); }
+@media(max-width:640px){
+  .doctor-card{flex-wrap:wrap;}
+  .doctor-actions{margin-left:0;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">N</div>
+      NaviarCare
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="triage.html">Check symptoms</a>
+      <a href="booking.html">Find a doctor</a>
+      <a href="languages.html">Languages</a>
+      <a href="join.html">For doctors</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <select class="lang-select" id="lang-sel" aria-label="Choose your language">
+        <option value="en">English</option>
+        <option value="tr">Türkçe</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="section">
+  <div class="wrap">
+    <h1 style="font-size:clamp(24px,4vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;">Find a doctor</h1>
+    <p style="font-size:16px;color:var(--text-2);margin-bottom:32px;">Filter by specialty, language, or availability. Price is always shown before you confirm.</p>
+
+    <div style="background:var(--warn-light);border:1px solid var(--warn);border-radius:var(--radius);padding:12px 18px;font-size:13px;color:var(--warn);margin-bottom:28px;line-height:1.5;">
+      <strong>Sample data:</strong> The doctors and availability shown are for demonstration purposes only. No real consultation is booked through this preview.
+    </div>
+
+    <div class="booking-layout">
+      <div>
+        <div class="filter-panel">
+          <h3>Filters</h3>
+          <select id="specialty-filter" aria-label="Specialty">
+            <option value="">Any specialty</option>
+            <option value="general-practice">General practice</option>
+            <option value="internal-medicine">Internal medicine</option>
+            <option value="pediatrics">Paediatrics</option>
+            <option value="cardiology">Cardiology</option>
+            <option value="dermatology">Dermatology</option>
+            <option value="psychiatry">Psychiatry</option>
+            <option value="gynecology">Gynaecology</option>
+            <option value="neurology">Neurology</option>
+            <option value="endocrinology">Endocrinology</option>
+            <option value="orthopedics">Orthopaedics</option>
+          </select>
+          <h3>Language</h3>
+          <select id="lang-filter" aria-label="Language">
+            <option value="">Any language</option>
+            <option>English</option>
+            <option>Türkçe</option>
+            <option>Español</option>
+            <option>العربية</option>
+            <option>Français</option>
+            <option>Deutsch</option>
+            <option>Русский</option>
+            <option>हिन्दी</option>
+            <option>বাংলা</option>
+            <option>中文</option>
+          </select>
+          <h3>Availability</h3>
+          <select id="avail-filter" aria-label="Availability">
+            <option value="">Any time</option>
+            <option value="now">Available now</option>
+            <option value="30min">Within 30 minutes</option>
+            <option value="today">Today</option>
+          </select>
+          <a href="triage.html" style="display:block;text-align:center;font-size:13px;color:var(--brand);margin-top:4px;">Not sure which specialty? Check symptoms first</a>
+        </div>
+      </div>
+
+      <div id="available">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+          <p style="font-size:14px;color:var(--text-3);">17 doctors available now · 15 more within 30 minutes</p>
+          <select style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:6px 12px;font-size:13px;color:var(--text-2);">
+            <option>Sort: available now first</option>
+            <option>Sort: lowest fee first</option>
+            <option>Sort: most languages</option>
+          </select>
+        </div>
+
+        <div class="doctor-grid">
+
+          <div class="doctor-card">
+            <div class="doctor-avatar">AK</div>
+            <div style="flex:1;">
+              <div class="doctor-name">Dr. Ayşe Kaya</div>
+              <div class="doctor-specialty">General practice · 14 years</div>
+              <div class="doctor-tags">
+                <span class="doctor-tag">Türkçe</span>
+                <span class="doctor-tag">English</span>
+                <span class="doctor-tag">Deutsch</span>
+              </div>
+              <div class="doctor-status free">Available now</div>
+            </div>
+            <div class="doctor-actions">
+              <div>
+                <div class="doctor-fee">$45</div>
+                <div class="doctor-fee-sub">per consultation</div>
+              </div>
+              <button class="btn btn-primary btn-sm">Book</button>
+            </div>
+          </div>
+
+          <div class="doctor-card">
+            <div class="doctor-avatar">MP</div>
+            <div style="flex:1;">
+              <div class="doctor-name">Dr. María Pérez</div>
+              <div class="doctor-specialty">Internal medicine · 9 years</div>
+              <div class="doctor-tags">
+                <span class="doctor-tag">Español</span>
+                <span class="doctor-tag">English</span>
+                <span class="doctor-tag">Català</span>
+              </div>
+              <div class="doctor-status free">Available now</div>
+            </div>
+            <div class="doctor-actions">
+              <div>
+                <div class="doctor-fee">$55</div>
+                <div class="doctor-fee-sub">per consultation</div>
+              </div>
+              <button class="btn btn-primary btn-sm">Book</button>
+            </div>
+          </div>
+
+          <div class="doctor-card">
+            <div class="doctor-avatar">AS</div>
+            <div style="flex:1;">
+              <div class="doctor-name">Dr. Ama Sarpong</div>
+              <div class="doctor-specialty">Paediatrics · 11 years</div>
+              <div class="doctor-tags">
+                <span class="doctor-tag">English</span>
+                <span class="doctor-tag">Twi</span>
+                <span class="doctor-tag">Hausa</span>
+              </div>
+              <div class="doctor-status free">Available now</div>
+            </div>
+            <div class="doctor-actions">
+              <div>
+                <div class="doctor-fee">$50</div>
+                <div class="doctor-fee-sub">per consultation</div>
+              </div>
+              <button class="btn btn-primary btn-sm">Book</button>
+            </div>
+          </div>
+
+          <div class="doctor-card">
+            <div class="doctor-avatar">RK</div>
+            <div style="flex:1;">
+              <div class="doctor-name">Dr. Rahul Kumar</div>
+              <div class="doctor-specialty">Cardiology · 18 years</div>
+              <div class="doctor-tags">
+                <span class="doctor-tag">English</span>
+                <span class="doctor-tag">हिन्दी</span>
+                <span class="doctor-tag">বাংলা</span>
+              </div>
+              <div class="doctor-status soon">Free in ~15 min</div>
+            </div>
+            <div class="doctor-actions">
+              <div>
+                <div class="doctor-fee">$75</div>
+                <div class="doctor-fee-sub">per consultation</div>
+              </div>
+              <button class="btn btn-ghost btn-sm">Reserve</button>
+            </div>
+          </div>
+
+          <div class="doctor-card">
+            <div class="doctor-avatar">EV</div>
+            <div style="flex:1;">
+              <div class="doctor-name">Dr. Elena Volkov</div>
+              <div class="doctor-specialty">Dermatology · 7 years</div>
+              <div class="doctor-tags">
+                <span class="doctor-tag">Русский</span>
+                <span class="doctor-tag">English</span>
+                <span class="doctor-tag">Українська</span>
+              </div>
+              <div class="doctor-status free">Available now</div>
+            </div>
+            <div class="doctor-actions">
+              <div>
+                <div class="doctor-fee">$60</div>
+                <div class="doctor-fee-sub">per consultation</div>
+              </div>
+              <button class="btn btn-primary btn-sm">Book</button>
+            </div>
+          </div>
+
+          <div class="doctor-card">
+            <div class="doctor-avatar">FO</div>
+            <div style="flex:1;">
+              <div class="doctor-name">Dr. Fatima Omar</div>
+              <div class="doctor-specialty">General practice · 6 years</div>
+              <div class="doctor-tags">
+                <span class="doctor-tag">العربية</span>
+                <span class="doctor-tag">English</span>
+                <span class="doctor-tag">Soomaali</span>
+              </div>
+              <div class="doctor-status free">Available now</div>
+            </div>
+            <div class="doctor-actions">
+              <div>
+                <div class="doctor-fee">$40</div>
+                <div class="doctor-fee-sub">per consultation</div>
+              </div>
+              <button class="btn btn-primary btn-sm">Book</button>
+            </div>
+          </div>
+
+        </div>
+
+        <p style="font-size:13px;color:var(--text-3);margin-top:20px;text-align:center;">Prices shown include the platform fee. The doctor keeps their portion in full. All prices in USD.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><div class="nav-logo-mark">N</div> NaviarCare</div>
+        <p class="footer-tagline">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <div class="footer-warn">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Service</div>
+        <ul class="footer-links">
+          <li><a href="triage.html">Check symptoms</a></li>
+          <li><a href="booking.html">Find a doctor</a></li>
+          <li><a href="languages.html">Languages</a></li>
+          <li><a href="booking.html#available">Doctors available now</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#safety">Safety &amp; privacy</a></li>
+          <li><a href="legal.html">Legal &amp; regulatory</a></li>
+          <li><a href="join.html">For doctors</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#contact">Support</a></li>
+          <li><a href="feedback.html">Leave feedback</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

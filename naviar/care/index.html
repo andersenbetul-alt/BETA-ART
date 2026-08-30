@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NaviarCare — Talk to a doctor in your language</title>
+<meta name="description" content="Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+@media(max-width:800px){ .hero-grid{grid-template-columns:1fr;} }
+.how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+@media(max-width:800px){ .how-grid{grid-template-columns:1fr;} }
+.lang-marquee { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+.lang-sample-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  min-width: 160px;
+}
+.lang-sample-native { font-size: 18px; font-weight: 700; }
+.lang-sample-phrase { font-size: 20px; color: var(--text-2); margin-bottom: 4px; line-height: 1.2; }
+.lang-sample-label { font-size: 11px; color: var(--text-3); font-weight: 600; }
+.queue-points { display: flex; flex-direction: column; gap: 14px; }
+.queue-point { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-2); }
+.queue-point::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--brand); margin-top:6px; flex-shrink:0; }
+.free-box {
+  background: var(--accent-light);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  font-size: 15px;
+  color: var(--accent);
+  line-height: 1.6;
+  margin-top: 32px;
+}
+.free-box strong { display:block; font-size:17px; font-weight:700; margin-bottom:6px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">N</div>
+      NaviarCare
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="triage.html">Check symptoms</a>
+      <a href="booking.html">Find a doctor</a>
+      <a href="languages.html">Languages</a>
+      <a href="join.html">For doctors</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <select class="lang-select" id="lang-sel" aria-label="Choose your language">
+        <option value="en">English</option>
+        <option value="tr">Türkçe</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          Doctors online right now
+        </div>
+        <h1>Talk to a doctor in minutes — in your <em>own language</em>.</h1>
+        <p class="hero-lead">Tell us what is wrong in the words you would use at home. We work out which specialist you need, write up everything a doctor will ask you, and connect you to one who is free right now and who understands you — instead of waiting in a queue for the wrong department.</p>
+        <div class="hero-actions">
+          <a href="triage.html" class="btn btn-primary">Describe my symptoms</a>
+          <a href="booking.html" class="btn btn-ghost">See doctors available now</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-n">113</div>
+            <div class="hero-stat-l">languages supported</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-n">28</div>
+            <div class="hero-stat-l">medical specialties</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-n">24/7</div>
+            <div class="hero-stat-l">every day of the year</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="avail-card">
+          <div>
+            <div class="avail-live"><span class="dot"></span> Live</div>
+            <div class="avail-n">17</div>
+            <div class="avail-sub">doctors free to take a consultation this minute</div>
+            <div class="avail-more">15 more free within half an hour</div>
+          </div>
+          <div>
+            <p style="font-size:13px;color:var(--text-3);margin-bottom:12px;">Common reasons people call:</p>
+            <div class="avail-tags">
+              <a href="triage.html?symptom=fever" class="avail-tag">Fever</a>
+              <a href="triage.html?symptom=chest-pain" class="avail-tag">Chest pain</a>
+              <a href="triage.html?symptom=rash" class="avail-tag">Skin rash</a>
+              <a href="triage.html?symptom=anxiety" class="avail-tag">Anxiety or panic</a>
+              <a href="triage.html?symptom=child-fever" class="avail-tag">Fever in a child</a>
+            </div>
+            <p style="font-size:12px;color:var(--text-3);margin-top:14px;">Availability updates as clinicians finish their consultations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="how-grid">
+      <div>
+        <h2 class="section-title">How it works</h2>
+        <p class="section-sub">Four steps from "something is wrong" to the right doctor. No referral letters, no waiting rooms, and no having to know which specialist to ask for.</p>
+        <a href="triage.html" class="btn btn-primary">Describe my symptoms</a>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">1</div>
+          <div>
+            <div class="step-title">Tell us what is wrong</div>
+            <div class="step-desc">Type or pick your complaint in your own language. Plain words are fine — no medical terms needed.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">2</div>
+          <div>
+            <div class="step-title">We check for anything urgent</div>
+            <div class="step-desc">A short set of safety questions decides whether this can wait, needs today, or needs emergency care now.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">3</div>
+          <div>
+            <div class="step-title">We find the right specialty</div>
+            <div class="step-desc">Your answers are matched against the specialties that treat them, so you skip the guesswork and the wrong queue.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">4</div>
+          <div>
+            <div class="step-title">You leave with your case written up</div>
+            <div class="step-desc">A summary of everything a doctor asks in the first two minutes — in your language. Book a doctor who is free now, or take it to your own hospital appointment.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NAVIAR CARE -->
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Why Naviar Care</h2>
+    <p class="section-sub">Built for whoever is furthest from care. Most people do not delay treatment because they do not care. They delay because they cannot get through, cannot explain, or do not know who to ask.</p>
+    <div class="props">
+      <div class="prop">
+        <div class="prop-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="prop-title">A doctor in minutes, not weeks</div>
+        <div class="prop-desc">Real clinicians are on call around the clock. Most patients are talking to one inside ten minutes.</div>
+      </div>
+      <div class="prop">
+        <div class="prop-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="prop-title">Care in your own language</div>
+        <div class="prop-desc">Speak to a doctor who shares your language, or bring in a medical interpreter on the same call.</div>
+      </div>
+      <div class="prop">
+        <div class="prop-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </div>
+        <div class="prop-title">Sent to the right specialist first time</div>
+        <div class="prop-desc">Describe the problem once. We work out which specialty fits and book you straight in.</div>
+      </div>
+      <div class="prop">
+        <div class="prop-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="prop-title">Emergencies spotted early</div>
+        <div class="prop-desc">The intake checks for warning signs and tells you plainly when to stop and seek emergency care.</div>
+      </div>
+      <div class="prop">
+        <div class="prop-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="prop-title">You arrive already prepared</div>
+        <div class="prop-desc">Medicines, allergies, how long it has lasted, what you want to ask. Written down before you go in, so nothing is forgotten under pressure.</div>
+      </div>
+      <div class="prop">
+        <div class="prop-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </div>
+        <div class="prop-title">Follow-up that does not restart</div>
+        <div class="prop-desc">Your next doctor already has the history, so you never have to tell the story twice.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="section section-alt">
+  <div class="wrap">
+    <h2 class="section-title">Every language we can reach</h2>
+    <p class="section-sub">Nobody should have to describe pain in a second language.</p>
+    <div class="lang-marquee">
+      <div class="lang-sample-card"><div class="lang-sample-phrase">أين يؤلمك؟</div><div class="lang-sample-label">العربية</div></div>
+      <div class="lang-sample-card"><div class="lang-sample-phrase">哪里疼？</div><div class="lang-sample-label">中文</div></div>
+      <div class="lang-sample-card"><div class="lang-sample-phrase">Unaumwa wapi?</div><div class="lang-sample-label">Kiswahili</div></div>
+      <div class="lang-sample-card"><div class="lang-sample-phrase">कहाँ दर्द हो रहा है?</div><div class="lang-sample-label">हिन्दी</div></div>
+      <div class="lang-sample-card"><div class="lang-sample-phrase">¿Dónde le duele?</div><div class="lang-sample-label">Español</div></div>
+      <div class="lang-sample-card"><div class="lang-sample-phrase">Neresi ağrıyor?</div><div class="lang-sample-label">Türkçe</div></div>
+      <div class="lang-sample-card"><div class="lang-sample-phrase">কোথায় ব্যথা করছে?</div><div class="lang-sample-label">বাংলা</div></div>
+      <div class="lang-sample-card"><div class="lang-sample-phrase">Où avez-vous mal ?</div><div class="lang-sample-label">Français</div></div>
+      <div class="lang-sample-card"><div class="lang-sample-phrase">Где болит?</div><div class="lang-sample-label">Русский</div></div>
+      <div class="lang-sample-card"><div class="lang-sample-phrase">Onde dói?</div><div class="lang-sample-label">Português</div></div>
+    </div>
+    <a href="languages.html" class="btn btn-ghost">See all 113 languages</a>
+  </div>
+</section>
+
+<!-- QUEUE PROBLEM -->
+<section class="section">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">The queue problem</h2>
+        <p style="font-size:16px;color:var(--text-2);margin-bottom:20px;line-height:1.65;">Most of that wait was never necessary. People spend a morning in a hospital queue to be told they are in the wrong department. They get sent away to book with someone else, and start again.</p>
+        <p style="font-size:16px;color:var(--text-2);margin-bottom:28px;line-height:1.65;">Almost none of that is a medical problem. It is a sorting problem, and it can be solved before anyone leaves the house.</p>
+        <div class="queue-points">
+          <div class="queue-point">Know which department handles your problem before you travel</div>
+          <div class="queue-point">Arrive with your history, medicines and questions written down</div>
+          <div class="queue-point">Find out in two minutes whether this needs a hospital at all</div>
+          <div class="queue-point">Free up the queue for the people who genuinely need to be in it</div>
+        </div>
+      </div>
+      <div>
+        <div class="free-box">
+          <strong>You do not have to book with us to use this</strong>
+          The symptom check and the summary it produces are free, run entirely on your own device, and are yours to keep. Print it and take it to your own doctor if that is what you need. We would rather you arrived at the right place prepared than paid us for a consultation you did not need.
+        </div>
+        <div style="margin-top:24px;">
+          <a href="triage.html" class="btn btn-primary">Describe my symptoms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES -->
+<section class="section section-alt">
+  <div class="wrap">
+    <h2 class="section-title">Specialties</h2>
+    <p class="section-sub">You do not need to pick one. Describe the problem and we will work out where it belongs.</p>
+    <div class="specialties">
+      <a href="booking.html?specialty=allergy-immunology" class="spec-pill">Allergy &amp; immunology</a>
+      <a href="booking.html?specialty=cardiology" class="spec-pill">Cardiology</a>
+      <a href="booking.html?specialty=dentistry" class="spec-pill">Dentistry</a>
+      <a href="booking.html?specialty=dermatology" class="spec-pill">Dermatology</a>
+      <a href="booking.html?specialty=ent" class="spec-pill">Ear, nose &amp; throat</a>
+      <a href="booking.html?specialty=emergency" class="spec-pill">Emergency medicine</a>
+      <a href="booking.html?specialty=endocrinology" class="spec-pill">Endocrinology</a>
+      <a href="booking.html?specialty=gastroenterology" class="spec-pill">Gastroenterology</a>
+      <a href="booking.html?specialty=general-practice" class="spec-pill">General practice</a>
+      <a href="booking.html?specialty=general-surgery" class="spec-pill">General surgery</a>
+      <a href="booking.html?specialty=gynecology" class="spec-pill">Gynaecology &amp; obstetrics</a>
+      <a href="booking.html?specialty=hematology" class="spec-pill">Haematology</a>
+      <a href="booking.html?specialty=infectious-disease" class="spec-pill">Infectious diseases</a>
+      <a href="booking.html?specialty=internal-medicine" class="spec-pill">Internal medicine</a>
+      <a href="booking.html?specialty=nephrology" class="spec-pill">Kidney medicine</a>
+      <a href="booking.html?specialty=neurology" class="spec-pill">Neurology</a>
+      <a href="booking.html?specialty=nutrition" class="spec-pill">Nutrition &amp; dietetics</a>
+      <a href="booking.html?specialty=oncology" class="spec-pill">Oncology</a>
+      <a href="booking.html?specialty=ophthalmology" class="spec-pill">Ophthalmology</a>
+      <a href="booking.html?specialty=orthopedics" class="spec-pill">Orthopaedics</a>
+      <a href="booking.html?specialty=pediatrics" class="spec-pill">Paediatrics</a>
+      <a href="booking.html?specialty=physiotherapy" class="spec-pill">Physiotherapy</a>
+      <a href="booking.html?specialty=psychiatry" class="spec-pill">Psychiatry</a>
+      <a href="booking.html?specialty=psychology" class="spec-pill">Psychology &amp; counselling</a>
+      <a href="booking.html?specialty=pulmonology" class="spec-pill">Respiratory medicine</a>
+      <a href="booking.html?specialty=rheumatology" class="spec-pill">Rheumatology</a>
+      <a href="booking.html?specialty=sleep-medicine" class="spec-pill">Sleep medicine</a>
+      <a href="booking.html?specialty=urology" class="spec-pill">Urology</a>
+    </div>
+    <div style="margin-top:28px;"><a href="booking.html" class="btn btn-ghost">Browse doctors</a></div>
+  </div>
+</section>
+
+<!-- FOR CLINICIANS -->
+<section class="section">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">For clinicians</h2>
+        <p class="section-sub">Somebody out there speaks your language and cannot find a doctor.</p>
+        <p style="font-size:15px;color:var(--text-2);line-height:1.65;margin-bottom:16px;">If you are a licensed doctor, you can register your specialty, your languages and your hours, and help the people our routing sends you. They arrive having already described their symptoms, so you start with the history rather than a blank page.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:28px;">
+          <li style="font-size:14px;color:var(--text-2);display:flex;gap:10px;"><span style="color:var(--brand);">&#10003;</span> You set your own fee and keep all of it</li>
+          <li style="font-size:14px;color:var(--text-2);display:flex;gap:10px;"><span style="color:var(--brand);">&#10003;</span> Our platform fee is flat — never a share of your professional fee</li>
+          <li style="font-size:14px;color:var(--text-2);display:flex;gap:10px;"><span style="color:var(--brand);">&#10003;</span> No minimum hours and no exclusivity</li>
+          <li style="font-size:14px;color:var(--text-2);display:flex;gap:10px;"><span style="color:var(--brand);">&#10003;</span> Every licence verified before a profile goes live</li>
+        </ul>
+        <a href="join.html" class="btn btn-primary">Register as a doctor</a>
+      </div>
+      <div>
+        <p style="font-size:16px;color:var(--text-2);line-height:1.7;font-style:italic;border-left:3px solid var(--border-strong);padding-left:20px;">Nearly every clinician has watched someone struggle through an appointment in a language they barely speak, and known the consultation was worse for it. If you share a language with a patient, you are often the difference between a useful appointment and a wasted one — and there are far more of those patients than there are of you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY SAFETY -->
+<section class="section section-alt">
+  <div class="wrap wrap-narrow">
+    <div class="safety-box">
+      <strong>Naviar Care does not replace emergency services</strong>
+      If someone is unconscious, struggling to breathe, bleeding heavily, or you think they are having a heart attack or stroke, call your local emergency number now. Our intake will tell you the same thing the moment it spots a warning sign.
+    </div>
+    <div style="text-align:center;">
+      <h2 class="section-title" style="margin-bottom:12px;">Something worrying you today?</h2>
+      <p style="font-size:16px;color:var(--text-2);margin-bottom:28px;">It takes about two minutes to describe your symptoms. You will know who you need to see before you finish.</p>
+      <a href="triage.html" class="btn btn-primary">Describe my symptoms</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="nav-logo-mark">N</div>
+          NaviarCare
+        </div>
+        <p class="footer-tagline">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <div class="footer-warn">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Service</div>
+        <ul class="footer-links">
+          <li><a href="triage.html">Check symptoms</a></li>
+          <li><a href="booking.html">Find a doctor</a></li>
+          <li><a href="languages.html">Languages</a></li>
+          <li><a href="booking.html#available">Doctors available now</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#how">How it works</a></li>
+          <li><a href="about.html#safety">Safety &amp; privacy</a></li>
+          <li><a href="legal.html">Legal &amp; regulatory</a></li>
+          <li><a href="join.html">For doctors</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="about.html#faq">Frequently asked questions</a></li>
+          <li><a href="languages.html#interpreters">Interpreters</a></li>
+          <li><a href="about.html#contact">Support</a></li>
+          <li><a href="feedback.html">Leave feedback</a></li>
+          <li><a href="legal.html#retention">Your records</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span class="footer-copy">Available 24 hours a day, in every language we can reach.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

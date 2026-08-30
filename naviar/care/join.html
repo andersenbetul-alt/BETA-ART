@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>For Doctors — NaviarCare</title>
+<meta name="description" content="Register as a doctor on NaviarCare. Set your specialty, languages and hours. Help patients who speak your language.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.join-layout { display: grid; grid-template-columns: 1fr 360px; gap: 48px; align-items: start; }
+@media(max-width:900px){ .join-layout{grid-template-columns:1fr;} }
+.join-sidebar-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+}
+.join-sidebar-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+.next-steps { display: flex; flex-direction: column; gap: 14px; }
+.next-step { display: flex; gap: 12px; }
+.next-step-n {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  color: var(--brand);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0;
+}
+.next-step-text { font-size: 14px; color: var(--text-2); line-height: 1.5; padding-top: 3px; }
+.referee-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.referee-box-title { font-size: 14px; font-weight: 700; color: var(--text-2); margin-bottom: 16px; }
+.lang-chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 10px;
+}
+.lang-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background .1s, border-color .1s;
+}
+.lang-chip.selected { background: var(--brand-light); border-color: var(--brand); color: var(--brand); }
+.lang-chip:hover:not(.selected) { border-color: var(--border-strong); background: var(--bg-alt); }
+.multi-select {
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--text);
+  max-height: 180px;
+  overflow-y: auto;
+  width: 100%;
+}
+.prop-point { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+.prop-point-check { color: var(--brand); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">N</div>
+      NaviarCare
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="triage.html">Check symptoms</a>
+      <a href="booking.html">Find a doctor</a>
+      <a href="languages.html">Languages</a>
+      <a href="join.html">For doctors</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <select class="lang-select" id="lang-sel" aria-label="Choose your language">
+        <option value="en">English</option>
+        <option value="tr">Türkçe</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / For doctors</div>
+    <h1>Help someone in your own language</h1>
+    <p class="page-hero-sub">Somewhere right now, a person who speaks your language is sitting in a hospital queue, or has given up on being seen at all. Register your specialty, your languages and your licence, and we will route them to you.</p>
+    <div style="display:flex;gap:24px;margin-top:32px;flex-wrap:wrap;">
+      <div class="prop-point"><span class="prop-point-check">&#10003;</span><div><strong>Your hours, your fee</strong><br><span style="font-size:14px;color:var(--text-2);">You set when you are available and what you charge. There is no minimum commitment and no exclusivity.</span></div></div>
+      <div class="prop-point"><span class="prop-point-check">&#10003;</span><div><strong>Patients arrive prepared</strong><br><span style="font-size:14px;color:var(--text-2);">Every patient reaches you having already described their symptoms. You start with the history in front of you.</span></div></div>
+      <div class="prop-point"><span class="prop-point-check">&#10003;</span><div><strong>A flat platform fee</strong><br><span style="font-size:14px;color:var(--text-2);">We charge a fixed amount per completed consultation. We do not take a percentage of your professional fee.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="join-layout">
+      <div>
+        <h2 style="font-size:20px;font-weight:700;margin-bottom:8px;">Your application</h2>
+        <p style="font-size:14px;color:var(--text-3);margin-bottom:32px;">Everything here appears on your public profile except your licence details, which we verify privately.</p>
+
+        <form id="join-form" onsubmit="return false;">
+
+          <!-- About you -->
+          <div class="form-section">
+            <div class="form-section-title">About you</div>
+            <div class="field">
+              <label for="full-name">Full name</label>
+              <input type="text" id="full-name" placeholder="Dr. Jane Smith" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="email">Email address</label>
+              <input type="email" id="email" placeholder="you@hospital.example" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="country-practice">Country you practise in</label>
+              <select id="country-practice">
+                <option value="">Select a country…</option>
+                <option>Afghanistan</option><option>Argentina</option><option>Australia</option>
+                <option>Austria</option><option>Azerbaijan</option><option>Bangladesh</option>
+                <option>Belgium</option><option>Brazil</option><option>Canada</option>
+                <option>Chile</option><option>China</option><option>Colombia</option>
+                <option>Denmark</option><option>Egypt</option><option>Ethiopia</option>
+                <option>Finland</option><option>France</option><option>Germany</option>
+                <option>Ghana</option><option>Greece</option><option>India</option>
+                <option>Indonesia</option><option>Iran</option><option>Iraq</option>
+                <option>Ireland</option><option>Israel</option><option>Italy</option>
+                <option>Japan</option><option>Kenya</option><option>Korea</option>
+                <option>Malaysia</option><option>Mexico</option><option>Morocco</option>
+                <option>Nepal</option><option>Netherlands</option><option>New Zealand</option>
+                <option>Nigeria</option><option>Norway</option><option>Pakistan</option>
+                <option>Philippines</option><option>Poland</option><option>Portugal</option>
+                <option>Romania</option><option>Russia</option><option>Saudi Arabia</option>
+                <option>Serbia</option><option>Singapore</option><option>South Africa</option>
+                <option>Spain</option><option>Sweden</option><option>Switzerland</option>
+                <option>Thailand</option><option>Türkiye</option><option>Ukraine</option>
+                <option>United Arab Emirates</option><option>United Kingdom</option>
+                <option>United States</option><option>Vietnam</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="years">Years in practice</label>
+              <input type="number" id="years" min="1" max="60" placeholder="e.g. 12">
+            </div>
+          </div>
+
+          <!-- Licence -->
+          <div class="form-section">
+            <div class="form-section-title">Your licence</div>
+            <p style="font-size:13px;color:var(--text-3);margin-bottom:18px;">We verify every licence against the issuing register before your profile goes live. This is also how we work out which patients you can treat and which you can advise.</p>
+            <div class="field">
+              <label for="licence-num">Licence or registration number</label>
+              <input type="text" id="licence-num" placeholder="e.g. GMC-1234567">
+            </div>
+            <div class="field">
+              <label for="licence-authority">Issuing authority</label>
+              <input type="text" id="licence-authority" placeholder="e.g. General Medical Council (UK)">
+            </div>
+            <div class="field">
+              <label for="licence-countries">Countries you are licensed to treat patients in</label>
+              <div class="field-help" style="margin-bottom:8px;">Select every country where you hold a licence. Patients elsewhere can still reach you — those sessions are second opinions rather than consultations, and we label them that way.</div>
+              <select id="licence-countries" multiple class="multi-select">
+                <option>Türkiye</option><option>Germany</option><option>United Kingdom</option>
+                <option>United States</option><option>France</option><option>Spain</option>
+                <option>Netherlands</option><option>Sweden</option><option>India</option>
+                <option>Pakistan</option><option>Nigeria</option><option>Kenya</option>
+                <option>Brazil</option><option>Mexico</option><option>Saudi Arabia</option>
+                <option>United Arab Emirates</option>
+              </select>
+            </div>
+            <label class="checkbox-field">
+              <input type="checkbox" id="insurance">
+              I hold professional indemnity insurance that covers telemedicine, and I will keep it valid for as long as I consult through Naviar Care.
+            </label>
+          </div>
+
+          <!-- Referees -->
+          <div class="form-section">
+            <div class="form-section-title">Professional referees</div>
+            <p style="font-size:13px;color:var(--text-3);margin-bottom:18px;">A valid licence tells us you may practise. Referees tell us how you work. We contact both before your profile goes live, and we will tell you before we do.</p>
+            <div class="referee-box">
+              <div class="referee-box-title">Referee 1</div>
+              <div class="field-row">
+                <div class="field"><label>Referee's full name</label><input type="text" placeholder="Prof. John Doe"></div>
+                <div class="field"><label>Their role or title</label><input type="text" placeholder="Head of Cardiology"></div>
+              </div>
+              <div class="field"><label>Hospital or institution</label><input type="text" placeholder="Oslo University Hospital"></div>
+              <div class="field"><label>How they know your work</label><input type="text" placeholder="Direct supervisor for 4 years"></div>
+              <div class="field-row">
+                <div class="field"><label>Their email address</label><input type="email" placeholder="referee@hospital.example"></div>
+                <div class="field"><label>Their phone number</label><input type="tel" placeholder="+47 12 34 56 78"></div>
+              </div>
+            </div>
+            <div class="referee-box">
+              <div class="referee-box-title">Referee 2</div>
+              <div class="field-row">
+                <div class="field"><label>Referee's full name</label><input type="text"></div>
+                <div class="field"><label>Their role or title</label><input type="text"></div>
+              </div>
+              <div class="field"><label>Hospital or institution</label><input type="text"></div>
+              <div class="field"><label>How they know your work</label><input type="text"></div>
+              <div class="field-row">
+                <div class="field"><label>Their email address</label><input type="email"></div>
+                <div class="field"><label>Their phone number</label><input type="tel"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- What you treat -->
+          <div class="form-section">
+            <div class="form-section-title">What you treat</div>
+            <div class="field">
+              <label for="main-specialty">Your main specialty</label>
+              <select id="main-specialty">
+                <option value="">Select your specialty…</option>
+                <option value="general-practice">General practice</option>
+                <option value="internal-medicine">Internal medicine</option>
+                <option value="pediatrics">Paediatrics</option>
+                <option value="emergency">Emergency medicine</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="endocrinology">Endocrinology</option>
+                <option value="gastroenterology">Gastroenterology</option>
+                <option value="hematology">Haematology</option>
+                <option value="nephrology">Kidney medicine</option>
+                <option value="neurology">Neurology</option>
+                <option value="oncology">Oncology</option>
+                <option value="pulmonology">Respiratory medicine</option>
+                <option value="dentistry">Dentistry</option>
+                <option value="dermatology">Dermatology</option>
+                <option value="ent">Ear, nose &amp; throat</option>
+                <option value="ophthalmology">Ophthalmology</option>
+                <option value="orthopedics">Orthopaedics</option>
+                <option value="physiotherapy">Physiotherapy</option>
+                <option value="rheumatology">Rheumatology</option>
+                <option value="allergy-immunology">Allergy &amp; immunology</option>
+                <option value="gynecology">Gynaecology &amp; obstetrics</option>
+                <option value="infectious-disease">Infectious diseases</option>
+                <option value="urology">Urology</option>
+                <option value="psychiatry">Psychiatry</option>
+                <option value="psychology">Psychology &amp; counselling</option>
+                <option value="sleep-medicine">Sleep medicine</option>
+                <option value="nutrition">Nutrition &amp; dietetics</option>
+                <option value="general-surgery">General surgery</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sec-specialty">Anything else you consult on</label>
+              <select id="sec-specialty" multiple class="multi-select">
+                <option value="">None</option>
+                <option value="general-practice">General practice</option>
+                <option value="internal-medicine">Internal medicine</option>
+                <option value="pediatrics">Paediatrics</option>
+                <option value="emergency">Emergency medicine</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="endocrinology">Endocrinology</option>
+                <option value="gastroenterology">Gastroenterology</option>
+                <option value="hematology">Haematology</option>
+                <option value="nephrology">Kidney medicine</option>
+                <option value="neurology">Neurology</option>
+                <option value="oncology">Oncology</option>
+                <option value="pulmonology">Respiratory medicine</option>
+                <option value="dentistry">Dentistry</option>
+                <option value="dermatology">Dermatology</option>
+                <option value="ent">Ear, nose &amp; throat</option>
+                <option value="ophthalmology">Ophthalmology</option>
+                <option value="orthopedics">Orthopaedics</option>
+                <option value="physiotherapy">Physiotherapy</option>
+                <option value="rheumatology">Rheumatology</option>
+                <option value="allergy-immunology">Allergy &amp; immunology</option>
+                <option value="gynecology">Gynaecology &amp; obstetrics</option>
+                <option value="infectious-disease">Infectious diseases</option>
+                <option value="urology">Urology</option>
+                <option value="psychiatry">Psychiatry</option>
+                <option value="psychology">Psychology &amp; counselling</option>
+                <option value="sleep-medicine">Sleep medicine</option>
+                <option value="nutrition">Nutrition &amp; dietetics</option>
+                <option value="general-surgery">General surgery</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Which problems do you actually spend your time on?</label>
+              <div class="field-help">Pick the complaints you see most. We match these against what patients describe, so choosing accurately gets you the right patients rather than more of them.</div>
+              <div class="lang-chip-wrap" id="complaint-chips" style="margin-top:10px;">
+                <!-- Populated by JS or static chips here -->
+                <button type="button" class="lang-chip">Chest pain</button>
+                <button type="button" class="lang-chip">Fever</button>
+                <button type="button" class="lang-chip">Headache</button>
+                <button type="button" class="lang-chip">Skin rash</button>
+                <button type="button" class="lang-chip">Shortness of breath</button>
+                <button type="button" class="lang-chip">Abdominal pain</button>
+                <button type="button" class="lang-chip">Joint pain</button>
+                <button type="button" class="lang-chip">Back pain</button>
+                <button type="button" class="lang-chip">Anxiety</button>
+                <button type="button" class="lang-chip">Depression</button>
+                <button type="button" class="lang-chip">Fatigue</button>
+                <button type="button" class="lang-chip">Cough</button>
+                <button type="button" class="lang-chip">Dizziness</button>
+                <button type="button" class="lang-chip">Child illness</button>
+                <button type="button" class="lang-chip">Hypertension</button>
+                <button type="button" class="lang-chip">Diabetes management</button>
+              </div>
+              <div style="font-size:12px;color:var(--text-3);margin-top:8px;" id="complaint-chosen">Nothing chosen yet.</div>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div class="form-section">
+            <div class="form-section-title">Languages you consult in</div>
+            <p style="font-size:13px;color:var(--text-3);margin-bottom:16px;">This is the single most useful thing you can tell us. A patient who can describe their symptoms in their own language gets better care, and you get a consultation that is not fighting a translation.</p>
+            <div class="field">
+              <input type="text" id="lang-chip-search" placeholder="Search languages" autocomplete="off">
+              <div class="lang-chip-wrap" id="lang-chip-container" style="margin-top:8px;"></div>
+              <div style="font-size:12px;color:var(--text-3);margin-top:8px;" id="lang-chip-chosen">Nothing chosen yet.</div>
+            </div>
+          </div>
+
+          <!-- Availability -->
+          <div class="form-section">
+            <div class="form-section-title">Availability and fee</div>
+            <div class="field">
+              <label>Roughly how many hours a week?</label>
+              <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="hours" value="1-5"> 1–5 hours</label>
+                <label class="radio-option"><input type="radio" name="hours" value="5-10"> 5–10 hours</label>
+                <label class="radio-option"><input type="radio" name="hours" value="10-20"> 10–20 hours</label>
+                <label class="radio-option"><input type="radio" name="hours" value="20+"> More than 20 hours</label>
+              </div>
+            </div>
+            <div class="field">
+              <label for="fee">Your consultation fee (USD)</label>
+              <div class="field-help">You keep this in full. Our platform fee is charged separately to the patient.</div>
+              <input type="number" id="fee" min="1" placeholder="e.g. 60" style="margin-top:6px;">
+            </div>
+          </div>
+
+          <!-- Introduction -->
+          <div class="form-section">
+            <div class="form-section-title">Introduce yourself</div>
+            <div class="field">
+              <label for="intro">A short introduction for patients</label>
+              <div class="field-help">Two or three sentences, in whichever language you like — patients see it as you wrote it. Say what you do day to day rather than listing qualifications.</div>
+              <textarea id="intro" rows="4" style="margin-top:6px;" placeholder="I have worked in general cardiology for 14 years, mostly in outpatient clinics. I see a lot of people who are worried about heart symptoms and want a clear explanation of what is actually going on."></textarea>
+            </div>
+          </div>
+
+          <!-- Declarations -->
+          <div class="form-section">
+            <div class="form-section-title">Declarations</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <label class="checkbox-field"><input type="checkbox"> Everything I have entered is accurate, and I will update it if my licence, insurance or scope of practice changes.</label>
+              <label class="checkbox-field"><input type="checkbox"> I understand that I may only diagnose, treat and prescribe for patients in countries where I am licensed, and that sessions with other patients are second opinions.</label>
+              <label class="checkbox-field"><input type="checkbox"> I will keep patient information confidential, and I understand consultations are not recorded unless both the patient and I consent.</label>
+              <label class="checkbox-field"><input type="checkbox"> I understand Naviar Care is not an emergency service, and I will direct a patient to emergency care when their condition needs it.</label>
+            </div>
+            <div style="margin-top:28px;">
+              <button type="submit" class="btn btn-primary">Send my application</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div>
+        <div class="join-sidebar-card">
+          <h3>What happens next</h3>
+          <div class="next-steps">
+            <div class="next-step"><div class="next-step-n">1</div><div class="next-step-text">We verify your licence with the issuing authority</div></div>
+            <div class="next-step"><div class="next-step-n">2</div><div class="next-step-text">We check your indemnity cover includes telemedicine</div></div>
+            <div class="next-step"><div class="next-step-n">3</div><div class="next-step-text">A clinician on our team reviews your profile</div></div>
+            <div class="next-step"><div class="next-step-n">4</div><div class="next-step-text">You go live and choose your first available hours</div></div>
+          </div>
+          <p style="font-size:13px;color:var(--text-3);margin-top:16px;">Verification usually takes three to five working days.</p>
+        </div>
+
+        <div class="join-sidebar-card" style="margin-top:16px;">
+          <h3>Where you can practise</h3>
+          <p style="font-size:14px;color:var(--text-2);line-height:1.6;margin-bottom:12px;">Medical licensing follows the patient, not the doctor. You can consult with patients anywhere in the world, but you may only diagnose and prescribe where you hold a licence. We label every session so both you and the patient know which it is before it starts.</p>
+          <a href="legal.html" style="font-size:13px;color:var(--link);">Read how we handle this</a>
+        </div>
+
+        <div class="join-sidebar-card" style="margin-top:16px;">
+          <h3>Working with health facilities</h3>
+          <p style="font-size:14px;color:var(--text-2);line-height:1.6;">Some countries — Türkiye among them — require remote consultations to be delivered through a licensed health facility rather than by an individual doctor. If that applies where you are, we will tell you during verification and connect you to a partner facility.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><div class="nav-logo-mark">N</div> NaviarCare</div>
+        <p class="footer-tagline">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <div class="footer-warn">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Service</div>
+        <ul class="footer-links">
+          <li><a href="triage.html">Check symptoms</a></li>
+          <li><a href="booking.html">Find a doctor</a></li>
+          <li><a href="languages.html">Languages</a></li>
+          <li><a href="booking.html#available">Doctors available now</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html#how">How it works</a></li>
+          <li><a href="about.html#safety">Safety &amp; privacy</a></li>
+          <li><a href="legal.html">Legal &amp; regulatory</a></li>
+          <li><a href="join.html">For doctors</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="about.html#faq">Frequently asked questions</a></li>
+          <li><a href="languages.html#interpreters">Interpreters</a></li>
+          <li><a href="about.html#contact">Support</a></li>
+          <li><a href="feedback.html">Leave feedback</a></li>
+          <li><a href="legal.html#retention">Your records</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span class="footer-copy">Available 24 hours a day, in every language we can reach.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+// Complaint chip toggle for join form
+document.querySelectorAll('#complaint-chips .lang-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    chip.classList.toggle('selected');
+    const chosen = [...document.querySelectorAll('#complaint-chips .lang-chip.selected')].map(c=>c.textContent);
+    document.getElementById('complaint-chosen').textContent = chosen.length ? chosen.join(', ') : 'Nothing chosen yet.';
+  });
+});
+</script>
+</body>
+</html>

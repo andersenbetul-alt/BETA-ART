@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Leave Feedback — NaviarCare</title>
+<meta name="description" content="Share your experience with NaviarCare. Your feedback shapes how we improve the service.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.rating-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.rating-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  background: var(--bg);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background .1s, border-color .1s;
+}
+.rating-btn:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-light); }
+.rating-btn.selected { background: var(--brand); border-color: var(--brand); color: #fff; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">N</div>
+      NaviarCare
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="triage.html">Check symptoms</a>
+      <a href="booking.html">Find a doctor</a>
+      <a href="languages.html">Languages</a>
+      <a href="join.html">For doctors</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <select class="lang-select" id="lang-sel" aria-label="Choose your language">
+        <option value="en">English</option>
+        <option value="tr">Türkçe</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Leave feedback</div>
+    <h1>Share your experience</h1>
+    <p class="page-hero-sub">Your feedback shapes how we improve the service. Write in any language — we read every message.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap wrap-narrow">
+    <div class="form-card">
+      <form onsubmit="handleFeedback(event);">
+
+        <div class="form-section">
+          <div class="form-section-title">What did you use?</div>
+          <div class="field">
+            <div class="radio-group">
+              <label class="radio-option"><input type="radio" name="used" value="triage"> Symptom check</label>
+              <label class="radio-option"><input type="radio" name="used" value="booking"> Found a doctor</label>
+              <label class="radio-option"><input type="radio" name="used" value="consultation"> Had a consultation</label>
+              <label class="radio-option"><input type="radio" name="used" value="other"> Something else</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title">Overall, how did it go?</div>
+          <div class="field">
+            <div class="rating-row" id="rating-row">
+              <button type="button" class="rating-btn" onclick="selectRating(1)">1</button>
+              <button type="button" class="rating-btn" onclick="selectRating(2)">2</button>
+              <button type="button" class="rating-btn" onclick="selectRating(3)">3</button>
+              <button type="button" class="rating-btn" onclick="selectRating(4)">4</button>
+              <button type="button" class="rating-btn" onclick="selectRating(5)">5</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);margin-top:6px;padding:0 4px;">
+              <span>Not good</span><span>Very good</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title">What would you like us to know?</div>
+          <div class="field">
+            <textarea id="fb-message" rows="5" placeholder="Write in any language. If something went wrong, tell us what happened. If something worked well, that helps too."></textarea>
+          </div>
+          <div class="field">
+            <label for="fb-improve">Anything specific you would like to see improved?</label>
+            <textarea id="fb-improve" rows="3" placeholder="A language you could not find, a specialty you needed that was not there, something that confused you…"></textarea>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title">Can we follow up? (optional)</div>
+          <div class="field">
+            <label for="fb-email">Email address</label>
+            <div class="field-help">Only if you want a reply — we will not use it for anything else.</div>
+            <input type="email" id="fb-email" placeholder="you@example.com" autocomplete="email" style="margin-top:6px;">
+          </div>
+        </div>
+
+        <p style="font-size:12px;color:var(--danger);margin-bottom:16px;">Please do not include medical details here. For anything clinical, use the consultation service.</p>
+        <button type="submit" class="btn btn-primary">Send feedback</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><div class="nav-logo-mark">N</div> NaviarCare</div>
+        <p class="footer-tagline">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
+        <div class="footer-warn">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Service</div>
+        <ul class="footer-links">
+          <li><a href="triage.html">Check symptoms</a></li>
+          <li><a href="booking.html">Find a doctor</a></li>
+          <li><a href="languages.html">Languages</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="legal.html">Legal &amp; regulatory</a></li>
+          <li><a href="join.html">For doctors</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+let selectedRating = 0;
+
+function selectRating(n) {
+  selectedRating = n;
+  document.querySelectorAll('.rating-btn').forEach((btn, i) => {
+    btn.classList.toggle('selected', i < n);
+  });
+}
+
+function handleFeedback(e) {
+  e.preventDefault();
+  const msg = document.getElementById('fb-message').value.trim();
+  if (!msg) { alert('Please write something before submitting.'); return; }
+  alert('Thank you for your feedback. We read every message.');
+  e.target.reset();
+  selectedRating = 0;
+  document.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+}
+</script>
+</body>
+</html>
