@@ -1,30 +1,30 @@
-# Beta Art — ilk 90 gün konsepti (değerlendirme) — **AŞILDI/YENİDEN İSİMLENDİRİLDİ**
-
-> **26.08.2026 güncellemesi: Bu belgedeki yön kullanıcı kararıyla
-> reddedildi.** `andersenbetul-alt/beta-art-archive` deposundaki
-> `BETA_ART_MASTER.md` (kullanıcının kendi asıl karar belgesi,
-> 25-26.08.2026) Beta Art'ın gerçek yönünü "Verified Human Photography &
-> Licensing" (insan fotoğrafı arşiv/lisans) + "Beta Art Business" (inşaat
-> sektörü proje-kapanışı dokümantasyon arşivi) olarak belirliyor ve bu
-> belgedeki "AI destekli görsel tasarım stüdyosu" fikrini isim vererek
-> reddediyor ("conflicting AI creative-studio positioning"). Asıl model
-> için `beta-art-archive`'ı gör; kod göçü bu depoya taşındı (bkz.
-> `docs/proje-gunlugu.md`, 26.08.2026).
->
-> **30.08.2026 güncellemesi: Fikrin kendisi yaşıyor, yalnızca isim
-> değişti.** Kullanıcı kararıyla bu belgedeki iş modeli "Beta Art"
-> isminden koparılıp **"Beta AI"** adıyla, Beta Art'tan tamamen bağımsız
-> üçüncü bir marka olarak yeniden kuruldu. Güncel, güncellenen sürüm:
-> **`docs/beta-ai-konsept.md`**. Bu belge artık yürürlükte değil —
-> yalnızca o günkü değerlendirme sürecinin kaydı olarak tutuluyor
-> (uydurma yasağı: geçmişi silmek yerine yanlış/eski olduğunu
-> işaretlemek tercih edildi).
+# Beta AI — ilk 90 gün konsepti (değerlendirme)
 
 **Durum: TASLAK — karar kullanıcıda (bkz. §M, Açık kararlar).**
-Tarih: 25.08.2026. İşaretler: **[V]** doğrulanmış (bu oturumda kaynağıyla
-teyit edildi) · **[H]** hipotez (test edilecek varsayım, kullanıcının
-planına ait) · **[D]** dış iddia (kaynak adı var ama bu oturumda
-doğrulanmadı — kullanılmadan önce elle teyit edilmeli).
+Tarih: 25.08.2026 (ilk yazım) · 30.08.2026 (Beta Art'tan ayrıştırılıp
+"Beta AI" adıyla bağımsız marka olarak yeniden kuruldu — bkz. aşağıdaki
+kutu). İşaretler: **[V]** doğrulanmış (kaynağıyla teyit edildi) ·
+**[H]** hipotez (test edilecek varsayım) · **[D]** dış iddia (kaynak adı
+var ama doğrulanmadı — kullanılmadan önce elle teyit edilmeli).
+
+> **30.08.2026 — isim ve kimlik ayrışması.** Bu belge ilk yazıldığında
+> (25.08) "Beta Art" adını taşıyordu. Sonradan `andersenbetul-alt/beta-art-archive`
+> deposunda bulunan `BETA_ART_MASTER.md`, "Beta Art" markasının gerçek ve
+> tek yönünü **doğrulanmış insan fotoğrafı arşivi + inşaat sektörü proje
+> dokümantasyonu** olarak tanımladı ve bu belgedeki "AI destekli görsel
+> stüdyo" fikrini isim vererek reddetti ("conflicting AI creative-studio
+> positioning"). Kullanıcı kararıyla (30.08.2026): **bu iki fikir aynı
+> marka altında yaşamayacak.** Fikrin kendisi kötü değildi — yalnızca
+> "Beta Art" ismiyle çakışıyordu. Bu yüzden **"Beta AI"** adıyla,
+> Beta Art'tan (fotoğraf arşivi) ve QBLOGG'dan (içerik stüdyosu) tamamen
+> bağımsız, kendi kimliğine sahip **üçüncü bir marka** olarak yeniden
+> kuruldu. Eski belge (`docs/beta-art-konsept.md`) olduğu gibi, tarihiyle
+> duruyor — bu belge onun yerini alan, yeniden isimlendirilmiş ve
+> ayrıştırılmış sürümüdür.
+>
+> **Somut sonuç:** Beta AI, `beta-art/` klasörüne, `BETA_ART_MASTER.md`'ye
+> veya Beta Art'ın renk/tipografi/marka varlıklarına **hiç dokunmaz**.
+> Kendi adı, kendi renk paleti, kendi alan adı adayı gerekir (§M madde 2).
 
 Bu belge kullanıcının ilettiği ayrıntılı 90 günlük plan metnini QBLOGG
 deposunun belge biçimine (kanıt sınıflandırması, kaynak denetimi,
@@ -33,17 +33,19 @@ vaat değildir — depo genelindeki kural burada da geçerli.
 
 ## Depoyla ilişki
 
-Bu, QBLOGG'un **yanına** eklenen ayrı bir ürün fikridir, QBLOGG'un yerine
-geçmez ve QBLOGG'a dokunmaz (kullanıcı kararı, bu oturum). Depo adı zaten
-**BETA-ART**; QBLOGG bu şirketin bugün satılabilir tek ürünüdür, "Beta Art"
-ile "AI Workforce" (`docs/ai-workforce/`) ve "Yazar Platformu"
-(`docs/yazar-platformu.md`) gibi değerlendirme aşamasındaki bir diğer
-üründür. Üçü de aynı anda inşa edilirse hiçbiri kanıt eşiğine ulaşamaz —
-bu uyarı `docs/yazar-platformu.md`'de zaten yazılı ve burada da geçerlidir.
+Bu, QBLOGG'un ve Beta Art'ın **yanına** eklenen, üçüncü ve tamamen ayrı
+bir ürün fikridir — ikisinin de yerine geçmez, ikisine de dokunmaz.
+Bu depoda artık üç bağımsız ürün fikri/kod tabanı var: **QBLOGG**
+(içerik stüdyosu, bugün satılabilir tek ürün), **Beta Art**
+(`beta-art/` — fotoğraf arşivi + iş dokümantasyonu, asıl production
+kod tabanı) ve şimdi **Beta AI** (bu belge, henüz yalnızca kavram
+aşamasında, kod yok). Üçü de aynı anda inşa edilirse hiçbiri kanıt
+eşiğine ulaşamaz — bu uyarı `docs/yazar-platformu.md`'de yazılıydı,
+şimdi üçüncü bir ürünle daha geçerli.
 
-**Önemli kapsam kararı (kullanıcının açık talimatı):** Beta Art ilk
-aşamada **herkese açık, prompt'la çalışan bir AI görsel üretim aracı
-değildir.** Canva ve Adobe Firefly bu pazarı dolduruyor. Beta Art bunun
+**Önemli kapsam kararı (kullanıcının açık talimatı, değişmedi):** Beta AI
+ilk aşamada **herkese açık, prompt'la çalışan bir AI görsel üretim aracı
+değildir.** Canva ve Adobe Firefly bu pazarı dolduruyor. Beta AI bunun
 yerine **küçük işletmelere ve bireylere insan seçkisiyle teslim edilen,
 kullanıma hazır sanat ve marka görseli** satan bir dijital stüdyodur —
 araç değil, sonuç satar.
@@ -80,12 +82,12 @@ segment 1 ve 3'ün büyüklüğü bu oturumda ayrıca doğrulanmadı [H].
 
 ### Rakipler ve farklılaşma
 
-| Alternatif | Gücü | Beta Art'ın cevabı |
+| Alternatif | Gücü | Beta AI'nın cevabı |
 |---|---|---|
-| Canva / Adobe Express | Ucuz, güçlü, müşteri kendisi üretir | Beta Art araç değil, teslim edilmiş sonuç satar |
-| Adobe Firefly ve benzeri AI üreticiler | Hızlı üretim, çok seçenek | Beta Art brief, sanat yönetimi, seçki ve marka uyumu sağlar |
-| Serbest tasarımcılar | İnsan yaratıcılığı ve strateji | Beta Art daha hızlı, paketli ve erişilebilir fiyatlı |
-| Etsy / poster mağazaları | Geniş ürün seçimi | Beta Art kişiselleştirme ve B2B kullanım sunar |
+| Canva / Adobe Express | Ucuz, güçlü, müşteri kendisi üretir | Beta AI araç değil, teslim edilmiş sonuç satar |
+| Adobe Firefly ve benzeri AI üreticiler | Hızlı üretim, çok seçenek | Beta AI brief, sanat yönetimi, seçki ve marka uyumu sağlar |
+| Serbest tasarımcılar | İnsan yaratıcılığı ve strateji | Beta AI daha hızlı, paketli ve erişilebilir fiyatlı |
+| Etsy / poster mağazaları | Geniş ürün seçimi | Beta AI kişiselleştirme ve B2B kullanım sunar |
 
 Adobe Firefly'ın genel (ABD doları) fiyat basamakları **[V, ama Norveç
 NOK fiyatı değil]**: Free, Standard ~9,99 $/ay, Pro ~19,99 $/ay, Premium
@@ -114,7 +116,7 @@ kullanıcının konumlandırma kararı, bir pazar ölçümü değil].
 
 ## C. Business Model Canvas
 
-| Alan | Beta Art modeli |
+| Alan | Beta AI modeli |
 |---|---|
 | Müşteri segmentleri | Küçük işletmeler, yeni girişimler, bireysel sanat alıcıları |
 | Değer önerisi | 48–72 saatte, markaya uygun ve kullanıma hazır görsel paket |
@@ -141,7 +143,7 @@ edilir — sırayla değil, kanıt eşiği geçildikten sonra (aynı disiplin
 | Content Partner | Ayda 8 görsel + 1 kampanya seti | 3.490 NOK/ay |
 | Hazır Dijital Poster | İndirilebilir dosya | 149–349 NOK |
 
-**Kural (kullanıcı kararı):** Beta Art ilk aşamada logo tescili, hukuki
+**Kural (kullanıcı kararı):** Beta AI ilk aşamada logo tescili, hukuki
 marka koruması veya "tam telif garantisi" satmaz. Satılan şey, sözleşmede
 açıkça tanımlanmış bir **ticari kullanım lisansı** ve tasarım hizmetidir.
 
@@ -205,7 +207,7 @@ işler.
 
 ### Hizmet akışı
 
-| Müşteri adımı | Beta Art'ın görünür işi | Arka ofis kontrolü |
+| Müşteri adımı | Beta AI'nın görünür işi | Arka ofis kontrolü |
 |---|---|---|
 | Brief gönderir | Otomatik onay ve teslim tarihi | Telif, yüz görüntüsü, uygunsuz istek kontrolü |
 | Ödeme yapar | Fatura/ödeme teyidi | Proje kartı açılır |
@@ -217,7 +219,7 @@ işler.
 
 ### Site haritası
 
-Ana sayfa · Nasıl çalışır? · Paketler · Portföy · İşletmeler için Beta Art ·
+Ana sayfa · Nasıl çalışır? · Paketler · Portföy · İşletmeler için Beta AI ·
 Kişisel sanat ve hediyeler · SSS · AI/lisans/kullanım politikası ·
 Gizlilik/çerez/iletişim · Brief/sipariş sayfası.
 
@@ -228,20 +230,22 @@ Gizlilik/çerez/iletişim · Brief/sipariş sayfası.
 CTA'lar: "İşletme paketi oluştur" · "Kişisel eserini tasarla" ·
 "Örnek çalışmaları gör".
 
-### Teknik öneri ve QBLOGG'la fark
+### Teknik öneri ve QBLOGG/Beta Art'la fark
 
 Kullanıcının önerisi: Next.js veya hızlı bir no-code landing altyapısı,
 güvenli form + CRM kaydı, Stripe/Vipps ödeme linki, e-posta otomasyonu,
 güvenli dosya teslimi, basit analitik. **Bu, QBLOGG'un "derleme adımı ve
-bağımlılık yok" ilkesinden bilinçli bir sapmadır** — çünkü Beta Art'ın
+bağımlılık yok" ilkesinden bilinçli bir sapmadır** — çünkü Beta AI'nın
 MVP'si QBLOGG'un aksine gerçek form işleme, dosya teslimi ve ödeme akışı
 gerektiriyor; statik `mailto:` deseni bu iş için yetersiz kalır. Kesin
 yığın seçimi (Next.js mi, no-code mi, hangi form/CRM) §M'de açık karar
-olarak bırakılmıştır.
+olarak bırakılmıştır. Beta Art'ın kendi yığınından (React/Vite/Supabase,
+`beta-art/`) da bağımsızdır — paylaşılan bir bileşen/kod yoktur, yalnız
+aynı depoda kardeş klasör olarak yaşar.
 
 **Dil:** Norveççe ana site + İngilizce sürüm; Türkçe yönetim dili
 olabilir. Bu, QBLOGG'un 10 dilli modelinden **kasıtlı olarak farklıdır**
-— Beta Art'ın ilk pazarı tek ülke (Norveç), QBLOGG'un modeli çok dilli
+— Beta AI'nın ilk pazarı tek ülke (Norveç), QBLOGG'un modeli çok dilli
 küresel erişim içindi. İki dil bütünlüğü kuralı burada QBLOGG'unkinden
 ayrı ve daha küçük ölçekte yeniden kurulmalı.
 
@@ -262,7 +266,7 @@ geçerli değil; işletme eşiği aşarsa istisna geçiş süresi olmadan biter)
 Kaynak: EAA mikro işletme istisnası üzerine çok sayılı hukuk/uyum
 kaynağı (accessible.org, xictron.com, krisrivenburgh.com) — resmî AB
 metniyle bu oturumda birebir karşılaştırılmadı [D, ama tutarlı çoklu
-kaynak]. **Sonuç: Beta Art muhtemelen bu istisna kapsamına girer**
+kaynak]. **Sonuç: Beta AI muhtemelen bu istisna kapsamına girer**
 (mikro işletme, ilk aşamada <10 kişi). Bu, WCAG 2.2 AA hedefini "yasal
 zorunluluk" değil "iyi pratik ve dönüşüm avantajı" yapar — MVP bütçesi
 buna göre önceliklendirilebilir; büyüdükçe istisna otomatik düşer.
@@ -275,11 +279,11 @@ bir AI ile etkileşimde olduğunun, yapay/manipüle edilmiş içeriğin
 (sentetik ses/görsel/video/metin) açıkça belirtilmesi. **Önemli ayrıntı
 kullanıcının notunda yoktu:** 2 Ağustos 2026'dan önce piyasaya sürülmüş
 sistemler için **içerik işaretleme (marking) yükümlülüğü 2 Aralık
-2026'ya kadar ertelenmiş** — Beta Art yeni kurulduğu için bu erteleme
+2026'ya kadar ertelenmiş** — Beta AI yeni kurulduğu için bu erteleme
 muhtemelen işine yaramaz, baştan uyumlu tasarlanmalı. Uyumsuzlukta ceza
 üst sınırı 15 milyon Euro veya küresel cironun %3'ü (hangisi yüksekse) —
-Beta Art ölçeğinde pratik risk düşük ama kural yine de bağlayıcı.
-Beta Art, AI kullanımını açıkça belirtmeli; sağlayıcılarının içerik
+Beta AI ölçeğinde pratik risk düşük ama kural yine de bağlayıcı.
+Beta AI, kendi AI kullanımını açıkça belirtmeli; sağlayıcılarının içerik
 işaretleme ve lisans koşullarını belgelemelidir.
 
 Bu bölüm hukuki tavsiye değildir; satış başlamadan önce Norveç
@@ -287,7 +291,7 @@ muhasebecisi ve gizlilik/uyum uzmanıyla kısa bir kontrol yapılmalıdır.
 
 ## G. Marka ve iletişim
 
-**Konumlandırma:** Beta Art, küçük işletmeler için yapay zekâ destekli
+**Konumlandırma:** Beta AI, küçük işletmeler için yapay zekâ destekli
 fakat insan tarafından seçilmiş ve markaya uyarlanmış yaratıcı görsel
 stüdyodur.
 
@@ -297,9 +301,15 @@ stüdyodur.
 **Marka tonu:** Sakin, güvenilir, sade, yaratıcı, abartısız. "Bir tıkla
 milyonlarca görsel" yerine "markanıza uygun doğru görsel" dili.
 
+**Görsel kimlik notu:** Beta Art'ın "aperture/seal" mührü, arşiv/müze
+estetiği ve renk paleti (`#FBFAF7`, `#8B1A1A` vb.) **Beta AI'ya
+aktarılmaz** — iki marka görsel olarak da ayrışmalı, aksi hâlde
+karışıklık riski geri döner. Beta AI'nın kendi kimliği henüz kurulmadı
+(§M madde 2).
+
 **Satış metni örneği:**
 > Tasarım programı öğrenmeden, prompt yazmadan ve ajans bütçesi
-> ayırmadan markanız için güçlü görseller oluşturun. Beta Art, kısa
+> ayırmadan markanız için güçlü görseller oluşturun. Beta AI, kısa
 > brief'inizi 48–72 saat içinde kullanıma hazır görsel pakete dönüştürür.
 
 ## H. İlk 10 müşteri planı
@@ -314,7 +324,7 @@ milyonlarca görsel" yerine "markanıza uygun doğru görsel" dili.
 
 Norveççe kısa mesaj örneği:
 > Hei [navn], jeg så at dere har en tydelig tjeneste, men at det visuelle
-> uttrykket på sosiale medier kan bli enda mer gjenkjennelig. Beta Art
+> uttrykket på sosiale medier kan bli enda mer gjenkjennelig. Beta AI
 > lager en liten, ferdig innholdspakke tilpasset lokale bedrifter. Jeg
 > kan sende et konkret eksempel for [bedriftsnavn] – helt uforpliktende.
 
@@ -368,6 +378,7 @@ ve ≥%10 satış görüşmesi oranı.
 | Lisans ve telif belirsizliği | Güven ve hukuki risk | Stil taklidi yasağı, kaynak kaydı, açık kullanım koşulları |
 | Herkese satış yapmak | Mesaj dağılır, reklam pahalılaşır | İlk 90 gün tek B2B nişe odaklan |
 | Baskı/kargo operasyonu | Marjı ve müşteri desteğini bozar | Önce dijital teslim; baskıyı sonra partnerle test et |
+| **"Beta Art" ile isim karışıklığı (yeni)** | İkisi de "Beta ..." — müşteri/ortak yanlış markayla iletişime geçebilir | İsimler net ayrışmalı (§M madde 2); pazarlamada asla birlikte anılmamalı |
 
 **Kaldırılması gereken fikirler:** "Sınırsız AI görsel üretimi" ·
 "Herkes için sanat pazaryeri" · ilk gün mobil uygulama · baskı/stoklu
@@ -390,9 +401,10 @@ ve ≥%10 satış görüşmesi oranı.
 
 1. **Niş seçimi (adım 1).** Hangi tek B2B niş ile başlanacak — plan Oslo
    güzellik/bakım işletmelerini örnek veriyor, kesin seçim yapılmadı.
-2. **Marka adı ve QBLOGG ile görünürlük ilişkisi.** "Beta Art" mı "Beta
-   Art AI" mı kullanılacak; iki ürün (QBLOGG, Beta Art) aynı depoda mı
-   kalacak yoksa Beta Art ayrı bir depo/alan adına mı taşınacak?
+2. **Alan adı ve depo/görünürlük ilişkisi (güncellendi 30.08).** İsim
+   "Beta AI" olarak netleşti (Beta Art'tan bağımsız). Açık kalan: alan
+   adı adayı (beta-ai.com/.no?), bu depoda mı kalacak yoksa ayrı bir
+   depoya mı taşınacak, görsel kimliği (logo, renk) kimin üreteceği.
 3. **Teknik yığın.** Next.js mi, no-code landing (Framer/Webflow vb.) mi;
    form/CRM ve dosya teslimi hangi serviste toplanacak (§F).
 4. **Ödeme sağlayıcı.** Stripe mı Vipps mi, yoksa ikisi birden mi —
