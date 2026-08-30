@@ -33,13 +33,42 @@ bir şey varsa "doğrulanamadı" diye açıkça yazılıdır.
   `beta-art.com` (proje açıklamasında canonical olarak geçiyor, alan adı
   bağlantısı doğrulanmadı).
 - **Not:** "Beta Art" adının gerçek sahibi bu proje.
-- **Doğrulanamadı:** `beta-art-contact1-git-beta-070b86-andersenbetul-9635s-projects.vercel.app`
-  ve `beta-id-verification.vercel.app` adlı iki ayrı adres bu görüşmede
-  paylaşıldı; içerik/isimlendirme örtüşmesinden bu projeyle ilgili
-  olabilecekleri düşünülüyor ama ne bu oturumun Vercel hesabından
-  (`bet-art` takımı) ne Lovable'dan eşleşen bir kayıt bulundu — muhtemelen
-  farklı bir Vercel hesabında (`andersenbetul-9635s-projects`) barınıyorlar,
-  bu oturumdan erişilemiyor.
+- **Daha güncel bir sürüm var — `beta-art-contact1` (kullanıcı sayfa
+  içeriğini doğrudan yapıştırdı, 26.08.2026):** Bu, yukarıdaki
+  `human-lens-archive` Lovable projesinden **daha olgun, farklı bir
+  konsept**. Marka artık **"Beta Art · Archive + Business"** — tek marka,
+  iki giriş noktası:
+  - **01 · Archive** — "Photography with proof." Fotoğrafçı, fiziksel
+    çekim, orijinal kanıt, düzenleme açıklaması ve lisansı birbirine
+    bağlayan bir **kaynak (provenance) kaydı**. "AI-free" tek başına ürün
+    değil — asıl ürün kanıt zinciri. Yedi küratöryel seri planlı (Work,
+    Craft, Land and Light, The Table, Rooms, The Unseen, Weather).
+  - **02 · Business** — "Dokumentasjon som overlever prosjektet" (Norveççe:
+    "Projeyi aşan dokümantasyon"). **Norveç'te inşaat sektörüne yönelik**,
+    tamamlanmış proje kapanışında **belge/görsel kurtarma ve erişilebilirlik**
+    hizmeti — genel bir "şirketlere fotoğraf lisansı" değil. "Completed
+    Project Rescue" pilotu: kaynak envanteri → metadata haritası → istisna
+    kaydı → erişim testi (3-5 doğal dil sorusu, bulundu/kısmi/bulunamadı
+    olarak kaydedilir) → çıkış paketi (manifest + metadata export +
+    istisna kaydı + erişim sonuçları).
+  - **Ortak yöntem (her iki tarafta da):** Source → Context → Verify →
+    Rights → Retrieve → Export — altı adımlı "kanıt önce, rozet sonra"
+    disiplini.
+  - **"Beta Art Verified"** güven katmanı: yalnızca **neyin kontrol
+    edildiğini** belirtir, hukuki/mutlak doğruluk iddia etmez — kimlik/
+    kaynak, orijinal kanıt, bağlam, istisnalar, haklar, süreklilik.
+  - **Konumlandırma sınırları (bilinçli):** kilitlenme iddiası yok, "sihirli
+    doğrulama" yok, ilk temasta hassas dosya yüklemesi yok, canlı proje
+    yönetim sistemlerinin yerini almıyor.
+  - **Durum:** "Development preview" — görseller placeholder, katalog
+    kayıtları doğrulanmamış, fiyat/lisans şartları taslak.
+  - **Nerede:** `beta-art-contact1-*-andersenbetul-9635s-projects.vercel.app` —
+    bu oturumun erişebildiği Vercel hesabında (`bet-art` takımı) veya
+    Lovable çalışma alanında (`92fe40bbf478c5479f16`, 6 proje tarandı)
+    **bulunmuyor**; farklı bir hesapta/araçta yaşıyor, bu oturumdan
+    düzenlenemiyor.
+  - `beta-id-verification.vercel.app/#business` de muhtemelen aynı aileden
+    ayrı bir adres/deneme — doğrulanamadı.
 
 ## HXI Phonk Studio
 
