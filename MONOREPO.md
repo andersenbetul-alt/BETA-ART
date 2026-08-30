@@ -18,6 +18,7 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
 | `hxi/` | **HXI** — resmi web sitesi (nordic-pulse) | TanStack Start + React 19 + Tailwind v4 | Yayında: hxi-nordic-pulse.lovable.app |
 | `hxi-v2/` | **HXI v2** — Flag Edition, Supabase müzik kataloğu | TanStack Start + Supabase + shadcn/ui | Lovable: `50f62e94-6826-409e-9bcf-df1d71d8d029` |
 | `hxi-v4/` | **HXI v4** — Phonk Studio Pro, en eksiksiz sürüm (14 bölüm) | TanStack Start + React 19 + Tailwind v4 | Lovable: `daddeade-7b69-4b6a-bda8-e3e3acab8645` |
+| `hxi-v5/` | **HXI v5** — Acid Signal, Next.js yeniden yazım; 6 dil, RTL, acid yeşil `#c8ff00` | Next.js 15 + React 19 + Vanilla CSS | Geliştirme — Vercel: hxi-v5 (beklemede) |
 
 ## Vercel projeleri (BET-ART takımı)
 
