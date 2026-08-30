@@ -15,6 +15,8 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
 | `demo/` | Action Pages demoları | Saf HTML/JS | qblogg.vercel.app/demo/ |
 | `engine/` | Curiosity Engine — içerik üretim hattı | Node.js + SQLite | Yerel çalışır |
 | `docs/` | Tüm projeler için belgeleme | Markdown | — |
+| `hxi/` | **HXI** — resmi web sitesi (nordic-pulse) | TanStack Start + React 19 + Tailwind v4 | Yayında: hxi-nordic-pulse.lovable.app |
+| `hxi-v2/` | **HXI v2** — Supabase + auth + müzik bölümü bileşenleri | TanStack Start + Supabase + shadcn/ui | Lovable: `50f62e94-6826-409e-9bcf-df1d71d8d029` |
 
 ## Vercel projeleri (BET-ART takımı)
 
