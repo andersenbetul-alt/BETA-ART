@@ -12,6 +12,16 @@ Sitenin işi trafik toplamak değil, **brief formunu doldurtmaktır**.
 Hedef kitle: kendi içerik ekibi olmayan, düzenli yayın yapmak isteyen KOBİ ve
 SaaS şirketleri. İkincil kitle: stüdyoya katılmak isteyen yazarlar.
 
+**Bu depo yalnızca QBLOGG değil.** GitHub deposu `beta-art` — bu dosya
+öncelikli olarak QBLOGG'u belgeler çünkü aktif yayında olan site odur, ama
+ikinci bir markanın (**Naviar**) kimlik/marka çalışması da aynı ağaçta
+duruyor: `brand/naviar/` (üretim betiği + varlıklar), `docs/naviar/` (logo
+kararı, izin/temizlik yığını). Naviar'ın kendi sitesi ayrı depolardadır
+(`betulandersen-droid` hesabı altında, aşağıdaki Vercel notuna bakın) —
+burada yalnızca marka/kimlik tasarım çalışması yapılmış. Naviar için iş
+üstlenirken bu belgedeki QBLOGG kurallarını (i18n, görünürlük kapısı vb.)
+otomatik uygulanmış saymayın; ayrı sorun.
+
 ## Teknik yapı
 
 Saf HTML + CSS + JavaScript. **Derleme adımı, çatı (framework) ve bağımlılık yok** —
@@ -259,18 +269,32 @@ açık talebi.
   `main` kullanıcının açık izniyle QBLOGG sitesine çevrildi: `-s ours
   --allow-unrelated-histories` merge'ü ile eski saat uygulamasının geçmişi
   korunarak ağaç QBLOGG yapıldı. Geliştirme dalı `claude/qblogg-web-sayfasi-upcarm`.
-- **Site Vercel'de yayında (22.08.2026).** Proje `qblogg`, takım "BET - ART"
-  (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg.vercel.app (23.08 gecesi proje panelde silinmişti; aynı adla yeniden kuruldu — proje id değişti, eski qblogg-flame/qblogg-bet-art adresleri geçersiz).
-  Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir (depodaki
-  dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`)
-  klonlayıp 6 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
-  `dist/`e kopyalar. Yani **siteyi güncellemek =
-  main'e push + aynı dağıtımı yeniden tetiklemek.** Vercel'in GitHub
-  entegrasyonu `andersenbetul-alt` hesabına yetkili değil (`repo_no_access`,
-  entegrasyon `betulandersen-droid`a bağlı); kullanıcı yetkiyi verirse
-  `create_git_project` ile push başına otomatik dağıtıma geçilebilir.
-  qblogg.com alan adının bağlanması kullanıcı tarafında (Vercel panel +
-  GoDaddy DNS; ad sunucuları taşınmaz, e-posta MX kayıtları GoDaddy'de kalmalı).
+- **Site Vercel'de yayında (22.08.2026; konum bilgisi 26.08.2026'da
+  düzeltildi).** Proje `qblogg`, **kişisel Vercel hesabında**
+  (`andersenbetul-9635s-projects`), üretim adresi qblogg.vercel.app.
+  **Önceki kayıt yanlıştı:** burada "takım BET-ART'ta" yazıyordu; 26.08'de
+  MCP `list_teams`/`list_projects` ile ölçüldü, "BET - ART" takımı
+  (`team_xNtowH7U0jXQrI53DFJFzH2o`) `qblogg` barındırmıyor — kullanıcı da
+  qblogg'un kişisel hesapta olduğunu doğruladı. Kurulum tek dosyalık:
+  dağıtıma yalnızca `vercel.json` gönderilir (depodaki dosyanın kendisi —
+  tek kaynak); `buildCommand` public depoyu (`main`) klonlayıp 8 sayfa +
+  `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i `dist/`e kopyalar.
+  Yani **siteyi güncellemek = main'e push + aynı dağıtımı yeniden
+  tetiklemek.** Vercel'in GitHub entegrasyonu `andersenbetul-alt` hesabına
+  yetkili değil (`repo_no_access`, entegrasyon `betulandersen-droid`a
+  bağlı) — qblogg'un git-bağlantısız (tek dosyalık) kurulmasının nedeni
+  muhtemelen bu; kullanıcı yetkiyi verirse `create_git_project` ile push
+  başına otomatik dağıtıma geçilebilir. qblogg.com alan adının bağlanması
+  kullanıcı tarafında (Vercel panel + GoDaddy DNS; ad sunucuları taşınmaz,
+  e-posta MX kayıtları GoDaddy'de kalmalı).
+- **"BET - ART" takımı (`team_xNtowH7U0jXQrI53DFJFzH2o`) ayrı bir hesap,
+  qblogg'u barındırmaz.** 26.08.2026'da ölçüldü: `hxi-music`,
+  `naviar-care-1`, `naviar-consult` projelerini barındırıyor — hepsi
+  `betulandersen-droid` GitHub hesabındaki depolara bağlı (bu depoya
+  değil). Yani aynı kullanıcının birden çok girişimi aynı Vercel
+  hesabı/takımı ve aynı Claude Code oturum ortamı üzerinden yönetiliyor,
+  ama her girişimin kendi deposu ve dağıtımı var — "hepsi aynı depoda"
+  değil, "araçlar ve hesap paylaşılıyor" doğru çerçeve.
 - Haftalık SEO/AI görünürlük izlemesi kurulu: pazartesi 07:00 (Norveç saati).
 - FAQPage şeması duruyor ama Google 7 Mayıs 2026'da FAQ zengin sonuçlarını kaldırdı.
   Yapay zekâ aramaları için tutuluyor; zengin sonuç beklemeyin.
