@@ -20,111 +20,113 @@ bir şey varsa "doğrulanamadı" diye açıkça yazılıdır.
 - **Not:** Depo adı "beta-art" tarihsel bir kalıntı (bkz. CLAUDE.md
   "Depo adı hakkında"). "Beta Art" markasıyla ilişkili değil.
 
-## Beta Art Archive
+## Beta Art — üç mülklü sistem (kesinleşti, 30.08.2026)
 
-- **Ne:** Doğrulanmış insan fotoğrafçılığı lisanslama sitesi — RAW
-  orijinal saklama, çekim kaynağı/provenance kaydı, doğrudan fotoğrafçı
-  lisansı. Koleksiyon, Doğrulama, Fotoğrafçı, Lisanslama (Personal/
-  Commercial/Extended/Custom), SSS bölümleri.
-- **Kesinleşmiş görsel kimlik (kullanıcı logo dosyalarını paylaştı,
-  26.08.2026):** Roma profili + defne yaprağı mührü (bordo/kırmızı çizgi,
-  "VERIFIED HUMAN PHOTOGRAPHY" mühür yazısı) + siyah serif logotype
-  "BETA ART" + alt başlık "VERIFIED HUMAN PHOTOGRAPHY". Hero örneği:
-  "Verified Human Photography." başlığı, üstte "PHOTOGRAPHY ARCHIVE ·
-  DIRECT LICENSING" etiketi, altta "BETA ART · ARCHIVE" / `beta-art.com`.
-  **QBLOGG'un kimliğiyle (Midnight Navy/Electric Aqua) hiçbir ortak
-  belirteci yok** — bu bilinçli, iki ayrı marka.
-- **Çapraz-proje kuralı (kullanıcının paylaştığı `ASSETSTATUS.md`'den,
-  26.08.2026):** "HXI'nin moda/müzik görselleri ayrı bir marka, Beta Art
-  içeriği olarak temsil edilemez — yalnızca hakları onaylanmış gerçek
-  sanatçı/eser/mekân görseli eklenir." Bu, bu belgedeki "girişimler
-  birbirine karıştırılmaz" ilkesiyle birebir örtüşüyor.
-- **Nerede:** Lovable, çalışma alanı "Betül's Lovable"
-  (`92fe40bbf478c5479f16`), proje `human-lens-archive`
-- **Durum:** **yayında** (`is_published: true`, `publish_visibility:
-  public`) → `https://human-lens-archive.lovable.app`. Hedef alan adı
-  `beta-art.com` (proje açıklamasında canonical olarak geçiyor, alan adı
-  bağlantısı doğrulanmadı).
-- **Not:** "Beta Art" adının gerçek sahibi bu proje.
-- **Çoklu-mülk yapısı doğrulandı (kullanıcı gerçek kaynak dosyaları
-  yükledi, 26.08.2026 — README.md, CONTENTMAP.md, ~10 HTML/JS dosyası):**
-  Beta Art artık üç ayrı "mülke" (property) bölünmüş, `index.html`'deki
-  üst gezinme bunu doğruluyor: **Privat** (`/privat/`) · **Galleri &
-  Event** (`/events/`) · **Business** (`/business/`, `business.beta-art.com`).
-  Bu depoya yüklenen dosyalar yalnızca **Business** mülküne ait.
-  `README.md`: "Private archive plates and Gallery/Event exhibition
-  content remain in their own projects" — yani `human-lens-archive`
-  (yukarıda) muhtemelen **Privat** mülküne karşılık geliyor, Business
-  ayrı bir kod tabanı.
-- **Business mülkünde İKİ ÇELİŞEN SÜRÜM aynı anda yüklendi — kullanıcıya
-  sorulmalı, tahmin edilmedi:**
-  1. **Genel dijital ajans sürümü** (İngilizce, `styles.css` + Fraunces/
-     Inter/JetBrains Mono, mühür-SVG logo, üst menü Private/Business/
-     Find your service/Industries/Pricing/AI Studio/FAQ) — dosyalar:
-     `index.html` (eski), `blog.html`, `ai-staff.html`, `s-seo.html`,
-     `b-einvoicing-2027.html`, `b-cv-ats.html`, `b-what-to-automate.html`,
-     `quote.html`, `contact.html`, `dashboard.html`, `resources.html`,
-     `i18n.js`, `blog.js`. Hizmetler: web sitesi, SEO, CV/iş başvurusu,
-     AI otomasyonu, süreç otomasyonu. Fiyatlar NOK. Yazar: Betül Öner.
-     Çok olgun, yayına hazır görünüyor (gerçek Norveç e-fatura mevzuatı,
-     düşünülmüş "AI Staff" sınır belgesi).
-  2. **İnşaat-öncelikli proje arşivi sürümü** (Norveççe, satır içi stil,
-     koyu/minimal tasarım) — dosya: yeni `index.html`. Başlık: "Prosjektet
-     avsluttes. Dokumentasjonen skal ikke." (Proje bitiyor. Dokümantasyon
-     bitmemeli.) "Documentation that survives handover", sertifikalı
-     fotoğrafçılar, pilot: platform inşa edilmeden önce üç ödeyen arşiv
-     müşterisi.
-  - **`CONTENTMAP.md` bu çelişkiyi kendi içinde çözüyor** — açıkça yazıyor:
-    *"Do not treat broad marketplace, generic stock categories, or the
-    **old consumer licensing platform** as current scope"* ve *"the
-    **older platform**/public-clean files are retained as **references
-    only** and are **not** the Business product source of truth."*
-    Yani `CONTENTMAP.md`'nin kendi tanımına göre **(1) eski/referans,
-    (2) güncel kapsam** — ve bu, önceki `beta-art-contact1` bulgumla
-    ("Dokumentasjon som overlever prosjektet", inşaat odaklı) birebir
-    örtüşüyor. **Ama bu çıkarım bu oturumda doğrulanmadı, kullanıcıya
-    sorulması gerekiyor** — iki sürümün birlikte, açıklama yapılmadan
-    yüklenmesi kasıtlı bir karşılaştırma da olabilir.
-  - `CONTENTMAP.md`'deki diğer önemli notlar: kapasite varsayımı
-    ("60 yerine 35 gün/hafta 15-20 saat"), fotoğrafçı→arşiv alıcısı
-    devrinin kanıtlanmamışlığı, "yasal kanıt statüsü" vaadi YASAK,
-    "otomatik atama→arşiv sözleşmesi dönüşümü" vaadi YASAK. Açık üretim
-    girdileri: DPA, AB/EEA depolama, muhasebe, sigorta, paket/fiyat
-    kararı, şirket bilgileri, başvuru uç noktası, pilot vakalar.
-  - Daha önce bu depoya kaydedilen `beta-art-contact1` bulgusu (aşağıda,
-    değiştirilmeden bırakıldı — muhtemelen (2) numaralı sürümle aynı/çok
-    yakın aile):
-  - **01 · Archive** — "Photography with proof." Fotoğrafçı, fiziksel
-    çekim, orijinal kanıt, düzenleme açıklaması ve lisansı birbirine
-    bağlayan bir **kaynak (provenance) kaydı**. "AI-free" tek başına ürün
-    değil — asıl ürün kanıt zinciri. Yedi küratöryel seri planlı (Work,
-    Craft, Land and Light, The Table, Rooms, The Unseen, Weather).
-  - **02 · Business** — "Dokumentasjon som overlever prosjektet" (Norveççe:
-    "Projeyi aşan dokümantasyon"). **Norveç'te inşaat sektörüne yönelik**,
-    tamamlanmış proje kapanışında **belge/görsel kurtarma ve erişilebilirlik**
-    hizmeti — genel bir "şirketlere fotoğraf lisansı" değil. "Completed
-    Project Rescue" pilotu: kaynak envanteri → metadata haritası → istisna
-    kaydı → erişim testi (3-5 doğal dil sorusu, bulundu/kısmi/bulunamadı
-    olarak kaydedilir) → çıkış paketi (manifest + metadata export +
-    istisna kaydı + erişim sonuçları).
-  - **Ortak yöntem (her iki tarafta da):** Source → Context → Verify →
-    Rights → Retrieve → Export — altı adımlı "kanıt önce, rozet sonra"
-    disiplini.
-  - **"Beta Art Verified"** güven katmanı: yalnızca **neyin kontrol
-    edildiğini** belirtir, hukuki/mutlak doğruluk iddia etmez — kimlik/
-    kaynak, orijinal kanıt, bağlam, istisnalar, haklar, süreklilik.
-  - **Konumlandırma sınırları (bilinçli):** kilitlenme iddiası yok, "sihirli
-    doğrulama" yok, ilk temasta hassas dosya yüklemesi yok, canlı proje
-    yönetim sistemlerinin yerini almıyor.
-  - **Durum:** "Development preview" — görseller placeholder, katalog
-    kayıtları doğrulanmamış, fiyat/lisans şartları taslak.
-  - **Nerede:** `beta-art-contact1-*-andersenbetul-9635s-projects.vercel.app` —
-    bu oturumun erişebildiği Vercel hesabında (`bet-art` takımı) veya
-    Lovable çalışma alanında (`92fe40bbf478c5479f16`, 6 proje tarandı)
-    **bulunmuyor**; farklı bir hesapta/araçta yaşıyor, bu oturumdan
-    düzenlenemiyor.
-  - `beta-id-verification.vercel.app/#business` de muhtemelen aynı aileden
-    ayrı bir adres/deneme — doğrulanamadı.
+Kullanıcı bu depoya Beta Art'ın kendi resmi proje belgelerini yükledi:
+`PROJECTMANIFEST.md`, `BETAARTROUTEMAP.md`, `BETAARTPROJECTCODES.md`,
+`CONTENTMAP.md`, `ASSETSTATUS.md` + gerçek HTML/JS kaynak dosyaları.
+Bu üçü birbirini doğruluyor — aşağıdaki yapı **tahmin değil, kullanıcının
+kendi proje sisteminin belgelenmiş hâli.**
+
+**Ortak kimlik:** Roma profili + defne yaprağı aperture/seal işareti
+(bordo/kırmızı `#8B1A1A`/`#C43A2E`), "BETA ART" serif logotype. Kırmızı
+yalnızca güven/karar sinyali için kullanılır. Gerçek doğrulama olmadan
+"Verified" iddiası yok. HXI'nin (ayrı bir marka) görselleri hiçbir Beta
+Art mülkünde kullanılmaz (`ASSETSTATUS.md`, `PROJECTMANIFEST.md`).
+**QBLOGG'un kimliğiyle (Midnight Navy/Electric Aqua) hiçbir ortak
+belirteci yok** — iki ayrı marka, bilinçli.
+
+| Kod | Mülk | Alt yol | Amaç |
+|---|---|---|---|
+| BAP-01 | **Privat** | `/privat/` | Doğrulanmış insan fotoğrafçılığı: eser, sınırlı edisyon, doğrudan lisans/satış. Müze-arşiv estetiği. |
+| BAG-03 | **Galeri** (Galleri og Utstilling Event) | `/events/` | Sanatçı, eser, sergi, açılış, kültürel etkinlik programı. |
+| BAB-02 | **Business** | `/business/` | **İnşaat/yapı sektöründe proje bittikten sonra da bulunabilir kalan proje dokümantasyonu** — B2B rights desk, Evidence Photos, kurumsal arşiv. |
+
+Üçü de aynı logo ailesini paylaşır ama **kendi içerik, fiyat, kullanıcı ve
+deployment akışını** yönetir — ortak "pazaryeri" navigasyonuna konulmazlar,
+formlar tek bir genel gelen kutusuna yönlendirilmez (`BETAARTROUTEMAP.md`
+"Do not do" listesi).
+
+### Privat (BAP-01)
+- **Nerede (muhtemelen):** Lovable, çalışma alanı "Betül's Lovable"
+  (`92fe40bbf478c5479f16`), proje `human-lens-archive` — **yayında**
+  (`is_published: true`) → `https://human-lens-archive.lovable.app`.
+  `PROJECTMANIFEST.md`'deki "Final Work v2" (React + Supabase migrations
+  + Edge Functions) tanımı, bu Lovable projesinin dosya listesiyle
+  (`ProvenancePanel.tsx`, `TrustStrip.tsx`, Supabase entegrasyonu) örtüşüyor
+  — ama bu eşleşme kesin doğrulanmadı.
+  Hedef alan adı: `archive.beta-art.com` (DNS taslağında) ya da
+  `beta-art.com` kökü (eski referanslarda) — **DNS henüz "Draft", hiçbir
+  kayıt yayınlanmadı** (`betaartdnsadministrasjon.html`: "Ingen poster
+  endres eller publiseres fra denne siden").
+- Yedi küratöryel seri (Work, Craft, Land and Light, The Table, Rooms,
+  The Unseen, Weather), en az 24 lisanslı orijinal gerekli (launch gate),
+  "100% verified" gibi iddialar henüz doğrulanmamış/canlı değil.
+
+### Galeri (BAG-03)
+- Ayrı bir gelecek-odaklı kültürel mülk, Business'a katılmıyor. Bu
+  depoda henüz somut bir kod tabanı gözlemlenmedi.
+
+### Business (BAB-02) — **inşaat-öncelikli proje arşivi**
+- **Kesin kapsam** (`BETAARTPROJECTCODES.md`, `CONTENTMAP.md`,
+  `PROJECTMANIFEST.md` — üçü de aynı şeyi söylüyor): inşaat/yapı
+  sektöründe tamamlanmış bir projenin belgelerini/görsellerini gelecekte
+  bulunabilir kılmak. Norveççe başlık: **"Prosjektet avsluttes.
+  Dokumentasjonen skal ikke."** (Proje bitiyor, dokümantasyon bitmemeli.)
+  Ortak yöntem: **Source → Context → Verify → Rights → Retrieve → Export**.
+  "Beta Art Verified" yalnızca neyin kontrol edildiğini belirtir, hukuki/
+  mutlak doğruluk iddia etmez. Pilot: platform inşa edilmeden önce üç
+  ödeyen arşiv müşterisi, 20 dakikalık görüşme birincil CTA.
+  **Kapsam dışı:** genel stok pazaryeri, açık yükleme, tüketici checkout,
+  Galeri etkinlikleri.
+- **Hariç tutulan/eski sürüm:** Aynı proje klasöründe İngilizce, genel
+  bir dijital ajans sürümü de vardı (web sitesi/SEO/CV/AI-otomasyon
+  hizmetleri, `business.beta-art.com`, yazar Betül Öner, çok olgun ve
+  yayına hazır görünen içerik). `CONTENTMAP.md` ve `PROJECTMANIFEST.md`
+  bunu **açıkça "eski/referans, güncel kapsam değil"** olarak
+  işaretliyor: *"the older platform/public-clean files are retained as
+  references only and are not the Business product source of truth"*
+  ve *"Its Business page uses the older broad 'visual infrastructure
+  for brands' language; it must not override the newer construction-first
+  project-archive positioning."* Yani bu **çelişki kullanıcının kendi
+  belgesinde zaten çözülmüş** — sormaya gerek yok.
+- **Açık üretim girdileri (henüz yok, uydurulmadı):** DPA, AB/EEA
+  depolama, muhasebe, sigorta, paket/fiyat kararı, şirket bilgileri,
+  başvuru uç noktası, pilot vakalar, gerçek fiyat testi.
+- **Doğrulanmamış varsayımlar** (`CONTENTMAP.md` "Stress-test decision"):
+  kapasite 60 değil ~35 gün/hafta 15-20 saat; fotoğrafçı→arşiv alıcısı
+  devri kanıtlanmamış; birçok inşaat işinde arşiv hakları mevcut
+  olmayabilir; mevcut araçlar proje-içi fotoğrafları zaten kapsıyor.
+  **Yasaklı iddialar:** "yasal kanıt statüsü" vaadi, "otomatik atama→arşiv
+  sözleşmesi dönüşümü" vaadi.
+- **`beta-art-contact1-*-andersenbetul-9635s-projects.vercel.app`**
+  (kullanıcının paylaştığı canlı önizleme) muhtemelen bu Business
+  mülkünün bir dağıtımı — "Archive + Business" tek sayfa, aynı Source/
+  Context/Verify/Rights/Retrieve/Export dili, aynı Norveççe başlık.
+  Bu oturumdan **erişilemiyor** (ne `bet-art` Vercel takımında ne
+  taranan Lovable çalışma alanlarında bulunuyor) — cross-tier `add_repo`
+  kısıtlaması nedeniyle bu oturumda düzenlenemez de (bkz. aşağıdaki
+  "Erişim sınırları").
+- **DNS durumu:** `beta-art.com` bölgesi "Draft", 12 kayıttan 7'si
+  doğrulanmış, hiçbir canlı değişiklik yapılmadı. Planlanan alt alan
+  adları: `archive.beta-art.com`, `events.beta-art.com`,
+  `business.beta-art.com` — ama `BETAARTROUTEMAP.md` bunun yerine
+  **tek domain + alt yol** (`/privat/`, `/events/`, `/business/`) modelini
+  tanımlıyor. İki belge arasında bu noktada küçük bir tutarsızlık var;
+  DNS belgesi kendisi "planlı, yayınlanmadı" diyor, yani bu henüz karar
+  değil.
+
+### Erişim sınırları (bu oturumdan doğrulanan platform kısıtları)
+- GitHub: bu oturum `andersenbetul-alt/beta-art` ile başladığı için
+  başka hiçbir GitHub hesabından (`betulandersen-droid` dahil) depo
+  eklenemiyor — "cross-tier adds are not supported" hatası, deponun
+  var olup olmamasından bağımsız bir platform sınırı.
+- Vercel: `andersenbetul-9635s-projects` hesabına bu oturumun Vercel
+  bağlantısından erişim yok (`get_project`/`get_access_to_vercel_url`
+  403 döndü).
+- Lovable: `human-lens-archive` projesine tam erişim var (okuma +
+  `send_message` ile düzenleme) ama workspace'in kredisi bitti
+  (26.08.2026) — düzenleme mesajı gönderilemedi.
 
 ## HXI Phonk Studio
 
