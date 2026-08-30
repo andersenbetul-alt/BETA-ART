@@ -12,3 +12,7 @@ qblogg/engine/data/
 # Üretilen dağıtım klasörleri — marka-tescil.mjs ve marka-paket.mjs üretiyor
 tescil/
 paket/
+
+# small-business becerisi: gerçek banka/Stripe export'ları asla commit edilmez
+# (hesap numarası + tam işlem geçmişi içerir). Pipeline dosyası bunun dışında.
+muhasebe/exports/
