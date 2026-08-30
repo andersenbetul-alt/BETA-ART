@@ -10,44 +10,34 @@ Veriler 26.08.2026'da Vercel MCP (`list_teams`, `list_projects`,
 araçlarıyla **doğrudan sorgulanarak** ölçüldü — uydurma yok. Erişilemeyen
 bir şey varsa "doğrulanamadı" diye açıkça yazılıdır.
 
-**Güncelleme (30.08.2026, akşam) — dosyaların tam taraması yapıldı, açık
-çelişki tespit edildi, henüz çözülmedi:** Kullanıcı bu oturumda 44 dosya
-yükledi (`/root/.claude/uploads/.../27474db6-...` — bu yolun kendisi
-oturuma özel, kalıcı değil). Hepsi tek tek okundu, tekrarlar (bayt-bayt
-aynı kopyalar) elendi. Sonuç, aşağıdaki maddede anlatılan tek yönlü bir
-"kullanıcı düzeltmesi" değil, **kullanıcının kendi yüklediği belgeler
-arasında bugünün (30.08.2026) tarihini taşıyan doğrudan bir çelişki**:
+**Güncelleme (30.08.2026, akşam) — BAB-02 kapsamı kesinleşti: Dual
+reconciliation.** Kullanıcı bu oturumda 44 dosya yükledi
+(`/root/.claude/uploads/.../27474db6-...` — bu yolun kendisi oturuma
+özel, kalıcı değil). Hepsi tek tek okundu, tekrarlar (bayt-bayt aynı
+kopyalar) elendi. Sonuç, kullanıcının kendi yüklediği belgeler arasında
+bugünün (30.08.2026) tarihini taşıyan doğrudan bir çelişkiydi:
 
 - `PROJECTMANIFEST.md` (yüklendi ~19:32, kendi metninde *"Prepared 30
-  August 2026"* yazıyor) açıkça şunu söylüyor: *"The expert-board
-  materials supersede earlier broad marketplace language for the
-  Business project: construction-first, project-based archive..."* ve
-  *"Its Business page uses the older broad 'visual infrastructure for
-  brands' language; it must not override the newer construction-first
-  project-archive positioning."* — yani genel lisanslama dilini **bu
-  belge kendisi** "eski" ilan ediyor.
+  August 2026"* yazıyor) genel pazaryeri dilini açıkça "eski" ilan
+  ediyordu: *"The expert-board materials supersede earlier broad
+  marketplace language for the Business project: construction-first,
+  project-based archive..."*
 - Buna rağmen kullanıcı ~20:04'te "Visual Infrastructure for Brands" B2B
-  lisanslama taslağını (`beta-art-business-v3`) yükledi ve doğrudan
-  soruldu: *"Hayır, gerçekte bu genel lisanslama konsepti geçerli"*
-  dedi — yani `PROJECTMANIFEST.md`'nin "eski" dediği konsepti sözlü
-  olarak geçerli ilan etti.
-- Sonra 21:13'te (günün en son yüklemesi, `PROJECTMANIFEST.md`'den de,
-  bu sözlü onaydan da **sonra**) yeni dosyalar geldi: bunlar
-  `dualbusinessprivate.zip`'teki **"Dual"** paketle aynı içerik —
-  Business tekrar inşaat-öncelikli, ama bu kez Private (BAP-01) ile
-  **ayrı tutularak**: *"Business is the Phase-1 construction product.
-  It does not expose the broader image marketplace..."*
-  (`beta-art-dual/README.md`). Yani en son yüklenen materyal, genel
-  lisanslama konseptini reddetmiyor — onu **Business'tan tamamen ayırıp
-  Private'a devrediyor.**
+  lisanslama taslağını yükledi ve sözlü olarak onayladı: *"Hayır,
+  gerçekte bu genel lisanslama konsepti geçerli."*
+- 21:13'te (günün en son yüklemesi) gelen dosyalar `dualbusinessprivate.zip`
+  ile aynı **"Dual"** paketti: Business tekrar inşaat-öncelikli, ama
+  Private (BAP-01) ile ayrı tutularak: *"Business is the Phase-1
+  construction product. It does not expose the broader image
+  marketplace..."* (`beta-art-dual/README.md`).
 
-**Bu depodan çözülemeyen soru:** Kullanıcının sözlü onayı ile en son
-yüklediği dosyalar birbiriyle çelişiyor; ikisi de aynı gün, ikisi de
-"son söz" olma iddiasında. Bir sonraki oturum bunu **tahmin etmesin**,
-kullanıcıya tek cümlelik bir teyit sorsun: "Business = sadece
-inşaat-arşivi, genel B2B fotoğraf lisanslama Private'a mı taşınıyor?"
-Tam kanıt tablosu ve birebir alıntılar için bu bölümün altındaki
-"Business (BAB-02)" kısmına bakın.
+**Karar (kullanıcı onayı, 30.08.2026):** Dual reconciliation geçerli.
+**BAB-02 Business = yalnızca inşaat-öncesi proje dokümantasyon arşivi.**
+Genel B2B fotoğraf lisanslama ("Visual Infrastructure for Brands")
+Business kapsamından çıktı; o konsept **Private (BAP-01)** altında
+değerlendirilecek. `beta-art-business-v3` taslağı (scratchpad) bu kararla
+artık **geçersiz/referans** — Business için bundan sonra üretilecek her
+şey inşaat-arşivi konseptine (madde 2, aşağıda) dayanmalı.
 
 ## QBLOGG (bu depo)
 
@@ -106,11 +96,12 @@ formlar tek bir genel gelen kutusuna yönlendirilmez (`BETAARTROUTEMAP.md`
 - Ayrı bir gelecek-odaklı kültürel mülk, Business'a katılmıyor. Bu
   depoda henüz somut bir kod tabanı gözlemlenmedi.
 
-### Business (BAB-02) — çelişkili, **henüz kesinleşmedi** (bkz. üstteki güncelleme notu)
+### Business (BAB-02) — **kesinleşti: Dual reconciliation, madde 2 + 5 geçerli**
 
 Beş ayrı dosya grubu (yükleme saatine göre) beş farklı/örtüşen konsept
-taşıyor. Hiçbiri "yanlış" değil — hepsi kullanıcının kendi yüklediği
-gerçek dosyalar — ama üçü birbiriyle doğrudan çelişiyor. Kronolojik sırayla:
+taşıyordu. Kullanıcı 30.08.2026'da **madde 2 + 5'i (inşaat-öncelikli
+arşiv, Private'tan ayrı)** onayladı; madde 1, 3, 4 artık kapsam dışı/
+referans. Kronolojik sırayla, kayıt için tümü:
 
 1. **~19:26-19:30, genel dijital ajans:** `quote.html`, `resources.html`,
    `blog.html`, `dashboard.html`, `aistaff.html` vb. — sektör bağımsız
@@ -260,12 +251,10 @@ uygulaması olarak dosyalıyor, Business ile ilgisi yok.
 3. `naviar-consult` ve `hxi-music` Vercel projelerinin ikisi de aynı GitHub
    reposuna (`eve-slack-agent`) bağlı görünüyor — bu bilinçli bir
    placeholder mı, yoksa yanlış bağlanmış bir proje mi?
-4. **(30.08.2026, en kritik açık soru)** BAB-02 Business: kullanıcının
-   sözlü onayı ("genel lisanslama konsepti geçerli") mi geçerli, yoksa
-   ondan sonra yüklenen "Dual" dosyaları (Business=yalnızca inşaat-arşivi,
-   genel lisanslama Private'a taşınıyor) mı? İkisi de aynı gün, biri
-   sözle biri dosyayla ifade edilmiş — bu depodan tahmin edilemez, tek
-   cümlelik bir teyit gerekiyor.
+4. ~~BAB-02 Business kapsamı~~ — **çözüldü (30.08.2026):** Dual
+   reconciliation onaylandı. Business = yalnızca inşaat-arşivi; genel B2B
+   fotoğraf lisanslama Private'a (BAP-01) taşındı. Bkz. yukarıdaki
+   "Business (BAB-02)" bölümü.
 
 ## Bu belgeyi güncel tutma
 
