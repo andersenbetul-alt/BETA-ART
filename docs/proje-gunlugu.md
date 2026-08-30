@@ -354,3 +354,52 @@ Mevcut durum: 8 commit uzak depoda, tüm sağlık kontrolleri geçiyor.
 Açık kalemler: decision-log'daki 8 kırmızı madde (muhasebeci/avukat
 girdisi gerektiren), pilot e-postasının gerçek adresle değiştirilmesi,
 P9 marka onayı (iş onayı + sınıf 44 araştırması).
+
+## 30.08.2026 (akşam) — NaviarCare telemedicine sitesi naviar/care/ altına taşındı
+
+Kullanıcı talimatı: "BUTUN PROJELERI BURAYA TASI" — Vercel'deki dört
+projenin tamamı (naviar-care-1, naviar-consult, beta-art/NaviarCare,
+hxi-music) lw83yy dalında toplanıyor. Bu oturumda: telemedicine sitesi.
+
+Kaynak: `betulandersen-droid` hesabı erişilemez olduğundan orijinal
+repo klonlanamadı. Kullanıcı Vercel'deki canlı dağıtımın sayfa içeriklerini
+doğrudan sohbete yapıştırdı; 8 sayfanın tamamı bu içerikten yeniden kuruldu.
+
+Oluşturulan dosyalar (`naviar/care/`, commit 87f695e):
+- `style.css`      — tam tasarım sistemi: CSS değişkenleri, açık/koyu tema,
+                     nav, hero, kart, form, tablo, akordeon, footer bileşenleri
+- `app.js`         — dil değiştirici (4 dil + RTL), FAQ akordeon, dil tablosu
+                     filtresi, triage chip'leri, URL param ön doldurma
+- `index.html`     — ana sayfa: hero, istatistikler (113 dil / 28 uzmanlık /
+                     7/24), canlı durum kartı, nasıl çalışır, neden NaviarCare,
+                     dil örnekleri marquee, acil güvenlik uyarısı
+- `triage.html`    — 4 adımlı semptom denetleyici: şikayet chip'leri + serbest
+                     metin, güvenlik kapısı (3 soru; "Evet" → acil uyarı),
+                     süre/şiddet/yaş, yönlendirme sonucu + randevu butonu
+- `booking.html`   — filtreli doktor listesi: uzmanlık/dil/uygunluk, 6 örnek
+                     kart (avatar, dil etiketleri, durum göstergesi, ücret)
+- `languages.html` — 113 dil tablosu: yerel yazı, İngilizce ad, "Doktor
+                     konuşur" / "Tercüman katılır" etiketi, bölge filtresi
+- `join.html`      — klinisyen başvuru formu: kişisel bilgi, lisans, iki
+                     referans, uzmanlık/şikayet chip'leri, dil çoklu seçim,
+                     uygunluk/ücret, beyanlar; kenar çubuğu: sonraki adımlar,
+                     pratisyen hakları, Türkiye sağlık tesisi notu
+- `about.html`     — misyon, değerler (uzaklık/dil/aciliyet/yük), konsültasyon
+                     akışı (5 adım), güvenlik ve gizlilik, FAQ akordeon (8 soru),
+                     iletişim formu; çapalar: #how #safety #faq #contact
+- `legal.html`     — kapsam, tıbbi lisans doğrulaması + nerede uygulayabilir +
+                     sağlık tesisi gereklilikleri, acil feragati, veri/saklama,
+                     sorumluluk, demo uyarısı; tam TOC ile
+- `feedback.html`  — ne kullandı (radio), 1–5 sayısal derecelendirme,
+                     açık metin (deneyim + iyileştirme), isteğe bağlı e-posta
+
+Tasarım kararları: Inter (300–800), mavi #0051c3 + teal #00897b, sıfır
+bağımlılık, noindex/nofollow tüm sayfalarda, her sayfada acil feragatnamesi,
+demo banner (gerçek rezervasyon/ödeme yok), Arapça için RTL desteği.
+
+"Tüm projeleri buraya taşı" durumu:
+- ✓ NAVIAR CARE pilot dokümantasyonu — naviar/care-pilot/ (önceki oturum)
+- ✓ HXI Music sitesi — hxi/ (önceki oturum)
+- ✓ NaviarCare telemedicine sitesi — naviar/care/ (bu oturum)
+- ⏳ NAVIAR Consult placeholder — bekliyor
+- ⏳ beta-art TypeScript uygulaması — beta-art/ zaten main'de mevcut
