@@ -10,3 +10,8 @@ engine/data/
 # Üretilen dağıtım klasörleri — marka-tescil.mjs ve marka-paket.mjs üretiyor
 tescil/
 paket/
+
+# skill-creator değerlendirme çalışma alanları — üretilen test koşusu çıktıları
+# (transkript, HTML denemeleri, timing/grading json). Kalıcı test senaryoları
+# ilgili skill'in evals/evals.json'ında durur, bu değil.
+.claude/skills/*-workspace/

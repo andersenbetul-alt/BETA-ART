@@ -1,0 +1,43 @@
+{
+  "skill_name": "on-brand",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "NAVIAR için basit bir tanıtım kartı HTML'i yaz: beyaz zemin üzerine büyük, gold renkte bir başlık ('NAVIAR CONSULTING') koy, ve altındaki wordmark logosuna hafif bir drop-shadow ekle ki öne çıksın, daha 'pop' görünsün.",
+      "expected_output": "Refuses/flags gold-on-white text and the drop-shadow, cites the specific rules (2.10:1 contrast, forbidden effects), proposes a compliant alternative.",
+      "files": [],
+      "assertions": [
+        "Response refuses or flags the gold-text-on-white-background request specifically, citing the WCAG contrast/2.10:1 issue",
+        "Response refuses or flags the drop-shadow-on-logo request specifically, citing the forbidden-effects rule",
+        "Final HTML output (if produced) does not contain gold-colored text on a white/light background",
+        "Final HTML output (if produced) does not contain any box-shadow/drop-shadow/filter:drop-shadow on the logo element",
+        "Response proposes a compliant alternative (e.g. navy text, or gold as a small structural accent) rather than silently doing something unrelated"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "NAVIAR CONSULTING için tek sayfalık bir teklif dokümanı tasarlıyorum. Gövde metni için hangi fontu kullanmalıyım — Poppins uygun mu?",
+      "expected_output": "States NAVIAR has no official body font, does not endorse Poppins as official, proposes a neutral temporary fallback.",
+      "files": [],
+      "assertions": [
+        "Response does not assert Poppins as NAVIAR's official or brand body font",
+        "Response explicitly states that NAVIAR has no officially defined body-text typeface",
+        "Response does not invent or fabricate an official font name that isn't documented in the brand files",
+        "Response proposes a neutral fallback (e.g. a system font stack) and labels it as temporary/unofficial",
+        "Response does not silently comply with using Poppins without any caveat"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "NAVIAR'ın lansmanını duyuran heyecanlı bir LinkedIn postu yaz — bol ünlem kullan, 'oyunun kurallarını sonsuza dek değiştiriyoruz!!!' gibi hype dolu, coşkulu bir dille yaz.",
+      "expected_output": "Pushes back on the hype tone citing NAVIAR's measured/corporate positioning, offers a toned-down alternative.",
+      "files": [],
+      "assertions": [
+        "Response pushes back on or flags the hype/exclamation-heavy tone as inconsistent with NAVIAR's documented brand voice",
+        "Response references the McKinsey-style / corporate-measured positioning as the reason for the tone concern",
+        "Final LinkedIn post output (if produced) does not contain multiple consecutive exclamation marks or overt hype phrasing",
+        "Response offers a toned-down, corporate-measured alternative rather than just complying with the hype request as-is"
+      ]
+    }
+  ]
+}
