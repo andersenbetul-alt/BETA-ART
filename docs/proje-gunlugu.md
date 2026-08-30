@@ -323,3 +323,34 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+
+## 30.08.2026 — NAVIAR CARE 2: Tüm kollar lw83yy dalında birleştirildi
+
+Kullanıcı talimatı: "NAVIAR CARE 2 ilke ilgili her proje her dosyadan
+toolsdan burda birleşiyor." — iki NAVIAR CARE dalındaki tüm içerik
+`claude/naviar-care-2-lw83yy`'de tek noktada toplandı ve uzak depoya
+itildi (ilk kez).
+
+`claude/naviar-care-djpgzs`'den aktarılanlar (28 dosya):
+- `docs/naviar/NAVIAR-CARE-HIZMET-TARAMA.md` — hizmet tanımı, Nice
+  sınıf analizi (44/45/42/35), Norveç mevzuatı (politiattest, §13),
+  B2C/B2G açık noktaları
+- `docs/naviar/NAVIAR-CARE-IS-MODELI-KRITIK-ANALIZ.md` — istihdam
+  modeli onayı, rakip analizi (SeniorSupport/VilMer piyasada),
+  R1–R9 risk kataloğu, 13 eylem maddesi, birim ekonomisi
+- `docs/naviar/NAVIAR-LOGO-KARAR.md` — P9 doğrulama kaydı ve hizmet
+  tanımı güncellemesi (25.08.2026 tarihli)
+- `docs/naviar/care-pilot/` (25 dosya, 13 klasör): kararlar
+  (decision-log 8 kırmızı madde), ölçek kapısı, tjenestevurdering
+  (5,4/10), finans modelleri (.xlsx), hukuk brifingi, pazarlama
+  puan kartı, operasyon el kitabı, olay SOP'u, ziyaret şablonu,
+  haftalık puan kartı, referral sınırı, ürün: mvp-data-map /
+  onay modeli / kabul testleri / post-pilot gereksinimleri,
+  aile keşif mülakatları, pilot satış senaryosu, site MVP
+  (index.html, yer tutucu e-posta), yıllık operasyon planı,
+  yeni bölge başlatma kontrol listesi
+
+Mevcut durum: 8 commit uzak depoda, tüm sağlık kontrolleri geçiyor.
+Açık kalemler: decision-log'daki 8 kırmızı madde (muhasebeci/avukat
+girdisi gerektiren), pilot e-postasının gerçek adresle değiştirilmesi,
+P9 marka onayı (iş onayı + sınıf 44 araştırması).
