@@ -3,6 +3,16 @@
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
+**Depo adı hakkında (26.08.2026'da netleştirildi):** Bu GitHub deposu
+`andersenbetul-alt/beta-art` adını taşıyor ama içeriği **QBLOGG**'dur — isim
+tesadüfi/tarihseldir (bkz. "Bilinen sınırlar": ağaç eski bir saat
+uygulamasından QBLOGG'a çevrildi, depo adı değişmedi). **"Beta Art" markasının
+gerçek sahibi ayrı bir proje**: Lovable'da geliştirilen, `beta-art.com` hedefli
+bir fotoğraf lisanslama arşivi. QBLOGG bu markayla ilişkili değildir ve
+kullanıcının diğer girişimlerinden (Beta Art Archive, HXI Phonk Studio, Naviar
+Consult/Care) bağımsızdır — hepsinin envanteri `docs/girisimler.md`'de,
+**bu depoda geliştirilmezler**.
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:
