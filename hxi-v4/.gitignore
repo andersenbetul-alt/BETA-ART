@@ -1,0 +1,19 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+.output
+.vinxi
+.tanstack/**
+.nitro
+
+# Environment
+*.local
+.env
+.env.*
+!.env.example
+
+# Editor
+.DS_Store
+*.sw?

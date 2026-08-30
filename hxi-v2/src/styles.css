@@ -1,0 +1,184 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--text);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--text);
+  --color-secondary-foreground: var(--text);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--surface);
+  --color-accent-foreground: var(--text);
+  --color-destructive: var(--primary);
+  --color-destructive-foreground: var(--text);
+  --color-input: var(--border);
+  --color-ring: var(--primary);
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+}
+
+/* HXI-2 — Flag Edition: Norwegian flag navy/blue color system */
+:root {
+  --bg: #00142e;
+  --surface: #002868;
+  --border: #0a3a8a;
+  --primary: #EF2B2D;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FFFFFF;
+  --text: #FFFFFF;
+  --muted: #a8bcd8;
+  --radius: 0;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html, body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--text);
+  }
+  a, button { transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease, filter .18s ease; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 2px;
+  }
+}
+
+@utility btn-flag {
+  background: var(--primary);
+  color: #FFFFFF;
+  border: 1px solid var(--primary);
+  &:hover {
+    box-shadow: inset 0 0 0 2px #FFFFFF;
+    filter: brightness(1.08);
+  }
+  &:active {
+    background: #FFFFFF;
+    color: var(--primary);
+    border-color: #FFFFFF;
+    box-shadow: none;
+  }
+}
+
+@utility btn-outline-flag {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.4);
+  &:hover {
+    border-color: var(--primary);
+    color: #FFFFFF;
+    background: var(--primary);
+  }
+  &:active {
+    background: #FFFFFF;
+    color: var(--primary);
+    border-color: #FFFFFF;
+  }
+}
+
+@utility btn-ghost-flag {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  &:hover {
+    background: var(--primary);
+    color: #FFFFFF;
+  }
+  &:active {
+    background: #FFFFFF;
+    color: var(--primary);
+    border-color: #FFFFFF;
+  }
+}
+
+@utility link-flag {
+  color: inherit;
+  &:hover { color: var(--primary); }
+  &:active { color: #FFFFFF; }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+@utility font-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Grid background */
+@utility bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239, 43, 45, 0.10) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glitch — CSS pseudo-element technique (HXI-2 approach) */
+@keyframes glitch-red {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(-3px, -1px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(1px, -2px); }
+}
+@keyframes glitch-blue {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -1px); }
+  40% { transform: translate(3px, 1px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-1px, 2px); }
+}
+@keyframes glitch-clip {
+  0%, 100% { clip-path: inset(0 0 0 0); }
+  20% { clip-path: inset(20% 0 60% 0); }
+  40% { clip-path: inset(70% 0 10% 0); }
+  60% { clip-path: inset(40% 0 40% 0); }
+  80% { clip-path: inset(10% 0 80% 0); }
+}
+.glitch { position: relative; display: inline-block; color: var(--text); }
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute; inset: 0;
+  pointer-events: none;
+}
+.glitch::before { color: var(--primary); animation: glitch-red 2.2s infinite steps(2, end); mix-blend-mode: screen; }
+.glitch::after { color: #FFFFFF; animation: glitch-blue 2.6s infinite steps(2, end); mix-blend-mode: screen; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 30s linear infinite; }
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; }
+.reveal.in { animation: reveal-up 0.7s ease-out forwards; }
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }

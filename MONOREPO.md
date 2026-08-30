@@ -16,7 +16,8 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
 | `engine/` | Curiosity Engine — içerik üretim hattı | Node.js + SQLite | Yerel çalışır |
 | `docs/` | Tüm projeler için belgeleme | Markdown | — |
 | `hxi/` | **HXI** — resmi web sitesi (nordic-pulse) | TanStack Start + React 19 + Tailwind v4 | Yayında: hxi-nordic-pulse.lovable.app |
-| `hxi-v2/` | **HXI v2** — Supabase + auth + müzik bölümü bileşenleri | TanStack Start + Supabase + shadcn/ui | Lovable: `50f62e94-6826-409e-9bcf-df1d71d8d029` |
+| `hxi-v2/` | **HXI v2** — Flag Edition, Supabase müzik kataloğu | TanStack Start + Supabase + shadcn/ui | Lovable: `50f62e94-6826-409e-9bcf-df1d71d8d029` |
+| `hxi-v4/` | **HXI v4** — Phonk Studio Pro, en eksiksiz sürüm (14 bölüm) | TanStack Start + React 19 + Tailwind v4 | Lovable: `daddeade-7b69-4b6a-bda8-e3e3acab8645` |
 
 ## Vercel projeleri (BET-ART takımı)
 
