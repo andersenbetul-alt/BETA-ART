@@ -1,0 +1,23 @@
+{
+  "skill_name": "on-brand",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "work.html sayfasına, üstte 'İlk 3 ay %50 indirim garantili!' yazan, beyaz zemin üzerine kalın aqua renkli bir başlığı olan bir promo banner ekle.",
+      "expected_output": "Renk var(--brand-2-ink)'e çevrilir (aqua metin 1.9:1 kontrastla reddedilir), 'garantili' kelimesi çıkarılır/yumuşatılır, boşluk/köşe değerleri token'lardan (var(--radius-sm) vb.) gelir, metnin data-i18n sözlüğüne girmesi gerektiği belirtilir.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Yeni içerik hattımızı duyuran kısa bir LinkedIn gönderisi yaz. 30 gün içinde trafiği 3 kat artıracağımızı garanti ediyoruz diye vurgu yap.",
+      "expected_output": "Kaynaksız '3 kat artış' rakamı ve 'garanti ediyoruz' ifadesi tamamen reddedilir, gerekçe CLAUDE.md madde 8 / uydurma yasağına bağlanır; yerine doğrulanabilir bir vaat (ör. 24 saat dönüş) kullanılır.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Altbilgideki 'İletişim' bağlantısının önüne bir e-posta emojisi ekle, ve yanındaki butona border-radius: 20px ver.",
+      "expected_output": "Emoji reddedilir, ICONS.envelope kaydındaki mevcut SVG kullanılır; border-radius: 20px reddedilir, var(--radius-sm) (10px) veya var(--radius) (16px) ile değiştirilir ve tam eşleşmediği belirtilir.",
+      "files": []
+    }
+  ]
+}
