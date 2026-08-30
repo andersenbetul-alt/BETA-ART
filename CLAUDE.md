@@ -22,6 +22,40 @@ burada yalnızca marka/kimlik tasarım çalışması yapılmış. Naviar için i
 üstlenirken bu belgedeki QBLOGG kurallarını (i18n, görünürlük kapısı vb.)
 otomatik uygulanmış saymayın; ayrı sorun.
 
+**Dördüncü girişim: Beta Art (Archive + Business)** — bu depoda YOK,
+kaynağı/deposu bilinmiyor. 30.08.2026'da kullanıcının paylaştığı iki canlı
+önizlemeden ("development preview") biliniyor: `beta-art-archive-five.vercel.app`
+(Archive'a odaklı erken sürüm) ve
+`beta-art-contact1-9jsgs8q95-andersenbetul-9635s-projects.vercel.app` (Archive
++ Business birlikte, daha yeni). İkisi de kişisel Vercel hesabında
+(`andersenbetul-9635s-projects`), muhtemelen Next.js/React (rota yapısı
+`/plates/<slug>`, `/contact`, `/privacy` vb.) — QBLOGG'un derlemesiz
+yaklaşımıyla ilgisi yok.
+
+- **Archive:** tek fotoğrafçılı, kanıt/köken temelli insan fotoğrafçılığı
+  arşivi. Yedi küratöryel seri (Work, Craft, Land and Light, The Table,
+  Rooms, The Unseen, Weather), 12 katalog "plaka"sı (BA-001…BA-012) —
+  hepsi şu an "Awaiting verified original" (gerçek orijinal henüz yok,
+  yer tutucu görsel). Lisans katmanları: Personal (kr 190'dan), Commercial
+  (kr 1.200'den), Extended (kr 4.500'den), Custom & Exclusive (talebe
+  göre) — rakamlar sitede de "draft until confirmed" ibaresiyle işaretli.
+  Yol haritası: Beta Archive (temel) → Beta Passport (köken kaydı,
+  prototip) → Beta Vault (RAW saklama) → Beta Verify (doğrulama arayüzü,
+  planlı) → Beta Rights (makine-okunur hak/AI-eğitim kısıtı, planlı).
+- **Business:** Norveç'te tamamlanmış inşaat projeleri için kapanış sonrası
+  belge/kurtarılabilirlik hizmeti ("Dokumentasjon som overlever
+  prosjektet") — FDV/proje yönetiminin yerine değil yanına; soru "bir
+  sonraki sorumlu kişi doğru orijinali sonra bulabilir mi?"
+- Ortak yöntem: Source → Context → Verify → Rights → Retrieve → Export.
+  Sitenin kendi diliyle: "No unsupported claim becomes a fact for
+  marketing" — bu depodaki "uydurma yasağı" ilkesiyle örtüşüyor, ayrı
+  ürün olsa da aynı disiplin.
+- Yasal sayfalar (privacy/license-terms/refunds/contact) var ama e-posta
+  ve konum "to be supplied" — henüz yayın öncesi durumda.
+- `beta-privat/`teki BAB/BAC/BAP ile ilişkisi kullanıcı tarafından
+  **ayrı, dördüncü bir girişim** olarak doğrulandı (30.08.2026) — yani
+  beta-privat'ın kapsamına girmiyor, karıştırılmasın.
+
 **Üçüncü girişim: Beta Art Privat** (`beta-privat/`, 30.08.2026'da açıldı).
 QBLOGG ve Naviar'ın aksine bu bir web sitesi değil — Beta Art'ın kendi iç
 işletim katmanı: nakit/MVA/forskuddsskatt (Norveç enkeltpersonforetak),
