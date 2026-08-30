@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 800" width="760" height="800" role="img" aria-label="N-AXIS FLOW — extended gold sweep, forward motion (PENDING)">
+  <title>N-AXIS FLOW — PENDING</title>
+  <!-- NAVIAR brand palette -->
+  <!-- Navy #0A1628 · Gold #D4AF37 -->
+  <!-- Variant of CORE: gold area extended across full upper-right notch creating a sweeping flow effect -->
+  <!-- Diagonal blade + upper-right sweep combined into one gold shape -->
+
+  <!-- Left stem — navy pillar -->
+  <rect x="0" y="0" width="150" height="800" fill="#0A1628"/>
+  <!-- Right stem — navy pillar (lower segment, below diagonal exit) -->
+  <path d="M610,626.97 H760 V800 H610 Z" fill="#0A1628"/>
+  <!-- Gold sweep: diagonal blade + full upper-right notch merged into one flowing gold shape -->
+  <!-- Traces: left-stem-top → right-stem-top → outer-right mid-point → diagonal lower-right → diagonal lower-left -->
+  <path d="M150,0 H760 V428.7 L610,626.97 L150,173.03 Z" fill="#D4AF37"/>
+</svg>

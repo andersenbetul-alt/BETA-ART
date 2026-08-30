@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 800" width="760" height="800" role="img" aria-label="N-CONSULT SUPER — silver N on deep navy, controlled void authority (PENDING)">
+  <title>N-CONSULT SUPER — PENDING</title>
+  <!-- NAVIAR CONSULT SUPER LOGO palette -->
+  <!-- Deep Navy #0B1D33 · Silver/Platinum #C9CDD3 -->
+  <!-- Concept: "Controlled Void Authority" — solid silver N, two navy voids create the diagonal letterform -->
+  <!-- The diagonal is the ABSENCE of silver — the void IS the mark's character -->
+  <!-- Distinctiveness: strong monochromatic contrast; distinctive silhouette at all sizes -->
+
+  <!-- Deep navy background (fills the void areas of the N) -->
+  <rect width="760" height="800" fill="#0B1D33"/>
+
+  <!-- Silver/Platinum N elements: left stem + right stem + diagonal blade as separate shapes -->
+  <!-- Left stem — solid silver pillar -->
+  <rect x="0" y="0" width="150" height="800" fill="#C9CDD3"/>
+  <!-- Right stem — solid silver pillar -->
+  <rect x="610" y="0" width="150" height="800" fill="#C9CDD3"/>
+  <!-- Silver diagonal blade — the third element creating the N crossbar -->
+  <path d="M150,0 L610,167.7 L610,626.97 L150,173.03 Z" fill="#C9CDD3"/>
+  <!-- Silver top-right notch — fills the upper-right ear of the right stem -->
+  <path d="M610,0 H760 V167.7 L610,167.7 Z" fill="#C9CDD3"/>
+</svg>

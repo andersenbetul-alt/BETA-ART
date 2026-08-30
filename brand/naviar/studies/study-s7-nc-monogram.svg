@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-label="NC Monogram — NAVIAR CONSULT interlocked NC in gold on navy (PENDING)">
+  <title>NC Monogram — PENDING</title>
+  <!-- NAVIAR CONSULT sub-brand palette -->
+  <!-- Deep Navy #0B1D33 · Gold #D4AF37 · Silver #C9CDD3 -->
+  <!-- NC monogram: N (x=0-360) and C (x=400-760) side by side in gold on deep navy -->
+  <!-- Scale factor: 360/760=0.474 (x), 400/800=0.5 (y) applied to master N geometry -->
+
+  <!-- Deep navy background -->
+  <rect width="760" height="400" fill="#0B1D33"/>
+
+  <!-- N letterform (gold, left half, scaled 0.474×0.5) -->
+  <!-- Master → Study: (150→71), (610→289), (167.7→84), (626.97→313.5), (173.03→87), (428.7→214) -->
+  <path d="M0 0 H71 L289 313.5 V84 L360 214 V400 H289 L71 87 V400 H0 Z" fill="#D4AF37"/>
+
+  <!-- C letterform (gold, right half, geometric squared form) -->
+  <!-- Outer bounds: x=400-760, y=0-400 -->
+  <!-- C opens to the right; left bar x=400-460, top/bottom bars x=460-760, y=0-60 and y=340-400 -->
+  <path d="M760,0 V60 H480 V340 H760 V400 H420 V0 Z" fill="#D4AF37"/>
+
+  <!-- Thin gold separator line between N and C -->
+  <rect x="368" y="40" width="24" height="320" fill="#D4AF37" opacity="0.3"/>
+</svg>

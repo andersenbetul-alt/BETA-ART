@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -120 760 920" width="760" height="920" role="img" aria-label="N-ASCEND — N with ascending gold spike (PENDING)">
+  <title>N-ASCEND — PENDING</title>
+  <!-- NAVIAR brand palette -->
+  <!-- Navy #0A1628 · Gold #D4AF37 -->
+  <!-- Geometry: master N in 760×800 zone; ascending spike rises from top-right of right stem into -120 headroom -->
+  <!-- Spike: tall, slim gold triangle pointing upward-right — symbolises ascent/growth/forward trajectory -->
+
+  <!-- N body — navy letterform (master geometry) -->
+  <path d="M0 0 H150 L610 626.97 V167.7 L760 428.7 V800 H610 L150 173.03 V800 H0 Z" fill="#0A1628"/>
+
+  <!-- Ascending spike — gold, rises above the right stem's top corner -->
+  <!-- Base anchored at right stem top-right (700,0) and (760,0); tip reaches (-40) headroom -->
+  <path d="M680,0 H760 L730,-110 Z" fill="#D4AF37"/>
+
+  <!-- Gold triangle accent (top-right notch, original position) — retained from master -->
+  <path d="M610,0 H760 V428.7 L610,167.7 Z" fill="#D4AF37"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-80 -60 920 1020" width="920" height="1020" role="img" aria-label="N-SHIELD — N within gold heraldic shield (PENDING)">
+  <title>N-SHIELD — PENDING</title>
+  <!-- NAVIAR brand palette -->
+  <!-- Navy #0A1628 · Gold #D4AF37 -->
+  <!-- Geometry: master N (760×800) inside a heraldic shield with gold stroke outline -->
+  <!-- Shield: flat-top pentagon with curved taper to a downward point at y=900 -->
+  <!-- Note: shield shapes are common in trademark; distinctiveness relies on N treatment -->
+
+  <!-- Background: off-white/light for visibility -->
+  <rect x="-80" y="-60" width="920" height="1020" fill="#F5F6F8"/>
+
+  <!-- Gold shield outline — flat-top, two straight sides tapering to central point -->
+  <path d="M380,900 L-50,560 V-40 H810 V560 Z" fill="none" stroke="#D4AF37" stroke-width="24" stroke-linejoin="round"/>
+
+  <!-- N body — navy letterform (master geometry) -->
+  <path d="M0 0 H150 L610 626.97 V167.7 L760 428.7 V800 H610 L150 173.03 V800 H0 Z" fill="#0A1628"/>
+  <!-- Gold triangle accent (top-right notch) -->
+  <path d="M610,0 H760 V428.7 L610,167.7 Z" fill="#D4AF37"/>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 800" width="760" height="800" role="img" aria-label="N-EDGE — geometric N with angular slash accents (PENDING)">
+  <title>N-EDGE — PENDING</title>
+  <!-- NAVIAR brand palette -->
+  <!-- Navy #0A1628 · Gold #D4AF37 -->
+  <!-- N-EDGE concept: the master N augmented with two angular gold slash accents -->
+  <!-- Slashes: thin parallelograms cutting through the upper-right and lower-left corners -->
+  <!-- Creates an industrial, precision-cut aesthetic — "Edge" = defined, sharp, deliberate -->
+
+  <!-- N body — navy letterform (master geometry) -->
+  <path d="M0 0 H150 L610 626.97 V167.7 L760 428.7 V800 H610 L150 173.03 V800 H0 Z" fill="#0A1628"/>
+  <!-- Gold triangle accent (top-right notch, master) -->
+  <path d="M610,0 H760 V428.7 L610,167.7 Z" fill="#D4AF37"/>
+
+  <!-- Upper-left slash accent — thin gold parallelogram at 45° crossing the left stem top -->
+  <!-- Creates an "edge" visual cut across the upper-left corner of the N -->
+  <path d="M0,0 H80 L0,80 Z" fill="#D4AF37"/>
+
+  <!-- Lower-right slash accent — mirrors the upper-left, crossing the bottom of the right stem -->
+  <path d="M760,800 H680 L760,720 Z" fill="#D4AF37"/>
+
+  <!-- Horizontal rule — thin gold line at 50% height, extending full width -->
+  <!-- Adds an "edge" datum line reference — the horizontal axis the N pivots around -->
+  <rect x="0" y="396" width="760" height="8" fill="#D4AF37" opacity="0.55"/>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 800" width="760" height="800" role="img" aria-label="N-UNITY — wide-stem bold N, squared proportions (PENDING)">
+  <title>N-UNITY — PENDING</title>
+  <!-- NAVIAR brand palette -->
+  <!-- Navy #0A1628 · Gold #D4AF37 -->
+  <!-- N-UNITY concept: heavier, wider stems (180px) produce a monumental mass -->
+  <!-- Wider stems change the negative-space proportions, giving an interlocked/unified mass appearance -->
+  <!-- Stems: 0-180 left, 580-760 right — tighter inner void for a more "unified" silhouette -->
+
+  <!-- N body (wide-stem variant) -->
+  <!-- Wide stem geometry:
+       Left stem: 0-180 (180px)
+       Right stem: 580-760 (180px)
+       Diagonal upper endpoints: (180,0) and (580,626.97)
+       Diagonal lower endpoints: (180,173.03~200) and (580,167.7~195)
+       Recalculated proportionally:
+         Original 150/760 stem: (150,167.7) and (610,626.97)
+         Scale to 180/760: 167.7*(180/150) = 201.24 and (580,626.97) scaled similarly
+  -->
+  <path d="M0 0 H180 L580 640 V195 L760 440 V800 H580 L180 160 V800 H0 Z" fill="#0A1628"/>
+  <!-- Wide gold accent (upper-right notch, proportionally adjusted) -->
+  <path d="M580,0 H760 V440 L580,195 Z" fill="#D4AF37"/>
+</svg>

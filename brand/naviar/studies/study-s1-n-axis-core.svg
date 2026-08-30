@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 800" width="760" height="800" role="img" aria-label="N-AXIS CORE — gold diagonal dominant, navy stems (PENDING)">
+  <title>N-AXIS CORE — PENDING</title>
+  <!-- NAVIAR brand palette -->
+  <!-- Navy #0A1628 · Gold #D4AF37 -->
+  <!-- Geometry: master viewBox 760×800, stem width 150, diagonal from (150,0)→(610,626.97) -->
+  <!-- Distinctiveness assessment: two-tone N with geometric diagonal blade — more than a plain letter -->
+  <!-- Patentstyret/EUIPO: eligible for figurative mark application; word element separate -->
+
+  <!-- Left stem — navy pillar -->
+  <rect x="0" y="0" width="150" height="800" fill="#0A1628"/>
+  <!-- Right stem — navy pillar -->
+  <rect x="610" y="0" width="150" height="800" fill="#0A1628"/>
+  <!-- Gold diagonal blade — the dominant visual axis; the mark's primary distinctive element -->
+  <!-- Quadrilateral: (150,0)→(610,167.7)→(610,626.97)→(150,173.03) -->
+  <path d="M150,0 L610,167.7 L610,626.97 L150,173.03 Z" fill="#D4AF37"/>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 800" width="760" height="800" role="img" aria-label="N-MONOLITH — heavy block N, monumental mass presence (PENDING)">
+  <title>N-MONOLITH — PENDING</title>
+  <!-- NAVIAR brand palette -->
+  <!-- Navy #0A1628 · Gold #D4AF37 · Silver #C9CDD3 -->
+  <!-- N-MONOLITH concept: maximum stem weight (220px each) for a dense, monumental presence -->
+  <!-- Very narrow void between stems creates a strong, unified block silhouette -->
+  <!-- Stem weight: 220px (vs 150px in master) — the diagonal void becomes a defining slash through solid mass -->
+  <!-- Distinctiveness: the extreme weight creates a mark that reads as a BLOCK FORM before a letter — strong -->
+
+  <!-- Light ground (off-white) to foreground the dark mass -->
+  <rect width="760" height="800" fill="#F5F6F8"/>
+
+  <!-- Monolith N body (220px stems) -->
+  <!-- Left stem: x=0-220 -->
+  <!-- Right stem: x=540-760 (220px) -->
+  <!-- Inner space: 540-220 = 320px wide (tight void) -->
+  <!-- Diagonal scaling proportional: 220/760 of height ≈ same ratio -->
+  <!-- Upper diagonal chord: from (220,0) to (540,626) crossing the tight void -->
+  <!-- Lower diagonal chord: from (220,173) to (540,168) scaled proportionally -->
+  <!--   Proportion: 167.7/800 * 800 = 167.7; 626.97 stays -->
+  <!--   But x-positions shift: (150→220) and (610→540) -->
+  <!--   167.7 and 626.97 remain the same (only stem WIDTH changed, not height) -->
+  <path d="M0 0 H220 L540 626.97 V167.7 L760 428.7 V800 H540 L220 173.03 V800 H0 Z" fill="#0A1628"/>
+
+  <!-- Minimal gold accent — very thin gold stripe highlighting the diagonal axis -->
+  <!-- Traces the upper edge of the diagonal blade only -->
+  <path d="M220,0 L540,167.7 L520,167.7 L200,0 Z" fill="#D4AF37"/>
+
+  <!-- Gold baseline rule — a thin horizontal anchor line at the bottom -->
+  <rect x="0" y="790" width="760" height="10" fill="#D4AF37"/>
+</svg>

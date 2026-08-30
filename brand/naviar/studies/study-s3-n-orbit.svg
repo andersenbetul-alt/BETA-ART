@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img" aria-label="N-ORBIT — N within gold orbital ring (PENDING)">
+  <title>N-ORBIT — PENDING</title>
+  <!-- NAVIAR brand palette -->
+  <!-- Navy #0A1628 · Gold #D4AF37 -->
+  <!-- Geometry: N scaled 0.65× (494×520) and centered in 1000×1000, with orbital ellipse ring -->
+  <!-- N offset: x+253, y+240. Scale 0.65 applied to master 760×800 coords -->
+  <!-- Orbital ring: cx=500, cy=500 — the ring frames and elevates the N mark -->
+
+  <!-- Background: deep navy for contrast -->
+  <rect width="1000" height="1000" fill="#0A1628"/>
+
+  <!-- N body (scaled, centered): navy fill — entire N letterform in one path -->
+  <path d="M253,240 H350 L649,647 V349 L747,519 V760 H649 L350,352 V760 H253 Z" fill="#C9CDD3"/>
+  <!-- Gold triangle accent (top-right notch) -->
+  <path d="M649,240 H747 V519 L649,349 Z" fill="#D4AF37"/>
+
+  <!-- Gold orbital ring — the primary "orbit" distinctive element -->
+  <ellipse cx="500" cy="505" rx="445" ry="452" fill="none" stroke="#D4AF37" stroke-width="18"/>
+</svg>
