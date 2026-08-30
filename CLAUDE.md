@@ -22,6 +22,17 @@ burada yalnızca marka/kimlik tasarım çalışması yapılmış. Naviar için i
 üstlenirken bu belgedeki QBLOGG kurallarını (i18n, görünürlük kapısı vb.)
 otomatik uygulanmış saymayın; ayrı sorun.
 
+**Üçüncü girişim: Beta Art Privat** (`beta-privat/`, 30.08.2026'da açıldı).
+QBLOGG ve Naviar'ın aksine bu bir web sitesi değil — Beta Art'ın kendi iç
+işletim katmanı: nakit/MVA/forskuddsskatt (Norveç enkeltpersonforetak),
+BAB/BAC/BAP girişimlerinin satış/sözleşme/abonelik işleri. Şu an yalnızca
+iskelet + kapsam belgesi var (`beta-privat/README.md`); gerçek otomasyon
+kullanıcıdan somut girdiler (banka/muhasebe dışa aktarım formatı, BAB/BAC/BAP
+açılımları, Stripe erişimi) gelmeden kurulmuyor — para ve vergiye dokunan bir
+sistemde tahminle ilerlemek "uydurma yasağı" ilkesini ihlal eder. Ham
+banka/muhasebe verisi, API anahtarı, vergi kimlik numarası bu klasöre asla
+commit edilmez (`.gitignore`'da işaretli).
+
 ## Teknik yapı
 
 Saf HTML + CSS + JavaScript. **Derleme adımı, çatı (framework) ve bağımlılık yok** —
