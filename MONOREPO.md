@@ -12,6 +12,7 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
 | `naviar/` | **NAVIAR CARE** — Norveç yaşlı bakım koordinasyon platformu | Next.js (v0.app kökenli) | Kaynak: `betulandersen-droid/naviar-care-1` (transfer bekleniyor) |
 | `agents/eve-slack-agent/` | **naviar-consult & hxi-music** — Eve Slack botu | TypeScript + pnpm + Claude Sonnet | Vercel: naviar-consult, hxi-music |
 | `agents/eve-chat-template/` | **Eve Chat Template** — sohbet arayüzü şablonu | Next.js + pnpm + shadcn/ui | Kaynak: `andersenbetul-alt/eve-chat-template` |
+| `cobbani/` | **Cobbani** — bağımsız marka; site geliştirme bekliyor | Marka dosyaları (SVG) | cobbani.co (planlı) |
 | `demo/` | Action Pages demoları | Saf HTML/JS | qblogg.vercel.app/demo/ |
 | `engine/` | Curiosity Engine — içerik üretim hattı | Node.js + SQLite | Yerel çalışır |
 | `docs/` | Tüm projeler için belgeleme | Markdown | — |

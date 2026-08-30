@@ -1,0 +1,8 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cobbani">
+  <!-- Kare zemin -->
+  <rect width="512" height="512" fill="#12463C"/>
+  <!-- C işareti (beyaz) -->
+  <path d="M 401.91 354.42 A 176.00 176.00 0 1 1 401.91 157.58 L 346.37 172.12 A 109.00 150.00 0 1 0 346.37 339.88 Z" fill="#F1F3F1"/>
+  <!-- Pirinç nokta -->
+  <circle cx="361.60" cy="256.00" r="26" fill="#C6A566"/>
+</svg>
