@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NAVIAR Care</title>
+<meta name="description" content="Trygg, ikke-medisinsk hverdagsstøtte i indre Oslo: sosiale besøk, følge til aktivitet og digital hjelp. NAVIAR vurderer hvert oppdrag før oppstart.">
+<meta name="robots" content="noindex, nofollow">
+<!--
+  NAVIAR Care — pilot MVP tek sayfalık site.
+  Kaynak: docs/naviar/care-pilot/ — NAVIAR Care Pilot Implementation Plan, Task 4.
+  Bilinçli tasarım kararları:
+  - Sıfır bağımlılık, sıfır derleme adımı (QBLOGG'un felsefesiyle aynı, bkz. CLAUDE.md).
+  - Fiyat YOK — decisions/decision-log.md madde 3 (MVA muamelesi) netleşmeden
+    hiçbir fiyat taahhüt edilmez.
+  - Form, backend olmadığı için mailto: taslağı üretir (QBLOGG'daki composeMail
+    deseniyle aynı yaklaşım) — gerçek bir CRM/forma geçiş ayrı bir mühendislik işi.
+  - "noindex, nofollow": bu bir pilot/MVP'dir, arama motorlarına açılmadan önce
+    hukuk/finans onayı (launch-review-brief.md) tamamlanmalı.
+  - Marka: NAVIAR ana kimliği "KOŞULLU KABUL" durumunda (docs/naviar/NAVIAR-LOGO-KARAR.md
+    P9); CARE descriptor'ı iş onayı bekliyor. Bu yüzden burada logo/marka varlığı
+    KULLANILMADI — yalnız düz tipografi. Onay gelmeden marka varlığı canlıya çıkmaz.
+  - mailto adresi "pilot@naviarcare.example" bir YER TUTUCUDUR (RFC 2606 .example
+    alanı, kasıtlı olarak çalışmaz) — gerçek alan adı ve e-posta netleşmeden
+    değiştirilmemeli. QBLOGG'daki assets/js/config.js deseninin aynısı burada da
+    kurulmalı: gerçek adres TEK bir yerden (örn. bir config.js) okunmalı.
+-->
+<style>
+  :root {
+    --navy: #0A1628;
+    --gold: #D4AF37;
+    --off-white: #F5F6F8;
+    --graphite: #1E1E1E;
+    --text: #1E1E1E;
+    --text-muted: #4a5165;
+    --border: #dde1e8;
+    --danger-bg: #fff4f0;
+    --danger-border: #e0a98f;
+    --radius: 12px;
+    --maxw: 760px;
+    --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+            'Noto Sans', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  }
+  body {
+    margin: 0; font-family: var(--font); color: var(--text); background: #fff;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: 22px; }
+  header.site {
+    background: var(--navy); color: var(--off-white); padding-block: 28px;
+  }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .brand { font-weight: 700; font-size: 1.2rem; letter-spacing: .02em; }
+  .brand .care { color: var(--gold); font-weight: 500; }
+  nav.site a { color: var(--off-white); text-decoration: none; margin-inline-start: 18px; font-size: .92rem; }
+  nav.site a:hover, nav.site a:focus-visible { text-decoration: underline; }
+  .skip {
+    position: absolute; inset-inline-start: -9999px; top: 0; z-index: 99;
+    background: var(--gold); color: var(--navy); padding: 10px 16px; border-radius: 0 0 8px 0;
+  }
+  .skip:focus { inset-inline-start: 0; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  .hero { padding-block: 56px 40px; background: var(--off-white); }
+  .hero h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); line-height: 1.2; margin: 0 0 .5em; color: var(--navy); }
+  .hero p.lede { font-size: 1.1rem; color: var(--text-muted); max-width: 60ch; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+  .btn {
+    display: inline-block; padding: 13px 24px; border-radius: 999px; font-weight: 600;
+    text-decoration: none; font-size: .98rem; border: 1px solid transparent; cursor: pointer;
+  }
+  .btn-primary { background: var(--navy); color: #fff; }
+  .btn-primary:hover, .btn-primary:focus-visible { background: #0d1e38; }
+  .btn-secondary { background: transparent; color: var(--navy); border-color: var(--navy); }
+
+  section { padding-block: 40px; border-top: 1px solid var(--border); }
+  h2 { font-size: 1.4rem; color: var(--navy); margin-top: 0; }
+  .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px,100%),1fr)); gap: 18px; margin-top: 18px; }
+  .who-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+  .who-card h3 { margin: 0 0 8px; font-size: 1.02rem; color: var(--navy); }
+  .who-card p { margin: 0; color: var(--text-muted); font-size: .95rem; }
+
+  table.services { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: .95rem; }
+  table.services th, table.services td { text-align: start; padding: 12px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.services th { color: var(--navy); font-size: .85rem; text-transform: uppercase; letter-spacing: .03em; }
+
+  .exclusions {
+    background: var(--danger-bg); border: 1px solid var(--danger-border);
+    border-radius: var(--radius); padding: 20px 22px; margin-top: 22px;
+  }
+  .exclusions h3 { margin-top: 0; color: #7a3a1c; font-size: 1rem; }
+  .exclusions ul { margin: 8px 0 0; padding-inline-start: 20px; color: #5c2e15; }
+
+  .area-badge {
+    display: inline-block; background: var(--navy); color: #fff; border-radius: 999px;
+    padding: 4px 14px; font-size: .85rem; margin: 4px 6px 0 0;
+  }
+
+  form.request { margin-top: 18px; display: grid; gap: 14px; max-width: 520px; }
+  form.request label { font-weight: 600; font-size: .92rem; display: block; margin-bottom: 4px; }
+  form.request input, form.request select, form.request textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+    font: inherit; font-size: .95rem;
+  }
+  .field-warning {
+    background: #fff9e6; border: 1px solid #e8c766; border-radius: 8px; padding: 10px 14px;
+    font-size: .88rem; color: #6b5100;
+  }
+
+  .emergency {
+    background: var(--navy); color: var(--off-white); border-radius: var(--radius);
+    padding: 22px; margin-top: 18px;
+  }
+  .emergency strong { color: var(--gold); }
+
+  footer.site { background: var(--navy); color: var(--off-white); padding-block: 32px; margin-top: 20px; }
+  footer.site .wrap { font-size: .85rem; color: #c7cede; }
+  footer.site a { color: var(--off-white); }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Hopp til hovedinnhold / Skip to main content</a>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">NAVIAR <span class="care">Care</span></div>
+    <nav class="site" aria-label="Hovednavigasjon">
+      <a href="#tjenester">Tjenester</a>
+      <a href="#hvem">Hvem er dette for</a>
+      <a href="#kontakt">Be om en samtale</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Når du ikke selv kan være der, organiserer NAVIAR Care trygg,
+          ikke-medisinsk hverdagsstøtte — med samtykke og en informert
+          pårørende.</h1>
+      <p class="lede">
+        Sosiale besøk, følge til aktivitet og digital hverdagshjelp for
+        personer som bor selvstendig hjemme i indre Oslo. Hvert oppdrag
+        vurderes av en koordinator før oppstart — ingen automatisk matching.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#kontakt">Be om en samtale</a>
+        <a class="btn btn-secondary" href="#tjenester">Se tjenestene</a>
+      </div>
+      <p style="margin-top:18px;font-size:.85rem;color:var(--text-muted)">
+        <em>English summary: NAVIAR Care organises safe, non-medical
+        everyday support — social visits, activity accompaniment and
+        digital help — for people living independently in inner Oslo.
+        Every request is human-screened before any visit is booked.</em>
+      </p>
+    </div>
+  </section>
+
+  <section id="hvem">
+    <div class="wrap">
+      <h2>Hvem er dette for</h2>
+      <div class="who-grid">
+        <div class="who-card">
+          <h3>Tjenestemottaker</h3>
+          <p>Bor selvstendig hjemme, ønsker regelmessig sosial kontakt eller
+             følge — ikke klinisk pleie. Samtykker selv til tjenesten og til
+             hva som eventuelt deles med familie.</p>
+        </div>
+        <div class="who-card">
+          <h3>Pårørende</h3>
+          <p>Voksent barn eller nær pårørende, ofte bosatt et annet sted
+             eller tidsbegrenset, som ønsker å vite at det finnes pålitelig
+             støtte når de selv ikke kan være til stede.</p>
+        </div>
+        <div class="who-card">
+          <h3>Ikke for</h3>
+          <p>Personer med behov for personlig stell, medisinhåndtering,
+             hyppig krisestøtte eller medisinsk overvåkning. Disse behovene
+             henvises til kommunale, medisinske eller akutte tjenester.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tjenester">
+    <div class="wrap">
+      <h2>De tre tjenestene</h2>
+      <p>Hvert besøk er minimum 90 minutter og booket på forhånd — ingen
+         umiddelbar «finn en hjelper nå»-booking i piloten.</p>
+      <table class="services">
+        <thead>
+          <tr><th>Tjeneste</th><th>Eksempler</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Trygt besøk</strong></td>
+            <td>Samtale, kaffe/te hjemme, en delt hobby, sjekk av praktisk
+                komfort.</td>
+          </tr>
+          <tr>
+            <td><strong>Følge til aktivitet</strong></td>
+            <td>Gåtur, besøk på kafé/bibliotek/kulturarrangement langs en
+                avtalt rute.</td>
+          </tr>
+          <tr>
+            <td><strong>Digital hverdagsstøtte</strong></td>
+            <td>Videosamtaler, telefoninnstillinger, kalender, offentlig
+                informasjon og ikke-finansielle apper.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="exclusions">
+        <h3>NAVIAR Care tilbyr IKKE</h3>
+        <ul>
+          <li>Medisinsk assistanse, personlig stell eller medisinhåndtering</li>
+          <li>Løfting/forflytning eller kjøring/transport av klienten</li>
+          <li>Rengjøring, matinnkjøp eller håndtering av betaling</li>
+          <li>BankID, bankhjelp eller juridisk rådgivning</li>
+          <li>Akuttrespons — ved akutt behov ring <strong>113</strong>;
+              medisinsk behov utenom kontortid: <strong>116 117</strong></li>
+        </ul>
+      </div>
+
+      <p style="margin-top:18px">
+        Oslo kommune tilbyr allerede behovsprøvd praktisk bistand/hjemmehjelp.
+        NAVIAR Care er et valgfritt, privat supplement — ikke en erstatning.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Dekningsområde (pilot)</h2>
+      <p>Kun disse fire bydelene i indre Oslo, i denne fasen:</p>
+      <div>
+        <span class="area-badge">Grünerløkka</span>
+        <span class="area-badge">Sagene</span>
+        <span class="area-badge">St. Hanshaugen</span>
+        <span class="area-badge">Frogner</span>
+      </div>
+      <p style="margin-top:14px;color:var(--text-muted);font-size:.92rem">
+        Forespørsler utenfor dette området får et vennlig svar med
+        ventelisteinformasjon eller henvisning — ikke et unntak fra
+        avgrensningen.
+      </p>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap">
+      <h2>Be om en samtale</h2>
+      <p>Dette er ikke en direkte booking. En koordinator ringer deg
+         tilbake for en kort behovsavklaring før noe avtales.</p>
+
+      <p class="field-warning">
+        Vennligst ikke oppgi medisinske opplysninger, bankopplysninger
+        eller identifikasjonsnumre i dette skjemaet.
+      </p>
+
+      <!--
+        Backend yok — mailto: taslağı üretir (QBLOGG'daki composeMail deseniyle
+        aynı yaklaşım, bkz. assets/js/app.js). Gerçek CRM'e geçiş ayrı bir görev.
+      -->
+      <form class="request" id="requestForm" onsubmit="return sendRequest(event)">
+        <div>
+          <label for="navn">Navn</label>
+          <input type="text" id="navn" name="navn" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="epost">E-post</label>
+          <input type="email" id="epost" name="epost" autocomplete="email" required>
+        </div>
+        <div>
+          <label for="telefon">Telefon</label>
+          <input type="tel" id="telefon" name="telefon" autocomplete="tel" required>
+        </div>
+        <div>
+          <label for="postnummer">Postnummer (pilotområde)</label>
+          <input type="text" id="postnummer" name="postnummer" inputmode="numeric" pattern="[0-9]{4}" required>
+        </div>
+        <div>
+          <label for="tjeneste">Ønsket tjeneste</label>
+          <select id="tjeneste" name="tjeneste">
+            <option>Trygt besøk</option>
+            <option>Følge til aktivitet</option>
+            <option>Digital hverdagsstøtte</option>
+            <option>Usikker — vil diskutere med koordinator</option>
+          </select>
+        </div>
+        <div>
+          <label for="relasjon">Din relasjon til tjenestemottaker</label>
+          <input type="text" id="relasjon" name="relasjon" placeholder="f.eks. datter, sønn, meg selv">
+        </div>
+        <div>
+          <label for="melding">Kort beskrivelse (valgfritt, ikke medisinsk)</label>
+          <textarea id="melding" name="melding" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send forespørsel</button>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="emergency">
+        <p style="margin:0 0 8px"><strong>Akutt nødsituasjon:</strong> ring 113.</p>
+        <p style="margin:0">Medisinsk behov utenom kontortid: ring 116 117.
+           NAVIAR Care stiller ikke diagnoser og er ikke primær nødkontakt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Personvern og tilgjengelighet</h2>
+      <p style="color:var(--text-muted);font-size:.92rem">
+        NAVIAR Care samler inn kun de opplysningene som er nødvendige for å
+        vurdere og koordinere en forespørsel (se
+        <code>docs/naviar/care-pilot/product/mvp-data-map.md</code> for full
+        oversikt). Ingen automatisk beslutning tas uten menneskelig
+        vurdering. Samtykke til familieoppdateringer kan trekkes tilbake når
+        som helst av tjenestemottakeren.
+      </p>
+      <p style="color:var(--text-muted);font-size:.92rem">
+        Denne siden er bygget med semantisk HTML, synlig fokusmarkering og
+        respekterer <code>prefers-reduced-motion</code>. Tilbakemelding om
+        tilgjengelighet mottas gjerne på kontaktskjemaet over.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>© 2026 NAVIAR Care — pilotfase, indre Oslo. Dette er en MVP under
+       juridisk og økonomisk kvalitetssikring; ingen priser er publisert
+       før dette er bekreftet.</p>
+  </div>
+</footer>
+
+<script>
+  // Sıfır bağımlılık: form gönderimi mailto: taslağı açar (backend yok).
+  // Gerçek CRM entegrasyonu Task 4'ün ötesinde ayrı bir mühendislik görevi.
+  function sendRequest(ev) {
+    ev.preventDefault();
+    var f = document.getElementById('requestForm');
+    var d = new FormData(f);
+    var subject = 'NAVIAR Care - ny foresporsel';
+    var body = [
+      'Navn: ' + d.get('navn'),
+      'E-post: ' + d.get('epost'),
+      'Telefon: ' + d.get('telefon'),
+      'Postnummer: ' + d.get('postnummer'),
+      'Onsket tjeneste: ' + d.get('tjeneste'),
+      'Relasjon: ' + d.get('relasjon'),
+      'Melding: ' + d.get('melding')
+    ].join('\n');
+    window.location.href = 'mailto:pilot@naviarcare.example?subject=' +
+      encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    return false;
+  }
+</script>
+</body>
+</html>
