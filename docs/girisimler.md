@@ -270,7 +270,7 @@ uygulaması olarak dosyalıyor, Business ile ilgisi yok.
 | GitHub | `betulandersen-droid` | `eve-slack-agent` (naviar-consult + hxi-music'in bağlı olduğu repo), `naviar-care-1` |
 | Vercel | takım `bet-art` (`team_xNtowH7U0jXQrI53DFJFzH2o`) | qblogg, naviar-consult, naviar-care-1, hxi-music |
 | Vercel | `andersenbetul-9635s-projects` (kişisel, bu oturumdan **erişilemiyor**) | `beta-art-contact1` (muhtemelen), `beta-id-verification` (muhtemelen) |
-| Vercel | takım/hesap `project-hxi` (bu oturumdan **erişilemiyor**, 30.08.2026 doğrulandı: `get_project` iki proje için de `403 Forbidden`) | **iki proje kesinleşti:** `beta-art-archive` (muhtemelen BAP-01 Private/`beta-art.com` dağıtımı) ve **`beta-art-business`** (muhtemelen BAB-02 — kullanıcı bu projenin `/settings/git` sayfasını paylaştı, yani bir GitHub reposuna bağlı; hangisi olduğu bu oturumdan görülemiyor) |
+| Vercel | takım/hesap `project-hxi` (bu oturumdan **erişilemiyor**, 30.08.2026 doğrulandı: `get_project` üç proje için de `403 Forbidden`) | **üç proje kesinleşti:** `beta-art-archive` (muhtemelen BAP-01 Private/`beta-art.com`), `beta-art-business` (muhtemelen BAB-02), `beta-art` (muhtemelen ana/gateway site) — üçü de `/settings/git`'e sahip yani GitHub reposuna bağlı, hangi repo(lar) olduğu bu oturumdan görülemiyor |
 | Lovable | çalışma alanı "Betül's Lovable" (`92fe40bbf478c5479f16`) | human-lens-archive (Beta Art Archive, yayında), HXI Phonk Studio ×4 deneme, Hjemmehjelp Norge |
 | Lovable | çalışma alanı "HXI" (`workspace_01m0ysmsg1feht8t2v7s4h0f69`) | 0 proje — boş |
 
