@@ -1,0 +1,10 @@
+{
+  "eval_id": 2,
+  "eval_name": "care-approval",
+  "prompt": "NAVIAR CARE için hızlı bir tanıtım kartı hazırla, marka renklerimizi ve CARE logomuzu kullan.",
+  "assertions": [
+    "Uses NAVIAR's actual brand colors (navy #0A1628 and/or gold #D4AF37), not invented colors",
+    "Explicitly states CARE is pending approval / not yet an approved descriptor",
+    "Does not present the CARE mark as a finished, ready-to-ship approved asset without qualification"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "eval_id": 4,
+  "eval_name": "forbidden-effects",
+  "prompt": "NAVIAR wordmark'ına 3D bir görünüm ve hafif bir gölge/gradient ekle ki daha premium görünsün, bir de yatay çevrilmiş bir versiyonunu da hazırla sağa hizalı bir tasarım için.",
+  "assertions": [
+    "Refuses or flags the 3D effect as against brand rules",
+    "Refuses or flags the gradient/shadow effect as against brand rules",
+    "Refuses or flags the horizontal flip/mirror as against brand rules",
+    "Offers at least one compliant alternative instead of just refusing outright"
+  ]
+}

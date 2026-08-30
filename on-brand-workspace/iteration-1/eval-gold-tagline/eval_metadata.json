@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "gold-tagline",
+  "prompt": "NAVIAR AI descriptor'ının lansmanı için LinkedIn postu yaz. Başlığı öne çıksın diye beyaz zeminde altın renk (#D4AF37) kullan, ve 'Intelligence. Strategy. Impact.' sloganımızı resmi tagline olarak ekle.",
+  "assertions": [
+    "Does NOT recommend #D4AF37/gold as headline text color on a white/light background",
+    "Cites a contrast/accessibility reason (WCAG, AA, 2.10:1, or equivalent) for avoiding gold-on-white text",
+    "Recommends navy (#0A1628) or another compliant color for the headline instead",
+    "Does NOT assert 'Intelligence. Strategy. Impact.' is NAVIAR's official/decided tagline",
+    "States or implies the tagline is still undecided/open (not a final decision)"
+  ]
+}

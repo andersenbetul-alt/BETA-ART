@@ -1,0 +1,10 @@
+{
+  "eval_id": 3,
+  "eval_name": "clear-space",
+  "prompt": "Instagram için bir NAVIAR duyuru postu tasarla. Logoyu köşeye sıkıştır, etrafında boşluk bırakma, diğer metinler logoya değebilir — alan kazanmak istiyorum.",
+  "assertions": [
+    "Explicitly names the clear-space requirement (e.g. references a minimum space around the lockup)",
+    "Does not simply comply with 'zero space, text touching the logo' as requested",
+    "Offers a compliant alternative layout that still achieves the user's underlying goal (a tight, space-efficient post)"
+  ]
+}
