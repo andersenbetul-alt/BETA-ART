@@ -455,3 +455,34 @@ tartışılan "insanları birbirine bağlayan platform" (Meta UGC/sosyal grafik
 modeli) fikri bilinçli olarak uygulanmadı — QBLOGG'da hesap/UGC/moderasyon
 altyapısı yok, bu ayrı ve çok daha büyük bir kapı; kullanıcının asıl vardığı
 sonucun "gelişim/outcome metriği" olduğu değerlendirildi.
+
+## 30.08.2026 — "BUTUN PROJELERI BURAYA TASI": envanter çıkarıldı, gerçek gerilim ortaya çıktı
+
+Kullanıcı "her proje/dosya/tool burada birleşiyor" tespitini yaptı, ardından
+açık talimat verdi: **"BUTUN PROJELERI BURAYA TASI."** AskUserQuestion ile
+kapsam ("hangi repolar 'hepsi'?") ve yöntem ("taşımak teknik olarak ne
+demek?") netleştirildi — kullanıcı ikisine de **"HEPSI"** yanıtını verdi.
+
+Körlemesine bir kod/geçmiş birleştirmesi yapmak yerine (geri döndürülemez bir
+işlem, uzlaştırma planı olmadan yapılmaz) önce gerçek envanter çıkarıldı:
+beş repo (`beta-art-archive`, `QBLOGG`, `qb`, `eve-slack-agent`,
+`eve-chat-template`) `andersenbetul-alt` hesabından klonlandı, `HEAD`
+doğrulandı, içerikleri gerçekten okundu. Sonuç `docs/proje-envanteri.md`.
+
+Bulgular: `QBLOGG` ve `qb` tamamen boş (taşınacak içerik yok);
+`eve-slack-agent`/`eve-chat-template` Vercel'in stok "eve" şablonları,
+hiç özelleştirilmemiş. Asıl bulgu `beta-art-archive`: bu **QBLOGG değil**,
+tamamen ayrı bir marka ve iş (fotoğraf lisanslama + inşaat dokümantasyon
+arşivi, Vite/React/Supabase/Lovable). Kendi yönetişim belgesi
+(`BETA_ART_MASTER.md`, kullanıcının 25.08.2026'da onayladığı) açıkça
+"ikinci bir Beta Art sitesi yaratma" diyor — yani "her şeyi buraya taşı"
+talimatı, kullanıcının kendi onayladığı başka bir kararla doğrudan çarpışıyor.
+Bu bir teknik engel değil, iki talimat arasındaki gerçek çelişki; körlemesine
+biri diğerini ezmeden kullanıcıya üç somut karar soruldu (belge sonunda).
+
+NAVIAR Care ve `betulandersen-droid` hesabı altındaki her şey hâlâ bu
+oturumdan erişilemez durumda (farklı GitHub hesabı, bağlanmadı) — "HEPSI"
+cevabı bunu kapsasa da teknik olarak henüz mümkün değil.
+
+Gerçek dosya/geçmiş taşıma işlemi, yukarıdaki üç karar netleşmeden
+başlatılmadı.
