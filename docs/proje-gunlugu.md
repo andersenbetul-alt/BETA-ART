@@ -323,3 +323,21 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+
+## 30.08.2026 (Vercel proje sağlık kontrolü) — üretim adresi yanlış belgelenmiş bulundu
+
+`/mcp__Vercel__project_health_check` ile `qblogg` projesi Vercel API'den
+doğrudan sorgulandı: `get_project` ve `get_deployment` ikisi de gerçek
+üretim adresinin **`qblogg-smoky.vercel.app`** olduğunu gösterdi —
+CLAUDE.md'nin (ve `docs/action-pages-teklif.md`, `docs/konsept.md`'nin)
+"qblogg.vercel.app" dediği adres **yanlış/eski**. Ne zaman değiştiği
+bilinmiyor (23.08 kaydı "qblogg.vercel.app" diyordu, muhtemelen 23.08
+sonrası proje tekrar yeniden kuruldu ve Vercel adı otomatik farklılaştırdı
+— slug çakışması ihtimali, doğrulanmadı). CLAUDE.md ve müşteriye giden
+`action-pages-teklif.md`'deki canlı link düzeltildi. Ayrıca doğrulandı:
+build tek dağıtım (~4 saniye, hatasız), Deployment Protection kapalı,
+son 7 günde runtime hatası yok, **Web Analytics bu projede etkin değil**
+(trafik görünürlüğü sıfır — istenirse Vercel panelinden açılabilir).
+`docs/konsept.md`'deki eski "qblogg-bet-art.vercel.app" referansı
+düzeltilmedi — o belge zaten tarihsel/plan dokümanı, güncel durum iddiası
+taşımıyor.

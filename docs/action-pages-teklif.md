@@ -61,11 +61,11 @@ müşteri pilot ücretini karşılar, CV konusu demo ile birebir örtüşür.
 
 ## Sizin adımlarınız (adım adım)
 
-1. **Demoyu görün:** `demo/cv-action-page.html` dosyasını tarayıcıda açın (yayında: https://qblogg.vercel.app/demo/cv-action-page.html)
+1. **Demoyu görün:** `demo/cv-action-page.html` dosyasını tarayıcıda açın (yayında: https://qblogg-smoky.vercel.app/demo/cv-action-page.html)
    (çift tıklamak yeter — sunucu gerekmez). Soruları cevaplayıp sonucu
    görün; sonuç metinlerinde değiştirmek istediğinizi bana söyleyin.
 2. **Demo adresi:** görüşmelerde link paylaşmak için demoyu yayına
-   alalım — onay verirseniz qblogg.vercel.app altına eklerim (main'e
+   alalım — onay verirseniz qblogg-smoky.vercel.app altına eklerim (main'e
    push onayınızla) ya da ayrı bir demo adresi açarım.
 3. **10 aday listesi:** LinkedIn'de arama: "karriereveileder",
    "karrierecoach", "jobbsøkerhjelp" (Norge). Google: "karriereveiledning

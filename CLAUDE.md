@@ -262,7 +262,14 @@ açık talebi.
   --allow-unrelated-histories` merge'ü ile eski saat uygulamasının geçmişi
   korunarak ağaç QBLOGG yapıldı. Geliştirme dalı `claude/qblogg-web-sayfasi-upcarm`.
 - **Site Vercel'de yayında (22.08.2026).** Proje `qblogg`, takım "BET - ART"
-  (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg.vercel.app (23.08 gecesi proje panelde silinmişti; aynı adla yeniden kuruldu — proje id değişti, eski qblogg-flame/qblogg-bet-art adresleri geçersiz).
+  (`team_xNtowH7U0jXQrI53DFJFzH2o`). **Gerçek üretim adresi
+  `qblogg-smoky.vercel.app`** (30.08.2026, Vercel API'den `get_project` +
+  `get_deployment` ile doğrudan doğrulandı — `qblogg.vercel.app` değil;
+  bu depodaki birkaç eski belge hâlâ `qblogg.vercel.app`/`qblogg-bet-art.
+  vercel.app` yazıyor, bunlar yanlış/eski, güncellenmeli). Proje 23.08
+  gecesi panelde silinmiş, aynı adla yeniden kurulmuştu (proje id
+  değişti); Vercel bu kez adı `qblogg-smoky` olarak farklılaştırdı —
+  neden farklılaştığı (slug çakışması mı, otomatik ek mi) doğrulanmadı.
   Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir (depodaki
   dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`)
   klonlayıp 6 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
