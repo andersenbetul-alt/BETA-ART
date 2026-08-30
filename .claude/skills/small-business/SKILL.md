@@ -55,27 +55,41 @@ muhasebeci ile) verir. Herhangi bir vergi rakamı sunulurken "örnek/tahmin"
 olduğu açıkça yazılır (bkz. proje CLAUDE.md kural 8 — rakamlar örnek
 olarak işaretlenir).
 
-## 2. Ventürler: BAB, BAC, BAP
+## 2. Ventürler: BAP-01, BAG-03, BAB-02
 
-**Düzeltme (26.08.2026):** Bu bölümdeki önceki eşleme (BAB=B2B paketleri,
-BAC=içerik aboneliği, BAP=baskı ürünü, `docs/beta-art-konsept.md`'e
-dayanarak) **yanlıştı** — `andersenbetul-alt/beta-art-archive`
-deposundaki `BETA_ART_MASTER.md` (25-26.08.2026, kullanıcının kendi asıl
-karar belgesi) okunduktan sonra düzeltildi:
+**İkinci düzeltme (30.08.2026):** 26.08'deki eşleme (BAB=Beta Art
+Business doğrulanmış, BAC/BAP teyit gerekiyor) kısmen bayatladı —
+kullanıcının aynı gün yüklediği `BETA-ART-PROJECT-CODES.md` ve
+`PROJECT-MANIFEST.md` (bkz. `beta-art/source-review/intake-2026-08-30/`)
+daha yeni ve daha ayrıntılı bir kod seti veriyor: **üç proje, üç kod**,
+"BAC" hiçbirinde geçmiyor:
 
-| Kod | Doğrulanmış/güncel karşılığı | Dayanak |
-|---|---|---|
-| BAB | **Beta Art Business** — inşaat sektörüne proje kapanışı dokümantasyon arşivi hizmeti ("Completed Project Rescue / Project Closeout Archive"). `BAB01_035 · BETA ART BUSINESS — MASTER BUSINESS MODEL v1.0` (25.08.2026) Phase 1 ticari karar seti | `beta-art-archive/BETA_ART_MASTER.md` §3, §8 — [V] doğrulandı |
-| BAC | **TEYİT GEREKİYOR** — master belgede adı geçmiyor; "subscription clients" ipucuyla muhtemelen arşiv/retrieval hizmetinin tekrarlayan/abonelik katmanı (§6 "Continuity/Retrieval" ile ilişkili olabilir) | [D] — doğrulanmadı |
-| BAP | **TEYİT GEREKİYOR** — "editions" ipucuyla muhtemelen fotoğraf/Archive tarafının lisanslı baskı/edisyon satışı (§4.09 "Series/Editorial") | [D] — doğrulanmadı |
+| Kod | Proje | Alt yol | Dayanak |
+|---|---|---|---|
+| **BAP-01** | Beta Art **Privat** — doğrulanmış insan fotoğrafı, edisyon, doğrudan lisans | `/privat/` (veya `beta-art-privat/`) | `BETA-ART-PROJECT-CODES.md` — [V] |
+| **BAG-03** | Beta Art **Galeri**/Utstilling Event — sanatçı, eser, sergi, açılış, kültürel etkinlik | `/events/` (veya `beta-art-gallery-event/`) | Aynı belge — [V] |
+| **BAB-02** | Beta Art **Business** — inşaat sektörü proje-kapanışı dokümantasyonu (Completed Project Rescue) | `/business/` (veya `beta-art-business/`) | Aynı belge; `BETA_ART_MASTER.md`'deki BAB tanımıyla tutarlı — [V] |
 
-**Önemli çelişki notu:** Bu depodaki (`BETA-ART`) `docs/beta-art-konsept.md`
-— "AI destekli görsel tasarım stüdyosu" — `BETA_ART_MASTER.md`'de açıkça
-**reddedilen** bir yöndür ("conflicting AI creative-studio positioning").
-Kullanıcı kararıyla (26.08.2026) asıl yön `beta-art-archive`'daki
-fotoğraf-arşiv + inşaat-dokümantasyon modelidir; bu beceri artık o modele
-göre çalışmalı, `beta-art-konsept.md`'deki paket adlarına (Business Mini,
-Content Partner vb.) referans vermemeli.
+**"BAC" hâlâ çözülmedi.** Orijinal beceri tanımındaki "BAC subscription
+clients" hiçbir kaynakta (ne `BETA_ART_MASTER.md`'de ne bu son üç
+belgede) karşılık bulmuyor. İki ihtimal: (a) eski/terk edilmiş bir kod,
+(b) "BAG"in yanlış yazımı. Kullanıcıya sormadan hiçbirini varsayma.
+
+**Yapısal çelişki (çözülmedi, kullanıcıya soruldu):** 26.08'de
+`beta-art-archive`'ın tamamı (React/Vite/Supabase, tek uygulama) bu
+depoya `beta-art/` altına göçürüldü. Ama 30.08 belgeleri (`PROJECT-MANIFEST.md`)
+farklı bir hedef yapı tarif ediyor: **üç ayrı proje klasörü**
+(`beta-art-privat/`, `beta-art-gallery-event/`, `beta-art-business/`),
+ve o React/Vite/Supabase kodu bunların yalnızca `beta-art-privat/app-reference/`
+altında bir **referans** olarak yer alması gerektiğini söylüyor — üretim
+kodu olarak değil. Bu iki yapı şu an **uyuşmuyor**; hangisinin geçerli
+olduğu netleşene kadar bu beceri her iki olası klasör adını da (`beta-art/`
+eski göç ile `beta-art-privat/` vb. yeni model) kullanıcıya sorarak
+netleştirmeli, birini varsaymamalı.
+
+**Not:** `docs/beta-art-konsept.md`'deki "AI destekli görsel tasarım
+stüdyosu" yönü hâlâ reddedilmiş durumda — bu değişmedi, 30.08 belgeleri
+de onu doğrulamıyor.
 
 ## 3. Veri kaynakları
 
