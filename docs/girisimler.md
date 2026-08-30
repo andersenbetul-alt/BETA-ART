@@ -46,11 +46,54 @@ bir şey varsa "doğrulanamadı" diye açıkça yazılıdır.
   `beta-art.com` (proje açıklamasında canonical olarak geçiyor, alan adı
   bağlantısı doğrulanmadı).
 - **Not:** "Beta Art" adının gerçek sahibi bu proje.
-- **Daha güncel bir sürüm var — `beta-art-contact1` (kullanıcı sayfa
-  içeriğini doğrudan yapıştırdı, 26.08.2026):** Bu, yukarıdaki
-  `human-lens-archive` Lovable projesinden **daha olgun, farklı bir
-  konsept**. Marka artık **"Beta Art · Archive + Business"** — tek marka,
-  iki giriş noktası:
+- **Çoklu-mülk yapısı doğrulandı (kullanıcı gerçek kaynak dosyaları
+  yükledi, 26.08.2026 — README.md, CONTENTMAP.md, ~10 HTML/JS dosyası):**
+  Beta Art artık üç ayrı "mülke" (property) bölünmüş, `index.html`'deki
+  üst gezinme bunu doğruluyor: **Privat** (`/privat/`) · **Galleri &
+  Event** (`/events/`) · **Business** (`/business/`, `business.beta-art.com`).
+  Bu depoya yüklenen dosyalar yalnızca **Business** mülküne ait.
+  `README.md`: "Private archive plates and Gallery/Event exhibition
+  content remain in their own projects" — yani `human-lens-archive`
+  (yukarıda) muhtemelen **Privat** mülküne karşılık geliyor, Business
+  ayrı bir kod tabanı.
+- **Business mülkünde İKİ ÇELİŞEN SÜRÜM aynı anda yüklendi — kullanıcıya
+  sorulmalı, tahmin edilmedi:**
+  1. **Genel dijital ajans sürümü** (İngilizce, `styles.css` + Fraunces/
+     Inter/JetBrains Mono, mühür-SVG logo, üst menü Private/Business/
+     Find your service/Industries/Pricing/AI Studio/FAQ) — dosyalar:
+     `index.html` (eski), `blog.html`, `ai-staff.html`, `s-seo.html`,
+     `b-einvoicing-2027.html`, `b-cv-ats.html`, `b-what-to-automate.html`,
+     `quote.html`, `contact.html`, `dashboard.html`, `resources.html`,
+     `i18n.js`, `blog.js`. Hizmetler: web sitesi, SEO, CV/iş başvurusu,
+     AI otomasyonu, süreç otomasyonu. Fiyatlar NOK. Yazar: Betül Öner.
+     Çok olgun, yayına hazır görünüyor (gerçek Norveç e-fatura mevzuatı,
+     düşünülmüş "AI Staff" sınır belgesi).
+  2. **İnşaat-öncelikli proje arşivi sürümü** (Norveççe, satır içi stil,
+     koyu/minimal tasarım) — dosya: yeni `index.html`. Başlık: "Prosjektet
+     avsluttes. Dokumentasjonen skal ikke." (Proje bitiyor. Dokümantasyon
+     bitmemeli.) "Documentation that survives handover", sertifikalı
+     fotoğrafçılar, pilot: platform inşa edilmeden önce üç ödeyen arşiv
+     müşterisi.
+  - **`CONTENTMAP.md` bu çelişkiyi kendi içinde çözüyor** — açıkça yazıyor:
+    *"Do not treat broad marketplace, generic stock categories, or the
+    **old consumer licensing platform** as current scope"* ve *"the
+    **older platform**/public-clean files are retained as **references
+    only** and are **not** the Business product source of truth."*
+    Yani `CONTENTMAP.md`'nin kendi tanımına göre **(1) eski/referans,
+    (2) güncel kapsam** — ve bu, önceki `beta-art-contact1` bulgumla
+    ("Dokumentasjon som overlever prosjektet", inşaat odaklı) birebir
+    örtüşüyor. **Ama bu çıkarım bu oturumda doğrulanmadı, kullanıcıya
+    sorulması gerekiyor** — iki sürümün birlikte, açıklama yapılmadan
+    yüklenmesi kasıtlı bir karşılaştırma da olabilir.
+  - `CONTENTMAP.md`'deki diğer önemli notlar: kapasite varsayımı
+    ("60 yerine 35 gün/hafta 15-20 saat"), fotoğrafçı→arşiv alıcısı
+    devrinin kanıtlanmamışlığı, "yasal kanıt statüsü" vaadi YASAK,
+    "otomatik atama→arşiv sözleşmesi dönüşümü" vaadi YASAK. Açık üretim
+    girdileri: DPA, AB/EEA depolama, muhasebe, sigorta, paket/fiyat
+    kararı, şirket bilgileri, başvuru uç noktası, pilot vakalar.
+  - Daha önce bu depoya kaydedilen `beta-art-contact1` bulgusu (aşağıda,
+    değiştirilmeden bırakıldı — muhtemelen (2) numaralı sürümle aynı/çok
+    yakın aile):
   - **01 · Archive** — "Photography with proof." Fotoğrafçı, fiziksel
     çekim, orijinal kanıt, düzenleme açıklaması ve lisansı birbirine
     bağlayan bir **kaynak (provenance) kaydı**. "AI-free" tek başına ürün
