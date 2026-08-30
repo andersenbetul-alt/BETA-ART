@@ -50,7 +50,9 @@ satır tahminle doldurulmadı — kaynağı olmayan alan `bilinmiyor` yazar.
 | Kaynak | Statik prototip dosyaları paylaşıldı: `index.html`, `i18n.js`, `404.html`, `styles.css`, `script.js`, `tools.js`, `release.js`, `README.md`, `CONTENTMAP.md`, `DEPLOYMENT.md`, `ROUTE-CONFIG.md`, `sitemap.xml`, `vercel.json` |
 | Canlı önizlemeler | `beta-art-archive-five.vercel.app` (erken, yalnızca Archive), `beta-art-contact1-9jsgs8q95-andersenbetul-9635s-projects.vercel.app` (Archive+Business birlikte, daha yeni) |
 | Fotoğrafçı | Betül Öner (site içeriğinde adı geçiyor) |
-| Durum | **referans** (kod tabanı bu depoda değil) |
+| GoDaddy Airo venture | `7fb63a87-ebcb-45cc-b31e-98897df478c7` — kullanıcı 30.08'de doğruladı: madde 10 ve 11'deki Airo linkleri de bu venture'a ait, aynı proje |
+| **Temel alınan sayfa** | Kullanıcı 30.08'de bu GoDaddy Airo venture sayfasını (`dashboard.godaddy.com/venture/website?ventureId=7fb63a87-...`) BETA ART Privat için **temel** ilan etti — statik prototip (yukarıdaki dosyalar) ve Final Work v2 (madde 5) değil. **İçeriği bu ortamdan görülemiyor** (`EGRESS_BLOCKED`); temel alınacak gerçek içerik henüz doğrulanamadı, kullanıcının ekran görüntüsü/metin paylaşması bekleniyor. |
+| Durum | **referans** (kod tabanı bu depoda değil; temel karar verildi ama içerik henüz görülmedi) |
 
 ## 5. BETA ART Final Work v2 (Privat'ın üretim uygulaması)
 
@@ -97,21 +99,21 @@ satır tahminle doldurulmadı — kaynağı olmayan alan `bilinmiyor` yazar.
 | Ne olduğu | 4/6/7'yi `beta-art-privat/`, `beta-art-gallery-event/`, `beta-art-business/` göreli bağlantılarıyla listeleyen tek sayfalık hub |
 | Durum | **referans** |
 
-## 10. Adı bekleniyor — GoDaddy Airo Builder
+## 10. GoDaddy Airo Builder — çözüldü, madde 4'e ait
 
 | Alan | Değer |
 |---|---|
 | URL | `airo-builder.godaddy.com/develop/68v0scym3h?itc=account.products.vt_aab` |
 | Erişim | Bu ortamdan **erişilemiyor** (`EGRESS_BLOCKED`) — muhtemelen oturum açma da gerektiriyor |
-| Hangi projeye ait | **bilinmiyor** — kullanıcıdan bekleniyor |
+| Hangi projeye ait | **BETA ART Privat (madde 4)** — kullanıcı 30.08'de doğruladı, aynı GoDaddy venture (`7fb63a87-...`) |
 
-## 11. Adı bekleniyor — airo.ai paylaşım linki
+## 11. airo.ai paylaşım linki — çözüldü, madde 4'e ait
 
 | Alan | Değer |
 |---|---|
 | URL | `airo.ai/share/Njh2MHNjeW0zaDpjNDA6WG56T2RRenYyNHNj` |
 | Erişim | Bu ortamdan **erişilemiyor** (`EGRESS_BLOCKED`) |
-| Hangi projeye ait | **bilinmiyor** — kullanıcıdan bekleniyor |
+| Hangi projeye ait | **BETA ART Privat (madde 4)** — kullanıcı 30.08'de doğruladı, aynı GoDaddy venture (`7fb63a87-...`) |
 
 ---
 
@@ -123,5 +125,10 @@ satır tahminle doldurulmadı — kaynağı olmayan alan `bilinmiyor` yazar.
 ## Sıradaki adım
 
 Kullanıcı talimatı: önce bu katalog (bu belge), **sonra** hangi projelerin
-birleştirileceğine karar verilecek. 10 ve 11 numaralı satırlar için isim/
-bağlam bekleniyor.
+birleştirileceğine karar verilecek. 10 ve 11 numaralı satırlar 30.08'de
+madde 4'e (BETA ART Privat) bağlandı — hepsi aynı GoDaddy Airo venture'ı.
+
+**Açık engel:** madde 4 için "temel" ilan edilen GoDaddy Airo sayfasının
+içeriği bu ortamdan görülemiyor (`EGRESS_BLOCKED`, oturum açma da gerekebilir).
+Bu sayfayı gerçekten temel alabilmek için kullanıcının içeriği (ekran
+görüntüsü veya kopyalanmış metin/HTML) paylaşması gerekiyor.
