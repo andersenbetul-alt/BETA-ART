@@ -1,0 +1,1248 @@
+import type { MetadataRoute } from 'next';
+
+export type Locale = 'en' | 'no' | 'tr' | 'fr' | 'de' | 'es' | 'pt' | 'ar' | 'ja' | 'zh';
+
+export const localeCodes: Locale[] = ['en', 'no', 'tr', 'fr', 'de', 'es', 'pt', 'ar', 'ja', 'zh'];
+
+export const siteUrl = 'https://hxi.no';
+
+export function isLocale(s: string): s is Locale {
+  return (localeCodes as string[]).includes(s);
+}
+
+type Proof = { tag: string; title: string; body: string; cta: string };
+type Release = { name: string; yearLabel: string; href: string };
+type WorkCard = { label: string; title: string; body: string; cta: string };
+type TimelineEntry = { year: string; title: string };
+
+export type LocaleData = {
+  lang: string;
+  direction: 'ltr' | 'rtl';
+  hreflang: string;
+  title: string;
+  description: string;
+  nav: string[];
+  skip: string;
+  localeName: string;
+  languageSummary: string;
+  listen: string;
+  hero: {
+    kicker: string;
+    line: string;
+    desc: string;
+    actions: [string, string];
+    signalTitle: string;
+    stats: Array<{ value: string; label: string }>;
+    note: string;
+  };
+  music: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    latestLabel: string;
+    breakthroughLabel: string;
+    breakthroughDesc: string;
+    listen: string;
+    loadPlayer: string;
+    playerNote: string;
+    selectedWorks: string;
+    fullCatalog: string;
+  };
+  credits: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    proofs: Proof[];
+    ncsCta: string;
+  };
+  nordic: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    issue: string;
+    coord: string;
+    footer: [string, string];
+  };
+  creators: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    clear: string;
+    checkTerms: string;
+  };
+  about: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    note: string;
+  };
+  work: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    cards: WorkCard[];
+  };
+  frequency: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    note: string;
+  };
+  contact: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    actions: [string, string];
+  };
+  footer: {
+    identity: string;
+    privacyStrip: string;
+    privacyLabel: string;
+  };
+  releases: Release[];
+  timeline: {
+    label: string;
+    entries: TimelineEntry[];
+  };
+  impact: {
+    title: string;
+    body: string;
+  };
+  privacy: {
+    title: string;
+    description: string;
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    hostingH: string;
+    hostingP: string;
+    spotifyH: string;
+    spotifyP: string;
+    contactH: string;
+    contactP: string;
+    back: string;
+  };
+};
+
+export const localeData: Record<Locale, LocaleData> = {
+  en: {
+    lang: 'en',
+    direction: 'ltr',
+    hreflang: 'en',
+    title: 'HXI — Nordic Phonk Artist from Norway',
+    description: 'Official HXI artist site. Nordic phonk and glitch-driven electronic production from Norway.',
+    nav: ['Music', 'Credits', 'Nordic', 'Creators', 'Work', 'Contact'],
+    skip: 'Skip to content',
+    localeName: 'English',
+    languageSummary: 'Language · English ▾',
+    listen: 'Listen',
+    hero: {
+      kicker: 'OSLO · NORWAY · NORDIC PHONK',
+      line: 'THE SAME SPEED — COLDER.',
+      desc: 'Nordic phonk from Oslo: fast, glitch-heavy and built for impact.',
+      actions: ['Listen on Spotify ↗', 'Explore the catalog ↓'],
+      signalTitle: 'CURRENT SIGNAL',
+      stats: [{ value: '43M+*', label: 'Spotify streams on “help urself”' }, { value: '2021', label: 'active since' }, { value: 'NCS', label: 'creator ecosystem' }],
+      note: '* Archived milestone for “help urself”; streaming figures change over time. Current platform metrics are refreshed in the production release workflow.',
+    },
+    music: {
+      eyebrow: '01 / MUSIC',
+      title: 'The catalog, not just one track.',
+      intro: 'Start with the breakthrough, then move through the releases that define the current HXI sound.',
+      latestLabel: 'THE BREAKTHROUGH · help urself',
+      listen: 'Play track ↗',
+      breakthroughLabel: 'THE BREAKTHROUGH · help urself',
+      breakthroughDesc: 'Released in 2022, “help urself” passed an archived milestone of 43 million Spotify streams.',
+      loadPlayer: 'Load Spotify player',
+      playerNote: 'The player contacts Spotify only after you choose to load it. Spotify may set its own cookies.',
+      selectedWorks: 'SELECTED WORKS',
+      fullCatalog: 'Full catalog on Spotify ↗',
+    },
+    credits: {
+      eyebrow: '02 / CREDITS',
+      title: 'Selected work beyond the catalog.',
+      intro: 'Remixes, game soundtrack work and NCS releases.',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'HXI is credited on TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version), released on Fast & Furious: Drift Tape/Phonk Vol 1.', cta: 'Open track ↗' },
+      { tag: 'OFFICIAL GAME SOUNDTRACK', title: 'Never Phased · BODYCAM', body: 'Lurk, HXI & Scythermane — “Never Phased” appears on Bodycam (Official Game Soundtrack), 2024.', cta: 'Open soundtrack ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'NCS release · 12 Sep 2024.', cta: 'View source ↗' },
+      { tag: 'NCS', title: 'Round Around', body: 'With Nateki · NCS release · 23 Sep 2025.', cta: 'View source ↗' }],
+      ncsCta: 'Open HXI on NCS ↗',
+    },
+    nordic: {
+      eyebrow: '03 / NORDIC',
+      title: 'OSLO IS NOT THE BACKDROP. IT’S IN THE SIGNAL.',
+      body: 'Norwegian origin, cold visual language and high-impact sound — a place you can hear as much as see.',
+      issue: 'HXI · UTGAVE 01',
+      coord: '59.91°N · 10.75°E',
+      footer: ['MADE IN NORWAY', 'PLACE / SOUND / SYSTEM'],
+    },
+    creators: {
+      eyebrow: '04 / CREATORS',
+      title: 'Use the right track. Follow the right terms.',
+      body: 'HXI’s NCS releases can be used under the NCS usage policy. Check the individual track page before publishing.',
+      clear: 'Cleared for creators: use the NCS tracks below under the current NCS terms. Everything else: ask first.',
+      checkTerms: 'Check terms ↗',
+    },
+    about: {
+      eyebrow: '05 / ABOUT',
+      title: 'HXI, from Norway.',
+      body: 'HXI is a Norwegian DJ and producer active since 2021. The catalog moves across phonk, electronic production and glitch-heavy sound design, with releases including “help urself”, X-PIRATA, AURORA LOVE and MONTAGEM HYSTERIA.',
+      note: 'Fast, glitchy and bit-crushed. Built in Norway; carried far beyond it.',
+    },
+    work: {
+      eyebrow: '05 / WORK WITH HXI',
+      title: 'Choose the frame.',
+      intro: 'Features, remixes, production, sound design and creator work — one clear route into the HXI system.',
+      cards: [{ label: '01 / COLLAB', title: 'Features & collabs', body: 'Send a demo or an idea for a focused HXI collaboration.', cta: 'Start a conversation ↗' },
+      { label: '02 / REMIXES', title: 'Your track / HXI sound', body: 'Remix, production and sound design for the next frame.', cta: 'Start a conversation ↗' },
+      { label: '03 / PRESS', title: 'EPK / media', body: 'Press requests, interviews and approved assets through the official channel.', cta: 'Start a conversation ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / JOIN THE FREQUENCY',
+      title: 'First access.\nNo noise.',
+      intro: 'Release updates, creator resources and approved HXI project news belong here when a compliant contact workflow is active.',
+      note: 'Community activation is intentionally gated until the real backend is configured.',
+    },
+    contact: {
+      eyebrow: '06 / CONTACT',
+      title: 'Work with HXI.',
+      body: 'For business, booking, press or collaboration, contact HXI through the official Instagram profile.',
+      actions: ['Contact on Instagram ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · Oslo, Norway',
+      privacyStrip: 'No analytics or advertising trackers run on this build. Spotify embeds load only on request.',
+      privacyLabel: 'Privacy',
+    },
+    releases: [{ name: 'help urself', yearLabel: 'Year: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: 'Year: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: 'Year: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: 'Year: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: 'Year: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: 'Year: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: 'Selected timeline', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · selected remix work' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around with Nateki' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: 'Built for impact.', body: 'The frame is widening: from glitch-heavy phonk into wider electronic and montagem territory without losing the HXI signal.' },
+    privacy: {
+      title: 'Privacy — HXI',
+      description: 'Privacy information for the official HXI artist website.',
+      eyebrow: 'PRIVACY',
+      heading: 'Minimal by design.',
+      lead: 'This website does not run advertising pixels, newsletter forms or behavioural analytics, and it does not intentionally set first-party tracking cookies.',
+      hostingH: 'Hosting and technical logs',
+      hostingP: 'The site is hosted through web infrastructure that may process limited technical information such as IP address, browser or request logs for delivery, security and abuse prevention. Those logs are handled by the hosting provider under its own terms and retention practices.',
+      spotifyH: 'Spotify and external services',
+      spotifyP: 'The Spotify player is not loaded until you choose to load it. When loaded, Spotify may process data or set cookies under Spotify’s own policies. Links to Spotify, Instagram, YouTube and NCS take you to those third-party services.',
+      contactH: 'Contact',
+      contactP: 'For privacy questions about this site, contact HXI through the official Instagram profile linked from the main website.',
+      back: 'Back to HXI',
+    },
+  },
+  no: {
+    lang: 'nb',
+    direction: 'ltr',
+    hreflang: 'nb-NO',
+    title: 'HXI — nordisk phonk-artist fra Norge',
+    description: 'Offisiell HXI-artistside. Nordisk phonk og glitch-preget elektronisk produksjon fra Norge.',
+    nav: ['Musikk', 'Kreditter', 'Nordisk', 'Skapere', 'Jobb med HXI', 'Kontakt'],
+    skip: 'Hopp til innhold',
+    localeName: 'Norsk',
+    languageSummary: 'Språk · Norsk ▾',
+    listen: 'Lytt',
+    hero: {
+      kicker: 'OSLO · NORGE · NORDISK PHONK',
+      line: 'SAMME FART — KALDERE.',
+      desc: 'Nordisk phonk fra Oslo: rask, glitch-preget og bygget for kraft.',
+      actions: ['Lytt på Spotify ↗', 'Utforsk katalogen ↓'],
+      signalTitle: 'AKTUELT SIGNAL',
+      stats: [{ value: '43M+*', label: 'Spotify-strømmer på «help urself»' }, { value: '2021', label: 'aktiv siden' }, { value: 'NCS', label: 'skaperøkosystem' }],
+      note: '* Arkivert milepæl for «help urself»; strømmetall endres over tid. Gjeldende plattformtall oppdateres i produksjonsrutinen.',
+    },
+    music: {
+      eyebrow: '01 / MUSIKK',
+      title: 'Hele katalogen, ikke bare én låt.',
+      intro: 'Start med gjennombruddet og gå videre til utgivelsene som definerer HXI-lyden i dag.',
+      latestLabel: 'GJENNOMBRUDDET · help urself',
+      listen: 'Spill av spor ↗',
+      breakthroughLabel: 'GJENNOMBRUDDET · help urself',
+      breakthroughDesc: '«help urself» kom i 2022 og har passert 43 millioner strømminger på Spotify.',
+      loadPlayer: 'Last inn Spotify-spiller',
+      playerNote: 'Spilleren kobler til Spotify først når du velger å laste den inn. Spotify kan sette egne informasjonskapsler.',
+      selectedWorks: 'UTVALGTE UTGIVELSER',
+      fullCatalog: 'Hele katalogen på Spotify ↗',
+    },
+    credits: {
+      eyebrow: '02 / KREDITERINGER',
+      title: 'Utvalgt arbeid utenfor katalogen.',
+      intro: 'Remikser, spill-soundtrack og NCS-utgivelser.',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'HXI er kreditert på TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version), utgitt på Fast & Furious: Drift Tape/Phonk Vol 1.', cta: 'Åpne låten ↗' },
+      { tag: 'OFFISIELT SPILLSOUNDTRACK', title: 'Never Phased · BODYCAM', body: 'Lurk, HXI & Scythermane — «Never Phased» er med på Bodycam (Official Game Soundtrack), 2024.', cta: 'Åpne soundtracket ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'NCS-utgivelse · 12. sep. 2024.', cta: 'Se kilde ↗' },
+      { tag: 'NCS', title: 'Round Around', body: 'Med Nateki · NCS-utgivelse · 23. sep. 2025.', cta: 'Se kilde ↗' }],
+      ncsCta: 'Åpne HXI på NCS ↗',
+    },
+    nordic: {
+      eyebrow: '03 / NORDISK',
+      title: 'OSLO ER IKKE BAKGRUNNEN. DET ER I SIGNALET.',
+      body: 'Norsk opphav, kaldt visuelt språk og slagkraftig lyd — et sted du både kan høre og se.',
+      issue: 'HXI · UTGAVE 01',
+      coord: '59.91°N · 10.75°E',
+      footer: ['LAGET I NORGE', 'STED / LYD / SYSTEM'],
+    },
+    creators: {
+      eyebrow: '04 / SKAPERE',
+      title: 'Bruk riktig låt. Følg riktige vilkår.',
+      body: 'HXIs NCS-utgivelser kan brukes etter NCS sine bruksvilkår. Sjekk den enkelte låtsiden før publisering.',
+      clear: 'Klarert for skapere: bruk NCS-sporene under i henhold til gjeldende NCS-vilkår. Alt annet: spør først.',
+      checkTerms: 'Sjekk vilkår ↗',
+    },
+    about: {
+      eyebrow: '05 / OM',
+      title: 'HXI, fra Norge.',
+      body: 'HXI er en norsk DJ og produsent, aktiv siden 2021. Katalogen beveger seg mellom phonk, elektronisk produksjon og glitch-preget lyddesign, med utgivelser som «help urself», X-PIRATA, AURORA LOVE og MONTAGEM HYSTERIA.',
+      note: 'Raskt, glitch-preget og bitcrushet. Bygget i Norge; båret langt utenfor.',
+    },
+    work: {
+      eyebrow: '05 / JOBB MED HXI',
+      title: 'Velg rammen.',
+      intro: 'Features, remikser, produksjon, lyddesign og creator-arbeid — én tydelig vei inn i HXI-systemet.',
+      cards: [{ label: '01 / COLLAB', title: 'Features og samarbeid', body: 'Send en demo eller idé til et fokusert HXI-samarbeid.', cta: 'Start en samtale ↗' },
+      { label: '02 / REMIKSER', title: 'Din låt / HXI-lyd', body: 'Remiks, produksjon og lyddesign for neste ramme.', cta: 'Start en samtale ↗' },
+      { label: '03 / PRESSE', title: 'EPK / media', body: 'Presseforespørsler, intervjuer og godkjente assets via offisiell kanal.', cta: 'Start en samtale ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / BLI MED I FREKVENSEN',
+      title: 'Først tilgang.\nIngen støy.',
+      intro: 'Utgivelsesoppdateringer, creator-ressurser og godkjente HXI-nyheter hører hjemme her når en kompatibel kontaktflyt er aktiv.',
+      note: 'Community-aktivering er bevisst låst til ekte backend er konfigurert.',
+    },
+    contact: {
+      eyebrow: '06 / KONTAKT',
+      title: 'Jobb med HXI.',
+      body: 'For business, booking, presse eller samarbeid: kontakt HXI via den offisielle Instagram-profilen.',
+      actions: ['Kontakt på Instagram ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · Oslo, Norge',
+      privacyStrip: 'Denne versjonen bruker ingen analyse- eller annonse-sporing. Spotify-innbygginger lastes bare når du ber om det.',
+      privacyLabel: 'Personvern',
+    },
+    releases: [{ name: 'help urself', yearLabel: 'År: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: 'År: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: 'År: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: 'År: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: 'År: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: 'År: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: 'Utvalgt tidslinje', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · utvalgt remiksarbeid' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around med Nateki' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: 'Laget for effekt.', body: 'Rammen utvider seg: fra glitch-tung phonk til bredere elektroniske og montagem-influenser uten å miste HXI-signalet.' },
+    privacy: {
+      title: 'Personvern — HXI',
+      description: 'Personverninformasjon for HXIs offisielle artistside.',
+      eyebrow: 'PERSONVERN',
+      heading: 'Minimalt med vilje.',
+      lead: 'Dette nettstedet bruker ikke annonsepiksler, nyhetsbrevskjemaer eller atferdsanalyse, og setter ikke med hensikt egne sporingsinformasjonskapsler.',
+      hostingH: 'Hosting og tekniske logger',
+      hostingP: 'Nettstedets infrastruktur kan behandle begrenset teknisk informasjon som IP-adresse, nettleser- eller forespørselslogger for levering, sikkerhet og misbruksforebygging. Slike logger håndteres av hostingleverandøren etter deres vilkår og lagringsrutiner.',
+      spotifyH: 'Spotify og eksterne tjenester',
+      spotifyP: 'Spotify-spilleren lastes ikke før du velger å laste den. Da kan Spotify behandle data eller sette informasjonskapsler etter sine egne retningslinjer. Lenker til Spotify, Instagram, YouTube og NCS fører til disse tredjepartstjenestene.',
+      contactH: 'Kontakt',
+      contactP: 'For spørsmål om personvern på dette nettstedet, kontakt HXI via den offisielle Instagram-profilen som er lenket fra hovedsiden.',
+      back: 'Tilbake til HXI',
+    },
+  },
+  tr: {
+    lang: 'tr',
+    direction: 'ltr',
+    hreflang: 'tr',
+    title: 'HXI — Norveçli Nordik Phonk Sanatçısı',
+    description: 'Resmi HXI sanatçı sitesi. Norveç’ten Nordik phonk ve glitch odaklı elektronik prodüksiyon.',
+    nav: ['Müzik', 'Krediler', 'Nordik', 'Üreticiler', 'HXI ile Çalış', 'İletişim'],
+    skip: 'İçeriğe geç',
+    localeName: 'Türkçe',
+    languageSummary: 'Dil · Türkçe ▾',
+    listen: 'Dinle',
+    hero: {
+      kicker: 'OSLO · NORVEÇ · NORDİK PHONK',
+      line: 'AYNI HIZ — DAHA SOĞUK.',
+      desc: 'Oslo’dan Nordik phonk: hızlı, glitch ağırlıklı ve yüksek etki için tasarlanmış.',
+      actions: ['Spotify’da dinle ↗', 'Kataloğu keşfet ↓'],
+      signalTitle: 'GÜNCEL SİNYAL',
+      stats: [{ value: '43M+*', label: '“help urself” Spotify dinlenmeleri' }, { value: '2021', label: 'aktiflik başlangıcı' }, { value: 'NCS', label: 'üretici ekosistemi' }],
+      note: '* “help urself” için arşivlenmiş kilometre taşı; dinlenme verileri zamanla değişir. Güncel platform metrikleri yayın akışında yenilenir.',
+    },
+    music: {
+      eyebrow: '01 / MÜZİK',
+      title: 'Tek bir hit değil, bir katalog.',
+      intro: 'Önce çıkış parçasını dinle, sonra bugünkü HXI sesini tanımlayan yayınlara geç.',
+      latestLabel: 'ÇIKIŞ PARÇASI · help urself',
+      listen: 'Parçayı aç ↗',
+      breakthroughLabel: 'ÇIKIŞ PARÇASI · help urself',
+      breakthroughDesc: '2022’de yayımlanan “help urself”, Spotify’da 43 milyon dinlenmeyi geçti.',
+      loadPlayer: 'Spotify oynatıcıyı yükle',
+      playerNote: 'Oynatıcı yalnızca sen yüklemeyi seçtiğinde Spotify’a bağlanır. Spotify kendi çerezlerini kullanabilir.',
+      selectedWorks: 'SEÇİLMİŞ YAYINLAR',
+      fullCatalog: 'Spotify’da tüm katalog ↗',
+    },
+    credits: {
+      eyebrow: '02 / KREDİLER',
+      title: 'Kataloğun ötesinden seçilmiş işler.',
+      intro: 'Remiksler, oyun soundtrack çalışmaları ve NCS yayınları.',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'HXI, TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version) parçasında kredilidir; yayın Fast & Furious: Drift Tape/Phonk Vol 1 içinde yer alır.', cta: 'Parçayı aç ↗' },
+      { tag: 'RESMİ OYUN SOUNDTRACK’İ', title: 'Never Phased · BODYCAM', body: 'Lurk, HXI & Scythermane — “Never Phased”, Bodycam (Official Game Soundtrack), 2024 içinde yer alır.', cta: 'Soundtrack’i aç ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'NCS yayını · 12 Eyl 2024.', cta: 'Kaynağı gör ↗' },
+      { tag: 'NCS', title: 'Round Around', body: 'Nateki ile · NCS yayını · 23 Eyl 2025.', cta: 'Kaynağı gör ↗' }],
+      ncsCta: 'HXI’yi NCS’te aç ↗',
+    },
+    nordic: {
+      eyebrow: '03 / NORDİK',
+      title: 'OSLO ARKA PLAN DEĞİL. SİNYALİN İÇİNDE.',
+      body: 'Norveç kökeni, soğuk görsel dil ve yüksek etkili ses — hem duyulan hem görülen bir yer duygusu.',
+      issue: 'HXI · SAYI 01',
+      coord: '59.91°N · 10.75°E',
+      footer: ['NORVEÇ’TE ÜRETİLDİ', 'YER / SES / SİSTEM'],
+    },
+    creators: {
+      eyebrow: '04 / ÜRETİCİLER',
+      title: 'Doğru parçayı kullan. Doğru koşulları izle.',
+      body: 'HXI’nin NCS yayınları NCS kullanım politikasına göre kullanılabilir. Yayınlamadan önce ilgili parça sayfasını kontrol et.',
+      clear: 'Üreticiler için açık: Aşağıdaki NCS parçalarını güncel NCS koşulları altında kullanın. Diğer her şey için önce sorun.',
+      checkTerms: 'Koşulları incele ↗',
+    },
+    about: {
+      eyebrow: '05 / HAKKINDA',
+      title: 'HXI, Norveç’ten.',
+      body: 'HXI, 2021’den beri aktif Norveçli DJ ve prodüktördür. Katalog; phonk, elektronik prodüksiyon ve glitch ağırlıklı ses tasarımı arasında ilerler. “help urself”, X-PIRATA, AURORA LOVE ve MONTAGEM HYSTERIA öne çıkan yayınlardandır.',
+      note: 'Hızlı, glitch ağırlıklı ve bit-crushed. Norveç’te üretildi; çok daha uzağa taşındı.',
+    },
+    work: {
+      eyebrow: '05 / HXI İLE ÇALIŞ',
+      title: 'Kareyi seç.',
+      intro: 'Feat, remix, prodüksiyon, ses tasarımı ve creator çalışmaları — HXI sistemine tek net giriş.',
+      cards: [{ label: '01 / İŞ BİRLİĞİ', title: 'Feat ve iş birlikleri', body: 'Odaklı bir HXI iş birliği için demo veya fikir gönder.', cta: 'Görüşme başlat ↗' },
+      { label: '02 / REMİKSLER', title: 'Senin parçan / HXI sesi', body: 'Bir sonraki kare için remix, prodüksiyon ve ses tasarımı.', cta: 'Görüşme başlat ↗' },
+      { label: '03 / BASIN', title: 'EPK / medya', body: 'Basın talepleri, röportajlar ve onaylı varlıklar resmi kanal üzerinden.', cta: 'Görüşme başlat ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / FREKANSA KATIL',
+      title: 'İlk erişim.\nGürültü yok.',
+      intro: 'Release güncellemeleri, creator kaynakları ve onaylı HXI proje haberleri, uyumlu bir iletişim sistemi aktif olduğunda burada yer alır.',
+      note: 'Topluluk aktivasyonu, gerçek backend yapılandırılana kadar bilinçli olarak kapalıdır.',
+    },
+    contact: {
+      eyebrow: '06 / İLETİŞİM',
+      title: 'HXI ile çalış.',
+      body: 'İş, booking, basın veya iş birliği için HXI’nin resmi Instagram profili üzerinden iletişime geç.',
+      actions: ['Instagram’dan iletişim ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · Oslo, Norveç',
+      privacyStrip: 'Bu sürümde analiz veya reklam takibi yoktur. Spotify embed’i yalnızca isteğe bağlı olarak yüklenir.',
+      privacyLabel: 'Gizlilik',
+    },
+    releases: [{ name: 'help urself', yearLabel: 'Yıl: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: 'Yıl: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: 'Yıl: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: 'Yıl: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: 'Yıl: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: 'Yıl: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: 'Seçili zaman çizelgesi', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · seçili remix çalışması' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around Nateki ile' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: 'Etki için üretildi.', body: 'Çerçeve genişliyor: HXI sinyalini kaybetmeden glitch ağırlıklı phonk’tan daha geniş elektronik ve montagem alanına.' },
+    privacy: {
+      title: 'Gizlilik — HXI',
+      description: 'HXI resmi sanatçı sitesi için gizlilik bilgileri.',
+      eyebrow: 'GİZLİLİK',
+      heading: 'Tasarım gereği minimal.',
+      lead: 'Bu site reklam pikselleri, bülten formları veya davranış analitiği çalıştırmaz ve bilerek birinci taraf takip çerezleri yerleştirmez.',
+      hostingH: 'Barındırma ve teknik kayıtlar',
+      hostingP: 'Site altyapısı; teslimat, güvenlik ve kötüye kullanımı önleme amacıyla IP adresi, tarayıcı veya istek kayıtları gibi sınırlı teknik bilgileri işleyebilir. Bu kayıtlar barındırma sağlayıcısının kendi koşulları ve saklama uygulamaları kapsamında yönetilir.',
+      spotifyH: 'Spotify ve dış hizmetler',
+      spotifyP: 'Spotify oynatıcı, siz yüklemeyi seçene kadar yüklenmez. Yüklendiğinde Spotify kendi politikaları kapsamında veri işleyebilir veya çerez yerleştirebilir. Spotify, Instagram, YouTube ve NCS bağlantıları sizi bu üçüncü taraf hizmetlere götürür.',
+      contactH: 'İletişim',
+      contactP: 'Bu siteyle ilgili gizlilik soruları için ana sitede bağlantısı bulunan resmi Instagram profili üzerinden HXI ile iletişime geçin.',
+      back: 'HXI\'ye dön',
+    },
+  },
+  fr: {
+    lang: 'fr',
+    direction: 'ltr',
+    hreflang: 'fr',
+    title: 'HXI — artiste phonk nordique de Norvège',
+    description: 'Site officiel de HXI. Phonk nordique et production électronique glitch depuis la Norvège.',
+    nav: ['Musique', 'Crédits', 'Nordique', 'Créateurs', 'Travailler avec HXI', 'Contact'],
+    skip: 'Aller au contenu',
+    localeName: 'Français',
+    languageSummary: 'Langue · Français ▾',
+    listen: 'Écouter',
+    hero: {
+      kicker: 'OSLO · NORVÈGE · PHONK NORDIQUE',
+      line: 'MÊME VITESSE — PLUS FROID.',
+      desc: 'Phonk nordique depuis Oslo : rapide, glitch et conçue pour l’impact.',
+      actions: ['Écouter sur Spotify ↗', 'Explorer le catalogue ↓'],
+      signalTitle: 'SIGNAL ACTUEL',
+      stats: [{ value: '43M+*', label: 'streams Spotify de « help urself »' }, { value: '2021', label: 'actif depuis' }, { value: 'NCS', label: 'écosystème créateur' }],
+      note: '* Jalon archivé pour « help urself » ; les chiffres d’écoute évoluent avec le temps. Les métriques sont actualisées avant chaque mise en production.',
+    },
+    music: {
+      eyebrow: '01 / MUSIQUE',
+      title: 'Un catalogue, pas un seul titre.',
+      intro: 'Commencez par le morceau qui a percé, puis découvrez les sorties qui définissent le son HXI actuel.',
+      latestLabel: 'LE MORCEAU DÉCLENCHEUR · help urself',
+      listen: 'Lire le titre ↗',
+      breakthroughLabel: 'LE MORCEAU DÉCLENCHEUR · help urself',
+      breakthroughDesc: 'Sorti en 2022, « help urself » a dépassé 43 millions d’écoutes sur Spotify.',
+      loadPlayer: 'Charger le lecteur Spotify',
+      playerNote: 'Le lecteur contacte Spotify uniquement après votre choix. Spotify peut utiliser ses propres cookies.',
+      selectedWorks: 'SÉLECTION',
+      fullCatalog: 'Catalogue complet sur Spotify ↗',
+    },
+    credits: {
+      eyebrow: '02 / CRÉDITS',
+      title: 'Une sélection au-delà du catalogue.',
+      intro: 'Remixes, bande-son de jeu et sorties NCS.',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'HXI est crédité sur TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version), publié sur Fast & Furious: Drift Tape/Phonk Vol 1.', cta: 'Ouvrir le titre ↗' },
+      { tag: 'BANDE-SON OFFICIELLE DU JEU', title: 'Never Phased · BODYCAM', body: 'Lurk, HXI & Scythermane — « Never Phased » figure sur Bodycam (Official Game Soundtrack), 2024.', cta: 'Ouvrir la bande-son ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'Sortie NCS · 12 sept. 2024.', cta: 'Voir la source ↗' },
+      { tag: 'NCS', title: 'Round Around', body: 'Avec Nateki · sortie NCS · 23 sept. 2025.', cta: 'Voir la source ↗' }],
+      ncsCta: 'Voir HXI sur NCS ↗',
+    },
+    nordic: {
+      eyebrow: '03 / NORDIQUE',
+      title: 'OSLO N’EST PAS LE DÉCOR. IL EST DANS LE SIGNAL.',
+      body: 'Origine norvégienne, langage visuel froid et son à fort impact — un lieu qui s’entend autant qu’il se voit.',
+      issue: 'HXI · ÉDITION 01',
+      coord: '59.91°N · 10.75°E',
+      footer: ['CRÉÉ EN NORVÈGE', 'LIEU / SON / SYSTÈME'],
+    },
+    creators: {
+      eyebrow: '04 / CRÉATEURS',
+      title: 'Le bon titre. Les bonnes conditions.',
+      body: 'Les sorties NCS de HXI peuvent être utilisées selon la politique d’utilisation NCS. Vérifiez la page du titre avant publication.',
+      clear: 'Autorisé pour les créateurs : utilisez les titres NCS ci-dessous selon les conditions NCS en vigueur. Pour tout le reste : demandez d’abord.',
+      checkTerms: 'Voir les conditions ↗',
+    },
+    about: {
+      eyebrow: '05 / À PROPOS',
+      title: 'HXI, depuis la Norvège.',
+      body: 'HXI est un DJ et producteur norvégien actif depuis 2021. Son catalogue traverse la phonk, la production électronique et le sound design glitch, avec notamment « help urself », X-PIRATA, AURORA LOVE et MONTAGEM HYSTERIA.',
+      note: 'Rapide, glitché et bitcrushé. Construit en Norvège; porté bien au-delà.',
+    },
+    work: {
+      eyebrow: '05 / TRAVAILLER AVEC HXI',
+      title: 'Choisir le cadre.',
+      intro: 'Features, remixes, production, sound design et travail créateur — une entrée claire dans le système HXI.',
+      cards: [{ label: '01 / COLLAB', title: 'Features et collaborations', body: 'Envoyez une démo ou une idée pour une collaboration HXI ciblée.', cta: 'Démarrer une conversation ↗' },
+      { label: '02 / REMIXES', title: 'Votre titre / le son HXI', body: 'Remix, production et sound design pour la prochaine image.', cta: 'Démarrer une conversation ↗' },
+      { label: '03 / PRESSE', title: 'EPK / médias', body: 'Demandes presse, interviews et assets approuvés via le canal officiel.', cta: 'Démarrer une conversation ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / REJOINDRE LA FRÉQUENCE',
+      title: 'Premier accès.\nSans bruit.',
+      intro: 'Les actualités de sorties, ressources créateurs et informations HXI validées ont leur place ici lorsqu’un contact conforme est actif.',
+      note: 'L’activation de la communauté reste volontairement bloquée tant que le backend réel n’est pas configuré.',
+    },
+    contact: {
+      eyebrow: '06 / CONTACT',
+      title: 'Travailler avec HXI.',
+      body: 'Pour les affaires, bookings, presse ou collaborations, contactez HXI via le profil Instagram officiel.',
+      actions: ['Contacter sur Instagram ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · Oslo, Norvège',
+      privacyStrip: 'Cette version n’utilise aucun outil de suivi analytique ou publicitaire. Spotify ne se charge qu’à la demande.',
+      privacyLabel: 'Confidentialité',
+    },
+    releases: [{ name: 'help urself', yearLabel: 'Année: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: 'Année: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: 'Année: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: 'Année: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: 'Année: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: 'Année: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: 'Chronologie sélectionnée', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · travail de remix sélectionné' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around avec Nateki' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: 'Conçu pour l’impact.', body: 'Le cadre s’élargit : de la phonk chargée de glitch vers des territoires électroniques et montagem plus larges sans perdre le signal HXI.' },
+    privacy: {
+      title: 'Confidentialité — HXI',
+      description: 'Informations de confidentialité du site artiste officiel de HXI.',
+      eyebrow: 'CONFIDENTIALITÉ',
+      heading: 'Minimal par conception.',
+      lead: 'Ce site n’utilise ni pixels publicitaires, ni formulaires de newsletter, ni analyse comportementale, et ne dépose pas volontairement de cookies de suivi propriétaires.',
+      hostingH: 'Hébergement et journaux techniques',
+      hostingP: 'L’infrastructure d’hébergement peut traiter des informations techniques limitées, comme l’adresse IP, le navigateur ou les journaux de requêtes, pour la diffusion, la sécurité et la prévention des abus. Ces journaux sont gérés par l’hébergeur selon ses propres conditions et durées de conservation.',
+      spotifyH: 'Spotify et services externes',
+      spotifyP: 'Le lecteur Spotify n’est chargé que si vous choisissez de le charger. Spotify peut alors traiter des données ou déposer des cookies selon ses propres politiques. Les liens vers Spotify, Instagram, YouTube et NCS ouvrent ces services tiers.',
+      contactH: 'Contact',
+      contactP: 'Pour toute question de confidentialité concernant ce site, contactez HXI via le profil Instagram officiel lié depuis le site principal.',
+      back: 'Retour à HXI',
+    },
+  },
+  de: {
+    lang: 'de',
+    direction: 'ltr',
+    hreflang: 'de',
+    title: 'HXI — Nordic-Phonk-Artist aus Norwegen',
+    description: 'Offizielle HXI-Artist-Seite. Nordic Phonk und glitchige elektronische Produktion aus Norwegen.',
+    nav: ['Musik', 'Credits', 'Nordisch', 'Creator', 'Mit HXI arbeiten', 'Kontakt'],
+    skip: 'Zum Inhalt springen',
+    localeName: 'Deutsch',
+    languageSummary: 'Sprache · Deutsch ▾',
+    listen: 'Anhören',
+    hero: {
+      kicker: 'OSLO · NORWEGEN · NORDIC PHONK',
+      line: 'GLEICHE GESCHWINDIGKEIT — KÄLTER.',
+      desc: 'Nordic Phonk aus Oslo: schnell, glitch-lastig und auf Wirkung gebaut.',
+      actions: ['Auf Spotify hören ↗', 'Katalog entdecken ↓'],
+      signalTitle: 'AKTUELLES SIGNAL',
+      stats: [{ value: '43M+*', label: 'Spotify-Streams für „help urself“' }, { value: '2021', label: 'aktiv seit' }, { value: 'NCS', label: 'Creator-Ökosystem' }],
+      note: '* Archivierter Meilenstein für „help urself“; Streaming-Zahlen ändern sich im Laufe der Zeit. Aktuelle Plattformmetriken werden vor dem Production Release aktualisiert.',
+    },
+    music: {
+      eyebrow: '01 / MUSIK',
+      title: 'Ein Katalog, nicht nur ein Track.',
+      intro: 'Beginne mit dem Durchbruch und gehe dann zu den Releases, die den heutigen HXI-Sound prägen.',
+      latestLabel: 'DER DURCHBRUCH · help urself',
+      listen: 'Track abspielen ↗',
+      breakthroughLabel: 'DER DURCHBRUCH · help urself',
+      breakthroughDesc: '„help urself“ erschien 2022 und hat mehr als 43 Millionen Spotify-Streams.',
+      loadPlayer: 'Spotify-Player laden',
+      playerNote: 'Der Player verbindet sich erst nach deiner Auswahl mit Spotify. Spotify kann eigene Cookies setzen.',
+      selectedWorks: 'AUSGEWÄHLTE RELEASES',
+      fullCatalog: 'Gesamter Katalog auf Spotify ↗',
+    },
+    credits: {
+      eyebrow: '02 / CREDITS',
+      title: 'Ausgewählte Arbeiten jenseits des Katalogs.',
+      intro: 'Remixe, Game-Soundtrack-Arbeit und NCS-Releases.',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'HXI ist bei TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version) kreditiert, veröffentlicht auf Fast & Furious: Drift Tape/Phonk Vol 1.', cta: 'Track öffnen ↗' },
+      { tag: 'OFFIZIELLER GAME-SOUNDTRACK', title: 'Never Phased · BODYCAM', body: 'Lurk, HXI & Scythermane — „Never Phased“ ist auf Bodycam (Official Game Soundtrack), 2024 enthalten.', cta: 'Soundtrack öffnen ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'NCS-Release · 12. Sep. 2024.', cta: 'Quelle ansehen ↗' },
+      { tag: 'NCS', title: 'Round Around', body: 'Mit Nateki · NCS-Release · 23. Sep. 2025.', cta: 'Quelle ansehen ↗' }],
+      ncsCta: 'HXI auf NCS öffnen ↗',
+    },
+    nordic: {
+      eyebrow: '03 / NORDIC',
+      title: 'OSLO IST NICHT DIE KULISSE. ES STECKT IM SIGNAL.',
+      body: 'Norwegische Herkunft, kalte Bildsprache und druckvoller Sound — ein Ort, den man genauso hört wie sieht.',
+      issue: 'HXI · AUSGABE 01',
+      coord: '59.91°N · 10.75°E',
+      footer: ['MADE IN NORWAY', 'ORT / SOUND / SYSTEM'],
+    },
+    creators: {
+      eyebrow: '04 / CREATOR',
+      title: 'Den richtigen Track nutzen. Die richtigen Regeln beachten.',
+      body: 'HXIs NCS-Releases können gemäß der NCS-Nutzungsrichtlinie verwendet werden. Vor Veröffentlichung die jeweilige Track-Seite prüfen.',
+      clear: 'Für Creator freigegeben: Nutze die untenstehenden NCS-Tracks gemäß den aktuellen NCS-Bedingungen. Alles andere: zuerst fragen.',
+      checkTerms: 'Bedingungen prüfen ↗',
+    },
+    about: {
+      eyebrow: '05 / ÜBER',
+      title: 'HXI, aus Norwegen.',
+      body: 'HXI ist ein norwegischer DJ und Producer, aktiv seit 2021. Der Katalog bewegt sich zwischen Phonk, elektronischer Produktion und glitchigem Sounddesign, darunter „help urself“, X-PIRATA, AURORA LOVE und MONTAGEM HYSTERIA.',
+      note: 'Schnell, glitchig und bitcrushed. In Norwegen gebaut; weit darüber hinaus getragen.',
+    },
+    work: {
+      eyebrow: '05 / MIT HXI ARBEITEN',
+      title: 'Den Rahmen wählen.',
+      intro: 'Features, Remixe, Produktion, Sounddesign und Creator-Arbeit — ein klarer Weg ins HXI-System.',
+      cards: [{ label: '01 / COLLAB', title: 'Features & Kollaborationen', body: 'Sende eine Demo oder Idee für eine fokussierte HXI-Kollaboration.', cta: 'Gespräch starten ↗' },
+      { label: '02 / REMIXE', title: 'Dein Track / HXI-Sound', body: 'Remix, Produktion und Sounddesign für das nächste Bild.', cta: 'Gespräch starten ↗' },
+      { label: '03 / PRESSE', title: 'EPK / Medien', body: 'Presseanfragen, Interviews und freigegebene Assets über den offiziellen Kanal.', cta: 'Gespräch starten ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / DER FREQUENZ BEITRETEN',
+      title: 'Zuerst Zugang.\nKein Lärm.',
+      intro: 'Release-Updates, Creator-Ressourcen und bestätigte HXI-Projektnews gehören hierher, wenn ein konformer Kontaktablauf aktiv ist.',
+      note: 'Die Community-Aktivierung bleibt bewusst gesperrt, bis das echte Backend konfiguriert ist.',
+    },
+    contact: {
+      eyebrow: '06 / KONTAKT',
+      title: 'Mit HXI arbeiten.',
+      body: 'Für Business, Booking, Presse oder Kollaborationen HXI über das offizielle Instagram-Profil kontaktieren.',
+      actions: ['Über Instagram kontaktieren ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · Oslo, Norwegen',
+      privacyStrip: 'Dieser Build nutzt kein Analyse- oder Werbetracking. Spotify-Einbettungen laden nur auf Wunsch.',
+      privacyLabel: 'Datenschutz',
+    },
+    releases: [{ name: 'help urself', yearLabel: 'Jahr: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: 'Jahr: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: 'Jahr: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: 'Jahr: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: 'Jahr: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: 'Jahr: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: 'Ausgewählte Zeitleiste', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · ausgewählte Remix-Arbeit' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around mit Nateki' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: 'Für Wirkung gemacht.', body: 'Der Rahmen wird größer: von glitch-lastiger Phonk zu breiteren elektronischen und Montagem-Räumen, ohne das HXI-Signal zu verlieren.' },
+    privacy: {
+      title: 'Datenschutz — HXI',
+      description: 'Datenschutzinformationen für die offizielle HXI-Künstlerwebsite.',
+      eyebrow: 'DATENSCHUTZ',
+      heading: 'Bewusst minimal.',
+      lead: 'Diese Website verwendet keine Werbepixel, Newsletter-Formulare oder Verhaltensanalyse und setzt nicht absichtlich eigene Tracking-Cookies.',
+      hostingH: 'Hosting und technische Protokolle',
+      hostingP: 'Die Hosting-Infrastruktur kann begrenzte technische Informationen wie IP-Adresse, Browser- oder Anfrageprotokolle für Auslieferung, Sicherheit und Missbrauchsprävention verarbeiten. Diese Protokolle werden vom Hosting-Anbieter nach dessen Bedingungen und Aufbewahrungsregeln behandelt.',
+      spotifyH: 'Spotify und externe Dienste',
+      spotifyP: 'Der Spotify-Player wird erst geladen, wenn du ihn aktiv lädst. Danach kann Spotify Daten verarbeiten oder Cookies nach eigenen Richtlinien setzen. Links zu Spotify, Instagram, YouTube und NCS führen zu diesen Drittanbietern.',
+      contactH: 'Kontakt',
+      contactP: 'Bei Datenschutzfragen zu dieser Website kontaktiere HXI über das offizielle Instagram-Profil, das auf der Hauptseite verlinkt ist.',
+      back: 'Zurück zu HXI',
+    },
+  },
+  es: {
+    lang: 'es',
+    direction: 'ltr',
+    hreflang: 'es',
+    title: 'HXI — artista de phonk nórdico de Noruega',
+    description: 'Sitio oficial de HXI. Phonk nórdico y producción electrónica glitch desde Noruega.',
+    nav: ['Música', 'Créditos', 'Nórdico', 'Creadores', 'Trabajar con HXI', 'Contacto'],
+    skip: 'Saltar al contenido',
+    localeName: 'Español',
+    languageSummary: 'Idioma · Español ▾',
+    listen: 'Escuchar',
+    hero: {
+      kicker: 'OSLO · NORUEGA · PHONK NÓRDICO',
+      line: 'LA MISMA VELOCIDAD — MÁS FRÍO.',
+      desc: 'Phonk nórdico desde Oslo: rápido, cargado de glitch y hecho para impactar.',
+      actions: ['Escuchar en Spotify ↗', 'Explorar el catálogo ↓'],
+      signalTitle: 'SEÑAL ACTUAL',
+      stats: [{ value: '43M+*', label: 'reproducciones de Spotify de « help urself »' }, { value: '2021', label: 'activo desde' }, { value: 'NCS', label: 'ecosistema de creadores' }],
+      note: '* Hito archivado de «help urself»; las cifras de escucha cambian con el tiempo. Las métricas se actualizan antes de cada lanzamiento de producción.',
+    },
+    music: {
+      eyebrow: '01 / MÚSICA',
+      title: 'Un catálogo, no solo una canción.',
+      intro: 'Empieza por el tema que abrió camino y sigue con los lanzamientos que definen el sonido actual de HXI.',
+      latestLabel: 'EL PUNTO DE INFLEXIÓN · help urself',
+      listen: 'Reproducir tema ↗',
+      breakthroughLabel: 'EL PUNTO DE INFLEXIÓN · help urself',
+      breakthroughDesc: '“help urself”, publicado en 2022, superó los 43 millones de streams en Spotify.',
+      loadPlayer: 'Cargar reproductor de Spotify',
+      playerNote: 'El reproductor solo contacta con Spotify cuando decides cargarlo. Spotify puede usar sus propias cookies.',
+      selectedWorks: 'TRABAJOS SELECCIONADOS',
+      fullCatalog: 'Catálogo completo en Spotify ↗',
+    },
+    credits: {
+      eyebrow: '02 / CRÉDITOS',
+      title: 'Trabajo seleccionado más allá del catálogo.',
+      intro: 'Remixes, trabajo para banda sonora de videojuegos y lanzamientos NCS.',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'HXI aparece acreditado en TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version), publicado en Fast & Furious: Drift Tape/Phonk Vol 1.', cta: 'Abrir tema ↗' },
+      { tag: 'BANDA SONORA OFICIAL DEL JUEGO', title: 'Never Phased · BODYCAM', body: 'Lurk, HXI & Scythermane — “Never Phased” aparece en Bodycam (Official Game Soundtrack), 2024.', cta: 'Abrir banda sonora ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'Lanzamiento NCS · 12 sep 2024.', cta: 'Ver fuente ↗' },
+      { tag: 'NCS', title: 'Round Around', body: 'Con Nateki · lanzamiento NCS · 23 sep 2025.', cta: 'Ver fuente ↗' }],
+      ncsCta: 'Abrir HXI en NCS ↗',
+    },
+    nordic: {
+      eyebrow: '03 / NÓRDICO',
+      title: 'OSLO NO ES EL FONDO. ESTÁ EN LA SEÑAL.',
+      body: 'Origen noruego, lenguaje visual frío y sonido de alto impacto: un lugar que se oye tanto como se ve.',
+      issue: 'HXI · EDICIÓN 01',
+      coord: '59.91°N · 10.75°E',
+      footer: ['HECHO EN NORUEGA', 'LUGAR / SONIDO / SISTEMA'],
+    },
+    creators: {
+      eyebrow: '04 / CREADORES',
+      title: 'Usa el tema correcto. Sigue los términos correctos.',
+      body: 'Los lanzamientos NCS de HXI pueden usarse según la política de uso de NCS. Revisa la página de cada tema antes de publicar.',
+      clear: 'Aprobado para creadores: usa las pistas NCS de abajo bajo los términos NCS vigentes. Para todo lo demás: pregunta primero.',
+      checkTerms: 'Ver condiciones ↗',
+    },
+    about: {
+      eyebrow: '05 / ACERCA DE',
+      title: 'HXI, desde Noruega.',
+      body: 'HXI es un DJ y productor noruego activo desde 2021. Su catálogo cruza phonk, producción electrónica y diseño sonoro glitch, con lanzamientos como “help urself”, X-PIRATA, AURORA LOVE y MONTAGEM HYSTERIA.',
+      note: 'Rápido, glitch y bit-crushed. Hecho en Noruega; llevado mucho más lejos.',
+    },
+    work: {
+      eyebrow: '05 / TRABAJAR CON HXI',
+      title: 'Elige el encuadre.',
+      intro: 'Features, remixes, producción, diseño sonoro y trabajo creador: una ruta clara hacia el sistema HXI.',
+      cards: [{ label: '01 / COLAB', title: 'Features y colaboraciones', body: 'Envía una demo o una idea para una colaboración HXI enfocada.', cta: 'Iniciar una conversación ↗' },
+      { label: '02 / REMIXES', title: 'Tu tema / sonido HXI', body: 'Remix, producción y diseño sonoro para el siguiente encuadre.', cta: 'Iniciar una conversación ↗' },
+      { label: '03 / PRENSA', title: 'EPK / medios', body: 'Solicitudes de prensa, entrevistas y assets aprobados a través del canal oficial.', cta: 'Iniciar una conversación ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / ÚNETE A LA FRECUENCIA',
+      title: 'Primer acceso.\nSin ruido.',
+      intro: 'Las novedades de lanzamientos, recursos para creadores e información aprobada de HXI pertenecen aquí cuando exista un flujo de contacto conforme.',
+      note: 'La activación de comunidad permanece bloqueada hasta que el backend real esté configurado.',
+    },
+    contact: {
+      eyebrow: '06 / CONTACTO',
+      title: 'Trabaja con HXI.',
+      body: 'Para negocios, booking, prensa o colaboraciones, contacta con HXI a través del perfil oficial de Instagram.',
+      actions: ['Contactar por Instagram ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · Oslo, Noruega',
+      privacyStrip: 'Esta versión no usa seguimiento analítico ni publicitario. Spotify solo se carga cuando lo solicitas.',
+      privacyLabel: 'Privacidad',
+    },
+    releases: [{ name: 'help urself', yearLabel: 'Año: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: 'Año: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: 'Año: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: 'Año: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: 'Año: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: 'Año: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: 'Cronología seleccionada', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · trabajo de remix seleccionado' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around con Nateki' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: 'Hecho para impactar.', body: 'El encuadre se amplía: de phonk cargado de glitch a territorio electrónico y montagem más amplio sin perder la señal HXI.' },
+    privacy: {
+      title: 'Privacidad — HXI',
+      description: 'Información de privacidad del sitio oficial de HXI.',
+      eyebrow: 'PRIVACIDAD',
+      heading: 'Mínimo por diseño.',
+      lead: 'Este sitio no utiliza píxeles publicitarios, formularios de newsletter ni analítica de comportamiento, y no establece intencionadamente cookies propias de seguimiento.',
+      hostingH: 'Alojamiento y registros técnicos',
+      hostingP: 'La infraestructura de alojamiento puede procesar información técnica limitada, como dirección IP, navegador o registros de solicitudes, para entrega, seguridad y prevención de abusos. El proveedor de alojamiento gestiona esos registros según sus propios términos y periodos de conservación.',
+      spotifyH: 'Spotify y servicios externos',
+      spotifyP: 'El reproductor de Spotify no se carga hasta que eliges cargarlo. Entonces Spotify puede procesar datos o establecer cookies según sus propias políticas. Los enlaces a Spotify, Instagram, YouTube y NCS llevan a esos servicios de terceros.',
+      contactH: 'Contacto',
+      contactP: 'Para preguntas de privacidad sobre este sitio, contacta con HXI mediante el perfil oficial de Instagram enlazado desde la web principal.',
+      back: 'Volver a HXI',
+    },
+  },
+  pt: {
+    lang: 'pt-BR',
+    direction: 'ltr',
+    hreflang: 'pt-BR',
+    title: 'HXI — artista de phonk nórdico da Noruega',
+    description: 'Site oficial de HXI. Phonk nórdico e produção eletrônica glitch da Noruega.',
+    nav: ['Música', 'Créditos', 'Nórdico', 'Criadores', 'Trabalhe com HXI', 'Contato'],
+    skip: 'Ir para o conteúdo',
+    localeName: 'Português',
+    languageSummary: 'Idioma · Português ▾',
+    listen: 'Ouvir',
+    hero: {
+      kicker: 'OSLO · NORUEGA · PHONK NÓRDICO',
+      line: 'A MESMA VELOCIDADE — MAIS FRIO.',
+      desc: 'Phonk nórdico de Oslo: rápido, carregado de glitch e feito para impacto.',
+      actions: ['Ouvir no Spotify ↗', 'Explorar o catálogo ↓'],
+      signalTitle: 'SINAL ATUAL',
+      stats: [{ value: '43M+*', label: 'streams de Spotify de “help urself”' }, { value: '2021', label: 'ativo desde' }, { value: 'NCS', label: 'ecossistema de criadores' }],
+      note: '* Marco arquivado de “help urself”; os números de streaming mudam com o tempo. As métricas são atualizadas antes de cada lançamento de produção.',
+    },
+    music: {
+      eyebrow: '01 / MÚSICA',
+      title: 'Um catálogo, não só uma faixa.',
+      intro: 'Comece pela faixa que abriu caminho e siga pelos lançamentos que definem o som atual de HXI.',
+      latestLabel: 'O PONTO DE VIRADA · help urself',
+      listen: 'Tocar faixa ↗',
+      breakthroughLabel: 'O PONTO DE VIRADA · help urself',
+      breakthroughDesc: 'Lançada em 2022, “help urself” passou de 43 milhões de streams no Spotify.',
+      loadPlayer: 'Carregar player do Spotify',
+      playerNote: 'O player só contata o Spotify depois que você escolhe carregá-lo. O Spotify pode usar cookies próprios.',
+      selectedWorks: 'TRABALHOS SELECIONADOS',
+      fullCatalog: 'Catálogo completo no Spotify ↗',
+    },
+    credits: {
+      eyebrow: '02 / CRÉDITOS',
+      title: 'Trabalhos selecionados além do catálogo.',
+      intro: 'Remixes, trilha de game e lançamentos pela NCS.',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'HXI é creditado em TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version), lançado em Fast & Furious: Drift Tape/Phonk Vol 1.', cta: 'Abrir faixa ↗' },
+      { tag: 'TRILHA SONORA OFICIAL DO GAME', title: 'Never Phased · BODYCAM', body: 'Lurk, HXI & Scythermane — “Never Phased” faz parte de Bodycam (Official Game Soundtrack), 2024.', cta: 'Abrir trilha sonora ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'Lançamento NCS · 12 set 2024.', cta: 'Ver fonte ↗' },
+      { tag: 'NCS', title: 'Round Around', body: 'Com Nateki · lançamento NCS · 23 set 2025.', cta: 'Ver fonte ↗' }],
+      ncsCta: 'Abrir HXI na NCS ↗',
+    },
+    nordic: {
+      eyebrow: '03 / NÓRDICO',
+      title: 'OSLO NÃO É O CENÁRIO. ESTÁ NO SINAL.',
+      body: 'Origem norueguesa, linguagem visual fria e som de alto impacto — um lugar que se ouve tanto quanto se vê.',
+      issue: 'HXI · EDIÇÃO 01',
+      coord: '59.91°N · 10.75°E',
+      footer: ['FEITO NA NORUEGA', 'LUGAR / SOM / SISTEMA'],
+    },
+    creators: {
+      eyebrow: '04 / CRIADORES',
+      title: 'Use a faixa certa. Siga os termos certos.',
+      body: 'Os lançamentos da HXI pela NCS podem ser usados de acordo com a política de uso da NCS. Confira a página de cada faixa antes de publicar.',
+      clear: 'Liberado para criadores: use as faixas NCS abaixo sob os termos atuais da NCS. Para todo o resto: pergunte primeiro.',
+      checkTerms: 'Ver termos ↗',
+    },
+    about: {
+      eyebrow: '05 / SOBRE',
+      title: 'HXI, da Noruega.',
+      body: 'HXI é DJ e produtor norueguês, ativo desde 2021. O catálogo passa por phonk, produção eletrônica e sound design glitch, com lançamentos como “help urself”, X-PIRATA, AURORA LOVE e MONTAGEM HYSTERIA.',
+      note: 'Rápido, glitch e bit-crushed. Feito na Noruega; levado muito além dela.',
+    },
+    work: {
+      eyebrow: '05 / TRABALHE COM HXI',
+      title: 'Escolha o enquadramento.',
+      intro: 'Features, remixes, produção, design de som e trabalho com criadores — uma rota clara para o sistema HXI.',
+      cards: [{ label: '01 / COLAB', title: 'Features e colaborações', body: 'Envie uma demo ou ideia para uma colaboração HXI focada.', cta: 'Iniciar uma conversa ↗' },
+      { label: '02 / REMIXES', title: 'Sua faixa / som HXI', body: 'Remix, produção e design de som para o próximo enquadramento.', cta: 'Iniciar uma conversa ↗' },
+      { label: '03 / IMPRENSA', title: 'EPK / mídia', body: 'Solicitações de imprensa, entrevistas e assets aprovados pelo canal oficial.', cta: 'Iniciar uma conversa ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / ENTRE NA FREQUÊNCIA',
+      title: 'Primeiro acesso.\nSem ruído.',
+      intro: 'Atualizações de lançamentos, recursos para criadores e notícias aprovadas do projeto HXI ficam aqui quando um fluxo de contato compatível estiver ativo.',
+      note: 'A ativação da comunidade permanece bloqueada até que o backend real esteja configurado.',
+    },
+    contact: {
+      eyebrow: '06 / CONTATO',
+      title: 'Trabalhe com HXI.',
+      body: 'Para negócios, booking, imprensa ou colaboração, fale com HXI pelo perfil oficial no Instagram.',
+      actions: ['Contato pelo Instagram ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · Oslo, Noruega',
+      privacyStrip: 'Esta versão não usa rastreamento de analytics ou publicidade. O Spotify só carrega quando solicitado.',
+      privacyLabel: 'Privacidade',
+    },
+    releases: [{ name: 'help urself', yearLabel: 'Ano: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: 'Ano: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: 'Ano: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: 'Ano: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: 'Ano: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: 'Ano: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: 'Linha do tempo selecionada', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · trabalho de remix selecionado' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around com Nateki' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: 'Feito para impactar.', body: 'O enquadramento se amplia: de phonk carregado de glitch para território eletrônico e montagem mais amplo sem perder o sinal HXI.' },
+    privacy: {
+      title: 'Privacidade — HXI',
+      description: 'Informações de privacidade do site oficial do artista HXI.',
+      eyebrow: 'PRIVACIDADE',
+      heading: 'Minimal por design.',
+      lead: 'Este site não usa pixels de publicidade, formulários de newsletter nem análise comportamental, e não define intencionalmente cookies próprios de rastreamento.',
+      hostingH: 'Hospedagem e registros técnicos',
+      hostingP: 'A infraestrutura de hospedagem pode processar informações técnicas limitadas, como endereço IP, navegador ou registros de requisições, para entrega, segurança e prevenção de abuso. Esses registros são tratados pelo provedor de hospedagem conforme seus próprios termos e práticas de retenção.',
+      spotifyH: 'Spotify e serviços externos',
+      spotifyP: 'O player do Spotify só é carregado quando você escolhe carregá-lo. Depois disso, o Spotify pode processar dados ou definir cookies conforme suas próprias políticas. Links para Spotify, Instagram, YouTube e NCS levam a esses serviços de terceiros.',
+      contactH: 'Contato',
+      contactP: 'Para perguntas de privacidade sobre este site, entre em contato com HXI pelo perfil oficial do Instagram vinculado no site principal.',
+      back: 'Voltar para HXI',
+    },
+  },
+  ar: {
+    lang: 'ar',
+    direction: 'rtl',
+    hreflang: 'ar',
+    title: 'HXI — فنان فونك شمالي من النرويج',
+    description: 'الموقع الرسمي لـ HXI. فونك شمالي وإنتاج إلكتروني قائم على الغليتش من النرويج.',
+    nav: ['الموسيقى', 'الاعتمادات', 'شمالي', 'صنّاع المحتوى', 'اعمل مع HXI', 'التواصل'],
+    skip: 'انتقل إلى المحتوى',
+    localeName: 'العربية',
+    languageSummary: 'اللغة · العربية ▾',
+    listen: 'استمع',
+    hero: {
+      kicker: 'أوسلو · النرويج · فونك شمالي',
+      line: 'السرعة نفسها — أبرد.',
+      desc: 'فونك شمالي من أوسلو: سريع، قائم على الغليتش ومصمم للتأثير.',
+      actions: ['استمع على Spotify ↗', 'استكشف الكتالوج ↓'],
+      signalTitle: 'الإشارة الحالية',
+      stats: [{ value: '43M+*', label: 'استماعات Spotify لأغنية “help urself”' }, { value: '2021', label: 'نشط منذ' }, { value: 'NCS', label: 'منظومة صناع المحتوى' }],
+      note: '* إنجاز مؤرشف لمسار «help urself»؛ تتغير أرقام الاستماع مع الوقت. يتم تحديث مقاييس المنصات قبل كل إصدار إنتاجي.',
+    },
+    music: {
+      eyebrow: '01 / الموسيقى',
+      title: 'كتالوج كامل، وليس أغنية واحدة.',
+      intro: 'ابدأ بأغنية الانطلاقة، ثم انتقل إلى الإصدارات التي تحدد صوت HXI الحالي.',
+      latestLabel: 'الانطلاقة · help urself',
+      listen: 'شغّل المقطع ↗',
+      breakthroughLabel: 'الانطلاقة · help urself',
+      breakthroughDesc: 'صدرت “help urself” عام 2022 وتجاوزت 43 مليون استماع على Spotify.',
+      loadPlayer: 'تحميل مشغل Spotify',
+      playerNote: 'لن يتصل المشغل بـ Spotify إلا بعد أن تختار تحميله. قد يستخدم Spotify ملفات تعريف ارتباط خاصة به.',
+      selectedWorks: 'أعمال مختارة',
+      fullCatalog: 'الكتالوج الكامل على Spotify ↗',
+    },
+    credits: {
+      eyebrow: '02 / الاعتمادات',
+      title: 'أعمال مختارة خارج الكتالوج.',
+      intro: 'ريمكسات، موسيقى لعبة، وإصدارات NCS.',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'يظهر HXI ضمن اعتمادات TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version)، ضمن إصدار Fast & Furious: Drift Tape/Phonk Vol 1.', cta: 'فتح المقطع ↗' },
+      { tag: 'الموسيقى الرسمية للعبة', title: 'Never Phased · BODYCAM', body: 'تظهر أغنية “Never Phased” لـ Lurk وHXI وScythermane ضمن Bodycam (Official Game Soundtrack)، 2024.', cta: 'فتح الموسيقى التصويرية ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'إصدار NCS · 12 سبتمبر 2024.', cta: 'عرض المصدر ↗' },
+      { tag: 'NCS', title: 'Round Around', body: 'مع Nateki · إصدار NCS · 23 سبتمبر 2025.', cta: 'عرض المصدر ↗' }],
+      ncsCta: 'افتح HXI على NCS ↗',
+    },
+    nordic: {
+      eyebrow: '03 / شمالي',
+      title: 'أوسلو ليست خلفية. إنها داخل الإشارة.',
+      body: 'جذور نرويجية، لغة بصرية باردة وصوت قوي — مكان يُسمع بقدر ما يُرى.',
+      issue: 'HXI · الإصدار 01',
+      coord: '59.91°N · 10.75°E',
+      footer: ['صُنع في النرويج', 'مكان / صوت / نظام'],
+    },
+    creators: {
+      eyebrow: '04 / صنّاع المحتوى',
+      title: 'استخدم المقطع الصحيح. واتبع الشروط الصحيحة.',
+      body: 'يمكن استخدام إصدارات HXI على NCS وفق سياسة استخدام NCS. راجع صفحة المقطع قبل النشر.',
+      clear: 'مسموح لصناع المحتوى: استخدم مسارات NCS أدناه وفق شروط NCS الحالية. لأي شيء آخر: اسأل أولاً.',
+      checkTerms: 'تحقق من الشروط ↗',
+    },
+    about: {
+      eyebrow: '05 / عن HXI',
+      title: 'HXI، من النرويج.',
+      body: 'HXI دي جي ومنتج نرويجي نشط منذ 2021. يتحرك الكتالوج بين الفونك والإنتاج الإلكتروني وتصميم الصوت القائم على الغليتش، مع إصدارات منها “help urself” وX-PIRATA وAURORA LOVE وMONTAGEM HYSTERIA.',
+      note: 'سريع، غليتش وBit-crushed. صُنع في النرويج ووصل إلى ما هو أبعد.',
+    },
+    work: {
+      eyebrow: '05 / اعمل مع HXI',
+      title: 'اختر الإطار.',
+      intro: 'تعاونات وريمكسات وإنتاج وتصميم صوت وعمل مع صناع المحتوى — طريق واضح إلى نظام HXI.',
+      cards: [{ label: '01 / تعاون', title: 'تعاونات وظهور', body: 'أرسل ديمو أو فكرة لتعاون HXI مركز.', cta: 'ابدأ محادثة ↗' },
+      { label: '02 / ريمكسات', title: 'مقطوعتك / صوت HXI', body: 'ريمكس وإنتاج وتصميم صوت للإطار القادم.', cta: 'ابدأ محادثة ↗' },
+      { label: '03 / صحافة', title: 'EPK / إعلام', body: 'طلبات الصحافة والمقابلات والمواد المعتمدة عبر القناة الرسمية.', cta: 'ابدأ محادثة ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / انضم إلى التردد',
+      title: 'وصول أولاً.\nلا ضجيج.',
+      intro: 'تحديثات الإصدارات وموارد صناع المحتوى وأخبار HXI المعتمدة مكانها هنا عند تفعيل مسار تواصل متوافق.',
+      note: 'يبقى تفعيل المجتمع مقفلاً عمداً حتى يتم إعداد الخلفية الحقيقية.',
+    },
+    contact: {
+      eyebrow: '06 / التواصل',
+      title: 'اعمل مع HXI.',
+      body: 'للأعمال أو الحجز أو الصحافة أو التعاون، تواصل مع HXI عبر حساب Instagram الرسمي.',
+      actions: ['تواصل عبر Instagram ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · أوسلو، النرويج',
+      privacyStrip: 'لا يستخدم هذا الإصدار أدوات تتبع للتحليلات أو الإعلانات. يتم تحميل Spotify عند الطلب فقط.',
+      privacyLabel: 'الخصوصية',
+    },
+    releases: [{ name: 'help urself', yearLabel: 'السنة: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: 'السنة: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: 'السنة: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: 'السنة: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: 'السنة: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: 'السنة: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: 'خط زمني مختار', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · عمل ريمكس مختار' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around مع Nateki' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: 'صُنع للتأثير.', body: 'يتسع الإطار: من phonk المليء بالغليتش إلى مساحات إلكترونية وmontagem أوسع من دون فقدان إشارة HXI.' },
+    privacy: {
+      title: 'الخصوصية — HXI',
+      description: 'معلومات الخصوصية للموقع الرسمي للفنان HXI.',
+      eyebrow: 'الخصوصية',
+      heading: 'أقل قدر من التتبع، عن قصد.',
+      lead: 'لا يستخدم هذا الموقع وحدات بكسل إعلانية أو نماذج نشرات بريدية أو تحليلات سلوكية، ولا يضع عمداً ملفات تعريف ارتباط خاصة بالتتبع.',
+      hostingH: 'الاستضافة والسجلات التقنية',
+      hostingP: 'قد تعالج بنية الاستضافة معلومات تقنية محدودة مثل عنوان IP أو المتصفح أو سجلات الطلبات لأغراض تقديم الموقع والأمان ومنع إساءة الاستخدام. يتعامل مزود الاستضافة مع هذه السجلات وفق شروطه وممارسات الاحتفاظ الخاصة به.',
+      spotifyH: 'Spotify والخدمات الخارجية',
+      spotifyP: 'لا يتم تحميل مشغل Spotify إلا بعد اختيارك تحميله. عندها قد يعالج Spotify البيانات أو يضع ملفات تعريف ارتباط وفق سياساته الخاصة. تنقلك روابط Spotify وInstagram وYouTube وNCS إلى خدمات خارجية.',
+      contactH: 'التواصل',
+      contactP: 'لأسئلة الخصوصية المتعلقة بهذا الموقع، تواصل مع HXI عبر حساب Instagram الرسمي المرتبط من الموقع الرئيسي.',
+      back: 'العودة إلى HXI',
+    },
+  },
+  ja: {
+    lang: 'ja',
+    direction: 'ltr',
+    hreflang: 'ja',
+    title: 'HXI — ノルウェーのNordic Phonkアーティスト',
+    description: 'HXI公式アーティストサイト。ノルウェー発のNordic phonkとグリッチ主体のエレクトロニック制作。',
+    nav: ['音楽', 'クレジット', '北欧', 'クリエイター', 'HXIと仕事する', '連絡'],
+    skip: 'コンテンツへ移動',
+    localeName: '日本語',
+    languageSummary: '言語 · 日本語 ▾',
+    listen: '聴く',
+    hero: {
+      kicker: 'OSLO · NORWAY · NORDIC PHONK',
+      line: '同じスピード — もっと冷たく。',
+      desc: 'オスロ発のNordic phonk。速く、グリッチが強く、インパクトのために設計されたサウンド。',
+      actions: ['Spotifyで聴く ↗', 'カタログを見る ↓'],
+      signalTitle: 'CURRENT SIGNAL',
+      stats: [{ value: '43M+*', label: '「help urself」のSpotify再生数' }, { value: '2021', label: '活動開始' }, { value: 'NCS', label: 'クリエイター・エコシステム' }],
+      note: '* 「help urself」のアーカイブ済み到達記録。ストリーミング数は時間とともに変動します。最新のプラットフォーム指標は本番リリース前に更新されます。',
+    },
+    music: {
+      eyebrow: '01 / MUSIC',
+      title: '1曲だけではなく、カタログで聴く。',
+      intro: 'ブレイクした曲から始め、現在のHXIサウンドを形作るリリースへ。',
+      latestLabel: 'BREAKTHROUGH · help urself',
+      listen: 'トラックを再生 ↗',
+      breakthroughLabel: 'BREAKTHROUGH · help urself',
+      breakthroughDesc: '2022年リリースの「help urself」はSpotifyで4,300万再生を突破。',
+      loadPlayer: 'Spotifyプレーヤーを読み込む',
+      playerNote: 'Spotifyへの接続は、読み込みを選択した後にのみ行われます。Spotifyが独自のCookieを使用する場合があります。',
+      selectedWorks: 'SELECTED WORKS',
+      fullCatalog: 'Spotifyで全カタログを見る ↗',
+    },
+    credits: {
+      eyebrow: '02 / CREDITS',
+      title: 'カタログを越えた主なワーク。',
+      intro: 'リミックス、ゲーム・サウンドトラック、NCSリリース。',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'HXIは、Fast & Furious: Drift Tape/Phonk Vol 1 に収録された TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version) にクレジットされています。', cta: '楽曲を開く ↗' },
+      { tag: '公式ゲーム・サウンドトラック', title: 'Never Phased · BODYCAM', body: 'Lurk、HXI、Scythermane の「Never Phased」は Bodycam (Official Game Soundtrack), 2024 に収録されています。', cta: 'サウンドトラックを開く ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'NCSリリース · 2024年9月12日。', cta: 'ソースを見る ↗' },
+      { tag: 'NCS', title: 'Round Around', body: 'Natekiとの共作 · NCSリリース · 2025年9月23日。', cta: 'ソースを見る ↗' }],
+      ncsCta: 'NCSでHXIを見る ↗',
+    },
+    nordic: {
+      eyebrow: '03 / NORDIC',
+      title: 'OSLOは背景ではない。シグナルの中にある。',
+      body: 'ノルウェーのルーツ、冷たいビジュアル言語、強いインパクトのサウンド。見えるのと同じくらい、聴こえる場所。',
+      issue: 'HXI · UTGAVE 01',
+      coord: '59.91°N · 10.75°E',
+      footer: ['MADE IN NORWAY', 'PLACE / SOUND / SYSTEM'],
+    },
+    creators: {
+      eyebrow: '04 / CREATORS',
+      title: '正しい曲を使い、正しい条件に従う。',
+      body: 'HXIのNCSリリースはNCSの利用ポリシーに従って使用できます。公開前に各トラックページを確認してください。',
+      clear: 'クリエイター向け：現在のNCS利用条件に従って、下のNCSトラックを使用してください。それ以外：まず問い合わせてください。',
+      checkTerms: '条件を確認 ↗',
+    },
+    about: {
+      eyebrow: '05 / ABOUT',
+      title: 'HXI、ノルウェーから。',
+      body: 'HXIは2021年から活動するノルウェーのDJ／プロデューサー。phonk、エレクトロニック制作、グリッチ主体のサウンドデザインを横断し、「help urself」、X-PIRATA、AURORA LOVE、MONTAGEM HYSTERIAなどをリリースしている。',
+      note: '速く、グリッチーで、ビットクラッシュ。ノルウェーで作られ、そこから遠くへ届く。',
+    },
+    work: {
+      eyebrow: '05 / HXIと仕事する',
+      title: 'フレームを選ぶ。',
+      intro: 'フィーチャリング、リミックス、プロダクション、サウンドデザイン、クリエイター制作 — HXIシステムへの明確な入口。',
+      cards: [{ label: '01 / COLLAB', title: 'フィーチャリングとコラボ', body: '焦点の定まったHXIコラボレーションのためにデモやアイデアを送ってください。', cta: '相談を始める ↗' },
+      { label: '02 / REMIX', title: 'あなたの曲 / HXIサウンド', body: '次のフレームのためのリミックス、プロダクション、サウンドデザイン。', cta: '相談を始める ↗' },
+      { label: '03 / PRESS', title: 'EPK / メディア', body: 'プレス依頼、インタビュー、承認済みアセットは公式チャンネル経由で。', cta: '相談を始める ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / FREQUENCYに参加',
+      title: '最初のアクセス。\nノイズなし。',
+      intro: 'リリース情報、クリエイター向けリソース、承認済みHXIプロジェクトニュースは、適切な連絡フローが有効になった時にここに入ります。',
+      note: '実際のバックエンドが設定されるまで、コミュニティ機能は意図的に保留されます。',
+    },
+    contact: {
+      eyebrow: '06 / CONTACT',
+      title: 'HXIと仕事をする。',
+      body: 'ビジネス、ブッキング、プレス、コラボレーションは、HXI公式Instagramからお問い合わせください。',
+      actions: ['Instagramで連絡 ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · Oslo, Norway',
+      privacyStrip: 'このビルドでは解析・広告トラッキングを使用しません。Spotifyはリクエスト時のみ読み込まれます。',
+      privacyLabel: 'プライバシー',
+    },
+    releases: [{ name: 'help urself', yearLabel: '年: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: '年: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: '年: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: '年: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: '年: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: '年: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: '主な歩み', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · 主なリミックスワーク' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around Natekiとの共作' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: 'インパクトのために作られた。', body: 'グリッチの強いphonkから、HXIのシグナルを失わずに、より広いエレクトロニックとmontagemの領域へフレームを広げていく。' },
+    privacy: {
+      title: 'プライバシー — HXI',
+      description: 'HXI公式アーティストサイトのプライバシー情報。',
+      eyebrow: 'プライバシー',
+      heading: '意図的にミニマル。',
+      lead: 'このサイトは広告ピクセル、ニュースレターフォーム、行動分析を使用せず、意図的にファーストパーティの追跡Cookieを設定しません。',
+      hostingH: 'ホスティングと技術ログ',
+      hostingP: '配信、セキュリティ、不正利用防止のため、ホスティング基盤がIPアドレス、ブラウザ情報、リクエストログなどの限定的な技術情報を処理する場合があります。これらのログはホスティング事業者の条件と保持方針に従って扱われます。',
+      spotifyH: 'Spotifyと外部サービス',
+      spotifyP: 'Spotifyプレーヤーは、ユーザーが読み込みを選択するまで読み込まれません。読み込み後はSpotifyが独自のポリシーに基づきデータ処理やCookie設定を行う場合があります。Spotify、Instagram、YouTube、NCSへのリンクは各外部サービスに移動します。',
+      contactH: 'お問い合わせ',
+      contactP: 'このサイトのプライバシーに関する質問は、メインサイトからリンクされているHXI公式Instagramプロフィールからご連絡ください。',
+      back: 'HXIに戻る',
+    },
+  },
+  zh: {
+    lang: 'zh-CN',
+    direction: 'ltr',
+    hreflang: 'zh-CN',
+    title: 'HXI — 来自挪威的北欧 Phonk 艺术家',
+    description: 'HXI 官方艺术家网站。来自挪威的北欧 phonk 与 glitch 电子制作。',
+    nav: ['音乐', '鸣谢', '北欧', '创作者', '与 HXI 合作', '联系'],
+    skip: '跳到正文',
+    localeName: '中文',
+    languageSummary: '语言 · 中文 ▾',
+    listen: '收听',
+    hero: {
+      kicker: '奥斯陆 · 挪威 · 北欧 PHONK',
+      line: '同样的速度 — 更冷。',
+      desc: '来自奥斯陆的北欧 phonk：快速、glitch 强烈，为冲击力而打造。',
+      actions: ['在 Spotify 收听 ↗', '探索作品目录 ↓'],
+      signalTitle: '当前信号',
+      stats: [{ value: '43M+*', label: '“help urself”的 Spotify 播放量' }, { value: '2021', label: '活跃始于' }, { value: 'NCS', label: '创作者生态' }],
+      note: '* “help urself”的归档里程碑；播放数据会随时间变化。最新平台指标会在每次生产发布前更新。',
+    },
+    music: {
+      eyebrow: '01 / 音乐',
+      title: '不只是一首热门单曲，而是一套作品目录。',
+      intro: '从突破作品开始，再进入定义当前 HXI 声音的发行。',
+      latestLabel: '突破作品 · help urself',
+      listen: '播放曲目 ↗',
+      breakthroughLabel: '突破作品 · help urself',
+      breakthroughDesc: '“help urself” 于2022年发行，Spotify 播放量已超过4300万。',
+      loadPlayer: '加载 Spotify 播放器',
+      playerNote: '只有在你选择加载后，播放器才会连接 Spotify。Spotify 可能使用自己的 Cookie。',
+      selectedWorks: '精选作品',
+      fullCatalog: '在 Spotify 查看完整目录 ↗',
+    },
+    credits: {
+      eyebrow: '02 / 署名',
+      title: '目录之外的精选作品。',
+      intro: '混音、游戏原声作品与 NCS 发行。',
+      proofs: [{ tag: 'FAST & FURIOUS / REMIX', title: 'WORTH NOTHING', body: 'HXI 参与并署名于 TWISTED & Oliver Tree — WORTH NOTHING (Aggressive Drift Phonk Version)，收录于 Fast & Furious: Drift Tape/Phonk Vol 1。', cta: '打开单曲 ↗' },
+      { tag: '官方游戏原声', title: 'Never Phased · BODYCAM', body: 'Lurk、HXI 与 Scythermane 的 “Never Phased” 收录于 Bodycam (Official Game Soundtrack), 2024。', cta: '打开原声带 ↗' },
+      { tag: 'NCS', title: 'Lock n’ Load', body: 'NCS 发行 · 2024年9月12日。', cta: '查看来源 ↗' },
+      { tag: 'NCS', title: 'Round Around', body: '与 Nateki 合作 · NCS 发行 · 2025年9月23日。', cta: '查看来源 ↗' }],
+      ncsCta: '在 NCS 查看 HXI ↗',
+    },
+    nordic: {
+      eyebrow: '03 / 北欧',
+      title: '奥斯陆不是背景。它就在信号里。',
+      body: '挪威根源、冷冽视觉语言与高冲击声音——一个既能听见、也能看见的地方。',
+      issue: 'HXI · 第 01 期',
+      coord: '59.91°N · 10.75°E',
+      footer: ['MADE IN NORWAY', '地点 / 声音 / 系统'],
+    },
+    creators: {
+      eyebrow: '04 / 创作者',
+      title: '使用正确的曲目，遵循正确的条款。',
+      body: 'HXI 的 NCS 发行可依照 NCS 使用政策使用。发布前请查看对应曲目页面。',
+      clear: '面向创作者：请在当前 NCS 条款下使用下方 NCS 曲目。其他用途：请先咨询。',
+      checkTerms: '查看条款 ↗',
+    },
+    about: {
+      eyebrow: '05 / 关于',
+      title: 'HXI，来自挪威。',
+      body: 'HXI 是一位自2021年活跃的挪威 DJ 与制作人。作品横跨 phonk、电子制作和 glitch 声音设计，包括 “help urself”、X-PIRATA、AURORA LOVE 与 MONTAGEM HYSTERIA。',
+      note: '快速、故障感、bit-crushed。诞生于挪威，传播到更远的地方。',
+    },
+    work: {
+      eyebrow: '05 / 与 HXI 合作',
+      title: '选择画面。',
+      intro: '合作、混音、制作、声音设计和创作者工作——进入 HXI 系统的一条清晰路径。',
+      cards: [{ label: '01 / 合作', title: '合作与联名', body: '发送 demo 或创意，开展聚焦的 HXI 合作。', cta: '开始沟通 ↗' },
+      { label: '02 / 混音', title: '你的作品 / HXI 声音', body: '为下一帧打造混音、制作与声音设计。', cta: '开始沟通 ↗' },
+      { label: '03 / 媒体', title: 'EPK / 媒体', body: '媒体请求、采访和已批准素材请通过官方渠道联系。', cta: '开始沟通 ↗' }],
+    },
+    frequency: {
+      eyebrow: '06 / 加入频率',
+      title: '优先访问。\n没有噪音。',
+      intro: '当合规的联系流程启用后，发行更新、创作者资源和已批准的 HXI 项目消息都会在这里发布。',
+      note: '在真实后端配置完成之前，社区功能会被有意保留。',
+    },
+    contact: {
+      eyebrow: '06 / 联系',
+      title: '与 HXI 合作。',
+      body: '商务、演出预订、媒体或合作，请通过 HXI 官方 Instagram 联系。',
+      actions: ['通过 Instagram 联系 ↗', 'YouTube ↗'],
+    },
+    footer: {
+      identity: 'HXI · 奥斯陆，挪威',
+      privacyStrip: '此版本不运行分析或广告追踪。Spotify 仅在用户主动请求时加载。',
+      privacyLabel: '隐私',
+    },
+    releases: [{ name: 'help urself', yearLabel: '年份: 2022', href: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI' },
+      { name: 'MONTAGEM HYSTERIA', yearLabel: '年份: 2026', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'X-PIRATA', yearLabel: '年份: 2024', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'Put you in a COFFIN!', yearLabel: '年份: 2023', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'AURORA LOVE', yearLabel: '年份: 2025', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' },
+      { name: 'RECXVERY', yearLabel: '年份: 2022', href: 'https://open.spotify.com/artist/3yRqd6IO6SamMAmnXwZKeU' }],
+    timeline: { label: '精选时间线', entries: [{ year: '2022', title: 'RECXVERY · help urself' }, { year: '2023', title: 'Put you in a COFFIN! · 精选混音作品' }, { year: '2024', title: 'X-PIRATA · Lock n’ Load' }, { year: '2025', title: 'AURORA LOVE · Round Around 与 Nateki 合作' }, { year: '2026', title: 'MONTAGEM HYSTERIA' }] },
+    impact: { title: '为冲击而生。', body: '画面正在扩展：从强烈 glitch phonk 走向更广阔的电子与 montagem 领域，同时不失去 HXI 信号。' },
+    privacy: {
+      title: '隐私 — HXI',
+      description: 'HXI 官方艺人网站的隐私信息。',
+      eyebrow: '隐私',
+      heading: '从设计上保持最简。',
+      lead: '本网站不运行广告像素、邮件订阅表单或行为分析，也不会有意设置第一方跟踪 Cookie。',
+      hostingH: '托管与技术日志',
+      hostingP: '网站托管基础设施可能会为内容交付、安全和防止滥用处理有限的技术信息，例如 IP 地址、浏览器信息或请求日志。这些日志由托管服务商按照其自身条款和保留规则处理。',
+      spotifyH: 'Spotify 与外部服务',
+      spotifyP: '只有在你主动选择加载后，Spotify 播放器才会载入。载入后，Spotify 可能依据其自身政策处理数据或设置 Cookie。前往 Spotify、Instagram、YouTube 和 NCS 的链接会打开这些第三方服务。',
+      contactH: '联系',
+      contactP: '如对本网站的隐私有疑问，请通过主站所链接的 HXI 官方 Instagram 账号联系。',
+      back: '返回 HXI',
+    },
+  },
+};

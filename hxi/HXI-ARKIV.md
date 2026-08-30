@@ -14,6 +14,7 @@ Tüm HXI Lovable sürümlerinin sistematik kaydı.
 | **HXI-3** | *(hxi-v2 ile aynı kod)* | `761f6cd8` | **Phonk Studio (Orijinal)** | Lacivert `#00142e` | Evet | 🔒 Taslak | [id-preview--761f6cd8...lovable.app](https://id-preview--761f6cd8-77f3-4ed5-a60d-188f01add89d.lovable.app) |
 | **HXI-4** | `hxi-v4/` | `daddeade` | **Phonk Studio Pro** | Siyah `#080810` | Hayır | 🔒 Taslak | [id-preview--daddeade...lovable.app](https://id-preview--daddeade-7b69-4b6a-bda8-e3e3acab8645.lovable.app) |
 | **HXI-5** | `hxi-v5/` | *(Next.js — Lovable yok)* | **Acid Signal** | Siyah `#080808` + Acid `#c8ff00` | Hayır | 🔒 Geliştirme | — |
+| **HXI-6** | `hxi-v6/` | *(Next.js — Lovable yok)* | **Utgave 01** | Siyah `#080808` + Acid `#c8ff00` | Hayır | 🔒 Geliştirme | — |
 
 > **HXI-3 notu:** HXI-2, HXI-3'ün Lovable'daki "remix"idir (fork). HXI-3 Temmuz 2026'da 10 iterasyonla oluşturuldu; HXI-2 ise Ağustos 2026'da bu orijinalin üstüne 46 iterasyon daha eklendi. Kod tabanı birebir aynı — bu yüzden monorepo'da ayrı dizin açılmadı.
 
