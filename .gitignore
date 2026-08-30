@@ -5,7 +5,9 @@ __pycache__/
 
 # Motorun ürettiği veri. run.mjs bunları sıfırdan kuruyor (sınandı), ama izlenince
 # her koşuda diff üretiyorlardı — SQLite dosyası ikili olduğu için diff de okunmaz.
-engine/data/
+# Not: bu kural ortadan slash taşıdığı için kök dizine göre çapalı (gitignore kuralı) —
+# qblogg/ öneki olmadan eşleşmez.
+qblogg/engine/data/
 
 # Üretilen dağıtım klasörleri — marka-tescil.mjs ve marka-paket.mjs üretiyor
 tescil/

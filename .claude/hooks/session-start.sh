@@ -11,5 +11,7 @@ if ! command -v node >/dev/null 2>&1; then
   exit 0
 fi
 
-echo "QBLOGG sağlık kontrolü:"
-node scripts/check.mjs || echo "(kontrol hata verdi — oturuma başlarken önce bunları düzeltin)"
+if [ -f qblogg/scripts/check.mjs ]; then
+  echo "QBLOGG sağlık kontrolü:"
+  node qblogg/scripts/check.mjs || echo "(kontrol hata verdi — oturuma başlarken önce bunları düzeltin)"
+fi
