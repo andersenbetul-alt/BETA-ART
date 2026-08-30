@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COBBANI — Identity Contact Sheet</title>
+<style>
+:root{--bg:#FFF8EE;--card:#fff;--line:#e8dcc8;--ink:#1A0A00;--mut:#7a6040;--gold:#C8962A}
+@media (prefers-color-scheme:dark){:root:not([data-t=light]){
+  --bg:#0f0700;--card:#1a0e04;--line:#2e1f08;--ink:#FFF8EE;--mut:#b09060}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:48px 24px 96px}
+header{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:8px}
+h1{margin:0 0 6px;font-size:26px;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:14px;margin:0}
+h2{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);
+   margin:44px 0 14px;font-weight:600}
+.grid{display:flex;flex-wrap:wrap;gap:16px}
+.c{background:#fff;border:1px solid #e8dcc8;border-radius:10px;
+   padding:22px;display:flex;flex-direction:column;align-items:center;
+   justify-content:center;gap:12px;min-width:0}
+.c.rev{background:#1A0A00;border-color:#2e1f08}
+.c.cream{background:#FFF8EE;border-color:#e8dcc8}
+.lab{font:11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#7a6040;
+     letter-spacing:.04em;text-align:center}
+.c.rev .lab{color:#b09060}
+img{display:block;max-width:100%;height:auto}
+.swatch-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:4px}
+.sw{text-align:center;font:11px/1.4 ui-monospace,monospace;color:var(--mut)}
+.sw i{display:block;width:80px;height:54px;border-radius:8px;border:1px solid var(--line);margin-bottom:6px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin-top:4px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+td.ok{color:#1a7f4b;font-weight:600} td.no{color:#b4341f;font-weight:600}
+</style></head><body><div class="wrap">
+
+<header>
+  <h1>COBBANI — Identity System</h1>
+  <p class="sub">Geometrik wordmark · BB monogram mark · Tüm geometri H=100 ızgarasından hesaplanmıştır.</p>
+</header>
+
+<h2>Wordmark</h2>
+<div class="grid">
+  <div class="c cream" style="flex:1 1 560px">
+    <img src="master/cobbani-wordmark.svg" width="500">
+    <span class="lab">primary · espresso · 557 × 100</span>
+  </div>
+  <div class="c rev" style="flex:1 1 320px">
+    <img src="master/cobbani-wordmark-white.svg" width="300">
+    <span class="lab">white on espresso</span>
+  </div>
+</div>
+<div class="grid" style="margin-top:16px">
+  <div class="c rev" style="flex:1 1 280px">
+    <img src="master/cobbani-wordmark-gold.svg" width="280">
+    <span class="lab">gold on espresso</span>
+  </div>
+  <div class="c cream" style="flex:1 1 200px">
+    <img src="master/cobbani-wordmark-cream-bg.svg" width="200"><span class="lab">espresso on cream</span>
+  </div>
+  <div class="c cream" style="flex:1 1 120px">
+    <img src="master/cobbani-wordmark.svg" width="120"><span class="lab">120 px</span>
+  </div>
+</div>
+
+<h2>Mark — BB Monogram</h2>
+<div class="grid">
+  <div class="c cream" style="flex:1 1 160px">
+    <img src="master/cobbani-mark.svg" width="100">
+    <span class="lab">primary · espresso + gold</span>
+  </div>
+  <div class="c rev" style="flex:1 1 160px">
+    <img src="master/cobbani-mark-reverse.svg" width="100">
+    <span class="lab">cream + gold on espresso</span>
+  </div>
+  <div class="c cream" style="flex:1 1 160px">
+    <img src="master/cobbani-mark-mono.svg" width="100">
+    <span class="lab">mono espresso</span>
+  </div>
+  <div class="c rev" style="flex:1 1 160px">
+    <img src="master/cobbani-mark-mono-light.svg" width="100">
+    <span class="lab">mono light</span>
+  </div>
+</div>
+
+<h2>Lockups</h2>
+<div class="grid">
+  <div class="c cream" style="flex:2 1 560px">
+    <img src="master/cobbani-lockup-horizontal.svg" width="500">
+    <span class="lab">horizontal · primary</span>
+  </div>
+  <div class="c rev" style="flex:1 1 360px">
+    <img src="master/cobbani-lockup-horizontal-reverse.svg" width="320">
+    <span class="lab">horizontal · reverse</span>
+  </div>
+</div>
+<div class="grid" style="margin-top:16px">
+  <div class="c cream" style="flex:0 0 auto">
+    <img src="master/cobbani-lockup-stacked.svg" width="180">
+    <span class="lab">stacked</span>
+  </div>
+</div>
+
+<h2>App Icons</h2>
+<div class="grid">
+  <div class="c cream">
+    <img src="master/cobbani-icon-app.svg" width="96">
+    <span class="lab">1024 × 1024 · rx 22%</span>
+  </div>
+  <div class="c cream">
+    <img src="master/cobbani-icon-favicon.svg" width="64">
+    <span class="lab">512 × 512 favicon</span>
+  </div>
+</div>
+
+<h2>Scale Ladder</h2>
+<div class="grid">
+  <div class="c cream" style="flex:1">
+    <img src="studies/cobbani-scale-ladder.svg" style="max-width:560px;width:100%">
+    <span class="lab">100 / 48 / 24 cap height</span>
+  </div>
+</div>
+
+<h2>Palette &amp; Geometry</h2>
+<div class="swatch-row">
+  <div class="sw"><i style="background:#1A0A00"></i>#1A0A00<br>Deep Espresso</div>
+  <div class="sw"><i style="background:#C8962A;border-color:#C8962A"></i>#C8962A<br>Burnished Gold</div>
+  <div class="sw"><i style="background:#FFF8EE;border-color:#e8dcc8"></i>#FFF8EE<br>Warm Cream</div>
+  <div class="sw"><i style="background:#FFFFFF"></i>#FFFFFF<br>White</div>
+</div>
+
+<table style="margin-top:28px">
+  <tr><th>Ölçüt</th><th>Değer</th><th>Durum</th></tr>
+  <tr><td>Cap height H</td><td>100 u</td><td class="ok">✔</td></tr>
+  <tr><td>Stroke / stem S</td><td>13 u (%13 of H)</td><td class="ok">✔</td></tr>
+  <tr><td>Mark</td><td>BB monogram · 150 × 150 · espresso + gold</td><td class="ok">✔</td></tr>
+  <tr><td>B upper bump rx</td><td>53 u · ry 25 u</td><td class="ok">✔</td></tr>
+  <tr><td>B lower bump rx</td><td>57 u · ry 25 u (optik ağırlık)</td><td class="ok">✔</td></tr>
+  <tr><td>B counter stroke</td><td>S inset = 13 u</td><td class="ok">✔</td></tr>
+  <tr><td>A crossbar position</td><td>70% of H</td><td class="ok">✔</td></tr>
+  <tr><td>Wordmark inter-glyph gap</td><td>18 u</td><td class="ok">✔</td></tr>
+</table>
+
+</div></body></html>
