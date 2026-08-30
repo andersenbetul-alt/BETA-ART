@@ -169,6 +169,77 @@ Settings → Git'e bakıp bağlı GitHub deposu adını (`owner/repo`) paylaşı
 `add_repo` ile doğrudan koda bakılabilir; bu Vercel MCP bağlantısından
 tekrar deneme aynı sonucu verir.
 
+## 15. Bu oturumda yayınlanmış artifact'ler — 30.08.2026 envanteri
+
+Bu depoyla ilgisiz görünse de, bu Claude Code oturumu boyunca (özetlemeden
+önceki kısımda) `Artifact` aracıyla 8 Beta Art ile ilgili sayfa yayınlanmış
+ve `docs/`e hiç işlenmemiş. `@ARTIFACTS` ile listelenip okundu, önemli
+bulgular:
+
+**"BETA ART — Project Catalogue"** (yayınlanmış artifact, 30.08.2026) — bu
+oturumun kendi ürettiği, madde 1-14'ten daha düzenli bir 12-proje kataloğu,
+kod sistemiyle (`BA · 2026 P · 001` gibi):
+
+| Kod | Proje | Durum | Konum |
+|---|---|---|---|
+| P·001 | Beta Art Privat | ● Yayında (beta-art.com) | React+Vite+Supabase+C2PA |
+| P·002 | Beta Art Privat — Statik | ◐ Geliştirme | `beta-art-static/beta-art/` (yerelde yok, aşağı bkz.) |
+| F·001 | Beta Photo | ◐ Geliştirme (MVP) | `project-hxi` |
+| B·001 | Beta Art Business | ◐ Geliştirme (ön lansman) | `beta-art-static/beta-art-business/`, 9 makale, 36 doküman (yerelde yok) |
+| G·001 | Galleri og Utstilling Event | ○ Planlandı, Sonbahar 2026 Oslo | `beta-art-static/beta-art-gallery-event/` (yerelde yok) |
+| J·001 | Field Notes — The Beta Art Journal | ● Yayında | `project-hxi` |
+| N·001 | Beta Art Norway Archive | ◐ Geliştirme | `project-hxi` |
+| N·002 | Beta Art Industry Archive | ◐ Geliştirme | `project-hxi` |
+| Q·001 | Beta Art QR (v3) | ● Yayında | `project-hxi` |
+| A·001 | Beta Art Archive Platform (dahili, noindex) | ● Yayında | `project-hxi` |
+| A·002 | Beta Art Platform (iş ortağı arayüzü) | ● Yayında | `project-hxi` |
+| T·001 | Beta Art v8 — Airo SSR | ◎ Spesifikasyon | React+Airo SSR+Tailwind+shadcn, 42 Radix bileşeni |
+| T·002 | Beta Art v3 — Referans | ◎ Referans | beta-art.com'un önceki tasarım iterasyonu |
+
+**Bu, `project-hxi`'nin (madde 14'teki Vercel ipucu) yalnızca `beta-art`/
+`beta-art-archive`/`beta-art-private` değil, en az 8 ayrı Beta Art
+projesini barındıran ana hesap olduğunu doğruluyor** — F·001, J·001,
+N·001, N·002, Q·001, A·001, A·002 hepsi aynı hesapta. Erişim durumu
+değişmedi (hâlâ 403/erişilemez), ama kapsamın büyüklüğü artık netleşti.
+
+**Kayıp yerel dosyalar:** kataloğun P·002/B·001/G·001 satırlarındaki
+`beta-art-static/…` yol adları bu konteynerin dosya sisteminde **yok**
+(`find /` ile arandı, sonuç yok). Ya bu bir konteyner/oturum sıfırlamasında
+kayboldu, ya da bu yollar hiç dosya üretilmeden yalnızca planlanan konum
+olarak yazıldı — hangisi olduğu belirsiz. Yayınlanmış artifact'lerin
+kendisi (aşağıda) sunucu tarafında hâlâ duruyor, o yüzden içerik tamamen
+kayıp değil, ama yerel kaynak dosyaları (varsa) geri getirilemez.
+
+**Logo/mark tutarsızlığı — "TEK LOGO" kuralına aykırı bir bulgu:** iki ayrı
+artifact iki farklı "mark" gösteriyor:
+- **"Beta Art Brand"** kanonik bir birincil mark tanımlıyor: halka (r=44) +
+  4 kiriş "blade" + merkez nokta (`#8B1515`), gerçek dosya yollarıyla
+  (`brand/beta-art/master/`, `beta-art/public/assets/brand/`) — kesinleşmiş
+  gibi sunulmuş.
+- **"Beta Art Logos"** ise dört **kararsız** konsept sunuyor (Plate/Field/
+  Glyph/Horizon) — "Studio draft" etiketli, henüz seçim yapılmamış.
+- Bu oturumun kendi ürettiği `beta-art-privat.html`/`beta-art-hub.html`
+  (madde 10/11, React Privat artifact) ise **üçüncü, farklı bir mark**
+  kullanıyor: halka + 6 kollu pusula gülü (asterisk) deseni + merkez nokta.
+
+Üçü aynı anda doğru olamaz — kullanıcının "TEK LOGO KULLANIYORUZ BUTUN
+BETA ART PROJELERINDE" talimatı bu üç mark'tan **hangisinin gerçekten
+kanonik olduğu** netleşmeden karşılanmış sayılamaz. Şu an elde üç aday var,
+sıfır kesinleşmiş karar.
+
+**Doğrulanan iyi haber:** **"Beta Art Archive"** (4891c4bd) ve **"BETA ART
+Business"** (be610802) artifact'leri incelendi — ikisi de React uygulaması.
+"Beta Art Archive"nin metni madde 14'teki gerçek `beta-art.com` yapıştırmasıyla
+**birebir eşleşiyor** ("Price on request", "Portrait in Amber", FAQ soruları
+vs.) — yani "BU SAYFAYI GELISTIRIYORUZ" talebi bu oturumda zaten bir React
+yeniden-üretimiyle karşılanmış, `beta-art-hub.html` taslağı gereksiz kalmış.
+"BETA ART Business" ise CLAUDE.md'deki mevcut Business tanımıyla tutarlı,
+ek detaylar taşıyor: "Databehandleravtale" (veri işleyen sözleşmesi), faz/
+bölge/durum filtreli demo arşiv, ve fiyatlandırma notu — "Tallene er
+hypoteser for kundesamtaler, ikke endelig prisliste" (rakamlar müşteri
+görüşmesi için hipotez, kesin fiyat listesi değil) — CLAUDE.md'nin "rakamlar
+örnek" ilkesiyle birebir örtüşüyor.
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
