@@ -10,6 +10,18 @@ Veriler 26.08.2026'da Vercel MCP (`list_teams`, `list_projects`,
 araçlarıyla **doğrudan sorgulanarak** ölçüldü — uydurma yok. Erişilemeyen
 bir şey varsa "doğrulanamadı" diye açıkça yazılıdır.
 
+**Güncelleme (30.08.2026) — BAB-02 kapsamı düzeltildi:** Aşağıdaki BAB-02
+Business bölümü, `PROJECTMANIFEST.md`/`BETAARTPROJECTCODES.md`'nin
+"inşaat-öncelikli proje arşivi" kararını temel alıyordu. Kullanıcı bunu
+doğrudan yalanladı: geçerli konsept **"Norway's Visual Infrastructure for
+Brands"** — Norveçli 30+ sektöre (reklam ajansları, e-ticaret, kamu,
+petrol/offshore, medya, turizm...) abonelik/çerçeve anlaşması/sipariş
+üzerine çekimle genel fotoğraf lisanslama hizmeti (`betaart.no/business/`).
+`PROJECTMANIFEST.md`'nin "eski/geçersiz" dediği dil aslında **güncel**
+karar — yani o belge de eskimiş. Bu, aynı gün içinde ikinci kez konseptin
+değiştiği anlamına geliyor; bir sonraki oturum başka bir sürümle
+karşılaşırsa şaşırmasın, önce kullanıcıya doğrulatsın.
+
 ## QBLOGG (bu depo)
 
 - **Ne:** AI destekli çok dilli içerik stüdyosu sitesi
