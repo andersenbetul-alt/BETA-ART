@@ -154,6 +154,16 @@ satır tahminle doldurulmadı — kaynağı olmayan alan `bilinmiyor` yazar.
 | Detaylı karşılaştırma | `docs/beta-art/privat-icerik-analizi.md` — bu madde eklendiğinde o belge de güncellendi |
 | Durum | **En yetkili kaynak.** Madde 4'ün (BETA ART Privat statik prototip) canlıdaki en yakın karşılığı bu — birleştirme kararında "son söz" bu olmalı. |
 
+**Vercel proje ipucu (30.08.2026, henüz erişilemedi):** kullanıcı
+`https://vercel.com/project-hxi/beta-art-archive` paylaştı — ilk kez bir
+dağıtım URL'si değil, bir **Vercel proje adı** ("beta-art-archive"). Bu
+oturuma bağlı Vercel hesabı yalnızca "BET - ART" takımını görüyor
+(`team_xNtowH7U0jXQrI53DFJFzH2o`); `project-hxi` bu listede yok,
+`get_project` 403 Forbidden döndü, paylaşılabilir bağlantı oluşturma da
+başarısız oldu. Yani proje **bu hesabın erişimi olmayan başka bir Vercel
+hesabı/takımında**. Kod kaynağı hâlâ doğrulanamadı ama artık aranacak bir
+proje adı var.
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
