@@ -1,85 +1,95 @@
 # HXI — İş Belgesi
 
-Sürüm: 0.1 · 30.08.2026 · Sahip: andersenbetul-alt  
-Durum: Taslak — kararlar ve rakamlar doğrulanmadan kesinleşmez.
+Sürüm: 0.2 · 30.08.2026 · Sahip: andersenbetul-alt  
+Durum: Yön kararlaştırıldı — rakamlar ve detaylar doğrulanmadı.
 
 ## Tek cümleyle
 
-HXI, müzik prodüksiyon stüdyosudur: kayıt, mix, mastering ve ses tasarımı
-hizmetleri verir; müzisyen ve ses profesyonellerine danışmanlık sağlar.
+HXI, Oslo tabanlı bir Nordic phonk elektronik sanatçısı/prodüktör markasıdır:
+kendi müziğini yayınlar, diğer sanatçılarla çalışır ve prodüksiyon araçları üretir.
 
-## Sorun
+## Kim
 
-Bağımsız müzisyenler ve küçük plakçılar için profesyonel prodüksiyon erişimi
-genellikle ya çok pahalı (büyük stüdyolar) ya çok belirsiz (bireysel prodüktörler)
-ya da her ikisi birden. Boşluk: **öngörülebilir fiyat, net teslimat ve erişilebilir
-süreçle profesyonel ses kalitesi**.
+HXI bir hizmet stüdyosu değildir. Müzisyenlerden servis satın almaz —
+kendisi sanatçı olarak üretir, yayınlar ve iş birliği yapar.
 
-## Teklif
+**Ses dili:** Nordic phonk elektronik — Oslo'nun kış soğuğunun dönüştürüldüğü
+ses estetiği. Tagline: **THE SAME SPEED — COLDER.**
 
-| Hizmet | Kapsam | Not |
+Referans koordinat: 59.91°N · 10.75°E
+
+## Marka mimarisi
+
+| Kol | İçerik | Aşama |
 |---|---|---|
-| Mix | Çok kanallı ses dosyaları → stereo master | Tur başı |
-| Mastering | Stereo mix → dağıtım hazır dosya (streaming + fiziksel) | Tur başı |
-| Prodüksiyon | Aranjman, enstrümantasyon, ses tasarımı | Proje bazlı |
-| Danışmanlık | Stüdyo kurulumu, DAW seçimi, sinyal zinciri | Saat bazlı [H] |
-
-[H] = Bu rakamlar veya kapsam henüz kesinleşmedi; örnek olarak işaretlidir.
-
-## Hedef kitle
-
-- **Birincil:** Bağımsız müzisyenler ve solo sanatçılar
-- **İkincil:** Küçük bağımsız plakçılar ve podcast yapımcıları
-- **Coğrafya:** Norveç merkezli, çevrimiçi çalışmayla küresel erişim
+| HXI Music | Ana yayınlar (single, EP, LP) | Birincil |
+| HXI Credits | Diğer sanatçılara verilen prodüksiyon/mix katkısı | Aktif |
+| HXI Creator Use | Sample pack, preset, araç satışı | Planlanan |
+| HXI Sync | Film/oyun/reklam lisanslama | Planlanan |
+| HXI Booking | Canlı performans ve DJ set | Planlanan |
+| HXI Press | Basın materyalleri, medya | Altyapı |
 
 ## Gelir modeli
 
-| Katman | Model | Not |
+| Kanal | Model | Durum |
 |---|---|---|
-| Proje bazlı | Tek hizmet bedeli (mix, mastering, prodüksiyon) | Temel gelir |
-| Retainer | Aylık paket — düzenli sanatçılar için | Tekrarlayan [H] |
-| Danışmanlık | Saat ücreti | Ek kanal [H] |
+| Streaming (Spotify, Apple Music vb.) | Telif + dağıtım | Hedef |
+| Creator Use (sample / preset) | Tek seferlik satış | Planlanan [H] |
+| Sync lisanslama | Proje başına veya kütüphane lisansı | Planlanan [H] |
+| Canlı / DJ set | Gig ücreti | Planlanan [H] |
+| Koleksiyon / limited release | Fiziksel + dijital UTGAVE serileri | Planlanan [H] |
 
-Rakamlar henüz kesinleşmemiştir; piyasa araştırması tamamlanmadan fiyat
-listesi yayınlanmaz.
+[H] = Henüz kesinleşmemiş; bu belge iş planı değil, çalışma taslağıdır.
 
-## Kanallar
+## HXI Signal Score — iç kalite kapısı
 
-- Kendi sitesi (yapılacak)
-- Soundcloud / Bandcamp portföyü
-- Norveç müzik ağları (Bylarm, Music Norway vb.)
-- Slack botu (hxi-music) — iç iletişim ve proje takibi
+Her yayın ≥ 90/100 eşiğini geçmeden dağıtıma çıkmaz. Ölçüt alanları:
+
+- Ses kalitesi ve mastering standardı
+- Özgünlük / marka ses diliyle uyum
+- Teknik meta-veri eksiksizliği (ISRC, BPM, anahtar, tag)
+- Görsel tutarlılık (kapak, UTGAVE sistemi)
+
+## HXI web sitesi — mimari
+
+9 ekranlı tek sayfa yapısı (planlanan):
+
+1. **Hero** — tagline + ses/video loop
+2. **Current Signal** — aktif UTGAVE, yeni yayın
+3. **Selected Works** — seçilmiş diskografi
+4. **Credits** — iş birliği yapılan sanatçılar
+5. **Place (Oslo)** — coğrafya, atmosfer — 59.91°N · 10.75°E
+6. **Artist Story** — HXI kimliği ve ses dili
+7. **Creator / Sync** — araç ve lisanslama kanalları
+8. **Culture** — editorial, referans, etki
+9. **Work With HXI** — iletişim / booking formu
 
 ## HXI Slack botu (`hxi-music`)
 
-`agents/eve-slack-agent/` üzerinde çalışır. Kullanım alanları:
+`agents/eve-slack-agent/` üzerinde çalışır. `AGENT_PROFILE=hxi-music` ile etkinleşir.  
+Profil: `agents/eve-slack-agent/agent/profiles/hxi-music.md`
 
-- Stüdyo soruları ve proje durumu
-- Müşteri brief alma ve ön değerlendirme
-- Teknik danışmanlık (DAW, format, sinyal zinciri)
-
-Bot `AGENT_PROFILE=hxi-music` ortam değişkeniyle etkinleşir.
-Profil dosyası: `agents/eve-slack-agent/agent/profiles/hxi-music.md`
+Kullanım alanları: proje takibi, teknik sorular, yayın planlama, iş birliği brief'i.
 
 ## Marka
 
 Belge: `docs/hxi/brand-brief.md`  
-Varlık üretimi: henüz betiğe alınmadı — `docs/hxi/brand-brief.md`
-tamamlandığında `scripts/hxi-marka-uret.py` yazılacak.
+Palette: Deep Black `#080808` · Off White `#F0EDE8` · Acid Signal `#C8FF00` · Signal Red `#EF2B2D`  
+Tipografi: Barlow Condensed (display) · IBM Plex Sans (body) · Space Mono (metadata)
 
 ## Yapılacaklar (öncelik sırasıyla)
 
 | # | İş | Durum |
 |---|---|---|
-| 1 | Slack botu kimliği ve profil dosyası | **Bu PR** |
-| 2 | Fiyat araştırması (Norveç piyasası) | Bekliyor |
-| 3 | Portföy / örnek çalışmalar | Bekliyor |
-| 4 | Site: landing page | Bekliyor |
-| 5 | Marka kimliği (betik) | Bekliyor |
-| 6 | Stripe / ödeme entegrasyonu | Bekliyor — Hizmet #1'den sonra |
+| 1 | Slack botu kimliği ve profil | **Bu PR** |
+| 2 | HXI web sitesi (9 ekranlı) | Bekliyor |
+| 3 | Marka varlık üretim betiği (`hxi-marka-uret.py`) | Bekliyor |
+| 4 | Marka araştırması (Patentstyret + TMview) | Bekliyor |
+| 5 | İlk UTGAVE yayın paketi | Bekliyor |
+| 6 | Creator Use kanal kurulumu | Bekliyor |
 
 ## Bilinen sınırlar
 
-- Fiyatlar, hedef kitle ve hizmet kapsamı doğrulanmamıştır.
-- Bu belge iş planı değil, çalışma taslağıdır.
+- Gelir rakamları doğrulanmamıştır; bu belge iş planı değil, çalışma taslağıdır.
 - Norveç vergi/MVA yükümlülükleri kontrol edilmedi.
+- Marka araştırması tamamlanmadan ticari yayılma yapılmamalı.
