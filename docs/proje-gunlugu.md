@@ -254,3 +254,72 @@ ağacını değil depoyu dağıtır (gözlem #8). Push sonrası yeşil. Örnek t
 brief'i hazır (seed.sql, yayınlanmış yazıdan türetilmiş). Bekleyen: kullanıcı
 Supabase projesi + URL/anon anahtar.
 
+## 24.08.2026 (devam) — Yazar platformu fikri değerlendirildi (taslak)
+
+Kullanıcı yeni yön verdi: QBLOGG, insanların kendi bloglarını yayınlayıp
+kitaplarını tanıtabilecekleri bir platform olsun. Kod yazılmadan önce
+değerlendirme + v1 tasarımı `docs/yazar-platformu.md`'ye yazıldı: üç model
+seçeneği (öneri: davetli/küratörlü), mevcut Supabase üye sistemi üstüne
+şema genişlemesi (authors/books/author_posts + niyet temelli keşif —
+kullanıcının paylaştığı filtre kodu okur tarafının prototipi), gelir
+seçenekleri rakamsız [H], hukuk kapıları (tanıtım işareti, koşullar
+güncellemesi, avukat teyidi) ve eşikli pilot planı. Marka çelişkisi ve
+"bir haftada üçüncü yön" riski belgede açıkça kayıtlı. Model + öncelik
+kararı kullanıcıya soruldu; P0 inşası karar sonrası.
+## 24.08.2026 (gece) — Fikir seli tek çerçevede toplandı
+
+Aynı gün içinde dört yön geldi: yazar platformu (karar: davetli model,
+platform önce; şema yazıldı `uye/schema-platform.sql`), ad tartışması
+(QBOOK/QBLOOK — qbook.com dolu, qblook.com/.no müsait [V, GoDaddy]),
+Action Pages hizmet modeli ve SAYFA60 kitap keşif kanalı + çok-format
+merdiveni. Hepsi `docs/yazar-platformu.md`'ye işlendi (§8-10). Birleşik
+tez: ödeyen müşteri okur değil, içeriğini müşteriye dönüştürmek isteyen
+uzman/yazar. Önerilen sıra: önce TEK 30 günlük satış deneyi (3 ücretli
+pilot kapısı), kod ve video kanalı ödeme kanıtından sonra. Panel/keşif
+sayfalarının kodu bilinçli duraklatıldı; karar kullanıcıya soruldu.
+## 24.08.2026 (gece, devam) — İlk ticari deney seçildi: Action Pages pilotu
+
+Kullanıcı kararı (AskUserQuestion): 30 günlük tek deney = Action Pages.
+İlk teslimatlar üretildi: `demo/cv-action-page.html` (Norveççe satış
+demosu — 8 soru, belirlenimci puanlama, kişiye özel iyileştirme listesi,
+veri tarayıcıdan çıkmaz; Playwright ile uçtan uca doğrulandı: 8 soru,
+9/16 orta bant, 5 kişisel madde, eksik-cevap uyarısı, 0 konsol hatası)
+ve `docs/action-pages-teklif.md` (teklif, [H] test fiyatları, Norveççe
+ulaşım mesajı, kullanıcının adım adım satış görevleri). Demoyu yayına
+alma (main + Vercel) kullanıcı onayı bekliyor.
+## 24.08.2026 (gece, tescil) — Patentstyret + EUIPO başvuru hazırlığı tamamlandı
+
+Kullanıcı talimatıyla tescil hattı uçtan uca yeniden koşuldu: marka üretimi
+(15 varlık, bayt-bayt aynı — çalışma ağacında tek fark belge), tescil
+zarfı (4 JPEG + sicil önizleme ✓), zarf testleri 4/4, belge doğrulama
+56 ölçü ✓. Patentstyret tarafı arama özetleriyle dolduruldu (TIF/JPEG
+önerisi, Altinn kanalı, 3.800 NOK/sınıf — hepsi "elle teyit" notuyla;
+patentstyret.no/lovdata.no bu oturumda da EGRESS_BLOCKED). Nice sınıf
+taslağı (35+41, 42 isteğe bağlı), renk beyanı önerisi ve başvuru günü
+adımları docs/marka-tescili.md'ye işlendi. Yapılamayanlar dürüst listede:
+sicil ön araştırması (kullanıcı tarayıcısı), ek sınıf ücreti, vekil görüşü.
+Beceri arama denendi: npx skills tüm sorgularda boş (kontrol sorgusu dahil
+— kayıt defteri erişimi engelli, beceri yokluğu kanıtı değil).
+## 24.08.2026 (gece, denetim + standartlar) — Karma tur
+
+(1) Sezgisel denetim: rakip siteler (Outgrow/ScoreApp/Typeform) proxy
+engelli — canlı rakip ekranı alınamadı, dürüstçe kayıt edildi; kendi üç
+ekranımız (index, work, demo) 13 ölçütle gerçek görüntülerden puanlandı
+(docs/denetim/sezgisel-denetim-2026-08-24.md): en zayıf noktalar work
+bütçe alanının dolu açılması, demoda ilerleme göstergesi yokluğu.
+(2) NAVIAR "Logo Skills and Clearance Stack v1.0" depoya kopyalandı ve
+QBLOGG için benimsenen bölümleri (resmî arama adresleri, kanıt şablonu,
+durdurma koşulları) marka-tescili.md'ye işlendi; bu ortamda var olmayan
+becerilerin karşılıkları not edildi. (3) 20 rollük ekip listesi
+değerlendirildi → docs/ekip-modeli.md (roller işe alım değil denetim
+merceği; ilk işe alım ancak pilot gelirle). (4) IQ1000 "güven motoru"
+analizi is-modeli.md §14'e delta olarak işlendi — sıra kararı değişmedi.
+## 24.08.2026 (gece, test mimarisi) — Spec-driven Playwright standardı değerlendirildi
+
+Kullanıcının ilettiği üç katmanlı test mimarisi (specs/tests/agents +
+safety/) docs/test-mimarisi.md'de karara bağlandı: araç sorusunun cevabı
+Playwright (zaten standart); codegen bu konteynerde çalışmaz (etkileşimli
+pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapısı
+kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
+kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
+anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
