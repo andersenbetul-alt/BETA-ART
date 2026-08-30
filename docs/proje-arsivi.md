@@ -138,23 +138,47 @@ satır tahminle doldurulmadı — kaynağı olmayan alan `bilinmiyor` yazar.
 | BETA-ID doğrulama | `verify/` sayfası bir demo kayıt numarası (`BETA-PHOTO-DEMO-0001`) sorgulatıyor; sayfa `noindex`, "no production certificates are issued from this prototype" diyor |
 | Durum | **referans** — hiçbir üst-belgede (`PROJECTMANIFEST.md` dahil) bu spesifik varyanttan söz edilmiyor, kaynağı/tarihi bilinmiyor |
 
+## 14. `beta-art.com` kök alan adı — gerçek canlı içerik (30.08.2026 akşamı)
+
+| Alan | Değer |
+|---|---|
+| Ne olduğu | Kullanıcının **birebir yapıştırdığı**, gerçek `https://beta-art.com/` kök sayfasının metni — ilk kez bir önizleme değil, kök alan adının kendisi. `EGRESS_BLOCKED` yüzünden bu ortamdan hâlâ doğrudan görülemiyor; yalnızca kullanıcının yapıştırdığı kadarı biliniyor. |
+| Ayrıca gelen alt sayfalar | `/categories` (35 kategori, 5 bölüm: Global 16, Norveç-özel 5, Norveç sektörleri 5, Editoryal 5, Özel/Yeni 4), FAQ referans belgesi ("16 ENTRIES · HUMAN AUTHORED"), `/request-a-shoot` (özel çekim brief formu), sepet sayfası (Norveççe: "Handlekurv") |
+| Yapı | **Tek, bütünleşik bir sayfa** — Hero → Verification (3 yöntem) → Collection (Volume I, 12 plaka) → Exhibitions & Events (3 sergi) → Photographer bio → Licensing (4 katman) → Request form → FAQ (16 soru) → Footer |
+| **Önemli bulgu** | Bu sayfanın nav/footer'ında **"Business" veya "Galeri" bağlantısı yok** — yalnızca Archive (Collection/Verification/Photographer/Categories/Industries) ve Licensing var. Madde 9'daki "üç mülk hub" modelinin **kök alan adında karşılığı yok**; "Exhibitions & Events" madde 7'nin (Galeri) ayrı bir mülk olması varsayımının aksine kök sayfanın kendi içine gömülü bir bölümü. |
+| Fiyatlandırma (kesinleşti) | Personal kr190'dan (sabit sayı — tutarlı). Commercial/Extended/Custom & Exclusive: **"Price on request"** (sayı yok — üç önceki varyanttan farklı, muhtemelen kasıtlı) |
+| Doğrulama (kesinleşti) | **3 yöntem** (Method I/II/III: RAW arşivi → capture kaydı+C2PA → fotoğrafçı imzalı lisans) — madde 4'teki statik "Privat" prototipiyle **birebir örtüşüyor** |
+| Plaka isimleri (kesinleşti) | First Light (2026.0142), Into the Pines (2026.0143), Sea of Fog (2026.0144), Still Water (2026.0145), PALM (2026.0146), Blue Hour Grid (2026.0147), Night Crossing (2026.0148), Golden Hour (2026.0149), Portrait in Amber (2026.0150, *Available*), The Maker (2026.0151, *Available*), Slow Morning (2026.0152), Low Tide (2026.0153) — 12'sinden yalnızca 2'si "Available", kalanı "Awaiting verified original" |
+| Fotoğrafçı biyografisi | "84,000+ frames captured since 2012", teslimat 24 saat içinde, RAW dosya talep üzerine gösteriliyor |
+| Rota listesi (kesinleşti) | `/#collection`, `/#verification`, `/#photographer`, `/categories`, `/industries`, `/#licensing`, `/#request`, `/privacy`, `/cookie-settings`, `/license-terms` (İngilizce) **ve** `/lisensbetingelser` (Norveççe — aynı sayfaya mı gidiyor belirsiz), `/kontakt` (footer'da "Angrerett og refusjon" etiketiyle — isim/URL uyuşmazlığı not edildi), `/request-a-shoot` |
+| Detaylı karşılaştırma | `docs/beta-art/privat-icerik-analizi.md` — bu madde eklendiğinde o belge de güncellendi |
+| Durum | **En yetkili kaynak.** Madde 4'ün (BETA ART Privat statik prototip) canlıdaki en yakın karşılığı bu — birleştirme kararında "son söz" bu olmalı. |
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
 
 - **"Privat"** üç farklı şeyde geçiyor: `beta-privat/` (madde 3, muhasebe), "BETA ART Privat" BAP-01 (madde 4, fotoğraf arşivi). Kullanıcı 30.08'de bunların ayrı olduğunu doğruladı.
-- **Barındırma modeli çelişkisi**: madde 4/6/7'nin kendi belgeleri (`ROUTE-CONFIG.md`, `DEPLOYMENT.md`) yol-tabanlı (`/privat/`) diyor; madde 8 (DNS admin) alt-alan-adı-tabanlı (`archive.beta-art.com`) öneriyor. İkisi aynı anda doğru olamaz — birleştirme kararından önce hangisinin geçerli olduğu netleşmeli.
-- **BETA ART Privat/Private için dört ayrı kod tabanı var**: (1) statik HTML prototip "Privat" (madde 4), (2) React+Vite+Supabase "Final Work v2" (madde 5), (3) GoDaddy Airo App Builder (Vite+React+TS, kendi içerik eklentisi, madde 4'e bağlı — kullanıcı 30.08'de bunu temel ilan etti), (4) statik HTML "Private" — `assets/app.js` (madde 13, kaynağı bilinmiyor). Diğer üçünün akıbeti (tamamen bırakılıyor mu, referans mı kalıyor) henüz netleşmedi.
-- **İki farklı domain aynı markayı taşıyor**: `beta-art.com` (madde 4/6/7/8/9) ve `betaart.no` (madde 12, Field Notes). Hangisinin gerçek/kesin alan adı olacağı netleşmedi.
-- **Doğrulama kapısındaki adım sayısı üç kez değişiyor**: `ASSETSTATUS.md` "beş doğrulama kontrolü" diyor, canlı sitedeki "Beta proof chain" altı adım (Human→Camera→RAW→Edit→Rights→Licence), madde 13'teki kapı sekiz adım (Original/Identity/Capture/Rights/AI disclosure/Conflict gate/Provenance/C2PA). Hangisinin kesin liste olduğu hâlâ netleşmedi — kullanıcının daha önce ayrıca paylaşacağını söylediği "beş kontrol" listesi hâlâ gelmedi.
+- **Barındırma modeli çelişkisi — kısmen çözüldü**: madde 4/6/7'nin kendi belgeleri (`ROUTE-CONFIG.md`, `DEPLOYMENT.md`) yol-tabanlı (`/privat/`) diyor; madde 8 (DNS admin) alt-alan-adı-tabanlı (`archive.beta-art.com`) öneriyor. **Madde 14'te görülen gerçek kök alan adı ikisini de kullanmıyor** — Archive/Privat içeriği doğrudan `beta-art.com` kökünde, yol/alt-alan-adı ön eki olmadan yayında. Business/Galeri'nin nerede olduğu (ayrı alan adı mı, hiç yayında değil mi) hâlâ bilinmiyor.
+- **BETA ART Privat/Private için dört ayrı kod tabanı var**: (1) statik HTML prototip "Privat" (madde 4) — **madde 14'teki canlı kök alan adıyla fiyatlandırma hariç neredeyse birebir örtüşüyor, en güçlü aday**, (2) React+Vite+Supabase "Final Work v2" (madde 5), (3) GoDaddy Airo App Builder (Vite+React+TS, kendi içerik eklentisi, madde 4'e bağlı — kullanıcı 30.08'de bunu temel ilan etti), (4) statik HTML "Private" — `assets/app.js` (madde 13, kaynağı bilinmiyor). Diğer üçünün akıbeti (tamamen bırakılıyor mu, referans mı kalıyor) henüz netleşmedi.
+- **İki farklı domain aynı markayı taşıyor**: `beta-art.com` (madde 4/6/7/8/9/**14 — artık canlı içeriğiyle doğrulandı**) ve `betaart.no` (madde 12, Field Notes). `beta-art.com` artık gerçek, çalışan bir üretim sitesi olduğu doğrulandı; `betaart.no`'nun hâlâ yayında olup olmadığı bilinmiyor.
+- **Doğrulama kapısındaki adım sayısı — kök alan adı 3'ü doğruladı**: `ASSETSTATUS.md` "beş doğrulama kontrolü" diyor, önizleme sitesindeki "Beta proof chain" altı adım (Human→Camera→RAW→Edit→Rights→Licence), madde 13'teki kapı sekiz adım (Original/Identity/Capture/Rights/AI disclosure/Conflict gate/Provenance/C2PA). **Madde 14'teki gerçek kök alan adı 3 adım kullanıyor (Method I/II/III), madde 4'ün statik prototipiyle birebir aynı.** Bu artık en yetkili sayı — 5/6/8 adımlı listeler farklı taslak aşamalarına ait olmalı.
+- **"Üç mülk" modeli kök alan adında görünmüyor**: madde 9'daki hub sayfası Privat/Galeri/Business'ı ayrı mülkler olarak listeliyordu. Madde 14'teki gerçek `beta-art.com` kökü bunun yerine **tek, bütünleşik bir Archive/Privat sayfası** — Business veya Galeri'ye nav/footer'da hiç bağlantı yok, "Exhibitions & Events" ayrı bir mülk değil kök sayfanın bir bölümü. Business ve Galeri'nin gerçekte nerede/yayında olup olmadığı hâlâ **bilinmiyor**.
 
 ## Sıradaki adım
 
 Kullanıcı talimatı: önce bu katalog (bu belge), **sonra** hangi projelerin
 birleştirileceğine karar verilecek. 10 ve 11 numaralı satırlar 30.08'de
 madde 4'e (BETA ART Privat) bağlandı — hepsi aynı GoDaddy Airo venture'ı.
+**30.08 akşamı madde 14 eklendi**: kullanıcının birebir yapıştırdığı gerçek
+`beta-art.com` kök içeriği, madde 4'ün (statik "Privat" prototip) en yakın
+canlı karşılığı olduğunu gösterdi — fiyatlandırma (Personal sabit, üstü
+"Price on request") ve doğrulama adım sayısı (3) artık bu kaynaktan
+kesinleşti. Kalan açık soru: Business (madde 6) ve Galeri (madde 7) gerçek
+kök alan adında hiç görünmüyor — bunlar yayında mı, hiç mi yayınlanmadı,
+yoksa ayrı bir alan adında mı, bilinmiyor.
 
 **Açık engel:** madde 4 için "temel" ilan edilen GoDaddy Airo sayfasının
 içeriği bu ortamdan görülemiyor (`EGRESS_BLOCKED`, oturum açma da gerekebilir).
-Bu sayfayı gerçekten temel alabilmek için kullanıcının içeriği (ekran
-görüntüsü veya kopyalanmış metin/HTML) paylaşması gerekiyor.
+Kök alan adının kendisi de aynı sebeple doğrudan görülemiyor — yalnızca
+kullanıcının yapıştırdığı kadarı biliniyor (madde 14).

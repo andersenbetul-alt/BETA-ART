@@ -22,36 +22,53 @@ burada yalnızca marka/kimlik tasarım çalışması yapılmış. Naviar için i
 üstlenirken bu belgedeki QBLOGG kurallarını (i18n, görünürlük kapısı vb.)
 otomatik uygulanmış saymayın; ayrı sorun.
 
-**Dördüncü girişim: Beta Art (Archive + Business)** — bu depoda YOK,
-kaynağı/deposu bilinmiyor. 30.08.2026'da kullanıcının paylaştığı iki canlı
-önizlemeden ("development preview") biliniyor: `beta-art-archive-five.vercel.app`
-(Archive'a odaklı erken sürüm) ve
-`beta-art-contact1-9jsgs8q95-andersenbetul-9635s-projects.vercel.app` (Archive
-+ Business birlikte, daha yeni). İkisi de kişisel Vercel hesabında
-(`andersenbetul-9635s-projects`), muhtemelen Next.js/React (rota yapısı
-`/plates/<slug>`, `/contact`, `/privacy` vb.) — QBLOGG'un derlemesiz
-yaklaşımıyla ilgisi yok.
+**Dördüncü girişim: Beta Art (Archive + Business)** — bu depoda YOK, kod
+kaynağı/deposu hâlâ bilinmiyor, ama **kök alan adı canlı ve doğrulandı**:
+30.08.2026 akşamı kullanıcı `https://beta-art.com/`'un gerçek metnini
+birebir yapıştırdı (bu ortamdan `EGRESS_BLOCKED` yüzünden hâlâ doğrudan
+görülemiyor, yalnızca kullanıcının yapıştırdığı kadarı biliniyor). Öncesinde
+bilinen iki şey önizlemeydi, kök alan adı değildi:
+`beta-art-archive-five.vercel.app` (Archive'a odaklı erken sürüm) ve
+`beta-art-contact1-9jsgs8q95-andersenbetul-9635s-projects.vercel.app`
+(Archive + Business birlikte, daha yeni) — ikisi de kişisel Vercel
+hesabında (`andersenbetul-9635s-projects`). Tam kaynak/depo hâlâ bilinmiyor;
+detaylı katalog ve kaynak karşılaştırması `docs/proje-arsivi.md` (madde 14)
+ve `docs/beta-art/privat-icerik-analizi.md`'de.
 
-- **Archive:** tek fotoğrafçılı, kanıt/köken temelli insan fotoğrafçılığı
-  arşivi. Yedi küratöryel seri (Work, Craft, Land and Light, The Table,
-  Rooms, The Unseen, Weather), 12 katalog "plaka"sı (BA-001…BA-012) —
-  hepsi şu an "Awaiting verified original" (gerçek orijinal henüz yok,
-  yer tutucu görsel). Lisans katmanları: Personal (kr 190'dan), Commercial
-  (kr 1.200'den), Extended (kr 4.500'den), Custom & Exclusive (talebe
-  göre) — rakamlar sitede de "draft until confirmed" ibaresiyle işaretli.
-  Yol haritası: Beta Archive (temel) → Beta Passport (köken kaydı,
-  prototip) → Beta Vault (RAW saklama) → Beta Verify (doğrulama arayüzü,
-  planlı) → Beta Rights (makine-okunur hak/AI-eğitim kısıtı, planlı).
+- **Archive (kök alan adında doğrulandı):** tek fotoğrafçılı (biyografi:
+  "84,000+ frames captured since 2012"), kanıt/köken temelli insan
+  fotoğrafçılığı arşivi. Kök sayfa seri/katman adı kullanmıyor — "Volume I"
+  başlığı altında düz kategori filtresi (All/Landscape/City/Portrait), 12
+  plaka: First Light, Into the Pines, Sea of Fog, Still Water, PALM, Blue
+  Hour Grid, Night Crossing, Golden Hour, Portrait in Amber, The Maker,
+  Slow Morning, Low Tide — yalnızca ikisi ("Portrait in Amber", "The
+  Maker") "Available", kalanı "Awaiting verified original". Doğrulama 3
+  yöntem (RAW arşivi → capture kaydı + C2PA → fotoğrafçı imzalı lisans).
+  Lisans katmanları: Personal (kr 190'dan, sabit), Commercial/Extended/
+  Custom & Exclusive — **sayı yok, "Price on request"** (önceki iki
+  önizlemedeki sabit rakamlardan farklı, kesinleşmiş görünüyor). Ayrıca
+  kök sayfada bir "Exhibitions & Events" bölümü var (3 sergi, ayrı bir
+  mülk değil) ve `/categories` altında 35 kategorilik bir dizin (5 bölüm:
+  Global, Norveç-özel, Norveç sektörleri, Editoryal, Özel/Yeni).
+  **Kök sayfanın nav/footer'ında Business'a hiç bağlantı yok** — Business
+  bölümü ayrı bir alan adında mı, hiç yayında değil mi, bilinmiyor. Yol
+  haritası (Beta Archive → Passport → Vault → Verify → Rights) önceki
+  önizlemelerden biliniyor, kök sayfada doğrulanmadı.
 - **Business:** Norveç'te tamamlanmış inşaat projeleri için kapanış sonrası
   belge/kurtarılabilirlik hizmeti ("Dokumentasjon som overlever
   prosjektet") — FDV/proje yönetiminin yerine değil yanına; soru "bir
-  sonraki sorumlu kişi doğru orijinali sonra bulabilir mi?"
+  sonraki sorumlu kişi doğru orijinali sonra bulabilir mi?" **Kök alan
+  adında henüz görülmedi**, yalnızca eski önizlemeden ve üst-belgelerden
+  biliniyor.
 - Ortak yöntem: Source → Context → Verify → Rights → Retrieve → Export.
   Sitenin kendi diliyle: "No unsupported claim becomes a fact for
   marketing" — bu depodaki "uydurma yasağı" ilkesiyle örtüşüyor, ayrı
   ürün olsa da aynı disiplin.
-- Yasal sayfalar (privacy/license-terms/refunds/contact) var ama e-posta
-  ve konum "to be supplied" — henüz yayın öncesi durumda.
+- Yasal sayfalar kök alan adında canlı: `/privacy`, `/cookie-settings`,
+  `/license-terms` (İngilizce) ve `/lisensbetingelser` (Norveççe — aynı
+  sayfa mı ayrı mı belirsiz), `/kontakt` (footer'da "Angrerett og
+  refusjon" etiketiyle — isim/URL uyuşmazlığı var, not edildi). E-posta
+  `hallo@beta-art.com` olarak sabit görünüyor.
 - `beta-privat/`teki BAB/BAC/BAP ile ilişkisi kullanıcı tarafından
   **ayrı, dördüncü bir girişim** olarak doğrulandı (30.08.2026) — yani
   beta-privat'ın kapsamına girmiyor, karıştırılmasın.
