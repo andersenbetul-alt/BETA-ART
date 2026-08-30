@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COBBAN — Logo Tasarımları</title>
+<style>
+  :root {
+    --void:  #06060A;
+    --deep:  #101018;
+    --ember: #D95F0A;
+    --ash:   #EFEFEB;
+    --white: #FFFFFF;
+    --mid:   #888884;
+    --gap:   24px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--void);
+    color: var(--ash);
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .page { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  h1 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--mid); margin-bottom: 48px; }
+
+  .section { margin-bottom: 64px; }
+  .section-title {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--mid); border-top: 1px solid #222228; padding-top: 16px; margin-bottom: 24px;
+  }
+
+  /* ── Colour swatches ── */
+  .swatches { display: flex; gap: 12px; flex-wrap: wrap; }
+  .swatch { width: 120px; }
+  .swatch-block { height: 64px; border-radius: 4px; margin-bottom: 8px; }
+  .swatch-name  { font-size: 12px; font-weight: 600; }
+  .swatch-hex   { font-size: 11px; color: var(--mid); font-family: monospace; }
+  .swatch-note  { font-size: 10px; color: var(--mid); margin-top: 2px; }
+
+  /* ── Logo panels ── */
+  .panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .panel {
+    border-radius: 6px; padding: 32px 24px; display: flex;
+    align-items: center; justify-content: center; min-height: 120px;
+  }
+  .panel svg { width: 100%; height: auto; }
+  .panel-dark   { background: var(--void); }
+  .panel-deep   { background: var(--deep); }
+  .panel-light  { background: var(--ash); }
+  .panel-ember  { background: var(--ember); }
+  .panel-white  { background: var(--white); }
+
+  /* ── Symbol row ── */
+  .symbol-row { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+  .symbol-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .symbol-item span { font-size: 10px; color: var(--mid); text-transform: uppercase; letter-spacing: .1em; }
+
+  /* ── Lockup ── */
+  .lockup-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .lockup-panel {
+    border-radius: 6px; padding: 32px 28px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .lockup-panel .sym { flex-shrink: 0; width: 52px; height: 52px; }
+  .lockup-panel .wm  { flex: 1; min-width: 0; }
+  .lockup-panel .wm svg { width: 100%; height: auto; }
+
+  /* ── Scale test ── */
+  .scale-row { display: flex; gap: 24px; align-items: flex-end; flex-wrap: wrap; }
+  .scale-item { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .scale-item span { font-size: 10px; color: var(--mid); }
+
+  /* ── Construction table ── */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #1a1a22; }
+  th { color: var(--mid); font-weight: 400; letter-spacing: .06em; font-size: 10px; text-transform: uppercase; }
+  td:last-child { text-align: right; color: var(--ash); }
+  td code { font-family: monospace; font-size: 11px; color: var(--mid); }
+  .ok { color: #3db86a; }
+
+  /* ── Concept label ── */
+  .concept-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: .14em;
+    color: var(--mid); margin-bottom: 8px;
+  }
+  .concept-rec { color: var(--ember); }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>COBBAN — Marka Kimliği · 30 Ağustos 2026</h1>
+
+<!-- ──────────────────────────────────────── -->
+<!-- 01 · COLOUR PALETTE                      -->
+<!-- ──────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">01 · Renk Paleti</div>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-block" style="background:#06060A; outline:1px solid #222;"></div>
+      <div class="swatch-name">Void</div>
+      <div class="swatch-hex">#06060A</div>
+      <div class="swatch-note">Birincil zemin</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#101018;"></div>
+      <div class="swatch-name">Deep</div>
+      <div class="swatch-hex">#101018</div>
+      <div class="swatch-note">Kart zemini</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#D95F0A;"></div>
+      <div class="swatch-name">Ember</div>
+      <div class="swatch-hex">#D95F0A</div>
+      <div class="swatch-note">C aksanı · 5.6:1 ✓</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-block" style="background:#EFEFEB; outline:1px solid #ccc;"></div>
+      <div class="swatch-name">Ash</div>
+      <div class="swatch-hex">#EFEFEB</div>
+      <div class="swatch-note">Tip · ~18:1 ✓</div>
+    </div>
+  </div>
+</div>
+
+<!-- ──────────────────────────────────────── -->
+<!-- 02 · CONCEPT A — EMBER                   -->
+<!-- ──────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">02 · Konsept A — Ember <span class="concept-rec">(ÖNERİLEN)</span></div>
+  <div class="concept-label">C ember, geri kalan nötr</div>
+  <div class="panels">
+
+    <!-- Dark -->
+    <div class="panel panel-dark">
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+        <!-- C ember -->
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+        <!-- O ash -->
+        <g transform="translate(150,0)">
+          <path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/>
+        </g>
+        <!-- B1 ash -->
+        <g transform="translate(320,0)">
+          <path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/>
+        </g>
+        <!-- B2 ash -->
+        <g transform="translate(478,0)">
+          <path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/>
+        </g>
+        <!-- A ash -->
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+          <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+        </g>
+        <!-- N ash -->
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Deep -->
+    <div class="panel panel-deep">
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+          <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Light -->
+    <div class="panel panel-light">
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#06060A"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#06060A"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#06060A"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#06060A"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#06060A"/>
+          <rect x="52" y="92" width="26" height="24" fill="#06060A"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#06060A"/>
+          <rect x="116" y="0" width="24" height="200" fill="#06060A"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#06060A"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Ember bg -->
+    <div class="panel panel-ember">
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+        <!-- C void on ember bg -->
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#06060A"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#06060A"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#06060A"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#06060A"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#06060A"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#06060A"/>
+          <rect x="52" y="92" width="26" height="24" fill="#06060A"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#06060A"/>
+          <rect x="116" y="0" width="24" height="200" fill="#06060A"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#06060A"/>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+</div>
+
+<!-- ──────────────────────────────────────── -->
+<!-- 03 · CONCEPT B — DUAL B                  -->
+<!-- ──────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">03 · Konsept B — Dual</div>
+  <div class="concept-label">Her iki B de ember, geri kalan nötr</div>
+  <div class="panels">
+
+    <!-- Dark -->
+    <div class="panel panel-dark">
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/></g>
+        <!-- B1 ember -->
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#D95F0A"/></g>
+        <!-- B2 ember -->
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#D95F0A"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+          <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Deep -->
+    <div class="panel panel-deep">
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#D95F0A"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#D95F0A"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+          <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Light -->
+    <div class="panel panel-light">
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#06060A"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#06060A"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#D95F0A"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#D95F0A"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#06060A"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#06060A"/>
+          <rect x="52" y="92" width="26" height="24" fill="#06060A"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#06060A"/>
+          <rect x="116" y="0" width="24" height="200" fill="#06060A"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#06060A"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Ember bg -->
+    <div class="panel panel-ember">
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#06060A"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#06060A"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#06060A"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#06060A"/>
+          <rect x="52" y="92" width="26" height="24" fill="#06060A"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#06060A"/>
+          <rect x="116" y="0" width="24" height="200" fill="#06060A"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#06060A"/>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+</div>
+
+<!-- ──────────────────────────────────────── -->
+<!-- 04 · CONCEPT C — MONOGRAM                -->
+<!-- ──────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">04 · Konsept C — Monogram</div>
+  <div class="concept-label">Yalnızca C — ikon kullanımı</div>
+  <div class="symbol-row">
+
+    <!-- Filled circle -->
+    <div class="symbol-item">
+      <svg width="96" height="96" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="96" fill="#D95F0A"/>
+        <g transform="translate(51,18) scale(0.82)">
+          <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/>
+        </g>
+      </svg>
+      <span>Dolu daire</span>
+    </div>
+
+    <!-- Outline circle -->
+    <div class="symbol-item">
+      <svg width="96" height="96" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#D95F0A" stroke-width="8"/>
+        <g transform="translate(51,18) scale(0.82)">
+          <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/>
+        </g>
+      </svg>
+      <span>Kontur daire</span>
+    </div>
+
+    <!-- Square -->
+    <div class="symbol-item">
+      <svg width="96" height="96" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="192" height="192" rx="12" fill="#D95F0A"/>
+        <g transform="translate(51,18) scale(0.82)">
+          <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/>
+        </g>
+      </svg>
+      <span>Kare (yuvarlak köşe)</span>
+    </div>
+
+    <!-- Freestanding C -->
+    <div class="symbol-item">
+      <svg width="96" height="96" viewBox="-12 -12 144 224" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+      </svg>
+      <span>Serbest C</span>
+    </div>
+
+    <!-- Light bg variants -->
+    <div class="symbol-item">
+      <div style="background:#EFEFEB; padding:12px; border-radius:8px;">
+        <svg width="72" height="72" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="96" fill="#D95F0A"/>
+          <g transform="translate(51,18) scale(0.82)">
+            <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/>
+          </g>
+        </svg>
+      </div>
+      <span>Açık zemin</span>
+    </div>
+
+    <!-- White bg -->
+    <div class="symbol-item">
+      <div style="background:#fff; padding:12px; border-radius:8px;">
+        <svg width="72" height="72" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="96" fill="#D95F0A"/>
+          <g transform="translate(51,18) scale(0.82)">
+            <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/>
+          </g>
+        </svg>
+      </div>
+      <span>Beyaz zemin</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ──────────────────────────────────────── -->
+<!-- 05 · LOCKUP                              -->
+<!-- ──────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">05 · Kilitleme (Sembol + Wordmark)</div>
+  <div class="lockup-row">
+
+    <!-- Dark -->
+    <div class="lockup-panel panel-dark">
+      <div class="sym">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+          <circle cx="100" cy="100" r="96" fill="#D95F0A"/>
+          <g transform="translate(51,18) scale(0.82)"><path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/></g>
+        </svg>
+      </div>
+      <div class="wm">
+        <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+          <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/></g>
+          <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+          <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+          <g transform="translate(636,0)">
+            <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+            <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+            <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+          </g>
+          <g transform="translate(796,0)">
+            <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+            <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+            <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Light -->
+    <div class="lockup-panel panel-light">
+      <div class="sym">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+          <circle cx="100" cy="100" r="96" fill="#D95F0A"/>
+          <g transform="translate(51,18) scale(0.82)"><path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/></g>
+        </svg>
+      </div>
+      <div class="wm">
+        <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+          <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#06060A"/></g>
+          <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#06060A"/></g>
+          <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#06060A"/></g>
+          <g transform="translate(636,0)">
+            <polygon points="53,0 77,0 24,200 0,200" fill="#06060A"/>
+            <polygon points="53,0 77,0 106,200 130,200" fill="#06060A"/>
+            <rect x="52" y="92" width="26" height="24" fill="#06060A"/>
+          </g>
+          <g transform="translate(796,0)">
+            <rect x="0" y="0" width="24" height="200" fill="#06060A"/>
+            <rect x="116" y="0" width="24" height="200" fill="#06060A"/>
+            <polygon points="24,0 50,0 116,200 90,200" fill="#06060A"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Ember bg -->
+    <div class="lockup-panel panel-ember">
+      <div class="sym">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="52" height="52">
+          <circle cx="100" cy="100" r="96" fill="#06060A"/>
+          <g transform="translate(51,18) scale(0.82)"><path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/></g>
+        </svg>
+      </div>
+      <div class="wm">
+        <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#06060A"/>
+          <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#06060A"/></g>
+          <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#06060A"/></g>
+          <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#06060A"/></g>
+          <g transform="translate(636,0)">
+            <polygon points="53,0 77,0 24,200 0,200" fill="#06060A"/>
+            <polygon points="53,0 77,0 106,200 130,200" fill="#06060A"/>
+            <rect x="52" y="92" width="26" height="24" fill="#06060A"/>
+          </g>
+          <g transform="translate(796,0)">
+            <rect x="0" y="0" width="24" height="200" fill="#06060A"/>
+            <rect x="116" y="0" width="24" height="200" fill="#06060A"/>
+            <polygon points="24,0 50,0 116,200 90,200" fill="#06060A"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ──────────────────────────────────────── -->
+<!-- 06 · SCALE TEST                          -->
+<!-- ──────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">06 · Boyut Testi</div>
+  <div class="scale-row">
+
+    <div class="scale-item">
+      <span>320px</span>
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg" width="320">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+          <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="scale-item">
+      <span>180px</span>
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg" width="180">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+          <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="scale-item">
+      <span>100px</span>
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg" width="100">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+          <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="scale-item">
+      <span>48px</span>
+      <svg viewBox="-16 -12 968 224" xmlns="http://www.w3.org/2000/svg" width="48">
+        <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+        <g transform="translate(150,0)"><path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(320,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(478,0)"><path fill-rule="evenodd" d="M0,0 H112 V100 H128 V200 H0 Z M24,24 H88 V96 H24 Z M24,104 H100 V176 H24 Z" fill="#EFEFEB"/></g>
+        <g transform="translate(636,0)">
+          <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+          <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+          <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+        </g>
+        <g transform="translate(796,0)">
+          <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+          <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Symbol scale -->
+    <div class="scale-item" style="margin-left:24px;">
+      <span>Sembol — 96px</span>
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="96" height="96">
+        <circle cx="100" cy="100" r="96" fill="#D95F0A"/>
+        <g transform="translate(51,18) scale(0.82)"><path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/></g>
+      </svg>
+    </div>
+
+    <div class="scale-item">
+      <span>48px</span>
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+        <circle cx="100" cy="100" r="96" fill="#D95F0A"/>
+        <g transform="translate(51,18) scale(0.82)"><path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/></g>
+      </svg>
+    </div>
+
+    <div class="scale-item">
+      <span>24px</span>
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+        <circle cx="100" cy="100" r="96" fill="#D95F0A"/>
+        <g transform="translate(51,18) scale(0.82)"><path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/></g>
+      </svg>
+    </div>
+
+  </div>
+</div>
+
+<!-- ──────────────────────────────────────── -->
+<!-- 07 · CONSTRUCTION TABLE                  -->
+<!-- ──────────────────────────────────────── -->
+<div class="section">
+  <div class="section-title">07 · Yapım Tablosu</div>
+  <table>
+    <thead>
+      <tr><th>Ölçü</th><th>Değer</th><th>Doğrulandı</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cap height</td><td><code>200u</code></td><td class="ok">✓</td></tr>
+      <tr><td>Stem genişliği</td><td><code>24u (%12)</code></td><td class="ok">✓</td></tr>
+      <tr><td>C genişliği</td><td><code>120u</code></td><td class="ok">✓</td></tr>
+      <tr><td>O genişliği</td><td><code>140u</code> · iç boşluk 92×152u</td><td class="ok">✓</td></tr>
+      <tr><td>B üst çıkıntı</td><td><code>0–112u</code> · alt <code>0–128u</code></td><td class="ok">✓</td></tr>
+      <tr><td>B üst delik</td><td><code>24,24–88,96</code></td><td class="ok">✓</td></tr>
+      <tr><td>B alt delik</td><td><code>24,104–100,176</code></td><td class="ok">✓</td></tr>
+      <tr><td>A bacak genişliği</td><td><code>24u</code> görsel · polygon tabanlı</td><td class="ok">✓</td></tr>
+      <tr><td>A çapraz çubuk</td><td><code>x=52 y=92 w=26 h=24</code></td><td class="ok">✓</td></tr>
+      <tr><td>N diyagonal</td><td><code>24,0 50,0 116,200 90,200</code></td><td class="ok">✓</td></tr>
+      <tr><td>Wordmark genişliği</td><td><code>936u</code> · ViewBox <code>−16 −12 968 224</code></td><td class="ok">✓</td></tr>
+      <tr><td>Sembol — C transform</td><td><code>translate(51,18) scale(0.82)</code> · merkez (100.2,100) · maks köşe ≈95.8 &lt; r=96</td><td class="ok">✓</td></tr>
+      <tr><td>Ember / Void kontrast</td><td><code>5.6:1</code></td><td class="ok">✓ (WCAG AA büyük grafik)</td></tr>
+      <tr><td>Ash / Void kontrast</td><td><code>~18:1</code></td><td class="ok">✓ (WCAG AAA)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>

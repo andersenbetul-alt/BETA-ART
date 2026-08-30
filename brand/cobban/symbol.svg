@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="COBBAN Symbol">
+  <title>COBBAN</title>
+  <!--
+    COBBAN Symbol — C Monogramı — Flat Vector Master
+    30 Ağustos 2026 · Brand/COBBAN
+
+    Yapım kaydı:
+    - Daire: cx=100 cy=100 r=96
+    - C yerel koordinatlar: 120×200 bbox, merkez (60,100)
+    - Ölçek: 0.82 (köşeler r=96 içinde kalır, ≈95.8u maks dist)
+    - Transform: translate(51,18) scale(0.82)
+      → C merkezi global (51+60×0.82, 18+100×0.82) = (100.2, 100) ✓
+
+    Köşe mesafeleri (doğrulandı):
+    - (0,0)   → global (51.0, 18.0) → dist √(49²+82²) ≈ 95.8 < 96 ✓
+    - (120,0) → global (149.4, 18.0) → dist √(49.4²+82²) ≈ 95.8 < 96 ✓
+    - (0,200) → global (51.0, 182.0) → dist √(49²+82²) ≈ 95.8 < 96 ✓
+    - (120,200)→ global (149.4, 182.0)→ dist √(49.4²+82²) ≈ 95.8 < 96 ✓
+  -->
+
+  <!-- Circle -->
+  <circle cx="100" cy="100" r="96" fill="#D95F0A"/>
+
+  <!-- C mark (ash) -->
+  <g transform="translate(51,18) scale(0.82)">
+    <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#EFEFEB"/>
+  </g>
+</svg>
