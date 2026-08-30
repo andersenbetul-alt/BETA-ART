@@ -1,4 +1,17 @@
-# Beta Art — ilk 90 gün konsepti (değerlendirme)
+# Beta Art — ilk 90 gün konsepti (değerlendirme) — **AŞILDI/REDDEDİLDİ**
+
+> **26.08.2026 güncellemesi: Bu belgedeki yön kullanıcı kararıyla
+> reddedildi.** `andersenbetul-alt/beta-art-archive` deposundaki
+> `BETA_ART_MASTER.md` (kullanıcının kendi asıl karar belgesi,
+> 25-26.08.2026) Beta Art'ın gerçek yönünü "Verified Human Photography &
+> Licensing" (insan fotoğrafı arşiv/lisans) + "Beta Art Business" (inşaat
+> sektörü proje-kapanışı dokümantasyon arşivi) olarak belirliyor ve bu
+> belgedeki "AI destekli görsel tasarım stüdyosu" fikrini isim vererek
+> reddediyor ("conflicting AI creative-studio positioning"). Bu belge artık
+> yürürlükte değil — yalnızca o günkü değerlendirme sürecinin kaydı olarak
+> tutuluyor (uydurma yasağı: geçmişi silmek yerine yanlış olduğunu
+> işaretlemek tercih edildi). Asıl model için `beta-art-archive`'ı gör;
+> kod göçü bu depoya taşınıyor (bkz. `docs/proje-gunlugu.md`, 26.08.2026).
 
 **Durum: TASLAK — karar kullanıcıda (bkz. §M, Açık kararlar).**
 Tarih: 25.08.2026. İşaretler: **[V]** doğrulanmış (bu oturumda kaynağıyla

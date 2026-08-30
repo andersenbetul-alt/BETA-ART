@@ -57,19 +57,25 @@ olarak işaretlenir).
 
 ## 2. Ventürler: BAB, BAC, BAP
 
-**TEYİT GEREKİYOR — bu eşleme bir tahmindir, kullanıcı onaylamadı:**
+**Düzeltme (26.08.2026):** Bu bölümdeki önceki eşleme (BAB=B2B paketleri,
+BAC=içerik aboneliği, BAP=baskı ürünü, `docs/beta-art-konsept.md`'e
+dayanarak) **yanlıştı** — `andersenbetul-alt/beta-art-archive`
+deposundaki `BETA_ART_MASTER.md` (25-26.08.2026, kullanıcının kendi asıl
+karar belgesi) okunduktan sonra düzeltildi:
 
-| Kod | Tahmini karşılığı | Dayanak |
+| Kod | Doğrulanmış/güncel karşılığı | Dayanak |
 |---|---|---|
-| BAB | B2B marka görsel paketleri (Business Mini, Brand Launch Kit) | `docs/beta-art-konsept.md` §D paket tablosu |
-| BAC | Tekrarlayan içerik aboneliği (Content Partner) | Aynı belge, "aylık içerik aboneliği" gelir akışı |
-| BAP | Baskı/hazır dijital ürün (poster vb.) | Aynı belge, "Hazır Dijital Poster" |
+| BAB | **Beta Art Business** — inşaat sektörüne proje kapanışı dokümantasyon arşivi hizmeti ("Completed Project Rescue / Project Closeout Archive"). `BAB01_035 · BETA ART BUSINESS — MASTER BUSINESS MODEL v1.0` (25.08.2026) Phase 1 ticari karar seti | `beta-art-archive/BETA_ART_MASTER.md` §3, §8 — [V] doğrulandı |
+| BAC | **TEYİT GEREKİYOR** — master belgede adı geçmiyor; "subscription clients" ipucuyla muhtemelen arşiv/retrieval hizmetinin tekrarlayan/abonelik katmanı (§6 "Continuity/Retrieval" ile ilişkili olabilir) | [D] — doğrulanmadı |
+| BAP | **TEYİT GEREKİYOR** — "editions" ipucuyla muhtemelen fotoğraf/Archive tarafının lisanslı baskı/edisyon satışı (§4.09 "Series/Editorial") | [D] — doğrulanmadı |
 
-İlk gerçek kullanımda kullanıcıya bu üç kodun tam anlamını ve varsa resmî
-adlarını sor; doğru eşleme öğrenilince bu tabloyu güncelle ve "TEYİT
-GEREKİYOR" ibaresini kaldır. Yanlış varsayımla ilerlemek, yanlış ventüre
-fatura/sözleşme taslağı yazma riski taşır — bu yüzden emin olmadan bir
-taslağı kesin gibi sunma; "BAB'ı X sanıyorum, doğru mu?" diye sor.
+**Önemli çelişki notu:** Bu depodaki (`BETA-ART`) `docs/beta-art-konsept.md`
+— "AI destekli görsel tasarım stüdyosu" — `BETA_ART_MASTER.md`'de açıkça
+**reddedilen** bir yöndür ("conflicting AI creative-studio positioning").
+Kullanıcı kararıyla (26.08.2026) asıl yön `beta-art-archive`'daki
+fotoğraf-arşiv + inşaat-dokümantasyon modelidir; bu beceri artık o modele
+göre çalışmalı, `beta-art-konsept.md`'deki paket adlarına (Business Mini,
+Content Partner vb.) referans vermemeli.
 
 ## 3. Veri kaynakları
 
