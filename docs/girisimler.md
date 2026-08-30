@@ -10,17 +10,44 @@ Veriler 26.08.2026'da Vercel MCP (`list_teams`, `list_projects`,
 araçlarıyla **doğrudan sorgulanarak** ölçüldü — uydurma yok. Erişilemeyen
 bir şey varsa "doğrulanamadı" diye açıkça yazılıdır.
 
-**Güncelleme (30.08.2026) — BAB-02 kapsamı düzeltildi:** Aşağıdaki BAB-02
-Business bölümü, `PROJECTMANIFEST.md`/`BETAARTPROJECTCODES.md`'nin
-"inşaat-öncelikli proje arşivi" kararını temel alıyordu. Kullanıcı bunu
-doğrudan yalanladı: geçerli konsept **"Norway's Visual Infrastructure for
-Brands"** — Norveçli 30+ sektöre (reklam ajansları, e-ticaret, kamu,
-petrol/offshore, medya, turizm...) abonelik/çerçeve anlaşması/sipariş
-üzerine çekimle genel fotoğraf lisanslama hizmeti (`betaart.no/business/`).
-`PROJECTMANIFEST.md`'nin "eski/geçersiz" dediği dil aslında **güncel**
-karar — yani o belge de eskimiş. Bu, aynı gün içinde ikinci kez konseptin
-değiştiği anlamına geliyor; bir sonraki oturum başka bir sürümle
-karşılaşırsa şaşırmasın, önce kullanıcıya doğrulatsın.
+**Güncelleme (30.08.2026, akşam) — dosyaların tam taraması yapıldı, açık
+çelişki tespit edildi, henüz çözülmedi:** Kullanıcı bu oturumda 44 dosya
+yükledi (`/root/.claude/uploads/.../27474db6-...` — bu yolun kendisi
+oturuma özel, kalıcı değil). Hepsi tek tek okundu, tekrarlar (bayt-bayt
+aynı kopyalar) elendi. Sonuç, aşağıdaki maddede anlatılan tek yönlü bir
+"kullanıcı düzeltmesi" değil, **kullanıcının kendi yüklediği belgeler
+arasında bugünün (30.08.2026) tarihini taşıyan doğrudan bir çelişki**:
+
+- `PROJECTMANIFEST.md` (yüklendi ~19:32, kendi metninde *"Prepared 30
+  August 2026"* yazıyor) açıkça şunu söylüyor: *"The expert-board
+  materials supersede earlier broad marketplace language for the
+  Business project: construction-first, project-based archive..."* ve
+  *"Its Business page uses the older broad 'visual infrastructure for
+  brands' language; it must not override the newer construction-first
+  project-archive positioning."* — yani genel lisanslama dilini **bu
+  belge kendisi** "eski" ilan ediyor.
+- Buna rağmen kullanıcı ~20:04'te "Visual Infrastructure for Brands" B2B
+  lisanslama taslağını (`beta-art-business-v3`) yükledi ve doğrudan
+  soruldu: *"Hayır, gerçekte bu genel lisanslama konsepti geçerli"*
+  dedi — yani `PROJECTMANIFEST.md`'nin "eski" dediği konsepti sözlü
+  olarak geçerli ilan etti.
+- Sonra 21:13'te (günün en son yüklemesi, `PROJECTMANIFEST.md`'den de,
+  bu sözlü onaydan da **sonra**) yeni dosyalar geldi: bunlar
+  `dualbusinessprivate.zip`'teki **"Dual"** paketle aynı içerik —
+  Business tekrar inşaat-öncelikli, ama bu kez Private (BAP-01) ile
+  **ayrı tutularak**: *"Business is the Phase-1 construction product.
+  It does not expose the broader image marketplace..."*
+  (`beta-art-dual/README.md`). Yani en son yüklenen materyal, genel
+  lisanslama konseptini reddetmiyor — onu **Business'tan tamamen ayırıp
+  Private'a devrediyor.**
+
+**Bu depodan çözülemeyen soru:** Kullanıcının sözlü onayı ile en son
+yüklediği dosyalar birbiriyle çelişiyor; ikisi de aynı gün, ikisi de
+"son söz" olma iddiasında. Bir sonraki oturum bunu **tahmin etmesin**,
+kullanıcıya tek cümlelik bir teyit sorsun: "Business = sadece
+inşaat-arşivi, genel B2B fotoğraf lisanslama Private'a mı taşınıyor?"
+Tam kanıt tablosu ve birebir alıntılar için bu bölümün altındaki
+"Business (BAB-02)" kısmına bakın.
 
 ## QBLOGG (bu depo)
 
@@ -79,29 +106,66 @@ formlar tek bir genel gelen kutusuna yönlendirilmez (`BETAARTROUTEMAP.md`
 - Ayrı bir gelecek-odaklı kültürel mülk, Business'a katılmıyor. Bu
   depoda henüz somut bir kod tabanı gözlemlenmedi.
 
-### Business (BAB-02) — **inşaat-öncelikli proje arşivi**
-- **Kesin kapsam** (`BETAARTPROJECTCODES.md`, `CONTENTMAP.md`,
-  `PROJECTMANIFEST.md` — üçü de aynı şeyi söylüyor): inşaat/yapı
-  sektöründe tamamlanmış bir projenin belgelerini/görsellerini gelecekte
-  bulunabilir kılmak. Norveççe başlık: **"Prosjektet avsluttes.
-  Dokumentasjonen skal ikke."** (Proje bitiyor, dokümantasyon bitmemeli.)
-  Ortak yöntem: **Source → Context → Verify → Rights → Retrieve → Export**.
-  "Beta Art Verified" yalnızca neyin kontrol edildiğini belirtir, hukuki/
-  mutlak doğruluk iddia etmez. Pilot: platform inşa edilmeden önce üç
-  ödeyen arşiv müşterisi, 20 dakikalık görüşme birincil CTA.
-  **Kapsam dışı:** genel stok pazaryeri, açık yükleme, tüketici checkout,
-  Galeri etkinlikleri.
-- **Hariç tutulan/eski sürüm:** Aynı proje klasöründe İngilizce, genel
-  bir dijital ajans sürümü de vardı (web sitesi/SEO/CV/AI-otomasyon
-  hizmetleri, `business.beta-art.com`, yazar Betül Öner, çok olgun ve
-  yayına hazır görünen içerik). `CONTENTMAP.md` ve `PROJECTMANIFEST.md`
-  bunu **açıkça "eski/referans, güncel kapsam değil"** olarak
-  işaretliyor: *"the older platform/public-clean files are retained as
-  references only and are not the Business product source of truth"*
-  ve *"Its Business page uses the older broad 'visual infrastructure
-  for brands' language; it must not override the newer construction-first
-  project-archive positioning."* Yani bu **çelişki kullanıcının kendi
-  belgesinde zaten çözülmüş** — sormaya gerek yok.
+### Business (BAB-02) — çelişkili, **henüz kesinleşmedi** (bkz. üstteki güncelleme notu)
+
+Beş ayrı dosya grubu (yükleme saatine göre) beş farklı/örtüşen konsept
+taşıyor. Hiçbiri "yanlış" değil — hepsi kullanıcının kendi yüklediği
+gerçek dosyalar — ama üçü birbiriyle doğrudan çelişiyor. Kronolojik sırayla:
+
+1. **~19:26-19:30, genel dijital ajans:** `quote.html`, `resources.html`,
+   `blog.html`, `dashboard.html`, `aistaff.html` vb. — sektör bağımsız
+   içerik/SEO/CV/otomasyon hizmeti, 12 dilli, yazar "Betül Öner". Bu grup
+   içindeki **tek bir dosya** (`index.html`, küçük, 3.7KB) ise başlığı
+   "Prosjektet avsluttes. Dokumentasjonen skal ikke." olan inşaat-öncelikli
+   sayfa — yani bu grubun kendi içinde bile tutarsızlık var (kardeş
+   sayfalar genel ajans, index inşaat-öncelikli). Muhtemelen bu tek dosya
+   sonradan taşınmış bir yetim kopya, grubun geri kalanı eski/kapsam dışı.
+2. **~19:32-19:38, inşaat-öncelikli proje arşivi** (`BETAARTPROJECTCODES.md`,
+   `BETAARTROUTEMAP.md`, `PROJECTMANIFEST.md`, `CONTENTMAP.md`): İnşaat/yapı
+   sektöründe tamamlanmış bir projenin belgelerini/görsellerini gelecekte
+   bulunabilir kılmak. Ortak yöntem: **Source → Context → Verify → Rights →
+   Retrieve → Export**. `PROJECTMANIFEST.md` kendi metninde *"Prepared 30
+   August 2026"* diyor ve genel pazaryeri dilini açıkça "eski" ilan ediyor
+   (üstteki güncelleme notundaki alıntılara bakın). Pilot: platform inşa
+   edilmeden önce üç ödeyen arşiv müşterisi, 20 dakikalık görüşme birincil
+   CTA. **Kapsam dışı:** genel stok pazaryeri, açık yükleme, tüketici
+   checkout, Galeri etkinlikleri.
+3. **~19:34, "Beta Art MASTER" — bölünmeden önceki tek konsept**
+   (`combinedstrategy.md`, `corecanonical.html`, `betaartaudit.docx`):
+   Tek bir "doğrulanmış insan fotoğrafçılığı" pazaryeri/arşivi —
+   Privat/Business/Galeri ayrımı henüz yokken yazılmış. `combinedstrategy.md`
+   kendini *"Sürüm: 1.0 · Tarih: 16 Ağustos 2026 · Durum: Konsolide
+   referans — tek kaynak"* olarak tanımlıyor; `betaartaudit.docx` "Dato:
+   Juli 2026" ile bulunan en eski belge. Yani bu grup, 2 numaralı gruptan
+   **iki hafta daha eski** — üç mülklü sisteme (BAP-01/BAG-03/BAB-02)
+   bölünmeden önceki hâl. `PROJECTMANIFEST.md` bunu açıkça "kaynak/inceleme
+   materyali" seviyesine indiriyor.
+4. **~20:04, "Visual Infrastructure for Brands"** (`beta-art-business-v3`
+   olarak scratchpad'e kaydedildi): Norveçli 30+ sektöre genel B2B fotoğraf
+   lisanslama. **Kullanıcı bunu doğrudan sözlü onayladı** ("Hayır, gerçekte
+   bu genel lisanslama konsepti geçerli") — ama bu onay 2 numaralı grubun
+   "eski" ilan ettiği dille tam olarak aynı dili taşıyor.
+5. **21:13, en son yükleme — "Dual" reconciliation** (`dualbusinessprivate.zip`
+   ile aynı içerik): Business'ı tekrar inşaat-öncelikli yapıyor, ama Private
+   (BAP-01) ile **açıkça ayırarak**: *"Business is the Phase-1 construction
+   product. It does not expose the broader image marketplace, art sales,
+   generic stock categories..."* Her sayfada *"Pilot / utviklingsversjon —
+   juridiske dokumenter og priser må valideres før kommersiell lansering."*
+   uyarısı var — yani bu da kendini "kesin" ilan etmiyor, taslak olduğunu
+   söylüyor. Fiyat taslağı: kurulum+5 yıl saklama 15.000 kr, yıl 6-10
+   2.500 kr/yıl, aracılı çekim günü 11.000 kr (hepsi "hipotez", garanti
+   ticari şart değil). Metadata dosya adı standardı:
+   `BA-{prosjektnr}-{ÅÅÅÅMMDD}-{sone}-{fase}-{løpenr}.{ext}`. İletişim:
+   `hello@betaart.no`.
+
+**Bu grupla aynı pakette gelen ama Business değil Privat'a ait olan bir
+parça:** `finalworkv2.zip` (`beta-art-final-v2`, paket sürümü `2.0.0`) —
+gerçek bir React+TypeScript+Vite+Supabase uygulaması, veri modeli "Plate"
+(tek bir doğrulanmış fotoğraf kaydı: `catalogue`, `priceNok`, SHA-256
+`provenanceHash`, Supabase Edge Function `verify-plate` ile sunucu
+tarafında doğrulama). `PROJECTMANIFEST.md` bunu açıkça Privat'ın referans
+uygulaması olarak dosyalıyor, Business ile ilgisi yok.
+
 - **Açık üretim girdileri (henüz yok, uydurulmadı):** DPA, AB/EEA
   depolama, muhasebe, sigorta, paket/fiyat kararı, şirket bilgileri,
   başvuru uç noktası, pilot vakalar, gerçek fiyat testi.
@@ -196,6 +260,12 @@ formlar tek bir genel gelen kutusuna yönlendirilmez (`BETAARTROUTEMAP.md`
 3. `naviar-consult` ve `hxi-music` Vercel projelerinin ikisi de aynı GitHub
    reposuna (`eve-slack-agent`) bağlı görünüyor — bu bilinçli bir
    placeholder mı, yoksa yanlış bağlanmış bir proje mi?
+4. **(30.08.2026, en kritik açık soru)** BAB-02 Business: kullanıcının
+   sözlü onayı ("genel lisanslama konsepti geçerli") mi geçerli, yoksa
+   ondan sonra yüklenen "Dual" dosyaları (Business=yalnızca inşaat-arşivi,
+   genel lisanslama Private'a taşınıyor) mı? İkisi de aynı gün, biri
+   sözle biri dosyayla ifade edilmiş — bu depodan tahmin edilemez, tek
+   cümlelik bir teyit gerekiyor.
 
 ## Bu belgeyi güncel tutma
 
