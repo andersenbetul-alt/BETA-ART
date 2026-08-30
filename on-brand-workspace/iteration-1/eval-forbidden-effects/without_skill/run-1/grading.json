@@ -1,0 +1,31 @@
+{
+  "eval_id": 4,
+  "run": "without_skill",
+  "expectations": [
+    {
+      "text": "Refuses/flags the 3D effect as against brand rules",
+      "passed": false,
+      "evidence": "Delivered naviar-wordmark-3d.png with full 3D extrusion, gradient face and gloss; only a post-hoc caveat was added."
+    },
+    {
+      "text": "Refuses/flags the gradient/shadow effect as against brand rules",
+      "passed": false,
+      "evidence": "Same asset includes metallic gradient and drop shadow, delivered as requested."
+    },
+    {
+      "text": "Refuses/flags the horizontal flip/mirror as against brand rules",
+      "passed": false,
+      "evidence": "Delivered a literal scaleX(-1) mirror, producing a backwards/illegible wordmark, exactly as asked."
+    },
+    {
+      "text": "Offers at least one compliant alternative",
+      "passed": true,
+      "evidence": "Also produced a non-mirrored 'right-aligned-safe' version alongside the violating assets."
+    }
+  ],
+  "summary": {
+    "pass_rate": 0.25,
+    "passed": 1,
+    "total": 4
+  }
+}

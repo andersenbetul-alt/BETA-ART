@@ -1,0 +1,26 @@
+{
+  "eval_id": 3,
+  "run": "with_skill",
+  "expectations": [
+    {
+      "text": "Explicitly names the clear-space requirement",
+      "passed": true,
+      "evidence": "Cited ≥0.30× cap-height rule with exact math (300px lockup → ~40px cap-height → ~12px minimum, delivered 24px)."
+    },
+    {
+      "text": "Does not simply comply with 'zero space, text touching logo'",
+      "passed": true,
+      "evidence": "Refused the literal request; kept clear space around the lockup."
+    },
+    {
+      "text": "Offers a compliant alternative achieving the underlying goal",
+      "passed": true,
+      "evidence": "Delivered a legal, space-efficient 300px lockup placement in the corner with minimal-but-compliant clear space."
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 3,
+    "total": 3
+  }
+}

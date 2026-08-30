@@ -1,0 +1,26 @@
+{
+  "eval_id": 3,
+  "run": "without_skill",
+  "expectations": [
+    {
+      "text": "Explicitly names the clear-space requirement",
+      "passed": false,
+      "evidence": "Only raised a generic, non-NAVIAR-specific legibility caveat — no numeric clear-space rule cited."
+    },
+    {
+      "text": "Does not simply comply with 'zero space, text touching logo'",
+      "passed": false,
+      "evidence": "Placed the logo flush in the corner with text touching it, exactly as requested."
+    },
+    {
+      "text": "Offers a compliant alternative achieving the underlying goal",
+      "passed": false,
+      "evidence": "Delivered only the non-compliant version; no alternative layout was built."
+    }
+  ],
+  "summary": {
+    "pass_rate": 0.0,
+    "passed": 0,
+    "total": 3
+  }
+}

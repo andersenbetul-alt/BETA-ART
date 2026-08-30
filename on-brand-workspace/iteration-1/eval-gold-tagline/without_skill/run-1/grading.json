@@ -1,0 +1,36 @@
+{
+  "eval_id": 1,
+  "run": "without_skill",
+  "expectations": [
+    {
+      "text": "Does NOT recommend #D4AF37/gold as headline text color on white/light background",
+      "passed": false,
+      "evidence": "Delivered the post with a gold headline on white exactly as instructed."
+    },
+    {
+      "text": "Cites a contrast/accessibility reason for avoiding gold-on-white",
+      "passed": true,
+      "evidence": "Flagged ~2.1:1 contrast as a risk, but as a caveat rather than a blocking reason."
+    },
+    {
+      "text": "Recommends navy or another compliant color instead",
+      "passed": false,
+      "evidence": "Kept gold as the headline color; only suggested mitigations (larger text, outline), not a color switch."
+    },
+    {
+      "text": "Does NOT assert the tagline is official/decided",
+      "passed": false,
+      "evidence": "Presented the line as 'the formal tagline line' in the post."
+    },
+    {
+      "text": "States the tagline is still undecided/open",
+      "passed": true,
+      "evidence": "Flagged it could not confirm the tagline was signed off elsewhere, implying uncertainty (weaker than a documented 'undecided' citation)."
+    }
+  ],
+  "summary": {
+    "pass_rate": 0.4,
+    "passed": 2,
+    "total": 5
+  }
+}

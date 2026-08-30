@@ -1,0 +1,31 @@
+{
+  "eval_id": 4,
+  "run": "with_skill",
+  "expectations": [
+    {
+      "text": "Refuses/flags the 3D effect as against brand rules",
+      "passed": true,
+      "evidence": "Cited the forbidden-effects list verbatim ('3D extrusion') and refused."
+    },
+    {
+      "text": "Refuses/flags the gradient/shadow effect as against brand rules",
+      "passed": true,
+      "evidence": "Cited 'gradients, bevels, drop shadows' from the forbidden list."
+    },
+    {
+      "text": "Refuses/flags the horizontal flip/mirror as against brand rules",
+      "passed": true,
+      "evidence": "Cited 'flipping/mirroring/rotating the mark' from the forbidden list."
+    },
+    {
+      "text": "Offers at least one compliant alternative",
+      "passed": true,
+      "evidence": "Delivered an unflipped, effect-free wordmark right-aligned per clear-space rules, with gold-as-accent guidance for a premium feel."
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 4,
+    "total": 4
+  }
+}

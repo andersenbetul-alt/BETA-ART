@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html,body{margin:0;padding:0;background:transparent;}
+  .stage{
+    width:1600px;
+    height:600px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+  }
+  .wrap{
+    position:relative;
+    padding: 50px 60px 70px 60px;
+    transform:none;
+  }
+  .wordmark{
+    font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 220px;
+    letter-spacing: 6px;
+    line-height: 1;
+    margin: 0;
+    position: relative;
+    /* front face: cool metallic gradient */
+    background: linear-gradient(180deg,
+      #f4f7fa 0%,
+      #cfd8e3 22%,
+      #93a4b8 48%,
+      #5b6b80 72%,
+      #35424f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* extrusion (fake 3D depth) drawn behind the gradient face,
+       plus a soft ambient drop shadow to ground the mark */
+    filter:
+      drop-shadow(0 14px 10px rgba(8, 14, 22, 0.45))
+      drop-shadow(0 2px 0 rgba(255,255,255,0.06));
+  }
+  .wordmark::before{
+    content: 'NAVIAR';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    color: transparent;
+    -webkit-text-stroke: 0px transparent;
+    text-shadow:
+      0.55px 0.55px 0 hsl(211, 38%, 21%),
+      1.10px 1.10px 0 hsl(211, 38%, 20%),
+      1.65px 1.65px 0 hsl(211, 38%, 19%),
+      2.20px 2.20px 0 hsl(211, 38%, 18%),
+      2.75px 2.75px 0 hsl(211, 38%, 18%),
+      3.30px 3.30px 0 hsl(211, 38%, 17%),
+      3.85px 3.85px 0 hsl(211, 38%, 16%),
+      4.40px 4.40px 0 hsl(211, 38%, 15%),
+      4.95px 4.95px 0 hsl(211, 38%, 14%),
+      5.50px 5.50px 0 hsl(211, 38%, 13%),
+      6.05px 6.05px 0 hsl(211, 38%, 12%),
+      6.60px 6.60px 0 hsl(211, 38%, 11%),
+      7.15px 7.15px 0 hsl(211, 38%, 10%),
+      7.70px 7.70px 0 hsl(211, 38%, 10%),
+      8.25px 8.25px 0 hsl(211, 38%, 9%),
+      8.80px 8.80px 0 hsl(211, 38%, 8%),
+      9.35px 9.35px 0 hsl(211, 38%, 7%),
+      9.90px 9.90px 0 hsl(211, 38%, 6%);
+  }
+  .gloss{
+    position:absolute;
+    inset:0;
+    font-family: 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 220px;
+    letter-spacing: 6px;
+    line-height: 1;
+    margin: 0;
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0.85) 0%,
+      rgba(255,255,255,0.15) 32%,
+      rgba(255,255,255,0) 55%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    pointer-events:none;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="wrap">
+      <h1 class="wordmark">NAVIAR</h1>
+      <h1 class="gloss" aria-hidden="true">NAVIAR</h1>
+    </div>
+  </div>
+</body>
+</html>

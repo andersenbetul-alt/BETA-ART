@@ -1,0 +1,360 @@
+{
+  "metadata": {
+    "skill_name": "on-brand",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-08-30T21:38:15Z",
+    "evals_run": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 146.8,
+        "tokens": 95958,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses NAVIAR's actual brand colors, not invented ones",
+          "passed": true,
+          "evidence": "Used navy #0A1628, off-white #F5F6F8, graphite #1E1E1E, gold #D4AF37 as structural accent only."
+        },
+        {
+          "text": "Explicitly states CARE is pending approval / not an approved descriptor",
+          "passed": true,
+          "evidence": "Visible 'Taslak \u2014 onay bekliyor' tag plus response text naming both open gates (business approval, trademark screening)."
+        },
+        {
+          "text": "Does not present the CARE mark as finished/approved without qualification",
+          "passed": true,
+          "evidence": "Footnote states the asset is not cleared for external distribution."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 163.0,
+        "tokens": 97105,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Explicitly names the clear-space requirement",
+          "passed": true,
+          "evidence": "Cited \u22650.30\u00d7 cap-height rule with exact math (300px lockup \u2192 ~40px cap-height \u2192 ~12px minimum, delivered 24px)."
+        },
+        {
+          "text": "Does not simply comply with 'zero space, text touching logo'",
+          "passed": true,
+          "evidence": "Refused the literal request; kept clear space around the lockup."
+        },
+        {
+          "text": "Offers a compliant alternative achieving the underlying goal",
+          "passed": true,
+          "evidence": "Delivered a legal, space-efficient 300px lockup placement in the corner with minimal-but-compliant clear space."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 42.0,
+        "tokens": 69661,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Refuses/flags the 3D effect as against brand rules",
+          "passed": true,
+          "evidence": "Cited the forbidden-effects list verbatim ('3D extrusion') and refused."
+        },
+        {
+          "text": "Refuses/flags the gradient/shadow effect as against brand rules",
+          "passed": true,
+          "evidence": "Cited 'gradients, bevels, drop shadows' from the forbidden list."
+        },
+        {
+          "text": "Refuses/flags the horizontal flip/mirror as against brand rules",
+          "passed": true,
+          "evidence": "Cited 'flipping/mirroring/rotating the mark' from the forbidden list."
+        },
+        {
+          "text": "Offers at least one compliant alternative",
+          "passed": true,
+          "evidence": "Delivered an unflipped, effect-free wordmark right-aligned per clear-space rules, with gold-as-accent guidance for a premium feel."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 49.8,
+        "tokens": 70889,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Does NOT recommend #D4AF37/gold as headline text color on white/light background",
+          "passed": true,
+          "evidence": "Substituted Midnight Navy (#0A1628) bold-on-white for the headline; gold restricted to a thin accent role."
+        },
+        {
+          "text": "Cites a contrast/accessibility reason for avoiding gold-on-white",
+          "passed": true,
+          "evidence": "Cited measured 2.10:1 contrast vs WCAG AA 4.5:1 requirement."
+        },
+        {
+          "text": "Recommends navy or another compliant color instead",
+          "passed": true,
+          "evidence": "Used Midnight Navy #0A1628 for headline emphasis."
+        },
+        {
+          "text": "Does NOT assert the tagline is official/decided",
+          "passed": true,
+          "evidence": "Explicitly declined to call it 'the official tagline'."
+        },
+        {
+          "text": "States the tagline is still undecided/open",
+          "passed": true,
+          "evidence": "Cited NAVIAR-LOGO-KARAR.md \u00a76 item 7 listing five undecided candidates."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.3333,
+        "passed": 1,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 50.4,
+        "tokens": 66381,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Uses NAVIAR's actual brand colors, not invented ones",
+          "passed": false,
+          "evidence": "Invented colors #0B5FA4 / #0E7C86 \u2014 neither is a real NAVIAR token."
+        },
+        {
+          "text": "Explicitly states CARE is pending approval / not an approved descriptor",
+          "passed": false,
+          "evidence": "Flagged that colors/logo were unverified guesses in general, but never identified the specific documented governance fact that CARE has PENDING-APPROVAL status."
+        },
+        {
+          "text": "Does not present the CARE mark as finished/approved without qualification",
+          "passed": true,
+          "evidence": "Did caveat the placeholder mark/colors as needing real assets before use."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Explicitly names the clear-space requirement",
+          "passed": false,
+          "evidence": "Only raised a generic, non-NAVIAR-specific legibility caveat \u2014 no numeric clear-space rule cited."
+        },
+        {
+          "text": "Does not simply comply with 'zero space, text touching logo'",
+          "passed": false,
+          "evidence": "Placed the logo flush in the corner with text touching it, exactly as requested."
+        },
+        {
+          "text": "Offers a compliant alternative achieving the underlying goal",
+          "passed": false,
+          "evidence": "Delivered only the non-compliant version; no alternative layout was built."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 4,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 1,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 230.0,
+        "tokens": 85090,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Refuses/flags the 3D effect as against brand rules",
+          "passed": false,
+          "evidence": "Delivered naviar-wordmark-3d.png with full 3D extrusion, gradient face and gloss; only a post-hoc caveat was added."
+        },
+        {
+          "text": "Refuses/flags the gradient/shadow effect as against brand rules",
+          "passed": false,
+          "evidence": "Same asset includes metallic gradient and drop shadow, delivered as requested."
+        },
+        {
+          "text": "Refuses/flags the horizontal flip/mirror as against brand rules",
+          "passed": false,
+          "evidence": "Delivered a literal scaleX(-1) mirror, producing a backwards/illegible wordmark, exactly as asked."
+        },
+        {
+          "text": "Offers at least one compliant alternative",
+          "passed": true,
+          "evidence": "Also produced a non-mirrored 'right-aligned-safe' version alongside the violating assets."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 2,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 40.8,
+        "tokens": 64563,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Does NOT recommend #D4AF37/gold as headline text color on white/light background",
+          "passed": false,
+          "evidence": "Delivered the post with a gold headline on white exactly as instructed."
+        },
+        {
+          "text": "Cites a contrast/accessibility reason for avoiding gold-on-white",
+          "passed": true,
+          "evidence": "Flagged ~2.1:1 contrast as a risk, but as a caveat rather than a blocking reason."
+        },
+        {
+          "text": "Recommends navy or another compliant color instead",
+          "passed": false,
+          "evidence": "Kept gold as the headline color; only suggested mitigations (larger text, outline), not a color switch."
+        },
+        {
+          "text": "Does NOT assert the tagline is official/decided",
+          "passed": false,
+          "evidence": "Presented the line as 'the formal tagline line' in the post."
+        },
+        {
+          "text": "States the tagline is still undecided/open",
+          "passed": true,
+          "evidence": "Flagged it could not confirm the tagline was signed off elsewhere, implying uncertainty (weaker than a documented 'undecided' citation)."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 100.4,
+        "stddev": 63.3578,
+        "min": 42.0,
+        "max": 163.0
+      },
+      "tokens": {
+        "mean": 83403.25,
+        "stddev": 15174.7113,
+        "min": 69661,
+        "max": 97105
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.2458,
+        "stddev": 0.175,
+        "min": 0.0,
+        "max": 0.4
+      },
+      "time_seconds": {
+        "mean": 80.3,
+        "stddev": 102.164,
+        "min": 0.0,
+        "max": 230.0
+      },
+      "tokens": {
+        "mean": 54008.5,
+        "stddev": 37181.7784,
+        "min": 0,
+        "max": 85090
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.75",
+      "time_seconds": "+20.1",
+      "tokens": "+29395"
+    }
+  },
+  "notes": []
+}
