@@ -251,7 +251,17 @@ açık talebi.
   --allow-unrelated-histories` merge'ü ile eski saat uygulamasının geçmişi
   korunarak ağaç QBLOGG yapıldı. Geliştirme dalı `claude/qblogg-web-sayfasi-upcarm`.
 - **Site Vercel'de yayında (22.08.2026).** Proje `qblogg`, takım "BET - ART"
-  (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg.vercel.app (23.08 gecesi proje panelde silinmişti; aynı adla yeniden kuruldu — proje id değişti, eski qblogg-flame/qblogg-bet-art adresleri geçersiz).
+  (`team_xNtowH7U0jXQrI53DFJFzH2o`) — proje panelden en az üç kez silinip aynı
+  adla yeniden kuruldu, her seferinde proje id ve `.vercel.app` alt alan adı
+  değişti: 23.08 gecesi (eski qblogg-flame/qblogg-bet-art adresleri geçersiz),
+  sonra 30.08.2026 ~23:05 UTC'de tekrar (eski proje id
+  `prj_FdYjmnWVtAXWm9Rg2FkjAP3Ghlyz` / eski adres qblogg.vercel.app artık yok;
+  güncel proje id `prj_hJ6RIlkwFzvMkWV9fOcmxic9VJSX`, güncel adres
+  **qblogg-smoky.vercel.app**, yeniden kuran Vercel kullanıcısı
+  `betulandersen-8802`). Bu adlar `.vercel.app` rastgele son ek aldığı için her
+  silme-kurmada değişiyor; dışarıya paylaşılan bağlantılar bu yüzden kırılıyor —
+  kalıcı çözüm **qblogg.com özel alan adını bu projeye bağlamak** (proje silinip
+  yeniden kurulsa bile DNS seviyesinde yeniden bağlanabilir, adres değişmez).
   Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir (depodaki
   dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`)
   klonlayıp 6 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
