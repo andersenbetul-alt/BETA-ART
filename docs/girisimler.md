@@ -26,6 +26,19 @@ bir şey varsa "doğrulanamadı" diye açıkça yazılıdır.
   orijinal saklama, çekim kaynağı/provenance kaydı, doğrudan fotoğrafçı
   lisansı. Koleksiyon, Doğrulama, Fotoğrafçı, Lisanslama (Personal/
   Commercial/Extended/Custom), SSS bölümleri.
+- **Kesinleşmiş görsel kimlik (kullanıcı logo dosyalarını paylaştı,
+  26.08.2026):** Roma profili + defne yaprağı mührü (bordo/kırmızı çizgi,
+  "VERIFIED HUMAN PHOTOGRAPHY" mühür yazısı) + siyah serif logotype
+  "BETA ART" + alt başlık "VERIFIED HUMAN PHOTOGRAPHY". Hero örneği:
+  "Verified Human Photography." başlığı, üstte "PHOTOGRAPHY ARCHIVE ·
+  DIRECT LICENSING" etiketi, altta "BETA ART · ARCHIVE" / `beta-art.com`.
+  **QBLOGG'un kimliğiyle (Midnight Navy/Electric Aqua) hiçbir ortak
+  belirteci yok** — bu bilinçli, iki ayrı marka.
+- **Çapraz-proje kuralı (kullanıcının paylaştığı `ASSETSTATUS.md`'den,
+  26.08.2026):** "HXI'nin moda/müzik görselleri ayrı bir marka, Beta Art
+  içeriği olarak temsil edilemez — yalnızca hakları onaylanmış gerçek
+  sanatçı/eser/mekân görseli eklenir." Bu, bu belgedeki "girişimler
+  birbirine karıştırılmaz" ilkesiyle birebir örtüşüyor.
 - **Nerede:** Lovable, çalışma alanı "Betül's Lovable"
   (`92fe40bbf478c5479f16`), proje `human-lens-archive`
 - **Durum:** **yayında** (`is_published: true`, `publish_visibility:
