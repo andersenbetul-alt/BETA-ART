@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------
+   NAVIAR belirteçleri. Kaynak: brand/naviar/README.md — bu depoda
+   üretilmiş tek gerçek. Nötrler navy tonuna (H≈217-220°) yaslanmış,
+   çıplak gri kullanılmadı. Gold yalnız yapısal aksan (bkz. .accent-line,
+   FocusRing, ColorSwatch) — hiçbir zaman gövde metni veya buton dolgusu.
+   ------------------------------------------------------------------- */
+@layer base {
+  :root {
+    --navy: 217 60% 10%;        /* #0A1628 marka rengi */
+    --gold: 46 65% 52%;         /* #D4AF37 kontrollü aksan */
+    --off-white: 220 18% 97%;   /* #F5F6F8 */
+    --graphite: 0 0% 12%;       /* #1E1E1E */
+    --cyan: 193 100% 45%;       /* #00B2E3 — yalnız veri/UI, aşağıda tek kullanım yeri işaretli */
+
+    --background: 220 22% 96%;
+    --foreground: var(--navy);
+    --card: 0 0% 100%;
+    --card-foreground: var(--navy);
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--navy);
+    --primary: var(--navy);
+    --primary-foreground: var(--off-white);
+    --secondary: 220 20% 91%;
+    --secondary-foreground: var(--navy);
+    --muted: 220 20% 91%;
+    --muted-foreground: 220 15% 38%;
+    --accent: 220 20% 91%;
+    --accent-foreground: var(--navy);
+    --destructive: 6 74% 42%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 18% 85%;
+    --input: 220 18% 85%;
+    --ring: var(--gold);
+    --radius: 0.25rem;
+
+    --pass: 152 45% 32%;
+    --fail: 6 74% 42%;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --background: 217 52% 6%;
+      --foreground: var(--off-white);
+      --card: 217 44% 10%;
+      --card-foreground: var(--off-white);
+      --popover: 217 44% 10%;
+      --popover-foreground: var(--off-white);
+      --primary: var(--off-white);
+      --primary-foreground: var(--navy);
+      --secondary: 217 38% 15%;
+      --secondary-foreground: var(--off-white);
+      --muted: 217 38% 15%;
+      --muted-foreground: 217 15% 66%;
+      --accent: 217 38% 15%;
+      --accent-foreground: var(--off-white);
+      --border: 217 30% 20%;
+      --input: 217 30% 20%;
+      --pass: 152 40% 52%;
+      --fail: 6 78% 62%;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --background: 217 52% 6%;
+    --foreground: var(--off-white);
+    --card: 217 44% 10%;
+    --card-foreground: var(--off-white);
+    --popover: 217 44% 10%;
+    --popover-foreground: var(--off-white);
+    --primary: var(--off-white);
+    --primary-foreground: var(--navy);
+    --secondary: 217 38% 15%;
+    --secondary-foreground: var(--off-white);
+    --muted: 217 38% 15%;
+    --muted-foreground: 217 15% 66%;
+    --accent: 217 38% 15%;
+    --accent-foreground: var(--off-white);
+    --border: 217 30% 20%;
+    --input: 217 30% 20%;
+    --pass: 152 40% 52%;
+    --fail: 6 78% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  }
+  code,
+  .font-data {
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}

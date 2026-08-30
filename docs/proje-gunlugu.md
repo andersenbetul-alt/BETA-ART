@@ -435,3 +435,29 @@ Taşıma yapılamadı; kullanıcıya iki şey gerektiği söylendi: (1) o hesab�
 Claude'a bağlaması (claude.ai bağlayıcı ayarları), (2) Vercel'in proje
 taşımayı yalnızca panelden (Transfer Project, tek tek) desteklediği,
 API'de toplu taşıma olmadığı.
+
+## 30.08.2026 (devam) — naviar-consult interaktif kimlik sitesine yükseltildi
+
+Kullanıcı "BU KONSEPT ÜZERİNDE ÇALIŞ" diyerek `naviar-consult` Vercel
+projesine işaret etti (bu turda ayrıca `bet-art`, `beta-art-master`,
+`project-hxi` gibi birbirinden farklı takım URL'leri de geldi — muhtemelen
+tarayıcıda gezinirken kopyalanan anlık adresler; onaylanan `bet-art` hedefiyle
+devam edildi, her yeni URL için tekrar sorulmadı). Bu oturumda daha önce
+claude.ai artifact olarak yayınlanan React kimlik rehberi, gerçek statik site
+build'ine (`vite build`) çevrilip `deploy_to_vercel` ile kaynak dosya olarak
+`naviar-consult`'a dağıtıldı — önceki tur bu projeye yalnızca statik contact
+sheet'i koymuştu.
+
+Yol boyunca iki şey düzeltildi: (1) genel Vite iskelesinden kalan alakasız
+varlıklar (mor Vite favikonu, bluesky ikon sprite'ı) NAVIAR sitesine
+gitmeden temizlendi, gerçek NAVIAR favikonuyla değiştirildi; (2)
+`npm run build`'in kullandığı `tsc -b`, bu TypeScript sürümünde
+`tsconfig`'in `baseUrl` kullanımını hataya çevirip (`TS5101`, "deprecated")
+Vercel build'ini kırdı — build komutu `vite build`'e (tip kontrolü ayrı,
+`npm run typecheck`) indirgenerek çözüldü.
+
+Kaynak kod `brand/naviar/interactive/` olarak depoya kalıcı olarak eklendi
+(önceki tur bunu `/tmp` scratchpad'de bırakmıştı — artık gerçek bir üretim
+sitesi olduğu için kaybetmek operasyonel risk olurdu). Kullanılmayan ~44
+shadcn taslak bileşeni (yalnız `button` kullanılıyor) ve gereksiz bağımlılık
+listesi temizlendi. `npm run check` yeşil — QBLOGG tarafı etkilenmedi.

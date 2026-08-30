@@ -52,6 +52,11 @@ geometry must depart from any specified range."* **Karar bekliyor.**
 LABS. Ayrıca `naviar-care-PENDING-APPROVAL.svg` — CARE onaylı mimaride yoktur,
 iş onayı ve Nice sınıf 44 taraması gerektirir.
 
+**interactive/** — React/Vite kaynak kodu, `naviar-consult` Vercel projesinin
+(bet-art takımı) canlısı. Bu klasördeki varlıkları tema anahtarı, tıkla-kopyala
+renk kartları ve canlı WCAG kontrast hesaplayıcısıyla gösterir. Detay ve
+dağıtım talimatı: `interactive/README.md`.
+
 **studies/** — reddedilen yönlerin arşiv çalışmaları: `study-p1-sculptural-n-flat`
 (metalik N'nin düz vektör karşılığı) · `study-p4-dot-a-scale` (Dot-A'nın 100/48/24
 cap height'ta çözülmesi) · `study-p6-r-comparison` (açık R vs kapalı R, 24 cap
