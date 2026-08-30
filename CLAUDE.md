@@ -332,28 +332,38 @@ açık talebi.
   --allow-unrelated-histories` merge'ü ile eski saat uygulamasının geçmişi
   korunarak ağaç QBLOGG yapıldı. Geliştirme dalı `claude/qblogg-web-sayfasi-upcarm`.
 - **Site Vercel'de yayında (22.08.2026; konum bilgisi 26.08.2026'da
-  düzeltildi).** Proje `qblogg`, **kişisel Vercel hesabında**
-  (`andersenbetul-9635s-projects`), üretim adresi qblogg.vercel.app.
-  **Önceki kayıt yanlıştı:** burada "takım BET-ART'ta" yazıyordu; 26.08'de
-  MCP `list_teams`/`list_projects` ile ölçüldü, "BET - ART" takımı
-  (`team_xNtowH7U0jXQrI53DFJFzH2o`) `qblogg` barındırmıyor — kullanıcı da
-  qblogg'un kişisel hesapta olduğunu doğruladı. Kurulum tek dosyalık:
+  düzeltilmişti, 30.08.2026 akşamı tekrar değişti — bkz. aşağı).** Proje
+  `qblogg` (`prj_hJ6RIlkwFzvMkWV9fOcmxic9VJSX`). Kurulum tek dosyalık:
   dağıtıma yalnızca `vercel.json` gönderilir (depodaki dosyanın kendisi —
-  tek kaynak); `buildCommand` public depoyu (`main`) klonlayıp 8 sayfa +
-  `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i `dist/`e kopyalar.
-  Yani **siteyi güncellemek = main'e push + aynı dağıtımı yeniden
-  tetiklemek.** Vercel'in GitHub entegrasyonu `andersenbetul-alt` hesabına
-  yetkili değil (`repo_no_access`, entegrasyon `betulandersen-droid`a
-  bağlı) — qblogg'un git-bağlantısız (tek dosyalık) kurulmasının nedeni
-  muhtemelen bu; kullanıcı yetkiyi verirse `create_git_project` ile push
-  başına otomatik dağıtıma geçilebilir. qblogg.com alan adının bağlanması
-  kullanıcı tarafında (Vercel panel + GoDaddy DNS; ad sunucuları taşınmaz,
-  e-posta MX kayıtları GoDaddy'de kalmalı).
-- **"BET - ART" takımı (`team_xNtowH7U0jXQrI53DFJFzH2o`) ayrı bir hesap,
-  qblogg'u barındırmaz.** 26.08.2026'da ölçüldü: `hxi-music`,
-  `naviar-care-1`, `naviar-consult` projelerini barındırıyor — hepsi
+  tek kaynak); `buildCommand` public depoyu (`main`) `--depth 1` sığ
+  klonla çekip 8 sayfa + `404.html` + `sitemap.xml` + `robots.txt` +
+  `assets/`i `dist/`e kopyalar (`npm install`/çatı yok — build ~2 saniye,
+  30.08'de `get_deployment_build_logs` ile ölçüldü). Yani **siteyi
+  güncellemek = main'e push + aynı dağıtımı yeniden tetiklemek.**
+  qblogg.com alan adının bağlanması kullanıcı tarafında (Vercel panel +
+  GoDaddy DNS; ad sunucuları taşınmaz, e-posta MX kayıtları GoDaddy'de
+  kalmalı).
+- **30.08.2026 akşamı yeniden ölçüldü — konum tekrar değişti:** `qblogg`
+  artık **"BET - ART" takımında** (`team_xNtowH7U0jXQrI53DFJFzH2o`,
+  `list_projects` ile doğrulandı), üretim alan adı **`qblogg-smoky.vercel.app`**
+  (`get_project`/`get_deployment`'ın `domains`/`alias` alanından — önceki
+  kayıttaki `qblogg.vercel.app` şu an projeye atanmış değil). Proje
+  kaydının `createdAt` zaman damgası 30.08'e çok yakın — muhtemelen bu
+  aralıkta yeniden oluşturulmuş/taşınmış, ama bu bir yorum, doğrulanmadı.
+  **26.08'deki "kişisel hesapta, BET-ART'ta değil" kaydı o günkü ölçüme
+  göre doğruydu; bugünkü ölçüm farklı sonuç veriyor — iki ölçüm de
+  API'den, ikisi de gerçek zamanında doğruydu, konum zamanla değişmiş
+  görünüyor.** Vercel'in GitHub entegrasyonu proje kaydında
+  `betulandersen-droid/eve-slack-agent`'a bağlı görünüyor (`list_projects`
+  → `link` alanı) — bu **muhtemelen eski/kalıntı bir bağlantı**, gerçek
+  içerik hep yukarıdaki `buildCommand`'ın açık klonundan geliyor, bu link
+  alanı hiç kullanılmıyor.
+- **"BET - ART" takımı** (`team_xNtowH7U0jXQrI53DFJFzH2o`) 30.08 itibarıyla
+  `qblogg`, `hxi-music`, `naviar-care-1`, `naviar-consult` projelerini
+  barındırıyor. Üçü (`hxi-music`/`naviar-care-1`/`naviar-consult`)
   `betulandersen-droid` GitHub hesabındaki depolara bağlı (bu depoya
-  değil). Yani aynı kullanıcının birden çok girişimi aynı Vercel
+  değil) — `qblogg` de aynı (kalıntı) bağlantıyı taşıyor ama gerçek
+  kaynağı bu depo. Yani aynı kullanıcının birden çok girişimi aynı Vercel
   hesabı/takımı ve aynı Claude Code oturum ortamı üzerinden yönetiliyor,
   ama her girişimin kendi deposu ve dağıtımı var — "hepsi aynı depoda"
   değil, "araçlar ve hesap paylaşılıyor" doğru çerçeve.
