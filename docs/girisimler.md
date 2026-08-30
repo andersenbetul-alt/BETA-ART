@@ -270,7 +270,7 @@ uygulaması olarak dosyalıyor, Business ile ilgisi yok.
 | GitHub | `betulandersen-droid` | `eve-slack-agent` (naviar-consult + hxi-music'in bağlı olduğu repo), `naviar-care-1` |
 | Vercel | takım `bet-art` (`team_xNtowH7U0jXQrI53DFJFzH2o`) | qblogg, naviar-consult, naviar-care-1, hxi-music |
 | Vercel | `andersenbetul-9635s-projects` (kişisel, bu oturumdan **erişilemiyor**) | `beta-art-contact1` (muhtemelen), `beta-id-verification` (muhtemelen) |
-| Vercel | takım/hesap `project-hxi` (bu oturumdan **erişilemiyor**, 30.08.2026 doğrulandı: `get_project` → `403 Forbidden`) | proje `beta-art-archive` — isimden dolayı **muhtemelen** yeni doğrulanan canlı `beta-art.com` (BAP-01 Private) sitesinin dağıtımı, ama içerik/dağıtım geçmişi görülemediği için kesin değil |
+| Vercel | takım/hesap `project-hxi` (bu oturumdan **erişilemiyor**, 30.08.2026 doğrulandı: `get_project` iki proje için de `403 Forbidden`) | **iki proje kesinleşti:** `beta-art-archive` (muhtemelen BAP-01 Private/`beta-art.com` dağıtımı) ve **`beta-art-business`** (muhtemelen BAB-02 — kullanıcı bu projenin `/settings/git` sayfasını paylaştı, yani bir GitHub reposuna bağlı; hangisi olduğu bu oturumdan görülemiyor) |
 | Lovable | çalışma alanı "Betül's Lovable" (`92fe40bbf478c5479f16`) | human-lens-archive (Beta Art Archive, yayında), HXI Phonk Studio ×4 deneme, Hjemmehjelp Norge |
 | Lovable | çalışma alanı "HXI" (`workspace_01m0ysmsg1feht8t2v7s4h0f69`) | 0 proje — boş |
 
@@ -289,12 +289,19 @@ uygulaması olarak dosyalıyor, Business ile ilgisi yok.
    reconciliation onaylandı. Business = yalnızca inşaat-arşivi; genel B2B
    fotoğraf lisanslama Private'a (BAP-01) taşındı. Bkz. yukarıdaki
    "Business (BAB-02)" bölümü.
-5. **(30.08.2026, yeni)** Vercel takımı `project-hxi` — bu isim
-   `betulandersen-droid/eve-slack-agent`'a bağlı `hxi-music` projesiyle
-   (HXI Phonk Studio) mi ilişkili, yoksa yalnızca isim benzerliği mi?
-   Ve `beta-art-archive` projesi gerçekten `beta-art.com`'u mu dağıtıyor?
-   Bu oturumdan doğrulanamaz (`403 Forbidden`) — kullanıcı bu Vercel
-   takımına erişim tanımalı ya da doğrudan teyit etmeli.
+5. **(30.08.2026, yeni, en değerli açık soru)** Vercel takımı `project-hxi`
+   altında **iki** proje doğrulandı: `beta-art-archive` ve
+   `beta-art-business`. İkisi de bu oturumdan `403 Forbidden`.
+   - Bu isim `betulandersen-droid/eve-slack-agent`'a bağlı `hxi-music`
+     projesiyle (HXI Phonk Studio) mi ilişkili, yoksa yalnızca isim
+     benzerliği mi?
+   - `beta-art-archive` gerçekten `beta-art.com`'u mu dağıtıyor?
+   - **En önemlisi:** `beta-art-business`'ın `/settings/git` sayfasında
+     hangi GitHub reposu bağlı? Bu, BAB-02'nin belgelerden değil
+     **doğrudan canlı kaynak kodundan** okunmasını sağlayabilir —
+     `andersenbetul-alt` altındaysa bu oturuma `add_repo` ile eklenebilir.
+   Kullanıcı bu Vercel takımına erişim tanımalı ya da bağlı repo adını
+   doğrudan paylaşmalı; bu oturumdan tahmin edilemez.
 
 ## Bu belgeyi güncel tutma
 
