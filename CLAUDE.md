@@ -3,6 +3,35 @@
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
+## Bu depo artık bir monorepo (26.08.2026)
+
+Kullanıcı kararıyla, dağınık duran ayrı depolar buraya göçürüldü — repo
+kökü hâlâ **QBLOGG**'a ait (aşağıdaki her şey QBLOGG içindir), ama üç alt
+klasör **tamamen ayrı projeler**, kendi bağımlılıkları ve derleme
+adımlarıyla:
+
+| Klasör | Ne | Bağımlılık/derleme |
+|---|---|---|
+| `beta-art/` | **Beta Art** — asıl production kod tabanı (eski `andersenbetul-alt/beta-art-archive`, 45 commit'lik tam geçmişiyle göçürüldü). Yön: "Verified Human Photography & Licensing" + inşaat sektörü proje-kapanışı dokümantasyon arşivi ("Beta Art Business"/BAB). **Bu depodaki `docs/beta-art-konsept.md`'de yazılan "AI destekli görsel stüdyo" fikri REDDEDİLDİ** — asıl model `beta-art/BETA_ART_MASTER.md`'de. | React + Vite + TypeScript + Supabase (bun.lock). Kendi `npm i`/`bun install` gerekir — QBLOGG'un "sıfır bağımlılık" kuralı buraya uygulanmaz. |
+| `eve-slack-agent/` | Vercel "eve" Slack ajanı şablonu — **değiştirilmemiş boilerplate**, henüz özel içerik yok | pnpm workspace |
+| `eve-chat-template/` | Vercel "eve" sohbet şablonu (Next.js) — **değiştirilmemiş boilerplate** | Next.js, kendi paket yönetimi |
+
+**Kural:** Bu alt klasörlerde çalışırken QBLOGG'un "Değişmez kurallar"ı
+(aşağıda) uygulanmaz — onlar yalnız repo kökündeki QBLOGG dosyaları için
+geçerli. `beta-art/` kendi CLAUDE.md'sini henüz yazmadı; oraya girildiğinde
+önce `beta-art/BETA_ART_MASTER.md` ve `beta-art/BETA_ART_SINGLE_SITE_ARCHITECTURE.md`
+okunmalı. `npm run check`/`guvenlik`/`gorunurluk` betikleri yalnız repo
+köküne (QBLOGG) bakar, `beta-art/` içini denetlemez.
+
+**Göçürülemeyenler (erişim sınırı):** Vercel takımındaki `naviar-care`,
+`naviar-care-1`, `hximusic`, `naerhjelp-pilot`, `naerhjelp-pilot-v2`,
+`cobban` ve Vercel'deki "beta-art" adlı proje — hepsi `betulandersen-droid`
+adlı **farklı bir GitHub hesabına** bağlı; bu oturumun GitHub erişimi
+tek hesapla sınırlı ("cross-tier adds are not supported"). Bunlar için
+ayrı bir oturum, o hesabı kaynak alarak açılmalı. `andersenbetul-alt/qb`
+ve `andersenbetul-alt/qblogg` depoları da kontrol edildi — ikisi de boş,
+göçürülecek bir şey yok.
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:

@@ -347,3 +347,30 @@ Yazar Platformu, şimdi Beta Art) — hiçbiri aynı anda inşa edilmemeli
 uyarısı belgede tekrarlandı. Yedi açık karar kullanıcıda (niş seçimi,
 marka adı/depo ilişkisi, teknik yığın, ödeme sağlayıcı, AI görsel
 sağlayıcısı, NOK fiyat doğrulaması, erişilebilirlik hedefi).
+## 26.08.2026 — Depo monorepo'ya çevrildi: Beta Art yön çelişkisi çözüldü
+
+Kullanıcı "her proje/dosya/tool burada birleşsin", sonra "bütün projeleri
+buraya taşı" dedi. Envanter çıkarırken kritik bir çelişki bulundu:
+`andersenbetul-alt/beta-art-archive` deposunda kullanıcının kendi yazdığı
+`BETA_ART_MASTER.md` (25-26.08.2026), önceki günün `docs/beta-art-konsept.md`
+belgesindeki "AI destekli görsel stüdyo" yönünü isim vererek reddediyordu
+("conflicting AI creative-studio positioning") ve o depoyu "Master
+production codebase" ilan ediyordu — asıl yön "Verified Human Photography
+& Licensing" + inşaat sektörü proje-kapanışı dokümantasyonu (Beta Art
+Business/BAB). Kullanıcıya soruldu, beta-art-archive asıl kabul edildi.
+Sonuç: `docs/beta-art-konsept.md` AŞILDI/REDDEDİLDİ işaretlendi (silinmedi);
+`small-business` becerisindeki yanlış BAB/BAC/BAP tahmini düzeltildi (BAB
+artık doğrulandı, BAC/BAP hâlâ teyit gerekiyor ama artık yanlış bir
+varsayıma bağlı değil). Üç depo `git subtree` ile tam geçmişleriyle
+göçürüldü: `beta-art/` (45 commit, asıl Beta Art kodu), `eve-slack-agent/`
+ve `eve-chat-template/` (ikisi de değiştirilmemiş Vercel "eve" şablonları).
+`andersenbetul-alt/qb` ve `andersenbetul-alt/qblogg` boş bulundu, taşınacak
+bir şey yoktu. Erişilemeyenler: Vercel takımındaki `naviar-care`,
+`naviar-care-1`, `hximusic`, `naerhjelp-pilot`, `naerhjelp-pilot-v2`,
+`cobban` ve Vercel'deki ayrı "beta-art" projesi — hepsi `betulandersen-droid`
+adlı farklı bir GitHub hesabına bağlı, bu oturumun tek-hesap sınırı
+yüzünden ("cross-tier adds are not supported") erişilemedi; ayrıca
+`andersenbetul-9635s-projects` adlı ikinci bir Vercel hesabı da bu
+oturumdaki Vercel MCP bağlantısının kapsamı dışında kaldı. CLAUDE.md'ye
+monorepo yapısını ve alt klasörlerin QBLOGG'un "sıfır bağımlılık"
+kuralına tabi olmadığını açıklayan bir bölüm eklendi.
