@@ -323,3 +323,22 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+
+## 30.08.2026 — Çoklu proje ayrımı + dağıtım optimizasyonu
+
+Depo çoklu proje yapısına geçti: bu klasörün tamamı (site, assets, scripts,
+engine, docs, uye, content, vendor) kök dizinden `qblogg/` altına taşındı;
+NAVIAR'ın marka kimliği ayrı `naviar/` klasörüne ayrıldı. Taşıma hiçbir
+betiği bozmadı çünkü hepsi kendi dosya konumuna göre yol çözüyor
+(`import.meta.url`/`__file__`, `process.cwd()` değil) — `npm run check` ve
+`npm run guvenlik` taşıma sonrası yeşil kaldı. Detay: kök `CLAUDE.md`.
+
+Ayrıca `vercel.json`'ın `buildCommand`'ı ölçülerek optimize edildi: gerçek
+build log'u incelendiğinde build zaten ~5 saniyeydi (framework yok, optimize
+edilecek bundle yok), ama depo klonu her seferinde `qblogg/vendor/` (60 MB,
+yalnızca font hak paketi kanıtı, üretime hiç girmiyor) dahil **tüm** depoyu
+indiriyordu. `--filter=blob:none` + `sparse-checkout` (non-cone, `vendor/
+scripts/ engine/ docs/ content/ uye/` hariç) ile test edildi: `.git` pack
+dosyası 34 MB'tan 528 KB'a düştü (~65×), `dist/` çıktısı bire bir aynı kaldı
+(uçtan uca simülasyonla doğrulandı). Depo büyüdükçe (yeni projeler eklendikçe)
+bu fark büyüyecekti; şimdiden düzeltildi.
