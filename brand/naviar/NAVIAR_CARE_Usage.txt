@@ -1,0 +1,138 @@
+NAVIAR CARE — Brand Usage Guidelines
+Version: 1.0-DRAFT  (iş onayı bekleniyor; onaylanana kadar PENDING-APPROVAL)
+Date: 2026-08-30
+Scope: NAVIAR CARE descriptor lockup and all NAVIAR CARE branded materials
+
+═══════════════════════════════════════════════════════════════════
+1. MASTER COLOURS
+═══════════════════════════════════════════════════════════════════
+
+  Midnight Navy  #0A1628   Primary — backgrounds, type on light
+  Premium Gold   #D4AF37   Structural accent only (monogram bar)
+  Off White      #F5F6F8   Type on dark, reverse backgrounds
+  Graphite       #1E1E1E   Secondary neutral (monochrome print)
+
+  Note: Gold achieves only 2.10:1 contrast on white — it fails
+  WCAG 2.1 AA for text and load-bearing graphics on light backgrounds.
+  Gold is a structural accent, not a type colour.
+  On light backgrounds: descriptor and body type must use Midnight Navy.
+  On dark (navy) backgrounds: type and descriptor may use Off White.
+
+  Accent Cyan #00B2E3 is a data/UI colour only. It must never appear
+  in the master NAVIAR CARE mark or on branded stationery.
+
+═══════════════════════════════════════════════════════════════════
+2. MINIMUM SIZES
+═══════════════════════════════════════════════════════════════════
+
+  Full lockup (monogram + NAVIAR + CARE descriptor):
+    Digital  160 px  minimum width
+    Print     35 mm  minimum width
+
+  Wordmark only (NAVIAR, no descriptor):
+    Digital   96 px  minimum width
+    Print     24 mm  minimum width
+
+  These are hard minima. Below these sizes readability of
+  the CARE descriptor and monogram detail is not guaranteed.
+
+═══════════════════════════════════════════════════════════════════
+3. CLEAR SPACE
+═══════════════════════════════════════════════════════════════════
+
+  Lockup (horizontal / stacked):  ≥ 0.30H on all sides
+    where H = cap height of the NAVIAR wordmark (100 units)
+
+  Monogram alone:  ≥ 1 ribbon width (150 units at master scale)
+    on all sides
+
+  Nothing — text, image, border, fold — may enter the clear space.
+
+═══════════════════════════════════════════════════════════════════
+4. DESCRIPTOR GOVERNANCE — CARE
+═══════════════════════════════════════════════════════════════════
+
+  4.1  Cap height
+       CARE descriptor cap height = 27% of NAVIAR wordmark cap height.
+       Acceptable range: 24–30%.
+
+  4.2  Colour
+       Light background: Midnight Navy (#0A1628).
+       Dark / navy background: Off White (#F5F6F8).
+       Gold is not permitted as descriptor colour on any background.
+
+  4.3  Position
+       Centred below the NAVIAR wordmark, aligned to wordmark width.
+       Horizontal separation from wordmark baseline: 20 units.
+
+  4.4  Font reference
+       Poppins weight 500, or a construction reference for outlined
+       masters. The descriptor in production artwork must be outlined
+       vector paths — live text is not permitted in the filing master.
+
+  4.5  Architectural status
+       CARE is not in the approved master architecture as of 2026-08-30.
+       Use of this descriptor requires explicit business approval and
+       completion of a separate Nice class 44 trademark search.
+       Until both are granted, the CARE lockup file is named
+       naviar-care-PENDING-APPROVAL.svg and must not be used in
+       production, publications, or trademark filings.
+
+═══════════════════════════════════════════════════════════════════
+5. DO NOT LIST
+═══════════════════════════════════════════════════════════════════
+
+  × Gradients, bevels, shadows, glows, metal textures, 3D effects
+  × Raster masks overlaid on the master mark
+  × Permanently embedding a tagline inside the wordmark artwork
+  × Redrawing the wordmark geometry (use the master SVG output only)
+  × Country-specific or language-specific variants
+  × Translating, mirroring, or rotating the NAVIAR wordmark
+  × Using Gold as body text or descriptive label on light backgrounds
+  × Using Accent Cyan in the master mark or branded stationery
+  × Open-R letterform (the closed bowl + diagonal leg is mandatory)
+  × Dot-A letterform (dots are retired; plain triangular A is master)
+  × Combining the CARE descriptor with a tagline in the same lockup
+
+═══════════════════════════════════════════════════════════════════
+6. TRADEMARK STATUS AND RISK
+═══════════════════════════════════════════════════════════════════
+
+  The NAVIAR CARE mark carries the same pre-filing risk as the
+  NAVIAR master mark (see docs/naviar/NAVIAR-LOGO-KARAR.md §5).
+
+  Additional risk specific to CARE:
+  — "CARE" is descriptive for health/care services under SMK art. 5/1-c
+    and EUTMR art. 7(1)(c); it does not generate exclusive rights on its
+    own. Protection attaches to the NAVIAR element.
+  — Nice class 44 (medical and care services) must be searched before
+    any use if the service is health or care related.
+  — Sector-specific advertising restrictions for health services
+    must be verified once the service definition is final.
+  — A disclaimer for CARE is expected upon registration.
+
+  Searches required before production use:
+    NAVIAR CARE — exact + phonetic/spelling variants
+    Patentstyret (Norway) · EUIPO/TMview (EU) · WIPO GBD (international)
+    Nice classes: 35, 41, 42, 9, 44
+
+  Professional registry clearance and legal advice are required
+  before trademark filing, signage, and public rollout.
+
+═══════════════════════════════════════════════════════════════════
+7. CONTACT / OWNERSHIP
+═══════════════════════════════════════════════════════════════════
+
+  Applicant: Betül Andersen  |  andersen.betul@gmail.com
+  Parent brand: NAVIAR (master identity, no descriptor)
+  Filing office: Patentstyret (Norway primary) + EUIPO (EU)
+  Status: DRAFT — not filed as of 2026-08-30
+
+  This document is a design-and-usage guideline, not legal advice.
+  Registrability decisions belong to the relevant trademark office.
+  Legal review by a qualified IP professional is recommended before
+  any filing, commercial launch, or global rollout.
+
+═══════════════════════════════════════════════════════════════════
+END OF NAVIAR_CARE_Usage.txt  v1.0-DRAFT
+═══════════════════════════════════════════════════════════════════

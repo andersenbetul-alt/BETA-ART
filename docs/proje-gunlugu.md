@@ -314,6 +314,23 @@ becerilerin karşılıkları not edildi. (3) 20 rollük ekip listesi
 değerlendirildi → docs/ekip-modeli.md (roller işe alım değil denetim
 merceği; ilk işe alım ancak pilot gelirle). (4) IQ1000 "güven motoru"
 analizi is-modeli.md §14'e delta olarak işlendi — sıra kararı değişmedi.
+## 30.08.2026 — NAVIAR CARE dosyaları oluşturuldu
+
+Eksik olan iki dosya tamamlandı:
+(1) `brand/naviar/NAVIAR_CARE_Usage.txt` — logo karar belgesinde M2 kaynak
+olarak atıfta bulunulan ama depoda bulunmayan marka kullanım kılavuzu yazıldı:
+master renkler (#0A1628 + #D4AF37), CARE descriptor kuralları (cap height %24–30,
+beyaz zeminde lacivert, koyu zeminde off-white), minimum ölçüler (tam lockup
+160 px / 35 mm, wordmark 96 px / 24 mm), clear space, do-not listesi, marka
+hukuku durumu (CARE için Nice sınıf 44 taraması gerekli, "CARE" tek başına
+inhisari hak doğurmaz). PENDING-APPROVAL statüsü ve iş onayı gerekliliği
+kılavuzda açıkça yer aldı.
+(2) `naviar/README.md` genişletildi: platform özeti, pilot modüller, Vercel
+dağıtım durumu, BETA-ART'a taşıma planı (4 sıralı adım, kullanıcı vs. Claude
+adımları ayrıştırıldı), marka durumu bağlantıları.
+Kaynak kodu hâlâ `betulandersen-droid/naviar-care-1`'de (cross-tier kısıtı
+nedeniyle bu oturumda transfer yapılamadı); adım 1 kullanıcı tarafında.
+
 ## 24.08.2026 (gece, test mimarisi) — Spec-driven Playwright standardı değerlendirildi
 
 Kullanıcının ilettiği üç katmanlı test mimarisi (specs/tests/agents +

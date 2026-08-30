@@ -1,41 +1,75 @@
 # NAVIAR CARE
 
-Norveçli yaşlı bireyler ve yakınları için dijital koordinasyon platformu.
+Norveçli yaşlı bireyler ve pårørende (yakın aile/veli) için dijital koordinasyon platformu.  
 **"Trygg koordinering for eldre og pårørende."**
 
 ## Mevcut durum
 
 | Kaynak | Adres |
 |---|---|
-| Kaynak kodu | `betulandersen-droid/naviar-care-1` (private) |
-| Vercel projesi | `naviar-care-1` (bet-art takımı) |
+| Kaynak kodu | `betulandersen-droid/naviar-care-1` (private — transfer bekliyor) |
+| Vercel projesi | `naviar-care-1` (BET-ART takımı) |
 | Production URL | `naviar-care-1-psi.vercel.app` |
 | Son preview | `naviar-care-1-1503sfbgf-bet-art.vercel.app` |
+| Marka kullanım kılavuzu | `../brand/naviar/NAVIAR_CARE_Usage.txt` |
+| Logo + descriptor | `../brand/naviar/descriptors/naviar-care-PENDING-APPROVAL.svg` |
 
 ### Vercel dağıtım durumu
+
 - Son commit: "rename NAVIAR to NAVIAR CARE and update tagline" — **preview'da, production'a çıkarılmadı**
 - Production'daki: eski "update site title" sürümü
+- Mevcut preview'u production'a almak için:
+  ```
+  Vercel Dashboard → naviar-care-1 → Deployments
+  → dpl_E4Q3o3WXeyaCEva7reSLgtGRwt7z → ⋯ → Promote to Production
+  ```
 
-## Platform özeti (v0 ile oluşturuldu)
+## Platform özeti
 
-Next.js · Türkçe: Norveçli yaşlılar + pårørende için NAV/belediye sistemlerinde navigasyon.
+**Stack:** Next.js (v0.app kökenli) · Norveçce arayüz  
+**Hedef:** Norveçli yaşlılar ve yakınları için NAV/belediye sistemlerinde navigasyon
 
-### Pilot projeler
-1. **Pårørende i NAV-systemet** — NAV başvuruları, kararlar, itirazlar
-2. **Pårørende og kommunen** — Bakım ve belediye hizmetleri
-3. **Digital hjelp sammen** — Dijital hizmetlerde güvenli yardım
+### Pilot modüller
+
+| # | Modül | Kapsam |
+|---|---|---|
+| 1 | **Pårørende i NAV-systemet** | NAV başvuruları, kararlar, itirazlar |
+| 2 | **Pårørende og kommunen** | Bakım hizmetleri ve belediye süreçleri |
+| 3 | **Digital hjelp sammen** | Dijital hizmetlerde güvenli yardım |
 
 ## BETA-ART'a taşıma planı
 
-1. `betulandersen-droid/naviar-care-1` → `andersenbetul-alt/BETA-ART` için erişim ver
-2. Kaynak kodu `naviar/app/` altına kopyala
-3. Vercel'de `naviar-care-1` projesini bu repoya bağla
-4. `vercel.json` monorepo yapısıyla güncelle
+Sıra önemlidir; 1 tamamlanmadan 2'ye geçilmez.
 
-## Vercel production'a çıkarma
+1. **GitHub transfer (kullanıcı adımı)**  
+   `betulandersen-droid/naviar-care-1` → Settings → Transfer ownership → `andersenbetul-alt`  
+   Transfer sonrası repo bu monorepo'dan klonlanabilir hale gelir.
 
-Mevcut preview'u production'a çıkarmak için:
+2. **Kaynak kodu kopyalama (Claude adımı — 1. adım bittikten sonra)**  
+   ```bash
+   git subtree add --prefix=naviar/app \
+     https://github.com/andersenbetul-alt/naviar-care-1 main --squash
+   ```
+   Ya da: `git clone --no-local` ile `naviar/app/` altına çek.
+
+3. **Vercel bağlantısını güncelle (kullanıcı adımı)**  
+   Vercel Dashboard → `naviar-care-1` → Settings → Git →  
+   Repo'yu `andersenbetul-alt/BETA-ART`'a yönlendir, Root Directory: `naviar/app`
+
+4. **`vercel.json` güncelle (Claude adımı — 3. adım bittikten sonra)**  
+   Mevcut monorepo `vercel.json`'a `naviar-care-1` projesini ekle.
+
+## Geliştirme (taşıma sonrası)
+
+```bash
+cd naviar/app
+pnpm install       # veya npm install
+pnpm dev           # http://localhost:3000
 ```
-Vercel Dashboard → naviar-care-1 → Deployments
-→ dpl_E4Q3o3WXeyaCEva7reSLgtGRwt7z → ... → Promote to Production
-```
+
+## Marka durumu
+
+Logo kullanımı `../brand/naviar/NAVIAR_CARE_Usage.txt` kurallarına tabidir.  
+CARE descriptoru onaylı mimaride **henüz yer almıyor**; kullanım için iş onayı
+ve ayrı bir Nice sınıf 44 marka taraması gerekiyor.  
+Ayrıntı: `../docs/naviar/NAVIAR-LOGO-KARAR.md` → P9 bölümü.
