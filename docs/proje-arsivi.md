@@ -116,6 +116,17 @@ satır tahminle doldurulmadı — kaynağı olmayan alan `bilinmiyor` yazar.
 | Erişim | Bu ortamdan **erişilemiyor** (`EGRESS_BLOCKED`) |
 | Hangi projeye ait | **BETA ART Privat (madde 4)** — kullanıcı 30.08'de doğruladı, aynı GoDaddy venture (`7fb63a87-...`) |
 
+## 12. Field Notes — The Beta Art Journal
+
+| Alan | Değer |
+|---|---|
+| Canlı adres | `betaart.no/field-notes/` — **dikkat: `beta-art.com` değil, farklı bir domain** (`betaart.no`) |
+| Kaynak | `index.html`, `post.html`, `script.js`, `styles.css` paylaşıldı (30.08.2026) |
+| Amaç | Beta Art'ın dergi/blog'u — köken, yöntem, Norveç'te ışık, lisanslama ekonomisi üzerine denemeler |
+| Bağlantı verdiği kardeş sayfalar | `../beta-art/index.html` ("the archive"), `../beta-art-business/index.html` ("Business") — yani bu üçlüde klasör adları `beta-art/` ve `beta-art-business/`, madde 4/6/7'nin `beta-art-privat/`/`beta-art-gallery-event/`/`beta-art-business/` adlandırmasından **farklı** |
+| PROJECTMANIFEST.md'deki durumu | Manifesto bunu zaten biliyor ve **kaynak-inceleme malzemesi** olarak işaretlemiş: "üç proje adlandırmasıyla tam eşleşmiyor çünkü üçüncü mülk Galeri değil Journal... `source-review/intake-2026-08-30/three-sites-latest/` altında saklanıyor, üretim klasörlerine karıştırılmadı" |
+| Durum | **referans**, kaynak sistemde zaten "üretime alınmadı" diye işaretli — yine de üçüncü bir domain (`betaart.no`) ortaya çıkardığı için not edildi |
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
@@ -123,6 +134,7 @@ satır tahminle doldurulmadı — kaynağı olmayan alan `bilinmiyor` yazar.
 - **"Privat"** üç farklı şeyde geçiyor: `beta-privat/` (madde 3, muhasebe), "BETA ART Privat" BAP-01 (madde 4, fotoğraf arşivi). Kullanıcı 30.08'de bunların ayrı olduğunu doğruladı.
 - **Barındırma modeli çelişkisi**: madde 4/6/7'nin kendi belgeleri (`ROUTE-CONFIG.md`, `DEPLOYMENT.md`) yol-tabanlı (`/privat/`) diyor; madde 8 (DNS admin) alt-alan-adı-tabanlı (`archive.beta-art.com`) öneriyor. İkisi aynı anda doğru olamaz — birleştirme kararından önce hangisinin geçerli olduğu netleşmeli.
 - **BETA ART Privat için üç ayrı kod tabanı var**: (1) statik HTML prototip, (2) React+Vite+Supabase "Final Work v2" (madde 5), (3) GoDaddy Airo App Builder (Vite+React+TS, kendi içerik eklentisi) — kullanıcı 30.08'de üçüncüsünü temel ilan etti. Diğer ikisinin akıbeti (tamamen bırakılıyor mu, referans mı kalıyor) henüz netleşmedi.
+- **İki farklı domain aynı markayı taşıyor**: `beta-art.com` (madde 4/6/7/8/9) ve `betaart.no` (madde 12, Field Notes). Hangisinin gerçek/kesin alan adı olacağı netleşmedi.
 
 ## Sıradaki adım
 
