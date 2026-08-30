@@ -155,14 +155,19 @@ satır tahminle doldurulmadı — kaynağı olmayan alan `bilinmiyor` yazar.
 | Durum | **En yetkili kaynak.** Madde 4'ün (BETA ART Privat statik prototip) canlıdaki en yakın karşılığı bu — birleştirme kararında "son söz" bu olmalı. |
 
 **Vercel proje ipucu (30.08.2026, henüz erişilemedi):** kullanıcı
-`https://vercel.com/project-hxi/beta-art-archive` paylaştı — ilk kez bir
-dağıtım URL'si değil, bir **Vercel proje adı** ("beta-art-archive"). Bu
-oturuma bağlı Vercel hesabı yalnızca "BET - ART" takımını görüyor
-(`team_xNtowH7U0jXQrI53DFJFzH2o`); `project-hxi` bu listede yok,
-`get_project` 403 Forbidden döndü, paylaşılabilir bağlantı oluşturma da
-başarısız oldu. Yani proje **bu hesabın erişimi olmayan başka bir Vercel
-hesabı/takımında**. Kod kaynağı hâlâ doğrulanamadı ama artık aranacak bir
-proje adı var.
+`https://vercel.com/project-hxi/<proje>` biçiminde üç bağlantı paylaştı:
+`beta-art`, `beta-art-archive`, `beta-art-private` — üçü de aynı takım
+slug'ında (`project-hxi`), üçü de bir dağıtım URL'si değil, **Vercel proje
+adı**. Bu oturuma bağlı Vercel hesabı yalnızca "BET - ART" takımını görüyor
+(`team_xNtowH7U0jXQrI53DFJFzH2o`); `project-hxi` bu listede yok, üçü için
+de `get_project` 403 Forbidden döndü, paylaşılabilir bağlantı oluşturma
+da başarısız oldu, tahmini dağıtım adresi (`beta-art-archive.vercel.app`)
+`WebFetch` ile de `EGRESS_BLOCKED`. Yani üçü de **bu hesabın erişimi
+olmayan başka bir Vercel hesabı/takımında**. Kod kaynağı hâlâ
+doğrulanamadı ama artık üç proje adı var — kullanıcı panelde
+Settings → Git'e bakıp bağlı GitHub deposu adını (`owner/repo`) paylaşırsa
+`add_repo` ile doğrudan koda bakılabilir; bu Vercel MCP bağlantısından
+tekrar deneme aynı sonucu verir.
 
 ---
 
