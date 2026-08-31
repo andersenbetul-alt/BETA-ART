@@ -77,8 +77,8 @@ if (KIP === 'shot') {
   // 1. Başlık
   kontrol('sayfa başlığı "NAVIAR Care"', (await p.title()) === 'NAVIAR Care');
 
-  // 2. Nav bağlantıları (3 adet)
-  kontrol('navigasyon (3 bağlantı)', (await p.locator('nav.site a').count()) === 3);
+  // 2. Nav bağlantıları (4 adet: Tjenester, Hvem, Abonnement, Kontakt)
+  kontrol('navigasyon (4 bağlantı)', (await p.locator('nav.site a').count()) === 4);
 
   // 3. "Hvem er dette for" kartları (3 adet)
   kontrol('who-card (3 kart)', (await p.locator('.who-card').count()) === 3);

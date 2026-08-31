@@ -128,6 +128,51 @@
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
   }
+
+  /* Abonnement — tier kartları */
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+    gap: 18px;
+    margin-top: 22px;
+  }
+  .tier-card {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px 20px; display: flex; flex-direction: column;
+  }
+  .tier-card.featured {
+    border-color: var(--gold); border-width: 2px;
+    box-shadow: 0 2px 12px rgba(212, 175, 55, .15);
+  }
+  .tier-badge {
+    display: inline-block; background: var(--gold); color: var(--navy);
+    font-size: .75rem; font-weight: 700; letter-spacing: .04em;
+    padding: 2px 10px; border-radius: 999px; margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .tier-name { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin: 0 0 4px; }
+  .tier-visits { font-size: .88rem; color: var(--text-muted); margin: 0 0 16px; }
+  .tier-features {
+    list-style: none; padding: 0; margin: 0 0 20px; flex: 1;
+  }
+  .tier-features li {
+    padding: 6px 0; font-size: .9rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .tier-features li:last-child { border-bottom: none; }
+  .tier-features li::before {
+    content: '✓'; color: var(--gold); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .tier-price-note {
+    font-size: .8rem; color: var(--text-muted); font-style: italic;
+    margin-bottom: 14px;
+  }
+  .tier-note {
+    background: var(--off-white); border-radius: 8px; padding: 14px 16px;
+    font-size: .85rem; color: var(--text-muted); margin-top: 18px;
+  }
 </style>
 </head>
 <body>
@@ -139,6 +184,7 @@
     <nav class="site" aria-label="Hovednavigasjon">
       <a href="#tjenester">Tjenester</a>
       <a href="#hvem">Hvem er dette for</a>
+      <a href="#abonnement">Abonnement</a>
       <a href="#kontakt">Be om en samtale</a>
     </nav>
   </div>
@@ -260,6 +306,65 @@
     </div>
   </section>
 
+  <section id="abonnement">
+    <div class="wrap">
+      <h2>Abonnementsalternativer</h2>
+      <p>Alle pakker starter med en gratis koordinatorsamtale der vi avklarer
+         behov og passende besøksfrekvens — ingen automatisk oppstart.</p>
+
+      <div class="tier-grid">
+
+        <div class="tier-card">
+          <div class="tier-name">Grunnpakke</div>
+          <div class="tier-visits">2 besøk per måned · 90 min per besøk</div>
+          <ul class="tier-features">
+            <li>Gratis innledende koordinatorsamtale</li>
+            <li>2 planlagte besøk (90 min)</li>
+            <li>Bestilling via kontaktskjema</li>
+          </ul>
+          <p class="tier-price-note">Pris fastsettes etter koordinatorsamtale.</p>
+          <a class="btn btn-secondary" href="#kontakt">Be om samtale</a>
+        </div>
+
+        <div class="tier-card featured">
+          <span class="tier-badge">Mest valgt</span>
+          <div class="tier-name">Standardpakke</div>
+          <div class="tier-visits">4 besøk per måned · 90 min per besøk</div>
+          <ul class="tier-features">
+            <li>Gratis innledende koordinatorsamtale</li>
+            <li>4 planlagte besøk (90 min)</li>
+            <li>Digital hverdagsstøtte inkludert</li>
+            <li>Bestilling via kontaktskjema</li>
+          </ul>
+          <p class="tier-price-note">Pris fastsettes etter koordinatorsamtale.</p>
+          <a class="btn btn-primary" href="#kontakt">Be om samtale</a>
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-name">Familiepakke</div>
+          <div class="tier-visits">6 besøk per måned · 90 min per besøk</div>
+          <ul class="tier-features">
+            <li>Gratis innledende koordinatorsamtale</li>
+            <li>6 planlagte besøk (90 min)</li>
+            <li>Digital hverdagsstøtte inkludert</li>
+            <li>Ukentlig statusoppsummering til pårørende</li>
+            <li>Prioritert koordinatorkontakt</li>
+          </ul>
+          <p class="tier-price-note">Pris fastsettes etter koordinatorsamtale.</p>
+          <a class="btn btn-secondary" href="#kontakt">Be om samtale</a>
+        </div>
+
+      </div>
+
+      <div class="tier-note">
+        Faste priser publiseres når piloten er ferdig med juridisk og
+        avgiftsmessig kvalitetssikring. Alle besøk forhåndsbookes —
+        ingen umiddelbar «finn en hjelper nå»-funksjon i piloten.
+        Minimum bindingstid: én måned.
+      </div>
+    </div>
+  </section>
+
   <section id="kontakt">
     <div class="wrap">
       <h2>Be om en samtale</h2>
@@ -353,6 +458,7 @@
   </div>
 </footer>
 
+<script src="config.js"></script>
 <script>
   // Sıfır bağımlılık: form gönderimi mailto: taslağı açar (backend yok).
   // Gerçek CRM entegrasyonu Task 4'ün ötesinde ayrı bir mühendislik görevi.
