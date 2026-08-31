@@ -5,21 +5,30 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Legal &amp; Regulatory — NaviarCare</title>
-<meta name="description" content="Legal and regulatory information for NaviarCare — licensing, scope of practice, data retention and terms.">
+<meta name="description" content="Regulatory framework, scope of service, data handling and liability for NaviarCare — pre-consultation advisory platform.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.legal-section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
-.legal-section:last-child { border-bottom: none; }
-.legal-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 14px; }
-.legal-section h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; margin-top: 20px; }
-.legal-section p { font-size: 15px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px; }
-.legal-section ul { list-style: disc; padding-left: 20px; }
-.legal-section li { font-size: 15px; color: var(--text-2); line-height: 1.7; margin-bottom: 6px; }
-.legal-toc { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 48px; }
-.legal-toc h3 { font-size: 14px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
-.legal-toc ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-.legal-toc li a { font-size: 14px; color: var(--link); }
+.legal-section{margin-bottom:52px;padding-bottom:52px;border-bottom:1px solid var(--border)}
+.legal-section:last-child{border-bottom:none}
+.legal-section h2{font-size:22px;font-weight:700;margin-bottom:14px;color:var(--text)}
+.legal-section h3{font-size:16px;font-weight:700;margin-bottom:8px;margin-top:24px;color:var(--text)}
+.legal-section p{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:12px}
+.legal-section ul{list-style:disc;padding-inline-start:20px}
+.legal-section li{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:6px}
+.legal-toc{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:52px}
+.legal-toc h3{font-size:13px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px}
+.legal-toc ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
+.legal-toc li a{font-size:14px;color:var(--link);text-decoration:none}
+.legal-toc li a:hover{text-decoration:underline}
+.flag{display:flex;gap:10px;background:#fff3e0;border:1px solid #ffb300;border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;font-size:14px;color:#7a4000;line-height:1.6}
+.flag-icon{font-size:18px;flex-shrink:0;line-height:1.5}
+.reg-tag{display:inline-block;background:var(--bg-alt);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-size:12px;font-weight:600;color:var(--text-3);margin-inline-end:6px;margin-bottom:4px;white-space:nowrap}
+.country-block{border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin-top:16px;margin-bottom:4px}
+.country-block h4{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.status-open{color:#1a7f37;font-weight:600}
+.status-partner{color:#856404;font-weight:600}
+.status-plan{color:#0a5a9c;font-weight:600}
 </style>
 </head>
 <body>
@@ -33,7 +42,7 @@
     <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
       <a href="triage.html">Check symptoms</a>
-      <a href="booking.html">Find a doctor</a>
+      <a href="booking.html">Find an advisor</a>
       <a href="languages.html">Languages</a>
       <a href="join.html">For doctors</a>
       <a href="about.html">About</a>
@@ -44,6 +53,7 @@
         <option value="tr">Türkçe</option>
         <option value="es">Español</option>
         <option value="ar">العربية</option>
+        <option value="no">Norsk</option>
       </select>
     </div>
   </div>
@@ -55,7 +65,7 @@
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Home</a> / Legal &amp; regulatory</div>
     <h1>Legal &amp; regulatory</h1>
-    <p class="page-hero-sub">Last updated 30 August 2026. This page describes how we operate, what we can and cannot do, and how we handle your information.</p>
+    <p class="page-hero-sub">Last updated 31 August 2026. This page explains how NaviarCare is positioned under applicable law, what our advisors can and cannot do, and how we protect your data.</p>
   </div>
 </section>
 
@@ -65,76 +75,220 @@
     <div class="legal-toc">
       <h3>On this page</h3>
       <ul>
-        <li><a href="#scope">Scope of service</a></li>
-        <li><a href="#licensing">Medical licensing</a></li>
+        <li><a href="#scope">Scope of service — what "pre-consultation advisory" means</a></li>
+        <li><a href="#eu-mdr">EU Medical Device Regulation (MDR) position</a></li>
+        <li><a href="#market">Country-by-country regulatory position</a></li>
+        <li><a href="#licensing">Advisor verification and licensing</a></li>
         <li><a href="#emergency">Emergency disclaimer</a></li>
-        <li><a href="#data">Data and privacy</a></li>
-        <li><a href="#retention">Your records</a></li>
-        <li><a href="#liability">Liability</a></li>
+        <li><a href="#data">Data, privacy and GDPR Article 9</a></li>
+        <li><a href="#liability">Liability and platform role</a></li>
         <li><a href="#demo">Demo notice</a></li>
       </ul>
     </div>
 
+    <!-- SCOPE -->
     <div class="legal-section" id="scope">
       <h2>Scope of service</h2>
-      <p>Naviar Care is a platform that connects patients with licensed medical professionals for remote consultations. The service provides routing assistance (working out which specialty fits a described symptom), real-time booking of available clinicians, and interpretation services.</p>
-      <p>Naviar Care is a health guidance service. It is not a substitute for in-person examination, emergency services, or a primary care relationship. The symptom checker produces a routing suggestion, not a diagnosis.</p>
-    </div>
 
-    <div class="legal-section" id="licensing">
-      <h2>Medical licensing</h2>
-      <h3>How we verify clinicians</h3>
-      <p>Every clinician listed on Naviar Care is verified against the register of the issuing authority before their profile is made visible. We check:</p>
+      <div class="flag">
+        <div class="flag-icon">⚠️</div>
+        <div>NaviarCare advisors provide <strong>navigational guidance only</strong>. They help you decide which type of specialist to consult next — they do not diagnose, prescribe, or issue referrals. Every session is labelled a <em>pre-consultation advisory</em>, and every advisor agrees to this scope before their profile is activated.</div>
+      </div>
+
+      <p>NaviarCare is a marketplace that connects people with licensed clinicians acting in a pre-consultation advisory capacity. An advisory session helps a user answer the question <em>"which type of specialist should I see?"</em> based on the symptoms they describe. The answer is a directional recommendation — a direction, not a clinical finding.</p>
+
+      <h3>What advisors do</h3>
       <ul>
-        <li>Active registration with the issuing body</li>
-        <li>Scope of practice matches the specialty declared</li>
-        <li>Professional indemnity insurance covering telemedicine</li>
-        <li>Two professional referees, contacted directly</li>
+        <li>Listen to described symptoms and medical history</li>
+        <li>Suggest which medical specialty is likely most relevant</li>
+        <li>Explain what different specialists do and when they are appropriate</li>
+        <li>Indicate the level of urgency (routine, prompt, urgent, emergency)</li>
+        <li>Describe how to prepare for a specialist visit</li>
       </ul>
-      <h3>Where a doctor can diagnose and prescribe</h3>
-      <p>Medical licensing follows the patient, not the doctor. A clinician may diagnose and prescribe only in the countries where they hold an active licence. Where a clinician is not licensed in the patient's country, the session is labelled a second opinion — the clinician can discuss symptoms and provide information but cannot issue a diagnosis, prescription or referral in that jurisdiction.</p>
-      <p>This is shown clearly on the booking screen before a patient confirms. The clinician sees the same label.</p>
-      <h3>Health facility requirements</h3>
-      <p>Some jurisdictions — Türkiye among them — require remote medical consultations to be delivered through a licensed health facility rather than by an individual practitioner. Where this applies, we connect the clinician to a partner facility and the consultation is conducted under that facility's licence. We identify these cases during verification and inform the clinician before their profile goes live.</p>
+
+      <h3>What advisors do not do</h3>
+      <ul>
+        <li>Diagnose a condition or rule one out</li>
+        <li>Prescribe or recommend specific medications</li>
+        <li>Issue referral letters or sick-leave certificates</li>
+        <li>Make clinical decisions that determine treatment</li>
+        <li>Act as a patient's primary care clinician</li>
+      </ul>
+
+      <p>This scope is not a limitation — it is the design. A navigator who tells you to see a cardiologist is providing value precisely because they do not also become your cardiologist.</p>
     </div>
 
+    <!-- EU MDR -->
+    <div class="legal-section" id="eu-mdr">
+      <h2>EU Medical Device Regulation (MDR) position</h2>
+
+      <p>
+        <span class="reg-tag">EU 2017/745 MDR</span>
+        <span class="reg-tag">MDCG 2019-11</span>
+        <span class="reg-tag">MDCG 2024-6</span>
+      </p>
+
+      <p>The EU Medical Device Regulation classifies certain health software as Software as a Medical Device (SaMD) when it "influences clinical management" through a clinical decision-support algorithm. The European Commission's guidance document <em>MDCG 2019-11</em> sets out the test: software that routes patients based on <strong>geography, availability, or expressed preference</strong> is outside SaMD scope. Software that assesses symptoms clinically and routes based on that assessment is inside SaMD scope and requires CE certification at minimum Class I (MDR Annex II/III).</p>
+
+      <h3>How NaviarCare is positioned</h3>
+      <p>The symptom checker on NaviarCare is a <strong>user-directed navigation aid</strong>. It prompts the user to describe their symptoms and suggests a specialty area — but the routing decision is made by the human advisor in a pre-consultation session, not by an autonomous algorithm. The advisor's output is advisory, not a clinical decision.</p>
+      <p>This positions the platform outside the SaMD scope as described in MDCG 2019-11, because:</p>
+      <ul>
+        <li>No autonomous algorithm makes a clinical determination</li>
+        <li>The human advisor is licensed and bears individual professional liability</li>
+        <li>The platform does not substitute for a clinical consultation — it precedes one</li>
+        <li>The routing output is a suggestion confirmed by user choice, not a treatment pathway</li>
+      </ul>
+      <p>We maintain this position actively. Any feature that would move symptom assessment into algorithm-driven clinical routing is reviewed by legal counsel before release. We do not add features to the symptom checker without that review.</p>
+
+      <h3>What this means in practice</h3>
+      <p>NaviarCare does not carry a CE medical device mark, and is not registered as a medical device with any competent authority. If a future version of the platform includes an autonomous clinical routing algorithm, it would require a conformity assessment before release in the EU/EEA.</p>
+    </div>
+
+    <!-- COUNTRY BY COUNTRY -->
+    <div class="legal-section" id="market">
+      <h2>Country-by-country regulatory position</h2>
+
+      <p>Health services regulation varies significantly by country. Below is our current operational status and the key legal basis in the markets we are building towards.</p>
+
+      <div class="country-block">
+        <h4>🇳🇴 Norway — <span class="status-open">Active pilot market</span></h4>
+        <p>
+          <span class="reg-tag">Helsepersonelloven (1999)</span>
+          <span class="reg-tag">Pasientjournalloven</span>
+          <span class="reg-tag">Normen 7.x</span>
+          <span class="reg-tag">E-consultation rules (2023)</span>
+        </p>
+        <p>Norway is our primary pilot market. Key rules that govern the service:</p>
+        <ul>
+          <li><strong>Autorisasjon requirement:</strong> Clinicians providing pre-consultation advisory sessions to Norwegian patients must hold Norwegian authorisation (autorisasjon) from Helsedirektoratet. We verify this during onboarding — advisors without Norwegian autorisasjon are not shown to users in Norway.</li>
+          <li><strong>E-consultation permanently legalised (2023):</strong> The temporary COVID-era rules permitting e-consultation and remote sick-leave were made permanent in 2023. NaviarCare's advisory model is fully within the legal framework.</li>
+          <li><strong>Normen:</strong> Norway's information security standard for health (Normen 7.x) applies to health IT systems connected to Norwegian health infrastructure. We follow Normen access-control and logging requirements. Direct integration with the national health record (Pasientjournal) is not currently planned — if added, a full Normen compliance audit is required.</li>
+        </ul>
+      </div>
+
+      <div class="country-block">
+        <h4>🇹🇷 Turkey — <span class="status-partner">Requires institutional partnership</span></h4>
+        <p>
+          <span class="reg-tag">Yönetmelik 2022 (Uzaktan Sağlık Hizmetleri)</span>
+          <span class="reg-tag">Ministry of Health approval</span>
+        </p>
+        <p>Turkey's 2022 Remote Healthcare Services Regulation (Uzaktan Sağlık Hizmetleri Yönetmeliği) requires that remote medical consultations be delivered through a licensed Turkish healthcare institution, not through an individual practitioner operating from an unlicensed platform. The regulation further requires that the software platform itself receive Ministry of Health approval before it is used for consultations with Turkish patients.</p>
+        <p>NaviarCare cannot operate directly in Turkey at this time. Entry into the Turkish market requires:</p>
+        <ul>
+          <li>Partnership with a Ministry-licensed healthcare institution that assumes clinical oversight responsibility</li>
+          <li>Ministry of Health software approval for the NaviarCare platform</li>
+          <li>Advisors on Turkey-facing sessions to hold relevant Turkish practitioner registration</li>
+        </ul>
+        <p>Turkey entry is planned for Phase 2, subject to completing the above institutional and regulatory steps. Turkish users who reach the platform in the meantime are shown a notice explaining that the service is not yet available in their country.</p>
+      </div>
+
+      <div class="country-block">
+        <h4>🇪🇺 European Union — <span class="status-plan">Framework applies</span></h4>
+        <p>
+          <span class="reg-tag">EU 2017/745 MDR</span>
+          <span class="reg-tag">GDPR 2016/679</span>
+          <span class="reg-tag">AI Act 2024</span>
+        </p>
+        <p>NaviarCare is registered in Norway and operates within the EU/EEA legal framework. The General Data Protection Regulation applies to all users. Health data is special category data under GDPR Article 9 — see the Data section below.</p>
+        <p>The EU AI Act (applicable from 2026) classifies medical-purpose AI. Because our symptom checker does not make autonomous clinical decisions, it is not expected to fall under high-risk AI (Annex III) — it is informational software where a licensed human professional makes the routing recommendation. We will seek legal opinion before any AI-assisted advisory features are introduced.</p>
+      </div>
+
+      <div class="country-block">
+        <h4>🌍 Other markets</h4>
+        <p>We have reviewed global telemedicine regulatory models including the United States (federal HIPAA + state-by-state telemedicine practice standards), the United Kingdom (CQC registration requirement), Canada (provincial licensing), Australia (AHPRA registration), and Gulf Cooperation Council states (Ministry of Health licensing per country).</p>
+        <p>We do not currently offer the service in these markets. Expansion requires country-specific regulatory review in each case. We will not market to patients in a country where we have not completed that review.</p>
+      </div>
+    </div>
+
+    <!-- LICENSING -->
+    <div class="legal-section" id="licensing">
+      <h2>Advisor verification and licensing</h2>
+
+      <h3>Who can become an advisor</h3>
+      <p>Every advisor listed on NaviarCare is a licensed medical professional — a medical doctor (MD or equivalent) with an active registration in at least one recognised national register. We do not list unlicensed practitioners, wellness coaches, or health advisors without a recognised medical qualification.</p>
+
+      <h3>Verification steps</h3>
+      <ul>
+        <li>Active registration check against the issuing authority's public register</li>
+        <li>Declared specialty confirmed against the scope of that registration</li>
+        <li>Professional indemnity insurance document covering advisory and telemedicine activity</li>
+        <li>Signed declaration of scope: routing and navigational guidance only, no diagnosis</li>
+        <li>Identity verification (government-issued ID)</li>
+      </ul>
+      <p>For advisors intending to serve Norwegian patients: Norwegian autorisasjon verified via Helsedirektoratets register. Profiles without this authorisation are filtered from search results shown to Norway-based users.</p>
+
+      <h3>Ongoing obligations</h3>
+      <p>Advisors agree to notify NaviarCare immediately of any change to their licence status, restriction, investigation, or suspension by any regulatory body. NaviarCare conducts periodic re-verification and may suspend a profile at any time pending investigation of a complaint.</p>
+    </div>
+
+    <!-- EMERGENCY -->
     <div class="legal-section" id="emergency">
       <h2>Emergency disclaimer</h2>
-      <p>Naviar Care is not an emergency service. The platform cannot dispatch emergency responders, contact emergency services, or monitor a patient's condition in real time.</p>
-      <p>Our symptom intake checks for warning signs and, when it identifies one, instructs the user to stop and contact their local emergency number. This check is not exhaustive and does not replace clinical judgement.</p>
-      <p><strong>If you or someone near you is in immediate danger, call your local emergency number now.</strong></p>
+
+      <div class="flag">
+        <div class="flag-icon">🚨</div>
+        <div><strong>If you or someone near you is in immediate danger, call your local emergency number now.</strong> NaviarCare is not an emergency service and cannot dispatch emergency responders.</div>
+      </div>
+
+      <p>Our symptom intake screen checks for warning signs including severe chest pain, difficulty breathing, signs of stroke, severe allergic reaction, and loss of consciousness. When it identifies one, it instructs the user to stop and contact emergency services. This check does not replace clinical judgement and is not exhaustive.</p>
+      <p>If an advisor believes a user needs emergency care during a session, they will say so directly and end the advisory session. They are not in a position to call emergency services on your behalf.</p>
     </div>
 
+    <!-- DATA -->
     <div class="legal-section" id="data">
-      <h2>Data and privacy</h2>
-      <h3>Symptom check</h3>
-      <p>The symptom checker runs entirely in your browser. The answers you enter are not transmitted to our servers while you are completing the check. If you proceed to book, the summary you approve is sent to the clinician you select — nothing is shared without that step.</p>
-      <h3>Consultation data</h3>
-      <p>Booking details are transmitted to and stored by Naviar Care for the duration of the consultation and for a period afterwards to allow follow-up. Clinicians access only what they need to conduct the consultation. Interpreters work under the same confidentiality obligations as clinicians.</p>
+      <h2>Data, privacy and GDPR Article 9</h2>
+
+      <p>
+        <span class="reg-tag">GDPR 2016/679</span>
+        <span class="reg-tag">Art. 9 — special category data</span>
+        <span class="reg-tag">Pasientjournalloven (Norway)</span>
+      </p>
+
+      <h3>Health data is special category data</h3>
+      <p>Information about your health — including symptoms you describe, body systems affected, or the specialties you are directed towards — is <em>special category personal data</em> under GDPR Article 9. This category attracts the highest level of data protection under European law. We process it only on the lawful basis of your explicit consent (Article 9(2)(a)), given when you proceed from the symptom checker to book a session.</p>
+
+      <h3>Symptom checker</h3>
+      <p>The symptom checker runs entirely in your browser. Your answers are held in memory only and are not transmitted to our servers while you are completing the check. If you proceed to a session, you are shown a summary of your answers and asked to confirm what to share. Nothing is shared without that step.</p>
+
+      <h3>Session data</h3>
+      <p>Session records — the advisor's navigational recommendation and relevant notes — are stored encrypted and accessed only by the advisor you selected and, where required by law, a nominated data processor acting under a Data Processing Agreement. They are not accessible by other advisors or by NaviarCare staff without a specific support reason.</p>
+
       <h3>What we do not do</h3>
       <ul>
-        <li>We do not sell or share your health information with advertisers</li>
-        <li>We do not use your consultation data to train AI models without your explicit consent</li>
-        <li>We do not require you to create an account to use the symptom checker</li>
+        <li>We do not sell health data or any personal data</li>
+        <li>We do not share health data with insurers, employers, or marketers</li>
+        <li>We do not use consultation data to train AI models without your explicit separate consent</li>
+        <li>We do not build advertising profiles from health information</li>
+        <li>We do not require account creation to use the symptom checker</li>
       </ul>
+
+      <h3>Retention</h3>
+      <p>Session records are retained for the minimum period required by the applicable health data regulation in the patient's country and in Norway. For Norwegian patients, this is governed by Pasientjournalloven. Records are deleted or irreversibly anonymised at the end of the retention period. You may request deletion earlier — we will comply unless a legal obligation prevents it.</p>
+
+      <h3>Your rights</h3>
+      <p>Under GDPR you have the right to access, rectify, or erase your data; the right to data portability; and the right to object to processing. To exercise any of these rights, contact us via <a href="about.html#contact">the contact form</a>. We will respond within 30 days.</p>
     </div>
 
-    <div class="legal-section" id="retention">
-      <h2>Your records</h2>
-      <p>The summary produced by your symptom check belongs to you. You can print it, save it, or take it to another healthcare provider — there is no lock-in. If you booked through us, your consultation notes are available to you on request.</p>
-      <p>We retain booking records for a minimum period required by applicable health data regulations in the patient's country and in Norway, where Naviar Care is based. After that period, records are deleted or anonymised.</p>
-      <p>To request a copy of your data or to ask for deletion, contact us at <a href="about.html#contact">the contact form</a>.</p>
-    </div>
-
+    <!-- LIABILITY -->
     <div class="legal-section" id="liability">
-      <h2>Liability</h2>
-      <p>Naviar Care provides a platform connecting patients and clinicians. Clinical responsibility rests with the clinician conducting the consultation. Naviar Care is not liable for clinical decisions made by listed practitioners.</p>
-      <p>The symptom checker is an automated routing tool. It does not provide medical advice and should not be relied on as a substitute for clinical assessment.</p>
+      <h2>Liability and platform role</h2>
+
+      <h3>Marketplace intermediary</h3>
+      <p>NaviarCare is a marketplace platform that provides infrastructure for independent licensed clinicians to offer pre-consultation advisory services. It is not a healthcare provider. It does not employ the advisors listed on the platform, and it does not supervise their clinical judgement.</p>
+      <p>Each advisor is an independent professional who holds their own licence, their own professional indemnity insurance, and their own responsibility for the guidance they give. NaviarCare's liability for advisory content is limited to that of a marketplace intermediary — we are responsible for the accuracy of the information displayed about an advisor, the verification steps we carry out, and the functioning of the platform.</p>
+
+      <h3>Clinical responsibility</h3>
+      <p>Clinical responsibility for each advisory session rests entirely with the licensed professional who conducts it. If you act on guidance from an advisor and that guidance is wrong, your recourse is to the advisor and their insurer — not to NaviarCare as a platform. We make this clear before every session.</p>
+
+      <h3>Platform limitations</h3>
+      <p>NaviarCare does not guarantee availability of any particular advisor, accuracy of any routing suggestion, or fitness of any advisory session for any specific medical purpose. Advisory sessions are a supplement to, not a substitute for, professional medical care.</p>
     </div>
 
+    <!-- DEMO -->
     <div class="legal-section" id="demo">
       <h2>Demo notice</h2>
-      <p>This site is a working demonstration of the Naviar Care service. The clinician roster, availability numbers, and consultation prices shown are sample data. No real consultation is booked and no payment is processed through this version of the site.</p>
+      <p>This site is a working prototype of the NaviarCare service. The advisor roster, availability indicators, session prices, and earnings figures shown are sample data for illustration purposes. No real advisory session is conducted through this version, and no payment is processed. The regulatory frameworks described on this page are the actual frameworks that will govern the live service.</p>
     </div>
 
   </div>
@@ -147,23 +301,21 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo"><div class="nav-logo-mark">N</div> NaviarCare</div>
-        <p class="footer-tagline">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
-        <div class="footer-warn">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+        <p class="footer-tagline">Navigation, not diagnosis. Pre-consultation guidance so you see the right specialist the first time.</p>
+        <div class="footer-warn">NaviarCare is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
       </div>
       <div>
         <div class="footer-col-title">Service</div>
         <ul class="footer-links">
           <li><a href="triage.html">Check symptoms</a></li>
-          <li><a href="booking.html">Find a doctor</a></li>
+          <li><a href="booking.html">Find an advisor</a></li>
           <li><a href="languages.html">Languages</a></li>
-          <li><a href="booking.html#available">Doctors available now</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
           <li><a href="about.html">About</a></li>
-          <li><a href="about.html#safety">Safety &amp; privacy</a></li>
           <li><a href="legal.html">Legal &amp; regulatory</a></li>
           <li><a href="join.html">For doctors</a></li>
         </ul>
@@ -178,7 +330,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span class="footer-copy">© 2026 NaviarCare. Navigational guidance — not a diagnosis.</span>
     </div>
   </div>
 </footer>

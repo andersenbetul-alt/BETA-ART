@@ -126,7 +126,7 @@
     <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
       <a href="triage.html">Check symptoms</a>
-      <a href="booking.html">Find a doctor</a>
+      <a href="booking.html">Find an advisor</a>
       <a href="languages.html">Languages</a>
       <a href="join.html">For doctors</a>
       <a href="about.html">About</a>
@@ -246,13 +246,13 @@
           </div>
         </div>
 
-        <!-- Step 4: result -->
+        <!-- Step 4: result (filled dynamically by updateResult()) -->
         <div class="triage-step" id="step-4">
           <div class="result-card">
             <div style="font-size:13px;font-weight:600;color:var(--text-3);letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px;">Your symptom summary</div>
-            <div class="result-specialty">General practice</div>
-            <div class="result-urgency urgency-routine">Routine — can be seen within a few days</div>
-            <p style="font-size:15px;color:var(--text-2);line-height:1.65;margin-bottom:24px;">Based on your description, a general practitioner is most likely to be able to help. This does not appear to be an emergency — you can book within the next day or two.</p>
+            <div class="result-specialty" id="result-specialty">General practice</div>
+            <div class="result-urgency urgency-routine" id="result-urgency">Routine — can be seen within a few days</div>
+            <p style="font-size:15px;color:var(--text-2);line-height:1.65;margin-bottom:24px;" id="result-explain">Based on what you described, a general practitioner is a good starting point.</p>
             <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:24px;">
               <div style="font-size:13px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">Your case summary</div>
               <div style="font-size:14px;color:var(--text-2);line-height:1.7;" id="case-summary">
@@ -262,10 +262,10 @@
               </div>
             </div>
             <div style="display:flex;gap:12px;flex-wrap:wrap;">
-              <a href="booking.html?specialty=general-practice" class="btn btn-primary">Book a doctor now</a>
+              <a href="booking.html?specialty=general-practice" class="btn btn-primary" id="result-cta">Ask for guidance</a>
               <button class="btn btn-ghost" onclick="showStep(1)">Start again</button>
             </div>
-            <p style="font-size:12px;color:var(--text-3);margin-top:16px;">This is a routing suggestion, not a diagnosis. Print or save this summary to take to your appointment.</p>
+            <p style="font-size:12px;color:var(--text-3);margin-top:16px;">This is a routing suggestion, not a diagnosis. An advisor will help you decide who to see next — they will not diagnose you.</p>
           </div>
         </div>
 
@@ -354,16 +354,100 @@ function nextQ(btn) {
   btn.style.borderColor = 'var(--success)';
 }
 
+// ── Routing table ──────────────────────────────────────────────────────────
+// Each entry: [specialty slug, label, base urgency, explanation]
+// urgency levels: routine | soon | urgent
+const ROUTES = {
+  'fever':       ['general-practice','General practice','soon','Fever is most commonly handled by a general practitioner first. They can assess whether a referral to a specialist is needed.'],
+  'chest-pain':  ['cardiology','Cardiology','urgent','Chest pain — especially if new or severe — should be evaluated by a cardiologist promptly. If the pain is sudden, severe, or accompanied by sweating or arm pain, seek emergency care immediately.'],
+  'headache':    ['neurology','Neurology','soon','Persistent or unusual headaches are best assessed by a neurologist to rule out underlying causes.'],
+  'cough':       ['pulmonology','Pulmonology','routine','A cough lasting more than a week, or one with breathing difficulty, is worth reviewing with a pulmonologist (lung specialist).'],
+  'rash':        ['dermatology','Dermatology','routine','Skin rashes are best assessed by a dermatologist, who can identify the cause and recommend treatment.'],
+  'stomach':     ['gastroenterology','Gastroenterology','soon','Stomach or abdominal pain that is persistent or worsening is well suited to a gastroenterologist for further assessment.'],
+  'back':        ['orthopedics','Orthopaedics','routine','Back pain that has lasted more than a few days, or that limits movement, is a common referral for an orthopaedic specialist.'],
+  'joint':       ['rheumatology','Rheumatology','routine','Joint pain — especially if in multiple joints or accompanied by swelling — is often a starting point for a rheumatologist.'],
+  'anxiety':     ['psychiatry','Psychiatry / Mental health','routine','Anxiety, low mood, or stress symptoms are best addressed by a mental health specialist or a GP with a mental health focus.'],
+  'sleep':       ['psychiatry','Psychiatry / Mental health','routine','Persistent sleep problems often have a mental health component. A psychiatrist or GP can help identify the most appropriate next step.'],
+  'fatigue':     ['general-practice','General practice','routine','Unexplained fatigue is a broad symptom. A general practitioner is the right first step — they can run initial tests and refer on if needed.'],
+  'child-fever': ['pediatrics','Paediatrics','soon','Fever in a child is best assessed by a paediatrician, especially if the child is under 3 years old or the fever is high.'],
+};
+
+// Urgency upgrade rules: if severity is severe, escalate routine→soon, soon→urgent
+const URGENCY_ORDER = ['routine','soon','urgent'];
+function upgradeUrgency(base, severity) {
+  const idx = URGENCY_ORDER.indexOf(base);
+  if (severity === 'severe' && idx < 2) return URGENCY_ORDER[idx + 1];
+  return base;
+}
+
+const URGENCY_LABELS = {
+  routine: 'Routine — can be seen within a few days',
+  soon:    'See soon — aim for within 24–48 hours',
+  urgent:  'See today — do not delay',
+};
+const URGENCY_CLASSES = {
+  routine: 'urgency-routine',
+  soon:    'urgency-soon',
+  urgent:  'urgency-urgent',
+};
+
+// Free-text pattern fallback (if no chip selected)
+const TEXT_PATTERNS = [
+  [/chest|heart|palpitat|angina/i,       'chest-pain'],
+  [/head(ache)?|migrain|dizz/i,          'headache'],
+  [/cough|breath|lung|wheez/i,           'cough'],
+  [/rash|skin|itch|eczema|acne/i,        'rash'],
+  [/stomach|abdomen|bowel|digest|nausea|vomit/i, 'stomach'],
+  [/back|spine|disc|lumbar/i,            'back'],
+  [/joint|arthrit|knee|shoulder|hip/i,   'joint'],
+  [/anxiety|anxious|panic|depress|mental|stress/i, 'anxiety'],
+  [/sleep|insomnia|tired|fatigue/i,      'sleep'],
+  [/child|infant|baby|toddler|fever/i,   'child-fever'],
+];
+
+function detectSymptom(text) {
+  for (const [re, key] of TEXT_PATTERNS) {
+    if (re.test(text)) return key;
+  }
+  return 'fever'; // safe general-practice fallback
+}
+
 function updateResult() {
   const input = document.getElementById('triage-input');
   const dur = document.querySelector('input[name="duration"]:checked');
   const sev = document.querySelector('input[name="severity"]:checked');
+
+  // Summary fields
   const rs = document.getElementById('result-symptom');
   const rd = document.getElementById('result-duration');
   const rv = document.getElementById('result-severity');
-  if (rs) rs.textContent = (input && input.value) ? input.value : '(not specified)';
+  if (rs) rs.textContent = (input && input.value.trim()) ? input.value.trim() : '(not specified)';
   if (rd) rd.textContent = dur ? dur.parentElement.textContent.trim() : '(not specified)';
   if (rv) rv.textContent = sev ? sev.parentElement.textContent.trim() : '(not specified)';
+
+  // Determine symptom key: prefer chip, fallback to text pattern
+  const chip = document.querySelector('.complaint-chip.selected');
+  const symptomKey = chip ? chip.dataset.symptom
+                          : detectSymptom(input ? input.value : '');
+
+  const route = ROUTES[symptomKey] || ROUTES['fever'];
+  const [slug, label, baseUrgency, explain] = route;
+  const severity = sev ? sev.value : 'mild';
+  const urgency = upgradeUrgency(baseUrgency, severity);
+
+  // Fill result card
+  const elSpec    = document.getElementById('result-specialty');
+  const elUrgency = document.getElementById('result-urgency');
+  const elExplain = document.getElementById('result-explain');
+  const elCta     = document.getElementById('result-cta');
+
+  if (elSpec)    elSpec.textContent = label;
+  if (elUrgency) {
+    elUrgency.textContent = URGENCY_LABELS[urgency];
+    elUrgency.className = 'result-urgency ' + URGENCY_CLASSES[urgency];
+  }
+  if (elExplain) elExplain.textContent = explain;
+  if (elCta)     elCta.href = 'booking.html?specialty=' + slug;
 }
 
 // Complaint chips
