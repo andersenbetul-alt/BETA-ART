@@ -1,8 +1,8 @@
 # NAVIAR — Logo Kabul Kararı
 
-Tarih: 22 Ağustos 2026
+Tarih: 22 Ağustos 2026 (P10 eki: 31 Ağustos 2026)
 Karar mercii: tasarım/üretim uygunluk denetimi
-Kapsam: NAVIAR marka ailesine ait 9 ayrı logo projesi
+Kapsam: NAVIAR marka ailesine ait 10 ayrı logo projesi
 Kapsam dışı: QBLOGG (ayrı marka), HXI / BUSINESS.md (ayrı iş dosyası)
 
 Her logo **ayrı bir proje** olarak, kendi başına değerlendirilmiştir. Bir projenin
@@ -84,6 +84,7 @@ master logonun içine kalıcı tagline · wordmark geometrisini yeniden çizmek 
 | P7 | Metalik gümüş 3D N + NAVIAR (lacivert kare) | **RET** — sadece mockup | Metal + 3D + gölge; Finishing Rule ihlali |
 | P8 | **NAVIAR CONSULT** — flat lacivert+altın iki tonlu N lockup | **KOŞULLU KABUL** | Doğru yön, 4 düzeltme şartıyla |
 | P9 | **NAVIAR CARE** — flat lacivert+altın iki tonlu N lockup | **KOŞULLU KABUL** | Doğru yön, P8'in şartları + iş onayı + ayrı marka taraması |
+| P10 | NAVIAR CONSULT — diyagonal altın N (dış kaynaklı, raster) | **RET** — arşiv | Tek-monogram şartını ihlal ediyor; descriptor kontrast ihlali; altın oranı muhtemelen aşımlı; yeniden üretilebilir değil |
 
 **Master kimlik kararı:** P5 (wordmark) + P8/P9'un monogramı, düzeltmeler
 uygulandıktan sonra tek master sistem olarak birleştirilir. Master marka
@@ -220,6 +221,32 @@ Bu, sistemin doğru yönü. Karşıladıkları:
 
 Ayrıca **master NAVIAR (descriptor'suz) üretilmeden** bu lockup yayına
 alınamaz — M1: master, descriptor taşımaz.
+
+### P10 — Diyagonal altın N + NAVIAR CONSULT (dış kaynaklı) · **RET (arşiv)**
+
+31.08.2026'da kullanıcı tarafından bu depo dışından (kaynağı belirsiz, muhtemelen
+bir AI görsel-üretim aracı) iletildi — birkaç kırpma/zemin varyasyonu, tek bir
+tasarım. P8/P9'un "sağ dikey bar" monogramından farklı bir geometri: N'nin
+diyagonal gövdesini kesen bir altın şerit.
+
+- **Şart 1 ihlali (§3 P3'te zaten tanımlı sınır).** Sahada aynı anda iki farklı
+  N monogramı olamaz — "biri master, diğeri arşiv" kuralı burada da geçerli.
+  Mevcut onaylı monogram (P8/P9) kalıyor, bu adayı emekliye ayırıyor.
+- **Descriptor kontrast ihlali, gözle doğrulandı.** Açık zeminli varyantlarda
+  "CONSULT" yazısı altın renkte — P8'in zaten düzeltilmesi istenen aynı hatası
+  (§4.1: altın beyaz zeminde 2,10:1, WCAG AA metin eşiğini geçmiyor).
+- **Altın oranı muhtemelen %12–16 eşiğini aşıyor** — gözle yaklaşık ölçümle
+  diyagonal şerit, harfin P8'deki dikey bardan daha büyük bir kısmını
+  kaplıyor. Kesin ölçüm yapılmadı çünkü aday hiç üretim sürecine girmedi.
+- **Wordmark ayrı ve ölçülmemiş.** "NAVIAR" harflerinin çizimi P5'in ölçülmüş
+  geometrisinden (stroke %15, kapalı-bowl R, crossbar'lı A) farklı bir font/
+  çizim — kabul edilseydi P5'in yerini de almış olurdu, ayrı bir ölçüm turu
+  gerektirirdi.
+- **Yeniden üretilebilirlik yok.** Raster (görüntü) olarak geldi, herhangi bir
+  betikten (`scripts/marka-uret.py`) üretilmedi — CLAUDE.md kural 7(a)'yı
+  karşılamıyor.
+
+Sunum/referans olarak saklanabilir, master olamaz veya P8/P9'un yerine geçmez.
 
 ### P9 — NAVIAR CARE · **KOŞULLU KABUL**
 

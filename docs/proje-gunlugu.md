@@ -491,3 +491,20 @@ adlandırması, SEO/tech/data blueprint, 6 fazlı yol haritası) ve ayrı bir
 "NAVIAR Work Participation Architecture" konsepti parça parça iletmeye
 başladı — hacim nedeniyle konsolide bir belge istenip bu turda tam
 işlenemedi; sonraki adım.
+
+## 31.08.2026 (devam) — booking bölümü eklendi, diyagonal-altın logo adayı reddedildi
+
+`naviar-consult` interaktif sitesine görüşme-talebi (booking) bölümü eklendi
+(istek + insan onayı deseni, ödeme sistemi bilinçli olarak ertelendi —
+kullanıcı kararı, hem Stripe bu oturumda yetkilendirilmemiş hem de ilk
+görüşme ücretsiz kabul edildi). `docs/figma-tasarim-kurallari.md` NAVIAR
+interaktif sitesini de kapsayacak şekilde genişletildi (§B).
+
+Kullanıcı depoya dışarıdan (kaynağı belirsiz, muhtemelen bir AI görsel
+aracı) diyagonal altın N monogramlı bir "NAVIAR CONSULT" logo adayı iletti.
+`NAVIAR-LOGO-KARAR.md`'nin kendi kabul sürecinden geçirildi: descriptor
+kontrast ihlali gözle doğrulandı (P8'de zaten düzeltilen aynı hata), altın
+oranı muhtemelen aşımlı, wordmark ayrı/ölçülmemiş, raster kaynaklı (yeniden
+üretilebilir değil). Kullanıcı kararıyla **reddedildi** (P10, karar tablosuna
+işlendi) — onaylı sağ-dikey-bar monogram (P8/P9) ve ölçülmüş P5 wordmark
+değişmedi.
