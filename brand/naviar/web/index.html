@@ -1,0 +1,375 @@
+<title>NAVIAR</title>
+<meta name="description" content="NAVIAR hjelper ledere og virksomheter med lederstøtte, tilrettelegging og arbeidsnærvær — tidligere handling, konkrete tiltak, systematisk oppfølging.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* ============================== TOKENS ============================== */
+  :root{
+    --navy:#0A1628; --gold:#D4AF37; --off-white:#F5F6F8; --graphite:#1E1E1E;
+
+    --bg-page:#F5F6F8;
+    --bg-card:#FFFFFF;
+    --bg-strong:#0A1628;       /* hero / sprint / final CTA — brand-anchored, constant */
+    --text-on-strong:#F5F6F8;
+    --text:#111A2B;
+    --text-muted:#5B6472;
+    --border: rgba(10,22,40,.13);
+    --ink: var(--navy);         /* icon strokes / headline color on light */
+    --card-border: rgba(10,22,40,.10);
+    --focus: var(--gold);
+    --shadow: none;             /* NAVIAR never uses drop shadow */
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg-page:#0B1220;
+      --bg-card:#111B30;
+      --text:#F1F3F6;
+      --text-muted:#9AA7BC;
+      --border: rgba(241,243,246,.12);
+      --ink: var(--off-white);
+      --card-border: rgba(241,243,246,.10);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg-page:#0B1220;
+    --bg-card:#111B30;
+    --text:#F1F3F6;
+    --text-muted:#9AA7BC;
+    --border: rgba(241,243,246,.12);
+    --ink: var(--off-white);
+    --card-border: rgba(241,243,246,.10);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation-duration:.001ms!important; transition-duration:.001ms!important} }
+  body{
+    margin:0; background:var(--bg-page); color:var(--text);
+    font-family:'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Poppins', ui-sans-serif, system-ui, sans-serif;
+    color:var(--ink); margin:0; text-wrap:balance; font-weight:600;
+  }
+  .strong h1, .strong h2, .strong h3{ color:var(--text-on-strong) }
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{ outline:2px solid var(--focus); outline-offset:3px }
+  .eyebrow{
+    font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:.72rem;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:500;
+  }
+  .wrap{max-width:1120px; margin-inline:auto; padding-inline:24px}
+  section{padding-block:88px}
+  @media (max-width:720px){ section{padding-block:56px} .wrap{padding-inline:20px} }
+  .strong{ background:var(--bg-strong); color:var(--text-on-strong) }
+  .strong .eyebrow{ color:var(--gold) }
+  .muted{ color:var(--text-muted) }
+  .lede{ font-size:1.1rem; max-width:62ch; color:var(--text-muted) }
+  .strong .lede{ color:#C7CEDC }
+
+  /* ---- header ---- */
+  header.site{
+    position:sticky; top:0; z-index:20; background:var(--bg-strong);
+    border-bottom:1px solid rgba(245,246,248,.10);
+  }
+  header.site .bar{ display:flex; align-items:center; justify-content:space-between; gap:20px; padding-block:16px }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none }
+  .brand svg{ height:26px; width:auto; flex-shrink:0 }
+  .brand .name-block{ display:flex; flex-direction:column; line-height:1.15 }
+  .brand .name{ font-family:'Poppins',sans-serif; font-weight:600; font-size:1.05rem; letter-spacing:.02em; color:#F5F6F8 }
+  .brand .tag{ font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.10em; text-transform:uppercase; color:#8A9BB0 }
+  nav.primary{ display:flex; align-items:center; gap:28px }
+  nav.primary a{ font-size:.92rem; color:#C7CEDC; text-decoration:none }
+  nav.primary a:hover{ color:#fff }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; border-radius:999px; font-weight:600;
+    font-size:.92rem; padding:12px 22px; text-decoration:none; border:1px solid transparent; cursor:pointer;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+  .btn-gold{ background:var(--gold); color:#0A1628 }
+  .btn-gold:hover{ background:#c29f30 }
+  .btn-outline{ background:transparent; border-color:rgba(245,246,248,.35); color:#F5F6F8 }
+  .btn-outline:hover{ border-color:#fff }
+  .navtoggle{ display:none; background:none; border:0; color:#F5F6F8; padding:6px }
+  @media (max-width:860px){
+    nav.primary{ display:none }
+    .navtoggle{ display:inline-flex }
+    header.site.open nav.primary{
+      display:flex; position:absolute; inset-inline:0; top:100%; background:var(--bg-strong);
+      flex-direction:column; align-items:flex-start; padding:20px 24px 28px; gap:16px;
+      border-bottom:1px solid rgba(245,246,248,.12);
+    }
+  }
+
+  /* ---- hero ---- */
+  .hero{ position:relative; overflow:hidden; padding-block:120px 96px }
+  .hero .n-mark{ position:absolute; inset-block-start:-8%; inset-inline-end:-6%; height:135%; width:auto; opacity:.055; pointer-events:none }
+  .hero .inner{ position:relative; max-width:680px }
+  .hero h1{ font-size:clamp(2.1rem,4.6vw,3.4rem); line-height:1.08; margin-block:16px 20px }
+  .hero .cta-row{ display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; align-items:center }
+  .hero .link-quiet{ font-size:.94rem; text-decoration:none; color:#DCE2EC; border-bottom:1px solid rgba(220,226,236,.4); padding-bottom:2px }
+  .trust-line{ margin-top:38px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.05em; color:#8A9BB0 }
+
+  /* ---- problem ---- */
+  .problem h2{ font-size:clamp(1.5rem,2.6vw,2rem); max-width:22ch }
+  .qgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:44px }
+  @media (max-width:820px){ .qgrid{ grid-template-columns:1fr } }
+  .qcard{ border-inline-start:2px solid var(--gold); padding-inline-start:18px }
+  .qcard p.q{ font-family:'Poppins',sans-serif; font-weight:500; font-size:1.05rem; color:var(--ink) }
+
+  /* ---- services ---- */
+  .svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--card-border); margin-top:48px; border:1px solid var(--card-border) }
+  @media (max-width:820px){ .svc-grid{ grid-template-columns:1fr } }
+  .svc{ background:var(--bg-card); padding:36px 30px }
+  .svc .idx{ font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--gold); letter-spacing:.1em }
+  .svc h3{ font-size:1.2rem; margin-block:14px 10px }
+  .svc p{ color:var(--text-muted); font-size:.95rem }
+  .svc ul{ margin:16px 0 0; padding-inline-start:18px; color:var(--text-muted); font-size:.88rem; line-height:1.75 }
+
+  /* ---- sprint ---- */
+  .sprint-flow{ display:flex; flex-wrap:wrap; gap:0; margin-top:44px; align-items:stretch }
+  .sprint-step{ flex:1 1 150px; padding:18px 16px; border:1px solid rgba(245,246,248,.16); border-inline-start-width:0 }
+  .sprint-step:first-child{ border-inline-start-width:1px }
+  .sprint-step .n{ font-family:'IBM Plex Mono',monospace; color:var(--gold); font-size:.75rem }
+  .sprint-step p{ margin-top:8px; font-size:.92rem; color:#DCE2EC }
+  .sprint-cta{ margin-top:40px }
+
+  /* ---- method ---- */
+  .method-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; margin-top:44px; align-items:start }
+  @media (max-width:860px){ .method-grid{ grid-template-columns:1fr } }
+  .method-words{ display:flex; gap:28px; flex-wrap:wrap; margin-top:8px }
+  .method-words .w{ font-family:'Poppins',sans-serif; font-weight:600; font-size:1.35rem; color:var(--ink) }
+  .method-words .w span{ display:block; font-family:'IBM Plex Sans',sans-serif; font-weight:400; font-size:.82rem; color:var(--text-muted); margin-top:4px; max-width:20ch }
+  .cite{ margin-top:28px; font-size:.82rem; color:var(--text-muted); border-inline-start:2px solid var(--card-border); padding-inline-start:14px }
+
+  /* ---- trust ---- */
+  .trust-box{ background:var(--bg-card); border:1px solid var(--card-border); border-radius:6px; padding:36px; margin-top:40px }
+  .trust-list{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px 32px; margin-top:22px; padding:0; list-style:none }
+  @media (max-width:640px){ .trust-list{ grid-template-columns:1fr } }
+  .trust-list li{ display:flex; gap:10px; font-size:.94rem }
+  .trust-list svg{ flex-shrink:0; margin-top:2px }
+
+  /* ---- booking ---- */
+  .book-grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:60px }
+  @media (max-width:860px){ .book-grid{ grid-template-columns:1fr; gap:36px } }
+  .book-note{ font-size:.92rem; color:#C7CEDC; max-width:44ch }
+  form.request{ display:grid; gap:16px }
+  .field{ display:grid; gap:6px }
+  .field label{ font-size:.85rem; font-weight:500; color:#DCE2EC }
+  .field input, .field textarea{
+    background:rgba(245,246,248,.06); border:1px solid rgba(245,246,248,.22); border-radius:5px;
+    color:#F5F6F8; padding:11px 13px; font:inherit; font-size:.95rem;
+  }
+  .field input::placeholder, .field textarea::placeholder{ color:#7C879A }
+  .field input:focus, .field textarea:focus{ outline:2px solid var(--gold); outline-offset:1px; border-color:transparent }
+  .sent-msg{ margin-top:12px; font-size:.85rem; color:#9AA7BC }
+
+  /* ---- footer ---- */
+  footer.site{ background:var(--bg-strong); padding-block:44px; border-top:1px solid rgba(245,246,248,.10) }
+  .footer-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px }
+  .footer-row svg{ height:20px; width:auto }
+  footer.site p{ font-size:.8rem; color:#7C879A }
+</style>
+
+<header class="site" id="siteHeader">
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 760.0 800.0" aria-hidden="true"><path d="M0 0 H150.0 L610.0 626.97 V167.7 L760.0 428.7 V800.0 H610.0 L150.0 173.03 V800.0 H0 Z" fill="#0A1628"/><path d="M610.0 0 H760.0 V428.7 L610.0 167.7 Z" fill="#D4AF37"/></svg>
+      <span class="name-block">
+        <span class="name">NAVIAR</span>
+        <span class="tag">Clarity in Complex Systems</span>
+      </span>
+    </a>
+    <nav class="primary" aria-label="Hovednavigasjon">
+      <a href="#tjenester">Tjenester</a>
+      <a href="#metode">Metode</a>
+      <a href="#tillit">Tillit</a>
+      <a href="#kontakt">Om NAVIAR</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:10px">
+      <a class="btn btn-gold" href="#kontakt">Ta kontakt</a>
+      <button class="navtoggle" id="navToggle" aria-label="Åpne meny" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero strong">
+    <svg class="n-mark" viewBox="0 0 760.0 800.0" aria-hidden="true"><path d="M0 0 H150.0 L610.0 626.97 V0 H760.0 V800.0 H610.0 L150.0 173.03 V800.0 H0 Z" fill="#F5F6F8"/></svg>
+    <div class="wrap inner">
+      <p class="eyebrow">Arbeidsnærvær i praksis</p>
+      <h1>Gjør det lettere<br>å være i jobb.</h1>
+      <p class="lede">Vi hjelper ledere og virksomheter med å handle tidligere, finne gode tilretteleggingstiltak og følge opp bedre — uten diagnoser, uten automatiserte vurderinger.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#kontakt">Ta kontakt →</a>
+        <a class="link-quiet" href="#tjenester">Se tjenestene</a>
+      </div>
+      <p class="trust-line">LEDERSTØTTE&nbsp;&nbsp;·&nbsp;&nbsp;TILRETTELEGGING&nbsp;&nbsp;·&nbsp;&nbsp;ARBEIDSNÆRVÆR</p>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="wrap">
+      <p class="eyebrow">Utgangspunktet</p>
+      <h2 style="margin-top:12px">Når oppfølging blir vanskelig, trenger ledere mer enn en sjekkliste.</h2>
+      <div class="qgrid">
+        <div class="qcard"><p class="q">Hva gjør vi nå?</p><p class="muted" style="margin-top:8px; font-size:.92rem">Den første, uklare fasen — før noen har bestemt seg for et neste steg.</p></div>
+        <div class="qcard"><p class="q">Hva kan tilrettelegges?</p><p class="muted" style="margin-top:8px; font-size:.92rem">Hvilke deler av arbeidet er faktisk mulig å endre, og hvilke er ikke det?</p></div>
+        <div class="qcard"><p class="q">Hvordan følger vi opp på en god måte?</p><p class="muted" style="margin-top:8px; font-size:.92rem">Et tiltak uten oppfølging er sjelden mer enn et godt forsøk.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="tjenester" style="background:var(--bg-page)">
+    <div class="wrap">
+      <p class="eyebrow">Tre tjenester, én tilnærming</p>
+      <h2 style="margin-top:12px; max-width:26ch">Ikke separate produkter — tre innganger til samme arbeid.</h2>
+      <div class="svc-grid">
+        <div class="svc">
+          <p class="idx">01</p>
+          <h3>Lederstøtte</h3>
+          <p>Trygg faglig sparring når oppfølgingen blir krevende — før, under og etter en vanskelig samtale.</p>
+          <ul><li>Samtaleforberedelse</li><li>Tidlig innsats</li><li>Strukturert oppfølging</li></ul>
+        </div>
+        <div class="svc">
+          <p class="idx">02</p>
+          <h3>Tilrettelegging</h3>
+          <p>Finn konkrete muligheter i arbeidet, oppgavene og organiseringen — uten å gjøre det til en varig unntaksordning.</p>
+          <ul><li>Arbeidstid og tempo</li><li>Oppgavefordeling</li><li>Midlertidige justeringer</li></ul>
+        </div>
+        <div class="svc">
+          <p class="idx">03</p>
+          <h3>Arbeidsnærvær</h3>
+          <p>Bygg rutiner og lederpraksis som gjør at tidlig handling blir det normale, ikke unntaket.</p>
+          <ul><li>Prosessgjennomgang</li><li>Lederverktøy</li><li>Aggregert innsikt, ikke individdata</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPRINT -->
+  <section class="strong">
+    <div class="wrap">
+      <p class="eyebrow">Arbeidsnærvær Sprint</p>
+      <h2 style="margin-top:12px; max-width:24ch">Fra usikker praksis til konkrete tiltak.</h2>
+      <p class="lede" style="margin-top:14px">Et avgrenset, 90-dagers løp — ikke et åpent konsulentoppdrag.</p>
+      <div class="sprint-flow">
+        <div class="sprint-step"><p class="n">01</p><p>Kartlegging</p></div>
+        <div class="sprint-step"><p class="n">02</p><p>Lederintervjuer</p></div>
+        <div class="sprint-step"><p class="n">03</p><p>Gap-analyse</p></div>
+        <div class="sprint-step"><p class="n">04</p><p>Prioriterte tiltak</p></div>
+        <div class="sprint-step"><p class="n">05</p><p>90-dagers plan</p></div>
+      </div>
+      <div class="sprint-cta"><a class="btn btn-outline" href="#kontakt">Bestill en innledende samtale →</a></div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="metode">
+    <div class="wrap method-grid">
+      <div>
+        <p class="eyebrow">NAVIAR Method</p>
+        <h2 style="margin-top:12px">Ikke bare hva dere skal gjøre. Hjelp til å finne et godt neste steg.</h2>
+        <p class="lede" style="margin-top:16px">Metoden bygger på det forskningen faktisk viser: tidlig kontakt og konkrete jobbjusteringer virker best for muskel- og skjelettplager — og det er akkurat der vi setter inn støtet. For sammensatte eller psykiske forhold henviser vi videre til fagpersoner, i stedet for å late som generell tilrettelegging løser alt.</p>
+        <div class="cite">Basert på Cochranes gjennomgang av arbeidsplassrettede tiltak (CD006955) og deltakende arbeidsplassmodeller for tilbakeføring.</div>
+      </div>
+      <div class="method-words">
+        <div class="w">Tidligere<span>Kontakt innen de første ukene, ikke etter måneder.</span></div>
+        <div class="w">Konkret<span>Ett lite, reversibelt tiltak — ikke en generell plan.</span></div>
+        <div class="w">Systematisk<span>Faste oppfølgingspunkter, ikke en engangsvurdering.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section id="tillit" style="background:var(--bg-page)">
+    <div class="wrap">
+      <p class="eyebrow">Grenser vi holder</p>
+      <h2 style="margin-top:12px; max-width:22ch">Arbeid først. Minst mulig sensitive opplysninger.</h2>
+      <div class="trust-box">
+        <p class="muted" style="max-width:60ch">NAVIAR er en privat og uavhengig rådgiver — ikke NAV, ikke BHT, og ikke en erstatning for medisinsk vurdering.</p>
+        <ul class="trust-list">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M5 12l4 4L19 6"/></svg> Ingen diagnose</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M5 12l4 4L19 6"/></svg> Ingen behandling</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M5 12l4 4L19 6"/></svg> Ingen overvåking</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M5 12l4 4L19 6"/></svg> Ingen automatiserte beslutninger om ansatte</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M5 12l4 4L19 6"/></svg> Menneskelig faglig vurdering, alltid</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M5 12l4 4L19 6"/></svg> Fokus på funksjon, ikke sykdom</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="kontakt" class="strong">
+    <div class="wrap book-grid">
+      <div>
+        <p class="eyebrow">Neste steg</p>
+        <h2 style="margin-top:12px">Usikker på hvor dere bør starte?</h2>
+        <p class="book-note" style="margin-top:16px">Dette er ikke en direkte booking. En rådgiver tar kontakt per e-post eller telefon etter en kort behovsavklaring — før noe avtales.</p>
+      </div>
+      <form class="request" onsubmit="return sendRequest(event)">
+        <div class="field">
+          <label for="navn">Navn</label>
+          <input id="navn" name="navn" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="epost">E-post</label>
+          <input id="epost" name="epost" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="virksomhet">Virksomhet</label>
+          <input id="virksomhet" name="virksomhet" type="text" required>
+        </div>
+        <div class="field">
+          <label for="melding">Melding (valgfritt)</label>
+          <textarea id="melding" name="melding" rows="3" placeholder="Kort om situasjonen"></textarea>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-gold">Send forespørsel</button>
+          <p class="sent-msg" id="sentMsg" hidden>E-postklienten din åpnes med utkastet — send den for å fullføre forespørselen.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap footer-row">
+    <svg viewBox="0 0 557.0 100.0" aria-label="NAVIAR"><path d="M0 0 H15.0 L63.0 83.36 V0 H78.0 V100.0 H63.0 L15.0 16.64 V100.0 H0 Z" fill="#F5F6F8" fill-rule="evenodd"/><path d="M41.0 0.0 L82.0 100.0 L65.79 100.0 L41.0 39.54 L16.21 100.0 L0 100.0 Z M27.69 72.0 H54.31 L60.46 87.0 H21.54 Z" transform="translate(108.0 0.0)" fill="#F5F6F8" fill-rule="evenodd"/><path d="M41.0 100.0 L82.0 0.0 L65.79 0.0 L41.0 60.46 L16.21 0.0 L0 0.0 Z" transform="translate(214.0 0.0)" fill="#F5F6F8" fill-rule="evenodd"/><path d="M0 0 H15.0 V100.0 H0 Z" transform="translate(328.0 0.0)" fill="#F5F6F8" fill-rule="evenodd"/><path d="M41.0 0.0 L82.0 100.0 L65.79 100.0 L41.0 39.54 L16.21 100.0 L0 100.0 Z M27.69 72.0 H54.31 L60.46 87.0 H21.54 Z" transform="translate(377.0 0.0)" fill="#F5F6F8" fill-rule="evenodd"/><path d="M0 0 H44.0 A25.0 25.0 0 0 1 44.0 50.0 L72.0 100.0 H54.0 L16.0 50.0 H15.0 V100.0 H0 Z M15.0 15.0 H44.0 A10.0 10.0 0 0 1 44.0 35.0 H15.0 Z" transform="translate(485.0 0.0)" fill="#F5F6F8" fill-rule="evenodd"/></svg>
+    <p>© 2026 NAVIAR. Clarity in Complex Systems.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    var h = document.getElementById('siteHeader');
+    var open = h.classList.toggle('open');
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  function sendRequest(ev){
+    ev.preventDefault();
+    var f = ev.target;
+    var d = new FormData(f);
+    var subject = 'NAVIAR — forespørsel om samtale';
+    var body = [
+      'Navn: ' + d.get('navn'),
+      'E-post: ' + d.get('epost'),
+      'Virksomhet: ' + d.get('virksomhet'),
+      'Melding: ' + d.get('melding')
+    ].join('\n');
+    window.location.href = 'mailto:kontakt@naviar-consult.example?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    document.getElementById('sentMsg').hidden = false;
+    return false;
+  }
+</script>
