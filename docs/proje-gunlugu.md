@@ -461,3 +461,33 @@ Kaynak kod `brand/naviar/interactive/` olarak depoya kalıcı olarak eklendi
 sitesi olduğu için kaybetmek operasyonel risk olurdu). Kullanılmayan ~44
 shadcn taslak bileşeni (yalnız `button` kullanılıyor) ve gereksiz bağımlılık
 listesi temizlendi. `npm run check` yeşil — QBLOGG tarafı etkilenmedi.
+
+## 31.08.2026 — NAVIAR iş modeli netleşti; `naviar-care-2` bulunup durduruldu
+
+`docs/naviar/is-modeli.md`'ye kullanıcının ilettiği parçalar işlendi: hukuki
+risk sınırları (§7 — NAV adına karar yok, sağlık verisi yok, otomatik risk
+puanı yok), en kârlı hizmet paketi (§8 — Workforce & Work-Ability Program),
+dört modelin karşılaştırması (§9 — segment kararı kapandı: birincil ürün
+kurumlara B2B/B2G danışmanlık, vatandaşa doğrudan NAV/belediye rehberliği
+ilk aşamada yok) ve NAVIAR Method v0.1 (§10 — 6 adım × 4 hizmet yolu × 4
+mercek × Risk Gate, üç kayıtla onaylandı: v0.1 kapsamı pilot için daraltılmalı,
+marka/hukuk teyidi hâlâ açık).
+
+Bu sırada `/mcp__Vercel__fix_recent_build` ve `/mcp__Vercel__project_health_check`
+çalıştırılırken `bet-art` takımında iki yeni proje bulundu (ikisi de bu
+depoda hiç üretilmemiş, `betul.andersen@gmail.com` hesabından doğrudan
+production'a deploy edilmiş): **`naviar-care-2`** — "NAVIAR" markasını
+taşıyan ama tamamen farklı, çok dilli semptom triyajı + doktor pazaryeri
+işleten bir sağlık platformu, hiçbir onay izi yok — kullanıcı kararıyla
+durduruldu (`pause_project`); **`naerhjelp-pilot-v2`** — gerçek CARE pilot
+kavramına (Oslo yaşlı/ev desteği) yakın, dikkatli tasarlanmış (marka varlığı
+kasıtlı kullanılmamış, fiyat yok, `noindex`) ama `docs/naviar/care-pilot/`
+referansı bu depoda bulunamadığı için kaynağı doğrulanamadı — dokunulmadı,
+yalnız kayda geçirildi. Detay: `brand/naviar/README.md` madde 4.
+
+Aynı turda kullanıcı ayrıca çok büyük hacimde bir "NAVIAR Consult V2 Master
+Blueprint" (website mimarisi, homepage blueprint, NAVIAR Method yeniden
+adlandırması, SEO/tech/data blueprint, 6 fazlı yol haritası) ve ayrı bir
+"NAVIAR Work Participation Architecture" konsepti parça parça iletmeye
+başladı — hacim nedeniyle konsolide bir belge istenip bu turda tam
+işlenemedi; sonraki adım.

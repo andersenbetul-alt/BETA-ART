@@ -128,5 +128,15 @@ NAVIAR'ı çevirmek, aynalamak, döndürmek.
    alınmıştı, ayrıca doğrulanamayan "koordinatör" profilleri/randevu
    saatleri içeriyordu. Kullanıcı kararıyla durduruldu (`pause_project`).
    Bu madde kapanmadan tekrar yayına alınmamalı. Bkz. `docs/proje-gunlugu.md`.
+   **31.08.2026 — ikinci ve daha ağır tekrar:** `naviar-care-2` adıyla,
+   "NAVIAR" markasını taşıyan ama tamamen farklı bir ürün (çok dilli semptom
+   triyajı + doktor pazaryeri, platform komisyonu) doğrudan production'a
+   deploy edilmiş bulundu — bu depoda hiçbir kaynağı, hiçbir onay izi yok.
+   Kullanıcı kararıyla durduruldu (`pause_project`). Aynı oturumda ayrıca
+   `naerhjelp-pilot-v2` adında, gerçek CARE pilot kavramına (Oslo yaşlı/ev
+   desteği) yakın duran ama bu depoda kaynağı bulunamayan (`docs/naviar/
+   care-pilot/` bu depoda yok) üçüncü bir canlı proje daha bulundu — bu
+   dokunulmadı, kaynağı doğrulanamadığı için sadece kayda geçirildi.
+   Bkz. `docs/proje-gunlugu.md`.
 5. Profesyonel marka temizliği yapılmadan tescil, tabela ve rollout yapılamaz.
    Ön risk: orta-yüksek (NAVAIR / NAVIER yakınlığı).
