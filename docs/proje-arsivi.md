@@ -467,6 +467,22 @@ kaynağı ve tarihi belirtildi. Ayrıca kullanıcı bir vitrindeki eski
 rangefinder kamera fotoğrafı da paylaştı — ikinci fotoğrafın ilk fotoğraftaki
 kamerayla ilişkisi netleşmedi, siteye işlenmedi.
 
+**31.08.2026 — Köken hikayesi Adobe Express'te 3 kareli görsele döküldü.**
+`/STORY TELLE` + `@ADOBE` isteği netleştirildi (AskUserQuestion): sıfırdan
+tasarım, Beta Art marka sistemiyle, 3 kareli mini hikaye dizisi (1080×1080).
+`create_visual_design_express_skill` playbook'u izlendi; hesap `auth`
+doğrulandı. Yazı tipleri Adobe Fonts kütüphanesinde birebir yoktu —
+**Fraunces→Spectral ExtraBold** (benzerlik eşleşmesi, kanonik siteninkiyle
+aynı değil) ve **JetBrains Mono→IBM Plex Mono** ikame edildi, Inter 18pt
+birebir bulundu. SealMark'ın gerçek path verisi (ring+6 spoke+kırmızı
+merkez) satır içi SVG olarak kullanıldı — uydurma yeni bir mark değil.
+Kullanıcının paylaştığı gerçek aile fotoğrafı (babası, kamerayla) **görsele
+gömülmedi** — bu özel bir aile fotoğrafı, açık izin olmadan yayına
+dönüştürülecek bir varlığa gömülmesi doğru değil; onun yerine metin (aynı
+`artistsFoundingBio` cümlesi, 3 kareye bölünmüş) kullanıldı. Export başarılı,
+3/3 slayt, içerik/yazı tipi kaybı yok. Express dokümanı: `urn:aaid:sc:EU:
+2f5cd884-521d-4744-9ff7-9638b65d4cf1`.
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
