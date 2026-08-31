@@ -2,6 +2,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { ColorSwatch } from "@/components/color-swatch";
 import { ContrastDemo } from "@/components/contrast-demo";
 import { SectionNav, SECTIONS } from "@/components/section-nav";
+import { BookingRequest } from "@/components/booking-request";
 import {
   Wordmark,
   WordmarkResponsive,
@@ -118,10 +119,11 @@ function App() {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-6 py-10 lg:grid-cols-[1fr_160px]">
         <main className="min-w-0 order-2 lg:order-1">
           <div className="rounded-md border border-border bg-card p-4 text-sm leading-relaxed text-muted-foreground">
-            Bu sayfa satış sitesi değil, marka kimliğinin durumudur — tüm geometri ve renkler
-            depodaki gerçek dosyalardan (<code className="font-data">brand/naviar/</code>) birebir
-            alınmıştır. Kontrast oranı sayfada canlı hesaplanır, uydurulmuş bir rakam değildir
-            (bkz. Renkler bölümü).
+            Bu sayfa asıl olarak satış sitesi değil, marka kimliğinin durumudur — tüm geometri ve
+            renkler depodaki gerçek dosyalardan (<code className="font-data">brand/naviar/</code>)
+            birebir alınmıştır. Kontrast oranı sayfada canlı hesaplanır, uydurulmuş bir rakam
+            değildir (bkz. Renkler bölümü). Altta, kalıcı V2 sitesi kuruluncaya kadarki geçici bir
+            görüşme-talebi bölümü de var.
           </div>
 
           <Section id="wordmark" title="Wordmark">
@@ -293,6 +295,14 @@ function App() {
                 </AssetCard>
               </div>
             </div>
+          </Section>
+
+          <Section
+            id="kontakt"
+            title="Görüşme talebi"
+            intro="Kalıcı V2 pazarlama sitesi kuruluncaya kadarki geçici bölüm — istek + insan onayı deseni, otomatik/anında booking değil (bkz. docs/naviar/is-modeli.md §9, Risk Gate)."
+          >
+            <BookingRequest />
           </Section>
 
           <footer className="border-t border-border pt-6 text-xs text-muted-foreground">

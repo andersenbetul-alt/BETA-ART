@@ -8,6 +8,7 @@ export const SECTIONS = [
   { id: "descriptors", label: "Descriptor'lar" },
   { id: "colors", label: "Renkler" },
   { id: "measurements", label: "Ölçüm kanıtı" },
+  { id: "kontakt", label: "Görüşme talebi" },
 ] as const;
 
 export function SectionNav() {
