@@ -305,3 +305,56 @@ ayrımı, ticari model). Tam yöntem kitabı (roller, formlar, görüşme akış
 karar ağacı, ölçüm sistemi) için — istenen sonraki adım — yeşil ışık
 verilmiştir; kapsam daraltma önerisi (madde 2) yöntem kitabı yazılırken
 dikkate alınmalı, engel değildir.
+
+## 11. NAVIAR Adaptive Work Model / Job Decomposition — kısmi onay (31.08.2026)
+
+Kullanıcı, işsizlik-merkezli ilk versiyonu (bkz. önceki tur — reddedildi,
+Norveç'in kendi işsizliği %2,1 ile düşük olduğu için "işsizlik artıyor"
+gerekçesi yerel pazara uygulanamazdı) **daha güçlü bir gerekçeyle**
+düzeltip geri getirdi: Norveç'te aynı anda hem düşük işsizlik hem
+doldurulamayan pozisyon var — bu bir **beceri/iş tasarımı uyumsuzluğu**,
+salt işsizlik sorunu değil. Konsept: **Job Decomposition™** — bir pozisyonu
+"bir iş = bir kişi" yerine görev/talep/beceri bileşenlerine ayırıp yeniden
+kombine etmek; **StayFit** (mevcut çalışan işte kalsın) ve **EntryFit**
+(işsiz/deneyimsiz/kısmi kapasiteli biri işe girebilsin) aynı altyapıyı
+(Job Twin, WorkFit) paylaşır.
+
+**Rakam doğrulaması — genel tablo doğru, alt kırılımda iki sapma var:**
+
+| İddia | Kullanıcının rakamı | Doğrulanan (NAV Bedriftsundersøkelsen 2026) | Durum |
+|---|---|---|---|
+| Ulusal işgücü açığı | 33.750 kişi | **34.000 kişi** (NAV'ın kendi manşeti) | Yakın, kabul edilebilir yuvarlama farkı |
+| Sağlık/sosyal hizmet açığı | ~7.200 kişi | **9.200 kişi** (helse/omsorg/pleie meslek grubu) | **Sapma — düzeltildi** |
+| İşe alım sorunu bildiren işletme oranı | "yaklaşık her 5 işletmeden biri" | Oslo'da **1/6** genel, ama sağlık-sosyal hizmette özel olarak **%29** | **Sapma — kesin ulusal rakam bulunamadı, bölgesel veri karışık** |
+
+Kaynaklar: [NAV — Bedriftsundersøkelsen 2026: Norske virksomheter mangler 34 000 personer](https://www.nav.no/no/nav-og-samfunn/kunnskap/analyser-fra-nav/nyheter/bedriftsundersokelsen-2026-norske-virksomheter-mangler-34-000-personer) ·
+[NAV Oslo — 1 av 6 bedrifter har rekrutteringsproblemer](https://www.nav.no/no/lokalt/oslo/pressemeldinger/1-av-6-bedrifter-i-oslo-har-rekrutteringsproblemer) ·
+Norveç işsizliği %2,1 (Ağustos 2026, mevsimsel düzeltilmiş) — [Trading Economics](https://tradingeconomics.com/norway/unemployment-rate).
+**Bu üçü bu ortamda gerçekten arandı ve doğrulandı** — §7/§8'deki gibi
+"doğrulanmadı" notu bu bölüm için geçerli değil.
+
+**Değerlendirme — ikiye ayırarak onay:**
+
+1. **Job Decomposition, işveren tarafında bir organizasyon analizi olarak
+   [ONAYLANDI, şimdi kapsama alınabilir].** Bir pozisyonu görev/beceri
+   bileşenlerine ayırıp "bu görevler başka biçimde dağıtılabilir mi"
+   sorusunu sormak, mevcut **Arbeidsnærvær Sprint / WorkFit** ürününün
+   doğal bir uzantısı — hâlâ B2B, hâlâ işverene satılıyor, hâlâ §7'nin veri
+   sınırları içinde (bireyin sağlık/işsizlik verisine dokunmuyor, yalnız
+   *iş* analiz ediliyor). §9/V2'de kilitlenen dar konumlandırmayı bozmuyor.
+2. **EntryFit — işsiz/genç/göçmen bireyleri gerçekten decompose edilmiş
+   göreve eşleştirme [FAZ 2+, ŞİMDİ KAPSAMA ALINMIYOR].** Burada sınır
+   net: NAVIAR bir organizasyona "rolünüzü şöyle bölebilirsiniz" derse
+   danışmanlıktır; NAVIAR belirli bir işsiz/NAV kayıtlı bireyi belirli bir
+   role **eşleştirirse** bu iş ve işçi bulma faaliyetine (`bemanningsforetak`/
+   arbeidsformidling) girer — Norveç'te ayrı kayıt/düzenleme gerektirir,
+   ve tam olarak §9'un kapattığı "vatandaşa doğrudan hizmet/kamu
+   yönlendirme" alanına geri döner. Kullanıcının kendi 4-filtre testinde de
+   bu parça risk ve konumlandırma netliği açısından düşük puan alıyor.
+
+**Sonuç:** Job Decomposition metodolojisi WorkFit/Sprint kapsamına dahil
+edilebilir; EntryFit/eşleştirme kısmı ayrı hukuki teyit (bemanningsforetak
+kayıt şartları) olmadan ürünleşmez. "Work Participation Engineering" /
+"Adaptive Workforce" gibi daha büyük şemsiye kategoriler uzun vadeli vizyon
+notu olarak kalır, V1/V2 marka mimarisine (Lederstøtte · Tilrettelegging ·
+Arbeidsnærvær) şimdi eklenmez.
