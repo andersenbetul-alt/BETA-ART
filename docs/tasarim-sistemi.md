@@ -110,9 +110,9 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 **Yoktur.** Bileşen mimarisi, Storybook, bileşen dokümantasyonu — hiçbiri yok.
 
 Yerine geçen şey: `assets/css/main.css` içinde **119 benzersiz sınıf** (629
-satır), altı HTML sayfasında elle kullanılıyor. Sayfa iskeleti (menü +
-altbilgi) altı dosyada **tekrar eder**: `index`, `work`, `blog`, `post`,
-`gizlilik`, `kosullar`.
+satır), sekiz HTML sayfasında elle kullanılıyor. Sayfa iskeleti (menü +
+altbilgi) sekiz dosyada **tekrar eder**: `index`, `work`, `blog`, `post`,
+`gizlilik`, `kosullar`, `kalite`, `ornek` (`404` kasıtlı hariç).
 
 Ayrıca `demo/` dizininde ayrı bir kalıp var: **Action Pages** (`cv-action-page`,
 `q-work-audit`). Bunlar `main.css`'i **yüklemez** — tek dosyalık, kendi
@@ -122,8 +122,9 @@ sekiz basamaklı ölçek yerine sadeleştirilmiş kendi değişkenleri) tekrar t
 sayfası çeviriyorsanız hedef `main.css` değil, bu desendir.
 
 > **Figma'dan bileşen çevirirken:** menüyü ya da altbilgiyi değiştiriyorsanız
-> **altı dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve script'i
-> yakalar ama eksik menü bağlantısını yakalamaz.
+> **sekiz dosyayı birden** güncelleyin (`.claude/skills/qblogg-sayfa-iskeleti/`
+> bu senkronu ve kendi doğrulama betiğini taşır). `npm run check` çiftlenen id
+> ve script'i yakalar ama eksik menü bağlantısını yakalamaz.
 
 JavaScript'te bileşene en yakın şey `assets/js/app.js` içindeki
 `cardHTML(post, seviye)` — dize döndüren bir işlev, sınıf değil.
@@ -279,7 +280,7 @@ bakın.
 ## 7. Proje yapısı
 
 ```
-*.html                  6 sayfa — iskelet tekrar eder
+*.html                  9 sayfa — 8'i iskelet tekrar eder, 404 hariç
 assets/css/main.css     tek stil dosyası
 assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak dosya
 assets/js/i18n.js       10 dil × 233 anahtar
