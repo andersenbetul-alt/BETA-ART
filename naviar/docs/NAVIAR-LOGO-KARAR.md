@@ -363,3 +363,33 @@ inhisari hak doğurmaz.
   yok. İçindeki tek kesişen nokta genel bir ilkedir ve NAVIAR için de geçerlidir:
   *tescil edilmemiş bir isim altında ticari yayılma, en ucuz yüksek değerli
   aksiyonun ertelenmesidir.*
+
+---
+
+## 8. Ek — P9 (NAVIAR CARE) yeniden doğrulama (30.08.2026)
+
+Kullanıcı P9'un 4 koşulunun uygulanmasını istedi. `naviar/brand/build.py`
+(descriptor sistemi zaten "P8/P9 resolved" olarak yorumlanmış) yeniden
+çalıştırılıp `descriptors/naviar-care-PENDING-APPROVAL.svg` bayt bayt aynı
+üretildi (sürüklenme yok) — sonuç:
+
+| Koşul (§3, P9) | Durum | Kanıt |
+|---|---|---|
+| 1. Altın oranı %12–16 | ✅ **Karşılanıyor** | `gold_ratio()` = **%14,0** (betik çıktısı) |
+| 2. Descriptor adı doğru | N/A (CARE'e özgü değil, CONSULT→CONSULTING'e aitti) | — |
+| 3. Descriptor boyu NAVIAR'ın %24–30'u | ✅ **Karşılanıyor** | `dcap = 0.27*H` sabit kodlanmış (`lockup_h`, satır 199) — %27. **Düzeltme:** bu belgeye ilk bakışta font-size (38,57) yanlışlıkla cap height sanılmıştı; gerçek cap height `descriptor_text()`'in kendi notuna göre ≈ %70×font-size = 27 birim, yani %27 — hata ölçümdeydi, betikte değil. |
+| 4. Descriptor yan çizgileri | ✅ **Çözüldü (kaldırılarak)** | Güncel üretici hiç yan çizgi çizmiyor — §3'teki "ya spesifikasyona eklenir ya kaldırılır" seçeneklerinden ikincisi uygulanmış |
+| (§4.1) Descriptor kontrastı — beyaz zeminde lacivert olmalı | ✅ **Karşılanıyor** | `lockup_h(NAVY, GOLD, ...)` çağrısında descriptor `fill=NAVY` ile çiziliyor, altın değil |
+
+**Geometri tarafında P9 için gerçek eksik kalmadı.** Kapanmamış iki madde
+tasarım dosyası değişikliğiyle çözülemez, ayrı süreç gerektirir:
+
+- **CARE'in onaylı marka mimarisine eklenmesi** — iş onayı (kullanıcı kararı).
+  Bu onay verilene kadar dosya bilerek `APPROVED` listesinin dışında ve adı
+  `PENDING-APPROVAL` kalmalı (`build.py` satır 240-241).
+- **Nice sınıf 44 (tıbbi/bakım hizmetleri) marka taraması** — hukuki süreç,
+  bu ortamda yapılamaz (§5'teki kurum sitesi erişim engeli aynen geçerli).
+
+Diyagonal açı sapması (§ Ölçüm kanıtı, 29,9° vs spec 38–42°) CARE'e özgü
+değil — tüm sistemin paylaştığı monogramda, önceden bilinen ve kullanıcı
+onayı bekleyen ayrı bir karardır, bu düzeltme talebinin kapsamında değildir.
