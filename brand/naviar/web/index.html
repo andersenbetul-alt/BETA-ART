@@ -136,6 +136,17 @@
   .svc p{ color:var(--text-muted); font-size:.95rem }
   .svc ul{ margin:16px 0 0; padding-inline-start:18px; color:var(--text-muted); font-size:.88rem; line-height:1.75 }
 
+  /* ---- ladder ---- */
+  .ladder{ display:flex; flex-wrap:wrap; gap:12px; margin-top:36px }
+  .ladder-step{
+    display:flex; align-items:center; gap:10px; background:var(--bg-card); border:1px solid var(--card-border);
+    border-radius:999px; padding:10px 20px 10px 12px; font-size:.9rem; font-weight:500; text-decoration:none; color:var(--ink);
+  }
+  .ladder-step .n{
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#fff; background:var(--navy);
+    border-radius:50%; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+
   /* ---- sprint ---- */
   .sprint-flow{ display:flex; flex-wrap:wrap; gap:0; margin-top:44px; align-items:stretch }
   .sprint-step{ flex:1 1 150px; padding:18px 16px; border:1px solid rgba(245,246,248,.16); border-inline-start-width:0 }
@@ -252,6 +263,21 @@
     </div>
   </section>
 
+  <!-- LADDER -->
+  <section style="background:var(--bg-page)">
+    <div class="wrap">
+      <p class="eyebrow">Slik jobber vi sammen</p>
+      <h2 style="margin-top:12px; max-width:26ch">Mål → forbedre → tilrettelegg → støtt → samarbeid over tid.</h2>
+      <div class="ladder">
+        <a href="#score" class="ladder-step"><span class="n">01</span>Arbeidsnærvær Score</a>
+        <a href="#sprint" class="ladder-step"><span class="n">02</span>Arbeidsnærvær Sprint</a>
+        <a href="#workfit" class="ladder-step"><span class="n">03</span>WorkFit</a>
+        <a href="#tjenester" class="ladder-step"><span class="n">04</span>Lederstøtte</a>
+        <a href="#partner" class="ladder-step"><span class="n">05</span>Arbeidsnærvær Partner</a>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section id="tjenester" style="background:var(--bg-page)">
     <div class="wrap">
@@ -281,7 +307,7 @@
   </section>
 
   <!-- SPRINT -->
-  <section class="strong">
+  <section id="sprint" class="strong">
     <div class="wrap">
       <p class="eyebrow">Arbeidsnærvær Sprint</p>
       <h2 style="margin-top:12px; max-width:24ch">Fra usikker praksis til konkrete tiltak.</h2>
@@ -294,6 +320,16 @@
         <div class="sprint-step"><p class="n">05</p><p>90-dagers plan</p></div>
       </div>
       <div class="sprint-cta"><a class="btn btn-outline" href="#kontakt">Bestill en innledende samtale →</a></div>
+    </div>
+  </section>
+
+  <!-- PARTNER -->
+  <section id="partner" style="background:var(--bg-page)">
+    <div class="wrap">
+      <p class="eyebrow">Arbeidsnærvær Partner</p>
+      <h2 style="margin-top:12px; max-width:24ch">Faglig støtte gjennom året — etter Sprint.</h2>
+      <p class="lede" style="margin-top:14px; max-width:60ch">For virksomheter som ønsker en fast partner for lederstøtte, tilrettelegging, prosessforbedring og videre utvikling av arbeidsnærværsarbeidet — ikke enkeltstående prosjekter.</p>
+      <div class="sprint-cta"><a class="btn btn-outline" href="#kontakt">Snakk om et partnerskap →</a></div>
     </div>
   </section>
 
@@ -342,6 +378,63 @@
     </div>
   </section>
 
+  <!-- REGELVERK -->
+  <section style="background:var(--bg-page)">
+    <div class="wrap">
+      <p class="eyebrow">Når en medarbeider blir sykmeldt</p>
+      <h2 style="margin-top:12px; max-width:26ch">De lovpålagte milepælene — og når vi støtter.</h2>
+      <p class="lede" style="margin-top:14px; max-width:60ch">Arbeidsgiver har ansvaret gjennom hele forløpet. Regelverket setter noen viktige frister — NAVIAR hjelper dere ikke bare med å huske dem, men med å gjøre godt arbeid mellom dem.</p>
+      <div class="qgrid" style="grid-template-columns:repeat(4,1fr)">
+        <div class="qcard"><p class="q">Innen 4 uker</p><p class="muted" style="margin-top:8px; font-size:.92rem">Oppfølgingsplan utarbeides sammen med den ansatte og deles med sykmelder.</p></div>
+        <div class="qcard"><p class="q">Innen 7 uker</p><p class="muted" style="margin-top:8px; font-size:.92rem">Dialogmøte 1 — fokus på hva den ansatte kan gjøre, ikke diagnose.</p></div>
+        <div class="qcard"><p class="q">Ved 8 uker</p><p class="muted" style="margin-top:8px; font-size:.92rem">Aktivitetskravet — arbeidsgiver dokumenterer forsøkte tilretteleggingstiltak.</p></div>
+        <div class="qcard"><p class="q">Innen 26 uker</p><p class="muted" style="margin-top:8px; font-size:.92rem">Dialogmøte 2 (NAV) — oppdatert plan sendes i forkant.</p></div>
+      </div>
+      <p class="muted" style="margin-top:20px; font-size:.82rem">Basert på arbeidsmiljøloven §4-6 og NAV/Arbeidstilsynets frister for oppfølging av sykmeldte.</p>
+    </div>
+  </section>
+
+  <!-- OM NAVIAR -->
+  <section id="om" class="strong">
+    <div class="wrap">
+      <p class="eyebrow">Om NAVIAR</p>
+      <h2 style="margin-top:12px; max-width:22ch">Vi overtar ikke arbeidsgivers ansvar. Vi gjør det lettere å ivareta det.</h2>
+      <p class="lede" style="margin-top:16px; max-width:60ch">NAVIAR er en uavhengig arbeidsnærværspartner for ledere og virksomheter. Vi hjelper dere å forstå situasjonen, finne muligheter i arbeidet, avtale konkrete tiltak og følge opp om tiltakene faktisk fungerer. Vi arbeider med arbeidsfunksjon, dialog og tilrettelegging — ikke diagnose.</p>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section id="tillit" style="background:var(--bg-page)">
+    <div class="wrap">
+      <p class="eyebrow">Rolleklarering</p>
+      <h2 style="margin-top:12px; max-width:24ch">Arbeid først. Minst mulig sensitive opplysninger.</h2>
+      <div class="trust-box">
+        <p class="muted" style="max-width:60ch">NAVIAR er en privat og uavhengig rådgiver — ikke NAV, ikke BHT, og ikke en erstatning for medisinsk vurdering. Som ekstern prosessstøtte har vi en tydelig avgrenset rolle.</p>
+        <div class="method-grid" style="margin-top:24px; gap:32px">
+          <div>
+            <p style="font-weight:600; color:var(--ink)">Det NAVIAR gjør</p>
+            <ul class="trust-list" style="grid-template-columns:1fr; margin-top:14px">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Prosesstøtte og lederstøtte</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Maler for oppfølgingsplan og dialogmøter</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Tilretteleggingsarbeid (WorkFit)</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Opplæring, workshops og dokumentasjon</li>
+            </ul>
+          </div>
+          <div>
+            <p style="font-weight:600; color:var(--ink)">Det NAVIAR ikke gjør</p>
+            <ul class="trust-list" style="grid-template-columns:1fr; margin-top:14px">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Diagnose, behandling eller medisinsk vurdering</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Erstatte godkjent bedriftshelsetjeneste (BHT)</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Treffe vedtak på vegne av NAV</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Bruke kundens BankID eller NAV-innlogging</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Overvåke ansatte eller score individuell risiko</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SCORE -->
   <section id="score" style="background:var(--bg-page)">
     <div class="wrap">
@@ -352,14 +445,14 @@
         <div>
           <p class="score-num">68 / 100</p>
           <p style="font-weight:600; margin-top:4px">Eksempelresultat: moderat</p>
-          <p class="score-note">Illustrasjon av hvordan tilbakemeldingen ser ut — selve testen er ikke lansert ennå. Ingen faktisk score er beregnet her, og det finnes ennå ikke et sammenligningsgrunnlag mot andre virksomheter.</p>
+          <p class="score-note">Illustrasjon av hvordan tilbakemeldingen ser ut — selve testen er ikke lansert ennå. NAVIAR viser foreløpig ikke statistiske arbeidsnærværdata fra kunder. Arbeidsnærvær Score er en strukturell egenvurdering basert på NAVIARs kriterier for tidlig handling, tilrettelegging, lederstøtte og systematikk — ingen sammenligning mot andre virksomheter eller et norsk snitt før vi faktisk har et dokumentert datasett.</p>
         </div>
         <a class="btn btn-gold" href="#kontakt">Meld interesse for scoren →</a>
       </div>
     </div>
   </section>
 
-  <!-- KUNNSKAP -->
+  <!-- KUNNSKAP / FAQ -->
   <section id="kunnskap" class="strong">
     <div class="wrap">
       <p class="eyebrow">Kunnskap</p>
@@ -370,24 +463,14 @@
         <div class="svc" style="background:#0F1D33"><h3 style="color:#F5F6F8">Den vanskelige samtalen</h3><p style="color:#C7CEDC">Hvordan skape en trygg og konkret dialog?</p></div>
       </div>
       <p class="lede" style="margin-top:20px; font-size:.9rem">Kommer fortløpende — foreløpig ingen publiserte artikler.</p>
-    </div>
-  </section>
 
-  <!-- TRUST -->
-  <section id="tillit" style="background:var(--bg-page)">
-    <div class="wrap">
-      <p class="eyebrow">Grenser vi holder</p>
-      <h2 style="margin-top:12px; max-width:22ch">Arbeid først. Minst mulig sensitive opplysninger.</h2>
-      <div class="trust-box">
-        <p class="muted" style="max-width:60ch">NAVIAR er en privat og uavhengig rådgiver — ikke NAV, ikke BHT, og ikke en erstatning for medisinsk vurdering.</p>
-        <ul class="trust-list">
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Ingen diagnose</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Ingen behandling</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Ingen overvåking</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Ingen automatiserte beslutninger om ansatte</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Menneskelig faglig vurdering, alltid</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-safe)"><path d="M5 12l4 4L19 6"/></svg> Fokus på funksjon, ikke sykdom</li>
-        </ul>
+      <h3 style="margin-top:56px; font-size:1.3rem">Vanlige spørsmål</h3>
+      <div class="cite" style="margin-top:20px; max-width:70ch">
+        <p><b>Hvem har ansvaret for å følge opp en sykmeldt ansatt?</b> Arbeidsgiver, jf. arbeidsmiljøloven §4-6. NAVIAR er prosesstøtte — ansvaret ligger alltid hos dere.</p>
+        <p style="margin-top:14px"><b>Erstatter dere bedriftshelsetjenesten (BHT)?</b> Nei. Vi jobber ved siden av BHT, ikke i stedet for den.</p>
+        <p style="margin-top:14px"><b>Hva kan vi spørre den ansatte om?</b> Funksjon og tilrettelegging — aldri diagnose.</p>
+        <p style="margin-top:14px"><b>Bruker dere vår BankID eller NAV-innlogging?</b> Nei, aldri.</p>
+        <p style="margin-top:14px"><b>Må vi inngå en skriftlig avtale?</b> Ja — hvert oppdrag bekreftes skriftlig med omfang og pris før oppstart.</p>
       </div>
     </div>
   </section>
