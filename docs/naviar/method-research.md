@@ -132,3 +132,59 @@ ikisi de yüksek kanıtlı ama ikisi de bireysel sağlık/risk skoruyla
 çelişiyor, bu yüzden yalnız kavramsal ilham olarak alınmalı, araç olarak
 değil. Bu, önceki "bireye skor verme" kararının doğru yerde çizildiğini
 bağımsız biçimde doğruluyor.
+
+## 6. ADAPT™ önerisi — doğrulama durumu ve tutarlılık incelemesi (31.08.2026)
+
+Kullanıcı "NAVIAR Adaptive Work Method v0.1" ve "NAVIAR Research & Innovation
+Program"ı önerdi: ADAPT™ (Analyse the Work → Discover the Gap → Adapt the
+Work → Pilot the Smallest Viable Change → Track & Learn) 5 adımlı döngü,
+Dynamic WorkFit (4 harita: Work Demands/Available Function/Adaptability/
+Context), Work Experiment, Next Best Experiment, Adaptive Work Ladder
+(L0-L5), Barrier-Resource Map, Sustainable Participation, Mechanism Learning
+(Context-Mechanism-Intervention-Implementation-Outcome).
+
+**Doğrulama durumu — iki yeni rakam bu ortamda bulunamadı:**
+- "JD-R meta-analizi: 247 örneklem, 312.000+ katılımcı" — bu isimde/rakamda
+  bir çalışma **bulunamadı**. En yakın gerçek kaynak Lesener, Gusy & Wolter
+  (2019), *Work & Stress* — JD-R'ın boylamsal meta-analitik incelemesi,
+  gerçek ve genel bulgu yönü (talep↔negatif, kaynak↔pozitif) literatürle
+  tutarlı, ama **bu spesifik N rakamı doğrulanamadı**.
+- "52 sistematik derleme, 957 birincil çalışma" içeren genel bir overview —
+  **bulunamadı**.
+- "2026 tarihli" participatory RTW meta-analizi (bel ağrısı ↔ olumlu, ruh
+  sağlığı/karışık şikayet ↔ etkisiz) — **tam bu haliyle bulunamadı**, ama
+  yönü doğru: bulunan çalışmalar (katılımcı ergonomi + RTW koordinasyonu bel
+  ağrısında işe dönüşü ~2 kat iyileştiriyor) yönü destekliyor.
+  Kaynak: [Effects of Workplace Interventions on Low Back Pain — systematic review & meta-analysis, PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8657220/).
+
+**Sonuç: genel yön/nitel iddialar literatürle tutarlı, ama üç spesifik rakam
+bu ortamda doğrulanamadı — CLAUDE.md madde 8 gereği bunları "doğrulandı"
+diye sunmayın, kaynağını (muhtemelen başka bir AI/arama aracından geldi)
+kontrol edin.**
+
+**Tutarlılık incelemesi — üç güçlü, iki açık karar gerektiren nokta:**
+
+1. **Barrier-Resource Map, evidence-matrix.md'nin Work Ability Index/IPS
+   uyarısını doğru okumuş** — "kişiye 'riskli' etiketi vermek yerine
+   sistemdeki bariyerleri gösteririz" cümlesi tam olarak §7/Risk Gate'in
+   istediği şey. Onaylandı.
+2. **Work Experiment'in "minimum viable accommodation / en küçük, güvenli,
+   geri döndürülebilir değişiklik" ilkesi**, matristeki Lean Experimentation
+   satırının önerisiyle (zorunlu tersine-çevrilebilirlik filtresi) birebir
+   örtüşüyor — bağımsız yakınsama, iyi işaret.
+3. **Mechanism Learning (CMOIO)**, Realist Evaluation + Implementation
+   Science satırlarının önerdiği birleşimin tam karşılığı.
+4. **Açık karar gerektiren nokta — iki farklı isimli yöntem var artık:**
+   `is-modeli.md` §10'da onaylanan **NAVIAR 6 adım** (Nærværsbilde →
+   Arbeidsfunksjon → Vilkår → Involvering → Aksjon → Revisjon, marka adıyla
+   birebir eşleşen mnemonic) ile bu turdaki **ADAPT™ 5 adım** aynı anda
+   duruyor. İkisi de sağlam ama **hangisinin kanonik yöntem olacağı,
+   ikisinin nasıl ilişkileneceği (ADAPT bir üst-döngü, NAVIAR-harfleri
+   paydaşa anlatım katmanı mı; yoksa ADAPT NAVIAR'ın yerini mi alıyor)
+   netleşmedi** — yöntem kitabı yazılmadan önce bu karar verilmeli, yoksa
+   iki paralel isimlendirme ortaya çıkar.
+5. **Enter-work/EntryFit sınırı hâlâ geçerli** — bu turda "aynı motor
+   Stay/Return/Enter'ı çözer" denmesi metodolojik olarak doğru (§11'de zaten
+   kabul edildi), ama bu, Enter-work'ün **operasyonel olarak Faz 2+'ta
+   kaldığı** kararını değiştirmiyor — aynı bilimsel motor, farklı ürünleşme
+   zamanlaması. Yöntem kitabı bu ayrımı açıkça korumalı.
