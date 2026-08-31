@@ -439,10 +439,17 @@ inhisari hak doğurmaz.
    *(karar verildi: CONSULTING — bkz. §8)*.
 6. **CARE için iş onayı al**, mimariye resmen ekle, sınıf 44'ü tarama kapsamına
    dahil et.
-7. **Tek tagline seç.** Dolaşımda dört satır var: "Intelligence. Strategy.
-   Impact." / "Clarity in complex systems." / "Insight. Strategy. Impact." /
-   "Organizational Intelligence Systems." M1 önerisi: *Clarity in complex
-   systems.* Ve tagline master lockup'ın **dışında** kalır.
+7. **Tek tagline seç — kapandı (31.08.2026).** Dolaşımda dört satır vardı:
+   "Intelligence. Strategy. Impact." / "Clarity in complex systems." /
+   "Insight. Strategy. Impact." / "Organizational Intelligence Systems."
+   Kullanıcı kararı: **"Clarity in Complex Systems"** (M1'in kendi önerisiyle
+   aynı). Eşlenen ad **düz NAVIAR** — CONSULTING veya başka bir descriptor
+   değil ("CONSULT YAZMIYORUZ" / "SADECE NAVIAR" / "NAVIAR VE SLOGAN
+   YAZIYORUZ", kullanıcının art arda verdiği kararlar). Tagline hâlâ **master
+   lockup dosyasının içine gömülmez** (M1: "Do not place CONSULT, a tagline
+   or a division name permanently inside the master wordmark") — sayfa/uygulama
+   seviyesinde NAVIAR'ın yanında ayrı bir metin öğesi olarak durur, tek SVG
+   içinde birleştirilmez.
 8. **Minimum ölçü ve clear space kurallarını tek tabloda birleştir**
    (M1 ile M2 arasındaki farkı kapat).
 9. **Profesyonel marka temizliği başlat.** 1–8 arası maddeler bunu beklemeden
