@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 752.75 145.0" width="752.75" height="145.0" role="img" aria-label="NAVIAR CARE">
+  <title>NAVIAR CARE</title>
+  <g transform="translate(0 0) scale(0.18)">
+    <path d="M0 0 H150.0 L610.0 626.97 V167.7 L760.0 428.7 V800.0 H610.0 L150.0 173.03 V800.0 H0 Z" fill="#0A1628"/>
+    <path d="M610.0 0 H760.0 V428.7 L610.0 167.7 Z" fill="#D4AF37"/>
+  </g>
+  <path d="M0 0 H15.0 L63.0 83.36 V0 H78.0 V100.0 H63.0 L15.0 16.64 V100.0 H0 Z" transform="translate(195.75 -1.0)" fill="#0A1628" fill-rule="evenodd"/>
+  <path d="M41.0 0.0 L82.0 100.0 L65.79 100.0 L41.0 39.54 L16.21 100.0 L0 100.0 Z M27.69 72.0 H54.31 L60.46 87.0 H21.54 Z" transform="translate(303.75 -1.0)" fill="#0A1628" fill-rule="evenodd"/>
+  <path d="M41.0 100.0 L82.0 0.0 L65.79 0.0 L41.0 60.46 L16.21 0.0 L0 0.0 Z" transform="translate(409.75 -1.0)" fill="#0A1628" fill-rule="evenodd"/>
+  <path d="M0 0 H15.0 V100.0 H0 Z" transform="translate(523.75 -1.0)" fill="#0A1628" fill-rule="evenodd"/>
+  <path d="M41.0 0.0 L82.0 100.0 L65.79 100.0 L41.0 39.54 L16.21 100.0 L0 100.0 Z M27.69 72.0 H54.31 L60.46 87.0 H21.54 Z" transform="translate(572.75 -1.0)" fill="#0A1628" fill-rule="evenodd"/>
+  <path d="M0 0 H44.0 A25.0 25.0 0 0 1 44.0 50.0 L72.0 100.0 H54.0 L16.0 50.0 H15.0 V100.0 H0 Z M15.0 15.0 H44.0 A10.0 10.0 0 0 1 44.0 35.0 H15.0 Z" transform="translate(680.75 -1.0)" fill="#0A1628" fill-rule="evenodd"/>
+  <text x="474.25" y="146.0" font-family="'Poppins','Century Gothic','Futura','Helvetica Neue',Arial,sans-serif" font-size="38.57" font-weight="500" letter-spacing="16.2" fill="#0A1628" text-anchor="middle" textLength="160.46" lengthAdjust="spacing">CARE</text>
+</svg>
