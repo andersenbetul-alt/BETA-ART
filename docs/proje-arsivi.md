@@ -267,6 +267,23 @@ sıfırdan (React kaynağı da kayıptı) yeniden kuruldu:
 - Güncellenmiş artifact aynı URL'e yayınlandı:
   https://claude.ai/code/artifact/4891c4bd-69ae-4884-82eb-50153c1a91b5
 
+**Aynı gece, hemen ardından — mark kararı geri alındı.** Kullanıcı üç
+**gerçek üretilmiş** OG/sosyal görsel paylaştı — Business, Field Notes ve
+"Three Properties" hub sayfaları için, hepsi `beta-art.com` filigranlı.
+Üçü de **6 kollu pusula/diyafram deseni** kullanıyor (halka + altı kısa
+açılı çubuk + kırmızı merkez nokta) — **"Beta Art Brand" artifact'inin
+4-kirişli mark'ı DEĞİL**. Bu, o artifact'in kendi "kanonik" etiketinden
+daha güçlü bir kanıt: üç ayrı gerçek çıktıda fiilen kullanılan mark bu.
+
+Karar geri alındı: `SealMark.tsx` bu oturumun kendi `beta-art-privat.html`/
+`beta-art-hub.html` taslaklarında zaten kullandığı 6 kollu deseni geri
+aldı (aynı path verisi, birebir) — dolayısıyla üç mark adayından biri artık
+**gerçek üretim kanıtıyla doğrulanmış**: halka (r=46, sw=4) + altı kısa
+çubuk (`M50 30 75.81 11.92M67.32 40 84.99 47.86…`) + merkez nokta
+(`#8B1A1A`, r=7). "Beta Art Brand" ve "Beta Art Logos" artifact'leri
+(madde 15 üstü) artık **kullanılmayan keşif** olarak okunmalı, kanonik
+değil. Güncellenmiş artifact yine aynı URL'e yayınlandı.
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
