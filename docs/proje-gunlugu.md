@@ -416,3 +416,28 @@ için artık **dört** çelişen model var (bu oturumun git-subtree taşıması;
 `beta-art-static/` modeli; Design System artifact'inin — güvenilirliği
 şüpheli — `hxi-v6/` modeli). Hiçbir klasör taşınmadı/yeniden
 yapılandırılmadı; yalnızca arşivleme yapıldı. Karar kullanıcıda.
+
+## 31.08.2026 — Beş marka görseli sohbete yapıştırıldı (dosya olarak henüz alınmadı)
+
+Kullanıcı, metinsiz, beş görsel yapıştırdı: aparatür/iris biçimli bir
+sembol (beyaz halka + ışınsal çizgiler + tek kırmızı mühür noktası —
+merkez), ve bu sembolü kullanan üç OG-kart tasarımı — "BETA ART ·
+BUSINESS" (koyu zemin, "Turn your idea into a working digital
+solution."), "BETA ART · FIELD NOTES" (kağıt zemin, "What the work
+actually looks like.") ve markasız bir üçüncüsü, "THREE PROPERTIES ·
+ONE ARCHIVE" başlığıyla ("Made by a human. Verified at the source.").
+Palet daha önce arşivlenen `BETA_ART_MASTER.md`/"BETA ART Business"
+artifact'iyle örtüşüyor (kağıt + neredeyse-siyah + arşiv kırmızısı).
+"Field Notes" adı Project Catalogue'deki J·001'le ("Field Notes — The
+Beta Art Journal") eşleşiyor; "Three Properties" ise `PROJECT-MANIFEST.md`'nin
+üç-klasör modelini destekliyor — 30.08'de bulunan dört çelişen yapısal
+modelden ikisini birbirine bağlayan yeni bir veri noktası.
+
+**Teknik not:** bu görseller sohbete satır içi yapıştırıldı, dosya
+olarak gelmedi; oturumda hiçbir yerde piksel verisine erişim yok
+(diskte arandı, bulunamadı) — bu yüzden `source-review/` kuralına göre
+birebir arşivlenemedi, yalnızca görsel olarak tarif edildi. Kullanıcıdan
+dosya olarak göndermesi istendi. Bu arada aynı görsel DNA'yı (aparatür
+sembolü + OG-kart şablonu, üç varyant) yeniden üretilebilir kodla ifade
+eden bir örnek şablon inşa edildi (bkz. sonraki artifact) — birebir
+kopya değil, tarif edilen tasarımdan türetilmiş bir yorum.
