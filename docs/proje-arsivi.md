@@ -240,6 +240,33 @@ hypoteser for kundesamtaler, ikke endelig prisliste" (rakamlar müşteri
 görüşmesi için hipotez, kesin fiyat listesi değil) — CLAUDE.md'nin "rakamlar
 örnek" ilkesiyle birebir örtüşüyor.
 
+**30.08.2026, gece — "Beta Art Archive" güncellendi, logo çakışması bu
+artifact için çözüldü.** Kullanıcı `@BET ART LOGOLARINI KULLAN` dedi ve
+kardeş bir oturuma (`session_01VJ9qrepAV3P4ZV9fVFxovR`, "Beta art logo
+tasarımları", dal `claude/beta-art-logo-designs-vnxhwn`) işaret etti — o
+oturum tam olarak "Beta Art Logos" ve "Beta Art Brand" artifact'lerini
+üretmiş ve şu an "Herhangi birini güncellememi veya birleştirmemi ister
+misin?" diye kullanıcı girdisi bekliyor (durum: SESSION_STATUS_BUCKET_BLOCKED).
+Bu, üç mark adayından **"Beta Art Brand"**'ı (halka r=44 + 4 kiriş + merkez
+nokta `#8B1515`) kanonik ilan ediyor. Buna göre "Beta Art Archive" artifact'i
+sıfırdan (React kaynağı da kayıptı) yeniden kuruldu:
+- `src/components/SealMark.tsx`'e "Beta Art Brand" artifact'inin gerçek
+  SVG'si birebir kopyalandı (kaynak dosyadan `grep`lendi, elle çizilmedi).
+- Kök sayfaya ek olarak dört yeni sayfa eklendi — hepsi madde 14'teki
+  birebir yapıştırılan metinden: `/categories` (35 kategori, 5 bölüm),
+  FAQ referans belgesi (16 soru, kategori filtreli sekmeler), `/request-a-shoot`
+  (brief formu), sepet sayfası (Norveççe metin korunarak).
+- Plaka `category` (landscape/city/portrait) etiketleri gerçek sayfanın
+  düz metninde görünmüyordu (yalnızca filtre düğmeleri görünüyordu) — bu
+  yüzden statik "Privat" prototipinden (madde 4) yeniden kullanıldı, kod
+  içi yorumla kaynağı işaretlendi; uydurulmadı.
+- `Select`/`Accordion`/`Checkbox`/`Sheet` yerine düz `<select>`/`<details>`/
+  `<input type=checkbox>` kullanıldı — Privat React inşasında (madde 10/11)
+  aynı Parcel sürümünün Radix `@radix-ui/primitive` bundling hatasına daha
+  önce çarpılmıştı, bu bilgiyle önceden kaçınıldı.
+- Güncellenmiş artifact aynı URL'e yayınlandı:
+  https://claude.ai/code/artifact/4891c4bd-69ae-4884-82eb-50153c1a91b5
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
