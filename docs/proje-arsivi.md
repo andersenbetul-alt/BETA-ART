@@ -342,15 +342,36 @@ Exhibitions bölümüne bir "Verification, live." kutusu ve Photographer
 bölümüne bir "✓ Identity verified" rozeti olarak eklendi — ikisi de kodda
 ve görsel olarak gerçek site metninden **açıkça ayrı** işaretli.
 
-**Planlama için not düşüldü, henüz kurulmadı:** kullanıcı bir sanat
-pazaryeri navigasyon örneği paylaştı (Log In/Register, Artworks/Artists/
-Auctions/Galleries/Events/News/Price Database, Buy/Sell — yapısı Artsy.net'e
-çok benziyor) ve "BUNLARI DEGERLENDIR PLANLARKEN" dedi. Bu bir yapım
-talimatı değil, sıradaki aşama için referans: özellikle **hesap/giriş**
-(artık Sell akışı fotoğrafçı hesabı gerektirir) ve **Price Database**
-(sitenin "Price on request" disipliniyle ilginç bir gerilim/tamamlayıcı
-olabilir) akla yatkın adaylar — ama henüz kod olarak kurulmadı, yalnızca
-kayda geçirildi.
+**Aynı gece, hemen ardından — Artsy referansı ikinci kez gelince kuruldu.**
+Kullanıcı aynı sanat pazaryeri navigasyon örneğini (Log In/Register,
+Artworks/Artists/Auctions/Galleries/Events/News/Price Database, Buy/Sell)
+tekrar gönderince bunu "şimdi kur" olarak okudum. İki riskli öğe
+(**Auctions**, **Price Database**) için önce sordum:
+- **Auctions**: kullanıcı "Hayır, atla" dedi — sitenin sabit fiyat/lisans
+  modeliyle ("Price on request", pazarlıkla) çelişiyor, kurulmadı.
+- **Price Database**: kullanıcı "Kategori bazlı fiyat aralığı rehberi"
+  seçti — gerçek satış verisi değil, mevcut 4 lisans katmanının nasıl
+  fiyatlandığını açıklayan bir bilgi sayfası olarak kuruldu.
+
+Kurulan üç yeni sayfa (`/artists`, `/prices`, `/auth`), hepsi nav'a
+eklendi, "profesyonel tasarım" ve "insan psikolojisi" (güven sinyalleri,
+bilişsel yük) talimatlarıyla:
+- **Artists**: doğrulanmış fotoğrafçı dizini — şu an tek kayıt ("Beta Art",
+  ✓ rozetiyle), ölçeklenecek şekilde kurulu; altta "fotoğrafçı olarak
+  katıl" CTA'sı `/sell`'e bağlanıyor.
+- **Prices**: 4 lisans katmanının (Personal/Commercial/Extended/Custom)
+  nasıl fiyatlandığını açıklıyor — "Guide — not a live price list" etiketi
+  ve "neden sabit rakam yok" açıklamasıyla; **hiçbir rakam uydurulmadı**,
+  yalnızca gerçek Personal fiyatı (kr190) ve "Price on request" mantığı
+  yeniden anlatıldı.
+- **Auth**: giriş/kayıt sekmeli önizleme formu (diğer formlar gibi veri
+  göndermiyor) — Sell akışının artık bir hesap kavramı gerektirdiğini
+  yansıtıyor.
+
+**Nav taşma düzeltmesi:** 11 öğeye çıkan üst menü 1400px'te "Log in"
+yazısının satır kırmasına sebep oldu — ekran görüntüsüyle yakalandı,
+mobil menü kesme noktası `lg`'den `xl`'e taşınarak (ve `Industries`
+birincil nav'dan çıkarılıp yalnızca footer'da bırakılarak) düzeltildi.
 
 **Aynı gece, hemen ardından — mark kararı geri alındı.** Kullanıcı üç
 **gerçek üretilmiş** OG/sosyal görsel paylaştı — Business, Field Notes ve
