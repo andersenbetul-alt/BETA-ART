@@ -358,3 +358,9 @@ kayıt şartları) olmadan ürünleşmez. "Work Participation Engineering" /
 "Adaptive Workforce" gibi daha büyük şemsiye kategoriler uzun vadeli vizyon
 notu olarak kalır, V1/V2 marka mimarisine (Lederstøtte · Tilrettelegging ·
 Arbeidsnærvær) şimdi eklenmez.
+
+**Dış literatürle derinleştirme:** `docs/naviar/method-research.md` — Job
+Decomposition'ın akademik karşılığı ("job carving"), Cochrane kanıt tabanının
+duruma göre değiştiği (kas-iskelet güçlü, ruh sağlığı zayıf — Risk Gate'in
+tasarımını doğruluyor), skills-based organizasyon makro trendi (WEF/Deloitte)
+ve IA-avtalen'in 2025-26 bilgi toplama zamanlaması.
