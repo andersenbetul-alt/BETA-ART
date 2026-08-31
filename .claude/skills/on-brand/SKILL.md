@@ -1,161 +1,81 @@
 ---
 name: on-brand
-description: QBLOGG/BETA ART marka kurallarını (renk belirteçleri, tipografi, boşluk, ikon, ve depoda yazılı olan iki içerik kuralı) her üretilen HTML/CSS/JS parçasına ve her yeni metne uygular; off-brand bir kalıp istendiğinde kısa gerekçeyle reddeder ve doğrusunu önerir. Renk/hex, font-size, ikon, buton/kart/form gibi tekrar eden bileşen, ya da yeni bir metin/CTA/hero yazımı söz konusu olduğunda MUTLAKA bu beceriyi kullan — kullanıcı "marka kurallarına uygun mu" ya da "on-brand" demese bile.
+description: Enforces QBLOGG's real, measured brand rules — color tokens, typography scale, spacing/radius, icon system, RTL, and voice/content discipline — on ANY content or UI generated for this repo (HTML/CSS snippets, landing sections, UI components, blog copy, marketing text, ads, social posts). Invoke this BEFORE delivering visual or written output for QBLOGG, even when the user didn't ask for a "brand check" by name — it catches raw hex colors, ad-hoc font sizes, emoji-as-icon, direction-dependent CSS (margin-left/right), hyped or absolute claims, and unverified numbers/sources. Refuses off-brand patterns with a one-line reason plus the on-brand fix, instead of silently shipping them.
 owner: QBLOGG
 ---
 
-# /on-brand — marka tutarlılığı denetçisi
+# On-brand kapısı
 
-Bu beceri yeni kural icat etmez; depoda **zaten yazılı** olan marka
-kurallarını uygular ve ihlal edildiğinde kısa gerekçeyle reddeder. Çelişki
-çıkarsa `CLAUDE.md` → "Değişmez kurallar" (1–8) her zaman kazanır.
+QBLOGG için üretilen her görsel/metin çıktının, depodaki **ölçülmüş** marka
+kurallarına uyup uymadığını denetler. Kural uydurmaz — hepsi şu üç kaynaktan
+gelir, çelişkide bu sıra kazanır:
 
-## Kaynaklar (bu sırayla okunur)
+1. `CLAUDE.md` — Değişmez kurallar (renk, ikon, dil bütünlüğü, sayı disiplini)
+2. `docs/tasarim-sistemi.md` + `docs/figma-tasarim-kurallari.md` — token'lar, bileşen kalıpları, RTL
+3. `.claude/skills/qblogg-blog-yazisi/SKILL.md` — yazı sesi ve kalite kuralları
 
-1. `CLAUDE.md` madde 2, 3, 4, 5, 8 — RTL, i18n metin kuralı, emoji yasağı,
-   renk/tipografi belirteçleri, rakam/ücret dürüstlüğü.
-2. `docs/tasarim-sistemi.md` — belirteç/tipografi/boşluk/ikon/RTL'nin tam,
-   ölçülmüş kaynağı (26.08.2026'da yeniden ölçüldü).
-3. `docs/figma-tasarim-kurallari.md` — aynı kapsamın Figma aktarımına göre
-   özeti; tekrar eden sınıf adları (`.btn`, `.card`, `.plan`, `.section`,
-   `.wrap`, `.tag`, `.field`, `.article-body`, `.table-wrap`) burada listeli.
-
-**Bilinen çakışma:** bu iki belge aynı konuyu (belirteçler, ikon, RTL) ayrı
-ayrı anlatıyor. Bu beceri ikisini birleştirmiyor — biri güncellenirse
-diğerinin de kontrol edilmesi gerekir. Bunu fark ettiğinde kullanıcıya söyle,
-sessizce geçme.
-
-## Kapsam dışı
-
-`brand/naviar/` ve NAVIAR'a referans veren her şey **bu markanın kimliği
-değil** — `naviar-care` adlı ayrı bir projenin üretim/inceleme referansı
-(bkz. `docs/naviar/`). Bu beceri onu enforce etmez, karıştırma.
+Bu beceri sayı/hex ezberlemez, **kuralı** ezberler — tam token listesi ve
+güncel ölçümler her zaman `docs/tasarim-sistemi.md`'de yaşar. Bir token değeri
+gerekiyorsa (örn. "bu hex hangi değişkene karşılık geliyor?") o dosyayı oku;
+buraya kopyalama, kopya iki kaynaklı gerçeği birbirinden kaydırır.
 
 ## Ne zaman devreye girer
 
-- HTML/CSS/JS üretimi ya da düzenlemesi — renk, tipografi, ikon, boşluk,
-  buton/kart/form gibi tekrar eden bir görsel öğe içeriyorsa
-- Yeni metin/kopya yazımı — hero, CTA, rakam/ücret içeren herhangi bir cümle
-- Figma'dan ya da dışarıdan gelen bir tasarımın koda çevrilmesi
-- Açık istek: "marka kurallarına uygun mu", "on-brand mi", "brand check"
+Kullanıcı `/on-brand` yazmasa da devreye gir: bir HTML parçası, CSS kuralı,
+UI bileşeni, blog taslağı, pazarlama metni, sosyal paylaşım veya reklam metni
+**bu marka için** üretilecekse, teslim etmeden önce aşağıdaki listeyi geç.
 
-## Zorunlu ön-kontrol — teslimden önce
+## UI/görsel kontrol listesi
 
-Her üretimden önce şu soruları kendine sor; "hayır" çıkan her madde
-teslim edilmeden düzeltilir:
+Her biri için: bul → reddet (kısa gerekçe) → marka-içi karşılığını öner.
 
-1. Her renk `var(--…)` mi, yoksa ham hex mi?
-2. Aqua (`--brand-2` / `#00D8C2`) metin olarak mı kullanılıyor? (metinde
-   yasak — 1,9:1)
-3. Her yazı boyutu 8 basamaklık ölçekte mi, yoksa ham `rem`/`px` mi?
-4. Yeni bir ikon varsa: 24×24, `fill="none"`, `stroke="currentColor"`,
-   `stroke-width="1.7"` mi? Emoji mi kullanılmış?
-5. Yön bağımlı CSS (`margin-left`, `left`, `padding-right`) mi yazılmış,
-   yoksa mantıksal özellik (`margin-inline-start`, `inset-inline-start`) mi?
-6. Görünen metin `data-i18n` ile sözlükten mi geliyor, yoksa HTML'e sabit mi
-   yazılmış?
-7. Rakam/ücret/istatistik varsa: örnek olarak mı işaretli, yoksa kesin vaat
-   gibi mi sunulmuş?
-8. Tekrar eden bir bileşen (buton, kart, form alanı) için var olan sınıf
-   (`.btn`, `.card`, `.field`...) mu kullanılmış, yoksa yeni ad-hoc bir sınıf
-   mı icat edilmiş?
-
-## 1. Renk belirteçleri
-
-| Belirteç | Ne için | Tuzak |
+| Kontrol | Reddetme sebebi (örnek) | Marka-içi karşılık |
 |---|---|---|
-| `--bg` / `--bg-soft` / `--bg-card` | zeminler | |
-| `--text` / `--text-muted` | metin | |
-| `--border` | çizgiler | `--line` diye bir belirteç **yok** |
-| `--brand` | kimlik rengi (temaya göre döner: açıkta navy, koyuda aqua) | sabit hex sanılmasın |
-| `--brand-2` | yalnızca vurgu (`#00D8C2`) | **metinde asla** — beyaz üzerinde 1,9:1 |
-| `--brand-2-ink` | açık zeminde aqua niyetli metin (`#0a7d72`, 5,0:1) | metin aqua istendiğinde buraya çevir |
-| `--on-brand` / `--logo-ink` / `--brand-soft` / `--danger` | marka üstü metin / logo halkası / hafif vurgu / hata | |
+| Ham hex renk (`#fff`, `color: #082C54`) | "Ham hex kullanılamaz — koyu tema kendiliğinden çalışmaz" | `var(--brand)`, `var(--text)` vb. — tam liste `tasarim-sistemi.md` §1 |
+| Aqua (`--brand-2` / `#00D8C2`) metinde | "Aqua beyaz üzerinde ~1,9:1 — WCAG AA'nın (4,5:1) altında, metinde kullanılamaz" | `var(--brand-2-ink)` |
+| Ham `rem`/`px` yazı boyutu | "Yazı ölçeği yedi basamağa oturur, ham değer tırtıklı hizalama üretir" | `var(--fs-xs)`…`var(--fs-xl)` (başlık `clamp()` ve `em` göreli boyutlar istisna) |
+| Emoji ikon olarak kullanılmış | "Emoji'yi işletim sistemi çizer — üç platformda üç görünüm, marka kontrolü kaybolur" | Satır içi SVG: 24×24, `fill="none"`, `stroke="currentColor"`, `stroke-width="1.7"`, yuvarlak uç/birleşim. İstisna: `→ ↑ ☾ ☀` gibi tek renkli yazı-tipi işaretleri |
+| Yön bağımlı CSS (`margin-left`, `left`, `padding-right`) | "Arapça RTL'de kırılır — yön bağımsız özellik zorunlu" | `margin-inline-start`, `inset-inline-start`, `padding-inline-end`, `text-align: start` |
+| Yeni bileşen türü icat edilmiş (çatı/kütüphane yok) | "Bu repoda bileşen çatısı yok; tekrar eden sınıf kalıpları var" | Var olan kalıba otur: `.btn`(+`--primary/--ghost/--block/--lg`), `.card`, `.plan`(+`--featured`), `.section`(+`--soft`), `.wrap`, `.tag`/`.chip`, `.field`, `.article-body`, `.table-wrap` — tam liste `figma-tasarim-kurallari.md` §2 |
+| Dokunma hedefi 44px altı | "Mobilde dokunma hedefi 44px zorunlu" | Buton/etkileşim alanını 44px'e çıkar |
+| Metin doğrudan HTML'e gömülü | "Görünen metin sözlükten gelir, tek dilde gömmek en sık yapılan hata" | `data-i18n="anahtar"` + anahtarı 10 dilde `i18n.js`'e ekle |
+| Yeni dış servis/CDN/font bağlantısı | "Sıfır bağımlılık kuralı + CSP `connect-src` sessizce engeller" | Vendor'la veya reddet; gerekiyorsa `vercel.json` CSP güncellemesini de iste |
 
-**Reddet:** ham hex (`#082C54`, `#00D8C2` doğrudan yazımı), aquayı metin
-rengi olarak kullanmak, yeni bir ara ton icat etmek.
+## Ses/içerik kontrol listesi
 
-## 2. Tipografi
+| Kontrol | Reddetme sebebi (örnek) | Marka-içi karşılık |
+|---|---|---|
+| Doğrulanmamış istatistik, vaka, kurum şartı | "Uydurma yasak — bu iddianın kaynağı yok" | Ya kaynak bul (`src` alanına `u` ile), ya da "adres doğrulanmadı" notuyla (`nu`) yaz, ya da iddiayı çıkar |
+| Kesin/abartılı vaat ("garantili", "kesinlikle 3 kat büyür") | "Rakamlar örnek olarak işaretlenir; kesin vaat bu işte en pahalı hata" | "örnek/tipik" diliyle yaz, aralık ver, varsayımı işaretle |
+| Genel/soyut iddia beş sıfatla süslenmiş | "Özgül olan geneli yener — somut örnek daha güçlü" | Tek gerçek örneğe/rakama indir |
+| Blog yazısı `orig` (özgün katkı) olmadan | "Özgün katkısı olmayan yazı `gorunurluk.mjs` kapısından geçmez, yayınlanamaz" | Kendi veri/test/tablo ekle veya kapsamı daralt |
+| Blog yazısı 3'ten az kaynakla (para/kariyer konusu) | "Para/kariyer konusunda üç kaynak kural, öneri değil" | Kaynak ekle veya konuyu değiştir |
+| Dolgu cümle, boğaz temizleme girişi | "Değerle açılmıyor — okur üç paragraf bekletiliyor" | Kancayla aç, getiriyi baştan söyle |
 
-Sekiz basamak: `--fs-2xs .76rem · --fs-xs .8rem · --fs-sm .85rem ·
---fs-md .92rem · --fs-base .95rem · --fs-lg 1rem · --fs-xl 1.12rem` +
-`--fs-logo` (yalnızca logo). İstisna: başlıkların `clamp()` değerleri ve
-`em` göreli boyutlar (ilk harf, `code`).
+Tam yöntem (iskelet, optimize etme, düzeltme adımları) blog yazısı içinse
+`qblogg-blog-yazisi` becerisine devret — bu liste onun da uyduğu ortak zemin.
 
-Yazı tipi: Inter, yerel sunucudan (`assets/fonts/`). **Reddet:** ham `rem`/
-`px` punto, Google Fonts ya da başka bir CDN font bağlantısı (GDPR gerekçesi
-`assets/fonts/inter.css` başında kayıtlı).
+## Nasıl reddet
 
-## 3. Boşluk / düzen
+Kısa, tek cümle, hangi kural + neden + karşılığı. Uzun ders verme, akışı
+durdurma:
 
-- `--radius: 16px`, `--radius-sm: 10px`, `--maxw: 1140px`
-- Kırılma noktaları: `1180px · 860px · 620px · 360px` (hepsi `max-width`) —
-  yeni bir kırılma noktası açmadan önce bu dördüne oturmayı dene
-- Dokunma hedefi **44px** minimum (`.share-btn` bu yüzden 44px)
-- **RTL zorunlu:** `margin-left`→`margin-inline-start`, `left`→
-  `inset-inline-start`, `padding-right`→`padding-inline-end`,
-  `text-align:left`→`text-align:start`. Yeni bir bölüm eklenince Arapça
-  görünümü kontrol edilir.
-- Tekrar eden bileşen için var olan sınıf deseni kullanılır (§ Kaynaklar
-  madde 3'teki tablo); yeni ad-hoc sınıf icat etmeden önce main.css'te
-  aynısı olup olmadığına bakılır.
+> Reddedildi: `color: #00D8C2` metin rengi olarak kullanılmış — beyaz üzerinde
+> ~1,9:1 kontrast, WCAG AA'nın altında. `var(--brand-2-ink)` ile değiştirdim.
 
-## 4. İkon sistemi
+Reddetme, teslimatı durdurmaz — ihlali marka-içi karşılığıyla değiştirip
+teslim et. Yalnızca karşılığı belirsizse (örn. hangi token'a yuvarlanacağı
+net değilse) kullanıcıya sor.
 
-**Emoji yasak** — işletim sistemi çizer, üç platformda üç farklı görünüm
-verir. Her ikon satır içi SVG: 24×24 ızgara, `fill="none"`,
-`stroke="currentColor"`, `stroke-width="1.7"`, yuvarlak uç/birleşim.
-Yazı ikonları `assets/js/app.js → ICONS` kaydında adla durur; kayıtta
-olmayan yeni bir ikon gerekiyorsa aynı çizim kuralına uyularak kayda
-eklenir, HTML'e rastgele bir SVG yapıştırılmaz.
+## Teslimden önce son geçiş
 
-**İstisna:** `→ ↑ ☾ ☀` — tek renkli, yazı tipiyle çizilen metin işaretleri
-(ok, tema düğmesi). Bunlar emoji değil, ikon kuralının dışında.
+Çıktıyı vermeden önce yukarıdaki iki tabloyu bir kez daha, bu sefer kendi
+ürettiğin metne/koda karşı çalıştır. Bir skill kuralları yazıp onları
+uygulamayı unutmak, hiç yazmamaktan daha kötü bir izlenim bırakır — bu son
+geçiş 30 saniyelik, atlanmaması gereken bir adım.
 
-## 5. İçerik / ses — burada dürüst olalım
+## Kapsam dışı
 
-**Depoda resmi bir "marka sesi" (tone of voice) belgesi yok.** Ton, cümle
-uzunluğu, resmi/samimi tercih hiçbir yerde yazılı değil. Bu beceri var
-olmayan bir ses uydurmadan yalnızca **yazılı olan iki kuralı** uygular:
-
-1. **Rakam/ücret dürüstlüğü** (`CLAUDE.md` madde 8) — paket fiyatı, blog
-   yazısındaki ücret/istatistik bilgisi araştırma/örnek veridir; kesin vaat
-   gibi sunulmaz. Abartılı iddia bu işte en pahalı hata sayılır
-   (`docs/proje-gunlugu.md`).
-2. **Metin sözlükten gelir** (`CLAUDE.md` madde 1, 3) — görünen her metin
-   `data-i18n` ile `i18n.js`'ten gelir, on dile birden eklenir; HTML'deki
-   Türkçe yalnızca JS kapalıyken görünen yedektir.
-
-Bunun ötesinde bir "marka sesi" isteniyorsa (resmi mi samimi mi, ikinci
-tekil mi çoğul hitap mı), bu beceri karar vermez — kullanıcıya sorulur ve
-gerçek bir ton belgesi yoksa bunun eksik olduğu söylenir.
-
-## Reddetme biçimi
-
-Off-brand bir kalıp istendiğinde uzun açıklama yapma; şu üç parçayı ver:
-
-```
-Marka kuralı ihlali: [kural, kaynağıyla]
-Neden: [bir cümle — ölçü/gerekçe varsa rakamla]
-Düzeltme: [somut alternatif]
-```
-
-Örnek:
-
-```
-Marka kuralı ihlali: buton metni aqua (#00D8C2) ile isteniyor.
-Neden: --brand-2 beyaz üzerinde 1,9:1 — WCAG AA'nın (4,5:1) çok altında.
-Düzeltme: metin için var(--brand-2-ink) kullan (5,0:1); #00D8C2 yalnızca
-vurgu/dekor olarak kalabilir, metin değil.
-```
-
-Reddetme, işi durdurmak için değil — aynı istekte kalıp doğru belirteçle
-üretmek için. Kullanıcı bilerek kuralı aşmak isterse (örn. tek seferlik bir
-deney sayfası) bunu açıkça söylediği an uygula, ama önce ihlali adlandır.
-
-## Bilinen sınırlar
-
-- İçerik/ses bölümü sığ — yukarıda söylendiği gibi gerçek bir ton belgesi
-  yok. Biri yazılırsa bu beceriye eklenir.
-- `docs/tasarim-sistemi.md` ile `docs/figma-tasarim-kurallari.md` örtüşüyor;
-  bu beceri ikisini birleştirmiyor, yalnızca ikisinden de besleniyor.
+- Marka varlığı üretimi (logo/ikon dosyaları) — `scripts/marka-uret.py`'nin işi, elle SVG/PNG eklenmez
+- Tescil/hukuk kararları — `docs/marka-tescili.md`
+- Tam blog yazısı üretim yöntemi — `qblogg-blog-yazisi` becerisi
