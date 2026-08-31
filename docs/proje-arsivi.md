@@ -301,6 +301,57 @@ kayıp olduğu için içerik/yapıya dokunulmadı — yalnızca Google Fonts
   **kasıtlı olarak çevrilmedi** — gerçek `beta-art.com` bunları İngilizce
   sayfasında bile Norveççe gösteriyor, bu bir çeviri eksikliği değil.
 
+**Aynı gece — "Beta Art Archive" pazaryerine dönüştü (dört turda netleşen talep):**
+1. "BU SAYFADA INSANLAR RESIMLERINI YUKLEYIP SATABILIRLER" — ilk hâliyle
+   çok-katkıcılı bir pazaryeri gibi okunuyor, gerçek `beta-art.com`'un
+   "no anonymous uploads" (madde 14) ifadesiyle çelişiyor gibi görünmüştü.
+2. "VERIZE EDEBILIRLER" — çelişki çözüldü: yükleyenler **doğrulamadan**
+   geçiyor (aynı 3 yöntem), "anonim değil" ile "çoklu fotoğrafçı" birbirini
+   dışlamıyor.
+3. "BEN KENDI FOTOGRAFLARINI KENDI SAYFAMDA SATACAGIM" — kullanıcı kendi
+   fotoğraflarını da aynı akıştan satacağını netleştirdi.
+4. "PROFESYONEL FOTOGRAFCILARDA SATABILIR ONLARIN SATISLARINDAN KOMISYON
+   ALMIS OLUYORUZ YANI" — son hâl: hem sahibi hem dışarıdan profesyonel
+   fotoğrafçılar satabilir, Beta Art her satıştan komisyon alır. Komisyon
+   **yüzdesi uydurulmadı** — sitenin kendi "Price on request" disipliniyle
+   tutarlı olarak "şartlar doğrudan sizinle belirlenir" deniyor.
+
+Kurulan: `/sell` sayfası (nav'a "Sell" eklendi) — Ad/E-posta/Portfolyo
+bağlantısı/Kamera-ekipman/Mesaj formu, 3 adımlı süreç açıklaması (gönder →
+doğrulan → yayına gir ve öde), "Yeni program" notu. Her plakaya
+`photographer` alanı eklendi (mevcut 12 plaka için gerçek site isim
+vermediğinden marka adı "Beta Art" kullanıldı, kişisel isim uydurulmadı) —
+koleksiyon kartlarında artık görünür.
+
+**Aynı gece — plaka detay sayfası: "provenance zaman çizelgesi"**
+Kullanıcı: "Collection — statik ızgara değil, her eserin sayfası bir
+'provenance zaman çizelgesi' gösteriyor: kaynak → çekim bağlamı →
+doğrulama adımı → sergi." Kurulan: her plaka artık tıklanabilir, kendi
+sayfasında 4 aşamalı bir zaman çizelgesi gösteriyor — **hiçbiri uydurulmadı**:
+kaynak/çekim bağlamı zaten plaka verisinde vardı; doğrulama durumu plakanın
+`status`'üne göre (available→3 yöntem tamam, pending→yalnızca ilk adım);
+sergi bağlantısı gerçek: "Volume I — Opening Exhibition" açıkça "Twelve
+original prints" diyor, yani 12 plakanın hepsi doğrulanmış olarak o
+sergiye bağlı — bu çıkarım değil, doğrudan kaynak metinden.
+
+**Aynı gece — iki küçük, açıkça yeni ek:** kullanıcının "Events" (doğrulama
+anının sahnede canlı gösterilmesi — "ritüel, kağıt iş değil") ve
+"Photographer" (fotoğrafçının kimliğinin de doğrulanması — 2026'da
+yapay-zekâ sahte kimliklerine karşı güncel bir konumlanma) notları,
+Exhibitions bölümüne bir "Verification, live." kutusu ve Photographer
+bölümüne bir "✓ Identity verified" rozeti olarak eklendi — ikisi de kodda
+ve görsel olarak gerçek site metninden **açıkça ayrı** işaretli.
+
+**Planlama için not düşüldü, henüz kurulmadı:** kullanıcı bir sanat
+pazaryeri navigasyon örneği paylaştı (Log In/Register, Artworks/Artists/
+Auctions/Galleries/Events/News/Price Database, Buy/Sell — yapısı Artsy.net'e
+çok benziyor) ve "BUNLARI DEGERLENDIR PLANLARKEN" dedi. Bu bir yapım
+talimatı değil, sıradaki aşama için referans: özellikle **hesap/giriş**
+(artık Sell akışı fotoğrafçı hesabı gerektirir) ve **Price Database**
+(sitenin "Price on request" disipliniyle ilginç bir gerilim/tamamlayıcı
+olabilir) akla yatkın adaylar — ama henüz kod olarak kurulmadı, yalnızca
+kayda geçirildi.
+
 **Aynı gece, hemen ardından — mark kararı geri alındı.** Kullanıcı üç
 **gerçek üretilmiş** OG/sosyal görsel paylaştı — Business, Field Notes ve
 "Three Properties" hub sayfaları için, hepsi `beta-art.com` filigranlı.
