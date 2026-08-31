@@ -5,6 +5,26 @@ Bu belge **bu depo dışındaki** girişimlerin envanteridir. Amaç: hangi
 **Bu depo yalnızca QBLOGG'u geliştirir** — buradaki diğer girişimler bilgi
 amaçlıdır, bu depoda kodları değişmez, dosyaları taşınmaz.
 
+> **⚠ KRİTİK GÜNCELLEME (30.08.2026, gece) — bu kural `main`'de artık
+> doğru değil, bu dalda hâlâ geçerli.** `origin/main`'i inceledim:
+> `f4a95c4 "monorepo: tum projeler BETA-ART'ta birlestiriliyor"` commit'i
+> (bugün, 15:09 UTC) ile `main` artık **gerçek bir monorepo** —
+> kökte QBLOGG'un yanında `beta-art/`, `naviar/`, `agents/` dizinleri ve
+> bir `MONOREPO.md` var. Bu depoda (`andersenbetul-alt/BETA-ART`) toplam
+> **~45 dal** var, çoğu tamamen alakasız girişimler için (naviar-\*,
+> cobban\*, coddan\*, hxi-\*…) — yani bu depo birden fazla paralel Claude
+> Code oturumunun ortak çalışma alanı. **Benim dalım
+> (`claude/beta-art-business-ckufpl`) main'den 25.08'de ayrıldı — bu
+> monorepo birleşmesinden ÖNCE.** Şu an main'e göre 6 commit ileri, 21
+> commit geride. `main`'in kendi `CLAUDE.md`/`README.md`'si hâlâ eski
+> QBLOGG-only metnini taşıyor — yani dizin yapısı değişti ama belge
+> güncellenmedi (main'in kendi belge borcu, benim düzeltebileceğim bir
+> şey değil, kullanıcıya bildirildi). Detay ve kaynak alıntılar aşağıda
+> "Ana kaynak bulundu" bölümünde. **Sonraki oturum bu çelişkiyi
+> görmezden gelmesin:** bu dosyanın geri kalanı hâlâ "ayrı girişim, bu
+> depoda geliştirilmez" varsayımıyla yazıldı, ama main artık aynı fikirde
+> değil.
+
 Veriler 26.08.2026'da Vercel MCP (`list_teams`, `list_projects`,
 `list_deployments`) ve Lovable MCP (`list_workspaces`, `list_projects`)
 araçlarıyla **doğrudan sorgulanarak** ölçüldü — uydurma yok. Erişilemeyen
@@ -49,7 +69,69 @@ artık **geçersiz/referans** — Business için bundan sonra üretilecek her
 - **Not:** Depo adı "beta-art" tarihsel bir kalıntı (bkz. CLAUDE.md
   "Depo adı hakkında"). "Beta Art" markasıyla ilişkili değil.
 
-## Beta Art — üç mülklü sistem (kesinleşti, 30.08.2026)
+## Beta Art — ana kaynak bulundu: `main`'in kendi `beta-art/BETA_ART_MASTER.md`'si (30.08.2026, gece)
+
+Bu oturum boyunca (yukarıdaki bölüm) düzinelerce yüklenen dosyayı çapraz
+okuyarak Beta Art konseptini yeniden inşa etmeye çalıştık. Sonra
+`origin/main`'in artık monorepo olduğunu keşfettim ve orada
+**`beta-art/BETA_ART_MASTER.md`** + **`beta-art/BETA_ART_SINGLE_SITE_ARCHITECTURE.md`**
+diye iki belge buldum — bunlar tam olarak aradığımız "tek doğru kaynak."
+Bizim parça parça çıkardığımız her şeyi doğruluyorlar, bire bir:
+
+- **"Single website rule":** *"BETA ART is one brand, one website and one
+  evolving concept... Do not create another Beta Art website when a new
+  idea appears."* Üretim kod tabanı: `andersenbetul-alt/beta-art-archive`
+  (ayrı bir repo — main'deki `beta-art/` muhtemelen bunun bir kopyası/
+  vendor'ı, birebir aynı mı doğrulanmadı), production dalı `main`, hedef
+  Vercel.
+- **Business, tek sitenin bir bölümü olarak construction-first —
+  Dual reconciliation kararımızı birebir doğruluyor:** *"Aug 25, 2026
+  `BAB01_035 · BETA ART BUSINESS — MASTER BUSINESS MODEL v1.0` remains
+  the highest-current Business decision set."* Norveç-öncelikli, inşaat
+  odaklı: *"Dokumentasjon som overlever prosjektet."* Ticari ilke:
+  *"Retrieval, not storage."* Doğrulama kapısı: *"Deliver three paying
+  archive customers semi-manually before building a large software
+  platform."*
+- **Site mimarisi (9 bölüm, tek sayfa/site, ayrı domain'ler değil):**
+  01 Hero (iki ana yolculuk: Archive/Photography ve For Business),
+  02 What Beta Art protects, 03 Archive/Photography (`beta-art-v3`'ün
+  müze-standardı görsel dilini koru, eski ticari varsayımlarını atma),
+  04 For Business (tam olarak bizim yayınladığımız içerik: "Vurder ett
+  avsluttet prosjekt" / "Book 20 minutter"), 05 How it works (**Source/
+  original → Metadata → Verification/Exception → Rights → Retrieval →
+  Retention → Export/Exit** — bizim "Source→Context→Verify→Rights→
+  Retrieve→Export" zincirimizle neredeyse birebir), 06 Beta Art Verified,
+  07 Assignments/Commissions, 08 Rights & AI (AI training varsayılan
+  olarak verilmez — canlı sitenin SSS'siyle birebir), 09 Series/Editorial
+  (Work, Craft, Land and Light, The Table, Rooms — BAP-01 için zaten
+  kaydettiğimiz seri isimleriyle birebir aynı).
+- **Kaynak değerlendirmesi** (`SINGLE_SITE_ARCHITECTURE.md`), bizim de
+  bağımsız olarak vardığımız sonuçları teyit ediyor: GoDaddy Airo =
+  "BASE EXPERIENCE" ama "authenticated Airo builder itself is not a
+  production source-of-truth"; `beta-art-v3.html` = "STRONG VISUAL
+  REFERENCE" ama "legacy pricing/payment claims, not aligned with
+  current Business validation direction"; `beta-art-master-complete.html`
+  = "BEST CONNECTED PRODUCT MODEL" ama "too broad for immediate
+  commercial validation... risks becoming a platform before demand is
+  proven." Yani bizim "hariç tutulan eski sürüm" tespitlerimiz doğruydu.
+- **`main`'deki `beta-art/README.md`** (Lovable projesi, `lovable.dev/
+  projects/9b7b3abe-43fc-4867-9f79-b1d22fb1a80c`) — build-prompt metni,
+  kullanıcının bu oturuma yapıştırdığı **canlı `beta-art.com` ana sayfa
+  içeriğiyle** (12 levha adı, "from kr 190", lisans katmanları, nav
+  öğeleri) **birebir eşleşiyor.** Yani BAP-01 Private'ın gerçek kaynağı
+  artık kesin: bu Lovable projesi, `main`'deki `beta-art/` altında.
+  `docs/girisimler.md`'nin daha önce "muhtemelen `human-lens-archive`"
+  dediği eşleştirme büyük ihtimalle doğruydu, artık daha güçlü kanıtla.
+
+**Ne hâlâ doğrulanmadı:** `andersenbetul-alt/beta-art-archive` (ayrı repo)
+ile main'deki `beta-art/`'ın aynı şey olup olmadığı; `project-hxi`
+Vercel takımındaki dört projenin (`beta-art`, `beta-art-business`,
+`beta-art-archive`, `beta-art-industry-archive`) bu monorepo yapısıyla
+tam ilişkisi. Bu oturum `main`'e commit atmadı, yalnızca `origin/main`'i
+salt-okunur inceledi (`git fetch` + `git show`) — kendi dalıma hiçbir
+şey birleştirilmedi.
+
+## Beta Art — üç mülklü sistem (kesinleşti, 30.08.2026) — main öncesi tahlil, aşağıda tarihsel kayıt olarak duruyor
 
 Kullanıcı bu depoya Beta Art'ın kendi resmi proje belgelerini yükledi:
 `PROJECTMANIFEST.md`, `BETAARTROUTEMAP.md`, `BETAARTPROJECTCODES.md`,
