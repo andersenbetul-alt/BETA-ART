@@ -1,7 +1,10 @@
 # NAVIAR — iş modeli değerlendirmesi (bireysel + kamu sektörü segmenti)
 
-**Durum: TASLAK — segment ve kapsam kararı kullanıcıda (bkz. §4).**
-Tarih: 25.08.2026. İşaretler: [V] doğrulanmış · [H] hipotez · [D] dış iddia.
+**Durum: Segment ve kapsam kararı kapandı (bkz. §9); yöntem çerçevesi
+NAVIAR Method v0.1 olarak onaylandı (bkz. §10). Kalan açık kalem: descriptor/
+adlandırma ve marka-hukuk teyidi.**
+Tarih: 25.08.2026, güncelleme 30.08.2026. İşaretler: [V] doğrulanmış ·
+[H] hipotez · [D] dış iddia.
 
 ## 1. Kullanıcının ilettiği parçalar (aynen)
 
@@ -233,3 +236,72 @@ tasarım/kod üretimi öncesi kalan tek adım, bu hizmet hattının CONSULTING
 descriptor'ı altında nasıl adlandırılıp sunulacağına karar vermek (bkz. §3'teki
 Nice sınıfı notu, muhtemelen 35/41 — kurumsal danışmanlık/eğitim, kesin sınıf
 hukuk teyidi gerektirir).
+
+## 10. NAVIAR Method v0.1 — onaylandı (30.08.2026)
+
+Kullanıcının ilettiği tam çerçeve, kısaltılmadan: **NAVIAR = 6 adımlı yöntem
+× 4 hizmet yolu × 4 değerlendirme merceği × risk kapısı.**
+
+**6 adım (NAVIAR harfleriyle birebir eşleşiyor — kasıtlı, iyi bir mnemonic):**
+N Nærværsbilde (durum haritası) → A Arbeidsfunksjon (işlev profili) →
+V Vilkår/Barrierer (engel-kaynak haritası) → I Involvering (rol/izin planı) →
+A Aksjon (en küçük güvenli sonraki adım) → R Revisjon (değerlendirme/
+yönlendirme). Ana prensip: her durumda "en küçük güvenli ve ölçülebilir
+sonraki adım" seçilir.
+
+**4 hizmet yolu:** Prevent (önleme) · Follow (düzenli takip) · Resolve
+(uzmana yönlendirme) · Return (işe dönüş/görev değişikliği). 6 adım çalışma
+motoru, 4 yol satılabilir paket.
+
+**4 değerlendirme merceği:** kişi/kapasite · görev/iş yükü/ortam · yönetici/
+ekip · kurum/sistem. Amaç: "sorun çalışanda" indirgemesinden kaçınmak.
+
+**NAVIAR Risk Gate (Mandat–Risk–Yönlendirme Kapısı):** Yeşil (NAVIAR içinde:
+görev düzenleme, yönetici desteği, işe dönüş planı, iç yönlendirme) · Sarı
+(uzman desteği: süregelen devamsızlık, çözülmeyen bariyer, ekip çatışması,
+çoklu kurum koordinasyonu) · Kırmızı (NAVIAR durur, yönlendirir: tıbbi
+teşhis/tedavi, resmi sosyal yardım kararı, işten çıkarma/disiplin, taciz/
+ihbar/soruşturma, otomatik sağlık/devamsızlık risk puanı).
+
+**Veri/hukuk sınırları:** sağlık teşhisi toplanmaz; yalnız işlev/görev/ihtiyaç
+bilgisi; dört ayrı alan — `Employer Private`, `Employee Private`,
+`Shared Workspace`, `Expert Confidential`; çalışan bilgisi işverene otomatik
+aktarılmaz; AI yalnız özetleme/sınıflandırma/seçenek sunar, nihai kararı insan
+verir; veri minimizasyonu ve DPIA baştan tasarıma alınır. Kaynak (kullanıcı
+tarafından verildi, **bu ortamda doğrulanmadı**, aynı ihtiyat kaydı §8'deki
+gibi geçerli): Arbeidstilsynet —
+https://www.arbeidstilsynet.no/arbeidstid-og-organisering/tilrettelegging/oppfolging-av-sykmeldte/
+· Datatilsynet (§7'de zaten kayıtlı olan aynı sayfa).
+
+**Ticari model:** saat değil yöntem/standart satışı — Scan (durum analizi) ·
+Implement (uygulama) · Academy (eğitim) · Review (periyodik ölçüm) · Partner
+License (ileride, danışmanlık şirketlerine/iş sağlığı ortaklarına lisans).
+
+### Değerlendirme — onay, üç kayıtla birlikte
+
+**Onaylıyorum, üç kayıtla:**
+
+1. **Tutarlılık kontrolü [V]:** Bu çerçeve §9'daki karara sadık kalıyor —
+   tamamen kurum/işveren merkezli (B2B/B2G), vatandaşa doğrudan NAV/belediye
+   süreç rehberliği yok. Risk Gate'in kırmızı maddesi ("sosyal yardım/ödenek
+   hakkı hakkında resmi karar") bunu açıkça dışarıda tutuyor — iyi, sızma
+   olmamış.
+2. **v0.1 için kapsam geniş [H]:** 6×4×4×kapı, kavramsal çerçeve olarak
+   sağlam ama ilk pilot müşteri için muhtemelen fazla parçalı. Önerim: tam
+   yöntem kitabı yazılırken **Follow + Return** yollarına ve **Scan +
+   Implement** paketlerine daralt (Prevent/Academy/Review/Partner License
+   ikinci dalga) — CLAUDE.md'nin "önce sadelik" ilkesi kod için yazılmış
+   olsa da aynı disiplin burada da ilk sürümü satılabilir tutar.
+3. **Marka/hukuk teyidi hâlâ açık [D]:** Kullanıcı zaten "NAVIAR Method™
+   çalışma adı, marka ve sözleşme uygunluğu ayrıca kontrol edilmeli" diye not
+   düşmüş — bunu aynen destekliyorum. `NAVIAR-LOGO-KARAR.md`'nin governance
+   sırası (önce iş onayı/hukuk, sonra üretim) ve `brand/naviar/README.md`
+   §5'teki "profesyonel marka temizliği yapılmadan tescil/rollout yapılamaz"
+   maddesi burada da geçerli — "Method" eki ayrı bir marka unsuru, ayrı
+   taranmalı.
+
+Onay kapsamı: **kavramsal çerçeve** (yöntem mantığı, risk kapısı, veri
+ayrımı, ticari model). Tam yöntem kitabı (roller, formlar, görüşme akışları,
+karar ağacı, ölçüm sistemi) için — istenen sonraki adım — yeşil ışık
+verilmiştir; kapsam daraltma önerisi (madde 2) yöntem kitabı yazılırken
+dikkate alınmalı, engel değildir.
