@@ -323,3 +323,14 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+## 31.08.2026 — AUTOPROMPT sistemi kuruldu; ilk günlük denetim
+
+AUTOPROMPT proje yönetim sistemi ilk kez uygulandı. Tüm kalite
+kapıları yeşil (8/8 check · 13/13 güvenlik · 10/10 görünürlük).
+`docs/autoprompt/P01_QBLOGG/` altında dört belge oluşturuldu:
+PROJECT-INDEX, RISK-REGISTER, QUALITY-GATE, TRANSLATION-GLOSSARY ve
+ilk günlük rapor (06_LAUNCH/2026-08-31). Kritik açık: bülten endpoint
+`tatil` kullanıcısını işaret ediyor (`qblogg` olmalı), brief form
+endpoint boş (brief başvuruları kaybolabilir), qblogg.com DNS sahiplik
+doğrulaması bekleniyor. Eylül Norveç bütçe sezonu — Formspree + LinkedIn
+bu hafta çözülmeli.
