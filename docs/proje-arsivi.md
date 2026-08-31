@@ -493,6 +493,20 @@ zaten kullandığı aynı slot, Beta Art'ın kendi biyografisiyle aynı desen.
 `artistsJoinBody` da "kendi cümlelerinizle" notunu almak üzere 8 dilde
 güncellendi.
 
+**31.08.2026 — Nav/footer gerçek kök sayfayla yeniden karşılaştırıldı.**
+Kullanıcı `beta-art.com` kök sayfasının header nav + footer'ının güncel
+metnini tekrar birebir yapıştırdı ("GUNCELLE WEB SAYFASINI"). Karşılaştırma
+iki fark buldu: (1) gerçek header nav'da **Industries** ve **Contact**
+(→ `/request-a-shoot`) var, bizim primary nav'da yoktu (yalnızca footer'da
+Industries vardı) — ikisi de eklendi (Contact, `request-a-shoot` sayfasına
+yönlendiriyor, gerçek sitenin kendi yönlendirmesiyle aynı). (2) gerçek
+footer'ın Archive sütununda **Events yok** (header nav'da var, footer'da
+yok) — bizim footer'ımızdan Events kaldırıldı, header'da kaldı. Hero
+tagline (`footerTagline`) ve `/request-a-shoot` form alanları (Name/Email/
+Company/Project type/Location/Preferred date/Budget/Brief) zaten birebir
+eşleşiyordu, değişmedi. Kendi eklerimiz (Artists/Prices/Sell/Feedback)
+sıralı listelerin sonuna eklenmiş durumda, kaynaklı öğelerle karışmıyor.
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
