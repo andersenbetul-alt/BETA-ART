@@ -364,3 +364,59 @@ Decomposition'ın akademik karşılığı ("job carving"), Cochrane kanıt taban
 duruma göre değiştiği (kas-iskelet güçlü, ruh sağlığı zayıf — Risk Gate'in
 tasarımını doğruluyor), skills-based organizasyon makro trendi (WEF/Deloitte)
 ve IA-avtalen'in 2025-26 bilgi toplama zamanlaması.
+
+## 12. Tek uzmanlık alanı kararı — Lederstøtte (31.08.2026)
+
+Kullanıcı: "TEK BİR KONU TEK UZMANLIK ALANI." Üç hizmetin (Lederstøtte/
+Tilrettelegging/Arbeidsnærvær) eşit ağırlıkta sunulması yerine, ilk gün
+için **tek bir odak** seçildi — kendi daha önce verdiğin risk/ticari
+potansiyel/farklılaşma değerlendirmesinden sistematik eleme ile:
+
+| Hizmet | Risk | Ticari potansiyel | Farklılaşma |
+|---|---|---|---|
+| **Lederstøtte** | **2/10 (en düşük)** | **10/10 (en yüksek)** | 8/10 |
+| Arbeidsnærvær Sprint | 1,5/10 | 9,5/10 | 9/10 |
+| Tilrettelegging/WorkFit | 3/10 | 9/10 | **10/10 (en yüksek)** |
+
+Sprint bir proje/süreç (90 gün, çok adımlı) — "tek konu" değil. Tilrettelegging/
+WorkFit en yüksek farklılaşmayı taşıyor ama iş tasarımı uzmanlığı gerektirdiği
+için ilk gün için en iddialısı. **Lederstøtte** — "yönetici zor bir vakada
+sıkıştığında sparring/destek" — gerçekten tek bir ihtiyaç, tek bir beceri,
+tek bir satış cümlesi; aynı zamanda en düşük risk + en yüksek ticari
+potansiyel kombinasyonu.
+
+**Karar: Lederstøtte, NAVIAR'ın tek uzmanlık alanı/başlangıç teklifi.**
+Sprint ve Tilrettelegging **arşive kalkmadı** — yol haritasında sonraki
+doğal genişleme adımları olarak duruyor, ama artık eşit ağırlıklı üç teklif
+değil, tek teklif + iki gelecek adımı. Site buna göre yeniden kuruldu
+(`brand/naviar/web/index.html`).
+
+## 13. Dış kaynaklı stratejik girdi — arşivlendi, henüz karar değil (31.08.2026)
+
+Kullanıcı bu oturumda, başka bir yerde (kaynağı bu depoda doğrulanamayan bir
+sohbet/araç) yürütülmüş çok uzun bir strateji değerlendirmesini yapıştırdı:
+Hormozi "value equation"/teklif mimarisi çerçevesi, risk bazlı hizmet eleme
+tablosu, ICP tanımı (50-500 çalışanlı Norveç işletmeleri, insan-yoğun
+sektörler), bir huni/mimari önerisi (**Score (ücretsiz) → QuickScan →
+Arbeidsnærvær Sprint → WorkFit → Lederstøtte (recurring) → Arbeidsnærvær
+Partner → uzun vadede Arbeidsnærvær OS**), fiyat hipotezleri ve bir
+"Arbeidsnærværspartner" kategori önerisi.
+
+**Bu materyal §12'deki onaylı kararı geçersiz kılmıyor.** Bu materyalin
+Lederstøtte'yi tek başlangıç odağı değil "Support/recurring" basamağı olarak
+konumlandırdığı açıkça soruldu (bkz. bu oturumun AskUserQuestion kaydı);
+kullanıcı **"Lederstøtte kalsın (önceki onay)"** yanıtını verdi. Yani:
+
+- **Değişmeyen:** Lederstøtte, sitenin ve §12'nin tek başlangıç teklifi
+  olarak kalıyor. Site (`brand/naviar/web/index.html`) buna göredir.
+- **Kaydedilen ama entegre edilmeyen:** Yukarıdaki huni/kategori/fiyat
+  materyali. Kaynağı doğrulanmamış (dış bir AI sohbetinden yapıştırıldığı
+  anlaşılıyor — "Compare with other AI" ifadesi geçiyor), hacmi çok büyük ve
+  tek bir onayla kabul edilecek kadar küçük bir karar değil. **Uydurma
+  yasak** ilkesi gereği bu oturumda tek tek doğrulanmadan is-modeli.md'nin
+  onaylı kısımlarına karıştırılmadı.
+- **Sonraki adım (kullanıcı isterse):** Bu huniyi (Score/QuickScan/Sprint/
+  WorkFit/Lederstøtte/Partner/OS) ayrı bir bölüm olarak değerlendirip
+  §9-12'deki mevcut kararla nasıl bir araya geleceğine — Lederstøtte tek
+  başlangıç mı, yoksa huninin bir basamağı mı — ayrı bir oturumda karar
+  verilebilir. Bu belge o karara kadar §12'yi geçerli kabul eder.
