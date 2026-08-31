@@ -37,3 +37,17 @@ Bu bir claude.ai artifact olarak yayınlandı (önizleme/sunum amaçlı).
 Vercel'deki `naviar-consult` projesine dağıtılmadı — istenirse
 `brand/naviar/interactive/`'deki gibi `deploy_to_vercel` ile ayrı bir
 adım olarak yapılabilir.
+
+**31.08.2026 — paralel bir "V2" çalışması var, karıştırmayın.** Kullanıcı bu
+dosyadan bağımsız olarak, NAVIAR'ın kendi Figma alanında "NAVIAR Consult V2 —
+Website Master" adıyla ayrı bir tasarım dosyası başlattığını bildirdi (Figma
+MCP değil — kullanıcının kendi Figma oturumu). Hedef zincir kullanıcı
+tarafından açıkça belirtildi: **Figma (tasarım) → Next.js (kod) → Vercel
+(barındırma)** — bu depodaki mevcut sade HTML/CSS/vanilla-JS yaklaşımından
+farklı bir teknoloji seçimi. Bu depoda henüz karşılığı yok: `index.html`
+(bu dosya) hâlâ statik HTML, `interactive/` hâlâ React+Vite+Tailwind+shadcn;
+ikisi de Next.js değil. **Figma'daki tasarım koda dökülmeye hazır olduğunda
+ayrı bir görev olarak ele alınmalı** — bu dosyayı o an gelen gerçek Figma
+çıktısına göre migrate etmek ya da yepyeni bir Next.js projesi başlatmak
+arasında seçim, o zamanki talebe göre yapılır. Şimdiden tahminle Next.js
+iskeleti kurulmadı.
