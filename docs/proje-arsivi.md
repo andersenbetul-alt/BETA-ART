@@ -392,6 +392,32 @@ npm run check dışı bir hata: Almanca çeviride düz tırnak (`"`) JS dize
 sınırlayıcısıyla çakıştı, build'i kırdı — düzeltme: tipografik tırnak
 (`„…"`) kullanıldı.
 
+**Aynı gece — çok disiplinli ekip merceğiyle üçüncü kalite geçişi.**
+Kullanıcı 9 rollük bir "web sitesi ekibi" çerçevesi paylaşıp "bu projede
+gerekli düzeltmeleri yap" dedi. Dokuz rolü simüle etmek yerine her
+merceğin gerçekten neyi değiştireceğine bakıp üç somut düzeltme kuruldu:
+- **SEO**: SPA hiç `<title>` güncellemiyordu (her sayfa aynı statik
+  başlığı taşıyordu), `<meta name="description">` ve OG etiketleri hiç
+  yoktu. `DocumentTitle` bileşeni eklendi (rotaya göre başlık), `index.html`'e
+  description/theme-color/OG etiketleri eklendi.
+- **Erişilebilirlik**: 5 süs amaçlı gradient görsel bloğuna (gerçek
+  fotoğraf değil, yer tutucu) `aria-hidden="true"` eklendi — ekran
+  okuyucular artık anlamsız bir renk geçişini "görsel" olarak okumuyor.
+- **Servis tasarımı**: sepet ikonu/sayfası vardı ama hiçbir yerde "sepete
+  ekle" eylemi yoktu — tamamen kopuktu. Yalnızca `status: "available"`
+  (doğrulanmış, sabit fiyatlı Personal) plakalar için "Add to cart"
+  eklendi — Commercial/Extended/Custom "Price on request" olduğu için
+  talep formunda kalmaya devam ediyor, bu bilinçli bir ayrım. `cartContext`
+  (localStorage'da kalıcı), mastheadta sayaç rozeti, gerçek sepet
+  listesi/toplam/kaldırma kuruldu.
+
+Ardından kullanıcı ayrı bir "Konsept Araştırma ve Değerlendirme Ekibi"
+çerçevesi (11 rol, 10 adımlı süreç, 100 puanlık rubrik) paylaştı — bu,
+web sitesini değil, **Beta Art'ın iş fikrinin kendisini** puanlamak için.
+Bu değerlendirme ayrı bir sohbet yanıtında yapıldı (kod değişikliği değil),
+burada kayıt altına alınmıyor çünkü bir web sitesi/kod kararı değil bir
+iş değerlendirmesi — istenirse ayrı bir belgeye dökülebilir.
+
 **Aynı gece, hemen ardından — mark kararı geri alındı.** Kullanıcı üç
 **gerçek üretilmiş** OG/sosyal görsel paylaştı — Business, Field Notes ve
 "Three Properties" hub sayfaları için, hepsi `beta-art.com` filigranlı.
