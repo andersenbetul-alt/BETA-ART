@@ -435,6 +435,23 @@ aldı (aynı path verisi, birebir) — dolayısıyla üç mark adayından biri a
 (madde 15 üstü) artık **kullanılmayan keşif** olarak okunmalı, kanonik
 değil. Güncellenmiş artifact yine aynı URL'e yayınlandı.
 
+**31.08.2026 — Geri bildirim alanı eklendi (iş fikri puanlamasındaki
+kanıt boşluğuna doğrudan yanıt).** "Konsept Araştırma ve Değerlendirme
+Ekibi" rubriğiyle iş fikri puanlanırken "Hedef kitlenin talebi" 15 puanlık
+kalemi **BİLİNMİYOR** işaretlendi — gerçek kullanıcı görüşmesi/doğrulama
+verisi yok. Kullanıcı doğrudan bu satıra yanıt yazdı: "Hiç gerçek kullanıcı
+görüşmesi VE GERI BILDIRIM ALANI ACALIM WEB SAYFASINDA." Buna karşılık
+Beta Art Archive artifact'ine yeni bir `/feedback` sayfası eklendi: 1-5
+kullanım olasılığı, "burada lisans için öder miydin" (Evet/Hayır/Fiyata
+bağlı), açık yorum, isteğe bağlı e-posta. Bu oturumda arka uç yok — gönderim
+`previewNotice` deseniyle (diğer tüm formlarla aynı) önizleme kalıyor, gerçek
+veri toplamıyor; sayfa metni bunu açıkça söylüyor ("Nothing here is scripted
+or filtered"). Nav (masthead + mobil) ve footer'a bağlantı eklendi, 8 dilin
+hepsine `navFeedback`/`feedback*` anahtarları eklendi. Bu, "hedef kitle
+talebi bilinmiyor" boşluğunu **kapatmıyor** — gerçek ziyaretçi yanıtı
+toplanana kadar boşluk açık kalır — ama artık boşluğu kapatmaya yönelik
+gerçek bir mekanizma var, uydurma bir sayı değil.
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
