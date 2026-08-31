@@ -452,6 +452,21 @@ talebi bilinmiyor" boşluğunu **kapatmıyor** — gerçek ziyaretçi yanıtı
 toplanana kadar boşluk açık kalır — ama artık boşluğu kapatmaya yönelik
 gerçek bir mekanizma var, uydurma bir sayı değil.
 
+**31.08.2026 — Kurucu geçmişi: gerçek bir köken hikâyesi eklendi.**
+Konsept puanlamasındaki "Kurucu ve ekip uyumu BİLİNMİYOR" satırına
+"Kurucunun fotoğrafçılık geçmişi/ağı bu oturumda doğrulanabilir" yanıtı
+geldi; ben icat etmemek için kullanıcıdan somut bilgi istedim (AskUserQuestion,
+kullanıcı seçenekleri geçti, doğrudan yazdı): "İlk fotoğraf makinasını
+henüz 7 yaşındayken babamın resim albümlerini bulduğumda gördüğüm şu
+resimde babamın elindeki foto idi." Bu gerçek, kullanıcının kendi verdiği
+bir bilgi — `Artists.tsx`'teki `artistsFoundingBio`'ya ikinci cümle olarak
+eklendi (8 dilde), kurucu isimsiz/cinsiyetsiz kalacak şekilde ("they/their"),
+Roman dillerinde bu cümlenin ilk cümlesinden gelen dilbilgisel eril isim
+uyumu (fondateur/fondatore/fundador/Gründer) korunarak. Kod yorumunda
+kaynağı ve tarihi belirtildi. Ayrıca kullanıcı bir vitrindeki eski
+rangefinder kamera fotoğrafı da paylaştı — ikinci fotoğrafın ilk fotoğraftaki
+kamerayla ilişkisi netleşmedi, siteye işlenmedi.
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
