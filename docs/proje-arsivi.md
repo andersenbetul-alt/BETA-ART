@@ -483,6 +483,16 @@ dönüştürülecek bir varlığa gömülmesi doğru değil; onun yerine metin (
 3/3 slayt, içerik/yazı tipi kaybı yok. Express dokümanı: `urn:aaid:sc:EU:
 2f5cd884-521d-4744-9ff7-9638b65d4cf1`.
 
+**31.08.2026 — Fotoğrafçılar kendini tanıtabilir (kapsamı daraltıldı).**
+"BU SAYFAYA FOTOGRAFCILAR KENDI BLOGG BOLUMDE KENDILERINI TANITABILIRLER"
+isteği AskUserQuestion ile netleştirildi: tam bir blog sistemi değil (ayrı
+yazı listesi/URL, veri modeli gerektirir — reddedildi), `Sell.tsx`
+formuna "Introduce yourself" alanı eklendi. Onaylanan fotoğrafçının bu
+metni `/artists`'te adının yanında görünecek — `artistsFoundingBio`'nun
+zaten kullandığı aynı slot, Beta Art'ın kendi biyografisiyle aynı desen.
+`artistsJoinBody` da "kendi cümlelerinizle" notunu almak üzere 8 dilde
+güncellendi.
+
 ---
 
 ## Bilinen isim çakışmaları (birleştirme kararından önce çözülmeli)
