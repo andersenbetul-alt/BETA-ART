@@ -248,6 +248,36 @@ diyagonal gövdesini kesen bir altın şerit.
 
 Sunum/referans olarak saklanabilir, master olamaz veya P8/P9'un yerine geçmez.
 
+**31.08.2026 güncellemesi — kullanıcı düzeltilmesini istedi, üretilebilir
+olanlar düzeltildi:**
+
+`brand/naviar/build.py`'ye `monogram_paths_p10()` eklendi, çıktısı
+`studies/study-p10-diagonal-corrected.svg`. Düzeltilenler:
+
+1. **Altın oranı** — artık analitik hesapla **%14,0** (spec %12-16),
+   gözle tahmin değil. `silhouette_area()`'ya karşı çözüldü.
+2. **Descriptor kontrastı** — "CONSULTING" artık lacivert, altın değil
+   (mevcut `descriptor_text()` yardımcı fonksiyonu zaten doğru yapıyordu).
+3. **Tek lacivert path** — köşe kırpma tekniğiyle (master'ın kendi kanıtlı
+   yöntemiyle aynı ilke), delik/ada oluşturmuyor.
+4. **Wordmark** — yeni bir harf çizimi DEĞİL, mevcut onaylı P5 wordmark
+   birebir kullanıldı.
+5. **Yeniden üretilebilirlik** — raster değil, `build.py`'den çıkan vektör.
+
+**Düzeltilemeyen/hâlâ açık olanlar:**
+
+- **Diyagonal açı sapması (29,9° vs 38-42°)** — bu P10'a özgü değil,
+  master'ın (P8/P9) da paylaştığı, zaten `brand/naviar/README.md`'de
+  "Karar bekliyor" diye kayıtlı **aynı** sapma (aynı temel N geometrisini
+  paylaşıyorlar). Düzeltmek footprint'i ~760×800'den ~971 genişliğe
+  çıkarmayı gerektirir — bu, "~760×800" şartını bozan ayrı bir ödünleşim,
+  burada tek taraflı yapılmadı.
+- **Figüratif marka taraması** — profesyonel registry taraması gerektirir,
+  bu ortamda yapılamaz (M1 Stop Condition, §5).
+- **Tek-monogram kararının resmileştirilmesi** — bu düzeltilmiş aday P8/P9'un
+  yerine geçecek şekilde **master ilan edilmedi**; hâlâ `studies/` altında.
+  Bu son adım ayrı bir onay gerektirir.
+
 ### P9 — NAVIAR CARE · **KOŞULLU KABUL**
 
 P8'in bütün şartları aynen geçerli. Ek olarak:

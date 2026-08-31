@@ -112,6 +112,41 @@ def monogram_paths(navy=NAVY, gold=GOLD):
     g = f"M{r(MW-RIB)} 0 H{r(MW)} V{r(GOLD_TOP_R)} L{r(MW-RIB)} {r(GOLD_TOP_L)} Z"
     return [(n, navy), (g, gold)]
 
+def monogram_paths_p10(navy=NAVY, gold=GOLD, ratio=0.14):
+    """P10 corrected candidate (31.08.2026) — user asked for the diagonal-gold
+    direction from an external AI-generated logo to be fixed and re-evaluated,
+    not just rejected. First draft moved gold to a top-right corner wedge;
+    user rejected that ("logo bu değil") — the reference has gold crossing the
+    MIDDLE of the diagonal stroke, touching neither stem. Rebuilt as a true
+    interior band.
+
+    Construction: the diagonal stroke is a uniform-width parallelogram running
+    from the left-stem/diagonal junction (s=0) to the right-stem/diagonal
+    junction (s=1); a point at parameter s sits at x = RIB + s*_run, with the
+    stroke's local width _dv running from y = s*(MH-_dv) to y = _dv + s*(MH-_dv).
+    Gold occupies a centered band s in [s0, s1] that touches neither stem —
+    this makes it a genuine interior island, so navy is written as ONE <path>
+    with fill-rule="evenodd" (outer silhouette + gold-hole subpath) — the same
+    technique glyph_R() already uses for the bowl counter, so "1 closed navy
+    path" (per NAVIAR-LOGO-KARAR.md's spec) still means one <path> element,
+    not zero holes. `ratio` is solved analytically against silhouette_area(),
+    not eyeballed off a rendered PNG the way the external candidate was.
+    """
+    width_frac = ratio * silhouette_area() / (_run * _dv)
+    if not (0.0 < width_frac < 1.0):
+        raise ValueError(f"ratio {ratio} gives width_frac={width_frac:.2f}, out of range")
+    s0, s1 = (1.0 - width_frac) / 2.0, (1.0 + width_frac) / 2.0
+
+    def pt_bottom(s): return (RIB + s*_run, s*(MH - _dv))
+    def pt_top(s):    return (RIB + s*_run, _dv + s*(MH - _dv))
+
+    bl, br = pt_bottom(s0), pt_bottom(s1)
+    tl, tr = pt_top(s0), pt_top(s1)
+    hole = f"M{r(bl[0])} {r(bl[1])} L{r(br[0])} {r(br[1])} L{r(tr[0])} {r(tr[1])} L{r(tl[0])} {r(tl[1])} Z"
+    outer = monogram_solid(navy)  # full uncut silhouette, single closed path
+    n = f"{outer} {hole}"          # two subpaths, one <path>, evenodd punches the hole
+    return [(n, navy), (hole, gold)], (s0, s1)
+
 def monogram_solid(col=NAVY):
     """Single closed path — no two-tone seam in monochrome variants."""
     return (f"M0 0 H{r(RIB)} L{r(MW-RIB)} {r(MH-_dv)} V0 H{r(MW)} V{r(MH)} "
@@ -283,7 +318,30 @@ for px in (16, 24, 32, 48):
 made.append(svg("studies/study-p7-monogram-scale.svg", (0, 0, xx - 24.0, 48.0),
                 "\n  ".join(tiles), "Flat monogram at 16 / 24 / 32 / 48 px"))
 
+# P10  corrected candidate — same silhouette + master wordmark, gold
+# relocated and ratio-tuned (see monogram_paths_p10 docstring). Kept as a
+# study, not master/, pending the Acceptance Rule (measured evidence here,
+# explicit decision entry in NAVIAR-LOGO-KARAR.md separately).
+p10_paths, (p10_s0, p10_s1) = monogram_paths_p10()
+p10_ratio = (p10_s1 - p10_s0) * _run * _dv / silhouette_area() * 100.0
+p10_dcap = 0.27 * H
+p10_top = (MON_H - (H + 20.0 + p10_dcap)) / 2.0
+p10_navy_d, p10_gold_d = p10_paths[0][0], p10_paths[1][0]
+p10_mono = (f'<g transform="scale({r(MON_S)})">\n    '
+            f'<path d="{p10_navy_d}" fill="{NAVY}" fill-rule="evenodd"/>\n    '
+            f'<path d="{p10_gold_d}" fill="{GOLD}"/>'
+            + "\n  </g>")
+p10_wm, p10_wmw = wordmark_svg_body(fill=NAVY, dx=MON_W + GAP, dy=p10_top)
+p10_body = (p10_mono + "\n  " + p10_wm + "\n  "
+            + descriptor_text("CONSULTING", MON_W + GAP + p10_wmw/2,
+                               p10_top + H + 20.0 + p10_dcap, p10_dcap, NAVY,
+                               "middle", max_w=p10_wmw))
+made.append(svg("studies/study-p10-diagonal-corrected.svg",
+                (0, 0, MON_W + GAP + p10_wmw, MON_H), p10_body,
+                "P10 corrected candidate — diagonal-gold direction, ratio-fixed"))
+
 print(f"gold accent = {gold_ratio():.1f}%  (spec 12-16%)")
+print(f"P10 study gold accent = {p10_ratio:.1f}%  (target 12-16%, corrected from external candidate)")
 print(f"diagonal    = {DIAG_DEG:.1f} deg from vertical  (spec 38-42) <-- DEVIATION")
 print(f"ribbon      = {RIB:.0f} units (spec 145-160)")
 print(f"footprint   = {MW:.0f} x {MH:.0f} (spec ~760 x 800)")
