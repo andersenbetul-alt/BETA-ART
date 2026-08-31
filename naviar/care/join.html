@@ -4,79 +4,144 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>For Doctors — NaviarCare</title>
-<meta name="description" content="Register as a doctor on NaviarCare. Set your specialty, languages and hours. Help patients who speak your language.">
+<title>Register as a Routing Advisor — NaviarCare</title>
+<meta name="description" content="Register your specialty and languages. Help patients navigate to the right specialist — in their own language, before their appointment.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.join-layout { display: grid; grid-template-columns: 1fr 360px; gap: 48px; align-items: start; }
+/* ── Step indicator ── */
+.step-bar { display:flex; gap:0; margin-bottom:36px; counter-reset:step; }
+.step-item {
+  flex:1; display:flex; flex-direction:column; align-items:center; position:relative;
+}
+.step-item:not(:last-child)::after {
+  content:''; position:absolute; top:14px; left:50%; right:-50%;
+  height:2px; background:var(--border);
+}
+.step-item.done::after { background:var(--brand); }
+.step-dot {
+  width:28px; height:28px; border-radius:50%;
+  border:2px solid var(--border);
+  background:var(--bg); z-index:1; position:relative;
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:700; color:var(--text-3);
+  margin-bottom:6px;
+}
+.step-item.done .step-dot { background:var(--brand); border-color:var(--brand); color:#fff; }
+.step-item.active .step-dot { border-color:var(--brand); color:var(--brand); }
+.step-label { font-size:11px; color:var(--text-3); white-space:nowrap; }
+.step-item.active .step-label, .step-item.done .step-label { color:var(--text-2); }
+
+/* ── Join layout ── */
+.join-layout { display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:start; }
 @media(max-width:900px){ .join-layout{grid-template-columns:1fr;} }
-.join-sidebar-card {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  position: sticky;
-  top: calc(var(--nav-h) + 24px);
+
+.join-step { display:none; }
+.join-step.active { display:block; }
+
+/* ── Specialty picker ── */
+.spec-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+  gap:10px;
+  margin:20px 0 28px;
 }
-.join-sidebar-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
-.next-steps { display: flex; flex-direction: column; gap: 14px; }
-.next-step { display: flex; gap: 12px; }
-.next-step-n {
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  background: var(--brand-light);
-  color: var(--brand);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 700;
-  flex-shrink: 0;
+.spec-card {
+  background:var(--bg-alt);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:18px 12px 14px;
+  cursor:pointer;
+  text-align:center;
+  transition:border-color .12s, box-shadow .12s;
+  user-select:none;
 }
-.next-step-text { font-size: 14px; color: var(--text-2); line-height: 1.5; padding-top: 3px; }
-.referee-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  margin-bottom: 20px;
+.spec-card:hover { border-color:var(--border-strong); }
+.spec-card.selected {
+  border-color:var(--brand);
+  background:var(--brand-light);
+  box-shadow:0 0 0 3px rgba(0,81,195,.09);
 }
-.referee-box-title { font-size: 14px; font-weight: 700; color: var(--text-2); margin-bottom: 16px; }
+.spec-icon { font-size:22px; margin-bottom:8px; }
+.spec-name { font-size:12px; font-weight:700; color:var(--text); }
+.spec-note { font-size:11px; color:var(--text-3); margin-top:2px; }
+
+/* ── Advisory badge ── */
+.advisory-flag {
+  display:inline-flex; align-items:center; gap:5px;
+  background:#eff6ff; color:#1d4ed8;
+  border:1px solid #bfdbfe;
+  border-radius:20px; padding:3px 10px;
+  font-size:11px; font-weight:700; letter-spacing:.3px;
+  text-transform:uppercase; margin-bottom:20px;
+}
+
+/* ── Form sections ── */
+.form-section { margin-bottom:32px; }
+.form-section-title {
+  font-size:11px; font-weight:700; color:var(--text-3);
+  text-transform:uppercase; letter-spacing:.6px;
+  margin-bottom:16px; padding-bottom:10px;
+  border-bottom:1px solid var(--border);
+}
+
+/* ── Language chips ── */
 .lang-chip-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-  max-height: 200px;
-  overflow-y: auto;
-  background: var(--bg);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  padding: 10px;
+  display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;
+  max-height:200px; overflow-y:auto;
+  background:var(--bg); border:1px solid var(--border-strong);
+  border-radius:var(--radius); padding:10px;
 }
 .lang-chip {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 13px;
-  color: var(--text-2);
-  cursor: pointer;
-  transition: background .1s, border-color .1s;
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:20px; padding:4px 12px;
+  font-size:13px; color:var(--text-2);
+  cursor:pointer; transition:background .1s, border-color .1s;
 }
-.lang-chip.selected { background: var(--brand-light); border-color: var(--brand); color: var(--brand); }
-.lang-chip:hover:not(.selected) { border-color: var(--border-strong); background: var(--bg-alt); }
-.multi-select {
-  background: var(--bg);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  padding: 8px 10px;
-  font-size: 14px;
-  color: var(--text);
-  max-height: 180px;
-  overflow-y: auto;
-  width: 100%;
+.lang-chip.selected { background:var(--brand-light); border-color:var(--brand); color:var(--brand); }
+
+/* ── Sidebar card ── */
+.sidebar-card {
+  background:var(--bg-alt); border:1px solid var(--border);
+  border-radius:var(--radius-lg); padding:24px;
+  margin-bottom:16px;
+  position:sticky; top:calc(var(--nav-h) + 20px);
 }
-.prop-point { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
-.prop-point-check { color: var(--brand); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.sidebar-card h3 { font-size:15px; font-weight:700; margin-bottom:14px; }
+.next-steps { display:flex; flex-direction:column; gap:12px; }
+.next-step { display:flex; gap:10px; }
+.next-step-n {
+  width:24px; height:24px; border-radius:50%;
+  background:var(--brand-light); color:var(--brand);
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; font-weight:700; flex-shrink:0;
+}
+.next-step-text { font-size:13px; color:var(--text-2); line-height:1.5; padding-top:3px; }
+
+/* ── Earnings preview ── */
+.earn-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; color:var(--text-2); }
+.earn-row:last-child { border:none; font-weight:700; color:var(--text); }
+
+/* ── Consult type toggle ── */
+.type-toggle { display:flex; gap:10px; margin-top:8px; flex-wrap:wrap; }
+.type-btn {
+  flex:1; min-width:120px;
+  background:var(--bg); border:1.5px solid var(--border-strong);
+  border-radius:var(--radius-lg); padding:14px 12px;
+  cursor:pointer; text-align:center; transition:border-color .12s;
+}
+.type-btn.selected { border-color:var(--brand); background:var(--brand-light); }
+.type-btn-icon { font-size:18px; margin-bottom:6px; }
+.type-btn-label { font-size:13px; font-weight:700; color:var(--text); }
+.type-btn-sub { font-size:11px; color:var(--text-3); margin-top:2px; }
+
+/* ── Declaration ── */
+.decl-item {
+  display:flex; gap:12px; align-items:flex-start;
+  padding:12px 0; border-bottom:1px solid var(--border);
+  font-size:14px; color:var(--text-2);
+}
+.decl-item:last-child { border:none; }
 </style>
 </head>
 <body>
@@ -90,9 +155,9 @@
     <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
       <a href="triage.html">Check symptoms</a>
-      <a href="booking.html">Find a doctor</a>
+      <a href="booking.html">Find an advisor</a>
       <a href="languages.html">Languages</a>
-      <a href="join.html">For doctors</a>
+      <a href="join.html" aria-current="page">For doctors</a>
       <a href="about.html">About</a>
     </div>
     <div class="nav-right">
@@ -101,6 +166,7 @@
         <option value="tr">Türkçe</option>
         <option value="es">Español</option>
         <option value="ar">العربية</option>
+        <option value="no">Norsk</option>
       </select>
     </div>
   </div>
@@ -108,31 +174,147 @@
 
 <main>
 
+<!-- ── Hero ── -->
 <section class="page-hero">
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Home</a> / For doctors</div>
-    <h1>Help someone in your own language</h1>
-    <p class="page-hero-sub">Somewhere right now, a person who speaks your language is sitting in a hospital queue, or has given up on being seen at all. Register your specialty, your languages and your licence, and we will route them to you.</p>
-    <div style="display:flex;gap:24px;margin-top:32px;flex-wrap:wrap;">
-      <div class="prop-point"><span class="prop-point-check">&#10003;</span><div><strong>Your hours, your fee</strong><br><span style="font-size:14px;color:var(--text-2);">You set when you are available and what you charge. There is no minimum commitment and no exclusivity.</span></div></div>
-      <div class="prop-point"><span class="prop-point-check">&#10003;</span><div><strong>Patients arrive prepared</strong><br><span style="font-size:14px;color:var(--text-2);">Every patient reaches you having already described their symptoms. You start with the history in front of you.</span></div></div>
-      <div class="prop-point"><span class="prop-point-check">&#10003;</span><div><strong>A flat platform fee</strong><br><span style="font-size:14px;color:var(--text-2);">We charge a fixed amount per completed consultation. We do not take a percentage of your professional fee.</span></div></div>
+    <div class="advisory-flag">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Routing advisory only — not diagnosis or treatment
+    </div>
+    <h1>Register as a routing advisor</h1>
+    <p class="page-hero-sub">Patients describe their symptoms in their language. You tell them which specialist, clinic, or department they need — and why. That is the whole service.</p>
+    <div style="display:flex;gap:24px;margin-top:24px;flex-wrap:wrap;">
+      <div class="prop-point"><span class="prop-point-check">✓</span><div><strong>Routing only — low liability</strong><br><span style="font-size:14px;color:var(--text-2);">You advise on which direction to take, not on diagnosis or treatment. The platform is a marketplace intermediary.</span></div></div>
+      <div class="prop-point"><span class="prop-point-check">✓</span><div><strong>Your hours, your volume</strong><br><span style="font-size:14px;color:var(--text-2);">Video calls or written responses — set your own schedule and take as many or as few cases as you want.</span></div></div>
+      <div class="prop-point"><span class="prop-point-check">✓</span><div><strong>Patients arrive prepared</strong><br><span style="font-size:14px;color:var(--text-2);">Every patient has completed the symptom checker before reaching you. You start with their description in front of you.</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
+
+    <!-- Step bar -->
+    <div class="step-bar" id="step-bar">
+      <div class="step-item active" id="si-1"><div class="step-dot">1</div><div class="step-label">Specialty</div></div>
+      <div class="step-item" id="si-2"><div class="step-dot">2</div><div class="step-label">Your details</div></div>
+      <div class="step-item" id="si-3"><div class="step-dot">3</div><div class="step-label">Languages</div></div>
+      <div class="step-item" id="si-4"><div class="step-dot">4</div><div class="step-label">Confirmation</div></div>
+    </div>
+
     <div class="join-layout">
       <div>
-        <h2 style="font-size:20px;font-weight:700;margin-bottom:8px;">Your application</h2>
-        <p style="font-size:14px;color:var(--text-3);margin-bottom:32px;">Everything here appears on your public profile except your licence details, which we verify privately.</p>
 
-        <form id="join-form" onsubmit="return false;">
+        <!-- ── Step 1: Specialty ── -->
+        <div class="join-step active" id="jstep-1">
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:6px;">Choose your primary specialty</h2>
+          <p style="font-size:14px;color:var(--text-2);margin-bottom:4px;">This becomes the main label on your advisor profile. You can add sub-specialties in the next step.</p>
 
-          <!-- About you -->
+          <div class="spec-grid" id="spec-grid">
+            <div class="spec-card" data-spec="general-practice" data-label="General practice">
+              <div class="spec-icon">🩺</div>
+              <div class="spec-name">General practice</div>
+              <div class="spec-note">GP / Family medicine</div>
+            </div>
+            <div class="spec-card" data-spec="internal-medicine" data-label="Internal medicine">
+              <div class="spec-icon">⚕</div>
+              <div class="spec-name">Internal medicine</div>
+              <div class="spec-note">Internist / Physician</div>
+            </div>
+            <div class="spec-card" data-spec="cardiology" data-label="Cardiology">
+              <div class="spec-icon">❤</div>
+              <div class="spec-name">Cardiology</div>
+              <div class="spec-note">Heart &amp; vascular</div>
+            </div>
+            <div class="spec-card" data-spec="neurology" data-label="Neurology">
+              <div class="spec-icon">🧠</div>
+              <div class="spec-name">Neurology</div>
+              <div class="spec-note">Brain &amp; nervous system</div>
+            </div>
+            <div class="spec-card" data-spec="pediatrics" data-label="Paediatrics">
+              <div class="spec-icon">👶</div>
+              <div class="spec-name">Paediatrics</div>
+              <div class="spec-note">Children (0–18)</div>
+            </div>
+            <div class="spec-card" data-spec="dermatology" data-label="Dermatology">
+              <div class="spec-icon">🔬</div>
+              <div class="spec-name">Dermatology</div>
+              <div class="spec-note">Skin, hair &amp; nails</div>
+            </div>
+            <div class="spec-card" data-spec="psychiatry" data-label="Mental health">
+              <div class="spec-icon">💬</div>
+              <div class="spec-name">Mental health</div>
+              <div class="spec-note">Psychiatry / Psychology</div>
+            </div>
+            <div class="spec-card" data-spec="gynecology" data-label="Gynaecology">
+              <div class="spec-icon">🌸</div>
+              <div class="spec-name">Gynaecology</div>
+              <div class="spec-note">Women's health / OB</div>
+            </div>
+            <div class="spec-card" data-spec="orthopedics" data-label="Orthopaedics">
+              <div class="spec-icon">🦴</div>
+              <div class="spec-name">Orthopaedics</div>
+              <div class="spec-note">Bones, joints, muscles</div>
+            </div>
+            <div class="spec-card" data-spec="endocrinology" data-label="Endocrinology">
+              <div class="spec-icon">⚖</div>
+              <div class="spec-name">Endocrinology</div>
+              <div class="spec-note">Hormones / Diabetes</div>
+            </div>
+            <div class="spec-card" data-spec="gastroenterology" data-label="Gastroenterology">
+              <div class="spec-icon">🫀</div>
+              <div class="spec-name">Gastroenterology</div>
+              <div class="spec-note">Digestive system</div>
+            </div>
+            <div class="spec-card" data-spec="pulmonology" data-label="Respiratory medicine">
+              <div class="spec-icon">🫁</div>
+              <div class="spec-name">Respiratory</div>
+              <div class="spec-note">Lungs / Breathing</div>
+            </div>
+            <div class="spec-card" data-spec="oncology" data-label="Oncology">
+              <div class="spec-icon">🎗</div>
+              <div class="spec-name">Oncology</div>
+              <div class="spec-note">Cancer routing</div>
+            </div>
+            <div class="spec-card" data-spec="ent" data-label="Ear, nose &amp; throat">
+              <div class="spec-icon">👂</div>
+              <div class="spec-name">ENT</div>
+              <div class="spec-note">Ear, nose &amp; throat</div>
+            </div>
+            <div class="spec-card" data-spec="ophthalmology" data-label="Ophthalmology">
+              <div class="spec-icon">👁</div>
+              <div class="spec-name">Ophthalmology</div>
+              <div class="spec-note">Eye health</div>
+            </div>
+            <div class="spec-card" data-spec="urology" data-label="Urology">
+              <div class="spec-icon">💧</div>
+              <div class="spec-name">Urology</div>
+              <div class="spec-note">Kidney / Bladder</div>
+            </div>
+            <div class="spec-card" data-spec="nephrology" data-label="Kidney medicine">
+              <div class="spec-icon">🫘</div>
+              <div class="spec-name">Nephrology</div>
+              <div class="spec-note">Kidney disease</div>
+            </div>
+            <div class="spec-card" data-spec="rheumatology" data-label="Rheumatology">
+              <div class="spec-icon">🔴</div>
+              <div class="spec-name">Rheumatology</div>
+              <div class="spec-note">Autoimmune / Joints</div>
+            </div>
+          </div>
+
+          <div id="step1-error" style="color:var(--danger);font-size:13px;margin-bottom:12px;display:none;">Please select a specialty to continue.</div>
+          <button class="btn btn-primary" onclick="nextStep(1)">Continue with <span id="chosen-spec-label">chosen specialty</span> →</button>
+        </div>
+
+        <!-- ── Step 2: Details ── -->
+        <div class="join-step" id="jstep-2">
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:4px;">Your details</h2>
+          <p style="font-size:13px;color:var(--text-3);margin-bottom:24px;">Everything here appears on your public profile, except your licence number which we verify privately.</p>
+
           <div class="form-section">
-            <div class="form-section-title">About you</div>
+            <div class="form-section-title">Personal information</div>
             <div class="field">
               <label for="full-name">Full name</label>
               <input type="text" id="full-name" placeholder="Dr. Jane Smith" autocomplete="name">
@@ -142,280 +324,190 @@
               <input type="email" id="email" placeholder="you@hospital.example" autocomplete="email">
             </div>
             <div class="field">
-              <label for="country-practice">Country you practise in</label>
+              <label for="country-practice">Country you currently practise in</label>
               <select id="country-practice">
                 <option value="">Select a country…</option>
-                <option>Afghanistan</option><option>Argentina</option><option>Australia</option>
-                <option>Austria</option><option>Azerbaijan</option><option>Bangladesh</option>
-                <option>Belgium</option><option>Brazil</option><option>Canada</option>
-                <option>Chile</option><option>China</option><option>Colombia</option>
-                <option>Denmark</option><option>Egypt</option><option>Ethiopia</option>
-                <option>Finland</option><option>France</option><option>Germany</option>
-                <option>Ghana</option><option>Greece</option><option>India</option>
-                <option>Indonesia</option><option>Iran</option><option>Iraq</option>
-                <option>Ireland</option><option>Israel</option><option>Italy</option>
-                <option>Japan</option><option>Kenya</option><option>Korea</option>
-                <option>Malaysia</option><option>Mexico</option><option>Morocco</option>
-                <option>Nepal</option><option>Netherlands</option><option>New Zealand</option>
-                <option>Nigeria</option><option>Norway</option><option>Pakistan</option>
-                <option>Philippines</option><option>Poland</option><option>Portugal</option>
-                <option>Romania</option><option>Russia</option><option>Saudi Arabia</option>
-                <option>Serbia</option><option>Singapore</option><option>South Africa</option>
-                <option>Spain</option><option>Sweden</option><option>Switzerland</option>
-                <option>Thailand</option><option>Türkiye</option><option>Ukraine</option>
-                <option>United Arab Emirates</option><option>United Kingdom</option>
-                <option>United States</option><option>Vietnam</option>
+                <option>Norway</option><option>Sweden</option><option>Denmark</option>
+                <option>Finland</option><option>Germany</option><option>Netherlands</option>
+                <option>United Kingdom</option><option>France</option><option>Spain</option>
+                <option>Türkiye</option><option>Italy</option><option>Poland</option>
+                <option>United States</option><option>Canada</option><option>Australia</option>
+                <option>India</option><option>Pakistan</option><option>Bangladesh</option>
+                <option>Saudi Arabia</option><option>United Arab Emirates</option>
+                <option>Nigeria</option><option>Kenya</option><option>South Africa</option>
+                <option>Brazil</option><option>Argentina</option><option>Mexico</option>
+                <option>Russia</option><option>Ukraine</option><option>Other</option>
               </select>
             </div>
             <div class="field">
-              <label for="years">Years in practice</label>
+              <label for="years">Years in clinical practice</label>
               <input type="number" id="years" min="1" max="60" placeholder="e.g. 12">
             </div>
           </div>
 
-          <!-- Licence -->
           <div class="form-section">
-            <div class="form-section-title">Your licence</div>
-            <p style="font-size:13px;color:var(--text-3);margin-bottom:18px;">We verify every licence against the issuing register before your profile goes live. This is also how we work out which patients you can treat and which you can advise.</p>
+            <div class="form-section-title">Medical licence</div>
+            <p style="font-size:13px;color:var(--text-3);margin-bottom:14px;">We verify every licence before your profile goes live. The number never appears publicly.</p>
             <div class="field">
               <label for="licence-num">Licence or registration number</label>
-              <input type="text" id="licence-num" placeholder="e.g. GMC-1234567">
+              <input type="text" id="licence-num" placeholder="e.g. HPR-12345678">
             </div>
             <div class="field">
               <label for="licence-authority">Issuing authority</label>
-              <input type="text" id="licence-authority" placeholder="e.g. General Medical Council (UK)">
+              <input type="text" id="licence-authority" placeholder="e.g. Helsedirektoratet (Norway)">
             </div>
-            <div class="field">
-              <label for="licence-countries">Countries you are licensed to treat patients in</label>
-              <div class="field-help" style="margin-bottom:8px;">Select every country where you hold a licence. Patients elsewhere can still reach you — those sessions are second opinions rather than consultations, and we label them that way.</div>
-              <select id="licence-countries" multiple class="multi-select">
-                <option>Türkiye</option><option>Germany</option><option>United Kingdom</option>
-                <option>United States</option><option>France</option><option>Spain</option>
-                <option>Netherlands</option><option>Sweden</option><option>India</option>
-                <option>Pakistan</option><option>Nigeria</option><option>Kenya</option>
-                <option>Brazil</option><option>Mexico</option><option>Saudi Arabia</option>
-                <option>United Arab Emirates</option>
-              </select>
-            </div>
-            <label class="checkbox-field">
+            <label class="checkbox-field" style="margin-top:8px;">
               <input type="checkbox" id="insurance">
-              I hold professional indemnity insurance that covers telemedicine, and I will keep it valid for as long as I consult through Naviar Care.
+              I hold professional indemnity insurance that covers advisory and pre-consultation services, and will keep it current for as long as I advise through NaviarCare.
             </label>
           </div>
 
-          <!-- Referees -->
           <div class="form-section">
-            <div class="form-section-title">Professional referees</div>
-            <p style="font-size:13px;color:var(--text-3);margin-bottom:18px;">A valid licence tells us you may practise. Referees tell us how you work. We contact both before your profile goes live, and we will tell you before we do.</p>
-            <div class="referee-box">
-              <div class="referee-box-title">Referee 1</div>
-              <div class="field-row">
-                <div class="field"><label>Referee's full name</label><input type="text" placeholder="Prof. John Doe"></div>
-                <div class="field"><label>Their role or title</label><input type="text" placeholder="Head of Cardiology"></div>
-              </div>
-              <div class="field"><label>Hospital or institution</label><input type="text" placeholder="Oslo University Hospital"></div>
-              <div class="field"><label>How they know your work</label><input type="text" placeholder="Direct supervisor for 4 years"></div>
-              <div class="field-row">
-                <div class="field"><label>Their email address</label><input type="email" placeholder="referee@hospital.example"></div>
-                <div class="field"><label>Their phone number</label><input type="tel" placeholder="+47 12 34 56 78"></div>
-              </div>
+            <div class="form-section-title">Your advisory scope</div>
+            <p style="font-size:13px;color:var(--text-3);margin-bottom:12px;">On this platform you provide <strong>routing guidance only</strong> — you help patients understand which specialist or department they need. You do not diagnose or prescribe.</p>
+            <div class="field">
+              <label for="intro">Short introduction for patients (2–3 sentences)</label>
+              <div class="field-help" style="margin-bottom:6px;">Write in whichever language you prefer. Describe what you do, not just your qualifications. Patients read this before booking.</div>
+              <textarea id="intro" rows="4" placeholder="I have worked in general cardiology for 14 years. I advise patients on which heart specialist they need and how urgently — so they arrive at the right clinic the first time."></textarea>
             </div>
-            <div class="referee-box">
-              <div class="referee-box-title">Referee 2</div>
-              <div class="field-row">
-                <div class="field"><label>Referee's full name</label><input type="text"></div>
-                <div class="field"><label>Their role or title</label><input type="text"></div>
+          </div>
+
+          <div style="display:flex;gap:12px;">
+            <button class="btn btn-ghost" onclick="gotoStep(1)">← Back</button>
+            <button class="btn btn-primary" onclick="nextStep(2)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- ── Step 3: Languages & consultation type ── -->
+        <div class="join-step" id="jstep-3">
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:4px;">Languages &amp; consultation type</h2>
+          <p style="font-size:14px;color:var(--text-2);margin-bottom:24px;">The language match is <strong>the single most important factor</strong> patients use when choosing an advisor.</p>
+
+          <div class="form-section">
+            <div class="form-section-title">Languages you can advise in</div>
+            <input type="text" id="lang-chip-search" placeholder="Search languages…" autocomplete="off" style="margin-bottom:6px;">
+            <div class="lang-chip-wrap" id="lang-chip-container"></div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:8px;" id="lang-chip-chosen">Nothing chosen yet.</div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Consultation type</div>
+            <p style="font-size:13px;color:var(--text-3);margin-bottom:12px;">Select all types you are willing to offer. You can change this at any time.</p>
+            <div class="type-toggle" id="type-toggle">
+              <div class="type-btn" data-type="video" onclick="toggleType(this)">
+                <div class="type-btn-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <div class="type-btn-label">Video call</div>
+                <div class="type-btn-sub">Scheduled via calendar</div>
               </div>
-              <div class="field"><label>Hospital or institution</label><input type="text"></div>
-              <div class="field"><label>How they know your work</label><input type="text"></div>
-              <div class="field-row">
-                <div class="field"><label>Their email address</label><input type="email"></div>
-                <div class="field"><label>Their phone number</label><input type="tel"></div>
+              <div class="type-btn" data-type="written" onclick="toggleType(this)">
+                <div class="type-btn-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div class="type-btn-label">Written response</div>
+                <div class="type-btn-sub">Reply within 24 hours</div>
               </div>
             </div>
           </div>
 
-          <!-- What you treat -->
           <div class="form-section">
-            <div class="form-section-title">What you treat</div>
+            <div class="form-section-title">Availability</div>
             <div class="field">
-              <label for="main-specialty">Your main specialty</label>
-              <select id="main-specialty">
-                <option value="">Select your specialty…</option>
-                <option value="general-practice">General practice</option>
-                <option value="internal-medicine">Internal medicine</option>
-                <option value="pediatrics">Paediatrics</option>
-                <option value="emergency">Emergency medicine</option>
-                <option value="cardiology">Cardiology</option>
-                <option value="endocrinology">Endocrinology</option>
-                <option value="gastroenterology">Gastroenterology</option>
-                <option value="hematology">Haematology</option>
-                <option value="nephrology">Kidney medicine</option>
-                <option value="neurology">Neurology</option>
-                <option value="oncology">Oncology</option>
-                <option value="pulmonology">Respiratory medicine</option>
-                <option value="dentistry">Dentistry</option>
-                <option value="dermatology">Dermatology</option>
-                <option value="ent">Ear, nose &amp; throat</option>
-                <option value="ophthalmology">Ophthalmology</option>
-                <option value="orthopedics">Orthopaedics</option>
-                <option value="physiotherapy">Physiotherapy</option>
-                <option value="rheumatology">Rheumatology</option>
-                <option value="allergy-immunology">Allergy &amp; immunology</option>
-                <option value="gynecology">Gynaecology &amp; obstetrics</option>
-                <option value="infectious-disease">Infectious diseases</option>
-                <option value="urology">Urology</option>
-                <option value="psychiatry">Psychiatry</option>
-                <option value="psychology">Psychology &amp; counselling</option>
-                <option value="sleep-medicine">Sleep medicine</option>
-                <option value="nutrition">Nutrition &amp; dietetics</option>
-                <option value="general-surgery">General surgery</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="sec-specialty">Anything else you consult on</label>
-              <select id="sec-specialty" multiple class="multi-select">
-                <option value="">None</option>
-                <option value="general-practice">General practice</option>
-                <option value="internal-medicine">Internal medicine</option>
-                <option value="pediatrics">Paediatrics</option>
-                <option value="emergency">Emergency medicine</option>
-                <option value="cardiology">Cardiology</option>
-                <option value="endocrinology">Endocrinology</option>
-                <option value="gastroenterology">Gastroenterology</option>
-                <option value="hematology">Haematology</option>
-                <option value="nephrology">Kidney medicine</option>
-                <option value="neurology">Neurology</option>
-                <option value="oncology">Oncology</option>
-                <option value="pulmonology">Respiratory medicine</option>
-                <option value="dentistry">Dentistry</option>
-                <option value="dermatology">Dermatology</option>
-                <option value="ent">Ear, nose &amp; throat</option>
-                <option value="ophthalmology">Ophthalmology</option>
-                <option value="orthopedics">Orthopaedics</option>
-                <option value="physiotherapy">Physiotherapy</option>
-                <option value="rheumatology">Rheumatology</option>
-                <option value="allergy-immunology">Allergy &amp; immunology</option>
-                <option value="gynecology">Gynaecology &amp; obstetrics</option>
-                <option value="infectious-disease">Infectious diseases</option>
-                <option value="urology">Urology</option>
-                <option value="psychiatry">Psychiatry</option>
-                <option value="psychology">Psychology &amp; counselling</option>
-                <option value="sleep-medicine">Sleep medicine</option>
-                <option value="nutrition">Nutrition &amp; dietetics</option>
-                <option value="general-surgery">General surgery</option>
-              </select>
-            </div>
-            <div class="field">
-              <label>Which problems do you actually spend your time on?</label>
-              <div class="field-help">Pick the complaints you see most. We match these against what patients describe, so choosing accurately gets you the right patients rather than more of them.</div>
-              <div class="lang-chip-wrap" id="complaint-chips" style="margin-top:10px;">
-                <!-- Populated by JS or static chips here -->
-                <button type="button" class="lang-chip">Chest pain</button>
-                <button type="button" class="lang-chip">Fever</button>
-                <button type="button" class="lang-chip">Headache</button>
-                <button type="button" class="lang-chip">Skin rash</button>
-                <button type="button" class="lang-chip">Shortness of breath</button>
-                <button type="button" class="lang-chip">Abdominal pain</button>
-                <button type="button" class="lang-chip">Joint pain</button>
-                <button type="button" class="lang-chip">Back pain</button>
-                <button type="button" class="lang-chip">Anxiety</button>
-                <button type="button" class="lang-chip">Depression</button>
-                <button type="button" class="lang-chip">Fatigue</button>
-                <button type="button" class="lang-chip">Cough</button>
-                <button type="button" class="lang-chip">Dizziness</button>
-                <button type="button" class="lang-chip">Child illness</button>
-                <button type="button" class="lang-chip">Hypertension</button>
-                <button type="button" class="lang-chip">Diabetes management</button>
-              </div>
-              <div style="font-size:12px;color:var(--text-3);margin-top:8px;" id="complaint-chosen">Nothing chosen yet.</div>
-            </div>
-          </div>
-
-          <!-- Languages -->
-          <div class="form-section">
-            <div class="form-section-title">Languages you consult in</div>
-            <p style="font-size:13px;color:var(--text-3);margin-bottom:16px;">This is the single most useful thing you can tell us. A patient who can describe their symptoms in their own language gets better care, and you get a consultation that is not fighting a translation.</p>
-            <div class="field">
-              <input type="text" id="lang-chip-search" placeholder="Search languages" autocomplete="off">
-              <div class="lang-chip-wrap" id="lang-chip-container" style="margin-top:8px;"></div>
-              <div style="font-size:12px;color:var(--text-3);margin-top:8px;" id="lang-chip-chosen">Nothing chosen yet.</div>
-            </div>
-          </div>
-
-          <!-- Availability -->
-          <div class="form-section">
-            <div class="form-section-title">Availability and fee</div>
-            <div class="field">
-              <label>Roughly how many hours a week?</label>
-              <div class="radio-group">
+              <label>Roughly how many hours per week?</label>
+              <div class="radio-group" style="margin-top:8px;">
                 <label class="radio-option"><input type="radio" name="hours" value="1-5"> 1–5 hours</label>
                 <label class="radio-option"><input type="radio" name="hours" value="5-10"> 5–10 hours</label>
                 <label class="radio-option"><input type="radio" name="hours" value="10-20"> 10–20 hours</label>
                 <label class="radio-option"><input type="radio" name="hours" value="20+"> More than 20 hours</label>
               </div>
             </div>
-            <div class="field">
-              <label for="fee">Your consultation fee (USD)</label>
-              <div class="field-help">You keep this in full. Our platform fee is charged separately to the patient.</div>
-              <input type="number" id="fee" min="1" placeholder="e.g. 60" style="margin-top:6px;">
-            </div>
           </div>
 
-          <!-- Introduction -->
-          <div class="form-section">
-            <div class="form-section-title">Introduce yourself</div>
-            <div class="field">
-              <label for="intro">A short introduction for patients</label>
-              <div class="field-help">Two or three sentences, in whichever language you like — patients see it as you wrote it. Say what you do day to day rather than listing qualifications.</div>
-              <textarea id="intro" rows="4" style="margin-top:6px;" placeholder="I have worked in general cardiology for 14 years, mostly in outpatient clinics. I see a lot of people who are worried about heart symptoms and want a clear explanation of what is actually going on."></textarea>
-            </div>
+          <div style="display:flex;gap:12px;">
+            <button class="btn btn-ghost" onclick="gotoStep(2)">← Back</button>
+            <button class="btn btn-primary" onclick="nextStep(3)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- ── Step 4: Review & declarations ── -->
+        <div class="join-step" id="jstep-4">
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:4px;">Review &amp; declarations</h2>
+          <p style="font-size:13px;color:var(--text-3);margin-bottom:24px;">Check your summary, read the declarations, then submit. Verification takes 3–5 working days.</p>
+
+          <!-- Summary -->
+          <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;margin-bottom:24px;" id="review-summary">
+            <div class="form-section-title">Your application summary</div>
+            <div id="summary-content" style="font-size:14px;color:var(--text-2);line-height:1.8;"></div>
           </div>
 
           <!-- Declarations -->
           <div class="form-section">
             <div class="form-section-title">Declarations</div>
-            <div style="display:flex;flex-direction:column;gap:12px;">
-              <label class="checkbox-field"><input type="checkbox"> Everything I have entered is accurate, and I will update it if my licence, insurance or scope of practice changes.</label>
-              <label class="checkbox-field"><input type="checkbox"> I understand that I may only diagnose, treat and prescribe for patients in countries where I am licensed, and that sessions with other patients are second opinions.</label>
-              <label class="checkbox-field"><input type="checkbox"> I will keep patient information confidential, and I understand consultations are not recorded unless both the patient and I consent.</label>
-              <label class="checkbox-field"><input type="checkbox"> I understand Naviar Care is not an emergency service, and I will direct a patient to emergency care when their condition needs it.</label>
-            </div>
-            <div style="margin-top:28px;">
-              <button type="submit" class="btn btn-primary">Send my application</button>
+            <div>
+              <div class="decl-item">
+                <label class="checkbox-field"><input type="checkbox"> Everything I have entered is accurate and I will update it if my licence, insurance or scope of practice changes.</label>
+              </div>
+              <div class="decl-item">
+                <label class="checkbox-field"><input type="checkbox"> I understand that on this platform I provide <strong>routing and navigational guidance only</strong>. I will not diagnose conditions, prescribe medication, or provide treatment advice.</label>
+              </div>
+              <div class="decl-item">
+                <label class="checkbox-field"><input type="checkbox"> I will keep patient information confidential and will not store health information beyond the session, unless legally required.</label>
+              </div>
+              <div class="decl-item">
+                <label class="checkbox-field"><input type="checkbox"> I understand NaviarCare is not an emergency service. If I encounter a patient who appears to need urgent care, I will direct them to emergency services immediately.</label>
+              </div>
+              <div class="decl-item">
+                <label class="checkbox-field"><input type="checkbox"> I hold or will obtain the authorisations required in my country of practice to provide this type of advisory service before going live.</label>
+              </div>
             </div>
           </div>
 
-        </form>
+          <div style="display:flex;gap:12px;">
+            <button class="btn btn-ghost" onclick="gotoStep(3)">← Back</button>
+            <button class="btn btn-primary" type="submit" onclick="submitForm()">Submit application</button>
+          </div>
+        </div>
+
       </div>
 
+      <!-- Sidebar -->
       <div>
-        <div class="join-sidebar-card">
-          <h3>What happens next</h3>
+        <div class="sidebar-card" id="sidebar-card">
+          <h3>What happens after you apply</h3>
           <div class="next-steps">
-            <div class="next-step"><div class="next-step-n">1</div><div class="next-step-text">We verify your licence with the issuing authority</div></div>
-            <div class="next-step"><div class="next-step-n">2</div><div class="next-step-text">We check your indemnity cover includes telemedicine</div></div>
-            <div class="next-step"><div class="next-step-n">3</div><div class="next-step-text">A clinician on our team reviews your profile</div></div>
-            <div class="next-step"><div class="next-step-n">4</div><div class="next-step-text">You go live and choose your first available hours</div></div>
+            <div class="next-step"><div class="next-step-n">1</div><div class="next-step-text">We verify your licence with the issuing authority (1–2 days)</div></div>
+            <div class="next-step"><div class="next-step-n">2</div><div class="next-step-text">We confirm your indemnity insurance covers advisory services</div></div>
+            <div class="next-step"><div class="next-step-n">3</div><div class="next-step-text">A clinician on our team reviews your profile for accuracy</div></div>
+            <div class="next-step"><div class="next-step-n">4</div><div class="next-step-text">Your profile goes live and you set your first available hours</div></div>
           </div>
-          <p style="font-size:13px;color:var(--text-3);margin-top:16px;">Verification usually takes three to five working days.</p>
+          <p style="font-size:12px;color:var(--text-3);margin-top:14px;">Typical total: 3–5 working days.</p>
         </div>
 
-        <div class="join-sidebar-card" style="margin-top:16px;">
-          <h3>Where you can practise</h3>
-          <p style="font-size:14px;color:var(--text-2);line-height:1.6;margin-bottom:12px;">Medical licensing follows the patient, not the doctor. You can consult with patients anywhere in the world, but you may only diagnose and prescribe where you hold a licence. We label every session so both you and the patient know which it is before it starts.</p>
-          <a href="legal.html" style="font-size:13px;color:var(--link);">Read how we handle this</a>
+        <div class="sidebar-card">
+          <h3>What "routing only" means in practice</h3>
+          <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:10px;">
+            A patient describes chest pain. You tell them whether to go to a cardiologist, their GP, or A&amp;E — and how urgently. You do <em>not</em> say what is causing the pain.
+          </p>
+          <p style="font-size:13px;color:var(--text-2);line-height:1.6;">
+            This positioning keeps your liability low. NaviarCare is a marketplace intermediary — your professional indemnity is with your insurer, not with the platform.
+          </p>
+          <a href="legal.html" style="font-size:12px;color:var(--link);">Read the legal framework →</a>
         </div>
 
-        <div class="join-sidebar-card" style="margin-top:16px;">
-          <h3>Working with health facilities</h3>
-          <p style="font-size:14px;color:var(--text-2);line-height:1.6;">Some countries — Türkiye among them — require remote consultations to be delivered through a licensed health facility rather than by an individual doctor. If that applies where you are, we will tell you during verification and connect you to a partner facility.</p>
+        <div class="sidebar-card">
+          <h3>Illustrative earnings</h3>
+          <p style="font-size:12px;color:var(--text-3);margin-bottom:10px;">Example figures only — actual fees set by you. Platform commission applies.</p>
+          <div class="earn-row"><span>Video advisory (20 min)</span><span>~€30–80</span></div>
+          <div class="earn-row"><span>Written response</span><span>~€15–40</span></div>
+          <div class="earn-row"><span>Platform commission</span><span>12%</span></div>
+          <div class="earn-row"><span>10 sessions/week</span><span>~€1,200–2,800/mo</span></div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
-
 </main>
 
 <footer class="footer">
@@ -423,57 +515,195 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo"><div class="nav-logo-mark">N</div> NaviarCare</div>
-        <p class="footer-tagline">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
-        <div class="footer-warn">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+        <p class="footer-tagline">Reach a specialist advisor in your own language and arrive at the right department the first time.</p>
+        <div class="footer-warn">NaviarCare is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
       </div>
       <div>
         <div class="footer-col-title">Service</div>
         <ul class="footer-links">
           <li><a href="triage.html">Check symptoms</a></li>
-          <li><a href="booking.html">Find a doctor</a></li>
+          <li><a href="booking.html">Find an advisor</a></li>
           <li><a href="languages.html">Languages</a></li>
-          <li><a href="booking.html#available">Doctors available now</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
           <li><a href="about.html">About</a></li>
-          <li><a href="about.html#how">How it works</a></li>
-          <li><a href="about.html#safety">Safety &amp; privacy</a></li>
           <li><a href="legal.html">Legal &amp; regulatory</a></li>
           <li><a href="join.html">For doctors</a></li>
-          <li><a href="about.html#contact">Contact</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Help</div>
         <ul class="footer-links">
-          <li><a href="about.html#faq">Frequently asked questions</a></li>
-          <li><a href="languages.html#interpreters">Interpreters</a></li>
-          <li><a href="about.html#contact">Support</a></li>
-          <li><a href="feedback.html">Leave feedback</a></li>
-          <li><a href="legal.html#retention">Your records</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
-      <span class="footer-copy">Available 24 hours a day, in every language we can reach.</span>
+      <span class="footer-copy">© 2026 NaviarCare. Health navigation, not diagnosis.</span>
     </div>
   </div>
 </footer>
 
 <script src="app.js"></script>
 <script>
-// Complaint chip toggle for join form
-document.querySelectorAll('#complaint-chips .lang-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    chip.classList.toggle('selected');
-    const chosen = [...document.querySelectorAll('#complaint-chips .lang-chip.selected')].map(c=>c.textContent);
-    document.getElementById('complaint-chosen').textContent = chosen.length ? chosen.join(', ') : 'Nothing chosen yet.';
+// ── State ────────────────────────────────────────────────────────────────────
+let currentStep = 1;
+let selectedSpec = '';
+let selectedSpecLabel = '';
+let selectedTypes = [];
+const selectedLangs = new Set();
+
+// ── Step navigation ──────────────────────────────────────────────────────────
+function gotoStep(n) {
+  document.querySelectorAll('.join-step').forEach(s => s.classList.remove('active'));
+  const step = document.getElementById('jstep-' + n);
+  if (step) step.classList.add('active');
+  currentStep = n;
+
+  // Update step bar
+  for (let i = 1; i <= 4; i++) {
+    const si = document.getElementById('si-' + i);
+    if (!si) continue;
+    si.classList.remove('active', 'done');
+    if (i < n) si.classList.add('done');
+    else if (i === n) si.classList.add('active');
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextStep(from) {
+  if (from === 1) {
+    if (!selectedSpec) {
+      document.getElementById('step1-error').style.display = 'block';
+      return;
+    }
+    document.getElementById('step1-error').style.display = 'none';
+    gotoStep(2);
+  } else if (from === 2) {
+    gotoStep(3);
+  } else if (from === 3) {
+    buildSummary();
+    gotoStep(4);
+  }
+}
+
+// ── Specialty selection ──────────────────────────────────────────────────────
+document.querySelectorAll('.spec-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.spec-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    selectedSpec = card.dataset.spec;
+    selectedSpecLabel = card.dataset.label;
+    const lbl = document.getElementById('chosen-spec-label');
+    if (lbl) lbl.textContent = selectedSpecLabel;
+    document.getElementById('step1-error').style.display = 'none';
   });
 });
+
+// ── Consultation type toggle ─────────────────────────────────────────────────
+function toggleType(btn) {
+  btn.classList.toggle('selected');
+  const t = btn.dataset.type;
+  if (btn.classList.contains('selected')) {
+    if (!selectedTypes.includes(t)) selectedTypes.push(t);
+  } else {
+    selectedTypes = selectedTypes.filter(x => x !== t);
+  }
+}
+
+// ── Language chips ───────────────────────────────────────────────────────────
+const LANGUAGES = [
+  'English','Norsk','Türkçe','Español','Français','Deutsch','Русский',
+  'العربية','हिन्दी','বাংলা','中文','اردو','فارسی','Soomaali',
+  'Português','Italiano','Polski','Română','Nederlands','Svenska',
+  'Dansk','Suomi','Ελληνικά','Čeština','Magyar','Slovenčina',
+  'Kiswahili','Hausa','Yorùbá','Igbo','Amharic','Pashto',
+  'Tagalog','Bahasa Indonesia','Bahasa Melayu','Tiếng Việt',
+  'ภาษาไทย','한국어','日本語','မြန်မာဘာသာ','Català','Euskara',
+];
+
+function renderLangChips(q) {
+  const container = document.getElementById('lang-chip-container');
+  if (!container) return;
+  const filtered = q ? LANGUAGES.filter(l => l.toLowerCase().includes(q.toLowerCase())) : LANGUAGES;
+  container.innerHTML = filtered.map(lang => `
+    <button type="button" class="lang-chip${selectedLangs.has(lang) ? ' selected' : ''}" data-lang="${lang}">${lang}</button>
+  `).join('');
+  container.querySelectorAll('.lang-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const lang = chip.dataset.lang;
+      if (selectedLangs.has(lang)) {
+        selectedLangs.delete(lang);
+        chip.classList.remove('selected');
+      } else {
+        selectedLangs.add(lang);
+        chip.classList.add('selected');
+      }
+      updateLangChosen();
+    });
+  });
+}
+
+function updateLangChosen() {
+  const el = document.getElementById('lang-chip-chosen');
+  if (el) el.textContent = selectedLangs.size ? [...selectedLangs].join(', ') : 'Nothing chosen yet.';
+}
+
+const langSearch = document.getElementById('lang-chip-search');
+if (langSearch) {
+  langSearch.addEventListener('input', e => renderLangChips(e.target.value));
+}
+renderLangChips('');
+
+// ── Summary ──────────────────────────────────────────────────────────────────
+function buildSummary() {
+  const name = document.getElementById('full-name')?.value || '—';
+  const email = document.getElementById('email')?.value || '—';
+  const country = document.getElementById('country-practice')?.value || '—';
+  const years = document.getElementById('years')?.value || '—';
+  const langs = selectedLangs.size ? [...selectedLangs].join(', ') : '—';
+  const types = selectedTypes.length ? selectedTypes.map(t => t === 'video' ? 'Video call' : 'Written response').join(', ') : '—';
+
+  const el = document.getElementById('summary-content');
+  if (el) el.innerHTML = `
+    <strong>Name:</strong> ${name}<br>
+    <strong>Email:</strong> ${email}<br>
+    <strong>Specialty:</strong> ${selectedSpecLabel || '—'}<br>
+    <strong>Country:</strong> ${country}<br>
+    <strong>Experience:</strong> ${years} years<br>
+    <strong>Languages:</strong> ${langs}<br>
+    <strong>Consultation types:</strong> ${types}
+  `;
+}
+
+// ── Submit ────────────────────────────────────────────────────────────────────
+function submitForm() {
+  const allChecked = [...document.querySelectorAll('#jstep-4 input[type=checkbox]')].every(c => c.checked);
+  if (!allChecked) {
+    alert('Please check all declarations before submitting.');
+    return;
+  }
+  // Placeholder: in production, POST to API
+  const grid = document.getElementById('doctor-grid') || document.querySelector('.join-layout');
+  document.querySelector('#jstep-4 .btn.btn-primary').textContent = 'Application submitted ✓';
+  document.querySelector('#jstep-4 .btn.btn-primary').disabled = true;
+  // Show confirmation
+  const conf = document.createElement('div');
+  conf.style.cssText = 'margin-top:20px;background:var(--success-light);border:1px solid var(--success);border-radius:var(--radius-lg);padding:20px;color:var(--success);font-size:14px;line-height:1.6;';
+  conf.innerHTML = '<strong>Thank you — your application has been received.</strong><br>We will verify your licence and contact you within 3–5 working days. Watch your inbox at ' + (document.getElementById('email')?.value || 'your email') + '.';
+  document.getElementById('jstep-4').appendChild(conf);
+}
+
+// ── Pre-select specialty from URL ────────────────────────────────────────────
+const urlSpec = new URLSearchParams(location.search).get('specialty');
+if (urlSpec) {
+  const card = document.querySelector(`.spec-card[data-spec="${urlSpec}"]`);
+  if (card) card.click();
+}
 </script>
 </body>
 </html>

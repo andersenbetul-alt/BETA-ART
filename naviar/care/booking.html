@@ -4,13 +4,51 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Find a Doctor — NaviarCare</title>
-<meta name="description" content="Browse doctors available now. Filter by specialty, language and availability.">
+<title>Find a Routing Advisor — NaviarCare</title>
+<meta name="description" content="Find a doctor who speaks your language. Describe your symptoms and get directed to the right specialist — before your appointment.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.booking-layout { display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start; }
+/* ── Specialty hub ── */
+.specialty-hub {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 36px;
+}
+.specialty-hub-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 14px 14px;
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s;
+  text-align: center;
+  user-select: none;
+}
+.specialty-hub-card:hover { border-color: var(--brand); }
+.specialty-hub-card.active {
+  border-color: var(--brand);
+  background: var(--brand-light);
+  box-shadow: 0 0 0 3px rgba(0,81,195,.08);
+}
+.shc-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 10px;
+  font-size: 18px;
+}
+.specialty-hub-card.active .shc-icon { background: var(--brand-light); }
+.shc-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.shc-count { font-size: 11px; color: var(--text-3); }
+
+/* ── Booking layout ── */
+.booking-layout { display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: start; }
 @media(max-width:800px){ .booking-layout{grid-template-columns:1fr;} }
+
+/* ── Filter panel ── */
 .filter-panel {
   background: var(--bg-alt);
   border: 1px solid var(--border);
@@ -19,8 +57,11 @@
   position: sticky;
   top: calc(var(--nav-h) + 16px);
 }
-.filter-panel h3 { font-size: 13px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 12px; }
-.filter-panel select, .filter-panel input {
+.filter-panel h3 {
+  font-size: 11px; font-weight: 700; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px;
+}
+.filter-panel select {
   width: 100%;
   background: var(--bg);
   border: 1px solid var(--border-strong);
@@ -28,37 +69,71 @@
   padding: 8px 12px;
   font-size: 14px;
   color: var(--text);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
+
+/* ── Advisory badge ── */
+.advisory-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* ── Doctor cards ── */
 .doctor-grid { display: flex; flex-direction: column; gap: 14px; }
 .doctor-card {
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 22px 24px;
   display: flex;
-  gap: 20px;
+  gap: 18px;
   align-items: flex-start;
+  transition: border-color .12s;
 }
+.doctor-card:hover { border-color: var(--border-strong); }
+.doctor-card.lang-match { border-color: var(--brand); }
 .doctor-avatar {
-  width: 56px; height: 56px;
+  width: 52px; height: 52px;
   border-radius: 50%;
   background: var(--brand-light);
   display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 18px; color: var(--brand);
+  font-weight: 800; font-size: 17px; color: var(--brand);
   flex-shrink: 0;
 }
-.doctor-name { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
-.doctor-specialty { font-size: 14px; color: var(--text-3); margin-bottom: 8px; }
-.doctor-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.doctor-name { font-size: 16px; font-weight: 700; margin-bottom: 1px; }
+.doctor-specialty { font-size: 13px; color: var(--text-3); margin-bottom: 8px; }
+
+.doctor-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
 .doctor-tag {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 3px 10px;
+  padding: 2px 9px;
   font-size: 12px;
   color: var(--text-2);
 }
+.doctor-tag.match { background: var(--brand-light); border-color: var(--brand); color: var(--brand); font-weight: 600; }
+
+.consult-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text-3);
+  margin-right: 10px;
+}
+
 .doctor-status {
   display: inline-flex;
   align-items: center;
@@ -67,16 +142,35 @@
   font-weight: 600;
 }
 .doctor-status.free { color: var(--success); }
-.doctor-status.free::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--success); }
+.doctor-status.free::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--success); display:block; }
 .doctor-status.soon { color: var(--warn); }
-.doctor-status.soon::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--warn); }
+.doctor-status.soon::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--warn); display:block; }
+
 .doctor-actions { margin-left: auto; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
-.doctor-fee { font-size: 20px; font-weight: 800; color: var(--text); }
-.doctor-fee-sub { font-size: 11px; color: var(--text-3); }
-@media(max-width:640px){
+
+.lang-match-badge {
+  font-size: 11px; font-weight: 700; color: var(--brand);
+  background: var(--brand-light);
+  border-radius: 20px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+@media(max-width:600px){
   .doctor-card{flex-wrap:wrap;}
   .doctor-actions{margin-left:0;align-items:flex-start;}
 }
+
+/* ── No results ── */
+.no-results { text-align:center; padding:48px 24px; color:var(--text-3); font-size:14px; }
+.no-results strong { display:block; font-size:18px; color:var(--text-2); margin-bottom:8px; }
+
+/* ── How it works ── */
+.hiw-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; margin-top:28px; }
+.hiw-card { background:var(--bg-alt); border:1px solid var(--border); border-radius:var(--radius-lg); padding:22px 20px; }
+.hiw-n { font-size:11px; font-weight:700; color:var(--text-3); text-transform:uppercase; letter-spacing:.5px; margin-bottom:8px; }
+.hiw-title { font-size:15px; font-weight:700; margin-bottom:6px; }
+.hiw-desc { font-size:13px; color:var(--text-2); line-height:1.55; }
 </style>
 </head>
 <body>
@@ -90,7 +184,7 @@
     <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
       <a href="triage.html">Check symptoms</a>
-      <a href="booking.html">Find a doctor</a>
+      <a href="booking.html" aria-current="page">Find an advisor</a>
       <a href="languages.html">Languages</a>
       <a href="join.html">For doctors</a>
       <a href="about.html">About</a>
@@ -101,6 +195,11 @@
         <option value="tr">Türkçe</option>
         <option value="es">Español</option>
         <option value="ar">العربية</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="ru">Русский</option>
+        <option value="hi">हिन्दी</option>
+        <option value="no">Norsk</option>
       </select>
     </div>
   </div>
@@ -109,198 +208,173 @@
 <main>
 <section class="section">
   <div class="wrap">
-    <h1 style="font-size:clamp(24px,4vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;">Find a doctor</h1>
-    <p style="font-size:16px;color:var(--text-2);margin-bottom:32px;">Filter by specialty, language, or availability. Price is always shown before you confirm.</p>
 
-    <div style="background:var(--warn-light);border:1px solid var(--warn);border-radius:var(--radius);padding:12px 18px;font-size:13px;color:var(--warn);margin-bottom:28px;line-height:1.5;">
-      <strong>Sample data:</strong> The doctors and availability shown are for demonstration purposes only. No real consultation is booked through this preview.
+    <!-- Advisory flag -->
+    <div class="advisory-flag">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Pre-consultation advisory — not a diagnosis service
     </div>
 
+    <h1 style="font-size:clamp(24px,4vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;">Find a routing advisor</h1>
+    <p style="font-size:16px;color:var(--text-2);margin-bottom:10px;">
+      Describe your symptoms in your own language. A specialist advisor will tell you which department or doctor you need — before your appointment.
+    </p>
+    <p style="font-size:13px;color:var(--text-3);margin-bottom:28px;" id="lang-hint">
+      <strong>Select your language</strong> in the top-right corner — doctors who speak it will be highlighted.
+    </p>
+
+    <!-- Specialty hub -->
+    <div class="specialty-hub" id="specialty-hub">
+      <div class="specialty-hub-card active" data-specialty="">
+        <div class="shc-icon">⊞</div>
+        <div class="shc-name">All specialists</div>
+        <div class="shc-count" id="count-all">— advisors</div>
+      </div>
+      <div class="specialty-hub-card" data-specialty="general-practice">
+        <div class="shc-icon">🩺</div>
+        <div class="shc-name">General practice</div>
+        <div class="shc-count" id="count-gp">—</div>
+      </div>
+      <div class="specialty-hub-card" data-specialty="cardiology">
+        <div class="shc-icon">❤</div>
+        <div class="shc-name">Cardiology</div>
+        <div class="shc-count" id="count-card">—</div>
+      </div>
+      <div class="specialty-hub-card" data-specialty="neurology">
+        <div class="shc-icon">🧠</div>
+        <div class="shc-name">Neurology</div>
+        <div class="shc-count" id="count-neuro">—</div>
+      </div>
+      <div class="specialty-hub-card" data-specialty="pediatrics">
+        <div class="shc-icon">👶</div>
+        <div class="shc-name">Paediatrics</div>
+        <div class="shc-count" id="count-peds">—</div>
+      </div>
+      <div class="specialty-hub-card" data-specialty="dermatology">
+        <div class="shc-icon">🔬</div>
+        <div class="shc-name">Dermatology</div>
+        <div class="shc-count" id="count-derm">—</div>
+      </div>
+      <div class="specialty-hub-card" data-specialty="psychiatry">
+        <div class="shc-icon">💬</div>
+        <div class="shc-name">Mental health</div>
+        <div class="shc-count" id="count-psych">—</div>
+      </div>
+      <div class="specialty-hub-card" data-specialty="gynecology">
+        <div class="shc-icon">🌸</div>
+        <div class="shc-name">Gynaecology</div>
+        <div class="shc-count" id="count-gyn">—</div>
+      </div>
+      <div class="specialty-hub-card" data-specialty="orthopedics">
+        <div class="shc-icon">🦴</div>
+        <div class="shc-name">Orthopaedics</div>
+        <div class="shc-count" id="count-orth">—</div>
+      </div>
+      <div class="specialty-hub-card" data-specialty="internal-medicine">
+        <div class="shc-icon">⚕</div>
+        <div class="shc-name">Internal medicine</div>
+        <div class="shc-count" id="count-int">—</div>
+      </div>
+    </div>
+
+    <!-- Booking layout -->
     <div class="booking-layout">
+
+      <!-- Filters -->
       <div>
         <div class="filter-panel">
-          <h3>Filters</h3>
-          <select id="specialty-filter" aria-label="Specialty">
-            <option value="">Any specialty</option>
-            <option value="general-practice">General practice</option>
-            <option value="internal-medicine">Internal medicine</option>
-            <option value="pediatrics">Paediatrics</option>
-            <option value="cardiology">Cardiology</option>
-            <option value="dermatology">Dermatology</option>
-            <option value="psychiatry">Psychiatry</option>
-            <option value="gynecology">Gynaecology</option>
-            <option value="neurology">Neurology</option>
-            <option value="endocrinology">Endocrinology</option>
-            <option value="orthopedics">Orthopaedics</option>
-          </select>
           <h3>Language</h3>
-          <select id="lang-filter" aria-label="Language">
+          <select id="lang-filter" aria-label="Consultation language">
             <option value="">Any language</option>
-            <option>English</option>
-            <option>Türkçe</option>
-            <option>Español</option>
-            <option>العربية</option>
-            <option>Français</option>
-            <option>Deutsch</option>
-            <option>Русский</option>
-            <option>हिन्दी</option>
-            <option>বাংলা</option>
-            <option>中文</option>
+            <option value="en">English</option>
+            <option value="tr">Türkçe</option>
+            <option value="no">Norsk</option>
+            <option value="es">Español</option>
+            <option value="ar">العربية</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="ru">Русский</option>
+            <option value="hi">हिन्दी</option>
+            <option value="bn">বাংলা</option>
+            <option value="zh">中文</option>
+            <option value="so">Soomaali</option>
+            <option value="ur">اردو</option>
+            <option value="fa">فارسی</option>
+          </select>
+          <h3>Consultation type</h3>
+          <select id="type-filter" aria-label="Consultation type">
+            <option value="">Any type</option>
+            <option value="video">Video call</option>
+            <option value="written">Written</option>
           </select>
           <h3>Availability</h3>
           <select id="avail-filter" aria-label="Availability">
             <option value="">Any time</option>
             <option value="now">Available now</option>
-            <option value="30min">Within 30 minutes</option>
             <option value="today">Today</option>
           </select>
-          <a href="triage.html" style="display:block;text-align:center;font-size:13px;color:var(--brand);margin-top:4px;">Not sure which specialty? Check symptoms first</a>
+          <a href="triage.html" style="display:block;text-align:center;font-size:12px;color:var(--brand);margin-top:4px;">Not sure which specialty? →</a>
         </div>
       </div>
 
-      <div id="available">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
-          <p style="font-size:14px;color:var(--text-3);">17 doctors available now · 15 more within 30 minutes</p>
-          <select style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:6px 12px;font-size:13px;color:var(--text-2);">
-            <option>Sort: available now first</option>
-            <option>Sort: lowest fee first</option>
-            <option>Sort: most languages</option>
+      <!-- Doctor list -->
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+          <p style="font-size:14px;color:var(--text-3);" id="result-count">Loading…</p>
+          <select id="sort-sel" style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:6px 10px;font-size:13px;color:var(--text-2);" aria-label="Sort">
+            <option value="lang">Your language first</option>
+            <option value="avail">Available now first</option>
+            <option value="exp">Most experienced first</option>
           </select>
         </div>
 
-        <div class="doctor-grid">
-
-          <div class="doctor-card">
-            <div class="doctor-avatar">AK</div>
-            <div style="flex:1;">
-              <div class="doctor-name">Dr. Ayşe Kaya</div>
-              <div class="doctor-specialty">General practice · 14 years</div>
-              <div class="doctor-tags">
-                <span class="doctor-tag">Türkçe</span>
-                <span class="doctor-tag">English</span>
-                <span class="doctor-tag">Deutsch</span>
-              </div>
-              <div class="doctor-status free">Available now</div>
-            </div>
-            <div class="doctor-actions">
-              <div>
-                <div class="doctor-fee">$45</div>
-                <div class="doctor-fee-sub">per consultation</div>
-              </div>
-              <button class="btn btn-primary btn-sm">Book</button>
-            </div>
-          </div>
-
-          <div class="doctor-card">
-            <div class="doctor-avatar">MP</div>
-            <div style="flex:1;">
-              <div class="doctor-name">Dr. María Pérez</div>
-              <div class="doctor-specialty">Internal medicine · 9 years</div>
-              <div class="doctor-tags">
-                <span class="doctor-tag">Español</span>
-                <span class="doctor-tag">English</span>
-                <span class="doctor-tag">Català</span>
-              </div>
-              <div class="doctor-status free">Available now</div>
-            </div>
-            <div class="doctor-actions">
-              <div>
-                <div class="doctor-fee">$55</div>
-                <div class="doctor-fee-sub">per consultation</div>
-              </div>
-              <button class="btn btn-primary btn-sm">Book</button>
-            </div>
-          </div>
-
-          <div class="doctor-card">
-            <div class="doctor-avatar">AS</div>
-            <div style="flex:1;">
-              <div class="doctor-name">Dr. Ama Sarpong</div>
-              <div class="doctor-specialty">Paediatrics · 11 years</div>
-              <div class="doctor-tags">
-                <span class="doctor-tag">English</span>
-                <span class="doctor-tag">Twi</span>
-                <span class="doctor-tag">Hausa</span>
-              </div>
-              <div class="doctor-status free">Available now</div>
-            </div>
-            <div class="doctor-actions">
-              <div>
-                <div class="doctor-fee">$50</div>
-                <div class="doctor-fee-sub">per consultation</div>
-              </div>
-              <button class="btn btn-primary btn-sm">Book</button>
-            </div>
-          </div>
-
-          <div class="doctor-card">
-            <div class="doctor-avatar">RK</div>
-            <div style="flex:1;">
-              <div class="doctor-name">Dr. Rahul Kumar</div>
-              <div class="doctor-specialty">Cardiology · 18 years</div>
-              <div class="doctor-tags">
-                <span class="doctor-tag">English</span>
-                <span class="doctor-tag">हिन्दी</span>
-                <span class="doctor-tag">বাংলা</span>
-              </div>
-              <div class="doctor-status soon">Free in ~15 min</div>
-            </div>
-            <div class="doctor-actions">
-              <div>
-                <div class="doctor-fee">$75</div>
-                <div class="doctor-fee-sub">per consultation</div>
-              </div>
-              <button class="btn btn-ghost btn-sm">Reserve</button>
-            </div>
-          </div>
-
-          <div class="doctor-card">
-            <div class="doctor-avatar">EV</div>
-            <div style="flex:1;">
-              <div class="doctor-name">Dr. Elena Volkov</div>
-              <div class="doctor-specialty">Dermatology · 7 years</div>
-              <div class="doctor-tags">
-                <span class="doctor-tag">Русский</span>
-                <span class="doctor-tag">English</span>
-                <span class="doctor-tag">Українська</span>
-              </div>
-              <div class="doctor-status free">Available now</div>
-            </div>
-            <div class="doctor-actions">
-              <div>
-                <div class="doctor-fee">$60</div>
-                <div class="doctor-fee-sub">per consultation</div>
-              </div>
-              <button class="btn btn-primary btn-sm">Book</button>
-            </div>
-          </div>
-
-          <div class="doctor-card">
-            <div class="doctor-avatar">FO</div>
-            <div style="flex:1;">
-              <div class="doctor-name">Dr. Fatima Omar</div>
-              <div class="doctor-specialty">General practice · 6 years</div>
-              <div class="doctor-tags">
-                <span class="doctor-tag">العربية</span>
-                <span class="doctor-tag">English</span>
-                <span class="doctor-tag">Soomaali</span>
-              </div>
-              <div class="doctor-status free">Available now</div>
-            </div>
-            <div class="doctor-actions">
-              <div>
-                <div class="doctor-fee">$40</div>
-                <div class="doctor-fee-sub">per consultation</div>
-              </div>
-              <button class="btn btn-primary btn-sm">Book</button>
-            </div>
-          </div>
-
+        <div style="background:var(--warn-light);border:1px solid var(--warn);border-radius:var(--radius);padding:11px 16px;font-size:12px;color:var(--warn);margin-bottom:20px;line-height:1.5;">
+          <strong>Sample profiles.</strong> This is a preview. Advisors shown are illustrative — no real consultation is booked here.
         </div>
 
-        <p style="font-size:13px;color:var(--text-3);margin-top:20px;text-align:center;">Prices shown include the platform fee. The doctor keeps their portion in full. All prices in USD.</p>
+        <div class="doctor-grid" id="doctor-grid"></div>
+
+        <div id="no-results" class="no-results" hidden>
+          <strong>No advisors found</strong>
+          Try a different specialty, language, or availability. More advisors are added each week.
+          <br><br>
+          <a href="join.html" class="btn btn-ghost btn-sm" style="display:inline-flex;">Register as an advisor →</a>
+        </div>
+
+        <p style="font-size:12px;color:var(--text-3);margin-top:18px;text-align:center;">
+          Routing advisors provide navigational guidance only — they help you understand which specialist or department you need. This is not a diagnosis or treatment service.
+        </p>
       </div>
     </div>
+
+    <!-- How it works -->
+    <div style="margin-top:56px;">
+      <h2 style="font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px;">How pre-consultation advisory works</h2>
+      <p style="font-size:14px;color:var(--text-2);margin-bottom:0;">You describe the problem, the advisor tells you where to go. That's it.</p>
+      <div class="hiw-grid">
+        <div class="hiw-card">
+          <div class="hiw-n">Step 1</div>
+          <div class="hiw-title">Pick a specialty area</div>
+          <div class="hiw-desc">Not sure? Use the symptom checker first — it will suggest a specialty for you.</div>
+        </div>
+        <div class="hiw-card">
+          <div class="hiw-n">Step 2</div>
+          <div class="hiw-title">Choose your language</div>
+          <div class="hiw-desc">Select your preferred language. Advisors who speak it appear at the top of the list.</div>
+        </div>
+        <div class="hiw-card">
+          <div class="hiw-n">Step 3</div>
+          <div class="hiw-title">Book or write</div>
+          <div class="hiw-desc">Schedule a short video call or send a written message — whichever you prefer. No waiting room.</div>
+        </div>
+        <div class="hiw-card">
+          <div class="hiw-n">Step 4</div>
+          <div class="hiw-title">Get your routing letter</div>
+          <div class="hiw-desc">The advisor tells you which specialist, clinic, or department to go to, and why. You arrive prepared.</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 </main>
@@ -310,23 +384,21 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo"><div class="nav-logo-mark">N</div> NaviarCare</div>
-        <p class="footer-tagline">Reach a doctor in minutes, describe what is wrong in your own language, and get sent to the right specialist the first time.</p>
-        <div class="footer-warn">Naviar Care is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+        <p class="footer-tagline">Reach a specialist advisor in your own language and arrive at the right department the first time.</p>
+        <div class="footer-warn">NaviarCare is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
       </div>
       <div>
         <div class="footer-col-title">Service</div>
         <ul class="footer-links">
           <li><a href="triage.html">Check symptoms</a></li>
-          <li><a href="booking.html">Find a doctor</a></li>
+          <li><a href="booking.html">Find an advisor</a></li>
           <li><a href="languages.html">Languages</a></li>
-          <li><a href="booking.html#available">Doctors available now</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
           <li><a href="about.html">About</a></li>
-          <li><a href="about.html#safety">Safety &amp; privacy</a></li>
           <li><a href="legal.html">Legal &amp; regulatory</a></li>
           <li><a href="join.html">For doctors</a></li>
         </ul>
@@ -335,17 +407,309 @@
         <div class="footer-col-title">Help</div>
         <ul class="footer-links">
           <li><a href="about.html#faq">FAQ</a></li>
-          <li><a href="about.html#contact">Support</a></li>
-          <li><a href="feedback.html">Leave feedback</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Naviar Care. Health guidance, not a diagnosis.</span>
+      <span class="footer-copy">© 2026 NaviarCare. Health navigation, not diagnosis.</span>
     </div>
   </div>
 </footer>
 
 <script src="app.js"></script>
+<script>
+// ── Doctor data ──────────────────────────────────────────────────────────────
+const DOCTORS = [
+  {
+    id: 'ak', initials: 'AK', name: 'Dr. Ayşe Kaya',
+    specialty: 'general-practice', specialtyLabel: 'General practice',
+    experience: 14,
+    langs: ['tr', 'en', 'de'],
+    langLabels: { tr: 'Türkçe', en: 'English', de: 'Deutsch' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'GP with 14 years in primary care. Helps patients understand which specialist they need and prepares them for the referral process.',
+  },
+  {
+    id: 'mp', initials: 'MP', name: 'Dr. María Pérez',
+    specialty: 'internal-medicine', specialtyLabel: 'Internal medicine',
+    experience: 9,
+    langs: ['es', 'en'],
+    langLabels: { es: 'Español', en: 'English' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'Internal medicine specialist. Guides patients through complex symptom presentations and explains which diagnostic pathway to follow.',
+  },
+  {
+    id: 'as', initials: 'AS', name: 'Dr. Ama Sarpong',
+    specialty: 'pediatrics', specialtyLabel: 'Paediatrics',
+    experience: 11,
+    langs: ['en'],
+    langLabels: { en: 'English' },
+    types: ['video'],
+    available: 'now',
+    bio: 'Paediatric specialist helping families understand child health concerns and navigate to the right department quickly.',
+  },
+  {
+    id: 'rk', initials: 'RK', name: 'Dr. Rahul Kumar',
+    specialty: 'cardiology', specialtyLabel: 'Cardiology',
+    experience: 18,
+    langs: ['en', 'hi'],
+    langLabels: { en: 'English', hi: 'हिन्दी' },
+    types: ['video', 'written'],
+    available: 'soon',
+    bio: 'Cardiologist with 18 years in outpatient clinics. Advises on cardiac symptoms and helps patients understand whether they need urgent or routine referral.',
+  },
+  {
+    id: 'ev', initials: 'EV', name: 'Dr. Elena Volkov',
+    specialty: 'dermatology', specialtyLabel: 'Dermatology',
+    experience: 7,
+    langs: ['ru', 'en'],
+    langLabels: { ru: 'Русский', en: 'English' },
+    types: ['written'],
+    available: 'now',
+    bio: 'Dermatologist specialising in routing advice for skin concerns. Helps patients distinguish what needs urgent attention from what can wait.',
+  },
+  {
+    id: 'fo', initials: 'FO', name: 'Dr. Fatima Omar',
+    specialty: 'general-practice', specialtyLabel: 'General practice',
+    experience: 6,
+    langs: ['ar', 'en', 'so'],
+    langLabels: { ar: 'العربية', en: 'English', so: 'Soomaali' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'GP with a focus on patients navigating an unfamiliar health system. Fluent in Arabic and Somali.',
+  },
+  {
+    id: 'bc', initials: 'BC', name: 'Dr. Büşra Çelik',
+    specialty: 'psychiatry', specialtyLabel: 'Mental health',
+    experience: 8,
+    langs: ['tr', 'en', 'de'],
+    langLabels: { tr: 'Türkçe', en: 'English', de: 'Deutsch' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'Psychiatrist helping patients navigate mental health pathways. Routes patients to the right therapy type, service, or level of care.',
+  },
+  {
+    id: 'ln', initials: 'LN', name: 'Dr. Lars Nybø',
+    specialty: 'general-practice', specialtyLabel: 'General practice',
+    experience: 20,
+    langs: ['no', 'en', 'de'],
+    langLabels: { no: 'Norsk', en: 'English', de: 'Deutsch' },
+    types: ['video'],
+    available: 'now',
+    bio: 'Norwegian GP with 20 years. Specialises in helping international patients navigate Norway\'s fastlege and specialist referral system.',
+  },
+  {
+    id: 'sa', initials: 'SA', name: 'Dr. Sofia Andersen',
+    specialty: 'gynecology', specialtyLabel: 'Gynaecology',
+    experience: 12,
+    langs: ['no', 'en', 'es'],
+    langLabels: { no: 'Norsk', en: 'English', es: 'Español' },
+    types: ['video', 'written'],
+    available: 'soon',
+    bio: 'Gynaecologist helping patients understand their symptoms and find the right specialist or clinic, in the right timeframe.',
+  },
+  {
+    id: 'tm', initials: 'TM', name: 'Dr. Tariq Mahmoud',
+    specialty: 'neurology', specialtyLabel: 'Neurology',
+    experience: 15,
+    langs: ['ar', 'en', 'fr'],
+    langLabels: { ar: 'العربية', en: 'English', fr: 'Français' },
+    types: ['written'],
+    available: 'now',
+    bio: 'Neurologist advising on symptom patterns and helping patients understand whether they need urgent or routine neurological investigation.',
+  },
+  {
+    id: 'pc', initials: 'PC', name: 'Dr. Pierre Clément',
+    specialty: 'orthopedics', specialtyLabel: 'Orthopaedics',
+    experience: 11,
+    langs: ['fr', 'en'],
+    langLabels: { fr: 'Français', en: 'English' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'Orthopaedic surgeon advising on musculoskeletal symptoms. Guides patients on whether physio, GP, or specialist referral is the right next step.',
+  },
+];
+
+// ── State ────────────────────────────────────────────────────────────────────
+let selectedSpecialty = '';
+let selectedLang = '';
+let selectedType = '';
+let selectedAvail = '';
+let sortMode = 'lang';
+let uiLang = 'en';
+
+// ── Language matching ────────────────────────────────────────────────────────
+function getUiLang() {
+  try { return localStorage.getItem('nc-lang') || 'en'; } catch { return 'en'; }
+}
+
+// ── Render ───────────────────────────────────────────────────────────────────
+function render() {
+  uiLang = getUiLang();
+  const langHint = document.getElementById('lang-hint');
+  if (langHint) {
+    if (uiLang !== 'en') {
+      langHint.innerHTML = '<span style="color:var(--brand);font-weight:600;">Your language is selected.</span> Advisors who speak it are highlighted below.';
+    } else {
+      langHint.innerHTML = '<strong>Select your language</strong> in the top-right corner — advisors who speak it will be highlighted.';
+    }
+  }
+
+  // Filter
+  let docs = DOCTORS.filter(d => {
+    if (selectedSpecialty && d.specialty !== selectedSpecialty) return false;
+    if (selectedLang && !d.langs.includes(selectedLang)) return false;
+    if (selectedType && !d.types.includes(selectedType)) return false;
+    if (selectedAvail === 'now' && d.available !== 'now') return false;
+    if (selectedAvail === 'today' && !['now', 'soon'].includes(d.available)) return false;
+    return true;
+  });
+
+  // Sort
+  docs = [...docs].sort((a, b) => {
+    if (sortMode === 'lang') {
+      const aMatch = a.langs.includes(uiLang) ? 1 : 0;
+      const bMatch = b.langs.includes(uiLang) ? 1 : 0;
+      if (aMatch !== bMatch) return bMatch - aMatch;
+    }
+    if (sortMode === 'avail') {
+      const order = { now: 0, soon: 1, later: 2 };
+      const diff = (order[a.available]||2) - (order[b.available]||2);
+      if (diff !== 0) return diff;
+    }
+    if (sortMode === 'exp') return b.experience - a.experience;
+    return 0;
+  });
+
+  // Update counts
+  const countMap = {
+    'count-all': DOCTORS.length,
+    'count-gp': DOCTORS.filter(d=>d.specialty==='general-practice').length,
+    'count-card': DOCTORS.filter(d=>d.specialty==='cardiology').length,
+    'count-neuro': DOCTORS.filter(d=>d.specialty==='neurology').length,
+    'count-peds': DOCTORS.filter(d=>d.specialty==='pediatrics').length,
+    'count-derm': DOCTORS.filter(d=>d.specialty==='dermatology').length,
+    'count-psych': DOCTORS.filter(d=>d.specialty==='psychiatry').length,
+    'count-gyn': DOCTORS.filter(d=>d.specialty==='gynecology').length,
+    'count-orth': DOCTORS.filter(d=>d.specialty==='orthopedics').length,
+    'count-int': DOCTORS.filter(d=>d.specialty==='internal-medicine').length,
+  };
+  Object.entries(countMap).forEach(([id, n]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = n + (n === 1 ? ' advisor' : ' advisors');
+  });
+
+  // Result count
+  const rc = document.getElementById('result-count');
+  if (rc) rc.textContent = docs.length + ' advisor' + (docs.length !== 1 ? 's' : '') + ' found';
+
+  const grid = document.getElementById('doctor-grid');
+  const noRes = document.getElementById('no-results');
+  if (!grid) return;
+
+  if (docs.length === 0) {
+    grid.innerHTML = '';
+    if (noRes) noRes.hidden = false;
+    return;
+  }
+  if (noRes) noRes.hidden = true;
+
+  grid.innerHTML = docs.map(d => {
+    const langMatch = d.langs.includes(uiLang);
+    const types = d.types.map(t =>
+      t === 'video'
+        ? '<span class="consult-type"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg> Video</span>'
+        : '<span class="consult-type"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Written</span>'
+    ).join('');
+
+    const availHtml = d.available === 'now'
+      ? '<span class="doctor-status free">Available now</span>'
+      : '<span class="doctor-status soon">Available soon</span>';
+
+    const langTags = Object.entries(d.langLabels).map(([code, label]) =>
+      `<span class="doctor-tag${code === uiLang ? ' match' : ''}">${label}</span>`
+    ).join('');
+
+    const matchBadge = langMatch
+      ? `<span class="lang-match-badge">Speaks your language</span>`
+      : '';
+
+    return `
+      <div class="doctor-card${langMatch ? ' lang-match' : ''}">
+        <div class="doctor-avatar">${d.initials}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
+            <div class="doctor-name">${d.name}</div>
+            ${matchBadge}
+          </div>
+          <div class="doctor-specialty">${d.specialtyLabel} · ${d.experience} yrs</div>
+          <div class="doctor-tags">${langTags}</div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+            ${types}
+            ${availHtml}
+          </div>
+          <p style="font-size:13px;color:var(--text-2);margin-top:8px;line-height:1.5;">${d.bio}</p>
+        </div>
+        <div class="doctor-actions">
+          <a href="triage.html" class="btn btn-primary btn-sm">Ask for guidance</a>
+          <a href="triage.html" class="btn btn-ghost btn-sm" style="font-size:12px;">View profile</a>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ── Specialty hub ────────────────────────────────────────────────────────────
+document.querySelectorAll('.specialty-hub-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.specialty-hub-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    selectedSpecialty = card.dataset.specialty;
+    render();
+  });
+});
+
+// ── Filter controls ──────────────────────────────────────────────────────────
+document.getElementById('lang-filter').addEventListener('change', e => {
+  selectedLang = e.target.value;
+  render();
+});
+document.getElementById('type-filter').addEventListener('change', e => {
+  selectedType = e.target.value;
+  render();
+});
+document.getElementById('avail-filter').addEventListener('change', e => {
+  selectedAvail = e.target.value;
+  render();
+});
+document.getElementById('sort-sel').addEventListener('change', e => {
+  sortMode = e.target.value;
+  render();
+});
+
+// ── URL param: pre-select specialty from triage ──────────────────────────────
+const urlSpecialty = new URLSearchParams(location.search).get('specialty');
+if (urlSpecialty) {
+  selectedSpecialty = urlSpecialty;
+  const card = document.querySelector(`.specialty-hub-card[data-specialty="${urlSpecialty}"]`);
+  if (card) {
+    document.querySelectorAll('.specialty-hub-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  }
+}
+
+// ── Language select sync ─────────────────────────────────────────────────────
+const langSel = document.getElementById('lang-sel');
+if (langSel) {
+  langSel.addEventListener('change', () => {
+    setTimeout(render, 50); // let app.js setLang() run first
+  });
+}
+
+// ── Initial render ───────────────────────────────────────────────────────────
+render();
+</script>
 </body>
 </html>
