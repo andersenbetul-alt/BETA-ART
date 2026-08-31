@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Advisor profile — NaviarCare</title>
+<meta name="description" content="View this routing advisor's specialties, languages and availability on NaviarCare.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.profile-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+@media(max-width:800px){ .profile-layout{grid-template-columns:1fr;} }
+
+/* ── Sidebar card ── */
+.profile-sidebar {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  position: sticky;
+  top: calc(var(--nav-h) + 16px);
+}
+.profile-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 26px; color: var(--brand);
+  margin: 0 auto 18px;
+}
+.profile-name {
+  font-size: 20px; font-weight: 800; text-align: center;
+  margin-bottom: 4px; letter-spacing: -.02em;
+}
+.profile-specialty {
+  font-size: 13px; color: var(--text-3);
+  text-align: center; margin-bottom: 16px;
+}
+.avail-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 12px; font-weight: 700;
+  margin-bottom: 22px;
+}
+.avail-chip.now { background: var(--success-light); color: var(--success); }
+.avail-chip.now::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--success); }
+.avail-chip.soon { background: var(--warn-light); color: var(--warn); }
+.avail-chip.soon::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--warn); }
+.avail-chip.later { background: var(--bg-card); color: var(--text-3); border:1px solid var(--border); }
+
+.sidebar-sep { height:1px; background:var(--border); margin:18px 0; }
+
+.sidebar-label {
+  font-size:11px; font-weight:700; color:var(--text-3);
+  text-transform:uppercase; letter-spacing:.5px; margin-bottom:10px;
+}
+.lang-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px; }
+.lang-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12.5px; color: var(--text-2);
+}
+.ctype-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text-2);
+  margin-bottom: 8px;
+}
+.ctype-row svg { flex-shrink:0; color:var(--brand); }
+
+.btn-full {
+  display: block; width: 100%;
+  text-align: center;
+  margin-top: 8px;
+}
+.advisory-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: #eff6ff; color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 20px; padding: 3px 10px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .3px; text-transform: uppercase;
+  margin-top: 12px;
+}
+
+/* ── Main content ── */
+.profile-main {}
+.profile-section {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 26px;
+  margin-bottom: 16px;
+}
+.ps-title {
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .5px;
+  color: var(--text-3); margin-bottom: 14px;
+}
+.ps-body {
+  font-size: 15px; color: var(--text-2); line-height: 1.7;
+}
+.topic-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.topic-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--text-2); line-height: 1.45;
+}
+.topic-list li::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0; margin-top: 7px;
+}
+
+.exp-row {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 18px;
+  margin-bottom: 10px;
+}
+.exp-row svg { color: var(--brand); flex-shrink:0; }
+.exp-label { font-size: 14px; color: var(--text-2); line-height: 1.4; }
+.exp-label strong { color: var(--text); }
+
+.routing-notice {
+  background: var(--brand-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 13px; color: var(--text-2); line-height: 1.55;
+}
+.routing-notice strong { color: var(--brand); }
+
+/* ── Not found ── */
+.not-found {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--text-3);
+}
+.not-found h2 { font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" style="padding:0;line-height:1;">
+      <img src="naviar-care-logo.svg" alt="NaviarCare" height="36" style="display:block;height:36px;width:auto;">
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="triage.html">Check symptoms</a>
+      <a href="booking.html">Find an advisor</a>
+      <a href="languages.html">Languages</a>
+      <a href="join.html">For doctors</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <select class="lang-select" id="lang-sel" aria-label="Choose your language">
+        <option value="en">English</option>
+        <option value="tr">Türkçe</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="ru">Русский</option>
+        <option value="hi">हिन्दी</option>
+        <option value="no">Norsk</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="section">
+  <div class="wrap">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="margin-bottom:20px;font-size:13px;color:var(--text-3);display:flex;align-items:center;gap:6px;">
+      <a href="booking.html" style="color:var(--link);">Find an advisor</a>
+      <span>›</span>
+      <span id="bc-name">Advisor profile</span>
+    </nav>
+
+    <!-- Profile content (populated by JS) -->
+    <div id="profile-root"></div>
+
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="naviar-care-logo.svg" alt="NaviarCare" height="28" style="height:28px;width:auto;display:block;"></div>
+        <p class="footer-tagline">Reach a specialist advisor in your own language and arrive at the right department the first time.</p>
+        <div class="footer-warn">NaviarCare is not an emergency service. If someone is in immediate danger, call your local emergency number.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Service</div>
+        <ul class="footer-links">
+          <li><a href="triage.html">Check symptoms</a></li>
+          <li><a href="booking.html">Find an advisor</a></li>
+          <li><a href="languages.html">Languages</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="legal.html">Legal &amp; regulatory</a></li>
+          <li><a href="join.html">For doctors</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Help</div>
+        <ul class="footer-links">
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 NaviarCare. Health navigation, not diagnosis.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+// ── Doctor data (kept in sync with booking.html) ─────────────────────────────
+const DOCTORS = [
+  {
+    id: 'ak', initials: 'AK', name: 'Dr. Ayşe Kaya',
+    specialty: 'general-practice', specialtyLabel: 'General practice',
+    experience: 14,
+    langs: ['tr', 'en', 'de'],
+    langLabels: { tr: 'Türkçe', en: 'English', de: 'Deutsch' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'GP with 14 years in primary care. Helps patients understand which specialist they need and prepares them for the referral process.',
+    country: 'Türkiye / Germany',
+    since: 2026,
+  },
+  {
+    id: 'mp', initials: 'MP', name: 'Dr. María Pérez',
+    specialty: 'internal-medicine', specialtyLabel: 'Internal medicine',
+    experience: 9,
+    langs: ['es', 'en'],
+    langLabels: { es: 'Español', en: 'English' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'Internal medicine specialist. Guides patients through complex symptom presentations and explains which diagnostic pathway to follow.',
+    country: 'Spain',
+    since: 2026,
+  },
+  {
+    id: 'as', initials: 'AS', name: 'Dr. Ama Sarpong',
+    specialty: 'pediatrics', specialtyLabel: 'Paediatrics',
+    experience: 11,
+    langs: ['en'],
+    langLabels: { en: 'English' },
+    types: ['video'],
+    available: 'now',
+    bio: 'Paediatric specialist helping families understand child health concerns and navigate to the right department quickly.',
+    country: 'Ghana / UK',
+    since: 2026,
+  },
+  {
+    id: 'rk', initials: 'RK', name: 'Dr. Rahul Kumar',
+    specialty: 'cardiology', specialtyLabel: 'Cardiology',
+    experience: 18,
+    langs: ['en', 'hi'],
+    langLabels: { en: 'English', hi: 'हिन्दी' },
+    types: ['video', 'written'],
+    available: 'soon',
+    bio: 'Cardiologist with 18 years in outpatient clinics. Advises on cardiac symptoms and helps patients understand whether they need urgent or routine referral.',
+    country: 'India / Norway',
+    since: 2026,
+  },
+  {
+    id: 'ev', initials: 'EV', name: 'Dr. Elena Volkov',
+    specialty: 'dermatology', specialtyLabel: 'Dermatology',
+    experience: 7,
+    langs: ['ru', 'en'],
+    langLabels: { ru: 'Русский', en: 'English' },
+    types: ['written'],
+    available: 'now',
+    bio: 'Dermatologist specialising in routing advice for skin concerns. Helps patients distinguish what needs urgent attention from what can wait.',
+    country: 'Russia / Netherlands',
+    since: 2026,
+  },
+  {
+    id: 'fo', initials: 'FO', name: 'Dr. Fatima Omar',
+    specialty: 'general-practice', specialtyLabel: 'General practice',
+    experience: 6,
+    langs: ['ar', 'en', 'so'],
+    langLabels: { ar: 'العربية', en: 'English', so: 'Soomaali' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'GP with a focus on patients navigating an unfamiliar health system. Fluent in Arabic and Somali.',
+    country: 'Somalia / Norway',
+    since: 2026,
+  },
+  {
+    id: 'bc', initials: 'BC', name: 'Dr. Büşra Çelik',
+    specialty: 'psychiatry', specialtyLabel: 'Mental health',
+    experience: 8,
+    langs: ['tr', 'en', 'de'],
+    langLabels: { tr: 'Türkçe', en: 'English', de: 'Deutsch' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'Psychiatrist helping patients navigate mental health pathways. Routes patients to the right therapy type, service, or level of care.',
+    country: 'Türkiye / Germany',
+    since: 2026,
+  },
+  {
+    id: 'ln', initials: 'LN', name: 'Dr. Lars Nybø',
+    specialty: 'general-practice', specialtyLabel: 'General practice',
+    experience: 20,
+    langs: ['no', 'en', 'de'],
+    langLabels: { no: 'Norsk', en: 'English', de: 'Deutsch' },
+    types: ['video'],
+    available: 'now',
+    bio: "Norwegian GP with 20 years. Specialises in helping international patients navigate Norway's fastlege and specialist referral system.",
+    country: 'Norway',
+    since: 2026,
+  },
+  {
+    id: 'sa', initials: 'SA', name: 'Dr. Sofia Andersen',
+    specialty: 'gynecology', specialtyLabel: 'Gynaecology',
+    experience: 12,
+    langs: ['no', 'en', 'es'],
+    langLabels: { no: 'Norsk', en: 'English', es: 'Español' },
+    types: ['video', 'written'],
+    available: 'soon',
+    bio: 'Gynaecologist helping patients understand their symptoms and find the right specialist or clinic, in the right timeframe.',
+    country: 'Norway / Spain',
+    since: 2026,
+  },
+  {
+    id: 'tm', initials: 'TM', name: 'Dr. Tariq Mahmoud',
+    specialty: 'neurology', specialtyLabel: 'Neurology',
+    experience: 15,
+    langs: ['ar', 'en', 'fr'],
+    langLabels: { ar: 'العربية', en: 'English', fr: 'Français' },
+    types: ['written'],
+    available: 'now',
+    bio: 'Neurologist advising on symptom patterns and helping patients understand whether they need urgent or routine neurological investigation.',
+    country: 'Egypt / France',
+    since: 2026,
+  },
+  {
+    id: 'pc', initials: 'PC', name: 'Dr. Pierre Clément',
+    specialty: 'orthopedics', specialtyLabel: 'Orthopaedics',
+    experience: 11,
+    langs: ['fr', 'en'],
+    langLabels: { fr: 'Français', en: 'English' },
+    types: ['video', 'written'],
+    available: 'now',
+    bio: 'Orthopaedic surgeon advising on musculoskeletal symptoms. Guides patients on whether physio, GP, or specialist referral is the right next step.',
+    country: 'France',
+    since: 2026,
+  },
+];
+
+// ── Topic lists by specialty ──────────────────────────────────────────────────
+const TOPICS = {
+  'general-practice': [
+    'Which specialist to see for your symptoms',
+    'Whether your concern can wait or needs same-day attention',
+    'How the referral process works in your country',
+    'Preparing a summary of your history for your GP appointment',
+    'Understanding test results and what to ask your doctor next',
+  ],
+  'cardiology': [
+    'Whether chest symptoms suggest a cardiac or non-cardiac cause',
+    'How urgently you should seek a cardiac evaluation',
+    'What a cardiology referral typically involves',
+    'Questions to ask when you see a cardiologist',
+    'When palpitations, shortness of breath, or fatigue warrant urgent review',
+  ],
+  'neurology': [
+    'Whether headaches, numbness, or dizziness need neurological investigation',
+    'The difference between urgent (stroke, meningitis) and routine neurology',
+    'How to describe neurological symptoms clearly to your doctor',
+    'What an MRI or EEG involves and when they are typically ordered',
+    'Which type of neurologist handles your type of concern',
+  ],
+  'pediatrics': [
+    'Whether a child\'s fever or rash needs same-day attention',
+    'Understanding paediatric referral pathways for your country',
+    'How to describe a child\'s symptoms accurately to a clinician',
+    'When to go to A&E versus booking a GP appointment',
+    'Common developmental concerns and when to involve a specialist',
+  ],
+  'dermatology': [
+    'Whether a skin change needs urgent assessment',
+    'The difference between a GP referral and urgent dermatology',
+    'How to photograph and describe a skin lesion for your doctor',
+    'What a dermatology appointment involves',
+    'Understanding when a mole or rash can wait versus needs prompt review',
+  ],
+  'psychiatry': [
+    'Which mental health pathway — GP, psychologist, psychiatrist, or crisis service — fits your situation',
+    'How to access mental health support without a prior diagnosis',
+    'What a psychiatry referral involves and what to expect',
+    'Preparing for a first mental health assessment',
+    'Understanding the difference between therapy types',
+  ],
+  'gynecology': [
+    'When gynaecological symptoms warrant specialist referral',
+    'The difference between routine and urgent gynaecology appointments',
+    'Understanding screening and referral pathways',
+    'Preparing for your first gynaecological appointment',
+    'How to describe symptoms accurately in a consultation',
+  ],
+  'orthopedics': [
+    'Whether joint, muscle, or bone pain needs imaging or specialist review',
+    'Physiotherapy versus orthopaedic referral — which is the right first step',
+    'Preparing for an orthopaedic consultation',
+    'Understanding what an X-ray, MRI or ultrasound can and cannot show',
+    'Recovery pathway questions after an injury',
+  ],
+  'internal-medicine': [
+    'Making sense of multiple symptoms and finding the right specialist',
+    'Which diagnostic tests your doctor is likely to order and why',
+    'Understanding your existing test results and next steps',
+    'Complex referral pathways for multi-system concerns',
+    'Preparing for a hospital specialist appointment',
+  ],
+  'default': [
+    'Which specialist or department handles your concern',
+    'How urgently you should seek care',
+    'Preparing your history for your first appointment',
+    'Understanding what to expect from the referral process',
+    'Questions to ask your doctor at your next visit',
+  ],
+};
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render() {
+  const id = new URLSearchParams(location.search).get('id');
+  const root = document.getElementById('profile-root');
+  const d = DOCTORS.find(doc => doc.id === id);
+
+  if (!d) {
+    root.innerHTML = `
+      <div class="not-found">
+        <h2>Advisor not found</h2>
+        <p style="margin-bottom:20px;">This profile may have moved or is no longer available.</p>
+        <a href="booking.html" class="btn btn-primary">Browse all advisors</a>
+      </div>`;
+    return;
+  }
+
+  // Update breadcrumb and page title
+  document.getElementById('bc-name').textContent = d.name;
+  document.title = d.name + ' — NaviarCare';
+
+  const availClass = d.available === 'now' ? 'now' : (d.available === 'soon' ? 'soon' : 'later');
+  const availText  = d.available === 'now' ? 'Available now' : (d.available === 'soon' ? 'Available soon' : 'Check availability');
+
+  const langChips = Object.entries(d.langLabels)
+    .map(([, label]) => `<span class="lang-chip">${label}</span>`)
+    .join('');
+
+  const typeRows = d.types.map(t => t === 'video'
+    ? `<div class="ctype-row">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        Video consultation
+       </div>`
+    : `<div class="ctype-row">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Written exchange
+       </div>`
+  ).join('');
+
+  const topics = (TOPICS[d.specialty] || TOPICS.default)
+    .map(t => `<li>${t}</li>`)
+    .join('');
+
+  const triageUrl = `triage.html?specialty=${d.specialty}`;
+
+  root.innerHTML = `
+    <div class="profile-layout">
+
+      <!-- ── Sidebar ── -->
+      <div>
+        <div class="profile-sidebar">
+          <div style="text-align:center;">
+            <div class="profile-avatar">${d.initials}</div>
+            <div class="profile-name">${d.name}</div>
+            <div class="profile-specialty">${d.specialtyLabel} · ${d.experience} yrs experience</div>
+            <span class="avail-chip ${availClass}">${availText}</span>
+          </div>
+
+          <div class="sidebar-sep"></div>
+
+          <div class="sidebar-label">Languages</div>
+          <div class="lang-chips">${langChips}</div>
+
+          <div class="sidebar-label">Consultation type</div>
+          ${typeRows}
+
+          <div class="sidebar-sep"></div>
+
+          <a href="${triageUrl}" class="btn btn-primary btn-full btn-lg">Ask for guidance</a>
+          <a href="booking.html?specialty=${d.specialty}" class="btn btn-ghost btn-full" style="margin-top:8px;">Back to ${d.specialtyLabel}</a>
+
+          <div style="text-align:center;">
+            <div class="advisory-chip">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Navigation only
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Main content ── -->
+      <div class="profile-main">
+
+        <!-- Sample profiles notice -->
+        <div style="background:var(--warn-light);border:1px solid var(--warn);border-radius:var(--radius);padding:11px 16px;font-size:12px;color:var(--warn);margin-bottom:20px;line-height:1.5;">
+          <strong>Sample profile.</strong> This is a pilot preview. No real consultation is booked at this stage.
+        </div>
+
+        <!-- About -->
+        <div class="profile-section">
+          <div class="ps-title">About</div>
+          <p class="ps-body">${d.bio}</p>
+        </div>
+
+        <!-- What this advisor helps with -->
+        <div class="profile-section">
+          <div class="ps-title">What ${d.name.split(' ')[1] || d.name} helps with</div>
+          <p class="ps-body" style="margin-bottom:16px;">As a routing advisor, ${d.name.split(' ')[1] || d.name} helps you answer one question: <strong>where do I go next?</strong> Common questions in a ${d.specialtyLabel} navigation session:</p>
+          <ul class="topic-list">${topics}</ul>
+        </div>
+
+        <!-- Experience & credentials -->
+        <div class="profile-section">
+          <div class="ps-title">Experience</div>
+          <div class="exp-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <div class="exp-label"><strong>${d.experience} years</strong> of clinical experience in ${d.specialtyLabel}</div>
+          </div>
+          <div class="exp-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="exp-label"><strong>Verified licence</strong> — NaviarCare checks licence number and issuing authority before activation</div>
+          </div>
+          <div class="exp-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <div class="exp-label"><strong>${d.country}</strong> — licensed in jurisdiction shown. Advises on navigation only; does not issue prescriptions or referral letters.</div>
+          </div>
+        </div>
+
+        <!-- Routing notice -->
+        <div class="profile-section">
+          <div class="ps-title">What to expect</div>
+          <div class="routing-notice">
+            <strong>This is a navigation session, not a diagnosis.</strong> ${d.name.split(' ')[1] || d.name} will ask about your symptoms, help you understand which specialist or department you need, and prepare a summary you can take to your own doctor. No prescriptions, no diagnoses, and no referral letters are issued. In a medical emergency, call your local emergency number.
+          </div>
+        </div>
+
+      </div>
+    </div>`;
+}
+
+render();
+</script>
+</body>
+</html>
