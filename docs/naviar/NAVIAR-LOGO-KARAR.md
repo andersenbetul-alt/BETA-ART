@@ -286,6 +286,36 @@ P8/P9 + P5 değişmeden kalıyor, P10 ve düzeltme denemesi yalnızca arşiv
 çalışması (`studies/study-p10-diagonal-corrected.svg`) olarak duruyor.
 Bu yön ileride gerçek görsel araç (Figma vb.) üzerinden tekrar açılabilir.
 
+**31.08.2026 — asıl M1 kaynağı ilk kez doğrudan okundu, kapanışı doğruluyor.**
+Bu oturuma kadar M1 (`NAVIAR Logo Audit & Figma Production Autoprompt v1.0`)
+yalnızca bu belge üzerinden ikinci elden aktarılıyordu. Kullanıcı orijinal
+`.docx` dosyasını yükledi, doğrudan okundu (`pandoc`/`soffice` bu ortamda
+çalışmadı, `document.xml`'den ham metin çıkarıldı). Belgenin kendi cümlesi,
+tam da o sırada denenen "gold floating in the middle, iki kola değmesin"
+yapısını **doğrudan reddediyor**:
+
+> "Gold accent occupies 12–16% of visible monogram area and **remains
+> structurally attached; no floating decorative sliver.**"
+
+Yani P10'un ikinci düzeltme denemesi (kullanıcının kendi isteğiyle kurulan
+"iç şerit", iki kola da değmeyen bağımsız altın adası) **kaynak spesifikasyonun
+kendisiyle çelişiyordu** — bu yalnızca bir tercih anlaşmazlığı değildi, yazılı
+kurala aykırıydı. Master'ın (P8/P9) gold'u sağ kolun tabanına **yapısal olarak
+bağlı** bir kama olarak yerleştirmesi — tam olarak spec'in istediği şey.
+
+Ayrıca doğrulanan diğer maddeler (hepsi `build.py`'deki mevcut değerlerle
+birebir eşleşiyor): footprint "~760×800", ribbon "145-160", diyagonal açı
+"38-42°" (master'ın bilinen 29,9° sapması gerçek ve hâlâ açık — uydurulmuş
+bir eşik değil), "one closed navy path plus one closed gold accent path".
+Ayrıca metalik/gradyan efektler belgenin kendisinde de açıkça yasak
+("Metal, bevel, glow, texture and drop-shadow effects... retired from the
+master logo; these may appear only in presentation mockups") — yani bu
+oturumda art arda gelen metalik/gradyanlı "NC" ve gümüş-altın N görselleri,
+dayandıklarını iddia ettikleri kaynağın kendisiyle de çelişiyor.
+
+Kaynak dosya: kullanıcı tarafından yüklendi, bu depoya eklenmedi (kişisel
+yükleme alanı) — gerekirse tekrar okunabilir.
+
 ### P9 — NAVIAR CARE · **KOŞULLU KABUL**
 
 P8'in bütün şartları aynen geçerli. Ek olarak:
