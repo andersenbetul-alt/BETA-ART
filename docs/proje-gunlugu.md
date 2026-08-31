@@ -5,6 +5,23 @@ Projenin her aşaması ve yapılanlar bu dosyaya işlenir (kullanıcı talimatı
 listesi `ROADMAP.md`'de, teknik kararların gerekçeleri `docs/` altındaki ilgili
 belgelerde durur. Bu dosya hikâyeyi anlatır: ne yapıldı, neden, ne durumda.
 
+## 31.08.2026 — NAVIAR dosyaları oluşturuldu; öncelik sırası belirlendi
+
+**NAVIAR DOSYLARI** görevi: `naviar/` dizini ve naviar-consult Slack botu
+gerçek içerikle dolduruldu. Önceden yalnızca README.md vardı.
+
+Eklenenler: `naviar/CLAUDE.md` (alt-proje hafızası), `naviar/docs/` altında
+dört belge (pilot projeler, NAV sistemi rehberi, belediye hizmetleri,
+dijital yardım protokolü). Bot (`agents/eve-slack-agent`) NAVIAR kimliğiyle
+yeniden yapılandırıldı: üç NAVIAR becerek eklendi, örnek `plan_a_trip.md`
+kaldırıldı.
+
+**Karar (kullanıcı, 31.08):** NAVIAR marka çalışması repo transferi
+tamamlanmadan başlamaz. Sıra: önce `betulandersen-droid/naviar-care-1`
+→ `andersenbetul-alt` transferi; sonra marka/görsel sistem çalışması.
+Gerekçe: kodun burada olması neyin mevcut olduğunu gösterir — bu olmadan
+marka kararları havada kalır.
+
 ## Konsept — QBLOGG nedir
 
 Şirketlere içerik hattı satan bir stüdyo: tek araştırmadan yedi çıktı

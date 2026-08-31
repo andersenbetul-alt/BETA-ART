@@ -41,6 +41,15 @@ naviar/
 2. **Pårørende og kommunen** — Bakım ve belediye hizmetleri
 3. **Digital hjelp sammen** — Dijital hizmetlerde güvenli yardım
 
+## Öncelik sırası (31.08.2026 kararı)
+
+**Önce:** Repo transferi (`betulandersen-droid/naviar-care-1` → `andersenbetul-alt`).
+**Sonra:** Marka çalışması (kimlik, görsel sistem, artifact'lar).
+
+Marka çalışması repo transferi tamamlanmadan başlamaz — kaynak kodun burada
+olması, hangi bileşenlerin ve sayfa yapısının var olduğunu gösterir; bu olmadan
+marka kararları havada kalır.
+
 ## Geliştirme notu
 
 `app/` dizini şu an boş. Repo transferi tamamlandığında:
