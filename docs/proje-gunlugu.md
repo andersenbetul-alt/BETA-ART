@@ -508,3 +508,15 @@ oranı muhtemelen aşımlı, wordmark ayrı/ölçülmemiş, raster kaynaklı (ye
 üretilebilir değil). Kullanıcı kararıyla **reddedildi** (P10, karar tablosuna
 işlendi) — onaylı sağ-dikey-bar monogram (P8/P9) ve ölçülmüş P5 wordmark
 değişmedi.
+
+Kullanıcı sonra P10'un düzeltilmesini istedi ("gerekli bütün düzeltmeleri
+yap"). `brand/naviar/build.py`'ye `monogram_paths_p10()` eklenip iki deneme
+yapıldı: önce köşe kaması (altın oranı %14,0'a çekildi, descriptor kontrastı
+düzeltildi, tek path korundu) — kullanıcı "logo bu değil" dedi, altının
+diyagonalin ortasında olması gerektiğini belirtti. İkinci deneme (evenodd
+fill-rule ile iç şerit, aynı %14 oranı) de beğenilmedi ("beğenmedim").
+Kök neden netleşti: kaynak görsele hiç dosya erişimi olmadan koordinat
+tahminiyle geometri kurmak yakınsamıyor. Kullanıcı kararıyla arayış
+**kapatıldı** — master (P8/P9 + P5) değişmeden kalıyor, denemeler yalnızca
+arşiv study'si olarak duruyor (`studies/study-p10-diagonal-corrected.svg`).
+Detay: `NAVIAR-LOGO-KARAR.md` P10 kapanış notu.

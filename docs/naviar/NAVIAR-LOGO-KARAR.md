@@ -278,6 +278,14 @@ olanlar düzeltildi:**
   yerine geçecek şekilde **master ilan edilmedi**; hâlâ `studies/` altında.
   Bu son adım ayrı bir onay gerektirir.
 
+**Kapanış (31.08.2026):** İki düzeltme denemesi de (köşe kaması, sonra iç
+şerit) kullanıcı tarafından beğenilmedi — temel sorun, kaynak görsele hiç
+dosya erişimi olmadan koordinat tahminiyle geometri kurmanın doğası gereği
+yakınsamamasıydı. Kullanıcı kararıyla bu arayış **kapatıldı**: master
+P8/P9 + P5 değişmeden kalıyor, P10 ve düzeltme denemesi yalnızca arşiv
+çalışması (`studies/study-p10-diagonal-corrected.svg`) olarak duruyor.
+Bu yön ileride gerçek görsel araç (Figma vb.) üzerinden tekrar açılabilir.
+
 ### P9 — NAVIAR CARE · **KOŞULLU KABUL**
 
 P8'in bütün şartları aynen geçerli. Ek olarak:
