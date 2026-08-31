@@ -420,3 +420,52 @@ kullanıcı **"Lederstøtte kalsın (önceki onay)"** yanıtını verdi. Yani:
   §9-12'deki mevcut kararla nasıl bir araya geleceğine — Lederstøtte tek
   başlangıç mı, yoksa huninin bir basamağı mı — ayrı bir oturumda karar
   verilebilir. Bu belge o karara kadar §12'yi geçerli kabul eder.
+
+## 14. §12 geçersiz — üç eşit hizmet + huniye resmi geçiş (31.08.2026)
+
+§13'teki "henüz karar değil" durumu değişti: kullanıcı bu kez **gerçek kod**
+yapıştırdı (Figma tasarımından üretilmiş çalışan bir HTML/CSS prototipi —
+hero, üç eşit hizmet kartı, Arbeidsnærvær Sprint, NAVIAR Method, WorkFit,
+Tidlig støtte, Arbeidsnærvær Score, tillit, kunnskap, footer). Bu, önceki
+turlardaki betimleme/plan metninden farklı — somut, karşılaştırılabilir bir
+teslimat. Çelişki açıkça soruldu (AskUserQuestion: "Bu dosya ne olsun?") ve
+kullanıcı **"Üç servis + Score'a resmen geç"** seçti.
+
+**Karar: §12 iptal. Yeni karar — üç eşit hizmet + ürün merdiveni.**
+`brand/naviar/web/index.html` buna göre yeniden kuruldu:
+
+- **Hizmetler:** Lederstøtte / Tilrettelegging / Arbeidsnærvær — tekrar eşit
+  ağırlıklı üç kart (§9'daki orijinal karara dönüş).
+- **Yeni bölümler eklendi:** Arbeidsnærvær Sprint (zaten vardı, korundu),
+  WorkFit (tilrettelegging metodolojisi — jobbkrav/kapasitet/justeringer),
+  Tidlig støtte (erken destek — açıkça "ingen individuell risikoscore, ingen
+  overvåking" ile bireysel skorlamayı reddediyor), Arbeidsnærvær Score
+  (örnek sonuç kutusu), Kunnskap (bilgi merkezi — henüz yayınlanmış içerik
+  yok, sayfada bu açıkça "kommer fortløpende" diye belirtiliyor, uydurma
+  makale yok).
+- **Yapıştırılan prototipten alınmayanlar (uydurma yasak / marka kuralı
+  gereği düzeltildi):** `naviar.no` mailto adresi → `kontakt@naviar-consult.
+  example` (yerleşik placeholder, domain sahipliği doğrulanmadan gerçek gibi
+  gösterilmedi); jenerik Inter fontu ve `#0B1D33`/`#F5F6F8` (F5F2EA) renkleri
+  → onaylı marka tokenları (`#0A1628`/`#D4AF37`/`#F5F6F8`, Poppins/IBM Plex);
+  hiçbir logo yoktu → onaylı monogram/wordmark SVG'leri (`brand/naviar/
+  master/`) birebir path verisiyle korundu. Score sayfasındaki "68/100"
+  örnek sonucu **açıkça "eksempelresultat" ve "testen er ikke lansert ennå"**
+  ibaresiyle işaretlendi — gerçek bir puanlama motoru yok, gerçek kullanıcı
+  verisi yok, sahte benchmark iddiası yok.
+
+## 15. Sözleşme şablonları alındı — DPA ve Oppdragsavtale (31.08.2026)
+
+Kullanıcı iki gerçek `.docx` dosyası yükledi (bu kez uploads klasöründe
+doğrulandı, önceki turlardaki tarif edilen-ama-hiç-gelmeyen dosyalardan
+farklı): `Databehandleravtale (DPA) — sykefraværsoppfølging` ve
+`Oppdragsavtale — sykefraværsoppfølging`. İçerikleri bu oturumda doğrudan
+okunarak doğrulandı (bkz. `docs/naviar/juridisk/README.md`) — kullanıcının
+özeti doğru bulundu. Şablonlar `docs/naviar/juridisk/` altına kopyalandı.
+
+**Sonuç:** Bu şablonlar NAVIAR'ın zaten benimsediği hukuki sınırla (§7)
+tutarlı — dataansvarlığı müşteride kalıyor, NAV'a doğrudan rapor
+gönderilmiyor, helseopplysninger özel kategori olarak işaretli. **Nihai
+sözleşme olarak kilitlenmedi** — ikisi de kendi içinde avukat incelemesi
+gerektiğini söylüyor ve `[KLAMMER]` alanları (org.nr., adres, fiyat) boş.
+Web sitesine bu şablonlardan doğrudan yeni bir hukuki taahhüt eklenmedi.

@@ -38,6 +38,15 @@ Vercel'deki `naviar-consult` projesine dağıtılmadı — istenirse
 `brand/naviar/interactive/`'deki gibi `deploy_to_vercel` ile ayrı bir
 adım olarak yapılabilir.
 
+**31.08.2026 — iki kez el değiştirdi: önce tek-odak Lederstøtte, sonra tekrar
+üç eşit hizmete dönüldü.** Aynı gün içinde sırayla: (1) `is-modeli.md` §12 —
+Lederstøtte tek başlangıç teklifi yapıldı, site buna göre daraltıldı;
+(2) kullanıcı Figma'dan üretilmiş gerçek bir HTML prototipi paylaştı (üç eşit
+hizmet + Sprint + WorkFit + Tidlig støtte + Score + Kunnskap) ve açıkça
+§12'yi geçersiz kılıp bu yapıya geçmeyi seçti (`is-modeli.md` §14). Bu dosya
+şu an §14'ü yansıtıyor — üç eşit hizmet + genişletilmiş bölümler, onaylı
+marka tokenlarıyla. §12 arşivde kalıyor, geçerli değil.
+
 **31.08.2026 — paralel bir "V2" çalışması var, karıştırmayın.** Kullanıcı bu
 dosyadan bağımsız olarak, NAVIAR'ın kendi Figma alanında "NAVIAR Consult V2 —
 Website Master" adıyla ayrı bir tasarım dosyası başlattığını bildirdi (Figma

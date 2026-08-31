@@ -152,6 +152,22 @@
   .method-words .w span{ display:block; font-family:'IBM Plex Sans',sans-serif; font-weight:400; font-size:.82rem; color:var(--text-muted); margin-top:4px; max-width:20ch }
   .cite{ margin-top:28px; font-size:.82rem; color:var(--text-muted); border-inline-start:2px solid var(--card-border); padding-inline-start:14px }
 
+  /* ---- tidlig støtte ---- */
+  .pill-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:30px }
+  .pill{
+    font-family:'IBM Plex Mono',monospace; font-size:.76rem; letter-spacing:.03em;
+    color:#DCE2EC; border:1px solid rgba(245,246,248,.25); border-radius:999px; padding:9px 18px;
+  }
+
+  /* ---- score ---- */
+  .scorebox{
+    background:var(--bg-card); border:1px solid var(--card-border); border-radius:6px;
+    padding:32px; margin-top:40px; display:flex; justify-content:space-between;
+    align-items:center; gap:28px; flex-wrap:wrap;
+  }
+  .score-num{ font-family:'Poppins',sans-serif; font-weight:700; font-size:2.6rem; color:var(--ink) }
+  .score-note{ font-size:.8rem; color:var(--text-muted); margin-top:6px; max-width:32ch }
+
   /* ---- trust ---- */
   .trust-box{ background:var(--bg-card); border:1px solid var(--card-border); border-radius:6px; padding:36px; margin-top:40px }
   .trust-list{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px 32px; margin-top:22px; padding:0; list-style:none }
@@ -194,10 +210,11 @@
       <a href="#tjenester">Tjenester</a>
       <a href="#metode">Metode</a>
       <a href="#tillit">Tillit</a>
+      <a href="#kunnskap">Kunnskap</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <div style="display:flex; align-items:center; gap:10px">
-      <a class="btn btn-gold" href="#kontakt">Ta kontakt</a>
+      <a class="btn btn-gold" href="#score">Ta Arbeidsnærvær Score</a>
       <button class="navtoggle" id="navToggle" aria-label="Åpne meny" aria-expanded="false">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -211,14 +228,14 @@
   <section class="hero strong">
     <svg class="n-mark" viewBox="0 0 760.0 800.0" aria-hidden="true"><path d="M0 0 H150.0 L610.0 626.97 V0 H760.0 V800.0 H610.0 L150.0 173.03 V800.0 H0 Z" fill="#F5F6F8"/></svg>
     <div class="wrap inner">
-      <p class="eyebrow">Lederstøtte i fraværsoppfølging</p>
-      <h1>Trygg støtte når<br>oppfølging blir vanskelig.</h1>
-      <p class="lede">NAVIAR gir deg som leder konkret, faglig sparring i krevende fraværssaker — før, under og etter den vanskelige samtalen. Ett tydelig startpunkt, ikke en åpen konsulentavtale.</p>
+      <p class="eyebrow">Arbeidsnærvær i praksis</p>
+      <h1>Gjør det lettere<br>å være i jobb.</h1>
+      <p class="lede">Vi hjelper ledere og virksomheter med å handle tidligere, finne gode tilretteleggingstiltak og følge opp bedre — uten diagnoser, uten automatiserte vurderinger.</p>
       <div class="cta-row">
-        <a class="btn btn-gold" href="#kontakt">Ta kontakt →</a>
-        <a class="link-quiet" href="#tjenester">Se Lederstøtte</a>
+        <a class="btn btn-gold" href="#score">Ta Arbeidsnærvær Score →</a>
+        <a class="link-quiet" href="#kontakt">Snakk med en rådgiver</a>
       </div>
-      <p class="trust-line">NAVIARS FØRSTE TJENESTE&nbsp;&nbsp;·&nbsp;&nbsp;LEDERSTØTTE</p>
+      <p class="trust-line">LEDERSTØTTE&nbsp;&nbsp;·&nbsp;&nbsp;TILRETTELEGGING&nbsp;&nbsp;·&nbsp;&nbsp;ARBEIDSNÆRVÆR</p>
     </div>
   </section>
 
@@ -238,27 +255,45 @@
   <!-- SERVICES -->
   <section id="tjenester" style="background:var(--bg-page)">
     <div class="wrap">
-      <p class="eyebrow">Tjenesten</p>
-      <h2 style="margin-top:12px; max-width:26ch">Lederstøtte: trygg faglig sparring når oppfølgingen blir krevende.</h2>
-      <p class="lede" style="margin-top:14px; max-width:60ch">NAVIARs første tjeneste — ett tydelig startpunkt, ikke tre parallelle tilbud du må velge mellom.</p>
-      <div class="svc-grid" style="grid-template-columns:1fr; max-width:640px">
+      <p class="eyebrow">Tre områder, én tilnærming</p>
+      <h2 style="margin-top:12px; max-width:26ch">Ikke separate produkter — tre innganger til samme arbeid.</h2>
+      <div class="svc-grid">
         <div class="svc">
           <p class="idx">01</p>
           <h3>Lederstøtte</h3>
-          <p>Vi støtter deg som leder gjennom fraværssaken: hva du bør spørre om, hva som må dokumenteres, og hvordan du forbereder en vanskelig samtale — uten å gjette deg fram alene.</p>
-          <ul><li>Samtaleforberedelse</li><li>Tidlig innsats</li><li>Strukturert oppfølging</li><li>Oppfølgingsplan og dialogmøte</li></ul>
+          <p>Trygg faglig sparring når oppfølgingen blir krevende — før, under og etter en vanskelig samtale.</p>
+          <ul><li>Samtaleforberedelse</li><li>Tidlig innsats</li><li>Strukturert oppfølging</li></ul>
+        </div>
+        <div class="svc">
+          <p class="idx">02</p>
+          <h3>Tilrettelegging</h3>
+          <p>Finn konkrete muligheter i arbeidet, oppgavene og organiseringen — uten å gjøre det til en varig unntaksordning.</p>
+          <ul><li>Arbeidstid og tempo</li><li>Oppgavefordeling</li><li>Midlertidige justeringer</li></ul>
+        </div>
+        <div class="svc">
+          <p class="idx">03</p>
+          <h3>Arbeidsnærvær</h3>
+          <p>Bygg rutiner og lederpraksis som gjør at tidlig handling blir det normale, ikke unntaket.</p>
+          <ul><li>Prosessgjennomgang</li><li>Lederverktøy</li><li>Aggregert innsikt, ikke individdata</li></ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ROADMAP -->
+  <!-- SPRINT -->
   <section class="strong">
     <div class="wrap">
-      <p class="eyebrow">Veien videre</p>
-      <h2 style="margin-top:12px; max-width:24ch">Lederstøtte er startpunktet — ikke sluttpunktet.</h2>
-      <p class="lede" style="margin-top:14px; max-width:60ch">Når Lederstøtte er testet i praksis, bygger vi videre på samme grunnmur: <strong>Tilrettelegging</strong> (konkrete jobbjusteringer) og <strong>Arbeidsnærvær Sprint</strong> (et avgrenset 90-dagers løp). Begge er neste steg i utviklingen — ikke tilbud vi selger parallelt i dag.</p>
-      <div class="sprint-cta"><a class="btn btn-outline" href="#kontakt">Snakk om en lederstøtte-sak →</a></div>
+      <p class="eyebrow">Arbeidsnærvær Sprint</p>
+      <h2 style="margin-top:12px; max-width:24ch">Fra usikker praksis til konkrete tiltak.</h2>
+      <p class="lede" style="margin-top:14px">Et avgrenset, 90-dagers løp — ikke et åpent konsulentoppdrag.</p>
+      <div class="sprint-flow">
+        <div class="sprint-step"><p class="n">01</p><p>Kartlegging</p></div>
+        <div class="sprint-step"><p class="n">02</p><p>Lederintervjuer</p></div>
+        <div class="sprint-step"><p class="n">03</p><p>Gap-analyse</p></div>
+        <div class="sprint-step"><p class="n">04</p><p>Prioriterte tiltak</p></div>
+        <div class="sprint-step"><p class="n">05</p><p>90-dagers plan</p></div>
+      </div>
+      <div class="sprint-cta"><a class="btn btn-outline" href="#kontakt">Bestill en innledende samtale →</a></div>
     </div>
   </section>
 
@@ -276,6 +311,65 @@
         <div class="w">Konkret<span>Ett lite, reversibelt tiltak — ikke en generell plan.</span></div>
         <div class="w">Systematisk<span>Faste oppfølgingspunkter, ikke en engangsvurdering.</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- WORKFIT -->
+  <section id="workfit" style="background:var(--bg-page)">
+    <div class="wrap">
+      <p class="eyebrow">WorkFit — tilrettelegging i praksis</p>
+      <h2 style="margin-top:12px; max-width:24ch">Finn det som faktisk kan endres i arbeidet.</h2>
+      <p class="lede" style="margin-top:14px; max-width:60ch">NAVIAR vurderer ikke hvor syk noen er. Vi ser på hva jobben krever, og hva som er mulig å justere.</p>
+      <div class="svc-grid">
+        <div class="svc"><p class="idx">01</p><h3>Jobbkrav</h3><p>Hva krever rollen og arbeidsdagen faktisk — fysisk, kognitivt og i tempo?</p></div>
+        <div class="svc"><p class="idx">02</p><h3>Tilgjengelig kapasitet</h3><p>Hva fungerer i arbeid akkurat nå, uten å stille et medisinsk spørsmål?</p></div>
+        <div class="svc"><p class="idx">03</p><h3>Mulige justeringer</h3><p>Hva kan endres, prøves eller organiseres annerledes — midlertidig eller varig?</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIDLIG STØTTE -->
+  <section class="strong">
+    <div class="wrap">
+      <p class="eyebrow">Tidlig støtte</p>
+      <h2 style="margin-top:12px; max-width:22ch">Tidligere dialog. Flere muligheter.</h2>
+      <p class="lede" style="margin-top:14px; max-width:58ch">Målet er ikke å forutsi hvem som blir syk. Målet er å gjøre det enklere å reagere på kjente utfordringer før situasjonen låser seg — gjennom prosess- og arbeidssignaler, ikke individuell overvåking.</p>
+      <div class="pill-row">
+        <span class="pill">Ingen individuell risikoscore</span>
+        <span class="pill">Ingen overvåking</span>
+        <span class="pill">Menneskelig vurdering, alltid</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCORE -->
+  <section id="score" style="background:var(--bg-page)">
+    <div class="wrap">
+      <p class="eyebrow">Arbeidsnærvær Score</p>
+      <h2 style="margin-top:12px; max-width:24ch">Hvor godt håndterer dere arbeidsnærvær i dag?</h2>
+      <p class="lede" style="margin-top:14px; max-width:60ch">Et enkelt bilde av praksis innen tidlig innsats, tilrettelegging, lederstøtte og systematisk oppfølging.</p>
+      <div class="scorebox">
+        <div>
+          <p class="score-num">68 / 100</p>
+          <p style="font-weight:600; margin-top:4px">Eksempelresultat: moderat</p>
+          <p class="score-note">Illustrasjon av hvordan tilbakemeldingen ser ut — selve testen er ikke lansert ennå. Ingen faktisk score er beregnet her, og det finnes ennå ikke et sammenligningsgrunnlag mot andre virksomheter.</p>
+        </div>
+        <a class="btn btn-gold" href="#kontakt">Meld interesse for scoren →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KUNNSKAP -->
+  <section id="kunnskap" class="strong">
+    <div class="wrap">
+      <p class="eyebrow">Kunnskap</p>
+      <h2 style="margin-top:12px; max-width:24ch">Praktisk kunnskap for ledere og virksomheter.</h2>
+      <div class="svc-grid" style="background:rgba(245,246,248,.14); border-color:rgba(245,246,248,.16)">
+        <div class="svc" style="background:#0F1D33"><h3 style="color:#F5F6F8">Sykefraværsoppfølging</h3><p style="color:#C7CEDC">Hva må lederen gjøre — og når?</p></div>
+        <div class="svc" style="background:#0F1D33"><h3 style="color:#F5F6F8">Tilrettelegging</h3><p style="color:#C7CEDC">Hvordan finne tiltak som faktisk kan prøves?</p></div>
+        <div class="svc" style="background:#0F1D33"><h3 style="color:#F5F6F8">Den vanskelige samtalen</h3><p style="color:#C7CEDC">Hvordan skape en trygg og konkret dialog?</p></div>
+      </div>
+      <p class="lede" style="margin-top:20px; font-size:.9rem">Kommer fortløpende — foreløpig ingen publiserte artikler.</p>
     </div>
   </section>
 
