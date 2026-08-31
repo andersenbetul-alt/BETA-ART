@@ -42,3 +42,39 @@ prensipleriyle çelişmiyor.
 kendi içinde avukat incelemesi öneriyor, `[KLAMMER]` alanları boş, ve NAVIAR'ın
 gerçek org.nr./adres/kontak bilgisi henüz girilmedi. Web sitesi veya pazarlama
 metnine bu şablonlardan doğrudan hukuki taahhüt aktarılmadı.
+
+## `oppfolgingsplan-mal.docx`
+
+"Oppfølgingsplan for sykmeldt ansatt" ön-hazırlık şablonu. Kendi içinde açıkça
+belirtiyor: **"Det offisielle verktøyet er NAVs digitale oppfølgingsplan i
+Altinn («Dine sykmeldte»)"** — bu sadece bir hazırlık aracı, resmi form değil.
+Yasal dayanak: arbeidsmiljøloven §4-6. İçerik: 4/7/8/26 haftalık frist
+zinciri, "diagnose skal ikke registreres" ilkesi, tiltak/ansvarlı/tarih
+tablosu, tilbakeføring planı, BHT/NAV/lege bistand kutucukları.
+
+## `tjeneste-prisoversikt-mal.docx`
+
+Gerçek fiyat hipotezleri içeren tek dosya — ama **"Prisene er veiledende...
+illustrative oppstartsestimater"** ibaresiyle açıkça örnek/başlangıç fiyatı
+olarak işaretli, gerçek müşteri testinden gelmiyor.
+
+| Paket | İçerik | Fiyat |
+|---|---|---|
+| A — "Frisk sjekk" | Tek vaka, sykmelding→oppfølgingsplan→dialogmøte 1→uke 8 | kr 6.000–12.000/vaka |
+| B — "Ledelsesakademi" | Yarım günlük kurs, 10 katılımcıya kadar | kr 12.000–20.000/kurs |
+| C — "Fast følgesvenn" | Yıllık abonelik, e-posta/telefon danışmanlığı | kr 15.000–35.000/yıl + kr 300–500/çalışan |
+
+Ek: saatlik ücret kr 1.100–1.500 (uzman yönlendirmesi kr 1.500+), 14 gün
+vade, <24 saat iptalde %50 ücret. Belge kendi **"markedsbenchmark"**'ını da
+veriyor: HMS/BHT danışmanlığı tipik olarak **kr 1.100–1.700/saat**
+(kaynak belgede: tuka.no, Dr.Dropin Bedrift — bu iki kaynak bu oturumda ayrıca
+doğrulanmadı, yalnızca şablonun kendi atfı olarak aktarılıyor).
+
+**Bu depodaki karşılığı:** `is-modeli.md`'de daha önce zaten "6-12 bin / 12-20
+bin / 15-35 bin NOK" aralığı hipotez olarak kayıtlıydı (kaynağı bu şablondu,
+ama o zaman şablonun kendisi elde değildi). Şimdi doğrulandı ve saatlik ücret
++ benchmark eklendi. **Hâlâ değişmeyen:** bu fiyatlar gerçek bir müşteriyle
+test edilmedi (`autoprompt-degerlendirme.md` §19'daki açık iş). Paket adları
+("Frisk sjekk" vb.) web sitesine taşınmıyor — CLAUDE.md'de zaten not edilen
+karar (bkz. `is-modeli.md` §14 mimarisi: Lederstøtte/Tilrettelegging/
+Arbeidsnærvær/Sprint).
