@@ -267,6 +267,40 @@ sıfırdan (React kaynağı da kayıptı) yeniden kuruldu:
 - Güncellenmiş artifact aynı URL'e yayınlandı:
   https://claude.ai/code/artifact/4891c4bd-69ae-4884-82eb-50153c1a91b5
 
+**Paylaşılan tasarım sistemi belgesi:** kullanıcı "BU STILL BUTUN BETA
+PROJELERINDE KULLANALIM" dedi — mühür/renk/tipografi/yazım kararları artık
+`docs/beta-art/tasarim-sistemi.md`'de tek kaynakta, sayfaya özgü olmayan
+paylaşılan bir belge olarak duruyor (kullanıcı talimatı: "SADECE BU SAYFA
+ICIN DUSUNCUKLERIMIZ KALSIN DIGER ILGILI OLANLARI DIGER BETA PROJELERINE
+AKTARALIM"). O belgede: mühür SVG'si, renk tablosu, Fraunces+Inter+
+JetBrains Mono eşleşmesi, "klarspråk" (kısa/sade dil) yazım kuralı, ve
+8-dil i18n modeli.
+
+**"BETA ART Business" (be610802) stil güncellemesi:** React kaynağı
+kayıp olduğu için içerik/yapıya dokunulmadı — yalnızca Google Fonts
+(Fraunces+JetBrains Mono) ve mühür SVG'si CSS override ile enjekte edildi
+(`.brandmark` sınıfı arka plan görseli olarak). Aynı URL'e yayınlandı.
+
+**"Beta Art Archive" — nav düzeltmesi ve 8 dilli arayüz (30.08.2026 gece):**
+- Kullanıcı GoDaddy Airo Builder önizlemesinin (`68v0scym3h.preview.c40.airoapp.ai`)
+  gerçek metnini paylaştı — nav'da ayrı bir "Events" bağlantısı (`#events`)
+  ve "Contact"ın aslında `/request-a-shoot`'a gittiğini doğruladı (mailto
+  değil). İkisi de düzeltildi.
+- Kullanıcı 8 dil istedi: Norveççe, Türkçe, İngilizce, İtalyanca, Fransızca,
+  İspanyolca, Portekizce, Almanca. `docs/beta-art/tasarim-sistemi.md`'de
+  kararlaştırılan iki-katmanlı modelle kuruldu: İngilizce (kaynak, birebir)
+  ve Norveççe (gerçek pazar) tam içerik katmanı; kalan altı dil arayüz
+  kabuğu (nav/buton/etiket/form/footer, ~90 anahtar × 8 dil) tam çevrili,
+  büyük içerik blokları (35 kategori, 16 SSS, 12 plaka detayı, lisans
+  madde metinleri, sergi/fotoğrafçı metni) şimdilik İngilizceye düşüyor —
+  eksik anahtar sessizce İngilizceye düşmesi QBLOGG'daki gibi bir güvenlik
+  ağı, çözüm değil. Tam içerik çevirisi (özellikle Norveççe) sonraki aşama.
+- Mastheadta dil seçici (`<select>`, LANGS listesi) eklendi, tercih
+  `localStorage`'da (`beta-art-lang`) kalıcı.
+- Footer'daki Norveççe hukuk bağlantı etiketleri (Personvernerklæring vb.)
+  **kasıtlı olarak çevrilmedi** — gerçek `beta-art.com` bunları İngilizce
+  sayfasında bile Norveççe gösteriyor, bu bir çeviri eksikliği değil.
+
 **Aynı gece, hemen ardından — mark kararı geri alındı.** Kullanıcı üç
 **gerçek üretilmiş** OG/sosyal görsel paylaştı — Business, Field Notes ve
 "Three Properties" hub sayfaları için, hepsi `beta-art.com` filigranlı.
