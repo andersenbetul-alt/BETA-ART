@@ -33,10 +33,23 @@ IBM Plex Mono (eyebrow/veri). Gradyan, gölge, bevel, metalik efekt yok.
 
 ## Durum
 
-Bu bir claude.ai artifact olarak yayınlandı (önizleme/sunum amaçlı).
-Vercel'deki `naviar-consult` projesine dağıtılmadı — istenirse
-`brand/naviar/interactive/`'deki gibi `deploy_to_vercel` ile ayrı bir
-adım olarak yapılabilir.
+Bu bir claude.ai artifact olarak yayınlandı (önizleme/sunum amaçlı) VE
+**Vercel'de canlı** (31.08.2026, `deploy_to_vercel` ile production):
+
+- Proje: `naviar-consult` (team `bet-art`, `prj_xdqrg8LAsRZX6ZUOo8cXqXhJG1IT`)
+- Canlı adres: **https://naviar-consult-phi.vercel.app**
+- Kaynak: bu dosya (`index.html`), gerçek deploy öncesi tam HTML iskeletine
+  (`<!DOCTYPE>`/`<html lang="nb">`/`<head>`/`<body>`, favicon, OG/Twitter
+  meta, JSON-LD) sarmalanarak gönderildi — repodaki dosyanın kendisi
+  Artifact-uyumlu fragment olarak kalıyor, sarmalama yalnızca deploy
+  anında yapılıyor.
+- **Bu proje aynı zamanda kullanıcının paralel ChatGPT/Figma tarafından da
+  güncelleniyor** (kullanıcının kendi ifadesiyle: "bu sayfa hem burdan hem
+  ChatGPT üzerinden çalışıyor, aynı Vercel kaydını güncelle"). Yani
+  `naviar-consult` projesi artık iki kaynaktan deploy alan paylaşılan bir
+  hedef — bu depodan her deploy öncesi canlı içeriği kontrol edin
+  (`web_fetch_vercel_url` ile), çünkü diğer taraf araya farklı bir sürüm
+  deploy etmiş olabilir.
 
 **31.08.2026 — iki kez el değiştirdi: önce tek-odak Lederstøtte, sonra tekrar
 üç eşit hizmete dönüldü.** Aynı gün içinde sırayla: (1) `is-modeli.md` §12 —
