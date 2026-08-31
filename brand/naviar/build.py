@@ -340,6 +340,21 @@ made.append(svg("studies/study-p10-diagonal-corrected.svg",
                 (0, 0, MON_W + GAP + p10_wmw, MON_H), p10_body,
                 "P10 corrected candidate — diagonal-gold direction, ratio-fixed"))
 
+# tagline pairing preview (31.08.2026) — NAVIAR + "Clarity in Complex
+# Systems", plain name (no descriptor), tagline as a SEPARATE text element
+# next to the lockup, not merged into the master wordmark/monogram SVG
+# itself (M1: "Do not place ... a tagline ... permanently inside the master
+# wordmark"). Kept as a study/page-composition preview, not master/.
+tag_dcap = 0.20 * H
+tag_wm, tag_wmw = wordmark_svg_body(fill=NAVY, dx=MON_W + GAP, dy=0)
+tag_body = (monogram_body(NAVY, GOLD, 0, 0, MON_S) + "\n  " + tag_wm + "\n  "
+            + descriptor_text("CLARITY IN COMPLEX SYSTEMS", MON_W + GAP,
+                               H + 30.0 + tag_dcap, tag_dcap, NAVY, "start",
+                               max_w=tag_wmw))
+made.append(svg("studies/study-tagline-pairing.svg",
+                (0, 0, MON_W + GAP + tag_wmw, H + 30.0 + tag_dcap + 10.0), tag_body,
+                "NAVIAR + tagline, plain name (no descriptor), separate text element"))
+
 print(f"gold accent = {gold_ratio():.1f}%  (spec 12-16%)")
 print(f"P10 study gold accent = {p10_ratio:.1f}%  (target 12-16%, corrected from external candidate)")
 print(f"diagonal    = {DIAG_DEG:.1f} deg from vertical  (spec 38-42) <-- DEVIATION")
