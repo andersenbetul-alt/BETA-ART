@@ -373,6 +373,25 @@ yazısının satır kırmasına sebep oldu — ekran görüntüsüyle yakalandı
 mobil menü kesme noktası `lg`'den `xl`'e taşınarak (ve `Industries`
 birincil nav'dan çıkarılıp yalnızca footer'da bırakılarak) düzeltildi.
 
+**Aynı gece — iş geliştirme (BD) kalite geçişi.** Kullanıcı "Business
+developer olsan bu sayfada neyi değiştirirdin" diye sordu. Üç gözlem,
+üçü de rakam uydurmadan kuruldu:
+1. **Koleksiyonun %83'ü "Awaiting verified original"** — ilk izlenimde
+   "iş bitmemiş" gibi okunuyordu. Collection başlığının altına, bunun
+   editoryal bir disiplin olduğunu açıklayan bir cümle eklendi ("Volume I
+   releases one verified plate at a time...").
+2. **En güçlü güven rakamı ("84,000+ frames since 2012") üçüncü
+   paragrafta gömülüydü.** Hero'nun hemen altına, zaten var olan dört
+   gerçek rakamı (84,000+ kare, 2012, 3 yöntem, 12 plaka) taranabilir bir
+   şerite çıkaran `StatStrip` bileşeni eklendi — hiçbir yeni sayı
+   uydurulmadı.
+3. **"Neden stok fotoğraf değil" hiç söylenmiyordu.** Verification
+   bölümünün altına kısa, dürüst bir karşılaştırma kutusu eklendi.
+
+npm run check dışı bir hata: Almanca çeviride düz tırnak (`"`) JS dize
+sınırlayıcısıyla çakıştı, build'i kırdı — düzeltme: tipografik tırnak
+(`„…"`) kullanıldı.
+
 **Aynı gece, hemen ardından — mark kararı geri alındı.** Kullanıcı üç
 **gerçek üretilmiş** OG/sosyal görsel paylaştı — Business, Field Notes ve
 "Three Properties" hub sayfaları için, hepsi `beta-art.com` filigranlı.
