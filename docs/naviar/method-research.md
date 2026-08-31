@@ -117,3 +117,18 @@ gerçekçi bir Faz 2-3 hedefi olabilir.
 
 IA-avtalen zamanlama gözlemi (§4) bir fırsat notu olarak kaydedildi, hemen
 aksiyon gerektirmiyor — Faz 2-3 planlamasında hatırlanmalı.
+
+## 5. Kanıt matrisi (v1) — 15 model, 9 sütun
+
+`docs/naviar/evidence-matrix.md`: kullanıcının istediği format (kanıt gücü →
+nerede işe yarıyor → nerede başarısız oluyor → mekanizma → maliyet →
+uygulanabilirlik → etik/personvern riski → NAVIAR'a alınacak → reddedilecek),
+RTW/WDP ailesi, JD-R/Karasek/Siegrist/Work Ability/Job Crafting, Supported
+Employment/IPS ve beş metodoloji çerçevesi (Human Factors, Systems
+Engineering, Implementation Science, Realist Evaluation, Lean
+Experimentation) için. En kritik bulgu: **Work Ability Index ve IPS —
+ikisi de yüksek kanıtlı ama ikisi de bireysel sağlık/risk skoruyla
+çalışıyor** — §7 Risk Gate'in "otomatik risk puanı yok" kuralıyla doğrudan
+çelişiyor, bu yüzden yalnız kavramsal ilham olarak alınmalı, araç olarak
+değil. Bu, önceki "bireye skor verme" kararının doğru yerde çizildiğini
+bağımsız biçimde doğruluyor.
