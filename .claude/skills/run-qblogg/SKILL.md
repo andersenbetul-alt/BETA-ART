@@ -57,8 +57,11 @@ bağımlılık yok, hesap/veri gönderimi yok — satış demoları ve Faz 0
 doğrulama araçları. Smoke test artık bunlardan birini (Q Work Audit)
 uçtan uca sürüyor: görev seç, süre gir, gönder, sonuç kartında `mailto:`
 CTA'sının oluştuğunu doğrula. Yeni bir Action Page eklersen aynı deseni
-smoke'a ekle; `vercel.json`'daki `buildCommand`a da dosya adlarını
-eklemeyi unutma, yoksa dağıtımda 404 verir.
+smoke'a ekle. `vercel.json`'daki `buildCommand` artık `demo/`'yu tek tek
+dosya adıyla değil `cp -r` ile bütün kopyalıyor (01.09.2026 — tek tek
+enumerasyon `buildCommand`'ı Vercel'in 256 karakter sınırının üstüne
+çıkarmıştı) — yeni bir Action Page eklemek bu dosyaya dokunmayı
+gerektirmiyor.
 
 ## Gotchas (hepsi bu konteynerde yaşandı)
 
