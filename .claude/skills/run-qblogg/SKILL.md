@@ -1,6 +1,6 @@
 ---
 name: run-qblogg
-description: QBLOGG sitesini bu konteynerde çalıştır, sür ve ekran görüntüsü al — "siteyi çalıştır", "run", "smoke test", "screenshot/ekran görüntüsü", "sayfayı göreyim", "tarayıcıda doğrula" istendiğinde bu beceriyi kullan. Sunucu başlatma + Playwright sürüşü tek komutta.
+description: QBLOGG sitesini bu konteynerde çalıştır, sür ve ekran görüntüsü al — "siteyi çalıştır", "run", "smoke test", "screenshot/ekran görüntüsü", "sayfayı göreyim", "tarayıcıda doğrula", "incognito/gizli mod testi" istendiğinde bu beceriyi kullan. Sunucu başlatma + Playwright sürüşü tek komutta.
 ---
 
 # QBLOGG'u çalıştırma ve sürme
@@ -23,6 +23,9 @@ node .claude/skills/run-qblogg/driver.mjs smoke /tmp/qblogg-run
 
 # Tek sayfanın tam ekran görüntüsü (reveal animasyonu sabitlenmiş):
 node .claude/skills/run-qblogg/driver.mjs shot "post.html?slug=ai-icerik-studyosu" /tmp/qblogg-run
+
+# Gizli mod (incognito) testi — ilk ziyaret + localStorage erişilemez senaryosu:
+node .claude/skills/run-qblogg/driver.mjs incognito
 ```
 
 Görüntüler verilen dizine `.png` düşer. 8000'i çok aşan sayfa
