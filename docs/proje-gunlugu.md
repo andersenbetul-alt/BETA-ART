@@ -349,7 +349,9 @@ daveti kabul ettiğini bildirdi ama işbirlikçi listesi hâlâ yalnızca
 `andersenbetul-alt`; kabul GitHub API'ye yansımadı — muhtemelen yanlış
 hesapla yapıldı). Depo bu arada public olduğu için QBLOGG'un kanıtlanmış
 tarifine geçildi: yalnızca `vercel.json` gönderilir, `buildCommand`
-public depoyu `claude/beta-art-privat-g7k5vk` dalından `--depth 1`
+önce `rm -rf kaynak` yapar (derleme önbelleği klon klasörünü geri
+getiriyor; ikinci dağıtım bu yüzden git exit 128 verdi, düzeltildi),
+sonra public depoyu `claude/beta-art-privat-g7k5vk` dalından `--depth 1`
 klonlar, `apps/beta-art-archive` içinde `npm ci && npm run build`
 çalıştırır, `dist/`i çıktıya taşır. Sonuç: proje `beta-art-privat`
 (`prj_C9ByJukTJ8xulLpXCDQnunRCIBlh`, BET - ART takımı), derleme 14 sn,
