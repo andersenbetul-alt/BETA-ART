@@ -14,7 +14,7 @@
   --brand-soft: rgba(8, 44, 84, .08);
   --on-brand: #ffffff;            /* marka rengi üzerindeki metin — 13.2:1 */
   --logo-ink: #082C54;            /* logo halkası; aqua köprü her iki temada sabit */
-  /* Aqua beyaz üzerinde 1.9:1 — metinde kullanılamaz. Metin için koyulaştırılmış ton. */
+  /* Aqua beyaz üzerinde 1.8:1 — metinde kullanılamaz. Metin için koyulaştırılmış ton. */
   --brand-2-ink: #0a7d72;         /* beyaz üzerinde 5,0:1 (ölçüldü 22.08.2026) */
   --danger: #b3261e;              /* form hataları; beyaz üzerinde 6.3:1 */
   --shadow: 0 1px 2px rgba(16, 20, 40, .04), 0 12px 32px rgba(16, 20, 40, .07);
