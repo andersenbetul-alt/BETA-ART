@@ -55,6 +55,24 @@ export function PlateDetail() {
         ) : (
           <div aria-hidden="true" className={`mt-6 aspect-[16/9] w-full bg-gradient-to-br ${plate.swatch}`} />
         )}
+        {/* "Download" routes to payment, never to a free file (user decision
+            01.09.2026): the file is the product — it is delivered after
+            checkout, per the licence terms. Only available plates show it. */}
+        {verified && (
+          <div className="mt-3 flex justify-end">
+            <Button
+              onClick={() => {
+                if (!items.some((i) => i.plateId === plate.id)) {
+                  add({ plateId: plate.id, title: plate.title });
+                }
+                go("cart");
+              }}
+              className="rounded-none font-record text-xs uppercase tracking-[0.14em]"
+            >
+              ↓ {t("downloadBuy")}
+            </Button>
+          </div>
+        )}
 
         <div className="mt-6 flex flex-wrap items-baseline justify-between gap-2">
           <h1 className="font-display text-[clamp(1.8rem,3.6vw,2.6rem)] font-light">{plate.title}</h1>

@@ -231,6 +231,7 @@ const en: Dict = {
   lifeFlowerTagline: "Real people · Real moments · Real places",
   skipToContent: "Skip to content",
   heroTrustLine: "Trust the evidence behind every image.",
+  downloadBuy: "Download · kr 190",
 
   plateNotFound: "Plate not found.",
   provenance: "Provenance",
@@ -452,6 +453,7 @@ const no: Dict = {
   lifeFlowerTagline: "Ekte mennesker · Ekte øyeblikk · Ekte steder",
   skipToContent: "Hopp til innhold",
   heroTrustLine: "Stol på beviset bak hvert bilde.",
+  downloadBuy: "Last ned · kr 190",
 
   plateNotFound: "Fant ikke platen.",
   provenance: "Proveniens",
@@ -673,6 +675,7 @@ const tr: Dict = {
   lifeFlowerTagline: "Gerçek insanlar · Gerçek anlar · Gerçek yerler",
   skipToContent: "İçeriğe atla",
   heroTrustLine: "Her görüntünün arkasındaki kanıta güvenin.",
+  downloadBuy: "İndir · kr 190",
 
   plateNotFound: "Plaka bulunamadı.",
   provenance: "Provenans",
@@ -894,6 +897,7 @@ const it: Dict = {
   lifeFlowerTagline: "Persone vere · Momenti veri · Luoghi veri",
   skipToContent: "Vai al contenuto",
   heroTrustLine: "Fidati delle prove dietro ogni immagine.",
+  downloadBuy: "Scarica · kr 190",
 
   plateNotFound: "Lastra non trovata.",
   provenance: "Provenienza",
@@ -1115,6 +1119,7 @@ const fr: Dict = {
   lifeFlowerTagline: "Des gens réels · Des instants réels · Des lieux réels",
   skipToContent: "Aller au contenu",
   heroTrustLine: "Faites confiance aux preuves derrière chaque image.",
+  downloadBuy: "Télécharger · kr 190",
 
   plateNotFound: "Planche introuvable.",
   provenance: "Provenance",
@@ -1336,6 +1341,7 @@ const es: Dict = {
   lifeFlowerTagline: "Personas reales · Momentos reales · Lugares reales",
   skipToContent: "Ir al contenido",
   heroTrustLine: "Confía en la evidencia detrás de cada imagen.",
+  downloadBuy: "Descargar · kr 190",
 
   plateNotFound: "Placa no encontrada.",
   provenance: "Procedencia",
@@ -1557,6 +1563,7 @@ const pt: Dict = {
   lifeFlowerTagline: "Pessoas reais · Momentos reais · Lugares reais",
   skipToContent: "Saltar para o conteúdo",
   heroTrustLine: "Confie na evidência por trás de cada imagem.",
+  downloadBuy: "Transferir · kr 190",
 
   plateNotFound: "Placa não encontrada.",
   provenance: "Proveniência",
@@ -1778,6 +1785,7 @@ const de: Dict = {
   lifeFlowerTagline: "Echte Menschen · Echte Momente · Echte Orte",
   skipToContent: "Zum Inhalt springen",
   heroTrustLine: "Vertrauen Sie dem Beweis hinter jedem Bild.",
+  downloadBuy: "Herunterladen · kr 190",
 
   plateNotFound: "Platte nicht gefunden.",
   provenance: "Provenienz",

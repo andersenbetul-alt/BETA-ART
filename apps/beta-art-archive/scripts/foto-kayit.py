@@ -3,7 +3,13 @@
 
 Kullanıcı talebi (01.09.2026): siteye yüklenen her fotoğraf için
 (1) çekim bilgileri (kamera, tarih, GPS'ten yer) otomatik çıkarılsın,
-(2) sıradaki katalog numarası verilsin.
+(2) sıradaki katalog numarası verilsin,
+(3) en uygun ad otomatik seçilsin.
+
+Ad kuralı: bu betik görüntünün içeriğini göremez; adı, oturumdaki asistan
+fotoğrafa bakarak arşivin mevcut üslubunda önerir — 2-3 kelime, İngilizce,
+"First Light" / "Low Tide" / "Golden Hour" ailesiyle tutarlı. Öneri
+fotoğrafçının onayıyla kesinleşir; eser adları dillere çevrilmez.
 
 Ne yapar:
   1. EXIF okur: kamera, çekim tarihi, GPS koordinatı + rakım.
