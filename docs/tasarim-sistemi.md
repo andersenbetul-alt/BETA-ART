@@ -177,10 +177,24 @@ Bu, `assets/fonts/inter.css` başında kayıtlı. Figma bir Google Fonts bağlan
 ### Optimizasyon
 
 Alt kümeleme `unicode-range` ile: latin, latin-ext, cyrillic, cyrillic-ext.
-Ziyaretçi yalnızca kendi dilinin gerektirdiği baytı indirir. Arapça, Çince ve
-Devanagari **sistem yazı tiplerine** düşer — `--font` yığınında tanımlı.
+Ağırlık ekseni (400–800) tek bir değişken dosyada — `main.css`'te kullanılan
+beş ağırlığın (400/500/600/700/800) hepsi gerçekten kullanılıyor, kırpılacak
+fazlalık yok (30.08.2026'da doğrulandı). Arapça, Çince ve Devanagari **sistem
+yazı tiplerine** düşer — `--font` yığınında tanımlı.
 
 `font-display: swap` her `@font-face`'te.
+
+**Ölçülmüş gerçek: "ziyaretçi yalnızca kendi dilinin baytını indirir" iddiası
+tam doğru değil.** Playwright ile doğrulandı (30.08.2026): `?lang=en` ile
+açılan sayfa bile `inter-latin-ext.woff2`'yi (85 KB — en büyük dosya, temel
+`inter-latin.woff2`'den bile büyük) indiriyor, oysa nihai İngilizce metinde
+tek bir latin-ext karakteri yok. Sebep: betikler `</body>`'den hemen önce
+yükleniyor (kural 3 gereği — JS kapalıyken görünen Türkçe yedek), tarayıcı
+bu Türkçe metni JS onu değiştirmeden önce bir an boyar; ğ/ş gibi karakterler
+latin-ext'i tetikliyor ve indirme, metin değiştirildikten sonra bile devam
+ediyor. Düzeltmek betik yükleme sırasını (ilk boyamadan önce dil değiştirme)
+değiştirmeyi gerektirir — bu, hızlı ilk boyama ile gereksiz 85 KB arasında
+gerçek bir ödünleşim, tek satırlık bir düzeltme değil.
 
 ---
 
