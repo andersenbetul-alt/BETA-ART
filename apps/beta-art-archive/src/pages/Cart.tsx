@@ -4,6 +4,7 @@ import { usePage } from "@/lib/router";
 import { useLang } from "@/lib/langContext";
 import { useCart } from "@/lib/cartContext";
 import { licenceTiers } from "@/lib/data";
+import { STRIPE_PAYMENT_LINK } from "@/lib/config";
 
 // This page's Norwegian copy is preserved verbatim from the live site —
 // the rest of beta-art.com is in English, but the cart specifically was
@@ -76,8 +77,17 @@ export function Cart() {
           <span>kr {total}</span>
         </div>
 
+        {/* With a Stripe Payment Link configured, checkout goes straight to
+            Stripe (new tab, noopener); without one, the original behaviour —
+            the licence request form — remains. No simulated payment flow. */}
         <Button
-          onClick={() => go("home", "request")}
+          onClick={() => {
+            if (STRIPE_PAYMENT_LINK) {
+              window.open(STRIPE_PAYMENT_LINK, "_blank", "noopener,noreferrer");
+            } else {
+              go("home", "request");
+            }
+          }}
           className="mt-6 w-full rounded-none font-record text-xs uppercase tracking-[0.16em]"
         >
           {t("cartCheckout")}
