@@ -554,13 +554,17 @@
   }
 
   // Altbilgideki sosyal bağlantılar: adresi girilmemiş hesap gösterilmez.
+  // Hiçbir hesap girilmemişse "Sosyal" başlığı da boş kalmasın diye gizlenir.
   function applySocial() {
+    var any = false;
     $$('[data-social]').forEach(function (el) {
       var url = SOCIAL[el.getAttribute('data-social')];
       var li = el.closest('li') || el;
-      if (url) { el.href = url; li.hidden = false; }
+      if (url) { el.href = url; li.hidden = false; any = true; }
       else { li.hidden = true; }
     });
+    var wrap = document.getElementById('footerSocial');
+    if (wrap) wrap.hidden = !any;
   }
 
   // Paket kartlarındaki "Kartla öde" düğmesi: adresi config.js → payLinks'te

@@ -335,7 +335,11 @@ p { margin: 0 0 1em; }
 .post-card--featured .post-meta .meta-when { color: color-mix(in srgb, var(--on-brand) 72%, transparent); }
 .post-card--featured .tag { background: color-mix(in srgb, var(--on-brand) 18%, transparent); color: var(--on-brand); }
 .post-card--featured h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); line-height: 1.25; }
-.post-card--featured p { color: color-mix(in srgb, var(--on-brand) 85%, transparent); }
+/* .post-card p (aşağıda) aynı özgüllükte (sınıf+eleman) ve dosyada sonra
+   geldiği için sıradan kazanıyordu — koyu temada aqua zemin üzerinde
+   metni neredeyse görünmez (1,4:1 karşıtlık) bırakıyordu. İki sınıflı
+   seçici özgüllüğü kalıcı olarak yükseltir, sıradan bağımsız. */
+.post-card.post-card--featured p { color: color-mix(in srgb, var(--on-brand) 85%, transparent); }
 .post-card--featured .read-more { color: var(--brand-2); }
 @media (max-width: 640px) {
   .post-card--featured { grid-template-columns: 1fr; }
