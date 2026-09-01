@@ -25,7 +25,7 @@ const MARQUEE_ITEMS = [
   'OSLO · NORWAY',
 ];
 const NAV_IDS = ['music', 'credits', 'nordic', 'creators', 'work', 'social', 'contact'];
-const EMAIL = 'booking@hxi.no';
+const EMAIL = 'booking@hximusic.com';
 const SOCIALS = [
   { platform: 'Spotify', handle: 'HXI', href: SPOTIFY_ARTIST },
   { platform: 'Instagram', handle: '@prod.hxi', href: INSTAGRAM },

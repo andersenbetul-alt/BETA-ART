@@ -4,8 +4,7 @@ export type Locale = 'en' | 'no' | 'tr' | 'fr' | 'de' | 'es' | 'pt' | 'ar' | 'ja
 
 export const localeCodes: Locale[] = ['en', 'no', 'tr', 'fr', 'de', 'es', 'pt', 'ar', 'ja', 'zh'];
 
-// hxi.no bağlanana dek yayın adresi; alan adı gelince geri çevrilecek.
-export const siteUrl = 'https://hxi-nu.vercel.app';
+export const siteUrl = 'https://hximusic.com';
 
 export function isLocale(s: string): s is Locale {
   return (localeCodes as string[]).includes(s);

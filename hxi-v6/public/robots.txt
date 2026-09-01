@@ -7,4 +7,4 @@ Disallow: /v5/
 Disallow: /v6/
 Disallow: /klasik
 
-Sitemap: https://hxi-nu.vercel.app/sitemap.xml
+Sitemap: https://hximusic.com/sitemap.xml

@@ -6,7 +6,7 @@ const SPOTIFY_EMBED_TRACK = '54ggxbEopZwQ20zurJiHSD';
 const INSTAGRAM = 'https://www.instagram.com/prod.hxi/';
 const YOUTUBE = 'https://www.youtube.com/@hximusic';
 const NCS_ARTIST = 'https://ncs.io/artist/1169/hxi';
-const EMAIL = 'booking@hxi.no';
+const EMAIL = 'booking@hximusic.com';
 
 function useCounter(target: number, active: boolean) {
   const [count, setCount] = useState(0);
