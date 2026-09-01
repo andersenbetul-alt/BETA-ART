@@ -14,7 +14,7 @@
   --brand-soft: rgba(8, 44, 84, .08);
   --on-brand: #ffffff;            /* marka rengi üzerindeki metin — 13.2:1 */
   --logo-ink: #082C54;            /* logo halkası; aqua köprü her iki temada sabit */
-  /* Aqua beyaz üzerinde 1.9:1 — metinde kullanılamaz. Metin için koyulaştırılmış ton. */
+  /* Aqua beyaz üzerinde 1.8:1 — metinde kullanılamaz. Metin için koyulaştırılmış ton. */
   --brand-2-ink: #0a7d72;         /* beyaz üzerinde 5,0:1 (ölçüldü 22.08.2026) */
   --danger: #b3261e;              /* form hataları; beyaz üzerinde 6.3:1 */
   --shadow: 0 1px 2px rgba(16, 20, 40, .04), 0 12px 32px rgba(16, 20, 40, .07);
@@ -312,11 +312,33 @@ p { margin: 0 0 1em; }
 }
 .chip:hover { color: var(--text); }
 .chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
+/* Kaç yazı olduğunu tıklamadan önce göster — tersi, boş bir kategoriye
+   girip geri dönmeyi öğretir. */
+.chip-n { opacity: .6; font-weight: 500; font-variant-numeric: tabular-nums; }
+.chip[aria-pressed="true"] .chip-n { opacity: .8; }
 
 /* min(): 320px sınıfı telefonlarda sabit taban sütunu kapsayıcıdan taşırıyordu. */
 .posts { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
 .post-card {
   display: flex; flex-direction: column; text-decoration: none; overflow: hidden; padding: 0;
+}
+/* Filtresiz/aramasız varsayılan görünümde ilk kart büyütülür — en yeni yazı
+   listenin geri kalanıyla aynı boyda kaybolmasın. Kapak yerine marka rengi:
+   aynı sayfada iki farklı vurgu dili karışmasın. */
+.post-card--featured {
+  grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  background: var(--brand); color: var(--on-brand);
+}
+.post-card--featured .post-cover { height: auto; background: none; }
+.post-card--featured .post-cover svg { width: 56px; height: 56px; opacity: .9; }
+.post-card--featured .post-meta,
+.post-card--featured .post-meta .meta-when { color: color-mix(in srgb, var(--on-brand) 72%, transparent); }
+.post-card--featured .tag { background: color-mix(in srgb, var(--on-brand) 18%, transparent); color: var(--on-brand); }
+.post-card--featured h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); line-height: 1.25; }
+.post-card--featured p { color: color-mix(in srgb, var(--on-brand) 85%, transparent); }
+.post-card--featured .read-more { color: var(--brand-2); }
+@media (max-width: 640px) {
+  .post-card--featured { grid-template-columns: 1fr; }
 }
 .post-cover {
   height: 132px; display: grid; place-items: center; color: #fff;
