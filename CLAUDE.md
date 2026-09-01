@@ -13,6 +13,20 @@ kullanıcının diğer girişimlerinden (Beta Art Archive, HXI Phonk Studio, Nav
 Consult/Care) bağımsızdır — hepsinin envanteri `docs/girisimler.md`'de,
 **bu depoda geliştirilmezler**.
 
+> **⚠ (31.08.2026, gece) Depo GitHub'da yeniden adlandırıldı:**
+> `andersenbetul-alt/BETA-ART` → **`andersenbetul-alt/BETA-ART-PRIVAT`**.
+> Bu, `git push` sırasında GitHub'ın kendi yönlendirme uyarısıyla
+> keşfedildi (muhtemelen paralel çalışan "BETA ART PRIVAT" oturumu
+> yeniden adlandırdı — bkz. `docs/girisimler.md`). GitHub eski adı
+> otomatik yönlendiriyor, bu yüzden mevcut clone'lar/push'lar hâlâ
+> çalışıyor — **ama `vercel.json`'ın `buildCommand`'ı eski URL'yi
+> (`https://github.com/andersenbetul-alt/BETA-ART.git`) sabit
+> kodluyor.** Yönlendirme bir gün kesilirse (ad başkası tarafından
+> alınırsa, ya da GitHub süresiz garanti etmiyorsa) canlı QBLOGG
+> dağıtımı build aşamasında sessizce kırılır. Bu satırı düzeltmek
+> kullanıcının onayını gerektiriyor — depo adı değişikliğinin kalıcı
+> mı yoksa yanlışlıkla mı olduğu bu oturumdan bilinmiyor.
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:
