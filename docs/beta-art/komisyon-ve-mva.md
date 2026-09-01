@@ -40,6 +40,18 @@ fotoğrafçı 133,00 kr, Beta Art 52,35 kr alırdı. Fotoğrafçı sözleşmesin
 hangisi yazılacaksa ilk sözleşmeden önce kullanıcı onaylamalı; şimdilik
 varsayılan, tepeden düşme.
 
+## Faktura (kullanıcı kararı, 01.09.2026)
+
+Satış gerçekleştiğinde alıcının e-posta adresine fatura gider ve faturada
+alınan ürünün bilgileri yer alır. Uygulama: Stripe Payment Link
+`invoice_creation` açık kurulacak — Stripe, ödeme sonrası faturayı (ürün
+adı "Beta Art — Personal licence", açıklama, adet, tutar) alıcının
+e-postasına kendisi gönderir; alıcının checkout'ta doldurduğu zorunlu
+"plaka adları" alanı siparişle birlikte panelde durur. Plaka adlarının
+fatura satırına ürün olarak yazılması istenirse sonraki adım: plaka başına
+ayrı Stripe ürünü/fiyatı açmak. Bu bölüm, Stripe'ta ödeme yöntemi
+etkinleştirilip bağlantı oluşturulduğunda devreye girer.
+
 ## MVA kaydı geldiğinde ne değişir (şimdiden bilinen kadarıyla)
 
 - Standart oran %25'tir (sanat istisnası sorusu saklı). "kr 190 MVA dahil mi

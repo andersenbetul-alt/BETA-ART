@@ -58,6 +58,16 @@ def main():
     bilgi = {TAGS.get(k, k): v for k, v in exif.items()}
     gps = exif.get_ifd(0x8825)
 
+    # Kalite kapısı (kullanıcı kararı 01.09.2026): eşiği geçmeyen iş
+    # listelenmez. Ölçülebilir kısım burada; küratör bakışı insanda kalır.
+    # "En çok satılanın kalitesi" kıyası satış verisi biriktiğinde eklenecek.
+    genis = max(im.size)
+    if genis < 3000:
+        print(f"KALİTE KAPISI: RET — uzun kenar {genis}px < 3000px eşiği.")
+        print("Bu dosya listelenmez; fotoğrafçıdan tam çözünürlüklü orijinal istenir.")
+        sys.exit(1)
+    print(f"kalite      : uzun kenar {genis}px ≥ 3000px ✓ (netlik/küratör onayı elle)")
+
     # Sıradaki katalog numarası
     yillar = re.findall(r'accession: "(\d{4})\.(\d{4})"', DATA.read_text())
     yil, sira = max(yillar)

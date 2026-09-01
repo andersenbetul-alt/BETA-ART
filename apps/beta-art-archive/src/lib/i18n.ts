@@ -145,7 +145,7 @@ const en: Dict = {
   sellStep1Title: "Submit your work.",
   sellStep1Body: "Send a portfolio link and a sample RAW file.",
   sellStep2Title: "Get verified.",
-  sellStep2Body: "Same three checks as every plate: RAW archived, capture record with C2PA, signed license.",
+  sellStep2Body: "Same three checks as every plate: RAW archived, capture record with C2PA, signed license. Submissions must also clear the collection's technical quality bar — long edge 3000 px or more, critically sharp, RAW available. Work below the bar is not listed.",
   sellStep3Title: "Get listed and paid.",
   sellStep3Body: "Verified work goes live, credited to you by name. Beta Art takes a 30% commission on each sale — 70% is paid out to you.",
   sellNotYetTitle: "New program",
@@ -232,6 +232,8 @@ const en: Dict = {
   skipToContent: "Skip to content",
   heroTrustLine: "Trust the evidence behind every image.",
   downloadBuy: "Download · kr 190",
+  sellMailAttach: "Please attach the photographs you are submitting (or include a download link) before sending.",
+  sellMailNotice: "Your email draft opened — attach your photographs, then send.",
 
   plateNotFound: "Plate not found.",
   provenance: "Provenance",
@@ -454,6 +456,8 @@ const no: Dict = {
   skipToContent: "Hopp til innhold",
   heroTrustLine: "Stol på beviset bak hvert bilde.",
   downloadBuy: "Last ned · kr 190",
+  sellMailAttach: "Legg ved fotografiene du sender inn (eller en nedlastingslenke) før du sender.",
+  sellMailNotice: "E-postutkastet er åpnet — legg ved fotografiene og send.",
 
   plateNotFound: "Fant ikke platen.",
   provenance: "Proveniens",
@@ -676,6 +680,8 @@ const tr: Dict = {
   skipToContent: "İçeriğe atla",
   heroTrustLine: "Her görüntünün arkasındaki kanıta güvenin.",
   downloadBuy: "İndir · kr 190",
+  sellMailAttach: "Göndermeden önce başvurduğunuz fotoğrafları ekleyin (veya bir indirme bağlantısı yazın).",
+  sellMailNotice: "E-posta taslağınız açıldı — fotoğrafları ekleyip gönderin.",
 
   plateNotFound: "Plaka bulunamadı.",
   provenance: "Provenans",
@@ -898,6 +904,8 @@ const it: Dict = {
   skipToContent: "Vai al contenuto",
   heroTrustLine: "Fidati delle prove dietro ogni immagine.",
   downloadBuy: "Scarica · kr 190",
+  sellMailAttach: "Allega le fotografie che stai inviando (o includi un link) prima di spedire.",
+  sellMailNotice: "La bozza email è aperta — allega le fotografie e invia.",
 
   plateNotFound: "Lastra non trovata.",
   provenance: "Provenienza",
@@ -1120,6 +1128,8 @@ const fr: Dict = {
   skipToContent: "Aller au contenu",
   heroTrustLine: "Faites confiance aux preuves derrière chaque image.",
   downloadBuy: "Télécharger · kr 190",
+  sellMailAttach: "Joignez les photographies soumises (ou un lien de téléchargement) avant d'envoyer.",
+  sellMailNotice: "Votre brouillon d'email est ouvert — joignez vos photographies puis envoyez.",
 
   plateNotFound: "Planche introuvable.",
   provenance: "Provenance",
@@ -1342,6 +1352,8 @@ const es: Dict = {
   skipToContent: "Ir al contenido",
   heroTrustLine: "Confía en la evidencia detrás de cada imagen.",
   downloadBuy: "Descargar · kr 190",
+  sellMailAttach: "Adjunte las fotografías que envía (o incluya un enlace de descarga) antes de enviar.",
+  sellMailNotice: "Se abrió el borrador de correo — adjunte sus fotografías y envíelo.",
 
   plateNotFound: "Placa no encontrada.",
   provenance: "Procedencia",
@@ -1564,6 +1576,8 @@ const pt: Dict = {
   skipToContent: "Saltar para o conteúdo",
   heroTrustLine: "Confie na evidência por trás de cada imagem.",
   downloadBuy: "Transferir · kr 190",
+  sellMailAttach: "Anexe as fotografias que está a submeter (ou inclua uma ligação) antes de enviar.",
+  sellMailNotice: "O rascunho de email foi aberto — anexe as fotografias e envie.",
 
   plateNotFound: "Placa não encontrada.",
   provenance: "Proveniência",
@@ -1786,6 +1800,8 @@ const de: Dict = {
   skipToContent: "Zum Inhalt springen",
   heroTrustLine: "Vertrauen Sie dem Beweis hinter jedem Bild.",
   downloadBuy: "Herunterladen · kr 190",
+  sellMailAttach: "Bitte hängen Sie die eingereichten Fotografien an (oder fügen Sie einen Link ein), bevor Sie senden.",
+  sellMailNotice: "Ihr E-Mail-Entwurf ist geöffnet — Fotografien anhängen und senden.",
 
   plateNotFound: "Platte nicht gefunden.",
   provenance: "Provenienz",

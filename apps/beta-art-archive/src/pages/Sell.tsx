@@ -31,9 +31,38 @@ import { useLang } from "@/lib/langContext";
 // (artistsFoundingBio) already works this way; this just opens the same
 // slot to other photographers as they're verified.
 
+// 01.09.2026 — "diğer fotoğrafçıların yükleyip satacakları bir sistem kur":
+// the honest v1 of that system on a static site is a real intake channel,
+// not a fake account flow. Submit now composes a structured email to
+// hallo@beta-art.com (the QBLOGG composeMail pattern); photos are attached
+// by the sender. Review happens in the inbox — matching the page's own
+// promise ("reviewed individually, personal reply"). Verified work is then
+// listed through scripts/foto-kayit.py (auto number, name, capture record)
+// under the agreed 30/70 split. Accounts/auto-listing need a backend and
+// Stripe Connect — deliberately not simulated here.
 export function Sell() {
   const [status, setStatus] = useState("");
   const { t } = useLang();
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    const line = (k: string, v: FormDataEntryValue | null) => `${k}: ${String(v ?? "").trim()}`;
+    const body = [
+      line(t("fieldName"), f.get("ad")),
+      line(t("fieldEmail"), f.get("eposta")),
+      line(t("sellFieldPortfolio"), f.get("portfolyo")),
+      line(t("sellFieldEquipment"), f.get("ekipman")),
+      line(t("sellFieldBio"), f.get("bio")),
+      line(t("sellFieldMessage"), f.get("mesaj")),
+      "",
+      t("sellMailAttach"),
+    ].join("\n");
+    const url = `mailto:hallo@beta-art.com?subject=${encodeURIComponent(
+      `Submission — ${String(f.get("ad") ?? "").trim()}`
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = url;
+    setStatus(t("sellMailNotice"));
+  };
   return (
     <section className="border-b border-border">
       <div className="mx-auto w-[min(100%-3rem,1000px)] py-[clamp(3rem,7vw,4.5rem)]">
@@ -61,35 +90,32 @@ export function Sell() {
         </div>
 
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setStatus(t("previewNotice"));
-          }}
+          onSubmit={submit}
           className="mt-8 grid grid-cols-1 gap-5 border border-border bg-background p-[clamp(1.4rem,3vw,2rem)] md:grid-cols-2"
         >
           <div className="space-y-2">
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("fieldName")}</Label>
-            <Input className="rounded-none border-border" required />
+            <Input name="ad" className="rounded-none border-border" required />
           </div>
           <div className="space-y-2">
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("fieldEmail")}</Label>
-            <Input type="email" className="rounded-none border-border" required />
+            <Input name="eposta" type="email" className="rounded-none border-border" required />
           </div>
           <div className="space-y-2 md:col-span-2">
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("sellFieldPortfolio")}</Label>
-            <Input className="rounded-none border-border" placeholder="https://" />
+            <Input name="portfolyo" className="rounded-none border-border" placeholder="https://" />
           </div>
           <div className="space-y-2 md:col-span-2">
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("sellFieldEquipment")}</Label>
-            <Input className="rounded-none border-border" />
+            <Input name="ekipman" className="rounded-none border-border" />
           </div>
           <div className="space-y-2 md:col-span-2">
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("sellFieldBio")}</Label>
-            <Textarea rows={3} className="rounded-none border-border" placeholder={t("sellFieldBioPlaceholder")} />
+            <Textarea rows={3} className="rounded-none border-border" name="bio" placeholder={t("sellFieldBioPlaceholder")} />
           </div>
           <div className="space-y-2 md:col-span-2">
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("sellFieldMessage")}</Label>
-            <Textarea rows={4} className="rounded-none border-border" />
+            <Textarea name="mesaj" rows={4} className="rounded-none border-border" />
           </div>
           <div className="md:col-span-2">
             <Button type="submit" className="w-full rounded-none font-record text-xs uppercase tracking-[0.16em] md:w-auto">
