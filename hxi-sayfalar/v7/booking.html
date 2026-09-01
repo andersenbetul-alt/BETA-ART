@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Booking — HXI</title>
+<link rel="canonical" href="https://hximusic.com/booking.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/v7/style.css">
+</head>
+<body>
+
+<header class="head">
+  <div class="wrap nav">
+    <a class="logo" href="/"><img src="https://cdn.websitepublisher.ai/custom/wid24727/images/hxi-logo-candidate-a.svg" alt="HXI"></a>
+    <nav class="links">
+      <a href="/v7/music.html">Music</a>
+      <a href="/v7/credits.html">Credits</a>
+      <a href="/v7/creator-use.html">Creator Use</a>
+      <a href="/v7/sync.html">Sync</a>
+      <a href="/v7/press.html">Press</a>
+      <a href="/v7/booking.html">Booking</a>
+    </nav>
+    <button id="open" class="menu" aria-controls="mobile" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<nav class="mobile" id="mobile" aria-hidden="true">
+  <button id="close">Close</button>
+  <a href="/v7/music.html">01 / Music</a>
+  <a href="/v7/credits.html">02 / Credits</a>
+  <a href="/v7/creator-use.html">03 / Creator Use</a>
+  <a href="/v7/sync.html">04 / Sync</a>
+  <a href="/v7/press.html">05 / Press</a>
+  <a href="/v7/booking.html">06 / Booking</a>
+</nav>
+
+<main>
+  <header class="page">
+    <div class="wrap">
+      <div class="eyebrow">Booking</div>
+      <h1>Book HXI.</h1>
+      <p class="lede">Availability and format are confirmed case by case.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap form-shell">
+      <form class="form" id="booking-form">
+        <div class="field"><label>Name</label><input name="name" required></div>
+        <div class="field"><label>Email</label><input name="email" type="email" required></div>
+        <div class="field full"><label>Promoter / company</label><input name="promoter" required></div>
+        <div class="field"><label>Event / venue</label><input name="event" required></div>
+        <div class="field"><label>City / country</label><input name="place" required></div>
+        <div class="field"><label>Date</label><input name="date" type="date"></div>
+        <div class="field">
+          <label>Set type</label>
+          <select name="set_type">
+            <option value="">Not sure yet</option>
+            <option>DJ set</option>
+            <option>Festival / club appearance</option>
+            <option>Other / discuss</option>
+          </select>
+        </div>
+        <div class="field"><label>Expected attendance</label><input name="attendance"></div>
+        <div class="field"><label>Budget range</label><input name="budget"></div>
+        <div class="field full"><label>Message</label><textarea name="message" required></textarea></div>
+        <input name="website" tabindex="-1" style="position:absolute;left:-9999px">
+        <div class="field full">
+          <button class="btn primary" type="submit">Send booking inquiry</button>
+          <p role="status" class="muted" aria-live="polite"></p>
+        </div>
+      </form>
+      <aside>
+        <div class="policy">
+          <h3>No assumptions.</h3>
+          <p>Availability is confirmed case by case. No invented tour dates or fixed show format.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<script src="/v7/config.js"></script>
+<script src="/v7/app.js"></script>
+</body>
+</html>

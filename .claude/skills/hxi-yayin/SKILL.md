@@ -23,6 +23,15 @@ düşülmüş bir tuzaktır.
 
 ## Değişmez kurallar
 
+0. **Her iyileştirmeden ÖNCE üç kaynak okunur** (kullanıcı talimatı, 01.09.2026):
+   `brand/hxi/README.md` + `brand/hxi/CONCEPT.md` (marka mimarisi — masterbrand,
+   UTGAVE editoryal sistemi, dört dönüşüm modeli FAN→LISTEN / CREATOR→USE /
+   BRAND→SYNC / INDUSTRY→CONTACT, kilitli renk/tipografi), `hxi/` statik
+   sayfaları (mimari oturumunun uygulaması — yayında /v8) ve `hxi-website/`
+   (dosyalar oturumunun uygulaması — yayında /v7). Bu üç kaynağa aykırı
+   iyileştirme yapma; çelişki görürsen kullanıcıya söyle. Marka tescili temiz
+   değil: sitede asla ® veya "korunmaktadır" dili kullanma.
+
 1. **Depo adresi `BETA-ART-PRIVAT`'tır ve public'tir.** Vercel derlemesi onu
    anonim klonlar. Push çıktısındaki "repository moved" uyarısı normaldir;
    ama depo bir gün gerçekten private yapılırsa dağıtım o anda kırılır —

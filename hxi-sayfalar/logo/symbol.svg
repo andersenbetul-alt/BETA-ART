@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="HXI Symbol">
+  <title>HXI</title>
+  <!--
+    HXI Symbol — X Monogram — Flat Vector Master
+    30 Ağustos 2026 · Brand/HXI
+
+    Yapım kaydı:
+    - Daire: cx=100 cy=100 r=96
+    - X yerel koordinatlar: 140×200 bbox, merkez (70,100)
+    - Ölçek: 0.76 (köşeler r=96 içinde kalır, ≈93.3u maks dist)
+    - Transform: translate(47,24) scale(0.76)
+      → X merkezi global (100.2, 100) ✓
+
+    Köşe mesafeleri (doğrulandı):
+    - (−11.47, 8.03) → global (38.28, 30.10) → dist 93.3 < 96 ✓
+    - (11.47, −8.03) → global (55.72, 17.90) → dist 93.3 < 96 ✓
+    - (128.53, −8.03) → global (144.68, 17.90) → dist 93.3 < 96 ✓
+    - (151.47, 8.03) → global (162.12, 30.10) → dist 93.3 < 96 ✓
+  -->
+
+  <!-- Circle -->
+  <circle cx="100" cy="100" r="96" fill="#E8153A"/>
+
+  <!-- X mark (white) -->
+  <g transform="translate(47,24) scale(0.76)">
+    <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#F2F2EE"/>
+    <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#F2F2EE"/>
+  </g>
+</svg>
