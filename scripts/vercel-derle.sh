@@ -10,9 +10,7 @@ cp _src/index.html _src/work.html _src/blog.html _src/post.html \
    _src/gizlilik.html _src/kosullar.html _src/kalite.html _src/ornek.html \
    _src/404.html _src/sitemap.xml _src/robots.txt _src/feed.xml dist/
 cp _src/.well-known/security.txt dist/.well-known/
-# demo/ bu PR ile main'e giriyor; birleşene dek klonda olmayabilir
-if [ -f _src/demo/cv-action-page.html ]; then
-  mkdir -p dist/demo
-  cp _src/demo/cv-action-page.html _src/demo/cv-action-page.js dist/demo/
-fi
+mkdir -p dist/demo
+cp _src/demo/cv-action-page.html _src/demo/cv-action-page.js \
+   _src/demo/q-work-audit.html _src/demo/q-work-audit.js dist/demo/
 cp -r _src/assets dist/assets

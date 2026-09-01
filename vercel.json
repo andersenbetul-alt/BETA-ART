@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "git clone --depth 1 --branch main https://github.com/andersenbetul-alt/BETA-ART.git _src && bash _src/scripts/vercel-derle.sh",
-  "outputDirectory": "dist",
+  "buildCommand": "git clone --depth 1 --filter=blob:none --sparse --branch main https://github.com/andersenbetul-alt/BETA-ART.git _src && git -C _src sparse-checkout set assets demo .well-known scripts && bash scripts/vercel-derle.sh || bash _src/scripts/vercel-derle.sh",  "outputDirectory": "dist",
   "cleanUrls": false,
   "trailingSlash": false,
   "headers": [
