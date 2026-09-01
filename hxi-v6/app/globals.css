@@ -537,6 +537,28 @@ h1 span { color: var(--acid); text-shadow: 10px 0 0 rgba(255, 45, 45, .22); }
 .privacy-lead { color: #d2d2cc; font-size: 22px; line-height: 1.5; }
 .privacy-inner h2 { margin: 44px 0 10px; font-size: 27px; }
 .privacy-inner > p:not(.eyebrow):not(.privacy-lead) { color: #b7b8b2; }
+.use-note { margin-top: 34px; padding: 22px 26px; border: 1px solid var(--acid); }
+.use-note .eyebrow { margin-bottom: 10px; }
+.use-note p:last-child { margin: 0; }
+.sync-works .proof-card { min-height: 0; }
+.sync-works .proof-card p { margin-bottom: 0; }
+.sync-fields {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.sync-fields li {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  color: #d0d1cb;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+.sync-note { margin-top: 26px; color: #8b8d85; font-size: 14px; }
 .privacy-nav { grid-template-columns: 1fr auto; }
 
 .mt20 { margin-top: 20px; }

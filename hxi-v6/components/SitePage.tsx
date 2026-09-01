@@ -285,6 +285,10 @@ export function SitePage({ locale }: { locale: Locale }) {
               <h2 id="creators-title">{d.creators.title}</h2>
               <p className="hero-desc mt20">{d.creators.body}</p>
               <p className="creator-note">{d.creators.clear}</p>
+              <div className="actions mt24">
+                <Link className="btn ghost" href={`/${locale}/use/`}>{d.usePage.navLabel} →</Link>
+                <Link className="btn ghost" href={`/${locale}/sync/`}>{d.syncPage.navLabel} →</Link>
+              </div>
             </div>
             <div className="creator-list">
               <Ext href="https://ncs.io/LockNLoad" className="creator-link">
@@ -401,6 +405,10 @@ export function SitePage({ locale }: { locale: Locale }) {
           <Ext href={INSTAGRAM}>Instagram</Ext>
           {' · '}
           <Ext href={NCS_ARTIST}>NCS</Ext>
+          {' · '}
+          <Link href={`/${locale}/use/`}>{d.usePage.navLabel}</Link>
+          {' · '}
+          <Link href={`/${locale}/sync/`}>{d.syncPage.navLabel}</Link>
           {' · '}
           <Link href={`/${locale}/privacy/`}>{d.footer.privacyLabel}</Link>
           <div className="privacy-strip">HXI · UTGAVE 01 · 59.91°N · 10.75°E</div>
