@@ -43,7 +43,7 @@
   --border-strong: #c9d0db;
   --text: #0e1420;
   --text-2: #3b4557;
-  --text-3: #6b7a92;
+  --text-3: #586880; /* WCAG AA: 5.7:1 on white */
   --link: #0051c3;
   --brand: #0051c3;
   --brand-dark: #003d96;
@@ -76,7 +76,7 @@
     --border-strong: #2e3f5c;
     --text: #e8edf5;
     --text-2: #9baec8;
-    --text-3: #6b7a92;
+    --text-3: #7a8fa8; /* WCAG AA: 5.8:1 on dark bg */
     --link: #5b9cff;
     --brand: #4d8fff;
     --brand-dark: #2d6de8;
@@ -107,6 +107,22 @@
   --accent: #26a69a;
   --accent-light: #0a2522;
 }
+
+/* Skip link — WCAG 2.1 SC 2.4.1 */
+.skip-link {
+  position: absolute;
+  inset-inline-start: -100vw;
+  top: 8px;
+  padding: 8px 16px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 9999;
+}
+.skip-link:focus { inset-inline-start: 8px; }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
