@@ -86,6 +86,14 @@ if (KIP === 'shot') {
   kontrol('üye uygulaması (yapılandırmasızsa "Kurulum bekleniyor")',
     (await p.locator('#kurulum, #giris').count()) >= 1);
 
+  await git(p, 'demo/q-work-audit.html');
+  await p.click('input[name="task"]');
+  await p.fill('#minutes', '60');
+  await p.click('button.primary');
+  await p.waitForSelector('#resultat:not([hidden])', { timeout: 2000 });
+  kontrol('Action Pages demosu (Q Work Audit) uçtan uca çalışıyor',
+    (await p.locator('#joinLink').getAttribute('href') || '').startsWith('mailto:'));
+
   kontrol('konsol/sayfa hatası yok', hata.length === 0, hata[0] || '');
   await b.close(); if (srv) process.kill(-srv.pid);
   console.log(kalan === 0 ? 'SMOKE: PASS' : `SMOKE: FAIL (${kalan})`);
