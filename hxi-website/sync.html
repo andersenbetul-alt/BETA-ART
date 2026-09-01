@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Sync & Licensing — HXI</title>
+<link rel="canonical" href="https://hximusic.com/sync.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="head">
+  <div class="wrap nav">
+    <a class="logo" href="/"><img src="https://cdn.websitepublisher.ai/custom/wid24727/images/hxi-logo-candidate-a.svg" alt="HXI"></a>
+    <nav class="links">
+      <a href="/music.html">Music</a>
+      <a href="/credits.html">Credits</a>
+      <a href="/creator-use.html">Creator Use</a>
+      <a href="/sync.html">Sync</a>
+      <a href="/press.html">Press</a>
+      <a href="/booking.html">Booking</a>
+    </nav>
+    <button id="open" class="menu" aria-controls="mobile" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<nav class="mobile" id="mobile" aria-hidden="true">
+  <button id="close">Close</button>
+  <a href="/music.html">01 / Music</a>
+  <a href="/credits.html">02 / Credits</a>
+  <a href="/creator-use.html">03 / Creator Use</a>
+  <a href="/sync.html">04 / Sync</a>
+  <a href="/press.html">05 / Press</a>
+  <a href="/booking.html">06 / Booking</a>
+</nav>
+
+<main>
+  <header class="page">
+    <div class="wrap">
+      <div class="eyebrow">04 / Sync</div>
+      <h1>Music that moves image.</h1>
+      <p class="lede">Rights and licensing availability vary by track and intended use.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap form-shell">
+      <form class="form" id="sync-form">
+        <div class="field"><label>Name</label><input name="name" required></div>
+        <div class="field"><label>Email</label><input name="email" type="email" required></div>
+        <div class="field full"><label>Company / project</label><input name="company" required></div>
+        <div class="field">
+          <label>Media type</label>
+          <select name="media" required>
+            <option value="">Choose one</option>
+            <option>Film / TV</option>
+            <option>Game</option>
+            <option>Advertising / campaign</option>
+            <option>Creator / online video</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Track</label><input name="track" required></div>
+        <div class="field"><label>Territory</label><input name="territory"></div>
+        <div class="field"><label>Usage period</label><input name="period"></div>
+        <div class="field"><label>Deadline</label><input name="deadline" type="date"></div>
+        <div class="field"><label>Budget range</label><input name="budget"></div>
+        <div class="field full"><label>Brief</label><textarea name="brief" required></textarea></div>
+        <input name="website" tabindex="-1" style="position:absolute;left:-9999px">
+        <div class="field full">
+          <button class="btn primary" type="submit">Send sync inquiry</button>
+          <p role="status" class="muted" aria-live="polite"></p>
+        </div>
+      </form>
+      <aside>
+        <div class="policy">
+          <h3>Track-specific clearance.</h3>
+          <p>A credit or NCS release does not prove that every right required for a professional use is controlled by HXI.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<script src="/config.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
