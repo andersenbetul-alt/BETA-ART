@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import './index.css'
 
 function scrollTo(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  document.getElementById(id)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
 }
 
 // ─── Logo ────────────────────────────────────────────────────────────────────
@@ -11,7 +12,7 @@ function NaviarLogo({ size = 30, dark = false }: { size?: number; dark?: boolean
   const arc  = dark ? '#d8ef75' : '#173d3a'
   const dot  = dark ? '#fffdf8' : '#d8ef75'
   const name = dark ? '#fffdf8' : '#173d3a'
-  const sub  = dark ? '#d8ef75' : '#637774'
+  const sub  = dark ? '#d8ef75' : '#576b68'
   const gap  = size <= 24 ? 7 : 9
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap }}>
@@ -122,7 +123,7 @@ const FAQS = [
 
 function CookieBanner({ onAccept }: { onAccept: () => void }) {
   return (
-    <div style={{
+    <div role="region" aria-label="Informasjonskapsler" style={{
       position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
       background: '#173d3a',
       borderTop: '1px solid #2a5551',
@@ -173,10 +174,17 @@ function ContactModal({ onClose }: { onClose: () => void }) {
   const [situation, setSit]   = useState('')
   const [topic, setTopic]     = useState('')
   const overlayRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = '' }
+    closeRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', onKey)
+    }
   }, [])
 
   function handleSubmit(e: React.FormEvent) {
@@ -201,6 +209,9 @@ function ContactModal({ onClose }: { onClose: () => void }) {
   return (
     <div
       ref={overlayRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="nc-modal-title"
       onClick={e => { if (e.target === overlayRef.current) onClose() }}
       style={{
         position: 'fixed', inset: 0, zIndex: 200,
@@ -219,12 +230,13 @@ function ContactModal({ onClose }: { onClose: () => void }) {
         boxShadow: '0 20px 60px rgba(23,61,58,0.2)',
       }}>
         <button
+          ref={closeRef}
           onClick={onClose}
           aria-label="Lukk"
           style={{
             position: 'absolute', top: 18, right: 18,
             background: 'none', border: 'none', cursor: 'pointer',
-            color: '#637774', padding: 4,
+            color: '#576b68', padding: 4,
           }}
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
@@ -244,10 +256,10 @@ function ContactModal({ onClose }: { onClose: () => void }) {
               </svg>
             </div>
             <h3 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 26, fontWeight: 700, color: '#173d3a', marginBottom: 12 }}>Takk, {name.split(' ')[0]}!</h3>
-            <p style={{ fontSize: 15, color: '#637774', lineHeight: 1.6, marginBottom: 28 }}>
+            <p style={{ fontSize: 15, color: '#576b68', lineHeight: 1.6, marginBottom: 28 }}>
               Vi har mottatt forespørselen din og tar kontakt på <strong>{email}</strong> innen 24 timer for å koble deg med riktig ekspert.
             </p>
-            <p style={{ fontSize: 12, color: '#9bb8b4' }}>Dette er et pilotprogram. Responsene kan variere fra produksjonstid.</p>
+            <p style={{ fontSize: 12, color: '#576b68' }}>Dette er et pilotprogram. Responsene kan variere fra produksjonstid.</p>
             <button onClick={onClose} style={{
               marginTop: 20, padding: '12px 28px',
               background: '#173d3a', color: '#fffdf8',
@@ -258,34 +270,34 @@ function ContactModal({ onClose }: { onClose: () => void }) {
         ) : (
           <>
             <div style={{ marginBottom: 28 }}>
-              <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.1em', color: '#637774', textTransform: 'uppercase' }}>Kom i gang</span>
-              <h3 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 24, fontWeight: 700, color: '#173d3a', marginTop: 8 }}>Fortell oss om situasjonen</h3>
-              <p style={{ fontSize: 14, color: '#637774', marginTop: 6 }}>Vi kobler deg med riktig ekspert innen én arbeidsdag.</p>
+              <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Kom i gang</span>
+              <h3 id="nc-modal-title" style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 24, fontWeight: 700, color: '#173d3a', marginTop: 8 }}>Fortell oss om situasjonen</h3>
+              <p style={{ fontSize: 14, color: '#576b68', marginTop: 6 }}>Vi kobler deg med riktig ekspert innen én arbeidsdag.</p>
             </div>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                 <div>
-                  <label style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Navn *</label>
-                  <input required value={name} onChange={e => setName(e.target.value)}
-                    placeholder="Ditt navn" style={inputStyle} />
+                  <label htmlFor="nc-name" style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Navn *</label>
+                  <input id="nc-name" required value={name} onChange={e => setName(e.target.value)}
+                    placeholder="Ditt navn" autoComplete="name" style={inputStyle} />
                 </div>
                 <div>
-                  <label style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>E-post *</label>
-                  <input required type="email" value={email} onChange={e => setEmail(e.target.value)}
-                    placeholder="din@epost.no" style={inputStyle} />
+                  <label htmlFor="nc-email" style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>E-post *</label>
+                  <input id="nc-email" required type="email" value={email} onChange={e => setEmail(e.target.value)}
+                    placeholder="din@epost.no" autoComplete="email" style={inputStyle} />
                 </div>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                 <div>
-                  <label style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Telefon (valgfritt)</label>
-                  <input value={phone} onChange={e => setPhone(e.target.value)}
-                    placeholder="+47 000 00 000" style={inputStyle} />
+                  <label htmlFor="nc-phone" style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Telefon (valgfritt)</label>
+                  <input id="nc-phone" value={phone} onChange={e => setPhone(e.target.value)}
+                    placeholder="+47 000 00 000" autoComplete="tel" style={inputStyle} />
                 </div>
                 <div>
-                  <label style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Fagområde</label>
-                  <select value={topic} onChange={e => setTopic(e.target.value)} style={{ ...inputStyle, appearance: 'none' }}>
+                  <label htmlFor="nc-topic" style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Fagområde</label>
+                  <select id="nc-topic" value={topic} onChange={e => setTopic(e.target.value)} style={{ ...inputStyle, appearance: 'none' }}>
                     <option value="">Velg fagområde...</option>
                     {EXPERTS.map(ex => <option key={ex.code} value={ex.label}>{ex.label}</option>)}
                     <option value="Vet ikke">Vet ikke ennå</option>
@@ -294,12 +306,16 @@ function ContactModal({ onClose }: { onClose: () => void }) {
               </div>
 
               <div>
-                <label style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Beskriv situasjonen *</label>
-                <textarea required value={situation} onChange={e => setSit(e.target.value)}
-                  placeholder="Fortell kort hva du trenger hjelp med. Jo mer du beskriver, jo bedre kan vi matche deg med riktig ekspert."
+                <label htmlFor="nc-situation" style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Beskriv situasjonen *</label>
+                <textarea id="nc-situation" required value={situation} onChange={e => setSit(e.target.value)}
+                  placeholder="Beskriv behovet — ikke diagnosen. F.eks.: «Mor trenger hjelp til å søke hjemmetjenester i Bergen.»"
                   rows={4}
+                  aria-describedby="nc-situation-hint"
                   style={{ ...inputStyle, resize: 'vertical', lineHeight: 1.55 }}
                 />
+                <p id="nc-situation-hint" style={{ fontSize: 12, color: '#576b68', margin: '6px 0 0', lineHeight: 1.5 }}>
+                  Ikke skriv diagnoser, medisinlister eller andre helseopplysninger her — eksperten spør om det som trengs, når det trengs.
+                </p>
               </div>
 
               <div style={{ background: '#d9ebe2', borderRadius: 8, padding: '10px 14px', display: 'flex', gap: 10, alignItems: 'flex-start' }}>
@@ -307,7 +323,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                   <circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/>
                 </svg>
                 <p style={{ fontSize: 12.5, color: '#173d3a', margin: 0, lineHeight: 1.5 }}>
-                  Vi lagrer ikke helseopplysninger om tredjepersoner uten samtykke. Din henvendelse behandles konfidensielt i henhold til GDPR.
+                  Vi ber ikke om diagnoser og samler ikke inn mer enn det som trengs for å koble deg til riktig ekspert. Henvendelsen behandles konfidensielt i henhold til GDPR, og du kan be om sletting når som helst.
                 </p>
               </div>
 
@@ -320,7 +336,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
               }}>
                 Send forespørsel →
               </button>
-              <p style={{ fontSize: 11.5, color: '#9bb8b4', textAlign: 'center', margin: 0 }}>
+              <p style={{ fontSize: 11.5, color: '#576b68', textAlign: 'center', margin: 0 }}>
                 Ingen binding. Avbryt når som helst.
               </p>
             </form>
@@ -354,15 +370,15 @@ function Nav({
             { label: 'For fagpersoner',   id: 'for-section' },
           ].map(({ label, id }) => (
             <button key={id} onClick={() => scrollTo(id)}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, fontWeight: 500, color: '#637774', padding: 0 }}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, fontWeight: 500, color: '#576b68', padding: 0 }}
               onMouseEnter={e => (e.currentTarget.style.color = '#173d3a')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#637774')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#576b68')}
             >{label}</button>
           ))}
         </div>
 
         <div className="hidden md:flex" style={{ alignItems: 'center', gap: 16 }}>
-          <button onClick={() => {}} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, fontWeight: 500, color: '#637774' }}>Logg inn</button>
+          <button onClick={() => {}} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, fontWeight: 500, color: '#576b68' }}>Logg inn</button>
           <button onClick={onCta} style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
             padding: '10px 20px',
@@ -401,7 +417,7 @@ function Nav({
                 display: 'block', width: '100%', textAlign: 'left',
                 padding: '12px 0',
                 background: 'none', border: 'none', borderBottom: '1px solid #cbd8d0',
-                fontSize: 16, fontWeight: 500, color: '#637774', cursor: 'pointer',
+                fontSize: 16, fontWeight: 500, color: '#576b68', cursor: 'pointer',
               }}
             >{label}</button>
           ))}
@@ -443,7 +459,7 @@ function Hero({ onCta }: { onCta: () => void }) {
               Eldreomsorgen,<br/>koordinert —<br/>på ett sted
             </h1>
 
-            <p style={{ fontSize: 18, lineHeight: 1.65, color: '#637774', maxWidth: 480, marginBottom: 40 }}>
+            <p style={{ fontSize: 18, lineHeight: 1.65, color: '#576b68', maxWidth: 480, marginBottom: 40 }}>
               Naviar koordinerer omsorgen for dine nærmeste: fagfolk, offentlige
               tjenester og familien — samlet rundt én plan. Svar innen én time,
               uten venteliste.
@@ -465,7 +481,7 @@ function Hero({ onCta }: { onCta: () => void }) {
               <button onClick={() => scrollTo('how')} style={{
                 fontSize: 15, fontWeight: 500,
                 color: '#173d3a', background: 'none', border: 'none', cursor: 'pointer',
-                opacity: 0.65, textDecoration: 'underline', textUnderlineOffset: 3,
+                textDecoration: 'underline', textUnderlineOffset: 3,
               }}>Se hvordan det fungerer</button>
             </div>
 
@@ -474,7 +490,7 @@ function Hero({ onCta }: { onCta: () => void }) {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0a7d72" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               </svg>
-              <span style={{ fontSize: 12.5, color: '#637774' }}>Vi lagrer aldri helseopplysninger uten ditt eksplisitte samtykke · GDPR-sikker</span>
+              <span style={{ fontSize: 12.5, color: '#576b68' }}>Vi lagrer aldri helseopplysninger uten ditt eksplisitte samtykke · GDPR-sikker</span>
             </div>
 
             {/* Trust stats */}
@@ -488,12 +504,12 @@ function Hero({ onCta }: { onCta: () => void }) {
                   {i > 0 && <div style={{ width: 1, background: '#cbd8d0', margin: '0 24px', flexShrink: 0 }} />}
                   <div>
                     <div style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 30, fontWeight: 700, color: '#173d3a' }}>{s.val}</div>
-                    <div style={{ fontSize: 13, color: '#637774', marginTop: 2, lineHeight: 1.4, whiteSpace: 'pre-line' }}>{s.label}</div>
+                    <div style={{ fontSize: 13, color: '#576b68', marginTop: 2, lineHeight: 1.4, whiteSpace: 'pre-line' }}>{s.label}</div>
                   </div>
                 </div>
               ))}
             </div>
-            <p style={{ fontSize: 11, color: '#637774', marginTop: 10, opacity: 0.7 }}>* Eksempeltall fra pilotperioden</p>
+            <p style={{ fontSize: 11, color: '#576b68', marginTop: 10 }}>* Eksempeltall fra pilotperioden</p>
           </div>
 
           {/* Right: chat preview card */}
@@ -512,7 +528,7 @@ function Hero({ onCta }: { onCta: () => void }) {
                   </div>
                   <div>
                     <div style={{ fontSize: 13, fontWeight: 600, color: '#173d3a' }}>Anita Johansen</div>
-                    <div style={{ fontSize: 11, color: '#637774' }}>Sykepleier · Svarer nå</div>
+                    <div style={{ fontSize: 11, color: '#576b68' }}>Sykepleier · Svarer nå</div>
                   </div>
                   <div style={{ marginLeft: 'auto' }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, padding: '3px 8px', background: '#d9ebe2', borderRadius: 100 }}>
@@ -530,7 +546,7 @@ function Hero({ onCta }: { onCta: () => void }) {
                 }}>
                   Basert på det du beskriver ser det ut til at mamma har klassiske tegn på UTI. Her er tre konkrete tiltak du kan gjøre akkurat nå...
                 </div>
-                <div style={{ fontSize: 11, color: '#637774', textAlign: 'right' }}>Mottatt · 4 min etter forespørsel</div>
+                <div style={{ fontSize: 11, color: '#576b68', textAlign: 'right' }}>Mottatt · 4 min etter forespørsel</div>
               </div>
 
               <div style={{ borderTop: '1px solid #cbd8d0', paddingTop: 16 }}>
@@ -541,7 +557,7 @@ function Hero({ onCta }: { onCta: () => void }) {
                   border: '1px solid #cbd8d0', cursor: 'pointer',
                   textAlign: 'left',
                 }}>
-                  <span style={{ fontSize: 13, color: '#637774', flex: 1 }}>Skriv til en ekspert...</span>
+                  <span style={{ fontSize: 13, color: '#576b68', flex: 1 }}>Skriv til en ekspert...</span>
                   <div style={{ width: 30, height: 30, background: '#d8ef75', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#173d3a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -564,7 +580,7 @@ function HowItWorks() {
     <section id="how" style={{ background: '#fffdf8', padding: '80px 24px', scrollMarginTop: 68 }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ marginBottom: 56 }}>
-          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#637774', textTransform: 'uppercase' }}>Slik fungerer det</span>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Slik fungerer det</span>
           <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Tre steg. Klar hjelp.</h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32 }}>
@@ -575,7 +591,7 @@ function HowItWorks() {
               </div>
               <div>
                 <h3 style={{ fontSize: 17, fontWeight: 700, color: '#173d3a', marginBottom: 8 }}>{s.title}</h3>
-                <p style={{ fontSize: 15, lineHeight: 1.65, color: '#637774' }}>{s.body}</p>
+                <p style={{ fontSize: 15, lineHeight: 1.65, color: '#576b68' }}>{s.body}</p>
               </div>
             </div>
           ))}
@@ -592,7 +608,7 @@ function Testimonials() {
     <section style={{ background: '#f7f5ef', padding: '80px 24px', scrollMarginTop: 68 }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ marginBottom: 48 }}>
-          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#637774', textTransform: 'uppercase' }}>Fra pilotbrukerne</span>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Fra pilotbrukerne</span>
           <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Hva sier de som har prøvd</h2>
         </div>
 
@@ -609,12 +625,12 @@ function Testimonials() {
               <p style={{ fontSize: 15, lineHeight: 1.65, color: '#3a5553', marginBottom: 20, fontStyle: 'italic' }}>"{t.quote}"</p>
               <div style={{ borderTop: '1px solid #cbd8d0', paddingTop: 16 }}>
                 <div style={{ fontSize: 14, fontWeight: 700, color: '#173d3a' }}>{t.name}</div>
-                <div style={{ fontSize: 12.5, color: '#637774', marginTop: 2 }}>{t.role}</div>
+                <div style={{ fontSize: 12.5, color: '#576b68', marginTop: 2 }}>{t.role}</div>
               </div>
             </div>
           ))}
         </div>
-        <p style={{ fontSize: 12, color: '#9bb8b4', marginTop: 20 }}>* Sitater fra pilotbrukere. Navn og detaljer er anonymisert etter samtykke.</p>
+        <p style={{ fontSize: 12, color: '#576b68', marginTop: 20 }}>* Sitater fra pilotbrukere. Navn og detaljer er anonymisert etter samtykke.</p>
       </div>
     </section>
   )
@@ -627,9 +643,9 @@ function Experts({ onCta }: { onCta: () => void }) {
     <section id="experts" style={{ background: '#fffdf8', padding: '80px 24px', scrollMarginTop: 68 }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ marginBottom: 48 }}>
-          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#637774', textTransform: 'uppercase' }}>Fagområder</span>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Fagområder</span>
           <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>8 fagområder på én plattform</h2>
-          <p style={{ fontSize: 16, color: '#637774', marginTop: 12, maxWidth: 480 }}>Pårørendeomsorg krysser mange faggrenser. Naviar samler dem på ett sted.</p>
+          <p style={{ fontSize: 16, color: '#576b68', marginTop: 12, maxWidth: 480 }}>Pårørendeomsorg krysser mange faggrenser. Naviar samler dem på ett sted.</p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
@@ -653,7 +669,7 @@ function Experts({ onCta }: { onCta: () => void }) {
                 <span style={{ fontSize: 15, fontWeight: 700, color: '#173d3a' }}>{ex.label}</span>
                 <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.06em', padding: '2px 7px', background: '#d9ebe2', color: '#173d3a', borderRadius: 4 }}>{ex.code}</span>
               </div>
-              <p style={{ fontSize: 13.5, lineHeight: 1.55, color: '#637774', margin: 0 }}>{ex.desc}</p>
+              <p style={{ fontSize: 13.5, lineHeight: 1.55, color: '#576b68', margin: 0 }}>{ex.desc}</p>
             </button>
           ))}
         </div>
@@ -669,9 +685,9 @@ function Pricing({ onCta }: { onCta: () => void }) {
     <section id="priser" style={{ background: '#f7f5ef', padding: '80px 24px', scrollMarginTop: 68 }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ marginBottom: 52, maxWidth: 540 }}>
-          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#637774', textTransform: 'uppercase' }}>Priser</span>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Priser</span>
           <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Enkel, forutsigbar prising</h2>
-          <p style={{ fontSize: 16, color: '#637774', marginTop: 12, lineHeight: 1.6 }}>Start gratis i pilotperioden. Ingen kredittkort nødvendig.</p>
+          <p style={{ fontSize: 16, color: '#576b68', marginTop: 12, lineHeight: 1.6 }}>Start gratis i pilotperioden. Ingen kredittkort nødvendig.</p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16, alignItems: 'start' }}>
@@ -694,18 +710,18 @@ function Pricing({ onCta }: { onCta: () => void }) {
               )}
 
               <div style={{ marginBottom: 24 }}>
-                <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase', color: p.highlight ? '#7db5ad' : '#637774' }}>{p.name}</span>
+                <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase', color: p.highlight ? '#7db5ad' : '#576b68' }}>{p.name}</span>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginTop: 10, marginBottom: 4 }}>
                   {p.price === 'Avtale' ? (
                     <span style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 32, fontWeight: 700, color: p.highlight ? '#fffdf8' : '#173d3a' }}>Avtale</span>
                   ) : (
                     <>
                       <span style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 36, fontWeight: 700, color: p.highlight ? '#fffdf8' : '#173d3a' }}>kr {p.price}</span>
-                      <span style={{ fontSize: 14, color: p.highlight ? '#7db5ad' : '#637774' }}>{p.unit}</span>
+                      <span style={{ fontSize: 14, color: p.highlight ? '#7db5ad' : '#576b68' }}>{p.unit}</span>
                     </>
                   )}
                 </div>
-                <p style={{ fontSize: 13.5, color: p.highlight ? '#7db5ad' : '#637774', lineHeight: 1.5, margin: 0 }}>{p.desc}</p>
+                <p style={{ fontSize: 13.5, color: p.highlight ? '#7db5ad' : '#576b68', lineHeight: 1.5, margin: 0 }}>{p.desc}</p>
               </div>
 
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -714,7 +730,7 @@ function Pricing({ onCta }: { onCta: () => void }) {
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={p.highlight ? '#d8ef75' : '#0a7d72'} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 1 }}>
                       <polyline points="20 6 9 17 4 12"/>
                     </svg>
-                    <span style={{ fontSize: 14, color: p.highlight ? '#a8c9c5' : '#637774', lineHeight: 1.4 }}>{item}</span>
+                    <span style={{ fontSize: 14, color: p.highlight ? '#a8c9c5' : '#576b68', lineHeight: 1.4 }}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -731,7 +747,7 @@ function Pricing({ onCta }: { onCta: () => void }) {
           ))}
         </div>
 
-        <p style={{ fontSize: 12, color: '#9bb8b4', marginTop: 24 }}>
+        <p style={{ fontSize: 12, color: '#576b68', marginTop: 24 }}>
           * Priser er eksempeltall fra pilotperioden og kan endres. Alle priser inkl. mva. Stripe-behandlingsgebyr tilkommer ved kortbetaling.
         </p>
       </div>
@@ -767,13 +783,13 @@ function ForSection({ onCta }: { onCta: () => void }) {
         gap: 2, border: '1px solid #cbd8d0', borderRadius: 12, overflow: 'hidden',
       }}>
         <div style={{ background: '#f7f5ef', padding: '52px 48px' }}>
-          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.1em', color: '#637774', textTransform: 'uppercase' }}>For pårørende</span>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>For pårørende</span>
           <h3 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(22px, 2.5vw, 30px)', fontWeight: 700, color: '#173d3a', marginTop: 10, marginBottom: 28, letterSpacing: '-0.01em' }}>Du skal ikke stå alene<br/>med dette</h3>
           <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 36px' }}>
             {paroerende.map((p, i) => (
               <li key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
                 <span style={{ flexShrink: 0, marginTop: 2 }}>{check}</span>
-                <span style={{ fontSize: 14.5, lineHeight: 1.55, color: '#637774' }}>{p}</span>
+                <span style={{ fontSize: 14.5, lineHeight: 1.55, color: '#576b68' }}>{p}</span>
               </li>
             ))}
           </ul>
@@ -785,13 +801,13 @@ function ForSection({ onCta }: { onCta: () => void }) {
         </div>
 
         <div style={{ background: '#d9ebe2', padding: '52px 48px' }}>
-          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.1em', color: '#637774', textTransform: 'uppercase' }}>For fagpersoner</span>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>For fagpersoner</span>
           <h3 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(22px, 2.5vw, 30px)', fontWeight: 700, color: '#173d3a', marginTop: 10, marginBottom: 28, letterSpacing: '-0.01em' }}>Bruk kompetansen din<br/>der den trengs mest</h3>
           <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 36px' }}>
             {fagperson.map((p, i) => (
               <li key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
                 <span style={{ flexShrink: 0, marginTop: 2 }}>{check}</span>
-                <span style={{ fontSize: 14.5, lineHeight: 1.55, color: '#637774' }}>{p}</span>
+                <span style={{ fontSize: 14.5, lineHeight: 1.55, color: '#576b68' }}>{p}</span>
               </li>
             ))}
           </ul>
@@ -815,7 +831,7 @@ function FAQ() {
     <section id="faq" style={{ background: '#f7f5ef', padding: '80px 24px', scrollMarginTop: 68 }}>
       <div style={{ maxWidth: 760, margin: '0 auto' }}>
         <div style={{ marginBottom: 48 }}>
-          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#637774', textTransform: 'uppercase' }}>Spørsmål og svar</span>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Spørsmål og svar</span>
           <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Det du lurer på</h2>
         </div>
 
@@ -827,6 +843,8 @@ function FAQ() {
                 <div style={{ borderBottom: '1px solid #cbd8d0' }}>
                   <button
                     onClick={() => setOpen(isOpen ? null : i)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-panel-${i}`}
                     style={{
                       width: '100%', textAlign: 'left',
                       padding: '20px 0',
@@ -835,7 +853,7 @@ function FAQ() {
                     }}
                   >
                     <span style={{ fontSize: 16, fontWeight: 600, color: '#173d3a', lineHeight: 1.4 }}>{faq.q}</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#637774" strokeWidth="1.7" strokeLinecap="round" style={{
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#576b68" strokeWidth="1.7" strokeLinecap="round" style={{
                       flexShrink: 0,
                       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.2s',
@@ -844,7 +862,7 @@ function FAQ() {
                     </svg>
                   </button>
                   {isOpen && (
-                    <p style={{ fontSize: 15, lineHeight: 1.7, color: '#637774', paddingBottom: 20, margin: 0 }}>{faq.a}</p>
+                    <p id={`faq-panel-${i}`} style={{ fontSize: 15, lineHeight: 1.7, color: '#576b68', paddingBottom: 20, margin: 0 }}>{faq.a}</p>
                   )}
                 </div>
               </div>
@@ -916,7 +934,7 @@ function FinalCTA({ onCta }: { onCta: () => void }) {
               }}>Meld meg på →</button>
             </form>
 
-            <p style={{ fontSize: 13, color: '#4a7a75', marginTop: 16 }}>Ingen binding · Avbryt når som helst</p>
+            <p style={{ fontSize: 13, color: '#7db5ad', marginTop: 16 }}>Ingen binding · Avbryt når som helst</p>
 
             <div style={{ marginTop: 28, paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
               <button onClick={onCta} style={{
@@ -947,37 +965,37 @@ function Footer() {
                 <circle cx="29.19" cy="10.81" r="4.2" fill="#637774"/>
               </svg>
               <div style={{ lineHeight: 1 }}>
-                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.04em', color: '#3d5553' }}>NAVIAR</div>
-                <div style={{ fontSize: 7, fontWeight: 500, letterSpacing: '0.16em', color: '#2e4f4d', textTransform: 'uppercase', marginTop: 1 }}>CARE</div>
+                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.04em', color: '#7fa8a2' }}>NAVIAR</div>
+                <div style={{ fontSize: 7, fontWeight: 500, letterSpacing: '0.16em', color: '#7fa8a2', textTransform: 'uppercase', marginTop: 1 }}>CARE</div>
               </div>
             </div>
-            <p style={{ fontSize: 13, color: '#3d5553', lineHeight: 1.55, margin: 0 }}>Koordinering av eldreomsorg i Norge — fagfolk, tjenester og familie på ett sted.</p>
+            <p style={{ fontSize: 13, color: '#7fa8a2', lineHeight: 1.55, margin: 0 }}>Koordinering av eldreomsorg i Norge — fagfolk, tjenester og familie på ett sted.</p>
           </div>
 
           {/* Links */}
           <div style={{ display: 'flex', gap: 52, flexWrap: 'wrap' }}>
             <div>
-              <div style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.08em', color: '#2e4f4d', textTransform: 'uppercase', marginBottom: 12 }}>Tjenesten</div>
+              <div style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.08em', color: '#7fa8a2', textTransform: 'uppercase', marginBottom: 12 }}>Tjenesten</div>
               {['Slik fungerer det', 'Fagområder', 'Priser', 'For fagpersoner'].map(l => (
-                <div key={l} style={{ marginBottom: 8 }}><a href="#" style={{ fontSize: 13.5, color: '#4a7a75', textDecoration: 'none' }}>{l}</a></div>
+                <div key={l} style={{ marginBottom: 8 }}><a href="#" style={{ fontSize: 13.5, color: '#7db5ad', textDecoration: 'none' }}>{l}</a></div>
               ))}
             </div>
             <div>
-              <div style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.08em', color: '#2e4f4d', textTransform: 'uppercase', marginBottom: 12 }}>Selskapet</div>
+              <div style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.08em', color: '#7fa8a2', textTransform: 'uppercase', marginBottom: 12 }}>Selskapet</div>
               {['Om oss', 'Personvern', 'Vilkår for bruk', 'Kontakt'].map(l => (
-                <div key={l} style={{ marginBottom: 8 }}><a href="#" style={{ fontSize: 13.5, color: '#4a7a75', textDecoration: 'none' }}>{l}</a></div>
+                <div key={l} style={{ marginBottom: 8 }}><a href="#" style={{ fontSize: 13.5, color: '#7db5ad', textDecoration: 'none' }}>{l}</a></div>
               ))}
             </div>
           </div>
         </div>
 
         <div style={{ borderTop: '1px solid #1a3d3a', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
-          <p style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, color: '#2e4f4d', margin: 0 }}>© 2026 NAVIAR CARE AS · Oslo, Norge</p>
+          <p style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, color: '#7fa8a2', margin: 0 }}>© 2026 NAVIAR CARE AS · Oslo, Norge</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2e4f4d" strokeWidth="2" strokeLinecap="round">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7fa8a2" strokeWidth="2" strokeLinecap="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
-            <span style={{ fontSize: 12, color: '#2e4f4d' }}>GDPR-konform · Databehandling i EU</span>
+            <span style={{ fontSize: 12, color: '#7fa8a2' }}>GDPR-konform · Databehandling i EU</span>
           </div>
         </div>
       </div>
@@ -995,7 +1013,9 @@ export default function App() {
   })
 
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = 'smooth'
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.style.scrollBehavior = 'smooth'
+    }
     return () => { document.documentElement.style.scrollBehavior = '' }
   }, [])
 
