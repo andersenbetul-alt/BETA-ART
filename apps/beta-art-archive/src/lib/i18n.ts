@@ -1,13 +1,13 @@
-// Two-layer i18n model — same discipline this repo already applies to
-// QBLOGG (see CLAUDE.md rule 1, docs/tasarim-sistemi.md): English is the
-// verified source layer (beta-art.com, pasted verbatim, never edited
-// here). Norwegian is a second full layer (the business's real market).
-// The remaining six requested languages get the UI chrome translated in
-// full; the large content blocks (plates, categories, FAQ, licensing
-// bullets, exhibitions, photographer bio) fall back to English until a
-// dedicated content-translation pass — a missing key silently falling
-// back to English is a safety net, not a fix, exactly as documented for
-// QBLOGG. See docs/beta-art/tasarim-sistemi.md.
+// Full 8-language i18n — same "all languages at once" discipline this
+// repo applies to QBLOGG (CLAUDE.md rule 1). English is the verified
+// source layer (beta-art.com, pasted verbatim, never edited here); the
+// other seven render it in the UI language. The former two-layer model
+// (chrome-only for six languages) was replaced on 01.09.2026 at the
+// user's explicit request ("bütün tekstler bütün dillere"): this file
+// carries every UI string in all 8 languages, and the content blocks
+// live in data.ts as Record<Lang, string> so TypeScript enforces
+// completeness per string. translate()'s English fallback remains a
+// safety net for future keys, not a design feature.
 
 export type Lang = "en" | "no" | "tr" | "it" | "fr" | "es" | "pt" | "de";
 
@@ -23,9 +23,6 @@ export const LANGS: { code: Lang; name: string; native: string }[] = [
 ];
 
 type Dict = Record<string, string>;
-
-// Full content languages — see docs/beta-art/tasarim-sistemi.md.
-export const FULL_CONTENT_LANGS: Lang[] = ["en", "no"];
 
 const en: Dict = {
   tagline: "Verified Human Photography",

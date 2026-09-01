@@ -79,19 +79,24 @@ her yeni bölüm.
 
 QBLOGG'un i18n modeliyle aynı disiplin (bkz. QBLOGG CLAUDE.md madde 1):
 istenen 8 dil — Norveççe, Türkçe, İngilizce, İtalyanca, Fransızca,
-İspanyolca, Portekizce, Almanca. **İki katmanlı içerik modeli** uygulanıyor
-(QBLOGG'un kendi "tr/en tam, sekiz dil özet" kararıyla aynı gerekçe: gerçek
-ticari/lisans metnini tek seferde sekiz dile tam doğrulukla çevirmek
-kalite riski taşır):
+İspanyolca, Portekizce, Almanca.
+
+**01.09.2026'dan itibaren tam çeviri modeli** (kullanıcının açık talebi:
+"bütün tekstler tam olarak bütün dillere"). Önceki iki katmanlı model
+(kabuk çevrilir, içerik İngilizce kalır) bu tarihte kapatıldı:
 
 - **İngilizce**: kaynak katman, `beta-art.com`'dan birebir — hiç değişmez.
-- **Norveççe**: tam katman — işin gerçek pazarı, aynı titizlikle çevrilir.
-- **Türkçe, İtalyanca, Fransızca, İspanyolca, Portekizce, Almanca**: önce
-  **arayüz kabuğu** (nav, buton, bölüm başlığı, form label, footer) tam
-  çevrilir; büyük içerik blokları (35 kategori, 16 SSS, 12 plaka açıklaması,
-  lisans madde metinleri) ilk aşamada İngilizce kalır, eksik anahtar
-  sessizce İngilizceye düşer — bu bir güvenlik ağıdır, çözüm değil. Tam
-  içerik çevirisi ayrı, sonraki bir aşamada yapılır.
+  Diğer yedi dil bu katmanın çevirisidir; olgu/rakam eklenmez.
+- **UI metinleri** `src/lib/i18n.ts`'te 8 sözlükte durur (8 dil × aynı
+  anahtar kümesi); eksik anahtar sessizce İngilizceye düşer — güvenlik
+  ağı, çözüm değil.
+- **İçerik blokları** (3 doğrulama yöntemi, 3 sergi, 4 lisans katmanı,
+  16 SSS, 35 kategori, 12 plaka detayı) `src/lib/data.ts`'te
+  `Record<Lang, string>` tipindedir — TypeScript her metinde 8 dilin
+  varlığını derlemede zorlar.
+- **Çevrilmeyenler**: eser (plaka) adları, "Life Flower" manifesto adı,
+  fotoğrafçı künyesi, teknik terimler (RAW, EXIF, C2PA, sRGB), yer
+  adları, `kr 190` ve e-posta adresi.
 
 Detay ve hangi mülkte hangi dilin uygulandığı `docs/proje-arsivi.md`'de
 ilgili madde altında izlenir — bu belge yalnızca **kuralı** taşır.

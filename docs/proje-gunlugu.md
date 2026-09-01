@@ -323,3 +323,21 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+
+## 01.09.2026 — Beta Art Privat: tam çeviri (2 faz, 8 dil)
+
+Kullanıcı talebi "/TRANSLATE bütün tekstler tam olarak bütün dillere".
+Faz 1: Home'daki sabit İngilizce hero + fotoğrafçı biyosu + Life Flower
+manifestosu i18n sözlüğüne taşındı (10 anahtar × 8 dil); pt sözlüğünde
+yanlışlıkla İspanyolca kalmış feedback anahtarları düzeltildi. Faz 2:
+data.ts'teki 217 içerik metni (3 doğrulama yöntemi, 3 sergi, 4 lisans
+katmanı, 16 SSS, 35 kategori, 12 plaka detayı) `Record<Lang,string>`
+tipine çevrildi — çeviriler 7 paralel alt-ajanla üretildi, sayısal
+değerlerin korunduğu betikle doğrulandı; kalan sabit UI kırıntıları
+(provenance zaman çizelgesi, sepet sayacı, yer tutucular) sözlüğe alındı
+(8 dil × 195 anahtar). Eser adları, teknik terimler ve yer adları bilinçli
+çevrilmedi. tasarim-sistemi.md'deki iki katmanlı model bölümü tam çeviri
+modeliyle değiştirildi. Testler: 34/35 (tek fail scratchpad paketindeki
+Google Fonts'un sandbox ağ engeli — ortam artefaktı), dil bazlı içerik
+spot kontrolleri ve i18n anahtar eşitliği yeşil. Commit'ler: d0a6e9d,
+1f252b0 (+ dokümantasyon commit'i); artifact aynı adreste güncellendi.
