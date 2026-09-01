@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HXI — Nordic Phonk</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="2; url=/en/">
+<style>
+  body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; background: #080808; color: #f1f0eb; font-family: 'Courier New', ui-monospace, monospace; }
+  h1 { font-family: Impact, 'Arial Narrow Bold', sans-serif; font-size: 72px; margin: 0; letter-spacing: -.02em; }
+  h1 span { color: #c8ff00; }
+  nav { display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: center; max-width: 520px; padding: 0 20px; }
+  a { color: #f1f0eb; text-decoration: none; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid #292929; padding-bottom: 2px; }
+  a:hover { color: #c8ff00; border-color: #c8ff00; }
+  p { color: #b1b3ad; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin: 0; }
+</style>
+</head>
+<body>
+<h1>H<span>X</span>I</h1>
+<p>Select language</p>
+<nav>
+  <a href="/en/">English</a>
+  <a href="/no/">Norsk</a>
+  <a href="/tr/">Türkçe</a>
+  <a href="/fr/">Français</a>
+  <a href="/de/">Deutsch</a>
+  <a href="/es/">Español</a>
+  <a href="/pt/">Português</a>
+  <a href="/ar/">العربية</a>
+  <a href="/ja/">日本語</a>
+  <a href="/zh/">中文</a>
+</nav>
+<script>
+  var langs = ['en','no','tr','fr','de','es','pt','ar','ja','zh'];
+  var saved = null;
+  try { saved = localStorage.getItem('hxi-lang'); } catch (e) {}
+  var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  if (nav === 'nb' || nav === 'nn') nav = 'no';
+  var pick = (saved && langs.indexOf(saved) >= 0) ? saved
+           : (langs.indexOf(nav) >= 0 ? nav : 'en');
+  location.replace('/' + pick + '/');
+</script>
+</body>
+</html>
