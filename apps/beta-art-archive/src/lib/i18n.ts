@@ -230,6 +230,7 @@ const en: Dict = {
   lifeFlowerBody: "Because life does not last forever, every moment matters.",
   lifeFlowerTagline: "Real people · Real moments · Real places",
   skipToContent: "Skip to content",
+  heroTrustLine: "Trust the evidence behind every image.",
 
   plateNotFound: "Plate not found.",
   provenance: "Provenance",
@@ -450,6 +451,7 @@ const no: Dict = {
   lifeFlowerBody: "Fordi livet ikke varer evig, betyr hvert øyeblikk noe.",
   lifeFlowerTagline: "Ekte mennesker · Ekte øyeblikk · Ekte steder",
   skipToContent: "Hopp til innhold",
+  heroTrustLine: "Stol på beviset bak hvert bilde.",
 
   plateNotFound: "Fant ikke platen.",
   provenance: "Proveniens",
@@ -670,6 +672,7 @@ const tr: Dict = {
   lifeFlowerBody: "Hayat sonsuza dek sürmediği için her an önemlidir.",
   lifeFlowerTagline: "Gerçek insanlar · Gerçek anlar · Gerçek yerler",
   skipToContent: "İçeriğe atla",
+  heroTrustLine: "Her görüntünün arkasındaki kanıta güvenin.",
 
   plateNotFound: "Plaka bulunamadı.",
   provenance: "Provenans",
@@ -890,6 +893,7 @@ const it: Dict = {
   lifeFlowerBody: "Poiché la vita non dura per sempre, ogni momento conta.",
   lifeFlowerTagline: "Persone vere · Momenti veri · Luoghi veri",
   skipToContent: "Vai al contenuto",
+  heroTrustLine: "Fidati delle prove dietro ogni immagine.",
 
   plateNotFound: "Lastra non trovata.",
   provenance: "Provenienza",
@@ -1110,6 +1114,7 @@ const fr: Dict = {
   lifeFlowerBody: "Parce que la vie ne dure pas éternellement, chaque instant compte.",
   lifeFlowerTagline: "Des gens réels · Des instants réels · Des lieux réels",
   skipToContent: "Aller au contenu",
+  heroTrustLine: "Faites confiance aux preuves derrière chaque image.",
 
   plateNotFound: "Planche introuvable.",
   provenance: "Provenance",
@@ -1330,6 +1335,7 @@ const es: Dict = {
   lifeFlowerBody: "Porque la vida no dura para siempre, cada momento importa.",
   lifeFlowerTagline: "Personas reales · Momentos reales · Lugares reales",
   skipToContent: "Ir al contenido",
+  heroTrustLine: "Confía en la evidencia detrás de cada imagen.",
 
   plateNotFound: "Placa no encontrada.",
   provenance: "Procedencia",
@@ -1550,6 +1556,7 @@ const pt: Dict = {
   lifeFlowerBody: "Porque a vida não dura para sempre, cada momento importa.",
   lifeFlowerTagline: "Pessoas reais · Momentos reais · Lugares reais",
   skipToContent: "Saltar para o conteúdo",
+  heroTrustLine: "Confie na evidência por trás de cada imagem.",
 
   plateNotFound: "Placa não encontrada.",
   provenance: "Proveniência",
@@ -1770,6 +1777,7 @@ const de: Dict = {
   lifeFlowerBody: "Weil das Leben nicht ewig währt, zählt jeder Moment.",
   lifeFlowerTagline: "Echte Menschen · Echte Momente · Echte Orte",
   skipToContent: "Zum Inhalt springen",
+  heroTrustLine: "Vertrauen Sie dem Beweis hinter jedem Bild.",
 
   plateNotFound: "Platte nicht gefunden.",
   provenance: "Provenienz",

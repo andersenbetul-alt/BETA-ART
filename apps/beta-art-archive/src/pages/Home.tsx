@@ -71,6 +71,12 @@ function Hero() {
           <p className="mt-4 max-w-[58ch] text-[1.05rem] leading-relaxed text-foreground/80">
             {t("heroP3")}
           </p>
+          {/* User-supplied signature line ("TRUST THE EVIDENCE BEHIND EVERY
+              IMAGE.", 01.09.2026) — the archive's promise in one sentence,
+              placed as the bridge between the claim above and the CTAs. */}
+          <p className="mt-6 font-display text-lg font-light italic text-accent">
+            {t("heroTrustLine")}
+          </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Button className="rounded-none font-record text-xs uppercase tracking-[0.16em]" onClick={() => go("home", "collection")}>
               {t("heroCtaCollection")}
