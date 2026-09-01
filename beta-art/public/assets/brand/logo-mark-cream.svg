@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Beta Art">
+  <title>Beta Art</title>
+  <!-- Ground -->
+  <rect width="200" height="200" fill="#F2EFE8"/>
+  <!-- B — stem -->
+  <line x1="32" y1="42" x2="32" y2="158"
+        stroke="#1A1714" stroke-width="4" stroke-linecap="round"/>
+  <!-- B — upper bowl -->
+  <path d="M 32,42 Q 78,42 78,71 Q 78,100 32,100"
+        stroke="#1A1714" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+  <!-- B — lower bowl -->
+  <path d="M 32,100 Q 84,100 84,129 Q 84,158 32,158"
+        stroke="#1A1714" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+  <!-- A — left leg -->
+  <line x1="134" y1="42" x2="97" y2="158"
+        stroke="#1A1714" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- A — right leg -->
+  <line x1="134" y1="42" x2="172" y2="158"
+        stroke="#1A1714" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- A — crossbar -->
+  <line x1="113" y1="112" x2="155" y2="112"
+        stroke="#1A1714" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
