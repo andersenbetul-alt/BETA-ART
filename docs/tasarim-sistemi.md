@@ -5,8 +5,8 @@ tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
 **Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 26.08.2026 itibarıyla
-yeniden ölçüldü (Figma MCP `create_design_system_rules` çağrısı vesilesiyle;
-22.08'den beri sayfa sayısı, ikon kaydı ve i18n anahtar sayısı değişmiş).
+(22.08'den beri main.css'e 6 commit daha girdi: karşılaştırma tablosu, TOC,
+yazdırma CSS'i — sayılar buna göre güncellendi).
 
 ---
 
@@ -72,7 +72,9 @@ yerine ölçek basamakları.
 | `--on-brand` | `#ffffff` | `#08202f` | Marka üzerindeki metin |
 | `--brand-2-ink` | `#0a7d72` | `var(--brand-2)` | Metinde kullanılacak aqua |
 
-**Aqua tuzağı.** `#00D8C2` beyaz üzerinde **1,9:1**'dir — WCAG AA'nın (4,5:1)
+**Aqua tuzağı.** `#00D8C2` beyaz üzerinde **1,8:1**'dir (WCAG göreli
+parlaklık formülüyle yeniden hesaplandı, 26.08.2026 — önceki "1,9:1" hatalı
+yuvarlamaydı, CLAUDE.md'nin rakamı doğruydu) — WCAG AA'nın (4,5:1)
 çok altında, metinde **kullanılamaz**. Açık zeminde aqua metin gerekiyorsa
 `var(--brand-2-ink)` kullanın. Figma'dan gelen bir tasarımda aqua metin varsa
 bu bir hatadır, çevirmeyin — dönüştürün.
@@ -107,14 +109,22 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 
 **Yoktur.** Bileşen mimarisi, Storybook, bileşen dokümantasyonu — hiçbiri yok.
 
-Yerine geçen şey: `assets/css/main.css` içinde **119 sınıf**, sekiz HTML
-sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi) sekiz dosyada
-**tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`,
-`kalite`, `ornek`.
+Yerine geçen şey: `assets/css/main.css` içinde **119 benzersiz sınıf** (629
+satır), sekiz HTML sayfasında elle kullanılıyor. Sayfa iskeleti (menü +
+altbilgi) sekiz dosyada **tekrar eder**: `index`, `work`, `blog`, `post`,
+`gizlilik`, `kosullar`, `kalite`, `ornek` (`404` kasıtlı hariç).
+
+Ayrıca `demo/` dizininde ayrı bir kalıp var: **Action Pages** (`cv-action-page`,
+`q-work-audit`). Bunlar `main.css`'i **yüklemez** — tek dosyalık, kendi
+`<style>` bloğunda aynı marka belirteçlerini (`--brand`, `--brand-2-ink`,
+sekiz basamaklı ölçek yerine sadeleştirilmiş kendi değişkenleri) tekrar tanımlar,
+çünkü bağımsız/paylaşılabilir kalmaları gerekiyor. Figma'dan bir satış/anket
+sayfası çeviriyorsanız hedef `main.css` değil, bu desendir.
 
 > **Figma'dan bileşen çevirirken:** menüyü ya da altbilgiyi değiştiriyorsanız
-> **sekiz dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve script'i
-> yakalar ama eksik menü bağlantısını yakalamaz.
+> **sekiz dosyayı birden** güncelleyin (`.claude/skills/qblogg-sayfa-iskeleti/`
+> bu senkronu ve kendi doğrulama betiğini taşır). `npm run check` çiftlenen id
+> ve script'i yakalar ama eksik menü bağlantısını yakalamaz.
 
 JavaScript'te bileşene en yakın şey `assets/js/app.js` içindeki
 `cardHTML(post, seviye)` — dize döndüren bir işlev, sınıf değil.
@@ -147,10 +157,11 @@ Hepsi `window.QB_*` küresel değişkenleri üzerinden konuşuyor. Modül yok.
 | Klasör | Boyut | İçerik |
 |---|---|---|
 | `assets/fonts/` | 204 KB | Inter, dört alt küme + `inter.css` + `OFL.txt` |
-| `assets/js/` | 480 KB | Dört dosya; büyüğü `posts.js` (10 yazı × 10 dil) |
+| `assets/js/` | 460 KB | Dört dosya; büyüğü `posts.js` (10 yazı × 10 dil) |
 | `assets/brand/` | 116 KB | 14 kimlik varlığı — **betikten üretilir, elle düzenlenmez** |
-| `assets/css/` | 40 KB | Tek dosya |
+| `assets/css/` | 36 KB | Tek dosya |
 | `assets/downloads/` | 12 KB | Lead magnet |
+| `assets/img/` | 4 KB | |
 
 **CDN yok ve olmayacak.** Yazı tipleri kendi sunucumuzda:
 
@@ -166,10 +177,24 @@ Bu, `assets/fonts/inter.css` başında kayıtlı. Figma bir Google Fonts bağlan
 ### Optimizasyon
 
 Alt kümeleme `unicode-range` ile: latin, latin-ext, cyrillic, cyrillic-ext.
-Ziyaretçi yalnızca kendi dilinin gerektirdiği baytı indirir. Arapça, Çince ve
-Devanagari **sistem yazı tiplerine** düşer — `--font` yığınında tanımlı.
+Ağırlık ekseni (400–800) tek bir değişken dosyada — `main.css`'te kullanılan
+beş ağırlığın (400/500/600/700/800) hepsi gerçekten kullanılıyor, kırpılacak
+fazlalık yok (30.08.2026'da doğrulandı). Arapça, Çince ve Devanagari **sistem
+yazı tiplerine** düşer — `--font` yığınında tanımlı.
 
 `font-display: swap` her `@font-face`'te.
+
+**Ölçülmüş gerçek: "ziyaretçi yalnızca kendi dilinin baytını indirir" iddiası
+tam doğru değil.** Playwright ile doğrulandı (30.08.2026): `?lang=en` ile
+açılan sayfa bile `inter-latin-ext.woff2`'yi (85 KB — en büyük dosya, temel
+`inter-latin.woff2`'den bile büyük) indiriyor, oysa nihai İngilizce metinde
+tek bir latin-ext karakteri yok. Sebep: betikler `</body>`'den hemen önce
+yükleniyor (kural 3 gereği — JS kapalıyken görünen Türkçe yedek), tarayıcı
+bu Türkçe metni JS onu değiştirmeden önce bir an boyar; ğ/ş gibi karakterler
+latin-ext'i tetikliyor ve indirme, metin değiştirildikten sonra bile devam
+ediyor. Düzeltmek betik yükleme sırasını (ilk boyamadan önce dil değiştirme)
+değiştirmeyi gerektirir — bu, hızlı ilk boyama ile gereksiz 85 KB arasında
+gerçek bir ödünleşim, tek satırlık bir düzeltme değil.
 
 ---
 
@@ -190,10 +215,6 @@ Görünen her ikon **satır içi SVG**dir.
 question · coin · blocks · phone · banknote · compass · bulb · chart ·
 envelope · link · gear
 ```
-
-Aynı kayıtta ayrıca 4 **paylaşım kanalı** glifi durur (`linkedin` · `x` ·
-`facebook` · `whatsapp`) — marka logosu değil, ikon çizim kuralına uyan
-sadeleştirilmiş çizgi diliyle; toplam kayıt 15 girdi.
 
 Yalnızca yol gövdesi saklanır; sarmalayıcıyı `iconSVG(name)` üretir:
 
@@ -228,7 +249,7 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 629 satır, 119 sınıf. Sınıf adları anlamsal ve
+Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
 kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller
@@ -273,7 +294,7 @@ bakın.
 ## 7. Proje yapısı
 
 ```
-*.html                  8 sayfa — iskelet tekrar eder (404.html hariç)
+*.html                  9 sayfa — 8'i iskelet tekrar eder, 404 hariç
 assets/css/main.css     tek stil dosyası
 assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak dosya
 assets/js/i18n.js       10 dil × 233 anahtar
@@ -294,7 +315,7 @@ vendor/                 Inter resmi dağıtımı (yayına çıkmaz)
 ## Figma'dan çeviri yaparken kontrol listesi
 
 1. **Renkler** belirteçten mi geliyor? Ham hex varsa `var(--…)`'ya çevirin
-2. **Aqua metin** var mı? `--brand-2-ink`'e çevirin — `#00D8C2` metinde 1,9:1
+2. **Aqua metin** var mı? `--brand-2-ink`'e çevirin — `#00D8C2` metinde 1,8:1
 3. **Yazı boyutları** sekiz basamağa oturuyor mu? Ham `rem` yazmayın
 4. **İkonlar** satır içi SVG mi, 24×24 / 1.7 / `currentColor` mı?
 5. **Emoji** var mı? Varsa ikona çevirin
