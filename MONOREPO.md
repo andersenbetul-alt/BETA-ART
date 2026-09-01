@@ -11,7 +11,7 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
 | `hxi/` | **HXI** — Oslo elektronik artist sitesi | Saf HTML/CSS/JS | Geliştirmede · `brand/hxi/` marka mimarisi |
 | `beta-art/` | **Beta Art** — doğrulanmış insan fotoğrafçılığı ve arşiv | React + Vite + Bun + shadcn/ui | Kaynak: `andersenbetul-alt/beta-art-archive` |
 | `naviar/` | **NAVIAR CARE** — Norveç yaşlı bakım koordinasyon platformu | Next.js (v0.app kökenli) | Kaynak: `betulandersen-droid/naviar-care-1` (transfer bekleniyor) |
-| `agents/eve-slack-agent/` | **naviar-consult & hxi-music** — Eve Slack botu | TypeScript + pnpm + Claude Sonnet | Vercel: naviar-consult, hxi-music |
+| `agents/eve-slack-agent/` | **naviar-consult & hxi-music** — Eve Slack botu | TypeScript + pnpm + Claude Sonnet | Vercel: naviar-consult, hxi-music. Bot kimliği `AGENT_PROFILE` env değişkeniyle ayrılır |
 | `agents/eve-chat-template/` | **Eve Chat Template** — sohbet arayüzü şablonu | Next.js + pnpm + shadcn/ui | Kaynak: `andersenbetul-alt/eve-chat-template` |
 | `demo/` | Action Pages demoları | Saf HTML/JS | qblogg.vercel.app/demo/ |
 | `engine/` | Curiosity Engine — içerik üretim hattı | Node.js + SQLite | Yerel çalışır |
@@ -24,8 +24,8 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
 |---|---|---|
 | qblogg | `andersenbetul-alt/BETA-ART` (main, buildCommand) | qblogg.vercel.app |
 | naviar-care-1 | `betulandersen-droid/naviar-care-1` | — |
-| naviar-consult | `betulandersen-droid/eve-slack-agent` | — |
-| hxi-music | `betulandersen-droid/eve-slack-agent` | — |
+| naviar-consult | `betulandersen-droid/eve-slack-agent` | — | `AGENT_PROFILE=naviar-consult` |
+| hxi-music | `betulandersen-droid/eve-slack-agent` | — | `AGENT_PROFILE=hxi-music` |
 
 ## Transfer beklenen projeler
 
@@ -40,4 +40,5 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
   - Marka mimarisi: `brand/hxi/README.md` ve `brand/hxi/CONCEPT.md`
 - Beta Art: `cd beta-art && bun install && bun dev`
 - Eve Chat Template: `cd agents/eve-chat-template && pnpm install && pnpm dev`
-- Eve Slack Agent: `cd agents/eve-slack-agent && pnpm install && pnpm dev`
+- Eve Slack Agent: `cd agents/eve-slack-agent && pnpm install && AGENT_PROFILE=hxi-music pnpm dev`
+- HXI belgesi: `docs/hxi/BUSINESS.md` · marka taslağı: `docs/hxi/brand-brief.md`
