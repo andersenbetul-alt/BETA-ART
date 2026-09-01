@@ -133,9 +133,9 @@ const en: Dict = {
   cartTitle: "Cart",
   cartItems: "0 items",
   cartEmpty: "Your cart is empty",
-  cartAddItems: "Add items to get started!",
+  cartAddItems: "Licensed photographs you add will appear here.",
   cartSeeLicenses: "See licenses",
-  cartContinue: "← Continue shopping",
+  cartContinue: "← Back to the archive",
 
   navSell: "Sell",
   byPrefix: "By",
@@ -229,6 +229,7 @@ const en: Dict = {
   lifeFlowerQuote: "“Life’s limited nature is also what makes it precious.”",
   lifeFlowerBody: "Because life does not last forever, every moment matters.",
   lifeFlowerTagline: "Real people · Real moments · Real places",
+  skipToContent: "Skip to content",
 
   plateNotFound: "Plate not found.",
   provenance: "Provenance",
@@ -352,9 +353,9 @@ const no: Dict = {
   cartTitle: "Handlekurv",
   cartItems: "0 varer",
   cartEmpty: "Handlekurven er tom",
-  cartAddItems: "Legg til varer for å komme i gang!",
+  cartAddItems: "Fotografier du legger til, vises her.",
   cartSeeLicenses: "Se lisenser",
-  cartContinue: "← Fortsett å handle",
+  cartContinue: "← Tilbake til arkivet",
 
   navSell: "Selg",
   byPrefix: "Av",
@@ -448,6 +449,7 @@ const no: Dict = {
   lifeFlowerQuote: "«At livet er begrenset, er også det som gjør det verdifullt.»",
   lifeFlowerBody: "Fordi livet ikke varer evig, betyr hvert øyeblikk noe.",
   lifeFlowerTagline: "Ekte mennesker · Ekte øyeblikk · Ekte steder",
+  skipToContent: "Hopp til innhold",
 
   plateNotFound: "Fant ikke platen.",
   provenance: "Proveniens",
@@ -571,9 +573,9 @@ const tr: Dict = {
   cartTitle: "Sepet",
   cartItems: "0 ürün",
   cartEmpty: "Sepetiniz boş",
-  cartAddItems: "Başlamak için ürün ekleyin!",
+  cartAddItems: "Eklediğiniz fotoğraflar burada görünür.",
   cartSeeLicenses: "Lisanslara bakın",
-  cartContinue: "← Alışverişe devam et",
+  cartContinue: "← Arşive dön",
 
   navSell: "Sat",
   byPrefix: "Fotoğrafçı:",
@@ -667,6 +669,7 @@ const tr: Dict = {
   lifeFlowerQuote: "\"Hayatın sınırlı oluşu, aynı zamanda onu değerli kılan şeydir.\"",
   lifeFlowerBody: "Hayat sonsuza dek sürmediği için her an önemlidir.",
   lifeFlowerTagline: "Gerçek insanlar · Gerçek anlar · Gerçek yerler",
+  skipToContent: "İçeriğe atla",
 
   plateNotFound: "Plaka bulunamadı.",
   provenance: "Provenans",
@@ -790,9 +793,9 @@ const it: Dict = {
   cartTitle: "Carrello",
   cartItems: "0 articoli",
   cartEmpty: "Il carrello è vuoto",
-  cartAddItems: "Aggiungi articoli per iniziare!",
+  cartAddItems: "Le fotografie che aggiungi appariranno qui.",
   cartSeeLicenses: "Vedi le licenze",
-  cartContinue: "← Continua lo shopping",
+  cartContinue: "← Torna all'archivio",
 
   navSell: "Vendi",
   byPrefix: "Di",
@@ -886,6 +889,7 @@ const it: Dict = {
   lifeFlowerQuote: "«La natura limitata della vita è anche ciò che la rende preziosa.»",
   lifeFlowerBody: "Poiché la vita non dura per sempre, ogni momento conta.",
   lifeFlowerTagline: "Persone vere · Momenti veri · Luoghi veri",
+  skipToContent: "Vai al contenuto",
 
   plateNotFound: "Lastra non trovata.",
   provenance: "Provenienza",
@@ -1009,9 +1013,9 @@ const fr: Dict = {
   cartTitle: "Panier",
   cartItems: "0 article",
   cartEmpty: "Votre panier est vide",
-  cartAddItems: "Ajoutez des articles pour commencer !",
+  cartAddItems: "Les photographies ajoutées apparaîtront ici.",
   cartSeeLicenses: "Voir les licences",
-  cartContinue: "← Continuer mes achats",
+  cartContinue: "← Retour à l'archive",
 
   navSell: "Vendre",
   byPrefix: "Par",
@@ -1105,6 +1109,7 @@ const fr: Dict = {
   lifeFlowerQuote: "« La nature limitée de la vie est aussi ce qui la rend précieuse. »",
   lifeFlowerBody: "Parce que la vie ne dure pas éternellement, chaque instant compte.",
   lifeFlowerTagline: "Des gens réels · Des instants réels · Des lieux réels",
+  skipToContent: "Aller au contenu",
 
   plateNotFound: "Planche introuvable.",
   provenance: "Provenance",
@@ -1228,9 +1233,9 @@ const es: Dict = {
   cartTitle: "Carrito",
   cartItems: "0 artículos",
   cartEmpty: "Su carrito está vacío",
-  cartAddItems: "¡Añada artículos para empezar!",
+  cartAddItems: "Las fotografías que añadas aparecerán aquí.",
   cartSeeLicenses: "Ver licencias",
-  cartContinue: "← Seguir comprando",
+  cartContinue: "← Volver al archivo",
 
   navSell: "Vender",
   byPrefix: "Por",
@@ -1324,6 +1329,7 @@ const es: Dict = {
   lifeFlowerQuote: "«La naturaleza limitada de la vida es también lo que la hace preciosa.»",
   lifeFlowerBody: "Porque la vida no dura para siempre, cada momento importa.",
   lifeFlowerTagline: "Personas reales · Momentos reales · Lugares reales",
+  skipToContent: "Ir al contenido",
 
   plateNotFound: "Placa no encontrada.",
   provenance: "Procedencia",
@@ -1447,9 +1453,9 @@ const pt: Dict = {
   cartTitle: "Carrinho",
   cartItems: "0 itens",
   cartEmpty: "O seu carrinho está vazio",
-  cartAddItems: "Adicione itens para começar!",
+  cartAddItems: "As fotografias que adicionar aparecerão aqui.",
   cartSeeLicenses: "Ver licenças",
-  cartContinue: "← Continuar a comprar",
+  cartContinue: "← Voltar ao arquivo",
 
   navSell: "Vender",
   byPrefix: "Por",
@@ -1543,6 +1549,7 @@ const pt: Dict = {
   lifeFlowerQuote: "«A natureza limitada da vida é também o que a torna preciosa.»",
   lifeFlowerBody: "Porque a vida não dura para sempre, cada momento importa.",
   lifeFlowerTagline: "Pessoas reais · Momentos reais · Lugares reais",
+  skipToContent: "Saltar para o conteúdo",
 
   plateNotFound: "Placa não encontrada.",
   provenance: "Proveniência",
@@ -1666,9 +1673,9 @@ const de: Dict = {
   cartTitle: "Warenkorb",
   cartItems: "0 Artikel",
   cartEmpty: "Ihr Warenkorb ist leer",
-  cartAddItems: "Fügen Sie Artikel hinzu, um zu beginnen!",
+  cartAddItems: "Hinzugefügte Fotografien erscheinen hier.",
   cartSeeLicenses: "Lizenzen ansehen",
-  cartContinue: "← Weiter einkaufen",
+  cartContinue: "← Zurück zum Archiv",
 
   navSell: "Verkaufen",
   byPrefix: "Von",
@@ -1762,6 +1769,7 @@ const de: Dict = {
   lifeFlowerQuote: "„Dass das Leben begrenzt ist, macht es zugleich kostbar.“",
   lifeFlowerBody: "Weil das Leben nicht ewig währt, zählt jeder Moment.",
   lifeFlowerTagline: "Echte Menschen · Echte Momente · Echte Orte",
+  skipToContent: "Zum Inhalt springen",
 
   plateNotFound: "Platte nicht gefunden.",
   provenance: "Provenienz",

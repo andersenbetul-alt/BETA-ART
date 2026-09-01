@@ -43,6 +43,21 @@ function DocumentTitle() {
   return null;
 }
 
+// Keyboard/screen-reader users get a one-tab route past the (long) header
+// straight to the content — standard skip-link pattern; visually hidden
+// until focused.
+function SkipLink() {
+  const { t } = useLang();
+  return (
+    <a
+      href="#icerik"
+      className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:border focus:border-accent focus:bg-background focus:px-4 focus:py-2 focus:font-record focus:text-xs focus:uppercase focus:tracking-[0.14em]"
+    >
+      {t("skipToContent")}
+    </a>
+  );
+}
+
 function Pages() {
   const { page } = usePage();
   return (
@@ -70,8 +85,11 @@ export default function App() {
           <CartProvider>
             <div className="min-h-screen bg-background text-foreground">
               <DocumentTitle />
+              <SkipLink />
               <Masthead />
-              <Pages />
+              <main id="icerik">
+                <Pages />
+              </main>
               <Footer />
             </div>
           </CartProvider>

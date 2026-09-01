@@ -83,7 +83,10 @@ function Hero() {
         <div className="border border-border bg-secondary p-1">
           <div aria-hidden="true" className="aspect-[4/5] w-full bg-gradient-to-br from-slate-300 via-stone-300 to-neutral-700" />
           <p className="px-3 py-3 font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">
-            {t("platePrefix")} 01 · First Light — {t("heroPlateDate")}
+            {/* Artwork title marked lang="en" so CSS uppercasing follows
+                English casing rules — Turkish locale turned the i into İ
+                ("FİRST LİGHT"). */}
+            {t("platePrefix")} 01 · <span lang="en">First Light</span> — {t("heroPlateDate")}
           </p>
         </div>
       </div>
