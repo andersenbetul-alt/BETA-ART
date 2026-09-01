@@ -417,3 +417,45 @@ Bu, `decisions/tjenestevurdering-2026-08-26.md`'ye birebir kaydedildi ve
 kritik analiz belgesiyle çapraz referanslandı. `docs/naviar/care-pilot/
 README.md` okuma sırasını ve bilinen sınırları (LibreOffice, yer tutucu
 e-posta, doğrulanmamış Norveç rakamları) özetliyor.
+
+## 01.09.2026 — NAVIAR CARE gerçek iniş sayfası: Vercel'de canlı, WCAG denetlendi
+
+Ayrı bir React/Vite/Tailwind projesi (`web-artifacts-builder` altyapısıyla
+başlatıldı) NAVIAR CARE için marka kurallarına uygun bir iniş sayfası
+üretti — CARE descriptor'ı onaysız olduğu için hiç logo grafiği
+kullanmadı, yalnızca wordmark'ın kendi font stack'iyle tipografik ad.
+Önce Claude Artifact olarak yayınlandı, düzeltmeler (form `<label>`
+eksikliği, kanıtlanmamış "1 gün" performans iddiası) uygulandıktan sonra
+`mcp__Vercel__deploy_to_vercel` ile gerçek bir siteye dönüştürüldü:
+**naviar-care.vercel.app** (proje `naviar-care`, takım `bet-art`, Vite
+framework'ü Vercel tarafından otomatik algılandı).
+
+Font optimizasyonu: Poppins hiç yüklenmiyordu (sessizce sistem fontuna
+düşüyordu) — yalnızca kullanılan iki ağırlık (500/600), Latin+Latin-ext
+alt kümeleri self-host edildi (~27 KB, 4 dosya). İlk denemede ikili
+dosyaları base64 olarak elle taşırken bir karakter bozuldu (deploy
+reddedildi); bunun yerine build sırasında fontları indiren bir script
+(`scripts/fetch-fonts.mjs`) eklendi — daha güvenilir. Kaynak/lisans kaydı
+`public/fonts/KAYNAK.md`'de (Poppins SemiBold 4.004, © 2020 The Poppins
+Project Authors, SIL OFL 1.1 — fontun kendi `name` tablosundan okundu).
+
+Kullanıcı beş ayrı uyumluluk maddesi verdi (sağlık verisi asgariliği, AI
+çalışan hakkında otomatik karar vermemeli, insan kontrolü/RBAC/silme
+süresi/işlem kaydı, AI Act/Norveç KI-lov hazırlığı, WCAG). Denetim
+`docs/naviar/care-pilot/legal/ai-governance-and-accessibility.md`'ye
+yazıldı: ilk ikisi zaten `product/mvp-data-map.md` ve `operations/
+helper-selection-scorecard.md` tasarımıyla karşılanıyordu (doğrulandı,
+değişiklik gerekmedi); üçüncüsü henüz kurulmamış bir CRM için tasarım
+gereksinimi olarak `decisions/decision-log.md`'ye madde 13 eklendi;
+dördüncüsü web aramayla doğrulandı (Norveç KI-lov'u Stortinget'e sunma
+hedefi bahar 2027'ye ertelendi, kaynak regjeringen.no); beşincisi
+gerçek bir denetimle kapatıldı — `axe-core 4.13.0` ile WCAG 2.1/2.2 AA
+taraması 2 ihlal buldu (renk kontrastı 6 öğede, geçersiz `<dl>` yapısı),
+ikisi de düzeltildi (opaklık değerleri WCAG luminans formülüyle yeniden
+hesaplandı), yeniden dağıtıldı, ikinci tarama 0 ihlal verdi
+(`decisions/decision-log.md` madde 14).
+
+**Açık kalan:** iniş sayfasının React kaynağı henüz `BETA-ART` reposuna
+commit edilmedi — yalnızca Vercel'e doğrudan dosya yüklemesiyle yayında,
+git'e bağlı değil. `care-pilot/README.md`'ye bu ayrım not düşüldü (eski
+`site/index.html` MVP taslağıyla karıştırılmasın diye).

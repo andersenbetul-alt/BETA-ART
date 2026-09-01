@@ -17,6 +17,9 @@ hazırlığıdır; `decisions/decision-log.md`'deki 🔴 maddeler kapanmadan
    değerlendirme (tjenesteutvikler rolü), toplam puan 5,4/10
 3. `legal/launch-review-brief.md` → `decisions/decision-log.md` — hukuk/
    muhasebe onay döngüsü
+3b. `legal/ai-governance-and-accessibility.md` — sağlık verisi asgariliği,
+    AI'nın çalışan hakkında karar vermemesi, RBAC/silme/işlem kaydı,
+    AI Act/KI-lov hazırlığı, WCAG denetimi (5 ayrı gereksinim, 01.09.2026)
 4. `operations/service-boundary-matrix.md` — üç hizmetin sınırları (her
    şeyin temeli)
 5. `operations/` altındaki diğerleri — yardımcı işe alım, el kitabı, olay
@@ -35,7 +38,7 @@ hazırlığıdır; `decisions/decision-log.md`'deki 🔴 maddeler kapanmadan
 ```
 care-pilot/
   decisions/    decision-log, scale-gate-review, tjenestevurdering
-  legal/        launch-review-brief
+  legal/        launch-review-brief, ai-governance-and-accessibility
   finance/      pilot-unit-economics.xlsx, weekly-cohort-p-and-l.xlsx
   operations/   service-boundary-matrix, helper-*, incident-sop,
                 visit-update-template, weekly-pilot-scorecard,
@@ -60,6 +63,13 @@ care-pilot/
   ile açtığınızda formüller otomatik hesaplanacak — bu normal.
 - `site/index.html`'deki `pilot@naviarcare.example` bir yer tutucudur,
   gerçek adres netleşmeden değiştirilmedi.
+- **İki ayrı NAVIAR CARE iniş sayfası var, karıştırılmamalı:**
+  `site/index.html` bu dizindeki eski `noindex`/mailto-placeholder MVP
+  taslağı; **canlı, gerçek marka renkleriyle üretilen ve
+  `naviar-care.vercel.app`'e dağıtılan** sayfanın kaynağı bu depoda henüz
+  commit edilmedi — yalnızca bir çalışma oturumunun `/tmp` scratchpad'inde
+  var ve doğrudan Vercel'e dosya yüklemesiyle yayınlandı (git'e bağlı
+  değil). Kaynağı repoya işlemek ayrı bir görev.
 - Tüm Norveç hukuku/vergi rakamları (AGA, feriepenger, OTP, MVA) arama
   motoru özetinden derlendi — resmî sayfalar bu ortamda erişilemedi
   (`EGRESS_BLOCKED`). Muhasebeci/hukuk danışmanı onayı olmadan hiçbiri

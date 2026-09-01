@@ -19,6 +19,8 @@ netleşti, koşullu) · 🔴 Kırmızı (açık, lansmanı bloke eder)
 | 5 | Sigorta sağlayıcı/prim | 🔴 | *(bekleniyor)* | — | — |
 | 6 | DPIA gerekli mi | 🔴 | *(bekleniyor)* | Datatilsynet eşiği | — |
 | 7 | Polis kaydı türü | 🔴 | *(bekleniyor — plan bir tür varsayılmamasını açıkça uyarıyor)* | Plan, Task 2 Step 1 | — |
+| 13 | İnsan kontrolü / RBAC / silme süresi / işlem kaydı (gelecek CRM için) | 🔴 | *(bekleniyor — henüz bir CRM/veritabanı yok; bu dördü CRM seçilirken zorunlu tasarım kriteri)* | `legal/ai-governance-and-accessibility.md` §3 | 01.09.2026 |
+| 14 | WCAG 2.2 AA — iniş sayfası | 🟢 | axe-core denetimi: 2 ihlal bulundu (kontrast, geçersiz `<dl>`), düzeltildi, yeniden denetlendi — 0 ihlal | `legal/ai-governance-and-accessibility.md` §5 | 01.09.2026 |
 
 ## Ürün kararları (Open Product Decisions Before First Public Quote)
 
