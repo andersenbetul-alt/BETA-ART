@@ -107,6 +107,7 @@ export function SitePage({ locale }: { locale: Locale }) {
               ) : d.hero.line}
             </p>
             <p className="hero-desc">{d.hero.desc}</p>
+            <p className="hero-coord" aria-hidden="true">59.91°N · 10.75°E</p>
             <div className="actions">
               <Ext href={SPOTIFY_ARTIST} className="btn primary">{d.hero.actions[0]}</Ext>
               <a className="btn ghost" href="#music">{d.hero.actions[1]}</a>
@@ -402,6 +403,7 @@ export function SitePage({ locale }: { locale: Locale }) {
           <Ext href={NCS_ARTIST}>NCS</Ext>
           {' · '}
           <Link href={`/${locale}/privacy/`}>{d.footer.privacyLabel}</Link>
+          <div className="privacy-strip">HXI · UTGAVE 01 · 59.91°N · 10.75°E</div>
         </div>
       </footer>
     </>
