@@ -350,7 +350,10 @@ kontrol('optik açıklık sınır kutusundan dar değil', 'evet',
 # geometride (kiriş köprü, Ø okunan hâl) kaldı — R01 sınıfının bir örneği daha.
 # Kural: her sayfada kuyruk yolu SYM_AQUA ile bire bir ve navy'den SONRA
 # çizilmeli (kuyruk üstte). Sayfalar depo kökünde; paket düzeninde bu blok atlanır.
-_SAYFALAR = ['index', 'work', 'blog', 'post', 'gizlilik', 'kosullar']
+# 30.08.2026: kalite ve ornek (23.08 paketinde eklendi) bu listede yoktu —
+# aynı satır içi logoyu taşıyorlar ama hiç doğrulanmıyorlardı. Tescil başvurusunun
+# "yapım kaydı" iddiası tüm canlı sayfaları kapsamalı (madde 7d).
+_SAYFALAR = ['index', 'work', 'blog', 'post', 'gizlilik', 'kosullar', 'kalite', 'ornek']
 _LOGO_SAYISI = {'404': 1}          # 404 menüsüz/altbilgisiz: tek logo
 if (ROOT / 'index.html').exists():
     for _ad in _SAYFALAR + ['404']:

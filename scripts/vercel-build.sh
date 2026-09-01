@@ -16,6 +16,7 @@ mkdir -p dist/.well-known
 cp _src/.well-known/security.txt dist/.well-known/
 
 mkdir -p dist/demo
-cp _src/demo/cv-action-page.html _src/demo/cv-action-page.js dist/demo/
+cp _src/demo/cv-action-page.html _src/demo/cv-action-page.js \
+   _src/demo/q-work-audit.html _src/demo/q-work-audit.js dist/demo/
 
 cp -r _src/assets dist/assets
