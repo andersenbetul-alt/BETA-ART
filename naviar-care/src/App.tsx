@@ -114,6 +114,10 @@ const FAQS = [
     a: 'Nei — Naviar gir faglig veiledning, ikke juridisk rådgivning eller medisinsk behandling. Ekspertene hjelper deg å forstå situasjonen, kjenne rettighetene dine og ta informerte valg. Ved akutte helseproblemer ring alltid 113.',
   },
   {
+    q: 'Hva er en fritidskontakt, og hvordan kvalitetssikres de?',
+    a: 'En fritidskontakt følger den eldre til kultur- og fritidsaktiviteter — individuelt eller i gruppe, i snitt 3–5 timer per uke. Fritidskontakter er 18 år eller eldre, viser politiattest før oppdrag (vi lagrer den aldri, kun at den er fremvist), og matches på felles interesser og personlighet. Hver match godkjennes av et menneske, aldri av en algoritme alene.',
+  },
+  {
     q: 'Kan jeg avbryte abonnementet når som helst?',
     a: 'Ja, uten begrunnelse og uten ekstra kostnad. Abonnementet løper til slutten av inneværende periode og fornyes ikke. Du kan avbryte direkte i kontopanelet eller ved å sende oss en e-post.',
   },
@@ -300,6 +304,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                   <select id="nc-topic" value={topic} onChange={e => setTopic(e.target.value)} style={{ ...inputStyle, appearance: 'none' }}>
                     <option value="">Velg fagområde...</option>
                     {EXPERTS.map(ex => <option key={ex.code} value={ex.label}>{ex.label}</option>)}
+                    <option value="Fritidskontakt">Fritidskontakt / aktivitet</option>
                     <option value="Vet ikke">Vet ikke ennå</option>
                   </select>
                 </div>
@@ -366,6 +371,7 @@ function Nav({
           {[
             { label: 'Slik fungerer det', id: 'how' },
             { label: 'Eksperter',         id: 'experts' },
+            { label: 'Fritidskontakt',    id: 'fritid' },
             { label: 'Priser',            id: 'priser' },
             { label: 'For fagpersoner',   id: 'for-section' },
           ].map(({ label, id }) => (
@@ -409,6 +415,7 @@ function Nav({
           {[
             { label: 'Slik fungerer det', id: 'how' },
             { label: 'Eksperter',         id: 'experts' },
+            { label: 'Fritidskontakt',    id: 'fritid' },
             { label: 'Priser',            id: 'priser' },
             { label: 'For fagpersoner',   id: 'for-section' },
           ].map(({ label, id }) => (
@@ -673,6 +680,59 @@ function Experts({ onCta }: { onCta: () => void }) {
             </button>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Fritidskontakt ──────────────────────────────────────────────────────────
+
+function Fritidskontakt({ onCta }: { onCta: () => void }) {
+  const points = [
+    'Match på felles interesser og personlighet — godkjent av et menneske, ikke en algoritme',
+    'I snitt 3–5 timer per uke, tilpasset behov og form',
+    'Individuelt eller i gruppe: kultur, natur, trening og sosiale treff',
+    'Alle fritidskontakter viser politiattest før oppdrag — vi lagrer den aldri',
+  ]
+  return (
+    <section id="fritid" style={{ background: '#d9ebe2', padding: '80px 24px', scrollMarginTop: 68 }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', gap: 56, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+        <div style={{ flex: '1 1 420px', maxWidth: 560 }}>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Aktivitet og fellesskap</span>
+          <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Fritidskontakt for eldre</h2>
+          <p style={{ fontSize: 16, color: '#576b68', marginTop: 14, lineHeight: 1.65 }}>
+            Ikke alle behov er faglige. En fritidskontakt følger dine nærmeste til
+            aktiviteter, bygger nettverk og gir en aktiv, meningsfull fritid —
+            en brobygger til sosial deltakelse.
+          </p>
+          <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
+            <button onClick={onCta} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '12px 24px', background: '#173d3a', color: '#fffdf8',
+              fontSize: 14, fontWeight: 600, borderRadius: 6, border: 'none', cursor: 'pointer',
+            }}>Få en fritidskontakt <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button onClick={onCta} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '12px 24px', background: '#fffdf8', color: '#173d3a',
+              fontSize: 14, fontWeight: 600, borderRadius: 6,
+              border: '1px solid #cbd8d0', cursor: 'pointer',
+            }}>Bli fritidskontakt</button>
+          </div>
+        </div>
+        <ul style={{ flex: '1 1 320px', maxWidth: 480, listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+          {points.map((p, i) => (
+            <li key={i} style={{
+              display: 'flex', gap: 12, alignItems: 'flex-start',
+              background: '#fffdf8', border: '1px solid #cbd8d0',
+              borderRadius: 10, padding: '16px 18px',
+            }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0a7d72" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 3 }}>
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span style={{ fontSize: 14.5, lineHeight: 1.55, color: '#576b68' }}>{p}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
@@ -1037,6 +1097,7 @@ export default function App() {
         <HowItWorks />
         <Testimonials />
         <Experts onCta={openModal} />
+        <Fritidskontakt onCta={openModal} />
         <Pricing onCta={openModal} />
         <ForSection onCta={openModal} />
         <FAQ />
