@@ -18,7 +18,7 @@ install` ÇALIŞTIRMA.
 ## Çalıştır (ajan yolu — önce bunu kullan)
 
 ```bash
-# 5 kritik akışlı smoke test + ana sayfa görüntüsü (çıkış kodu 0/1):
+# 6 kritik akışlı smoke test + ana sayfa görüntüsü (çıkış kodu 0/1):
 node .claude/skills/run-qblogg/driver.mjs smoke /tmp/qblogg-run
 
 # Tek sayfanın tam ekran görüntüsü (reveal animasyonu sabitlenmiş):
@@ -26,6 +26,9 @@ node .claude/skills/run-qblogg/driver.mjs shot "post.html?slug=ai-icerik-studyos
 
 # Gizli mod (incognito) testi — ilk ziyaret + localStorage erişilemez senaryosu:
 node .claude/skills/run-qblogg/driver.mjs incognito
+
+# Yeni bir demo/Action Page eklediğinde aynı desenle görüntüle:
+node .claude/skills/run-qblogg/driver.mjs shot "demo/q-work-audit.html" /tmp/qblogg-run
 ```
 
 Görüntüler verilen dizine `.png` düşer. 8000'i çok aşan sayfa
@@ -46,6 +49,16 @@ npm run guvenlik   # XSS/CSP/veri koruma taraması
 npm run gorunurluk # yayınlanmış yazıların görünürlük denetimi
 npm run onizleme   # 8 sayfayı tek tıklanabilir HTML'e gömer (paylaşım için)
 ```
+
+## demo/ — Action Pages deseni
+
+`demo/*.html` + `.js` (ör. `cv-action-page`, `q-work-audit`): tek dosya,
+bağımlılık yok, hesap/veri gönderimi yok — satış demoları ve Faz 0
+doğrulama araçları. Smoke test artık bunlardan birini (Q Work Audit)
+uçtan uca sürüyor: görev seç, süre gir, gönder, sonuç kartında `mailto:`
+CTA'sının oluştuğunu doğrula. Yeni bir Action Page eklersen aynı deseni
+smoke'a ekle; `vercel.json`'daki `buildCommand`a da dosya adlarını
+eklemeyi unutma, yoksa dağıtımda 404 verir.
 
 ## Gotchas (hepsi bu konteynerde yaşandı)
 
