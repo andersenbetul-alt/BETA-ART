@@ -1,5 +1,5 @@
 ---
-name: on-brand
+name: naviar-on-brand
 description: Enforces NAVIAR's brand system — color tokens, logo/lockup usage, clear space, minimum sizes, and forbidden effects — on any content, marketing copy, deck, social graphic, or UI generated for NAVIAR. Refuses or flags off-brand patterns with a short, cited reason before delivering output. Trigger this whenever NAVIAR is named, NAVIAR colors/logo/descriptor assets are referenced, or the user asks to design/write/mock up anything under the NAVIAR name — even if they don't say "brand," "on-brand," or "style guide" explicitly. Also trigger when asked to check, review, or audit existing NAVIAR content for brand compliance.
 ---
 
