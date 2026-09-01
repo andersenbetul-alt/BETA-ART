@@ -1,4 +1,4 @@
-import { plates, verificationMethods } from "@/lib/data";
+import { exhibitions, plates, verificationMethods } from "@/lib/data";
 import { usePage } from "@/lib/router";
 import { useLang } from "@/lib/langContext";
 import { useCart } from "@/lib/cartContext";
@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button";
 //    assumed.
 export function PlateDetail() {
   const { plateId, go } = usePage();
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { items, add } = useCart();
   const plate = plates.find((p) => p.id === plateId);
 
@@ -29,7 +29,7 @@ export function PlateDetail() {
     return (
       <section className="border-b border-border">
         <div className="mx-auto w-[min(100%-3rem,900px)] py-24 text-center">
-          <p className="text-sm text-muted-foreground">Plate not found.</p>
+          <p className="text-sm text-muted-foreground">{t("plateNotFound")}</p>
           <button onClick={() => go("home", "collection")} className="mt-4 font-record text-xs uppercase tracking-[0.12em] text-accent hover:underline">
             {t("cartContinue")}
           </button>
@@ -75,31 +75,31 @@ export function PlateDetail() {
           </Button>
         )}
 
-        <p className="mt-8 font-record text-xs uppercase tracking-[0.22em] text-muted-foreground">Provenance</p>
+        <p className="mt-8 font-record text-xs uppercase tracking-[0.22em] text-muted-foreground">{t("provenance")}</p>
         <div className="mt-4 border-s-2 border-border ps-6">
-          <TimelineNode title="Source" done>
-            <p>{plate.accession} — {plate.title}, {plate.category}.</p>
+          <TimelineNode title={t("tlSource")} done>
+            <p>{plate.accession} — {plate.title}, {t(`filter${plate.category.charAt(0).toUpperCase()}${plate.category.slice(1)}`)}.</p>
             <p>{t("byPrefix")} {plate.photographer}.</p>
           </TimelineNode>
 
-          <TimelineNode title="Capture context" done>
-            <p>{plate.detail}</p>
+          <TimelineNode title={t("tlCaptureContext")} done>
+            <p>{plate.detail[lang]}</p>
           </TimelineNode>
 
-          <TimelineNode title="Verification" done={verified}>
+          <TimelineNode title={t("tlVerification")} done={verified}>
             {verified ? (
               verificationMethods.map((m) => (
                 <p key={m.numeral}>
-                  <span className="text-accent">✓</span> {t("method")} {m.numeral} — {m.title}
+                  <span className="text-accent">✓</span> {t("method")} {m.numeral} — {m.title[lang]}
                 </p>
               ))
             ) : (
-              <p>{verificationMethods[0].title} — {t("statusPending")}.</p>
+              <p>{verificationMethods[0].title[lang]} — {t("statusPending")}.</p>
             )}
           </TimelineNode>
 
-          <TimelineNode title="Exhibition" done last>
-            <p>Volume I — Opening Exhibition, Autumn 2026, Oslo.</p>
+          <TimelineNode title={t("tlExhibition")} done last>
+            <p>{exhibitions[0].title[lang]}, {exhibitions[0].when[lang]}, Oslo.</p>
           </TimelineNode>
         </div>
       </div>

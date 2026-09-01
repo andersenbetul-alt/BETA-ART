@@ -12,7 +12,7 @@ import { useLang } from "@/lib/langContext";
 // added for tiers that are genuinely open-ended on the real site.
 export function Prices() {
   const { go } = usePage();
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   return (
     <section className="border-b border-border">
@@ -27,14 +27,14 @@ export function Prices() {
 
         <div className="mt-8 divide-y divide-border border-y border-border">
           {licenceTiers.map((tier) => (
-            <div key={tier.name} className="grid grid-cols-1 gap-4 py-6 sm:grid-cols-[1fr_1fr_1.4fr]">
+            <div key={tier.name.en} className="grid grid-cols-1 gap-4 py-6 sm:grid-cols-[1fr_1fr_1.4fr]">
               <div>
-                <h2 className="font-display text-lg font-normal">{tier.name}</h2>
-                <p className="mt-1 font-record text-sm text-accent">{tier.price}</p>
+                <h2 className="font-display text-lg font-normal">{tier.name[lang]}</h2>
+                <p className="mt-1 font-record text-sm text-accent">{tier.price[lang]}</p>
               </div>
-              <p className="text-sm text-foreground/75">{tier.desc}</p>
+              <p className="text-sm text-foreground/75">{tier.desc[lang]}</p>
               <p className="text-sm text-foreground/70">
-                {tier.price === "from kr 190" ? t("pricesFixedNote") : t("pricesRequestNote")}
+                {tier.fixed ? t("pricesFixedNote") : t("pricesRequestNote")}
               </p>
             </div>
           ))}
@@ -50,7 +50,7 @@ export function Prices() {
             onClick={() => go("home", "request")}
             className="border border-accent bg-accent px-5 py-2.5 font-record text-xs uppercase tracking-[0.14em] text-accent-foreground"
           >
-            {licenceTiers[0].cta}
+            {licenceTiers[0].cta[lang]}
           </button>
         </div>
       </div>

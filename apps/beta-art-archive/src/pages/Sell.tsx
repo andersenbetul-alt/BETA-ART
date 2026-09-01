@@ -85,7 +85,7 @@ export function Sell() {
           </div>
           <div className="space-y-2 md:col-span-2">
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("sellFieldBio")}</Label>
-            <Textarea rows={3} className="rounded-none border-border" placeholder="This is what will appear on your Artists profile once verified." />
+            <Textarea rows={3} className="rounded-none border-border" placeholder={t("sellFieldBioPlaceholder")} />
           </div>
           <div className="space-y-2 md:col-span-2">
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("sellFieldMessage")}</Label>

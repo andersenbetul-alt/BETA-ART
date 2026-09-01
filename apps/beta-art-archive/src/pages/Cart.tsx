@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { usePage } from "@/lib/router";
 import { useLang } from "@/lib/langContext";
 import { useCart } from "@/lib/cartContext";
+import { licenceTiers } from "@/lib/data";
 
 // This page's Norwegian copy is preserved verbatim from the live site —
 // the rest of beta-art.com is in English, but the cart specifically was
@@ -13,7 +14,7 @@ import { useCart } from "@/lib/cartContext";
 // the cart icon/page existed but nothing ever added to it.
 export function Cart() {
   const { go } = usePage();
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { items, remove } = useCart();
   const total = items.length * 190;
 
@@ -49,7 +50,7 @@ export function Cart() {
       <div className="mx-auto w-[min(100%-3rem,720px)] py-[clamp(3rem,7vw,4.5rem)]">
         <h1 className="font-display text-[clamp(1.8rem,4vw,2.6rem)] font-light">{t("cartTitle")}</h1>
         <p className="mt-2 font-record text-xs uppercase tracking-[0.14em] text-muted-foreground">
-          {items.length} {items.length === 1 ? "item" : "items"}
+          {items.length} {items.length === 1 ? t("cartItemOne") : t("cartItemMany")}
         </p>
 
         <div className="mt-8 divide-y divide-border border-y border-border">
@@ -57,7 +58,7 @@ export function Cart() {
             <div key={item.plateId} className="flex items-center justify-between gap-4 py-4">
               <div>
                 <p className="font-display text-base">{item.title}</p>
-                <p className="font-record text-xs text-muted-foreground">Personal · kr 190</p>
+                <p className="font-record text-xs text-muted-foreground">{licenceTiers[0].name[lang]} · kr 190</p>
               </div>
               <button
                 onClick={() => remove(item.plateId)}

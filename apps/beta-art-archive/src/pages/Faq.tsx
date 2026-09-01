@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { faqCategories, faqItems, type FaqCategory } from "@/lib/data";
+import { faqCategories, faqCategoryLabels, faqItems, type FaqCategory } from "@/lib/data";
 import { useLang } from "@/lib/langContext";
 
 export function Faq() {
   const [active, setActive] = useState<FaqCategory | "All">("All");
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const visible = active === "All" ? faqItems : faqItems.filter((f) => f.category === active);
 
   return (
@@ -26,21 +26,21 @@ export function Faq() {
                 active === c ? "border-accent bg-accent text-accent-foreground" : "border-border text-muted-foreground hover:border-accent hover:text-foreground"
               }`}
             >
-              {c === "All" ? t("faqAll") : c}
+              {c === "All" ? t("faqAll") : faqCategoryLabels[c][lang]}
             </button>
           ))}
         </div>
 
         <div className="mt-8 divide-y divide-border border-t border-border">
           {visible.map((f) => (
-            <details key={f.q} className="group py-4">
+            <details key={f.q.en} className="group py-4">
               <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4">
-                <span className="font-display text-base">{f.q}</span>
+                <span className="font-display text-base">{f.q[lang]}</span>
                 <span className="shrink-0 font-record text-[0.6rem] uppercase tracking-[0.1em] text-muted-foreground">
-                  {f.category}
+                  {faqCategoryLabels[f.category][lang]}
                 </span>
               </summary>
-              <p className="mt-3 max-w-[68ch] text-sm leading-relaxed text-foreground/75">{f.a}</p>
+              <p className="mt-3 max-w-[68ch] text-sm leading-relaxed text-foreground/75">{f.a[lang]}</p>
             </details>
           ))}
         </div>

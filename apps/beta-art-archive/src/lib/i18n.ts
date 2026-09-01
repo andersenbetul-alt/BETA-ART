@@ -232,6 +232,18 @@ const en: Dict = {
   lifeFlowerQuote: "“Life’s limited nature is also what makes it precious.”",
   lifeFlowerBody: "Because life does not last forever, every moment matters.",
   lifeFlowerTagline: "Real people · Real moments · Real places",
+
+  plateNotFound: "Plate not found.",
+  provenance: "Provenance",
+  tlSource: "Source",
+  tlCaptureContext: "Capture context",
+  tlVerification: "Verification",
+  tlExhibition: "Exhibition",
+  cartItemOne: "item",
+  cartItemMany: "items",
+  heroPlateDate: "March 2026",
+  feedbackEmailOptional: "optional",
+  sellFieldBioPlaceholder: "This is what will appear on your Artists profile once verified.",
 };
 
 const no: Dict = {
@@ -439,6 +451,18 @@ const no: Dict = {
   lifeFlowerQuote: "«At livet er begrenset, er også det som gjør det verdifullt.»",
   lifeFlowerBody: "Fordi livet ikke varer evig, betyr hvert øyeblikk noe.",
   lifeFlowerTagline: "Ekte mennesker · Ekte øyeblikk · Ekte steder",
+
+  plateNotFound: "Fant ikke platen.",
+  provenance: "Proveniens",
+  tlSource: "Kilde",
+  tlCaptureContext: "Opptakskontekst",
+  tlVerification: "Verifisering",
+  tlExhibition: "Utstilling",
+  cartItemOne: "vare",
+  cartItemMany: "varer",
+  heroPlateDate: "mars 2026",
+  feedbackEmailOptional: "valgfritt",
+  sellFieldBioPlaceholder: "Dette vises på Artists-profilen din når den er verifisert.",
 };
 
 const tr: Dict = {
@@ -646,6 +670,18 @@ const tr: Dict = {
   lifeFlowerQuote: "\"Hayatın sınırlı oluşu, aynı zamanda onu değerli kılan şeydir.\"",
   lifeFlowerBody: "Hayat sonsuza dek sürmediği için her an önemlidir.",
   lifeFlowerTagline: "Gerçek insanlar · Gerçek anlar · Gerçek yerler",
+
+  plateNotFound: "Plaka bulunamadı.",
+  provenance: "Provenans",
+  tlSource: "Kaynak",
+  tlCaptureContext: "Çekim bağlamı",
+  tlVerification: "Doğrulama",
+  tlExhibition: "Sergi",
+  cartItemOne: "ürün",
+  cartItemMany: "ürün",
+  heroPlateDate: "Mart 2026",
+  feedbackEmailOptional: "isteğe bağlı",
+  sellFieldBioPlaceholder: "Doğrulandıktan sonra Artists profilinizde görünecek metin budur.",
 };
 
 const it: Dict = {
@@ -853,6 +889,18 @@ const it: Dict = {
   lifeFlowerQuote: "«La natura limitata della vita è anche ciò che la rende preziosa.»",
   lifeFlowerBody: "Poiché la vita non dura per sempre, ogni momento conta.",
   lifeFlowerTagline: "Persone vere · Momenti veri · Luoghi veri",
+
+  plateNotFound: "Lastra non trovata.",
+  provenance: "Provenienza",
+  tlSource: "Fonte",
+  tlCaptureContext: "Contesto di scatto",
+  tlVerification: "Verifica",
+  tlExhibition: "Esposizione",
+  cartItemOne: "articolo",
+  cartItemMany: "articoli",
+  heroPlateDate: "marzo 2026",
+  feedbackEmailOptional: "facoltativo",
+  sellFieldBioPlaceholder: "Questo è ciò che apparirà sul tuo profilo Artists una volta verificato.",
 };
 
 const fr: Dict = {
@@ -1060,6 +1108,18 @@ const fr: Dict = {
   lifeFlowerQuote: "« La nature limitée de la vie est aussi ce qui la rend précieuse. »",
   lifeFlowerBody: "Parce que la vie ne dure pas éternellement, chaque instant compte.",
   lifeFlowerTagline: "Des gens réels · Des instants réels · Des lieux réels",
+
+  plateNotFound: "Planche introuvable.",
+  provenance: "Provenance",
+  tlSource: "Source",
+  tlCaptureContext: "Contexte de prise de vue",
+  tlVerification: "Vérification",
+  tlExhibition: "Exposition",
+  cartItemOne: "article",
+  cartItemMany: "articles",
+  heroPlateDate: "mars 2026",
+  feedbackEmailOptional: "facultatif",
+  sellFieldBioPlaceholder: "Voici ce qui apparaîtra sur votre profil Artists une fois vérifié.",
 };
 
 const es: Dict = {
@@ -1267,6 +1327,18 @@ const es: Dict = {
   lifeFlowerQuote: "«La naturaleza limitada de la vida es también lo que la hace preciosa.»",
   lifeFlowerBody: "Porque la vida no dura para siempre, cada momento importa.",
   lifeFlowerTagline: "Personas reales · Momentos reales · Lugares reales",
+
+  plateNotFound: "Placa no encontrada.",
+  provenance: "Procedencia",
+  tlSource: "Fuente",
+  tlCaptureContext: "Contexto de captura",
+  tlVerification: "Verificación",
+  tlExhibition: "Exposición",
+  cartItemOne: "artículo",
+  cartItemMany: "artículos",
+  heroPlateDate: "marzo de 2026",
+  feedbackEmailOptional: "opcional",
+  sellFieldBioPlaceholder: "Esto es lo que aparecerá en tu perfil de Artists una vez verificado.",
 };
 
 const pt: Dict = {
@@ -1474,6 +1546,18 @@ const pt: Dict = {
   lifeFlowerQuote: "«A natureza limitada da vida é também o que a torna preciosa.»",
   lifeFlowerBody: "Porque a vida não dura para sempre, cada momento importa.",
   lifeFlowerTagline: "Pessoas reais · Momentos reais · Lugares reais",
+
+  plateNotFound: "Placa não encontrada.",
+  provenance: "Proveniência",
+  tlSource: "Fonte",
+  tlCaptureContext: "Contexto de captura",
+  tlVerification: "Verificação",
+  tlExhibition: "Exposição",
+  cartItemOne: "artigo",
+  cartItemMany: "artigos",
+  heroPlateDate: "março de 2026",
+  feedbackEmailOptional: "opcional",
+  sellFieldBioPlaceholder: "Isto é o que aparecerá no seu perfil de Artists depois de verificado.",
 };
 
 const de: Dict = {
@@ -1681,6 +1765,18 @@ const de: Dict = {
   lifeFlowerQuote: "„Dass das Leben begrenzt ist, macht es zugleich kostbar.“",
   lifeFlowerBody: "Weil das Leben nicht ewig währt, zählt jeder Moment.",
   lifeFlowerTagline: "Echte Menschen · Echte Momente · Echte Orte",
+
+  plateNotFound: "Platte nicht gefunden.",
+  provenance: "Provenienz",
+  tlSource: "Quelle",
+  tlCaptureContext: "Aufnahmekontext",
+  tlVerification: "Verifizierung",
+  tlExhibition: "Ausstellung",
+  cartItemOne: "Artikel",
+  cartItemMany: "Artikel",
+  heroPlateDate: "März 2026",
+  feedbackEmailOptional: "optional",
+  sellFieldBioPlaceholder: "Das erscheint nach der Verifizierung in Ihrem Artists-Profil.",
 };
 
 export const UI: Record<Lang, Dict> = { en, no, tr, it, fr, es, pt, de };

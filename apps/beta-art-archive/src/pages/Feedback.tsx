@@ -71,7 +71,7 @@ export function Feedback() {
 
           <div className="space-y-2">
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("fieldEmail")}</Label>
-            <Input type="email" className="rounded-none border-border" placeholder="optional" />
+            <Input type="email" className="rounded-none border-border" placeholder={t("feedbackEmailOptional")} />
           </div>
 
           <div>

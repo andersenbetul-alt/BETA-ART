@@ -83,7 +83,7 @@ function Hero() {
         <div className="border border-border bg-secondary p-1">
           <div aria-hidden="true" className="aspect-[4/5] w-full bg-gradient-to-br from-slate-300 via-stone-300 to-neutral-700" />
           <p className="px-3 py-3 font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">
-            {t("platePrefix")} 01 · First Light — March 2026
+            {t("platePrefix")} 01 · First Light — {t("heroPlateDate")}
           </p>
         </div>
       </div>
@@ -92,7 +92,7 @@ function Hero() {
 }
 
 function Verification() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <section id="verification" className="scroll-mt-20 border-b border-border">
       <div className="mx-auto w-[min(100%-3rem,1280px)] py-[clamp(3rem,7vw,4.5rem)]">
@@ -102,8 +102,8 @@ function Verification() {
           {verificationMethods.map((m) => (
             <div key={m.numeral} className="bg-background p-7">
               <p className="font-display text-sm italic text-accent">{t("method")} {m.numeral}</p>
-              <h3 className="mt-3 font-display text-lg font-normal leading-snug">{m.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-foreground/75">{m.body}</p>
+              <h3 className="mt-3 font-display text-lg font-normal leading-snug">{m.title[lang]}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-foreground/75">{m.body[lang]}</p>
             </div>
           ))}
         </div>
@@ -120,7 +120,7 @@ function Verification() {
 
 function Collection() {
   const [filter, setFilter] = useState<PlateCategory | "all">("all");
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { goToPlate } = usePage();
   const FILTERS: { label: string; value: PlateCategory | "all" }[] = [
     { label: t("filterAll"), value: "all" },
@@ -171,7 +171,7 @@ function Collection() {
                 </span>
                 <h3 className="mt-2 font-display text-lg font-normal">{plate.title}</h3>
                 <p className="font-record text-[0.68rem] text-muted-foreground">{plate.accession}</p>
-                <p className="mt-1 text-xs text-foreground/70">{plate.detail}</p>
+                <p className="mt-1 text-xs text-foreground/70">{plate.detail[lang]}</p>
                 <p className="mt-1 font-record text-[0.66rem] uppercase tracking-[0.08em] text-muted-foreground">{t("byPrefix")} {plate.photographer}</p>
                 <p className="mt-auto pt-4 font-record text-xs">{t("fromPrice")} kr 190</p>
               </div>
@@ -185,7 +185,7 @@ function Collection() {
 
 function Exhibitions() {
   const { go } = usePage();
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <section id="events" className="scroll-mt-20 border-b border-border">
       <div className="mx-auto w-[min(100%-3rem,1280px)] py-[clamp(3rem,7vw,4.5rem)]">
@@ -194,11 +194,11 @@ function Exhibitions() {
         <p className="mt-4 max-w-[62ch] text-[1.02rem] leading-relaxed text-foreground/80">{t("eventsIntro")}</p>
         <div className="mt-10 grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-3">
           {exhibitions.map((ex) => (
-            <div key={ex.title} className="flex flex-col bg-background p-7">
-              <span className="font-record text-[0.64rem] uppercase tracking-[0.12em] text-accent">{ex.tag}</span>
-              <p className="mt-2 font-record text-[0.7rem] text-muted-foreground">{ex.when} · {ex.where}</p>
-              <h3 className="mt-3 font-display text-lg font-normal leading-snug">{ex.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/75">{ex.body}</p>
+            <div key={ex.title.en} className="flex flex-col bg-background p-7">
+              <span className="font-record text-[0.64rem] uppercase tracking-[0.12em] text-accent">{ex.tag[lang]}</span>
+              <p className="mt-2 font-record text-[0.7rem] text-muted-foreground">{ex.when[lang]} · {ex.where[lang]}</p>
+              <h3 className="mt-3 font-display text-lg font-normal leading-snug">{ex.title[lang]}</h3>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/75">{ex.body[lang]}</p>
               <button
                 onClick={() => go("request-a-shoot")}
                 className="mt-5 self-start font-record text-xs uppercase tracking-[0.12em] text-accent hover:underline"
@@ -284,7 +284,7 @@ function LifeFlower() {
 
 function Licensing() {
   const { go } = usePage();
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const steps = [
     ["01", t("step1Title"), t("step1Body")],
     ["02", t("step2Title"), t("step2Body")],
@@ -297,15 +297,15 @@ function Licensing() {
         <h2 className="mt-3 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-light">{t("licensingTitle")}</h2>
         <div className="mt-10 grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {licenceTiers.map((tier) => (
-            <div key={tier.name} className="flex flex-col bg-background p-7">
-              <h3 className="font-display text-xl font-normal">{tier.name}</h3>
-              <p className="mt-1 font-record text-sm text-accent">{tier.price}</p>
-              <p className="mt-3 text-sm text-foreground/75">{tier.desc}</p>
+            <div key={tier.name.en} className="flex flex-col bg-background p-7">
+              <h3 className="font-display text-xl font-normal">{tier.name[lang]}</h3>
+              <p className="mt-1 font-record text-sm text-accent">{tier.price[lang]}</p>
+              <p className="mt-3 text-sm text-foreground/75">{tier.desc[lang]}</p>
               <ul className="mt-4 space-y-1.5 text-sm text-foreground/70">
                 {tier.bullets.map((b) => (
-                  <li key={b} className="flex items-baseline gap-2">
+                  <li key={b.en} className="flex items-baseline gap-2">
                     <span className="text-accent">·</span>
-                    {b}
+                    {b[lang]}
                   </li>
                 ))}
               </ul>
@@ -313,7 +313,7 @@ function Licensing() {
                 onClick={() => go("home", "request")}
                 className="mt-6 self-start font-record text-xs uppercase tracking-[0.12em] text-accent hover:underline"
               >
-                {tier.cta}
+                {tier.cta[lang]}
               </button>
             </div>
           ))}
@@ -335,7 +335,7 @@ function Licensing() {
 
 function RequestSection() {
   const [status, setStatus] = useState("");
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <section id="request" className="scroll-mt-20 border-b border-border bg-secondary">
       <div className="mx-auto w-[min(100%-3rem,1280px)] py-[clamp(3rem,7vw,4.5rem)]">
@@ -361,10 +361,10 @@ function RequestSection() {
             <Label className="font-record text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">{t("fieldLicence")}</Label>
             <select className={selectCls} defaultValue="">
               <option value="" disabled>{t("fieldLicencePlaceholder")}</option>
-              <option value="personal">Personal</option>
-              <option value="commercial">Commercial</option>
-              <option value="extended">Extended</option>
-              <option value="custom">Custom &amp; Exclusive</option>
+              <option value="personal">{licenceTiers[0].name[lang]}</option>
+              <option value="commercial">{licenceTiers[1].name[lang]}</option>
+              <option value="extended">{licenceTiers[2].name[lang]}</option>
+              <option value="custom">{licenceTiers[3].name[lang]}</option>
             </select>
           </div>
           <div className="space-y-2">
@@ -408,7 +408,7 @@ function RequestSection() {
 }
 
 function Faq() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <section className="border-b border-border">
       <div className="mx-auto w-[min(100%-3rem,1280px)] py-[clamp(3rem,7vw,4.5rem)]">
@@ -416,13 +416,13 @@ function Faq() {
         <h2 className="mt-3 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-light">{t("faqIntro")}</h2>
         <div className="mt-8 divide-y divide-border border-t border-border">
           {faqItems.map((f) => (
-            <details key={f.q} className="group py-4">
+            <details key={f.q.en} className="group py-4">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-base">
-                {f.q}
+                {f.q[lang]}
                 <span className="font-record text-muted-foreground group-open:hidden">+</span>
                 <span className="hidden font-record text-muted-foreground group-open:inline">−</span>
               </summary>
-              <p className="mt-3 max-w-[68ch] text-sm leading-relaxed text-foreground/75">{f.a}</p>
+              <p className="mt-3 max-w-[68ch] text-sm leading-relaxed text-foreground/75">{f.a[lang]}</p>
             </details>
           ))}
         </div>
