@@ -21,6 +21,7 @@ netleşti, koşullu) · 🔴 Kırmızı (açık, lansmanı bloke eder)
 | 7 | Polis kaydı türü | 🔴 | *(bekleniyor — plan bir tür varsayılmamasını açıkça uyarıyor)* | Plan, Task 2 Step 1 | — |
 | 13 | İnsan kontrolü / RBAC / silme süresi / işlem kaydı (gelecek CRM için) | 🔴 | *(bekleniyor — henüz bir CRM/veritabanı yok; bu dördü CRM seçilirken zorunlu tasarım kriteri)* | `legal/ai-governance-and-accessibility.md` §3 | 01.09.2026 |
 | 14 | WCAG 2.2 AA — iniş sayfası | 🟢 | axe-core denetimi: 2 ihlal bulundu (kontrast, geçersiz `<dl>`), düzeltildi, yeniden denetlendi — 0 ihlal | `legal/ai-governance-and-accessibility.md` §5 | 01.09.2026 |
+| 15 | Incognito/temiz oturum testi — iniş sayfası | 🟢 | Playwright'ta sıfır depolama durumuyla (çerez/localStorage yok) test edildi: form gönderimi hiçbir şey kaydetmiyor, üçüncü taraf isteği yok. Bulunan tek sorun: `favicon.ico` 404 (site hiç favicon tanımlamıyordu) — NAVIAR master monogram ikonu (`brand/naviar/master/naviar-icon-favicon.svg`) eklendi, düzeltildi, yeniden dağıtıldı, 0 konsol hatası | `dpl_kfm1L9e38xpiL1TYzqw6fPjWfuP8` | 01.09.2026 |
 
 ## Ürün kararları (Open Product Decisions Before First Public Quote)
 
