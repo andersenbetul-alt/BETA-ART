@@ -440,12 +440,13 @@ function Hero({ onCta }: { onCta: () => void }) {
               fontWeight: 700, lineHeight: 1.08, color: '#173d3a',
               marginBottom: 24, letterSpacing: '-0.02em', textWrap: 'balance',
             }}>
-              Faglig hjelp<br/>til pårørende —<br/>tilgjengelig nå
+              Eldreomsorgen,<br/>koordinert —<br/>på ett sted
             </h1>
 
             <p style={{ fontSize: 18, lineHeight: 1.65, color: '#637774', maxWidth: 480, marginBottom: 40 }}>
-              Koble deg til erfarne rådgivere innen helse, jus og økonomi.
-              Svar innen én time — uten venteliste, uten viderehenvisning.
+              Naviar koordinerer omsorgen for dine nærmeste: fagfolk, offentlige
+              tjenester og familien — samlet rundt én plan. Svar innen én time,
+              uten venteliste.
             </p>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
@@ -884,7 +885,7 @@ function FinalCTA({ onCta }: { onCta: () => void }) {
         }}>Ikke la usikkerheten<br/>vente til i morgen</h2>
 
         <p style={{ fontSize: 17, color: '#7db5ad', maxWidth: 400, margin: '0 auto 44px', lineHeight: 1.6 }}>
-          Registrer deg i dag og få tilgang til faglig hjelp — når du trenger det, ikke når systemet passer det.
+          Registrer deg i dag og få eldreomsorgen koordinert — når du trenger det, ikke når systemet passer det.
         </p>
 
         {done ? (
@@ -950,7 +951,7 @@ function Footer() {
                 <div style={{ fontSize: 7, fontWeight: 500, letterSpacing: '0.16em', color: '#2e4f4d', textTransform: 'uppercase', marginTop: 1 }}>CARE</div>
               </div>
             </div>
-            <p style={{ fontSize: 13, color: '#3d5553', lineHeight: 1.55, margin: 0 }}>Faglig hjelp til pårørende — tilgjengelig nå, uten venteliste.</p>
+            <p style={{ fontSize: 13, color: '#3d5553', lineHeight: 1.55, margin: 0 }}>Koordinering av eldreomsorg i Norge — fagfolk, tjenester og familie på ett sted.</p>
           </div>
 
           {/* Links */}
