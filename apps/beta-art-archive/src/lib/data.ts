@@ -181,21 +181,24 @@ export const plates: Plate[] = [
     title: "Golden Hour",
     category: "landscape",
     status: "pending",
+    // Capture record derived from the original's own EXIF (IMG_0020.heic):
+    // GPS 59.6705 N 9.5221 E at 895 m — inside Kongsberg municipality
+    // (Knutefjell ridge west of the town; Jonsknuten summit is 904 m),
+    // captured 19.09.2020 18:47 on iPhone 11. The published place name is
+    // municipality-level on purpose; raw coordinates stay out of the site.
     detail: {
-      en: "Location to be supplied",
-      no: "Sted oppgis senere",
-      tr: "Konum bilgisi eklenecek",
-      it: "Località da fornire",
-      fr: "Lieu à préciser",
-      es: "Ubicación pendiente de facilitar",
-      pt: "Localização a fornecer",
-      de: "Ort wird nachgereicht",
+      en: "Kongsberg, Norway · September 2020",
+      no: "Kongsberg, Norge · september 2020",
+      tr: "Kongsberg, Norveç · Eylül 2020",
+      it: "Kongsberg, Norvegia · settembre 2020",
+      fr: "Kongsberg, Norvège · septembre 2020",
+      es: "Kongsberg, Noruega · septiembre de 2020",
+      pt: "Kongsberg, Noruega · setembro de 2020",
+      de: "Kongsberg, Norwegen · September 2020",
     },
     swatch: "from-slate-300 via-slate-100 to-slate-500",
     photographer: "Beta Art",
-    // User-supplied original (IMG_0020.heic, 01.09.2026): sunset over a
-    // forested lake landscape; EXIF shows iPhone 11, 19.09.2020 18:47.
-    // GPS was present in the original and stripped from the web copy.
+    // User-supplied original (01.09.2026); GPS stripped from the web copy.
     image: "/plates/golden-hour.jpg",
   },
   {
