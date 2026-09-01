@@ -68,16 +68,16 @@ export function Masthead() {
           >
             {t("navCategories")}
           </button>
-          {/* Industries: real beta-art.com nav item, external (no local Industries
-              page exists yet in this build — see docs/proje-arsivi.md). */}
-          <a
-            href="https://beta-art.com/industries"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Industries: real beta-art.com nav item. Was an external link to
+              beta-art.com/industries; since the root domain now targets this
+              site (user decision 01.09.2026), it points at the in-site
+              directory whose "Norwegian Industries" section covers it. */}
+          <button
+            onClick={() => go("categories")}
             className="border-b border-transparent pb-[3px] font-record text-xs uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:border-accent hover:text-foreground"
           >
             {t("navIndustries")}
-          </a>
+          </button>
           <button
             onClick={() => go("artists")}
             className={`border-b pb-[3px] font-record text-xs uppercase tracking-[0.14em] transition-colors ${
@@ -232,14 +232,15 @@ export function Masthead() {
               {label}
             </button>
           ))}
-          <a
-            href="https://beta-art.com/industries"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => {
+              go("categories");
+              setMobileOpen(false);
+            }}
             className="block w-full border-b border-border py-4 text-left font-record text-xs uppercase tracking-[0.14em] text-muted-foreground"
           >
             {t("navIndustries")}
-          </a>
+          </button>
           <button
             onClick={() => {
               go("home", "licensing");

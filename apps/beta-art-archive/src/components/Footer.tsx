@@ -1,9 +1,10 @@
 import { usePage } from "@/lib/router";
 import { useLang } from "@/lib/langContext";
+import { licenceTiers } from "@/lib/data";
 
 export function Footer() {
   const { go } = usePage();
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <footer className="border-t border-border">
       <div className="mx-auto w-[min(100%-3rem,1280px)] py-[clamp(2.5rem,6vw,4rem)]">
@@ -23,7 +24,7 @@ export function Footer() {
               <li><button onClick={() => go("home", "verification")} className="hover:text-accent">{t("navVerification")}</button></li>
               <li><button onClick={() => go("home", "photographer")} className="hover:text-accent">{t("navPhotographer")}</button></li>
               <li><button onClick={() => go("categories")} className="hover:text-accent">{t("navCategories")}</button></li>
-              <li><a href="https://beta-art.com/industries" target="_blank" rel="noopener noreferrer" className="hover:text-accent">{t("navIndustries")}</a></li>
+              <li><button onClick={() => go("categories")} className="hover:text-accent">{t("navIndustries")}</button></li>
               <li><button onClick={() => go("sell")} className="hover:text-accent">{t("navSell")}</button></li>
               <li><button onClick={() => go("feedback")} className="hover:text-accent">{t("navFeedback")}</button></li>
             </ul>
@@ -31,16 +32,21 @@ export function Footer() {
           <div>
             <p className="font-record text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground">{t("footerLicensing")}</p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><button onClick={() => go("home", "licensing")} className="hover:text-accent">Personal</button></li>
-              <li><button onClick={() => go("home", "licensing")} className="hover:text-accent">Commercial</button></li>
-              <li><button onClick={() => go("home", "licensing")} className="hover:text-accent">Extended</button></li>
-              <li><button onClick={() => go("home", "request")} className="hover:text-accent">Custom &amp; Exclusive</button></li>
+              <li><button onClick={() => go("home", "licensing")} className="hover:text-accent">{licenceTiers[0].name[lang]}</button></li>
+              <li><button onClick={() => go("home", "licensing")} className="hover:text-accent">{licenceTiers[1].name[lang]}</button></li>
+              <li><button onClick={() => go("home", "licensing")} className="hover:text-accent">{licenceTiers[2].name[lang]}</button></li>
+              <li><button onClick={() => go("home", "request")} className="hover:text-accent">{licenceTiers[3].name[lang]}</button></li>
             </ul>
           </div>
           <div>
             {/* Legal link labels stay Norwegian regardless of UI language — matching the
                 real beta-art.com, which shows these same Norwegian labels on its English
-                page too. Not a translation gap; see docs/beta-art/tasarim-sistemi.md. */}
+                page too. Not a translation gap; see docs/beta-art/tasarim-sistemi.md.
+                OPEN ITEM (01.09.2026): these hrefs point at the OLD site's legal
+                pages. Once beta-art.com's DNS targets this build, they will land
+                on this SPA (no such local pages exist). The legal texts cannot be
+                invented here — the user must supply them (paste) before or right
+                after the domain switch; then these become local pages. */}
             <p className="font-record text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground">{t("footerLegal")}</p>
             <ul className="mt-4 space-y-2 text-sm">
               <li><a href="https://beta-art.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Personvernerklæring</a></li>
