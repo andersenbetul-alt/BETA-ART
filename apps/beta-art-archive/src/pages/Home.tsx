@@ -262,6 +262,32 @@ function Photographer() {
   );
 }
 
+// New, user-supplied addition (01.09.2026, "BUNU EKLEYELIM"): the LIFE
+// FLOWER statement — the user's own words, pasted verbatim, placed as a
+// quiet manifesto interlude. Not sourced from beta-art.com; kept in
+// English like the rest of the content layer.
+function LifeFlower() {
+  return (
+    <section className="border-b border-border">
+      <div className="mx-auto w-[min(100%-3rem,760px)] py-[clamp(3.5rem,9vw,6rem)] text-center">
+        <p className="font-record text-xs uppercase tracking-[0.3em] text-accent">Life Flower</p>
+        <p className="mt-6 font-display text-[clamp(1.5rem,3.2vw,2.2rem)] font-light italic leading-snug">
+          “Life’s limited nature is also what makes it precious.”
+        </p>
+        <p className="mt-5 max-w-[48ch] mx-auto text-[1.02rem] leading-relaxed text-foreground/70">
+          Because life does not last forever, every moment matters.
+        </p>
+        {/* User-supplied follow-up in the same request ("REAL PEOPLE REAM
+            MOMENT REAL PLACE") — obvious REAM→REAL typo fixed, natural
+            English plurals applied. */}
+        <p className="mt-8 font-record text-[0.7rem] uppercase tracking-[0.24em] text-muted-foreground">
+          Real people · Real moments · Real places
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function Licensing() {
   const { go } = usePage();
   const { t } = useLang();
@@ -420,6 +446,7 @@ export function Home() {
       <Collection />
       <Exhibitions />
       <Photographer />
+      <LifeFlower />
       <Licensing />
       <RequestSection />
       <Faq />
