@@ -6,6 +6,178 @@
  */
 window.QB_POSTS = [
 {
+  slug: 'sykefraversoppfolging-metodikk',
+  category: 'business', date: '2026-09-01', accent: 3, icon: 'gear',
+  orig: 'Fire-fase-modellen presenteres som hendelsesbaserte frister — oppfølgingsplan utløses av diagnosemelding, ikke av kalenderuke — noe som gjør det enklere å bruke systemet i praksis uten å miste fristen.',
+  src: [
+    {t: 'Arbeidsmiljøloven §4-6 — tilretteleggingsplikten og oppfølgingsplanen', nu: 'lovdata.no — adresse ikke verifisert i dette miljøet; søk AML §4-6'},
+    {t: 'NAV — Sykefraværsoppfølging: frister og ansvar for arbeidsgiver', nu: 'nav.no — adresse ikke verifisert i dette miljøet'},
+    {t: 'Arbeidstilsynet — Forebygging og oppfølging av sykefravær', nu: 'arbeidstilsynet.no — adresse ikke verifisert i dette miljøet'}
+  ],
+  t: {
+    tr: "Hastalık izni takibi: Norveç’te dört aşamalı yöntem",
+    en: "Sick leave follow-up in Norway: the four-phase methodology",
+    zh: "挪威病假跟进：四阶段方法论",
+    hi: "नॉर्वे में बीमारी की छुट्टी का अनुसरण: चार-चरण पद्धति",
+    es: "Seguimiento de bajas laborales en Noruega: la metodología de cuatro fases",
+    ar: "متابعة إجازات المرض في النرويج: منهجية المراحل الأربع",
+    fr: "Suivi des arrêts maladie en Norvège : la méthode en quatre phases",
+    pt: "Acompanhamento de licença médica na Noruega: a metodologia de quatro fases",
+    ru: "Сопровождение больничных в Норвегии: четырёхэтапная методология",
+    no: "Sykefraværsoppfølging: fire-fase-metoden for norske arbeidsgivere"
+  },
+  e: {
+    tr: "Norveç’te hastalık izni takibi için yasal yükümlülükler ve dört aşamalı yöntem: takip planı, diyalog toplantıları ve belgeleme.",
+    en: "Norwegian sick leave follow-up: legal obligations, the four-phase method (follow-up plan, dialogue meetings) and what to document.",
+    zh: "挪威病假跟进的法律义务与四阶段方法：跟进计划、对话会议及文件记录。",
+    hi: "नॉर्वे में बीमारी की छुट्टी की क़ानूनी ज़िम्मेदारियाँ और चार-चरण पद्धति: अनुसरण योजना, संवाद बैठकें और दस्तावेज़ीकरण।",
+    es: "Obligaciones legales y método de cuatro fases para el seguimiento de bajas laborales en Noruega: plan, reuniones y documentación.",
+    ar: "الالتزامات القانونية وأسلوب المراحل الأربع لمتابعة إجازات المرض في النرويج: الخطة واجتماعات الحوار والتوثيق.",
+    fr: "Obligations légales et méthode en quatre phases pour le suivi des arrêts maladie en Norvège : plan, réunions, documentation.",
+    pt: "Obrigações legais e método de quatro fases para acompanhamento de licença médica na Noruega: plano, reuniões e documentação.",
+    ru: "Правовые обязательства и четырёхэтапный метод сопровождения больничных в Норвегии: план, диалоговые встречи и документация.",
+    no: "Lovpålagte plikter og fire-fase-metoden for sykefraværsoppfølging i Norge: oppfølgingsplan, dialogmøter og dokumentasjon."
+  },
+  b: {
+    tr: [
+      'Norveçli bir çalışan hastalanıp işe gidemez hale geldiğinde, işveren için otomatik olarak bir saat başlar. Bu saat Norveç İş Çevresi Kanunu (Arbeidsmiljøloven, AML) §4-6\'dan güç alır ve belirli adımları belirli sürelerde tamamlamayı zorunlu kılar. Adımları kaçıran işveren hem NAV denetimlerine hem de çalışanla hukuki uyuşmazlığa açık hale gelir.',
+      'Bu yazı o saati görünür kılmak için yazıldı: dört aşamanın ne zaman başladığını, kimin ne yapacağını ve neyin belgelenmesi gerektiğini somut bir çerçeveye oturtuyor. Rakamlar Norveç mevzuatını yansıtıyor; değişim olup olmadığını kaynaktan doğrulayın.',
+      {h: '1. Aşama: Erken temas — ilk günden itibaren'},
+      'Yasanın beklentisi şu: çalışan raporlandığı anda işveren iletişim kurmaya başlar. Bu genellikle ilk hafta içinde bir telefon veya kısa bir mesajdır. Amaç çalışanı izlemek değil, tablo netleştirmede yardımcı olmaktır: iş yükü nasıl devredilecek, çalışanın bir kolaylaştırmaya ihtiyacı var mı, geri dönüş için genel bir beklenti var mı?',
+      'Erken temas aynı zamanda ilişkiyi korur. Uzun süren sessizlik — her iki taraftan da — geri dönüşü zorlaştırır. Küçük işletmelerde bu genellikle doğrudan yöneticinin işidir; büyük şirketlerde İK birimi süreci başlatır.',
+      {h: '2. Aşama: Oppfølgingsplan — 4. haftaya kadar'},
+      'Hastalık izninin dört haftayı aşması bekleniyorsa ya da fiilen dört haftayı dolduruyorsa, işverenin bir **oppfølgingsplan** (takip planı) hazırlaması zorunludur. Bu plan çalışanla birlikte hazırlanır ve her ikisi tarafından imzalanır.',
+      'Planın içermesi gerekenler:',
+      {ul: [
+        '**Mevcut görevler:** çalışanın şu an yapabilecekleri ve yapamadıkları',
+        '**Kolaylaştırma önlemleri:** görev uyarlaması, uzaktan çalışma, kısmi mesai vb.',
+        '**Geri dönüş hedefi:** tahmini tarih veya koşul (zorunlu değil ama faydalı)',
+        '**Sorumluluğun kime ait olduğu:** takip için iletişim noktaları'
+      ]},
+      'Plan çalışanın hekimine de gönderilir; hekim gerekirse içeriği günceller. Belge hem çalışanı hem işvereni korur: iyiniyetin ve çabanın somut kaydıdır.',
+      {h: '3. Aşama: Dialogmøte 1 — 7. haftaya kadar'},
+      'Hastalık izni yedi haftayı doldurduğunda, işveren bir **dialogmøte 1** (diyalog toplantısı) düzenlemekle yükümlüdür. Toplantıya çalışan ve işveren katılır; çalışan dilerse hekimi veya bir vekili de davet edebilir.',
+      'Bu toplantı disiplin görüşmesi değildir. Odak noktası: hangi düzenlemelerle çalışan işe dönebilir? Kısmi çalışma mümkün mü? Farklı bir görev veya departman uygun olabilir mi? Toplantının notları belgelenir ve oppfølgingsplan güncellenir.',
+      {note: 'Çalışan toplantıya katılmayı reddederse bu durum kayıt altına alınır. Makul bir neden olmaksızın devamsızlık, çalışanın sükûnetle NAV sürecini yavaşlatmasına yol açabilir.'},
+      {h: '4. Aşama: Dialogmøte 2 — 26. haftaya kadar'},
+      '26. haftaya gelindiğinde NAV devreye girer ve bir **dialogmøte 2** düzenler. Bu toplantı işveren, çalışan ve genellikle hekimi içerir. NAV\'ın amacı çalışanın uzun vadeli çalışma kapasitesini değerlendirmek ve uygun desteği planlamaktır.',
+      'İşveren bu toplantıdan önce güncel oppfølgingsplan\'ı NAV\'a iletmek zorundadır. Belge hazır değilse ya da toplantıya katılım sağlanmazsa NAV ek inceleme başlatabilir.',
+      {h: '52. hafta ve sonrası'},
+      '52 hafta dolduğunda **sykepenger** (hastalık parası) sona erer. Çalışan bu noktada hâlâ iş göremez durumdaysa NAV üzerinden farklı desteklere (AAP — arbeidsavklaringspenger veya uføretrygd) başvurulabilir. İşverenin bu aşamadaki rolü azalır; NAV süreci yönetir.',
+      {h: 'Belgeleme neden kritik'},
+      'Norveç iş hukukunda "yapıldı" demek yetmez; yapıldığının kanıtlanması gerekir. İşverenin tutması gereken kayıtlar:',
+      {ul: [
+        '**Temas günlüğü:** her iletişimin tarihi, yöntemi ve özeti',
+        '**Oppfølgingsplan versiyonları:** tüm güncellemelerle birlikte imzalı kopyalar',
+        '**Toplantı tutanakları:** Dialogmøte 1 ve 2 için katılımcılar, konuşulan noktalar, alınan kararlar',
+        '**Kolaylaştırma denemeleri:** hangi düzenlemeler teklif edildi, hangisi kabul edildi, hangisi neden mümkün olmadı'
+      ]},
+      'NAV denetim talep ettiğinde ya da çalışan itiraz başlattığında bu belgeler birincil kanıt olarak kullanılır.',
+      {h: 'Sık yapılan hatalar'},
+      'Yıllar içinde ortaya çıkan kalıplar şunlar:',
+      {ul: [
+        '**"Kendiliğinden geçer" beklentisi.** İki hafta sessiz kalmak hukuki süreci durdurmaz; süre işlemeye devam eder.',
+        '**Çalışana sorulmadan plan hazırlamak.** Plan çalışanla birlikte hazırlanmazsa hem yasaya hem de ilişkiye zarar verir.',
+        '**Toplantıyı belgelemeden kapatmak.** Toplantı yapıldı ama tutanak yok — denetimde sözlü ifade kanıt sayılmaz.',
+        '**Hekimi döngünün dışında tutmak.** Oppfølgingsplan\'ın hekime gönderilmemesi bilgi eksikliğine ve gereksiz uzamaya yol açar.'
+      ]},
+      {h: 'IA-avtalen kapsamındaki işyerleri'},
+      'Norveç\'te **IA-avtalen** (Inkluderende Arbeidsliv — Kapsayıcı Çalışma Hayatı) anlaşmasını imzalayan işyerleri ek kaynaklara erişebilir: NAV\'ın iş yeri irtibat görevlisi (arbeidslivssenter), önce sağlık değerlendirmesi ve artan eğitim desteği. Bu anlaşmayı imzalamamış işyerleri de aynı yasal yükümlülüklere tabidir; ek destekten yararlanma fırsatlarını kaçırırlar.',
+      {h: 'İçerik ve iletişimde nerede devreye girebiliriz'},
+      'Sykefraværsoppfølging sürecinin her aşamasında iletişim kritik bir rol oynar: çalışana gönderilen ilk mesaj, hazırlanan takip planı, toplantı öncesi özet ve sonrasında paylaşılan notlar. Bu metinlerin hem yasaya uygun hem de insan dilinde yazılması önem taşır.',
+      'QBLOGG, İK iletişimi için şablonlar ve içerik üretir: çalışana hitap eden nazik ama net dil, yönetici kılavuzları, iç intranet içeriği. Düzenli üretim için {see:ai-icerik-studyosu} konusundaki yazımıza göz atın.',
+      {see: 'ai-icerik-studyosu'}
+    ],
+    en: [
+      'When a Norwegian employee goes on sick leave, a legal clock starts for the employer. The Arbeidsmiljøloven (Working Environment Act) §4-6 mandates a sequence of documented steps within defined deadlines. Missing them exposes the employer to NAV audits and potential disputes. This article breaks that clock into four phases — when each starts, who does what, and what to document.',
+      'Numbers in this article reflect Norwegian labour law as understood at the time of writing; verify with official sources before acting.',
+      {h: 'Phase 1: Early contact — from day one'},
+      'The expectation is immediate: as soon as the employee calls in sick, the employer begins contact. In practice this is often a phone call or short message within the first week. The goal is not surveillance — it is clarifying the situation: who covers the workload, is any adjustment needed, is a return likely within a short time?',
+      'Early contact protects the relationship. Prolonged silence on either side makes return harder. In small companies this is the direct manager; in larger ones HR opens the process.',
+      {h: 'Phase 2: Oppfølgingsplan (Follow-up plan) — by week 4'},
+      'If sick leave is expected to last — or has already lasted — more than four weeks, the employer must prepare an **oppfølgingsplan** together with the employee. Both parties sign it.',
+      'A complete plan covers:',
+      {ul: [
+        '**Current tasks:** what the employee can and cannot do right now',
+        '**Facilitation measures:** task adjustment, remote work, part-time return, reassignment',
+        '**Return goal:** estimated date or conditions (not legally required, but useful)',
+        '**Responsibility:** who follows up, how, and how often'
+      ]},
+      'The plan is also sent to the employee\'s GP (sykmelder), who may update it based on clinical assessment. It is the primary evidence of good faith if NAV or a tribunal later reviews the case.',
+      {h: 'Phase 3: Dialogmøte 1 (Dialogue meeting 1) — by week 7'},
+      'At seven weeks the employer is obligated to hold **dialogmøte 1**. The employee and employer meet; the employee may bring their GP or a representative. This is not a disciplinary meeting — the sole question is: what adjustments could make a return possible?',
+      'Outcomes are written up, and the oppfølgingsplan is updated. If the employee refuses to attend without a reasonable cause, this is recorded and may affect their NAV benefits.',
+      {note: 'Partial return (gradert sykmelding) can start at any point before week 7; dialogmøte 1 formalises the arrangement if it has not been set up already.'},
+      {h: 'Phase 4: Dialogmøte 2 — by week 26'},
+      'NAV organises **dialogmøte 2** at around 26 weeks. The employer, employee and usually the GP attend. NAV assesses long-term work capacity and plans support. The employer must send the current oppfølgingsplan to NAV before this meeting. Failure to do so or to attend without good reason triggers a follow-up inquiry.',
+      {h: 'Week 52 and beyond'},
+      'Sykepenger (sick pay from NAV) ends at 52 weeks. If the employee is still unable to work, they may apply for AAP (work assessment allowance) or, in permanent cases, uføretrygd (disability benefit). The employer\'s formal obligations diminish at this stage; NAV manages the process.',
+      {h: 'Documentation: the silent rule'},
+      'In Norwegian labour law, saying it happened is not enough — you must be able to prove it. Keep:',
+      {ul: [
+        '**Contact log:** date, method, and summary of every communication',
+        '**Signed oppfølgingsplan versions:** all updates with timestamps',
+        '**Meeting minutes:** participants, topics, decisions for both dialogmøter',
+        '**Facilitation record:** what was offered, what was accepted, what was not feasible and why'
+      ]},
+      'These documents are the first thing NAV requests in an audit and the foundation of any legal defence.',
+      {h: 'Common mistakes'},
+      {ul: [
+        '**Waiting it out.** Two weeks of silence does not pause the legal clock.',
+        '**Writing the plan without the employee.** The plan must be prepared jointly — doing it unilaterally violates both the law and the working relationship.',
+        '**Undocumented meetings.** A meeting happened but no minutes exist — verbal accounts are not accepted as evidence in audits.',
+        '**Leaving the GP out.** Not sending the oppfølgingsplan to the sykmelder creates information gaps and unnecessary delays.'
+      ]},
+      {h: 'IA-avtalen workplaces'},
+      'Companies signed up to the **IA-avtalen** (Inkluderende Arbeidsliv — Inclusive Working Life agreement) get extras: a dedicated NAV workplace advisor (arbeidslivssenter contact), earlier health assessments, and expanded training support. Workplaces not signed up face the same legal obligations — they simply miss the additional resources.',
+      {h: 'Where content fits in'},
+      'Every phase of sykefraværsoppfølging requires clear written communication: the initial message to the employee, the follow-up plan itself, the pre-meeting summary, and the post-meeting notes. These texts need to be legally sound and human in tone.',
+      'QBLOGG produces HR communication templates and workplace content: employee-facing language that is firm but kind, manager guides, and internal intranet copy. For building a consistent production rhythm, see {see:ai-icerik-studyosu}.',
+      {see: 'ai-icerik-studyosu'}
+    ],
+    zh: [
+      '在挪威，雇员病假超过四周时，雇主须依法完成四个阶段的跟进：早期联系、跟进计划（oppfølgingsplan，第4周前）、对话会议1（第7周前）和NAV主持的对话会议2（第26周前）。每个阶段均需书面记录。',
+      '法律依据为《劳动环境法》（Arbeidsmiljøloven）第4-6条。跟进计划须由雇主与员工共同制定并签署，并发送给主治医生。未完成任何一个阶段均可能引发NAV审计或劳动纠纷。',
+      '文件记录是该流程的核心——联系记录、签署的计划版本及会议纪要构成合规的基础证据。在信息核实前，请通过nav.no或arbeidstilsynet.no确认最新要求。'
+    ],
+    hi: [
+      'नॉर्वे में, जब कोई कर्मचारी चार हफ्ते से अधिक समय के लिए बीमार छुट्टी पर होता है, तो नियोक्ता को कानूनी रूप से चार चरणों का पालन करना होता है: शीघ्र संपर्क, अनुसरण योजना (चौथे सप्ताह तक), संवाद बैठक 1 (सातवें सप्ताह तक), और NAV द्वारा आयोजित संवाद बैठक 2 (26वें सप्ताह तक)।',
+      'कानूनी आधार अर्बाइड्समिल्योलोवेन (Arbeidsmiljøloven) धारा 4-6 है। अनुसरण योजना नियोक्ता और कर्मचारी मिलकर बनाते हैं, दोनों हस्ताक्षर करते हैं, और इसे उपचारकर्ता को भी भेजा जाता है। किसी भी चरण में चूक होने पर NAV जांच या विवाद हो सकता है।',
+      'दस्तावेज़ीकरण इस प्रक्रिया का मूल है — संपर्क लॉग, हस्ताक्षरित योजनाएँ और बैठक के मिनट प्राथमिक साक्ष्य हैं। वर्तमान आवश्यकताओं के लिए nav.no या arbeidstilsynet.no पर जाँचें।'
+    ],
+    es: [
+      'En Noruega, cuando un empleado está de baja por más de cuatro semanas, el empleador debe completar cuatro fases legalmente obligatorias: contacto temprano, plan de seguimiento (antes de la semana 4), reunión de diálogo 1 (antes de la semana 7) y reunión de diálogo 2 organizada por NAV (antes de la semana 26).',
+      'La base legal es el §4-6 de la Ley del Entorno Laboral (Arbeidsmiljøloven). El plan de seguimiento se elabora conjuntamente con el empleado, ambos lo firman y se envía al médico tratante. El incumplimiento de cualquier fase puede derivar en una auditoría de NAV o en una disputa laboral.',
+      'La documentación es el núcleo del proceso: registro de contactos, versiones firmadas del plan y actas de reuniones. Verifique los requisitos actuales en nav.no o arbeidstilsynet.no antes de actuar.'
+    ],
+    ar: [
+      'في النرويج، حين يتغيب موظف عن العمل بسبب المرض لأكثر من أربعة أسابيع، يلتزم صاحب العمل قانونياً بإتمام أربع مراحل: التواصل المبكر، خطة المتابعة (oppfølgingsplan) قبل الأسبوع الرابع، اجتماع الحوار الأول قبل الأسبوع السابع، واجتماع الحوار الثاني الذي تنظمه NAV قبل الأسبوع السادس والعشرين.',
+      'الأساس القانوني هو المادة 4-6 من قانون بيئة العمل (Arbeidsmiljøloven). تُعَدّ خطة المتابعة بمشاركة الموظف، يوقّعها الطرفان، وتُرسَل إلى الطبيب المعالج. الإخلال بأي مرحلة قد يعرّض صاحب العمل لتفتيش NAV أو نزاع قانوني.',
+      'التوثيق هو جوهر العملية: سجل التواصل، النسخ الموقّعة من الخطة، ومحاضر الاجتماعات. تحقّق من المتطلبات الحالية عبر nav.no أو arbeidstilsynet.no قبل اتخاذ أي إجراء.'
+    ],
+    fr: [
+      'En Norvège, lorsqu’un salarié est en arrêt maladie depuis plus de quatre semaines, l’employeur doit accomplir quatre étapes légalement obligatoires : contact précoce, plan de suivi (avant la semaine 4), réunion de dialogue 1 (avant la semaine 7) et réunion de dialogue 2 organisée par NAV (avant la semaine 26).',
+      'Le fondement juridique est l’article 4-6 de la loi sur le milieu de travail (Arbeidsmiljøloven). Le plan de suivi est élaboré conjointement avec le salarié, signé par les deux parties et transmis au médecin traitant. Le non-respect d’une étape peut entraîner un contrôle NAV ou un litige.',
+      'La documentation est au cœur du processus : journal des contacts, versions signées du plan et comptes rendus de réunions. Vérifiez les exigences en vigueur sur nav.no ou arbeidstilsynet.no avant toute action.'
+    ],
+    pt: [
+      'Na Noruega, quando um funcionário está de licença médica por mais de quatro semanas, o empregador deve cumprir quatro etapas legalmente obrigatórias: contato inicial, plano de acompanhamento (até a semana 4), reunião de diálogo 1 (até a semana 7) e reunião de diálogo 2 organizada pela NAV (até a semana 26).',
+      'A base legal é o §4-6 da Lei do Ambiente de Trabalho (Arbeidsmiljøloven). O plano é elaborado em conjunto com o funcionário, assinado por ambas as partes e enviado ao médico assistente. O descumprimento de qualquer etapa pode resultar em auditoria da NAV ou disputa trabalhista.',
+      'A documentação é o núcleo do processo: registro de contatos, versões assinadas do plano e atas de reuniões. Verifique os requisitos atuais em nav.no ou arbeidstilsynet.no antes de agir.'
+    ],
+    ru: [
+      'В Норвегии, когда сотрудник находится на больничном более четырёх недель, работодатель обязан выполнить четыре законодательно закреплённых этапа: ранний контакт, план сопровождения (до 4-й недели), диалоговое совещание 1 (до 7-й недели) и диалоговое совещание 2 под руководством NAV (до 26-й недели).',
+      'Правовая основа — §4-6 Закона о рабочей среде (Arbeidsmiljøloven). План составляется совместно с работником, подписывается обеими сторонами и направляется лечащему врачу. Нарушение любого из этапов может повлечь проверку NAV или трудовой спор.',
+      'Документирование — основа всего процесса: журнал контактов, подписанные версии плана и протоколы встреч. Актуальные требования проверяйте на nav.no или arbeidstilsynet.no.'
+    ],
+    no: [
+      'Sykefraværsoppfølging er lovpålagt i Norge gjennom Arbeidsmiljøloven §4-6. Når en ansatt er sykmeldt lenger enn forventet, utløses fire frister: tidlig kontakt (fra dag én), oppfølgingsplan (innen fire uker), dialogmøte 1 (innen syv uker) og dialogmøte 2 organisert av NAV (innen 26 uker). Alle frister regnes fra sykemeldingsstart — ikke fra kalenderuke.',
+      'Oppfølgingsplanen utarbeides av arbeidsgiver og ansatt i fellesskap, signeres av begge og sendes til sykmelder. Den er primærdokumentet i en eventuell NAV-kontroll. Dialogmøte 1 er ikke et disiplinærmøte — spørsmålet er utelukkende: hva skal til for å komme tilbake? Dialogmøte 2 avholdes av NAV og handler om langsiktig arbeidsevne.',
+      'Dokumentasjon er kjernekravet: kontaktlogg, signerte versjoner av planen og møtereferat fra begge dialogmøter. Manglende dokumentasjon er den vanligste årsaken til at arbeidsgivere ikke vinner saker i Arbeidsretten. Sjekk nav.no eller arbeidstilsynet.no for gjeldende krav.'
+    ]
+  }
+},
+{
   slug: 'yapay-zeka-hakkinda-en-cok-sorulanlar',
   category: 'safety', date: '2026-08-20', accent: 5, icon: 'question',
   orig: "Soruları üç kovaya ayırdık — bugün olan, olması muhtemel, spekülasyon — ve her birinin hangi kovaya neden düştüğünü yazdık. Sayfayı üreten sistem kendi doğrulanamayan yanlarını da listeledi; sonunda okurun kullanabileceği dört maddelik bir güven çerçevesi var.",
