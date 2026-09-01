@@ -8,6 +8,7 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
 | Dizin | Proje | Stack | Durum |
 |---|---|---|---|
 | `/` (kök) | **QBLOGG** — içerik stüdyosu tanıtım + blog sitesi | Saf HTML/CSS/JS, 10 dil | Yayında: qblogg.vercel.app |
+| `hxi/` | **HXI** — Oslo elektronik artist sitesi | Saf HTML/CSS/JS | Geliştirmede · `brand/hxi/` marka mimarisi |
 | `beta-art/` | **Beta Art** — doğrulanmış insan fotoğrafçılığı ve arşiv | React + Vite + Bun + shadcn/ui | Kaynak: `andersenbetul-alt/beta-art-archive` |
 | `naviar/` | **NAVIAR CARE** — Norveç yaşlı bakım koordinasyon platformu | Next.js (v0.app kökenli) | Kaynak: `betulandersen-droid/naviar-care-1` (transfer bekleniyor) |
 | `agents/eve-slack-agent/` | **naviar-consult & hxi-music** — Eve Slack botu | TypeScript + pnpm + Claude Sonnet | Vercel: naviar-consult, hxi-music. Bot kimliği `AGENT_PROFILE` env değişkeniyle ayrılır |
@@ -15,11 +16,12 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
 | `demo/` | Action Pages demoları | Saf HTML/JS | qblogg.vercel.app/demo/ |
 | `engine/` | Curiosity Engine — içerik üretim hattı | Node.js + SQLite | Yerel çalışır |
 | `docs/` | Tüm projeler için belgeleme | Markdown | — |
-| `hxi/` | **HXI** — resmi web sitesi (nordic-pulse) | TanStack Start + React 19 + Tailwind v4 | Yayında: hxi-nordic-pulse.lovable.app |
+| `hxi/` | **HXI** — V1 TanStack kaynağı + marka-mimarisi statik sayfaları (aynı klasörde) | Karışık | Statik sayfalar hximusic sitesinde /v8 |
 | `hxi-v2/` | **HXI v2** — Flag Edition, Supabase müzik kataloğu | TanStack Start + Supabase + shadcn/ui | Lovable: `50f62e94-6826-409e-9bcf-df1d71d8d029` |
 | `hxi-v4/` | **HXI v4** — Phonk Studio Pro, en eksiksiz sürüm (14 bölüm) | TanStack Start + React 19 + Tailwind v4 | Lovable: `daddeade-7b69-4b6a-bda8-e3e3acab8645` |
 | `hxi-v5/` | **HXI v5** — Acid Signal, Next.js yeniden yazım; 6 dil, RTL, acid yeşil `#c8ff00` | Next.js 15 + React 19 + Vanilla CSS | Geliştirme — Vercel: hxi-v5 (beklemede) |
 | `hxi-v6/` | **HXI v6 — Utgave 01** — gerçek HXI içeriği; 10 dil, RTL, kahraman fotoğraf, Spotify embed, NCS atıfları | Next.js 15 + React 19 + Vanilla CSS | Geliştirme |
+| `brand/hxi/` | **HXI marka mimarisi** — brand DNA, görsel kimlik, site mimarisi | Markdown | 100/100 Final · 30.08.2026 |
 
 ## Vercel projeleri (BET-ART takımı)
 
@@ -39,6 +41,8 @@ Bu depo tüm projelerin tek merkezde toplandığı ana depodur.
 ## Geliştirme notları
 
 - QBLOGG (kök): `npm run dev` → http://localhost:8000
+- **HXI**: `cd hxi && python3 -m http.server 8001` → http://localhost:8001 (saf HTML, sunucu gerekmez)
+  - Marka mimarisi: `brand/hxi/README.md` ve `brand/hxi/CONCEPT.md`
 - Beta Art: `cd beta-art && bun install && bun dev`
 - Eve Chat Template: `cd agents/eve-chat-template && pnpm install && pnpm dev`
 - Eve Slack Agent: `cd agents/eve-slack-agent && pnpm install && AGENT_PROFILE=hxi-music pnpm dev`
