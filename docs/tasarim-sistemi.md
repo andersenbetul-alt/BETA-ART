@@ -4,7 +4,9 @@ Figma MCP entegrasyonu için istendi, ama asıl işlevi daha geniş: bir Figma
 tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
-**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 22.08.2026 itibarıyla.
+**Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 26.08.2026 itibarıyla
+(22.08'den beri main.css'e 6 commit daha girdi: karşılaştırma tablosu, TOC,
+yazdırma CSS'i — sayılar buna göre güncellendi).
 
 ---
 
@@ -70,7 +72,9 @@ yerine ölçek basamakları.
 | `--on-brand` | `#ffffff` | `#08202f` | Marka üzerindeki metin |
 | `--brand-2-ink` | `#0a7d72` | `var(--brand-2)` | Metinde kullanılacak aqua |
 
-**Aqua tuzağı.** `#00D8C2` beyaz üzerinde **1,9:1**'dir — WCAG AA'nın (4,5:1)
+**Aqua tuzağı.** `#00D8C2` beyaz üzerinde **1,8:1**'dir (WCAG göreli
+parlaklık formülüyle yeniden hesaplandı, 26.08.2026 — önceki "1,9:1" hatalı
+yuvarlamaydı, CLAUDE.md'nin rakamı doğruydu) — WCAG AA'nın (4,5:1)
 çok altında, metinde **kullanılamaz**. Açık zeminde aqua metin gerekiyorsa
 `var(--brand-2-ink)` kullanın. Figma'dan gelen bir tasarımda aqua metin varsa
 bu bir hatadır, çevirmeyin — dönüştürün.
@@ -105,15 +109,22 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 
 **Yoktur.** Bileşen mimarisi, Storybook, bileşen dokümantasyonu — hiçbiri yok.
 
-Yerine geçen şey: `assets/css/main.css` içindeki tekrar eden sınıf desenleri,
-sekiz HTML sayfasında elle kullanılıyor. Sayfa iskeleti (menü + altbilgi)
-sekiz dosyada **tekrar eder**: `index`, `work`, `blog`, `post`, `gizlilik`,
-`kosullar`, `kalite`, `ornek` (`404.html` bilinçli olarak menüsüz, dokuzuncu
-sayfa olarak ayrı sayılır).
+Yerine geçen şey: `assets/css/main.css` içinde **119 benzersiz sınıf** (629
+satır), sekiz HTML sayfasında elle kullanılıyor. Sayfa iskeleti (menü +
+altbilgi) sekiz dosyada **tekrar eder**: `index`, `work`, `blog`, `post`,
+`gizlilik`, `kosullar`, `kalite`, `ornek` (`404` kasıtlı hariç).
+
+Ayrıca `demo/` dizininde ayrı bir kalıp var: **Action Pages** (`cv-action-page`,
+`q-work-audit`). Bunlar `main.css`'i **yüklemez** — tek dosyalık, kendi
+`<style>` bloğunda aynı marka belirteçlerini (`--brand`, `--brand-2-ink`,
+sekiz basamaklı ölçek yerine sadeleştirilmiş kendi değişkenleri) tekrar tanımlar,
+çünkü bağımsız/paylaşılabilir kalmaları gerekiyor. Figma'dan bir satış/anket
+sayfası çeviriyorsanız hedef `main.css` değil, bu desendir.
 
 > **Figma'dan bileşen çevirirken:** menüyü ya da altbilgiyi değiştiriyorsanız
-> **sekiz dosyayı birden** güncelleyin. `npm run check` çiftlenen id ve
-> script'i yakalar ama eksik menü bağlantısını yakalamaz.
+> **sekiz dosyayı birden** güncelleyin (`.claude/skills/qblogg-sayfa-iskeleti/`
+> bu senkronu ve kendi doğrulama betiğini taşır). `npm run check` çiftlenen id
+> ve script'i yakalar ama eksik menü bağlantısını yakalamaz.
 
 JavaScript'te bileşene en yakın şey `assets/js/app.js` içindeki
 `cardHTML(post, seviye)` — dize döndüren bir işlev, sınıf değil.
@@ -166,10 +177,24 @@ Bu, `assets/fonts/inter.css` başında kayıtlı. Figma bir Google Fonts bağlan
 ### Optimizasyon
 
 Alt kümeleme `unicode-range` ile: latin, latin-ext, cyrillic, cyrillic-ext.
-Ziyaretçi yalnızca kendi dilinin gerektirdiği baytı indirir. Arapça, Çince ve
-Devanagari **sistem yazı tiplerine** düşer — `--font` yığınında tanımlı.
+Ağırlık ekseni (400–800) tek bir değişken dosyada — `main.css`'te kullanılan
+beş ağırlığın (400/500/600/700/800) hepsi gerçekten kullanılıyor, kırpılacak
+fazlalık yok (30.08.2026'da doğrulandı). Arapça, Çince ve Devanagari **sistem
+yazı tiplerine** düşer — `--font` yığınında tanımlı.
 
 `font-display: swap` her `@font-face`'te.
+
+**Ölçülmüş gerçek: "ziyaretçi yalnızca kendi dilinin baytını indirir" iddiası
+tam doğru değil.** Playwright ile doğrulandı (30.08.2026): `?lang=en` ile
+açılan sayfa bile `inter-latin-ext.woff2`'yi (85 KB — en büyük dosya, temel
+`inter-latin.woff2`'den bile büyük) indiriyor, oysa nihai İngilizce metinde
+tek bir latin-ext karakteri yok. Sebep: betikler `</body>`'den hemen önce
+yükleniyor (kural 3 gereği — JS kapalıyken görünen Türkçe yedek), tarayıcı
+bu Türkçe metni JS onu değiştirmeden önce bir an boyar; ğ/ş gibi karakterler
+latin-ext'i tetikliyor ve indirme, metin değiştirildikten sonra bile devam
+ediyor. Düzeltmek betik yükleme sırasını (ilk boyamadan önce dil değiştirme)
+değiştirmeyi gerektirir — bu, hızlı ilk boyama ile gereksiz 85 KB arasında
+gerçek bir ödünleşim, tek satırlık bir düzeltme değil.
 
 ---
 
@@ -272,7 +297,7 @@ bakın.
 ## 7. Proje yapısı
 
 ```
-*.html                  6 sayfa — iskelet tekrar eder
+*.html                  9 sayfa — 8'i iskelet tekrar eder, 404 hariç
 assets/css/main.css     tek stil dosyası
 assets/js/config.js     yayın ayarları — yayına almak için tek dokunulacak dosya
 assets/js/i18n.js       10 dil × 233 anahtar
@@ -293,7 +318,7 @@ vendor/                 Inter resmi dağıtımı (yayına çıkmaz)
 ## Figma'dan çeviri yaparken kontrol listesi
 
 1. **Renkler** belirteçten mi geliyor? Ham hex varsa `var(--…)`'ya çevirin
-2. **Aqua metin** var mı? `--brand-2-ink`'e çevirin — `#00D8C2` metinde 1,9:1
+2. **Aqua metin** var mı? `--brand-2-ink`'e çevirin — `#00D8C2` metinde 1,8:1
 3. **Yazı boyutları** sekiz basamağa oturuyor mu? Ham `rem` yazmayın
 4. **İkonlar** satır içi SVG mi, 24×24 / 1.7 / `currentColor` mı?
 5. **Emoji** var mı? Varsa ikona çevirin

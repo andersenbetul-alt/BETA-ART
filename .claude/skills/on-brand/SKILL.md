@@ -1,112 +1,116 @@
 ---
 name: on-brand
-description: QBLOGG için marka denetim kapısı — renk belirteçleri, yazı ölçeği, boşluk/dokunma hedefi, ikon kuralı ve içerik bütünlüğü (ses/voice) kurallarını, üretilen her içerik veya arayüz parçasına karşı denetler; kural ihlali varsa sessizce geçmez, kısa gerekçeyle ya düzeltir ya reddeder. Şu durumlarda MUTLAKA kullan: yeni bir HTML/CSS bileşeni, sayfa bölümü veya Figma çevirisi üretirken; pazarlama/blog/sosyal metni yazarken; "bu markaya uygun mu", "on-brand mi", "renk/tipografi/boşluk kontrol et" denildiğinde; herhangi bir görsel veya metin çıktısını QBLOGG adına yayına hazırlarken.
-owner: QBLOGG
-version: 0.1.0
+description: QBLOGG için marka uygunluk denetçisi — renk, tipografi, aralık/yerleşim ve ses kurallarını her içerik veya arayüz üretiminde uygular. Yeni bir HTML/CSS parçası, e-posta, sosyal metin, buton, kart, banner, ikon ya da blog paragrafı üretirken — kullanıcı açıkça "marka kontrolü yap" demese bile — bu beceriyi yükle ve çıktıyı teslim etmeden önce buradaki kurallara karşı kontrol et. Marka dışı bir istek gelirse (aqua renginde metin, Google Fonts, emoji ikon, `margin-left`, "garanti/kesin" dili gibi) sessizce uygulama ya da sessizce düzeltme — kısa gerekçeyle reddet, sonra marka-uyumlu alternatifi sun.
 ---
 
-# on-brand — QBLOGG marka denetim kapısı
+# on-brand — QBLOGG marka denetçisi
 
-Bu beceri yeni bir kural kaynağı **değildir** — kurallar zaten
-`docs/tasarim-sistemi.md` ve `docs/figma-tasarim-kurallari.md`'de var ve
-oradan **tek kaynak** olarak okunur, burada kopyalanmaz. Bu beceri onların
-üstüne bir **denetim/reddetme katmanı** koyar: bir şey üretilirken bu
-listeye karşı çalıştırılır, mekanik ihlaller kısa gerekçeyle otomatik
-düzeltilir, yargı gerektirenler kısa gerekçeyle işaretlenip sorulur.
+Bu beceri, dört kaynaktan damıtıldı — hiçbir kural burada icat edilmedi:
+`docs/tasarim-sistemi.md` (renk/tipografi/aralık), `assets/css/main.css`
+(gerçek `:root` değerleri), `.claude/skills/qblogg-blog-yazisi/SKILL.md`
+"Kalite kuralları" ve CLAUDE.md'nin uydurma/abartı yasağı. **Ayrı bir
+"marka sesi" belgesi yok** — bu ikisi (kalite kuralları + uydurma yasağı)
+QBLOGG'un fiili ses kuralıdır; kaynak buysa, bu beceri de bunu söyler.
 
-**Kapsam notu:** Bu beceri **QBLOGG**'un markasını denetler — bu depodaki
-tek gerçek, ölçülü tasarım sistemi bu. `docs/beta-art-konsept.md`'de
-tanımlanan "Beta Art" ürünü henüz kendi renk/tipografi/ses sistemine sahip
-değil (§M'de açık karar); o ürün için ayrı belirteçler kurulunca bu
-beceriye ikinci bir bölüm eklenmeli, şimdilik burada yok.
+Çelişki hâlinde CLAUDE.md kazanır — bu beceri onun bir alt kümesidir.
 
-## Nasıl çalışır
+## Neden bu bir "reddet" becerisi, "düzelt" becerisi değil
 
-Bir HTML/CSS parçası, bir bileşen, bir pazarlama/blog metni veya bir
-Figma çevirisi üretmeden önce (ya da üretildikten hemen sonra, teslim
-etmeden önce) aşağıdaki tabloyu satır satır kontrol et. Her satır için:
+Sessizce düzeltmek iki sorun yaratır: kullanıcı neyin yanlış olduğunu
+öğrenmez (aynı hatayı tekrar ister), ve bazen "düzeltme" kullanıcının asıl
+istediğini kaybeder. Bunun yerine: **kısa gerekçeyle reddet, sonra
+marka-uyumlu alternatifi hemen sun.** Tek cümlelik gerekçe + çözüm — uzun
+ders değil.
 
-- **Mekanik ihlal** (belirteç, ölçek, ikon, yön, dokunma hedefi) →
-  **otomatik düzelt**, ama sessizce değil: kullanıcıya/çıktıya tek satırlık
-  gerekçe ekle ("`#00D8C2` metin renginde kullanılamaz [1.9:1] →
-  `var(--brand-2-ink)`'e çevrildi [5.0:1]").
-- **Yargı gerektiren ihlal** (ses/voice, kaynaksız iddia) → **durdur ve
-  sor** ya da açıkça "bu satır kaynaksız, kaldırdım" de; asla sessizce
-  geçme veya sessizce uydurma bir kaynak ekleme.
+## Kontrol listesi
 
-## 1. Renk
+Her içerik/arayüz üretiminde, teslim etmeden önce şunları tara:
 
-| Kontrol | İhlal örneği | Kısa gerekçe → düzeltme |
-|---|---|---|
-| Ham hex mi? | `color: #082C54` | "Ham hex; koyu tema kırılır → `var(--brand)`" |
-| Aqua metinde mi? | `color: #00D8C2` bir metinde | "`#00D8C2` beyazda 1.9:1, WCAG AA altı → `var(--brand-2-ink)` (5.0:1)" |
-| Belirteç dışı yeni ton mu? | Depoda olmayan bir mavi/yeşil | "Yeni ara ton yok → en yakın belirtece yuvarla" |
+### 1. Renk — ham hex yazılmaz
 
-Tam belirteç listesi ve kontrast ölçümleri: `docs/tasarim-sistemi.md` §1,
-`docs/figma-tasarim-kurallari.md` §1.
+Her renk `var(--token)` ile gelir; token'lar (`assets/css/main.css`):
+`--bg`, `--bg-soft`, `--bg-card`, `--text`, `--text-muted`, `--border`,
+`--brand` (#082C54, koyu temada aqua'ya döner), `--brand-2` (#00D8C2,
+yalnızca vurgu), `--brand-2-ink` (#0a7d72, metinde kullanılacak aqua),
+`--on-brand`, `--danger`.
 
-## 2. Tipografi
+**Tuzak:** `--brand-2` (aqua) beyaz üzerinde **1,8:1** — WCAG AA'nın
+(4,5:1) çok altında. Aqua **hiçbir zaman metin rengi olamaz**; metin için
+her zaman `--brand-2-ink`.
 
-| Kontrol | İhlal örneği | Kısa gerekçe → düzeltme |
-|---|---|---|
-| Ham `rem`/`px` mi? | `font-size: 0.9rem` | "Ölçek dışı → en yakın basamak (`--fs-md` .92rem)" |
-| Sekiz basamağın dışında mı? | `.83rem` gibi ara bir değer | "Sekiz basamağa oturmuyor → yuvarla" |
-| `--fs-logo` sistemin dışında kullanılıyor mu? | Logo dışı bir yerde `--fs-logo` | "Bu belirteç yalnız logo oranı için, başka yerde kullanılmaz" |
+**Neden reddedilir, düzeltilmez:** Ham hex ya da sabit renk yazılırsa koyu
+tema kendiliğinden çalışmaz — token kullanmak koyu temanın **tek**
+çalışma mekanizması. Sessizce "düzelttim" demek, kullanıcının bir dahaki
+sefere yine ham hex isteyeceği anlamına gelir.
 
-İstisna (denetim gerektirmez): başlıkların `clamp()` değerleri, `em`
-göreli boyutlar (ilk harf, `code`).
+**Örnek**
+> İstek: "Butonu #00D8C2 renginde, üzerinde beyaz yazıyla yap."
+> Yanıt: Reddediyorum — aqua (#00D8C2) beyaz üzerinde 1,8:1 kontrast
+> veriyor, WCAG AA'nın çok altında ve koyu temada bozulur. Bunun yerine
+> `background: var(--brand); color: var(--on-brand)` kullanıyorum —
+> aynı marka hissi, okunabilir ve tema-uyumlu.
 
-## 3. Boşluk / dokunma hedefi
+### 2. Tipografi — sekiz basamaklı ölçek
 
-| Kontrol | İhlal örneği | Kısa gerekçe → düzeltme |
-|---|---|---|
-| Yön bağımlı özellik mi? | `margin-left`, `left`, `padding-right` | "RTL'de kırılır → `margin-inline-start` / `inset-inline-start` / `padding-inline-end`" |
-| Dokunma hedefi <44px mi? | 32px'lik bir düğme/ikon linki | "Erişilebilirlik tabanı 44px altında → büyüt" |
-| `--maxw`/`--radius` dışı sabit değer mi? | `max-width: 1200px` gibi elle yazılmış | "Belirteçten sap → `var(--maxw)`/`var(--radius)`" |
-| Yeni bir breakpoint mı açılıyor? | `@media (max-width: 700px)` | "Mevcut dört basamağa (1180/860/620/360) oturmuyor mu, önce onu dene" |
+`--fs-2xs` … `--fs-xl` + `--fs-logo`. Ham `rem` yazılmaz. İstisnalar:
+başlık `clamp()` değerleri, `em` göreli boyutlar (ilk harf, `code`),
+`--fs-logo` (ölçeğe yuvarlanmaz, marka belgesinde ölçülü).
 
-## 4. İkon
+Yazı tipi: Inter, **yerelde** (`assets/fonts/`). Google Fonts CDN'i asla
+önerilmez — ziyaretçinin IP'sini Google'a gönderir, Münih Bölge Mahkemesi
+kararı (3 O 17493/20) sonrası AB'de riskli. Bu proje zaten hiçbir dış
+istek yapmıyor; bir Google Fonts linki bunu kırar.
 
-| Kontrol | İhlal örneği | Kısa gerekçe → düzeltme |
-|---|---|---|
-| Emoji mi? | 💡 ✅ 🚀 | "Emoji yasak (OS'e göre değişir) → `ICONS` kaydından SVG veya 24×24/`stroke-width:1.7`/`currentColor` kuralına göre yeni ikon" |
-| Sabit renkli SVG mi? | `fill="#082C54"` içeren ikon | "İkon `currentColor` kullanmalı ki tema değişince dönsün" |
-| 24×24 dışı ızgara mı? | `viewBox="0 0 32 32"` | "Sabit ızgara 24×24; ölçekle" |
+### 3. Aralık ve yerleşim
 
-## 5. Metin bütünlüğü (i18n)
+Token'lar: `--radius` (16px), `--radius-sm` (10px), `--maxw` (1140px).
+Dokunma hedefi en az 44px.
 
-| Kontrol | İhlal örneği | Kısa gerekçe |
-|---|---|---|
-| HTML'e sabit metin mi gömüldü? | `<h2>Paketler</h2>` (anahtar yok) | "Görünen metin `data-i18n` ile sözlükten gelmeli; HTML'deki metin yalnız JS-kapalı yedek" |
-| Yeni anahtar 10 dilin hepsinde mi? | Yalnız `tr`/`en`'de eklendi | "Eksik dilde sessizce İngilizceye düşer — bu güvenlik ağı, çözüm değil; 10 dile birden ekle" |
+**RTL — yön bağımlı CSS yazılmaz.** `margin-left`/`left`/`padding-right`
+yerine `margin-inline-start`/`inset-inline-start`/`padding-inline-end`.
+Arapça sitenin on dilinden biri; yön bağımlı bir kural doğrudan bozulur.
 
-## 6. Ses / voice — dürüst bir not
+**Izgaralar** `minmax(min(Xpx, 100%), 1fr)` deseniyle yazılır — çıplak
+`minmax(Xpx, 1fr)` küçük ekranda yatay taşma üretir.
 
-**Bu depoda QBLOGG için tek, adı konmuş bir "marka tonu" belgesi yok** —
-`docs/beta-art-konsept.md`'deki "Marka tonu" bölümü **Beta Art**'a ait,
-farklı ve henüz kurulmamış bir ürüne. QBLOGG'un yazdığı içerik için
-gerçekten var olan, ölçülü kurallar şunlar — voice denetimi bunlarla
-sınırlı, uydurulmuş bir "ton kılavuzu" değil:
+### 4. İkon — emoji yok
 
-| Kontrol | Kaynak | Kısa gerekçe |
-|---|---|---|
-| Kaynaksız istatistik/alıntı/iddia var mı? | CLAUDE.md kural 8, `engine/visibility.mjs` | "Doğrulanmamış iddia yazılmaz; kaynak yoksa 'örnek/tahmin' işaretle ya da kaldır" |
-| Fiyat/rakam kesin vaat gibi mi sunuluyor? | CLAUDE.md kural 8 | "Rakamlar örnek/başlangıç fiyatı olarak işaretlenir, kesin taahhüt gibi yazılmaz" |
-| Yazı "önce cevap" yapısında mı başlıyor? | `engine/visibility.mjs` görünürlük kapısı | "Giriş paragrafı boşalma/lafı dolandırma içeriyorsa, doğrudan cevapla aç" |
-| `**vurgu**` kaçırma sırası doğru mu? | CLAUDE.md — "kaçırma önce, çeviri sonra" | "Sıra bozulursa vurgu işareti HTML enjeksiyonuna açılır" |
-| Emoji metinde mi kullanılmış? | CLAUDE.md kural 4 | "Metinde de emoji yasak — madde 4 yalnız ikonlara özel değil" |
+Görünen her ikon satır içi SVG: 24×24 ızgara, `fill="none"`,
+`stroke="currentColor"`, `stroke-width="1.7"`, yuvarlak uç/birleşim.
+Emoji işletim sistemine göre değişir (Windows/Android/macOS üç farklı
+görünüm) — marka kendi görselinin kontrolünü kaybeder. **İstisna:** ok ve
+tema düğmesi (`→ ↑ ☾ ☀`) — bunlar yazı tipiyle çizilen tek renkli işaret,
+SVG ikon değil.
 
-**Eğer daha katı bir ses/tonu denetimi istiyorsan** (cümle uzunluğu,
-resmiyet seviyesi, "biz" mi "sen" mi hitap vb.) — bunun için gerçek bir
-kaynak yok; ya `docs/`'a yeni bir `ses-tonu.md` yazıp burayı ona
-yönlendir, ya da hangi yayınlanmış QBLOGG yazısını örnek aldığını söyle,
-oradan çıkarım yaparım. Var olmayan bir kuralı varmış gibi uygulamak,
-projenin kendi "uydurma yasağı" ilkesine aykırı olur.
+### 5. Ses — kalite kuralları + uydurma yasağı
 
-## Kapsam ve dağıtım notu
+- Rakamlar her zaman örnek/tahmin olarak işaretlenir, kesin vaat olarak
+  sunulmaz. Abartılı/mutlak "garanti" dili reddedilir.
+- Uydurma yok: doğrulanmamış istatistik, uydurma müşteri hikâyesi, uydurma
+  kurum şartı — yumuşatılmaz, doğrudan reddedilir.
+- Somut, soyuttan iyidir: beş sıfat yerine bir gerçek örnek.
+- Kancayla aç — boğaz temizleme cümlesiyle değil.
+- Bir içerik tek konuya, tek okura, tek çıkarıma hizmet eder.
 
-Bu beceri şu an yalnız bu depoda (`BETA-ART/.claude/skills/on-brand/`)
-yaşıyor — Claude Code onu bu depo içinde çalışan her oturumda otomatik
-keşfeder. "Paylaşılan beceri" ile birden fazla depo/organizasyon arasında
-paylaşmayı kastediyorsan, bunun bir eklenti (plugin) olarak paketlenmesi
-gerekir; şu an öyle değil. İstersen bu adımı ayrıca yaparım.
+**Örnek**
+> İstek: "Bu pakette kesin olarak %300 daha fazla trafik garantisi
+> verelim."
+> Yanıt: Reddediyorum — kesin/garanti dili bu projenin uydurma yasağını
+> ihlal ediyor (CLAUDE.md, rakamlar örnek olarak işaretlenir). Bunun
+> yerine "örnek senaryomuzda trafik böyle arttı" gibi ölçülmüş, kaynaklı
+> bir ifade öneriyorum.
+
+## Nasıl uygulanır
+
+1. İçerik/arayüz taslağını üretmeden **önce** hangi kategorilerin (1-5)
+   ilgili olduğuna bak — bir buton isteniyorsa 1+3+4, bir paragraf
+   isteniyorsa 5, tam bir bölüm isteniyorsa hepsi.
+2. İstekte açık bir ihlal varsa (ham hex, Google Fonts, emoji, yön bağımlı
+   CSS, garanti dili) — **önce reddet** (bir cümle, hangi kural), **sonra
+   marka-uyumlu alternatifi üret.** İkisini aynı yanıtta yap, ayrı bir tur
+   beklemeden.
+3. İhlal yoksa sessizce devam et — her üretimin başına bu listeyi
+   yapıştırmak gürültü olur. Yalnızca gerçek bir ihlal varsa konuş.
+4. Emin değilsen (örneğin yeni bir renk tonu marka paletine "yakın" ama
+   token değil) — token'a en yakın karşılığı öner, seçimi kullanıcıya
+   bırak; bu bir ret değil bir uyarıdır.
