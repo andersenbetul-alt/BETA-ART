@@ -1,0 +1,48 @@
+{
+  "skill_name": "qblogg-sayfa-iskeleti",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Menüye ana sayfadaki paket bölümüne (#packages) giden yeni bir 'Fiyatlandırma' bağlantısı ekle. Tüm sayfalarda tutarlı olmalı.",
+      "expected_output": "Sekiz sayfanın menüsüne yeni bir 'Fiyatlandırma' öğesi eklenir; index.html'de #packages, diğer yedi sayfada index.html#packages'a gider. Yeni metin on dilde i18n.js'e eklenir. npm run check yeşil kalır.",
+      "files": [],
+      "expectations": [
+        "index.html nav-links içinde 'Fiyatlandırma' bağlantısı href=\"#packages\" ile var",
+        "Diğer yedi sayfanın nav-links'inde aynı bağlantı href=\"index.html#packages\" ile var (çapa doğru çevrilmiş)",
+        "Yeni i18n anahtarı QB_I18N'deki on dilin hepsinde dolu (boş string değil)",
+        "npm run check 0 hatayla tamamlanıyor",
+        "Yeni bağlantı data-i18n özniteliğiyle sözlükten geliyor, metin HTML'e sabitlenmemiş"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Yeni bir SSS (sıkça sorulan sorular) sayfası oluştur: sss.html. Mevcut sayfalarla aynı header/footer iskeletine sahip olsun, üst menüye ve footer'a eklensin, sitemap.xml'e girsin. 3-4 örnek soru-cevap yeterli; asıl önemli olan iskeletin (menü/footer/sitemap) doğru senkronize olması, tam çok dilli içerik şart değil.",
+      "expected_output": "sss.html oluşturulur, header/footer diğer sekiz sayfayla aynı desende (kendi sayfası olduğu için #anchor'lar index.html#anchor olur, kendi nav öğesinde aria-current olabilir). Dokuz sayfanın nav'ında ve footer 'Site' listesinde sss.html'e bağlantı var. sitemap.xml'e eklenir. npm run check yeşil.",
+      "files": [],
+      "expectations": [
+        "sss.html dosyası var",
+        "sss.html'deki header/footer bloğu (aria-current ve #anchor farkı normalize edildiğinde) index.html'inkiyle aynı",
+        "Diğer sekiz sayfanın nav-links'inde sss.html'e bir bağlantı eklenmiş",
+        "Dokuz sayfanın footer 'Site' listesinde sss.html'e bağlantı var",
+        "sitemap.xml içinde sss.html için bir <url> girdisi var",
+        "npm run check 0 hatayla tamamlanıyor",
+        "Yeni sayfada emoji ikon kullanılmamış (satır içi SVG veya yok)",
+        "Yeni sayfada ham hex renk yok, var(--token) kullanılmış"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Menüdeki 'Bizimle çalışın' bağlantısının etiketini 'Birlikte üretelim' olarak değiştir. Tüm sayfalarda aynı olmalı.",
+      "expected_output": "nav.work i18n anahtarının değeri on dilde güncellenir (yalnızca görünen tr/en metni değil, sözlük değeri). Sekiz sayfada href=\"work.html\" ve data-i18n=\"nav.work\" binding'i korunur, yalnızca sözlükteki metin değişir. npm run check yeşil.",
+      "files": [],
+      "expectations": [
+        "Sekiz sayfanın hepsinde eski etiket 'Bizimle çalışın' artık literal olarak görünmüyor",
+        "QB_I18N.tr.nav.work değeri 'Birlikte üretelim' (ya da eşdeğeri) olarak güncellenmiş",
+        "Değişiklik on dilin hepsine yayılmış, sadece tr'de değil",
+        "data-i18n=\"nav.work\" binding'i her sekiz sayfada korunmuş, metin hiçbir sayfada hardcode edilmemiş",
+        "href=\"work.html\" değişmemiş",
+        "npm run check 0 hatayla tamamlanıyor"
+      ]
+    }
+  ]
+}

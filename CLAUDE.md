@@ -143,9 +143,12 @@ engine/             Curiosity Engine (site değil, üretim hattı)
    Yazı boyutu da aynı kuraldadır: ham `rem` yazmayın, `--fs-2xs`…`--fs-xl`
    basamaklarını kullanın. Başlıkların `clamp()` değerleri ve `em` göreli boyutlar
    (ilk harf, `code`) ölçeğin dışındadır.
-6. **Sayfa iskeleti altı dosyada tekrar eder.** Menü veya altbilgiyi değiştirirken
-   altısını birden güncelleyin (`index`, `work`, `blog`, `post`, `gizlilik`, `kosullar`). `check.mjs` çiftlenen
-   id ve script'leri yakalar ama eksik menü bağlantısını yakalamaz.
+6. **Sayfa iskeleti sekiz dosyada tekrar eder** (`index`, `work`, `blog`, `post`,
+   `gizlilik`, `kosullar`, `kalite`, `ornek` — `404` kasıtlı hariç, o kendi başına
+   bir sayfa). Menü veya altbilgiyi değiştirirken sekizini birden güncelleyin.
+   `check.mjs` çiftlenen id ve script'leri yakalar ama eksik menü bağlantısını
+   yakalamaz — bunun için `.claude/skills/qblogg-sayfa-iskeleti/` becerisini kullanın,
+   kendi doğrulama betiğini taşır.
 7. **Kimlik işi tescil standardına göre yapılır.** Üretilen her logo, ikon ve
    marka varlığı şu üç kapıdan geçmek zorunda; "sonra bakarız" denmez:
    **(a) Yeniden üretilebilirlik.** Varlık bir betikten çıkar, elle çizilmez.
