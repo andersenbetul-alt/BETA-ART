@@ -29,6 +29,8 @@
     { "source": "/use", "destination": "/use.html" },
     { "source": "/sync", "destination": "/sync.html" },
     { "source": "/press", "destination": "/press.html" },
-    { "source": "/contact", "destination": "/contact.html" }
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/legal", "destination": "/legal.html" }
   ]
 }
