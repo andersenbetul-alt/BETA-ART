@@ -69,6 +69,34 @@ artık **geçersiz/referans** — Business için bundan sonra üretilecek her
 - **Not:** Depo adı "beta-art" tarihsel bir kalıntı (bkz. CLAUDE.md
   "Depo adı hakkında"). "Beta Art" markasıyla ilişkili değil.
 
+## Beta Art Business — konsept değerlendirmesi (karar günlüğü, 31.08.2026)
+
+Kullanıcının "Fikir ve Konsept Değerlendirme Ekibi" şablonu (19 bölüm, 100
+puanlık rubrik) BAB-02 üzerinde çalıştırıldı. Tam rapor bu oturumun
+sohbet kaydında; özet:
+
+- **Puan: 56/100.** Rubriğin kendi bandı (50–64) "konsepti/hedef kitleyi
+  önemli ölçüde değiştir" diyor — ama bu, fikrin kırık olduğu için değil,
+  **hiç pazar-doğrulaması yapılmadığı** için (talep 6/15, ödeme 5/15).
+  Zaten planlanan "3 ödeyen müşteri" pilot kapısı bu iki eksen için doğru
+  ilaç.
+- **Karar: Devam et — yalnızca doğrulama fazına.** Yazılım yok, yeni
+  web sayfası yok (zaten var); keşif görüşmeleri + fiyat testi var.
+- **Web araştırmasıyla doğrulanan yeni gerçekler** (uydurulmadı,
+  kaynaklı): Norveç'te `bustadoppføringslova` **tüketici konutu** için
+  5 yıllık kesin reklamasyon süresi veriyor (kaynak: svw.no, Codex
+  Advokat) — **ticari NS 8405/8406/8407 sözleşmelerindeki süre bu
+  oturumda doğrulanmadı**, satış diline girmeden önce avukata sorulmalı.
+  En yakın kurumsal analog/rakip **Preservica for Construction**
+  (dijital kayıt arşivleme) — Dalux/PlanRadar/Procore hâlâ proje-içi
+  odaklı, kapanış-sonrası konumlandırma bulunamadı ama bu bağımsız
+  doğrulanmadı, sadece bu üçünün birincil odağı doğrulandı. Pazar
+  büyüklüğü için hiçbir birincil kaynak bulunamadı — açık boşluk.
+- **Yeni alternatif, ciddiye alınmalı:** doğrudan entreprenör/byggherre
+  satışı yerine **sigorta şirketi/büyük byggherre kanal modeli** —
+  "kim ödüyor" sorusunu tek büyük alıcıya kilitleyerek çözer. Mevcut
+  pilot fazında paralel test edilmeli, ayrı bir ürün değil.
+
 ## Beta Art — ana kaynak bulundu: `main`'in kendi `beta-art/BETA_ART_MASTER.md`'si (30.08.2026, gece)
 
 Bu oturum boyunca (yukarıdaki bölüm) düzinelerce yüklenen dosyayı çapraz
