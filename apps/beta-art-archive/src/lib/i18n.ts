@@ -221,6 +221,17 @@ const en: Dict = {
   feedbackPayMaybe: "Depends on the price",
   feedbackCommentLabel: "Anything else — what's missing, what's confusing, what would change your answer?",
   feedbackSubmit: "Send feedback",
+
+  heroP1: "Beta Art is an archive of original photographs made by people with physical cameras. The archive is designed around provenance: the connection between an image, its original capture, the photographer who made it and the licence granted to the customer.",
+  heroP2: "For every photograph that receives verified status, the original RAW file is preserved and the available capture record is kept with the catalogue entry. Customers can ask to inspect provenance information before licensing an image.",
+  heroP3: "Each plate in the archive carries a catalogue number, a capture record and a written licence signed by the photographer. There are no intermediaries, no anonymous uploads and no synthetic images in this collection.",
+  photographerTitle: "I photograph what actually exists.",
+  photographerP1: "Fjords before sunrise, cities after rain, faces that agreed to be seen. Nothing on this site was generated, composited or hallucinated by a machine.",
+  photographerP2: "My archive holds more than 84,000 frames captured since 2012. When you license a plate, you deal with me directly — a written license, a proper invoice, and the full-resolution file delivered to your inbox within twenty-four hours.",
+  photographerP3: "If you want to see the RAW file behind any plate, ask. That's the point.",
+  lifeFlowerQuote: "“Life’s limited nature is also what makes it precious.”",
+  lifeFlowerBody: "Because life does not last forever, every moment matters.",
+  lifeFlowerTagline: "Real people · Real moments · Real places",
 };
 
 const no: Dict = {
@@ -417,6 +428,17 @@ const no: Dict = {
   feedbackPayMaybe: "Avhenger av prisen",
   feedbackCommentLabel: "Noe annet — hva mangler, hva er uklart, hva ville endret svaret ditt?",
   feedbackSubmit: "Send tilbakemelding",
+
+  heroP1: "Beta Art er et arkiv med originale fotografier laget av mennesker med fysiske kameraer. Arkivet er bygget rundt proveniens: forbindelsen mellom et bilde, det originale opptaket, fotografen som laget det og lisensen som gis til kunden.",
+  heroP2: "For hvert fotografi som får verifisert status, bevares den originale RAW-filen, og tilgjengelige opptaksdata følger katalogoppføringen. Kunder kan be om innsyn i proveniensinformasjonen før de lisensierer et bilde.",
+  heroP3: "Hver plate i arkivet har et katalognummer, opptaksdata og en skriftlig lisens signert av fotografen. Det finnes ingen mellomledd, ingen anonyme opplastinger og ingen syntetiske bilder i denne samlingen.",
+  photographerTitle: "Jeg fotograferer det som faktisk finnes.",
+  photographerP1: "Fjorder før soloppgang, byer etter regn, ansikter som har sagt ja til å bli sett. Ingenting på dette nettstedet er generert, sammensatt eller hallusinert av en maskin.",
+  photographerP2: "Arkivet mitt rommer mer enn 84 000 bilder tatt siden 2012. Når du lisensierer en plate, forholder du deg direkte til meg — en skriftlig lisens, en ordentlig faktura, og filen i full oppløsning levert til innboksen din innen tjuefire timer.",
+  photographerP3: "Vil du se RAW-filen bak en plate? Bare spør. Det er hele poenget.",
+  lifeFlowerQuote: "«At livet er begrenset, er også det som gjør det verdifullt.»",
+  lifeFlowerBody: "Fordi livet ikke varer evig, betyr hvert øyeblikk noe.",
+  lifeFlowerTagline: "Ekte mennesker · Ekte øyeblikk · Ekte steder",
 };
 
 const tr: Dict = {
@@ -613,6 +635,17 @@ const tr: Dict = {
   feedbackPayMaybe: "Fiyata bağlı",
   feedbackCommentLabel: "Başka bir şey — ne eksik, ne kafa karıştırıcı, cevabını ne değiştirirdi?",
   feedbackSubmit: "Geri bildirim gönder",
+
+  heroP1: "Beta Art, fiziksel kameralarla insanlar tarafından çekilmiş özgün fotoğrafların arşividir. Arşiv, köken etrafında tasarlandı: bir görüntü, özgün çekimi, onu çeken fotoğrafçı ve müşteriye verilen lisans arasındaki bağ.",
+  heroP2: "Doğrulanmış statü alan her fotoğrafın özgün RAW dosyası korunur ve mevcut çekim kaydı katalog kaydıyla birlikte saklanır. Müşteriler, bir görüntüyü lisanslamadan önce köken bilgilerini incelemeyi talep edebilir.",
+  heroP3: "Arşivdeki her plaka bir katalog numarası, bir çekim kaydı ve fotoğrafçının imzaladığı yazılı bir lisans taşır. Bu koleksiyonda aracı yok, anonim yükleme yok, sentetik görüntü yok.",
+  photographerTitle: "Gerçekten var olanı fotoğraflıyorum.",
+  photographerP1: "Gün doğumundan önce fiyortlar, yağmurdan sonra şehirler, görülmeyi kabul etmiş yüzler. Bu sitedeki hiçbir şey bir makine tarafından üretilmedi, birleştirilmedi ya da halüsinasyonla oluşturulmadı.",
+  photographerP2: "Arşivimde 2012'den beri çekilmiş 84.000'den fazla kare var. Bir plakayı lisansladığınızda doğrudan benimle muhatap olursunuz — yazılı lisans, usulüne uygun fatura ve yirmi dört saat içinde e-postanıza teslim edilen tam çözünürlüklü dosya.",
+  photographerP3: "Herhangi bir plakanın arkasındaki RAW dosyasını görmek isterseniz, sorun. Bütün mesele bu.",
+  lifeFlowerQuote: "\"Hayatın sınırlı oluşu, aynı zamanda onu değerli kılan şeydir.\"",
+  lifeFlowerBody: "Hayat sonsuza dek sürmediği için her an önemlidir.",
+  lifeFlowerTagline: "Gerçek insanlar · Gerçek anlar · Gerçek yerler",
 };
 
 const it: Dict = {
@@ -809,6 +842,17 @@ const it: Dict = {
   feedbackPayMaybe: "Dipende dal prezzo",
   feedbackCommentLabel: "Altro — cosa manca, cosa non è chiaro, cosa cambierebbe la tua risposta?",
   feedbackSubmit: "Invia feedback",
+
+  heroP1: "Beta Art è un archivio di fotografie originali realizzate da persone con macchine fotografiche fisiche. L'archivio è costruito attorno alla provenienza: il legame tra un'immagine, il suo scatto originale, il fotografo che l'ha realizzata e la licenza concessa al cliente.",
+  heroP2: "Per ogni fotografia che riceve lo stato verificato, il file RAW originale viene conservato e i dati di scatto disponibili accompagnano la voce di catalogo. I clienti possono chiedere di esaminare le informazioni di provenienza prima di licenziare un'immagine.",
+  heroP3: "Ogni tavola dell'archivio porta un numero di catalogo, i dati di scatto e una licenza scritta firmata dal fotografo. In questa collezione non ci sono intermediari, caricamenti anonimi né immagini sintetiche.",
+  photographerTitle: "Fotografo ciò che esiste davvero.",
+  photographerP1: "Fiordi prima dell'alba, città dopo la pioggia, volti che hanno accettato di essere visti. Niente su questo sito è stato generato, composto o allucinato da una macchina.",
+  photographerP2: "Il mio archivio contiene più di 84.000 scatti realizzati dal 2012. Quando licenzi una tavola, tratti direttamente con me — una licenza scritta, una fattura regolare e il file in piena risoluzione consegnato nella tua casella entro ventiquattro ore.",
+  photographerP3: "Se vuoi vedere il file RAW dietro una tavola, chiedi. È proprio questo il punto.",
+  lifeFlowerQuote: "«La natura limitata della vita è anche ciò che la rende preziosa.»",
+  lifeFlowerBody: "Poiché la vita non dura per sempre, ogni momento conta.",
+  lifeFlowerTagline: "Persone vere · Momenti veri · Luoghi veri",
 };
 
 const fr: Dict = {
@@ -1005,6 +1049,17 @@ const fr: Dict = {
   feedbackPayMaybe: "Ça dépend du prix",
   feedbackCommentLabel: "Autre chose — qu'est-ce qui manque, qu'est-ce qui n'est pas clair, qu'est-ce qui changerait votre réponse ?",
   feedbackSubmit: "Envoyer",
+
+  heroP1: "Beta Art est une archive de photographies originales réalisées par des personnes avec de vrais appareils photo. L'archive est construite autour de la provenance : le lien entre une image, sa prise de vue originale, le photographe qui l'a réalisée et la licence accordée au client.",
+  heroP2: "Pour chaque photographie qui reçoit le statut vérifié, le fichier RAW original est conservé et les données de prise de vue disponibles accompagnent l'entrée de catalogue. Les clients peuvent demander à examiner les informations de provenance avant de licencier une image.",
+  heroP3: "Chaque planche de l'archive porte un numéro de catalogue, des données de prise de vue et une licence écrite signée par le photographe. Il n'y a ni intermédiaires, ni envois anonymes, ni images synthétiques dans cette collection.",
+  photographerTitle: "Je photographie ce qui existe vraiment.",
+  photographerP1: "Des fjords avant l'aube, des villes après la pluie, des visages qui ont accepté d'être vus. Rien sur ce site n'a été généré, composité ou halluciné par une machine.",
+  photographerP2: "Mon archive compte plus de 84 000 clichés réalisés depuis 2012. Quand vous licenciez une planche, vous traitez directement avec moi — une licence écrite, une vraie facture, et le fichier en pleine résolution livré dans votre boîte mail sous vingt-quatre heures.",
+  photographerP3: "Vous voulez voir le fichier RAW derrière une planche ? Demandez. C'est tout l'intérêt.",
+  lifeFlowerQuote: "« La nature limitée de la vie est aussi ce qui la rend précieuse. »",
+  lifeFlowerBody: "Parce que la vie ne dure pas éternellement, chaque instant compte.",
+  lifeFlowerTagline: "Des gens réels · Des instants réels · Des lieux réels",
 };
 
 const es: Dict = {
@@ -1201,6 +1256,17 @@ const es: Dict = {
   feedbackPayMaybe: "Depende del precio",
   feedbackCommentLabel: "Algo más — ¿qué falta, qué no está claro, qué cambiaría tu respuesta?",
   feedbackSubmit: "Enviar comentarios",
+
+  heroP1: "Beta Art es un archivo de fotografías originales hechas por personas con cámaras físicas. El archivo está construido en torno a la procedencia: la conexión entre una imagen, su captura original, el fotógrafo que la hizo y la licencia otorgada al cliente.",
+  heroP2: "Por cada fotografía que recibe el estado verificado, se conserva el archivo RAW original y el registro de captura disponible se guarda junto a la entrada del catálogo. Los clientes pueden pedir inspeccionar la información de procedencia antes de licenciar una imagen.",
+  heroP3: "Cada placa del archivo lleva un número de catálogo, un registro de captura y una licencia escrita firmada por el fotógrafo. No hay intermediarios, ni subidas anónimas, ni imágenes sintéticas en esta colección.",
+  photographerTitle: "Fotografío lo que realmente existe.",
+  photographerP1: "Fiordos antes del amanecer, ciudades después de la lluvia, rostros que aceptaron ser vistos. Nada en este sitio fue generado, compuesto ni alucinado por una máquina.",
+  photographerP2: "Mi archivo contiene más de 84.000 tomas capturadas desde 2012. Cuando licencias una placa, tratas directamente conmigo: una licencia escrita, una factura en regla y el archivo en resolución completa entregado en tu correo en veinticuatro horas.",
+  photographerP3: "Si quieres ver el archivo RAW detrás de cualquier placa, pídelo. De eso se trata.",
+  lifeFlowerQuote: "«La naturaleza limitada de la vida es también lo que la hace preciosa.»",
+  lifeFlowerBody: "Porque la vida no dura para siempre, cada momento importa.",
+  lifeFlowerTagline: "Personas reales · Momentos reales · Lugares reales",
 };
 
 const pt: Dict = {
@@ -1384,19 +1450,30 @@ const pt: Dict = {
   cartTotal: "Total",
   cartCheckout: "Finalizar compra",
 
-  navFeedback: "Comentarios",
-  feedbackEyebrow: "Cuéntanos qué piensas",
-  feedbackTitle: "Ayúdanos a saber si vale la pena construir esto.",
-  feedbackIntro: "Beta Art todavía no tiene investigación real de usuarios — esta página es el comienzo. Nada aquí está filtrado. Sé honesto, incluso si la respuesta es no.",
-  feedbackRatingLabel: "¿Qué tan probable es que uses Beta Art?",
-  feedbackRatingUnlikely: "Poco probable",
-  feedbackRatingLikely: "Muy probable",
-  feedbackPayLabel: "¿Pagarías por una licencia aquí?",
-  feedbackPayYes: "Sí",
-  feedbackPayNo: "No",
-  feedbackPayMaybe: "Depende del precio",
-  feedbackCommentLabel: "Algo más — ¿qué falta, qué no está claro, qué cambiaría tu respuesta?",
-  feedbackSubmit: "Enviar comentarios",
+  navFeedback: "Feedback",
+  feedbackEyebrow: "Diga-nos o que pensa",
+  feedbackTitle: "Ajude-nos a descobrir se vale a pena construir isto.",
+  feedbackIntro: "A Beta Art ainda não tem pesquisa real com utilizadores — esta página é o começo. Nada aqui é filtrado. Seja honesto, mesmo que a resposta seja não.",
+  feedbackRatingLabel: "Qual a probabilidade de usar a Beta Art?",
+  feedbackRatingUnlikely: "Pouco provável",
+  feedbackRatingLikely: "Muito provável",
+  feedbackPayLabel: "Pagaria por uma licença aqui?",
+  feedbackPayYes: "Sim",
+  feedbackPayNo: "Não",
+  feedbackPayMaybe: "Depende do preço",
+  feedbackCommentLabel: "Mais alguma coisa — o que falta, o que não está claro, o que mudaria a sua resposta?",
+  feedbackSubmit: "Enviar feedback",
+
+  heroP1: "A Beta Art é um arquivo de fotografias originais feitas por pessoas com câmaras físicas. O arquivo é construído em torno da proveniência: a ligação entre uma imagem, a sua captura original, o fotógrafo que a fez e a licença concedida ao cliente.",
+  heroP2: "Para cada fotografia que recebe o estado verificado, o ficheiro RAW original é preservado e o registo de captura disponível é guardado junto à entrada do catálogo. Os clientes podem pedir para inspecionar a informação de proveniência antes de licenciar uma imagem.",
+  heroP3: "Cada placa do arquivo tem um número de catálogo, um registo de captura e uma licença escrita assinada pelo fotógrafo. Não há intermediários, nem envios anónimos, nem imagens sintéticas nesta coleção.",
+  photographerTitle: "Fotografo o que realmente existe.",
+  photographerP1: "Fiordes antes do nascer do sol, cidades depois da chuva, rostos que aceitaram ser vistos. Nada neste site foi gerado, composto ou alucinado por uma máquina.",
+  photographerP2: "O meu arquivo guarda mais de 84.000 fotogramas captados desde 2012. Quando licencia uma placa, trata diretamente comigo: uma licença escrita, uma fatura adequada e o ficheiro em resolução completa entregue na sua caixa de entrada em vinte e quatro horas.",
+  photographerP3: "Se quiser ver o ficheiro RAW por trás de qualquer placa, peça. É esse o objetivo.",
+  lifeFlowerQuote: "«A natureza limitada da vida é também o que a torna preciosa.»",
+  lifeFlowerBody: "Porque a vida não dura para sempre, cada momento importa.",
+  lifeFlowerTagline: "Pessoas reais · Momentos reais · Lugares reais",
 };
 
 const de: Dict = {
@@ -1593,6 +1670,17 @@ const de: Dict = {
   feedbackPayMaybe: "Kommt auf den Preis an",
   feedbackCommentLabel: "Sonst noch etwas — was fehlt, was ist unklar, was würde deine Antwort ändern?",
   feedbackSubmit: "Feedback senden",
+
+  heroP1: "Beta Art ist ein Archiv originaler Fotografien, aufgenommen von Menschen mit physischen Kameras. Das Archiv ist um Provenienz herum gebaut: die Verbindung zwischen einem Bild, seiner Originalaufnahme, dem Fotografen, der es gemacht hat, und der Lizenz, die dem Kunden erteilt wird.",
+  heroP2: "Für jede Fotografie mit verifiziertem Status wird die originale RAW-Datei aufbewahrt und der verfügbare Aufnahmenachweis beim Katalogeintrag geführt. Kunden können vor der Lizenzierung eines Bildes Einsicht in die Provenienzinformationen verlangen.",
+  heroP3: "Jede Platte im Archiv trägt eine Katalognummer, einen Aufnahmenachweis und eine vom Fotografen unterzeichnete schriftliche Lizenz. Es gibt keine Zwischenhändler, keine anonymen Uploads und keine synthetischen Bilder in dieser Kollektion.",
+  photographerTitle: "Ich fotografiere, was wirklich existiert.",
+  photographerP1: "Fjorde vor Sonnenaufgang, Städte nach dem Regen, Gesichter, die einverstanden waren, gesehen zu werden. Nichts auf dieser Seite wurde von einer Maschine generiert, zusammengesetzt oder halluziniert.",
+  photographerP2: "Mein Archiv umfasst mehr als 84.000 Aufnahmen seit 2012. Wenn Sie eine Platte lizenzieren, verhandeln Sie direkt mit mir: eine schriftliche Lizenz, eine ordentliche Rechnung und die Datei in voller Auflösung innerhalb von vierundzwanzig Stunden in Ihrem Posteingang.",
+  photographerP3: "Wenn Sie die RAW-Datei hinter einer Platte sehen möchten, fragen Sie. Genau darum geht es.",
+  lifeFlowerQuote: "„Dass das Leben begrenzt ist, macht es zugleich kostbar.“",
+  lifeFlowerBody: "Weil das Leben nicht ewig währt, zählt jeder Moment.",
+  lifeFlowerTagline: "Echte Menschen · Echte Momente · Echte Orte",
 };
 
 export const UI: Record<Lang, Dict> = { en, no, tr, it, fr, es, pt, de };

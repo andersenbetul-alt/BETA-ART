@@ -16,11 +16,11 @@ const selectCls =
   "h-9 w-full appearance-none rounded-none border border-border bg-background px-3 text-sm";
 
 // Content note (docs/beta-art/tasarim-sistemi.md): the long-form English
-// paragraphs below (hero copy, verification bodies, exhibition bodies,
-// photographer bio, licence bullets, FAQ answers) are the verified source
-// layer, pasted verbatim from beta-art.com. They stay in English for every
-// UI language until a dedicated content-translation pass — only the
-// chrome around them (labels, buttons, headings) is translated via t().
+// content originates verbatim from beta-art.com (verified source layer).
+// Translation pass 1 (01.09.2026, user request): hero copy, photographer
+// bio and the Life Flower manifesto now come from the i18n dictionary in
+// all 8 languages. Still English-only pending pass 2: verification bodies,
+// exhibition bodies, licence bullets, FAQ answers (all in data.ts).
 
 // New, user-directed addition (30.08.2026) — a BD-style credibility pass:
 // pull the already-real numbers (84,000+ frames, 2012, 3 methods, 12
@@ -60,22 +60,16 @@ function Hero() {
             {t("heroEyebrow")}
           </p>
           <h1 className="font-display text-[clamp(2.4rem,5.5vw,4.2rem)] font-light leading-[1.05]">
-            Verified Human<br />Photography.
+            {t("tagline")}.
           </h1>
           <p className="mt-6 max-w-[58ch] text-[1.05rem] leading-relaxed text-foreground/80">
-            Beta Art is an archive of original photographs made by people with physical cameras. The
-            archive is designed around provenance: the connection between an image, its original capture,
-            the photographer who made it and the licence granted to the customer.
+            {t("heroP1")}
           </p>
           <p className="mt-4 max-w-[58ch] text-[1.05rem] leading-relaxed text-foreground/80">
-            For every photograph that receives verified status, the original RAW file is preserved and the
-            available capture record is kept with the catalogue entry. Customers can ask to inspect
-            provenance information before licensing an image.
+            {t("heroP2")}
           </p>
           <p className="mt-4 max-w-[58ch] text-[1.05rem] leading-relaxed text-foreground/80">
-            Each plate in the archive carries a catalogue number, a capture record and a written licence
-            signed by the photographer. There are no intermediaries, no anonymous uploads and no synthetic
-            images in this collection.
+            {t("heroP3")}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Button className="rounded-none font-record text-xs uppercase tracking-[0.16em]" onClick={() => go("home", "collection")}>
@@ -242,19 +236,16 @@ function Photographer() {
             </span>
           </div>
           <h2 className="mt-3 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-light leading-snug">
-            I photograph<br />what actually exists.
+            {t("photographerTitle")}
           </h2>
           <p className="mt-5 max-w-[58ch] text-[1.02rem] leading-relaxed text-foreground/80">
-            Fjords before sunrise, cities after rain, faces that agreed to be seen. Nothing on this site was
-            generated, composited or hallucinated by a machine.
+            {t("photographerP1")}
           </p>
           <p className="mt-4 max-w-[58ch] text-[1.02rem] leading-relaxed text-foreground/80">
-            My archive holds more than 84,000 frames captured since 2012. When you license a plate, you deal
-            with me directly — a written license, a proper invoice, and the full-resolution file delivered
-            to your inbox within twenty-four hours.
+            {t("photographerP2")}
           </p>
           <p className="mt-4 max-w-[58ch] text-[1.02rem] leading-relaxed text-foreground/80">
-            If you want to see the RAW file behind any plate, ask. That's the point.
+            {t("photographerP3")}
           </p>
         </div>
       </div>
@@ -267,21 +258,24 @@ function Photographer() {
 // quiet manifesto interlude. Not sourced from beta-art.com; kept in
 // English like the rest of the content layer.
 function LifeFlower() {
+  const { t } = useLang();
   return (
     <section className="border-b border-border">
       <div className="mx-auto w-[min(100%-3rem,760px)] py-[clamp(3.5rem,9vw,6rem)] text-center">
+        {/* "Life Flower" is the manifesto's name, not a label — stays
+            untranslated like plate titles. */}
         <p className="font-record text-xs uppercase tracking-[0.3em] text-accent">Life Flower</p>
         <p className="mt-6 font-display text-[clamp(1.5rem,3.2vw,2.2rem)] font-light italic leading-snug">
-          “Life’s limited nature is also what makes it precious.”
+          {t("lifeFlowerQuote")}
         </p>
         <p className="mt-5 max-w-[48ch] mx-auto text-[1.02rem] leading-relaxed text-foreground/70">
-          Because life does not last forever, every moment matters.
+          {t("lifeFlowerBody")}
         </p>
         {/* User-supplied follow-up in the same request ("REAL PEOPLE REAM
             MOMENT REAL PLACE") — obvious REAM→REAL typo fixed, natural
             English plurals applied. */}
         <p className="mt-8 font-record text-[0.7rem] uppercase tracking-[0.24em] text-muted-foreground">
-          Real people · Real moments · Real places
+          {t("lifeFlowerTagline")}
         </p>
       </div>
     </section>
