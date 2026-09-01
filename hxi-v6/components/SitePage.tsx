@@ -70,7 +70,8 @@ export function SitePage({ locale }: { locale: Locale }) {
               const ld = localeData[code];
               return (
                 <Link key={code} href={`/${code}/`} lang={ld.lang} hrefLang={ld.hreflang}
-                  className={code === locale ? 'active' : undefined}>
+                  className={code === locale ? 'active' : undefined}
+                  onClick={() => { try { localStorage.setItem('hxi-lang', code); } catch { /* kapalı olabilir */ } }}>
                   {ld.localeName}
                 </Link>
               );
@@ -359,10 +360,11 @@ export function SitePage({ locale }: { locale: Locale }) {
             </div>
             <div>
               <p className="frequency-intro">{d.frequency.intro}</p>
-              <p className="gated-note">
-                <span aria-hidden="true" />
-                {d.frequency.note}
-              </p>
+              {/* Bülten altyapısı kurulana dek gerçek "ilk erişim" kanalı Spotify takibi */}
+              <div className="actions">
+                <Ext href={SPOTIFY_ARTIST} className="btn primary">{d.listen}</Ext>
+                <Ext href={YOUTUBE} className="btn">YouTube ↗</Ext>
+              </div>
             </div>
           </div>
         </section>

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /v1/
+Disallow: /v2/
+Disallow: /v4/
+Disallow: /v5/
+Disallow: /v6/
+Disallow: /klasik
+
+Sitemap: https://hxi-nu.vercel.app/sitemap.xml

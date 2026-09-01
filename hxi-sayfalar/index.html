@@ -33,9 +33,13 @@
 </nav>
 <script>
   var langs = ['en','no','tr','fr','de','es','pt','ar','ja','zh'];
+  var saved = null;
+  try { saved = localStorage.getItem('hxi-lang'); } catch (e) {}
   var nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
   if (nav === 'nb' || nav === 'nn') nav = 'no';
-  location.replace('/' + (langs.indexOf(nav) >= 0 ? nav : 'en') + '/');
+  var pick = (saved && langs.indexOf(saved) >= 0) ? saved
+           : (langs.indexOf(nav) >= 0 ? nav : 'en');
+  location.replace('/' + pick + '/');
 </script>
 </body>
 </html>
