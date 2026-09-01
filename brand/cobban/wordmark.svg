@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 -12 968 224" width="968" height="224" role="img" aria-label="COBBAN Wordmark">
+  <title>COBBAN</title>
+  <!--
+    COBBAN Wordmark — Flat Vector Master
+    30 Ağustos 2026 · Brand/COBBAN
+
+    Yapım kaydı:
+    - Cap height: 200u
+    - Stem genişliği: 24u (%12 cap height)
+    - Harf aralığı: 30u nominal
+    - Konumlar: C=0, O=150, B1=320, B2=478, A=636, N=796
+    - ViewBox: −16,−12 to 952,212 (+16u yatay, +12u dikey dolgu)
+
+    Renk paleti:
+    - Void  #06060A — zemin
+    - Ember #D95F0A — C aksanı (5.6:1 kontrast, WCAG AA büyük grafik ✓)
+    - Ash   #EFEFEB — geri kalan harfler (18:1 ✓)
+
+    Harf geometrisi (tüm şekiller filled; stroke yok):
+    - C: path M0,0 H120 V24 H24 V176 H120 V200 H0 Z
+    - O: path evenodd M0,0 H140 V200 H0 Z + M24,24 H116 V176 H24 Z
+    - B: path evenodd dış M0,0 H112 V100 H128 V200 H0 Z
+         delik1 M24,24 H88 V96 H24 Z
+         delik2 M24,104 H100 V176 H24 Z
+    - A: polygon sol 53,0 77,0 24,200 0,200
+         polygon sağ 53,0 77,0 106,200 130,200
+         rect çapraz x=52 y=92 w=26 h=24
+    - N: rect sol x=0 w=24 h=200
+         rect sağ x=116 w=24 h=200
+         polygon diyagonal 24,0 50,0 116,200 90,200
+  -->
+
+  <!-- C (ember) -->
+  <path d="M0,0 H120 V24 H24 V176 H120 V200 H0 Z" fill="#D95F0A"/>
+
+  <!-- O (ash) -->
+  <g transform="translate(150,0)">
+    <path fill-rule="evenodd" d="M0,0 H140 V200 H0 Z M24,24 H116 V176 H24 Z" fill="#EFEFEB"/>
+  </g>
+
+  <!-- B1 (ash) -->
+  <g transform="translate(320,0)">
+    <path fill-rule="evenodd" d="
+      M0,0 H112 V100 H128 V200 H0 Z
+      M24,24 H88 V96 H24 Z
+      M24,104 H100 V176 H24 Z
+    " fill="#EFEFEB"/>
+  </g>
+
+  <!-- B2 (ash) -->
+  <g transform="translate(478,0)">
+    <path fill-rule="evenodd" d="
+      M0,0 H112 V100 H128 V200 H0 Z
+      M24,24 H88 V96 H24 Z
+      M24,104 H100 V176 H24 Z
+    " fill="#EFEFEB"/>
+  </g>
+
+  <!-- A (ash) -->
+  <g transform="translate(636,0)">
+    <polygon points="53,0 77,0 24,200 0,200" fill="#EFEFEB"/>
+    <polygon points="53,0 77,0 106,200 130,200" fill="#EFEFEB"/>
+    <rect x="52" y="92" width="26" height="24" fill="#EFEFEB"/>
+  </g>
+
+  <!-- N (ash) -->
+  <g transform="translate(796,0)">
+    <rect x="0" y="0" width="24" height="200" fill="#EFEFEB"/>
+    <rect x="116" y="0" width="24" height="200" fill="#EFEFEB"/>
+    <polygon points="24,0 50,0 116,200 90,200" fill="#EFEFEB"/>
+  </g>
+
+</svg>
