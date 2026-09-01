@@ -57,12 +57,18 @@ cd hxi-v6
 # 1. Düzenle: components/SitePage.tsx, content/locales.ts, app/globals.css
 npx next build                      # çıktı: out/ (basePath YOK — kök site)
 cd ..
+# 1b. JS söküm: Next hidrasyonu kaldırılır, üç davranış vanilya betiğe döner
+#     (oynatıcı kapısı, dil menüsü kaydı). SitePage'e YENİ istemci davranışı
+#     eklersen bu betiğe de vanilya karşılığını ekle, yoksa canlıda çalışmaz.
+node .claude/skills/hxi-yayin/scripts/statik-incelt.mjs hxi-v6/out
 # 2. Yayın klasörünü tazele (kapı sayfasını koruyarak)
 KAPI=$(mktemp); cp hxi-sayfalar/index.html $KAPI
 rm -rf hxi-sayfalar/{en,no,tr,fr,de,es,pt,ar,ja,zh,_next,404,404.html,sitemap.xml}
 cp -r hxi-v6/out/. hxi-sayfalar/
 cp $KAPI hxi-sayfalar/index.html
 rm -f hxi-sayfalar/index.txt        # export artığı
+# artık hiçbir sayfadan çağrılmayan JS parçaları atılır (css kalır!)
+rm -rf hxi-sayfalar/_next/static/chunks
 # hero.png'nin yerinde olduğunu doğrula (kural 4)
 test -f hxi-sayfalar/assets/hero.png || cp hxi-v6/public/assets/hero.png hxi-sayfalar/assets/
 # 3. Commit + push (model adı yazma; Co-Authored-By: Claude <noreply@anthropic.com>)
