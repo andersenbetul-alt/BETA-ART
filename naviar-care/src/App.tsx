@@ -686,7 +686,7 @@ function Pricing({ onCta }: { onCta: () => void }) {
                   position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)',
                   background: '#d8ef75', color: '#173d3a',
                   fontFamily: '"DM Mono", monospace',
-                  fontSize: 10, fontWeight: 700, letterSpacing: '0.08em',
+                  fontSize: 10, letterSpacing: '0.08em',
                   padding: '4px 12px', borderRadius: 100, textTransform: 'uppercase',
                   whiteSpace: 'nowrap',
                 }}>Mest populær</div>
