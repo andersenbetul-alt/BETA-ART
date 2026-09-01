@@ -356,8 +356,10 @@ klonlar, `apps/beta-art-archive` içinde `npm ci && npm run build`
 çalıştırır, `dist/`i çıktıya taşır. Sonuç: proje `beta-art-privat`
 (`prj_C9ByJukTJ8xulLpXCDQnunRCIBlh`, BET - ART takımı), derleme 14 sn,
 üretim adresi **https://beta-art-privat.vercel.app** (alias otomatik
-geldi). SSO Deployment Protection kapatıldı, adres herkese açık — 200
-ve doğru HTML `web_fetch_vercel_url` ile doğrulandı. **Siteyi
+geldi). SSO Deployment Protection proje oluşturulduğunda kapalı geldi
+(01.09 öğleden sonra `get_project_deployment_protection` ile doğrulandı;
+önceki "kapatıldı" ifadesi yanlıştı — kapatma işlemi yapılmadı, gerek de
+yoktu), adres herkese açık — 200 ve doğru HTML doğrulandı. **Siteyi
 güncellemek = dala push + aynı vercel.json ile dağıtımı yeniden
 tetiklemek** (git bağlantısı yok; davet sorunu çözülürse git-link'e
 yükseltilebilir). Önceki başarısız denemeden kalan boş `beta-art`
