@@ -1,19 +1,22 @@
-/* BETA PHOTO — styles placeholder
- * Fullstendige stiler implementeres ved lansering.
- * Kilde: betaphoto.html i beta-art/reference/html/
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* BETA PHOTO — styles
+ * Token sistemi beta-art landing ile eşleştirildi.
  */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --void:    #141411;
-  --surface: #1C1C19;
-  --border:  #2E2E2A;
-  --text:    #F3F0E9;
-  --muted:   #9A9792;
-  --accent:  #8B1A1A;
-  --ok:      #7FB69B;
-  --warm:    #C8A96E;
+  --void:      #0F0F0F;
+  --surface:   #171614;
+  --surface-2: #1E1C19;
+  --line:      #2A2824;
+  --muted:     #6B6760;
+  --text:      #F3F0E9;
+  --text-dim:  #A8A49D;
+  --seal:      #8B1A1A;
+  --warm:      #C8A96E;
+  --ok:        #7FB69B;
 }
 
 body {
@@ -40,7 +43,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 2rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
   background: var(--void);
@@ -54,7 +57,7 @@ body {
   text-decoration: none;
   color: var(--text);
   font-family: 'Fraunces', Georgia, serif;
-  font-weight: 600;
+  font-weight: 300;
   letter-spacing: 0.04em;
 }
 
@@ -64,7 +67,7 @@ body {
   justify-content: center;
   width: 2rem;
   height: 2rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   font-size: 0.875rem;
 }
 
@@ -74,7 +77,7 @@ body {
 
 .cart-button {
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   color: var(--text);
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -103,7 +106,7 @@ body {
 
 h1, h2 {
   font-family: 'Fraunces', Georgia, serif;
-  font-weight: 600;
+  font-weight: 300;
   line-height: 1.1;
 }
 
@@ -137,7 +140,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
 
 .photo-placeholder {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -152,8 +155,8 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
   font-size: 0.625rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
-  border: 1px solid var(--accent);
+  color: var(--seal);
+  border: 1px solid var(--seal);
   padding: 0.2rem 0.4rem;
 }
 
@@ -173,14 +176,14 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--line);
   padding-top: 3rem;
 }
 
 .hero-facts dt {
   font-family: 'Fraunces', Georgia, serif;
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 300;
   color: var(--warm);
   line-height: 1;
 }
@@ -223,7 +226,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
 
 .filter-button {
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   color: var(--muted);
   padding: 0.4rem 1rem;
   font-size: 0.8125rem;
@@ -288,7 +291,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
 
 .verify-panel {
   background: var(--void);
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -308,7 +311,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
 .verify-form input {
   flex: 1;
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   color: var(--text);
   padding: 0.6rem 0.75rem;
   font-family: 'JetBrains Mono', monospace;
@@ -351,7 +354,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
 }
 
 .process-card {
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   padding: 2rem 1.5rem;
 }
 
@@ -373,7 +376,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
 .faq-list { display: flex; flex-direction: column; }
 
 details {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--line);
   padding: 1.5rem 0;
 }
 
@@ -404,7 +407,7 @@ details p { color: var(--muted); margin-top: 1rem; font-size: 0.875rem; line-hei
 .launch-form input {
   flex: 1;
   background: var(--void);
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   color: var(--text);
   padding: 0.75rem 1rem;
   font-size: 0.9rem;
@@ -421,7 +424,7 @@ details p { color: var(--muted); margin-top: 1rem; font-size: 0.875rem; line-hei
 .form-note { font-size: 0.8rem; color: var(--ok); margin-top: 1rem; }
 
 .site-footer {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--line);
   padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
@@ -453,7 +456,7 @@ details p { color: var(--muted); margin-top: 1rem; font-size: 0.875rem; line-hei
 
 .product-modal {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--line);
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 52rem;
@@ -482,12 +485,12 @@ details p { color: var(--muted); margin-top: 1rem; font-size: 0.875rem; line-hei
 
 .size-selector { border: none; margin-bottom: 1.5rem; }
 .size-selector legend { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
-.size-selector label { display: block; border: 1px solid var(--border); padding: 0.75rem; margin-bottom: 0.5rem; cursor: pointer; }
+.size-selector label { display: block; border: 1px solid var(--line); padding: 0.75rem; margin-bottom: 0.5rem; cursor: pointer; }
 .size-selector input { margin-right: 0.5rem; }
 .size-selector strong { float: right; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
 
 .product-includes { list-style: none; margin-bottom: 1.5rem; }
-.product-includes li { font-size: 0.8125rem; color: var(--muted); padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
+.product-includes li { font-size: 0.8125rem; color: var(--muted); padding: 0.3rem 0; border-bottom: 1px solid var(--line); }
 .product-includes li::before { content: '✓ '; color: var(--ok); }
 
 .modal-note { font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center; }
@@ -499,7 +502,7 @@ details p { color: var(--muted); margin-top: 1rem; font-size: 0.875rem; line-hei
   bottom: 0;
   width: min(24rem, 90vw);
   background: var(--surface);
-  border-left: 1px solid var(--border);
+  border-left: 1px solid var(--line);
   z-index: 50;
   display: flex;
   flex-direction: column;
@@ -513,7 +516,7 @@ details p { color: var(--muted); margin-top: 1rem; font-size: 0.875rem; line-hei
 .cart-drawer-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
 .cart-drawer-head button { background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
 .cart-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: var(--muted); }
-.cart-total { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.cart-total { border-top: 1px solid var(--line); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
 .cart-total div { display: flex; justify-content: space-between; }
 
 .drawer-backdrop {
