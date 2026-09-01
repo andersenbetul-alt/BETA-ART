@@ -2,6 +2,17 @@ onizleme/
 node_modules/
 __pycache__/
 .DS_Store
+.env
+.next/
+dist/
+.vercel/
+
+# Alt proje build/bağımlılık klasörleri
+beta-art/node_modules/
+beta-art/.next/
+agents/eve-chat-template/node_modules/
+agents/eve-chat-template/.next/
+agents/eve-slack-agent/node_modules/
 
 # Motorun ürettiği veri. run.mjs bunları sıfırdan kuruyor (sınandı), ama izlenince
 # her koşuda diff üretiyorlardı — SQLite dosyası ikili olduğu için diff de okunmaz.
