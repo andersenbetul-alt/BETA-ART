@@ -82,6 +82,13 @@ export type LocaleData = {
     intro: string;
     cards: WorkCard[];
   };
+  social: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    podcastDesc: string;
+    podcastCta: string;
+  };
   frequency: {
     eyebrow: string;
     title: string;
@@ -131,7 +138,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'en',
     title: 'HXI — Nordic Phonk Artist from Norway',
     description: 'Official HXI artist site. Nordic phonk and glitch-driven electronic production from Norway.',
-    nav: ['Music', 'Credits', 'Nordic', 'Creators', 'Work', 'Contact'],
+    nav: ['Music', 'Credits', 'Nordic', 'Creators', 'Work', 'Social', 'Contact'],
     skip: 'Skip to content',
     localeName: 'English',
     languageSummary: 'Language · English ▾',
@@ -197,6 +204,13 @@ export const localeData: Record<Locale, LocaleData> = {
       { label: '02 / REMIXES', title: 'Your track / HXI sound', body: 'Remix, production and sound design for the next frame.', cta: 'Start a conversation ↗' },
       { label: '03 / PRESS', title: 'EPK / media', body: 'Press requests, interviews and approved assets through the official channel.', cta: 'Start a conversation ↗' }],
     },
+    social: {
+      eyebrow: '06 / SOCIAL',
+      title: 'Follow HXI.',
+      intro: 'New tracks are announced on these channels first.',
+      podcastDesc: 'A podcast about the production process and behind the scenes. The first episode is in the works. Links will be announced here.',
+      podcastCta: 'Suggest a topic →',
+    },
     frequency: {
       eyebrow: '06 / JOIN THE FREQUENCY',
       title: 'First access.\nNo noise.',
@@ -243,7 +257,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'nb-NO',
     title: 'HXI — nordisk phonk-artist fra Norge',
     description: 'Offisiell HXI-artistside. Nordisk phonk og glitch-preget elektronisk produksjon fra Norge.',
-    nav: ['Musikk', 'Kreditter', 'Nordisk', 'Skapere', 'Jobb med HXI', 'Kontakt'],
+    nav: ['Musikk', 'Kreditter', 'Nordisk', 'Skapere', 'Jobb med HXI', 'Sosialt', 'Kontakt'],
     skip: 'Hopp til innhold',
     localeName: 'Norsk',
     languageSummary: 'Språk · Norsk ▾',
@@ -309,6 +323,13 @@ export const localeData: Record<Locale, LocaleData> = {
       { label: '02 / REMIKSER', title: 'Din låt / HXI-lyd', body: 'Remiks, produksjon og lyddesign for neste ramme.', cta: 'Start en samtale ↗' },
       { label: '03 / PRESSE', title: 'EPK / media', body: 'Presseforespørsler, intervjuer og godkjente assets via offisiell kanal.', cta: 'Start en samtale ↗' }],
     },
+    social: {
+      eyebrow: '06 / SOSIALT',
+      title: 'Følg HXI.',
+      intro: 'Nye låter annonseres først i disse kanalene.',
+      podcastDesc: 'En podkast om produksjon og kulissene bak. Første episode er under arbeid. Lenker annonseres her.',
+      podcastCta: 'Foreslå et tema →',
+    },
     frequency: {
       eyebrow: '06 / BLI MED I FREKVENSEN',
       title: 'Først tilgang.\nIngen støy.',
@@ -355,7 +376,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'tr',
     title: 'HXI — Norveçli Nordik Phonk Sanatçısı',
     description: 'Resmi HXI sanatçı sitesi. Norveç’ten Nordik phonk ve glitch odaklı elektronik prodüksiyon.',
-    nav: ['Müzik', 'Krediler', 'Nordik', 'Üreticiler', 'HXI ile Çalış', 'İletişim'],
+    nav: ['Müzik', 'Krediler', 'Nordik', 'Üreticiler', 'HXI ile Çalış', 'Sosyal', 'İletişim'],
     skip: 'İçeriğe geç',
     localeName: 'Türkçe',
     languageSummary: 'Dil · Türkçe ▾',
@@ -421,6 +442,13 @@ export const localeData: Record<Locale, LocaleData> = {
       { label: '02 / REMİKSLER', title: 'Senin parçan / HXI sesi', body: 'Bir sonraki kare için remix, prodüksiyon ve ses tasarımı.', cta: 'Görüşme başlat ↗' },
       { label: '03 / BASIN', title: 'EPK / medya', body: 'Basın talepleri, röportajlar ve onaylı varlıklar resmi kanal üzerinden.', cta: 'Görüşme başlat ↗' }],
     },
+    social: {
+      eyebrow: '06 / SOSYAL',
+      title: 'HXI\'ı takip edin.',
+      intro: 'Yeni parçalar önce bu kanallarda duyurulur.',
+      podcastDesc: 'Prodüksiyon süreci ve sahne arkası üzerine podcast. İlk bölüm hazırlanıyor. Yayın adresleri burada duyurulacak.',
+      podcastCta: 'Konu önerin →',
+    },
     frequency: {
       eyebrow: '06 / FREKANSA KATIL',
       title: 'İlk erişim.\nGürültü yok.',
@@ -467,7 +495,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'fr',
     title: 'HXI — artiste phonk nordique de Norvège',
     description: 'Site officiel de HXI. Phonk nordique et production électronique glitch depuis la Norvège.',
-    nav: ['Musique', 'Crédits', 'Nordique', 'Créateurs', 'Travailler avec HXI', 'Contact'],
+    nav: ['Musique', 'Crédits', 'Nordique', 'Créateurs', 'Travailler avec HXI', 'Réseaux', 'Contact'],
     skip: 'Aller au contenu',
     localeName: 'Français',
     languageSummary: 'Langue · Français ▾',
@@ -533,6 +561,13 @@ export const localeData: Record<Locale, LocaleData> = {
       { label: '02 / REMIXES', title: 'Votre titre / le son HXI', body: 'Remix, production et sound design pour la prochaine image.', cta: 'Démarrer une conversation ↗' },
       { label: '03 / PRESSE', title: 'EPK / médias', body: 'Demandes presse, interviews et assets approuvés via le canal officiel.', cta: 'Démarrer une conversation ↗' }],
     },
+    social: {
+      eyebrow: '06 / RÉSEAUX',
+      title: 'Suivez HXI.',
+      intro: 'Les nouveaux titres sont annoncés d\'abord sur ces canaux.',
+      podcastDesc: 'Un podcast sur la production et les coulisses. Le premier épisode est en préparation. Les liens seront annoncés ici.',
+      podcastCta: 'Proposer un sujet →',
+    },
     frequency: {
       eyebrow: '06 / REJOINDRE LA FRÉQUENCE',
       title: 'Premier accès.\nSans bruit.',
@@ -579,7 +614,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'de',
     title: 'HXI — Nordic-Phonk-Artist aus Norwegen',
     description: 'Offizielle HXI-Artist-Seite. Nordic Phonk und glitchige elektronische Produktion aus Norwegen.',
-    nav: ['Musik', 'Credits', 'Nordisch', 'Creator', 'Mit HXI arbeiten', 'Kontakt'],
+    nav: ['Musik', 'Credits', 'Nordisch', 'Creator', 'Mit HXI arbeiten', 'Social', 'Kontakt'],
     skip: 'Zum Inhalt springen',
     localeName: 'Deutsch',
     languageSummary: 'Sprache · Deutsch ▾',
@@ -645,6 +680,13 @@ export const localeData: Record<Locale, LocaleData> = {
       { label: '02 / REMIXE', title: 'Dein Track / HXI-Sound', body: 'Remix, Produktion und Sounddesign für das nächste Bild.', cta: 'Gespräch starten ↗' },
       { label: '03 / PRESSE', title: 'EPK / Medien', body: 'Presseanfragen, Interviews und freigegebene Assets über den offiziellen Kanal.', cta: 'Gespräch starten ↗' }],
     },
+    social: {
+      eyebrow: '06 / SOCIAL',
+      title: 'HXI folgen.',
+      intro: 'Neue Tracks werden zuerst auf diesen Kanälen angekündigt.',
+      podcastDesc: 'Ein Podcast über Produktion und Hintergründe. Die erste Folge ist in Arbeit. Links folgen hier.',
+      podcastCta: 'Thema vorschlagen →',
+    },
     frequency: {
       eyebrow: '06 / DER FREQUENZ BEITRETEN',
       title: 'Zuerst Zugang.\nKein Lärm.',
@@ -691,7 +733,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'es',
     title: 'HXI — artista de phonk nórdico de Noruega',
     description: 'Sitio oficial de HXI. Phonk nórdico y producción electrónica glitch desde Noruega.',
-    nav: ['Música', 'Créditos', 'Nórdico', 'Creadores', 'Trabajar con HXI', 'Contacto'],
+    nav: ['Música', 'Créditos', 'Nórdico', 'Creadores', 'Trabajar con HXI', 'Redes', 'Contacto'],
     skip: 'Saltar al contenido',
     localeName: 'Español',
     languageSummary: 'Idioma · Español ▾',
@@ -757,6 +799,13 @@ export const localeData: Record<Locale, LocaleData> = {
       { label: '02 / REMIXES', title: 'Tu tema / sonido HXI', body: 'Remix, producción y diseño sonoro para el siguiente encuadre.', cta: 'Iniciar una conversación ↗' },
       { label: '03 / PRENSA', title: 'EPK / medios', body: 'Solicitudes de prensa, entrevistas y assets aprobados a través del canal oficial.', cta: 'Iniciar una conversación ↗' }],
     },
+    social: {
+      eyebrow: '06 / REDES',
+      title: 'Siga a HXI.',
+      intro: 'Los temas nuevos se anuncian primero en estos canales.',
+      podcastDesc: 'Un pódcast sobre la producción y el detrás de escena. El primer episodio está en camino. Los enlaces se anunciarán aquí.',
+      podcastCta: 'Sugerir un tema →',
+    },
     frequency: {
       eyebrow: '06 / ÚNETE A LA FRECUENCIA',
       title: 'Primer acceso.\nSin ruido.',
@@ -803,7 +852,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'pt-BR',
     title: 'HXI — artista de phonk nórdico da Noruega',
     description: 'Site oficial de HXI. Phonk nórdico e produção eletrônica glitch da Noruega.',
-    nav: ['Música', 'Créditos', 'Nórdico', 'Criadores', 'Trabalhe com HXI', 'Contato'],
+    nav: ['Música', 'Créditos', 'Nórdico', 'Criadores', 'Trabalhe com HXI', 'Redes', 'Contato'],
     skip: 'Ir para o conteúdo',
     localeName: 'Português',
     languageSummary: 'Idioma · Português ▾',
@@ -869,6 +918,13 @@ export const localeData: Record<Locale, LocaleData> = {
       { label: '02 / REMIXES', title: 'Sua faixa / som HXI', body: 'Remix, produção e design de som para o próximo enquadramento.', cta: 'Iniciar uma conversa ↗' },
       { label: '03 / IMPRENSA', title: 'EPK / mídia', body: 'Solicitações de imprensa, entrevistas e assets aprovados pelo canal oficial.', cta: 'Iniciar uma conversa ↗' }],
     },
+    social: {
+      eyebrow: '06 / REDES',
+      title: 'Siga HXI.',
+      intro: 'As faixas novas são anunciadas primeiro nesses canais.',
+      podcastDesc: 'Um podcast sobre produção e bastidores. O primeiro episódio está a caminho. Os links serão anunciados aqui.',
+      podcastCta: 'Sugerir um tema →',
+    },
     frequency: {
       eyebrow: '06 / ENTRE NA FREQUÊNCIA',
       title: 'Primeiro acesso.\nSem ruído.',
@@ -915,7 +971,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'ar',
     title: 'HXI — فنان فونك شمالي من النرويج',
     description: 'الموقع الرسمي لـ HXI. فونك شمالي وإنتاج إلكتروني قائم على الغليتش من النرويج.',
-    nav: ['الموسيقى', 'الاعتمادات', 'شمالي', 'صنّاع المحتوى', 'اعمل مع HXI', 'التواصل'],
+    nav: ['الموسيقى', 'الاعتمادات', 'شمالي', 'صنّاع المحتوى', 'اعمل مع HXI', 'تواصل', 'التواصل'],
     skip: 'انتقل إلى المحتوى',
     localeName: 'العربية',
     languageSummary: 'اللغة · العربية ▾',
@@ -981,6 +1037,13 @@ export const localeData: Record<Locale, LocaleData> = {
       { label: '02 / ريمكسات', title: 'مقطوعتك / صوت HXI', body: 'ريمكس وإنتاج وتصميم صوت للإطار القادم.', cta: 'ابدأ محادثة ↗' },
       { label: '03 / صحافة', title: 'EPK / إعلام', body: 'طلبات الصحافة والمقابلات والمواد المعتمدة عبر القناة الرسمية.', cta: 'ابدأ محادثة ↗' }],
     },
+    social: {
+      eyebrow: '06 / التواصل',
+      title: 'تابِع HXI.',
+      intro: 'تُعلَن المقاطع الجديدة أولاً عبر هذه القنوات.',
+      podcastDesc: 'بودكاست عن عملية الإنتاج وكواليسها. الحلقة الأولى قيد الإعداد. ستُعلَن الروابط هنا.',
+      podcastCta: 'اقترح موضوعًا ←',
+    },
     frequency: {
       eyebrow: '06 / انضم إلى التردد',
       title: 'وصول أولاً.\nلا ضجيج.',
@@ -1027,7 +1090,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'ja',
     title: 'HXI — ノルウェーのNordic Phonkアーティスト',
     description: 'HXI公式アーティストサイト。ノルウェー発のNordic phonkとグリッチ主体のエレクトロニック制作。',
-    nav: ['音楽', 'クレジット', '北欧', 'クリエイター', 'HXIと仕事する', '連絡'],
+    nav: ['音楽', 'クレジット', '北欧', 'クリエイター', 'HXIと仕事する', 'ソーシャル', '連絡'],
     skip: 'コンテンツへ移動',
     localeName: '日本語',
     languageSummary: '言語 · 日本語 ▾',
@@ -1093,6 +1156,13 @@ export const localeData: Record<Locale, LocaleData> = {
       { label: '02 / REMIX', title: 'あなたの曲 / HXIサウンド', body: '次のフレームのためのリミックス、プロダクション、サウンドデザイン。', cta: '相談を始める ↗' },
       { label: '03 / PRESS', title: 'EPK / メディア', body: 'プレス依頼、インタビュー、承認済みアセットは公式チャンネル経由で。', cta: '相談を始める ↗' }],
     },
+    social: {
+      eyebrow: '06 / ソーシャル',
+      title: 'HXIをフォロー。',
+      intro: '新曲はまずこれらのチャンネルで発表されます。',
+      podcastDesc: '制作の裏側を語るポッドキャスト。第1回を準備中。配信リンクはここで発表します。',
+      podcastCta: 'テーマを提案 →',
+    },
     frequency: {
       eyebrow: '06 / FREQUENCYに参加',
       title: '最初のアクセス。\nノイズなし。',
@@ -1139,7 +1209,7 @@ export const localeData: Record<Locale, LocaleData> = {
     hreflang: 'zh-CN',
     title: 'HXI — 来自挪威的北欧 Phonk 艺术家',
     description: 'HXI 官方艺术家网站。来自挪威的北欧 phonk 与 glitch 电子制作。',
-    nav: ['音乐', '鸣谢', '北欧', '创作者', '与 HXI 合作', '联系'],
+    nav: ['音乐', '鸣谢', '北欧', '创作者', '与 HXI 合作', '社交', '联系'],
     skip: '跳到正文',
     localeName: '中文',
     languageSummary: '语言 · 中文 ▾',
@@ -1204,6 +1274,13 @@ export const localeData: Record<Locale, LocaleData> = {
       cards: [{ label: '01 / 合作', title: '合作与联名', body: '发送 demo 或创意，开展聚焦的 HXI 合作。', cta: '开始沟通 ↗' },
       { label: '02 / 混音', title: '你的作品 / HXI 声音', body: '为下一帧打造混音、制作与声音设计。', cta: '开始沟通 ↗' },
       { label: '03 / 媒体', title: 'EPK / 媒体', body: '媒体请求、采访和已批准素材请通过官方渠道联系。', cta: '开始沟通 ↗' }],
+    },
+    social: {
+      eyebrow: '06 / 社交',
+      title: '关注 HXI。',
+      intro: '新曲目会首先在这些频道公布。',
+      podcastDesc: '一档关于制作过程与幕后的播客。第一期正在制作中。收听链接将在此公布。',
+      podcastCta: '建议主题 →',
     },
     frequency: {
       eyebrow: '06 / 加入频率',

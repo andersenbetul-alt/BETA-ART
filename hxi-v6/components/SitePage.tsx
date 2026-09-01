@@ -24,7 +24,14 @@ const MARQUEE_ITEMS = [
   'NCS · ROUND AROUND',
   'OSLO · NORWAY',
 ];
-const NAV_IDS = ['music', 'credits', 'nordic', 'creators', 'work', 'contact'];
+const NAV_IDS = ['music', 'credits', 'nordic', 'creators', 'work', 'social', 'contact'];
+const EMAIL = 'booking@hxi.no';
+const SOCIALS = [
+  { platform: 'Spotify', handle: 'HXI', href: SPOTIFY_ARTIST },
+  { platform: 'Instagram', handle: '@prod.hxi', href: INSTAGRAM },
+  { platform: 'YouTube', handle: '@hximusic', href: YOUTUBE },
+  { platform: 'NCS', handle: 'ncs.io/hxi', href: NCS_ARTIST },
+];
 
 function Ext({
   href, children, className,
@@ -307,6 +314,34 @@ export function SitePage({ locale }: { locale: Locale }) {
                   <Ext href={INSTAGRAM}>{card.cta}</Ext>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── SOCIAL & PODCAST ─── */}
+        <section className="section social-section" id="social" aria-labelledby="social-title">
+          <div className="section-inner">
+            <div className="section-head">
+              <p className="eyebrow">{d.social.eyebrow}</p>
+              <h2 id="social-title">{d.social.title}</h2>
+              <p>{d.social.intro}</p>
+            </div>
+            <div className="social-grid">
+              {SOCIALS.map((s) => (
+                <Ext href={s.href} className="social-card" key={s.platform}>
+                  <span className="platform">{s.platform}</span>
+                  <span className="handle">{s.handle}</span>
+                  <span className="social-arrow" aria-hidden="true">↗</span>
+                </Ext>
+              ))}
+            </div>
+            <div className="podcast-box">
+              <div>
+                <p className="eyebrow">Podcast</p>
+                <h3>HXI FREQUENCY</h3>
+                <p>{d.social.podcastDesc}</p>
+              </div>
+              <a className="btn" href={`mailto:${EMAIL}?subject=Podcast`}>{d.social.podcastCta}</a>
             </div>
           </div>
         </section>
