@@ -13,13 +13,19 @@ düşülmüş bir tuzaktır.
 
 | Kaynak | Çıktı | Yayın yeri |
 |---|---|---|
-| `hxi-v6/` (Next.js 15, statik export) | `hxi-v6/out/` | Site kökü: `/tr/ /en/ … /zh/` (10 dil) |
+| `hxi-v6/` (Next.js 15, statik export) | `hxi-v6/out/` | Site kökü: `/tr/ /en/ … /zh/` (10 dil; her dilde `/use/`, `/sync/`, `/privacy/` alt sayfaları) |
 | `hxi-klasik-kaynak/` (React SPA, 8 dil) | web-artifacts-builder ile `bundle.html` | `/klasik` + Claude artifact |
+| `hxi/` (marka mimarisi oturumunun statik sitesi) | — | `/v8` (kopya; kaynak değişirse aynala) |
+| `hxi-website/` (dosyalar oturumunun sitesi) | — | `/v7` (kopya; kök-mutlak yollar `/v7/` önekine çevrilmiş) |
+| `brand/hxi/designs.html` | — | `/logo` (kopya, `index.html` adıyla) |
 | `hxi-sayfalar/` (yayın klasörü, depoda) | — | Vercel `hxi` projesi bunu olduğu gibi servis eder |
 
 `hxi-sayfalar/` içindeki el yazması dosyalar (derleme çıktısı DEĞİL, elle korunur):
 `index.html` (dil kapı sayfası), `klasik.html`, `studio.html`, `degerlendirme.html`,
-`arktisk.html`, `sync.html`, `v1/ v2/ v4/ v5/ v6/` arşivleri.
+`arktisk.html`, `sync.html` (kök — eski artifact sayfası; dil altındaki `/en/sync/`
+ile karışmaz), `v1/ v2/ v4/ v5/ v6/ v7/ v8/ logo/` arşiv ve montajları.
+Kanonik alan adı **hximusic.com** (meta/canonical'lar onu yazar; DNS bağlantısı
+kullanıcı tarafında bekliyor, yayın adresi hxi-nu.vercel.app).
 
 ## Değişmez kurallar
 
@@ -31,6 +37,10 @@ düşülmüş bir tuzaktır.
    (dosyalar oturumunun uygulaması — yayında /v7). Bu üç kaynağa aykırı
    iyileştirme yapma; çelişki görürsen kullanıcıya söyle. Marka tescili temiz
    değil: sitede asla ® veya "korunmaktadır" dili kullanma.
+   **Kaynaklar tasarım/doktrin otoritesidir, veri otoritesi değil:** /v8
+   kaynağında bilinen veri hataları var (WORTH NOTHING'i NCS yayını sayar,
+   Round Around'a 2023 yazar — doğrusu 2025; sahte "mesaj alındı" formu).
+   İçerik taşırken doğrulanmış verilerimiz kazanır (kural 8).
 
 1. **Depo adresi `BETA-ART-PRIVAT`'tır ve public'tir.** Vercel derlemesi onu
    anonim klonlar. Push çıktısındaki "repository moved" uyarısı normaldir;
@@ -44,20 +54,25 @@ düşülmüş bir tuzaktır.
 4. **`assets/hero.png` silinmez.** Kök site WebP kullanır ama `/v5` ve `/v6`
    arşiv sayfaları kökteki PNG'ye başvurur; silinirse arşiv görselleri kırılır.
 5. **Metinler yalın dil (klart språk) ilkesiyle yazılır:** kısa cümle, tek
-   fikir, süs yok. Marka öğeleri çevrilmez: HXI, "THE SAME SPEED, COLDER",
-   parça adları, marquee.
+   fikir, süs yok. Marka öğeleri çevrilmez: HXI, imza satırı
+   "THE SAME SPEED — COLDER." (kilitli biçim: uzun çizgi + nokta),
+   UTGAVE, koordinatlar (59.91°N · 10.75°E), parça adları, marquee.
 6. **Yeni metin anahtarı 10 dile birden eklenir** (`hxi-v6/content/locales.ts`:
    en, no, tr, fr, de, es, pt, ar, ja, zh). Klasik SPA'da 8 dil
    (`hxi-klasik-kaynak/src/i18n.ts`). Arapça RTL: `margin-left` değil
    `margin-inline-start`, `left` değil `inset-inline-start`.
+   Yeni alt sayfa kalıbı: `app/[locale]/<ad>/page.tsx` (privacy sayfasını
+   kopyala — metadata + canonical + `privacy-page` sınıfları), sözlüğü
+   `LocaleData` tipine ve 10 dile ekle, `app/sitemap.ts`'e URL satırı ekle.
 7. **Bölüm eyebrow'ları 01–08 sıralıdır** (music 01 … contact 08; Nordik içi
    HAKKINDA alt bloğu 03'ü paylaşır). Bölüm ekle/çıkarınca 10 dilde yeniden
    numaralandır.
 8. **Bağlantı uydurulmaz.** Doğrulanmış hesaplar: Spotify sanatçı
    `3yRqd6IO6SamMAmnXwZKeU`, Instagram `@prod.hxi`, YouTube `@hximusic`,
-   NCS `ncs.io/artist/1169/hxi`, e-posta `booking@hxi.no`. TikTok/Apple Music
-   adresi doğrulanmadıkça sayfaya girmez; podcast kutusu platform bağlantısız
-   "hazırlanıyor" durumundadır.
+   NCS `ncs.io/artist/1169/hxi` (parçalar: `ncs.io/LockNLoad` 2024,
+   `ncs.io/roundaround` 2025 · Nateki), e-posta `booking@hximusic.com`.
+   TikTok/Apple Music adresi doğrulanmadıkça sayfaya girmez; podcast kutusu
+   platform bağlantısız "hazırlanıyor" durumundadır (yalnız mailto CTA'sı var).
 
 ## Tarif: V6 (kök site) güncellemesi
 
@@ -70,12 +85,15 @@ cd ..
 #     (oynatıcı kapısı, dil menüsü kaydı). SitePage'e YENİ istemci davranışı
 #     eklersen bu betiğe de vanilya karşılığını ekle, yoksa canlıda çalışmaz.
 node .claude/skills/hxi-yayin/scripts/statik-incelt.mjs hxi-v6/out
-# 2. Yayın klasörünü tazele (kapı sayfasını koruyarak)
+# 2. Yayın klasörünü tazele (kapı sayfasını koruyarak; v7/ v8/ logo/ silinmez —
+#    rm listesinde yoklar, öyle kalsınlar)
 KAPI=$(mktemp); cp hxi-sayfalar/index.html $KAPI
 rm -rf hxi-sayfalar/{en,no,tr,fr,de,es,pt,ar,ja,zh,_next,404,404.html,sitemap.xml}
 cp -r hxi-v6/out/. hxi-sayfalar/
 cp $KAPI hxi-sayfalar/index.html
-rm -f hxi-sayfalar/index.txt        # export artığı
+# export artıkları: kökteki ve dil klasörlerindeki RSC .txt dosyaları
+rm -f hxi-sayfalar/index.txt
+find hxi-sayfalar/{en,no,tr,fr,de,es,pt,ar,ja,zh} -name '*.txt' -delete
 # artık hiçbir sayfadan çağrılmayan JS parçaları atılır (css kalır!)
 rm -rf hxi-sayfalar/_next/static/chunks
 # hero.png'nin yerinde olduğunu doğrula (kural 4)
@@ -137,12 +155,21 @@ node .claude/skills/hxi-yayin/scripts/dogrula.mjs   # rapor stdout'a
 mobil görünümleri açar; konsol hatası, kırık çapa, yatay taşma, yüklenmeyen
 görsel, RTL yönü ve mobilde başlığın ilk ekranda olup olmadığını denetler.
 Herhangi bir satır `HATA` içeriyorsa push'lama — önce düzelt. Playwright
-kurulu değilse: `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install playwright`
+kurulu değilse (her taze konteynerde kurulu değildir):
+`PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install --no-save playwright`
 (tarayıcı indirme, hazır Chromium kullanılır).
+**Komutları depo kökünden çalıştır:** `dogrula.mjs` playwright'ı çağıran
+dizinden çözer ve `cd hxi-sayfalar` gibi bir yön değişimi kabuğa yapışıp
+sonraki `git add hxi-sayfalar` komutunu da kırar (bir kez yaşandı).
 
 ## Bilinen açık işler
 
-- Vercel Authentication takım varsayılanıyla açık olabilir (ziyaretçiye giriş
-  duvarı); kullanıcının incognito testi ve onayı olmadan kapatma.
-- hxi.no alan adı bağlanınca meta/canonical'lar hazır (zaten hxi.no yazıyor);
-  bağlanana dek arama motoru önizlemeleri hxi.no gösterir, bu bilinçlidir.
+- Vercel Authentication ayarlandı (üretim halka açık, önizlemeler korumalı;
+  `ssoProtection.deploymentType: "preview"`). Yeni proje açarsan aynı ayarı yap.
+- Kanonik alan adı hximusic.com'a çevrildi; canonical/hreflang'ler hazır.
+  Kullanıcı tarafında bekleyen: Vercel panelde alan adı ekleme + GoDaddy DNS
+  (A @ → 76.76.21.21, CNAME www → cname.vercel-dns.com) + booking@hximusic.com
+  e-posta yönlendirmesi. "Ekledim" denince `get_project` ile domains doğrula.
+- "HXI brand architecture" oturumu birleştirme sırasında hâlâ çalışıyordu;
+  dalı (`claude/hxi-brand-architecture-740yhs`) yeni commit alırsa yeniden
+  merge et ve değişen `hxi/` sayfalarını `/v8`'e aynala.
