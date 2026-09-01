@@ -341,3 +341,23 @@ modeliyle değiştirildi. Testler: 34/35 (tek fail scratchpad paketindeki
 Google Fonts'un sandbox ağ engeli — ortam artefaktı), dil bazlı içerik
 spot kontrolleri ve i18n anahtar eşitliği yeşil. Commit'ler: d0a6e9d,
 1f252b0 (+ dokümantasyon commit'i); artifact aynı adreste güncellendi.
+
+## 01.09.2026 (öğle) — Beta Art Privat Vercel'de yayında
+
+`create_git_project` üçüncü denemede de `repo_no_access` verdi (kullanıcı
+daveti kabul ettiğini bildirdi ama işbirlikçi listesi hâlâ yalnızca
+`andersenbetul-alt`; kabul GitHub API'ye yansımadı — muhtemelen yanlış
+hesapla yapıldı). Depo bu arada public olduğu için QBLOGG'un kanıtlanmış
+tarifine geçildi: yalnızca `vercel.json` gönderilir, `buildCommand`
+public depoyu `claude/beta-art-privat-g7k5vk` dalından `--depth 1`
+klonlar, `apps/beta-art-archive` içinde `npm ci && npm run build`
+çalıştırır, `dist/`i çıktıya taşır. Sonuç: proje `beta-art-privat`
+(`prj_C9ByJukTJ8xulLpXCDQnunRCIBlh`, BET - ART takımı), derleme 14 sn,
+üretim adresi **https://beta-art-privat.vercel.app** (alias otomatik
+geldi). SSO Deployment Protection kapatıldı, adres herkese açık — 200
+ve doğru HTML `web_fetch_vercel_url` ile doğrulandı. **Siteyi
+güncellemek = dala push + aynı vercel.json ile dağıtımı yeniden
+tetiklemek** (git bağlantısı yok; davet sorunu çözülürse git-link'e
+yükseltilebilir). Önceki başarısız denemeden kalan boş `beta-art`
+projesi (prj_QLewfMpfzgVSOO2FsZoZpmeszbNG) hâlâ silinmeyi bekliyor —
+panelden kullanıcı silecek.
