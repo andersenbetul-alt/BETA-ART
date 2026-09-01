@@ -416,8 +416,20 @@ ve ≥%10 satış görüşmesi oranı.
    Bu depoda Adobe için Firefly MCP araçları zaten bağlı — teknik olarak
    erişilebilir, ama ticari lisans/fiyat koşulları ayrı değerlendirilmeli.
 6. **Fiyatların NOK piyasa doğrulaması.** Canva'nın Norveç NOK fiyatı bu
-   oturumda teyit edilemedi (§B); önerilen paket fiyatları [H] işaretli,
-   pilot öncesi gözden geçirilmeli.
+   oturumda **hâlâ** teyit edilemedi (§B) — 01.09.2026'da bir deep-research
+   çalışması denendi, ama bu ortamın ağ proxy'si `canva.com`,
+   `smartbyra.no` ve `geopriced.com`'un **hepsini** engelledi (WebFetch
+   ile de doğrudan denendi, aynı sonuç — bkz. `qblogg-operasyon` SKILL.md
+   §4). Yalnızca arama motoru özetleri (WebSearch snippet, birebir
+   sayfadan doğrulanmadı) elde edilebildi: Canva'nın kendi "Fair Regional
+   Pricing" adlı bir politika sayfası olduğu (bölgesel fiyatlandırma
+   iddiası var, ama metni okunamadı) ve üçüncü taraf bir karşılaştırma
+   sitesinin (geopriced.com, doğrulanmamış) Canva Pro'yu Norveç'te
+   19,39 $/ay ile karşılaştırdığı 40 ülke arasında **en pahalısı**
+   olarak gösterdiği iddiası bulundu — **ikisi de [D], kullanılmadan
+   önce kullanıcının kendi tarayıcısından canva.com/no adresini elle
+   açması gerekiyor.** Önerilen paket fiyatları [H] işaretli, pilot
+   öncesi gözden geçirilmeli.
 7. **Erişilebilirlik hedefi.** Mikro işletme istisnası uygulanıyor olsa
    bile WCAG 2.2 AA'yı gönüllü hedef olarak MVP'ye alıp almama kararı
    (§F) — maliyet/zaman etkisi var.
