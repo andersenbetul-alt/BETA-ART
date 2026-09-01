@@ -23,9 +23,14 @@ Consult/Care) bağımsızdır — hepsinin envanteri `docs/girisimler.md`'de,
 > (`https://github.com/andersenbetul-alt/BETA-ART.git`) sabit
 > kodluyor.** Yönlendirme bir gün kesilirse (ad başkası tarafından
 > alınırsa, ya da GitHub süresiz garanti etmiyorsa) canlı QBLOGG
-> dağıtımı build aşamasında sessizce kırılır. Bu satırı düzeltmek
-> kullanıcının onayını gerektiriyor — depo adı değişikliğinin kalıcı
-> mı yoksa yanlışlıkla mı olduğu bu oturumdan bilinmiyor.
+> dağıtımı build aşamasında sessizce kırılır.
+>
+> **Düzeltildi (31.08.2026, kullanıcı onayıyla):** `vercel.json`'ın
+> `buildCommand`'ı yeni URL'ye (`.../BETA-ART-PRIVAT.git`) güncellendi;
+> güncelleme öncesi yeni URL gerçek bir `git clone`'la doğrulandı (exit
+> 0, `main` üzerinde `MONOREPO.md` görüldü — depo gerçekten taşınmış).
+> Depo adının GitHub'da geri "BETA-ART" yapılması bu oturumun yetkisi/
+> aracı dışında — o adım kullanıcının kendi işlemi.
 
 ## Proje nedir
 
