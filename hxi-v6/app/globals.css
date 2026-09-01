@@ -585,7 +585,9 @@ h1 span { color: var(--acid); text-shadow: 10px 0 0 rgba(255, 45, 45, .22); }
     text-transform: uppercase;
   }
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: clamp(86px, 13vh, 128px); }
-  .hero-art { object-position: 55% center; }
+  /* Mobilde görsel akışta 900px+ yer kaplayıp başlığı ekran altına itiyordu;
+     masaüstündeki gibi arka plana alınır, scrim üstünde metin okunur kalır. */
+  .hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-position: 55% center; }
   .hero-scrim { background: linear-gradient(0deg, rgba(8, 8, 8, .97) 0%, rgba(8, 8, 8, .68) 48%, rgba(8, 8, 8, .24) 100%); }
   .signal { padding: 24px 0 0; border-top: 1px solid var(--line); border-left: 0; background: transparent; backdrop-filter: none; }
   [dir='rtl'] .signal { padding: 24px 0 0; border-right: 0; }

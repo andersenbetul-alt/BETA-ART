@@ -93,7 +93,7 @@ export function SitePage({ locale }: { locale: Locale }) {
         {/* ─── HERO ─── */}
         <section className="hero" id="top" aria-labelledby="hero-title">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="hero-art" src="/assets/hero.png" alt="" aria-hidden="true" />
+          <img className="hero-art" src="/assets/hero.webp" alt="" aria-hidden="true" />
           <div className="hero-scrim" aria-hidden="true" />
           <div className="hero-copy">
             <p className="kicker">{d.hero.kicker}</p>

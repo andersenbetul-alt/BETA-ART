@@ -191,7 +191,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: 'Check terms ↗',
     },
     about: {
-      eyebrow: '05 / ABOUT',
+      eyebrow: '03 / ABOUT',
       title: 'HXI, from Norway.',
       body: 'HXI is a Norwegian DJ and producer active since 2021. The catalog moves across phonk, electronic production and glitch-heavy sound design, with releases including “help urself”, X-PIRATA, AURORA LOVE and MONTAGEM HYSTERIA.',
       note: 'Fast, glitchy and bit-crushed. Built in Norway; carried far beyond it.',
@@ -212,13 +212,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: 'Suggest a topic →',
     },
     frequency: {
-      eyebrow: '06 / JOIN THE FREQUENCY',
+      eyebrow: '07 / JOIN THE FREQUENCY',
       title: 'First access.\nNo noise.',
       intro: 'Release updates, creator resources and approved HXI project news belong here when a compliant contact workflow is active.',
       note: 'Community activation is intentionally gated until the real backend is configured.',
     },
     contact: {
-      eyebrow: '06 / CONTACT',
+      eyebrow: '08 / CONTACT',
       title: 'Work with HXI.',
       body: 'For business, booking, press or collaboration, contact HXI through the official Instagram profile.',
       actions: ['Contact on Instagram ↗', 'YouTube ↗'],
@@ -310,7 +310,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: 'Sjekk vilkår ↗',
     },
     about: {
-      eyebrow: '05 / OM',
+      eyebrow: '03 / OM',
       title: 'HXI, fra Norge.',
       body: 'HXI er en norsk DJ og produsent, aktiv siden 2021. Katalogen beveger seg mellom phonk, elektronisk produksjon og glitch-preget lyddesign, med utgivelser som «help urself», X-PIRATA, AURORA LOVE og MONTAGEM HYSTERIA.',
       note: 'Raskt, glitch-preget og bitcrushet. Bygget i Norge; båret langt utenfor.',
@@ -331,13 +331,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: 'Foreslå et tema →',
     },
     frequency: {
-      eyebrow: '06 / BLI MED I FREKVENSEN',
+      eyebrow: '07 / BLI MED I FREKVENSEN',
       title: 'Først tilgang.\nIngen støy.',
       intro: 'Utgivelsesoppdateringer, creator-ressurser og godkjente HXI-nyheter hører hjemme her når en kompatibel kontaktflyt er aktiv.',
       note: 'Community-aktivering er bevisst låst til ekte backend er konfigurert.',
     },
     contact: {
-      eyebrow: '06 / KONTAKT',
+      eyebrow: '08 / KONTAKT',
       title: 'Jobb med HXI.',
       body: 'For business, booking, presse eller samarbeid: kontakt HXI via den offisielle Instagram-profilen.',
       actions: ['Kontakt på Instagram ↗', 'YouTube ↗'],
@@ -429,7 +429,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: 'Koşulları incele ↗',
     },
     about: {
-      eyebrow: '05 / HAKKINDA',
+      eyebrow: '03 / HAKKINDA',
       title: 'HXI, Norveç’ten.',
       body: 'HXI, 2021’den beri aktif Norveçli DJ ve prodüktördür. Katalog; phonk, elektronik prodüksiyon ve glitch ağırlıklı ses tasarımı arasında ilerler. “help urself”, X-PIRATA, AURORA LOVE ve MONTAGEM HYSTERIA öne çıkan yayınlardandır.',
       note: 'Hızlı, glitch ağırlıklı ve bit-crushed. Norveç’te üretildi; çok daha uzağa taşındı.',
@@ -450,13 +450,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: 'Konu önerin →',
     },
     frequency: {
-      eyebrow: '06 / FREKANSA KATIL',
+      eyebrow: '07 / FREKANSA KATIL',
       title: 'İlk erişim.\nGürültü yok.',
       intro: 'Release güncellemeleri, creator kaynakları ve onaylı HXI proje haberleri, uyumlu bir iletişim sistemi aktif olduğunda burada yer alır.',
       note: 'Topluluk aktivasyonu, gerçek backend yapılandırılana kadar bilinçli olarak kapalıdır.',
     },
     contact: {
-      eyebrow: '06 / İLETİŞİM',
+      eyebrow: '08 / İLETİŞİM',
       title: 'HXI ile çalış.',
       body: 'İş, booking, basın veya iş birliği için HXI’nin resmi Instagram profili üzerinden iletişime geç.',
       actions: ['Instagram’dan iletişim ↗', 'YouTube ↗'],
@@ -548,7 +548,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: 'Voir les conditions ↗',
     },
     about: {
-      eyebrow: '05 / À PROPOS',
+      eyebrow: '03 / À PROPOS',
       title: 'HXI, depuis la Norvège.',
       body: 'HXI est un DJ et producteur norvégien actif depuis 2021. Son catalogue traverse la phonk, la production électronique et le sound design glitch, avec notamment « help urself », X-PIRATA, AURORA LOVE et MONTAGEM HYSTERIA.',
       note: 'Rapide, glitché et bitcrushé. Construit en Norvège; porté bien au-delà.',
@@ -569,13 +569,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: 'Proposer un sujet →',
     },
     frequency: {
-      eyebrow: '06 / REJOINDRE LA FRÉQUENCE',
+      eyebrow: '07 / REJOINDRE LA FRÉQUENCE',
       title: 'Premier accès.\nSans bruit.',
       intro: 'Les actualités de sorties, ressources créateurs et informations HXI validées ont leur place ici lorsqu’un contact conforme est actif.',
       note: 'L’activation de la communauté reste volontairement bloquée tant que le backend réel n’est pas configuré.',
     },
     contact: {
-      eyebrow: '06 / CONTACT',
+      eyebrow: '08 / CONTACT',
       title: 'Travailler avec HXI.',
       body: 'Pour les affaires, bookings, presse ou collaborations, contactez HXI via le profil Instagram officiel.',
       actions: ['Contacter sur Instagram ↗', 'YouTube ↗'],
@@ -667,7 +667,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: 'Bedingungen prüfen ↗',
     },
     about: {
-      eyebrow: '05 / ÜBER',
+      eyebrow: '03 / ÜBER',
       title: 'HXI, aus Norwegen.',
       body: 'HXI ist ein norwegischer DJ und Producer, aktiv seit 2021. Der Katalog bewegt sich zwischen Phonk, elektronischer Produktion und glitchigem Sounddesign, darunter „help urself“, X-PIRATA, AURORA LOVE und MONTAGEM HYSTERIA.',
       note: 'Schnell, glitchig und bitcrushed. In Norwegen gebaut; weit darüber hinaus getragen.',
@@ -688,13 +688,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: 'Thema vorschlagen →',
     },
     frequency: {
-      eyebrow: '06 / DER FREQUENZ BEITRETEN',
+      eyebrow: '07 / DER FREQUENZ BEITRETEN',
       title: 'Zuerst Zugang.\nKein Lärm.',
       intro: 'Release-Updates, Creator-Ressourcen und bestätigte HXI-Projektnews gehören hierher, wenn ein konformer Kontaktablauf aktiv ist.',
       note: 'Die Community-Aktivierung bleibt bewusst gesperrt, bis das echte Backend konfiguriert ist.',
     },
     contact: {
-      eyebrow: '06 / KONTAKT',
+      eyebrow: '08 / KONTAKT',
       title: 'Mit HXI arbeiten.',
       body: 'Für Business, Booking, Presse oder Kollaborationen HXI über das offizielle Instagram-Profil kontaktieren.',
       actions: ['Über Instagram kontaktieren ↗', 'YouTube ↗'],
@@ -786,7 +786,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: 'Ver condiciones ↗',
     },
     about: {
-      eyebrow: '05 / ACERCA DE',
+      eyebrow: '03 / ACERCA DE',
       title: 'HXI, desde Noruega.',
       body: 'HXI es un DJ y productor noruego activo desde 2021. Su catálogo cruza phonk, producción electrónica y diseño sonoro glitch, con lanzamientos como “help urself”, X-PIRATA, AURORA LOVE y MONTAGEM HYSTERIA.',
       note: 'Rápido, glitch y bit-crushed. Hecho en Noruega; llevado mucho más lejos.',
@@ -807,13 +807,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: 'Sugerir un tema →',
     },
     frequency: {
-      eyebrow: '06 / ÚNETE A LA FRECUENCIA',
+      eyebrow: '07 / ÚNETE A LA FRECUENCIA',
       title: 'Primer acceso.\nSin ruido.',
       intro: 'Las novedades de lanzamientos, recursos para creadores e información aprobada de HXI pertenecen aquí cuando exista un flujo de contacto conforme.',
       note: 'La activación de comunidad permanece bloqueada hasta que el backend real esté configurado.',
     },
     contact: {
-      eyebrow: '06 / CONTACTO',
+      eyebrow: '08 / CONTACTO',
       title: 'Trabaja con HXI.',
       body: 'Para negocios, booking, prensa o colaboraciones, contacta con HXI a través del perfil oficial de Instagram.',
       actions: ['Contactar por Instagram ↗', 'YouTube ↗'],
@@ -905,7 +905,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: 'Ver termos ↗',
     },
     about: {
-      eyebrow: '05 / SOBRE',
+      eyebrow: '03 / SOBRE',
       title: 'HXI, da Noruega.',
       body: 'HXI é DJ e produtor norueguês, ativo desde 2021. O catálogo passa por phonk, produção eletrônica e sound design glitch, com lançamentos como “help urself”, X-PIRATA, AURORA LOVE e MONTAGEM HYSTERIA.',
       note: 'Rápido, glitch e bit-crushed. Feito na Noruega; levado muito além dela.',
@@ -926,13 +926,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: 'Sugerir um tema →',
     },
     frequency: {
-      eyebrow: '06 / ENTRE NA FREQUÊNCIA',
+      eyebrow: '07 / ENTRE NA FREQUÊNCIA',
       title: 'Primeiro acesso.\nSem ruído.',
       intro: 'Atualizações de lançamentos, recursos para criadores e notícias aprovadas do projeto HXI ficam aqui quando um fluxo de contato compatível estiver ativo.',
       note: 'A ativação da comunidade permanece bloqueada até que o backend real esteja configurado.',
     },
     contact: {
-      eyebrow: '06 / CONTATO',
+      eyebrow: '08 / CONTATO',
       title: 'Trabalhe com HXI.',
       body: 'Para negócios, booking, imprensa ou colaboração, fale com HXI pelo perfil oficial no Instagram.',
       actions: ['Contato pelo Instagram ↗', 'YouTube ↗'],
@@ -1024,7 +1024,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: 'تحقق من الشروط ↗',
     },
     about: {
-      eyebrow: '05 / عن HXI',
+      eyebrow: '03 / عن HXI',
       title: 'HXI، من النرويج.',
       body: 'HXI دي جي ومنتج نرويجي نشط منذ 2021. يتحرك الكتالوج بين الفونك والإنتاج الإلكتروني وتصميم الصوت القائم على الغليتش، مع إصدارات منها “help urself” وX-PIRATA وAURORA LOVE وMONTAGEM HYSTERIA.',
       note: 'سريع، غليتش وBit-crushed. صُنع في النرويج ووصل إلى ما هو أبعد.',
@@ -1045,13 +1045,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: 'اقترح موضوعًا ←',
     },
     frequency: {
-      eyebrow: '06 / انضم إلى التردد',
+      eyebrow: '07 / انضم إلى التردد',
       title: 'وصول أولاً.\nلا ضجيج.',
       intro: 'تحديثات الإصدارات وموارد صناع المحتوى وأخبار HXI المعتمدة مكانها هنا عند تفعيل مسار تواصل متوافق.',
       note: 'يبقى تفعيل المجتمع مقفلاً عمداً حتى يتم إعداد الخلفية الحقيقية.',
     },
     contact: {
-      eyebrow: '06 / التواصل',
+      eyebrow: '08 / التواصل',
       title: 'اعمل مع HXI.',
       body: 'للأعمال أو الحجز أو الصحافة أو التعاون، تواصل مع HXI عبر حساب Instagram الرسمي.',
       actions: ['تواصل عبر Instagram ↗', 'YouTube ↗'],
@@ -1143,7 +1143,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: '条件を確認 ↗',
     },
     about: {
-      eyebrow: '05 / ABOUT',
+      eyebrow: '03 / ABOUT',
       title: 'HXI、ノルウェーから。',
       body: 'HXIは2021年から活動するノルウェーのDJ／プロデューサー。phonk、エレクトロニック制作、グリッチ主体のサウンドデザインを横断し、「help urself」、X-PIRATA、AURORA LOVE、MONTAGEM HYSTERIAなどをリリースしている。',
       note: '速く、グリッチーで、ビットクラッシュ。ノルウェーで作られ、そこから遠くへ届く。',
@@ -1164,13 +1164,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: 'テーマを提案 →',
     },
     frequency: {
-      eyebrow: '06 / FREQUENCYに参加',
+      eyebrow: '07 / FREQUENCYに参加',
       title: '最初のアクセス。\nノイズなし。',
       intro: 'リリース情報、クリエイター向けリソース、承認済みHXIプロジェクトニュースは、適切な連絡フローが有効になった時にここに入ります。',
       note: '実際のバックエンドが設定されるまで、コミュニティ機能は意図的に保留されます。',
     },
     contact: {
-      eyebrow: '06 / CONTACT',
+      eyebrow: '08 / CONTACT',
       title: 'HXIと仕事をする。',
       body: 'ビジネス、ブッキング、プレス、コラボレーションは、HXI公式Instagramからお問い合わせください。',
       actions: ['Instagramで連絡 ↗', 'YouTube ↗'],
@@ -1262,7 +1262,7 @@ export const localeData: Record<Locale, LocaleData> = {
       checkTerms: '查看条款 ↗',
     },
     about: {
-      eyebrow: '05 / 关于',
+      eyebrow: '03 / 关于',
       title: 'HXI，来自挪威。',
       body: 'HXI 是一位自2021年活跃的挪威 DJ 与制作人。作品横跨 phonk、电子制作和 glitch 声音设计，包括 “help urself”、X-PIRATA、AURORA LOVE 与 MONTAGEM HYSTERIA。',
       note: '快速、故障感、bit-crushed。诞生于挪威，传播到更远的地方。',
@@ -1283,13 +1283,13 @@ export const localeData: Record<Locale, LocaleData> = {
       podcastCta: '建议主题 →',
     },
     frequency: {
-      eyebrow: '06 / 加入频率',
+      eyebrow: '07 / 加入频率',
       title: '优先访问。\n没有噪音。',
       intro: '当合规的联系流程启用后，发行更新、创作者资源和已批准的 HXI 项目消息都会在这里发布。',
       note: '在真实后端配置完成之前，社区功能会被有意保留。',
     },
     contact: {
-      eyebrow: '06 / 联系',
+      eyebrow: '08 / 联系',
       title: '与 HXI 合作。',
       body: '商务、演出预订、媒体或合作，请通过 HXI 官方 Instagram 联系。',
       actions: ['通过 Instagram 联系 ↗', 'YouTube ↗'],
