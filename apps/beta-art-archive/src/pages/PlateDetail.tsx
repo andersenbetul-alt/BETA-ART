@@ -50,7 +50,11 @@ export function PlateDetail() {
           ← {t("collectionEyebrow")}
         </button>
 
-        <div aria-hidden="true" className={`mt-6 aspect-[16/9] w-full bg-gradient-to-br ${plate.swatch}`} />
+        {plate.image ? (
+          <img src={plate.image} alt={plate.title} className="mt-6 aspect-[16/9] w-full object-cover" />
+        ) : (
+          <div aria-hidden="true" className={`mt-6 aspect-[16/9] w-full bg-gradient-to-br ${plate.swatch}`} />
+        )}
 
         <div className="mt-6 flex flex-wrap items-baseline justify-between gap-2">
           <h1 className="font-display text-[clamp(1.8rem,3.6vw,2.6rem)] font-light">{plate.title}</h1>

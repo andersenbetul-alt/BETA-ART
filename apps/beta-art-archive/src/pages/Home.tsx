@@ -169,7 +169,16 @@ function Collection() {
               onClick={() => goToPlate(plate.id)}
               className="flex flex-col bg-background text-start transition-colors hover:bg-secondary"
             >
-              <div aria-hidden="true" className={`aspect-square w-full bg-gradient-to-br ${plate.swatch}`} />
+              {plate.image ? (
+                <img
+                  src={plate.image}
+                  alt={plate.title}
+                  loading="lazy"
+                  className="aspect-square w-full object-cover"
+                />
+              ) : (
+                <div aria-hidden="true" className={`aspect-square w-full bg-gradient-to-br ${plate.swatch}`} />
+              )}
               <div className="flex flex-1 flex-col p-5">
                 <span
                   className={`font-record text-[0.62rem] uppercase tracking-[0.1em] ${

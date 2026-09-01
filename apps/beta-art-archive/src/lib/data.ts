@@ -34,6 +34,11 @@ export interface Plate {
   // photographer — no personal name is verified, so the original 12
   // plates carry the brand name "Beta Art" rather than an invented one.
   photographer: string;
+  // Real photograph for this plate, under public/plates/. Optional: plates
+  // without one render the placeholder gradient. Files are re-encoded with
+  // EXIF (incl. GPS) stripped before entering the repo — see docs note in
+  // proje-gunlugu 01.09.2026.
+  image?: string;
 }
 
 export const plates: Plate[] = [
@@ -188,6 +193,10 @@ export const plates: Plate[] = [
     },
     swatch: "from-slate-300 via-slate-100 to-slate-500",
     photographer: "Beta Art",
+    // User-supplied original (IMG_0020.heic, 01.09.2026): sunset over a
+    // forested lake landscape; EXIF shows iPhone 11, 19.09.2020 18:47.
+    // GPS was present in the original and stripped from the web copy.
+    image: "/plates/golden-hour.jpg",
   },
   {
     id: "portrait-in-amber",
