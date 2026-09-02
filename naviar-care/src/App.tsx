@@ -144,6 +144,7 @@ const CATEGORIES = [
   { code: 'TRA', label: 'Transport og avtaler',    desc: 'Følge til lege, frisør eller andre avtaler.' },
   { code: 'TRE', label: 'Trening og aktivitetsfølge', desc: 'Følge til svømming, trim og organisert aktivitet.' },
   { code: 'KOO', label: 'Pårørendekoordinering',   desc: 'Én plan for familien: hvem gjør hva, når.' },
+  { code: 'ANN', label: 'Annet — beskriv oppgaven', desc: 'Alle andre lavrisiko-oppgaver i hverdagen. Grensen er risiko, ikke listen.' },
 ]
 
 const STEPS = [
@@ -184,8 +185,8 @@ const PLANS = [
     name: 'NAVIAR CARE Assist',
     price: '250',
     unit: 'per time',
-    desc: 'Timebasert lavrisiko-hjelp i hverdagen — betal kun for timene du bruker.',
-    items: ['Alle sju tjenestekategorier', 'Plattformgebyr 15–25 % vises før betaling', 'Kontrollert hjelper, godkjent av deg', 'Ingen binding'],
+    desc: 'Alle typer lavrisiko-oppgaver — betal kun for timene du bruker.',
+    items: ['Alle lavrisiko-oppgaver, også utenfor kategoriene', 'Gebyr 15–25 % — vises før, trekkes ved fullført hjelp', 'Kontrollert hjelper, godkjent av deg', 'Ingen binding'],
     cta: 'Be om hjelper',
     highlight: false,
   },
@@ -494,6 +495,8 @@ const NAVI_ANSWERS: { keys: RegExp; text: string; topic?: string }[] = [
     text: 'Fritidskontakt følger dine nærmeste til aktiviteter — i snitt 3–5 timer i uken, individuelt eller i gruppe, matchet på interesser. Vil du sende en forespørsel?', topic: 'Tur og aktivitet' },
   { keys: /handl|ærend|butikk|apotek|post/i,
     text: 'Vi hjelper med dagligvarer, apotek, post og småærend — betalt per time. Skal jeg åpne forespørselen med riktig tjeneste valgt?', topic: 'Handling og ærend' },
+  { keys: /annet|andre ting|noe annet|spesiell/i,
+    text: 'Vi hjelper med alt som er lavrisiko — grensen er risiko, ikke en liste. Beskriv oppgaven, så vurderer en koordinator den. Utenfor: medisinsk pleie, pengehåndtering, juridiske råd og alt som krever autorisasjon.', topic: 'Annet — beskriv oppgaven' },
   { keys: /trygg|sikker|attest|personvern|gdpr|data/i,
     text: 'Alle hjelpere viser politiattest før oppdrag (vi lagrer den aldri), matching godkjennes av et menneske, og vi ber aldri om diagnoser eller helseopplysninger. Alt du skriver her blir i nettleseren din.' },
   { keys: /menneske|person|ringe|kontakt|snakke/i,
@@ -875,10 +878,11 @@ function Categories({ onCta, top }: { onCta: (topic?: string) => void; top: stri
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ marginBottom: 48 }}>
           <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Hjelp time for time</span>
-          <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Sju tjenester i hverdagen</h2>
+          <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>All lavrisiko hjelp — time for time</h2>
           <p style={{ fontSize: 16, color: '#576b68', marginTop: 12, maxWidth: 520 }}>
-            Lavrisiko, praktisk hjelp fra kontrollerte hjelpere — betalt per time,
-            med gebyret synlig før du bekrefter.
+            Sju vanlige tjenester — og alt annet som er lavrisiko: beskriv
+            oppgaven, så vurderer en koordinator den. Gebyret vises før du
+            bekrefter og trekkes først når hjelpen er fullført.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>

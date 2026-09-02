@@ -245,6 +245,7 @@ const CATS = [
   ['Handling og ærend','Dagligvarer, apotek, post'],['Enkelt husarbeid','Lette oppgaver hjemme'],
   ['Transport og avtaler','Følge til avtaler'],['Trening og aktivitetsfølge','Svømming, trim'],
   ['Pårørendekoordinering','Én plan for familien'],
+  ['Annet','Beskriv oppgaven — grensen er risiko'],
 ];
 const HELPERS = [
   ['Sara K.','1,2 km','4,9','Student · svømmer selv · tegnspråk'],
@@ -253,7 +254,7 @@ const HELPERS = [
 ];
 // Husk forrige kategori (kun lokalt i nettleseren)
 let savedCat = 5;
-try { const s = Number(localStorage.getItem('nc_proto_cat')); if (s >= 0 && s < 7) savedCat = s; } catch {}
+try { const s = Number(localStorage.getItem('nc_proto_cat')); if (s >= 0 && s < 8) savedCat = s; } catch {}
 let state = { step:0, cat:savedCat, helper:-1, stars:0, jobDone:false };
 
 const catBox = document.getElementById('cats');

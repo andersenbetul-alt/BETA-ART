@@ -20,6 +20,18 @@ modelin ilk test ürünüdür.
 | **NAVIAR CARE Assist** | Saatlik düşük riskli destek: alışveriş, yürüyüş, sosyal refakat, aktivite/antrenman, ulaşım, basit ev işleri, günlük pratik işler | Saatlik ücret + komisyon |
 | **NAVIAR CARE Partner** | Belediye/BPA/bakım kuruluşları: ihtiyaç analizi, hizmet akışı tasarımı, koordinasyon, pilot yönetimi, kalite + kullanıcı deneyimi raporu | Pilot ücreti / abonelik / lisans |
 
+## Kapsam kuralı (proje lideri, 02.09.2026)
+
+Hizmet kapsamı **kategori listesiyle değil, risk sınırıyla** çizilir:
+riskiz her tür günlük yardım saat ücretiyle yapılabilir. 7 kategori en
+sık istenen işlerin kısayoludur; liste dışı her düşük riskli görev
+"Annet — beskriv oppgaven" yoluyla alınır ve koordinatör risk
+değerlendirmesinden geçer. Risk sınırı (NærHjelp dışlama listesiyle
+aynı): tıbbi bakım, para/değerli eşya işlemleri, hukuki/finansal
+tavsiye, kişisel hijyen, gecelik kalış ve otorizasyon gerektiren her iş
+kapsam DIŞIDIR. **Komisyon kullanıcıdan, hizmet gerçekleştiği anda
+alınır** — ödeme öncesi gösterilir, tamamlanan hizmette tahsil edilir.
+
 ## Hedef müşteriler ve gelir
 
 | Müşteri | İhtiyacı | Gelir |
