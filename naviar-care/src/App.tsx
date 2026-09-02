@@ -50,6 +50,47 @@ function topCategory(): string | null {
   } catch { return null }
 }
 
+// "Neste steg": regelbasert og forklarbar — ingen ML, jf. prosjektplanens
+// Build-prinsipp. Leser hendelsene og foreslår ett riktig neste steg.
+type NextStep = { label: string; action: 'modal' | 'how'; topic?: string }
+
+function nextStep(): NextStep | null {
+  if (getConsent() !== 'all') return null
+  try {
+    const list: NCEvent[] = JSON.parse(localStorage.getItem(BEHAVIOR_KEY) || '[]')
+    if (!list.length) return null
+    const last = (e: string) => [...list].reverse().find(x => x.e === e)
+    const lastSubmit = last('submit')
+    const lastCta = last('cta')
+
+    // Allerede sendt inn, og ikke startet noe nytt siden: ikke mas
+    if (lastSubmit && (!lastCta || lastSubmit.t >= lastCta.t)) return null
+
+    // Åpnet skjemaet uten å sende: fullfør der de slapp
+    if (lastCta) {
+      const topic = lastCta.v !== 'generell' ? lastCta.v : (topCategory() || undefined)
+      return {
+        label: topic
+          ? `Fullføre forespørselen om ${topic.toLowerCase()}?`
+          : 'Fullføre forespørselen din? Det tar under ett minutt',
+        action: 'modal', topic,
+      }
+    }
+
+    // Så på priser: klar til å starte
+    if (last('plan')) return { label: 'Klar til å starte? Første time uten binding', action: 'modal' }
+
+    // Viste interesse for en kategori
+    const top = topCategory()
+    if (top) return { label: `Fortsette med ${top.toLowerCase()}?`, action: 'modal', topic: top }
+
+    // Leste bare FAQ: vis hvordan det fungerer
+    if (last('faq')) return { label: 'Se hvordan det fungerer — tre enkle steg', action: 'how' }
+
+    return null
+  } catch { return null }
+}
+
 function clearAllLocalData() {
   try {
     localStorage.removeItem(BEHAVIOR_KEY)
@@ -263,6 +304,7 @@ function ContactModal({ onClose, initialTopic }: { onClose: () => void; initialT
       `Navn: ${name}\nE-post: ${email}\nTelefon: ${phone || '—'}\nFagområde: ${topic || '—'}\n\nSituasjon:\n${situation}`
     )
     window.open(`mailto:hei@naviar.no?subject=Forespørsel fra ${encodeURIComponent(name)}&body=${body}`)
+    track('submit', topic || 'skjema')
     setStep('done')
   }
 
@@ -508,7 +550,7 @@ function Nav({
 
 // ─── Hero ────────────────────────────────────────────────────────────────────
 
-function Hero({ onCta, top }: { onCta: (topic?: string) => void; top: string | null }) {
+function Hero({ onCta, next }: { onCta: (topic?: string) => void; next: NextStep | null }) {
   return (
     <section style={{ background: '#f7f5ef', padding: '80px 24px 72px' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
@@ -557,15 +599,17 @@ function Hero({ onCta, top }: { onCta: (topic?: string) => void; top: string | n
               }}>Se hvordan det fungerer</button>
             </div>
 
-            {top && (
-              <button onClick={() => onCta(top)} style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                marginTop: 16, padding: '8px 16px',
-                background: '#d9ebe2', border: '1px solid #cbd8d0',
-                borderRadius: 100, cursor: 'pointer',
-                fontSize: 13.5, fontWeight: 600, color: '#173d3a',
-              }}>
-                Velkommen tilbake — fortsette med {top.toLowerCase()}? →
+            {next && (
+              <button
+                onClick={() => next.action === 'how' ? scrollTo('how') : onCta(next.topic)}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  marginTop: 16, padding: '8px 16px',
+                  background: '#d9ebe2', border: '1px solid #cbd8d0',
+                  borderRadius: 100, cursor: 'pointer',
+                  fontSize: 13.5, fontWeight: 600, color: '#173d3a',
+                }}>
+                Velkommen tilbake — {next.label} →
               </button>
             )}
 
@@ -1072,6 +1116,7 @@ function FinalCTA({ onCta }: { onCta: () => void }) {
     if (!email) return
     // Pilot: open mail client
     window.open(`mailto:hei@naviar.no?subject=Ventliste-påmelding&body=E-post: ${encodeURIComponent(email)}`)
+    track('submit', 'venteliste')
     setDone(true)
   }
 
@@ -1203,7 +1248,8 @@ export default function App() {
   const [modalOpen, setModalOpen]     = useState(false)
   const [initialTopic, setInitialTopic] = useState<string | undefined>(undefined)
   const [consent, setConsent] = useState<'all' | 'necessary' | null>(() => getConsent())
-  const top = consent === 'all' ? topCategory() : null
+  const top  = consent === 'all' ? topCategory() : null
+  const next = consent === 'all' ? nextStep() : null
 
   useEffect(() => {
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1229,7 +1275,7 @@ export default function App() {
     <div style={{ fontFamily: '"DM Sans", system-ui, sans-serif', WebkitFontSmoothing: 'antialiased' }}>
       <Nav menuOpen={menuOpen} setMenuOpen={setMenuOpen} onCta={openModal} />
       <main>
-        <Hero onCta={openModal} top={top} />
+        <Hero onCta={openModal} next={next} />
         <HowItWorks />
         <Categories onCta={openModal} top={top} />
         <Testimonials />

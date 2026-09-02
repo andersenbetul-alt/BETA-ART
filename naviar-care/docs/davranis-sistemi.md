@@ -58,6 +58,23 @@ Build fazı: "önce manuel, gerçek veriyle öğren").
 | naviar-care/prototype.html | ✅ Hafif sürüm: son seçilen kategori hatırlanır, akış oradan başlar |
 | QBLOGG sayfaları | ⏳ Ayrı iş: kendi `guvenlik.mjs` denetimi localStorage'daki kişisel veriyi tarar; modül taşınmadan önce o denetimle birlikte planlanmalı |
 
+## "Neste steg" katmanı (v1.1 — 02.09.2026)
+
+İlgi tahmininin üstüne, ziyaretçinin yolculuk aşamasını tespit edip
+**tek bir doğru sonraki adımı** öneren kural katmanı eklendi
+(`nextStep()`). Kurallar öncelik sırasıyla, tamamen açıklanabilir:
+
+| Durum (olaylardan) | Önerilen neste steg |
+|---|---|
+| Form gönderilmiş, sonrasında yeni başlangıç yok | **Hiçbir şey** — dönüşmüş kullanıcı dürtülmez |
+| Form açılmış ama gönderilmemiş | "Fullføre forespørselen om …?" — konu korunarak forma döner |
+| Fiyat planına bakılmış | "Klar til å starte? Første time uten binding" |
+| Kategori ilgisi var | "Fortsette med …?" |
+| Yalnızca SSS okunmuş | "Se hvordan det fungerer" — güven kurmaya, forma değil |
+
+Yeni sinyal: `submit` (form + venteliste gönderimi). Çip hero'da tek
+yerde durur; birden fazla dürtme yoktur.
+
 ## v2 için notlar (pilot verisi geldikten sonra)
 
 - Bölüm görünürlüğü sinyali (IntersectionObserver) — v1'de bilinçli
