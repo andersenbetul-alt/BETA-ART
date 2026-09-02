@@ -19,11 +19,15 @@ install` ÇALIŞTIRMA.
 
 ```bash
 # 5 kritik akışlı smoke test + ana sayfa görüntüsü (çıkış kodu 0/1):
-node .claude/skills/run-qblogg/driver.mjs smoke /tmp/qblogg-run
+node /home/user/BETA-ART/.claude/skills/run-qblogg/driver.mjs smoke /tmp/qblogg-run
 
 # Tek sayfanın tam ekran görüntüsü (reveal animasyonu sabitlenmiş):
-node .claude/skills/run-qblogg/driver.mjs shot "post.html?slug=ai-icerik-studyosu" /tmp/qblogg-run
+node /home/user/BETA-ART/.claude/skills/run-qblogg/driver.mjs shot "post.html?slug=ai-icerik-studyosu" /tmp/qblogg-run
 ```
+
+> **Gotcha:** `node .claude/skills/...` (nokta-göreli yol) Node'un `.claude` dizinini
+> paket adı sanmasına yol açar ve sessizce exit 144 ile çıkar, sıfır çıktı verir.
+> Tam yol (`/home/user/BETA-ART/.claude/...`) veya `realpath` kullanın.
 
 Görüntüler verilen dizine `.png` düşer. 8000'i çok aşan sayfa
 yüksekliğinde SendUserFile reddeder — sürücü 0.75 ölçek kullanır; yine
@@ -70,6 +74,7 @@ npm run onizleme   # 8 sayfayı tek tıklanabilir HTML'e gömer (paylaşım içi
 
 | Belirti | Çözüm |
 |---|---|
+| Hiçbir çıktı yok, exit 144 | `.claude/...` göreli yolu kullanıldı — `$PWD/.claude/...` ile başlat |
 | `ERR_MODULE_NOT_FOUND: playwright` | createRequire deseni (yukarıda); betiği scratchpad'e taşımak da çalışır |
 | `sunucu 5 sn içinde açılmadı` | 8000 portunu tutan eski süreç: `pkill -f http.server` sonra tekrar |
 | Görüntüde kartlar boş | reveal sabitleme enjekte edilmemiş — driver'ı kullan |
