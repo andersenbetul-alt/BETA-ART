@@ -605,3 +605,24 @@ Home Collection (filtre). Metinler 8 dilde (recoTitle/recoBasis/recoReset).
 Çapraz-ziyaretçi analitiği, hesap profili, satın alma tahmini bilinçle
 kapsam dışı (backend + rıza ister — uydurma yasağı); davranis-sistemi.md'de
 sonraki adım olarak yazılı. Doğrulama: build temiz, Playwright 7/7.
+
+## 02.09.2026 (gece) — Yönetici satış takip sistemi + iki-sistem ayrımı
+
+Kullanıcı talebi: "satış takip sistemi kur — web sayfasını yöneten kişi
+için", ardından "web sayfasını düzenleyen kişi ve kullanıcılar için ayrı
+sistem kuruyoruz". Böylece iki ayrık sistem netleşti: ziyaretçi →
+davranış/öneri (ba_davranis_v1), yönetici → satış defteri (ba_satis_v1);
+kod ve depolama tamamen ayrı, admin sayfası davranış profili kaydetmiyor.
+Yönetici sistemi: gizli /#admin (nav/footer'da yok, hashchange ile
+bookmark'tan da açılır), cihaz-yerel satış defteri. `src/lib/sales.ts` para
+modelini (komisyon-ve-mva.md) uygular: net = brüt−kesinti, %30/%70, kendi
+plakasında komisyon yok, MVA yok; Stripe kesinti tahmini %1,5+1,80.
+`src/pages/Admin.tsx`: satış ekleme formu (kesinti otomatik), özet kartları
+(brüt/kesinti/net/BA payı/ödemeler), fotoğrafçı başına ödeme listesi, CSV
+dışa aktarım, satır silme. Admin iç araç olduğu için etiketler i18n dışı düz
+EN/NO (belgede gerekçeli). Güvenlik notu açıkça yazıldı: /#admin parola
+korumalı değil, veri yalnızca yöneticinin tarayıcısında. Otomatik Stripe
+kaydı, parolalı çok-cihaz panel, ödeme durumu takibi bilinçle kapsam dışı
+(backend ister) — satis-takip.md'de sonraki adım. Doğrulama: build temiz,
+Playwright 8/8 (kullanıcıya görünmez, panel açılıyor, kendi plakası net
+185,35, dış fotoğrafçı payout 129,7x, ayrı depolama anahtarı, reload kalıcı).

@@ -1,7 +1,7 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { record } from "./behavior";
 
-export type Page = "home" | "categories" | "faq" | "request-a-shoot" | "cart" | "sell" | "plate" | "artists" | "prices" | "auth" | "feedback";
+export type Page = "home" | "categories" | "faq" | "request-a-shoot" | "cart" | "sell" | "plate" | "artists" | "prices" | "auth" | "feedback" | "admin";
 
 const PageContext = createContext<{
   page: Page;
@@ -16,7 +16,10 @@ const PageContext = createContext<{
 });
 
 export function PageProvider({ children }: { children: ReactNode }) {
-  const [page, setPage] = useState<Page>("home");
+  // The owner's sales dashboard is unlinked but reachable at /#admin — a
+  // deliberate hidden entry (no backend to gate it; see lib/sales.ts).
+  const initial: Page = typeof window !== "undefined" && window.location.hash === "#admin" ? "admin" : "home";
+  const [page, setPage] = useState<Page>(initial);
   const [plateId, setPlateId] = useState<string | null>(null);
 
   const go = (p: Page, hash?: string) => {
@@ -38,6 +41,16 @@ export function PageProvider({ children }: { children: ReactNode }) {
     setPage("plate");
     window.scrollTo({ top: 0 });
   };
+
+  // Let #admin be entered from the URL bar / a bookmark without a full
+  // reload — the owner's hidden entry to the sales dashboard.
+  useEffect(() => {
+    const onHash = () => {
+      if (window.location.hash === "#admin") setPage("admin");
+    };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
 
   return <PageContext.Provider value={{ page, plateId, go, goToPlate }}>{children}</PageContext.Provider>;
 }

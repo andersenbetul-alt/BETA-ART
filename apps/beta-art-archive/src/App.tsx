@@ -16,6 +16,7 @@ import { Artists } from "@/pages/Artists";
 import { Prices } from "@/pages/Prices";
 import { Auth } from "@/pages/Auth";
 import { Feedback } from "@/pages/Feedback";
+import { Admin } from "@/pages/Admin";
 
 // New, user-directed addition — SEO/QA pass: an SPA that never updates
 // <title> hurts search snippets and browser-tab orientation alike. Each
@@ -37,6 +38,7 @@ function DocumentTitle() {
       prices: `${t("pricesTitle")} — Beta Art`,
       auth: `${t("authLogIn")} / ${t("authRegister")} — Beta Art`,
       feedback: `${t("navFeedback")} — Beta Art`,
+      admin: "Sales tracking — Beta Art",
     };
     document.title = titles[page] ?? "Beta Art";
   }, [page, t]);
@@ -73,6 +75,7 @@ function Pages() {
       {page === "prices" && <Prices />}
       {page === "auth" && <Auth />}
       {page === "feedback" && <Feedback />}
+      {page === "admin" && <Admin />}
     </>
   );
 }
