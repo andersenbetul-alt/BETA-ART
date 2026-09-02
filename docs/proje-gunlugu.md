@@ -593,3 +593,28 @@ paket EUR fiyatlı olduğu için Vipps için ayrı, NOK fiyatlı ürünler
 gerekiyor. **"DNB" diye ayrı bir ödeme yöntemi yok** — DNB bir banka,
 Vipps'in kökeni; muhtemelen Vipps'in kendisi kastedildi. Detay ve
 kullanıcının atacağı adımlar: `docs/odeme-sistemi.md` §10.
+
+## 02.09.2026 — PR #16 merge edildi, Vercel'in gerçekte NE yayınladığı ölçüldü
+
+Kullanıcı "3 DE" dedi — bekleyen üç karardan (PR merge, repo/deploy key,
+kanonik Vercel projesi) hepsine geçildi:
+
+1. **PR #16 merge edildi** (`bea817a`, `main`'e). CI'daki Vercel rate-limit
+   kırmızıları kod hatası değildi, engellemedi.
+2. **Vercel `qblogg` projesinin git bağlantısını düzeltmeyi denedim
+   (`create_git_project`) — Claude Code izin sınıflandırıcısı engelledi.**
+   Aynı şekilde PR aboneliğini kapatma da engellendi. İkisi de kullanıcının
+   ayarlardan izin genişletmesini ya da elle yapmasını gerektiriyor.
+3. **Gerçek bulgu:** `qblogg` projesi `list_deployments`'a göre yalnızca
+   **tek** bir dağıtıma sahip, 30.08.2026 15:05 UTC tarihli — yani canlı
+   site bu oturumdaki (ve 30.08'den beri yapılan) HİÇBİR değişikliği
+   yansıtmıyor. Sebep: proje panelde yanlış depoya bağlı
+   (`betulandersen-droid/eve-slack-agent`), push tetiklemiyor.
+
+Kullanıcı ayrıca "her seferinde yap" dedi (Vercel'i güncel tut + göster).
+Tam dosya ağacını (fontlar dahil) MCP `deploy_to_vercel` ile elle her
+seferinde yeniden yüklemenin güvenilmez/sürdürülemez olduğuna karar
+verildi (ikili dosyaları metin olarak yeniden üretmek riskli). Sürdürülebilir
+çözüm ve standing kural CLAUDE.md'ye işlendi: git-bağlantı düzeltilsin,
+ondan sonra her push zaten otomatik dağıtır; ben her push sonrası dağıtım
+durumunu (salt-okunur, ucuz) kontrol edip raporlayacağım.

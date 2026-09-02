@@ -253,18 +253,33 @@ açık talebi.
   `main` kullanıcının açık izniyle QBLOGG sitesine çevrildi: `-s ours
   --allow-unrelated-histories` merge'ü ile eski saat uygulamasının geçmişi
   korunarak ağaç QBLOGG yapıldı. Geliştirme dalı `claude/qblogg-web-sayfasi-upcarm`.
-- **Site Vercel'de yayında (22.08.2026).** Proje `qblogg`, takım "BET - ART"
-  (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg.vercel.app (23.08 gecesi proje panelde silinmişti; aynı adla yeniden kuruldu — proje id değişti, eski qblogg-flame/qblogg-bet-art adresleri geçersiz).
-  Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir (depodaki
-  dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`)
-  klonlayıp 6 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
-  `dist/`e kopyalar. Yani **siteyi güncellemek =
-  main'e push + aynı dağıtımı yeniden tetiklemek.** Vercel'in GitHub
-  entegrasyonu `andersenbetul-alt` hesabına yetkili değil (`repo_no_access`,
-  entegrasyon `betulandersen-droid`a bağlı); kullanıcı yetkiyi verirse
-  `create_git_project` ile push başına otomatik dağıtıma geçilebilir.
+- **Site Vercel'de yayında ama dağıtımı BOZUK (durum 02.09.2026'da yeniden
+  ölçüldü).** Proje `qblogg`, takım "BET - ART" (`team_xNtowH7U0jXQrI53DFJFzH2o`).
+  Proje panelde **yanlış depoya bağlı**: `andersenbetul-alt/BETA-ART-PRIVAT`
+  değil, `betulandersen-droid/eve-slack-agent` (tamamen farklı hesap/depo,
+  stok Vercel "eve" şablonu) — bu yüzden push otomatik dağıtım tetiklemiyor.
+  `list_deployments` ile ölçülen tek dağıtım **30.08.2026 15:05 UTC**
+  tarihli; yani şu an canlıda olan içerik o tarihten sonraki HİÇBİR
+  değişikliği (bu oturumdaki iş dahil) yansıtmıyor.
+  **Düzeltme (kullanıcı adımı, panelden):** Vercel → `qblogg` projesi →
+  Settings → Git → eski bağlantıyı kaldır → `andersenbetul-alt/BETA-ART-PRIVAT`
+  bağla. Bunu MCP üzerinden (`create_git_project`) yapmayı denedim,
+  **Claude Code izin sınıflandırıcısı tarafından engellendi** — bu araç
+  ancak kullanıcı ayarlardan izin genişletirse çalışır.
+  Ayrı bir doğrulama: `andersenbetul-9635's projects` takımında (bu oturumun
+  erişemediği) altı proje gerçekten git-bağlı ve otomatik dağıtıyor — ama
+  hepsi aynı anda tetiklendiği için Vercel'in günlük deploy limitine takılıyor
+  (`api-deployments-free-per-day`, >100/gün) — ayrı, çözülmemiş bir sorun.
   qblogg.com alan adının bağlanması kullanıcı tarafında (Vercel panel +
   GoDaddy DNS; ad sunucuları taşınmaz, e-posta MX kayıtları GoDaddy'de kalmalı).
+  **Standing kural (kullanıcı talimatı, 02.09.2026, "her seferinde yap"):**
+  `main`'e her push'tan sonra Vercel dağıtım durumunu kontrol edip (mümkünse
+  `list_deployments`/`get_deployment` ile, salt-okunur ve ucuz) kullanıcıya
+  raporla. **Sitenin tam dosya ağacını (fontlar dahil) MCP `deploy_to_vercel`
+  ile elle her seferinde yeniden yüklemeye ÇALIŞMA** — ikili (woff2/png)
+  dosyaları metin olarak yeniden üretmek güvenilmez/bozulmaya açık ve git-bağlı
+  otomatik dağıtımla aynı işi gereksiz yere tekrarlar; sürdürülebilir çözüm
+  yukarıdaki git-bağlantı düzeltmesidir, o yapılınca push zaten otomatik dağıtır.
 - Haftalık SEO/AI görünürlük izlemesi kurulu: pazartesi 07:00 (Norveç saati).
 - FAQPage şeması duruyor ama Google 7 Mayıs 2026'da FAQ zengin sonuçlarını kaldırdı.
   Yapay zekâ aramaları için tutuluyor; zengin sonuç beklemeyin.
