@@ -737,3 +737,22 @@ hâlâ "BAC abonelik durumunu özetle" istiyor ve bu artık çözülmüş bir
 soru soruyor (skill artık "BAC" gördüğünde BAG-03 diyecek, eskisi gibi
 kullanıcıya sormayacak) — eval setinin bir sonraki iterasyonda
 güncellenmesi gerekiyor, bu oturumda dokunulmadı.
+
+## 02.09.2026 — Beta Art için DNB/Klarna ödeme araştırması
+
+Kullanıcının kısa isteği ("VIBBES DNB ODEME SISTEMI KLARNA") netleştirme
+turuyla "Beta Art için DNB ve Klarna'yı araştır ve karşılaştır"a
+indirgendi ("VIBBES" çözülmedi, konu dışı bırakıldı). Sonuç:
+`beta-art/docs/odeme-arastirmasi.md`. Ortam yine `dnb.no`,
+`vippsmobilepay.com`, `klarna.com`'a doğrudan erişimi engelledi
+(`qblogg-operasyon`'da daha önce belgelenen sınırla aynı) — tüm rakamlar
+yalnızca WebSearch özetlerinden, `[D]` işaretli, birincil kaynaktan
+doğrulanmadı. En önemli bulgu: DNB'nin ayrı bir "DNB ödeme sistemi"
+markası görünmüyor — DNB, Vipps MobilePay'in ~%52 hissedarı; "DNB ile
+öde" fiilen Vipps'e çıkıyor olabilir. Klarna için ABD rakamı (%5,99)
+bulunup Norveç'e yanlışlıkla uygulanma riski fark edildi ve raporda
+açıkça ayrıştırıldı. Ürün-uyum notu: Beta Art'ın 190 NOK'tan başlayan
+tek-plaka satışı, Klarna'nın taksit/erteleme değer önerisiyle örtüşmüyor
+— bu gözlem hipotez (`[H]`) olarak işaretlendi. Kod tabanında değişiklik
+yok; `LicenseRequestForm.tsx` zaten ödeme akışına bağlı değil, bu yüzden
+sağlayıcı seçimi henüz geri dönüşsüz bir adım değil.
