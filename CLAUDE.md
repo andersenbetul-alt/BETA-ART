@@ -3,6 +3,10 @@
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
+**Kullanıcı tercihi (02.09.2026, kullanıcı talimatı):** kullanıcıya
+yazılan her yanıt "Betul" hitabıyla başlar — istisnasız, her mesajın
+ilk kelimesi.
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:
