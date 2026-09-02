@@ -158,7 +158,6 @@ const en: Dict = {
 
   eventsRitualTitle: "Verification, live.",
   eventsRitualBody: "At the opening, verification isn't paperwork behind the scenes — it happens on stage. Watch a plate go through the same three checks, live, in front of you.",
-  photographerVerifiedBadge: "Identity verified",
 
   authLogIn: "Log in",
   authRegister: "Register",
@@ -172,7 +171,7 @@ const en: Dict = {
   navPrices: "Prices",
   artistsEyebrow: "Artists",
   artistsTitle: "Verified photographers.",
-  artistsIntro: "Every photographer here is identity-verified. Work is licensed directly — no anonymous submissions.",
+  artistsIntro: "Work is licensed directly from the photographer. Every submission is reviewed personally before it is listed.",
   artistsPlatesSuffix: "plates",
   artistsFoundingBio: "Founding photographer. Every plate in Volume I is theirs, shot since 2012. At seven, going through their father's old photo albums, the founder found a photograph of him holding a camera — the first camera they'd ever seen.",
   artistsViewWork: "View work",
@@ -197,7 +196,7 @@ const en: Dict = {
   statPlatesLabel: "catalogued plates",
   collectionReleaseNote: "Volume I releases one verified plate at a time — a plate goes live only once its RAW original, capture record and signed license are in place. That's why most of the collection reads \"awaiting\" rather than showing filler images.",
   vsStockTitle: "Not stock photography.",
-  vsStockBody: "Stock libraries aggregate thousands of anonymous contributors — provenance stops at a license agreement nobody checks. Beta Art licenses directly from a named, verified photographer, with the RAW file and capture record behind every plate. Fewer images. Each one accountable.",
+  vsStockBody: "Stock libraries aggregate thousands of anonymous contributors — provenance stops at a license agreement nobody checks. Beta Art licenses directly from the photographer, with the original file and capture record behind every verified plate. Fewer images. Each one accountable.",
 
   addToCart: "Add to cart — Personal, kr 190",
   inCart: "In cart",
@@ -225,7 +224,7 @@ const en: Dict = {
   photographerTitle: "I photograph what actually exists.",
   photographerP1: "Fjords before sunrise, cities after rain, faces that agreed to be seen. Nothing on this site was generated, composited or hallucinated by a machine.",
   photographerP2: "My archive holds more than 84,000 frames captured since 2012. When you license a plate, you deal with me directly — a written license, a proper invoice, and the full-resolution file delivered to your inbox within twenty-four hours.",
-  photographerP3: "If you want to see the RAW file behind any plate, ask. That's the point.",
+  photographerP3: "If you want to see the original file behind any plate, ask. That's the point.",
   lifeFlowerQuote: "“Life’s limited nature is also what makes it precious.”",
   lifeFlowerBody: "Because life does not last forever, every moment matters.",
   lifeFlowerTagline: "Real people · Real places · Real moments",
@@ -243,7 +242,6 @@ const en: Dict = {
   tlExhibition: "Exhibition",
   cartItemOne: "item",
   cartItemMany: "items",
-  heroPlateDate: "March 2026",
   feedbackEmailOptional: "optional",
   sellFieldBioPlaceholder: "This is what will appear on your Artists profile once verified.",
 };
@@ -382,7 +380,6 @@ const no: Dict = {
 
   eventsRitualTitle: "Verifisering, live.",
   eventsRitualBody: "På åpningen skjer ikke verifisering bak kulissene som papirarbeid — den skjer på scenen. Se en plate gå gjennom de samme tre sjekkene, live, foran deg.",
-  photographerVerifiedBadge: "Identitet verifisert",
 
   authLogIn: "Logg inn",
   authRegister: "Registrer",
@@ -396,7 +393,7 @@ const no: Dict = {
   navPrices: "Priser",
   artistsEyebrow: "Fotografer",
   artistsTitle: "Verifiserte fotografer.",
-  artistsIntro: "Hver fotograf her er identitetsverifisert. Arbeid lisensieres direkte — ingen anonyme innsendinger.",
+  artistsIntro: "Arbeid lisensieres direkte fra fotografen. Hver innsending vurderes personlig før den listes.",
   artistsPlatesSuffix: "plater",
   artistsFoundingBio: "Grunnleggende fotograf. Hver plate i Volum I er deres, tatt siden 2012. Som sjuåring fant grunnleggeren et fotografi av faren med et kamera i hendene, i gamle familiealbum — det første kameraet grunnleggeren noensinne hadde sett.",
   artistsViewWork: "Se arbeid",
@@ -421,7 +418,7 @@ const no: Dict = {
   statPlatesLabel: "katalogiserte plater",
   collectionReleaseNote: "Volum I slipper én verifisert plate om gangen — en plate publiseres først når RAW-originalen, opptaksdataene og signert lisens er på plass. Derfor står de fleste som «venter» i stedet for å vise fyllbilder.",
   vsStockTitle: "Ikke stockfoto.",
-  vsStockBody: "Stockbibliotek samler tusenvis av anonyme bidragsytere — proveniens stopper ved en lisensavtale ingen sjekker. Beta Art lisensierer direkte fra en navngitt, verifisert fotograf, med RAW-filen og opptaksdataene bak hver plate. Færre bilder. Hvert eneste ett med ansvarlig.",
+  vsStockBody: "Stockbibliotek samler tusenvis av anonyme bidragsytere — proveniens stopper ved en lisensavtale ingen sjekker. Beta Art lisensierer direkte fra fotografen, med originalfilen og opptaksdataene bak hver verifiserte plate. Færre bilder. Hvert eneste ett med ansvarlig.",
 
   addToCart: "Legg i handlekurv — Personal, kr 190",
   inCart: "I handlekurven",
@@ -449,7 +446,7 @@ const no: Dict = {
   photographerTitle: "Jeg fotograferer det som faktisk finnes.",
   photographerP1: "Fjorder før soloppgang, byer etter regn, ansikter som har sagt ja til å bli sett. Ingenting på dette nettstedet er generert, sammensatt eller hallusinert av en maskin.",
   photographerP2: "Arkivet mitt rommer mer enn 84 000 bilder tatt siden 2012. Når du lisensierer en plate, forholder du deg direkte til meg — en skriftlig lisens, en ordentlig faktura, og filen i full oppløsning levert til innboksen din innen tjuefire timer.",
-  photographerP3: "Vil du se RAW-filen bak en plate? Bare spør. Det er hele poenget.",
+  photographerP3: "Vil du se originalfilen bak en plate? Bare spør. Det er hele poenget.",
   lifeFlowerQuote: "«At livet er begrenset, er også det som gjør det verdifullt.»",
   lifeFlowerBody: "Fordi livet ikke varer evig, betyr hvert øyeblikk noe.",
   lifeFlowerTagline: "Ekte mennesker · Ekte steder · Ekte øyeblikk",
@@ -467,7 +464,6 @@ const no: Dict = {
   tlExhibition: "Utstilling",
   cartItemOne: "vare",
   cartItemMany: "varer",
-  heroPlateDate: "mars 2026",
   feedbackEmailOptional: "valgfritt",
   sellFieldBioPlaceholder: "Dette vises på Artists-profilen din når den er verifisert.",
 };
@@ -606,7 +602,6 @@ const tr: Dict = {
 
   eventsRitualTitle: "Canlı doğrulama.",
   eventsRitualBody: "Açılışta doğrulama perde arkasında bir kağıt işi değil — sahneye çıkıyor. Bir plakanın aynı üç kontrolden canlı, gözünüzün önünde geçtiğini izleyin.",
-  photographerVerifiedBadge: "Kimliği doğrulandı",
 
   authLogIn: "Giriş yap",
   authRegister: "Kayıt ol",
@@ -620,7 +615,7 @@ const tr: Dict = {
   navPrices: "Fiyatlar",
   artistsEyebrow: "Fotoğrafçılar",
   artistsTitle: "Doğrulanmış fotoğrafçılar.",
-  artistsIntro: "Buradaki her fotoğrafçının kimliği doğrulanmıştır. Eserler doğrudan lisanslanır — anonim gönderim yoktur.",
+  artistsIntro: "Eserler doğrudan fotoğrafçıdan lisanslanır. Her gönderim, listelenmeden önce kişisel olarak incelenir.",
   artistsPlatesSuffix: "plaka",
   artistsFoundingBio: "Kurucu fotoğrafçı. Cilt I'deki her plaka onun, 2012'den beri çekiyor. Yedi yaşında, babasının eski fotoğraf albümlerini karıştırırken elinde bir fotoğraf makinesi tutan babasının fotoğrafını buldu — gördüğü ilk fotoğraf makinesiydi.",
   artistsViewWork: "Eserlere bakın",
@@ -645,7 +640,7 @@ const tr: Dict = {
   statPlatesLabel: "kataloglu plaka",
   collectionReleaseNote: "Cilt I, bir seferde bir doğrulanmış plaka yayınlıyor — bir plaka ancak RAW orijinali, çekim kaydı ve imzalı lisansı hazır olduğunda yayına giriyor. Koleksiyonun çoğunun doldurma görselle değil \"bekliyor\" yazısıyla görünmesinin sebebi bu.",
   vsStockTitle: "Stok fotoğraf değil.",
-  vsStockBody: "Stok kütüphaneleri binlerce anonim katkıcıyı bir araya getirir — köken, kimsenin okumadığı bir lisans sözleşmesinde biter. Beta Art doğrudan adı belli, doğrulanmış bir fotoğrafçıdan lisanslıyor; her plakanın arkasında RAW dosyası ve çekim kaydı var. Daha az görsel. Her biri hesap verebilir.",
+  vsStockBody: "Stok kütüphaneleri binlerce anonim katkıcıyı bir araya getirir — köken, kimsenin okumadığı bir lisans sözleşmesinde biter. Beta Art doğrudan fotoğrafçıdan lisanslıyor; doğrulanmış her plakanın arkasında orijinal dosya ve çekim kaydı var. Daha az görsel. Her biri hesap verebilir.",
 
   addToCart: "Sepete ekle — Personal, kr 190",
   inCart: "Sepette",
@@ -673,7 +668,7 @@ const tr: Dict = {
   photographerTitle: "Gerçekten var olanı fotoğraflıyorum.",
   photographerP1: "Gün doğumundan önce fiyortlar, yağmurdan sonra şehirler, görülmeyi kabul etmiş yüzler. Bu sitedeki hiçbir şey bir makine tarafından üretilmedi, birleştirilmedi ya da halüsinasyonla oluşturulmadı.",
   photographerP2: "Arşivimde 2012'den beri çekilmiş 84.000'den fazla kare var. Bir plakayı lisansladığınızda doğrudan benimle muhatap olursunuz — yazılı lisans, usulüne uygun fatura ve yirmi dört saat içinde e-postanıza teslim edilen tam çözünürlüklü dosya.",
-  photographerP3: "Herhangi bir plakanın arkasındaki RAW dosyasını görmek isterseniz, sorun. Bütün mesele bu.",
+  photographerP3: "Herhangi bir plakanın arkasındaki orijinal dosyayı görmek isterseniz, sorun. Bütün mesele bu.",
   lifeFlowerQuote: "\"Hayatın sınırlı oluşu, aynı zamanda onu değerli kılan şeydir.\"",
   lifeFlowerBody: "Hayat sonsuza dek sürmediği için her an önemlidir.",
   lifeFlowerTagline: "Gerçek insanlar · Gerçek yerler · Gerçek anlar",
@@ -691,7 +686,6 @@ const tr: Dict = {
   tlExhibition: "Sergi",
   cartItemOne: "ürün",
   cartItemMany: "ürün",
-  heroPlateDate: "Mart 2026",
   feedbackEmailOptional: "isteğe bağlı",
   sellFieldBioPlaceholder: "Doğrulandıktan sonra Artists profilinizde görünecek metin budur.",
 };
@@ -830,7 +824,6 @@ const it: Dict = {
 
   eventsRitualTitle: "Verifica, dal vivo.",
   eventsRitualBody: "All'inaugurazione, la verifica non è una pratica burocratica dietro le quinte — va in scena. Guarda una tavola superare gli stessi tre controlli, dal vivo, davanti a te.",
-  photographerVerifiedBadge: "Identità verificata",
 
   authLogIn: "Accedi",
   authRegister: "Registrati",
@@ -844,7 +837,7 @@ const it: Dict = {
   navPrices: "Prezzi",
   artistsEyebrow: "Artisti",
   artistsTitle: "Fotografi verificati.",
-  artistsIntro: "Ogni fotografo qui è verificato nell'identità. Il lavoro è concesso in licenza direttamente — nessun invio anonimo.",
+  artistsIntro: "Il lavoro è concesso in licenza direttamente dal fotografo. Ogni invio viene esaminato personalmente prima di essere pubblicato.",
   artistsPlatesSuffix: "tavole",
   artistsFoundingBio: "Fotografo fondatore. Ogni tavola del Volume I è sua, scattata dal 2012. A sette anni, tra i vecchi album di famiglia del padre, il fondatore trovò una fotografia di lui con una macchina fotografica in mano — la prima che avesse mai visto.",
   artistsViewWork: "Vedi il lavoro",
@@ -869,7 +862,7 @@ const it: Dict = {
   statPlatesLabel: "tavole catalogate",
   collectionReleaseNote: "Il Volume I pubblica una tavola verificata alla volta — una tavola va online solo quando il file RAW originale, i dati di scatto e la licenza firmata sono pronti. Per questo la maggior parte della collezione mostra \"in attesa\" invece di immagini segnaposto.",
   vsStockTitle: "Non è stock photography.",
-  vsStockBody: "Le librerie stock raccolgono migliaia di collaboratori anonimi — la provenienza si ferma a un accordo di licenza che nessuno controlla. Beta Art concede in licenza direttamente da un fotografo nominato e verificato, con il file RAW e i dati di scatto dietro ogni tavola. Meno immagini. Ognuna responsabile.",
+  vsStockBody: "Le librerie stock raccolgono migliaia di collaboratori anonimi — la provenienza si ferma a un accordo di licenza che nessuno controlla. Beta Art concede in licenza direttamente dal fotografo, con il file originale e i dati di scatto dietro ogni tavola verificata. Meno immagini. Ognuna responsabile.",
 
   addToCart: "Aggiungi al carrello — Personal, kr 190",
   inCart: "Nel carrello",
@@ -897,7 +890,7 @@ const it: Dict = {
   photographerTitle: "Fotografo ciò che esiste davvero.",
   photographerP1: "Fiordi prima dell'alba, città dopo la pioggia, volti che hanno accettato di essere visti. Niente su questo sito è stato generato, composto o allucinato da una macchina.",
   photographerP2: "Il mio archivio contiene più di 84.000 scatti realizzati dal 2012. Quando licenzi una tavola, tratti direttamente con me — una licenza scritta, una fattura regolare e il file in piena risoluzione consegnato nella tua casella entro ventiquattro ore.",
-  photographerP3: "Se vuoi vedere il file RAW dietro una tavola, chiedi. È proprio questo il punto.",
+  photographerP3: "Se vuoi vedere il file originale dietro una tavola, chiedi. È proprio questo il punto.",
   lifeFlowerQuote: "«La natura limitata della vita è anche ciò che la rende preziosa.»",
   lifeFlowerBody: "Poiché la vita non dura per sempre, ogni momento conta.",
   lifeFlowerTagline: "Persone vere · Luoghi veri · Momenti veri",
@@ -915,7 +908,6 @@ const it: Dict = {
   tlExhibition: "Esposizione",
   cartItemOne: "articolo",
   cartItemMany: "articoli",
-  heroPlateDate: "marzo 2026",
   feedbackEmailOptional: "facoltativo",
   sellFieldBioPlaceholder: "Questo è ciò che apparirà sul tuo profilo Artists una volta verificato.",
 };
@@ -1054,7 +1046,6 @@ const fr: Dict = {
 
   eventsRitualTitle: "Vérification, en direct.",
   eventsRitualBody: "Lors du vernissage, la vérification n'est pas de la paperasse en coulisses — elle se joue sur scène. Regardez une planche passer les mêmes trois contrôles, en direct, devant vous.",
-  photographerVerifiedBadge: "Identité vérifiée",
 
   authLogIn: "Connexion",
   authRegister: "S'inscrire",
@@ -1068,7 +1059,7 @@ const fr: Dict = {
   navPrices: "Tarifs",
   artistsEyebrow: "Artistes",
   artistsTitle: "Photographes vérifiés.",
-  artistsIntro: "Chaque photographe ici a une identité vérifiée. Le travail est concédé sous licence directement — aucun envoi anonyme.",
+  artistsIntro: "Le travail est concédé sous licence directement par le photographe. Chaque envoi est examiné personnellement avant d'être publié.",
   artistsPlatesSuffix: "planches",
   artistsFoundingBio: "Photographe fondateur. Chaque planche du Volume I lui appartient, prise depuis 2012. À sept ans, en feuilletant les vieux albums de son père, le fondateur y trouva une photographie de lui tenant un appareil photo — le premier qu'il ait jamais vu.",
   artistsViewWork: "Voir le travail",
@@ -1093,7 +1084,7 @@ const fr: Dict = {
   statPlatesLabel: "planches cataloguées",
   collectionReleaseNote: "Le Volume I publie une planche vérifiée à la fois — une planche n'est mise en ligne qu'une fois le fichier RAW original, les données de prise de vue et la licence signée réunis. C'est pourquoi la plupart de la collection affiche « en attente » plutôt que des images de remplissage.",
   vsStockTitle: "Pas de la photo de stock.",
-  vsStockBody: "Les banques d'images rassemblent des milliers de contributeurs anonymes — la provenance s'arrête à un accord de licence que personne ne vérifie. Beta Art concède directement la licence d'un photographe nommé et vérifié, avec le fichier RAW et les données de prise de vue derrière chaque planche. Moins d'images. Chacune responsable.",
+  vsStockBody: "Les banques d'images rassemblent des milliers de contributeurs anonymes — la provenance s'arrête à un accord de licence que personne ne vérifie. Beta Art concède la licence directement auprès du photographe, avec le fichier original et les données de prise de vue derrière chaque planche vérifiée. Moins d'images. Chacune responsable.",
 
   addToCart: "Ajouter au panier — Personal, kr 190",
   inCart: "Dans le panier",
@@ -1121,7 +1112,7 @@ const fr: Dict = {
   photographerTitle: "Je photographie ce qui existe vraiment.",
   photographerP1: "Des fjords avant l'aube, des villes après la pluie, des visages qui ont accepté d'être vus. Rien sur ce site n'a été généré, composité ou halluciné par une machine.",
   photographerP2: "Mon archive compte plus de 84 000 clichés réalisés depuis 2012. Quand vous licenciez une planche, vous traitez directement avec moi — une licence écrite, une vraie facture, et le fichier en pleine résolution livré dans votre boîte mail sous vingt-quatre heures.",
-  photographerP3: "Vous voulez voir le fichier RAW derrière une planche ? Demandez. C'est tout l'intérêt.",
+  photographerP3: "Vous voulez voir le fichier original derrière une planche ? Demandez. C'est tout l'intérêt.",
   lifeFlowerQuote: "« La nature limitée de la vie est aussi ce qui la rend précieuse. »",
   lifeFlowerBody: "Parce que la vie ne dure pas éternellement, chaque instant compte.",
   lifeFlowerTagline: "Des gens réels · Des lieux réels · Des instants réels",
@@ -1139,7 +1130,6 @@ const fr: Dict = {
   tlExhibition: "Exposition",
   cartItemOne: "article",
   cartItemMany: "articles",
-  heroPlateDate: "mars 2026",
   feedbackEmailOptional: "facultatif",
   sellFieldBioPlaceholder: "Voici ce qui apparaîtra sur votre profil Artists une fois vérifié.",
 };
@@ -1278,7 +1268,6 @@ const es: Dict = {
 
   eventsRitualTitle: "Verificación en directo.",
   eventsRitualBody: "En la inauguración, la verificación no es papeleo entre bastidores — sube al escenario. Vea cómo una lámina supera las mismas tres comprobaciones, en directo, ante usted.",
-  photographerVerifiedBadge: "Identidad verificada",
 
   authLogIn: "Iniciar sesión",
   authRegister: "Registrarse",
@@ -1292,7 +1281,7 @@ const es: Dict = {
   navPrices: "Precios",
   artistsEyebrow: "Artistas",
   artistsTitle: "Fotógrafos verificados.",
-  artistsIntro: "Cada fotógrafo aquí tiene la identidad verificada. El trabajo se licencia directamente — sin envíos anónimos.",
+  artistsIntro: "El trabajo se licencia directamente del fotógrafo. Cada envío se revisa personalmente antes de publicarse.",
   artistsPlatesSuffix: "láminas",
   artistsFoundingBio: "Fotógrafo fundador. Cada lámina del Volumen I es suya, tomada desde 2012. A los siete años, mientras el fundador revisaba los viejos álbumes de fotos de su padre, encontró una fotografía de él con una cámara en la mano — la primera que había visto.",
   artistsViewWork: "Ver trabajo",
@@ -1317,7 +1306,7 @@ const es: Dict = {
   statPlatesLabel: "láminas catalogadas",
   collectionReleaseNote: "El Volumen I publica una lámina verificada a la vez — una lámina solo se publica cuando el archivo RAW original, los datos de captura y la licencia firmada están listos. Por eso la mayoría de la colección aparece como \"en espera\" en lugar de mostrar imágenes de relleno.",
   vsStockTitle: "No es fotografía de stock.",
-  vsStockBody: "Los bancos de imágenes reúnen a miles de colaboradores anónimos — la procedencia se detiene en un acuerdo de licencia que nadie comprueba. Beta Art licencia directamente de un fotógrafo nombrado y verificado, con el archivo RAW y los datos de captura detrás de cada lámina. Menos imágenes. Cada una responsable.",
+  vsStockBody: "Los bancos de imágenes reúnen a miles de colaboradores anónimos — la procedencia se detiene en un acuerdo de licencia que nadie comprueba. Beta Art licencia directamente del fotógrafo, con el archivo original y los datos de captura detrás de cada lámina verificada. Menos imágenes. Cada una responsable.",
 
   addToCart: "Añadir al carrito — Personal, kr 190",
   inCart: "En el carrito",
@@ -1345,7 +1334,7 @@ const es: Dict = {
   photographerTitle: "Fotografío lo que realmente existe.",
   photographerP1: "Fiordos antes del amanecer, ciudades después de la lluvia, rostros que aceptaron ser vistos. Nada en este sitio fue generado, compuesto ni alucinado por una máquina.",
   photographerP2: "Mi archivo contiene más de 84.000 tomas capturadas desde 2012. Cuando licencias una placa, tratas directamente conmigo: una licencia escrita, una factura en regla y el archivo en resolución completa entregado en tu correo en veinticuatro horas.",
-  photographerP3: "Si quieres ver el archivo RAW detrás de cualquier placa, pídelo. De eso se trata.",
+  photographerP3: "Si quieres ver el archivo original detrás de cualquier placa, pídelo. De eso se trata.",
   lifeFlowerQuote: "«La naturaleza limitada de la vida es también lo que la hace preciosa.»",
   lifeFlowerBody: "Porque la vida no dura para siempre, cada momento importa.",
   lifeFlowerTagline: "Personas reales · Lugares reales · Momentos reales",
@@ -1363,7 +1352,6 @@ const es: Dict = {
   tlExhibition: "Exposición",
   cartItemOne: "artículo",
   cartItemMany: "artículos",
-  heroPlateDate: "marzo de 2026",
   feedbackEmailOptional: "opcional",
   sellFieldBioPlaceholder: "Esto es lo que aparecerá en tu perfil de Artists una vez verificado.",
 };
@@ -1502,7 +1490,6 @@ const pt: Dict = {
 
   eventsRitualTitle: "Verificação, ao vivo.",
   eventsRitualBody: "Na inauguração, a verificação não é papelada nos bastidores — sobe ao palco. Veja uma prancha passar pelas mesmas três verificações, ao vivo, à sua frente.",
-  photographerVerifiedBadge: "Identidade verificada",
 
   authLogIn: "Iniciar sessão",
   authRegister: "Registar",
@@ -1516,7 +1503,7 @@ const pt: Dict = {
   navPrices: "Preços",
   artistsEyebrow: "Artistas",
   artistsTitle: "Fotógrafos verificados.",
-  artistsIntro: "Cada fotógrafo aqui tem identidade verificada. O trabalho é licenciado diretamente — sem submissões anónimas.",
+  artistsIntro: "O trabalho é licenciado diretamente do fotógrafo. Cada submissão é analisada pessoalmente antes de ser listada.",
   artistsPlatesSuffix: "pranchas",
   artistsFoundingBio: "Fotógrafo fundador. Cada prancha do Volume I é sua, captada desde 2012. Aos sete anos, ao folhear os velhos álbuns de fotos do pai, o fundador encontrou uma fotografia dele segurando uma câmera — a primeira que já tinha visto.",
   artistsViewWork: "Ver trabalho",
@@ -1541,7 +1528,7 @@ const pt: Dict = {
   statPlatesLabel: "pranchas catalogadas",
   collectionReleaseNote: "O Volume I publica uma prancha verificada de cada vez — uma prancha só é publicada quando o ficheiro RAW original, os dados de captura e a licença assinada estão prontos. É por isso que a maior parte da coleção mostra \"aguardando\" em vez de imagens de preenchimento.",
   vsStockTitle: "Não é fotografia de stock.",
-  vsStockBody: "Os bancos de imagens reúnem milhares de colaboradores anónimos — a proveniência para num acordo de licença que ninguém verifica. A Beta Art licencia diretamente de um fotógrafo identificado e verificado, com o ficheiro RAW e os dados de captura por trás de cada prancha. Menos imagens. Cada uma responsável.",
+  vsStockBody: "Os bancos de imagens reúnem milhares de colaboradores anónimos — a proveniência para num acordo de licença que ninguém verifica. A Beta Art licencia diretamente do fotógrafo, com o ficheiro original e os dados de captura por trás de cada prancha verificada. Menos imagens. Cada uma responsável.",
 
   addToCart: "Adicionar ao carrinho — Personal, kr 190",
   inCart: "No carrinho",
@@ -1569,7 +1556,7 @@ const pt: Dict = {
   photographerTitle: "Fotografo o que realmente existe.",
   photographerP1: "Fiordes antes do nascer do sol, cidades depois da chuva, rostos que aceitaram ser vistos. Nada neste site foi gerado, composto ou alucinado por uma máquina.",
   photographerP2: "O meu arquivo guarda mais de 84.000 fotogramas captados desde 2012. Quando licencia uma placa, trata diretamente comigo: uma licença escrita, uma fatura adequada e o ficheiro em resolução completa entregue na sua caixa de entrada em vinte e quatro horas.",
-  photographerP3: "Se quiser ver o ficheiro RAW por trás de qualquer placa, peça. É esse o objetivo.",
+  photographerP3: "Se quiser ver o ficheiro original por trás de qualquer placa, peça. É esse o objetivo.",
   lifeFlowerQuote: "«A natureza limitada da vida é também o que a torna preciosa.»",
   lifeFlowerBody: "Porque a vida não dura para sempre, cada momento importa.",
   lifeFlowerTagline: "Pessoas reais · Lugares reais · Momentos reais",
@@ -1587,7 +1574,6 @@ const pt: Dict = {
   tlExhibition: "Exposição",
   cartItemOne: "artigo",
   cartItemMany: "artigos",
-  heroPlateDate: "março de 2026",
   feedbackEmailOptional: "opcional",
   sellFieldBioPlaceholder: "Isto é o que aparecerá no seu perfil de Artists depois de verificado.",
 };
@@ -1726,7 +1712,6 @@ const de: Dict = {
 
   eventsRitualTitle: "Verifizierung, live.",
   eventsRitualBody: "Bei der Eröffnung ist Verifizierung kein Papierkram hinter den Kulissen — sie steht auf der Bühne. Sehen Sie live, direkt vor sich, wie eine Tafel dieselben drei Prüfungen durchläuft.",
-  photographerVerifiedBadge: "Identität verifiziert",
 
   authLogIn: "Anmelden",
   authRegister: "Registrieren",
@@ -1740,7 +1725,7 @@ const de: Dict = {
   navPrices: "Preise",
   artistsEyebrow: "Künstler",
   artistsTitle: "Verifizierte Fotografen.",
-  artistsIntro: "Jeder Fotograf hier ist identitätsverifiziert. Arbeiten werden direkt lizenziert — keine anonymen Einreichungen.",
+  artistsIntro: "Arbeiten werden direkt vom Fotografen lizenziert. Jede Einreichung wird persönlich geprüft, bevor sie gelistet wird.",
   artistsPlatesSuffix: "Tafeln",
   artistsFoundingBio: "Gründungsfotograf. Jede Tafel in Band I stammt von ihm, aufgenommen seit 2012. Mit sieben, beim Durchblättern der alten Fotoalben seines Vaters, fand der Gründer ein Foto von ihm mit einer Kamera in der Hand — die erste, die er je gesehen hatte.",
   artistsViewWork: "Arbeiten ansehen",
@@ -1765,7 +1750,7 @@ const de: Dict = {
   statPlatesLabel: "katalogisierte Tafeln",
   collectionReleaseNote: "Band I veröffentlicht jeweils eine verifizierte Tafel — eine Tafel geht erst live, wenn das RAW-Original, die Aufnahmedaten und die unterschriebene Lizenz vorliegen. Deshalb steht bei den meisten Werken „wartend“ statt eines Platzhalterbilds.",
   vsStockTitle: "Keine Stockfotografie.",
-  vsStockBody: "Stock-Bibliotheken sammeln Tausende anonyme Beitragende — die Herkunft endet bei einer Lizenzvereinbarung, die niemand prüft. Beta Art lizenziert direkt von einem namentlich genannten, verifizierten Fotografen, mit der RAW-Datei und den Aufnahmedaten hinter jeder Tafel. Weniger Bilder. Jedes einzelne rechenschaftspflichtig.",
+  vsStockBody: "Stock-Bibliotheken sammeln Tausende anonyme Beitragende — die Herkunft endet bei einer Lizenzvereinbarung, die niemand prüft. Beta Art lizenziert direkt vom Fotografen, mit der Originaldatei und den Aufnahmedaten hinter jeder verifizierten Tafel. Weniger Bilder. Jedes einzelne rechenschaftspflichtig.",
 
   addToCart: "In den Warenkorb — Personal, kr 190",
   inCart: "Im Warenkorb",
@@ -1793,7 +1778,7 @@ const de: Dict = {
   photographerTitle: "Ich fotografiere, was wirklich existiert.",
   photographerP1: "Fjorde vor Sonnenaufgang, Städte nach dem Regen, Gesichter, die einverstanden waren, gesehen zu werden. Nichts auf dieser Seite wurde von einer Maschine generiert, zusammengesetzt oder halluziniert.",
   photographerP2: "Mein Archiv umfasst mehr als 84.000 Aufnahmen seit 2012. Wenn Sie eine Platte lizenzieren, verhandeln Sie direkt mit mir: eine schriftliche Lizenz, eine ordentliche Rechnung und die Datei in voller Auflösung innerhalb von vierundzwanzig Stunden in Ihrem Posteingang.",
-  photographerP3: "Wenn Sie die RAW-Datei hinter einer Platte sehen möchten, fragen Sie. Genau darum geht es.",
+  photographerP3: "Wenn Sie die Originaldatei hinter einer Platte sehen möchten, fragen Sie. Genau darum geht es.",
   lifeFlowerQuote: "„Dass das Leben begrenzt ist, macht es zugleich kostbar.“",
   lifeFlowerBody: "Weil das Leben nicht ewig währt, zählt jeder Moment.",
   lifeFlowerTagline: "Echte Menschen · Echte Orte · Echte Momente",
@@ -1811,7 +1796,6 @@ const de: Dict = {
   tlExhibition: "Ausstellung",
   cartItemOne: "Artikel",
   cartItemMany: "Artikel",
-  heroPlateDate: "März 2026",
   feedbackEmailOptional: "optional",
   sellFieldBioPlaceholder: "Das erscheint nach der Verifizierung in Ihrem Artists-Profil.",
 };

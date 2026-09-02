@@ -528,3 +528,44 @@ tetiklemek** (git bağlantısı yok; davet sorunu çözülürse git-link'e
 yükseltilebilir). Önceki başarısız denemeden kalan boş `beta-art`
 projesi (prj_QLewfMpfzgVSOO2FsZoZpmeszbNG) hâlâ silinmeyi bekliyor —
 panelden kullanıcı silecek.
+
+## 02.09.2026 (sabah) — Kanıt denetimi bulguları düzeltildi
+
+"Trust the evidence behind every image" denetim workflow'u (126 ajan; iki
+oturum-limiti kesintisinden sonra devam ettirildi) 40 bulgu inceledi, 10'u
+3 hakemli çürütme turundan ayakta çıktı. Hepsi uygulandı:
+
+- **Satış kapısı (F1):** İndir/sepet düğmeleri artık `verified &&
+  plate.image` şartına bağlı — dosyası depoda olmayan bir plaka satışa
+  sunulmuyor. "Available" durumu beta-art.com'dan geldiği için elle
+  düşürülmedi; yalnızca satış girişleri kapatıldı. Şu an hiçbir plaka
+  satılabilir durumda değil: Portrait in Amber ile The Maker'ın
+  orijinalleri yüklendiğinde düğme kendiliğinden geri gelir.
+- **Provenance dürüstlüğü (F2, F6):** Sergi düğümü artık "tamamlandı"
+  değil — serginin kendi verisi "Upcoming / Autumn 2026" diyor; yer de
+  sabit ", Oslo." yerine `where` alanından geliyor. Çekim bağlamı düğümü,
+  metni "Capture details to be supplied" olan plakada boş nokta gösteriyor.
+- **Kimlik rozetleri (F8):** "Identity verified" rozeti Home ve Artists'ten
+  kaldırıldı; artistsIntro "kimliği doğrulanmış" iddiasından arındırıldı
+  (8 dil). Doğrulama prosedürü kurulunca geri gelir.
+- **RAW mutlak iddiası (F3, F5, F9):** Tek gerçek orijinal (Golden Hour)
+  iPhone HEIC olduğu için "her plaka RAW ile başlar" evrensel iddiası
+  yanlıştı. Yöntem I + iki SSS + vsStock kutusu + fotoğrafçı metni 8 dilde
+  "orijinal dosya — kamera üretiyorsa RAW" biçimine yumuşatıldı.
+- **Var olmayan otomasyon (F4, F7, F10):** Hero'daki kaynaksız "March 2026"
+  tarihi kaldırıldı; teslimat SSS'indeki 72 saatlik link + PDF sertifika
+  vaadi gerçek akışla (e-postayla, normalde 24 saat içinde) değiştirildi;
+  fatura SSS'indeki "organizasyon numarası + MVA" satırı düz makbuz vaadine
+  çevrildi (MVA kaydı yok — komisyon-ve-mva.md'deki bayat "sitede MVA
+  ifadesi yok" cümlesi de düzeltildi); cayma hakkı SSS'indeki uydurma
+  "checkout'ta kutu işaretleme" adımı e-posta onayına çevrildi.
+
+data.ts başlığına sapma kaydı düşüldü: birebir katmandan her sapmanın
+gerekçesi tek tek yazılı (uydurma yasağı > birebir sadakat). Doğrulama:
+`tsc -b` + Vite build temiz, Playwright duman testi 7/7 (tarih yok, rozet
+yok, görselsiz "available" plakada satış düğmesi yok, sergi düğümü
+"Upcoming, Oslo, Norway"). Günlük araştır-geliştir turunun bu günkü
+iyileştirmesi bu düzeltme setidir; araştırma notu: dünkü derin araştırma
+(doğrulanmamış, kaynaklı) Norveç'te sipariş çekim pilot bandını
+kr 7.000–14.000 gösteriyor (NTB üye ~6.900 / liste ~13.800; arşiv tek
+kullanım 3.770+MVA) — fiyat sayfası kurulurken elle teyit edilecek.

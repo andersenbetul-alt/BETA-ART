@@ -13,6 +13,21 @@
 // UI language. Plate titles and the photographer credit stay original —
 // artwork titles are not translated (art-world practice; same decision
 // as the untranslated "Life Flower" name in Home.tsx).
+//
+// Evidence audit 02.09.2026 — deliberate deviations from the verbatim
+// layer, each because this deployment would otherwise publish a claim it
+// cannot back (CLAUDE.md uydurma yasağı beats verbatim fidelity):
+//  - Method I + two FAQ answers: the universal "RAW file" claim softened
+//    to "original file — RAW where the camera produces it" (Golden Hour's
+//    documented original is an iPhone HEIC, so the absolute was false).
+//  - Delivery FAQ: 72-hour download link + PDF certificate replaced with
+//    the real flow (email delivery, normally within twenty-four hours) —
+//    no automated delivery pipeline exists.
+//  - Invoice FAQ: organisation number + VAT line replaced with a plain
+//    receipt promise; the business is not MVA-registered
+//    (docs/beta-art/komisyon-ve-mva.md), so VAT is never mentioned.
+//  - Withdrawal FAQ: the "tick a box at checkout" step replaced with
+//    email-confirmed consent — no checkout checkbox exists.
 
 import type { Lang } from "./i18n";
 
@@ -289,24 +304,24 @@ export const verificationMethods: VerificationMethod[] = [
   {
     numeral: "I",
     title: {
-      en: "The RAW original is archived.",
-      no: "RAW-originalen er arkivert.",
-      tr: "RAW orijinal arşivde saklanır.",
-      it: "L'originale RAW è archiviato.",
-      fr: "L'original RAW est archivé.",
-      es: "El original RAW queda archivado.",
-      pt: "O original RAW está arquivado.",
-      de: "Das RAW-Original ist archiviert.",
+      en: "The original is archived.",
+      no: "Originalen er arkivert.",
+      tr: "Orijinal arşivde saklanır.",
+      it: "L'originale è archiviato.",
+      fr: "L'original est archivé.",
+      es: "El original queda archivado.",
+      pt: "O original está arquivado.",
+      de: "Das Original ist archiviert.",
     },
     body: {
-      en: "Every plate begins as a RAW file from a real camera. The originals are stored in an offline archive, available for inspection on request.",
-      no: "Hvert bilde begynner som en RAW-fil fra et ekte kamera. Originalene oppbevares i et frakoblet arkiv og kan fremvises på forespørsel.",
-      tr: "Her plaka, gerçek bir kameradan çıkan RAW dosyayla başlar. Orijinaller çevrimdışı bir arşivde tutulur ve talep üzerine incelemeye açıktır.",
-      it: "Ogni tavola nasce come file RAW da una vera fotocamera. Gli originali sono conservati in un archivio offline, disponibili per ispezione su richiesta.",
-      fr: "Chaque planche naît d'un fichier RAW issu d'un véritable appareil photo. Les originaux sont conservés dans une archive hors ligne, consultables sur demande.",
-      es: "Cada lámina comienza como un archivo RAW de una cámara real. Los originales se conservan en un archivo fuera de línea, disponibles para inspección previa solicitud.",
-      pt: "Cada chapa começa como um ficheiro RAW de uma câmara real. Os originais são guardados num arquivo offline, disponíveis para inspeção mediante pedido.",
-      de: "Jede Platte beginnt als RAW-Datei aus einer echten Kamera. Die Originale werden in einem Offline-Archiv aufbewahrt und können auf Anfrage eingesehen werden.",
+      en: "Every plate begins as an original file from a real camera — RAW where the camera produces it. The originals are stored in an offline archive, available for inspection on request.",
+      no: "Hvert bilde begynner som en originalfil fra et ekte kamera — RAW der kameraet produserer det. Originalene oppbevares i et frakoblet arkiv og kan fremvises på forespørsel.",
+      tr: "Her plaka, gerçek bir kameradan çıkan orijinal dosyayla başlar — kamera üretiyorsa RAW olarak. Orijinaller çevrimdışı bir arşivde tutulur ve talep üzerine incelemeye açıktır.",
+      it: "Ogni tavola nasce come file originale da una vera fotocamera — RAW dove la fotocamera lo produce. Gli originali sono conservati in un archivio offline, disponibili per ispezione su richiesta.",
+      fr: "Chaque planche naît d'un fichier original issu d'un véritable appareil photo — RAW lorsque l'appareil le produit. Les originaux sont conservés dans une archive hors ligne, consultables sur demande.",
+      es: "Cada lámina comienza como un archivo original de una cámara real — RAW cuando la cámara lo produce. Los originales se conservan en un archivo fuera de línea, disponibles para inspección previa solicitud.",
+      pt: "Cada chapa começa como um ficheiro original de uma câmara real — RAW quando a câmara o produz. Os originais são guardados num arquivo offline, disponíveis para inspeção mediante pedido.",
+      de: "Jede Platte beginnt als Originaldatei aus einer echten Kamera — RAW, wo die Kamera es erzeugt. Die Originale werden in einem Offline-Archiv aufbewahrt und können auf Anfrage eingesehen werden.",
     },
   },
   {
@@ -863,14 +878,14 @@ export const faqItems: FaqItem[] = [
       de: "Verwenden Sie KI?",
     },
     a: {
-      en: "No. Every photograph on this site is an original image captured with a physical camera. Nothing is generated, composited or enhanced by AI. The RAW files are archived and can be produced on request. That's the whole point of BETA ART.",
-      no: "Nei. Hvert fotografi på dette nettstedet er et originalbilde tatt med et fysisk kamera. Ingenting er generert, sammensatt eller forbedret med KI. RAW-filene er arkivert og kan fremlegges på forespørsel. Det er hele poenget med BETA ART.",
-      tr: "Hayır. Bu sitedeki her fotoğraf, fiziksel bir kamerayla çekilmiş özgün bir görüntüdür. Hiçbir şey yapay zekâyla üretilmiş, birleştirilmiş veya iyileştirilmiş değildir. RAW dosyalar arşivlenir ve talep üzerine sunulabilir. BETA ART'ın bütün amacı zaten budur.",
-      it: "No. Ogni fotografia su questo sito è un'immagine originale scattata con una fotocamera fisica. Nulla è generato, composto o ritoccato dall'IA. I file RAW sono archiviati e possono essere esibiti su richiesta. È proprio questo il senso di BETA ART.",
-      fr: "Non. Chaque photographie de ce site est une image originale prise avec un véritable appareil photo. Rien n'est généré, composité ni retouché par IA. Les fichiers RAW sont archivés et peuvent être produits sur demande. C'est toute la raison d'être de BETA ART.",
-      es: "No. Cada fotografía de este sitio es una imagen original captada con una cámara física. Nada está generado, compuesto ni mejorado con IA. Los archivos RAW están archivados y pueden presentarse previa solicitud. Esa es precisamente la razón de ser de BETA ART.",
-      pt: "Não. Todas as fotografias deste site são imagens originais captadas com uma câmara física. Nada é gerado, composto ou melhorado por IA. Os ficheiros RAW estão arquivados e podem ser apresentados mediante pedido. É essa a razão de ser da BETA ART.",
-      de: "Nein. Jede Fotografie auf dieser Website ist ein Originalbild, aufgenommen mit einer physischen Kamera. Nichts wird durch KI erzeugt, zusammengesetzt oder nachbearbeitet. Die RAW-Dateien sind archiviert und können auf Anfrage vorgelegt werden. Genau darum geht es bei BETA ART.",
+      en: "No. Every photograph on this site is an original image captured with a physical camera. Nothing is generated, composited or enhanced by AI. The original camera files are archived and can be produced on request. That's the whole point of BETA ART.",
+      no: "Nei. Hvert fotografi på dette nettstedet er et originalbilde tatt med et fysisk kamera. Ingenting er generert, sammensatt eller forbedret med KI. Original-kamerafilene er arkivert og kan fremlegges på forespørsel. Det er hele poenget med BETA ART.",
+      tr: "Hayır. Bu sitedeki her fotoğraf, fiziksel bir kamerayla çekilmiş özgün bir görüntüdür. Hiçbir şey yapay zekâyla üretilmiş, birleştirilmiş veya iyileştirilmiş değildir. Orijinal kamera dosyaları arşivlenir ve talep üzerine sunulabilir. BETA ART'ın bütün amacı zaten budur.",
+      it: "No. Ogni fotografia su questo sito è un'immagine originale scattata con una fotocamera fisica. Nulla è generato, composto o ritoccato dall'IA. I file originali della fotocamera sono archiviati e possono essere esibiti su richiesta. È proprio questo il senso di BETA ART.",
+      fr: "Non. Chaque photographie de ce site est une image originale prise avec un véritable appareil photo. Rien n'est généré, composité ni retouché par IA. Les fichiers originaux de l'appareil sont archivés et peuvent être produits sur demande. C'est toute la raison d'être de BETA ART.",
+      es: "No. Cada fotografía de este sitio es una imagen original captada con una cámara física. Nada está generado, compuesto ni mejorado con IA. Los archivos originales de la cámara están archivados y pueden presentarse previa solicitud. Esa es precisamente la razón de ser de BETA ART.",
+      pt: "Não. Todas as fotografias deste site são imagens originais captadas com uma câmara física. Nada é gerado, composto ou melhorado por IA. Os ficheiros originais da câmara estão arquivados e podem ser apresentados mediante pedido. É essa a razão de ser da BETA ART.",
+      de: "Nein. Jede Fotografie auf dieser Website ist ein Originalbild, aufgenommen mit einer physischen Kamera. Nichts wird durch KI erzeugt, zusammengesetzt oder nachbearbeitet. Die Original-Kameradateien sind archiviert und können auf Anfrage vorgelegt werden. Genau darum geht es bei BETA ART.",
     },
   },
   {
@@ -886,14 +901,14 @@ export const faqItems: FaqItem[] = [
       de: "Wie funktioniert „Human Verified“?",
     },
     a: {
-      en: "Every photograph is shipped with its capture record — camera, lens, exposure, location, date. The original RAW file is kept in a permanent archive. If anyone questions whether a photograph is genuine, I can produce the RAW original, the EXIF data, and, where the camera supports it, C2PA Content Credentials.",
-      no: "Hvert fotografi leveres med sin opptaksdokumentasjon — kamera, objektiv, eksponering, sted og dato. Den originale RAW-filen oppbevares i et permanent arkiv. Skulle noen betvile at et fotografi er ekte, kan jeg fremlegge RAW-originalen, EXIF-dataene og, der kameraet støtter det, C2PA Content Credentials.",
-      tr: "Her fotoğraf çekim kaydıyla birlikte teslim edilir — kamera, objektif, pozlama, konum, tarih. Orijinal RAW dosya kalıcı bir arşivde tutulur. Bir fotoğrafın gerçekliği sorgulanırsa RAW orijinali, EXIF verilerini ve kameranın desteklediği durumlarda C2PA Content Credentials kayıtlarını sunabilirim.",
-      it: "Ogni fotografia viene consegnata con il suo registro di scatto — fotocamera, obiettivo, esposizione, luogo, data. Il file RAW originale è conservato in un archivio permanente. Se qualcuno mette in dubbio l'autenticità di una fotografia, posso esibire l'originale RAW, i dati EXIF e, dove la fotocamera lo supporta, le C2PA Content Credentials.",
-      fr: "Chaque photographie est livrée avec son relevé de prise de vue — boîtier, objectif, exposition, lieu, date. Le fichier RAW original est conservé dans une archive permanente. Si quelqu'un met en doute l'authenticité d'une photographie, je peux produire l'original RAW, les données EXIF et, lorsque l'appareil le permet, les C2PA Content Credentials.",
-      es: "Cada fotografía se entrega con su registro de captura: cámara, objetivo, exposición, ubicación y fecha. El archivo RAW original se conserva en un archivo permanente. Si alguien cuestiona la autenticidad de una fotografía, puedo presentar el original RAW, los datos EXIF y, cuando la cámara lo permite, las C2PA Content Credentials.",
-      pt: "Cada fotografia é entregue com o seu registo de captura — câmara, objetiva, exposição, local, data. O ficheiro RAW original é mantido num arquivo permanente. Se alguém questionar a autenticidade de uma fotografia, posso apresentar o original RAW, os dados EXIF e, quando a câmara o permite, as C2PA Content Credentials.",
-      de: "Jede Fotografie wird mit ihren Aufnahmedaten geliefert — Kamera, Objektiv, Belichtung, Ort, Datum. Die originale RAW-Datei wird in einem dauerhaften Archiv aufbewahrt. Sollte jemand anzweifeln, dass eine Fotografie echt ist, kann ich das RAW-Original, die EXIF-Daten und, sofern die Kamera es unterstützt, C2PA Content Credentials vorlegen.",
+      en: "Every photograph is shipped with its capture record — camera, lens, exposure, location, date. The original camera file is kept in a permanent archive. If anyone questions whether a photograph is genuine, I can produce the original file, the EXIF data, and, where the camera supports it, C2PA Content Credentials.",
+      no: "Hvert fotografi leveres med sin opptaksdokumentasjon — kamera, objektiv, eksponering, sted og dato. Den originale kamerafilen oppbevares i et permanent arkiv. Skulle noen betvile at et fotografi er ekte, kan jeg fremlegge originalfilen, EXIF-dataene og, der kameraet støtter det, C2PA Content Credentials.",
+      tr: "Her fotoğraf çekim kaydıyla birlikte teslim edilir — kamera, objektif, pozlama, konum, tarih. Orijinal kamera dosyası kalıcı bir arşivde tutulur. Bir fotoğrafın gerçekliği sorgulanırsa orijinal dosyayı, EXIF verilerini ve kameranın desteklediği durumlarda C2PA Content Credentials kayıtlarını sunabilirim.",
+      it: "Ogni fotografia viene consegnata con il suo registro di scatto — fotocamera, obiettivo, esposizione, luogo, data. Il file originale della fotocamera è conservato in un archivio permanente. Se qualcuno mette in dubbio l'autenticità di una fotografia, posso esibire il file originale, i dati EXIF e, dove la fotocamera lo supporta, le C2PA Content Credentials.",
+      fr: "Chaque photographie est livrée avec son relevé de prise de vue — boîtier, objectif, exposition, lieu, date. Le fichier original de l'appareil est conservé dans une archive permanente. Si quelqu'un met en doute l'authenticité d'une photographie, je peux produire le fichier original, les données EXIF et, lorsque l'appareil le permet, les C2PA Content Credentials.",
+      es: "Cada fotografía se entrega con su registro de captura: cámara, objetivo, exposición, ubicación y fecha. El archivo original de la cámara se conserva en un archivo permanente. Si alguien cuestiona la autenticidad de una fotografía, puedo presentar el archivo original, los datos EXIF y, cuando la cámara lo permite, las C2PA Content Credentials.",
+      pt: "Cada fotografia é entregue com o seu registo de captura — câmara, objetiva, exposição, local, data. O ficheiro original da câmara é mantido num arquivo permanente. Se alguém questionar a autenticidade de uma fotografia, posso apresentar o ficheiro original, os dados EXIF e, quando a câmara o permite, as C2PA Content Credentials.",
+      de: "Jede Fotografie wird mit ihren Aufnahmedaten geliefert — Kamera, Objektiv, Belichtung, Ort, Datum. Die originale Kameradatei wird in einem dauerhaften Archiv aufbewahrt. Sollte jemand anzweifeln, dass eine Fotografie echt ist, kann ich die Originaldatei, die EXIF-Daten und, sofern die Kamera es unterstützt, C2PA Content Credentials vorlegen.",
     },
   },
   {
@@ -1093,14 +1108,14 @@ export const faqItems: FaqItem[] = [
       de: "Wie erhalte ich die Datei?",
     },
     a: {
-      en: "Immediately after payment, you'll get an email with a download link (valid 72 hours) and a PDF license certificate. The file is high-resolution, sRGB, JPEG or TIFF on request.",
-      no: "Rett etter betaling får du en e-post med nedlastingslenke (gyldig i 72 timer) og et lisenssertifikat i PDF. Filen er høyoppløselig, sRGB, JPEG eller TIFF på forespørsel.",
-      tr: "Ödemenin hemen ardından, indirme bağlantısı (72 saat geçerli) ve PDF lisans sertifikası içeren bir e-posta alırsınız. Dosya yüksek çözünürlüklü ve sRGB'dir; JPEG olarak, talep üzerine TIFF olarak gönderilir.",
-      it: "Subito dopo il pagamento riceverai un'email con un link di download (valido 72 ore) e un certificato di licenza in PDF. Il file è ad alta risoluzione, sRGB, JPEG o TIFF su richiesta.",
-      fr: "Immédiatement après le paiement, vous recevrez un e-mail avec un lien de téléchargement (valable 72 heures) et un certificat de licence au format PDF. Le fichier est en haute résolution, sRGB, JPEG ou TIFF sur demande.",
-      es: "Inmediatamente después del pago recibirás un correo con un enlace de descarga (válido durante 72 horas) y un certificado de licencia en PDF. El archivo es de alta resolución, sRGB, en JPEG o en TIFF previa solicitud.",
-      pt: "Imediatamente após o pagamento, recebe um e-mail com uma ligação de descarregamento (válida por 72 horas) e um certificado de licença em PDF. O ficheiro é de alta resolução, sRGB, em JPEG ou, mediante pedido, TIFF.",
-      de: "Unmittelbar nach der Zahlung erhalten Sie eine E-Mail mit einem Download-Link (72 Stunden gültig) und einem Lizenzzertifikat als PDF. Die Datei ist hochauflösend, sRGB, JPEG oder auf Wunsch TIFF.",
+      en: "After your payment is confirmed, the file and the license confirmation are delivered by email — normally within twenty-four hours. The file is high-resolution, sRGB, JPEG or TIFF on request.",
+      no: "Når betalingen er bekreftet, leveres filen og lisensbekreftelsen på e-post — normalt innen tjuefire timer. Filen er høyoppløselig, sRGB, JPEG eller TIFF på forespørsel.",
+      tr: "Ödemeniz onaylandıktan sonra dosya ve lisans onayı e-postayla teslim edilir — normalde yirmi dört saat içinde. Dosya yüksek çözünürlüklü ve sRGB'dir; JPEG olarak, talep üzerine TIFF olarak gönderilir.",
+      it: "Una volta confermato il pagamento, il file e la conferma di licenza vengono consegnati via email — normalmente entro ventiquattro ore. Il file è ad alta risoluzione, sRGB, JPEG o TIFF su richiesta.",
+      fr: "Une fois le paiement confirmé, le fichier et la confirmation de licence sont livrés par e-mail — normalement sous vingt-quatre heures. Le fichier est en haute résolution, sRGB, JPEG ou TIFF sur demande.",
+      es: "Una vez confirmado el pago, el archivo y la confirmación de licencia se entregan por correo electrónico — normalmente en un plazo de veinticuatro horas. El archivo es de alta resolución, sRGB, en JPEG o en TIFF previa solicitud.",
+      pt: "Depois de o pagamento ser confirmado, o ficheiro e a confirmação de licença são entregues por e-mail — normalmente no prazo de vinte e quatro horas. O ficheiro é de alta resolução, sRGB, em JPEG ou, mediante pedido, TIFF.",
+      de: "Sobald die Zahlung bestätigt ist, werden die Datei und die Lizenzbestätigung per E-Mail zugestellt — in der Regel innerhalb von vierundzwanzig Stunden. Die Datei ist hochauflösend, sRGB, JPEG oder auf Wunsch TIFF.",
     },
   },
   {
@@ -1116,14 +1131,14 @@ export const faqItems: FaqItem[] = [
       de: "Erhalte ich eine Rechnung?",
     },
     a: {
-      en: "Yes — a proper Norwegian invoice with organisation number and VAT (where applicable) is sent by email.",
-      no: "Ja — en ordentlig norsk faktura med organisasjonsnummer og MVA (der det er aktuelt) sendes på e-post.",
-      tr: "Evet — organizasyon numarası ve (geçerli olduğu durumlarda) KDV içeren, usulüne uygun bir Norveç faturası e-postayla gönderilir.",
-      it: "Sì — una regolare fattura norvegese con numero di registrazione dell'impresa e IVA (dove applicabile) viene inviata via email.",
-      fr: "Oui — une facture norvégienne en bonne et due forme, avec numéro d'organisation et TVA (le cas échéant), est envoyée par e-mail.",
-      es: "Sí — se envía por correo electrónico una factura noruega en regla, con número de organización e IVA (cuando corresponda).",
-      pt: "Sim — é enviada por e-mail uma fatura norueguesa em devida forma, com número de organização e IVA (quando aplicável).",
-      de: "Ja — eine ordentliche norwegische Rechnung mit Organisationsnummer und Mehrwertsteuer (sofern anwendbar) wird per E-Mail zugestellt.",
+      en: "Yes — a receipt confirming your purchase, the plate and the license tier is sent by email. The listed price is the final price.",
+      no: "Ja — en kvittering som bekrefter kjøpet, platen og lisensnivået sendes på e-post. Oppgitt pris er endelig pris.",
+      tr: "Evet — satın alımınızı, plakayı ve lisans katmanını doğrulayan bir makbuz e-postayla gönderilir. Belirtilen fiyat nihai fiyattır.",
+      it: "Sì — una ricevuta che conferma l'acquisto, la tavola e il livello di licenza viene inviata via email. Il prezzo indicato è quello definitivo.",
+      fr: "Oui — un reçu confirmant l'achat, la planche et le niveau de licence est envoyé par e-mail. Le prix indiqué est le prix définitif.",
+      es: "Sí — se envía por correo electrónico un recibo que confirma la compra, la lámina y el nivel de licencia. El precio indicado es el precio final.",
+      pt: "Sim — é enviado por e-mail um recibo que confirma a compra, a prancha e o nível de licença. O preço indicado é o preço final.",
+      de: "Ja — eine Quittung, die den Kauf, die Tafel und die Lizenzstufe bestätigt, wird per E-Mail zugestellt. Der angegebene Preis ist der Endpreis.",
     },
   },
   {
@@ -1208,14 +1223,14 @@ export const faqItems: FaqItem[] = [
       de: "Wie steht es um das 14-tägige Widerrufsrecht?",
     },
     a: {
-      en: "Under Norwegian law you have a 14-day right to withdraw digital purchases — unless you consent to receive the file immediately, in which case you waive that right. You will be asked to tick a box at checkout.",
-      no: "Etter norsk lov har du 14 dagers angrerett ved digitale kjøp — med mindre du samtykker til å motta filen umiddelbart, og dermed frasier deg angreretten. Du blir bedt om å krysse av for dette i kassen.",
-      tr: "Norveç hukukuna göre dijital satın alımlarda 14 günlük cayma hakkınız vardır — dosyayı hemen teslim almayı kabul etmediğiniz sürece; kabul ettiğinizde bu haktan feragat etmiş olursunuz. Ödeme adımında bir onay kutusunu işaretlemeniz istenecektir.",
-      it: "La legge norvegese prevede un diritto di recesso di 14 giorni per gli acquisti digitali — a meno che tu non acconsenta a ricevere il file immediatamente, rinunciando così a tale diritto. Al momento del pagamento ti verrà chiesto di spuntare una casella.",
-      fr: "Le droit norvégien vous accorde un délai de rétractation de 14 jours pour les achats numériques — sauf si vous consentez à recevoir le fichier immédiatement, auquel cas vous renoncez à ce droit. Une case à cocher vous sera proposée au moment du paiement.",
-      es: "Según la legislación noruega, tienes 14 días para desistir de las compras digitales — salvo que consientas recibir el archivo de inmediato, en cuyo caso renuncias a ese derecho. Al finalizar la compra se te pedirá que marques una casilla.",
-      pt: "Ao abrigo da lei norueguesa, tem um prazo de 14 dias para resolver o contrato em compras digitais — a menos que consinta em receber o ficheiro de imediato, caso em que renuncia a esse direito. Ser-lhe-á pedido que assinale uma caixa no momento do pagamento.",
-      de: "Nach norwegischem Recht haben Sie bei digitalen Käufen ein 14-tägiges Widerrufsrecht — es sei denn, Sie stimmen der sofortigen Bereitstellung der Datei zu; in diesem Fall verzichten Sie auf dieses Recht. Beim Bezahlvorgang werden Sie gebeten, ein entsprechendes Kästchen anzukreuzen.",
+      en: "Under Norwegian law you have a 14-day right to withdraw digital purchases — unless you consent to receive the file immediately, in which case you waive that right. We confirm this consent with you by email before the file is delivered.",
+      no: "Etter norsk lov har du 14 dagers angrerett ved digitale kjøp — med mindre du samtykker til å motta filen umiddelbart, og dermed frasier deg angreretten. Vi bekrefter dette samtykket med deg på e-post før filen leveres.",
+      tr: "Norveç hukukuna göre dijital satın alımlarda 14 günlük cayma hakkınız vardır — dosyayı hemen teslim almayı kabul etmediğiniz sürece; kabul ettiğinizde bu haktan feragat etmiş olursunuz. Bu onay, dosya teslim edilmeden önce sizinle e-posta üzerinden teyit edilir.",
+      it: "La legge norvegese prevede un diritto di recesso di 14 giorni per gli acquisti digitali — a meno che tu non acconsenta a ricevere il file immediatamente, rinunciando così a tale diritto. Confermiamo questo consenso con te via email prima della consegna del file.",
+      fr: "Le droit norvégien vous accorde un délai de rétractation de 14 jours pour les achats numériques — sauf si vous consentez à recevoir le fichier immédiatement, auquel cas vous renoncez à ce droit. Nous confirmons ce consentement avec vous par e-mail avant la livraison du fichier.",
+      es: "Según la legislación noruega, tienes 14 días para desistir de las compras digitales — salvo que consientas recibir el archivo de inmediato, en cuyo caso renuncias a ese derecho. Confirmamos este consentimiento contigo por correo electrónico antes de entregar el archivo.",
+      pt: "Ao abrigo da lei norueguesa, tem um prazo de 14 dias para resolver o contrato em compras digitais — a menos que consinta em receber o ficheiro de imediato, caso em que renuncia a esse direito. Confirmamos este consentimento consigo por e-mail antes de o ficheiro ser entregue.",
+      de: "Nach norwegischem Recht haben Sie bei digitalen Käufen ein 14-tägiges Widerrufsrecht — es sei denn, Sie stimmen der sofortigen Bereitstellung der Datei zu; in diesem Fall verzichten Sie auf dieses Recht. Wir bestätigen diese Einwilligung mit Ihnen per E-Mail, bevor die Datei bereitgestellt wird.",
     },
   },
 ];

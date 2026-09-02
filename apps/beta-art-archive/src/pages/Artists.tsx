@@ -35,11 +35,13 @@ export function Artists() {
           <div className="flex flex-1 items-start gap-5 bg-background p-6">
             <div aria-hidden="true" className="h-16 w-16 flex-none border border-border bg-gradient-to-br from-stone-400 via-stone-200 to-neutral-500" />
             <div>
+              {/* Evidence audit 02.09.2026 (F8): the "Identity verified"
+                  badge was removed — the real beta-art.com never names its
+                  photographer and no identity-verification procedure exists
+                  yet, so the badge asserted something nothing backs. It
+                  returns when a real procedure and a verified entry exist. */}
               <div className="flex flex-wrap items-center gap-2">
                 <h2 className="font-display text-lg font-normal">Beta Art</h2>
-                <span className="border border-accent px-1.5 py-0.5 font-record text-[0.58rem] uppercase tracking-[0.08em] text-accent">
-                  ✓ {t("photographerVerifiedBadge")}
-                </span>
               </div>
               <p className="mt-1 font-record text-[0.68rem] uppercase tracking-[0.08em] text-muted-foreground">
                 {count} {t("artistsPlatesSuffix")}

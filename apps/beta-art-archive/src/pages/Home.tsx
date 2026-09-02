@@ -92,7 +92,11 @@ function Hero() {
             {/* Artwork title marked lang="en" so CSS uppercasing follows
                 English casing rules — Turkish locale turned the i into İ
                 ("FİRST LİGHT"). */}
-            {t("platePrefix")} 01 · <span lang="en">First Light</span> — {t("heroPlateDate")}
+            {/* Evidence audit 02.09.2026 (F4): the hero used to append a
+                capture date ("March 2026") that the catalogue itself does
+                not have — First Light's detail reads "Capture details to be
+                supplied". No date is shown until a verified one exists. */}
+            {t("platePrefix")} 01 · <span lang="en">First Light</span>
           </p>
         </div>
       </div>
@@ -246,12 +250,12 @@ function Photographer() {
       <div className="mx-auto grid w-[min(100%-3rem,1280px)] grid-cols-1 gap-12 py-[clamp(3rem,7vw,4.5rem)] lg:grid-cols-[0.8fr_1.2fr]">
         <div aria-hidden="true" className="aspect-[4/5] w-full max-w-sm border border-border bg-gradient-to-br from-stone-400 via-stone-200 to-neutral-500" />
         <div>
+          {/* Evidence audit 02.09.2026 (F8): the "Identity verified" badge
+              was removed here and on /artists — no identity-verification
+              procedure exists and the photographer is unnamed, so nothing
+              backed the claim. */}
           <div className="flex flex-wrap items-center gap-3">
             <p className="font-record text-xs uppercase tracking-[0.22em] text-muted-foreground">{t("photographerEyebrow")}</p>
-            {/* New, user-directed addition (30.08.2026) — see Sell.tsx header note. */}
-            <span className="border border-accent px-2 py-0.5 font-record text-[0.6rem] uppercase tracking-[0.1em] text-accent">
-              ✓ {t("photographerVerifiedBadge")}
-            </span>
           </div>
           <h2 className="mt-3 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-light leading-snug">
             {t("photographerTitle")}

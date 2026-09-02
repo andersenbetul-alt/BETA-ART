@@ -39,6 +39,16 @@ export function PlateDetail() {
   }
 
   const verified = plate.status === "available";
+  // Evidence audit 02.09.2026 (F1): a plate may only be SOLD when we can
+  // actually deliver a file — i.e. it has a real photograph in the repo.
+  // The "available" status itself stays as sourced from beta-art.com; only
+  // the cart/Download entry points are gated, so nothing is offered for
+  // sale that cannot be produced.
+  const purchasable = verified && Boolean(plate.image);
+  // Evidence audit 02.09.2026 (F6): the capture-context node must not show
+  // a completed dot when the plate's own text says the details don't exist
+  // yet. The sentinel below is First Light's literal detail string.
+  const captureKnown = plate.detail.en !== "Capture details to be supplied";
 
   return (
     <section className="border-b border-border">
@@ -57,8 +67,8 @@ export function PlateDetail() {
         )}
         {/* "Download" routes to payment, never to a free file (user decision
             01.09.2026): the file is the product — it is delivered after
-            checkout, per the licence terms. Only available plates show it. */}
-        {verified && (
+            checkout, per the licence terms. Only purchasable plates show it. */}
+        {purchasable && (
           <div className="mt-3 flex justify-end">
             <Button
               onClick={() => {
@@ -87,7 +97,7 @@ export function PlateDetail() {
             only Personal has a real fixed price (kr 190), so cart only
             makes sense here. Commercial/Extended/Custom stay request-form
             only (#request), matching their real "Price on request" state. */}
-        {verified && (
+        {purchasable && (
           <Button
             onClick={() => add({ plateId: plate.id, title: plate.title })}
             disabled={items.some((i) => i.plateId === plate.id)}
@@ -104,7 +114,7 @@ export function PlateDetail() {
             <p>{t("byPrefix")} {plate.photographer}.</p>
           </TimelineNode>
 
-          <TimelineNode title={t("tlCaptureContext")} done>
+          <TimelineNode title={t("tlCaptureContext")} done={captureKnown}>
             <p>{plate.detail[lang]}</p>
           </TimelineNode>
 
@@ -120,8 +130,12 @@ export function PlateDetail() {
             )}
           </TimelineNode>
 
-          <TimelineNode title={t("tlExhibition")} done last>
-            <p>{exhibitions[0].title[lang]}, {exhibitions[0].when[lang]}, Oslo.</p>
+          {/* Evidence audit 02.09.2026 (F2): the exhibition is tagged
+              "Upcoming" (Autumn 2026) in its own data — a future event is
+              never a completed provenance stage, and the place comes from
+              exhibitions[0].where instead of a hardcoded ", Oslo." */}
+          <TimelineNode title={t("tlExhibition")} done={false} last>
+            <p>{exhibitions[0].title[lang]} — {exhibitions[0].tag[lang]}, {exhibitions[0].when[lang]}, {exhibitions[0].where[lang]}.</p>
           </TimelineNode>
         </div>
       </div>

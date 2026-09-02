@@ -60,5 +60,8 @@ etkinleştirilip bağlantı oluşturulduğunda devreye girer.
 - Komisyon bölüşümü MVA'sız net üzerinden yapılır; MVA devlete aittir,
   bölüşülmez.
 - Bu satırların hiçbiri bugün siteye yazılmaz — kayıt yokken MVA'dan hiç söz
-  etmemek en temiz durumdur; mevcut site metinlerinde MVA ifadesi yoktur ve
-  öyle kalacaktır.
+  etmemek en temiz durumdur. Düzeltme (02.09.2026): bu belgenin "site
+  metinlerinde MVA ifadesi yoktur" cümlesi yazıldığı gün yanlıştı — fatura
+  SSS'i "VAT (where applicable)" diyordu. Kanıt denetimi bunu yakaladı;
+  SSS artık MVA'dan hiç söz etmeyen düz bir makbuz vaadi taşıyor
+  (organizasyon numarası da depoya kaydedilene kadar yazılmıyor).
