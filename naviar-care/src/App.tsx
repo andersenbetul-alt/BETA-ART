@@ -6,6 +6,59 @@ function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
 }
 
+// ─── Atferdssystem: samtykkebasert, kun i nettleseren, sendes aldri ut ───────
+
+const CONSENT_KEY  = 'nc_consent'
+const BEHAVIOR_KEY = 'nc_behavior'
+type NCEvent = { t: number; e: string; v: string }
+
+function getConsent(): 'all' | 'necessary' | null {
+  try {
+    const c = localStorage.getItem(CONSENT_KEY)
+    if (c === 'all' || c === 'necessary') return c
+    if (localStorage.getItem('nc_cookie') === '1') return 'necessary'
+  } catch {}
+  return null
+}
+
+function track(e: string, v: string) {
+  if (getConsent() !== 'all') return
+  try {
+    const now = Date.now()
+    const cutoff = now - 90 * 24 * 3600 * 1000
+    const list: NCEvent[] = JSON.parse(localStorage.getItem(BEHAVIOR_KEY) || '[]')
+      .filter((x: NCEvent) => x.t > cutoff)
+    list.push({ t: now, e, v })
+    localStorage.setItem(BEHAVIOR_KEY, JSON.stringify(list.slice(-200)))
+  } catch {}
+}
+
+// Frekvens x ferskhet: nyere interesse teller mest; alt eldre enn 90 dager slettes
+function topCategory(): string | null {
+  if (getConsent() !== 'all') return null
+  try {
+    const list: NCEvent[] = JSON.parse(localStorage.getItem(BEHAVIOR_KEY) || '[]')
+    const score: Record<string, number> = {}
+    const now = Date.now()
+    for (const x of list) {
+      if (x.e !== 'cat') continue
+      const ageDays = (now - x.t) / 86400000
+      score[x.v] = (score[x.v] || 0) + Math.max(0.2, 1 - ageDays / 90)
+    }
+    const best = Object.entries(score).sort((a, b) => b[1] - a[1])[0]
+    return best ? best[0] : null
+  } catch { return null }
+}
+
+function clearAllLocalData() {
+  try {
+    localStorage.removeItem(BEHAVIOR_KEY)
+    localStorage.removeItem(CONSENT_KEY)
+    localStorage.removeItem('nc_cookie')
+  } catch {}
+  window.location.reload()
+}
+
 // ─── Logo ────────────────────────────────────────────────────────────────────
 
 function NaviarLogo({ size = 30, dark = false }: { size?: number; dark?: boolean }) {
@@ -135,7 +188,7 @@ const FAQS = [
 
 // ─── Cookie banner ────────────────────────────────────────────────────────────
 
-function CookieBanner({ onAccept }: { onAccept: () => void }) {
+function CookieBanner({ onAccept }: { onAccept: (level: 'all' | 'necessary') => void }) {
   return (
     <div role="region" aria-label="Informasjonskapsler" style={{
       position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
@@ -150,12 +203,13 @@ function CookieBanner({ onAccept }: { onAccept: () => void }) {
         justifyContent: 'space-between',
       }}>
         <p style={{ fontSize: 13.5, color: '#a8c9c5', margin: 0, flex: '1 1 320px', lineHeight: 1.5 }}>
-          Vi bruker informasjonskapsler for å huske innstillingene dine og forbedre tjenesten.
-          {' '}<a href="#" style={{ color: '#d8ef75', textDecoration: 'underline' }}>Les personvernerklæringen</a>.
+          Vi lagrer valgene dine kun i din nettleser. Sier du ja til alle, husker
+          siden også hva du så på sist — så neste besøk starter der du slapp.
+          Ingenting sendes ut av nettleseren, og du kan slette alt når som helst.
         </p>
         <div style={{ display: 'flex', gap: 10, flexShrink: 0 }}>
           <button
-            onClick={onAccept}
+            onClick={() => onAccept('all')}
             style={{
               padding: '9px 22px',
               background: '#d8ef75', color: '#173d3a',
@@ -164,7 +218,7 @@ function CookieBanner({ onAccept }: { onAccept: () => void }) {
             }}
           >Godta alle</button>
           <button
-            onClick={onAccept}
+            onClick={() => onAccept('necessary')}
             style={{
               padding: '9px 22px',
               background: 'transparent', color: '#a8c9c5',
@@ -180,13 +234,13 @@ function CookieBanner({ onAccept }: { onAccept: () => void }) {
 
 // ─── Contact modal ────────────────────────────────────────────────────────────
 
-function ContactModal({ onClose }: { onClose: () => void }) {
+function ContactModal({ onClose, initialTopic }: { onClose: () => void; initialTopic?: string }) {
   const [step, setStep] = useState<'form' | 'done'>('form')
   const [name, setName]       = useState('')
   const [email, setEmail]     = useState('')
   const [phone, setPhone]     = useState('')
   const [situation, setSit]   = useState('')
-  const [topic, setTopic]     = useState('')
+  const [topic, setTopic]     = useState(initialTopic || '')
   const overlayRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
 
@@ -454,7 +508,7 @@ function Nav({
 
 // ─── Hero ────────────────────────────────────────────────────────────────────
 
-function Hero({ onCta }: { onCta: () => void }) {
+function Hero({ onCta, top }: { onCta: (topic?: string) => void; top: string | null }) {
   return (
     <section style={{ background: '#f7f5ef', padding: '80px 24px 72px' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
@@ -502,6 +556,18 @@ function Hero({ onCta }: { onCta: () => void }) {
                 textDecoration: 'underline', textUnderlineOffset: 3,
               }}>Se hvordan det fungerer</button>
             </div>
+
+            {top && (
+              <button onClick={() => onCta(top)} style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                marginTop: 16, padding: '8px 16px',
+                background: '#d9ebe2', border: '1px solid #cbd8d0',
+                borderRadius: 100, cursor: 'pointer',
+                fontSize: 13.5, fontWeight: 600, color: '#173d3a',
+              }}>
+                Velkommen tilbake — fortsette med {top.toLowerCase()}? →
+              </button>
+            )}
 
             {/* GDPR trust line */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginTop: 16 }}>
@@ -621,7 +687,10 @@ function HowItWorks() {
 
 // ─── Categories (primary service) ────────────────────────────────────────────
 
-function Categories({ onCta }: { onCta: () => void }) {
+function Categories({ onCta, top }: { onCta: (topic?: string) => void; top: string | null }) {
+  const ordered = top
+    ? [...CATEGORIES].sort((a, b) => (a.label === top ? -1 : b.label === top ? 1 : 0))
+    : CATEGORIES
   return (
     <section id="tjenester" style={{ background: '#f7f5ef', padding: '80px 24px', scrollMarginTop: 68 }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
@@ -634,8 +703,8 @@ function Categories({ onCta }: { onCta: () => void }) {
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
-          {CATEGORIES.map(c => (
-            <button key={c.code} onClick={onCta} style={{
+          {ordered.map(c => (
+            <button key={c.code} onClick={() => { track('cat', c.label); onCta(c.label) }} style={{
               background: '#fffdf8', border: '1px solid #cbd8d0',
               borderRadius: 10, padding: '20px 22px',
               cursor: 'pointer', textAlign: 'left', width: '100%',
@@ -652,7 +721,7 @@ function Categories({ onCta }: { onCta: () => void }) {
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
                 <span style={{ fontSize: 15, fontWeight: 700, color: '#173d3a' }}>{c.label}</span>
-                <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.06em', padding: '2px 7px', background: '#d9ebe2', color: '#173d3a', borderRadius: 4 }}>{c.code}</span>
+                <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.06em', padding: '2px 7px', background: c.label === top ? '#d8ef75' : '#d9ebe2', color: '#173d3a', borderRadius: 4 }}>{c.label === top ? 'SIST SETT' : c.code}</span>
               </div>
               <p style={{ fontSize: 13.5, lineHeight: 1.55, color: '#576b68', margin: 0 }}>{c.desc}</p>
             </button>
@@ -715,7 +784,7 @@ function Experts({ onCta }: { onCta: () => void }) {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
           {EXPERTS.map(ex => (
-            <button key={ex.code} onClick={onCta} style={{
+            <button key={ex.code} onClick={() => { track('exp', ex.label); onCta('Faglig rådgivning') }} style={{
               background: '#fffdf8', border: '1px solid #cbd8d0',
               borderRadius: 10, padding: '20px 22px',
               cursor: 'pointer', textAlign: 'left', width: '100%',
@@ -764,12 +833,12 @@ function Fritidskontakt({ onCta }: { onCta: () => void }) {
             en brobygger til sosial deltakelse.
           </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
-            <button onClick={onCta} style={{
+            <button onClick={() => { track('cat', 'Tur og aktivitet'); onCta('Tur og aktivitet') }} style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '12px 24px', background: '#173d3a', color: '#fffdf8',
               fontSize: 14, fontWeight: 600, borderRadius: 6, border: 'none', cursor: 'pointer',
             }}>Få en fritidskontakt <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-            <button onClick={onCta} style={{
+            <button onClick={() => onCta('Bli hjelper')} style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '12px 24px', background: '#fffdf8', color: '#173d3a',
               fontSize: 14, fontWeight: 600, borderRadius: 6,
@@ -853,7 +922,7 @@ function Pricing({ onCta }: { onCta: () => void }) {
                 ))}
               </ul>
 
-              <button onClick={onCta} style={{
+              <button onClick={() => { track('plan', p.name); onCta(p.name === 'Fagsamtale' ? 'Faglig rådgivning' : undefined) }} style={{
                 width: '100%', padding: '12px',
                 background: p.highlight ? '#d8ef75' : 'transparent',
                 color: p.highlight ? '#173d3a' : '#173d3a',
@@ -929,7 +998,7 @@ function ForSection({ onCta }: { onCta: () => void }) {
               </li>
             ))}
           </ul>
-          <button onClick={onCta} style={{
+          <button onClick={() => onCta('Bli hjelper')} style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             padding: '12px 24px', background: '#fffdf8', color: '#173d3a',
             fontSize: 14, fontWeight: 600, borderRadius: 6,
@@ -960,7 +1029,7 @@ function FAQ() {
               <div key={i} style={{ borderTop: i === 0 ? '1px solid #cbd8d0' : 'none' }}>
                 <div style={{ borderBottom: '1px solid #cbd8d0' }}>
                   <button
-                    onClick={() => setOpen(isOpen ? null : i)}
+                    onClick={() => { if (!isOpen) track('faq', faq.q); setOpen(isOpen ? null : i) }}
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${i}`}
                     style={{
@@ -1109,11 +1178,17 @@ function Footer() {
 
         <div style={{ borderTop: '1px solid #1a3d3a', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
           <p style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, color: '#7fa8a2', margin: 0 }}>© 2026 NAVIAR CARE AS · Oslo, Norge</p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7fa8a2" strokeWidth="2" strokeLinecap="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-            <span style={{ fontSize: 12, color: '#7fa8a2' }}>GDPR-konform · Databehandling i EU</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+            <button onClick={clearAllLocalData} style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              fontSize: 12, color: '#7fa8a2', textDecoration: 'underline', textUnderlineOffset: 2, padding: 0,
+            }}>Slett lagrede data</button>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7fa8a2" strokeWidth="2" strokeLinecap="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span style={{ fontSize: 12, color: '#7fa8a2' }}>GDPR-konform · Databehandling i EU</span>
+            </span>
           </div>
         </div>
       </div>
@@ -1126,9 +1201,9 @@ function Footer() {
 export default function App() {
   const [menuOpen, setMenuOpen]       = useState(false)
   const [modalOpen, setModalOpen]     = useState(false)
-  const [cookieAccepted, setCookieAccepted] = useState(() => {
-    try { return localStorage.getItem('nc_cookie') === '1' } catch { return false }
-  })
+  const [initialTopic, setInitialTopic] = useState<string | undefined>(undefined)
+  const [consent, setConsent] = useState<'all' | 'necessary' | null>(() => getConsent())
+  const top = consent === 'all' ? topCategory() : null
 
   useEffect(() => {
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1137,12 +1212,15 @@ export default function App() {
     return () => { document.documentElement.style.scrollBehavior = '' }
   }, [])
 
-  function handleCookieAccept() {
-    try { localStorage.setItem('nc_cookie', '1') } catch {}
-    setCookieAccepted(true)
+  function handleCookieAccept(level: 'all' | 'necessary') {
+    try { localStorage.setItem(CONSENT_KEY, level) } catch {}
+    setConsent(level)
   }
 
-  function openModal() {
+  function openModal(topic?: unknown) {
+    const t = typeof topic === 'string' ? topic : undefined
+    setInitialTopic(t)
+    track('cta', t || 'generell')
     setModalOpen(true)
     setMenuOpen(false)
   }
@@ -1151,9 +1229,9 @@ export default function App() {
     <div style={{ fontFamily: '"DM Sans", system-ui, sans-serif', WebkitFontSmoothing: 'antialiased' }}>
       <Nav menuOpen={menuOpen} setMenuOpen={setMenuOpen} onCta={openModal} />
       <main>
-        <Hero onCta={openModal} />
+        <Hero onCta={openModal} top={top} />
         <HowItWorks />
-        <Categories onCta={openModal} />
+        <Categories onCta={openModal} top={top} />
         <Testimonials />
         <Experts onCta={openModal} />
         <Fritidskontakt onCta={openModal} />
@@ -1163,8 +1241,8 @@ export default function App() {
         <FinalCTA onCta={openModal} />
       </main>
       <Footer />
-      {modalOpen && <ContactModal onClose={() => setModalOpen(false)} />}
-      {!cookieAccepted && <CookieBanner onAccept={handleCookieAccept} />}
+      {modalOpen && <ContactModal onClose={() => setModalOpen(false)} initialTopic={initialTopic} />}
+      {!consent && <CookieBanner onAccept={handleCookieAccept} />}
     </div>
   )
 }

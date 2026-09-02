@@ -251,7 +251,10 @@ const HELPERS = [
   ['Jon A.','2,0 km','4,8','Pensjonert lærer · turgruppe-leder'],
   ['Amina H.','0,8 km','4,7','Helsefagstudent · førerkort og bil'],
 ];
-let state = { step:0, cat:5, helper:-1, stars:0, jobDone:false };
+// Husk forrige kategori (kun lokalt i nettleseren)
+let savedCat = 5;
+try { const s = Number(localStorage.getItem('nc_proto_cat')); if (s >= 0 && s < 7) savedCat = s; } catch {}
+let state = { step:0, cat:savedCat, helper:-1, stars:0, jobDone:false };
 
 const catBox = document.getElementById('cats');
 CATS.forEach((c,i)=>{
@@ -260,9 +263,11 @@ CATS.forEach((c,i)=>{
   b.innerHTML='<b>'+c[0]+'</b><span>'+c[1]+'</span>';
   b.setAttribute('aria-pressed', i===state.cat);
   b.onclick=()=>{state.cat=i;[...catBox.children].forEach((x,j)=>x.setAttribute('aria-pressed',j===i));
-    document.getElementById('v-cat').textContent=CATS[i][0];};
+    document.getElementById('v-cat').textContent=CATS[i][0];
+    try{localStorage.setItem('nc_proto_cat',String(i))}catch{}};
   catBox.appendChild(b);
 });
+document.getElementById('v-cat').textContent=CATS[state.cat][0];
 
 const hBox = document.getElementById('helpers');
 HELPERS.forEach((h,i)=>{
