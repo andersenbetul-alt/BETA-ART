@@ -702,3 +702,38 @@ izlenecek bir sayfa gerekiyor. Bu özellik isteği bir sayfa şablonu
 inşa etmeyi kapsamıyordu; o yüzden Business'a hiçbir şey eklenmedi,
 yalnızca bu not düşüldü. Business'a bir sayfa geldiğinde aynı desen
 (Beta Art'ınkiyle birebir) uygulanabilir.
+
+## 02.09.2026 — `small-business` becerisi kullanıcıya göre özelleştirildi
+
+Skill-creator eval turunun (`small-business-workspace/iteration-1/`,
+24/24 assertion geçti — bkz. `benchmark.md`) hemen ardından, kullanıcı
+"küçük işletme becerisini şirketime göre özelleştir" dedi. Repo taraması
+BAC/pipeline/yapı çelişkisinin hâlâ hiçbir belgede çözülmediğini
+doğruladı (`isletme/` klasörü yoktu, pipeline dosyası yoktu); tahmin
+etmek yerine `AskUserQuestion` ile dört doğrudan karar istendi ve
+`.claude/skills/small-business/SKILL.md`'ye işlendi (v0.1.0 → v0.2.0):
+
+- **"BAC" = BAG-03'ün yazım hatası** — ayrı bir dördüncü hat yok.
+- **Hedef klasör yapısı: üç ayrı proje** (`beta-art-privat/`,
+  `beta-art-gallery-event/`, `beta-art-business/`) — 26.08'de tek
+  uygulama olarak göçürülen `beta-art/` kodu yalnızca
+  `beta-art-privat/app-reference/` altında referans kalacak.
+  **Fiziksel taşıma henüz yapılmadı** — bu yalnızca beceriyi güncelledi,
+  gerçek klasör yeniden yapılandırması (ve bu depronun `CLAUDE.md`'sindeki
+  "iki yapı henüz uzlaştırılmadı" notunun düzeltilmesi) hâlâ ayrı,
+  yapılmamış bir iş olarak duruyor.
+- **Diller:** BAB-02 ve BAG-03 varsayılan Norveççe (yerel pazar), BAP-01
+  varsayılan İngilizce (uluslararası koleksiyoncu).
+- **Veri konumları:** `isletme/pipeline.md` oluşturuldu (BAP-01/BAG-03/
+  BAB-02 başlıklı, boş tablo); muhasebe/banka dışa aktarımı **kasıtlı
+  olarak** sabit bir yol almadı, her kullanımda sorulmaya devam edecek.
+
+Açık kalan tek nokta: forskuddsskatt'ın kesin taksit takvimi — kullanıcının
+kendi Altinn hesabından gelmesi gereken kişisel veri, bu ortamdan
+doğrulanamaz, tahmin edilmedi.
+
+**Not:** `.claude/skills/small-business/evals/evals.json`'daki eval-2
+hâlâ "BAC abonelik durumunu özetle" istiyor ve bu artık çözülmüş bir
+soru soruyor (skill artık "BAC" gördüğünde BAG-03 diyecek, eskisi gibi
+kullanıcıya sormayacak) — eval setinin bir sonraki iterasyonda
+güncellenmesi gerekiyor, bu oturumda dokunulmadı.
