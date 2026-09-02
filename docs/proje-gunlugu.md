@@ -334,3 +334,15 @@ Belge varsayımı açıkça işaretliyor: BETA ART zaten gerçek şirket/hesap a
 şemsiye altına, tüketiciye dönük ayrı bir ürün fikri (anıdan sanat eseri
 üretimi) — ama tek doğru okuma olduğu iddia edilmiyor. Açık sorular ve
 karar kullanıcıya bırakıldı; kapanmış bir aşama değil.
+
+## 02.09.2026 — beta-art-prototip becerisi kuruldu ve doğrulandı
+
+Beta Art tek dosyalık sayfa prototipi akışı (üç kez elle keşfedilmişti)
+`.claude/skills/beta-art-prototip/` altında kalıcılaştı: SKILL.md (kurulum →
+marka belirteçleri → font gömme → dürüst-içerik kuralları → bilinen tuzaklar),
+references/ (doğrulanmış tokens.css + aperture Logo.tsx), scripts/embed-fonts.py
+(html-inline'ın gömmediği fontları base64 gömer) ve scripts/drive-bundle.mjs
+(font/dış-istek/render/hata sınaması + tam boy görüntü; iki mevcut bundle'da
+DRIVE: PASS). run-qblogg becerisi de aynı gün yeniden çalıştırılıp doğrulandı
+(SMOKE: PASS, 5 akış). Prototiplerin kendisi scratchpad'de yaşıyor — depoya
+taşınmaları ayrı bir karar, bu kayıt onu kapatmıyor.
