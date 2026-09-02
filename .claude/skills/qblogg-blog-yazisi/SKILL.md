@@ -61,3 +61,38 @@ görevi görür.
 - Değerle aç; cevabı üç paragraf boğaz temizliğinin altına gömme.
 - Özgül olan genel olanı yener — bir gerçek örnek, beş sıfattan iyidir.
 - Anlam kaybetmeden kesilebilen cümle kesilir.
+
+## Bilinen tuzaklar (02.09.2026 dersler)
+
+### JavaScript'e giren metin içinde kesme işareti
+`posts.js` tek tırnaklı string içinde typografik kesme işareti (`'`, U+2019)
+`SyntaxError` üretir. Kural: posts.js'e yazarken **sadece ASCII kesme işareti
+(`'`)** kullan; ya da o metni çift tırnak ile sar. Yapay zekâ çıktısı
+typografik tırnak içerebilir — kontrol et.
+
+Tespit: `node -e "require('./assets/js/posts.js')"` — eğer SyntaxError
+verirse sorunlu satırı şununla bul:
+```bash
+python3 -c "
+import ast, re, pathlib
+src = pathlib.Path('assets/js/posts.js').read_text()
+for i,l in enumerate(src.splitlines(),1):
+    if '’' in l or '‘' in l:
+        print(i, l[:80])
+"
+```
+
+### `nu` alanı — adres doğrulanmamış kaynak
+Kaynağın URL'si bulunamamışsa boş `u:''` bırakma; bunun yerine `nu` ile
+gerekçe yaz:
+```js
+{ t: 'Kaynak başlığı', nu: 'adres doğrulanmadı; Firecrawl bu ortamda engelli' }
+```
+`nu` sayfada görünmez; `check.mjs` adressiz kaynağı kasıtsız unutulmuş
+adresden bu yolla ayırır.
+
+### Bölgeye özgü içerik (Norveç)
+Norveç iş hukuku konularında (`jobs`, `hr` kategorisi) istatistik ve yasa
+kaynakları `ssb.no`, `arbeidstilsynet.no`, `lovdata.no` domenlerinde. Bu
+ortamda bu domenlere doğrudan erişim engelli olabilir; Firecrawl arama
+sonucu açıklamaları yeterli alıntı taşıyorsa oradan kaydet, `nu` ile not düş.

@@ -56,6 +56,29 @@ Dağıtım depoyu klonlayan bir buildCommand ise ("tarif" deseni):
 SDD planlarında görev başlıkları `## Task N —` ile açılır (betikler bu
 deseni arar); gövde Türkçe kalabilir.
 
+## 6. Proje altyapısı — mevcut durum (02.09.2026)
+
+### i18n
+`assets/js/i18n.js`: **10 dil × 236 anahtar**. `check.mjs` eşitliği denetler.
+Yeni anahtar eklerken on dile birden eklenmeli; `check.mjs` kırmızı verirse yayın yok.
+
+### Davranış sistemi (`QB_BEH`)
+`assets/js/behavior.js` tüm 6 HTML sayfasına yüklendi. Genel API:
+```
+window.QB_BEH.track(slug, category)   — sayfa görüntülemesini kaydet
+window.QB_BEH.suggest(posts, slug, 3) — öneri listesi
+window.QB_BEH.topCat()                — en çok okunan kategori
+window.QB_BEH.recoPlan()              — önerilen paket: 'p1'/'p2'/'p3'
+window.QB_BEH.eventCount()            — toplam event sayısı
+window.QB_BEH.clear()                 — veriyi sil
+```
+`localStorage` anahtarı: `qb_beh`. Stripe aktivasyonu: `config.js → payLinks`.
+Detay ve test talimatları: `qblogg-behavior` becerisi.
+
+### Stripe CTA (bekleyen)
+`config.js → payLinks: {p1:'', p2:'', p3:''}` şu an boş → CTA görünmüyor.
+URL'ler eklendiğinde 4+ event biriken ziyaretçilere otomatik çıkar.
+
 ## Kullanım
 
 Çok adımlı işe başlarken bu beceriyi yükle; özellikle dağıtım, commit ve
