@@ -638,3 +638,20 @@ yuvarlak-tepeli çubuklar, taban çizgisi resesif, her çubukta doğrudan kr
 etiketi, ay etiketi, çubuk başına hover (adet + net). Tablo görünümü zaten
 satış listesi. Doğrulama: build temiz, Playwright 6/6 (aylık gruplama,
 toplam etiketleri, hover ayrıntısı) + ekran görüntüsüyle görsel kontrol.
+
+## 02.09.2026 (gece, ek) — small-business eklentisi Beta Art'a göre özelleştirildi
+
+Kullanıcı talebi: "small-business eklentisini şirketime göre özelleştir" →
+Beta Art seçildi, "kur + şirket profili yaz" yaklaşımı. Eklenti
+(knowledge-work-plugins marketplace, ~31 iş akışı becerisi + QuickBooks/
+HubSpot/Stripe/Square/PayPal/Docusign/Gsuite/Canva araçları) kurulu değildi;
+kurulum kartı gösterildi (kullanıcı etkinleştirecek). Uzak marketplace
+eklentisinin kaynağı yerel düzenlenemediği için özelleştirme vektörü:
+`docs/beta-art/sirket-profili.md` — iş akışlarının okuyacağı tek şirket
+bağlamı. Gerçek/doğrulanmış verilerden derlendi (komisyon-ve-mva.md,
+config.ts, CLAUDE.md); bilinmeyen alanlar [DOLDURULACAK] işaretli (uydurma
+yasağı). Kritik ezmeler: MVA kaydı yok (fatura/tax akışları MVA
+hesaplamamalı, ciro 50.000 kr eşiğini izle-uyar), enkeltpersonforetak →
+bordro yok/forskuddsskatt, gerçek araç yığını (Stripe henüz canlı değil,
+QuickBooks/HubSpot yok — varsayma, sor), satış defteri cihaz-yerel /#admin.
+Her iş akışının Beta Art'a göre yorumu özetlendi.
