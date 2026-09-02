@@ -308,6 +308,20 @@ etiketli açık (OPEN) gözlem var mı diye bakılır; varsa beceri dosyası hen
 güncellenmemiş olsa bile o gözlemin içgörüsü mevcut işe uygulanır — kalıcı
 entegrasyon haftalık incelemede olur.
 
+## small-business eklentisi — Beta Art bağlamı
+
+`small-business` eklentisinin (knowledge-work-plugins) herhangi bir becerisi
+(`small-business:friday-brief`, `plan-payroll`, `close-month`, `tax-prep`,
+`invoice-chase`, `cash-flow-snapshot`, `run-campaign` vb.) bu depoda
+çalıştırıldığında, ÖNCE `docs/beta-art/sirket-profili.md` okunur ve şirket
+bağlamı olarak alınır — eklentinin genel küçük-işletme varsayımlarını (ABD
+odaklı, MVA'lı, QuickBooks/HubSpot bağlı) ezer. Kritik: Beta Art
+enkeltpersonforetak, **MVA kayıtlı değil** (MVA hesaplama; ciro 50.000 kr
+eşiğini izle), bordro yok → forskuddsskatt, para birimi NOK, Stripe henüz
+canlı değil, QuickBooks/HubSpot bağlı değil (varsayma, sor). Profildeki
+`[DOLDURULACAK]` alanlar birer açık iştir; değeri uydurma, kullanıcıdan iste.
+Not: bu eklenti QBLOGG değil Beta Art işidir.
+
 ## Kullanıcıya iş devrederken
 
 Kullanıcının kendi yapması gereken bir adım varsa (izin verme, DNS, panel ayarı,
