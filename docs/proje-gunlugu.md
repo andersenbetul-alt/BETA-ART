@@ -547,3 +547,37 @@ kaç kez okuduğunu/seçtiğini sayıyor (`trackInterest`/`getInterest`,
 `gizlilik.html` (TR+EN) yeni anahtarı üçüncü/dördüncü madde olarak açıkladı;
 `npm run guvenlik` ve `npm run check` yeşil. `posts.recommended` anahtarı
 10 dilin hepsine eklendi, Arapça RTL'de görsel olarak doğrulandı.
+
+## 02.09.2026 — "Web sayfasını düzenleyen kişi ve kullanıcılar için ayrı
+sistem": üç büyük karar netleşti, ilki (içerik paneli) kodlandı
+
+Kullanıcı "web sayfasını düzenleyen kişi ve kullanıcılar için ayrı sistem
+kuruyoruz" dedi. Bu, üç ayrı, kısmen zaten var olan büyük kararla
+kesişiyordu — körlemesine kodlamak yerine AskUserQuestion ile netleştirildi:
+
+1. **Üye sistemi (kullanıcılar):** mevcut planı (`docs/uye-sistemi.md`,
+   24.08.2026'dan beri iskelet hâlinde, Supabase yapılandırılmamış)
+   tamamlamaya karar verildi. Kurulum adımları kullanıcıya tekrar
+   sunuldu — bu oturumdan yapılabilecek bir şey yok, Supabase hesabı
+   kullanıcı adımı.
+2. **Yazar platformu (docs/yazar-platformu.md):** Model A (davetli/
+   küratörlü) onaylandı. Ama belgenin kendi §9'u (Action Pages önerisi)
+   yazar platformunu Action Pages'in SONRASINA koyuyordu — bu gerilim
+   çözülmeden inşaya başlanmadı, belgeye açıkça not düşüldü.
+3. **QBLOGG'un kendi içerik yöneticisi (editör/CMS):** "GitHub'a yazan
+   hafif panel" mimarisi onaylandı ve **kodlandı**: `panel/` — üçüncü
+   ayrı Vercel uygulaması, `uye/` deseninin devamı ama bağımlılıksız
+   (Supabase SDK bile yok, düz `fetch()` ile `api.github.com`). GitHub
+   PAT ile giriş, iki işlev: (a) `config.js`'i satır-bazlı yamalayıp
+   `main`'e karşı PR açan bir form, (b) yeni yazı fikrini GitHub Issue'ya
+   çeviren bir form (yazının kendisini üretmiyor — bilinçli, 10 dilli/
+   görünürlük-denetimli üretimin `qblogg-blog-yazisi` becerisine ait
+   kalması için).
+
+`patchConfig` mantığı Node'da gerçek `config.js`'e karşı doğrulandı
+(hedef alanlar doğru değişti, geri kalanı bayt bayt korundu). Panel arayüzü
+Playwright'ta hatasız render oluyor. **Doğrulanamayan tek şey:** panelin
+gerçek GitHub API çağrılarının tarayıcı CORS ön-denetiminden geçip
+geçmeyeceği — bu ortamın vekil sunucusu test için kullanılamadı (OPTIONS'a
+405 dönüyor, ama bu vekile mi GitHub'a mı ait belirsiz). Detay ve ilk-giriş
+doğrulama koşulu: `docs/icerik-paneli.md`.
