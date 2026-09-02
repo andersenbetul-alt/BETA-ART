@@ -3,6 +3,13 @@
 Kaynak: Pilot Implementation Plan, Task 6 Step 2 ve Step 4. **Bu bir
 taahhüt değil, ölçekleme kapısı geçildiğinde doldurulacak bir şablondur.**
 
+**02.09.2026 güncellemesi:** `strategy/go-to-market-sequencing.md`
+(proje lideri kararı) bu belgenin varsaydığı sıralamayı değiştiriyor —
+aşağıdaki "55 aktif ödeyen aile" hedefi doğrudan aile ödemesi
+varsayıyordu; yeni sıralamada ilk ödeyen müşteri **kurum** (belediye/BPA/
+dagsenter), aile ikinci aşamada doğrudan ödeyen olarak geliyor. Bu belge
+doldurulurken go-to-market-sequencing.md esas alınmalı.
+
 ## Eşiğe bağlı işe alım kuralı (plan, Task 6 Step 2)
 
 | Rol | Eklenme eşiği |
