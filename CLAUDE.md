@@ -7,6 +7,13 @@ zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 yazılan her yanıt "Betul" hitabıyla başlar — istisnasız, her mesajın
 ilk kelimesi.
 
+**Kullanıcı tercihi (03.09.2026, kullanıcı talimatı):** NAVIAR CARE
+landing'inde her değişiklik sonrası ÜÇÜ BİRDEN yapılır: (1) tam sayfa
+ekran görüntüleri kullanıcıya gönderilir, (2) canlı site güncellenir —
+naviar-care-live projesine `naviar-care/deploy/vercel.json` tarifiyle
+üretim dağıtımı (tarif dalı klonlar, index.html'i dist'e koyar),
+(3) canlı adres doğrulanır. Ayrıntı: naviar-care-ship becerisi.
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:

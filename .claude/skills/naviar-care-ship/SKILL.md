@@ -109,11 +109,21 @@ smoke'u yetmez — bu oturumdaki desenlerle senaryo testi yaz (Playwright,
 doldur, chat yönlendirmesi. Referans senaryolar commit geçmişinde
 (`behavior-test`, `nextstep-test`, `chat-test` mesajları).
 
-## Yayın hedefleri
+## Yayın hedefleri — her ship'te ÜÇÜ BİRDEN (kullanıcı talimatı, 03.09.2026)
 
-- **Artifact:** aynı konuşmada `naviar-care/index.html`'i aynı yola
-  publish etmek yeter; başka oturumdan `url` parametresiyle.
-- **Canlı site:** naviar-care-live (BET-ART takımı) tarif deseniyle
-  dağıtılır — tek `vercel.json`, buildCommand dalı klonlayıp
-  `naviar-care/index.html`'i `dist/`e koyar. Push otomatik dağıtmaz;
-  dağıtımı yeniden tetikle.
+1. **Ekran görüntüsü:** tam sayfayı ~3400px'lik parçalara bölerek çek
+   (tek parça 10000px+ upload'da 400 verir) ve SendUserFile ile gönder.
+2. **Canlı site:** naviar-care-live (BET-ART,
+   `team_xNtowH7U0jXQrI53DFJFzH2o`) — `mcp__Vercel__deploy_to_vercel`
+   ile TEK dosya gönder: `naviar-care/deploy/vercel.json` (depodaki
+   dosyanın kendisi — tek kaynak; buildCommand dalı klonlar,
+   index.html'i dist'e koyar). target=production. Push otomatik
+   dağıtmaz; her ship'te bunu elle tetikle. READY olana dek
+   get_deployment ile izle, sonra canlı URL'yi Playwright ile açıp
+   doğrula (başlık + h1).
+3. **Artifact:** aynı konuşmada `naviar-care/index.html`'i aynı yola
+   publish etmek yeter; başka oturumdan `url` parametresiyle.
+
+Alan adı: naviarcare.com kullanıcıya ait; panelden naviar-care-live'a
+bağlanması kullanıcı adımı (A @ 76.76.21.21, CNAME www
+cname.vercel-dns.com — panel ekranı esastır).
