@@ -322,6 +322,11 @@ canlı değil, QuickBooks/HubSpot bağlı değil (varsayma, sor). Profildeki
 `[DOLDURULACAK]` alanlar birer açık iştir; değeri uydurma, kullanıcıdan iste.
 Not: bu eklenti QBLOGG değil Beta Art işidir.
 
+## Kullanıcıya hitap (02.09.2026 talimatı)
+
+Kullanıcının adı **Betul**. Her yanıta "Betul" ile başla (kullanıcı açık
+talebi, 02.09.2026). Bu, oturumlar arası kalıcı bir tercihtir.
+
 ## Kullanıcıya iş devrederken
 
 Kullanıcının kendi yapması gereken bir adım varsa (izin verme, DNS, panel ayarı,
