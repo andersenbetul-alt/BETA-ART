@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Same tokens as beta-art-one-site — BETA_ART_MASTER.md §5, not invented */
+    --paper: 40 27% 97%;      /* #FBFAF7 */
+    --panel: 40 17% 93%;      /* #F3F0E9 */
+    --ink: 0 6% 6%;           /* #0F0F0F */
+    --ink-2: 20 6% 12%;       /* #1F1D1B */
+    --muted: 30 4% 51%;       /* #85817A */
+    --rule: 39 15% 87%;       /* #E4E0D8 */
+    --seal: 0 65% 32%;        /* #8B1A1A */
+    --ok: 152 30% 32%;
+    --pending: 32 50% 38%;
+
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --card: var(--panel);
+    --card-foreground: var(--ink);
+    --popover: var(--paper);
+    --popover-foreground: var(--ink);
+    --primary: var(--ink);
+    --primary-foreground: var(--paper);
+    --secondary: var(--panel);
+    --secondary-foreground: var(--ink);
+    --muted-foreground: var(--muted);
+    --accent: var(--seal);
+    --accent-foreground: var(--paper);
+    --destructive: 0 65% 32%;
+    --destructive-foreground: var(--paper);
+    --border: var(--rule);
+    --input: var(--rule);
+    --ring: var(--seal);
+    --radius: 0rem;
+
+    --f-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --f-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--f-body);
+  }
+}
+
+.font-display { font-family: var(--f-display); }
+.font-mono-label { font-family: var(--f-mono); letter-spacing: 0.13em; }
