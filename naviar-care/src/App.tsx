@@ -459,6 +459,141 @@ function ContactModal({ onClose, initialTopic }: { onClose: () => void; initialT
   )
 }
 
+// ─── Navi: skriptet chatassistent (ingen KI ennå, ingen data ut) ─────────────
+// Avataren er en midlertidig SVG. Bytt til ekte bilde ved å legge
+// naviar-care/assets/navi.jpg i repoet og erstatte <NaviAvatar/> med <img>.
+
+function NaviAvatar({ size = 40 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden style={{ display: 'block', borderRadius: '50%' }}>
+      <circle cx="32" cy="32" r="32" fill="#d9ebe2"/>
+      <path d="M14 34 a18 18 0 0 1 36 0 v10 a4 4 0 0 1 -8 0 v-8 a14 14 0 0 0 -20 0 v8 a4 4 0 0 1 -8 0 z" fill="#173d3a"/>
+      <circle cx="32" cy="34" r="13" fill="#f2d5bd"/>
+      <path d="M19 32 a13 13 0 0 1 26 0 c-4 -6 -9 -8 -13 -8 s-9 2 -13 8 z" fill="#173d3a"/>
+      <circle cx="27" cy="35" r="1.8" fill="#173d3a"/>
+      <circle cx="37" cy="35" r="1.8" fill="#173d3a"/>
+      <path d="M28 42 q4 3 8 0" stroke="#173d3a" strokeWidth="1.6" strokeLinecap="round" fill="none"/>
+      <rect x="10" y="30" width="6" height="12" rx="3" fill="#0a7d72"/>
+      <rect x="48" y="30" width="6" height="12" rx="3" fill="#0a7d72"/>
+      <path d="M50 42 q0 8 -10 9" stroke="#0a7d72" strokeWidth="2.4" fill="none" strokeLinecap="round"/>
+      <circle cx="39" cy="52" r="2.4" fill="#d8ef75"/>
+    </svg>
+  )
+}
+
+type ChatMsg = { from: 'navi' | 'meg'; text: string }
+
+const NAVI_ANSWERS: { keys: RegExp; text: string; topic?: string }[] = [
+  { keys: /pris|koste|kr|betal|gebyr/i,
+    text: 'Timehjelp koster fra 250 kr per time (eksempelpris fra piloten), pluss plattformgebyr på 15–25 % som alltid vises før du betaler. En fagsamtale koster 249 kr. Vil du be om en hjelper?' },
+  { keys: /fungerer|hvordan|steg|virker/i,
+    text: 'Tre steg: du beskriver behovet, en koordinator matcher deg med en kontrollert hjelper (et menneske godkjenner — aldri en algoritme alene), og du betaler per time med åpen pris. Skal jeg åpne skjemaet?' },
+  { keys: /hjelper|jobb|søk|arbeid|bli/i,
+    text: 'Så fint at du vil bli hjelper! Du må være 18+, vise politiattest (vi lagrer den aldri) og sette dine egne tilgjengelighetstider. Jeg kan åpne søknadsskjemaet for deg.', topic: 'Bli hjelper' },
+  { keys: /fritid|tur|aktivitet|følge|svøm/i,
+    text: 'Fritidskontakt følger dine nærmeste til aktiviteter — i snitt 3–5 timer i uken, individuelt eller i gruppe, matchet på interesser. Vil du sende en forespørsel?', topic: 'Tur og aktivitet' },
+  { keys: /handl|ærend|butikk|apotek|post/i,
+    text: 'Vi hjelper med dagligvarer, apotek, post og småærend — betalt per time. Skal jeg åpne forespørselen med riktig tjeneste valgt?', topic: 'Handling og ærend' },
+  { keys: /trygg|sikker|attest|personvern|gdpr|data/i,
+    text: 'Alle hjelpere viser politiattest før oppdrag (vi lagrer den aldri), matching godkjennes av et menneske, og vi ber aldri om diagnoser eller helseopplysninger. Alt du skriver her blir i nettleseren din.' },
+  { keys: /menneske|person|ringe|kontakt|snakke/i,
+    text: 'Selvsagt — send inn skjemaet, så tar et ekte menneske kontakt innen 24 timer. Jeg åpner det for deg.' },
+]
+
+function NaviChat({ onCta, lifted }: { onCta: (topic?: string) => void; lifted: boolean }) {
+  const [open, setOpen] = useState(false)
+  const [msgs, setMsgs] = useState<ChatMsg[]>([
+    { from: 'navi', text: 'Hei! Jeg er Navi — en automatisk assistent, ikke et menneske. Jeg svarer på det vanligste og setter deg videre til teamet. Ikke skriv helseopplysninger her. Hva lurer du på?' },
+  ])
+  const [input, setInput] = useState('')
+
+  function say(text: string) {
+    const q = text.trim()
+    if (!q) return
+    const hit = NAVI_ANSWERS.find(a => a.keys.test(q))
+    const reply: ChatMsg = hit
+      ? { from: 'navi', text: hit.text }
+      : { from: 'navi', text: 'Det kan jeg ikke svare godt på ennå. Vil du sende spørsmålet til teamet? Et menneske svarer innen 24 timer — trykk «Snakk med et menneske».' }
+    track('chat', hit ? hit.keys.source.slice(0, 20) : 'ukjent')
+    setMsgs(m => [...m, { from: 'meg', text: q }, reply])
+    setInput('')
+    if (hit?.topic) setTimeout(() => onCta(hit.topic), 900)
+  }
+
+  const quick = ['Hva koster det?', 'Hvordan fungerer det?', 'Bli hjelper', 'Snakk med et menneske']
+
+  return (
+    <>
+      <button
+        onClick={() => { setOpen(!open); track('chat', open ? 'lukk' : 'åpne') }}
+        aria-label={open ? 'Lukk chat' : 'Åpne chat med Navi, automatisk assistent'}
+        style={{
+          position: 'fixed', insetInlineEnd: 20, bottom: lifted ? 96 : 20, zIndex: 90,
+          display: 'flex', alignItems: 'center', gap: 10,
+          padding: '8px 16px 8px 8px',
+          background: '#173d3a', border: 'none', borderRadius: 100,
+          cursor: 'pointer', boxShadow: '0 4px 20px rgba(23,61,58,0.3)',
+        }}>
+        <NaviAvatar size={36} />
+        <span style={{ color: '#fffdf8', fontSize: 14, fontWeight: 700 }}>{open ? 'Lukk' : 'Spør Navi'}</span>
+      </button>
+
+      {open && (
+        <div role="region" aria-label="Chat med Navi, automatisk assistent" style={{
+          position: 'fixed', insetInlineEnd: 20, bottom: lifted ? 156 : 80, zIndex: 90,
+          width: 'min(360px, calc(100vw - 40px))',
+          background: '#fffdf8', border: '1px solid #cbd8d0', borderRadius: 14,
+          boxShadow: '0 12px 40px rgba(23,61,58,0.22)',
+          display: 'flex', flexDirection: 'column', overflow: 'hidden',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 16px', background: '#173d3a' }}>
+            <NaviAvatar size={34} />
+            <div style={{ lineHeight: 1.2 }}>
+              <div style={{ color: '#fffdf8', fontSize: 14, fontWeight: 700 }}>Navi</div>
+              <div style={{ color: '#7db5ad', fontSize: 11 }}>Automatisk assistent — ikke et menneske</div>
+            </div>
+          </div>
+
+          <div aria-live="polite" style={{ padding: 14, maxHeight: 300, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {msgs.map((m, i) => (
+              <p key={i} style={{
+                alignSelf: m.from === 'navi' ? 'flex-start' : 'flex-end',
+                background: m.from === 'navi' ? '#d9ebe2' : '#173d3a',
+                color: m.from === 'navi' ? '#173d3a' : '#fffdf8',
+                borderRadius: m.from === 'navi' ? '12px 12px 12px 3px' : '12px 12px 3px 12px',
+                padding: '9px 13px', fontSize: 13.5, lineHeight: 1.5, maxWidth: '85%',
+              }}>{m.text}</p>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '0 14px 10px' }}>
+            {quick.map(q => (
+              <button key={q} onClick={() => q === 'Snakk med et menneske' ? (track('chat', 'menneske'), onCta()) : say(q)} style={{
+                fontSize: 12, fontWeight: 600, color: '#173d3a',
+                background: '#f7f5ef', border: '1px solid #cbd8d0',
+                borderRadius: 100, padding: '5px 12px', cursor: 'pointer',
+              }}>{q}</button>
+            ))}
+          </div>
+
+          <form onSubmit={e => { e.preventDefault(); say(input) }} style={{ display: 'flex', gap: 8, padding: '10px 14px', borderTop: '1px solid #cbd8d0' }}>
+            <label htmlFor="navi-input" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}>Skriv til Navi</label>
+            <input id="navi-input" value={input} onChange={e => setInput(e.target.value)}
+              placeholder="Skriv et spørsmål..." autoComplete="off"
+              style={{ flex: 1, padding: '9px 12px', border: '1px solid #cbd8d0', borderRadius: 6, fontSize: 13.5, fontFamily: 'inherit', color: '#173d3a', background: '#fff' }} />
+            <button type="submit" aria-label="Send" style={{
+              width: 38, height: 38, background: '#d8ef75', border: 'none', borderRadius: 6,
+              cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+            }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#173d3a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+      )}
+    </>
+  )
+}
+
 // ─── Nav ─────────────────────────────────────────────────────────────────────
 
 function Nav({
@@ -1287,6 +1422,7 @@ export default function App() {
         <FinalCTA onCta={openModal} />
       </main>
       <Footer />
+      <NaviChat onCta={openModal} lifted={!consent} />
       {modalOpen && <ContactModal onClose={() => setModalOpen(false)} initialTopic={initialTopic} />}
       {!consent && <CookieBanner onAccept={handleCookieAccept} />}
     </div>
