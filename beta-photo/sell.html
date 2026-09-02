@@ -217,6 +217,16 @@
       /* ── Lang-toggled content ─────────────────────────────────────── */
       [data-lang-content] { display: none; }
       [data-lang-content].is-active { display: block; }
+
+      /* ── Behavior nudge (gallery context for returning visitors) ──── */
+      .sell-nudge {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        color: var(--ok);
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+      }
     </style>
     <script src="app.js" defer></script>
   </head>
@@ -254,6 +264,7 @@
 
         <div class="sell-hero">
           <p class="eyebrow">For fotografer · søknadsbasert</p>
+          <p class="sell-nudge" data-sell-nudge="nb" hidden></p>
           <h1>Du skaper.<br /><em>Vi leverer.</em></h1>
           <p class="lead">BETA PHOTO selger fotografiene dine som signerte og nummererte begrensede opplag — med BETA-ID-verifisering, arkivkvalitetstrykk og direkte levering til kjøperen. Du beholder 70 % av hvert salg.</p>
 
@@ -311,6 +322,7 @@
 
         <div class="sell-hero">
           <p class="eyebrow">For photographers · application-based</p>
+          <p class="sell-nudge" data-sell-nudge="en" hidden></p>
           <h1>You create.<br /><em>We deliver.</em></h1>
           <p class="lead">BETA PHOTO sells your photographs as signed, numbered limited editions — with BETA-ID verification, archival-quality printing, and direct delivery to the buyer. You keep 70 % of every sale.</p>
 
@@ -368,6 +380,7 @@
 
         <div class="sell-hero">
           <p class="eyebrow">Für Fotografen · Bewerbungsbasiert</p>
+          <p class="sell-nudge" data-sell-nudge="de" hidden></p>
           <h1>Du erschaffst.<br /><em>Wir liefern.</em></h1>
           <p class="lead">BETA PHOTO verkauft deine Fotografien als signierte, nummerierte Limitierungen — mit BETA-ID-Verifizierung, Archivdruck und Direktlieferung an den Käufer. Du behältst 70 % jedes Verkaufs.</p>
 
@@ -425,6 +438,7 @@
 
         <div class="sell-hero">
           <p class="eyebrow">Pour les photographes · sur candidature</p>
+          <p class="sell-nudge" data-sell-nudge="fr" hidden></p>
           <h1>Vous créez.<br /><em>Nous livrons.</em></h1>
           <p class="lead">BETA PHOTO vend vos photographies en éditions limitées, signées et numérotées — avec vérification BETA-ID, impression qualité archives et livraison directe à l'acheteur. Vous conservez 70 % de chaque vente.</p>
 
@@ -482,6 +496,7 @@
 
         <div class="sell-hero">
           <p class="eyebrow">Para fotógrafos · por solicitud</p>
+          <p class="sell-nudge" data-sell-nudge="es" hidden></p>
           <h1>Tú creas.<br /><em>Nosotros entregamos.</em></h1>
           <p class="lead">BETA PHOTO vende tus fotografías como ediciones limitadas firmadas y numeradas — con verificación BETA-ID, impresión de calidad archivo y entrega directa al comprador. Te quedas con el 70 % de cada venta.</p>
 
@@ -539,6 +554,7 @@
 
         <div class="sell-hero">
           <p class="eyebrow">Voor fotografen · op aanvraag</p>
+          <p class="sell-nudge" data-sell-nudge="nl" hidden></p>
           <h1>Jij maakt.<br /><em>Wij leveren.</em></h1>
           <p class="lead">BETA PHOTO verkoopt jouw foto's als gesigneerde, genummerde beperkte oplages — met BETA-ID-verificatie, archivale druk en rechtstreekse levering aan de koper. Jij houdt 70 % van elke verkoop.</p>
 
@@ -596,6 +612,7 @@
 
         <div class="sell-hero">
           <p class="eyebrow">For fotografer · ansøgningsbaseret</p>
+          <p class="sell-nudge" data-sell-nudge="da" hidden></p>
           <h1>Du skaber.<br /><em>Vi leverer.</em></h1>
           <p class="lead">BETA PHOTO sælger dine fotografier som signerede, nummererede begrænsede oplag — med BETA-ID-verifikation, arkivkvalitetstryk og direkte levering til køber. Du beholder 70 % af hvert salg.</p>
 
@@ -653,6 +670,7 @@
 
         <div class="sell-hero">
           <p class="eyebrow">För fotografer · ansökningsbaserat</p>
+          <p class="sell-nudge" data-sell-nudge="sv" hidden></p>
           <h1>Du skapar.<br /><em>Vi levererar.</em></h1>
           <p class="lead">BETA PHOTO säljer dina fotografier som signerade, numrerade limiterade upplagor — med BETA-ID-verifiering, arkivkvalitetstryck och direktleverans till köparen. Du behåller 70 % av varje försäljning.</p>
 
@@ -742,6 +760,31 @@
             : lang === 'es' ? 'es'
             : lang === 'nl' ? 'nl'
             : 'en';
+        });
+      });
+
+      /* Gallery-context nudge — populated after app.js deferred script runs */
+      document.addEventListener('DOMContentLoaded', function () {
+        var b = window.__bpBehavior;
+        if (!b || !b.isReturning()) return;
+        var n = b.recentViewed(20).length;
+        if (n < 1) return;
+        var s = n === 1;
+        var texts = {
+          nb: s ? 'Du har sett 1 verk i galleriet — fotografen bak tjener 70 % av hvert salg.'
+                : 'Du har sett ' + n + ' verk i galleriet — fotografene bak tjener 70 % av hvert salg.',
+          en: s ? 'You’ve explored 1 work in the gallery — the photographer earns 70 % of every sale.'
+                : 'You’ve explored ' + n + ' works in the gallery — the photographers earn 70 % of every sale.',
+          de: 'Du hast ' + n + (s ? ' Werk' : ' Werke') + ' in der Galerie angesehen — die Fotografen verdienen 70 % jedes Verkaufs.',
+          fr: 'Vous avez exploré ' + n + (s ? ' œuvre' : ' œuvres') + ' dans la galerie — les photographes en gagnent 70 % de chaque vente.',
+          es: 'Has explorado ' + n + (s ? ' obra' : ' obras') + ' en la galería — los fotógrafos ganan el 70 % de cada venta.',
+          nl: 'Je hebt ' + n + (s ? ' werk' : ' werken') + ' in de galerie bekeken — de fotografen verdienen 70 % van elke verkoop.',
+          da: 'Du har set ' + n + (s ? ' værk' : ' værker') + ' i galleriet — fotograferne tjener 70 % af hvert salg.',
+          sv: 'Du har sett ' + n + ' verk i galleriet — fotograferna tjänar 70 % av varje försäljning.',
+        };
+        document.querySelectorAll('[data-sell-nudge]').forEach(function (el) {
+          var lang = el.dataset.sellNudge;
+          if (texts[lang]) { el.textContent = texts[lang]; el.hidden = false; }
         });
       });
     </script>
