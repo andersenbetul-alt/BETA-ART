@@ -434,3 +434,17 @@ Ortam dersi: dış kaynaklar Chromium'a ulaşmıyor — Google Fonts `curl` ile
 200 ama Chromium'da 13 sn sonra `ERR_CONNECTION_RESET`, logo CDN'i ve
 Spotify askıda. Driver localhost dışı her isteği kesiyor; tipografi bu
 ortamda doğrulanamıyor, görüntülerde yedek font var.
+
+## 02.09.2026 — small-business eklentisi QBLOGG'a uyarlandı
+
+Kullanıcı isteği: "small-business" eklentisini şirkete göre özelleştir.
+Eklenti pazaryerinde var (31 beceri) ama kurulu değil; kaynak
+anthropics/knowledge-work-plugins'ten okundu. İki katman yazıldı:
+- `CLAUDE.md → ## Business context` — eklentinin `smb-onboard`/`smb-router`
+  becerilerinin başlık adıyla okuduğu profil bloğu (tam alan adlarıyla).
+- `.claude/skills/qblogg-kucuk-isletme/` — bağlayıcı eşlemesi (QuickBooks/
+  HubSpot/PayPal yok → Stripe salt-okunur + CSV, Gmail, Takvim, Notion/Linear),
+  15 komutun QBLOGG karşılığı (Norveç MVA, bordro yok, işe alım kapısı,
+  içerik üretimi depo becerileriyle), `esikler.md` NOK ölçeğinde eşikler ve
+  Action Pages 30 gün sayacı.
+Eklenti kurulmasa da aynı iş akışları bu eşlemeyle yürür. Kurulum kullanıcıda.

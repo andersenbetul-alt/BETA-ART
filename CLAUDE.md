@@ -272,3 +272,15 @@ açık talebi.
 Öncelik sırası ve iş listesi için `ROADMAP.md`. **Projenin her aşaması ve
 yapılanlar `docs/proje-gunlugu.md`'ye işlenir** (kullanıcı talimatı,
 22.08.2026): yeni bir aşama kapandığında oraya tarihle kısa kayıt düşün.
+
+## Business context
+
+small-business eklentisi (knowledge-work-plugins) bu bloğu başlık adıyla okur;
+alan adlarını değiştirmeyin. QBLOGG'a özgü uyarlama: `.claude/skills/qblogg-kucuk-isletme/`.
+
+- **Business:** QBLOGG — Oslo-based content studio selling a content pipeline (SEO articles, LinkedIn series, social, newsletter, 10-language publishing) to SMB/SaaS companies without a content team; building "Q Brief Pro" paid decision-brief membership on top (docs/is-modeli.md). Side units in the same repo: NaviarCare (naviar/care), HXI Music (hxi).
+- **Size:** 1 (founder + AI); no hiring before payment proof (docs/ekip-modeli.md)
+- **Top headaches:** first paying customers — Action Pages 30-day gate: 10 meetings / 3 paid pilots (docs/action-pages-teklif.md) · pricing for the Norwegian market — site prices are examples, ROADMAP #67/#68 pending · legal/finance placeholders — kosullar.html `[DOLDURULACAK]` (legal entity, MVA, court), Buttondown handle still `tatil`
+- **Connected tools:** Stripe (read-only key), Gmail, Google Calendar, Google Drive, Slack, Canva, Notion, Linear, Vercel, GitHub, Figma. Not connected: QuickBooks, HubSpot, PayPal, Square, DocuSign — see skill for substitutes
+- **Weekly cadence:** "haftalık kontrol" / "weekly check-in" every Monday morning (Norway time), alongside the existing Monday 07:00 SEO/AI visibility watch
+- **Onboarded:** 2026-09-02
