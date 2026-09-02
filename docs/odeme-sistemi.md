@@ -162,3 +162,51 @@ yetkisi eklenirse) Claude bu üç ürünü ve üç Payment Link'i doğrudan API
 üzerinden de oluşturabilir — bu durumda 2. ve 3. adımları elle yapmanıza
 gerek kalmaz, yalnız 4. adımdaki (adresleri `config.js`'e yapıştırma)
 onayı siz verirsiniz.
+
+## 10. Norveç yerel ödeme yöntemleri — Vipps ve Klarna (02.09.2026)
+
+"Vipps, DNB, ödeme sistemi, Klarna" talebi üzerine araştırıldı. Üç ayrı
+bulgu — biri düzeltme gerektiriyor, dashboard.stripe.com bu ortamdan
+erişilemediği için hiçbiri elle doğrulanamadı, hepsi Stripe'ın kendi
+belgelerinden alıntı:
+
+- **"DNB" diye ayrı bir ödeme yöntemi yok.** DNB bir banka; Vipps
+  uygulaması aslen DNB tarafından çıkarıldı ama artık tüm Norveç
+  bankalarının müşterileri kullanıyor (Vipps MobilePay). Stripe'ta "DNB"
+  adında ayrı bir ödeme yöntemi bulunamadı — kastedilen muhtemelen
+  Vipps'in kendisi.
+  ([DNB Bank — Wikipedia](https://en.wikipedia.org/wiki/DNB_Bank),
+  [Vipps — Wikipedia](https://en.wikipedia.org/wiki/Vipps))
+
+- **Klarna: hazır, ekstra kurulum yok.** Stripe ile Klarna arasında
+  doğrudan ortaklık var; Payment Links'te ek bir başvuru/onay süreci
+  gerektirmiyor, uygun müşterilere konum/para birimi/sepet tutarına göre
+  otomatik gösteriliyor. Norveç'teki satıcılar için açık.
+  ([Klarna on Stripe](https://stripe.com/en-no/payments/klarna),
+  [How to accept payments in Norway](https://stripe.com/en-no/resources/more/payments-in-norway))
+
+- **Vipps: destekleniyor ama "private preview" (kapalı önizleme)
+  aşamasında** — yani hesabınızda otomatik açık olmayabilir, Stripe'tan
+  önizleme erişimi istemeniz gerekebilir. Yalnızca **NOK** para biriminde
+  çalışıyor.
+  ([Vipps payments — Stripe Docs](https://docs.stripe.com/payments/vipps))
+
+  **Bunun gerçek bir sonucu var:** şu anki üç paket EUR fiyatlı (§2).
+  Vipps'i açmak için o ürünlerin **NOK fiyatlı bir kopyasını** (ya da
+  `config.js`'teki yorumda zaten önerilen "Norveç pazarı için kron
+  yazmak isterseniz" seçeneğini) oluşturmanız gerekir — mevcut EUR
+  ürünlerine Vipps eklenemez, para birimi uyuşmuyor.
+
+**Sizin adımınız (bu ortamdan yapılamaz, panel erişilemiyor):**
+
+1. dashboard.stripe.com → **Settings → Payment methods** açın, Klarna'yı
+   ve (görünüyorsa) Vipps'i etkinleştirin.
+2. Vipps görünmüyorsa Stripe destek/satış ekibinden "Vipps private
+   preview" erişimi isteyin.
+3. Vipps için: 2. adımdaki ürünlerin NOK fiyatlı bir sürümünü oluşturun
+   (aynı isim, `kr` fiyat), o ürünle yeni bir Payment Link üretin, `config.js`'e
+   ayrı bir alan olarak eklemek isterseniz bana söyleyin — şu an
+   `payLinks` tek bir para birimi varsayıyor, iki para birimli (EUR/NOK)
+   seçenek sunmak site tarafında küçük bir değişiklik gerektirir.
+4. Klarna için ek bir adım yok — Payment Link zaten oluşturduğunuz EUR
+   ürünlerle çalışır, method listesinde otomatik belirir.
