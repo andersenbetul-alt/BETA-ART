@@ -81,6 +81,71 @@ Tripletex — unverified, ask the owner).
    (kartlegging/koordinering/oppfølging).
 5. Weekly rhythm: Monday brief fits the existing Monday 07:00 slot.
 
+## Skill-by-skill customization (read this before running any skill)
+
+**Briefs & pulse** — `monday-brief`, `friday-brief`, `business-pulse`:
+sources are Gmail, Google Calendar, Stripe and Vercel (no CRM/books
+yet). Monday brief lands in the existing Monday 07:00 Europe/Oslo
+slot. Include: new brief-form emails (QBLOGG), NAVIAR henvendelser,
+deploy status, calendar week. Exclude: revenue claims — pre-revenue.
+
+**Finance** — `cash-flow-snapshot`, `close-month`, `month-end-prep`,
+`month-heads-up`, `margin-analyzer`, `invoice-chase`: LIMITED. Only
+money source is Stripe (no charges yet); there is no bookkeeping
+connector. Do not fabricate a close — report "no accounting system
+connected" until the owner names one. `invoice-chase`: no invoicing
+in use; if invoicing starts, it starts in the accounting system, not
+ad hoc. `margin-analyzer`/`price-check`: all current prices are
+EXAMPLES; NAVIAR margins must include Stripe Norway fees (see line 1
+notes) and the 15–25% commission is an example band, not policy.
+
+**Tax** — `tax-prep`, `tax-season-organizer`: Norwegian regime
+(Skatteetaten; MVA only if registered — status UNKNOWN). Deadlines
+must be verified against skatteetaten.no or the owner's accountant at
+run time; never stated from memory (repo rule: no unverified claims).
+
+**Payroll** — `plan-payroll`: N/A — no employees. NAVIAR helpers are
+NOT employees until the employment-status question in
+naviar-care/docs/hukuk-kontrol-listesi.md is answered; do not run
+payroll planning for helpers.
+
+**Sales & CRM** — `lead-triage`, `call-list`, `sales-brief`,
+`crm-cleanup`, `crm-maintenance`, `customer-pulse`,
+`customer-pulse-check`: no CRM connected (HubSpot installed, not
+connected). Leads live in Gmail: QBLOGG brief-form mails and NAVIAR
+contact requests. Triage from Gmail; track in the repo/console, not
+an imaginary CRM. NAVIAR user data: alias-only, never health data.
+
+**Marketing** — `run-campaign`, `content-strategy`, `canva-creator`:
+defer to the repo's own skills first — QBLOGG content goes through
+qblogg-blog-yazisi / qblogg-turev / on-brand (brand rules in
+docs/tasarim-sistemi.md); NAVIAR pages ship via naviar-care-ship.
+Canva is connected for standalone visuals; respect each venture's
+palette. No "guaranteed results" language, ever.
+
+**Legal** — `contract-review`, `review-contract`: primary use is
+NAVIAR helper/user agreements; review against
+naviar-care/docs/hukuk-kontrol-listesi.md and flag, do not conclude —
+counsel decides. Output is not legal advice.
+
+**HR** — `job-post-builder`: used for NAVIAR helper recruitment —
+Norwegian language, low-risk task scope, politiattest shown before
+assignments (never stored), no health-sector claims.
+
+**Support** — `handle-complaint`, `ticket-deflector`: NAVIAR
+complaints follow the Klage flow in naviar-care/admin.html (logged,
+followed up, counted toward metric 8 target 0). QBLOGG support is
+plain Gmail.
+
+**Reviews** — `quarterly-review`: NAVIAR side reads
+naviar-care/docs/pilot-olcum-plani.md metrics (console CSV export);
+QBLOGG side reads visibility-monitor output. Pre-revenue: judge
+against pilot exit criteria, not revenue targets.
+
+**Router/onboard** — `smb-router`, `smb-onboard`: onboarding answers
+come from THIS file; when a fact is UNKNOWN here, ask the owner
+rather than assuming.
+
 ## Owner to fill in (blocks some workflows until answered)
 
 - Legal form + org number + MVA status for each line (one company or
