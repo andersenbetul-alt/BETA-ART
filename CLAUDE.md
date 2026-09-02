@@ -3,6 +3,10 @@
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
+## İletişim kuralı
+
+**Her yanıta "Betul," ile başla.** Bu kullanıcının kalıcı talebidir (02.09.2026).
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:
