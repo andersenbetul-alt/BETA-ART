@@ -7,7 +7,9 @@ description: >
   altında herhangi bir düzenleme, "bundle et", "yeniden derle", "WCAG /
   axe kontrolü", "landing'i yayınla/güncelle", "naviar deploy" veya yeni
   bölüm/özellik ekleme istendiğinde MUTLAKA bu beceriyi kullan; adımları
-  elle yeniden icat etme — betikler burada.
+  elle yeniden icat etme — betikler burada. Sayfayı "çalıştır",
+  "ekran görüntüsü al" veya "tarayıcıda test et" istekleri de buraya
+  girer: verify.mjs sayfayı Chromium'da açar ve görüntü alır.
 ---
 
 # naviar-care-ship — derle, doğrula, yayınla
@@ -29,7 +31,11 @@ bash $S/setup.sh /tmp/nc-build      # 1) taze vite projesi + repo kaynaklarını
 #  repo naviar-care/src/App.tsx düzenlenir, sonra setup yeniden koşulur;
 #  tek kaynak repodur)
 bash $S/build.sh /tmp/nc-build      # 2) font linklerini söker, bundle eder, gömülü fontları enjekte eder
+mkdir -p /tmp/nc-verify && cd /tmp/nc-verify && npm i --no-save playwright axe-core
 node  $S/verify.mjs /tmp/nc-build/bundle.html   # 3) axe WCAG 2.1 AA (0 ihlal şart) + smoke + sıfır dış istek
+# (verify bağımlılıkları TEMİZ bir dizinden kurulur/koşulur — aşağıdaki
+#  gotcha; ekran görüntüsü bundle'ın yanına düşer: /tmp/nc-build/verify-shot.png.
+#  Görüntüye BAK — geçen testler yanlış render'ı yakalamaz.)
 cp /tmp/nc-build/bundle.html naviar-care/index.html   # 4) ürünleştir
 ```
 
@@ -77,12 +83,19 @@ artifact'ı AYNI url ile yeniden yayınla (yeni url açma).
 - **verify.mjs bağımlılıkları çalıştırıldığı dizinden çözer** (bilinçli:
   beceri dizinine node_modules koymuyoruz). Farklı dizinden koşarken
   önce o dizinde `npm i --no-save playwright axe-core`.
+- **Scaffold dizininde npm kurulumu ÇÖKEBİLİR.** `/tmp/nc-build` içinde
+  `npm i --no-save playwright axe-core` arborist hatası verdi ("Cannot
+  read properties of null (reading 'matches')") — scaffold'un
+  node_modules'u pnpm düzeninde ve npm ona aşı tutturamıyor. Çözüm:
+  boş bir dizine kur (`/tmp/nc-verify`) ve verify'ı ORADAN koş; bundle
+  yolunu mutlak ver.
 
 ## Sorun giderme
 
 | Belirti | Çözüm |
 |---|---|
 | `Cannot find package 'playwright'` (verify) | Çalıştığın dizinde `npm i --no-save playwright axe-core` |
+| npm `Cannot read properties of null (reading 'matches')` | Scaffold dizinine kurma — boş dizine kur, verify'ı oradan koş |
 | `ENOENT ... https:/fonts.googleapis...` (bundle) | Font linki sökülmemiş — build.sh kullan, elle bundle etme |
 | axe `color-contrast` ihlali | Yeni renk mi ekledin? Palet dışına çıkma; #637774 metinde yasak |
 | Bundle'da `fonts.googleapis` çıktı | build.sh'ın enjeksiyon assert'i durdurur; index.dev.html'deki linkleri kontrol et |
