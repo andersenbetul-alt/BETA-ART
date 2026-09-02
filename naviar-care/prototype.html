@@ -131,6 +131,18 @@
     <label for="r-desc">Beskriv behovet</label>
     <textarea id="r-desc" rows="3">Mor (82) trenger følge til svømmehallen på torsdager, ca. 2 timer.</textarea>
     <p class="hint">Ikke skriv diagnoser eller helseopplysninger — hjelperen spør om det som trengs.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 14px">
+      <div><label for="r-sted">Hvor skjer det?</label>
+        <input id="r-sted" value="Drammen sentrum / svømmehallen"></div>
+      <div><label for="r-rep">Engangs eller fast?</label>
+        <select id="r-rep"><option>Fast — hver uke</option><option>Fast — annenhver uke</option><option>Engangs</option></select></div>
+      <div><label for="r-int">Interesser (hjelper matches også på dette)</label>
+        <input id="r-int" value="Svømming, kryssord, radio"></div>
+      <div><label for="r-trans">Trengs transport?</label>
+        <select id="r-trans"><option>Ja — hjelper med førerkort og bil</option><option>Nei — møtes på stedet</option><option>Følge med buss/taxi</option></select></div>
+    </div>
+    <label for="r-fam">Skal familien involveres?</label>
+    <select id="r-fam"><option>Ja — jeg vil ha beskjed etter hvert oppdrag</option><option>Kun ved endringer</option><option>Nei</option></select>
     <button class="btn" onclick="go(2)">Neste →</button>
   </section>
 
@@ -191,11 +203,13 @@
     <ul class="timeline">
       <li class="done"><span class="dot"></span>Avtalt og bekreftet av begge parter</li>
       <li class="done"><span class="dot"></span>Påminnelse sendes dagen før</li>
-      <li id="g-run"><span class="dot"></span>Hjelpen pågår</li>
-      <li id="g-done"><span class="dot"></span>Fullført og betalt</li>
+      <li id="g-run"><span class="dot"></span>Hjelper sjekker inn ved oppstart</li>
+      <li id="g-done"><span class="dot"></span>Hjelper sjekker ut og leverer kort notat</li>
+      <li id="g-paid"><span class="dot"></span>Du godkjenner — betaling frigjøres, hjelper får oppgjør</li>
     </ul>
-    <button class="btn alt" onclick="finishJob()">Marker som fullført (simulering)</button>
-    <button class="btn" id="btn-eval" onclick="go(7)" hidden>Gi vurdering →</button>
+    <button class="btn alt" id="btn-checkin" onclick="checkIn()">Hjelper sjekker inn (simulering)</button>
+    <button class="btn alt" id="btn-checkout" onclick="checkOut()" hidden>Hjelper sjekker ut (simulering)</button>
+    <button class="btn" id="btn-eval" onclick="go(7)" hidden>Godkjenn og gi vurdering →</button>
   </section>
 
   <!-- 8 Vurdering -->
@@ -318,10 +332,16 @@ function calc(){
   const d=document.getElementById('t-date').value, k=document.getElementById('t-time').value;
   document.getElementById('g-sub').textContent=d+' kl. '+k+' · '+t+' timer';
 }
-function finishJob(){
-  state.jobDone=true;
+function checkIn(){
   document.getElementById('g-run').classList.add('done');
+  document.getElementById('btn-checkin').hidden=true;
+  document.getElementById('btn-checkout').hidden=false;
+}
+function checkOut(){
+  state.jobDone=true;
   document.getElementById('g-done').classList.add('done');
+  document.getElementById('g-paid').classList.add('done');
+  document.getElementById('btn-checkout').hidden=true;
   document.getElementById('btn-eval').hidden=false;
 }
 function reset(){ location.reload(); }

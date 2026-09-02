@@ -29,9 +29,11 @@ riskiz her tür günlük yardım saat ücretiyle yapılabilir. 7 kategori en
 sık istenen işlerin kısayoludur; liste dışı her düşük riskli görev
 "Annet — beskriv oppgaven" yoluyla alınır ve koordinatör risk
 değerlendirmesinden geçer. Risk sınırı (NærHjelp dışlama listesiyle
-aynı): tıbbi bakım, para/değerli eşya işlemleri, hukuki/finansal
-tavsiye, kişisel hijyen, gecelik kalış ve otorizasyon gerektiren her iş
-kapsam DIŞIDIR. **Komisyon kullanıcıdan, hizmet gerçekleştiği anda
+aynı): tıbbi bakım (ilaç yönetimi, tıbbi karar, teşhis, klinik takip,
+profesyonel rehabilitasyon, yüksek riskli forflytning dahil),
+para/değerli eşya işlemleri, hukuki/finansal tavsiye, kişisel hijyen,
+gecelik kalış ve otorizasyon gerektiren her iş kapsam DIŞIDIR
+(ayrıntı: pilot-breakdown.md). **Komisyon kullanıcıdan, hizmet gerçekleştiği anda
 alınır** — ödeme öncesi gösterilir, tamamlanan hizmette tahsil edilir.
 
 ## Hedef müşteriler ve gelir

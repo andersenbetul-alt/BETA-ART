@@ -40,6 +40,7 @@
   .pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:100px;white-space:nowrap}
   .s-Ny{background:#fdf3d7;color:var(--warn)} .s-Vurdert{background:#e8eefc;color:#2a4d8f}
   .s-Matchet{background:var(--mint);color:var(--teal)} .s-Bekreftet{background:var(--lime);color:var(--ink)}
+  .s-Pågår{background:#e4f0d7;color:#3f6b2a}
   .s-Fullført{background:#e9e6dd;color:var(--muted)} .s-Avbrutt{background:#fbf0f0;color:#8b2020}
   .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
   .tile{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px}
@@ -126,7 +127,9 @@ Ekte tilgangskontroll og delt lagring kommer med backend (Build-fasen).</div>
       <div class="tiles" id="tiles" style="margin-top:14px"></div>
       <p style="font-size:12px;color:var(--muted);margin-top:14px">
         Måltall er eksempler fra målplanen. Tilfredshet registreres per fullført
-        oppdrag i køen (1–5). Provisjon: 20 % av 250 kr/t (eksempel).</p>
+        oppdrag i køen (1–5). Provisjon: 20 % av 250 kr/t (eksempel).
+        Finansmetrikkene F4–F6 (anskaffelseskost, driftskost, bruttobidrag)
+        kan ikke beregnes herfra — føres manuelt i pilotregnearket.</p>
     </div>
   </section>
 
@@ -155,7 +158,8 @@ const CATS = ['Sosial følge','Tur og aktivitet','Handling og ærend','Enkelt hu
               'Transport og avtaler','Trening og aktivitetsfølge','Pårørendekoordinering','Annet'];
 const KEY = 'nc_admin_v1';
 const RATE = 250, FEE = 0.20;
-const FLOW = ['Ny','Vurdert','Matchet','Bekreftet','Fullført'];
+const FLOW = ['Ny','Vurdert','Matchet','Bekreftet','Pågår','Fullført'];
+const STEP_LABEL = { Pågår: 'Sjekk inn', Fullført: 'Sjekk ut' };
 
 let db = { seq: 15, reqs: [], helpers: [], audit: [] };
 try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.reqs) db = s; } catch {}
@@ -196,10 +200,16 @@ function advance(id){
     log(r.id+' matchet med '+h.alias+' (manuelt godkjent)');
   }
   r.status = next; r.ts[next] = now();
-  if (next==='Fullført'){
+  if (next==='Pågår'){
+    log(r.id+' sjekket inn av '+(r.helper||'hjelper'));
+  } else if (next==='Fullført'){
     const sc = Number(prompt('Tilfredshet 1–5:', '5'));
     r.score = (sc>=1 && sc<=5) ? sc : 0;
-    log(r.id+' fullført · '+r.timer+'t · tilfredshet '+ (r.score||'—'));
+    r.notat = (prompt('Kort hendelsesnotat (uten helseopplysninger):', '') || '').trim();
+    const pay = r.timer*RATE, fee = Math.round(pay*FEE);
+    log(r.id+' sjekket ut · '+r.timer+'t · tilfredshet '+(r.score||'—')+
+        (r.notat?' · notat registrert':''));
+    log(r.id+' oppgjør (eksempel): '+pay+' kr til hjelper + '+fee+' kr provisjon — frigjøres ved brukers godkjenning');
   } else if (next!=='Matchet'){ log(r.id+' → '+next) }
   save(); renderQ(); renderHelpers(); renderTiles();
 }
@@ -207,15 +217,25 @@ function cancel(id){
   const r = db.reqs.find(x=>x.id===id); if (!r || r.status==='Fullført' || r.status==='Avbrutt') return;
   r.status='Avbrutt'; r.ts.Avbrutt=now(); log(id+' avbrutt'); save(); renderQ(); renderTiles();
 }
+function klage(id){
+  const r = db.reqs.find(x=>x.id===id); if (!r) return;
+  const txt = (prompt('Klage/hendelse (uten helseopplysninger) — hver klage følges opp:', r.klage||'') || '').trim();
+  if (!txt) return;
+  r.klage = txt; log(r.id+' klage registrert — følges opp');
+  save(); renderQ(); renderTiles();
+}
 
 function renderQ(){
   const el = document.getElementById('q'); el.innerHTML='';
   [...db.reqs].reverse().forEach(r=>{
     const i = FLOW.indexOf(r.status);
     const nextBtn = (r.status!=='Fullført' && r.status!=='Avbrutt')
-      ? '<button class="btn sm alt" onclick="advance(\''+r.id+'\')">'+FLOW[i+1]+' →</button> '+
+      ? '<button class="btn sm alt" onclick="advance(\''+r.id+'\')">'+(STEP_LABEL[FLOW[i+1]]||FLOW[i+1])+' →</button> '+
         '<button class="btn sm danger" onclick="cancel(\''+r.id+'\')">Avbryt</button>'
-      : (r.score ? '★ '+r.score : '—');
+      : (r.score ? '★ '+r.score : '—') +
+        (r.status==='Fullført'
+          ? ' <button class="btn sm '+(r.klage?'danger':'alt')+'" onclick="klage(\''+r.id+'\')">'+(r.klage?'Klage !':'Klage')+'</button>'
+          : '');
     el.insertAdjacentHTML('beforeend',
       '<tr><td class="mono" style="font-size:10px">'+r.id+'</td><td>'+esc(r.alias)+'</td>'+
       '<td>'+esc(r.cat)+'</td><td>'+esc(r.tid||'—')+' · '+r.timer+'t</td><td>'+esc(r.helper||'—')+'</td>'+
@@ -265,9 +285,15 @@ function metric(list){
   const activeH = db.helpers.filter(h=>h.aktiv).length;
   const hours = done.reduce((a,r)=>a+r.timer,0);
   const commission = Math.round(hours*RATE*FEE);
+  const orderVal = r => Math.round(r.timer*RATE*(1+FEE));
+  const avgOrder = done.length ? Math.round(done.reduce((a,r)=>a+orderVal(r),0)/done.length) : null;
+  const doneByUser = {}; done.forEach(r=>{ (doneByUser[r.alias]=doneByUser[r.alias]||[]).push(r) });
+  const repeatRev = Object.values(doneByUser).filter(u=>u.length>1)
+    .reduce((a,u)=>a+u.reduce((s,r)=>s+orderVal(r),0),0);
+  const complaints = list.filter(r=>r.klage).length;
   return { total:list.length, done:done.length, avgMatch, avgScore, repeat,
     cancelRate: confirmedEver.length ? cancelled.length/confirmedEver.length : null,
-    activeH, totalH: db.helpers.length, hours, commission };
+    activeH, totalH: db.helpers.length, hours, commission, avgOrder, repeatRev, complaints };
 }
 function tile(label, value, target, ok){
   const cls = ok===null ? '' : ok ? 'ok' : 'bad';
@@ -284,7 +310,10 @@ function renderTiles(){
     tile('Avbruddsrate', m.cancelRate===null?'—':Math.round(m.cancelRate*100)+' %', 'mål (eksempel): < 10 %', m.cancelRate===null?null:m.cancelRate<0.1) +
     tile('Aktive hjelpere', m.activeH+' / '+m.totalH, 'aktive / registrerte', null) +
     tile('Fullførte timer', m.hours+' t', RATE+' kr/t (eksempel)', null) +
-    tile('Provisjon (est.)', m.commission+' kr', Math.round(FEE*100)+' % av timepris — eksempel', null);
+    tile('Provisjon (est.)', m.commission+' kr', Math.round(FEE*100)+' % av timepris — eksempel', null) +
+    tile('Snitt ordreverdi', m.avgOrder===null?'—':m.avgOrder+' kr', 'per fullført oppdrag (F1, eksempel)', null) +
+    tile('Gjenkjøpsomsetning', m.repeatRev+' kr', 'fra brukere med >1 oppdrag (F3, eksempel)', null) +
+    tile('Klager', String(m.complaints), 'mål: 0 — hver klage følges opp (metrikk 8)', m.complaints===0);
 }
 
 // ── Data ──
@@ -295,9 +324,10 @@ function exportJSON(){
   a.click(); URL.revokeObjectURL(a.href);
 }
 function exportCSV(){
-  const rows = [['id','bruker','tjeneste','tid','timer','hjelper','status','opprettet','matchet','fullført','tilfredshet']];
+  const rows = [['id','bruker','tjeneste','tid','timer','hjelper','status','opprettet','matchet','sjekket_inn','fullført','tilfredshet','notat','klage']];
   db.reqs.forEach(r=>rows.push([r.id,r.alias,r.cat,r.tid,r.timer,r.helper,r.status,
-    r.ts.Ny?fmt(r.ts.Ny):'', r.ts.Matchet?fmt(r.ts.Matchet):'', r.ts.Fullført?fmt(r.ts.Fullført):'', r.score||'']));
+    r.ts.Ny?fmt(r.ts.Ny):'', r.ts.Matchet?fmt(r.ts.Matchet):'', r.ts['Pågår']?fmt(r.ts['Pågår']):'',
+    r.ts.Fullført?fmt(r.ts.Fullført):'', r.score||'', r.notat||'', r.klage||'']));
   const csv = rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(';')).join('\n');
   document.getElementById('csvout').value = csv;
   try { navigator.clipboard.writeText(csv) } catch {}

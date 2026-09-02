@@ -18,6 +18,17 @@ pilotun işi gerçek eşikleri bulmaktır.
 | 7 | İptal oranı | Onaylandıktan sonra iptal edilen hizmet oranı | < %10 | Hizmetler sekmesi: durum kolonu |
 | 8 | Olay/şikâyet | Güvenlik veya kalite kaydı sayısı | 0 hedef; her kayıt incelenir | Ayrı olay defteri; uyum-ilkeleri madde 3 işlem kaydına girer |
 
+## Finans metrikleri (breakdown §11, 02.09.2026 — hepsi örnek hedefli)
+
+| # | Metrik | Tanım | Nasıl toplanır |
+|---|---|---|---|
+| F1 | Ortalama hizmet tutarı | Tamamlanan hizmet başına toplam ücret (yardımcı + komisyon) | Konsol Måling / Hizmetler sekmesi |
+| F2 | Komisyon geliri | Tamamlanan saat × örnek oran (metrik 6'nın pay tarafı) | Konsol Måling |
+| F3 | Tekrar sipariş geliri | Birden fazla hizmet alan kullanıcılardan gelen gelir | Konsol Måling, kullanıcı bazında |
+| F4 | Kullanıcı edinme maliyeti | Pazarlama gideri / yeni kullanıcı | Regneark, elle — konsoldan hesaplanamaz |
+| F5 | Hizmet başına operasyon maliyeti | Koordinatör süresi + araçlar / hizmet | Regneark, elle |
+| F6 | Brüt katkı payı | (F2 − F5) / F2 | Regneark; metrik 6 ile birlikte okunur |
+
 ## Kayıt kuralları
 
 - Her talep bir satırdır; kimlik yerine takma ad/kod kullanılır
