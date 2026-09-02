@@ -3,6 +3,13 @@
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
+## Kullanıcı talimatları (değiştirilemez)
+
+**Her yanıt "Betul," ile başlar.** Kullanıcının adı Betul'dur. Her cevabın ilk
+satırı — sorudan veya konudan bağımsız olarak — tam olarak `Betul,` kelimesiyle
+açılır. Bu kural kalıcıdır ve kullanıcı tarafından açıkça iptal edilmedikçe
+geçerliliğini korur.
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:
