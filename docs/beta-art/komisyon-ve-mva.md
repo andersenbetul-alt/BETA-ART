@@ -52,6 +52,38 @@ fatura satırına ürün olarak yazılması istenirse sonraki adım: plaka baş�
 ayrı Stripe ürünü/fiyatı açmak. Bu bölüm, Stripe'ta ödeme yöntemi
 etkinleştirilip bağlantı oluşturulduğunda devreye girer.
 
+## Ödeme yöntemleri — Vipps / DNB / Klarna (kullanıcı yönü, 02.09.2026)
+
+Kullanıcı Norveç ödeme yöntemlerini istedi: **Vipps (MobilePay), DNB, Klarna.**
+Üçü aynı türden değil:
+
+- **Vipps MobilePay** — Norveç'in ana mobil ödemesi; web'de Vipps Bedrift
+  sözleşmesi + org number + banka hesabı ister.
+- **Klarna** — sonra-öde/fatura; merchant sözleşmesiyle ya da bir PSP üzerinden.
+- **DNB** — banka; gömülen bir checkout değil, paranın yattığı **settlement
+  hesabı**. Stripe/Vipps'in ödeme çıkış hesabı olarak bağlanır.
+
+**Karar yönü (öneri, en az iş — statik siteye uygun):** ayrı üç entegrasyon
+yerine **tek Stripe hosted checkout**, içinde **Vipps MobilePay + Klarna**
+ödeme yöntemi olarak açık, para **DNB hesabına** yatar. Siteye ek backend
+gerekmez; planlanan kr 190 Payment Link'e oturur. Native yol (Stripe'sız
+doğrudan Vipps ePayment + Klarna Payments) backend + ayrı merchant
+sözleşmeleri ister — ayrı proje, bugün kapsam dışı.
+
+**Teyit edilecek (uydurma yasağı — stripe.com bu ortamda engelli):**
+- Stripe panelinde Payment methods altında Vipps MobilePay ve Klarna gerçekten
+  açılabiliyor mu (Norveç hesabı için).
+- Vipps ve Klarna işlem ücretleri `[DOLDURULACAK]` — kart ücretinden farklı;
+  panelde görülüp buraya yazılacak. Örnek hesaplardaki net/bölüşüm bu ücretlere
+  göre güncellenir.
+- Org number (enkeltpersonforetak, Brønnøysund) ve DNB işletme hesabı
+  `[DOLDURULACAK]` — merchant sözleşmeleri ve payout için gerekli.
+
+Kullanıcı adımları (sırayla): (1) DNB'de işletme hesabı hazır olsun,
+(2) Stripe hesabında Payment methods → Vipps MobilePay + Klarna'yı etkinleştir,
+(3) payout hesabı olarak DNB'yi bağla, (4) bana "hazır" de → kr 190 Payment
+Link'i bu yöntemlerle kurar, `STRIPE_PAYMENT_LINK`'i bağlarım.
+
 ## MVA kaydı geldiğinde ne değişir (şimdiden bilinen kadarıyla)
 
 - Standart oran %25'tir (sanat istisnası sorusu saklı). "kr 190 MVA dahil mi
