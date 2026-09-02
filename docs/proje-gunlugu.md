@@ -5,6 +5,44 @@ Projenin her aşaması ve yapılanlar bu dosyaya işlenir (kullanıcı talimatı
 listesi `ROADMAP.md`'de, teknik kararların gerekçeleri `docs/` altındaki ilgili
 belgelerde durur. Bu dosya hikâyeyi anlatır: ne yapıldı, neden, ne durumda.
 
+## 02.09.2026 — Müşteri davranış izleme ve kişiselleştirme sistemi
+
+**Kullanıcı talebi (Norveçce özet):** her iki sitede (QBLOGG + NAVIAR) ziyaretçinin
+bir sonraki görmek veya satın almak isteyeceğini öngören bir davranış sistemi.
+Netleştirme: gerçek Stripe ödemesi, NAVIAR dahil, yalnızca içerik tercihi izleme.
+
+**Yapılanlar:**
+
+- `assets/js/behavior.js` (228 satır) oluşturuldu. Sıfır bağımlılık, localStorage.
+  - `track(slug, category)` — yazı okunduğunda kaydeder; sessionStorage ile
+    oturum başına bir kez çalışır (çift sayım yok).
+  - Gün bazlı azalma (DECAY=0,85): eski okumalar daha düşük ağırlık alır.
+  - `suggest()` — okunmamış yazıları kategori ağırlıklı önceliğe göre sıralar.
+  - `recoPlan()` — en çok okunan kategoriyi Stripe paket bağlantısına (`payLinks`)
+    eşler (`business`→p3, `money`→p2, `ai`→p2 vs.).
+  - `injectPostWidget()` — 2. okumadan itibaren "bunlar da ilginizi çekebilir"
+    bölümü, 4. okumadan itibaren önerilen Stripe paket CTA'sı ekler.
+  - `injectBlogHint()` — 3+ okuma sonrası blog sayfasında en çok okunan
+    kategoriye yönlendiren ipucu satırı.
+  - `QB_BEH.clear()` — GDPR veri silme.
+  - `qb:lang` event'ini dinleyerek dil değişiminde widget'ı yeniden çizer.
+
+- `assets/js/i18n.js`: 3 yeni anahtar × 10 dil: `beh.nextRead`, `beh.recoPlan`,
+  `beh.contReading`.
+
+- 6 HTML sayfasına `behavior.js` eklendi (app.js'den sonra).
+
+- `naviar/docs/behavior-system.md`: Next.js + TypeScript uyarlaması — modül,
+  React hook, bileşen örneği, Stripe entegrasyon rehberi, GDPR notu.
+
+**Stripe durumu:** `config.js → payLinks` zaten yapılandırılmış bekliyor;
+paket bağlantıları girildiğinde widget otomatik devreye girer, ek kod gerekmez.
+NAVIAR Stripe entegrasyonu repo transferi sonrası yapılacak.
+
+**check.mjs:** 8/8 geçti, 0 uyarı.
+
+---
+
 ## 31.08.2026 — NAVIAR dosyaları oluşturuldu; öncelik sırası belirlendi
 
 **NAVIAR DOSYLARI** görevi: `naviar/` dizini ve naviar-consult Slack botu
