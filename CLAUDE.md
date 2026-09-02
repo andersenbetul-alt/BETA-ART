@@ -3,6 +3,10 @@
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
+## İletişim tercihi (kullanıcı talimatı, 02.09.2026)
+
+Her yanıt kullanıcının adıyla — **Betul** — başlar.
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:
