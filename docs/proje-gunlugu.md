@@ -569,3 +569,21 @@ iyileştirmesi bu düzeltme setidir; araştırma notu: dünkü derin araştırma
 (doğrulanmamış, kaynaklı) Norveç'te sipariş çekim pilot bandını
 kr 7.000–14.000 gösteriyor (NTB üye ~6.900 / liste ~13.800; arşiv tek
 kullanım 3.770+MVA) — fiyat sayfası kurulurken elle teyit edilecek.
+
+## 02.09.2026 (öğleden sonra) — Sosyal medya kanalları geliştirildi
+
+Kullanıcı talebi "sosyal medya kanalları geliştir". Üç parça:
+(1) `docs/beta-art/sosyal-medya.md` — kanal planı tek kaynağı: IG + LinkedIn
+öncelikli (Pinterest 2. ay, TikTok/X bilinçli kapalı), yapıştırmaya hazır
+biyografiler (EN+NO), 5 içerik sütunu, 4 haftalık 12 gönderilik takvim.
+Dürüstlük çerçevesi başa yazıldı: tek gerçek fotoğraf (Golden Hour) var,
+görsel gerektiren diğer gönderiler marka kartı; kullanıcı adı müsaitliği bu
+ortamdan doğrulanamadığı için adaylar "doğrulanmadı" işaretli; sayı/istatistik
+uydurulmaz. (2) `config.ts → SOCIAL_LINKS` (boş) + Footer'da yalnızca URL
+doldurulunca görünen "Follow" bloğu (footerFollow ×8 dil) — ölü bağlantı
+yayınlanmaz. (3) `index.html`e paylaşım meta'ları: og:site_name/url/image +
+twitter kartı, görsel Golden Hour web kopyası (-phi adresi; alan adı
+bağlanınca güncellenecek, sosyal-medya.md açık işlerde). Doğrulama: build
+temiz, Playwright: Follow bloğu boş linklerle gizli, footer sağlam.
+Hesap açılışı adım adım kullanıcıya yazıldı; URL gelince config doldurulup
+dağıtım yenilenecek.

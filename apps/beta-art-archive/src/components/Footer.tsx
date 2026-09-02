@@ -1,6 +1,7 @@
 import { usePage } from "@/lib/router";
 import { useLang } from "@/lib/langContext";
 import { licenceTiers } from "@/lib/data";
+import { SOCIAL_LINKS } from "@/lib/config";
 
 export function Footer() {
   const { go } = usePage();
@@ -57,6 +58,22 @@ export function Footer() {
             </ul>
           </div>
         </div>
+        {/* Social channels (02.09.2026): rendered ONLY for entries whose URL
+            is filled in config.ts — accounts don't exist yet, and a dead
+            link would break the site's own evidence standard. Platform
+            names are proper nouns, not translated. This block is a
+            this-build addition, not part of the sourced beta-art.com
+            footer (same convention as Sell/Feedback above). */}
+        {SOCIAL_LINKS.some((s) => s.url) && (
+          <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-border pt-6 font-record text-[0.68rem] uppercase tracking-[0.14em]">
+            <span className="text-muted-foreground">{t("footerFollow")}</span>
+            {SOCIAL_LINKS.filter((s) => s.url).map((s) => (
+              <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+                {s.name}
+              </a>
+            ))}
+          </div>
+        )}
         <div className="mt-10 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-6 font-record text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
           <span>{t("footerRights")}</span>
           <span>{t("footerNoAi")}</span>

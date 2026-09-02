@@ -129,6 +129,7 @@ const en: Dict = {
   footerLegal: "Legal",
   footerRights: "© 2026 Beta Art. All rights reserved worldwide.",
   footerNoAi: "No AI training · Verified human photography",
+  footerFollow: "Follow",
 
   cartTitle: "Cart",
   cartItems: "0 items",
@@ -351,6 +352,7 @@ const no: Dict = {
   footerLegal: "Juridisk",
   footerRights: "© 2026 Beta Art. Alle rettigheter forbeholdt globalt.",
   footerNoAi: "Ingen AI-trening · Verifisert menneskelig fotografi",
+  footerFollow: "Følg",
 
   cartTitle: "Handlekurv",
   cartItems: "0 varer",
@@ -573,6 +575,7 @@ const tr: Dict = {
   footerLegal: "Yasal",
   footerRights: "© 2026 Beta Art. Tüm hakları dünya çapında saklıdır.",
   footerNoAi: "Yapay zekâ eğitimi yok · Doğrulanmış insan fotoğrafçılığı",
+  footerFollow: "Takip",
 
   cartTitle: "Sepet",
   cartItems: "0 ürün",
@@ -795,6 +798,7 @@ const it: Dict = {
   footerLegal: "Legale",
   footerRights: "© 2026 Beta Art. Tutti i diritti riservati nel mondo.",
   footerNoAi: "Nessun addestramento IA · Fotografia umana verificata",
+  footerFollow: "Segui",
 
   cartTitle: "Carrello",
   cartItems: "0 articoli",
@@ -1017,6 +1021,7 @@ const fr: Dict = {
   footerLegal: "Mentions légales",
   footerRights: "© 2026 Beta Art. Tous droits réservés dans le monde entier.",
   footerNoAi: "Aucun entraînement IA · Photographie humaine vérifiée",
+  footerFollow: "Suivre",
 
   cartTitle: "Panier",
   cartItems: "0 article",
@@ -1239,6 +1244,7 @@ const es: Dict = {
   footerLegal: "Legal",
   footerRights: "© 2026 Beta Art. Todos los derechos reservados en todo el mundo.",
   footerNoAi: "Sin entrenamiento de IA · Fotografía humana verificada",
+  footerFollow: "Seguir",
 
   cartTitle: "Carrito",
   cartItems: "0 artículos",
@@ -1461,6 +1467,7 @@ const pt: Dict = {
   footerLegal: "Legal",
   footerRights: "© 2026 Beta Art. Todos os direitos reservados em todo o mundo.",
   footerNoAi: "Sem treino de IA · Fotografia humana verificada",
+  footerFollow: "Seguir",
 
   cartTitle: "Carrinho",
   cartItems: "0 itens",
@@ -1683,6 +1690,7 @@ const de: Dict = {
   footerLegal: "Rechtliches",
   footerRights: "© 2026 Beta Art. Alle Rechte weltweit vorbehalten.",
   footerNoAi: "Kein KI-Training · Verifizierte menschliche Fotografie",
+  footerFollow: "Folgen",
 
   cartTitle: "Warenkorb",
   cartItems: "0 Artikel",

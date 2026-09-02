@@ -8,3 +8,15 @@
 // site's original behaviour. Never point this at a test-mode link on the
 // public site.
 export const STRIPE_PAYMENT_LINK = "";
+
+// SOCIAL_LINKS: the brand's social channel URLs (user request 02.09.2026,
+// "sosyal medya kanalları geliştir"). Empty string = account not created
+// yet; the footer renders a channel only when its URL is filled in, so no
+// dead or invented links ever ship. Fill each value with the REAL profile
+// URL after creating the account — the channel plan, paste-ready bios and
+// content calendar live in docs/beta-art/sosyal-medya.md.
+export const SOCIAL_LINKS: { name: string; url: string }[] = [
+  { name: "Instagram", url: "" },
+  { name: "LinkedIn", url: "" },
+  { name: "Pinterest", url: "" },
+];
