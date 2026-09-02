@@ -448,3 +448,23 @@ anthropics/knowledge-work-plugins'ten okundu. İki katman yazıldı:
   içerik üretimi depo becerileriyle), `esikler.md` NOK ölçeğinde eşikler ve
   Action Pages 30 gün sayacı.
 Eklenti kurulmasa da aynı iş akışları bu eşlemeyle yürür. Kurulum kullanıcıda.
+
+## 02.09.2026 (gece) — NaviarCare ilk kez canlıda: naviarcare.vercel.app
+
+Bu depodaki `naviar/care/` hiç yayına alınmamıştı; Vercel'deki `naviar-care`
+(React, naviar-care-1 deposu) ve `naviar-care-live` (Norveççe care-pilot)
+başka kod tabanları. Yeni proje **`naviarcare`** (takım BET - ART,
+`prj_bnAWxkOQaAmm1UwiCpqK9tfJkgyX`) `naviar/vercel-care.json` tarifiyle
+üretime alındı. Tarif düzeltmeleri: `cp -r` (fonts/ alt klasörü
+kopyalanmıyordu), depo adresi `BETA-ART-PRIVAT` (taşındı; herkese açık),
+`.claude` dağıtımdan çıkarıldı. Doğrulandı: index 200, admin.html 200,
+fonts/inter-latin.woff2 200, doctors.js `window.NC_DOCTORS` satırıyla,
+`.claude/...` 404.
+
+naviarcare.com bu projeye bağlı değil; DNS GoDaddy yönlendirme adreslerini
+gösteriyor (15.197.148.33 / 3.33.130.190). Alan adı bağlama kullanıcı
+adımı (Vercel panel + GoDaddy DNS). Bu ortam naviarcare.com'u açamıyor
+(proxy engeli), bugünkü içeriği görülmedi.
+
+Kalıcı kural CLAUDE.md'ye işlendi: naviar/care'de her iş bitince push →
+deploy → canlı doğrulama → görüntü.
