@@ -46,6 +46,12 @@ change; it is the single source.
   Plan, Pårørende, Partner — see naviar-care/docs/forretningsmodell.md.
 - Status: landing + prototype + pilot console built; NO real
   customers, helpers or payments yet. Pilot design is manual-first.
+- Domain: naviarcare.com is owned by the owner (confirmed 02.09.2026;
+  registrar UNKNOWN — likely GoDaddy like qblogg.com). Not yet
+  connected; target is Vercel project naviar-care-live
+  (prj_soL100MluDGAjLVqte65l9aLz9Pd, BET-ART team). naviarcare.no and
+  naviar.care were still available on 02.09.2026 (availability changes
+  — recheck before deciding).
 - All prices are EXAMPLES (e.g. 250 NOK/h + 15–25% commission).
 - Hard gate: no real payments before the employment-status/tax/
   insurance questions in naviar-care/docs/hukuk-kontrol-listesi.md are
