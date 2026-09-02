@@ -42,10 +42,20 @@ const EXPERTS = [
   { code: 'ERN', label: 'Ernæringsfysiolog', desc: 'Kosthold, matlyst og ernæringsplan.' },
 ]
 
+const CATEGORIES = [
+  { code: 'SOS', label: 'Sosial følge',            desc: 'Besøk, samtale og selskap i hverdagen.' },
+  { code: 'TUR', label: 'Tur og aktivitet',        desc: 'Gåturer og aktiviteter i nærmiljøet.' },
+  { code: 'ÆRE', label: 'Handling og ærend',       desc: 'Dagligvarer, apotek, post og småærend.' },
+  { code: 'HUS', label: 'Enkelt husarbeid',        desc: 'Lette oppgaver hjemme — bæring, rydding, småfiks.' },
+  { code: 'TRA', label: 'Transport og avtaler',    desc: 'Følge til lege, frisør eller andre avtaler.' },
+  { code: 'TRE', label: 'Trening og aktivitetsfølge', desc: 'Følge til svømming, trim og organisert aktivitet.' },
+  { code: 'KOO', label: 'Pårørendekoordinering',   desc: 'Én plan for familien: hvem gjør hva, når.' },
+]
+
 const STEPS = [
-  { n: '1', title: 'Beskriv situasjonen', body: 'Fortell kort hva du trenger hjelp med. Ingen journaler, ingen skjemaer — bare skriv som til et medmenneske.' },
-  { n: '2', title: 'Match med riktig ekspert', body: 'Vi kobler deg til en fagperson med erfaring fra nettopp din situasjon — innen én time på dagtid.' },
-  { n: '3', title: 'Få klar, handlingsrettet hjelp', body: 'Eksperten svarer direkte, konkret og uten viderehenvisning. Du sitter igjen med neste steg — ikke nye spørsmål.' },
+  { n: '1', title: 'Beskriv behovet', body: 'Fortell kort hva du trenger hjelp med — ingen søknad, ingen journaler. Vi vurderer oppgave og risiko sammen med deg.' },
+  { n: '2', title: 'Godkjent hjelper matches', body: 'Vi foreslår en kontrollert hjelper som passer oppgaven, tiden og interessene — og du godkjenner før noe skjer.' },
+  { n: '3', title: 'Time for time, åpen pris', body: 'Hjelpen gjennomføres til avtalt tid. Du betaler per time, og plattformgebyret vises alltid før betaling.' },
 ]
 
 const TESTIMONIALS = [
@@ -68,29 +78,29 @@ const TESTIMONIALS = [
 
 const PLANS = [
   {
-    name: 'Enkeltspørsmål',
-    price: '249',
-    unit: 'per konsultasjon',
-    desc: 'Én fagsamtale med én ekspert. Betaler per gang — ingen binding.',
-    items: ['Svar innen én time', 'Velg fagområde selv', 'Skriftlig oppsummering inkludert'],
-    cta: 'Start her',
-    highlight: false,
-  },
-  {
-    name: 'Månedlig',
-    price: '799',
-    unit: 'per måned',
-    desc: 'Ubegrenset tilgang for hele familien. Avbryt når som helst.',
-    items: ['Ubegrensede spørsmål', 'Alle 8 fagområder', 'Prioritert responstid', 'Familiedeling (opptil 4 pers.)'],
-    cta: 'Prøv gratis i 14 dager',
+    name: 'Timehjelp',
+    price: '250',
+    unit: 'per time',
+    desc: 'Praktisk hjelp i hverdagen — betal kun for timene du bruker.',
+    items: ['Alle sju tjenestekategorier', 'Plattformgebyr 15–25 % vises før betaling', 'Kontrollert hjelper, godkjent av deg', 'Ingen binding'],
+    cta: 'Be om hjelper',
     highlight: true,
   },
   {
-    name: 'Bedrift / Arbeidsgiver',
+    name: 'Fagsamtale',
+    price: '249',
+    unit: 'per konsultasjon',
+    desc: 'Én samtale med autorisert fagperson — helse, jus eller økonomi.',
+    items: ['Svar innen én time', 'Velg fagområde selv', 'Skriftlig oppsummering inkludert'],
+    cta: 'Still et spørsmål',
+    highlight: false,
+  },
+  {
+    name: 'Kommune / Bedrift',
     price: 'Avtale',
     unit: '',
-    desc: 'For HR og bedrifter som ønsker å støtte ansatte med pårørendeansvar.',
-    items: ['Volumrabatt fra 10 ansatte', 'Dedikert kontaktperson', 'Brukerrapport månedlig', 'SLA og faktura'],
+    desc: 'For kommuner, BPA-leverandører og arbeidsgivere.',
+    items: ['Rekruttering og matching av hjelpere', 'Rapportering og kvalitetsoppfølging', 'SLA og faktura'],
     cta: 'Ta kontakt',
     highlight: false,
   },
@@ -300,11 +310,12 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                     placeholder="+47 000 00 000" autoComplete="tel" style={inputStyle} />
                 </div>
                 <div>
-                  <label htmlFor="nc-topic" style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Fagområde</label>
+                  <label htmlFor="nc-topic" style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Tjeneste</label>
                   <select id="nc-topic" value={topic} onChange={e => setTopic(e.target.value)} style={{ ...inputStyle, appearance: 'none' }}>
-                    <option value="">Velg fagområde...</option>
-                    {EXPERTS.map(ex => <option key={ex.code} value={ex.label}>{ex.label}</option>)}
-                    <option value="Fritidskontakt">Fritidskontakt / aktivitet</option>
+                    <option value="">Velg tjeneste...</option>
+                    {CATEGORIES.map(c => <option key={c.code} value={c.label}>{c.label}</option>)}
+                    <option value="Faglig rådgivning">Faglig rådgivning (helse, jus, økonomi)</option>
+                    <option value="Bli hjelper">Jeg vil bli hjelper</option>
                     <option value="Vet ikke">Vet ikke ennå</option>
                   </select>
                 </div>
@@ -369,8 +380,8 @@ function Nav({
         {/* Desktop links */}
         <div className="hidden md:flex" style={{ alignItems: 'center', gap: 32 }}>
           {[
+            { label: 'Tjenester',         id: 'tjenester' },
             { label: 'Slik fungerer det', id: 'how' },
-            { label: 'Eksperter',         id: 'experts' },
             { label: 'Fritidskontakt',    id: 'fritid' },
             { label: 'Priser',            id: 'priser' },
             { label: 'For fagpersoner',   id: 'for-section' },
@@ -413,8 +424,8 @@ function Nav({
       {menuOpen && (
         <div style={{ background: '#fffdf8', borderTop: '1px solid #cbd8d0', padding: '20px 24px 28px' }}>
           {[
+            { label: 'Tjenester',         id: 'tjenester' },
             { label: 'Slik fungerer det', id: 'how' },
-            { label: 'Eksperter',         id: 'experts' },
             { label: 'Fritidskontakt',    id: 'fritid' },
             { label: 'Priser',            id: 'priser' },
             { label: 'For fagpersoner',   id: 'for-section' },
@@ -467,9 +478,9 @@ function Hero({ onCta }: { onCta: () => void }) {
             </h1>
 
             <p style={{ fontSize: 18, lineHeight: 1.65, color: '#576b68', maxWidth: 480, marginBottom: 40 }}>
-              Naviar koordinerer omsorgen for dine nærmeste: fagfolk, offentlige
-              tjenester og familien — samlet rundt én plan. Svar innen én time,
-              uten venteliste.
+              Naviar kobler dine nærmeste med en godkjent hjelper — time for
+              time: følge, ærend, husarbeid og aktivitet. Fagfolk, tjenester og
+              familie samlet rundt én plan, uten venteliste.
             </p>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
@@ -608,6 +619,53 @@ function HowItWorks() {
   )
 }
 
+// ─── Categories (primary service) ────────────────────────────────────────────
+
+function Categories({ onCta }: { onCta: () => void }) {
+  return (
+    <section id="tjenester" style={{ background: '#f7f5ef', padding: '80px 24px', scrollMarginTop: 68 }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <div style={{ marginBottom: 48 }}>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Hjelp time for time</span>
+          <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Sju tjenester i hverdagen</h2>
+          <p style={{ fontSize: 16, color: '#576b68', marginTop: 12, maxWidth: 520 }}>
+            Lavrisiko, praktisk hjelp fra kontrollerte hjelpere — betalt per time,
+            med gebyret synlig før du bekrefter.
+          </p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
+          {CATEGORIES.map(c => (
+            <button key={c.code} onClick={onCta} style={{
+              background: '#fffdf8', border: '1px solid #cbd8d0',
+              borderRadius: 10, padding: '20px 22px',
+              cursor: 'pointer', textAlign: 'left', width: '100%',
+              transition: 'border-color 0.15s, box-shadow 0.15s',
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = '#173d3a'
+              ;(e.currentTarget as HTMLElement).style.boxShadow = '0 2px 12px rgba(23,61,58,0.08)'
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.borderColor = '#cbd8d0'
+              ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
+            }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+                <span style={{ fontSize: 15, fontWeight: 700, color: '#173d3a' }}>{c.label}</span>
+                <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.06em', padding: '2px 7px', background: '#d9ebe2', color: '#173d3a', borderRadius: 4 }}>{c.code}</span>
+              </div>
+              <p style={{ fontSize: 13.5, lineHeight: 1.55, color: '#576b68', margin: 0 }}>{c.desc}</p>
+            </button>
+          ))}
+        </div>
+        <p style={{ fontSize: 12, color: '#576b68', marginTop: 20 }}>
+          Utenfor tjenesten: medisinsk pleie, pengehåndtering, juridisk rådgivning og alt som krever autorisasjon — det hører til fagteamet eller det offentlige.
+        </p>
+      </div>
+    </section>
+  )
+}
+
 // ─── Testimonials ─────────────────────────────────────────────────────────────
 
 function Testimonials() {
@@ -650,9 +708,9 @@ function Experts({ onCta }: { onCta: () => void }) {
     <section id="experts" style={{ background: '#fffdf8', padding: '80px 24px', scrollMarginTop: 68 }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ marginBottom: 48 }}>
-          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Fagområder</span>
-          <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>8 fagområder på én plattform</h2>
-          <p style={{ fontSize: 16, color: '#576b68', marginTop: 12, maxWidth: 480 }}>Pårørendeomsorg krysser mange faggrenser. Naviar samler dem på ett sted.</p>
+          <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Faglig støttelag</span>
+          <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>8 fagområder bak tjenesten</h2>
+          <p style={{ fontSize: 16, color: '#576b68', marginTop: 12, maxWidth: 480 }}>Når behovet krever autorisert kompetanse, står fagteamet klart — samme plattform, samme plan.</p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
@@ -808,7 +866,7 @@ function Pricing({ onCta }: { onCta: () => void }) {
         </div>
 
         <p style={{ fontSize: 12, color: '#576b68', marginTop: 24 }}>
-          * Priser er eksempeltall fra pilotperioden og kan endres. Alle priser inkl. mva. Stripe-behandlingsgebyr tilkommer ved kortbetaling.
+          * Priser er eksempeltall fra pilotperioden og kan endres. Hjelperens timepris og plattformgebyret vises alltid hver for seg før du betaler. Alle priser inkl. mva.
         </p>
       </div>
     </section>
@@ -1095,6 +1153,7 @@ export default function App() {
       <main>
         <Hero onCta={openModal} />
         <HowItWorks />
+        <Categories onCta={openModal} />
         <Testimonials />
         <Experts onCta={openModal} />
         <Fritidskontakt onCta={openModal} />
