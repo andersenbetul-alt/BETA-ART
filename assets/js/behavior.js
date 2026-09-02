@@ -1,21 +1,33 @@
-/* QBLOGG — davranış izleme ve öneri motoru
+/* QBLOGG — davranış izleme, öneri motoru ve yolculuk rehberi
  *
- * Ziyaretçinin okudukları, ilgilendiği kategoriler ve incelediği paketler
- * tarayıcı yerel deposunda (localStorage) tutulur. Sunucuya hiçbir şey gitmez.
- * Kişisel veri yok: yalnızca slug'lar ve kategori adları saklanır.
+ * İki sistem bir arada:
  *
- * Ne yapar:
- *   blog.html  → "Son okunanlar" bölümü, kategori tıklamalarını izler
- *   post.html  → görüntülemeyi kaydeder
- *   index.html → paket etkileşimlerini izler, davranışa göre öneri rozeti gösterir
+ * 1. GEÇMİŞ SİSTEMİ (behavior tracking)
+ *    blog.html  → "Son okunanlar", kategori izleme
+ *    post.html  → görüntülemeyi kaydet
+ *    index.html → paket etkileşimi, davranışa göre öneri rozeti
+ *
+ * 2. SONRAKI ADIM SİSTEMİ (next step guidance)
+ *    Tüm sayfalar → ziyaretçinin yolculuk aşamasını hesapla,
+ *    sayfa yarısına gelince veya 20 sn dolunca kayan pill göster:
+ *      Aşama 0 — Keşfet  → Örnek çalışma
+ *      Aşama 1 — İncele  → Paket karşılaştırma
+ *      Aşama 2 — Değerlendir → Brief gönder
+ *      Aşama 3 — Karar ver   → Bugün başlayalım
+ *
+ * Veri: localStorage (qb_behavior). Sunucuya hiçbir şey gitmez.
+ * Kişisel veri yok: slug + kategori adları tutulur.
  */
 (function () {
   'use strict';
 
-  var LS_KEY = 'qb_behavior';
+  var LS_KEY  = 'qb_behavior';
+  var SS_DISMISSED = 'qb_ns_dismissed'; /* sessionStorage: pill kapatıldı mı */
   var MAX_VIEWS = 20;
 
-  /* ---- Yardımcılar ---- */
+  /* ══════════════════════════════════════════════════
+     YARDIMCILAR
+  ══════════════════════════════════════════════════ */
 
   function getLang() {
     try {
@@ -40,8 +52,8 @@
       if (!d || typeof d !== 'object') d = {};
       return {
         views: Array.isArray(d.views) ? d.views : [],
-        cats:  (d.cats  && typeof d.cats  === 'object') ? d.cats  : {},
-        pkg:   (d.pkg   && typeof d.pkg   === 'object') ? d.pkg   : {}
+        cats:  (d.cats && typeof d.cats === 'object') ? d.cats : {},
+        pkg:   (d.pkg  && typeof d.pkg  === 'object') ? d.pkg  : {}
       };
     } catch (e) {
       return { views: [], cats: {}, pkg: {} };
@@ -50,6 +62,14 @@
 
   function save(data) {
     try { localStorage.setItem(LS_KEY, JSON.stringify(data)); } catch (e) {}
+  }
+
+  function isDismissed() {
+    try { return !!sessionStorage.getItem(SS_DISMISSED); } catch (e) { return false; }
+  }
+
+  function dismiss() {
+    try { sessionStorage.setItem(SS_DISMISSED, '1'); } catch (e) {}
   }
 
   function trackView(slug, cat) {
@@ -69,18 +89,6 @@
     save(d);
   }
 
-  function getSuggestedPkg(d) {
-    var views   = d.views.length;
-    var cats    = Object.keys(d.cats).length;
-    var p3clicks = d.pkg.p3 || 0;
-    var p2clicks = d.pkg.p2 || 0;
-
-    if (p3clicks >= 2 || views >= 7 || cats >= 3) return 'p3';
-    if (p2clicks >= 1 || views >= 3 || cats >= 2) return 'p2';
-    if (views >= 1)                               return 'p1';
-    return null; // henüz yeterli veri yok
-  }
-
   function findPost(slug) {
     var posts = window.QB_POSTS || [];
     for (var i = 0; i < posts.length; i++) {
@@ -94,13 +102,70 @@
     return (post.t && (post.t[lang] || post.t.en || post.t.tr)) || post.slug;
   }
 
-  /* ---- Stil enjeksiyonu (main.css değişkenlerinden türetilir) ---- */
+  /* ══════════════════════════════════════════════════
+     YOLCULUK AŞAMASI HESAPLA
+  ══════════════════════════════════════════════════ */
+
+  /*
+   * Dört aşama:
+   *   0 Keşfet      — henüz yazı okumadı
+   *   1 İncele      — 1–2 yazı okudu
+   *   2 Değerlendir — 3–5 yazı VEYA paket etkileşimi
+   *   3 Karar ver   — 6+ yazı VEYA yüksek paket etkileşimi
+   */
+  function getStage(d) {
+    var views = d.views.length;
+    var pkgTotal = Object.keys(d.pkg).reduce(function (s, k) { return s + (d.pkg[k] || 0); }, 0);
+
+    if (pkgTotal >= 4 || views >= 6) return 3;
+    if (pkgTotal >= 1 || views >= 3) return 2;
+    if (views >= 1)                  return 1;
+    return 0;
+  }
+
+  /*
+   * Her aşama + sayfa bileşimi için sonraki adım:
+   * { label: i18n anahtarı, url: hedef }
+   */
+  var STEPS = [
+    /* aşama 0 */ {
+      'blog':      { label: 'ns.discover', url: 'ornek.html' },
+      'post':      { label: 'ns.discover', url: 'ornek.html' },
+      'index':     { label: 'ns.blog',     url: 'blog.html' },
+      'default':   { label: 'ns.discover', url: 'ornek.html' }
+    },
+    /* aşama 1 */ {
+      'blog':      { label: 'ns.packages', url: 'index.html#packages' },
+      'post':      { label: 'ns.packages', url: 'index.html#packages' },
+      'index':     { label: 'ns.quality',  url: 'kalite.html' },
+      'ornek':     { label: 'ns.packages', url: 'index.html#packages' },
+      'kalite':    { label: 'ns.packages', url: 'index.html#packages' },
+      'default':   { label: 'ns.packages', url: 'index.html#packages' }
+    },
+    /* aşama 2 */ {
+      'default':   { label: 'ns.evaluate', url: 'work.html' }
+    },
+    /* aşama 3 */ {
+      'default':   { label: 'ns.decide',   url: 'work.html' }
+    }
+  ];
+
+  function getNextStep(stage, page) {
+    var map = STEPS[stage] || STEPS[0];
+    return map[page] || map['default'];
+  }
+
+  /* ══════════════════════════════════════════════════
+     STİL ENJEKSİYONU
+  ══════════════════════════════════════════════════ */
 
   function injectStyles() {
     if (document.getElementById('beh-styles')) return;
     var el = document.createElement('style');
     el.id = 'beh-styles';
     el.textContent =
+
+      /* --- Geçmiş sistemi --- */
       '.beh-section{margin-block-end:28px}' +
       '.beh-head{display:flex;align-items:center;justify-content:space-between;' +
         'margin-block-end:12px;gap:10px}' +
@@ -121,18 +186,46 @@
       '.beh-badge{display:inline-block;margin-block-end:10px;' +
         'padding:3px 10px;border-radius:var(--radius-sm);' +
         'background:var(--brand);color:#fff;font-size:var(--fs-xs);' +
-        'font-weight:700;text-transform:uppercase;letter-spacing:.05em}';
+        'font-weight:700;text-transform:uppercase;letter-spacing:.05em}' +
+
+      /* --- Sonraki adım pill --- */
+      '@keyframes behSlide{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}' +
+      '.beh-pill{position:fixed;inset-inline-end:20px;bottom:20px;z-index:900;' +
+        'background:var(--bg-card);border:1px solid var(--border);' +
+        'border-radius:var(--radius-sm);padding:14px 16px;' +
+        'box-shadow:var(--shadow-lg);width:270px;' +
+        'animation:behSlide .28s ease}' +
+      '[dir=rtl] .beh-pill{inset-inline-end:20px;inset-inline-start:auto}' +
+      '.beh-pill-steps{display:flex;align-items:center;gap:5px;margin-block-end:10px}' +
+      '.beh-dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0}' +
+      '.beh-dot.on{background:var(--brand)}' +
+      '.beh-dot-sep{flex:1;height:1px;background:var(--border)}' +
+      '.beh-stage-lbl{font-size:var(--fs-xs);color:var(--text-muted);' +
+        'margin-inline-start:8px;font-weight:600;white-space:nowrap}' +
+      '.beh-pill-body{display:flex;align-items:center;justify-content:space-between;gap:8px}' +
+      '.beh-ns-lbl{font-size:var(--fs-2xs);color:var(--text-muted);' +
+        'text-transform:uppercase;letter-spacing:.06em;margin-block-end:3px}' +
+      '.beh-ns-cta{font-size:var(--fs-sm);font-weight:600;color:var(--text);' +
+        'text-decoration:none;display:block;line-height:1.3}' +
+      '.beh-ns-cta:hover{color:var(--brand)}' +
+      '.beh-pill-close{background:none;border:none;padding:4px;' +
+        'color:var(--text-muted);cursor:pointer;font-size:16px;line-height:1;' +
+        'flex-shrink:0;border-radius:4px}' +
+      '.beh-pill-close:hover{color:var(--text);background:var(--bg-soft)}';
+
     document.head.appendChild(el);
   }
 
-  /* ---- blog.html: Son okunanlar + kategori izleme ---- */
+  /* ══════════════════════════════════════════════════
+     GEÇMİŞ SİSTEMİ — blog.html
+  ══════════════════════════════════════════════════ */
 
   function initBlog() {
     var d = load();
-    var views = d.views.slice(0, 3);
+    var recentViews = d.views.slice(0, 3);
 
-    if (views.length) {
-      var cards = views.reduce(function (acc, v) {
+    if (recentViews.length) {
+      var cards = recentViews.reduce(function (acc, v) {
         var post = findPost(v.s);
         if (!post) return acc;
         var a = document.createElement('a');
@@ -179,7 +272,7 @@
       }
     }
 
-    // Kategori chip tıklamalarını izle (event delegation)
+    /* Kategori chip tıklamalarını izle */
     var catChips = document.getElementById('catChips');
     if (catChips) {
       catChips.addEventListener('click', function (e) {
@@ -193,7 +286,9 @@
     }
   }
 
-  /* ---- post.html: Görüntülemeyi kaydet ---- */
+  /* ══════════════════════════════════════════════════
+     GEÇMİŞ SİSTEMİ — post.html
+  ══════════════════════════════════════════════════ */
 
   function initPost() {
     try {
@@ -205,12 +300,13 @@
     } catch (e) {}
   }
 
-  /* ---- index.html: Paket etkileşim izleme + öneri rozeti ---- */
+  /* ══════════════════════════════════════════════════
+     GEÇMİŞ SİSTEMİ — index.html
+  ══════════════════════════════════════════════════ */
 
   function initIndex() {
     var plans = document.querySelectorAll('.plan[data-pkg]');
 
-    // Etkileşimleri kaydet
     plans.forEach(function (plan) {
       var pkg = plan.dataset.pkg;
       if (!pkg) return;
@@ -218,7 +314,6 @@
       plan.addEventListener('click', function () { trackPkg(pkg); });
     });
 
-    // Davranışa göre rozet ekle
     var d = load();
     var suggested = getSuggestedPkg(d);
     if (!suggested) return;
@@ -232,22 +327,150 @@
     target.insertBefore(badge, target.firstChild);
   }
 
-  /* ---- Sayfa algılama ve başlatma ---- */
+  function getSuggestedPkg(d) {
+    var views    = d.views.length;
+    var cats     = Object.keys(d.cats).length;
+    var p3clicks = d.pkg.p3 || 0;
+    var p2clicks = d.pkg.p2 || 0;
+
+    if (p3clicks >= 2 || views >= 7 || cats >= 3) return 'p3';
+    if (p2clicks >= 1 || views >= 3 || cats >= 2) return 'p2';
+    if (views >= 1)                               return 'p1';
+    return null;
+  }
+
+  /* ══════════════════════════════════════════════════
+     SONRAKI ADIM SİSTEMİ — tüm sayfalar
+  ══════════════════════════════════════════════════ */
+
+  /* Aşama adları (i18n key'leri) */
+  var STAGE_LABELS = ['ns.s0', 'ns.s1', 'ns.s2', 'ns.s3'];
+
+  function buildPill(stage, step) {
+    var pill = document.createElement('div');
+    pill.className = 'beh-pill';
+    pill.id = 'behPill';
+    pill.setAttribute('role', 'complementary');
+    pill.setAttribute('aria-label', t('ns.label'));
+
+    /* İlerleme noktaları */
+    var stepsRow = document.createElement('div');
+    stepsRow.className = 'beh-pill-steps';
+    for (var i = 0; i < 4; i++) {
+      if (i > 0) {
+        var sep = document.createElement('span');
+        sep.className = 'beh-dot-sep';
+        stepsRow.appendChild(sep);
+      }
+      var dot = document.createElement('span');
+      dot.className = 'beh-dot' + (i <= stage ? ' on' : '');
+      stepsRow.appendChild(dot);
+    }
+    var stageLbl = document.createElement('span');
+    stageLbl.className = 'beh-stage-lbl';
+    stageLbl.textContent = t(STAGE_LABELS[stage]);
+    stepsRow.appendChild(stageLbl);
+    pill.appendChild(stepsRow);
+
+    /* CTA + kapat */
+    var body = document.createElement('div');
+    body.className = 'beh-pill-body';
+
+    var left = document.createElement('div');
+
+    var lbl = document.createElement('div');
+    lbl.className = 'beh-ns-lbl';
+    lbl.textContent = t('ns.label');
+    left.appendChild(lbl);
+
+    var cta = document.createElement('a');
+    cta.className = 'beh-ns-cta';
+    cta.href = step.url;
+    cta.textContent = t(step.label) + ' →';
+    left.appendChild(cta);
+
+    var closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'beh-pill-close';
+    closeBtn.setAttribute('aria-label', t('ns.close'));
+    closeBtn.textContent = '×';
+    closeBtn.addEventListener('click', function () {
+      pill.remove();
+      dismiss();
+    });
+
+    body.appendChild(left);
+    body.appendChild(closeBtn);
+    pill.appendChild(body);
+
+    return pill;
+  }
+
+  function showPill(stage, step) {
+    if (isDismissed()) return;
+    if (document.getElementById('behPill')) return;
+
+    var pill = buildPill(stage, step);
+    document.body.appendChild(pill);
+  }
+
+  function initNextStep(page) {
+    /* Brief sayfasında gösterme — ziyaretçi zaten dönüşüm noktasında */
+    if (page === 'work') return;
+
+    var d = load();
+    var stage = getStage(d);
+    var step  = getNextStep(stage, page);
+
+    /* Tetiğin birini bekle: %50 kaydırma veya 20 saniye */
+    var triggered = false;
+
+    function trigger() {
+      if (triggered) return;
+      triggered = true;
+      scrollOff();
+      clearTimeout(timer);
+      showPill(stage, step);
+    }
+
+    function onScroll() {
+      var scrolled = window.scrollY + window.innerHeight;
+      var total = document.documentElement.scrollHeight;
+      if (total > 0 && scrolled / total >= 0.5) trigger();
+    }
+
+    function scrollOff() {
+      window.removeEventListener('scroll', onScroll, { passive: true });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    var timer = setTimeout(trigger, 20000);
+
+    /* İlk kontrol: sayfa zaten scroll edilmiş mi */
+    onScroll();
+  }
+
+  /* ══════════════════════════════════════════════════
+     SAYFA ALGILAMA VE BAŞLATMA
+  ══════════════════════════════════════════════════ */
 
   function init() {
     injectStyles();
 
     var page = location.pathname.split('/').pop().replace('.html', '') || 'index';
 
-    // Önizleme modunda ?page= parametresi sayfa adını taşır
     try {
       var pp = new URLSearchParams(location.search).get('page');
       if (pp) page = pp;
     } catch (e) {}
 
-    if (page === 'blog')                           initBlog();
-    else if (page === 'post')                      initPost();
-    else if (page === 'index' || page === '')      initIndex();
+    /* Geçmiş sistemi */
+    if (page === 'blog')                       initBlog();
+    else if (page === 'post')                  initPost();
+    else if (page === 'index' || page === '')  initIndex();
+
+    /* Sonraki adım sistemi — tüm sayfalarda */
+    initNextStep(page);
   }
 
   if (document.readyState === 'loading') {
