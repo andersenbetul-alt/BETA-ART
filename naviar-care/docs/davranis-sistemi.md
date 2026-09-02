@@ -1,5 +1,29 @@
 # Müşteri davranış sistemi — tasarım ve uyum haritası
 
+## İki ayrı sistem (02.09.2026 talimatı)
+
+| | Ziyaretçi sistemi | Düzenleyen (redaktör) sistemi |
+|---|---|---|
+| Sayfa | index.html (landing) | **admin.html** — landing'den link YOK |
+| Amaç | Neste steg tahmini + kişiselleştirme | Pilot operasyonu: kuyruk, eşleştirme, ölçüm |
+| Veri | Anonim tıklama olayları (rızayla) | Talep/yardımcı kayıtları (takma adla) |
+| Depo | Ziyaretçinin tarayıcısı | Redaktörün tarayıcısı (`nc_admin_v1`) |
+| Kural | Sağlık verisi hiç girmez | Alias zorunlu; attest tarihi tutulur, attest tutulmaz |
+
+Konsol sekmeleri: **Kø** (Ny→Vurdert→Matchet→Bekreftet→Fullført hattı,
+manuel yardımcı seçimi, iptal), **Hjelpere** (alias + kategori + vandel
+tarihi + aktif/pasif), **Måling** (pilot-olcum-plani.md metrikleri
+kuyruktan canlı hesaplanır: matchetid, tilfredshet, gjentakelse,
+avbrudd, provisjon), **Data** (JSON indirme, CSV panoya, tümünü silme).
+Her durum geçişi değiştirilemez hendelseslogg'a "kim yaptı" ile düşer.
+
+Sınır dürüstlüğü: admin.html'de gerçek kimlik doğrulama YOKTUR —
+istemci tarafı şifre güvenlik tiyatrosu olurdu. Sayfa "internt verktøy"
+olarak işaretlidir, landing'den bağlantı verilmez ve gerçek erişim
+kontrolü Build fazındaki backend'le gelir. O güne kadar konsol yalnızca
+koordinatörün kendi makinesinde kullanılır (pilot zaten tek
+koordinatörlü ve manuel).
+
 Amaç (proje lideri talimatı, 02.09.2026): her web sayfasında müşterinin
 **bir sonraki ziyarette ne görmek veya satın almak isteyeceğini** bulmak.
 
