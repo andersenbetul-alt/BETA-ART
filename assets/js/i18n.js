@@ -1788,3 +1788,15 @@ Object.assign(window.QB_I18N.ru, {
 Object.assign(window.QB_I18N.no, {
   'cta.magnet': 'Abonner og få Sjekklisten for automatiseringsdiagnose — mål på én uke hvilken oppgave i bedriften som er verdt å automatisere.',
   'cta.download': '↓ Last ned sjekklisten' });
+
+/* Davranış motoru metinleri (behavior.js) */
+Object.assign(window.QB_I18N.tr, { 'beh.recent': 'Son okunanlar', 'beh.clear': 'Temizle', 'beh.suggested': 'Size özel' });
+Object.assign(window.QB_I18N.en, { 'beh.recent': 'Recently read', 'beh.clear': 'Clear', 'beh.suggested': 'Suggested for you' });
+Object.assign(window.QB_I18N.zh, { 'beh.recent': '最近阅读', 'beh.clear': '清除', 'beh.suggested': '为您推荐' });
+Object.assign(window.QB_I18N.hi, { 'beh.recent': 'हाल ही में पढ़ा', 'beh.clear': 'साफ़ करें', 'beh.suggested': 'आपके लिए सुझाव' });
+Object.assign(window.QB_I18N.es, { 'beh.recent': 'Leídos recientemente', 'beh.clear': 'Borrar', 'beh.suggested': 'Recomendado para ti' });
+Object.assign(window.QB_I18N.ar, { 'beh.recent': 'المقروء مؤخراً', 'beh.clear': 'مسح', 'beh.suggested': 'مقترح لك' });
+Object.assign(window.QB_I18N.fr, { 'beh.recent': 'Lus récemment', 'beh.clear': 'Effacer', 'beh.suggested': 'Recommandé pour vous' });
+Object.assign(window.QB_I18N.pt, { 'beh.recent': 'Lidos recentemente', 'beh.clear': 'Limpar', 'beh.suggested': 'Sugerido para você' });
+Object.assign(window.QB_I18N.ru, { 'beh.recent': 'Недавно прочитанное', 'beh.clear': 'Очистить', 'beh.suggested': 'Рекомендуем вам' });
+Object.assign(window.QB_I18N.no, { 'beh.recent': 'Nylig lest', 'beh.clear': 'Tøm', 'beh.suggested': 'Anbefalt for deg' });
