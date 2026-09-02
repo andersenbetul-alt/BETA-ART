@@ -415,6 +415,19 @@ h1 span { color: var(--acid); text-shadow: 10px 0 0 rgba(255, 45, 45, .22); }
 .timeline-row span { color: var(--acid); font-family: var(--mono); font-size: 12px; letter-spacing: .14em; }
 .timeline-row p { margin: 0; font-family: var(--display); font-size: clamp(23px, 3vw, 38px); line-height: .95; text-transform: uppercase; }
 .release-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 48px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.foryou { margin-top: 40px; padding: 24px; border: 1px solid var(--acid); }
+.foryou[hidden] { display: none; }
+.foryou-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 0; }
+.foryou-list a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 15px; border: 1px solid var(--line);
+  font-family: var(--mono); font-size: 13px; letter-spacing: .04em;
+  color: var(--ink);
+}
+.foryou-list a:hover { border-color: var(--acid); color: var(--acid); }
+.foryou-list a .num { color: var(--acid); font-size: 11px; }
+.foryou-note { margin: 16px 0 0; color: #8b8d85; font-size: 12px; font-family: var(--mono); letter-spacing: .04em; }
+[dir='rtl'] .foryou-list a:hover { transform: none; }
 .release-card {
   position: relative;
   min-height: 190px;

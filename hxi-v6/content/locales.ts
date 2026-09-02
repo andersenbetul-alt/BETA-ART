@@ -47,6 +47,8 @@ export type LocaleData = {
     playerNote: string;
     selectedWorks: string;
     fullCatalog: string;
+    mostLiked: string;
+    mostLikedNote: string;
   };
   credits: {
     eyebrow: string;
@@ -194,6 +196,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: 'The player contacts Spotify only after you choose to load it. Spotify may set its own cookies.',
       selectedWorks: 'SELECTED WORKS',
       fullCatalog: 'Full catalog on Spotify ↗',
+      mostLiked: 'For you',
+      mostLikedNote: 'Built from what you played here. Stays on your device.',
     },
     credits: {
       eyebrow: '02 / CREDITS',
@@ -271,7 +275,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'Privacy information for the official HXI artist website.',
       eyebrow: 'PRIVACY',
       heading: 'Minimal by design.',
-      lead: 'This website does not run advertising pixels, newsletter forms or behavioural analytics, and it does not intentionally set first-party tracking cookies.',
+      lead: 'This website does not run advertising pixels, newsletter forms or behavioural analytics, and it does not intentionally set first-party tracking cookies. A small on-device list of what you played here is kept in your browser to show a “For you” strip; it never leaves your device and no analytics are sent.',
       hostingH: 'Hosting and technical logs',
       hostingP: 'The site is hosted through web infrastructure that may process limited technical information such as IP address, browser or request logs for delivery, security and abuse prevention. Those logs are handled by the hosting provider under its own terms and retention practices.',
       spotifyH: 'Spotify and external services',
@@ -343,6 +347,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: 'Spilleren kobler til Spotify først når du velger å laste den inn. Spotify kan sette egne informasjonskapsler.',
       selectedWorks: 'UTVALGTE UTGIVELSER',
       fullCatalog: 'Hele katalogen på Spotify ↗',
+      mostLiked: 'Mest spilte',
+      mostLikedNote: 'Bygget på det du spilte her. Blir på enheten din.',
     },
     credits: {
       eyebrow: '02 / KREDITERINGER',
@@ -420,7 +426,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'Personverninformasjon for HXIs offisielle artistside.',
       eyebrow: 'PERSONVERN',
       heading: 'Minimalt med vilje.',
-      lead: 'Dette nettstedet bruker ikke annonsepiksler, nyhetsbrevskjemaer eller atferdsanalyse, og setter ikke med hensikt egne sporingsinformasjonskapsler.',
+      lead: 'Dette nettstedet bruker ikke annonsepiksler, nyhetsbrevskjemaer eller atferdsanalyse, og setter ikke med hensikt egne sporingsinformasjonskapsler. En liten liste på enheten over hva du spilte her lagres i nettleseren for å vise en «Mest spilte»-stripe; den forlater aldri enheten din og ingen analyse sendes.',
       hostingH: 'Hosting og tekniske logger',
       hostingP: 'Nettstedets infrastruktur kan behandle begrenset teknisk informasjon som IP-adresse, nettleser- eller forespørselslogger for levering, sikkerhet og misbruksforebygging. Slike logger håndteres av hostingleverandøren etter deres vilkår og lagringsrutiner.',
       spotifyH: 'Spotify og eksterne tjenester',
@@ -492,6 +498,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: 'Oynatıcı yalnızca sen yüklemeyi seçtiğinde Spotify’a bağlanır. Spotify kendi çerezlerini kullanabilir.',
       selectedWorks: 'SEÇİLMİŞ YAYINLAR',
       fullCatalog: 'Spotify’da tüm katalog ↗',
+      mostLiked: 'Senin için',
+      mostLikedNote: 'Burada dinlediklerinden oluşur. Cihazında kalır.',
     },
     credits: {
       eyebrow: '02 / KREDİLER',
@@ -569,7 +577,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'HXI resmi sanatçı sitesi için gizlilik bilgileri.',
       eyebrow: 'GİZLİLİK',
       heading: 'Tasarım gereği minimal.',
-      lead: 'Bu site reklam pikselleri, bülten formları veya davranış analitiği çalıştırmaz ve bilerek birinci taraf takip çerezleri yerleştirmez.',
+      lead: 'Bu site reklam pikselleri, bülten formları veya davranış analitiği çalıştırmaz ve bilerek birinci taraf takip çerezleri yerleştirmez. Burada ne dinlediğinize dair küçük bir liste “Senin için” şeridini göstermek üzere tarayıcınızda cihaz üzerinde tutulur; cihazınızdan hiç çıkmaz ve hiçbir analitik gönderilmez.',
       hostingH: 'Barındırma ve teknik kayıtlar',
       hostingP: 'Site altyapısı; teslimat, güvenlik ve kötüye kullanımı önleme amacıyla IP adresi, tarayıcı veya istek kayıtları gibi sınırlı teknik bilgileri işleyebilir. Bu kayıtlar barındırma sağlayıcısının kendi koşulları ve saklama uygulamaları kapsamında yönetilir.',
       spotifyH: 'Spotify ve dış hizmetler',
@@ -641,6 +649,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: 'Le lecteur contacte Spotify uniquement après votre choix. Spotify peut utiliser ses propres cookies.',
       selectedWorks: 'SÉLECTION',
       fullCatalog: 'Catalogue complet sur Spotify ↗',
+      mostLiked: 'Pour vous',
+      mostLikedNote: 'Construit à partir de ce que vous avez écouté ici. Reste sur votre appareil.',
     },
     credits: {
       eyebrow: '02 / CRÉDITS',
@@ -718,7 +728,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'Informations de confidentialité du site artiste officiel de HXI.',
       eyebrow: 'CONFIDENTIALITÉ',
       heading: 'Minimal par conception.',
-      lead: 'Ce site n’utilise ni pixels publicitaires, ni formulaires de newsletter, ni analyse comportementale, et ne dépose pas volontairement de cookies de suivi propriétaires.',
+      lead: 'Ce site n’utilise ni pixels publicitaires, ni formulaires de newsletter, ni analyse comportementale, et ne dépose pas volontairement de cookies de suivi propriétaires. Une petite liste, sur l’appareil, de ce que vous avez écouté ici est conservée dans le navigateur pour afficher une bande « Pour vous » ; elle ne quitte jamais votre appareil et aucune analyse n’est envoyée.',
       hostingH: 'Hébergement et journaux techniques',
       hostingP: 'L’infrastructure d’hébergement peut traiter des informations techniques limitées, comme l’adresse IP, le navigateur ou les journaux de requêtes, pour la diffusion, la sécurité et la prévention des abus. Ces journaux sont gérés par l’hébergeur selon ses propres conditions et durées de conservation.',
       spotifyH: 'Spotify et services externes',
@@ -790,6 +800,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: 'Der Player verbindet sich erst nach deiner Auswahl mit Spotify. Spotify kann eigene Cookies setzen.',
       selectedWorks: 'AUSGEWÄHLTE RELEASES',
       fullCatalog: 'Gesamter Katalog auf Spotify ↗',
+      mostLiked: 'Für dich',
+      mostLikedNote: 'Basiert auf dem, was du hier gehört hast. Bleibt auf deinem Gerät.',
     },
     credits: {
       eyebrow: '02 / CREDITS',
@@ -867,7 +879,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'Datenschutzinformationen für die offizielle HXI-Künstlerwebsite.',
       eyebrow: 'DATENSCHUTZ',
       heading: 'Bewusst minimal.',
-      lead: 'Diese Website verwendet keine Werbepixel, Newsletter-Formulare oder Verhaltensanalyse und setzt nicht absichtlich eigene Tracking-Cookies.',
+      lead: 'Diese Website verwendet keine Werbepixel, Newsletter-Formulare oder Verhaltensanalyse und setzt nicht absichtlich eigene Tracking-Cookies. Eine kleine geräteinterne Liste dessen, was du hier gehört hast, wird im Browser gespeichert, um eine „Für dich“-Leiste zu zeigen; sie verlässt nie dein Gerät und es wird keine Analyse gesendet.',
       hostingH: 'Hosting und technische Protokolle',
       hostingP: 'Die Hosting-Infrastruktur kann begrenzte technische Informationen wie IP-Adresse, Browser- oder Anfrageprotokolle für Auslieferung, Sicherheit und Missbrauchsprävention verarbeiten. Diese Protokolle werden vom Hosting-Anbieter nach dessen Bedingungen und Aufbewahrungsregeln behandelt.',
       spotifyH: 'Spotify und externe Dienste',
@@ -939,6 +951,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: 'El reproductor solo contacta con Spotify cuando decides cargarlo. Spotify puede usar sus propias cookies.',
       selectedWorks: 'TRABAJOS SELECCIONADOS',
       fullCatalog: 'Catálogo completo en Spotify ↗',
+      mostLiked: 'Para ti',
+      mostLikedNote: 'Se basa en lo que reprodujiste aquí. Permanece en tu dispositivo.',
     },
     credits: {
       eyebrow: '02 / CRÉDITOS',
@@ -1016,7 +1030,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'Información de privacidad del sitio oficial de HXI.',
       eyebrow: 'PRIVACIDAD',
       heading: 'Mínimo por diseño.',
-      lead: 'Este sitio no utiliza píxeles publicitarios, formularios de newsletter ni analítica de comportamiento, y no establece intencionadamente cookies propias de seguimiento.',
+      lead: 'Este sitio no utiliza píxeles publicitarios, formularios de newsletter ni analítica de comportamiento, y no establece intencionadamente cookies propias de seguimiento. Se guarda en el navegador una pequeña lista, en el dispositivo, de lo que reprodujiste aquí para mostrar una franja «Para ti»; nunca sale de tu dispositivo y no se envía ninguna analítica.',
       hostingH: 'Alojamiento y registros técnicos',
       hostingP: 'La infraestructura de alojamiento puede procesar información técnica limitada, como dirección IP, navegador o registros de solicitudes, para entrega, seguridad y prevención de abusos. El proveedor de alojamiento gestiona esos registros según sus propios términos y periodos de conservación.',
       spotifyH: 'Spotify y servicios externos',
@@ -1088,6 +1102,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: 'O player só contata o Spotify depois que você escolhe carregá-lo. O Spotify pode usar cookies próprios.',
       selectedWorks: 'TRABALHOS SELECIONADOS',
       fullCatalog: 'Catálogo completo no Spotify ↗',
+      mostLiked: 'Para você',
+      mostLikedNote: 'Baseado no que você tocou aqui. Fica no seu dispositivo.',
     },
     credits: {
       eyebrow: '02 / CRÉDITOS',
@@ -1165,7 +1181,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'Informações de privacidade do site oficial do artista HXI.',
       eyebrow: 'PRIVACIDADE',
       heading: 'Minimal por design.',
-      lead: 'Este site não usa pixels de publicidade, formulários de newsletter nem análise comportamental, e não define intencionalmente cookies próprios de rastreamento.',
+      lead: 'Este site não usa pixels de publicidade, formulários de newsletter nem análise comportamental, e não define intencionalmente cookies próprios de rastreamento. Uma pequena lista, no dispositivo, do que você tocou aqui é guardada no navegador para mostrar uma faixa «Para você»; ela nunca sai do seu dispositivo e nenhuma análise é enviada.',
       hostingH: 'Hospedagem e registros técnicos',
       hostingP: 'A infraestrutura de hospedagem pode processar informações técnicas limitadas, como endereço IP, navegador ou registros de requisições, para entrega, segurança e prevenção de abuso. Esses registros são tratados pelo provedor de hospedagem conforme seus próprios termos e práticas de retenção.',
       spotifyH: 'Spotify e serviços externos',
@@ -1237,6 +1253,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: 'لن يتصل المشغل بـ Spotify إلا بعد أن تختار تحميله. قد يستخدم Spotify ملفات تعريف ارتباط خاصة به.',
       selectedWorks: 'أعمال مختارة',
       fullCatalog: 'الكتالوج الكامل على Spotify ↗',
+      mostLiked: 'لك',
+      mostLikedNote: 'مبني على ما استمعت إليه هنا. يبقى على جهازك.',
     },
     credits: {
       eyebrow: '02 / الاعتمادات',
@@ -1314,7 +1332,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'معلومات الخصوصية للموقع الرسمي للفنان HXI.',
       eyebrow: 'الخصوصية',
       heading: 'أقل قدر من التتبع، عن قصد.',
-      lead: 'لا يستخدم هذا الموقع وحدات بكسل إعلانية أو نماذج نشرات بريدية أو تحليلات سلوكية، ولا يضع عمداً ملفات تعريف ارتباط خاصة بالتتبع.',
+      lead: 'لا يستخدم هذا الموقع وحدات بكسل إعلانية أو نماذج نشرات بريدية أو تحليلات سلوكية، ولا يضع عمداً ملفات تعريف ارتباط خاصة بالتتبع. تُحفظ في المتصفح قائمة صغيرة على الجهاز بما استمعت إليه هنا لعرض شريط «لك»؛ وهي لا تغادر جهازك أبداً ولا تُرسَل أي تحليلات.',
       hostingH: 'الاستضافة والسجلات التقنية',
       hostingP: 'قد تعالج بنية الاستضافة معلومات تقنية محدودة مثل عنوان IP أو المتصفح أو سجلات الطلبات لأغراض تقديم الموقع والأمان ومنع إساءة الاستخدام. يتعامل مزود الاستضافة مع هذه السجلات وفق شروطه وممارسات الاحتفاظ الخاصة به.',
       spotifyH: 'Spotify والخدمات الخارجية',
@@ -1386,6 +1404,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: 'Spotifyへの接続は、読み込みを選択した後にのみ行われます。Spotifyが独自のCookieを使用する場合があります。',
       selectedWorks: 'SELECTED WORKS',
       fullCatalog: 'Spotifyで全カタログを見る ↗',
+      mostLiked: 'あなたに',
+      mostLikedNote: 'ここで再生した曲から作られます。端末内にとどまります。',
     },
     credits: {
       eyebrow: '02 / CREDITS',
@@ -1463,7 +1483,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'HXI公式アーティストサイトのプライバシー情報。',
       eyebrow: 'プライバシー',
       heading: '意図的にミニマル。',
-      lead: 'このサイトは広告ピクセル、ニュースレターフォーム、行動分析を使用せず、意図的にファーストパーティの追跡Cookieを設定しません。',
+      lead: 'このサイトは広告ピクセル、ニュースレターフォーム、行動分析を使用せず、意図的にファーストパーティの追跡Cookieを設定しません。ここで再生した内容の小さなリストが「あなたに」の帯を表示するためブラウザ内（端末上）に保存されます。端末外へは出ず、分析データも送信しません。',
       hostingH: 'ホスティングと技術ログ',
       hostingP: '配信、セキュリティ、不正利用防止のため、ホスティング基盤がIPアドレス、ブラウザ情報、リクエストログなどの限定的な技術情報を処理する場合があります。これらのログはホスティング事業者の条件と保持方針に従って扱われます。',
       spotifyH: 'Spotifyと外部サービス',
@@ -1535,6 +1555,8 @@ export const localeData: Record<Locale, LocaleData> = {
       playerNote: '只有在你选择加载后，播放器才会连接 Spotify。Spotify 可能使用自己的 Cookie。',
       selectedWorks: '精选作品',
       fullCatalog: '在 Spotify 查看完整目录 ↗',
+      mostLiked: '为你推荐',
+      mostLikedNote: '根据你在这里播放的内容生成。只保留在你的设备上。',
     },
     credits: {
       eyebrow: '02 / 署名',
@@ -1612,7 +1634,7 @@ export const localeData: Record<Locale, LocaleData> = {
       description: 'HXI 官方艺人网站的隐私信息。',
       eyebrow: '隐私',
       heading: '从设计上保持最简。',
-      lead: '本网站不运行广告像素、邮件订阅表单或行为分析，也不会有意设置第一方跟踪 Cookie。',
+      lead: '本网站不运行广告像素、邮件订阅表单或行为分析，也不会有意设置第一方跟踪 Cookie。为显示“为你推荐”栏，浏览器会在设备上保存一份你在这里播放内容的小清单；它绝不会离开你的设备，也不会发送任何分析数据。',
       hostingH: '托管与技术日志',
       hostingP: '网站托管基础设施可能会为内容交付、安全和防止滥用处理有限的技术信息，例如 IP 地址、浏览器信息或请求日志。这些日志由托管服务商按照其自身条款和保留规则处理。',
       spotifyH: 'Spotify 与外部服务',

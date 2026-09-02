@@ -34,10 +34,10 @@ const SOCIALS = [
 ];
 
 function Ext({
-  href, children, className,
-}: { href: string; children: React.ReactNode; className?: string }) {
+  href, children, className, dataRel,
+}: { href: string; children: React.ReactNode; className?: string; dataRel?: string }) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+    <a href={href} target="_blank" rel="noopener noreferrer" className={className} data-rel={dataRel}>
       {children}
     </a>
   );
@@ -156,11 +156,11 @@ export function SitePage({ locale }: { locale: Locale }) {
                 <h3>help<br />urself</h3>
                 <p>{d.music.breakthroughDesc}</p>
                 <div className="actions">
-                  <Ext href={BREAKTHROUGH_TRACK} className="btn primary">{d.music.listen}</Ext>
+                  <Ext href={BREAKTHROUGH_TRACK} className="btn primary" dataRel="help urself">{d.music.listen}</Ext>
                   <Ext href={SPOTIFY_ARTIST} className="btn ghost">{d.music.fullCatalog}</Ext>
                 </div>
                 {!playerLoaded ? (
-                  <div className="player-gate">
+                  <div className="player-gate" data-rel="help urself">
                     <p className="eyebrow">SPOTIFY</p>
                     <button type="button" className="btn ghost" onClick={() => setPlayerLoaded(true)}>
                       {d.music.loadPlayer}
@@ -211,7 +211,7 @@ export function SitePage({ locale }: { locale: Locale }) {
             <p className="eyebrow mt52">{d.music.selectedWorks}</p>
             <div className="release-grid">
               {d.releases.map((release, i) => (
-                <Ext href={release.href} className="release-card" key={i}>
+                <Ext href={release.href} className="release-card" dataRel={release.name} key={i}>
                   <span className="num">{String(i + 1).padStart(2, '0')}</span>
                   <h3>{release.name}</h3>
                   <small>{release.yearLabel}</small>
@@ -219,6 +219,22 @@ export function SitePage({ locale }: { locale: Locale }) {
                 </Ext>
               ))}
             </div>
+
+            {/* For-you strip — filled by on-device behavior script; empty until a
+                visitor interacts. Data never leaves this browser (privacy note). */}
+            <aside
+              className="foryou"
+              id="foryou"
+              hidden
+              aria-labelledby="foryou-title"
+              data-foryou
+              data-label={d.music.mostLiked}
+              data-note={d.music.mostLikedNote}
+            >
+              <p className="eyebrow" id="foryou-title">{d.music.mostLiked}</p>
+              <div className="foryou-list" data-foryou-list></div>
+              <p className="foryou-note">{d.music.mostLikedNote}</p>
+            </aside>
           </div>
         </section>
 
