@@ -1,0 +1,13 @@
+import type { MetadataRoute } from 'next';
+import { localeCodes, siteUrl } from '@/content/locales';
+
+export const dynamic = 'force-static';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return localeCodes.flatMap((locale) => [
+    { url: `${siteUrl}/${locale}/`, changeFrequency: 'weekly', priority: locale === 'en' ? 1 : 0.9 },
+    { url: `${siteUrl}/${locale}/use/`, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${siteUrl}/${locale}/sync/`, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${siteUrl}/${locale}/privacy/`, changeFrequency: 'yearly', priority: 0.2 }
+  ]);
+}

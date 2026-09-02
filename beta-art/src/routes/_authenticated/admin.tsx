@@ -88,6 +88,23 @@ function AdminPage() {
           </p>
         ) : null}
 
+        <section className="mt-12 border border-border p-6" aria-labelledby="signals-title">
+          <p className="label" id="signals-title">
+            Visitor interest — editor view
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            The visitor-facing site personalises what each person sees next entirely on their own
+            device (localStorage) — that data never leaves the browser and never reaches this panel,
+            by design and in line with the privacy policy. Aggregated interest here will populate
+            only from real signals a connected backend records, such as submitted licence requests.
+            No visitor browsing is or will be collected without disclosure.
+          </p>
+          <p className="mt-4 text-xs text-muted-foreground">
+            Status: no submission backend connected yet — nothing to show. See the launch checklist in{" "}
+            <span className="font-mono">src/config/site.ts</span>.
+          </p>
+        </section>
+
         {data ? (
           <div className="mt-12 overflow-x-auto border border-border">
             <table className="w-full min-w-[52rem] text-left text-sm">

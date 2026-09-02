@@ -70,6 +70,12 @@ function Privacy() {
 
       <LegalSection heading="Cookies and analytics">
         <p>
+          This build sets no advertising or analytics cookies, and there is no separate
+          cookie-settings page because there is nothing to configure. The administration login
+          (not used by ordinary visitors) stores its session in the browser&apos;s local storage via
+          the authentication provider.
+        </p>
+        <p>
           No non-essential analytics service should be enabled merely by publishing this draft. If
           analytics, advertising, embedded social media or other tracking technology is introduced,
           Beta Art must update this policy and implement the consent/information mechanism required by

@@ -1,0 +1,13 @@
+node_modules
+dist
+.output
+.vinxi
+.tanstack/**
+.nitro
+*.local
+.env
+.env.*
+!.env.example
+
+# wrangler yerel derleme önbelleği
+.wrangler/

@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ChuckNorrisRouteImport } from './routes/chuck-norris'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookieSettingsRouteImport } from './routes/cookie-settings'
+import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as LicenseTermsRouteImport } from './routes/license-terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefundsRouteImport } from './routes/refunds'
@@ -33,9 +36,24 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChuckNorrisRoute = ChuckNorrisRouteImport.update({
+  id: '/chuck-norris',
+  path: '/chuck-norris',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookieSettingsRoute = CookieSettingsRouteImport.update({
+  id: '/cookie-settings',
+  path: '/cookie-settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LicenseTermsRoute = LicenseTermsRouteImport.update({
@@ -67,7 +85,10 @@ const PlatesSlugRoute = PlatesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/chuck-norris': typeof ChuckNorrisRoute
   '/contact': typeof ContactRoute
+  '/cookie-settings': typeof CookieSettingsRoute
+  '/kontakt': typeof KontaktRoute
   '/license-terms': typeof LicenseTermsRoute
   '/privacy': typeof PrivacyRoute
   '/refunds': typeof RefundsRoute
@@ -77,7 +98,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/chuck-norris': typeof ChuckNorrisRoute
   '/contact': typeof ContactRoute
+  '/cookie-settings': typeof CookieSettingsRoute
+  '/kontakt': typeof KontaktRoute
   '/license-terms': typeof LicenseTermsRoute
   '/privacy': typeof PrivacyRoute
   '/refunds': typeof RefundsRoute
@@ -89,7 +113,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/chuck-norris': typeof ChuckNorrisRoute
   '/contact': typeof ContactRoute
+  '/cookie-settings': typeof CookieSettingsRoute
+  '/kontakt': typeof KontaktRoute
   '/license-terms': typeof LicenseTermsRoute
   '/privacy': typeof PrivacyRoute
   '/refunds': typeof RefundsRoute
@@ -101,7 +128,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/chuck-norris'
     | '/contact'
+    | '/cookie-settings'
+    | '/kontakt'
     | '/license-terms'
     | '/privacy'
     | '/refunds'
@@ -111,7 +141,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/chuck-norris'
     | '/contact'
+    | '/cookie-settings'
+    | '/kontakt'
     | '/license-terms'
     | '/privacy'
     | '/refunds'
@@ -122,7 +155,10 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/chuck-norris'
     | '/contact'
+    | '/cookie-settings'
+    | '/kontakt'
     | '/license-terms'
     | '/privacy'
     | '/refunds'
@@ -134,7 +170,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ChuckNorrisRoute: typeof ChuckNorrisRoute
   ContactRoute: typeof ContactRoute
+  CookieSettingsRoute: typeof CookieSettingsRoute
+  KontaktRoute: typeof KontaktRoute
   LicenseTermsRoute: typeof LicenseTermsRoute
   PrivacyRoute: typeof PrivacyRoute
   RefundsRoute: typeof RefundsRoute
@@ -164,11 +203,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chuck-norris': {
+      id: '/chuck-norris'
+      path: '/chuck-norris'
+      fullPath: '/chuck-norris'
+      preLoaderRoute: typeof ChuckNorrisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie-settings': {
+      id: '/cookie-settings'
+      path: '/cookie-settings'
+      fullPath: '/cookie-settings'
+      preLoaderRoute: typeof CookieSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/license-terms': {
@@ -224,7 +284,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  ChuckNorrisRoute: ChuckNorrisRoute,
   ContactRoute: ContactRoute,
+  CookieSettingsRoute: CookieSettingsRoute,
+  KontaktRoute: KontaktRoute,
   LicenseTermsRoute: LicenseTermsRoute,
   PrivacyRoute: PrivacyRoute,
   RefundsRoute: RefundsRoute,
