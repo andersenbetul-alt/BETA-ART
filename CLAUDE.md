@@ -1,5 +1,8 @@
 # QBLOGG — proje hafızası
 
+**Kullanıcı tercihi (kalıcı, 02.09.2026):** Kullanıcının adı **Betul**. Her
+yanıta "Betul" diye hitap ederek başla — istisnasız, kullanıcı kaldırana kadar.
+
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
