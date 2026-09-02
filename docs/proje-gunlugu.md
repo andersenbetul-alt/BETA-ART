@@ -621,3 +621,50 @@ hesaplandı), yeniden dağıtıldı, ikinci tarama 0 ihlal verdi
 commit edilmedi — yalnızca Vercel'e doğrudan dosya yüklemesiyle yayında,
 git'e bağlı değil. `care-pilot/README.md`'ye bu ayrım not düşüldü (eski
 `site/index.html` MVP taslağıyla karıştırılmasın diye).
+
+## 02.09.2026 — Oturum-bazlı "sıradaki adım" önerisi: QBLOGG + NAVIAR CARE
+
+Kullanıcı her iki sitede de ziyaretçinin bir sonraki adımda ne görmek/
+almak istediğini tahmin eden bir sistem istedi ve "gerçek ML tabanlı"
+belirtti. Dürüstçe ayrıştırıldı: eğitim verisi (gerçek ziyaretçi
+davranışı, zaman içinde biriken) olmadan bir öğrenilmiş model kurmak
+var olmayan bir sofistikasyon iddia etmek olurdu (`CLAUDE.md`: "abartılı
+iddia bu işte en pahalı hatadır"). Plan iki aşamaya bölündü — Aşama 1
+şimdi kuruldu: gerçek, çalışan, içerik-tabanlı bir öneri motoru, oturum
+içi sinyallerle. Aşama 2 (kalıcı + rızalı + gerçek ML, backend gerektirir)
+kasıtlı olarak ertelendi, ayrı bir onay turu gerektiriyor.
+
+Kullanıcının netleştirmesi üzerine ("düzenleyicinin kendi trafiği
+sinyale karışmasın") her iki sitede de aynı desen: `?qb_editor=1` /
+`?naviar_editor=1` URL parametresi `localStorage`'a kalıcı bir mod
+bayrağı yazıyor (davranış verisi değil, `qb_lang`/`qb_theme` ile aynı
+kategori); bu bayrak açıkken sinyal toplama/okuma tamamen no-op.
+
+**QBLOGG** (`assets/js/app.js`): `sessionStorage['qb_seen']` — bu
+sekmede görüntülenen yazı slug'ları (en fazla 20). Kategori ilgisi
+üstel azalmayla ağırlıklandırılıyor (`weight *= 0.7`), tazelik hafif bir
+ikincil sinyal. `renderPost()`'taki "ilgili yazılar" artık bu skorla
+sıralanıyor; sinyal yoksa (ilk ziyaret) bugünkü deterministik kategori
+eşleşmesine sessizce düşülüyor — regresyon yok. `gizlilik.html`'e iki
+yeni madde eklendi (`qb_seen`, `qb_editor_mode`); `scripts/guvenlik.mjs`
+check 4 artık `sessionStorage.setItem`'ı da tarıyor (önceden yalnızca
+`localStorage.setItem` görüyordu — yeni oturum-bazlı anahtar eklenince
+denetim kör kalırdı, bu düzeltildi). `npm run check` ve `npm run
+guvenlik` yeşil (13 kontrol geçti, 0 yüksek, 0 orta).
+
+**NAVIAR CARE** (`naviar-care.vercel.app`, kaynak scratchpad'de):
+`IntersectionObserver` ile üç fokus alanı kartından (NAV, kommunale
+tjenester, digital veiledning) hangisinin ≥%50 görünür kaldığı
+`sessionStorage`'da ağırlıklı sayaç olarak tutuluyor. Bir alan belirgin
+biçimde öndeyse ("iki yakınının 1,3 katından fazla") iletişim
+bölümünde tek satırlık bir ipucu beliriyor: "Vi ser du er interessert i
+X — vil du starte samtalen der?". Değişiklik `mcp__Vercel__deploy_to_vercel`
+ile yeniden dağıtıldı (`dpl_8BQF4hLFuvCmSb9jwMv7Su21TFUw`, READY), canlı
+bundle'da yeni kod doğrulandı (`naviar_care_session_signal`,
+`naviar_editor_mode`, `IntersectionObserver` string'leri mevcut).
+`docs/naviar/care-pilot/product/mvp-data-map.md`'ye "veri asgariye
+indirilir" ilkesiyle uyumluluğu açıklayan bir bölüm eklendi.
+
+Her iki sinyal de aynı ilkede: anonim, yalnızca oturum boyunca,
+sunucuya hiç gönderilmiyor, sekme kapanınca kayboluyor — GDPR rızası
+gerektirmiyor çünkü kalıcı profil oluşturulmuyor.
