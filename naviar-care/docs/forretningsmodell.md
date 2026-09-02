@@ -17,7 +17,9 @@ modelin ilk test ürünüdür.
 |---|---|---|
 | **NAVIAR CARE Start** | Yapılandırılmış ihtiyaç görüşmesi, ihtiyaç özeti, kişisel günlük yaşam planı, ilgili hizmetlere yönlendirme, 14 günlük takip | Sabit ücret |
 | **NAVIAR CARE Match** | Doğrulanmış yardımcı bulma; konum + uygunluk + ilgi/kişilik eşleştirmesi; saat planlama; hizmet onayı | Start ve Assist'in içinde; hızlı eşleştirme ek ücretli olabilir |
-| **NAVIAR CARE Assist** | Saatlik düşük riskli destek: alışveriş, yürüyüş, sosyal refakat, aktivite/antrenman, ulaşım, basit ev işleri, günlük pratik işler | Saatlik ücret + komisyon |
+| **NAVIAR CARE Assist** | Saatlik düşük riskli destek: alışveriş, yürüyüş, sosyal refakat, aktivite/antrenman, ulaşım ve randevu eşliği, basit ev işleri, yemek hazırlığı, dışarı çıkmaya destek, aile ziyareti/sosyal etkinliğe eşlik, günlük pratik işler | Saatlik ücret + komisyon |
+| **NAVIAR CARE Plan** | Haftalık aktivite planı, saat planı, yardımcı uygunluğu, ulaşım planı, tekrar eden görevler, aile bilgilendirmesi, hizmet sonrası takip | Start'a dahil; ayrıca aylık koordinasyon paketi |
+| **NAVIAR CARE Pårørende** | İhtiyaç haritası, hizmetlere yönlendirme, aile koordinasyonu, takip ve iletişim planı — ana hizmeti güçlendiren ikinci katman | Start + abonelik |
 | **NAVIAR CARE Partner** | Belediye/BPA/bakım kuruluşları: ihtiyaç analizi, hizmet akışı tasarımı, koordinasyon, pilot yönetimi, kalite + kullanıcı deneyimi raporu | Pilot ücreti / abonelik / lisans |
 
 ## Kapsam kuralı (proje lideri, 02.09.2026)
@@ -52,6 +54,11 @@ fon/inovasyon desteği, sınırlı sayıda ücretli koordinasyon görüşmesi.
 1. Sabit başlangıç ücreti (Start)
 2. Saatlik işlem komisyonu (Assist — ödeme öncesi açıkça gösterilir)
 3. Kurumsal abonelik/sözleşme (Partner)
+
+**Ödeme akışı:** kullanıcı toplam tutarı platform üzerinden öder →
+hizmet tamamlanınca ücret yardımcıya aktarılır → NAVIAR CARE komisyonu
+alıkoyar. Komisyon oranı, iptal koşulları, ulaşım giderleri ve ödeme
+dağılımı kullanıcıya ÖNCEDEN açıkça gösterilir.
 
 **Örnek fiyat yapısı** — aileler: ihtiyaç görüşmesi sabit fiyat; plan
 pakete dahil; saatlik destek = yardımcı ücreti + komisyon; hızlı
@@ -96,6 +103,13 @@ metrikleriyle eşli):
 4. Eşleştirme ne kadar sürede gerçekleşiyor? (→ metrik 1)
 5. Saatlik komisyon kârlı mı? (→ metrik 6)
 6. Belediye/partner bu modeli satın almak istiyor mu? (→ Partner görüşmeleri)
+
+## İlk MVP sınırı
+
+MVP yalnızca üç alanı test eder: **sosyal/aktivite desteği, pratik
+günlük yardım, ulaşım ve refakat.** Manuel/yarı otomatik: form →
+koordinatör değerlendirir → yardımcı seçilir → saat planı → ödeme+
+komisyon takibi → değerlendirme. (Yöntem seti: docs/metodoloji.md.)
 
 ## Nihai model
 

@@ -148,9 +148,11 @@ const CATEGORIES = [
 ]
 
 const STEPS = [
-  { n: '1', title: 'Beskriv behovet', body: 'Fortell kort hva du trenger hjelp med — ingen søknad, ingen journaler. Vi vurderer oppgave og risiko sammen med deg.' },
-  { n: '2', title: 'Godkjent hjelper matches', body: 'Vi foreslår en kontrollert hjelper som passer oppgaven, tiden og interessene — og du godkjenner før noe skjer.' },
-  { n: '3', title: 'Time for time, åpen pris', body: 'Hjelpen gjennomføres til avtalt tid. Du betaler per time, og plattformgebyret vises alltid før betaling.' },
+  { n: '1', title: 'Kartlegging', body: 'Vi kartlegger behov, ønsker og hverdagsrutiner — strukturert, uten søknad og uten helsejournal.' },
+  { n: '2', title: 'Behovsavklaring', body: 'Sammen avklarer vi målet bak behovet: aktivitet, mestring og sosial deltakelse — ikke bare oppgaven.' },
+  { n: '3', title: 'Hverdagsplan', body: 'Dere mottar en konkret plan: aktiviteter, støttetimer, transport og familiekoordinering.' },
+  { n: '4', title: 'Kvalitetssikret match', body: 'En koordinator matcher hjelper på kompetanse, egnethet, interesser og tilgjengelighet — dere godkjenner før oppstart.' },
+  { n: '5', title: 'Gjennomføring og oppfølging', body: 'Tjenesten gjennomføres til avtalt tid med full prisoversikt. Vi følger opp kvalitet, trygghet og videre behov.' },
 ]
 
 const TESTIMONIALS = [
@@ -177,8 +179,8 @@ const PLANS = [
     price: 'Fast pris',
     unit: '',
     desc: 'Pilotpakken: kartlegging og en personlig plan for hverdagen.',
-    items: ['Strukturert behovssamtale', 'Behovssammendrag + personlig hverdagsplan', 'Henvisning til riktig støtte', 'Oppfølging etter 14 dager'],
-    cta: 'Book behovssamtale',
+    items: ['Strukturert behovskartlegging', 'Behovssammendrag + personlig hverdagsplan', 'Henvisning til riktig støtte', 'Systematisk oppfølging etter 14 dager'],
+    cta: 'Book behovskartlegging',
     highlight: true,
   },
   {
@@ -368,7 +370,7 @@ function ContactModal({ onClose, initialTopic }: { onClose: () => void; initialT
             </div>
             <h3 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 26, fontWeight: 700, color: '#173d3a', marginBottom: 12 }}>Takk, {name.split(' ')[0]}!</h3>
             <p style={{ fontSize: 15, color: '#576b68', lineHeight: 1.6, marginBottom: 28 }}>
-              Vi har mottatt forespørselen din og tar kontakt på <strong>{email}</strong> innen 24 timer for å koble deg med riktig ekspert.
+              Henvendelsen er registrert. Vi kontakter deg på <strong>{email}</strong> innen 24 timer for behovsavklaring og videre prosess.
             </p>
             <p style={{ fontSize: 12, color: '#576b68' }}>Dette er et pilotprogram. Responsene kan variere fra produksjonstid.</p>
             <button onClick={onClose} style={{
@@ -381,9 +383,9 @@ function ContactModal({ onClose, initialTopic }: { onClose: () => void; initialT
         ) : (
           <>
             <div style={{ marginBottom: 28 }}>
-              <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Kom i gang</span>
-              <h3 id="nc-modal-title" style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 24, fontWeight: 700, color: '#173d3a', marginTop: 8 }}>Fortell oss om situasjonen</h3>
-              <p style={{ fontSize: 14, color: '#576b68', marginTop: 6 }}>Vi kobler deg med riktig ekspert innen én arbeidsdag.</p>
+              <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Behovskartlegging</span>
+              <h3 id="nc-modal-title" style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 24, fontWeight: 700, color: '#173d3a', marginTop: 8 }}>Meld inn behov</h3>
+              <p style={{ fontSize: 14, color: '#576b68', marginTop: 6 }}>Vi kartlegger behovet og matcher riktig hjelper innen én virkedag.</p>
             </div>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -419,7 +421,7 @@ function ContactModal({ onClose, initialTopic }: { onClose: () => void; initialT
               </div>
 
               <div>
-                <label htmlFor="nc-situation" style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Beskriv situasjonen *</label>
+                <label htmlFor="nc-situation" style={{ fontSize: 12.5, fontWeight: 600, color: '#173d3a', display: 'block', marginBottom: 6 }}>Beskriv behovet *</label>
                 <textarea id="nc-situation" required value={situation} onChange={e => setSit(e.target.value)}
                   placeholder="Beskriv behovet — ikke diagnosen. F.eks.: «Mor trenger hjelp til å søke hjemmetjenester i Bergen.»"
                   rows={4}
@@ -447,10 +449,10 @@ function ContactModal({ onClose, initialTopic }: { onClose: () => void; initialT
                 fontSize: 15, fontWeight: 700,
                 border: 'none', borderRadius: 6, cursor: 'pointer',
               }}>
-                Send forespørsel →
+                Send henvendelse →
               </button>
               <p style={{ fontSize: 11.5, color: '#576b68', textAlign: 'center', margin: 0 }}>
-                Ingen binding. Avbryt når som helst.
+                Uforpliktende henvendelse — ingen binding.
               </p>
             </form>
           </>
@@ -486,9 +488,9 @@ type ChatMsg = { from: 'navi' | 'meg'; text: string }
 
 const NAVI_ANSWERS: { keys: RegExp; text: string; topic?: string }[] = [
   { keys: /pris|koste|kr|betal|gebyr/i,
-    text: 'NAVIAR CARE Start er pilotpakken til fast pris: behovssamtale, personlig plan og oppfølging etter 14 dager. NAVIAR CARE Assist koster fra 250 kr per time (eksempelpris), pluss plattformgebyr på 15–25 % som alltid vises før du betaler. Vil du booke en behovssamtale?' },
-  { keys: /fungerer|hvordan|steg|virker/i,
-    text: 'Tre steg: du beskriver behovet, en koordinator matcher deg med en kontrollert hjelper (et menneske godkjenner — aldri en algoritme alene), og du betaler per time med åpen pris. Skal jeg åpne skjemaet?' },
+    text: 'NAVIAR CARE Start er pilotpakken til fast pris: behovssamtale, personlig plan og oppfølging etter 14 dager. NAVIAR CARE Assist koster fra 250 kr per time (eksempelpris), pluss plattformgebyr på 15–25 % som alltid vises før du betaler. Vil du booke en behovskartlegging?' },
+  { keys: /fungerer|hvordan|steg|virker|metode/i,
+    text: 'Vi arbeider i fem steg: kartlegging av behovet, behovsavklaring, en konkret hverdagsplan, kvalitetssikret match (alltid godkjent av et menneske) og oppfølging etter gjennomført tjeneste. Skal jeg åpne behovskartleggingen?' },
   { keys: /hjelper|jobb|søk|arbeid|bli/i,
     text: 'Så fint at du vil bli hjelper! Du må være 18+, vise politiattest (vi lagrer den aldri) og sette dine egne tilgjengelighetstider. Jeg kan åpne søknadsskjemaet for deg.', topic: 'Bli hjelper' },
   { keys: /fritid|tur|aktivitet|følge|svøm/i,
@@ -712,9 +714,10 @@ function Hero({ onCta, next }: { onCta: (topic?: string) => void; next: NextStep
             </h1>
 
             <p style={{ fontSize: 18, lineHeight: 1.65, color: '#576b68', maxWidth: 480, marginBottom: 40 }}>
-              Naviar kobler dine nærmeste med en godkjent hjelper — time for
-              time: følge, ærend, husarbeid og aktivitet. Fagfolk, tjenester og
-              familie samlet rundt én plan, uten venteliste.
+              NAVIAR CARE kartlegger behovet, matcher en kvalitetssikret
+              hjelper og følger opp gjennomføringen — time for time, med full
+              prisoversikt før bestilling. Fagfolk, tjenester og familie samlet
+              rundt én plan.
             </p>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
@@ -725,7 +728,7 @@ function Hero({ onCta, next }: { onCta: (topic?: string) => void; next: NextStep
                 fontSize: 15, fontWeight: 600,
                 borderRadius: 6, border: 'none', cursor: 'pointer',
               }}>
-                Start gratis — ingen binding
+                Book behovskartlegging
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
@@ -734,7 +737,7 @@ function Hero({ onCta, next }: { onCta: (topic?: string) => void; next: NextStep
                 fontSize: 15, fontWeight: 500,
                 color: '#173d3a', background: 'none', border: 'none', cursor: 'pointer',
                 textDecoration: 'underline', textUnderlineOffset: 3,
-              }}>Se hvordan det fungerer</button>
+              }}>Slik arbeider vi</button>
             </div>
 
             {next && (
@@ -847,7 +850,7 @@ function HowItWorks() {
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ marginBottom: 56 }}>
           <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Slik fungerer det</span>
-          <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Tre steg. Klar hjelp.</h2>
+          <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Fra behov til oppfølging — i fem steg</h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32 }}>
           {STEPS.map((s, i) => (
@@ -880,9 +883,10 @@ function Categories({ onCta, top }: { onCta: (topic?: string) => void; top: stri
           <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Hjelp time for time</span>
           <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>All lavrisiko hjelp — time for time</h2>
           <p style={{ fontSize: 16, color: '#576b68', marginTop: 12, maxWidth: 520 }}>
-            Sju vanlige tjenester — og alt annet som er lavrisiko: beskriv
-            oppgaven, så vurderer en koordinator den. Gebyret vises før du
-            bekrefter og trekkes først når hjelpen er fullført.
+            Lavterskel bistand i hverdagen, levert av kvalitetssikrede
+            hjelpere. Omfanget avgrenses av risiko — oppgaver utenfor
+            kategoriene vurderes individuelt av en koordinator. Gebyret
+            fremgår før bekreftelse og belastes ved fullført tjeneste.
           </p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
@@ -999,10 +1003,10 @@ function Experts({ onCta }: { onCta: () => void }) {
 
 function Fritidskontakt({ onCta }: { onCta: () => void }) {
   const points = [
-    'Match på felles interesser og personlighet — godkjent av et menneske, ikke en algoritme',
-    'I snitt 3–5 timer per uke, tilpasset behov og form',
-    'Individuelt eller i gruppe: kultur, natur, trening og sosiale treff',
-    'Alle fritidskontakter viser politiattest før oppdrag — vi lagrer den aldri',
+    'Match basert på interesser, egnethet og kommunikasjonsstil — godkjent av koordinator',
+    'Gjennomsnittlig 3–5 timer per uke, etter avtalt aktivitetsplan',
+    'Individuelt eller i gruppe: kultur, aktivitet, trening og sosial deltakelse',
+    'Politiattest fremvises før oppdrag — attesten lagres ikke',
   ]
   return (
     <section id="fritid" style={{ background: '#d9ebe2', padding: '80px 24px', scrollMarginTop: 68 }}>
@@ -1011,9 +1015,10 @@ function Fritidskontakt({ onCta }: { onCta: () => void }) {
           <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.1em', color: '#576b68', textTransform: 'uppercase' }}>Aktivitet og fellesskap</span>
           <h2 style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 'clamp(28px, 3.5vw, 42px)', fontWeight: 700, color: '#173d3a', marginTop: 12, letterSpacing: '-0.02em' }}>Fritidskontakt for eldre</h2>
           <p style={{ fontSize: 16, color: '#576b68', marginTop: 14, lineHeight: 1.65 }}>
-            Ikke alle behov er faglige. En fritidskontakt følger dine nærmeste til
-            aktiviteter, bygger nettverk og gir en aktiv, meningsfull fritid —
-            en brobygger til sosial deltakelse.
+            Tilrettelagt fritid er en etablert kommunal tjenesteform. NAVIAR
+            CARE leverer tilsvarende aktivitets- og deltakelsesstøtte:
+            strukturert matching, kvalitetssikring og systematisk oppfølging —
+            individuelt eller i gruppe.
           </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
             <button onClick={() => { track('cat', 'Tur og aktivitet'); onCta('Tur og aktivitet') }} style={{
@@ -1167,7 +1172,7 @@ function ForSection({ onCta }: { onCta: () => void }) {
             display: 'inline-flex', alignItems: 'center', gap: 8,
             padding: '12px 24px', background: '#173d3a', color: '#fffdf8',
             fontSize: 14, fontWeight: 600, borderRadius: 6, border: 'none', cursor: 'pointer',
-          }}>Start gratis <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          }}>Meld inn behov <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         </div>
 
         <div style={{ background: '#d9ebe2', padding: '52px 48px' }}>
@@ -1274,7 +1279,7 @@ function FinalCTA({ onCta }: { onCta: () => void }) {
         }}>Ikke la usikkerheten<br/>vente til i morgen</h2>
 
         <p style={{ fontSize: 17, color: '#7db5ad', maxWidth: 400, margin: '0 auto 44px', lineHeight: 1.6 }}>
-          Registrer deg i dag og få eldreomsorgen koordinert — når du trenger det, ikke når systemet passer det.
+          Meld inn behovet i dag — vi kartlegger, matcher og følger opp, når det passer dere.
         </p>
 
         {done ? (
