@@ -11,13 +11,18 @@ onayı ister — fatura göndermek, ödeme talep etmek, MVA beyanı hazırlamak,
 bir müşteriye e-posta taslağı dışında bir şey yollamak. Bu beceri hiçbir
 zaman kendi başına harekete geçmez; taslak hazırlar, onay bekler.
 
-## Durum: iskelet — gerçek operasyonel veri eksik
+## Durum: kısmen dolu — ticari parametreler karara bağlandı, operasyonel veri hâlâ eksik
 
 Bu beceri iki farklı oturumdan gelen bilgiyle kuruldu: ilk talimat (isim,
 sürüm, kapsam açıklaması — girişim kodları dahil) ile 29–30.08.2026'da bu
 oturuma aktarılan BETA ART üç-mülk sistemi belgeleri (`PROJECTMANIFEST.md`,
 `BETAARTROUTEMAP.md`, `BETAARTPROJECTCODES.md`). İkisi arasında **bir
 çelişki var, sessizce çözülmedi** — aşağıda §1'de.
+
+01–02.09.2026 güncellemesi: kurucu iki yapısal kararı verdi (site modeli ve
+komisyon — §1a), Galleri & Event konsepti bağımsız değerlendirmeden geçti
+(65/100, karar günlüğüyle; artifact: "Galleri & Event Değerlendirmesi").
+Kararlaşan her rakam §1a'da; §3'teki boşluklar hâlâ boş ve uydurulmayacak.
 
 ## 1. Girişimler — doğrulanmış kodlar, bir çelişki notuyla
 
@@ -38,6 +43,40 @@ BETA ART belgesinde geçmiyor. İki olası okuma: (a) BAC, Galleri resmileşmede
 BETA ART'ın parçası olmayan, tamamen başka bir girişim. **Ben seçim yapmadım
 — kullanıcı hangisinin doğru olduğunu söylemeden bu beceri BAC/abonelik
 varsayımıyla çalışmaz.**
+
+## 1a. Karara bağlanan ticari parametreler (01–02.09.2026)
+
+Bunlar kurucu kararı veya canlı siteden doğrulanmış gerçeklerdir; taslak
+değildir. Değişirlerse önce burası güncellenir.
+
+- **Site modeli:** `beta-art/BETA_ART_MASTER.md` tek-site kuralı kurucu
+  tarafından onaylandı — üç mülk ayrı site değil, beta-art.com altında
+  bölüm/rotadır. BAP/BAG/BAB kodları **muhasebe/girişim kategorisi** olarak
+  yaşamaya devam eder (gelir-gider ayrıştırması hâlâ bu üçe göre yapılır).
+- **BAG komisyonu — kurucu kararı, 01.09:** satış/lisans başına
+  **%30 Beta Art / %70 sanatçı**. Sektör bandının (%35–45; Saatchi %40)
+  altında — bilinçli: sanatçı çekimi. İnce marjın ön şartı salon modelinin
+  düşük sabit maliyeti.
+- **BAG ritmi — salon modeli:** yılda **1–2 küratörlü sergi**; sürekli
+  platform değil. Sergi başına 5–8 sanatçı hedefi (pilot ölçütleriyle
+  birlikte değerlendirme raporunda).
+- **BAG davet kuralı:** açılış davetleri **talep edilir, satılmaz** —
+  bilet gelir kalemi varsayılmaz; etkinlik geliri (sponsorluk vb.) henüz
+  karar değil, test konusu.
+- **BAG aday gelir (karar DEĞİL):** 2. sergiden itibaren doğrulama
+  **inceleme ücreti** denenebilir — ilke sabit: rozet satılmaz, inceleme
+  ücretlendirilir; kabul garantisi yoktur. Kurucu onayı olmadan açılmaz.
+- **BAP lisans çapası (canlı siteden):** Personal **kr 190** sabit;
+  Commercial/Extended/Custom "price on request". Plaka başına gösterilen
+  tek fiyat "from kr 190".
+- **Kanal politikası:** Galleri/arşiv plakaları stok platformlarına
+  **konmaz** — %70 vaadi ve seçkinlik iddiası, aynı işin Adobe Stock'ta
+  (%33 pay, abonelikte ~0,99 $/lisans) satılmasıyla çöker. İkinci katman
+  iş için stok kanalı ayrı ve açık bir kurucu kararı gerektirir.
+- **Ödeme maliyeti referansı:** Stripe Norveç — yurt içi kart %1,5 + 1,80 kr
+  (yurt dışı +%3,25, döviz +%2; kaynak: CLAUDE.md kaydı — stripe.com bu
+  ortamda engelli, fiyat kararı öncesi elle doğrula).
+- **Müşteri e-postası:** hallo@beta-art.com (canlı site).
 
 ## 2. Dil kuralı — kısmen doğrulandı
 
@@ -85,9 +124,15 @@ Yukarıdaki boşluklar doldurulunca:
    kullanıcı onayı ve muhtemelen bir muhasebeci/Altinn adımı gerekir.
 3. **Fatura/tahsilat taslağı** — Stripe kaydı veya elle girilen bir satıştan
    fatura taslağı üretir, göndermeden önce onay ister.
-4. **Müşteri kaydı** — BAG (Galleri) sergi/etkinlik katılımcıları, BAB
-   (Business) pilot görüşme talepleri, BAP (Privat) lisans talepleri —
+4. **Müşteri kaydı** — BAG (Galleri) için artık iki ayrı akış var:
+   **sanatçı başvuruları** (açık çağrı → küratöryel inceleme → %70/%30
+   sözleşmesi) ve **davet talepleri** (misafir; talep edilir, satılmaz).
+   BAB (Business) pilot görüşme talepleri, BAP (Privat) lisans talepleri —
    hangi "pipeline dosyası" formatında tutulacaksa oraya yazar.
+5. **BAG satış kaydı** — her satışta ayrıştırma sabittir: brüt → %70
+   sanatçı payı (borç olarak kaydedilir) → %30 Beta Art komisyonu →
+   komisyondan Stripe kesintisi düşülür; MVA etkisi muhasebeciye
+   doğrulatılır (sanat satışı/konsinye MVA'sı bu ortamda doğrulanamadı).
 
 ## 5. Sınır — bu beceri neyi yapmaz
 
