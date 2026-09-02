@@ -401,6 +401,21 @@
   function renderHome() {
     var box = $('#latestPosts');
     if (!box) return;
+    /* Dönen ziyaretçiye kişiselleştirilmiş öneri: QB_BEH varsa ve en az iki
+       oturumdan gelen bir ziyaretçiyse, okuma geçmişine göre yazılar öne çıkar.
+       Yeterli öneri yoksa standart liste gösterilir. */
+    var BEH = window.QB_BEH;
+    if (BEH && BEH.isReturning()) {
+      var recs = BEH.recommend(POSTS, 3);
+      if (recs.length) {
+        var kicker = $('#blogKicker'), heading = $('#blogTitle'), sub = $('#blogSub');
+        if (kicker) kicker.textContent = t('beh.kicker');
+        if (heading) heading.textContent = t('beh.title');
+        if (sub) sub.textContent = t('beh.sub');
+        box.innerHTML = recs.map(function (p) { return cardHTML(p, 3); }).join('');
+        return;
+      }
+    }
     box.innerHTML = sorted().slice(0, 3).map(function (p) { return cardHTML(p, 3); }).join('');
   }
 
@@ -514,6 +529,9 @@
       '</aside>' +
       '<h2 style="margin-top:52px">' + esc(t('posts.related')) + '</h2>' +
       '<div class="posts">' + related.map(function (p) { return cardHTML(p, 3); }).join('') + '</div>';
+
+    /* Okuma davranışı kaydı: yazı slug ve kategori QB_BEH'e iletilir. */
+    if (window.QB_BEH) QB_BEH.trackRead(post.slug, post.category);
 
     var share = $('#shareBtn');
     if (share) share.addEventListener('click', function () {

@@ -116,7 +116,8 @@ window.QB_I18N.tr = {
   'footer.quality': 'Kalite güvencesi',
   'footer.sample': 'Örnek teslimat',
   'footer.rights': 'Tüm hakları saklıdır.',
-  'ui.theme': 'Temayı değiştir', 'ui.lang': 'Dil', 'ui.menu': 'Menü', 'ui.top': 'Yukarı çık'
+  'ui.theme': 'Temayı değiştir', 'ui.lang': 'Dil', 'ui.menu': 'Menü', 'ui.top': 'Yukarı çık',
+  'beh.kicker': 'Senin için', 'beh.title': 'Önerilen yazılar', 'beh.sub': 'Okuma geçmişine göre seçildi.'
 };
 
 window.QB_I18N.en = {
@@ -216,7 +217,8 @@ window.QB_I18N.en = {
   'footer.quality': 'Quality assurance',
   'footer.sample': 'Sample deliverable',
   'footer.rights': 'All rights reserved.',
-  'ui.theme': 'Toggle theme', 'ui.lang': 'Language', 'ui.menu': 'Menu', 'ui.top': 'Back to top'
+  'ui.theme': 'Toggle theme', 'ui.lang': 'Language', 'ui.menu': 'Menu', 'ui.top': 'Back to top',
+  'beh.kicker': 'For you', 'beh.title': 'Recommended reads', 'beh.sub': 'Picked based on what you have read.'
 };
 
 window.QB_I18N.zh = {
@@ -316,7 +318,8 @@ window.QB_I18N.zh = {
   'footer.quality': '质量保障',
   'footer.sample': '交付示例',
   'footer.rights': '版权所有。',
-  'ui.theme': '切换主题', 'ui.lang': '语言', 'ui.menu': '菜单', 'ui.top': '回到顶部'
+  'ui.theme': '切换主题', 'ui.lang': '语言', 'ui.menu': '菜单', 'ui.top': '回到顶部',
+  'beh.kicker': '为你推荐', 'beh.title': '精选文章', 'beh.sub': '根据您的阅读历史推荐。'
 };
 
 window.QB_I18N.hi = {
@@ -416,7 +419,8 @@ window.QB_I18N.hi = {
   'footer.quality': 'गुणवत्ता आश्वासन',
   'footer.sample': 'नमूना डिलीवरी',
   'footer.rights': 'सर्वाधिकार सुरक्षित।',
-  'ui.theme': 'थीम बदलें', 'ui.lang': 'भाषा', 'ui.menu': 'मेन्यू', 'ui.top': 'ऊपर जाएँ'
+  'ui.theme': 'थीम बदलें', 'ui.lang': 'भाषा', 'ui.menu': 'मेन्यू', 'ui.top': 'ऊपर जाएँ',
+  'beh.kicker': 'आपके लिए', 'beh.title': 'अनुशंसित लेख', 'beh.sub': 'आपकी पढ़ी गई सामग्री के आधार पर।'
 };
 
 window.QB_I18N.es = {
@@ -516,7 +520,8 @@ window.QB_I18N.es = {
   'footer.quality': 'Garantía de calidad',
   'footer.sample': 'Ejemplo de entrega',
   'footer.rights': 'Todos los derechos reservados.',
-  'ui.theme': 'Cambiar tema', 'ui.lang': 'Idioma', 'ui.menu': 'Menú', 'ui.top': 'Volver arriba'
+  'ui.theme': 'Cambiar tema', 'ui.lang': 'Idioma', 'ui.menu': 'Menú', 'ui.top': 'Volver arriba',
+  'beh.kicker': 'Para ti', 'beh.title': 'Artículos recomendados', 'beh.sub': 'Seleccionados según lo que has leído.'
 };
 
 window.QB_I18N.ar = {
@@ -616,7 +621,8 @@ window.QB_I18N.ar = {
   'footer.quality': 'ضمان الجودة',
   'footer.sample': 'نموذج تسليم',
   'footer.rights': 'جميع الحقوق محفوظة.',
-  'ui.theme': 'تبديل السمة', 'ui.lang': 'اللغة', 'ui.menu': 'القائمة', 'ui.top': 'العودة إلى الأعلى'
+  'ui.theme': 'تبديل السمة', 'ui.lang': 'اللغة', 'ui.menu': 'القائمة', 'ui.top': 'العودة إلى الأعلى',
+  'beh.kicker': 'لك', 'beh.title': 'مقالات مقترحة', 'beh.sub': 'مختارة بناءً على ما قرأته.'
 };
 
 window.QB_I18N.fr = {
@@ -716,7 +722,8 @@ window.QB_I18N.fr = {
   'footer.quality': 'Garantie qualité',
   'footer.sample': 'Exemple de livrable',
   'footer.rights': 'Tous droits réservés.',
-  'ui.theme': 'Changer de thème', 'ui.lang': 'Langue', 'ui.menu': 'Menu', 'ui.top': 'Haut de page'
+  'ui.theme': 'Changer de thème', 'ui.lang': 'Langue', 'ui.menu': 'Menu', 'ui.top': 'Haut de page',
+  'beh.kicker': 'Pour vous', 'beh.title': 'Articles recommandés', 'beh.sub': 'Sélectionnés selon vos lectures.'
 };
 
 window.QB_I18N.pt = {
@@ -816,7 +823,8 @@ window.QB_I18N.pt = {
   'footer.quality': 'Garantia de qualidade',
   'footer.sample': 'Exemplo de entrega',
   'footer.rights': 'Todos os direitos reservados.',
-  'ui.theme': 'Alternar tema', 'ui.lang': 'Idioma', 'ui.menu': 'Menu', 'ui.top': 'Voltar ao topo'
+  'ui.theme': 'Alternar tema', 'ui.lang': 'Idioma', 'ui.menu': 'Menu', 'ui.top': 'Voltar ao topo',
+  'beh.kicker': 'Para você', 'beh.title': 'Artigos recomendados', 'beh.sub': 'Selecionados com base no que você leu.'
 };
 
 window.QB_I18N.ru = {
@@ -916,7 +924,8 @@ window.QB_I18N.ru = {
   'footer.quality': 'Гарантия качества',
   'footer.sample': 'Пример поставки',
   'footer.rights': 'Все права защищены.',
-  'ui.theme': 'Сменить тему', 'ui.lang': 'Язык', 'ui.menu': 'Меню', 'ui.top': 'Наверх'
+  'ui.theme': 'Сменить тему', 'ui.lang': 'Язык', 'ui.menu': 'Меню', 'ui.top': 'Наверх',
+  'beh.kicker': 'Для вас', 'beh.title': 'Рекомендуемые статьи', 'beh.sub': 'Подобрано на основе прочитанного.'
 };
 
 window.QB_I18N.no = {
@@ -1016,7 +1025,8 @@ window.QB_I18N.no = {
   'footer.quality': 'Kvalitetssikring',
   'footer.sample': 'Eksempel på leveranse',
   'footer.rights': 'Alle rettigheter forbeholdt.',
-  'ui.theme': 'Bytt tema', 'ui.lang': 'Språk', 'ui.menu': 'Meny', 'ui.top': 'Til toppen'
+  'ui.theme': 'Bytt tema', 'ui.lang': 'Språk', 'ui.menu': 'Meny', 'ui.top': 'Til toppen',
+  'beh.kicker': 'For deg', 'beh.title': 'Anbefalte artikler', 'beh.sub': 'Valgt basert på det du har lest.'
 };
 
 /* ---------------------------------------------------------------

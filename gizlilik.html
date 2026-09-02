@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title >QBLOGG — Gizlilik ve veri koruma</title>
-<meta name="description" content="QBLOGG hangi veriyi topluyor, neden topluyor, nerede tutuyor ve nasıl silinir. Çerez yok, izleyici yok, üçüncü tarafa istek yok.">
+<meta name="description" content="QBLOGG hangi veriyi topluyor, neden topluyor, nerede tutuyor ve nasıl silinir. Çerez yok, izleyici yok, üçüncü tarafa istek yok; içerik tercihleri yalnızca kendi tarayıcınızda saklanır.">
 <meta name="theme-color" content="#082C54" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0c0e14" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
@@ -91,9 +91,22 @@
           <li><code>qb_theme</code> — açık/koyu tema tercihiniz.</li>
           <li><code>qb_subs</code> — yalnızca bülten servisi henüz bağlı değilken, girdiğiniz e-posta
           adresinin geçici kopyası. Servis bağlandığında bu kayıt kullanılmıyor.</li>
+          <li><code>qb_beh</code> — içerik tercihleri. Okuduğunuz yazıların kategorilerini sayar;
+          sonraki ziyaretinizde ilginizi çekebilecek yazıları öne çıkarmak için kullanılır.
+          Kimlik bilgisi içermez; yalnızca kategori sayıları ve okunan slug listesi tutulur.</li>
+          <li><code>qb_ses</code> — oturum işaretleyicisi (sessionStorage). Tarayıcı kapatıldığında
+          otomatik silinir. Aynı oturumda birden fazla sayfayı açmanın bir ziyaret olarak sayılmasını sağlar.</li>
         </ul>
-        <p>Bunlar çerez değil, tarayıcı deposudur (localStorage) ve tercih saklamak dışında bir işe
-        yaramaz. Tarayıcınızın site verilerini temizleyerek her an silebilirsiniz.</p>
+        <p>Bunlar çerez değil, tarayıcı deposudur (localStorage / sessionStorage) ve tercih ile
+        içerik önerisi saklamak dışında bir işe yaramaz. Tarayıcınızın site verilerini temizleyerek
+        her an silebilirsiniz. Hiçbiri bize veya üçüncü bir tarafa gönderilmez.</p>
+
+        <h2>İçerik tercihleri</h2>
+        <p>Okuduğunuz yazıların kategorisi (örneğin "yapay zekâ" veya "güvenlik"), <code>qb_beh</code>
+        anahtarı altında yalnızca kendi tarayıcınızda tutulur. Bu veriyi, sonraki ziyaretinizde
+        ilginizi çekebilecek içerikleri ana sayfada öne çıkarmak için kullanırız. Sunucuya
+        hiçbir şey gönderilmez; başka bir cihaza veya oturuma taşınmaz. "Tarayıcı geçmişini temizle"
+        veya "site verilerini sil" komutuyla istediğiniz zaman kaldırabilirsiniz.</p>
 
         <h2>Formlar</h2>
         <h3>Brief ve yazar başvuru formu</h3>
