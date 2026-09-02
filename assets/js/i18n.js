@@ -1802,3 +1802,15 @@ Object.assign(window.QB_I18N.fr, { 'beh.recTitle': 'Vous pourriez aussi aimer', 
 Object.assign(window.QB_I18N.pt, { 'beh.recTitle': 'Você também pode gostar', 'beh.cont': 'Continuar lendo' });
 Object.assign(window.QB_I18N.ru, { 'beh.recTitle': 'Вам также может понравиться', 'beh.cont': 'Продолжить чтение' });
 Object.assign(window.QB_I18N.no, { 'beh.recTitle': 'Du liker kanskje også', 'beh.cont': 'Fortsett å lese' });
+
+/* Sonraki adım nudge bar */
+Object.assign(window.QB_I18N.tr, { 'beh.next': 'Sonraki adım', 'beh.nextBrief': 'Brief gönder', 'beh.nextBlog': 'Daha fazla oku', 'beh.nextNews': 'Bültene katıl', 'beh.nextPkg': 'Paketleri gör' });
+Object.assign(window.QB_I18N.en, { 'beh.next': 'Next step', 'beh.nextBrief': 'Send a brief', 'beh.nextBlog': 'Read more', 'beh.nextNews': 'Subscribe', 'beh.nextPkg': 'See packages' });
+Object.assign(window.QB_I18N.zh, { 'beh.next': '下一步', 'beh.nextBrief': '发送需求单', 'beh.nextBlog': '继续浏览', 'beh.nextNews': '订阅通讯', 'beh.nextPkg': '查看套餐' });
+Object.assign(window.QB_I18N.hi, { 'beh.next': 'अगला कदम', 'beh.nextBrief': 'ब्रीफ भेजें', 'beh.nextBlog': 'और पढ़ें', 'beh.nextNews': 'सदस्यता लें', 'beh.nextPkg': 'पैकेज देखें' });
+Object.assign(window.QB_I18N.es, { 'beh.next': 'Siguiente paso', 'beh.nextBrief': 'Enviar solicitud', 'beh.nextBlog': 'Leer más', 'beh.nextNews': 'Suscribirse', 'beh.nextPkg': 'Ver paquetes' });
+Object.assign(window.QB_I18N.ar, { 'beh.next': 'الخطوة التالية', 'beh.nextBrief': 'أرسل طلبك', 'beh.nextBlog': 'اقرأ المزيد', 'beh.nextNews': 'اشترك', 'beh.nextPkg': 'عرض الباقات' });
+Object.assign(window.QB_I18N.fr, { 'beh.next': 'Prochaine étape', 'beh.nextBrief': 'Envoyer un brief', 'beh.nextBlog': 'Lire plus', 'beh.nextNews': 'S\'abonner', 'beh.nextPkg': 'Voir les offres' });
+Object.assign(window.QB_I18N.pt, { 'beh.next': 'Próximo passo', 'beh.nextBrief': 'Enviar brief', 'beh.nextBlog': 'Ler mais', 'beh.nextNews': 'Assinar', 'beh.nextPkg': 'Ver pacotes' });
+Object.assign(window.QB_I18N.ru, { 'beh.next': 'Следующий шаг', 'beh.nextBrief': 'Отправить бриф', 'beh.nextBlog': 'Читать ещё', 'beh.nextNews': 'Подписаться', 'beh.nextPkg': 'Смотреть пакеты' });
+Object.assign(window.QB_I18N.no, { 'beh.next': 'Neste steg', 'beh.nextBrief': 'Send forespørsel', 'beh.nextBlog': 'Les mer', 'beh.nextNews': 'Abonner', 'beh.nextPkg': 'Se pakker' });

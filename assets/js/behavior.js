@@ -179,6 +179,102 @@
     slot.hidden = false;
   }
 
+  /* ---------- sonraki adım: bölüm görünürlük gözlemcisi ---------- */
+  function observeSections(state) {
+    if (!window.IntersectionObserver) return;
+    var targets = ['#packages', '#services', '#newsletter', '#postList', '.plan--featured'];
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var id = e.target.id || e.target.className.split(' ')[0];
+        recordSig(state, 'section_view', { id: id });
+        save(state);
+      });
+    }, { threshold: 0.4 });
+    targets.forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) io.observe(el);
+    });
+  }
+
+  /* ---------- sonraki adım: niyet puanı ---------- */
+  function computeNextStep(state) {
+    var sigs  = state.signals || [];
+    var reads = state.reads   || [];
+
+    var briefScore = 0, newsScore = 0;
+    sigs.forEach(function (s) {
+      if (s.type === 'cta_click')   briefScore += 3;
+      if (s.type === 'pkg_hover')   briefScore += 1;
+      if (s.type === 'nudge_click' && s.data && s.data.step === 'brief') briefScore += 2;
+      if (s.type === 'section_view') {
+        if (s.data && s.data.id === 'packages')   briefScore += 0.5;
+        if (s.data && s.data.id === 'newsletter')  newsScore  += 1;
+      }
+    });
+
+    var blogScore = reads.length * 1.5;
+    if (reads.length >= 2) newsScore += 1;
+
+    if (briefScore >= 3)                       return 'brief';
+    if (blogScore  >= 4.5 && briefScore < 2)   return 'blog';
+    if (newsScore  >= 2)                       return 'news';
+    return 'pkg';
+  }
+
+  /* ---------- sonraki adım: nudge bar ---------- */
+  function renderNudgeBar(state, lang, i18n) {
+    var SESS_KEY = 'qb_nudge';
+    try { if (sessionStorage.getItem(SESS_KEY)) return; } catch (e) {}
+
+    /* İzin verilen sayfalar: dönüştürme sayfasında ve yasal sayfalarda gereksiz */
+    var page = window.location.pathname.split('/').pop();
+    if (page === 'work.html' || page === 'gizlilik.html' || page === 'kosullar.html') return;
+
+    var step = computeNextStep(state);
+    var KEY_MAP  = { brief: 'beh.nextBrief', blog: 'beh.nextBlog', news: 'beh.nextNews', pkg: 'beh.nextPkg' };
+    var HREF_MAP = { brief: 'work.html', blog: 'blog.html', news: '#newsletter', pkg: '#packages' };
+
+    var label   = i18n[KEY_MAP[step]]  || step;
+    var heading = i18n['beh.next']     || 'Next step';
+    var href    = HREF_MAP[step];
+
+    var bar = document.createElement('div');
+    bar.id = 'behNudge';
+    bar.setAttribute('role', 'complementary');
+    bar.setAttribute('aria-label', heading);
+    bar.innerHTML =
+      '<a class="beh-nudge__link" href="' + esc(href) + '">' +
+        '<span class="beh-nudge__head">' + esc(heading) + '</span>' +
+        '<span class="beh-nudge__cta">' + esc(label) + ' →</span>' +
+      '</a>' +
+      '<button class="beh-nudge__close" aria-label="Kapat" type="button">×</button>';
+    document.body.appendChild(bar);
+
+    bar.querySelector('.beh-nudge__close').addEventListener('click', function () {
+      bar.classList.add('beh-nudge--out');
+      try { sessionStorage.setItem(SESS_KEY, '1'); } catch (e) {}
+      setTimeout(function () { if (bar.parentNode) bar.parentNode.removeChild(bar); }, 320);
+    });
+
+    bar.querySelector('.beh-nudge__link').addEventListener('click', function () {
+      recordSig(state, 'nudge_click', { step: step });
+      save(state);
+    });
+
+    /* Kaydırma eşiğinde göster (sayfa yüksekliğinin %35'i) */
+    var shown = false;
+    function maybeShow() {
+      if (shown) return;
+      var total = document.body.scrollHeight - window.innerHeight;
+      if (total <= 0 || window.scrollY / total < 0.35) return;
+      shown = true;
+      bar.classList.add('beh-nudge--visible');
+      window.removeEventListener('scroll', maybeShow);
+    }
+    window.addEventListener('scroll', maybeShow, { passive: true });
+  }
+
   /* ---------- sinyal: CTA tıklamaları ve paket üzerine gelme ---------- */
   function hookSignals(state) {
     document.querySelectorAll('[href="work.html"]').forEach(function (el) {
@@ -207,6 +303,8 @@
     save(state);
 
     hookSignals(state);
+    observeSections(state);
+    renderNudgeBar(state, lang, i18n);
 
     if (page === 'post.html' || page === 'post') {
       renderPostRec(state, posts, lang, i18n);
