@@ -1,5 +1,10 @@
 # QBLOGG — proje hafızası
 
+## Yanıt kuralı (değiştirilemez)
+
+**Her yanıt "Betul," sözcüğüyle başlar.** Kısa yanıt, kod bloğu, liste — fark etmez;
+ilk satır her zaman "Betul," olur. Bu kural kullanıcının kalıcı talebidir (02.09.2026).
+
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
