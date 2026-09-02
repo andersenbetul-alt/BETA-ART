@@ -172,29 +172,29 @@ const TESTIMONIALS = [
 
 const PLANS = [
   {
-    name: 'Timehjelp',
-    price: '250',
-    unit: 'per time',
-    desc: 'Praktisk hjelp i hverdagen — betal kun for timene du bruker.',
-    items: ['Alle sju tjenestekategorier', 'Plattformgebyr 15–25 % vises før betaling', 'Kontrollert hjelper, godkjent av deg', 'Ingen binding'],
-    cta: 'Be om hjelper',
+    name: 'NAVIAR CARE Start',
+    price: 'Fast pris',
+    unit: '',
+    desc: 'Pilotpakken: kartlegging og en personlig plan for hverdagen.',
+    items: ['Strukturert behovssamtale', 'Behovssammendrag + personlig hverdagsplan', 'Henvisning til riktig støtte', 'Oppfølging etter 14 dager'],
+    cta: 'Book behovssamtale',
     highlight: true,
   },
   {
-    name: 'Fagsamtale',
-    price: '249',
-    unit: 'per konsultasjon',
-    desc: 'Én samtale med autorisert fagperson — helse, jus eller økonomi.',
-    items: ['Svar innen én time', 'Velg fagområde selv', 'Skriftlig oppsummering inkludert'],
-    cta: 'Still et spørsmål',
+    name: 'NAVIAR CARE Assist',
+    price: '250',
+    unit: 'per time',
+    desc: 'Timebasert lavrisiko-hjelp i hverdagen — betal kun for timene du bruker.',
+    items: ['Alle sju tjenestekategorier', 'Plattformgebyr 15–25 % vises før betaling', 'Kontrollert hjelper, godkjent av deg', 'Ingen binding'],
+    cta: 'Be om hjelper',
     highlight: false,
   },
   {
-    name: 'Kommune / Bedrift',
+    name: 'NAVIAR CARE Partner',
     price: 'Avtale',
     unit: '',
-    desc: 'For kommuner, BPA-leverandører og arbeidsgivere.',
-    items: ['Rekruttering og matching av hjelpere', 'Rapportering og kvalitetsoppfølging', 'SLA og faktura'],
+    desc: 'For kommuner, BPA-leverandører og omsorgsvirksomheter.',
+    items: ['Behovsanalyse og tjenestedesign', 'Pilotledelse og koordinering', 'Kvalitets- og brukerrapport', 'Plattformlisens, SLA og faktura'],
     cta: 'Ta kontakt',
     highlight: false,
   },
@@ -485,7 +485,7 @@ type ChatMsg = { from: 'navi' | 'meg'; text: string }
 
 const NAVI_ANSWERS: { keys: RegExp; text: string; topic?: string }[] = [
   { keys: /pris|koste|kr|betal|gebyr/i,
-    text: 'Timehjelp koster fra 250 kr per time (eksempelpris fra piloten), pluss plattformgebyr på 15–25 % som alltid vises før du betaler. En fagsamtale koster 249 kr. Vil du be om en hjelper?' },
+    text: 'NAVIAR CARE Start er pilotpakken til fast pris: behovssamtale, personlig plan og oppfølging etter 14 dager. NAVIAR CARE Assist koster fra 250 kr per time (eksempelpris), pluss plattformgebyr på 15–25 % som alltid vises før du betaler. Vil du booke en behovssamtale?' },
   { keys: /fungerer|hvordan|steg|virker/i,
     text: 'Tre steg: du beskriver behovet, en koordinator matcher deg med en kontrollert hjelper (et menneske godkjenner — aldri en algoritme alene), og du betaler per time med åpen pris. Skal jeg åpne skjemaet?' },
   { keys: /hjelper|jobb|søk|arbeid|bli/i,
@@ -1072,14 +1072,14 @@ function Pricing({ onCta }: { onCta: () => void }) {
                   fontSize: 10, letterSpacing: '0.08em',
                   padding: '4px 12px', borderRadius: 100, textTransform: 'uppercase',
                   whiteSpace: 'nowrap',
-                }}>Mest populær</div>
+                }}>Pårørendepiloten</div>
               )}
 
               <div style={{ marginBottom: 24 }}>
                 <span style={{ fontFamily: '"DM Mono", monospace', fontSize: 11, letterSpacing: '0.08em', textTransform: 'uppercase', color: p.highlight ? '#7db5ad' : '#576b68' }}>{p.name}</span>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginTop: 10, marginBottom: 4 }}>
-                  {p.price === 'Avtale' ? (
-                    <span style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 32, fontWeight: 700, color: p.highlight ? '#fffdf8' : '#173d3a' }}>Avtale</span>
+                  {!/^\d/.test(p.price) ? (
+                    <span style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 32, fontWeight: 700, color: p.highlight ? '#fffdf8' : '#173d3a' }}>{p.price}</span>
                   ) : (
                     <>
                       <span style={{ fontFamily: '"Playfair Display", Georgia, serif', fontSize: 36, fontWeight: 700, color: p.highlight ? '#fffdf8' : '#173d3a' }}>kr {p.price}</span>
@@ -1101,7 +1101,7 @@ function Pricing({ onCta }: { onCta: () => void }) {
                 ))}
               </ul>
 
-              <button onClick={() => { track('plan', p.name); onCta(p.name === 'Fagsamtale' ? 'Faglig rådgivning' : undefined) }} style={{
+              <button onClick={() => { track('plan', p.name); onCta(undefined) }} style={{
                 width: '100%', padding: '12px',
                 background: p.highlight ? '#d8ef75' : 'transparent',
                 color: p.highlight ? '#173d3a' : '#173d3a',
@@ -1114,7 +1114,7 @@ function Pricing({ onCta }: { onCta: () => void }) {
         </div>
 
         <p style={{ fontSize: 12, color: '#576b68', marginTop: 24 }}>
-          * Priser er eksempeltall fra pilotperioden og kan endres. Hjelperens timepris og plattformgebyret vises alltid hver for seg før du betaler. Alle priser inkl. mva.
+          * Priser er eksempeltall fra pilotperioden og kan endres. Hjelperens timepris og plattformgebyret vises alltid hver for seg før du betaler. NAVIAR CARE Match — verifisert matching på sted, tid og interesser — inngår i både Start og Assist. Alle priser inkl. mva.
         </p>
       </div>
     </section>
