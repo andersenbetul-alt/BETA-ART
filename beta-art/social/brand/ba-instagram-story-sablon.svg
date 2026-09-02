@@ -1,0 +1,48 @@
+<svg viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Beta Art Instagram Story şablon">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;1,400&amp;family=JetBrains+Mono&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Zemin -->
+  <rect width="1080" height="1920" fill="#0F0F0F"/>
+
+  <!-- Üst bilgi çubuğu alanı (Instagram UI için boşluk) -->
+  <!-- Accession numarası -->
+  <text x="60" y="144"
+    font-family="'JetBrains Mono', monospace" font-size="22" fill="#4a4a4a" letter-spacing="3">BA·2026·001</text>
+  <!-- Seri adı -->
+  <text x="1020" y="144"
+    font-family="'JetBrains Mono', monospace" font-size="22" fill="#4a4a4a" letter-spacing="3" text-anchor="end">WORK</text>
+
+  <!-- İnce yatay kural -->
+  <rect x="60" y="162" width="960" height="0.8" fill="#1e1e1e"/>
+
+  <!-- Fotoğraf placeholder (tam genişlik, uzun dikey) -->
+  <rect x="60" y="182" width="960" height="1400" fill="#141414"/>
+  <text x="540" y="882"
+    font-family="'JetBrains Mono', monospace" font-size="18" fill="#2a2a2a" text-anchor="middle" letter-spacing="3">FOTOĞRAF</text>
+  <text x="540" y="910"
+    font-family="'JetBrains Mono', monospace" font-size="18" fill="#2a2a2a" text-anchor="middle" letter-spacing="3">960 × 1400 px</text>
+
+  <!-- Alt içerik alanı -->
+  <rect x="60" y="1598" width="960" height="0.8" fill="#1e1e1e"/>
+
+  <!-- Başlık -->
+  <text x="60" y="1666"
+    font-family="Fraunces, Georgia, serif" font-size="52" font-weight="400" fill="#FBFAF7">Başlık buraya</text>
+
+  <!-- Açıklama -->
+  <text x="60" y="1720"
+    font-family="'JetBrains Mono', monospace" font-size="20" fill="#4a4a4a">Kısa not · tarih</text>
+
+  <!-- Marka işareti sağ alt -->
+  <circle cx="1010" cy="1854" r="10" fill="#8B1A1A"/>
+  <text x="990" y="1861"
+    font-family="Fraunces, Georgia, serif" font-size="28" fill="#FBFAF7" text-anchor="end">B·A</text>
+
+  <!-- Kaydır oku placeholder -->
+  <text x="540" y="1870"
+    font-family="'JetBrains Mono', monospace" font-size="16" fill="#3a3a3a" text-anchor="middle" letter-spacing="4">DAHA FAZLA</text>
+  <rect x="516" y="1878" width="48" height="0.8" fill="#3a3a3a"/>
+</svg>

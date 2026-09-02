@@ -1,0 +1,32 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Beta Art profil">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Zemin -->
+  <rect width="400" height="400" fill="#FBFAF7"/>
+  <!-- Çerçeve -->
+  <rect x="1" y="1" width="398" height="398" fill="none" stroke="#E4E0D8" stroke-width="1"/>
+  <!-- B·A monogram -->
+  <text
+    x="200" y="192"
+    font-family="Fraunces, Georgia, 'Times New Roman', serif"
+    font-size="128"
+    font-weight="400"
+    fill="#0F0F0F"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    letter-spacing="-2">B·A</text>
+  <!-- Archival kırmızı çizgi -->
+  <rect x="160" y="234" width="80" height="1.5" fill="#8B1A1A"/>
+  <!-- Alt metin -->
+  <text
+    x="200" y="266"
+    font-family="'JetBrains Mono', 'Courier New', monospace"
+    font-size="13"
+    font-weight="400"
+    fill="#85817A"
+    text-anchor="middle"
+    letter-spacing="4">BETA ART</text>
+</svg>

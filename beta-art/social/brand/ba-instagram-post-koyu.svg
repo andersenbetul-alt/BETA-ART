@@ -1,0 +1,44 @@
+<svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Beta Art Instagram post koyu şablon">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;1,400&amp;family=JetBrains+Mono&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Koyu zemin -->
+  <rect width="1080" height="1080" fill="#0F0F0F"/>
+  <!-- Çerçeve kuralları -->
+  <rect x="60" y="60" width="960" height="0.8" fill="#2a2a2a"/>
+  <rect x="60" y="1019.2" width="960" height="0.8" fill="#2a2a2a"/>
+  <rect x="60" y="60" width="0.8" height="960" fill="#2a2a2a"/>
+  <rect x="1019.2" y="60" width="0.8" height="960" fill="#2a2a2a"/>
+
+  <!-- Sol üst — accession -->
+  <text x="84" y="101"
+    font-family="'JetBrains Mono', monospace" font-size="18" fill="#4a4a4a" letter-spacing="2">BA·2026·001</text>
+  <!-- Sağ üst — seri -->
+  <text x="996" y="101"
+    font-family="'JetBrains Mono', monospace" font-size="18" fill="#4a4a4a" letter-spacing="2" text-anchor="end">WORK</text>
+
+  <!-- Fotoğraf alanı placeholder -->
+  <rect x="84" y="122" width="912" height="740" fill="#1A1A1A"/>
+  <text x="540" y="492"
+    font-family="'JetBrains Mono', monospace" font-size="14" fill="#3a3a3a" text-anchor="middle" letter-spacing="3">FOTOĞRAF ALANI</text>
+  <text x="540" y="516"
+    font-family="'JetBrains Mono', monospace" font-size="14" fill="#3a3a3a" text-anchor="middle" letter-spacing="3">912 × 740 px</text>
+
+  <!-- Alt bilgi -->
+  <text x="84" y="920"
+    font-family="Fraunces, Georgia, serif" font-size="40" font-weight="400" fill="#FBFAF7">
+    Başlık buraya
+  </text>
+  <text x="84" y="960"
+    font-family="'JetBrains Mono', monospace" font-size="17" fill="#4a4a4a">
+    Kısa açıklama · tarih · yer
+  </text>
+
+  <!-- Archival kırmızı nokta -->
+  <circle cx="996" cy="984" r="8" fill="#8B1A1A"/>
+  <!-- B·A monogram -->
+  <text x="977" y="991"
+    font-family="Fraunces, Georgia, serif" font-size="22" fill="#FBFAF7" text-anchor="end">B·A</text>
+</svg>

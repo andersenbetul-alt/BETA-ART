@@ -1,0 +1,49 @@
+<svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Beta Art Instagram post açık şablon">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;1,400&amp;family=JetBrains+Mono&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Zemin -->
+  <rect width="1080" height="1080" fill="#FBFAF7"/>
+  <!-- Üst ince kural -->
+  <rect x="60" y="60" width="960" height="0.8" fill="#E4E0D8"/>
+  <!-- Alt ince kural -->
+  <rect x="60" y="1019.2" width="960" height="0.8" fill="#E4E0D8"/>
+  <!-- Sol kural -->
+  <rect x="60" y="60" width="0.8" height="960" fill="#E4E0D8"/>
+  <!-- Sağ kural -->
+  <rect x="1019.2" y="60" width="0.8" height="960" fill="#E4E0D8"/>
+
+  <!-- Sol üst — accession -->
+  <text x="84" y="101"
+    font-family="'JetBrains Mono', monospace" font-size="18" fill="#85817A" letter-spacing="2">BA·2026·001</text>
+  <!-- Sağ üst — seri adı -->
+  <text x="996" y="101"
+    font-family="'JetBrains Mono', monospace" font-size="18" fill="#85817A" letter-spacing="2" text-anchor="end">WORK</text>
+
+  <!-- Fotoğraf alanı placeholder (merkez) -->
+  <rect x="84" y="122" width="912" height="740" fill="#F3F0E9"/>
+  <text x="540" y="492"
+    font-family="'JetBrains Mono', monospace" font-size="14" fill="#85817A" text-anchor="middle" letter-spacing="3">FOTOĞRAF ALANI</text>
+  <text x="540" y="516"
+    font-family="'JetBrains Mono', monospace" font-size="14" fill="#85817A" text-anchor="middle" letter-spacing="3">912 × 740 px</text>
+
+  <!-- Alt bilgi alanı -->
+  <!-- Başlık -->
+  <text x="84" y="920"
+    font-family="Fraunces, Georgia, serif" font-size="40" font-weight="400" fill="#0F0F0F">
+    Başlık buraya
+  </text>
+  <!-- Açıklama -->
+  <text x="84" y="960"
+    font-family="'JetBrains Mono', monospace" font-size="17" fill="#85817A">
+    Kısa açıklama · tarih · yer
+  </text>
+
+  <!-- Archival kırmızı nokta / marka işareti -->
+  <circle cx="996" cy="984" r="8" fill="#8B1A1A"/>
+  <!-- B·A monogram sağ alt -->
+  <text x="977" y="991"
+    font-family="Fraunces, Georgia, serif" font-size="22" fill="#0F0F0F" text-anchor="end">B·A</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg viewBox="0 0 1584 396" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Beta Art LinkedIn kapak">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,400&amp;family=JetBrains+Mono&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Zemin -->
+  <rect width="1584" height="396" fill="#FBFAF7"/>
+  <!-- Sol panel -->
+  <rect width="560" height="396" fill="#F3F0E9"/>
+  <!-- Dikey ayırıcı kural -->
+  <rect x="560" y="40" width="0.8" height="316" fill="#E4E0D8"/>
+
+  <!-- Sol panel içeriği -->
+  <!-- B·A büyük monogram -->
+  <text x="280" y="190"
+    font-family="Fraunces, Georgia, serif" font-size="120" font-weight="400" fill="#0F0F0F"
+    text-anchor="middle" dominant-baseline="middle" letter-spacing="-2">B·A</text>
+  <!-- Archival kırmızı kural -->
+  <rect x="216" y="230" width="128" height="1.5" fill="#8B1A1A"/>
+  <!-- BETA ART -->
+  <text x="280" y="263"
+    font-family="'JetBrains Mono', monospace" font-size="14" fill="#85817A"
+    text-anchor="middle" letter-spacing="5">BETA ART</text>
+
+  <!-- Sağ panel içeriği -->
+  <!-- Üst accession -->
+  <text x="596" y="72"
+    font-family="'JetBrains Mono', monospace" font-size="13" fill="#85817A" letter-spacing="3">ARCHIVE · PHOTOGRAPHY · VERIFICATION</text>
+  <!-- Yatay kural -->
+  <rect x="596" y="84" width="220" height="0.8" fill="#E4E0D8"/>
+
+  <!-- Ana slogan -->
+  <text x="596" y="160"
+    font-family="Fraunces, Georgia, serif" font-size="42" font-weight="300" fill="#0F0F0F">Real-world visual records</text>
+  <text x="596" y="212"
+    font-family="Fraunces, Georgia, serif" font-size="42" font-style="italic" font-weight="400" fill="#0F0F0F">with context and provenance.</text>
+
+  <!-- İkincil açıklama -->
+  <text x="596" y="272"
+    font-family="'JetBrains Mono', monospace" font-size="14" fill="#85817A" letter-spacing="1">Photography · Project Archive · Rights · Retrieval</text>
+
+  <!-- Alt kural -->
+  <rect x="596" y="305" width="900" height="0.8" fill="#E4E0D8"/>
+
+  <!-- Alt bilgi: alan ve doğrulama -->
+  <text x="596" y="338"
+    font-family="'JetBrains Mono', monospace" font-size="13" fill="#85817A" letter-spacing="2">beta-art.com</text>
+
+  <!-- Archival kırmızı nokta sağ alt köşe -->
+  <circle cx="1550" cy="356" r="10" fill="#8B1A1A"/>
+</svg>
