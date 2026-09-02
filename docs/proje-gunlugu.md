@@ -334,3 +334,11 @@ ilk günlük rapor (06_LAUNCH/2026-08-31). Kritik açık: bülten endpoint
 endpoint boş (brief başvuruları kaybolabilir), qblogg.com DNS sahiplik
 doğrulaması bekleniyor. Eylül Norveç bütçe sezonu — Formspree + LinkedIn
 bu hafta çözülmeli.
+
+## 2026-09-02 — Rutin AUTOPROMPT denetimi; tüm kapılar yeşil, açıklar değişmedi
+
+Tüm kalite kapıları yeşil: check 8/8, güvenlik 13/13, görünürlük 10/10.
+Son commit 31.08 (AUTOPROMPT altyapısı); bu haftada kaynak değişikliği yok.
+Kritik açıklar (R01 Buttondown, R02 Formspree, R03 DNS) hâlâ kullanıcı
+eylemini bekliyor. R08 Eylül bütçe sezonu fırsatı devam ediyor — bu hafta
+Formspree ve LinkedIn harekete geçilmezse pencere daralıyor.
