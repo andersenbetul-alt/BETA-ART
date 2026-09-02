@@ -1,0 +1,642 @@
+<!doctype html><html><head><!-- frame-runtime --><script>window.__FRAME_PREAMBLE={"v":1,"capabilities":{"artifact":"artifact.0kpk9vgi.js","assets":"assets.8Gk803W0.js","comments":"comments.vw5vQdGA.js","db":"db.h-3sndFg.js","downloads":"downloads.C3GSvEDP.js","embed":"embed.CxGAyc-v.js","mcp":"mcp.Bvma3qD7.js","network":"network.B5UA9Su4.js","notifications":"notifications.ssU4jy7G.js","permissions":"permissions.BNySkLV5.js","room":"room.VSdFwTE9.js","sample":"sample.BW2Uysoh.js","self":"artifact.0kpk9vgi.js","user":"user.BpKav-Rf.js"},"transforms":"_transforms.DSB5x63f.js","comments":"_comments.C6E0cR5g.js","translate":"_translate.5HCW4BJh.js"}</script><script>(function(){"use strict";var te=["light","dark","system"],re=/^[A-Za-z0-9_-]{1,64}$/,$=/^[a-zA-Z_:][a-zA-Z0-9_:.-]{0,127}$/,ne=new Set(["class","hidden","value","checked","style","title","alt","placeholder","lang","dir","role","tabindex","disabled","readonly","contenteditable","open","colspan","rowspan"]);function oe(e){const t=e.toLowerCase();return t.startsWith("data-")||t.startsWith("aria-")||ne.has(t)}var Be="http://www.w3.org/1999/xhtml",se="http://www.w3.org/2000/svg",ae=new Set(["script","style","iframe","noscript","noframes","noembed","xmp","plaintext","template","title","textarea","object","embed"]),ie=new Set(["script","style"]);function ce(e){const t=e.localName.toLowerCase();return e.namespaceURI==="http://www.w3.org/1999/xhtml"?!ae.has(t):e.namespaceURI===se?!ie.has(t):!1}function M(e,t){return e===t||(e===160||e===32)&&(t===160||t===32)}function le(e,t){const r=e.length,n=t.length;let s=0;for(;s<r&&s<n&&M(e.charCodeAt(s),t.charCodeAt(s));)s++;let o=0;for(;o<r-s&&o<n-s&&M(e.charCodeAt(r-1-o),t.charCodeAt(n-1-o));)o++;return{p:s,s:o}}function ue(e,t){const r=e.firstChild;if(e.childNodes.length!==1||r===null||r.nodeType!==Node.TEXT_NODE){e.textContent=t;return}const n=r.data,s=n.length,o=t.length,{p:i,s:c}=le(n,t);i===s&&c===0&&s===o||r.replaceData(i,s-i-c,t.slice(i,o-c));const h=r.data,p=e.ownerDocument.getSelection?.()??null,w=p!==null&&p.rangeCount>0&&(p.anchorNode===r||p.focusNode===r)?{anchor:p.anchorNode,anchorOffset:p.anchorOffset,focus:p.focusNode,focusOffset:p.focusOffset}:null;let m=-1,g=-1;for(let f=0;f<h.length&&f<t.length;f++){const v=h.charCodeAt(f),b=t.charCodeAt(f);v!==b&&M(v,b)&&(m<0&&(m=f),g=f)}const a=m>=0;if(a&&r.replaceData(m,g-m+1,t.slice(m,g+1)),a&&w!==null&&w.anchor!==null&&w.focus!==null)try{p.setBaseAndExtent(w.anchor,w.anchorOffset,w.focus,w.focusOffset)}catch{}}var fe=new Set(["html","head","body","frameset"]);function de(e){return e.namespaceURI==="http://www.w3.org/1999/xhtml"&&fe.has(e.localName)}function pe(e){if(e===null||typeof e!="object")return!1;const t=e;if(typeof t.target!="string"||!re.test(t.target)||t.text!==void 0&&typeof t.text!="string")return!1;if(t.attrsSet!==void 0){if(t.attrsSet===null||typeof t.attrsSet!="object")return!1;for(const[r,n]of Object.entries(t.attrsSet))if(!$.test(r)||typeof n!="string")return!1}if(t.attrsRemoved!==void 0){if(!Array.isArray(t.attrsRemoved))return!1;for(const r of t.attrsRemoved)if(typeof r!="string"||!$.test(r))return!1}return!0}function me(e,t){if(e===null||typeof e!="object")return!1;const{seq:r,elements:n}=e;if(typeof r!="number"||!Number.isSafeInteger(r)||!Array.isArray(n)||n.length===0||n.length>64)return!1;for(let s=0;s<n.length;s++)if(!t(n[s]))return!1;return!0}function he(e){return e===null||typeof e!="object"?!1:me(e.__frame_patch,pe)}function _e(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_init;return t!==null&&typeof t=="object"}function ve(e){return e!==null&&typeof e=="object"&&e.__frame_size_poke===!0}function ye(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_theme;if(t===null||typeof t!="object")return!1;const r=t.theme;return typeof r=="string"&&te.includes(r)}var A=/^[\w.-]+\.js$/;function we(e,t,r){return r?"inert":typeof t=="string"&&A.test(t)?e?[t]:"inert":e?"inert":"framed"}function ge(){return{post(e,t){parent.postMessage(e,t)},on(e){const t=r=>{r.source===parent&&e(r.data,r.origin,r.isTrusted)};return addEventListener("message",t),()=>removeEventListener("message",t)}}}function be(){return{post:()=>{},on:()=>()=>{}}}var j="__frame_scroll",Ee=150,Ae=310,Se=160,Te=3e4;function ke(){let e=0,t=!1,r=!1,n=!1,s=0,o=null;const i=l=>{try{sessionStorage.setItem(j,JSON.stringify({y:l}))}catch{}},c=()=>{if(clearTimeout(e),o===null)return;const l=o;o=null,i(l)},h=()=>{if(t){t=!1;return}r=!0,o=scrollY,clearTimeout(e),e=setTimeout(c,Ee)};try{addEventListener("scroll",h,{passive:!0}),addEventListener("pagehide",c)}catch{}const p=()=>{let l;try{l=sessionStorage.getItem(j)}catch{return null}if(l===null)return null;let _;try{_=JSON.parse(l)}catch{_=null}const d=_?.y;if(!(typeof d=="number"&&Number.isFinite(d)&&d>=0)){try{sessionStorage.removeItem(j)}catch{}return null}return d};let w=!1;const m=l=>{try{const _=scrollY;scrollTo({top:l,left:0,behavior:"instant"}),s=l,n=!0,clearTimeout(e),o=null,i(l);const d=scrollY;d!==_&&(t=!0),d!==l&&!w&&(w=!0,addEventListener("load",()=>{try{if(scrollY===d){const T=p();m(T!==null?T:s)}}catch{}},{once:!0}))}catch{}},g=()=>{try{return!!location.hash}catch{return!0}};let a=!1;const f=()=>{try{if(a||innerWidth>Ae||innerHeight>Se)return;a=!0;const l=Date.now(),_=()=>{try{removeEventListener("resize",_)}catch{}if(Date.now()-l>Te||r||g())return;const d=p();m(d!==null?d:s)};addEventListener("resize",_)}catch{}};let v=!1,b=!1;return{restore(){if(v||(v=!0,g()))return;const l=p();l!==null&&(m(l),f())},promoted(){if(b||(b=!0,g()))return;const l=p();l!==null?(m(l),f()):n&&m(s)}}}function Re(e,t,r,n){let s=null;try{s=window.trustedTypes?.createPolicy("frame-runtime",{createScriptURL:h=>h})??null}catch{}const o=window.Worker,i=o?.prototype,c=Object.freeze({Worker:o,workerOn:i?.addEventListener,workerPost:i?.postMessage,workerTerminate:i?.terminate,fetch:window.fetch.bind(window),preventDefault:Event.prototype.preventDefault,policy:s,origins:t});r(e).then(h=>h?.bootTopLevel?h.bootTopLevel(c,n):n.settle()).catch(()=>n.settle())}var De="modulepreload",Ie=function(e){return"/"+e},Ue={},Le=function(t,r,n){let s=Promise.resolve();function o(i){const c=new Event("vite:preloadError",{cancelable:!0});if(c.payload=i,window.dispatchEvent(c),!c.defaultPrevented)throw i}return s.then(i=>{for(const c of i||[])c.status==="rejected"&&o(c.reason);return t().catch(o)})},Oe=window===top,q=Object.getOwnPropertyDescriptor(window,"claude"),k=we(Oe,window.__FRAME_PREAMBLE?.topLevel,q?.writable===!1),N=typeof k=="object"&&k[0],y=N?be():ge();(function(){const e=Object.defineProperty,t=globalThis,r=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let n=0;for(let s=0;s<r.length;s++){const o=r[s];try{e(t,o,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[o]}catch{}try{e(t,o,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[o]=="function"&&n++}if(n&&k==="framed")try{y.post({__frame_rtc_lockdown_failed:n},"*")}catch{}})();var Pe=1e4,Y=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function X(e){for(const t of Y)if(t.endsWith(":*"))try{const r=new URL(e);if(`${r.protocol}//${r.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}var R=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities}),B=window.__FRAME_PREAMBLE?.transforms,D=window.__FRAME_PREAMBLE?.comments,I=window.__FRAME_PREAMBLE?.translate;function S(e){return Le(()=>import("/_runtime/"+e),void 0)}function G(e,t){return{contract:e.contract,changes:new Set(e.changes??[]),flags:new Set(e.flags??[]),capabilities:e.capabilities??{},capBudgets:e.capBudgets??{},transforms:new Map,shellOrigin:t,mount:x,hooks:O,pipe:()=>({wrap:(r,n)=>(...s)=>{try{return n(...s)}catch(o){return Promise.reject(o)}}})}}var L=null,E=null;function V(e,t,r){try{Object.defineProperty(e,t,{value:r,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:r,writable:!1,configurable:!0,enumerable:!0})}catch{}}}var U=!1,O={editBefore:null,edit:null};function Ce(e,t,r=!1){const n=[];let s;if(r)try{O.editBefore?.(e)}catch{}for(const o of e.elements){const i=document.querySelector(`[data-id="${o.target}"]`);if(!i){s=o.target;break}if([...Object.keys(o.attrsSet??{}),...o.attrsRemoved??[]].some(c=>!oe(c))){s=o.target;break}if(o.text!==void 0&&(!ce(i)||de(i))){s=o.target;break}for(const[c,h]of Object.entries(o.attrsSet??{}))if(!J(i,c)){try{i.setAttribute(c,h)}catch{}Z(i,c,h)}for(const c of o.attrsRemoved??[])J(i,c)||(i.removeAttribute(c),Z(i,c,null));typeof o.text=="string"&&ue(i,o.text),n.push(o.target)}if(r)try{O.edit?.(e.seq,n,s)}catch{}if(s!==void 0){y.post({__frame_patch_miss:{seq:e.seq}},t);return}try{document.dispatchEvent(new CustomEvent("claude:edit",{detail:{seq:e.seq,targets:n}}))}catch{}}function Z(e,t,r){if(!(e instanceof HTMLInputElement))return;const n=t.toLowerCase();n==="checked"?e.checked=r!==null:n==="value"&&e.type!=="file"&&(e.value=r??"")}function J(e,t){const r=t.toLowerCase(),n=e;return r==="data-id"||(r==="value"||r==="checked")&&(n.__artifactSecret===!0||/^(password|hidden|file)$/.test(n.type??"")||/(^|\s)(cc-|one-time-code|current-password|new-password)/i.test(`${e.getAttribute("autocomplete")??""} ${n.autocomplete??""}`))}function Q(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,U=!0):U&&(delete t.dataset.theme,t.style.colorScheme="",U=!1)}var P=new Map;function Me(){let e;const t={u:new Promise(r=>{e=r}),r:r=>{t.done=!0,e(r)},done:!1,nulled:!1};return t}function F(){for(const e of P.values())e.done||(e.nulled=!0,e.r(null))}var je=Object.freeze(Object.assign(Object.create(null),{call:Function.prototype.call,apply:Function.prototype.apply,bind:Function.prototype.bind})),x=(e,t)=>{const r=P.get(e);if(!r||r.done){r?.nulled&&E&&y.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:e}},E);return}const n=typeof t=="function"?Object.setPrototypeOf(t,je):Object.assign(Object.create(null),t);typeof n.then=="function"&&delete n.then,r.r(Object.freeze(n))};function ee(){const e=q?.value??{};V(window,"claude",e);for(const t of Object.keys(R)){if(e[t]!==void 0){V(e,t,e[t]);continue}P.set(t,Me())}if(e.use===void 0){const t=r=>{if(typeof r!="string"||!Object.hasOwn(R,r))return Promise.resolve(null);const n=P.get(r);return n?n.u:Promise.resolve(e[r]??null)};try{Object.defineProperty(e,"use",{value:t,writable:!0,configurable:!0,enumerable:!1})}catch{}}}if(k==="framed"){const e=B&&A.test(B)?S(B).catch(()=>{}):Promise.resolve(void 0),t=a=>{if(a.type==="auxclick"&&a.button!==1)return;const f=a.target,v=f&&f.closest?f.closest("a[href],area[href]"):null;if(!v)return;const b=v.getAttribute("href");if(!b)return;let l;try{l=new URL(b,document.baseURI)}catch{return}if((l.protocol==="http:"||l.protocol==="https:")&&l.origin!==location.origin){a.preventDefault();const _=(v.getAttribute("target")??"").toLowerCase(),d=a.type==="auxclick"||a.metaKey||a.ctrlKey||a.shiftKey||a.altKey||!["","_self","_top","_parent"].includes(_);y.post({__frame_nav:!0,url:l.href,newTab:d},"*")}};addEventListener("click",t,!0),addEventListener("auxclick",t,!0);const r={},n=a=>{a.isTrusted&&(r.pointer=!0)},s=a=>{a.isTrusted&&(r.click=!0)};addEventListener("pointermove",n,{capture:!0,passive:!0}),addEventListener("click",s,{capture:!0,passive:!0}),e.then(a=>{a?.wireNav&&(a.wireNav(),removeEventListener("click",t,!0),removeEventListener("auxclick",t,!0),removeEventListener("pointermove",n,!0),removeEventListener("click",s,!0),a.wireEngagement?.(r))});let o=null;try{o=ke()}catch{}ee();let i=null,c=null,h=0;const p=y.on((a,f)=>{X(f)&&_e(a)&&(i=a.__frame_init,E=f,p(),clearTimeout(h),c?.())});y.post({__frame_connect:!0},"*");const w=new Promise(a=>{c=a,h=setTimeout(()=>{p(),a()},Pe)}),m=document.readyState==="loading"?new Promise(a=>document.addEventListener("DOMContentLoaded",()=>a(),{once:!0})):Promise.resolve();m.then(()=>{try{o?.restore()}catch{}});const g={cb:null};y.on((a,f)=>{if(X(f)&&ve(a)){try{o?.promoted()}catch{}g.cb?.()}}),w.then(async()=>{if(!i||!E){F();return}Q(i.theme);const a=E;let f=!1,v=!1;y.on((u,z,C)=>{if(z!==a)return;ye(u)&&Q(u.__frame_theme.theme),he(u)&&Ce(u.__frame_patch,a,C);const H=u?.__fc_mode;H&&typeof H=="object"&&!f&&D&&A.test(D)&&(f=!0,S(D).then(K=>K.install?.(a,H.on===!0)).catch(()=>{}));const W=u?.__ft_cmd;W&&typeof W=="object"&&!v&&I&&A.test(I)&&(v=!0,S(I).then(K=>K.install?.(a,W)).catch(()=>{}))});const b=Object.keys(i.capabilities??{}).filter(u=>Object.hasOwn(R,u)).map(u=>[u,R[u]]).filter(u=>typeof u[1]=="string"&&A.test(u[1])),l=await Promise.allSettled(b.map(([,u])=>S(u))),_=await e,d=E;if(_?.buildBoot||y.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:"_transforms"}},d),_?.buildBoot)try{L=_.buildBoot(i,_.TRANSFORMS??{},{shellOrigin:d,mount:x,hooks:O},u=>y.post({__frame_cap_telemetry:u},d))}catch{y.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:"_transforms"}},d),L=G(i,d)}else L=G(i,d);const T=u=>y.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:u}},d),Ne=L;l.forEach((u,z)=>{const C=b[z][0];if(u.status!=="fulfilled"){T(C);return}try{u.value?.install?.(Ne)}catch{T(C)}}),F(),await m,y.post({__frame_ready:!0},E),e.then(u=>u?.installSizeReporter?.(d,g))})}else N&&(ee(),Re(N,Y,S,{settle:F,mount:x}))})();</script><!-- /frame-runtime --><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>HXI Studio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg:         #F5F4F0;
+    --bg-surface: #ECEAE4;
+    --text:       #0E0E0C;
+    --text-2:     #6C6B64;
+    --rule:       #D2D0C8;
+    --accent:     #C42D1E;
+    --mono-bg:    #E6E4DC;
+    --tag-bg:     #DEDBD2;
+    --done-bg:    #D8EFDE;
+    --done-ink:   #2A7040;
+    --pend-bg:    #F4EDD6;
+    --pend-ink:   #8A6020;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:         #0E0E0C;
+      --bg-surface: #1A1A18;
+      --text:       #F0EFEB;
+      --text-2:     #8C8B84;
+      --rule:       #2C2C28;
+      --accent:     #D43A2A;
+      --mono-bg:    #181816;
+      --tag-bg:     #222220;
+      --done-bg:    #0C2418;
+      --done-ink:   #4CC47A;
+      --pend-bg:    #241E0A;
+      --pend-ink:   #C8963A;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg:         #0E0E0C;
+    --bg-surface: #1A1A18;
+    --text:       #F0EFEB;
+    --text-2:     #8C8B84;
+    --rule:       #2C2C28;
+    --accent:     #D43A2A;
+    --mono-bg:    #181816;
+    --tag-bg:     #222220;
+    --done-bg:    #0C2418;
+    --done-ink:   #4CC47A;
+    --pend-bg:    #241E0A;
+    --pend-ink:   #C8963A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 48px 24px 96px;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .header {
+    border-top: 3px solid var(--accent);
+    padding-top: 32px;
+    margin-bottom: 60px;
+  }
+
+  .hxi-lockup {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .hxi-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(40px, 8vw, 56px);
+    letter-spacing: -0.03em;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .hxi-signal {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 6px;
+  }
+
+  .signal-bar {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  .signal-bar:nth-child(1) { width: 20px; }
+  .signal-bar:nth-child(2) { width: 13px; opacity: .55; }
+  .signal-bar:nth-child(3) { width: 7px;  opacity: .25; }
+
+  .header-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    margin-top: 8px;
+  }
+
+  .header-desc {
+    margin-top: 16px;
+    font-size: 16px;
+    color: var(--text-2);
+    max-width: 52ch;
+    line-height: 1.5;
+  }
+
+  /* ── Section ── */
+  section { margin-bottom: 52px; }
+
+  .section-eye {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .rule { height: 1px; background: var(--rule); margin-bottom: 22px; }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--text);
+    text-wrap: balance;
+    margin-bottom: 14px;
+  }
+
+  p { color: var(--text); max-width: 62ch; margin-bottom: 10px; }
+
+  /* ── File tree ── */
+  .filetree {
+    background: var(--mono-bg);
+    border-radius: 5px;
+    padding: 20px 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    line-height: 2;
+    overflow-x: auto;
+  }
+
+  .ft-root  { color: var(--text-2); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .ft-dir   { color: var(--text); font-weight: 500; }
+  .ft-file  { color: var(--text-2); }
+  .ft-new   { color: var(--text); }
+
+  .ft-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 8px;
+    padding: 1px 5px;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    vertical-align: middle;
+    margin-left: 8px;
+    font-weight: 500;
+  }
+
+  /* ── Data table ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .data-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    text-align: left;
+    padding: 0 0 10px;
+    border-bottom: 1px solid var(--rule);
+    font-weight: 400;
+  }
+
+  .data-table th + th { padding-left: 20px; }
+
+  .data-table td {
+    padding: 11px 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--text);
+    vertical-align: top;
+  }
+
+  .data-table td + td { padding-left: 20px; }
+
+  .data-table td:first-child { font-weight: 500; white-space: nowrap; }
+
+  .data-table .note { color: var(--text-2); font-size: 13px; }
+
+  /* ── Mono block ── */
+  .mono-block {
+    background: var(--mono-bg);
+    border-radius: 5px;
+    padding: 16px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.9;
+    overflow-x: auto;
+    margin-bottom: 14px;
+  }
+
+  .mono-block .c  { color: var(--text-2); }
+  .mono-block .k  { color: var(--text); font-weight: 500; }
+  .mono-block .v  { color: var(--accent); }
+
+  /* ── Profile cards ── */
+  .profiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  @media (max-width: 500px) {
+    .profiles { grid-template-columns: 1fr; }
+  }
+
+  .profile-card {
+    background: var(--bg-surface);
+    border-radius: 5px;
+    padding: 16px 18px;
+    border-left: 2px solid var(--rule);
+  }
+
+  .profile-card.active { border-left-color: var(--accent); }
+
+  .profile-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .profile-desc { font-size: 13px; color: var(--text-2); line-height: 1.4; }
+
+  /* ── Swatches ── */
+  .swatches {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+
+  .swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+  .swatch-color {
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    border: 1px solid var(--rule);
+  }
+
+  .swatch-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    color: var(--text-2);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .brand-note {
+    font-size: 13px;
+    color: var(--text-2);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  /* ── Status list ── */
+  .status-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .status-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .pill {
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 3px;
+    margin-top: 2px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .pill-done    { background: var(--done-bg); color: var(--done-ink); }
+  .pill-pending { background: var(--pend-bg); color: var(--pend-ink); }
+
+  /* ── Steps ── */
+  .step {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .step:first-child { border-top: 1px solid var(--rule); }
+
+  .step-n {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    padding-top: 1px;
+  }
+
+  .step-body { font-size: 14px; color: var(--text); line-height: 1.5; }
+
+  .step-hint {
+    display: block;
+    font-size: 12px;
+    color: var(--text-2);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-top: 3px;
+  }
+
+  /* ── Skills summary ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 500px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+
+  .skill-item {
+    background: var(--bg-surface);
+    border-radius: 5px;
+    padding: 14px 16px;
+  }
+
+  .skill-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .skill-desc { font-size: 13px; color: var(--text-2); line-height: 1.4; }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--text-2);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="hxi-lockup">
+      <span class="hxi-name">HXI</span>
+      <div class="hxi-signal" aria-hidden="true">
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+        <div class="signal-bar"></div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span>Müzik Prodüksiyon Stüdyosu</span>
+      <span>Norveç</span>
+      <span>30.08.2026</span>
+    </div>
+    <p class="header-desc">
+      Kayıt, mix, mastering ve ses tasarımı hizmetleri.
+      Bağımsız sanatçılar ve küçük plakçılar için öngörülebilir süreç, net teslimat.
+    </p>
+  </header>
+
+  <!-- ── Dosya yapısı ── -->
+  <section>
+    <div class="section-eye">Bu PR'da oluşturulan dosyalar</div>
+    <div class="rule"></div>
+    <div class="filetree" role="img" aria-label="Dosya ağacı">
+      <span class="ft-root">BETA-ART / claude/hxi-dosyalari</span>
+      <div>
+        <span class="ft-dir">docs/hxi/</span>
+        <div style="padding-left:20px">
+          <div><span class="ft-new">BUSINESS.md</span><span class="ft-badge">yeni</span>&nbsp;&nbsp;<span class="ft-file">— iş belgesi (taslak)</span></div>
+          <div><span class="ft-new">brand-brief.md</span><span class="ft-badge">yeni</span>&nbsp;&nbsp;<span class="ft-file">— marka brief taslağı</span></div>
+        </div>
+      </div>
+      <div style="margin-top:6px">
+        <span class="ft-dir">agents/eve-slack-agent/agent/</span>
+        <div style="padding-left:20px">
+          <div><span class="ft-new">agent.ts</span>&nbsp;&nbsp;<span class="ft-file">— AGENT_PROFILE ile profil yükleme (güncellendi)</span></div>
+          <div style="padding-left:20px">
+            <span class="ft-dir">profiles/</span>
+            <div style="padding-left:20px">
+              <div><span class="ft-new">hxi-music.md</span><span class="ft-badge">yeni</span>&nbsp;&nbsp;<span class="ft-file">— HXI bot kimliği</span></div>
+              <div><span class="ft-new">naviar-consult.md</span><span class="ft-badge">yeni</span>&nbsp;&nbsp;<span class="ft-file">— Naviar profil taslağı</span></div>
+            </div>
+          </div>
+          <div style="padding-left:20px">
+            <span class="ft-dir">skills/</span>
+            <div style="padding-left:20px">
+              <div><span class="ft-new">proje-on-degerlendirme.md</span><span class="ft-badge">yeni</span></div>
+              <div><span class="ft-new">teknik-format.md</span><span class="ft-badge">yeni</span></div>
+              <div><span class="ft-file">plan_a_trip.md</span>&nbsp;&nbsp;<span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-2)">silindi (şablon artığı)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── İş Belgesi ── -->
+  <section>
+    <div class="section-eye">İş Belgesi</div>
+    <div class="rule"></div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Hizmet</th><th>Kapsam</th><th>Not</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mix</td>
+          <td>Çok kanallı ses → stereo master</td>
+          <td class="note">Tur başı fiyat</td>
+        </tr>
+        <tr>
+          <td>Mastering</td>
+          <td>Stereo mix → streaming + fiziksel master</td>
+          <td class="note">WAV 24-bit + MP3 320</td>
+        </tr>
+        <tr>
+          <td>Prodüksiyon</td>
+          <td>Aranjman, enstrümantasyon, ses tasarımı</td>
+          <td class="note">Proje bazlı</td>
+        </tr>
+        <tr>
+          <td>Danışmanlık</td>
+          <td>DAW, sinyal zinciri, stüdyo kurulumu</td>
+          <td class="note">Saat bazlı [H]</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px;font-size:13px;color:var(--text-2)">
+      [H] işaretli kalemler henüz fiyatlandırılmadı. Norveç piyasa araştırması tamamlanmadan fiyat listesi yayınlanmaz.
+    </p>
+  </section>
+
+  <!-- ── Slack Botu ── -->
+  <section>
+    <div class="section-eye">Slack Botu — hxi-music</div>
+    <div class="rule"></div>
+    <p>İki Vercel deployment aynı kodu paylaşır. <code style="font-family:'IBM Plex Mono',monospace;font-size:12px;background:var(--mono-bg);padding:1px 5px;border-radius:3px">AGENT_PROFILE</code> env değişkeni bot kimliğini belirler.</p>
+
+    <div class="mono-block" style="margin-top:14px">
+      <span class="c"># Vercel Dashboard → Settings → Environment Variables</span><br>
+      <span class="c"># hxi-music projesi:</span><br>
+      <span class="k">AGENT_PROFILE</span>=<span class="v">hxi-music</span><br><br>
+      <span class="c"># naviar-consult projesi:</span><br>
+      <span class="k">AGENT_PROFILE</span>=<span class="v">naviar-consult</span><br><br>
+      <span class="c"># Yerel geliştirme:</span><br>
+      <span class="k">AGENT_PROFILE</span>=<span class="v">hxi-music</span> pnpm dev
+    </div>
+
+    <div class="profiles">
+      <div class="profile-card active">
+        <div class="profile-name">hxi-music ●</div>
+        <p class="profile-desc">Müzik prodüksiyon stüdyosu asistanı. Mix, mastering, teknik format soruları, proje kapsamlandırma.</p>
+      </div>
+      <div class="profile-card">
+        <div class="profile-name">naviar-consult</div>
+        <p class="profile-desc">Organizasyon danışmanlığı botu. Henüz taslak aşamasında — içerik ve kapsam girilmedi.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:20px">
+      <h2>Bot Skill'leri</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-name">proje-on-degerlendirme</div>
+          <p class="skill-desc">Müşteri proje anlatımında devreye girer. Track sayısı, aşama, format ve deadline'ı sorar; sonraki adımı netler.</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">teknik-format</div>
+          <p class="skill-desc">Format, sample rate, loudness target ve stem hazırlık soruları için standart teknik bilgi tablosu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Marka ── -->
+  <section>
+    <div class="section-eye">Marka Taslağı</div>
+    <div class="rule"></div>
+    <p>Tüm değerler onay bekliyor. Kontrast oranları ölçülmeden ve logo vektörü betikten üretilmeden kullanılamaz.</p>
+
+    <div class="swatches" style="margin-top:18px">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0D0D0D"></div>
+        <div class="swatch-label">Signal<br>Black<br>#0D0D0D</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F2F0EB;"></div>
+        <div class="swatch-label">Studio<br>White<br>#F2F0EB</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#D94F3D"></div>
+        <div class="swatch-label">Tape<br>Red<br>#D94F3D</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4A4A4A"></div>
+        <div class="swatch-label">Console<br>Grey<br>#4A4A4A</div>
+      </div>
+    </div>
+
+    <p class="brand-note">Not: Tape Red açık zemin üzerinde metin için kullanılamaz — kontrast oranı hesaplanmadan karar verilmedi.</p>
+
+    <ul class="status-list" style="margin-top:20px">
+      <li>
+        <span class="pill pill-done">Bitti</span>
+        <span>Brand brief taslağı oluşturuldu — <code style="font-family:'IBM Plex Mono',monospace;font-size:11px">docs/hxi/brand-brief.md</code></span>
+      </li>
+      <li>
+        <span class="pill pill-pending">Bekliyor</span>
+        <span>Renk paletini onayla ve kontrast ölçümlerini yap</span>
+      </li>
+      <li>
+        <span class="pill pill-pending">Bekliyor</span>
+        <span>Tipografi seç ve lisans kaydet (<code style="font-family:'IBM Plex Mono',monospace;font-size:11px">assets/hxi/fonts/KAYNAK.md</code>)</span>
+      </li>
+      <li>
+        <span class="pill pill-pending">Bekliyor</span>
+        <span>Logo tasarımı → <code style="font-family:'IBM Plex Mono',monospace;font-size:11px">scripts/hxi-marka-uret.py</code> betiğine dönüştür</span>
+      </li>
+      <li>
+        <span class="pill pill-pending">Bekliyor</span>
+        <span>Marka araştırması: Patentstyret + TMview/EUIPO (Nice 41, 42)</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ── Sonraki Adımlar ── -->
+  <section>
+    <div class="section-eye">Sonraki Adımlar</div>
+    <div class="rule"></div>
+
+    <div>
+      <div class="step">
+        <span class="step-n">01</span>
+        <div class="step-body">
+          Vercel'de <code style="font-family:'IBM Plex Mono',monospace;font-size:12px">AGENT_PROFILE=hxi-music</code> env değişkenini ekle
+          <span class="step-hint">hxi-music projesi → Settings → Environment Variables</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n">02</span>
+        <div class="step-body">
+          Bu PR'ı merge et; Vercel yeniden deploy eder
+          <span class="step-hint">main → qblogg.vercel.app build trigger</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n">03</span>
+        <div class="step-body">
+          Norveç piyasa araştırması: mix/mastering fiyat aralığı
+          <span class="step-hint">BUSINESS.md'deki [H] kalemleri doldurmak için</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n">04</span>
+        <div class="step-body">
+          Marka renklerini onayla ve kontrast ölçümlerini yap
+          <span class="step-hint">docs/hxi/brand-brief.md → onay sütununu doldur</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-n">05</span>
+        <div class="step-body">
+          Logo tasarımı → betikten üretim (<code style="font-family:'IBM Plex Mono',monospace;font-size:12px">scripts/hxi-marka-uret.py</code>)
+          <span class="step-hint">QBLOGG'un marka-uret.py modelinde</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>HXI · BETA-ART monorepo</span>
+    <span>branch: claude/hxi-dosyalari-nuf9y8</span>
+    <span>30.08.2026</span>
+  </footer>
+
+</div>
+
+</body></html>

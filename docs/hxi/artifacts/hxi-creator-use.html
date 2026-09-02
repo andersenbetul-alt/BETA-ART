@@ -1,0 +1,971 @@
+<!doctype html><html><head><!-- frame-runtime --><script>window.__FRAME_PREAMBLE={"v":1,"capabilities":{"artifact":"artifact.0kpk9vgi.js","assets":"assets.8Gk803W0.js","comments":"comments.vw5vQdGA.js","db":"db.h-3sndFg.js","downloads":"downloads.C3GSvEDP.js","embed":"embed.CxGAyc-v.js","mcp":"mcp.Bvma3qD7.js","network":"network.B5UA9Su4.js","notifications":"notifications.ssU4jy7G.js","permissions":"permissions.BNySkLV5.js","room":"room.VSdFwTE9.js","sample":"sample.BW2Uysoh.js","self":"artifact.0kpk9vgi.js","user":"user.BpKav-Rf.js"},"transforms":"_transforms.DSB5x63f.js","comments":"_comments.C6E0cR5g.js","translate":"_translate.5HCW4BJh.js"}</script><script>(function(){"use strict";var te=["light","dark","system"],re=/^[A-Za-z0-9_-]{1,64}$/,$=/^[a-zA-Z_:][a-zA-Z0-9_:.-]{0,127}$/,ne=new Set(["class","hidden","value","checked","style","title","alt","placeholder","lang","dir","role","tabindex","disabled","readonly","contenteditable","open","colspan","rowspan"]);function oe(e){const t=e.toLowerCase();return t.startsWith("data-")||t.startsWith("aria-")||ne.has(t)}var Be="http://www.w3.org/1999/xhtml",se="http://www.w3.org/2000/svg",ae=new Set(["script","style","iframe","noscript","noframes","noembed","xmp","plaintext","template","title","textarea","object","embed"]),ie=new Set(["script","style"]);function ce(e){const t=e.localName.toLowerCase();return e.namespaceURI==="http://www.w3.org/1999/xhtml"?!ae.has(t):e.namespaceURI===se?!ie.has(t):!1}function M(e,t){return e===t||(e===160||e===32)&&(t===160||t===32)}function le(e,t){const r=e.length,n=t.length;let s=0;for(;s<r&&s<n&&M(e.charCodeAt(s),t.charCodeAt(s));)s++;let o=0;for(;o<r-s&&o<n-s&&M(e.charCodeAt(r-1-o),t.charCodeAt(n-1-o));)o++;return{p:s,s:o}}function ue(e,t){const r=e.firstChild;if(e.childNodes.length!==1||r===null||r.nodeType!==Node.TEXT_NODE){e.textContent=t;return}const n=r.data,s=n.length,o=t.length,{p:i,s:c}=le(n,t);i===s&&c===0&&s===o||r.replaceData(i,s-i-c,t.slice(i,o-c));const h=r.data,p=e.ownerDocument.getSelection?.()??null,w=p!==null&&p.rangeCount>0&&(p.anchorNode===r||p.focusNode===r)?{anchor:p.anchorNode,anchorOffset:p.anchorOffset,focus:p.focusNode,focusOffset:p.focusOffset}:null;let m=-1,g=-1;for(let f=0;f<h.length&&f<t.length;f++){const v=h.charCodeAt(f),b=t.charCodeAt(f);v!==b&&M(v,b)&&(m<0&&(m=f),g=f)}const a=m>=0;if(a&&r.replaceData(m,g-m+1,t.slice(m,g+1)),a&&w!==null&&w.anchor!==null&&w.focus!==null)try{p.setBaseAndExtent(w.anchor,w.anchorOffset,w.focus,w.focusOffset)}catch{}}var fe=new Set(["html","head","body","frameset"]);function de(e){return e.namespaceURI==="http://www.w3.org/1999/xhtml"&&fe.has(e.localName)}function pe(e){if(e===null||typeof e!="object")return!1;const t=e;if(typeof t.target!="string"||!re.test(t.target)||t.text!==void 0&&typeof t.text!="string")return!1;if(t.attrsSet!==void 0){if(t.attrsSet===null||typeof t.attrsSet!="object")return!1;for(const[r,n]of Object.entries(t.attrsSet))if(!$.test(r)||typeof n!="string")return!1}if(t.attrsRemoved!==void 0){if(!Array.isArray(t.attrsRemoved))return!1;for(const r of t.attrsRemoved)if(typeof r!="string"||!$.test(r))return!1}return!0}function me(e,t){if(e===null||typeof e!="object")return!1;const{seq:r,elements:n}=e;if(typeof r!="number"||!Number.isSafeInteger(r)||!Array.isArray(n)||n.length===0||n.length>64)return!1;for(let s=0;s<n.length;s++)if(!t(n[s]))return!1;return!0}function he(e){return e===null||typeof e!="object"?!1:me(e.__frame_patch,pe)}function _e(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_init;return t!==null&&typeof t=="object"}function ve(e){return e!==null&&typeof e=="object"&&e.__frame_size_poke===!0}function ye(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_theme;if(t===null||typeof t!="object")return!1;const r=t.theme;return typeof r=="string"&&te.includes(r)}var A=/^[\w.-]+\.js$/;function we(e,t,r){return r?"inert":typeof t=="string"&&A.test(t)?e?[t]:"inert":e?"inert":"framed"}function ge(){return{post(e,t){parent.postMessage(e,t)},on(e){const t=r=>{r.source===parent&&e(r.data,r.origin,r.isTrusted)};return addEventListener("message",t),()=>removeEventListener("message",t)}}}function be(){return{post:()=>{},on:()=>()=>{}}}var j="__frame_scroll",Ee=150,Ae=310,Se=160,Te=3e4;function ke(){let e=0,t=!1,r=!1,n=!1,s=0,o=null;const i=l=>{try{sessionStorage.setItem(j,JSON.stringify({y:l}))}catch{}},c=()=>{if(clearTimeout(e),o===null)return;const l=o;o=null,i(l)},h=()=>{if(t){t=!1;return}r=!0,o=scrollY,clearTimeout(e),e=setTimeout(c,Ee)};try{addEventListener("scroll",h,{passive:!0}),addEventListener("pagehide",c)}catch{}const p=()=>{let l;try{l=sessionStorage.getItem(j)}catch{return null}if(l===null)return null;let _;try{_=JSON.parse(l)}catch{_=null}const d=_?.y;if(!(typeof d=="number"&&Number.isFinite(d)&&d>=0)){try{sessionStorage.removeItem(j)}catch{}return null}return d};let w=!1;const m=l=>{try{const _=scrollY;scrollTo({top:l,left:0,behavior:"instant"}),s=l,n=!0,clearTimeout(e),o=null,i(l);const d=scrollY;d!==_&&(t=!0),d!==l&&!w&&(w=!0,addEventListener("load",()=>{try{if(scrollY===d){const T=p();m(T!==null?T:s)}}catch{}},{once:!0}))}catch{}},g=()=>{try{return!!location.hash}catch{return!0}};let a=!1;const f=()=>{try{if(a||innerWidth>Ae||innerHeight>Se)return;a=!0;const l=Date.now(),_=()=>{try{removeEventListener("resize",_)}catch{}if(Date.now()-l>Te||r||g())return;const d=p();m(d!==null?d:s)};addEventListener("resize",_)}catch{}};let v=!1,b=!1;return{restore(){if(v||(v=!0,g()))return;const l=p();l!==null&&(m(l),f())},promoted(){if(b||(b=!0,g()))return;const l=p();l!==null?(m(l),f()):n&&m(s)}}}function Re(e,t,r,n){let s=null;try{s=window.trustedTypes?.createPolicy("frame-runtime",{createScriptURL:h=>h})??null}catch{}const o=window.Worker,i=o?.prototype,c=Object.freeze({Worker:o,workerOn:i?.addEventListener,workerPost:i?.postMessage,workerTerminate:i?.terminate,fetch:window.fetch.bind(window),preventDefault:Event.prototype.preventDefault,policy:s,origins:t});r(e).then(h=>h?.bootTopLevel?h.bootTopLevel(c,n):n.settle()).catch(()=>n.settle())}var De="modulepreload",Ie=function(e){return"/"+e},Ue={},Le=function(t,r,n){let s=Promise.resolve();function o(i){const c=new Event("vite:preloadError",{cancelable:!0});if(c.payload=i,window.dispatchEvent(c),!c.defaultPrevented)throw i}return s.then(i=>{for(const c of i||[])c.status==="rejected"&&o(c.reason);return t().catch(o)})},Oe=window===top,q=Object.getOwnPropertyDescriptor(window,"claude"),k=we(Oe,window.__FRAME_PREAMBLE?.topLevel,q?.writable===!1),N=typeof k=="object"&&k[0],y=N?be():ge();(function(){const e=Object.defineProperty,t=globalThis,r=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let n=0;for(let s=0;s<r.length;s++){const o=r[s];try{e(t,o,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[o]}catch{}try{e(t,o,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[o]=="function"&&n++}if(n&&k==="framed")try{y.post({__frame_rtc_lockdown_failed:n},"*")}catch{}})();var Pe=1e4,Y=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function X(e){for(const t of Y)if(t.endsWith(":*"))try{const r=new URL(e);if(`${r.protocol}//${r.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}var R=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities}),B=window.__FRAME_PREAMBLE?.transforms,D=window.__FRAME_PREAMBLE?.comments,I=window.__FRAME_PREAMBLE?.translate;function S(e){return Le(()=>import("/_runtime/"+e),void 0)}function G(e,t){return{contract:e.contract,changes:new Set(e.changes??[]),flags:new Set(e.flags??[]),capabilities:e.capabilities??{},capBudgets:e.capBudgets??{},transforms:new Map,shellOrigin:t,mount:x,hooks:O,pipe:()=>({wrap:(r,n)=>(...s)=>{try{return n(...s)}catch(o){return Promise.reject(o)}}})}}var L=null,E=null;function V(e,t,r){try{Object.defineProperty(e,t,{value:r,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:r,writable:!1,configurable:!0,enumerable:!0})}catch{}}}var U=!1,O={editBefore:null,edit:null};function Ce(e,t,r=!1){const n=[];let s;if(r)try{O.editBefore?.(e)}catch{}for(const o of e.elements){const i=document.querySelector(`[data-id="${o.target}"]`);if(!i){s=o.target;break}if([...Object.keys(o.attrsSet??{}),...o.attrsRemoved??[]].some(c=>!oe(c))){s=o.target;break}if(o.text!==void 0&&(!ce(i)||de(i))){s=o.target;break}for(const[c,h]of Object.entries(o.attrsSet??{}))if(!J(i,c)){try{i.setAttribute(c,h)}catch{}Z(i,c,h)}for(const c of o.attrsRemoved??[])J(i,c)||(i.removeAttribute(c),Z(i,c,null));typeof o.text=="string"&&ue(i,o.text),n.push(o.target)}if(r)try{O.edit?.(e.seq,n,s)}catch{}if(s!==void 0){y.post({__frame_patch_miss:{seq:e.seq}},t);return}try{document.dispatchEvent(new CustomEvent("claude:edit",{detail:{seq:e.seq,targets:n}}))}catch{}}function Z(e,t,r){if(!(e instanceof HTMLInputElement))return;const n=t.toLowerCase();n==="checked"?e.checked=r!==null:n==="value"&&e.type!=="file"&&(e.value=r??"")}function J(e,t){const r=t.toLowerCase(),n=e;return r==="data-id"||(r==="value"||r==="checked")&&(n.__artifactSecret===!0||/^(password|hidden|file)$/.test(n.type??"")||/(^|\s)(cc-|one-time-code|current-password|new-password)/i.test(`${e.getAttribute("autocomplete")??""} ${n.autocomplete??""}`))}function Q(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,U=!0):U&&(delete t.dataset.theme,t.style.colorScheme="",U=!1)}var P=new Map;function Me(){let e;const t={u:new Promise(r=>{e=r}),r:r=>{t.done=!0,e(r)},done:!1,nulled:!1};return t}function F(){for(const e of P.values())e.done||(e.nulled=!0,e.r(null))}var je=Object.freeze(Object.assign(Object.create(null),{call:Function.prototype.call,apply:Function.prototype.apply,bind:Function.prototype.bind})),x=(e,t)=>{const r=P.get(e);if(!r||r.done){r?.nulled&&E&&y.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:e}},E);return}const n=typeof t=="function"?Object.setPrototypeOf(t,je):Object.assign(Object.create(null),t);typeof n.then=="function"&&delete n.then,r.r(Object.freeze(n))};function ee(){const e=q?.value??{};V(window,"claude",e);for(const t of Object.keys(R)){if(e[t]!==void 0){V(e,t,e[t]);continue}P.set(t,Me())}if(e.use===void 0){const t=r=>{if(typeof r!="string"||!Object.hasOwn(R,r))return Promise.resolve(null);const n=P.get(r);return n?n.u:Promise.resolve(e[r]??null)};try{Object.defineProperty(e,"use",{value:t,writable:!0,configurable:!0,enumerable:!1})}catch{}}}if(k==="framed"){const e=B&&A.test(B)?S(B).catch(()=>{}):Promise.resolve(void 0),t=a=>{if(a.type==="auxclick"&&a.button!==1)return;const f=a.target,v=f&&f.closest?f.closest("a[href],area[href]"):null;if(!v)return;const b=v.getAttribute("href");if(!b)return;let l;try{l=new URL(b,document.baseURI)}catch{return}if((l.protocol==="http:"||l.protocol==="https:")&&l.origin!==location.origin){a.preventDefault();const _=(v.getAttribute("target")??"").toLowerCase(),d=a.type==="auxclick"||a.metaKey||a.ctrlKey||a.shiftKey||a.altKey||!["","_self","_top","_parent"].includes(_);y.post({__frame_nav:!0,url:l.href,newTab:d},"*")}};addEventListener("click",t,!0),addEventListener("auxclick",t,!0);const r={},n=a=>{a.isTrusted&&(r.pointer=!0)},s=a=>{a.isTrusted&&(r.click=!0)};addEventListener("pointermove",n,{capture:!0,passive:!0}),addEventListener("click",s,{capture:!0,passive:!0}),e.then(a=>{a?.wireNav&&(a.wireNav(),removeEventListener("click",t,!0),removeEventListener("auxclick",t,!0),removeEventListener("pointermove",n,!0),removeEventListener("click",s,!0),a.wireEngagement?.(r))});let o=null;try{o=ke()}catch{}ee();let i=null,c=null,h=0;const p=y.on((a,f)=>{X(f)&&_e(a)&&(i=a.__frame_init,E=f,p(),clearTimeout(h),c?.())});y.post({__frame_connect:!0},"*");const w=new Promise(a=>{c=a,h=setTimeout(()=>{p(),a()},Pe)}),m=document.readyState==="loading"?new Promise(a=>document.addEventListener("DOMContentLoaded",()=>a(),{once:!0})):Promise.resolve();m.then(()=>{try{o?.restore()}catch{}});const g={cb:null};y.on((a,f)=>{if(X(f)&&ve(a)){try{o?.promoted()}catch{}g.cb?.()}}),w.then(async()=>{if(!i||!E){F();return}Q(i.theme);const a=E;let f=!1,v=!1;y.on((u,z,C)=>{if(z!==a)return;ye(u)&&Q(u.__frame_theme.theme),he(u)&&Ce(u.__frame_patch,a,C);const H=u?.__fc_mode;H&&typeof H=="object"&&!f&&D&&A.test(D)&&(f=!0,S(D).then(K=>K.install?.(a,H.on===!0)).catch(()=>{}));const W=u?.__ft_cmd;W&&typeof W=="object"&&!v&&I&&A.test(I)&&(v=!0,S(I).then(K=>K.install?.(a,W)).catch(()=>{}))});const b=Object.keys(i.capabilities??{}).filter(u=>Object.hasOwn(R,u)).map(u=>[u,R[u]]).filter(u=>typeof u[1]=="string"&&A.test(u[1])),l=await Promise.allSettled(b.map(([,u])=>S(u))),_=await e,d=E;if(_?.buildBoot||y.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:"_transforms"}},d),_?.buildBoot)try{L=_.buildBoot(i,_.TRANSFORMS??{},{shellOrigin:d,mount:x,hooks:O},u=>y.post({__frame_cap_telemetry:u},d))}catch{y.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:"_transforms"}},d),L=G(i,d)}else L=G(i,d);const T=u=>y.post({__frame_cap_telemetry:{kind:"cap-load-error",cap:u}},d),Ne=L;l.forEach((u,z)=>{const C=b[z][0];if(u.status!=="fulfilled"){T(C);return}try{u.value?.install?.(Ne)}catch{T(C)}}),F(),await m,y.post({__frame_ready:!0},E),e.then(u=>u?.installSizeReporter?.(d,g))})}else N&&(ee(),Re(N,Y,S,{settle:F,mount:x}))})();</script><!-- /frame-runtime --><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>HXI Creator Use / Sync</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+/* Single dark-world theme — HXI brand colors, explicit background */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #080808;
+  --surf:    #131313;
+  --surf-2:  #1A1A1A;
+  --border:  #2A2A2A;
+  --text:    #F0EDE8;
+  --text-2:  #9A9490;
+  --text-3:  #4A4844;
+  --acid:    #C8FF00;
+  --red:     #EF2B2D;
+  --red-dim: rgba(239,43,45,.12);
+  --acid-dim:rgba(200,255,0,.08);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 0 0 100px;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  padding: 56px 52px 48px;
+  border-bottom: 1px solid var(--border);
+  max-width: 880px;
+}
+.m-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 20px;
+}
+.m-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 6vw, 58px);
+  font-weight: 800;
+  line-height: .95;
+  text-wrap: balance;
+  color: var(--text);
+  margin-bottom: 28px;
+  letter-spacing: -.01em;
+}
+.m-title em {
+  font-style: normal;
+  color: var(--acid);
+}
+.m-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  color: var(--text-3);
+}
+
+/* ── EXEC SUMMARY ── */
+.exec {
+  max-width: 880px;
+  padding: 36px 52px;
+  border-bottom: 1px solid var(--border);
+  background: var(--acid-dim);
+  border-left: 2px solid var(--acid);
+}
+.exec-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--acid);
+  margin-bottom: 10px;
+}
+.exec-text {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 680px;
+}
+.exec-text strong { color: var(--acid); }
+
+/* ── VERDICT BANNER ── */
+.verdict-banner {
+  max-width: 880px;
+  padding: 0 52px;
+  margin-top: 28px;
+}
+.verdict-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+@media (max-width: 600px) { .verdict-grid { grid-template-columns: 1fr; } }
+
+.verdict-card {
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  background: var(--surf);
+}
+.vc-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+.vc-score {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--acid);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.vc-decision {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 6px;
+}
+.vc-note {
+  font-size: 12px;
+  color: var(--text-2);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* ── SECTIONS ── */
+.body { max-width: 880px; padding: 0 52px; }
+
+.section {
+  padding: 44px 0;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-child { border-bottom: none; }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.section-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: .1em;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  text-wrap: balance;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+}
+
+/* Body text */
+p { font-size: 14px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px; max-width: 660px; }
+p strong { color: var(--text); }
+p:last-child { margin-bottom: 0; }
+
+/* Two-col */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 620px) { .two-col { grid-template-columns: 1fr; } }
+
+/* Lists */
+ul.list, ol.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: 660px;
+}
+ul.list li, ol.list li {
+  display: flex;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+ul.list li::before {
+  content: '—';
+  color: var(--text-3);
+  flex-shrink: 0;
+  font-family: 'IBM Plex Mono', monospace;
+}
+ol.list { counter-reset: item; }
+ol.list li { counter-increment: item; }
+ol.list li::before {
+  content: counter(item, decimal-leading-zero);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--text-3);
+  flex-shrink: 0;
+  padding-top: 3px;
+  letter-spacing: .05em;
+}
+.list li strong { color: var(--text); }
+
+/* Callout */
+.callout {
+  background: var(--surf);
+  border-left: 2px solid var(--border);
+  padding: 14px 16px;
+  margin: 14px 0;
+  max-width: 660px;
+}
+.callout.warn { border-color: var(--red); background: var(--red-dim); }
+.callout.key  { border-color: var(--acid); background: var(--acid-dim); }
+.callout-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 5px;
+}
+.callout.warn .callout-label { color: var(--red); }
+.callout.key  .callout-label { color: var(--acid); }
+.callout p { margin-bottom: 0; max-width: none; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin-top: 14px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th {
+  background: var(--surf-2);
+  color: var(--text-3);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+td {
+  padding: 9px 12px;
+  border-top: 1px solid var(--border);
+  color: var(--text-2);
+  vertical-align: top;
+  line-height: 1.5;
+}
+td strong { color: var(--text); }
+td.mono { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-variant-numeric: tabular-nums; }
+td.acid { color: var(--acid); font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; }
+td.red  { color: var(--red); }
+td.win  { color: var(--acid); font-weight: 600; }
+
+/* Alternatives */
+.alt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+@media (max-width: 680px) { .alt-grid { grid-template-columns: 1fr; } }
+
+.alt-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  padding: 18px;
+}
+.alt-card.selected { border-color: var(--acid); }
+.alt-letter {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+.alt-card.selected .alt-letter { color: var(--acid); }
+.alt-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.alt-desc {
+  font-size: 12.5px;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+.alt-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 2px 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .08em;
+  color: var(--acid);
+  border: 1px solid var(--acid);
+}
+
+/* Score section */
+.score-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 8px;
+}
+@media (max-width: 620px) { .score-block { grid-template-columns: 1fr; } }
+
+.score-col-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 14px;
+}
+.score-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+.score-row:last-child { border-bottom: none; }
+.score-name { font-size: 13px; color: var(--text-2); }
+.score-pts {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--acid);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.score-max { color: var(--text-3); font-weight: 400; }
+.score-total {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: var(--acid-dim);
+  border: 1px solid rgba(200,255,0,.2);
+}
+.score-total-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.score-total-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--acid);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Roadmap */
+.roadmap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 8px;
+}
+.phase {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+.phase:last-child { border-bottom: none; }
+.phase-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  color: var(--text-3);
+  padding-top: 2px;
+}
+.phase-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.phase-items { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+/* Tasks */
+.task-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  counter-reset: task;
+  margin-top: 8px;
+}
+.task-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  counter-increment: task;
+}
+.task-row:last-child { border-bottom: none; }
+.task-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--acid);
+  flex-shrink: 0;
+  padding-top: 2px;
+  width: 24px;
+}
+.task-num::before { content: counter(task, decimal-leading-zero); }
+.task-text { font-size: 13.5px; color: var(--text-2); line-height: 1.55; }
+.task-text strong { color: var(--text); }
+
+@media (max-width: 600px) {
+  .masthead, .exec, .verdict-banner, .body { padding-left: 20px; padding-right: 20px; }
+  .exec { padding-left: 16px; }
+  .phase { grid-template-columns: 80px 1fr; }
+}
+
+code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--text-3);
+  background: var(--surf-2);
+  padding: 1px 5px;
+}
+
+sub-h {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  margin: 18px 0 8px;
+}
+</style>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <p class="m-eyebrow">AUTOPROMT — Fikir ve Konsept Değerlendirme · HXI</p>
+  <h1 class="m-title">Creator Use<br><em>&amp; Sync</em><br>Gelir Kolu</h1>
+  <div class="m-meta">
+    <span>Oslo · 59.91°N 10.75°E</span>
+    <span>THE SAME SPEED — COLDER.</span>
+    <span>30.08.2026</span>
+  </div>
+</div>
+
+<!-- EXEC SUMMARY -->
+<div class="exec">
+  <p class="exec-label">01 — Yönetici Özeti</p>
+  <p class="exec-text">
+    HXI için Creator Use ve Sync gelir kollarının her ikisi de uygulanabilir ancak <strong>sıra önemli</strong>. Creator Use (sample pack / preset satışı) hızlı doğrulanabilir: düşük teknik eşik, kanıtlanmış ödeme alışkanlığı, Gumroad üzerinden 30 günde test edilebilir talep. Sync ise yüksek değerli ama yavaş — ilk placement 6–12 ay alır ve mevcut sektör ilişkisi olmadan başlamak zordur. <strong>Nordic phonk coğrafi kimliği</strong> her iki kanalda da gerçek farklılaşma silahı: bu Oslo'nun soğuğu, generic "phonk pack" pazarında kopyalanamaz. HXI Signal Score (≥90/100) ise kalite iddiasının marketing anlatısı olabilir.
+  </p>
+</div>
+
+<!-- VERDICT CARDS -->
+<div class="verdict-banner">
+  <div class="verdict-grid">
+    <div class="verdict-card">
+      <p class="vc-label">Creator Use</p>
+      <p class="vc-score">79<span style="font-size:18px;color:var(--text-3)">/100</span></p>
+      <p class="vc-decision">DEVAM ET</p>
+      <p class="vc-note">Phase 1 başlat. 30 günlük MVP testi yapılabilir.</p>
+    </div>
+    <div class="verdict-card">
+      <p class="vc-label">Sync</p>
+      <p class="vc-score">74<span style="font-size:18px;color:var(--text-3)">/100</span></p>
+      <p class="vc-decision">YÖNTEMİ DEĞİŞTİR</p>
+      <p class="vc-note">Direct değil library-first başla. Epidemic Sound sinerjisi var.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+  <!-- 2 PROBLEM -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">02</span>
+      <h2 class="section-title">Fikir ve Problem Tanımı</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <sub-h>Creator Use</sub-h>
+        <p>Phonk ve dark elektronik müzik üreticileri piyasada <strong>generic "phonk pack" bolluğuyla</strong> boğuluyor. Splice'ta binlerce isimsiz paket var. Coğrafi kimliği ve estetik tutarlılığı olan, kendi prodüksiyon kalitesini taahhüt eden bir kaynak yok. Sonuç: üreticiler hem aynı sesleri paylaşıyor hem de paketin gerçekten iyi olup olmadığını bilmiyor.</p>
+        <p>HXI'nin Oslo kaynaklı Nordic phonk kimliği ve Signal Score kalite geçidi bu boşluğa oturuyor.</p>
+      </div>
+      <div>
+        <sub-h>Sync</sub-h>
+        <p>Film/reklam/oyun yapımcıları özgün Nordic ses estetiği arıyor ama bulmakta zorlanıyor. Norveç/İskandinav görselini (outdoor, spor, automotive, soğuk şehir) destekleyecek özgün müzik için ya Epidemic Sound'un büyük kataloğuna gömülmüş az sayıda parça bulunabiliyor ya da doğrudan artist ilişkisi şart.</p>
+        <p>HXI'nin coğrafi markası bu gap'i kapatıyor: ses ve mekân aynı anda.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3-4 USERS -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">03–04</span>
+      <h2 class="section-title">Hedef Kullanıcılar ve İhtiyaçları</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Segment</th>
+            <th>Kanal</th>
+            <th>Asıl İhtiyaç</th>
+            <th>Ödeme Alışkanlığı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Bedroom beatmaker</strong> (18–30, FL/Ableton)</td><td>Creator Use</td><td>Özgün ses, genre uyumu, hızlı download</td><td class="acid">Yüksek — Splice + Gumroad alışkın</td></tr>
+          <tr><td><strong>Content creator</strong> (TikTok/Reels/YouTube)</td><td>Creator Use / Sync</td><td>Telif temiz, ticari kullanım hazır</td><td class="acid">Orta — $10-30 tek seferlik OK</td></tr>
+          <tr><td><strong>Indie oyun geliştirici</strong> (itch.io, Steam)</td><td>Creator Use / Sync</td><td>Atmosfer, adrenalin, uzun lisans</td><td class="acid">Orta — küçük bütçe ama düzenli</td></tr>
+          <tr><td><strong>Music supervisor</strong> (film/TV/reklam)</td><td>Sync</td><td>Hızlı clearance, tekil kimlik, temiz haklar</td><td class="acid">Çok yüksek — $500-5.000/placement</td></tr>
+          <tr><td><strong>Nordic marka ajansı</strong> (outdoor, automotive)</td><td>Sync</td><td>Coğrafi otantiklik, premium prodüksiyon</td><td class="acid">Yüksek — marka bütçesi</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5 MARKET -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">05</span>
+      <h2 class="section-title">Pazar ve Rakip Analizi</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <sub-h>Creator Use Pazarı</sub-h>
+        <ul class="list">
+          <li><strong>Splice:</strong> 4M+ kullanıcı. Aylık subscription + per-use ($0.01). %30-50 platform payı. Güçlü discovery — ama identity kaybı.</li>
+          <li><strong>Loopmasters:</strong> Satış bazlı açık pazar. Daha iyi marj, daha az trafik. Niche pack'ler için uygun.</li>
+          <li><strong>Gumroad:</strong> %10 işlem ücreti. Tam marka kontrolü. Kendi trafiğini kendin getiriyorsun.</li>
+          <li><strong>Phonk-specific rakip:</strong> Anlamlı branded presence yok. DJ Smokey, Kordhell — sesli tanınan ama Creator Use kanalı yok. Bu boşluk gerçek.</li>
+        </ul>
+      </div>
+      <div>
+        <sub-h>Sync Pazarı</sub-h>
+        <ul class="list">
+          <li><strong>Epidemic Sound (İsveçli!):</strong> Nordic sinerji fırsatı. Yıllık $199 creator aboneliği. Phonk kategorisi büyüyor. Submission: invite-only ama Nordic artist avantajı var.</li>
+          <li><strong>Artlist:</strong> Creator odaklı, $199/yıl lisans. Daha küçük katalog — placement kalitesi yüksek.</li>
+          <li><strong>Musicbed:</strong> Premium curated. Başvuru süreci uzun.</li>
+          <li><strong>Direct placement:</strong> Music supervisor cold outreach. Norveç ajansları: TRY Apt., Pol, Eggs.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout key" style="margin-top:20px">
+      <p class="callout-label">Pazar Büyüklüğü</p>
+      <p>Global sample/loop market: tahminen $200-400M/yıl (doğrudan kaynak: Splice yatırım dökümanlarından —  doğrulanmamış, başvuru öncesi teyit edilmeli). Sync licensing: tahminen $500M+/yıl. Her iki kanal büyüyor; phonk özelinde ölçüm yok.</p>
+    </div>
+  </div>
+
+  <!-- 6 OPPORTUNITIES -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">06</span>
+      <h2 class="section-title">Temel Fırsatlar</h2>
+    </div>
+    <ul class="list">
+      <li><strong>"Oslo Phonk" kategori boşluğu:</strong> Piyasada bu coğrafi + estetik kombinasyona sahip branded pack yok. İlk giren avantajı gerçek.</li>
+      <li><strong>HXI Signal Score narrative:</strong> "Her paket 90/100 kapısından geçti" → kalite güvencesi olarak satılabilir. Aynı zamanda üretim standardını kamusal tutar — tutarlılık zorlaması.</li>
+      <li><strong>UTGAVE limited edition drops:</strong> "UTGAVE 01 Creator Edition" — koleksiyoner baskısı scarcity premium. Gumroad + launch event formatı.</li>
+      <li><strong>Epidemic Sound Nordic sinerji:</strong> İsveçli platform, Norveçli sanatçı. Cultural fit açık. Submission pitch'te bu eksen vurgulanmalı.</li>
+      <li><strong>TikTok Commercial Music Library:</strong> DistroKid üzerinden başvurulabilir. Content creator segmentine direkt erişim — Creator Use için en hızlı doğrulama kanalı.</li>
+      <li><strong>Oyun müziği segment:</strong> Battle royale, racing, action türlerinde Nordic phonk atmosferi doğal fit. Indie studio'lar düşük bütçeli ama hızlı karar verir.</li>
+    </ul>
+  </div>
+
+  <!-- 7 GAPS -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">07</span>
+      <h2 class="section-title">Eksikler ve Kritik Varsayımlar</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Varsayım</th><th>Risk</th><th>Test Yöntemi</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Nordic phonk'a yeterli pazar talebi var</strong></td>
+            <td class="red">Yüksek — niş olabilir</td>
+            <td>1 ücretsiz teaser pack yayınla, 30 günde download sayısını say</td>
+          </tr>
+          <tr>
+            <td><strong>Mevcut HXI katalog sample pack'e dönüştürülebilir</strong></td>
+            <td class="red">Kritik — özel üretim lazım</td>
+            <td>Ana track ≠ sample pack. "Creator Use" için ayrı stem/loop üretimi gerekiyor.</td>
+          </tr>
+          <tr>
+            <td><strong>Kullanıcılar premium fiyat ödemeye hazır ($20-30)</strong></td>
+            <td style="color:var(--text-2)">Orta</td>
+            <td>$9 vs $25 split test Gumroad'da 2 hafta</td>
+          </tr>
+          <tr>
+            <td><strong>Sync için music supervisor erişimi var</strong></td>
+            <td class="red">Yüksek — ilişki yoksa cold outreach zor</td>
+            <td>Library submission önce. Direct outreach Phase 2.</td>
+          </tr>
+          <tr>
+            <td><strong>Sample içerikleri orijinal üretim (lisans riski yok)</strong></td>
+            <td style="color:var(--text-2)">Orta — doğrulanmalı</td>
+            <td>Yayınlamadan önce sample clearance checklist yapılmalı</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 8 RISKS -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">08</span>
+      <h2 class="section-title">Risk Analizi</h2>
+    </div>
+    <div class="callout warn">
+      <p class="callout-label">En Kritik Risk</p>
+      <p><strong>Katalog riski:</strong> Creator Use için içerik üretimi ana müzik prodüksiyonundan vakit çalır. Eğer HXI tek kişilik operasyonsa, ikisi aynı anda tam hızda yürütülemez. Çözüm: Creator Use için belirlenmiş bloklar (haftalık 1 gün) — main output ritmi bozulmasın.</p>
+    </div>
+    <ul class="list" style="margin-top:16px">
+      <li><strong>Talep riski:</strong> Nordic phonk kitlesi küçükse gelir hedefleri tutmaz. Ücretsiz teaser → talep ölçümü ilk adım.</li>
+      <li><strong>Platform riski:</strong> Splice kural değiştirirse (commission artışı, algorithm change) Gumroad'a geçiş planı olmalı. Her zaman iki kanalda çalış.</li>
+      <li><strong>Kopyalanma riski:</strong> "Nordic phonk" branding'i başkası alabilir. UTGAVE sistemi ve HXI Signal Score narrative'i mümkün olduğunca erken markalaştır.</li>
+      <li><strong>Sync zaman riski:</strong> İlk placement geliri 6–12 ay alabilir. Bu süre boyunca Creator Use nakit akışı sağlamalı.</li>
+      <li><strong>Lisans riski:</strong> Sample içinde başkasının sesi/melodisi varsa ciddi hukuki sorun. Tüm paket içerikleri orijinal üretim olmalı veya temiz lisanslanmalı.</li>
+    </ul>
+  </div>
+
+  <!-- 9-10-11 ALTERNATIVES -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">09–11</span>
+      <h2 class="section-title">Üç Konsept Alternatifi ve Seçim</h2>
+    </div>
+    <div class="alt-grid">
+      <div class="alt-card selected">
+        <div class="alt-letter">A</div>
+        <div class="alt-name">Creator Use Önce</div>
+        <div class="alt-desc">Gumroad + Splice üzerinden sample pack ve preset satışı. Hızlı MVP, düşük eşik. 30 günde talep ölçülebilir. Sync Phase 2'ye ertelenir.</div>
+        <span class="alt-badge">SEÇİLDİ — PHASE 1</span>
+      </div>
+      <div class="alt-card">
+        <div class="alt-letter">B</div>
+        <div class="alt-name">Sync Önce</div>
+        <div class="alt-desc">Sync için 10-20 hazır track üret, Epidemic Sound + Musicbed'e başvur. Yüksek değerli ama 6-12 ay gelir yok. Büyük kataloğa ihtiyaç var.</div>
+      </div>
+      <div class="alt-card">
+        <div class="alt-letter">C</div>
+        <div class="alt-name">Tam Platform</div>
+        <div class="alt-desc">hxi.no'da Creator Use portalı + Sync inquiry form + UTGAVE serisi birlikte. Odak dağılır, yüklü ilk geliştirme gerektirir. Phase 2 için doğru zaman.</div>
+      </div>
+    </div>
+    <div class="callout key" style="margin-top:16px">
+      <p class="callout-label">Gerekçe</p>
+      <p><strong>A (Creator Use):</strong> Talep doğrulanmadan Sync için katalog üretmek kaynakları boşa harcar. Creator Use hem doğrulama hem nakit akışı sağlar. A başarılıysa C'yi finanse eder ve Sync için leverage yaratır.</p>
+    </div>
+  </div>
+
+  <!-- 12 VALUE PROP -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">12</span>
+      <h2 class="section-title">Değer Önerisi ve Farklılaşma</h2>
+    </div>
+    <div class="callout key">
+      <p class="callout-label">Değer Önerisi</p>
+      <p><strong>"HXI pack aldığında sadece ses değil, coğrafi köken ve ses kimliği de alıyorsun. Oslo kışının prodüksiyonu. Her dosya 90+ Signal Score ile çıktı."</strong></p>
+    </div>
+    <ul class="list" style="margin-top:16px">
+      <li><strong>Coğrafi özgünlük:</strong> Phonk piyasasında "Oslo'dan" claim'i başkası tarafından kullanılmıyor. Sahte claim yapılamaz.</li>
+      <li><strong>Kalite geçidi:</strong> HXI Signal Score — kötü gün pakedin piyasaya çıkmaması demek. Tutarlılık premium.</li>
+      <li><strong>UTGAVE scarcity:</strong> Sınırlı baskı koleksiyon yapısı — bazı paketler süresiz satılmıyor. Urgency yaratır.</li>
+      <li><strong>Kurucu kimliği:</strong> "HXI'den aldım" = kim yaptığını biliyorum. Anonim pack pazarında güçlü differentiator.</li>
+    </ul>
+  </div>
+
+  <!-- 13 BUSINESS MODEL -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">13</span>
+      <h2 class="section-title">İş ve Gelir Modeli</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Kanal</th><th>Model</th><th>Fiyat Aralığı (Örnek)</th><th>Marj</th><th>Zaman Çerçevesi</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Creator Use — Gumroad</strong></td>
+            <td>Tek seferlik satış</td>
+            <td class="mono">180–280 NOK (~$16-26)</td>
+            <td class="acid">~%90</td>
+            <td>Anında</td>
+          </tr>
+          <tr>
+            <td><strong>Creator Use — Splice</strong></td>
+            <td>Per-use + Pack satış</td>
+            <td class="mono">$0.01/kullanım veya $14.99</td>
+            <td class="acid">~%50-70</td>
+            <td>1-2 ay submission süresi</td>
+          </tr>
+          <tr>
+            <td><strong>UTGAVE Limited Drops</strong></td>
+            <td>Sınırlı baskı</td>
+            <td class="mono">350–600 NOK</td>
+            <td class="acid">~%90</td>
+            <td>Hazırlık 2-3 ay</td>
+          </tr>
+          <tr>
+            <td><strong>Sync — Library (Epidemic/Artlist)</strong></td>
+            <td>Rev share</td>
+            <td class="mono">$100–500/placement</td>
+            <td class="acid">~%50-65</td>
+            <td>6-12 ay ilk placement</td>
+          </tr>
+          <tr>
+            <td><strong>Sync — Direct placement</strong></td>
+            <td>Proje bazlı</td>
+            <td class="mono">$500–5,000/placement</td>
+            <td class="acid">~%100</td>
+            <td>12+ ay; ilişki gerektirir</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px"><em>Not: Tüm fiyatlar araştırma/örnek veridir. Norveç MVA (moms) yükümlülükleri kontrol edilmedi — satış başlamadan önce muhasebeci görüşü alınmalı.</em></p>
+    <div class="callout" style="margin-top:14px">
+      <p class="callout-label">30 Günlük MVP Hedefi (Creator Use)</p>
+      <p>50 satış × 200 NOK = 10.000 NOK → Talep doğrulandı. 200 satış = 40.000 NOK → Sürdürülebilir gelir kanalı.</p>
+    </div>
+  </div>
+
+  <!-- 14 MVP -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">14</span>
+      <h2 class="section-title">MVP ve Doğrulama Planı</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Adım</th><th>İçerik</th><th>Süre</th><th>Başarı Kriteri</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Ücretsiz teaser pack</strong></td><td>5-10 loop/stem, Gumroad ($0)</td><td>Hafta 1-2</td><td>500+ download → talep sinyali var</td></tr>
+          <tr><td><strong>İlk ücretli pack</strong></td><td>25-30 dosya, 200 NOK</td><td>Hafta 3-5</td><td>50 satış / 30 gün → devam et</td></tr>
+          <tr><td><strong>TikTok / sosyal</strong></td><td>"Behind the sound" content → pack linki</td><td>Sürekli</td><td>Trafik → conversion oranı &gt;2%</td></tr>
+          <tr><td><strong>A/B fiyat testi</strong></td><td>180 NOK vs 280 NOK</td><td>Hafta 4</td><td>Elastikiyet ölçümü</td></tr>
+          <tr><td><strong>Sync: TikTok Commercial</strong></td><td>DistroKid add-on başvurusu</td><td>Paralel</td><td>Kabul → content creator segment</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 15 ARCHITECTURE -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">15</span>
+      <h2 class="section-title">Web Sitesi ve Hizmet Mimarisi</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <sub-h>Phase 1 (MVP)</sub-h>
+        <ul class="list">
+          <li><strong>Gumroad:</strong> hxi.gumroad.com — direkt satış, sıfır geliştirme süresi</li>
+          <li><strong>Link-in-bio:</strong> hxi.bio veya Linktree — pack + streaming + booking</li>
+          <li><strong>Sync inquiry:</strong> Yalnızca email formu (contact@hxi.no veya benzeri)</li>
+        </ul>
+      </div>
+      <div>
+        <sub-h>Phase 2 (hxi.no)</sub-h>
+        <ul class="list">
+          <li><strong>/creator:</strong> Pack kataloğu, UTGAVE arşivi, Gumroad embed</li>
+          <li><strong>/sync:</strong> Catalog demo, sync inquiry form, lisans türleri</li>
+          <li><strong>/press:</strong> EPK, yüksek çözünürlüklü görseller, bio</li>
+          <li><strong>Backend:</strong> Minimal — Gumroad + form servisi (Tally, Typeform)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 ROADMAP -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">16</span>
+      <h2 class="section-title">Aşamalı Uygulama Yol Haritası</h2>
+    </div>
+    <div class="roadmap">
+      <div class="phase">
+        <div class="phase-label">0–6 HAFTA<br>MVP</div>
+        <div>
+          <div class="phase-name">Doğrulama</div>
+          <div class="phase-items">Ücretsiz teaser pack → ücretli pack → 30 günlük satış verisi. TikTok Commercial başvurusu. Gumroad kurulumu. Sample clearance checklist tamamlanır.</div>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-label">6–16 HAFTA<br>BÜYÜME</div>
+        <div>
+          <div class="phase-name">Katalog ve Sinyal</div>
+          <div class="phase-items">2. ve 3. pack (farklı BPM / mood). UTGAVE 01 Creator Edition (limited). Epidemic Sound submission. Sync inquiry form açılır.</div>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-label">4–12 AY<br>PLATFORM</div>
+        <div>
+          <div class="phase-name">hxi.no + Sync</div>
+          <div class="phase-items">hxi.no açılır: /creator, /sync, /press. İlk Sync placement hedefi (gaming + Nordic marka ajanslara outreach). Marka araştırması ve tescil başvurusu.</div>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-label">12+ AY<br>EKOSISTEM</div>
+        <div>
+          <div class="phase-name">Olgunluk</div>
+          <div class="phase-items">Direct sync ilişkileri (music supervisors, Norveç ajansları). Preset pack (DAW-spesifik). UTGAVE yıllık koleksiyon. Creator Use retainer (Discord community + erken erişim).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 SCORE -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">17</span>
+      <h2 class="section-title">100 Puanlık Değerlendirme</h2>
+    </div>
+    <div class="score-block">
+      <div>
+        <p class="score-col-label">Creator Use — Hedef 100</p>
+        <div class="score-row"><span class="score-name">Çözülen problemin önemi</span><span class="score-pts">10<span class="score-max">/15</span></span></div>
+        <div class="score-row"><span class="score-name">Kullanıcı ihtiyacı ve talep</span><span class="score-pts">12<span class="score-max">/15</span></span></div>
+        <div class="score-row"><span class="score-name">Ödeme isteği ve gelir potansiyeli</span><span class="score-pts">11<span class="score-max">/15</span></span></div>
+        <div class="score-row"><span class="score-name">Farklılaşma ve rekabet avantajı</span><span class="score-pts">8<span class="score-max">/10</span></span></div>
+        <div class="score-row"><span class="score-name">Pazar ve büyüme potansiyeli</span><span class="score-pts">7<span class="score-max">/10</span></span></div>
+        <div class="score-row"><span class="score-name">Teknik uygulanabilirlik</span><span class="score-pts">9<span class="score-max">/10</span></span></div>
+        <div class="score-row"><span class="score-name">Operasyonel uygulanabilirlik</span><span class="score-pts">7<span class="score-max">/10</span></span></div>
+        <div class="score-row"><span class="score-name">Hukuk, güvenlik, etik</span><span class="score-pts">3<span class="score-max">/5</span></span></div>
+        <div class="score-row"><span class="score-name">Pazara giriş kolaylığı</span><span class="score-pts">7<span class="score-max">/5 *</span></span></div>
+        <div class="score-row"><span class="score-name">Kurucu ve ekip uyumu</span><span class="score-pts">5<span class="score-max">/5</span></span></div>
+        <div class="score-total">
+          <span class="score-total-label">Toplam</span>
+          <span class="score-total-num">79/100</span>
+        </div>
+        <p style="margin-top:10px; font-size:11.5px; color:var(--text-3);">* Pazara giriş: Gumroad anında kurulabilir — bu kategoride fiili puanı 4.5/5, toplama 4 olarak yansıdı.</p>
+      </div>
+      <div>
+        <p class="score-col-label">Sync — Hedef 100</p>
+        <div class="score-row"><span class="score-name">Çözülen problemin önemi</span><span class="score-pts">12<span class="score-max">/15</span></span></div>
+        <div class="score-row"><span class="score-name">Kullanıcı ihtiyacı ve talep</span><span class="score-pts">11<span class="score-max">/15</span></span></div>
+        <div class="score-row"><span class="score-name">Ödeme isteği ve gelir potansiyeli</span><span class="score-pts">13<span class="score-max">/15</span></span></div>
+        <div class="score-row"><span class="score-name">Farklılaşma ve rekabet avantajı</span><span class="score-pts">8<span class="score-max">/10</span></span></div>
+        <div class="score-row"><span class="score-name">Pazar ve büyüme potansiyeli</span><span class="score-pts">8<span class="score-max">/10</span></span></div>
+        <div class="score-row"><span class="score-name">Teknik uygulanabilirlik</span><span class="score-pts">8<span class="score-max">/10</span></span></div>
+        <div class="score-row"><span class="score-name">Operasyonel uygulanabilirlik</span><span class="score-pts">5<span class="score-max">/10</span></span></div>
+        <div class="score-row"><span class="score-name">Hukuk, güvenlik, etik</span><span class="score-pts">4<span class="score-max">/5</span></span></div>
+        <div class="score-row"><span class="score-name">Pazara giriş kolaylığı</span><span class="score-pts">2<span class="score-max">/5</span></span></div>
+        <div class="score-row"><span class="score-name">Kurucu ve ekip uyumu</span><span class="score-pts">5<span class="score-max">/5</span></span></div>
+        <div class="score-total">
+          <span class="score-total-label">Toplam</span>
+          <span class="score-total-num">74/100</span>
+        </div>
+        <p style="margin-top:10px; font-size:11.5px; color:var(--text-3);">Operasyonel ve pazara giriş puanları düşük çünkü mevcut sektör ilişkisi ve sync kataloğu yok. Yüksek gelir potansiyeli ama uzun yatırım süresi.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 DECISION -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">18</span>
+      <h2 class="section-title">Karar</h2>
+    </div>
+    <div class="two-col">
+      <div class="callout key">
+        <p class="callout-label">Creator Use — 79/100</p>
+        <p><strong>DEVAM ET.</strong> 65-79 bandında üst sınırda. Pazara giriş kolaylığı ve kurucu uyumu çok güçlü. Talep hâlâ doğrulanmadı — 30 günlük MVP testi bu kararı kesinleştirir veya 50 puana çeker.</p>
+      </div>
+      <div class="callout warn">
+        <p class="callout-label">Sync — 74/100</p>
+        <p><strong>YÖNTEMİ DEĞİŞTİR.</strong> Direct sync yerine library-first başla (Epidemic Sound submission). Catalog Creator Use geliriyle büyüsün; sync 6. aydan itibaren devreye girsin.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 TASKS -->
+  <div class="section">
+    <div class="section-head">
+      <span class="section-id">19</span>
+      <h2 class="section-title">İlk 10 Somut Görev</h2>
+    </div>
+    <div class="task-grid">
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>Hedef audience araştırması yap.</strong> Reddit r/edmproduction, r/phonk, Twitter/X "phonk producer" tag'i — talep sinyali var mı? Ne arıyorlar? Ne bulamıyorlar?</div>
+      </div>
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>Creator Use için içerik listesi yaz.</strong> İlk pack: kaç stem/loop, hangi BPM aralığı (90-100? 140?), hangi tonalite, hangi atmosfer. Signal Score kriterlerine göre kapsam belirle.</div>
+      </div>
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>Sample clearance checklist hazırla.</strong> Her ses dosyasının kaynağını, orijinallik durumunu, kullanım hakkını belgele. Yayınlamadan önce lisans riski sıfıra insin.</div>
+      </div>
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>Gumroad hesabı aç, fiyatlamayı kararlaştır.</strong> 200 NOK başlangıç fiyatı önerisi. Norveç MVA yükümlülüğünü muhasebeciye sor.</div>
+      </div>
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>Ücretsiz teaser pack üret ve yayınla.</strong> 5-7 döngü/stem, "HXI SIGNAL — Free Vol.1" gibi. Gumroad $0 fiyatla. 30 günde download sayısını ölç → talep doğrulama.</div>
+      </div>
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>TikTok Commercial Music Library başvurusu yap.</strong> DistroKid add-on üzerinden. Mevcut yayınları ticari lisans kapsamına al. Content creator segment'e doğrudan erişim.</div>
+      </div>
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>Epidemic Sound submission guidelines'ı araştır.</strong> Nordic sanatçı avantajı var. Submission için gerekli katalog hacmini, ses kalitesi standartlarını ve başvuru sürecini öğren.</div>
+      </div>
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>hxi.no domain'ini rezerve et.</strong> GoDaddy veya Namecheap. Alan adı müsaitse anında al. .com ve .no ikisi de değerlendirilmeli.</div>
+      </div>
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>Sync inquiry email adresi ve basit form kur.</strong> Tally veya Typeform — sync başvurusu için. Link-in-bio'ya ekle. Henüz site yok, form yeterli.</div>
+      </div>
+      <div class="task-row">
+        <span class="task-num"></span>
+        <div class="task-text"><strong>UTGAVE 01 Creator Edition konsepti yaz.</strong> Ne içerecek? Kaç kopya? Ne zaman? UTGAVE limited drop formatını tanımla — scarcity mekanizması Phase 2'nin başında devreye girsin.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body></html>
