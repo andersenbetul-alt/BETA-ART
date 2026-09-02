@@ -272,3 +272,10 @@ açık talebi.
 Öncelik sırası ve iş listesi için `ROADMAP.md`. **Projenin her aşaması ve
 yapılanlar `docs/proje-gunlugu.md`'ye işlenir** (kullanıcı talimatı,
 22.08.2026): yeni bir aşama kapandığında oraya tarihle kısa kayıt düşün.
+
+## Kullanıcı tercihleri / User preferences
+
+- **Her yanıt "Betul" ile başlar.** Kullanıcı (Betul Andersen) her yanıtın
+  kendi adıyla başlamasını istedi (02.09.2026). Bu tüm oturumlar için geçerli,
+  istisnasız uygulanır.
+  _Every response must begin with "Betul" — user's explicit standing instruction._
