@@ -654,3 +654,51 @@ Kod değişikliği yok. Böylece bugün iki ayrı AUTOPROMPT değerlendirmesi
 (Beta Art + Beta AI) birbirini bağımsız doğrulayan, tutarlı bir portföy
 kararına ulaştı: tek girişime odaklan, gerisini kanıt gelene kadar
 duraklat.
+
+## 02.09.2026 — Müşteri davranış/öneri sistemi: QBLOGG + Beta Art, Business bloklu
+
+Kullanıcı "her web sayfasında müşterinin bir sonraki ilgisini bulan bir
+sistem" istedi, sonra kapsamı netleştirdi: anonim/oturum-bazlı (kişisel
+veri yok), editör için de ayrı bir toplu görünüm olsun. İki karar
+AskUserQuestion ile alındı: (1) editör toplu görünümü Beta Art'ın zaten
+var olan Supabase'ine yazılsın, QBLOGG yalnızca ziyaretçi-tarafı kalsın
+(sıfır bağımlılık ilkesi korunuyor); (2) kullanıcı **açıkça** bugünkü
+Beta Art Business "Beklet" kararını bu özellik için geçersiz saydı.
+
+**QBLOGG (`assets/js/ilgi.js`, yeni):** Yazı görüntülemelerini
+`qb_ilgi` anahtarıyla localStorage'da tutan, kategori ağırlıklı,
+sunucusuz bir öneri motoru. İlk ziyaretçi için davranış değişmedi
+(geçmiş yoksa `recommend()` null döner, mevcut aynı-kategori mantığına
+düşülür) — yalnızca geçmişi olan ziyaretçide devreye giriyor. 8 sayfaya
+da eklendi, `gizlilik.html` (TR+EN) yeni anahtarı açıkladı, `guvenlik.mjs`
+artık `ilgi.js`'i de tarıyor. Playwright ile uçtan uca doğrulandı (iki
+ziyaretten sonra öneri gerçekten kategoriye göre değişiyor, gizli modda
+[localStorage kapalı] hata vermiyor).
+
+**Beta Art (`beta-art/`):** Yeni Supabase migration'ı
+(`plate_view_events` tablosu + iki SECURITY DEFINER fonksiyon:
+`co_viewed_plates` herkese açık toplu "birlikte görüntülendi" sayımı,
+`plate_view_summary` yalnızca admin). Kimlik yok — yalnızca
+`sessionStorage`'da (sekme kapanınca silinen) rastgele bir bağıntı
+kimliği. Plaka sayfasına "You might also like" bölümü, `_authenticated/
+admin.tsx`'e ("zaten var olan gerçek bir admin rota) ziyaretçi ilgisi
+tablosu eklendi. `privacy.tsx`'in "Cookies and analytics" bölümü
+**dürüstçe** güncellendi: bu mekanizma düşük riskli ama "ticari lansman
+öncesi ePrivacy rızası incelemesi yapılmadı" notu eklendi — sayfanın
+zaten var olan "[lansman öncesi tamamlanacak]" desenine uyularak,
+yeni bir onay-banner'ı icat edilmedi. `types.ts` (otomatik üretilen
+dosya) elle güncellendi çünkü bu ortamdan canlı Supabase şemasına
+erişilip `supabase gen types` çalıştırılamadı — gerçek CLI ile
+yeniden üretilmeli, şekli birebir aynı olacak şekilde yazıldı.
+`npm run build` + `tsc --noEmit` + `eslint` üçü de temiz (yalnızca
+bu değişiklikle ilgisiz, önceden var olan iki tsc hatası kaldı —
+biri `routeTree.gen.ts`'in bayatlamış olması, derleme sırasında
+kendiliğinden düzeldi).
+
+**Beta Art Business: kasıtlı olarak bloklu, "Beklet" karar geçersiz
+kılınmasına rağmen.** Business'ın hiç kodu/sayfası yok (bugünkü kendi
+değerlendirmesi bunu zaten teyit etmişti) — davranış izlemek için
+izlenecek bir sayfa gerekiyor. Bu özellik isteği bir sayfa şablonu
+inşa etmeyi kapsamıyordu; o yüzden Business'a hiçbir şey eklenmedi,
+yalnızca bu not düşüldü. Business'a bir sayfa geldiğinde aynı desen
+(Beta Art'ınkiyle birebir) uygulanabilir.
