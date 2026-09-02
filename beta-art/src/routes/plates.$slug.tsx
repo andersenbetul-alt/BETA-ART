@@ -1,13 +1,15 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LicenseRequestForm } from "@/components/LicenseRequestForm";
 import { CaptureTable, ProvenancePanel } from "@/components/ProvenancePanel";
+import { ForYou } from "@/components/ForYou";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustStrip } from "@/components/TrustStrip";
 import { canonicalUrl, PRICE_STATUS_NOTE, robotsContent, siteConfig } from "@/config/site";
 import { deliveryInfo, getPlate, licenses, orderingSteps } from "@/data/collection";
+import { recordView } from "@/lib/affinity";
 
 export const Route = createFileRoute("/plates/$slug")({
   loader: ({ params }) => {
@@ -90,6 +92,11 @@ function PlateDetail() {
   const { plate } = Route.useLoaderData();
   const [selected, setSelected] = useState(licenses[0]!.id);
   const active = licenses.find((l) => l.id === selected)!;
+
+  // USER-side behavior: record this plate view on the visitor's device only.
+  useEffect(() => {
+    recordView(plate.slug);
+  }, [plate.slug]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -256,6 +263,8 @@ function PlateDetail() {
             </div>
           </div>
         </section>
+
+        <ForYou exclude={plate.slug} heading="You may want to license next" />
       </main>
 
       <SiteFooter />

@@ -4,6 +4,7 @@ import makerImage from "@/assets/maker.jpg";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LicenseRequestForm } from "@/components/LicenseRequestForm";
+import { ForYou } from "@/components/ForYou";
 import { canonicalUrl, robotsContent, siteConfig } from "@/config/site";
 import { plates, licenses, faqs } from "@/data/collection";
 
@@ -321,6 +322,8 @@ function Home() {
             </div>
           </div>
         </section>
+
+        <ForYou heading="Pick up where you left off" />
 
         <section id="collection" className="border-b border-border" aria-labelledby="collection-title">
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
