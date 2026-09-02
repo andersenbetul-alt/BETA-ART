@@ -1,0 +1,23 @@
+{
+  "skill_name": "autoprompt",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/autoprompt",
+      "expected_output": "Tüm kalite kapıları çalıştırılmış (npm run check, guvenlik, gorunurluk), config.js boşlukları tespit edilmiş, tarihli günlük rapor docs/autoprompt/P01_QBLOGG/06_LAUNCH/ içine yazılmış, proje-gunlugu.md güncellenmiş, commit ve push yapılmış. Kullanıcıya kısa özet sunulmuş.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Projeyi tara ve günlük rapor hazırla. Hangi riskler açık, ne yapılması gerekiyor?",
+      "expected_output": "ROADMAP ve RISK-REGISTER okunmuş, kalite kapıları çalıştırılmış, aktif riskler (özellikle R01 Buttondown, R02 formEndpoint, R03 DNS) açıklanmış, kullanıcı eylemi gereken maddeler öncelik sırasıyla listelenmiş.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Bugün ne yapmam lazım QBLOGG için? Güncel durumu özetle.",
+      "expected_output": "Kalite kapıları çalıştırılmış, config.js boşlukları tespit edilmiş, en kritik 3 kullanıcı eylemi açıklanmış (Buttondown, Formspree, DNS), bir sonraki 3 görev belirlenmiş. Kısa ve aksiyon odaklı rapor.",
+      "files": []
+    }
+  ]
+}
