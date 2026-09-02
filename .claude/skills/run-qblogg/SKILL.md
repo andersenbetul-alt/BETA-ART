@@ -18,7 +18,7 @@ install` ÇALIŞTIRMA.
 ## Çalıştır (ajan yolu — önce bunu kullan)
 
 ```bash
-# 6 kritik akışlı smoke test + ana sayfa görüntüsü (çıkış kodu 0/1):
+# 7 kritik akışlı smoke test + ana sayfa görüntüsü (çıkış kodu 0/1):
 node .claude/skills/run-qblogg/driver.mjs smoke /tmp/qblogg-run
 
 # Tek sayfanın tam ekran görüntüsü (reveal animasyonu sabitlenmiş):
