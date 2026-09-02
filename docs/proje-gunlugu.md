@@ -421,3 +421,16 @@ Sürüş iki gerçek hatayı ortaya çıkardı (ikisi de bir önceki oturumun ü
 
 Driver dersleri SKILL.md'ye işlendi: `pkill -f` kendi kabuğunu vurur,
 detached spawn `unref()` ister, her Playwright context ayrı localStorage.
+
+## 02.09.2026 — run-hxi becerisi: HXI sitesi için Playwright sürücüsü
+
+`hxi/.claude/skills/run-hxi/` oluşturuldu (driver.mjs + SKILL.md). Smoke
+19 kontrol, ~8 sn: index (CSS kök-mutlak yoldan, nav, iş kartları, JSON-LD),
+music (tıklamayla Spotify iframe'i), 9 sayfa noindex + iç bağlantı 200,
+mobil hamburger menü (aria, kaydırma kilidi). `shot --mobile --menu` ile
+mobil menü görüntüsü. Port 8003.
+
+Ortam dersi: dış kaynaklar Chromium'a ulaşmıyor — Google Fonts `curl` ile
+200 ama Chromium'da 13 sn sonra `ERR_CONNECTION_RESET`, logo CDN'i ve
+Spotify askıda. Driver localhost dışı her isteği kesiyor; tipografi bu
+ortamda doğrulanamıyor, görüntülerde yedek font var.
