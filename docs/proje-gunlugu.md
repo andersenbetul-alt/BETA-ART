@@ -486,3 +486,38 @@ cevabı bunu kapsasa da teknik olarak henüz mümkün değil.
 
 Gerçek dosya/geçmiş taşıma işlemi, yukarıdaki üç karar netleşmeden
 başlatılmadı.
+
+## 02.09.2026 — Sosyal medya kanalları: strateji + ilk gerçek içerik partisi
+
+Kullanıcı "BETA ART SOSIAL MEDIA KANALLARI GELISTIR" dedi. AskUserQuestion'da
+üç seçenek de (kanal stratejisi, gerçek içerik üretimi, sitedeki sosyal
+bağlantı altyapısını tamamlama) seçildi.
+
+- **Strateji + kurulum rehberi:** `docs/sosyal-medya-stratejisi.md`. Beş
+  kanal (`config.js`'deki `social` alanlarıyla birebir: LinkedIn, X, YouTube,
+  Substack — Medium yerine önerildi), öncelik sırası, adım adım hesap açma,
+  `config.js`'e bağlama talimatı, yayın ritmi önerisi.
+- **Gerçek içerik:** `qblogg-turev` becerisiyle en yeni yazıdan
+  (`ai-arac-yigini-maliyeti`) yedi türev üretildi —
+  `content/ai-arac-yigini-maliyeti/tr/`. Tüm rakamlar kaynak yazıdaki Zylo
+  verisiyle birebir eşleşiyor (otomatik çapraz kontrol yapıldı), emoji
+  taraması temiz.
+- **Sosyal bağlantı altyapısı:** kod tarafı zaten hazırdı (`applySocial()`),
+  yalnızca 02.09.2026'daki "profesyonellik" düzeltmesiyle boş başlık kusuru
+  giderildi (aşağıya bakın). Gerçek hesap adresleri kullanıcıdan bekleniyor
+  — doldurulmadan tamamlanamaz, bu rehberde adımlar var.
+
+Aynı gün, önce "WEB SAYFASINI PROFESYONELLESTIR" talebiyle site görsel/kod
+denetiminden geçirildi: (1) altbilgide hiç sosyal hesap yokken "Sosyal"
+başlığının boş göründüğü bulundu ve düzeltildi (8 sayfa + `app.js`), (2)
+öne çıkan blog kartının özet metninin bir CSS özgüllük çakışmasıyla ezildiği,
+koyu temada 1,4:1 karşıtlığa (WCAG AA eşiği 4,5:1) düştüğü bulundu ve
+düzeltildi (~6,7:1'e çıktı). PR #16'ya push edildi (`ad0ece0`).
+
+Ayrıca PR #16'nın CI'ı ayrı bir gerçek hatayla kırılmıştı: `vercel.json`
+`buildCommand`'ı 691 karaktere ulaşmış, Vercel'in 256 karakter şema
+sınırını aşıyordu. Mantık `scripts/vercel-build.sh`'a taşındı, `buildCommand`
+28 karaktere indi (`414bdf0`). Kalan CI kırmızısı kod hatası değil: altı
+Vercel projesi (`andersenbetul-9635's projects` takımı) aynı repodan aynı
+anda deploy tetikleyip günlük deploy limitine (`api-deployments-free-per-day`,
+>100) takıldı — hangi Vercel projesinin kanonik olacağı kararı hâlâ bekliyor.
