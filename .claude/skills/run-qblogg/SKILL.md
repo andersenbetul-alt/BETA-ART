@@ -44,6 +44,16 @@ npm run gorunurluk # yayınlanmış yazıların görünürlük denetimi
 npm run onizleme   # 8 sayfayı tek tıklanabilir HTML'e gömer (paylaşım için)
 ```
 
+## Smoke testi neleri kapsar (7 akış)
+
+1. Ana sayfa — karşılaştırma tablosu (8 satır)
+2. Yazı sayfası — TOC (≥3 bağlantı)
+3. Kalite sayfası — başlık doğru
+4. Arapça RTL — `dir="rtl"` atanmış
+5. Üye uygulaması — `#kurulum` veya `#giris` görünür
+6. **QB_BEHAVIOR** — `window.QB_BEHAVIOR.recommend` fonksiyon olarak mevcut (behavior.js)
+7. Konsol/sayfa hatası yok
+
 ## Gotchas (hepsi bu konteynerde yaşandı)
 
 - **Playwright depo kökünden import EDİLEMEZ** (`ERR_MODULE_NOT_FOUND`;

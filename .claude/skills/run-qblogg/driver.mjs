@@ -86,6 +86,11 @@ if (KIP === 'shot') {
   kontrol('üye uygulaması (yapılandırmasızsa "Kurulum bekleniyor")',
     (await p.locator('#kurulum, #giris').count()) >= 1);
 
+  // QB_BEHAVIOR davranış modülü her sayfada window'da görünmeli
+  await git(p, 'blog.html');
+  kontrol('QB_BEHAVIOR modülü yüklü (behavior.js)',
+    await p.evaluate(() => typeof window.QB_BEHAVIOR === 'object' && typeof window.QB_BEHAVIOR.recommend === 'function'));
+
   kontrol('konsol/sayfa hatası yok', hata.length === 0, hata[0] || '');
   await b.close(); if (srv) process.kill(-srv.pid);
   console.log(kalan === 0 ? 'SMOKE: PASS' : `SMOKE: FAIL (${kalan})`);
