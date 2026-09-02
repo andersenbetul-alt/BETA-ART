@@ -1,0 +1,167 @@
+{
+  "_comment": "QBLOGG — Small Business plugin iş profili. Plugin kurulunca her skill bunu okur.",
+  "_version": "1.0.0",
+  "_updated": "2026-09-02",
+
+  "business": {
+    "name": "QBLOGG",
+    "type": "İçerik stüdyosu — SEO makale, LinkedIn serisi, sosyal içerik, newsletter, çok dilli yayın",
+    "industry": "content_marketing",
+    "location": "Norway",
+    "currency_primary": "NOK",
+    "currency_invoicing": "EUR",
+    "contact_email": "hello@qblogg.com",
+    "website": "https://qblogg.com",
+    "legal_note": "Yasal kimlik ve MVA numarası config.js / gizlilik.html içindeki [DOLDURULACAK] alanlarında. Eklenmeden fatura düzenleme."
+  },
+
+  "packages": [
+    {
+      "id": "p1",
+      "name": "Tek Makale",
+      "price_eur": 150,
+      "description": "Tek araştırma → 7 çıktı (blog + LinkedIn + sosyal + newsletter + SEO + video senaryosu + YouTube taslağı)",
+      "delivery_sla_hours": "30–60 dakika (breaking) / 24–48 saat (evergreen)"
+    },
+    {
+      "id": "p2",
+      "name": "Büyüme",
+      "price_eur": 900,
+      "billing": "monthly",
+      "description": "Aylık tekrarlayan içerik hattı; hedef: düzenli yayın yapan KOBİ ve SaaS"
+    },
+    {
+      "id": "p3",
+      "name": "Stüdyo",
+      "price_eur": 2500,
+      "billing": "monthly",
+      "description": "Tam stüdyo kapasitesi + video/YouTube çıktısı"
+    }
+  ],
+
+  "payment": {
+    "processor": "Stripe",
+    "domestic_fee_pct": 1.5,
+    "domestic_fee_fixed_nok": 1.80,
+    "international_surcharge_pct": 3.25,
+    "fx_surcharge_pct": 2.0,
+    "invoice_terms_days": 14,
+    "note": "stripe.com bu konteynerde engelli — oran kaynağı docs/odeme-sistemi.md, değiştirmeden önce doğrulayın."
+  },
+
+  "revenue_streams": [
+    { "id": "project",      "label": "Proje geliri",      "tool": "Stripe",     "currency": "EUR/NOK" },
+    { "id": "retainer",     "label": "Aylık abonelik",    "tool": "Stripe",     "currency": "EUR/NOK" },
+    { "id": "newsletter",   "label": "Bülten aboneliği",  "tool": "Buttondown", "currency": "NOK", "note": "Kullanıcı adı 'tatil' → 'qblogg' olarak değiştirilmeli" },
+    { "id": "affiliate",    "label": "Ortaklık komisyonu","tool": "posts.js {aff:} bloğu", "currency": "EUR" }
+  ],
+
+  "tools": {
+    "hosting":     "Vercel (proje: qblogg, takım: BET-ART)",
+    "newsletter":  "Buttondown (endpoint: config.js → newsletterEndpoint)",
+    "payments":    "Stripe",
+    "forms":       "Formspree (formEndpoint boş — mailto fallback aktif)",
+    "analytics":   "Vercel Analytics",
+    "seo_monitor": "Haftalık pazartesi 07:00 Norveç saati (routin kurulu)"
+  },
+
+  "content_engine": {
+    "board_file":   "engine/data/board.json",
+    "run_demo":     "node engine/run.mjs --demo",
+    "run_board":    "node engine/run.mjs --board",
+    "run_smoke":    "node .claude/skills/run-engine/driver.mjs smoke",
+    "decision_threshold": "KARAR = 🟢 YAZ veya 🟡 FİKİR",
+    "credit_costs": {
+      "article":     20,
+      "deep_report": 50,
+      "research":     5,
+      "keyword":      2,
+      "trend_scan":   1
+    }
+  },
+
+  "lead_flow": {
+    "entry_point":      "work.html brief formu",
+    "fallback":         "mailto:hello@qblogg.com (formEndpoint boş iken)",
+    "target_response_hours": 4,
+    "qualification_signal": "brief formu dolduran = sıcak lead; yalnızca blog okuyan = besle"
+  },
+
+  "workflows": {
+
+    "monday_brief": {
+      "skill": "small-business:monday-brief",
+      "qblogg_context": "Haftanın başında engine/data/board.json'u oku, 🟢 YAZ kararındaki konuları listele, haftalık yazı hedefini ve yayın takvimini hazırla. Henüz 🟢 konu yoksa 🟡 FİKİR grubundan en yüksek puanlı üç konuyu öner.",
+      "data_sources": ["engine/data/board.json", "sitemap.xml"],
+      "output": "Haftalık sprint: konu · sütun · kelime hedefi · SLA · para yolu"
+    },
+
+    "friday_brief": {
+      "skill": "small-business:friday-brief",
+      "qblogg_context": "Haftanın kapanışı: bu hafta yayınlanan yazıları sitemap.xml'den say, bülten gönderildi mi kontrol et, kalan board.json kuyruğunu göster, Stripe ve Buttondown gelir özetini ekle.",
+      "data_sources": ["engine/data/board.json", "sitemap.xml"],
+      "output": "Haftalık kapanış özeti: yayın sayısı · gelir sinyali · açık konu"
+    },
+
+    "content_strategy": {
+      "skill": "small-business:content-strategy",
+      "qblogg_context": "Curiosity Engine'in board.json çıktısını okuyarak 2 haftalık içerik sprinti oluştur. Her konu için: slug, pillar, wordTarget, sla, moneyPath alanlarını kullan. Öncelik sırası: finalScore (yüksekten düşüğe), sonra para yolu (course > affiliate > sponsored). Status='queued' olanlar önce gelir.",
+      "pipeline": "node engine/run.mjs --board → sprint planı → Canva görsel → LinkedIn duyurusu → newsletter konusu",
+      "output": "2 haftalık takvim: tarih · konu · kanal · çıktı sayısı · gelir bağlantısı"
+    },
+
+    "invoice_chase": {
+      "skill": "small-business:invoice-chase",
+      "qblogg_context": "Stripe üzerindeki NOK/EUR faturalar. Vade 14 gündür. Hatırlatma tonu: kibarca ısrarcı, hukuki değil. İlk hatırlatma vade+1, ikincisi vade+7, üçüncüsü vade+14 (son uyarı). Norveç'te geç ödeme faizi yasal zorunluluk — oranı docs içindeki mevzuat notuna bak.",
+      "currency": "NOK/EUR",
+      "payment_link_note": "config.js → payLinks dolu olan paketlerde Stripe linki oluşturulmuş; boş olanlar için manuel link üret."
+    },
+
+    "lead_triage": {
+      "skill": "small-business:lead-triage",
+      "qblogg_context": "Brief formu dolduran = sıcak; 4 saat içinde yanıt. Yalnızca blog okuyup form doldurmayan = bülten akışına al. Lead kalifikasyon sorusu: 'Hangi içerik kanalını aktif tutmak istiyorsunuz?' Cevap yoksa p1 (Tek Makale) paketiyle başla.",
+      "scoring": {
+        "hot":  "Brief formu doldurdu → 4 saat içinde yanıt",
+        "warm": "Birden fazla sayfa ziyaret, bülten abonesi → haftalık nurture",
+        "cold": "Tek ziyaret, form yok → SEO hunisinde bırak"
+      }
+    },
+
+    "cash_flow_snapshot": {
+      "skill": "small-business:cash-flow-snapshot",
+      "qblogg_context": "Üç gelir akışı: Stripe proje+abonelik (EUR/NOK) + Buttondown bülten aboneliği (NOK) + ortaklık komisyonu (EUR). Stripe maliyet: yurt içi %1.5 + 1,80kr; yurt dışı +%3.25; döviz +%2. Hedef aylık eşik: p2×2 = €1.800 (Büyüme×2) veya p1×12 = €1.800 (tek makale×12).",
+      "currency_display": "NOK (fatura EUR → NOK çevirisi için günlük kur kullan)"
+    },
+
+    "margin_analyzer": {
+      "skill": "small-business:margin-analyzer",
+      "qblogg_context": "Curiosity Engine kredi maliyeti vs paket fiyatı. Makale başına maliyet: research(5) + keyword×2(4) + article(20) = 29 kredi. Kredi birim fiyatı engine/schema-billing.sql'den okunur. Paket marjını hesaplarken Stripe komisyonunu da düş.",
+      "credit_cost_per_article": 29,
+      "packages_eur": { "p1": 150, "p2_monthly_articles": "6–8", "p3_monthly_articles": "20+" }
+    },
+
+    "run_campaign": {
+      "skill": "small-business:run-campaign",
+      "qblogg_context": "QBLOGG'un 7 çıktı hattı: 1) SEO blog makalesi (TR + EN, 1200+ kelime) → 2) LinkedIn serisi (3–5 gönderi) → 3) Sosyal içerik (Twitter/X + Instagram) → 4) Newsletter bölümü → 5) Kısa video senaryosu → 6) YouTube taslağı → 7) Çok dilli sürümler (8 dil özet katmanı). Kampanya başlangıç noktası: engine/data/board.json'daki 'queued' konu.",
+      "entry": "board.json → slug seç → write.mjs → Canva görsel → dağıtım takvimi",
+      "languages": ["tr","en","zh","hi","es","ar","fr","pt","ru","no"]
+    },
+
+    "job_post_builder": {
+      "skill": "small-business:job-post-builder",
+      "qblogg_context": "Yazar başvuru formu work.html'de. Gereksinimler: 10 dilde yazabilmek (en az TR+EN tam makale), SEO ve kaynak standartlarını bilmek (gorunurluk.mjs 16 kural), görünürlük kapısından geçen içerik üretmek. Ücret: makale başı veya aylık. İlan dilini Norveççe veya İngilizce yaz — Türkçe de kabul edilir.",
+      "form_url": "work.html#yazar"
+    },
+
+    "quarterly_review": {
+      "skill": "small-business:quarterly-review",
+      "qblogg_context": "Dört metrik grubu: (1) İçerik: yayınlanan yazı sayısı, ortalama kelime, görünürlük kapısı geçme oranı. (2) SEO/AI görünürlük: haftalık izleme verisi (pazartesi 07:00 routin). (3) Gelir: Stripe + Buttondown + ortaklık. (4) Pipeline: engine/data/board.json'daki konuların kaçı makaleye dönüştü.",
+      "data_sources": [
+        "Vercel Analytics (web_fetch_vercel_url)",
+        "engine/data/board.json",
+        "sitemap.xml (yayın sayısı)",
+        "scripts/gorunurluk.mjs (görünürlük oranı)"
+      ]
+    }
+  }
+}
