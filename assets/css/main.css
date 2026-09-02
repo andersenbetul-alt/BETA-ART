@@ -608,6 +608,49 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 .magnet-link { margin-top: 4px; background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.5); color: #fff; }
 .magnet-link:hover { background: rgba(255,255,255,.26); }
 
+/* ---------- Davranış motoru: yazı önerisi ---------- */
+.post-rec { background: var(--bg-soft); padding-block: 50px 52px; }
+.post-rec__title {
+  text-align: center; font-size: var(--fs-xl); font-weight: 700; color: var(--text);
+  margin: 0 0 28px;
+}
+.post-rec__grid {
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  max-width: 940px; margin-inline: auto;
+}
+.post-rec__card {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 22px 22px 24px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--bg-card);
+  color: var(--text); text-decoration: none;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  box-shadow: var(--shadow);
+}
+.post-rec__card:hover {
+  border-color: var(--brand); box-shadow: var(--shadow-lg); transform: translateY(-2px);
+}
+.post-rec__cat {
+  font-size: var(--fs-2xs); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--brand-2-ink);
+}
+.post-rec__t { font-size: var(--fs-base); font-weight: 700; line-height: 1.35; color: var(--text); }
+.post-rec__e { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ---------- Davranış motoru: blog devam çipi ---------- */
+.beh-chip {
+  display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 12px 18px; border-radius: var(--radius-sm);
+  border: 1px solid var(--brand-soft); background: var(--brand-soft);
+  color: var(--text); text-decoration: none; font-size: var(--fs-md);
+  margin-bottom: 20px; transition: border-color .15s ease;
+  max-width: 100%;
+}
+.beh-chip:hover { border-color: var(--brand); }
+.beh-chip__label { font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--brand-2-ink); flex: 0 0 auto; }
+.beh-chip__title { font-weight: 600; color: var(--text); flex: 1 1 160px; }
+.beh-chip__arrow { color: var(--brand); flex: 0 0 auto; }
+
 /* ---------- Yazdırma CSS'i ---------- */
 @media print {
   .site-header,

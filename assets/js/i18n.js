@@ -1788,3 +1788,17 @@ Object.assign(window.QB_I18N.ru, {
 Object.assign(window.QB_I18N.no, {
   'cta.magnet': 'Abonner og få Sjekklisten for automatiseringsdiagnose — mål på én uke hvilken oppgave i bedriften som er verdt å automatisere.',
   'cta.download': '↓ Last ned sjekklisten' });
+
+/* ---------------------------------------------------------------
+ * Davranış motoru (behavior.js) — öneri ve okuma sürekliliği.
+ * --------------------------------------------------------------- */
+Object.assign(window.QB_I18N.tr, { 'beh.recTitle': 'Bunlar da ilginizi çekebilir', 'beh.cont': 'Kaldığın yerden devam et' });
+Object.assign(window.QB_I18N.en, { 'beh.recTitle': 'You might also like', 'beh.cont': 'Continue reading' });
+Object.assign(window.QB_I18N.zh, { 'beh.recTitle': '你可能也喜欢', 'beh.cont': '继续阅读' });
+Object.assign(window.QB_I18N.hi, { 'beh.recTitle': 'आपको ये भी पसंद आ सकते हैं', 'beh.cont': 'पढ़ना जारी रखें' });
+Object.assign(window.QB_I18N.es, { 'beh.recTitle': 'También te puede interesar', 'beh.cont': 'Continuar leyendo' });
+Object.assign(window.QB_I18N.ar, { 'beh.recTitle': 'قد يعجبك أيضاً', 'beh.cont': 'تابع القراءة' });
+Object.assign(window.QB_I18N.fr, { 'beh.recTitle': 'Vous pourriez aussi aimer', 'beh.cont': 'Continuer la lecture' });
+Object.assign(window.QB_I18N.pt, { 'beh.recTitle': 'Você também pode gostar', 'beh.cont': 'Continuar lendo' });
+Object.assign(window.QB_I18N.ru, { 'beh.recTitle': 'Вам также может понравиться', 'beh.cont': 'Продолжить чтение' });
+Object.assign(window.QB_I18N.no, { 'beh.recTitle': 'Du liker kanskje også', 'beh.cont': 'Fortsett å lese' });
