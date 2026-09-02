@@ -474,7 +474,11 @@
     var blocks = pick(post.b) || [];
     var body = blocks.map(blockHTML).join('');
     var toc = tocHTML(blocks);
-    var related = sorted().filter(function (p) { return p.slug !== post.slug && p.category === post.category; }).slice(0, 2);
+    if (window.QB_ILGI) window.QB_ILGI.trackView(post.slug, post.category);
+    var related = (window.QB_ILGI && window.QB_ILGI.recommend(POSTS, post.slug, 2)) || null;
+    if (!related) {
+      related = sorted().filter(function (p) { return p.slug !== post.slug && p.category === post.category; }).slice(0, 2);
+    }
     if (related.length < 2) {
       related = related.concat(sorted().filter(function (p) {
         return p.slug !== post.slug && related.indexOf(p) === -1;
