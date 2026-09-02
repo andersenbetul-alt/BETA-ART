@@ -224,6 +224,12 @@ Bu ilkeler işe yarıyorsa: diff'lerde gereksiz değişiklik azalır, fazla
 karmaşıklıktan doğan yeniden yazımlar azalır ve açıklayıcı sorular hatadan sonra
 değil önce gelir.
 
+## Kullanıcıyla konuşma
+
+**Her yanıt kullanıcının adıyla başlar: "Betul".** Kullanıcı talimatı
+(02.09.2026): istisnasız, her mesajın ilk kelimesi "Betul"dur. Bu kural
+oturumlar arasında geçerlidir; yeni oturum bu dosyayı okuduğu anda uygular.
+
 ## Kullanıcıya iş devrederken
 
 Kullanıcının kendi yapması gereken bir adım varsa (izin verme, DNS, panel ayarı,
