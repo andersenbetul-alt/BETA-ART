@@ -116,6 +116,9 @@ window.QB_I18N.tr = {
   'footer.quality': 'Kalite güvencesi',
   'footer.sample': 'Örnek teslimat',
   'footer.rights': 'Tüm hakları saklıdır.',
+  'rec.next': 'Sonraki okuma',
+  'rec.forYou': 'Sizin için',
+  'rec.basedOn': 'Okuduklarınıza göre',
   'ui.theme': 'Temayı değiştir', 'ui.lang': 'Dil', 'ui.menu': 'Menü', 'ui.top': 'Yukarı çık'
 };
 
@@ -216,6 +219,9 @@ window.QB_I18N.en = {
   'footer.quality': 'Quality assurance',
   'footer.sample': 'Sample deliverable',
   'footer.rights': 'All rights reserved.',
+  'rec.next': 'Read next',
+  'rec.forYou': 'For you',
+  'rec.basedOn': 'Based on your reading history',
   'ui.theme': 'Toggle theme', 'ui.lang': 'Language', 'ui.menu': 'Menu', 'ui.top': 'Back to top'
 };
 
@@ -316,6 +322,9 @@ window.QB_I18N.zh = {
   'footer.quality': '质量保障',
   'footer.sample': '交付示例',
   'footer.rights': '版权所有。',
+  'rec.next': '下一篇',
+  'rec.forYou': '为你推荐',
+  'rec.basedOn': '基于您的阅读记录',
   'ui.theme': '切换主题', 'ui.lang': '语言', 'ui.menu': '菜单', 'ui.top': '回到顶部'
 };
 
@@ -416,6 +425,9 @@ window.QB_I18N.hi = {
   'footer.quality': 'गुणवत्ता आश्वासन',
   'footer.sample': 'नमूना डिलीवरी',
   'footer.rights': 'सर्वाधिकार सुरक्षित।',
+  'rec.next': 'अगला पढ़ें',
+  'rec.forYou': 'आपके लिए',
+  'rec.basedOn': 'आपकी पढ़ाई के आधार पर',
   'ui.theme': 'थीम बदलें', 'ui.lang': 'भाषा', 'ui.menu': 'मेन्यू', 'ui.top': 'ऊपर जाएँ'
 };
 
@@ -516,6 +528,9 @@ window.QB_I18N.es = {
   'footer.quality': 'Garantía de calidad',
   'footer.sample': 'Ejemplo de entrega',
   'footer.rights': 'Todos los derechos reservados.',
+  'rec.next': 'Leer siguiente',
+  'rec.forYou': 'Para ti',
+  'rec.basedOn': 'Según tu historial de lectura',
   'ui.theme': 'Cambiar tema', 'ui.lang': 'Idioma', 'ui.menu': 'Menú', 'ui.top': 'Volver arriba'
 };
 
@@ -616,6 +631,9 @@ window.QB_I18N.ar = {
   'footer.quality': 'ضمان الجودة',
   'footer.sample': 'نموذج تسليم',
   'footer.rights': 'جميع الحقوق محفوظة.',
+  'rec.next': 'اقرأ التالي',
+  'rec.forYou': 'مقترح لك',
+  'rec.basedOn': 'بناءً على سجل قراءتك',
   'ui.theme': 'تبديل السمة', 'ui.lang': 'اللغة', 'ui.menu': 'القائمة', 'ui.top': 'العودة إلى الأعلى'
 };
 
@@ -716,6 +734,9 @@ window.QB_I18N.fr = {
   'footer.quality': 'Garantie qualité',
   'footer.sample': 'Exemple de livrable',
   'footer.rights': 'Tous droits réservés.',
+  'rec.next': 'Lire la suite',
+  'rec.forYou': 'Pour vous',
+  'rec.basedOn': 'Selon votre historique de lecture',
   'ui.theme': 'Changer de thème', 'ui.lang': 'Langue', 'ui.menu': 'Menu', 'ui.top': 'Haut de page'
 };
 
@@ -816,6 +837,9 @@ window.QB_I18N.pt = {
   'footer.quality': 'Garantia de qualidade',
   'footer.sample': 'Exemplo de entrega',
   'footer.rights': 'Todos os direitos reservados.',
+  'rec.next': 'Ler a seguir',
+  'rec.forYou': 'Para você',
+  'rec.basedOn': 'Com base no seu histórico de leitura',
   'ui.theme': 'Alternar tema', 'ui.lang': 'Idioma', 'ui.menu': 'Menu', 'ui.top': 'Voltar ao topo'
 };
 
@@ -916,6 +940,9 @@ window.QB_I18N.ru = {
   'footer.quality': 'Гарантия качества',
   'footer.sample': 'Пример поставки',
   'footer.rights': 'Все права защищены.',
+  'rec.next': 'Читать дальше',
+  'rec.forYou': 'Для вас',
+  'rec.basedOn': 'На основе истории чтения',
   'ui.theme': 'Сменить тему', 'ui.lang': 'Язык', 'ui.menu': 'Меню', 'ui.top': 'Наверх'
 };
 
@@ -1016,6 +1043,9 @@ window.QB_I18N.no = {
   'footer.quality': 'Kvalitetssikring',
   'footer.sample': 'Eksempel på leveranse',
   'footer.rights': 'Alle rettigheter forbeholdt.',
+  'rec.next': 'Les neste',
+  'rec.forYou': 'For deg',
+  'rec.basedOn': 'Basert på det du har lest',
   'ui.theme': 'Bytt tema', 'ui.lang': 'Språk', 'ui.menu': 'Meny', 'ui.top': 'Til toppen'
 };
 

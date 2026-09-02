@@ -409,6 +409,22 @@
   function renderBlog() {
     var box = $('#postList');
     if (!box) return;
+    /* Kişiselleştirilmiş "Sizin için" bölümü — yalnızca okuma geçmişi varsa gösterilir */
+    var forYouBox = $('#forYou');
+    if (forYouBox) {
+      if (QB_BEHAVIOR.hasHistory()) {
+        var recs = QB_BEHAVIOR.recommend('', sorted(), 3);
+        if (recs.length) {
+          forYouBox.innerHTML =
+            '<h2>' + esc(t('rec.forYou')) + '</h2>' +
+            '<p class="muted" style="margin-bottom:20px">' + esc(t('rec.basedOn')) + '</p>' +
+            '<div class="posts">' + recs.map(function (p) { return cardHTML(p, 3); }).join('') + '</div>';
+          forYouBox.removeAttribute('hidden');
+        }
+      } else {
+        forYouBox.setAttribute('hidden', '');
+      }
+    }
     var chips = $('#catChips');
     if (chips) {
       var cats = ['all'].concat(POSTS.map(function (p) { return p.category; }).filter(function (v, i, a) { return a.indexOf(v) === i; }));
@@ -471,15 +487,11 @@
       return;
     }
     var c = ACCENTS[post.accent] || ACCENTS[1];
+    QB_BEHAVIOR.record(post.slug, post.category);
     var blocks = pick(post.b) || [];
     var body = blocks.map(blockHTML).join('');
     var toc = tocHTML(blocks);
-    var related = sorted().filter(function (p) { return p.slug !== post.slug && p.category === post.category; }).slice(0, 2);
-    if (related.length < 2) {
-      related = related.concat(sorted().filter(function (p) {
-        return p.slug !== post.slug && related.indexOf(p) === -1;
-      }).slice(0, 2 - related.length));
-    }
+    var related = QB_BEHAVIOR.recommend(slug, sorted(), 3);
     document.title = pick(post.t) + ' — QBLOGG';
     var metaDesc = $('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', pick(post.e));
@@ -512,7 +524,7 @@
           '<a class="btn btn--ghost" href="index.html#packages">' + esc(t('cta2.alt')) + '</a>' +
         '</div>' +
       '</aside>' +
-      '<h2 style="margin-top:52px">' + esc(t('posts.related')) + '</h2>' +
+      '<h2 style="margin-top:52px">' + esc(t('rec.next')) + '</h2>' +
       '<div class="posts">' + related.map(function (p) { return cardHTML(p, 3); }).join('') + '</div>';
 
     var share = $('#shareBtn');
