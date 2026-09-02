@@ -4,9 +4,15 @@
  * Kullanım (depo kökünden):
  *   node .claude/skills/run-qblogg/driver.mjs smoke [çıktı-dizini]
  *   node .claude/skills/run-qblogg/driver.mjs shot <sayfa[?sorgu]> [çıktı-dizini]
+ *   node .claude/skills/run-qblogg/driver.mjs incognito
  *
- * smoke: sunucuyu kendisi açar (8000 boşsa), 5 kritik akışı sürer, kapatır.
- * shot : tek sayfanın tam ekran görüntüsü (reveal animasyonu sabitlenmiş).
+ * smoke     : sunucuyu kendisi açar (8000 boşsa), 5 kritik akışı sürer, kapatır.
+ * shot      : tek sayfanın tam ekran görüntüsü (reveal animasyonu sabitlenmiş).
+ * incognito : ilk ziyaret + gizli mod davranışını sınar — (1) sıfır cookie/
+ *             localStorage'lı temiz bağlam, (2) localStorage tamamen erişilemez
+ *             (Safari'nin eski gizli modunda gerçek olan QuotaExceededError).
+ *             app.js'teki tema/dil/bülten try/catch'lerinin gerçekten koruyup
+ *             korumadığını doğrular; ekran görüntüsü almaz, çıkış kodu 0/1.
  * Çıktılar varsayılan olarak <çıktı-dizini|/tmp/qblogg-run>/ altına .png yazar.
  *
  * Playwright bu konteynerde küresel kuruludur ama depo kökünden import edilemez
@@ -50,7 +56,47 @@ async function sabitle(p) {  // reveal animasyonu ekran görüntüsünde boş ka
 
 const git = async (p, yol) => p.goto(`http://localhost:${PORT}/${yol}`, { waitUntil: 'networkidle' });
 
-if (KIP === 'shot') {
+if (KIP === 'incognito') {
+  const srv = await sunucu();
+  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
+
+  const senaryo = async (ad, initScript) => {
+    const ctx = await b.newContext({ viewport: { width: 1280, height: 850 } });
+    if (initScript) await ctx.addInitScript(initScript);
+    const p = await ctx.newPage();
+    const hatalar = [];
+    p.on('pageerror', e => hatalar.push(String(e)));
+    p.on('console', m => { if (m.type() === 'error') hatalar.push('console.error: ' + m.text()); });
+
+    await git(p, 'index.html');
+    const tema1 = await p.getAttribute('html', 'data-theme');
+    const dil1 = await p.getAttribute('html', 'lang');
+    await p.locator('#themeBtn').first().click({ timeout: 1000 }).catch(() => {});
+    await p.reload({ waitUntil: 'networkidle' });
+    const tema2 = await p.getAttribute('html', 'data-theme');
+
+    await ctx.close();
+    console.log(`\n== ${ad} ==`);
+    console.log('  ilk tema:', tema1, '| ilk dil:', dil1, '| değiştir+yenile sonrası tema:', tema2);
+    console.log('  sayfa/konsol hatası:', hatalar.length === 0 ? 'yok' : hatalar.length + ' → ' + hatalar[0]);
+    return hatalar.length === 0;
+  };
+
+  const ok1 = await senaryo('1) Temiz gizli mod bağlamı (sıfır cookie/localStorage)');
+  const ok2 = await senaryo('2) Sert senaryo — localStorage erişilemez (QuotaExceededError)', () => {
+    const bozuk = {
+      getItem() { throw new DOMException('QuotaExceededError'); },
+      setItem() { throw new DOMException('QuotaExceededError'); },
+      removeItem() { throw new DOMException('QuotaExceededError'); },
+    };
+    Object.defineProperty(window, 'localStorage', { value: bozuk, configurable: true });
+  });
+
+  await b.close(); if (srv) process.kill(-srv.pid);
+  const gecti = ok1 && ok2;
+  console.log('\nINCOGNITO:', gecti ? 'PASS' : 'FAIL');
+  process.exit(gecti ? 0 : 1);
+} else if (KIP === 'shot') {
   const yol = process.argv[3] || 'index.html';
   const srv = await sunucu();
   const { b, ctx } = await tarayici();

@@ -1,6 +1,6 @@
 ---
 name: run-qblogg
-description: QBLOGG sitesini bu konteynerde çalıştır, sür ve ekran görüntüsü al — "siteyi çalıştır", "run", "smoke test", "screenshot/ekran görüntüsü", "sayfayı göreyim", "tarayıcıda doğrula" istendiğinde bu beceriyi kullan. Sunucu başlatma + Playwright sürüşü tek komutta.
+description: QBLOGG sitesini bu konteynerde çalıştır, sür ve ekran görüntüsü al — "siteyi çalıştır", "run", "smoke test", "screenshot/ekran görüntüsü", "sayfayı göreyim", "tarayıcıda doğrula", "incognito/gizli mod testi" istendiğinde bu beceriyi kullan. Sunucu başlatma + Playwright sürüşü tek komutta.
 ---
 
 # QBLOGG'u çalıştırma ve sürme
@@ -18,11 +18,14 @@ install` ÇALIŞTIRMA.
 ## Çalıştır (ajan yolu — önce bunu kullan)
 
 ```bash
-# 6 kritik akışlı smoke test + ana sayfa görüntüsü (çıkış kodu 0/1):
+# 7 kritik akışlı smoke test + ana sayfa görüntüsü (çıkış kodu 0/1):
 node .claude/skills/run-qblogg/driver.mjs smoke /tmp/qblogg-run
 
 # Tek sayfanın tam ekran görüntüsü (reveal animasyonu sabitlenmiş):
 node .claude/skills/run-qblogg/driver.mjs shot "post.html?slug=ai-icerik-studyosu" /tmp/qblogg-run
+
+# Gizli mod (incognito) testi — ilk ziyaret + localStorage erişilemez senaryosu:
+node .claude/skills/run-qblogg/driver.mjs incognito
 
 # Yeni bir demo/Action Page eklediğinde aynı desenle görüntüle:
 node .claude/skills/run-qblogg/driver.mjs shot "demo/q-work-audit.html" /tmp/qblogg-run
@@ -54,8 +57,11 @@ bağımlılık yok, hesap/veri gönderimi yok — satış demoları ve Faz 0
 doğrulama araçları. Smoke test artık bunlardan birini (Q Work Audit)
 uçtan uca sürüyor: görev seç, süre gir, gönder, sonuç kartında `mailto:`
 CTA'sının oluştuğunu doğrula. Yeni bir Action Page eklersen aynı deseni
-smoke'a ekle; `vercel.json`'daki `buildCommand`a da dosya adlarını
-eklemeyi unutma, yoksa dağıtımda 404 verir.
+smoke'a ekle. `vercel.json`'daki `buildCommand` artık `demo/`'yu tek tek
+dosya adıyla değil `cp -r` ile bütün kopyalıyor (01.09.2026 — tek tek
+enumerasyon `buildCommand`'ı Vercel'in 256 karakter sınırının üstüne
+çıkarmıştı) — yeni bir Action Page eklemek bu dosyaya dokunmayı
+gerektirmiyor.
 
 ## Gotchas (hepsi bu konteynerde yaşandı)
 

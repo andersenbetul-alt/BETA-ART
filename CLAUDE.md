@@ -256,9 +256,14 @@ açık talebi.
 - **Site Vercel'de yayında (22.08.2026).** Proje `qblogg`, takım "BET - ART"
   (`team_xNtowH7U0jXQrI53DFJFzH2o`), üretim adresi qblogg.vercel.app (23.08 gecesi proje panelde silinmişti; aynı adla yeniden kuruldu — proje id değişti, eski qblogg-flame/qblogg-bet-art adresleri geçersiz).
   Kurulum tek dosyalık: dağıtıma yalnızca `vercel.json` gönderilir (depodaki
-  dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`)
-  klonlayıp 6 sayfa + `404.html` + `sitemap.xml` + `robots.txt` + `assets/`i
-  `dist/`e kopyalar. Yani **siteyi güncellemek =
+  dosyanın kendisi — tek kaynak); `buildCommand` public depoyu (`main`) sparse
+  klonlayıp kök `*.html`/`*.xml`/`*.txt` + `.well-known/` + `demo/` + `assets/`i
+  `outputDirectory` (`d`)'ye kopyalar — `dist` değil `d`: `buildCommand` 691
+  karaktere çıkıp Vercel'in 256 karakter şema sınırını aşmıştı (01.09.2026,
+  her yeni `demo/` sayfası dosya adını tek tek `buildCommand`'a ekleyerek
+  büyümüştü); joker karakterle listeleme + kısa klasör adları (`s`, `d`) ile
+  247 karaktere indirildi, artık yeni bir `demo/` sayfası eklemek bu dosyaya
+  dokunmayı gerektirmiyor. Yani **siteyi güncellemek =
   main'e push + aynı dağıtımı yeniden tetiklemek.** Vercel'in GitHub
   entegrasyonu `andersenbetul-alt` hesabına yetkili değil (`repo_no_access`,
   entegrasyon `betulandersen-droid`a bağlı); kullanıcı yetkiyi verirse

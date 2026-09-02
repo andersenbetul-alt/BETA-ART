@@ -32,8 +32,8 @@ gelen bir bileşen React JSX olarak değil, **düz HTML + satır içi stil** ola
 
 ### Nerede
 
-Tek yer: `assets/css/main.css` içindeki `:root` bloğu (satır 1–40) ve koyu
-tema için `html[data-theme="dark"]` (satır 41–58). Başka hiçbir dosyada
+Tek yer: `assets/css/main.css` içindeki `:root` bloğu (satır 4–41) ve koyu
+tema için `html[data-theme="dark"]` (satır 43–62). Başka hiçbir dosyada
 belirteç tanımı yok.
 
 ### Biçim
@@ -157,11 +157,10 @@ Hepsi `window.QB_*` küresel değişkenleri üzerinden konuşuyor. Modül yok.
 | Klasör | Boyut | İçerik |
 |---|---|---|
 | `assets/fonts/` | 204 KB | Inter, dört alt küme + `inter.css` + `OFL.txt` |
-| `assets/js/` | 460 KB | Dört dosya; büyüğü `posts.js` (10 yazı × 10 dil) |
+| `assets/js/` | 480 KB | Dört dosya; büyüğü `posts.js` (10 yazı × 10 dil) |
 | `assets/brand/` | 116 KB | 14 kimlik varlığı — **betikten üretilir, elle düzenlenmez** |
-| `assets/css/` | 36 KB | Tek dosya |
+| `assets/css/` | 40 KB | Tek dosya |
 | `assets/downloads/` | 12 KB | Lead magnet |
-| `assets/img/` | 4 KB | |
 
 **CDN yok ve olmayacak.** Yazı tipleri kendi sunucumuzda:
 
@@ -249,7 +248,7 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
+Hiçbiri. Düz CSS, tek dosya, 629 satır, 117 sınıf. Sınıf adları anlamsal ve
 kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller
@@ -259,8 +258,11 @@ sıfırlama → tipografi → düzen → bileşenler → medya sorguları.
 
 ### Duyarlılık
 
-**5 medya sorgusu**, hepsi `max-width`. Mobil kırılma noktaları:
+**6 medya sorgusu**: dördü `max-width` kırılma noktası, biri
+`prefers-reduced-motion`, biri `print`. Kırılma noktaları:
 
+- `≤1180px` — menü mobil moda geçer (eşik yüksek: Rusça/Norveççe etiketler uzun)
+- `≤860px` — `.flow` ızgarası tek sütuna düşer
 - `≤620px` — dil seçici ikona düşer, logo yalnızca sembol
 - `≤360px` — tema düğmesi gizlenir
 
