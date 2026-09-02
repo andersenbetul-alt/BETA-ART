@@ -115,3 +115,5 @@ const NC_DOCTORS = [
     bio: 'Orthopaedic surgeon advising on musculoskeletal symptoms. Guides patients on whether physio, GP, or specialist referral is the right next step.',
   },
 ];
+// Üst düzey const window'a yazılmaz; admin.html ve profile.html window.NC_DOCTORS okur.
+window.NC_DOCTORS = NC_DOCTORS;

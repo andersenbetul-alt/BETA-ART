@@ -403,3 +403,21 @@ demo banner (gerçek rezervasyon/ödeme yok), Arapça için RTL desteği.
 - ✓ NaviarCare telemedicine sitesi — naviar/care/ (bu oturum)
 - ⏳ NAVIAR Consult placeholder — bekliyor
 - ⏳ beta-art TypeScript uygulaması — beta-art/ zaten main'de mevcut
+
+## 02.09.2026 — run-naviar-care becerisi genişletildi, iki kör hata bulundu
+
+`/run-skill-generator` ile `naviar/care/.claude/skills/run-naviar-care`
+yeniden sürüldü: smoke 9 → 27 kontrol (NCB onayı → favori → profil,
+admin kurulum/giriş/çıkış, view-profile, join sihirbazı); `shot` moduna
+`--login`, `--tab=`, `--consent` bayrakları eklendi.
+
+Sürüş iki gerçek hatayı ortaya çıkardı (ikisi de bir önceki oturumun ürünü):
+- `admin.html`: `#doctor-modal{display:flex}` ve `#auth-screen{display:flex}`
+  tarayıcının `[hidden]` kuralını eziyordu — modal hep açık, sayfa tıklanamaz.
+  `#x[hidden]{display:none}` ile düzeltildi.
+- `doctors.js`: üst düzey `const NC_DOCTORS` `window`'a yazılmadığı için
+  admin tablosu ve profil favorileri boş kalıyordu. Dosya sonuna
+  `window.NC_DOCTORS = NC_DOCTORS` eklendi; admin dışa aktarması da yazıyor.
+
+Driver dersleri SKILL.md'ye işlendi: `pkill -f` kendi kabuğunu vurur,
+detached spawn `unref()` ister, her Playwright context ayrı localStorage.

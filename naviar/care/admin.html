@@ -11,6 +11,7 @@
 body { background: var(--bg-alt); }
 
 /* Auth screen */
+#auth-screen[hidden] { display: none; }    /* id seçici UA [hidden] kuralını ezer */
 #auth-screen {
   display: flex;
   align-items: center;
@@ -373,6 +374,7 @@ body { background: var(--bg-alt); }
 .ncb-empty { color: var(--text-3); font-size: 14px; font-style: italic; }
 
 /* Modal */
+#doctor-modal[hidden] { display: none; }   /* id seçici UA [hidden] kuralını ezer */
 #doctor-modal {
   position: fixed;
   inset: 0;
@@ -1220,7 +1222,7 @@ body { background: var(--bg-alt); }
  * To update: Admin panel (admin.html) → Doctors tab → export → replace this file → git commit → Vercel redeploys.
  */
 const NC_DOCTORS = `;
-    const content = header + JSON.stringify(doctors, null, 2) + ';\n';
+    const content = header + JSON.stringify(doctors, null, 2) + ';\nwindow.NC_DOCTORS = NC_DOCTORS;\n';
     const blob = new Blob([content], { type: 'text/javascript' });
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement('a');
