@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { plates, verificationMethods, exhibitions, licenceTiers, faqItems, type PlateCategory } from "@/lib/data";
 import { usePage } from "@/lib/router";
 import { useLang } from "@/lib/langContext";
+import { record } from "@/lib/behavior";
+import { ForYou } from "@/components/ForYou";
 
 // Plain native <select> throughout this file — the Radix-based shadcn
 // Select/Accordion/Checkbox/Sheet primitives failed to bundle under this
@@ -156,7 +158,12 @@ function Collection() {
           {FILTERS.map((f) => (
             <button
               key={f.value}
-              onClick={() => setFilter(f.value)}
+              onClick={() => {
+                setFilter(f.value);
+                // Behavior layer: an explicit category choice is an
+                // interest signal (on-device only, lib/behavior.ts).
+                if (f.value !== "all") record({ t: "filter", cat: f.value });
+              }}
               className={`border px-4 py-2 font-record text-[0.7rem] uppercase tracking-[0.12em] transition-colors ${
                 filter === f.value ? "border-accent bg-accent text-accent-foreground" : "border-border text-muted-foreground hover:border-accent hover:text-foreground"
               }`}
@@ -460,6 +467,10 @@ export function Home() {
       <StatStrip />
       <Verification />
       <Collection />
+      {/* Behavior layer (02.09.2026): renders only when this device has
+          real activity — returning visitors see what they're likely to
+          want next; first-time visitors see nothing extra. */}
+      <ForYou />
       <Exhibitions />
       <Photographer />
       <LifeFlower />

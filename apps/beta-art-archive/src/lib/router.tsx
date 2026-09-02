@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
+import { record } from "./behavior";
 
 export type Page = "home" | "categories" | "faq" | "request-a-shoot" | "cart" | "sell" | "plate" | "artists" | "prices" | "auth" | "feedback";
 
@@ -19,6 +20,9 @@ export function PageProvider({ children }: { children: ReactNode }) {
   const [plateId, setPlateId] = useState<string | null>(null);
 
   const go = (p: Page, hash?: string) => {
+    // Behavior layer: every navigation is recorded on-device (never sent
+    // anywhere) — see lib/behavior.ts.
+    record({ t: "page", page: p });
     setPage(p);
     window.scrollTo({ top: 0 });
     if (p === "home" && hash) {

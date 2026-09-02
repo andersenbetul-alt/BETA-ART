@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import { exhibitions, plates, verificationMethods } from "@/lib/data";
 import { usePage } from "@/lib/router";
 import { useLang } from "@/lib/langContext";
 import { useCart } from "@/lib/cartContext";
+import { record } from "@/lib/behavior";
+import { ForYou } from "@/components/ForYou";
 import { Button } from "@/components/ui/button";
 
 // New, user-directed feature (30.08.2026): "Collection — statik ızgara
@@ -24,6 +27,12 @@ export function PlateDetail() {
   const { t, lang } = useLang();
   const { items, add } = useCart();
   const plate = plates.find((p) => p.id === plateId);
+
+  // Behavior layer: a plate view is the core interest signal (on-device
+  // only, see lib/behavior.ts).
+  useEffect(() => {
+    if (plate) record({ t: "view", id: plate.id, cat: plate.category });
+  }, [plate]);
 
   if (!plate) {
     return (
@@ -75,6 +84,7 @@ export function PlateDetail() {
                 if (!items.some((i) => i.plateId === plate.id)) {
                   add({ plateId: plate.id, title: plate.title });
                 }
+                record({ t: "cart", id: plate.id, cat: plate.category });
                 go("cart");
               }}
               className="rounded-none font-record text-xs uppercase tracking-[0.14em]"
@@ -99,7 +109,10 @@ export function PlateDetail() {
             only (#request), matching their real "Price on request" state. */}
         {purchasable && (
           <Button
-            onClick={() => add({ plateId: plate.id, title: plate.title })}
+            onClick={() => {
+              add({ plateId: plate.id, title: plate.title });
+              record({ t: "cart", id: plate.id, cat: plate.category });
+            }}
             disabled={items.some((i) => i.plateId === plate.id)}
             className="mt-4 rounded-none font-record text-xs uppercase tracking-[0.14em]"
           >
@@ -139,6 +152,7 @@ export function PlateDetail() {
           </TimelineNode>
         </div>
       </div>
+      <ForYou excludePlateId={plate.id} />
     </section>
   );
 }

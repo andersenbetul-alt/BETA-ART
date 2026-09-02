@@ -130,6 +130,9 @@ const en: Dict = {
   footerRights: "© 2026 Beta Art. All rights reserved worldwide.",
   footerNoAi: "No AI training · Verified human photography",
   footerFollow: "Follow",
+  recoTitle: "Picked for you",
+  recoBasis: "Based only on what you've viewed on this device — nothing is sent anywhere.",
+  recoReset: "Forget my activity",
 
   cartTitle: "Cart",
   cartItems: "0 items",
@@ -353,6 +356,9 @@ const no: Dict = {
   footerRights: "© 2026 Beta Art. Alle rettigheter forbeholdt globalt.",
   footerNoAi: "Ingen AI-trening · Verifisert menneskelig fotografi",
   footerFollow: "Følg",
+  recoTitle: "Utvalgt for deg",
+  recoBasis: "Basert kun på det du har sett på denne enheten — ingenting sendes noe sted.",
+  recoReset: "Glem aktiviteten min",
 
   cartTitle: "Handlekurv",
   cartItems: "0 varer",
@@ -576,6 +582,9 @@ const tr: Dict = {
   footerRights: "© 2026 Beta Art. Tüm hakları dünya çapında saklıdır.",
   footerNoAi: "Yapay zekâ eğitimi yok · Doğrulanmış insan fotoğrafçılığı",
   footerFollow: "Takip",
+  recoTitle: "Size özel seçildi",
+  recoBasis: "Yalnızca bu cihazda görüntülediklerinize dayanır — hiçbir veri hiçbir yere gönderilmez.",
+  recoReset: "Etkinliğimi unut",
 
   cartTitle: "Sepet",
   cartItems: "0 ürün",
@@ -799,6 +808,9 @@ const it: Dict = {
   footerRights: "© 2026 Beta Art. Tutti i diritti riservati nel mondo.",
   footerNoAi: "Nessun addestramento IA · Fotografia umana verificata",
   footerFollow: "Segui",
+  recoTitle: "Scelte per te",
+  recoBasis: "Basato solo su ciò che hai visto su questo dispositivo — nulla viene inviato altrove.",
+  recoReset: "Dimentica la mia attività",
 
   cartTitle: "Carrello",
   cartItems: "0 articoli",
@@ -1022,6 +1034,9 @@ const fr: Dict = {
   footerRights: "© 2026 Beta Art. Tous droits réservés dans le monde entier.",
   footerNoAi: "Aucun entraînement IA · Photographie humaine vérifiée",
   footerFollow: "Suivre",
+  recoTitle: "Choisies pour vous",
+  recoBasis: "Basé uniquement sur ce que vous avez consulté sur cet appareil — rien n'est envoyé nulle part.",
+  recoReset: "Oublier mon activité",
 
   cartTitle: "Panier",
   cartItems: "0 article",
@@ -1245,6 +1260,9 @@ const es: Dict = {
   footerRights: "© 2026 Beta Art. Todos los derechos reservados en todo el mundo.",
   footerNoAi: "Sin entrenamiento de IA · Fotografía humana verificada",
   footerFollow: "Seguir",
+  recoTitle: "Elegidas para ti",
+  recoBasis: "Se basa solo en lo que has visto en este dispositivo — no se envía nada a ningún sitio.",
+  recoReset: "Olvidar mi actividad",
 
   cartTitle: "Carrito",
   cartItems: "0 artículos",
@@ -1468,6 +1486,9 @@ const pt: Dict = {
   footerRights: "© 2026 Beta Art. Todos os direitos reservados em todo o mundo.",
   footerNoAi: "Sem treino de IA · Fotografia humana verificada",
   footerFollow: "Seguir",
+  recoTitle: "Escolhidas para si",
+  recoBasis: "Baseado apenas no que viu neste dispositivo — nada é enviado para lado nenhum.",
+  recoReset: "Esquecer a minha atividade",
 
   cartTitle: "Carrinho",
   cartItems: "0 itens",
@@ -1691,6 +1712,9 @@ const de: Dict = {
   footerRights: "© 2026 Beta Art. Alle Rechte weltweit vorbehalten.",
   footerNoAi: "Kein KI-Training · Verifizierte menschliche Fotografie",
   footerFollow: "Folgen",
+  recoTitle: "Für Sie ausgewählt",
+  recoBasis: "Beruht nur auf dem, was Sie auf diesem Gerät angesehen haben — nichts wird irgendwohin gesendet.",
+  recoReset: "Meine Aktivität vergessen",
 
   cartTitle: "Warenkorb",
   cartItems: "0 Artikel",

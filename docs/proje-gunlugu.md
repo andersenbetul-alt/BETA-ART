@@ -587,3 +587,21 @@ bağlanınca güncellenecek, sosyal-medya.md açık işlerde). Doğrulama: build
 temiz, Playwright: Follow bloğu boş linklerle gizli, footer sağlam.
 Hesap açılışı adım adım kullanıcıya yazıldı; URL gelince config doldurulup
 dağıtım yenilenecek.
+
+## 02.09.2026 (akşam) — Müşteri davranış sistemi kuruldu
+
+Kullanıcı talebi (NO): "bir müşteri davranış sistemi kur — müşterinin bir
+sonraki sefer ne görmek/satın almak istediğini bulalım, tüm sayfalarda".
+Statik sitede dürüst v1: TAMAMEN cihaz-içi. `src/lib/behavior.ts`
+localStorage'a görüntü/filtre/sepet olaylarını (ağırlık 1/2/4) yazar,
+kategori yakınlığına göre katalogdan öneri üretir; hiçbir ağ isteği, çerez,
+analitik, parmak izi yok. `src/components/ForYou.tsx` "Picked for you"
+şeridi ana sayfa (koleksiyon altı) + plaka + sepette; soğuk başlangıçta hiç
+görünmez (dolgu yok), temel satırı "nothing is sent anywhere" ve "Forget my
+activity" düğmesi (kaydı siler) şeffaflık/kontrol için. record() bir pencere
+olayı yayar, şerit dinler → o anki plaka görüntüsü aynı ziyarette öneriyi
+canlı günceller. İzleme: router (gezinme), PlateDetail (görüntü+sepet),
+Home Collection (filtre). Metinler 8 dilde (recoTitle/recoBasis/recoReset).
+Çapraz-ziyaretçi analitiği, hesap profili, satın alma tahmini bilinçle
+kapsam dışı (backend + rıza ister — uydurma yasağı); davranis-sistemi.md'de
+sonraki adım olarak yazılı. Doğrulama: build temiz, Playwright 7/7.

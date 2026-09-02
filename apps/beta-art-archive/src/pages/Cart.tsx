@@ -5,6 +5,7 @@ import { useLang } from "@/lib/langContext";
 import { useCart } from "@/lib/cartContext";
 import { licenceTiers } from "@/lib/data";
 import { STRIPE_PAYMENT_LINK } from "@/lib/config";
+import { ForYou } from "@/components/ForYou";
 
 // This page's Norwegian copy is preserved verbatim from the live site —
 // the rest of beta-art.com is in English, but the cart specifically was
@@ -42,6 +43,9 @@ export function Cart() {
             {t("cartContinue")}
           </button>
         </div>
+        {/* Behavior layer: an empty cart is where "what might they want to
+            buy next" helps most — shown only with real device activity. */}
+        <ForYou />
       </section>
     );
   }
@@ -97,6 +101,7 @@ export function Cart() {
           {t("cartContinue")}
         </button>
       </div>
+      <ForYou />
     </section>
   );
 }
