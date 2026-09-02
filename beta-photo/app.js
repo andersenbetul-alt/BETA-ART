@@ -403,11 +403,32 @@
   }
 
   /* ── Init ────────────────────────────────────────────────────────────── */
-  Behavior.trackVisit();
+  const _isAdmin = localStorage.getItem('betaphoto_admin') === '1';
 
-  if (Behavior.isReturning()) {
-    restoreLastFilter();
-    renderRecentlyViewed();
+  if (_isAdmin) {
+    /* Admin mode: skip all behaviour tracking, show floating bar */
+    const _ab = document.createElement('div');
+    _ab.id = 'bp-admin-bar';
+    _ab.innerHTML =
+      '<span style="color:var(--warm);letter-spacing:.1em">■ ADMIN</span>' +
+      '<a href="admin.html" style="color:var(--text);text-decoration:none">→ Panel</a>' +
+      '<button onclick="localStorage.removeItem(\'betaphoto_admin\');location.reload()" ' +
+        'style="background:none;border:1px solid var(--line);color:var(--text-dim);' +
+        'padding:.2rem .7rem;cursor:pointer;font-family:inherit;font-size:inherit">' +
+        'Avslutt' +
+      '</button>';
+    _ab.style.cssText =
+      'position:fixed;bottom:0;inset-inline-start:0;inset-inline-end:0;z-index:9999;' +
+      'display:flex;align-items:center;gap:1.5rem;padding:.5rem 1.5rem;' +
+      'background:var(--surface);border-top:1px solid var(--warm);' +
+      'font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.05em';
+    document.body.appendChild(_ab);
+  } else {
+    Behavior.trackVisit();
+    if (Behavior.isReturning()) {
+      restoreLastFilter();
+      renderRecentlyViewed();
+    }
   }
 
 })();
