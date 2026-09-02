@@ -1,25 +1,33 @@
-/* NaviarCare — Customer Behaviour System (NCB)
+/* NaviarCare — Customer Behaviour System (NCB) v2
  * Tracks specialty interest, doctor views, page visits.
  * Stores in localStorage ONLY with explicit user consent (ePrivacy/GDPR).
  * No PII, no external services, no cookies.
  *
  * Global API: window.NCB
- *   NCB.init()                     — call on every page load
- *   NCB.trackDoctor({id,name,specialty}) — call when doctor card interacted
- *   NCB.trackSpecialty(slug)       — call on specialty filter click
- *   NCB.suggest()                  → {type,specialty,doctor,message,url}
- *   NCB.renderWelcomeBack(id)      — inject welcome strip into element #id
- *   NCB.renderContinueSearch(id)   — inject "continue" strip into element #id
- *   NCB.markSeenDoctors()          — add "Seen before" badge to [data-doctor-id]
- *   NCB.grantConsent('yes'|'no')   — called by banner buttons
- *   NCB.clear()                    — wipe all stored data
+ *   NCB.init()                              — call on every page load
+ *   NCB.trackDoctor({id,name,specialty})    — call when doctor card interacted
+ *   NCB.trackSpecialty(slug)                — call on specialty filter click
+ *   NCB.suggest()                           → {type,specialty,doctor,message,url}
+ *   NCB.renderWelcomeBack(id)               — inject welcome strip into element #id
+ *   NCB.renderContinueSearch(id)            — inject "continue" strip into element #id
+ *   NCB.markSeenDoctors()                   — add "Seen before" badge to [data-doctor-id]
+ *   NCB.markFavoriteDoctors()               — add heart badge to saved [data-doctor-id]
+ *   NCB.toggleFavorite(doctorId)            — save / unsave a doctor; returns new state
+ *   NCB.isFavorite(doctorId)               → boolean
+ *   NCB.getFavorites()                     → string[]  (doctor ids)
+ *   NCB.requestNotifications()             → Promise<PermissionState>
+ *   NCB.scheduleReminder(message, delayMs) — fire a browser Notification after delay
+ *   NCB.exportProfile()                    — download profile JSON
+ *   NCB.importProfile(jsonString)          — load profile from exported JSON
+ *   NCB.grantConsent('yes'|'no')           — called by banner buttons
+ *   NCB.clear()                            — wipe all stored data
  */
 (function () {
   'use strict';
 
   const KEY_CONSENT = 'NC_CONSENT';
   const KEY_DATA    = 'NC_BEHAVIOR';
-  const V           = 1;
+  const V           = 2;
 
   // ── Storage helpers ────────────────────────────────────────────────────────
   function safe(fn, fallback) { try { return fn(); } catch { return fallback; } }
@@ -30,7 +38,13 @@
   function loadStored() {
     const raw = safe(() => localStorage.getItem(KEY_DATA), null);
     if (!raw) return null;
-    try { const d = JSON.parse(raw); return d.v === V ? d : null; } catch { return null; }
+    try {
+      const d = JSON.parse(raw);
+      if (!d || typeof d !== 'object') return null;
+      // Migrate v1 → v2: add favorites field
+      if (d.v === 1) { d.v = 2; d.favorites = d.favorites || []; }
+      return d.v === V ? d : null;
+    } catch { return null; }
   }
 
   function persist(data) {
@@ -53,7 +67,7 @@
 
   function newProfile() {
     return { v: V, firstVisit: Date.now(), lastVisit: null, visits: 0,
-             specialties: {}, doctors: [], pages: {}, lang: null };
+             specialties: {}, doctors: [], pages: {}, lang: null, favorites: [] };
   }
 
   // ── Core tracking ──────────────────────────────────────────────────────────
@@ -114,8 +128,19 @@
   };
 
   function topSpecialty(d) {
-    return Object.entries(d.specialties)
-      .sort((a, b) => b[1] - a[1])[0]?.[0] || null;
+    // Base scores from explicit specialty-filter clicks
+    const scores = Object.fromEntries(
+      Object.entries(d.specialties).map(([k, v]) => [k, v])
+    );
+    // Boost from doctor views — recency decay (half-life ≈ 3 days)
+    const now = Date.now();
+    const HALF_LIFE = 3 * 24 * 3600 * 1000;
+    (d.doctors || []).forEach(doc => {
+      if (!doc.specialty) return;
+      const decay = Math.pow(0.5, (now - (doc.ts || now)) / HALF_LIFE);
+      scores[doc.specialty] = (scores[doc.specialty] || 0) + decay;
+    });
+    return Object.entries(scores).sort((a, b) => b[1] - a[1])[0]?.[0] || null;
   }
 
   NCB.suggest = function () {
@@ -241,6 +266,85 @@
         nameEl.insertAdjacentElement('afterend', badge);
       }
     });
+  };
+
+  // ── Favorites (V2) ─────────────────────────────────────────────────────────
+
+  NCB.getFavorites = function () {
+    return (getData().favorites || []).slice();
+  };
+
+  NCB.isFavorite = function (id) {
+    return (getData().favorites || []).includes(id);
+  };
+
+  NCB.toggleFavorite = function (id) {
+    const d = getData();
+    d.favorites = d.favorites || [];
+    const idx = d.favorites.indexOf(id);
+    if (idx === -1) { d.favorites.push(id); }
+    else            { d.favorites.splice(idx, 1); }
+    setData(d);
+    // Update the heart button in the card immediately if present
+    NCB.markFavoriteDoctors();
+    return d.favorites.includes(id);
+  };
+
+  // Stamp heart badge onto doctor cards in the grid
+  NCB.markFavoriteDoctors = function () {
+    const faves = new Set(getData().favorites || []);
+    document.querySelectorAll('[data-doctor-id]').forEach(card => {
+      const id = card.dataset.doctorId;
+      const btn = card.querySelector('.ncb-fav-btn');
+      if (!btn) return;
+      const isFav = faves.has(id);
+      btn.setAttribute('aria-pressed', isFav ? 'true' : 'false');
+      btn.setAttribute('aria-label', isFav ? 'Remove from saved' : 'Save doctor');
+      btn.classList.toggle('ncb-fav-active', isFav);
+    });
+  };
+
+  // ── Browser notifications (V2) ─────────────────────────────────────────────
+
+  NCB.requestNotifications = function () {
+    if (!('Notification' in window)) return Promise.resolve('denied');
+    return Notification.requestPermission();
+  };
+
+  NCB.scheduleReminder = function (message, delayMs) {
+    if (!('Notification' in window) || Notification.permission !== 'granted') return;
+    setTimeout(() => {
+      try { new Notification('NaviarCare', { body: message, icon: 'naviar-care-logo.svg' }); }
+      catch { /* non-fatal — browser may block in background */ }
+    }, delayMs || 0);
+  };
+
+  // ── Export / Import (V2) ───────────────────────────────────────────────────
+
+  NCB.exportProfile = function () {
+    const data = getData();
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'naviarcare-profile.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  NCB.importProfile = function (jsonString) {
+    try {
+      const parsed = JSON.parse(jsonString);
+      if (typeof parsed !== 'object' || parsed === null) return false;
+      // Accept v1 or v2 exports
+      if (parsed.v === 1) { parsed.v = 2; parsed.favorites = parsed.favorites || []; }
+      if (parsed.v !== V) return false;
+      setData(parsed);
+      return true;
+    } catch { return false; }
   };
 
   // ── Init ────────────────────────────────────────────────────────────────────

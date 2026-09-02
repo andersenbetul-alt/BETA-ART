@@ -1,0 +1,1333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NaviarCare Admin</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── Admin layout ──────────────────────────────────────────────────────────── */
+body { background: var(--bg-alt); }
+
+/* Auth screen */
+#auth-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 24px;
+}
+.auth-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 40px 44px;
+  width: 100%;
+  max-width: 400px;
+}
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.auth-logo-badge {
+  width: 36px;
+  height: 36px;
+  background: var(--brand);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.auth-logo-text { font-size: 17px; font-weight: 700; color: var(--text); }
+.auth-logo-sub { font-size: 12px; color: var(--text-3); }
+.auth-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+.auth-desc { font-size: 14px; color: var(--text-2); margin-bottom: 24px; }
+.auth-field { margin-bottom: 16px; }
+.auth-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 6px; }
+.auth-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  color: var(--text);
+  font-size: 15px;
+  font-family: var(--font);
+  box-sizing: border-box;
+  transition: border-color .15s;
+}
+.auth-input:focus { outline: none; border-color: var(--brand); }
+.auth-btn {
+  width: 100%;
+  padding: 11px;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s;
+  margin-top: 4px;
+}
+.auth-btn:hover { background: var(--brand-dark); }
+.auth-error {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.auth-note {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.5;
+}
+
+/* Admin panel */
+#admin-panel { min-height: 100svh; }
+
+.admin-nav {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.admin-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.admin-nav-logo-badge {
+  width: 28px;
+  height: 28px;
+  background: var(--brand);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.admin-nav-sep { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
+.admin-nav-pill {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  background: var(--warn-light);
+  color: var(--warn);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+.admin-nav-spacer { flex: 1; }
+.admin-nav-site {
+  font-size: 13px;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  transition: background .12s;
+}
+.admin-nav-site:hover { background: var(--bg-alt); }
+.admin-nav-logout {
+  font-size: 13px;
+  color: var(--text-3);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: border-color .12s, color .12s;
+}
+.admin-nav-logout:hover { border-color: var(--danger); color: var(--danger); }
+
+/* Tabs */
+.admin-tabs-bar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  padding: 0 24px;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.admin-tabs-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 16px 12px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-3);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: color .12s, border-color .12s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-bottom: -1px;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--brand); border-bottom-color: var(--brand); font-weight: 600; }
+
+/* Tab panels */
+.tab-panel { display: none; max-width: 1000px; margin: 0 auto; padding: 28px 24px 60px; }
+.tab-panel.active { display: block; }
+
+/* Section headers */
+.admin-section { margin-bottom: 32px; }
+.admin-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-section-desc { font-size: 14px; color: var(--text-2); margin-bottom: 20px; }
+
+/* Stat cards */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.stat-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+}
+.stat-value { font-size: 28px; font-weight: 800; color: var(--text); line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 12px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .04em; }
+
+/* Table */
+.admin-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--bg);
+}
+.admin-table th {
+  background: var(--bg-alt);
+  padding: 10px 16px;
+  text-align: start;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.admin-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+.admin-table tr:last-child td { border-bottom: none; }
+.admin-table tr:hover td { background: var(--bg-alt); }
+
+.doc-initials {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.doc-avail-now {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--success);
+}
+.doc-avail-soon {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--warn);
+}
+.doc-avail-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  flex-shrink: 0;
+}
+.type-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--bg-card);
+  color: var(--text-2);
+  margin-inline-end: 4px;
+}
+
+/* Buttons */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: background .12s, border-color .12s;
+}
+.btn-sm:hover { background: var(--bg-alt); border-color: var(--brand); color: var(--brand); }
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+.btn-primary:hover { background: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
+.btn-danger {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.btn-danger:hover { background: var(--danger); color: #fff; }
+
+.btn-group { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+/* Export bar */
+.export-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.export-bar-text { font-size: 14px; color: var(--text-2); flex: 1; min-width: 220px; }
+
+/* NCB data panel */
+.ncb-panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+.ncb-panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.ncb-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 14px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ncb-row:last-child { border-bottom: none; }
+.ncb-row-label { color: var(--text-3); font-size: 13px; min-width: 160px; flex-shrink: 0; }
+.ncb-row-value { color: var(--text); font-weight: 500; }
+.ncb-empty { color: var(--text-3); font-size: 14px; font-style: italic; }
+
+/* Modal */
+#doctor-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(14,20,32,.5);
+  backdrop-filter: blur(3px);
+}
+.modal-card {
+  position: relative;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 560px;
+  max-height: 88svh;
+  overflow-y: auto;
+  padding: 28px 30px;
+}
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-3);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color .12s, background .12s;
+}
+.modal-close:hover { color: var(--text); background: var(--bg-alt); }
+.form-field { margin-bottom: 16px; }
+.form-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 6px; }
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  color: var(--text);
+  font-size: 14px;
+  font-family: var(--font);
+  box-sizing: border-box;
+  transition: border-color .15s;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--brand);
+}
+.form-textarea { min-height: 80px; resize: vertical; }
+.form-hint { font-size: 12px; color: var(--text-3); margin-top: 4px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-check-group { display: flex; gap: 16px; }
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.form-check input { accent-color: var(--brand); }
+
+/* Requests tab */
+.info-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.info-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.info-callout {
+  background: var(--brand-light);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--brand);
+  margin-top: 10px;
+}
+
+/* Settings tab */
+.settings-block {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+}
+.settings-block-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.settings-label { font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 6px; display: block; }
+.settings-input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+  color: var(--text);
+  font-size: 14px;
+  font-family: var(--font);
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  transition: border-color .15s;
+}
+.settings-input:focus { outline: none; border-color: var(--brand); }
+
+/* Code display */
+.code-block {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-2);
+  overflow-x: auto;
+  white-space: pre;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+/* Toast */
+.admin-toast {
+  position: fixed;
+  inset-block-end: 24px;
+  inset-inline-end: 24px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 12px 18px;
+  border-radius: var(--radius-lg);
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 999;
+  box-shadow: var(--shadow-lg);
+  transition: opacity .25s;
+}
+
+@media (max-width: 600px) {
+  .auth-card { padding: 28px 24px; }
+  .modal-card { padding: 22px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .tab-panel { padding: 20px 16px 48px; }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ── Auth screen ──────────────────────────────────────────────────────────── -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="auth-logo-badge" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="auth-logo-text">NaviarCare</div>
+        <div class="auth-logo-sub">Admin panel</div>
+      </div>
+    </div>
+
+    <!-- First-run setup (no password yet) -->
+    <div id="auth-setup">
+      <div class="auth-title">Set up access</div>
+      <div class="auth-desc">Create a password to protect this admin panel. The password is stored in this browser only — keep a copy somewhere safe.</div>
+      <div id="auth-setup-error" class="auth-error" hidden></div>
+      <div class="auth-field">
+        <label class="auth-label" for="setup-pw">Password</label>
+        <input class="auth-input" type="password" id="setup-pw" autocomplete="new-password" placeholder="At least 8 characters">
+      </div>
+      <div class="auth-field">
+        <label class="auth-label" for="setup-pw2">Confirm password</label>
+        <input class="auth-input" type="password" id="setup-pw2" autocomplete="new-password" placeholder="Repeat password">
+      </div>
+      <button class="auth-btn" id="setup-btn" type="button">Create password</button>
+      <p class="auth-note">The hash of your password (not the password itself) is stored in this browser's localStorage. Clearing site data will require setting up again.</p>
+    </div>
+
+    <!-- Return login -->
+    <div id="auth-login" hidden>
+      <div class="auth-title">Welcome back</div>
+      <div class="auth-desc">Enter the admin password to continue.</div>
+      <div id="auth-login-error" class="auth-error" hidden></div>
+      <div class="auth-field">
+        <label class="auth-label" for="login-pw">Password</label>
+        <input class="auth-input" type="password" id="login-pw" autocomplete="current-password" placeholder="Admin password">
+      </div>
+      <button class="auth-btn" id="login-btn" type="button">Sign in</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Admin panel ──────────────────────────────────────────────────────────── -->
+<div id="admin-panel" hidden>
+  <!-- Admin nav -->
+  <nav class="admin-nav" aria-label="Admin navigation">
+    <a href="index.html" class="admin-nav-logo">
+      <div class="admin-nav-logo-badge" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      NaviarCare
+    </a>
+    <div class="admin-nav-sep" aria-hidden="true"></div>
+    <span class="admin-nav-pill">Admin</span>
+    <div class="admin-nav-spacer"></div>
+    <a href="index.html" class="admin-nav-site">View site ↗</a>
+    <button class="admin-nav-logout" id="logout-btn" type="button">Sign out</button>
+  </nav>
+
+  <!-- Tab bar -->
+  <div class="admin-tabs-bar" role="tablist" aria-label="Admin sections">
+    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-dashboard" data-tab="dashboard" id="tabBtn-dashboard">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-doctors" data-tab="doctors" id="tabBtn-doctors">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      Doctors
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-requests" data-tab="requests" id="tabBtn-requests">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Requests
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-settings" data-tab="settings" id="tabBtn-settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Settings
+    </button>
+  </div>
+
+  <!-- ── Main content ──────────────────────────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- Dashboard tab -->
+    <div class="tab-panel active" id="tab-dashboard" role="tabpanel" aria-labelledby="tabBtn-dashboard">
+      <div class="admin-section">
+        <div class="admin-section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Site overview
+        </div>
+        <div class="stat-grid" id="site-stats">
+          <!-- populated by JS -->
+        </div>
+      </div>
+
+      <div class="admin-section">
+        <div class="admin-section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Visitor behaviour — this browser
+        </div>
+        <div class="admin-section-desc">Data from the NCB system stored in this browser's localStorage. This reflects the browsing history of whoever is logged in here, not aggregate visitor data (NaviarCare is static; there is no server-side analytics).</div>
+        <div id="ncb-stats">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Doctors tab -->
+    <div class="tab-panel" id="tab-doctors" role="tabpanel" aria-labelledby="tabBtn-doctors">
+      <div class="admin-section">
+        <div class="admin-section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          Doctor roster
+        </div>
+        <div class="admin-section-desc">Changes made here update the in-memory roster for this session. Export <code>doctors.js</code> and commit it to the repository to make changes permanent.</div>
+
+        <div class="export-bar">
+          <div class="export-bar-text">
+            <strong>How to publish changes:</strong> Edit doctors below → Export <code>doctors.js</code> → replace <code>naviar/care/doctors.js</code> in the repository → commit → Vercel redeploys automatically.
+          </div>
+          <button class="btn-sm btn-primary" id="export-doctors-btn" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-inline-end:5px" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export doctors.js
+          </button>
+          <button class="btn-sm" id="add-doctor-btn" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-inline-end:5px" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add doctor
+          </button>
+        </div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="doctors-table">
+            <thead>
+              <tr>
+                <th>Doctor</th>
+                <th>Specialty</th>
+                <th>Langs</th>
+                <th>Types</th>
+                <th>Status</th>
+                <th>Exp.</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="doctors-tbody">
+              <!-- populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Requests tab -->
+    <div class="tab-panel" id="tab-requests" role="tabpanel" aria-labelledby="tabBtn-requests">
+      <div class="admin-section">
+        <div class="admin-section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          How form requests work
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Booking requests → email
+          </div>
+          NaviarCare is a static site with no server. When a visitor submits the booking form on <a href="booking.html">booking.html</a>, it opens their email client with a pre-filled draft — name, language, preferred doctor, and their message. The email goes to the address set in <code>assets/js/config.js</code> (currently <code>pilot@naviarcare.example</code>).
+          <div class="info-callout">To change the intake address: edit <code>assets/js/config.js</code> → <code>contactEmail</code> → commit and deploy.</div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Doctor join applications → email
+          </div>
+          The "For doctors" form on <a href="join.html">join.html</a> works the same way — opens a mailto: draft. To add a separate intake address for doctor applications, update <code>config.js → doctorEmail</code> (field exists but defaults to <code>contactEmail</code>).
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Symptom checks → stored client-side only
+          </div>
+          Triage entries (symptom checker on <a href="triage.html">triage.html</a>) are processed in the browser and never sent to a server. Nothing is stored. If you need to collect triage data, you will need a backend integration (Vercel Functions, Supabase, or similar).
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Moving to a real backend
+          </div>
+          When you are ready to replace the mailto: flow with a real form submission, the change point is the <code>composeMail()</code> function in <code>assets/js/app.js</code>. Replace the <code>mailto:</code> href construction with a <code>fetch()</code> POST to your chosen endpoint and update <code>vercel.json → Content-Security-Policy → connect-src</code> to allow that host.
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings tab -->
+    <div class="tab-panel" id="tab-settings" role="tabpanel" aria-labelledby="tabBtn-settings">
+
+      <div class="settings-block">
+        <div class="settings-block-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Change admin password
+        </div>
+        <div id="pw-change-error" class="auth-error" hidden style="margin-bottom:12px;"></div>
+        <div id="pw-change-success" class="ncb-panel" hidden style="background:var(--success-light);border-color:var(--success);margin-bottom:12px;">
+          <div style="color:var(--success);font-size:14px;font-weight:600;">Password updated.</div>
+        </div>
+        <label class="settings-label" for="pw-current">Current password</label>
+        <input class="settings-input" type="password" id="pw-current" autocomplete="current-password" placeholder="Current admin password">
+        <label class="settings-label" for="pw-new">New password</label>
+        <input class="settings-input" type="password" id="pw-new" autocomplete="new-password" placeholder="New password (at least 8 characters)">
+        <label class="settings-label" for="pw-new2">Confirm new password</label>
+        <input class="settings-input" type="password" id="pw-new2" autocomplete="new-password" placeholder="Repeat new password">
+        <button class="btn-sm btn-primary" id="pw-change-btn" type="button">Update password</button>
+      </div>
+
+      <div class="settings-block">
+        <div class="settings-block-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          NCB behaviour data — this browser
+        </div>
+        <p style="font-size:14px;color:var(--text-2);margin-bottom:14px;">Raw NCB data stored in <code>localStorage.NC_BEHAVIOR</code> for this browser. This is per-device visitor data, not aggregate.</p>
+        <div class="btn-group" style="margin-bottom:14px;">
+          <button class="btn-sm" id="ncb-view-btn" type="button">View raw JSON</button>
+          <button class="btn-sm btn-danger" id="ncb-clear-btn" type="button">Clear NCB data</button>
+        </div>
+        <div id="ncb-raw-display" hidden>
+          <div class="code-block" id="ncb-raw-code"></div>
+        </div>
+      </div>
+
+      <div class="settings-block">
+        <div class="settings-block-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          Danger zone
+        </div>
+        <p style="font-size:14px;color:var(--text-2);margin-bottom:14px;">Remove the admin password from this browser. You will need to set up a new password on the next visit.</p>
+        <button class="btn-sm btn-danger" id="remove-admin-btn" type="button">Remove admin access from this browser</button>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ── Doctor edit/add modal ─────────────────────────────────────────────────── -->
+<div id="doctor-modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-card">
+    <div class="modal-title">
+      <span id="modal-title">Edit doctor</span>
+      <button class="modal-close" id="modal-close-btn" type="button" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <input type="hidden" id="modal-editing-id">
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label" for="modal-id">ID <span style="color:var(--text-3)">(short, unique)</span></label>
+        <input class="form-input" type="text" id="modal-id" placeholder="e.g. ak" maxlength="8">
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="modal-initials">Initials</label>
+        <input class="form-input" type="text" id="modal-initials" placeholder="e.g. AK" maxlength="3">
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="modal-name">Full name</label>
+      <input class="form-input" type="text" id="modal-name" placeholder="e.g. Dr. Ayşe Kaya">
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label" for="modal-specialty">Specialty</label>
+        <select class="form-select" id="modal-specialty">
+          <option value="general-practice">General practice</option>
+          <option value="internal-medicine">Internal medicine</option>
+          <option value="pediatrics">Paediatrics</option>
+          <option value="cardiology">Cardiology</option>
+          <option value="dermatology">Dermatology</option>
+          <option value="psychiatry">Mental health</option>
+          <option value="gynecology">Gynaecology</option>
+          <option value="neurology">Neurology</option>
+          <option value="orthopedics">Orthopaedics</option>
+          <option value="other">Other (set label manually)</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="modal-specialty-label">Specialty label</label>
+        <input class="form-input" type="text" id="modal-specialty-label" placeholder="Displayed label">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label" for="modal-experience">Experience (years)</label>
+        <input class="form-input" type="number" id="modal-experience" min="1" max="50" placeholder="e.g. 14">
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="modal-available">Availability</label>
+        <select class="form-select" id="modal-available">
+          <option value="now">Available now</option>
+          <option value="soon">Available soon</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="modal-langs">Languages <span style="color:var(--text-3)">(comma-separated codes)</span></label>
+      <input class="form-input" type="text" id="modal-langs" placeholder="e.g. tr, en, de">
+      <div class="form-hint">ISO codes: en, tr, de, es, ar, fr, pt, ru, hi, no, so, …</div>
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">Consultation type</label>
+      <div class="form-check-group">
+        <label class="form-check"><input type="checkbox" id="modal-type-video" value="video"> Video</label>
+        <label class="form-check"><input type="checkbox" id="modal-type-written" value="written"> Written</label>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="modal-bio">Bio</label>
+      <textarea class="form-textarea" id="modal-bio" placeholder="Short bio for the doctor card…"></textarea>
+    </div>
+
+    <div class="btn-group" style="margin-top:4px;justify-content:space-between;">
+      <button class="btn-sm btn-danger" id="modal-delete-btn" type="button">Delete doctor</button>
+      <div class="btn-group">
+        <button class="btn-sm" id="modal-cancel-btn" type="button">Cancel</button>
+        <button class="btn-sm btn-primary" id="modal-save-btn" type="button">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="doctors.js"></script>
+<script src="behavior.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ── Constants ──────────────────────────────────────────────────────────────
+  const HASH_KEY    = 'NC_ADMIN_HASH';
+  const SESSION_KEY = 'NC_ADMIN_SESSION';
+
+  const SPECIALTY_LABELS = {
+    'general-practice': 'General practice',
+    'internal-medicine': 'Internal medicine',
+    'pediatrics': 'Paediatrics',
+    'cardiology': 'Cardiology',
+    'dermatology': 'Dermatology',
+    'psychiatry': 'Mental health',
+    'gynecology': 'Gynaecology',
+    'neurology': 'Neurology',
+    'orthopedics': 'Orthopaedics',
+  };
+
+  const LANG_LABELS = {
+    tr: 'Türkçe', en: 'English', de: 'Deutsch', es: 'Español',
+    ar: 'العربية', so: 'Soomaali', hi: 'हिन्दी', ru: 'Русский',
+    fr: 'Français', no: 'Norsk', it: 'Italiano', nl: 'Nederlands',
+    pl: 'Polski', pt: 'Português', sv: 'Svenska', da: 'Dansk',
+    fi: 'Suomi', zh: '中文', ja: '日本語', ko: '한국어',
+  };
+
+  // Working copy of doctor roster (editable in-session)
+  let doctors = (window.NC_DOCTORS || []).map(d => Object.assign({}, d));
+
+  // ── SHA-256 helper ─────────────────────────────────────────────────────────
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  // ── Auth flow ──────────────────────────────────────────────────────────────
+  function isLoggedIn() {
+    return sessionStorage.getItem(SESSION_KEY) === '1';
+  }
+
+  function hasPassword() {
+    return !!localStorage.getItem(HASH_KEY);
+  }
+
+  function showAuthScreen() {
+    document.getElementById('auth-screen').removeAttribute('hidden');
+    document.getElementById('admin-panel').setAttribute('hidden', '');
+    if (hasPassword()) {
+      document.getElementById('auth-setup').setAttribute('hidden', '');
+      document.getElementById('auth-login').removeAttribute('hidden');
+      document.getElementById('login-pw').focus();
+    } else {
+      document.getElementById('auth-setup').removeAttribute('hidden');
+      document.getElementById('auth-login').setAttribute('hidden', '');
+      document.getElementById('setup-pw').focus();
+    }
+  }
+
+  function showAdmin() {
+    document.getElementById('auth-screen').setAttribute('hidden', '');
+    document.getElementById('admin-panel').removeAttribute('hidden');
+    renderDashboard();
+    renderDoctorsTable();
+  }
+
+  // Setup
+  document.getElementById('setup-btn').addEventListener('click', async () => {
+    const pw  = document.getElementById('setup-pw').value;
+    const pw2 = document.getElementById('setup-pw2').value;
+    const err = document.getElementById('auth-setup-error');
+    if (pw.length < 8) { showErr(err, 'Password must be at least 8 characters.'); return; }
+    if (pw !== pw2)    { showErr(err, 'Passwords do not match.'); return; }
+    err.setAttribute('hidden', '');
+    const hash = await sha256(pw);
+    localStorage.setItem(HASH_KEY, hash);
+    sessionStorage.setItem(SESSION_KEY, '1');
+    showAdmin();
+  });
+
+  // Login
+  document.getElementById('login-btn').addEventListener('click', async () => {
+    const pw  = document.getElementById('login-pw').value;
+    const err = document.getElementById('auth-login-error');
+    const hash = await sha256(pw);
+    if (hash === localStorage.getItem(HASH_KEY)) {
+      err.setAttribute('hidden', '');
+      sessionStorage.setItem(SESSION_KEY, '1');
+      showAdmin();
+    } else {
+      showErr(err, 'Incorrect password. Try again.');
+      document.getElementById('login-pw').select();
+    }
+  });
+
+  // Allow Enter key in password fields
+  ['setup-pw', 'setup-pw2'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('setup-btn').click();
+    });
+  });
+  document.getElementById('login-pw').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('login-btn').click();
+  });
+
+  // Logout
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    sessionStorage.removeItem(SESSION_KEY);
+    showAuthScreen();
+  });
+
+  // ── Tabs ───────────────────────────────────────────────────────────────────
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.tab === target);
+        b.setAttribute('aria-selected', b.dataset.tab === target ? 'true' : 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(p => {
+        p.classList.toggle('active', p.id === 'tab-' + target);
+      });
+    });
+  });
+
+  // ── Dashboard ──────────────────────────────────────────────────────────────
+  function renderDashboard() {
+    const specialties = new Set(doctors.map(d => d.specialty));
+    const available   = doctors.filter(d => d.available === 'now').length;
+    const langs       = new Set(doctors.flatMap(d => d.langs));
+
+    const siteStats = document.getElementById('site-stats');
+    siteStats.innerHTML = [
+      stat(doctors.length, 'Doctors'),
+      stat(specialties.size, 'Specialties'),
+      stat(available, 'Available now'),
+      stat(langs.size, 'Languages covered'),
+    ].join('');
+
+    // NCB stats
+    const ncbEl = document.getElementById('ncb-stats');
+    let raw = null;
+    try { raw = JSON.parse(localStorage.getItem('NC_BEHAVIOR') || 'null'); } catch {}
+    if (!raw) {
+      ncbEl.innerHTML = '<div class="ncb-panel"><p class="ncb-empty">No NCB data in this browser — the visitor consent banner has not been accepted yet.</p></div>';
+      return;
+    }
+    const topSpec = Object.entries(raw.specialties || {}).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    const topDocs = (raw.doctors || []).slice(-5).reverse();
+    ncbEl.innerHTML = `
+      <div class="ncb-panel">
+        <div class="ncb-panel-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Session summary
+        </div>
+        ${row('First visit', raw.firstVisit ? new Date(raw.firstVisit).toLocaleString() : '—')}
+        ${row('Last visit', raw.lastVisit ? new Date(raw.lastVisit).toLocaleString() : '—')}
+        ${row('Total visits', raw.visits || 0)}
+        ${row('Language preference', raw.lang || '—')}
+      </div>
+      ${topSpec.length ? `
+      <div class="ncb-panel">
+        <div class="ncb-panel-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Top specialties viewed
+        </div>
+        ${topSpec.map(([s, n]) => row(SPECIALTY_LABELS[s] || s, n + ' views')).join('')}
+      </div>` : ''}
+      ${topDocs.length ? `
+      <div class="ncb-panel">
+        <div class="ncb-panel-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          Recently viewed doctors
+        </div>
+        ${topDocs.map(d => row(d.name || d.id, SPECIALTY_LABELS[d.specialty] || d.specialty || '')).join('')}
+      </div>` : ''}
+    `;
+  }
+
+  function stat(val, label) {
+    return `<div class="stat-card"><div class="stat-value">${val}</div><div class="stat-label">${label}</div></div>`;
+  }
+  function row(label, value) {
+    return `<div class="ncb-row"><div class="ncb-row-label">${label}</div><div class="ncb-row-value">${value}</div></div>`;
+  }
+
+  // ── Doctors table ──────────────────────────────────────────────────────────
+  function renderDoctorsTable() {
+    const tbody = document.getElementById('doctors-tbody');
+    tbody.innerHTML = doctors.map((d, i) => `
+      <tr>
+        <td>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="doc-initials">${esc(d.initials)}</div>
+            <div>
+              <div style="font-weight:600">${esc(d.name)}</div>
+              <div style="font-size:12px;color:var(--text-3)">${esc(d.id)}</div>
+            </div>
+          </div>
+        </td>
+        <td>${esc(d.specialtyLabel || SPECIALTY_LABELS[d.specialty] || d.specialty)}</td>
+        <td style="font-size:13px;color:var(--text-2)">${(d.langs || []).join(', ')}</td>
+        <td>${(d.types || []).map(t => `<span class="type-badge">${esc(t)}</span>`).join('')}</td>
+        <td>${d.available === 'now'
+          ? '<span class="doc-avail-now"><span class="doc-avail-dot"></span>Now</span>'
+          : '<span class="doc-avail-soon">Soon</span>'}</td>
+        <td style="color:var(--text-2)">${d.experience}y</td>
+        <td>
+          <button class="btn-sm" data-edit="${i}" type="button">Edit</button>
+        </td>
+      </tr>
+    `).join('');
+
+    tbody.querySelectorAll('[data-edit]').forEach(btn => {
+      btn.addEventListener('click', () => openModal(parseInt(btn.dataset.edit)));
+    });
+  }
+
+  function esc(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // ── Doctor modal ───────────────────────────────────────────────────────────
+  let editingIndex = -1; // -1 = new doctor
+
+  function openModal(index) {
+    editingIndex = index;
+    const isNew = index === -1;
+    const d = isNew ? {} : doctors[index];
+
+    document.getElementById('modal-title').textContent = isNew ? 'Add doctor' : 'Edit doctor';
+    document.getElementById('modal-editing-id').value = isNew ? '' : d.id;
+    document.getElementById('modal-id').value          = d.id        || '';
+    document.getElementById('modal-initials').value    = d.initials  || '';
+    document.getElementById('modal-name').value        = d.name      || '';
+    document.getElementById('modal-specialty').value   = d.specialty || 'general-practice';
+    document.getElementById('modal-specialty-label').value = d.specialtyLabel || SPECIALTY_LABELS[d.specialty] || '';
+    document.getElementById('modal-experience').value  = d.experience || '';
+    document.getElementById('modal-available').value   = d.available  || 'now';
+    document.getElementById('modal-langs').value       = (d.langs || []).join(', ');
+    document.getElementById('modal-type-video').checked   = (d.types || []).includes('video');
+    document.getElementById('modal-type-written').checked = (d.types || []).includes('written');
+    document.getElementById('modal-bio').value         = d.bio || '';
+    document.getElementById('modal-delete-btn').style.display = isNew ? 'none' : '';
+
+    document.getElementById('doctor-modal').removeAttribute('hidden');
+    document.getElementById('modal-name').focus();
+  }
+
+  function closeModal() {
+    document.getElementById('doctor-modal').setAttribute('hidden', '');
+  }
+
+  document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+  document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
+  document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !document.getElementById('doctor-modal').hidden) closeModal();
+  });
+
+  // Auto-fill specialty label when specialty changes
+  document.getElementById('modal-specialty').addEventListener('change', function () {
+    const lbl = SPECIALTY_LABELS[this.value] || '';
+    document.getElementById('modal-specialty-label').value = lbl;
+  });
+
+  document.getElementById('modal-save-btn').addEventListener('click', () => {
+    const id      = document.getElementById('modal-id').value.trim();
+    const initials = document.getElementById('modal-initials').value.trim();
+    const name    = document.getElementById('modal-name').value.trim();
+    const spec    = document.getElementById('modal-specialty').value;
+    const specLbl = document.getElementById('modal-specialty-label').value.trim() || SPECIALTY_LABELS[spec] || spec;
+    const exp     = parseInt(document.getElementById('modal-experience').value) || 0;
+    const avail   = document.getElementById('modal-available').value;
+    const bio     = document.getElementById('modal-bio').value.trim();
+    const langsRaw = document.getElementById('modal-langs').value;
+    const langs   = langsRaw.split(',').map(l => l.trim()).filter(Boolean);
+    const types   = [];
+    if (document.getElementById('modal-type-video').checked)   types.push('video');
+    if (document.getElementById('modal-type-written').checked) types.push('written');
+
+    if (!id || !name || !langs.length || !types.length) {
+      toast('Fill in ID, name, languages, and at least one consultation type.', true);
+      return;
+    }
+
+    // Build langLabels from known map
+    const langLabels = {};
+    langs.forEach(l => { langLabels[l] = LANG_LABELS[l] || l; });
+
+    const docObj = { id, initials: initials || id.toUpperCase(), name, specialty: spec, specialtyLabel: specLbl, experience: exp, langs, langLabels, types, available: avail, bio };
+
+    if (editingIndex === -1) {
+      doctors.push(docObj);
+    } else {
+      doctors[editingIndex] = docObj;
+    }
+
+    closeModal();
+    renderDoctorsTable();
+    toast(editingIndex === -1 ? 'Doctor added.' : 'Doctor updated.');
+  });
+
+  document.getElementById('modal-delete-btn').addEventListener('click', () => {
+    if (!confirm('Remove this doctor from the roster?')) return;
+    doctors.splice(editingIndex, 1);
+    closeModal();
+    renderDoctorsTable();
+    toast('Doctor removed.');
+  });
+
+  document.getElementById('add-doctor-btn').addEventListener('click', () => openModal(-1));
+
+  // ── Export doctors.js ──────────────────────────────────────────────────────
+  document.getElementById('export-doctors-btn').addEventListener('click', () => {
+    const header = `/* NaviarCare — Doctor roster (NC_DOCTORS)
+ * Single source of truth used by booking.html, admin.html, and profile.html.
+ *
+ * To update: Admin panel (admin.html) → Doctors tab → export → replace this file → git commit → Vercel redeploys.
+ */
+const NC_DOCTORS = `;
+    const content = header + JSON.stringify(doctors, null, 2) + ';\n';
+    const blob = new Blob([content], { type: 'text/javascript' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url;
+    a.download = 'doctors.js';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast('doctors.js downloaded. Commit to repository to publish changes.');
+  });
+
+  // ── Settings ───────────────────────────────────────────────────────────────
+
+  // Change password
+  document.getElementById('pw-change-btn').addEventListener('click', async () => {
+    const cur  = document.getElementById('pw-current').value;
+    const nw   = document.getElementById('pw-new').value;
+    const nw2  = document.getElementById('pw-new2').value;
+    const err  = document.getElementById('pw-change-error');
+    const ok   = document.getElementById('pw-change-success');
+
+    err.setAttribute('hidden', '');
+    ok.setAttribute('hidden', '');
+
+    const curHash = await sha256(cur);
+    if (curHash !== localStorage.getItem(HASH_KEY)) {
+      showErr(err, 'Current password is incorrect.'); return;
+    }
+    if (nw.length < 8) { showErr(err, 'New password must be at least 8 characters.'); return; }
+    if (nw !== nw2)    { showErr(err, 'New passwords do not match.'); return; }
+
+    const newHash = await sha256(nw);
+    localStorage.setItem(HASH_KEY, newHash);
+    document.getElementById('pw-current').value = '';
+    document.getElementById('pw-new').value = '';
+    document.getElementById('pw-new2').value = '';
+    ok.removeAttribute('hidden');
+  });
+
+  // NCB raw view
+  document.getElementById('ncb-view-btn').addEventListener('click', () => {
+    const display = document.getElementById('ncb-raw-display');
+    const code    = document.getElementById('ncb-raw-code');
+    if (!display.hidden) {
+      display.setAttribute('hidden', '');
+      document.getElementById('ncb-view-btn').textContent = 'View raw JSON';
+      return;
+    }
+    try {
+      const raw = localStorage.getItem('NC_BEHAVIOR');
+      code.textContent = raw ? JSON.stringify(JSON.parse(raw), null, 2) : '(no data)';
+    } catch {
+      code.textContent = '(parse error)';
+    }
+    display.removeAttribute('hidden');
+    document.getElementById('ncb-view-btn').textContent = 'Hide JSON';
+  });
+
+  // NCB clear
+  document.getElementById('ncb-clear-btn').addEventListener('click', () => {
+    if (!confirm('Clear all NCB behaviour data for this browser?')) return;
+    localStorage.removeItem('NC_BEHAVIOR');
+    localStorage.removeItem('NC_CONSENT');
+    document.getElementById('ncb-raw-display').setAttribute('hidden', '');
+    document.getElementById('ncb-view-btn').textContent = 'View raw JSON';
+    toast('NCB data cleared.');
+    renderDashboard();
+  });
+
+  // Remove admin access
+  document.getElementById('remove-admin-btn').addEventListener('click', () => {
+    if (!confirm('Remove the admin password from this browser? You will need to set a new one on the next visit.')) return;
+    localStorage.removeItem(HASH_KEY);
+    sessionStorage.removeItem(SESSION_KEY);
+    showAuthScreen();
+  });
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  function showErr(el, msg) {
+    el.textContent = msg;
+    el.removeAttribute('hidden');
+  }
+
+  let toastTimer = null;
+  function toast(msg, isError) {
+    let el = document.querySelector('.admin-toast');
+    if (!el) {
+      el = document.createElement('div');
+      el.className = 'admin-toast';
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.style.background = isError ? 'var(--danger)' : 'var(--text)';
+    el.style.opacity = '1';
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { el.style.opacity = '0'; }, 3000);
+  }
+
+  // ── Boot ───────────────────────────────────────────────────────────────────
+  if (isLoggedIn()) {
+    showAdmin();
+  } else {
+    showAuthScreen();
+  }
+
+}());
+</script>
+</body>
+</html>

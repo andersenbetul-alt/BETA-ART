@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Your profile — NaviarCare</title>
+<meta name="description" content="Manage your NaviarCare profile: saved doctors, visit history, notification preferences, and data controls.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── Profile page layout ───────────────────────────────────────────────────── */
+.profile-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 36px;
+  padding: 24px 26px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  flex-shrink: 0;
+}
+.profile-hero-text h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+.profile-hero-meta {
+  font-size: 14px;
+  color: var(--text-2);
+  margin: 0;
+}
+
+/* Section blocks */
+.profile-section {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.profile-section-header {
+  padding: 18px 22px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.profile-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.profile-section-body {
+  padding: 18px 22px;
+}
+
+/* Empty states */
+.profile-empty {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--text-3);
+  font-size: 14px;
+}
+.profile-empty-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 12px;
+  color: var(--border-strong);
+}
+
+/* Saved doctors */
+.saved-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.saved-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color .12s;
+}
+.saved-card:hover { border-color: var(--brand-dark); }
+.saved-initials {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.saved-info { flex: 1; min-width: 0; }
+.saved-name { font-size: 15px; font-weight: 600; }
+.saved-meta { font-size: 13px; color: var(--text-3); }
+.saved-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.btn-icon {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 8px;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: color .12s, border-color .12s;
+  display: flex;
+  align-items: center;
+}
+.btn-icon:hover { color: var(--danger); border-color: var(--danger); }
+.btn-icon-book:hover { color: var(--brand); border-color: var(--brand); }
+
+/* Visit history */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.history-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.history-row:last-child { border-bottom: none; }
+.history-page { flex: 1; color: var(--text); font-weight: 500; }
+.history-time { color: var(--text-3); font-size: 12px; flex-shrink: 0; }
+
+/* Specialty interests */
+.interest-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.interest-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--brand-light);
+  color: var(--brand);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.interest-chip-count {
+  background: var(--brand);
+  color: #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Notification settings */
+.notif-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.notif-row:last-child { border-bottom: none; }
+.notif-label { font-size: 14px; font-weight: 500; }
+.notif-desc  { font-size: 13px; color: var(--text-3); margin-top: 2px; }
+.notif-status {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+.notif-granted { background: var(--success-light); color: var(--success); }
+.notif-denied  { background: var(--danger-light);  color: var(--danger);  }
+.notif-default { background: var(--bg-card); color: var(--text-3); }
+
+/* Data controls */
+.data-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.data-row:last-child { border-bottom: none; }
+.data-row-info h3 { font-size: 14px; font-weight: 600; margin: 0 0 2px; }
+.data-row-info p  { font-size: 13px; color: var(--text-3); margin: 0; }
+.btn-sm {
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: background .12s, border-color .12s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn-sm:hover { background: var(--bg-alt); border-color: var(--brand); color: var(--brand); }
+.btn-danger {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.btn-danger:hover { background: var(--danger); color: #fff; border-color: var(--danger); }
+
+/* No-consent overlay */
+.no-consent-panel {
+  text-align: center;
+  padding: 48px 24px;
+}
+.no-consent-icon {
+  color: var(--border-strong);
+  margin: 0 auto 16px;
+  width: 48px;
+  height: 48px;
+}
+.no-consent-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.no-consent-desc  { font-size: 15px; color: var(--text-2); max-width: 400px; margin: 0 auto 24px; line-height: 1.6; }
+.btn-enable {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: background .15s;
+}
+.btn-enable:hover { background: var(--brand-dark); }
+
+/* Toast */
+.profile-toast {
+  position: fixed;
+  inset-block-end: 24px;
+  inset-inline-end: 24px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 12px 18px;
+  border-radius: var(--radius-lg);
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(14,20,32,.18);
+  transition: opacity .25s;
+}
+
+@media (max-width: 600px) {
+  .profile-hero { flex-direction: column; text-align: center; gap: 12px; }
+  .data-row { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" style="padding:0;line-height:1;">
+      <img src="naviar-care-logo.svg" alt="NaviarCare" height="36" style="display:block;height:36px;width:auto;">
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="triage.html">Check symptoms</a>
+      <a href="booking.html">Find a doctor</a>
+      <a href="languages.html">Languages</a>
+      <a href="join.html">For doctors</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+  <div class="profile-wrap">
+
+    <!-- No-consent gate -->
+    <div id="no-consent-view" hidden>
+      <div class="no-consent-panel">
+        <svg class="no-consent-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <div class="no-consent-title">Profile not available</div>
+        <div class="no-consent-desc">Your profile is stored in this browser only. To use it, NaviarCare needs permission to save your preferences locally. No data is sent to any server.</div>
+        <button class="btn-enable" id="enable-ncb-btn" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Enable my profile
+        </button>
+        <p style="margin-top:16px;font-size:12px;color:var(--text-3);">
+          You can erase all stored data at any time from the Data controls section below.
+          <a href="legal.html" style="color:var(--link);">Privacy policy</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Main profile view -->
+    <div id="profile-view" hidden>
+
+      <!-- Hero -->
+      <div class="profile-hero">
+        <div class="profile-avatar" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="profile-hero-text">
+          <h1>Your profile</h1>
+          <p class="profile-hero-meta" id="hero-meta">Loading…</p>
+        </div>
+      </div>
+
+      <!-- Saved doctors -->
+      <section class="profile-section" aria-labelledby="saved-heading">
+        <div class="profile-section-header">
+          <div class="profile-section-title" id="saved-heading">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Saved doctors
+          </div>
+          <a href="booking.html" class="btn-sm" style="font-size:13px;">Find more</a>
+        </div>
+        <div class="profile-section-body">
+          <div id="saved-list"></div>
+        </div>
+      </section>
+
+      <!-- Specialty interests -->
+      <section class="profile-section" aria-labelledby="interests-heading">
+        <div class="profile-section-header">
+          <div class="profile-section-title" id="interests-heading">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Your interests
+          </div>
+        </div>
+        <div class="profile-section-body">
+          <div id="interests-list"></div>
+        </div>
+      </section>
+
+      <!-- Recent visits -->
+      <section class="profile-section" aria-labelledby="history-heading">
+        <div class="profile-section-header">
+          <div class="profile-section-title" id="history-heading">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Recent pages
+          </div>
+        </div>
+        <div class="profile-section-body">
+          <div id="history-list"></div>
+        </div>
+      </section>
+
+      <!-- Notifications -->
+      <section class="profile-section" aria-labelledby="notif-heading">
+        <div class="profile-section-header">
+          <div class="profile-section-title" id="notif-heading">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            Notifications
+          </div>
+        </div>
+        <div class="profile-section-body">
+          <div id="notif-section"></div>
+        </div>
+      </section>
+
+      <!-- Data controls -->
+      <section class="profile-section" aria-labelledby="data-heading">
+        <div class="profile-section-header">
+          <div class="profile-section-title" id="data-heading">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            Your data
+          </div>
+        </div>
+        <div class="profile-section-body">
+          <div class="data-row">
+            <div class="data-row-info">
+              <h3>Export profile</h3>
+              <p>Download everything NaviarCare has stored in this browser as a JSON file.</p>
+            </div>
+            <button class="btn-sm" id="export-btn" type="button">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-inline-end:5px" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export
+            </button>
+          </div>
+          <div class="data-row">
+            <div class="data-row-info">
+              <h3>Import profile</h3>
+              <p>Restore a previously exported NaviarCare profile on this device.</p>
+            </div>
+            <button class="btn-sm" id="import-btn" type="button">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-inline-end:5px" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Import
+            </button>
+            <input type="file" id="import-file" accept=".json" hidden>
+          </div>
+          <div class="data-row">
+            <div class="data-row-info">
+              <h3>Erase all data</h3>
+              <p>Permanently delete everything NaviarCare has stored in this browser. This cannot be undone.</p>
+            </div>
+            <button class="btn-sm btn-danger" id="erase-btn" type="button">Erase all</button>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /profile-view -->
+
+  </div><!-- /profile-wrap -->
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span style="font-weight:700">NaviarCare</span>
+      <span style="color:var(--text-3);font-size:13px">Routing advice in your language</span>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="booking.html">Find a doctor</a>
+      <a href="join.html">For doctors</a>
+      <a href="about.html">About</a>
+      <a href="legal.html">Privacy</a>
+    </nav>
+    <div style="font-size:12px;color:var(--text-3);text-align:center">
+      NaviarCare provides routing advice only — not medical diagnosis or treatment.
+    </div>
+  </div>
+</footer>
+
+<div id="ncb-banner" hidden></div>
+<script src="doctors.js"></script>
+<script src="behavior.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ── Helpers ──────────────────────────────────────────────────────────────
+  function esc(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  const PAGE_LABELS = {
+    'index.html': 'Home', 'triage.html': 'Symptom check', 'booking.html': 'Find a doctor',
+    'languages.html': 'Languages', 'join.html': 'For doctors', 'about.html': 'About',
+    'feedback.html': 'Feedback', 'legal.html': 'Privacy policy', 'profile.html': 'Your profile',
+  };
+
+  const SPECIALTY_LABELS = {
+    'general-practice': 'General practice', 'internal-medicine': 'Internal medicine',
+    'pediatrics': 'Paediatrics', 'cardiology': 'Cardiology', 'dermatology': 'Dermatology',
+    'psychiatry': 'Mental health', 'gynecology': 'Gynaecology', 'neurology': 'Neurology',
+    'orthopedics': 'Orthopaedics',
+  };
+
+  function getBehavior() {
+    try { return JSON.parse(localStorage.getItem('NC_BEHAVIOR') || 'null'); } catch { return null; }
+  }
+
+  function saveBehavior(data) {
+    try { localStorage.setItem('NC_BEHAVIOR', JSON.stringify(data)); } catch {}
+  }
+
+  let toastTimer = null;
+  function toast(msg, isErr) {
+    let el = document.querySelector('.profile-toast');
+    if (!el) {
+      el = document.createElement('div');
+      el.className = 'profile-toast';
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.style.background = isErr ? 'var(--danger)' : 'var(--text)';
+    el.style.opacity = '1';
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { el.style.opacity = '0'; }, 3000);
+  }
+
+  // ── Consent check ────────────────────────────────────────────────────────
+  const consent = localStorage.getItem('NC_CONSENT');
+  const noConsentView = document.getElementById('no-consent-view');
+  const profileView   = document.getElementById('profile-view');
+
+  function enableConsent() {
+    localStorage.setItem('NC_CONSENT', 'yes');
+    if (window.NCB) window.NCB.grantConsent();
+    noConsentView.setAttribute('hidden', '');
+    profileView.removeAttribute('hidden');
+    renderProfile();
+  }
+
+  document.getElementById('enable-ncb-btn').addEventListener('click', enableConsent);
+
+  if (consent === 'yes') {
+    profileView.removeAttribute('hidden');
+    renderProfile();
+  } else {
+    noConsentView.removeAttribute('hidden');
+  }
+
+  // ── Render profile ───────────────────────────────────────────────────────
+  function renderProfile() {
+    const data = getBehavior();
+
+    // Hero meta
+    const metaEl = document.getElementById('hero-meta');
+    if (data && data.firstVisit) {
+      const days = Math.round((Date.now() - data.firstVisit) / 86400000);
+      metaEl.textContent = `${data.visits || 1} visit${(data.visits || 1) !== 1 ? 's' : ''} · member for ${days < 1 ? 'less than a day' : days + ' day' + (days !== 1 ? 's' : '')}`;
+    } else {
+      metaEl.textContent = 'No history yet — start by exploring the site.';
+    }
+
+    renderSaved(data);
+    renderInterests(data);
+    renderHistory(data);
+    renderNotifications();
+  }
+
+  // ── Saved doctors ────────────────────────────────────────────────────────
+  function renderSaved(data) {
+    const el = document.getElementById('saved-list');
+    const favorites = (data && data.favorites) || [];
+
+    if (!favorites.length) {
+      el.innerHTML = `
+        <div class="profile-empty">
+          <svg class="profile-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          No saved doctors yet. Visit <a href="booking.html">Find a doctor</a> and tap the heart to save a doctor.
+        </div>`;
+      return;
+    }
+
+    const doctors = window.NC_DOCTORS || [];
+    el.innerHTML = `<div class="saved-grid">${favorites.map(id => {
+      const d = doctors.find(x => x.id === id);
+      if (!d) return '';
+      return `
+        <div class="saved-card">
+          <div class="saved-initials">${esc(d.initials)}</div>
+          <div class="saved-info">
+            <div class="saved-name">${esc(d.name)}</div>
+            <div class="saved-meta">${esc(d.specialtyLabel || SPECIALTY_LABELS[d.specialty] || d.specialty)} · ${(d.langs || []).join(', ')}</div>
+          </div>
+          <div class="saved-actions">
+            <a href="booking.html#doctor-${esc(d.id)}" class="btn-icon btn-icon-book" aria-label="Book ${esc(d.name)}" title="Book appointment">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </a>
+            <button class="btn-icon" data-unsave="${esc(d.id)}" aria-label="Remove ${esc(d.name)} from saved" title="Remove">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>`;
+    }).join('')}</div>`;
+
+    el.querySelectorAll('[data-unsave]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        unsaveDoctor(btn.dataset.unsave);
+      });
+    });
+  }
+
+  function unsaveDoctor(id) {
+    const data = getBehavior();
+    if (!data) return;
+    data.favorites = (data.favorites || []).filter(f => f !== id);
+    saveBehavior(data);
+    renderSaved(data);
+    toast('Doctor removed from saved.');
+  }
+
+  // ── Specialty interests ──────────────────────────────────────────────────
+  function renderInterests(data) {
+    const el = document.getElementById('interests-list');
+    const specialties = (data && data.specialties) || {};
+    const sorted = Object.entries(specialties).sort((a, b) => b[1] - a[1]);
+
+    if (!sorted.length) {
+      el.innerHTML = `<p class="profile-empty">No interests tracked yet. Browse specialties on <a href="booking.html">Find a doctor</a> to see them here.</p>`;
+      return;
+    }
+
+    el.innerHTML = `<div class="interest-list">${sorted.map(([s, n]) => `
+      <div class="interest-chip">
+        ${esc(SPECIALTY_LABELS[s] || s)}
+        <span class="interest-chip-count">${n}</span>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  // ── Recent page history ──────────────────────────────────────────────────
+  function renderHistory(data) {
+    const el = document.getElementById('history-list');
+    const pages = (data && data.pages) || {};
+    const sorted = Object.entries(pages).sort((a, b) => b[1] - a[1]).slice(0, 8);
+
+    if (!sorted.length) {
+      el.innerHTML = `<p class="profile-empty">No page history yet.</p>`;
+      return;
+    }
+
+    el.innerHTML = `<div class="history-list">${sorted.map(([page, count]) => `
+      <div class="history-row">
+        <div class="history-page"><a href="${esc(page)}" style="color:var(--link);text-decoration:none">${esc(PAGE_LABELS[page] || page)}</a></div>
+        <div class="history-time">${count} view${count !== 1 ? 's' : ''}</div>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  // ── Notifications ────────────────────────────────────────────────────────
+  function renderNotifications() {
+    const el = document.getElementById('notif-section');
+    const supported = 'Notification' in window;
+
+    if (!supported) {
+      el.innerHTML = `<p style="font-size:14px;color:var(--text-2);">Browser notifications are not supported in this browser. Try a modern desktop browser such as Chrome, Firefox, or Edge.</p>`;
+      return;
+    }
+
+    const perm = Notification.permission;
+
+    let statusClass = 'notif-default';
+    let statusText  = 'Not requested';
+    let actionHtml  = `<button class="btn-sm" id="notif-request-btn" type="button">Enable notifications</button>`;
+
+    if (perm === 'granted') {
+      statusClass = 'notif-granted';
+      statusText  = 'Enabled';
+      actionHtml  = `<button class="btn-sm" id="notif-test-btn" type="button">Send test</button>`;
+    } else if (perm === 'denied') {
+      statusClass = 'notif-denied';
+      statusText  = 'Blocked';
+      actionHtml  = `<span style="font-size:13px;color:var(--text-3)">Open browser settings to unblock</span>`;
+    }
+
+    el.innerHTML = `
+      <div class="notif-row">
+        <div>
+          <div class="notif-label">Browser notifications</div>
+          <div class="notif-desc">Allow NaviarCare to remind you about upcoming appointments or follow-up actions.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;">
+          <span class="notif-status ${statusClass}">${statusText}</span>
+          ${actionHtml}
+        </div>
+      </div>`;
+
+    const reqBtn  = document.getElementById('notif-request-btn');
+    const testBtn = document.getElementById('notif-test-btn');
+
+    if (reqBtn) {
+      reqBtn.addEventListener('click', async () => {
+        const result = await Notification.requestPermission();
+        renderNotifications();
+        if (result === 'granted') toast('Notifications enabled.');
+        else if (result === 'denied') toast('Notifications blocked — change in browser settings.', true);
+      });
+    }
+
+    if (testBtn) {
+      testBtn.addEventListener('click', () => {
+        new Notification('NaviarCare', {
+          body: 'Notifications are working.',
+          icon: 'naviar-care-logo.svg',
+        });
+        toast('Test notification sent.');
+      });
+    }
+  }
+
+  // ── Export ───────────────────────────────────────────────────────────────
+  document.getElementById('export-btn').addEventListener('click', () => {
+    const data = getBehavior();
+    if (!data) { toast('No profile data to export.', true); return; }
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url;
+    a.download = 'naviarcare-profile.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast('Profile exported.');
+  });
+
+  // ── Import ───────────────────────────────────────────────────────────────
+  document.getElementById('import-btn').addEventListener('click', () => {
+    document.getElementById('import-file').click();
+  });
+
+  document.getElementById('import-file').addEventListener('change', function () {
+    const file = this.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(reader.result);
+        if (typeof parsed !== 'object' || parsed === null || parsed.v === undefined) {
+          toast('Invalid profile file — must be a NaviarCare export.', true);
+          return;
+        }
+        if (!confirm('Replace your current profile with the imported one?')) return;
+        saveBehavior(parsed);
+        renderProfile();
+        toast('Profile imported.');
+      } catch {
+        toast('Could not read the file. Is it a valid JSON export?', true);
+      }
+    };
+    reader.readAsText(file);
+    this.value = '';
+  });
+
+  // ── Erase ────────────────────────────────────────────────────────────────
+  document.getElementById('erase-btn').addEventListener('click', () => {
+    if (!confirm('Permanently delete all NaviarCare data from this browser? This cannot be undone.')) return;
+    localStorage.removeItem('NC_BEHAVIOR');
+    localStorage.removeItem('NC_CONSENT');
+    window.location.reload();
+  });
+
+  // ── NCB init ─────────────────────────────────────────────────────────────
+  if (window.NCB) {
+    NCB.init();
+  }
+
+}());
+</script>
+</body>
+</html>
