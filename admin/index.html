@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QBLOGG Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ── Temel ── */
+:root {
+  --bg: #F8F7F4;
+  --bg2: #FFFFFF;
+  --border: #E2DDD6;
+  --text: #1A1A1A;
+  --muted: #6B6460;
+  --brand: #082C54;
+  --aqua: #00D8C2;
+  --red: #C0392B;
+  --green: #1a7f3c;
+  --mid: #b07d00;
+  --radius: 8px;
+  --mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Mono', monospace;
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; font-size: 15px; line-height: 1.6; }
+a { color: var(--brand); text-underline-offset: 2px; }
+code { font-family: var(--mono); font-size: 0.9em; background: #F0EDE8; padding: 0 4px; border-radius: 3px; }
+
+/* ── PIN Ekranı ── */
+#pinOverlay {
+  position: fixed; inset: 0; background: var(--bg);
+  display: flex; align-items: center; justify-content: center; z-index: 100;
+}
+.pin-box {
+  width: 360px; background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 36px; text-align: center;
+}
+.pin-logo { font-size: 28px; font-weight: 700; letter-spacing: -1px; color: var(--brand); margin-bottom: 4px; }
+.pin-sub  { font-size: 12px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 28px; }
+.pin-box h2 { font-size: 17px; margin: 0 0 18px; }
+.pin-input {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius);
+  font-size: 20px; letter-spacing: 4px; text-align: center; font-family: var(--mono);
+  margin-bottom: 12px; outline: none;
+}
+.pin-input:focus { border-color: var(--brand); }
+.pin-btn {
+  width: 100%; padding: 10px; background: var(--brand); color: #fff; border: none;
+  border-radius: var(--radius); font-size: 15px; cursor: pointer; font-weight: 600;
+  margin-bottom: 8px;
+}
+.pin-btn:hover { opacity: 0.9; }
+.pin-msg { font-size: 13px; min-height: 20px; margin-top: 8px; }
+.pin-msg--error { color: var(--red); }
+.pin-msg--ok    { color: var(--green); }
+.pin-link { font-size: 12px; color: var(--muted); cursor: pointer; text-decoration: underline; margin-top: 10px; display: block; }
+
+/* ── Header ── */
+.admin-header {
+  background: var(--brand); color: #fff; padding: 0 24px;
+  display: flex; align-items: center; gap: 16px; height: 54px;
+  position: sticky; top: 0; z-index: 10;
+}
+.admin-logo { font-size: 17px; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; color: #fff; }
+.admin-logo span { color: var(--aqua); }
+.admin-date { margin-inline-start: auto; font-size: 12px; color: rgba(255,255,255,0.6); font-family: var(--mono); }
+.lock-btn { background: rgba(255,255,255,0.12); color: #fff; border: none; border-radius: 6px; padding: 5px 12px; cursor: pointer; font-size: 13px; }
+.lock-btn:hover { background: rgba(255,255,255,0.2); }
+
+/* ── Tab Navigasyon ── */
+.tab-bar {
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  padding: 0 24px; display: flex; gap: 0;
+}
+.tab-btn {
+  padding: 12px 20px; border: none; background: none; cursor: pointer;
+  font-size: 14px; color: var(--muted); border-bottom: 2px solid transparent;
+  margin-bottom: -1px; transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn[aria-selected="true"] { color: var(--brand); border-bottom-color: var(--brand); font-weight: 600; }
+.tab-btn:hover { color: var(--text); }
+.tab-panel { padding: 28px 24px; }
+
+/* ── Kart ── */
+.card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 20px; overflow: hidden; }
+.card-head { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+.card-title { font-size: 14px; font-weight: 600; margin: 0; }
+.card-body  { padding: 20px; }
+
+/* ── Filtre Çipleri ── */
+.chip-bar { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.chip {
+  padding: 4px 12px; border: 1px solid var(--border); border-radius: 20px;
+  background: none; font-size: 13px; cursor: pointer; color: var(--muted);
+}
+.chip--active, .chip:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+/* ── Tablo ── */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: start; padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); background: var(--bg); border-bottom: 1px solid var(--border); white-space: nowrap; }
+td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #F5F3EF; }
+.mono   { font-family: var(--mono); font-size: 12px; }
+.small  { font-size: 11px; }
+.center { text-align: center; }
+.cat { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #E8EFF8; color: var(--brand); }
+
+/* Kelime sayısı renk kodları */
+.wc       { font-family: var(--mono); font-size: 12px; font-weight: 600; }
+.wc--ok   { color: var(--green); }
+.wc--mid  { color: var(--mid);   }
+.wc--low  { color: var(--red);   }
+
+.icon-btn { background: none; border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; cursor: pointer; font-size: 14px; }
+.icon-btn:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+/* ── Form ── */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field.span2 { grid-column: 1 / -1; }
+label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+input[type="text"], input[type="date"], select, textarea {
+  padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px;
+  font-size: 14px; font-family: inherit; background: var(--bg); color: var(--text);
+  outline: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--brand); }
+textarea { resize: vertical; min-height: 80px; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn--primary { background: var(--brand); color: #fff; }
+.btn--ghost   { background: none; border: 1px solid var(--border); color: var(--text); }
+.btn--primary:hover { opacity: 0.9; }
+.btn--ghost:hover   { border-color: var(--brand); color: var(--brand); }
+.form-actions { display: flex; gap: 10px; margin-top: 20px; }
+.template-output {
+  width: 100%; margin-top: 16px; padding: 14px; border: 1px solid var(--border); border-radius: 6px;
+  font-family: var(--mono); font-size: 12px; background: #F0EDE8; color: var(--text);
+  min-height: 240px; white-space: pre;
+}
+.accent-hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* ── Durum ── */
+.status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+@media (max-width: 480px) { .status-grid { grid-template-columns: 1fr; } }
+.stat-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; }
+.stat-n { display: block; font-size: 36px; font-weight: 700; color: var(--brand); font-family: var(--mono); }
+.stat-l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.link-list { list-style: none; padding: 0; margin: 0 0 20px; }
+.link-list li { padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.link-list li:last-child { border: none; }
+.code-block { background: #F0EDE8; border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; font-family: var(--mono); font-size: 13px; line-height: 2; }
+h3 { font-size: 14px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 24px 0 10px; }
+h3:first-child { margin-top: 0; }
+
+/* ── Footer ── */
+.admin-footer { text-align: center; padding: 24px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<!-- PIN EKRANI -->
+<div id="pinOverlay">
+  <div class="pin-box">
+    <div class="pin-logo">QB<span>LOGG</span></div>
+    <div class="pin-sub">Yönetici Paneli</div>
+
+    <!-- İlk kurulum: PIN belirleme -->
+    <form id="pinSetForm" hidden>
+      <h2>PIN Belirleyin</h2>
+      <input class="pin-input" id="pinNew"     type="password" placeholder="Yeni PIN" maxlength="20" autocomplete="new-password">
+      <input class="pin-input" id="pinConfirm" type="password" placeholder="PIN tekrarı" maxlength="20" autocomplete="new-password">
+      <button class="pin-btn" type="submit">PIN Kaydet</button>
+    </form>
+
+    <!-- Giriş -->
+    <form id="pinLoginForm" hidden>
+      <h2>PIN Girin</h2>
+      <input class="pin-input" id="pinInput" type="password" placeholder="••••" maxlength="20" autocomplete="current-password">
+      <button class="pin-btn" type="submit">Giriş</button>
+      <a class="pin-link" id="resetPin">PIN sıfırla</a>
+    </form>
+
+    <p class="pin-msg" id="pinMsg"></p>
+  </div>
+</div>
+
+<!-- YÖNETİCİ PANELI -->
+<div id="dashboard" hidden>
+
+  <header class="admin-header">
+    <a class="admin-logo" href="../index.html" target="_blank">QB<span>LOGG</span></a>
+    <span>Yönetici Paneli</span>
+    <span class="admin-date" id="adminDate"></span>
+    <button class="lock-btn" id="lockBtn">⬡ Kilitle</button>
+  </header>
+
+  <nav class="tab-bar" role="tablist">
+    <button class="tab-btn" role="tab" data-panel="posts" aria-selected="true">Yazılar</button>
+    <button class="tab-btn" role="tab" data-panel="new"   aria-selected="false">Yeni Yazı</button>
+    <button class="tab-btn" role="tab" data-panel="status" aria-selected="false">Site Durumu</button>
+  </nav>
+
+  <!-- SEKME: Yazı Listesi -->
+  <div id="panel-posts" class="tab-panel">
+    <div class="card">
+      <div class="card-head">
+        <h2 class="card-title">Blog Yazıları</h2>
+      </div>
+      <div class="card-body">
+        <div class="chip-bar" id="catFilter"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Başlık</th>
+                <th>Kategori</th>
+                <th>Tarih</th>
+                <th class="center">Süre</th>
+                <th class="center">Kelime</th>
+                <th>Slug</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="postTableBody"></tbody>
+          </table>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:12px">
+          <span style="color:var(--green);font-weight:600">≥1200</span> yayına hazır ·
+          <span style="color:var(--mid);font-weight:600">600–1199</span> geliştirilebilir ·
+          <span style="color:var(--red);font-weight:600">&lt;600</span> eksik
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEKME: Yeni Yazı Şablonu -->
+  <div id="panel-new" class="tab-panel" hidden>
+    <div class="card">
+      <div class="card-head">
+        <h2 class="card-title">Yeni Yazı JSON Şablonu</h2>
+      </div>
+      <div class="card-body">
+        <p style="font-size:13px;color:var(--muted);margin:0 0 20px">
+          Aşağıdaki formu doldurun, oluşturulan JSON'ı <code>assets/js/posts.js</code> dosyasındaki
+          <code>QB_POSTS</code> dizisine yapıştırın.
+        </p>
+        <form id="templateForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="tSlug">Slug</label>
+              <input id="tSlug" type="text" placeholder="yazi-slug-ornegi" required>
+            </div>
+            <div class="field">
+              <label for="tDate">Yayın tarihi</label>
+              <input id="tDate" type="date" required>
+            </div>
+            <div class="field">
+              <label for="tCategory">Kategori</label>
+              <select id="tCategory"></select>
+            </div>
+            <div class="field">
+              <label for="tIcon">İkon</label>
+              <select id="tIcon"></select>
+            </div>
+            <div class="field">
+              <label for="tAccent">Kapak rengi (1–6)</label>
+              <input id="tAccent" type="number" min="1" max="6" value="1">
+              <span class="accent-hint">1=lacivert, 2–3=derin mavi, 4–5=deniz mavisi, 6=koyu</span>
+            </div>
+            <div class="field"><!-- boş --></div>
+            <div class="field span2">
+              <label for="tTitleTR">Başlık (TR)</label>
+              <input id="tTitleTR" type="text" placeholder="Türkçe başlık" required>
+            </div>
+            <div class="field span2">
+              <label for="tTitleEN">Başlık (EN)</label>
+              <input id="tTitleEN" type="text" placeholder="English title" required>
+            </div>
+            <div class="field span2">
+              <label for="tExcTR">Özet (TR)</label>
+              <textarea id="tExcTR" placeholder="Yazının kısa özeti — Türkçe"></textarea>
+            </div>
+            <div class="field span2">
+              <label for="tExcEN">Özet (EN)</label>
+              <textarea id="tExcEN" placeholder="Article excerpt — English"></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn--primary" type="submit">Şablon Oluştur</button>
+            <button class="btn btn--ghost" id="copyTemplate" type="button">Kopyala</button>
+          </div>
+        </form>
+        <textarea class="template-output" id="templateOutput" readonly hidden></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEKME: Site Durumu -->
+  <div id="panel-status" class="tab-panel" hidden>
+    <div class="card">
+      <div class="card-head">
+        <h2 class="card-title">Site Durumu</h2>
+      </div>
+      <div class="card-body" id="statusPanel"></div>
+    </div>
+  </div>
+
+  <footer class="admin-footer">
+    © <span id="year">2026</span> QBLOGG · Yönetici paneli — yalnızca yetkili kullanım
+  </footer>
+
+</div>
+
+<script>
+  /* Tarihi header'a yaz */
+  document.addEventListener('DOMContentLoaded', function() {
+    var el = document.getElementById('adminDate');
+    if (el) el.textContent = new Date().toLocaleDateString('tr-TR', {
+      weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+    });
+  });
+</script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/i18n.js"></script>
+<script src="../assets/js/posts.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

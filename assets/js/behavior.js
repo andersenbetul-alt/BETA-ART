@@ -87,9 +87,34 @@
       .slice(0, n || 3);
   }
 
+  /* Ziyaretçi bir paketi (p1, p2, p3) görüntülediğinde çağrılır.
+     Paket adı `qb_beh.pkgs` altında sayılır; satış sayfasına yönlendirme
+     kararlarında kullanılabilir. */
+  function trackPackage(pkgId) {
+    if (!pkgId) return;
+    var data = load() || empty();
+    if (!data.pkgs) data.pkgs = {};
+    data.pkgs[pkgId] = (data.pkgs[pkgId] || 0) + 1;
+    save(data);
+  }
+
+  /* Ziyaretçinin en çok incelediği paketi döndürür. */
+  function topPackage() {
+    var data = load();
+    if (!data || !data.pkgs) return null;
+    var pkgs = data.pkgs;
+    var best = null, max = 0;
+    Object.keys(pkgs).forEach(function(k) {
+      if (pkgs[k] > max) { max = pkgs[k]; best = k; }
+    });
+    return best;
+  }
+
   window.QB_BEH = {
     boot: boot,
     trackRead: trackRead,
+    trackPackage: trackPackage,
+    topPackage: topPackage,
     isReturning: isReturning,
     recommend: recommend
   };
