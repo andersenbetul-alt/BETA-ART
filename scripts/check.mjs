@@ -212,6 +212,8 @@ const HTML_FILES = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
     const html = read(file);
     // 404.html bilinçli olarak posts.js yüklemez: sayfada yazı listesi yok,
     // 300 KB veri boşuna inmesin (app.js QB_POSTS yoksa boş listeyle çalışır).
+    // admin.html bağımsız editör panelidir: kendi CSS'i var, yalnızca posts.js yükler.
+    if (file === 'admin.html') continue;
     const gerekli = ['assets/js/i18n.js', 'assets/js/app.js', 'assets/css/main.css'];
     if (file !== '404.html') gerekli.push('assets/js/posts.js');
     for (const need of gerekli) {

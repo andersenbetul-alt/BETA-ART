@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QBLOGG Editör Paneli</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+/* --- Editör paneli: bağımsız CSS --- */
+:root {
+  --bg:      #080e1c;
+  --bg-card: #0e1628;
+  --bg-row:  #111d33;
+  --border:  #1c2a45;
+  --brand:   #00d8c2;
+  --brand-d: #009e8e;
+  --text:    #dce6f8;
+  --muted:   #647898;
+  --danger:  #f87171;
+  --good:    #4ade80;
+  --warn:    #facc15;
+  --radius:  10px;
+  --fs-xs:   .75rem;
+  --fs-sm:   .82rem;
+  --fs-md:   .9rem;
+  --fs-base: .95rem;
+  --fs-lg:   1rem;
+  --fs-xl:   1.2rem;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text);
+  font-size: var(--fs-base); line-height: 1.55; min-height: 100vh;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: 'Cascadia Code','Fira Code',Consolas,monospace; font-size: .88em;
+  background: var(--bg-row); padding: 2px 6px; border-radius: 5px; color: var(--brand); }
+
+/* --- iskelet --- */
+.shell { display: grid; grid-template-rows: auto 1fr; min-height: 100vh; }
+.topbar {
+  background: var(--bg-card); border-bottom: 1px solid var(--border);
+  padding: 14px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.topbar-logo { font-size: var(--fs-lg); font-weight: 800; letter-spacing: -.02em; }
+.topbar-logo span { color: var(--brand); }
+.topbar-tag {
+  font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--muted); background: var(--bg-row); border: 1px solid var(--border);
+  padding: 3px 9px; border-radius: 6px;
+}
+.topbar-spacer { flex: 1; }
+.topbar-btn {
+  font: inherit; font-size: var(--fs-sm); font-weight: 700; cursor: pointer;
+  border-radius: 8px; padding: 8px 16px; border: 1px solid var(--border);
+  background: var(--bg-row); color: var(--text); transition: border-color .15s, color .15s;
+}
+.topbar-btn:hover { border-color: var(--brand); color: var(--brand); }
+.topbar-btn--danger { border-color: var(--danger); color: var(--danger); }
+.topbar-btn--danger:hover { background: rgba(248,113,113,.1); }
+.topbar-url { font-size: var(--fs-xs); color: var(--muted); }
+
+.main { padding: 28px 24px; display: grid; gap: 28px; }
+
+/* --- kartlar --- */
+.section-title {
+  font-size: var(--fs-xs); font-weight: 800; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--muted); margin-bottom: 14px;
+}
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 22px;
+}
+
+/* --- stat grid --- */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.stat-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px 20px; display: flex; flex-direction: column; gap: 6px;
+}
+.stat-label { font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.stat-val   { font-size: 2rem; font-weight: 800; letter-spacing: -.04em; line-height: 1; color: var(--text); font-variant-numeric: tabular-nums; }
+.stat-sub   { font-size: var(--fs-xs); color: var(--muted); }
+.stat-card--brand .stat-val { color: var(--brand); }
+.stat-card--good  .stat-val { color: var(--good); }
+.stat-card--warn  .stat-val { color: var(--warn); }
+
+/* --- tablo --- */
+.tbl-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+th {
+  font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--muted); padding: 8px 12px; text-align: start; border-bottom: 1px solid var(--border);
+}
+td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg-row); }
+.pill {
+  display: inline-block; font-size: var(--fs-xs); font-weight: 700; padding: 2px 8px;
+  border-radius: 20px; letter-spacing: .04em;
+}
+.pill--cat  { background: rgba(0,216,194,.15); color: var(--brand); }
+.pill--good { background: rgba(74,222,128,.12); color: var(--good); }
+.pill--warn { background: rgba(250,204,21,.12);  color: var(--warn); }
+.pill--muted{ background: var(--bg-row); color: var(--muted); }
+.pill--danger{ background: rgba(248,113,113,.12); color: var(--danger); }
+
+/* --- öneri kutusu --- */
+.next-step-box {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(0,216,194,.12), rgba(0,216,194,.04));
+  border: 1px solid rgba(0,216,194,.3); border-radius: var(--radius); padding: 16px 20px;
+}
+.next-step-box .ns-label { font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--brand); }
+.next-step-box .ns-val   { font-size: var(--fs-xl); font-weight: 800; color: var(--text); }
+.next-step-box .ns-href  { font-size: var(--fs-sm); color: var(--muted); }
+
+/* --- içerik durumu bar --- */
+.content-bar {
+  display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap;
+}
+.content-bar .cb-item {
+  font-size: var(--fs-xs); font-weight: 700; padding: 4px 12px;
+  border-radius: 20px; display: flex; align-items: center; gap: 5px;
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+/* --- boş durum --- */
+.empty {
+  text-align: center; padding: 40px 20px; color: var(--muted); font-size: var(--fs-md);
+}
+.empty .empty-icon { font-size: 2.5rem; margin-bottom: 10px; opacity: .5; }
+
+/* --- bilgi satırı --- */
+.info-row {
+  display: flex; gap: 8px; align-items: flex-start;
+  background: var(--bg-row); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 16px; font-size: var(--fs-sm); color: var(--muted);
+}
+.info-row .info-icon { flex: 0 0 auto; font-size: 1rem; margin-top: 1px; }
+
+/* --- editör URL yardımı --- */
+.editor-mode-box {
+  background: rgba(250,204,21,.07); border: 1px solid rgba(250,204,21,.25);
+  border-radius: var(--radius); padding: 14px 18px;
+}
+.editor-mode-box p { font-size: var(--fs-sm); color: var(--text); margin-bottom: 8px; }
+.editor-mode-box code { display: block; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <span class="topbar-logo">QB<span>LOGG</span></span>
+    <span class="topbar-tag">Editör Paneli</span>
+    <span class="topbar-url" id="panelDate"></span>
+    <span class="topbar-spacer"></span>
+    <button class="topbar-btn" id="btnRefresh" type="button">↺ Yenile</button>
+    <button class="topbar-btn topbar-btn--danger" id="btnReset" type="button">⚠ Davranış Verisini Sıfırla</button>
+  </div>
+
+  <div class="main" id="main">
+    <!-- JS doldurur -->
+  </div>
+</div>
+
+<script src="assets/js/posts.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var POSTS = window.QB_POSTS || [];
+  var BEH_KEY = 'qb_beh';
+  var NUDGE_KEY = 'qb_nudge';
+  var DECAY_DAYS = 30;
+
+  /* --- veri --- */
+  function loadBeh() {
+    try {
+      var raw = localStorage.getItem(BEH_KEY);
+      if (!raw) return { v: 1, reads: [], signals: [], scores: {} };
+      var d = JSON.parse(raw);
+      return (d && d.v === 1) ? d : { v: 1, reads: [], signals: [], scores: {} };
+    } catch (e) { return { v: 1, reads: [], signals: [], scores: {} }; }
+  }
+
+  function rebuildScores(reads) {
+    var now = Date.now(); var s = {};
+    reads.forEach(function (r) {
+      var w = Math.max(0, 1 - (now - r.ts) / 86400000 / DECAY_DAYS);
+      s[r.cat] = (s[r.cat] || 0) + w;
+    });
+    return s;
+  }
+
+  function topCat(scores) {
+    var best = null, bestV = -1;
+    Object.keys(scores).forEach(function (k) {
+      if (scores[k] > bestV) { best = k; bestV = scores[k]; }
+    });
+    return best;
+  }
+
+  function computeNextStep(state) {
+    var sigs = state.signals || [], reads = state.reads || [];
+    var briefScore = 0, newsScore = 0;
+    sigs.forEach(function (s) {
+      if (s.type === 'cta_click')   briefScore += 3;
+      if (s.type === 'pkg_hover')   briefScore += 1;
+      if (s.type === 'nudge_click' && s.data && s.data.step === 'brief') briefScore += 2;
+      if (s.type === 'section_view') {
+        if (s.data && s.data.id === 'packages')  briefScore += 0.5;
+        if (s.data && s.data.id === 'newsletter') newsScore += 1;
+      }
+    });
+    var blogScore = reads.length * 1.5;
+    if (reads.length >= 2) newsScore += 1;
+    if (briefScore >= 3)                     return { step: 'brief', score: briefScore, href: 'work.html',   label: 'Brief gönder' };
+    if (blogScore  >= 4.5 && briefScore < 2) return { step: 'blog',  score: blogScore,  href: 'blog.html',  label: 'Daha fazla oku' };
+    if (newsScore  >= 2)                     return { step: 'news',  score: newsScore,  href: '#newsletter', label: 'Bültene katıl' };
+    return { step: 'pkg', score: 0, href: '#packages', label: 'Paketleri gör' };
+  }
+
+  /* --- yardımcılar --- */
+  function esc(str) {
+    return String(str || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function timeAgo(ts) {
+    var s = Math.floor((Date.now() - ts) / 1000);
+    if (s < 60) return s + 's önce';
+    if (s < 3600) return Math.floor(s / 60) + 'dk önce';
+    if (s < 86400) return Math.floor(s / 3600) + 'sa önce';
+    return Math.floor(s / 86400) + 'gün önce';
+  }
+  function fmtDate(ts) {
+    return new Date(ts).toLocaleString('tr-TR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+
+  /* --- render --- */
+  function render() {
+    var beh  = loadBeh();
+    var reads = beh.reads || [];
+    var sigs  = beh.signals || [];
+    var scores = rebuildScores(reads);
+    var ns    = computeNextStep(beh);
+    var top   = topCat(scores);
+    var nudgeDismissed = false;
+    try { nudgeDismissed = !!sessionStorage.getItem(NUDGE_KEY); } catch (e) {}
+
+    /* toplam sayfa görüntülemesi */
+    var pvCount = sigs.filter(function (s) { return s.type === 'page_view'; }).length;
+    var published = POSTS.filter(function (p) { return !p.draft; });
+    var drafts    = POSTS.filter(function (p) { return p.draft; });
+
+    var html = '';
+
+    /* --- istatistik satırı --- */
+    html += '<div><div class="section-title">Ziyaretçi Özeti</div>';
+    html += '<div class="stat-grid">';
+    html += statCard('Sayfa Görüntüleme', pvCount, 'Bu tarayıcıda kayıtlı', '');
+    html += statCard('Okunan Yazı', reads.length, 'Benzersiz yazı', '--brand');
+    html += statCard('Kayıtlı Sinyal', sigs.length, 'Son ' + Math.min(sigs.length, 100) + ' sinyal', '--warn');
+    html += statCard('En Çok Okunan Kategori', top ? '<span style="font-size:1rem;font-weight:700">' + esc(top) + '</span>' : '—', top ? (scores[top] || 0).toFixed(1) + ' puan' : 'henüz yok', '--good');
+    html += '</div></div>';
+
+    /* --- sonraki adım --- */
+    html += '<div><div class="section-title">Hesaplanan Sonraki Adım</div>';
+    html += '<div class="next-step-box">';
+    html += '<div><div class="ns-label">Önerilen adım</div><div class="ns-val">' + esc(ns.label) + ' →</div>';
+    html += '<div class="ns-href"><code>' + esc(ns.href) + '</code> &nbsp;·&nbsp; puan: ' + ns.score.toFixed(1) + '</div></div>';
+    html += nudgeDismissed ? '<span class="pill pill--muted">nudge kapatılmış (bu oturumda)</span>' : '<span class="pill pill--good">nudge aktif</span>';
+    html += '</div>';
+    html += '<div class="info-row" style="margin-top:10px"><span class="info-icon">ℹ</span>' +
+      '<span>Bu hesaplama ziyaretçinin <strong>kendi tarayıcısında</strong> çalışır; ' +
+      'her ziyaretçi için farklı sonuç verir. Editör modunda (<code>?editor=1</code>) sinyal kaydedilmez.</span></div>';
+    html += '</div>';
+
+    /* --- okuma geçmişi --- */
+    html += '<div><div class="section-title">Okuma Geçmişi (' + reads.length + ')</div>';
+    if (reads.length) {
+      html += '<div class="tbl-wrap"><table><thead><tr><th>Yazı</th><th>Kategori</th><th>Görüntüleme</th><th>Son okuma</th></tr></thead><tbody>';
+      var sorted = reads.slice().sort(function (a, b) { return b.ts - a.ts; });
+      sorted.forEach(function (r) {
+        var post = null;
+        POSTS.forEach(function (p) { if (p.slug === r.slug) post = p; });
+        var title = post ? (post.t && post.t.tr || r.slug) : r.slug;
+        html += '<tr><td><a href="post.html?slug=' + esc(r.slug) + '" target="_blank">' + esc(title.slice(0, 55)) + '</a></td>' +
+          '<td><span class="pill pill--cat">' + esc(r.cat) + '</span></td>' +
+          '<td>' + (r.views || 1) + 'x</td>' +
+          '<td title="' + esc(fmtDate(r.ts)) + '">' + esc(timeAgo(r.ts)) + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+    } else {
+      html += emptyState('Bu tarayıcıda henüz okuma kaydı yok.', '📖');
+    }
+    html += '</div>';
+
+    /* --- sinyal günlüğü --- */
+    html += '<div><div class="section-title">Son Sinyaller (' + Math.min(sigs.length, 20) + ' / ' + sigs.length + ')</div>';
+    if (sigs.length) {
+      html += '<div class="tbl-wrap"><table><thead><tr><th>Tür</th><th>Veri</th><th>Zaman</th></tr></thead><tbody>';
+      var lastSigs = sigs.slice(-20).reverse();
+      lastSigs.forEach(function (s) {
+        var typeClass = { cta_click: 'pill--good', pkg_hover: 'pill--brand', nudge_click: 'pill--brand',
+          section_view: 'pill--warn', page_view: 'pill--muted' }[s.type] || 'pill--muted';
+        html += '<tr><td><span class="pill ' + typeClass + '">' + esc(s.type) + '</span></td>' +
+          '<td><code>' + esc(JSON.stringify(s.data || {}).slice(0, 60)) + '</code></td>' +
+          '<td title="' + esc(fmtDate(s.ts)) + '">' + esc(timeAgo(s.ts)) + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+    } else {
+      html += emptyState('Henüz sinyal kaydı yok.', '📡');
+    }
+    html += '</div>';
+
+    /* --- içerik durumu --- */
+    html += '<div><div class="section-title">İçerik Durumu</div>';
+    html += '<div class="content-bar">';
+    html += '<div class="cb-item" style="color:var(--good)"><div class="dot"></div>' + published.length + ' yayında</div>';
+    if (drafts.length) html += '<div class="cb-item" style="color:var(--warn)"><div class="dot"></div>' + drafts.length + ' taslak</div>';
+    html += '</div>';
+    html += '<div class="tbl-wrap"><table><thead><tr><th>Başlık (TR)</th><th>Slug</th><th>Kategori</th><th>Tarih</th><th>Durum</th></tr></thead><tbody>';
+    var sortedPosts = POSTS.slice().sort(function (a, b) { return b.date > a.date ? 1 : -1; });
+    sortedPosts.forEach(function (p) {
+      var isDraft = !!p.draft;
+      var readCount = 0;
+      reads.forEach(function (r) { if (r.slug === p.slug) readCount = r.views || 1; });
+      html += '<tr><td>' + esc((p.t && p.t.tr || p.slug).slice(0, 55)) + (readCount ? ' <span class="pill pill--muted">' + readCount + 'x okundu</span>' : '') + '</td>' +
+        '<td><code>' + esc(p.slug) + '</code></td>' +
+        '<td><span class="pill pill--cat">' + esc(p.category) + '</span></td>' +
+        '<td>' + esc(p.date) + '</td>' +
+        '<td>' + (isDraft ? '<span class="pill pill--warn">taslak</span>' : '<span class="pill pill--good">yayında</span>') + '</td></tr>';
+    });
+    html += '</tbody></table></div></div>';
+
+    /* --- editör modu --- */
+    html += '<div class="card editor-mode-box"><div class="section-title">Editör Modu</div>';
+    html += '<p>Siteye şu URL\'leri ekleyerek editör modunu açın — bu modda <code>behavior.js</code> sinyal kaydetmez, böylece editörün gezintisi ziyaretçi verisini kirletmez:</p>';
+    html += '<code>' + esc(location.origin) + '/index.html?editor=1</code>';
+    html += '<code style="margin-top:6px">' + esc(location.origin) + '/blog.html?editor=1</code>';
+    html += '<code style="margin-top:6px">' + esc(location.origin) + '/post.html?slug=...&amp;editor=1</code>';
+    html += '</div>';
+
+    document.getElementById('main').innerHTML = html;
+  }
+
+  function statCard(label, val, sub, mod) {
+    return '<div class="stat-card' + (mod === '--brand' ? ' stat-card--brand' : mod === '--good' ? ' stat-card--good' : mod === '--warn' ? ' stat-card--warn' : '') + '">' +
+      '<div class="stat-label">' + esc(label) + '</div>' +
+      '<div class="stat-val">' + val + '</div>' +
+      '<div class="stat-sub">' + esc(sub) + '</div>' +
+      '</div>';
+  }
+
+  function emptyState(msg, icon) {
+    return '<div class="empty"><div class="empty-icon">' + icon + '</div>' + esc(msg) + '</div>';
+  }
+
+  /* --- olaylar --- */
+  document.getElementById('btnRefresh').addEventListener('click', render);
+  document.getElementById('btnReset').addEventListener('click', function () {
+    if (!confirm('Bu tarayıcıdaki tüm QB_BEH davranış verisi ve oturum nudge durumu silinecek. Devam?')) return;
+    try { localStorage.removeItem(BEH_KEY); sessionStorage.removeItem(NUDGE_KEY); } catch (e) {}
+    render();
+  });
+
+  /* --- başlık tarihi --- */
+  document.getElementById('panelDate').textContent = new Date().toLocaleString('tr-TR');
+
+  render();
+})();
+</script>
+</body>
+</html>

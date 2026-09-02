@@ -293,6 +293,9 @@
 
   /* ---------- ana giriş ---------- */
   function init() {
+    /* Editör modu: ?editor=1 ile sitenin kendi taraması iz bırakmaz */
+    if (new URLSearchParams(location.search).get('editor') === '1') return;
+
     var state = load();
     var posts = window.QB_POSTS || [];
     var lang  = getLang();
