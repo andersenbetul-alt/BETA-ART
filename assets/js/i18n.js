@@ -1788,3 +1788,45 @@ Object.assign(window.QB_I18N.ru, {
 Object.assign(window.QB_I18N.no, {
   'cta.magnet': 'Abonner og få Sjekklisten for automatiseringsdiagnose — mål på én uke hvilken oppgave i bedriften som er verdt å automatisere.',
   'cta.download': '↓ Last ned sjekklisten' });
+
+/* ── Davranış widget'ı (behavior.js) ────────────────────────────────── */
+Object.assign(window.QB_I18N.tr, {
+  'bhv.welcome': 'Tekrar hoş geldiniz', 'bhv.form_continue': 'Brief formuna devam edin',
+  'bhv.see_pkg': 'Pakete bakın', 'bhv.interest': 'İlginizi çekebilir',
+  'bhv.see_post': 'Okumaya devam edin', 'bhv.dismiss': 'Kapat' });
+Object.assign(window.QB_I18N.en, {
+  'bhv.welcome': 'Welcome back', 'bhv.form_continue': 'Continue your brief',
+  'bhv.see_pkg': 'See package', 'bhv.interest': 'You might like',
+  'bhv.see_post': 'Continue reading', 'bhv.dismiss': 'Dismiss' });
+Object.assign(window.QB_I18N.zh, {
+  'bhv.welcome': '欢迎回来', 'bhv.form_continue': '继续填写简报',
+  'bhv.see_pkg': '查看套餐', 'bhv.interest': '您可能感兴趣',
+  'bhv.see_post': '继续阅读', 'bhv.dismiss': '关闭' });
+Object.assign(window.QB_I18N.hi, {
+  'bhv.welcome': 'फिर से स्वागत है', 'bhv.form_continue': 'अपना ब्रीफ जारी रखें',
+  'bhv.see_pkg': 'पैकेज देखें', 'bhv.interest': 'आपको पसंद आ सकता है',
+  'bhv.see_post': 'पढ़ना जारी रखें', 'bhv.dismiss': 'बंद करें' });
+Object.assign(window.QB_I18N.es, {
+  'bhv.welcome': 'Bienvenido de nuevo', 'bhv.form_continue': 'Continuar el brief',
+  'bhv.see_pkg': 'Ver paquete', 'bhv.interest': 'Te puede interesar',
+  'bhv.see_post': 'Seguir leyendo', 'bhv.dismiss': 'Cerrar' });
+Object.assign(window.QB_I18N.ar, {
+  'bhv.welcome': 'أهلاً بعودتك', 'bhv.form_continue': 'أكمل الاستمارة',
+  'bhv.see_pkg': 'اطّلع على الباقة', 'bhv.interest': 'قد يعجبك',
+  'bhv.see_post': 'تابع القراءة', 'bhv.dismiss': 'إغلاق' });
+Object.assign(window.QB_I18N.fr, {
+  'bhv.welcome': 'Bon retour', 'bhv.form_continue': 'Reprendre le brief',
+  'bhv.see_pkg': 'Voir le forfait', 'bhv.interest': 'Vous pourriez aimer',
+  'bhv.see_post': 'Continuer la lecture', 'bhv.dismiss': 'Fermer' });
+Object.assign(window.QB_I18N.pt, {
+  'bhv.welcome': 'Bem-vindo de volta', 'bhv.form_continue': 'Continuar o brief',
+  'bhv.see_pkg': 'Ver pacote', 'bhv.interest': 'Você pode gostar',
+  'bhv.see_post': 'Continuar lendo', 'bhv.dismiss': 'Fechar' });
+Object.assign(window.QB_I18N.ru, {
+  'bhv.welcome': 'С возвращением', 'bhv.form_continue': 'Продолжить заполнение брифа',
+  'bhv.see_pkg': 'Посмотреть пакет', 'bhv.interest': 'Вам может понравиться',
+  'bhv.see_post': 'Продолжить чтение', 'bhv.dismiss': 'Закрыть' });
+Object.assign(window.QB_I18N.no, {
+  'bhv.welcome': 'Velkommen tilbake', 'bhv.form_continue': 'Fortsett briefet',
+  'bhv.see_pkg': 'Se pakke', 'bhv.interest': 'Du vil kanskje like',
+  'bhv.see_post': 'Fortsett å lese', 'bhv.dismiss': 'Lukk' });

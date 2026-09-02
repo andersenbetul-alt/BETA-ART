@@ -608,6 +608,37 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 .magnet-link { margin-top: 4px; background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.5); color: #fff; }
 .magnet-link:hover { background: rgba(255,255,255,.26); }
 
+/* ---------- Davranış Widget'ı ---------- */
+#bhvWidget {
+  position: fixed; inset-block-end: 24px; inset-inline-end: 24px;
+  z-index: 9000; max-width: 320px; width: calc(100vw - 48px);
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow-lg);
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .28s ease, transform .28s ease;
+  pointer-events: none;
+}
+#bhvWidget.bhv-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.bhv-inner { padding: 14px 16px; }
+.bhv-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-block-end: 10px; }
+.bhv-title { font-size: var(--fs-xs); font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: .05em; }
+.bhv-close {
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; background: none; border: none; cursor: pointer;
+  color: var(--text-muted); border-radius: var(--radius-sm);
+  transition: color .15s ease, background .15s ease;
+}
+.bhv-close:hover { color: var(--text); background: var(--border); }
+.bhv-cta {
+  display: block; padding: 9px 12px;
+  background: var(--brand); color: #fff;
+  font-size: var(--fs-xs); font-weight: 600; text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: opacity .15s ease;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.bhv-cta:hover { opacity: .88; }
+
 /* ---------- Yazdırma CSS'i ---------- */
 @media print {
   .site-header,
