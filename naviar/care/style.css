@@ -777,3 +777,140 @@ tr:hover td { background: var(--bg-alt); }
   .section { padding: 48px 0; }
   .page-hero { padding: 40px 0 32px; }
 }
+
+/* ── NCB: Customer Behaviour System ────────────────────────────────────────── */
+
+/* Consent banner (fixed bottom) */
+#ncb-banner { display: contents; }
+.ncb-banner {
+  position: fixed;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 14px 20px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 -2px 12px rgba(0,0,0,.06);
+}
+.ncb-banner-text {
+  flex: 1;
+  min-width: 200px;
+  font-size: 13px;
+  color: var(--text-2);
+  margin: 0;
+  line-height: 1.5;
+}
+.ncb-banner-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.ncb-btn {
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  line-height: 1;
+}
+.ncb-btn-yes { background: var(--brand); color: #fff; border-color: var(--brand); }
+.ncb-btn-yes:hover { background: var(--brand-dark); border-color: var(--brand-dark); }
+.ncb-btn-no { background: transparent; color: var(--text-2); border-color: var(--border-strong); }
+.ncb-btn-no:hover { background: var(--bg-alt); }
+
+/* Welcome-back strip (index.html hero) */
+.ncb-welcome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.ncb-welcome-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--brand-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+}
+.ncb-welcome-body { flex: 1; min-width: 160px; }
+.ncb-welcome-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--brand);
+  margin-bottom: 2px;
+}
+.ncb-welcome-sub { font-size: 13px; color: var(--text-2); line-height: 1.4; }
+.ncb-welcome-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ncb-welcome-cta:hover { text-decoration: underline; }
+
+/* Continue-search strip (booking.html) */
+.ncb-continue {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--brand-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  color: var(--brand);
+}
+.ncb-continue-msg { flex: 1; font-size: 13px; font-weight: 500; color: var(--text); }
+.ncb-continue-link { font-size: 12px; font-weight: 600; color: var(--brand); text-decoration: none; }
+.ncb-continue-link:hover { text-decoration: underline; }
+
+/* Dismiss button */
+.ncb-dismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-3);
+  padding: 4px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+.ncb-dismiss:hover { color: var(--text); background: var(--bg-alt); }
+
+/* Previously-seen doctor badge */
+.ncb-seen-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text-3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-inline-start: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ncb-banner { box-shadow: 0 -2px 12px rgba(0,0,0,.25); }
+  .ncb-continue { background: rgba(0,81,195,.12); }
+}

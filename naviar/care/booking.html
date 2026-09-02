@@ -225,6 +225,9 @@
       <strong>Select your language</strong> in the top-right corner — doctors who speak it will be highlighted.
     </p>
 
+    <!-- NCB: continue-search strip (filled by behavior.js) -->
+    <div id="ncb-continue-container" hidden></div>
+
     <!-- Specialty hub -->
     <div class="specialty-hub" id="specialty-hub">
       <div class="specialty-hub-card active" data-specialty="">
@@ -640,7 +643,7 @@ function render() {
       : '';
 
     return `
-      <div class="doctor-card${langMatch ? ' lang-match' : ''}">
+      <div class="doctor-card${langMatch ? ' lang-match' : ''}" data-doctor-id="${d.id}">
         <div class="doctor-avatar">${d.initials}</div>
         <div style="flex:1;min-width:0;">
           <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
@@ -669,7 +672,9 @@ document.querySelectorAll('.specialty-hub-card').forEach(card => {
     document.querySelectorAll('.specialty-hub-card').forEach(c => c.classList.remove('active'));
     card.classList.add('active');
     selectedSpecialty = card.dataset.specialty;
+    if (selectedSpecialty && window.NCB) NCB.trackSpecialty(selectedSpecialty);
     render();
+    if (window.NCB) NCB.markSeenDoctors();
   });
 });
 
@@ -712,6 +717,28 @@ if (langSel) {
 
 // ── Initial render ───────────────────────────────────────────────────────────
 render();
+
+// ── Doctor interaction tracking (event delegation) ───────────────────────────
+document.getElementById('doctor-grid').addEventListener('click', e => {
+  if (!window.NCB) return;
+  const card = e.target.closest('[data-doctor-id]');
+  if (!card) return;
+  const doc = DOCTORS.find(d => d.id === card.dataset.doctorId);
+  if (doc) NCB.trackDoctor({ id: doc.id, name: doc.name, specialty: doc.specialty, specialtyLabel: doc.specialtyLabel });
+});
+
+
+</script>
+
+<div id="ncb-banner" hidden></div>
+<script src="behavior.js"></script>
+<script>
+// NCB init runs after behavior.js is loaded
+if (window.NCB) {
+  NCB.init();
+  NCB.renderContinueSearch('ncb-continue-container');
+  NCB.markSeenDoctors();
+}
 </script>
 </body>
 </html>

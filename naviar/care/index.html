@@ -87,6 +87,9 @@
         </div>
         <h1>Talk to a doctor in minutes — in your <em>own language</em>.</h1>
         <p class="hero-lead">Tell us what is wrong in the words you would use at home. We work out which specialist you need, write up everything a doctor will ask you, and connect you to one who is free right now and who understands you — instead of waiting in a queue for the wrong department.</p>
+        <!-- NCB: welcome-back strip (filled by behavior.js on return visits) -->
+        <div id="ncb-welcome-container" hidden></div>
+
         <div class="hero-actions">
           <a href="triage.html" class="btn btn-primary">Describe my symptoms</a>
           <a href="booking.html" class="btn btn-ghost">See doctors available now</a>
@@ -401,5 +404,13 @@
 </footer>
 
 <script src="app.js"></script>
+<div id="ncb-banner" hidden></div>
+<script src="behavior.js"></script>
+<script>
+if (window.NCB) {
+  NCB.init();
+  NCB.renderWelcomeBack('ncb-welcome-container');
+}
+</script>
 </body>
 </html>
