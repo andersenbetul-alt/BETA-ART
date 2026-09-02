@@ -131,6 +131,36 @@ export function totalsOf(sales: Sale[]): Totals {
   return t;
 }
 
+export interface MonthPoint {
+  month: string; // YYYY-MM
+  label: string; // e.g. "2026-09"
+  gross: number;
+  net: number;
+  ownerShare: number;
+  count: number;
+}
+
+// Gross/net per calendar month, oldest→newest, only months that have sales.
+// Feeds the admin revenue chart (magnitude over time → bars).
+export function monthlyTotals(sales: Sale[]): MonthPoint[] {
+  const map = new Map<string, MonthPoint>();
+  for (const s of sales) {
+    const month = s.date.slice(0, 7);
+    if (!/^\d{4}-\d{2}$/.test(month)) continue;
+    const sp = splitOf(s);
+    const cur = map.get(month) ?? { month, label: month, gross: 0, net: 0, ownerShare: 0, count: 0 };
+    cur.gross += s.gross;
+    cur.net += sp.net;
+    cur.ownerShare += sp.ownerShare;
+    cur.count += 1;
+    map.set(month, cur);
+  }
+  const round = (n: number) => Math.round(n * 100) / 100;
+  return [...map.values()]
+    .map((m) => ({ ...m, gross: round(m.gross), net: round(m.net), ownerShare: round(m.ownerShare) }))
+    .sort((a, b) => (a.month < b.month ? -1 : a.month > b.month ? 1 : 0));
+}
+
 // CSV for the owner's own bookkeeping / accountant. Fields quoted so commas
 // in notes don't break columns.
 export function salesToCsv(sales: Sale[]): string {

@@ -626,3 +626,15 @@ kaydı, parolalı çok-cihaz panel, ödeme durumu takibi bilinçle kapsam dış�
 (backend ister) — satis-takip.md'de sonraki adım. Doğrulama: build temiz,
 Playwright 8/8 (kullanıcıya görünmez, panel açılıyor, kendi plakası net
 185,35, dış fotoğrafçı payout 129,7x, ayrı depolama anahtarı, reload kalıcı).
+
+## 02.09.2026 (gece, ek) — Satışlar grafikte gösteriliyor
+
+Kullanıcı talebi "satışları grafikte göster". Yönetici panelinde (/#admin)
+aylık brüt gelir çubuk grafiği. Form: büyüklük/zaman → çubuk; tek seri
+(brüt) → tek renk (tema accent tokenı, açık/koyu temada zaten doğrulanmış),
+efsane gerekmez. `sales.ts → monthlyTotals()` satışları takvim ayına göre
+gruplar (net/BA payı/adet dahil). `Admin.tsx → RevenueChart`: satır içi SVG,
+yuvarlak-tepeli çubuklar, taban çizgisi resesif, her çubukta doğrudan kr
+etiketi, ay etiketi, çubuk başına hover (adet + net). Tablo görünümü zaten
+satış listesi. Doğrulama: build temiz, Playwright 6/6 (aylık gruplama,
+toplam etiketleri, hover ayrıntısı) + ekran görüntüsüyle görsel kontrol.

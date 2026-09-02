@@ -6,10 +6,12 @@ import {
   addSale,
   deleteSale,
   estimateFee,
+  monthlyTotals,
   OWN_BRAND,
   readSales,
   salesToCsv,
   totalsOf,
+  type MonthPoint,
   type Sale,
 } from "@/lib/sales";
 
@@ -38,6 +40,7 @@ export function Admin() {
   const [err, setErr] = useState("");
 
   const totals = useMemo(() => totalsOf(sales), [sales]);
+  const months = useMemo(() => monthlyTotals(sales), [sales]);
 
   const onGross = (v: string) => {
     setGross(v);
@@ -114,6 +117,9 @@ export function Admin() {
           <Stat label="Beta Art (30%)" value={kr(totals.ownerShare)} accent />
           <Stat label="Payouts owed" value={kr(totals.payouts)} />
         </div>
+
+        {/* Revenue chart — gross per month (magnitude over time → bars) */}
+        {months.length > 0 && <RevenueChart months={months} />}
 
         {/* Add sale */}
         <form onSubmit={submit} className="mt-8 grid grid-cols-1 gap-4 border border-border bg-background p-[clamp(1.2rem,3vw,1.8rem)] md:grid-cols-3">
@@ -207,6 +213,73 @@ export function Admin() {
         )}
       </div>
     </section>
+  );
+}
+
+// Gross revenue per month. One series → one hue (the theme accent, already
+// validated site-wide for both light and dark), so no legend and no
+// categorical-palette check needed. Thin bars, 4px rounded tops anchored to
+// the baseline, recessive axis, direct labels, per-bar hover tooltip. The
+// sales table below is the "table view" this chart's data also lives in.
+function RevenueChart({ months }: { months: MonthPoint[] }) {
+  const [hover, setHover] = useState<number | null>(null);
+  const W = 720;
+  const H = 240;
+  const padX = 16;
+  const padTop = 28; // room for the direct value label
+  const padBottom = 26; // room for month labels
+  const max = Math.max(...months.map((m) => m.gross), 1);
+  const n = months.length;
+  const slot = (W - padX * 2) / n;
+  const barW = Math.min(48, slot * 0.6);
+  const plotH = H - padTop - padBottom;
+  const y = (v: number) => padTop + plotH * (1 - v / max);
+  const shortKr = (v: number) => `kr ${Math.round(v).toLocaleString("nb-NO")}`;
+
+  return (
+    <div className="mt-8">
+      <p className="font-record text-xs uppercase tracking-[0.2em] text-muted-foreground">Gross revenue by month</p>
+      <div className="mt-3 overflow-x-auto border border-border bg-background p-4">
+        <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label="Gross revenue by month" style={{ minWidth: 480 }}>
+          {/* baseline (recessive) */}
+          <line x1={padX} y1={y(0)} x2={W - padX} y2={y(0)} stroke="hsl(var(--border))" strokeWidth={1} />
+          {months.map((m, i) => {
+            const cx = padX + slot * i + slot / 2;
+            const x = cx - barW / 2;
+            const h = Math.max(2, plotH * (m.gross / max));
+            const active = hover === i;
+            return (
+              <g key={m.month} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(null)}>
+                {/* invisible full-height hit target, larger than the bar */}
+                <rect x={cx - slot / 2} y={padTop} width={slot} height={plotH} fill="transparent" />
+                <rect
+                  x={x}
+                  y={y(m.gross)}
+                  width={barW}
+                  height={h}
+                  rx={4}
+                  fill="hsl(var(--accent))"
+                  opacity={hover === null || active ? 1 : 0.55}
+                />
+                {/* direct value label above each bar */}
+                <text x={cx} y={y(m.gross) - 8} textAnchor="middle" fontSize={11} fill="hsl(var(--foreground))" className="font-record">
+                  {shortKr(m.gross)}
+                </text>
+                {/* month label */}
+                <text x={cx} y={H - 8} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))" className="font-record">
+                  {m.label.slice(2)}
+                </text>
+                {active && (
+                  <text x={cx} y={padTop - 14} textAnchor="middle" fontSize={11} fill="hsl(var(--muted-foreground))">
+                    {m.count} {m.count === 1 ? "sale" : "sales"} · net {shortKr(m.net)}
+                  </text>
+                )}
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+    </div>
   );
 }
 
