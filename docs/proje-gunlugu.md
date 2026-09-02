@@ -581,3 +581,15 @@ gerçek GitHub API çağrılarının tarayıcı CORS ön-denetiminden geçip
 geçmeyeceği — bu ortamın vekil sunucusu test için kullanılamadı (OPTIONS'a
 405 dönüyor, ama bu vekile mi GitHub'a mı ait belirsiz). Detay ve ilk-giriş
 doğrulama koşulu: `docs/icerik-paneli.md`.
+
+## 02.09.2026 — Vipps/Klarna araştırması (DNB düzeltmesi)
+
+Kullanıcı "Vipps, DNB, ödeme sistemi, Klarna" istedi. Araştırıldı
+(dashboard.stripe.com bu ortamdan erişilemiyor, Stripe'ın kendi genel
+belgelerinden alıntı): **Klarna** Stripe Payment Links'te ek kurulum
+gerektirmeden hazır. **Vipps** destekleniyor ama "private preview"
+aşamasında (erişim istenmeli) ve yalnızca NOK'ta çalışıyor — mevcut üç
+paket EUR fiyatlı olduğu için Vipps için ayrı, NOK fiyatlı ürünler
+gerekiyor. **"DNB" diye ayrı bir ödeme yöntemi yok** — DNB bir banka,
+Vipps'in kökeni; muhtemelen Vipps'in kendisi kastedildi. Detay ve
+kullanıcının atacağı adımlar: `docs/odeme-sistemi.md` §10.
