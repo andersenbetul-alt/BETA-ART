@@ -60,6 +60,35 @@ const gates = checkVisibility(article);   // makale nesnesiyle
 printReport(gates);
 ```
 
+## Dashboard (tarayıcıda görüntüle)
+
+`engine/dashboard.html` — Curiosity Engine canlı paneli. DB bağlantısı olmadan
+boş yüklenir (stat kartları ve konu listesi boş görünür); bu normaldir.
+
+```bash
+# BETA-ART/ kökünden:
+python3 -m http.server 8000 --directory . &
+# → http://localhost:8000/engine/dashboard.html
+```
+
+Playwright ile ekran görüntüsü:
+
+```bash
+node --input-type=module << 'EOF'
+import { createRequire } from 'module';
+const req = createRequire('/opt/node22/lib/node_modules/');
+const { chromium } = req('playwright');
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args:['--no-sandbox'] });
+const p = await b.newPage({ viewport:{width:1280,height:900} });
+await p.goto('http://localhost:8000/engine/dashboard.html', { waitUntil:'networkidle' });
+await p.screenshot({ path:'/tmp/engine-dashboard.png' });
+await b.close();
+EOF
+```
+
+> Gerçek veriler: `engine.db` SQLite dosyası aynı dizinde olmalı; dashboard
+> `fetch('/api/topics')` çağırmaz, doğrudan DB'ye bakacak `run.mjs` çıktısı gerekir.
+
 ## Doğrudan içerik kanalı
 
 ```bash
