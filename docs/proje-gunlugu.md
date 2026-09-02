@@ -521,3 +521,29 @@ sınırını aşıyordu. Mantık `scripts/vercel-build.sh`'a taşındı, `buildC
 Vercel projesi (`andersenbetul-9635's projects` takımı) aynı repodan aynı
 anda deploy tetikleyip günlük deploy limitine (`api-deployments-free-per-day`,
 >100) takıldı — hangi Vercel projesinin kanonik olacağı kararı hâlâ bekliyor.
+
+## 02.09.2026 — Davranış temelli içerik önerisi (yalnızca tarayıcıda)
+
+Kullanıcı "her web sayfasında müşterinin bir sonraki adımda ne görmek/almak
+isteyeceğini bulan bir sistem" istedi (Norveççe). Bu, sitenin "çatısız,
+sunucusuz" temel kuralıyla doğrudan gerilim taşıyordu — AskUserQuestion ile
+netleştirildi: **amaç** içerik önerisi (paket/CTA kişiselleştirme ve gerçek
+çapraz-ziyaretçi analiz/tahmin motoru seçilmedi), **veri kapsamı** yalnızca
+ziyaretçinin kendi tarayıcısı (sunucuya hiç gitmeyen, paylaşılmayan veri).
+
+Uygulama: `qb_interest` adlı yeni bir localStorage anahtarı, hangi kategoriyi
+kaç kez okuduğunu/seçtiğini sayıyor (`trackInterest`/`getInterest`,
+`app.js`). İki yüzey:
+
+- **post.html — "Benzer yazılar":** var olan kategori-eşleşmeli mantık,
+  geçmiş yoksa birebir eski davranışı veren bir puanlama ile genelleştirildi
+  (ilgi puanı × 10 + aynı kategori bonusu 5). Playwright ile doğrulandı:
+  dört "business" yazısı okuyan bir ziyaretçi, başka bir kategoriden yazı
+  okurken "Benzer yazılar"da Business yazıları görüyor.
+- **blog.html — "Sizin için önerilen":** yeni bir şerit, yalnızca varsayılan
+  görünümde (filtresiz/aramasız) ve yalnızca gerçek geçmiş varken görünüyor
+  — ilk ziyarette hiç render edilmiyor, boş kutu kalmıyor.
+
+`gizlilik.html` (TR+EN) yeni anahtarı üçüncü/dördüncü madde olarak açıkladı;
+`npm run guvenlik` ve `npm run check` yeşil. `posts.recommended` anahtarı
+10 dilin hepsine eklendi, Arapça RTL'de görsel olarak doğrulandı.

@@ -85,12 +85,15 @@
         bu siteye bağlanır. Bize veri, ancak siz bir form doldurduğunuzda ulaşır.</p>
 
         <h2>Tarayıcınızda ne saklanıyor</h2>
-        <p>Üç şey, hepsi sizin cihazınızda kalır ve bize gönderilmez:</p>
+        <p>Dört şey, hepsi sizin cihazınızda kalır ve bize gönderilmez:</p>
         <ul>
           <li><code>qb_lang</code> — seçtiğiniz dil.</li>
           <li><code>qb_theme</code> — açık/koyu tema tercihiniz.</li>
           <li><code>qb_subs</code> — yalnızca bülten servisi henüz bağlı değilken, girdiğiniz e-posta
           adresinin geçici kopyası. Servis bağlandığında bu kayıt kullanılmıyor.</li>
+          <li><code>qb_interest</code> — blogda hangi konu kategorilerine baktığınızın sayısı (ör.
+          "business: 3"). Yalnızca size "benzer yazılar" ve "sizin için önerilen" önerisini
+          göstermek için kullanılır; kimliğinizle ilişkilendirilmez, başka hiçbir yere gitmez.</li>
         </ul>
         <p>Bunlar çerez değil, tarayıcı deposudur (localStorage) ve tercih saklamak dışında bir işe
         yaramaz. Tarayıcınızın site verilerini temizleyerek her an silebilirsiniz.</p>
@@ -151,10 +154,13 @@
         this site. We receive data only when you submit a form.</p>
 
         <h3>What is stored in your browser</h3>
-        <p>Three items, all kept on your device and never sent to us: <code>qb_lang</code> (your
-        language), <code>qb_theme</code> (light or dark), and <code>qb_subs</code> — a temporary copy
-        of the email you typed, used only while the newsletter service is not yet connected. These
-        are browser storage, not cookies, and clearing your site data removes them.</p>
+        <p>Four items, all kept on your device and never sent to us: <code>qb_lang</code> (your
+        language), <code>qb_theme</code> (light or dark), <code>qb_subs</code> — a temporary copy
+        of the email you typed, used only while the newsletter service is not yet connected — and
+        <code>qb_interest</code>, a count of which blog categories you've viewed, used only to show
+        you "related posts" and "recommended for you". It is never linked to your identity and never
+        leaves your device. These are browser storage, not cookies, and clearing your site data
+        removes them.</p>
 
         <h3>Forms</h3>
         <p>The brief and writer application forms are <strong>not submitted to a server</strong>.

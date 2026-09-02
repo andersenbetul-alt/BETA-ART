@@ -298,6 +298,10 @@ p { margin: 0 0 1em; }
 .cmp-foot { text-align: center; color: var(--text-muted); font-size: var(--fs-sm); margin: 4px 0 0; }
 
 /* ---------- Blog ---------- */
+/* Davranış temelli öneri şeridi: yalnızca ziyaretçinin kendi geçmişi
+   varsa görünür (bkz. app.js → getInterest). */
+.recommended { margin-bottom: 34px; }
+.recommended-title { font-size: var(--fs-lg); margin-bottom: 16px; }
 .filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin-bottom: 30px; }
 .search-box { position: relative; flex: 1 1 260px; max-width: 340px; }
 .search-box input {
