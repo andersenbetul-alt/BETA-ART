@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BET-ART Panosu</title>
+<meta name="description" content="QBLOGG, HXI, Beta Art ve NAVIAR projelerinin tek panoda takibi — ne yapıldı, neredeyiz, sıradaki adım.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f5f7; --panel:#ffffff; --panel-2:#eef0f3; --col:#e9ebef;
+  --ink:#1a1d24; --muted:#5c6270; --faint:#8a90a0; --line:#dcdfe6;
+  --shadow:0 1px 2px rgba(20,24,40,.06),0 8px 24px rgba(20,24,40,.06);
+  --shadow-lift:0 2px 6px rgba(20,24,40,.10),0 18px 40px rgba(20,24,40,.16);
+  --amber:#b7791f; --amber-bg:#fdf3e0; --green:#2f7d4f; --green-bg:#e6f4ea;
+  --hxi:#7a8a00; --hxi-chip:#eef6c9;
+  --qb:#0a7d72;  --qb-chip:#d6f3ef;
+  --ba:#9c6a3c;  --ba-chip:#f2e6d8;
+  --nav:#2f6bb0; --nav-chip:#dde9f7;
+  --ort:#5b6070; --ort-chip:#e6e8ee;
+  --display:'Barlow Condensed',Impact,sans-serif;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  --mono:'Space Mono','Courier New',monospace;
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1116; --panel:#181b22; --panel-2:#1f232c; --col:#161920;
+    --ink:#eef0f5; --muted:#a4abbb; --faint:#6e7688; --line:#2a2f3a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    --shadow-lift:0 2px 6px rgba(0,0,0,.5),0 18px 40px rgba(0,0,0,.5);
+    --amber:#e6ad55; --amber-bg:#33280f; --green:#7ecb98; --green-bg:#13301f;
+    --hxi:#c8ff00; --hxi-chip:#2a3400;
+    --qb:#3fe0cf;  --qb-chip:#093430;
+    --ba:#d5a173;  --ba-chip:#37271a;
+    --nav:#7cb2f0; --nav-chip:#14283f;
+    --ort:#aab0c0; --ort-chip:#282c36;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1116; --panel:#181b22; --panel-2:#1f232c; --col:#161920;
+  --ink:#eef0f5; --muted:#a4abbb; --faint:#6e7688; --line:#2a2f3a;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  --shadow-lift:0 2px 6px rgba(0,0,0,.5),0 18px 40px rgba(0,0,0,.5);
+  --amber:#e6ad55; --amber-bg:#33280f; --green:#7ecb98; --green-bg:#13301f;
+  --hxi:#c8ff00; --hxi-chip:#2a3400;
+  --qb:#3fe0cf;  --qb-chip:#093430;
+  --ba:#d5a173;  --ba-chip:#37271a;
+  --nav:#7cb2f0; --nav-chip:#14283f;
+  --ort:#aab0c0; --ort-chip:#282c36;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.45;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--qb);outline-offset:2px;border-radius:4px}
+
+/* ── Header ── */
+header{position:sticky;top:0;z-index:20;background:var(--panel);border-bottom:1px solid var(--line);padding:14px clamp(14px,3vw,28px)}
+.head-row{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.wordmark{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.wordmark b{color:var(--qb)}
+.sub{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.04em}
+.spacer{flex:1}
+.tbtn{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:7px 11px;display:inline-flex;gap:7px;align-items:center;background:var(--panel-2)}
+.tbtn:hover{color:var(--ink);border-color:var(--muted)}
+
+/* ── Filter / stats bar ── */
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:13px}
+.chip{font-family:var(--mono);font-size:12px;letter-spacing:.02em;padding:6px 11px;border-radius:999px;border:1px solid transparent;display:inline-flex;gap:8px;align-items:center;background:var(--panel-2);color:var(--muted)}
+.chip .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.chip .n{font-weight:700;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{color:var(--ink);border-color:currentColor}
+.chip.f-hxi[aria-pressed="true"]{color:var(--hxi)} .chip.f-hxi .dot{background:var(--hxi)}
+.chip.f-qb[aria-pressed="true"]{color:var(--qb)}   .chip.f-qb .dot{background:var(--qb)}
+.chip.f-ba[aria-pressed="true"]{color:var(--ba)}   .chip.f-ba .dot{background:var(--ba)}
+.chip.f-nav[aria-pressed="true"]{color:var(--nav)} .chip.f-nav .dot{background:var(--nav)}
+.chip.f-ort[aria-pressed="true"]{color:var(--ort)} .chip.f-ort .dot{background:var(--ort)}
+.chip.f-all .dot{background:linear-gradient(90deg,var(--hxi),var(--qb),var(--ba),var(--nav))}
+.chip.f-all[aria-pressed="true"]{color:var(--ink)}
+
+/* ── Board ── */
+.board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(268px,1fr);gap:14px;padding:16px clamp(14px,3vw,28px) 40px;overflow-x:auto;min-height:calc(100vh - 138px);align-items:start}
+.col{background:var(--col);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;min-height:120px}
+.col-head{position:sticky;top:0;display:flex;align-items:center;gap:9px;padding:12px 14px 9px}
+.col-head h2{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:.04em;text-transform:uppercase;margin:0}
+.col-head .cnt{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--faint);background:var(--panel-2);border-radius:999px;padding:2px 8px;font-variant-numeric:tabular-nums}
+.col-head .lead{width:6px;height:18px;border-radius:3px;flex:none}
+.c-backlog .lead{background:var(--faint)} .c-next .lead{background:var(--qb)}
+.c-doing .lead{background:var(--nav)} .c-block .lead{background:var(--amber)}
+.c-done .lead{background:var(--green)}
+.stack{display:flex;flex-direction:column;gap:9px;padding:4px 10px 12px;flex:1;min-height:40px}
+.stack.drag-over{background:color-mix(in srgb,var(--qb) 12%,transparent);border-radius:10px}
+
+/* ── Card ── */
+.card{background:var(--panel);border:1px solid var(--line);border-left-width:4px;border-radius:10px;padding:11px 12px 10px;box-shadow:var(--shadow);cursor:grab;position:relative}
+.card:active{cursor:grabbing}
+.card.dragging{opacity:.4}
+.card.lift{box-shadow:var(--shadow-lift)}
+.card .proj{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.card h3{font-size:14px;font-weight:600;margin:5px 0 0;line-height:1.32;text-wrap:balance}
+.card p{font-size:12.5px;color:var(--muted);margin:5px 0 0}
+.card .meta{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:.03em;padding:2px 7px;border-radius:6px;color:var(--muted);background:var(--panel-2)}
+.tag.user{color:var(--amber);background:var(--amber-bg)}
+.card .x{position:absolute;top:7px;right:8px;font-size:15px;line-height:1;color:var(--faint);opacity:0;padding:3px;border-radius:6px}
+.card:hover .x,.card:focus-within .x{opacity:1}
+.card .x:hover{color:var(--ink);background:var(--panel-2)}
+.p-hxi{border-left-color:var(--hxi)} .p-hxi .proj{color:var(--hxi)}
+.p-qb{border-left-color:var(--qb)}   .p-qb .proj{color:var(--qb)}
+.p-ba{border-left-color:var(--ba)}   .p-ba .proj{color:var(--ba)}
+.p-nav{border-left-color:var(--nav)} .p-nav .proj{color:var(--nav)}
+.p-ort{border-left-color:var(--ort)} .p-ort .proj{color:var(--ort)}
+.card.hidden{display:none}
+
+.add{font-family:var(--mono);font-size:12px;color:var(--faint);text-align:left;padding:8px 12px;margin:0 10px 12px;border:1px dashed var(--line);border-radius:9px}
+.add:hover{color:var(--ink);border-color:var(--muted)}
+
+/* ── Editor dialog ── */
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);box-shadow:var(--shadow-lift);padding:0;width:min(440px,92vw)}
+dialog::backdrop{background:rgba(10,12,18,.5)}
+.dlg{padding:18px 18px 16px;display:flex;flex-direction:column;gap:12px}
+.dlg h2{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;margin:0}
+.dlg label{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+.dlg input,.dlg textarea,.dlg select{width:100%;font:inherit;font-size:13px;color:var(--ink);background:var(--panel-2);border:1px solid var(--line);border-radius:9px;padding:9px 11px}
+.dlg textarea{resize:vertical;min-height:56px}
+.dlg .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dlg .row{display:flex;gap:9px;align-items:center;margin-top:2px}
+.dlg .flex{flex:1}
+.btn{font-family:var(--mono);font-size:12px;letter-spacing:.03em;padding:9px 14px;border-radius:9px;border:1px solid var(--line);background:var(--panel-2);color:var(--ink)}
+.btn.primary{background:var(--qb);color:#04201d;border-color:transparent;font-weight:700}
+:root:not([data-theme="light"]) .btn.primary{color:#04201d}
+.btn:hover{border-color:var(--muted)}
+.foot{font-family:var(--mono);font-size:11px;color:var(--faint);padding:0 clamp(14px,3vw,28px) 26px;letter-spacing:.02em}
+.foot b{color:var(--muted);font-weight:400}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="head-row">
+    <span class="wordmark">BET<b>·</b>ART PANOSU</span>
+    <span class="sub" id="stamp">proje takibi · yerel kayıt</span>
+    <span class="spacer"></span>
+    <button class="tbtn" id="reset" title="Panoyu başlangıç durumuna döndür">↺ Sıfırla</button>
+    <button class="tbtn" id="theme">◐ Tema</button>
+  </div>
+  <div class="bar" id="filters"></div>
+</header>
+
+<main class="board" id="board"></main>
+<p class="foot">Kartlar bu tarayıcıda saklanır (localStorage) — sunucuya gitmez, başka cihaza taşınmaz. Sürükleyerek taşı, karta tıklayarak düzenle. <b id="count"></b></p>
+
+<dialog id="editor">
+  <form method="dialog" class="dlg" id="form">
+    <h2 id="dlg-title">Kart</h2>
+    <div>
+      <label for="f-title">Başlık</label>
+      <input id="f-title" required maxlength="120" placeholder="Ne yapılacak?">
+    </div>
+    <div>
+      <label for="f-note">Not (isteğe bağlı)</label>
+      <textarea id="f-note" maxlength="400" placeholder="Ayrıntı, bağlam, sonraki adım…"></textarea>
+    </div>
+    <div class="two">
+      <div>
+        <label for="f-proj">Proje</label>
+        <select id="f-proj">
+          <option value="hxi">HXI</option>
+          <option value="qb">QBLOGG</option>
+          <option value="ba">Beta Art</option>
+          <option value="nav">NAVIAR</option>
+          <option value="ort">Ortak / Altyapı</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-col">Sütun</label>
+        <select id="f-col">
+          <option value="backlog">Backlog</option>
+          <option value="next">Sıradaki</option>
+          <option value="doing">Devam Ediyor</option>
+          <option value="block">Beklemede</option>
+          <option value="done">Bitti</option>
+        </select>
+      </div>
+    </div>
+    <div class="row"><input type="checkbox" id="f-user" style="width:auto"><label for="f-user" style="margin:0;text-transform:none;letter-spacing:0">Kullanıcı tarafında bekliyor (senin yapman gereken)</label></div>
+    <div class="row">
+      <button type="button" class="btn" id="del" style="color:var(--amber)">Sil</button>
+      <span class="flex"></span>
+      <button type="button" class="btn" id="cancel">Vazgeç</button>
+      <button type="submit" class="btn primary">Kaydet</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+const COLS=[["backlog","Backlog"],["next","Sıradaki"],["doing","Devam Ediyor"],["block","Beklemede"],["done","Bitti"]];
+const PROJ={hxi:"HXI",qb:"QBLOGG",ba:"Beta Art",nav:"NAVIAR",ort:"Ortak"};
+const KEY="betart-kanban-v1";
+let uid=Date.now();
+const nid=()=>"c"+(uid++).toString(36);
+
+// Başlangıç durumu — bu oturuma kadar yapılanlar ve bilinen sonraki adımlar.
+const SEED=[
+ // HXI
+ ["hxi","done","10 dilli site kökü (V6, SEO-doğru çok dilli yapı)","en/no/tr/fr/de/es/pt/ar/ja/zh — kanonik hximusic.com"],
+ ["hxi","done","/use ve /sync alt sayfaları (10 dil)","Konsept §18–19; doğrulanmış NCS bağlantıları, booking@ CTA"],
+ ["hxi","done","Üç oturum birleştirildi: /v7 /v8 /logo","Marka mimarisi + dosyalar + logo oturumları mount edildi"],
+ ["hxi","done","Sosyal medya + podcast bölümü","Spotify/Instagram/YouTube/NCS + HXI FREQUENCY"],
+ ["hxi","done","Cihaz-içi öneri sistemi ('Senin için' şeridi)","En çok dinlenen parçalar; veri tarayıcıda kalır"],
+ ["hxi","done","Marka tescili derin araştırma raporu","EUIPO vs Patentstyret, ücretler, HXI/PROD.HXI/HXIMUSIC, sloganlar"],
+ ["hxi","done","small-business eklenti profili (SMB-PROFIL.md)","30 iş akışının HXI'ye uygunluk haritası"],
+ ["hxi","doing","PR #14 yeşile taşınıyor","claude/hxi-skrlag → main; kalan kırmızı: başıboş Vercel projeleri kotası"],
+ ["hxi","block","hximusic.com DNS bağlama","Vercel panel + GoDaddy DNS (A @ 76.76.21.21, CNAME www)","user"],
+ ["hxi","block","booking@hximusic.com e-posta yönlendirme","GoDaddy Email Forwarding → Gmail","user"],
+ ["hxi","next","Marka tescili: TMview + Patentstyret elle tarama","HX/HXV komşuluğu netleşmeden başvuru yok"],
+ ["hxi","next","Gerçek 'help urself' kapak görseli","Kullanıcı sağlarsa placeholder yerine geçer","user"],
+ // QBLOGG
+ ["qb","done","QBLOGG yayında (qblogg.vercel.app)","10 dil, blog, brief formu, klon-kalıplı dağıtım"],
+ ["qb","done","vercel.json şema hatası düzeltildi","buildCommand 256 karakter sınırına indirildi (scripts/vercel-derle.sh)"],
+ ["qb","block","qblogg.com DNS bağlama","Vercel panel + GoDaddy DNS; MX GoDaddy'de kalır","user"],
+ ["qb","next","Vercel GitHub entegrasyon yetkisi","andersenbetul-alt için; push başına otomatik dağıtım","user"],
+ // Beta Art
+ ["ba","done","Hukuki footer düzeltmeleri","/kontakt→/refunds, /cookie-settings→/privacy, çerez beyanı"],
+ ["ba","done","Lovable footer bağlantıları düzeltildi + yeniden yayın","/terms /cookies /ai-policy kaldırıldı; gerçek rotalar"],
+ ["ba","done","Cihaz-içi öneri (ForYou) + editör panel notu","Kullanıcı/editör ayrımı; uydurma istatistik yok"],
+ ["ba","done","Sosyal medya kanal stratejisi","IG→Pinterest→LinkedIn; açılış kapıları"],
+ ["ba","block","beta-art.com DNS yok (alan adı çözünmüyor)","Barındırma seç + DNS","user"],
+ ["ba","block","12 plaka hâlâ placeholder görsel","Gerçek fotoğraflar olmadan 'kanıt' markası açılamaz","user"],
+ ["ba","next","Gerçek iletişim e-postası (site.ts)","hâlâ 'to be supplied'","user"],
+ ["ba","next","Hukuki metinlerdeki [To be completed] alanları","Şirket unvanı, org.nr, adres, saklama süreleri","user"],
+ ["ba","backlog","Submission backend (form → gerçek kayıt)","Bağlanınca editör paneli gerçek sinyalle dolar"],
+ // NAVIAR
+ ["nav","block","NAVIAR CARE depo transferi bekleniyor","betulandersen-droid/naviar-care-1 → hesaba transfer","user"],
+ ["nav","backlog","Naviar için ayrı takip başlat","Transfer sonrası profil + yol haritası"],
+ // Ortak / altyapı
+ ["ort","doing","PR #14 saatlik kontrol kurulu","Kota hatası sürerse sessiz; çözülünce merge hazır"],
+ ["ort","block","6 başıboş Vercel projesinin Git bağlantısı kaldırılmalı","'Deployment rate limited' kotayı dolduruyor; PR statüleri kırmızı","user"],
+ ["ort","backlog","QBLOGG davranış sistemi (cihaz-içi öneri)","HXI/Beta Art deseni QBLOGG'a taşınabilir"],
+];
+
+function seedState(){
+  const cards=SEED.map(([proj,col,title,note,flag])=>({
+    id:nid(),proj,col,title,note:note||"",user:flag==="user"
+  }));
+  return {cards};
+}
+function load(){
+  try{const r=localStorage.getItem(KEY);if(r){const s=JSON.parse(r);if(s&&Array.isArray(s.cards))return s;}}catch(e){}
+  return seedState();
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+let state=load();
+
+const board=document.getElementById("board");
+const filters=document.getElementById("filters");
+let filter="all";
+
+function projClass(p){return "p-"+p;}
+function render(){
+  board.innerHTML="";
+  for(const [cid,cname] of COLS){
+    const cards=state.cards.filter(c=>c.col===cid);
+    const col=document.createElement("section");
+    col.className="col c-"+cid;
+    const shown=cards.filter(c=>filter==="all"||c.proj===filter).length;
+    col.innerHTML=`<div class="col-head"><span class="lead"></span><h2>${cname}</h2><span class="cnt">${shown}</span></div>`;
+    const stack=document.createElement("div");
+    stack.className="stack";stack.dataset.col=cid;
+    for(const c of cards){
+      const el=document.createElement("article");
+      el.className="card "+projClass(c.proj)+((filter!=="all"&&c.proj!==filter)?" hidden":"");
+      el.draggable=true;el.dataset.id=c.id;el.tabIndex=0;
+      el.innerHTML=`<button class="x" title="Sil" aria-label="Sil">×</button>
+        <span class="proj">${PROJ[c.proj]}</span>
+        <h3>${esc(c.title)}</h3>
+        ${c.note?`<p>${esc(c.note)}</p>`:""}
+        ${c.user?`<div class="meta"><span class="tag user">senin adımın</span></div>`:""}`;
+      stack.appendChild(el);
+    }
+    const add=document.createElement("button");
+    add.className="add";add.textContent="+ Kart ekle";add.dataset.col=cid;
+    col.appendChild(stack);col.appendChild(add);
+    board.appendChild(col);
+  }
+  renderFilters();
+  document.getElementById("count").textContent=state.cards.length+" kart";
+}
+function esc(s){return s.replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));}
+
+function renderFilters(){
+  const counts={all:state.cards.length};
+  for(const p in PROJ)counts[p]=state.cards.filter(c=>c.proj===p).length;
+  const items=[["all","Tümü"]].concat(Object.entries(PROJ));
+  filters.innerHTML=items.map(([k,label])=>{
+    const cls=k==="all"?"f-all":("f-"+k);
+    return `<button class="chip ${cls}" data-f="${k}" aria-pressed="${filter===k}">
+      <span class="dot"></span>${label}<span class="n">${counts[k]}</span></button>`;
+  }).join("");
+}
+
+// ── Filters ──
+filters.addEventListener("click",e=>{
+  const b=e.target.closest(".chip");if(!b)return;
+  filter=b.dataset.f;render();
+});
+
+// ── Drag & drop ──
+let dragId=null;
+board.addEventListener("dragstart",e=>{
+  const card=e.target.closest(".card");if(!card)return;
+  dragId=card.dataset.id;card.classList.add("dragging");
+  e.dataTransfer.effectAllowed="move";
+});
+board.addEventListener("dragend",e=>{
+  const card=e.target.closest(".card");if(card)card.classList.remove("dragging");
+  document.querySelectorAll(".stack.drag-over").forEach(s=>s.classList.remove("drag-over"));
+});
+board.addEventListener("dragover",e=>{
+  const stack=e.target.closest(".stack");if(!stack)return;
+  e.preventDefault();stack.classList.add("drag-over");
+});
+board.addEventListener("dragleave",e=>{
+  const stack=e.target.closest(".stack");
+  if(stack&&!stack.contains(e.relatedTarget))stack.classList.remove("drag-over");
+});
+board.addEventListener("drop",e=>{
+  const stack=e.target.closest(".stack");if(!stack||!dragId)return;
+  e.preventDefault();
+  const card=state.cards.find(c=>c.id===dragId);
+  if(card){card.col=stack.dataset.col;save();render();}
+  dragId=null;
+});
+
+// ── Add / edit ──
+const dlg=document.getElementById("editor");
+const form=document.getElementById("form");
+let editing=null;
+function openEditor(card,defaultCol){
+  editing=card;
+  document.getElementById("dlg-title").textContent=card?"Kartı düzenle":"Yeni kart";
+  document.getElementById("f-title").value=card?card.title:"";
+  document.getElementById("f-note").value=card?card.note:"";
+  document.getElementById("f-proj").value=card?card.proj:(filter!=="all"?filter:"hxi");
+  document.getElementById("f-col").value=card?card.col:(defaultCol||"next");
+  document.getElementById("f-user").checked=card?!!card.user:false;
+  document.getElementById("del").style.display=card?"":"none";
+  dlg.showModal();
+  document.getElementById("f-title").focus();
+}
+board.addEventListener("click",e=>{
+  const add=e.target.closest(".add");
+  if(add){openEditor(null,add.dataset.col);return;}
+  const x=e.target.closest(".x");
+  if(x){const card=e.target.closest(".card");
+    state.cards=state.cards.filter(c=>c.id!==card.dataset.id);save();render();return;}
+  const card=e.target.closest(".card");
+  if(card){openEditor(state.cards.find(c=>c.id===card.dataset.id));}
+});
+board.addEventListener("keydown",e=>{
+  if(e.key==="Enter"){const card=e.target.closest(".card");
+    if(card){e.preventDefault();openEditor(state.cards.find(c=>c.id===card.dataset.id));}}
+});
+form.addEventListener("submit",e=>{
+  const t=document.getElementById("f-title").value.trim();
+  if(!t){e.preventDefault();return;}
+  const data={
+    title:t,note:document.getElementById("f-note").value.trim(),
+    proj:document.getElementById("f-proj").value,col:document.getElementById("f-col").value,
+    user:document.getElementById("f-user").checked
+  };
+  if(editing){Object.assign(editing,data);}
+  else{state.cards.push({id:nid(),...data});}
+  save();render();
+});
+document.getElementById("cancel").addEventListener("click",()=>dlg.close());
+document.getElementById("del").addEventListener("click",()=>{
+  if(editing){state.cards=state.cards.filter(c=>c.id!==editing.id);save();render();}
+  dlg.close();
+});
+
+// ── Reset ──
+document.getElementById("reset").addEventListener("click",()=>{
+  if(confirm("Pano başlangıç durumuna dönsün mü? Kendi eklediğin kartlar silinir."))
+  {state=seedState();save();render();}
+});
+
+// ── Theme toggle ──
+const themeBtn=document.getElementById("theme");
+try{const saved=localStorage.getItem("betart-theme");if(saved)document.documentElement.dataset.theme=saved;}catch(e){}
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.dataset.theme;
+  const mqDark=matchMedia("(prefers-color-scheme:dark)").matches;
+  const next=cur?(cur==="dark"?"light":"dark"):(mqDark?"light":"dark");
+  document.documentElement.dataset.theme=next;
+  try{localStorage.setItem("betart-theme",next);}catch(e){}
+});
+
+render();
+</script>
+</body>
+</html>
