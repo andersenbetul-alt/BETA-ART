@@ -66,18 +66,28 @@ First Light, Into the Pines, Sea of Fog, Still Water, PALM, Blue Hour Grid, Nigh
 | Ağu 2026 | Lovable'da oluşturuldu | Lovable AI |
 | 30.08.2026 | BETA-ART monoreposuna import edildi (`beta-art/`) | Claude |
 | 30.08.2026 | ROADMAP.md oluşturuldu | Claude |
+| 02.09.2026 | Hukuki footer düzeltmeleri: `/kontakt`→`/refunds`, `/cookie-settings`→`/privacy` redirect rotaları; çerez beyanı | Claude |
+| 02.09.2026 | Lovable barındırılan uygulamada footer bağlantıları düzeltildi + yeniden yayın (`/terms` `/cookies` `/ai-policy` kaldırıldı; gerçek rotalara bağlandı) | Claude |
+| 02.09.2026 | Cihaz-içi öneri (`ForYou`) + editör panel notu: kullanıcı/editör ayrımı, uydurma istatistik yok — veri tarayıcıda kalır | Claude |
+| 02.09.2026 | Sosyal medya kanal stratejisi (`SOSYAL-MEDYA.md`): IG→Pinterest→LinkedIn, açılış kapıları | Claude |
 
 ---
 
 ## Sırada ne var
 
+Canlı takip panosu: `pano/` (BET·ART Panosu). Kullanıcı tarafında bekleyen
+adımlar **[SENİN ADIMIN]** ile işaretli — bunlar bağlanmadan "kanıt" markası açılamaz.
+
 | Öncelik | İş |
 |---|---|
-| Kritik | **Gerçek fotoğraflar ekle** — şu an placeholder; lisans satışı için gerçek koleksiyon gerekli |
+| Kritik · [SENİN ADIMIN] | **Gerçek fotoğraflar ekle** — 12 plaka hâlâ placeholder; gerçek fotoğraflar olmadan "kanıt" markası açılamaz |
+| Kritik · [SENİN ADIMIN] | **beta-art.com DNS** — alan adı çözünmüyor; barındırma seç + DNS bağla |
 | Kritik | **Ödeme akışı** — Lisans satın alma; Stripe önerilen |
+| Yüksek · [SENİN ADIMIN] | **Gerçek iletişim e-postası** (`src/config/site.ts`) — hâlâ "to be supplied" |
+| Yüksek · [SENİN ADIMIN] | **Hukuki metinlerdeki [To be completed] alanları** — şirket unvanı, org.nr, adres, saklama süreleri |
+| Yüksek | **Submission backend** (form → gerçek kayıt) — bağlanınca editör paneli gerçek sinyalle dolar |
 | Yüksek | **Fotoğraf kataloğu** — Supabase; title, catalogue_no, provenance, RAW hash, lisans türleri |
 | Yüksek | **Lisans belgesi üretimi** — Her satışta PDF/imzalı belge |
-| Yüksek | **Alan adı** — beta-art.com (SEO meta'da halihazırda kayıtlı) |
 | Orta | **Provenance sayfası** — Her fotoğrafın EXIF + RAW özeti |
 | Orta | **Fotoğrafçı profili** — Kim çekti, nasıl doğrulandı |
 | Düşük | **İkincil pazar / koleksiyoncu** — Baskı satışı |

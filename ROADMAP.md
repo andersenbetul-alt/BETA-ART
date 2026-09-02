@@ -31,6 +31,7 @@ maliyet.
 | 4 | ~~Paket fiyatlarını güncelle~~ | Birleşti → #3 | Fiyat da config.js'ten geliyor (NOK yazılabilir) |
 | 5 | Formu Formspree/Netlify Forms'a bağla | Bekliyor | `composeMail` içindeki `mailto` bloğu |
 | 6 | ~~Bülten kaydını e-posta servisine bağla~~ | **Bitti** 21.08 | Buttondown — bkz. #54 |
+| 69 | Vercel GitHub entegrasyon yetkisi | **Senden bekliyor** | `andersenbetul-alt` hesabına Vercel GitHub entegrasyonu yetkilendirilirse push başına otomatik dağıtıma geçilir (şu an `repo_no_access`, entegrasyon `betulandersen-droid`'a bağlı) |
 
 ### 2. Güvenilirlik (öncelik: yüksek — teklif almanın önündeki engel)
 
