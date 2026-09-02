@@ -165,13 +165,17 @@ onay alır, ardından Notion sayfasına işlenmesi için sunar.
 
 ---
 
-## 7. Kalan tek boşluk ⚠️
+## 7. Banka bilgisi — doğrulandı
 
-**Banka adı + export formatı** — nakit özeti için gerekli, henüz bilinmiyor.
-Kullanıcı banka ekstresi paylaştığında veya "nakit durumu" istediğinde sor:
-> "Hangi bankayı kullanıyorsun ve ekstresi nasıl iniyor (CSV/XLSX/PDF)?"
+| Alan | Değer | Kaynak |
+|---|---|---|
+| Banka | **DNB** | Kullanıcı onayı: 2026-09-02 |
+| Ekstresi formatı | **XLSX** | Kullanıcı onayı: 2026-09-02 |
 
-Diğer tüm operasyonel veriler artık dolu.
+Nakit özeti için beklenen format: DNB XLSX ekstresi. Kullanıcı dosyayı paylaştığında
+satırları BAP / BAG / BAB'a göre ayır (açıklama veya tutar eşleşmesiyle).
+
+**Tüm operasyonel veriler artık dolu — boşluk kalmadı.**
 
 ---
 
