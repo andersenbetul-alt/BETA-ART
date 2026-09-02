@@ -1,6 +1,6 @@
 ---
 name: small-business
-description: BETA ART'ın kendi küçük işletme işleri — nakit takibi, Norveç şahıs şirketi (enkeltpersonforetak) için MVA ve forskuddsskatt, üç mülkün (Privat/Galleri/Business) satış ve müşteri kaydı. Kullanıcı "MVA", "forskuddsskatt", "muhasebe", "banka ekstresi", "fatura", "nakit durumu", "BAP/BAG/BAB" ya da BETA ART'ın parasal/müşteri işleriyle ilgili bir şey sorduğunda MUTLAKA bu beceriyi kullan. Para veya müşteriye giden HER adım kullanıcı onayı gerektirir — bu beceri hiçbir ödeme, fatura veya mesajı kullanıcı onayı olmadan göndermez.
+description: BETA ART'ın kendi küçük işletme işleri — nakit takibi, Norveç şahıs şirketi (enkeltpersonforetak) için MVA ve forskuddsskatt, üç mülkün (BAP-01 Privat / BAG-03 Galleri / BAB-02 Business) satış ve müşteri kaydı. Kullanıcı "MVA", "forskuddsskatt", "muhasebe", "banka ekstresi", "fatura", "nakit durumu", "BAP/BAG/BAB" ya da BETA ART'ın parasal/müşteri işleriyle ilgili bir şey sorduğunda MUTLAKA bu beceriyi kullan. Para veya müşteriye giden HER adım kullanıcı onayı gerektirir — bu beceri hiçbir ödeme, fatura veya mesajı kullanıcı onayı olmadan göndermez.
 owner: BETA ART
 ---
 
@@ -11,93 +11,178 @@ onayı ister — fatura göndermek, ödeme talep etmek, MVA beyanı hazırlamak,
 bir müşteriye e-posta taslağı dışında bir şey yollamak. Bu beceri hiçbir
 zaman kendi başına harekete geçmez; taslak hazırlar, onay bekler.
 
-## Durum: iskelet — gerçek operasyonel veri eksik
+---
 
-Bu beceri iki farklı oturumdan gelen bilgiyle kuruldu: ilk talimat (isim,
-sürüm, kapsam açıklaması — girişim kodları dahil) ile 29–30.08.2026'da bu
-oturuma aktarılan BETA ART üç-mülk sistemi belgeleri (`PROJECTMANIFEST.md`,
-`BETAARTROUTEMAP.md`, `BETAARTPROJECTCODES.md`). İkisi arasında **bir
-çelişki var, sessizce çözülmedi** — aşağıda §1'de.
+## 1. Üç mülk — doğrulanmış kodlar
 
-## 1. Girişimler — doğrulanmış kodlar, bir çelişki notuyla
+Kaynak: `beta-art/docs/BETA-ART-PROJECT-CODES.md` + `PROJECT-MANIFEST.md`
 
-`BETAARTPROJECTCODES.md`'den doğrulanan üç mülk:
+| Kod | Mülk | Ne satar | Dil | Fiyat bandı |
+|---|---|---|---|---|
+| **BAP-01** | Privat | Doğrulanmış fotoğraf, edisyon, doğrudan lisanslama | İngilizce | kr 190 / 890 / 2 900 |
+| **BAG-03** | Galleri og Utstilling | Sergi, etkinlik, sanatçı/eser programı | İngilizce | *(henüz fiyatlanmadı)* |
+| **BAB-02** | Business | İnşaat sektörüne proje arşivi ve dokümantasyon | Norveççe öncelikli | kr 490 – 39 000 (25 hizmet) |
 
-| Kod | Mülk | Ne | Alt yol |
-|---|---|---|---|
-| **BAP-01** | Privat | Doğrulanmış insan fotoğrafçılığı, edisyon, doğrudan lisanslama | `/privat/` |
-| **BAG-03** | Galleri og Utstilling Event | Sanatçı/eser/sergi/etkinlik programı | `/events/` |
-| **BAB-02** | Business | İnşaat sektörüne B2B proje dokümantasyonu, "20 dakikalık görüşme" CTA'sı | `/business/` |
+**BAC çözümü:** Önceki bir oturumda geçen "BAC subscription clients" kodu hiçbir
+resmi BETA ART belgesinde yer almıyor. Üçüncü mülk BAG-03'tür (Galleri og
+Utstilling). BAC ya Galleri resmileşmeden önceki çalışma koduydu ya da BETA ART
+dışındaki bir girişime aitti. Bu beceri BAC varsayımıyla çalışmaz; bir BAC
+müşterisi veya geliri ortaya çıkarsa kullanıcı hangi mülke ait olduğunu söylemeli.
 
-**Çelişki:** Bu beceriyi ilk isteyen talimat "BAB pilot sales and contracts,
-**BAC** subscription clients, and BAP editions" diyordu. Sonradan gelen
-resmi proje kodlarında **BAC diye bir kod yok** — üçüncü mülk BAG (Galleri)
-olarak tanımlı, "subscription clients" (abonelik müşterileri) de hiçbir
-BETA ART belgesinde geçmiyor. İki olası okuma: (a) BAC, Galleri resmileşmeden
-önceki bir çalışma adıydı ve BAG'e dönüştü, (b) "BAC / abonelik müşterileri"
-BETA ART'ın parçası olmayan, tamamen başka bir girişim. **Ben seçim yapmadım
-— kullanıcı hangisinin doğru olduğunu söylemeden bu beceri BAC/abonelik
-varsayımıyla çalışmaz.**
+---
 
-## 2. Dil kuralı — kısmen doğrulandı
+## 2. Ödeme altyapısı — doğrulanmış kararlar
 
-`PROJECTMANIFEST.md`: "Business remains Norwegian-first." Privat ve Galleri
-sayfalarının incelenen `index.html`'leri tamamen İngilizce. Yani şu an
-gözlemlenen:
+Kaynak: `beta-art/docs/05paymentarchitecture.md` (karar tarihi: 2026-08-20)
 
-- **Business → Norveççe öncelikli**
-- **Privat, Galleri → İngilizce** (gözlemlenen, ama resmi kural olarak
-  yazılı değil)
-- **Türkçe** — ilk talimatta "Norwegian, Turkish or English by venture"
-  deniyordu ama hiçbir BETA ART belgesinde Türkçe müşteri diline rastlanmadı.
-  Muhtemelen kullanıcıyla iç yazışma dili (bu konuşmanın kendisi Türkçe) —
-  müşteriye giden değil. **Doğrulanmadan varsayılmaz.**
+- **Tek ödeme katmanı:** Stripe. Tüm mülkler (BAP/BAG/BAB) aynı Stripe hesabından
+  işlem yapıyor. Lemon Squeezy, Paddle veya bölünmüş hesap yok.
+- **Tek seferlik ödemeler (Norveç):** Vipps — ama Stripe Vipps desteği hâlâ *private
+  preview* aşamasında; önce preview erişimi gelmeli.
+- **Abonelik/retainer:** Kart zorunlu — Stripe üzerinden Vipps aboneliği desteklenmiyor.
+- **Sunucu:** Ödeme servisi Render'da, Frankfurt (AB bölgesi). Siteler Vercel'de.
+- **Kayıt tutulması gereken:** Stripe webhook → erişim verildi mi değil; `access`
+  bir webhook onayıyla verilir, yönlendirmeyle değil.
 
-## 3. Doldurulması gereken operasyonel veri (uydurulmadı, boş bırakıldı)
+---
 
-Bu beceri gerçek işlem yapabilmek için aşağıdakilerin kullanıcıdan gelmesi
-gerekiyor — hiçbiri tahmin edilmedi:
+## 3. MVA (Merverdiavgift) — çerçeve
 
-- **Banka/muhasebe export formatı** — hangi bankadan, hangi dosya biçiminde
-  (CSV/PDF), kategori adları ne
-- **Stripe hesap kapsamı** — QBLOGG'un bilinen BETA ART Stripe hesabıyla
-  (`docs/odeme-sistemi.md`, ana QBLOGG deposunda) aynı hesap mı, yoksa
-  BAP/BAG/BAB'ın her biri ayrı mı tahsilat yapıyor
-- **"Pipeline dosyası"** — konum ve format (JSON/spreadsheet/Notion) —
-  ilk talimatta adı geçti, içeriği hiç görülmedi
-- **MVA beyan dönemi** — aylık mı, üç aylık mı; **forskuddsskatt** taksit
-  tarihleri
-- **Org.nr** — DNS taslak sayfasında `000 000 000` yer tutucu olarak
-  duruyordu, gerçek numara henüz yok (bkz. `PROJECTMANIFEST.md`: "Legal
-  and compliance files are reference drafts only... organization number...
-  require human confirmation")
+Kaynak: `05paymentarchitecture.md`
 
-Bu alanlardan biri gerekince ve kullanıcı vermemişse: **tahmin etme,
-doğrudan sor.**
+| Kural | Değer |
+|---|---|
+| Norveç MVA eşiği | kr 50 000 kümülatif ciro (rolling) |
+| AB'ye dijital tüketici satışı | Eşiksiz non-Union OSS — ilk satıştan itibaren |
+| Hesap / beyan | Altinn + muhasebeci onayı gerekli; bu beceri taslak üretir |
+| Beyan dönemi | ⚠️ **EKSİK — kullanıcı doğrultmalı:** aylık mı, çift aylık mı? |
 
-## 4. Bu beceri hazır olduğunda ne yapacak (taslak kapsam)
+**Forskuddsskatt taksit tarihleri** da kullanıcı/muhasebeci onaylı değil;
+bu beceri taslak hazırlar, sayıları kullanıcı teyit etmeden gönderilmez.
 
-Yukarıdaki boşluklar doldurulunca:
+---
 
-1. **Nakit durumu** — banka/muhasebe export'unu okur, üç mülke göre
-   ayrıştırır (gelir/gider hangi BAP/BAG/BAB'a ait), özet çıkarır.
-2. **MVA hazırlığı** — dönem sonunda beyan taslağı hazırlar, **göndermez** —
-   kullanıcı onayı ve muhtemelen bir muhasebeci/Altinn adımı gerekir.
-3. **Fatura/tahsilat taslağı** — Stripe kaydı veya elle girilen bir satıştan
-   fatura taslağı üretir, göndermeden önce onay ister.
-4. **Müşteri kaydı** — BAG (Galleri) sergi/etkinlik katılımcıları, BAB
-   (Business) pilot görüşme talepleri, BAP (Privat) lisans talepleri —
-   hangi "pipeline dosyası" formatında tutulacaksa oraya yazar.
+## 4. Fiyat referansı
 
-## 5. Sınır — bu beceri neyi yapmaz
+Kaynak: `beta-art/docs/18ismodeli.md`
 
-- Canlı DNS, registrar, ödeme sağlayıcı veya CRM değişikliği yapmaz
-  (`PROJECTMANIFEST.md`'de zaten kayıtlı ilke: "Live DNS, registrar,
-  deployment, payment and CRM changes were not performed").
-- Hukuki/vergi tavsiyesi vermez — MVA ve forskuddsskatt kuralları hakkında
-  Norveç mevzuatını bu ortamda doğrulama imkânı yok (`skatteetaten.no` gibi
-  resmî kaynaklar bu ortamda erişilemeyebilir); rakam gerektiren her hesap
-  kullanıcıya veya bir muhasebeciye doğrulatılmalı.
-- Bir mülkün fiyat/lisans şartını bir diğerine uygulamaz — `BETAARTROUTEMAP.md`
-  bunu açıkça yasaklıyor ("Do not reuse Privat prices or licensing terms
-  for Gallery/Event or Business").
+### BAP-01 Privat — arşiv lisansı
+
+| Tier | Fiyat |
+|---|---|
+| Kişisel | kr 190 |
+| Ticari | kr 890 |
+| Genişletilmiş | kr 2 900 |
+
+### BAB-02 Business — proje hizmetleri
+
+| Hizmet | Fiyat bandı |
+|---|---|
+| Tek proje (küçük) | kr 490 – |
+| Tek proje (büyük) | – kr 39 000 |
+| Retainer / aylık | (ayrıca fiyatlandırılacak) |
+
+BAG-03 (Galleri) için henüz onaylı fiyat yok; gelir kaydında kod olarak tutulur,
+gerçek tutar üzerinde konuşulana kadar tahmin edilmez.
+
+**Mülkler arası fiyat/lisans geçişi yasak:** BAP şartları BAG veya BAB'a
+uygulanamaz (`BETA-ART-ROUTE-MAP.md` açık kural).
+
+---
+
+## 5. Dil kuralı
+
+| Mülk | Müşteri dili |
+|---|---|
+| BAB-02 Business | Norveççe öncelikli |
+| BAP-01 Privat | İngilizce |
+| BAG-03 Galleri | İngilizce |
+| Kullanıcıyla iç yazışma | Türkçe (bu beceri Türkçe yanıt verir) |
+
+---
+
+## 6. Doldurulması gereken operasyonel veri ⚠️
+
+Bunlar hâlâ eksik — **tahmin edilmez, kullanıcıdan beklenir:**
+
+| Alan | Neden gerekli | Ne sorulacak |
+|---|---|---|
+| **Banka adı + export formatı** | Nakit özeti için banka ekstresini ayrıştırmak gerekiyor | "Hangi bankayı kullanıyorsun, CSV/PDF formatında mı iniyor?" |
+| **MVA beyan dönemi** | Dönem sonu taslağı ve Altinn takvimleri için | "Norveç MVA'nı aylık mı, çift aylık mı (termin) beyan ediyorsun?" |
+| **Org.nr** | Fatura ve resmi belgeler için | "ENK kaydı tamamlandı mı? Org.nr kaç?" |
+| **Pipeline dosyası** | Müşteri ve potansiyel müşteri takibi için | "Müşterileri nerede tutuyorsun — Notion/Google Sheet/JSON?" |
+| **Stripe canlı mı?** | Gerçek işlem vs. test mode için | "Stripe hesabı live moda geçti mi, yoksa test modunda mı?" |
+
+Bir görev bu alanlardan birini gerektiriyorsa ve kullanıcı vermemişse:
+**tahmin etme, doğrudan sor.**
+
+---
+
+## 7. Bu becerinin yaptıkları
+
+### 7a. Nakit durumu özeti
+
+Kullanıcı banka/muhasebe export'unu paylaştığında:
+1. Satırları üç mülke ayır (BAP / BAG / BAB) — gelir ve gider
+2. Dönem toplamlarını çıkar
+3. MVA eşiğine ne kadar kaldığını hesapla
+4. Özet tabloyu göster, kullanıcı onayı iste
+
+### 7b. Fatura / tahsilat taslağı
+
+Bir satış veya Stripe kaydı geldiğinde:
+1. Mülkü (BAP/BAG/BAB) ve fiyat seviyesini tespit et
+2. Fatura taslağını hazırla: alıcı, tutar, MVA (eğer kayıtlıysa), tarih, referans
+3. Onay iste — gönderme
+
+Fatura şablonu (taslak, org.nr gerçek değil):
+
+```
+FATURA / FAKTURA
+Satıcı: BETA ART — [Ad Soyad]
+Org.nr: ⚠️ DOLDURULMADI
+Tarih: YYYY-MM-DD
+Fatura no: BAP-YYYY-NNN / BAB-YYYY-NNN
+
+Alıcı: [isim, adres]
+
+Hizmet: [açıklama]
+Tutar (eks. MVA): kr ___
+MVA %25: kr ___  ← yalnızca kayıtlı olduğunda
+Toplam: kr ___
+
+Ödeme: [banka/Stripe]
+Vade: [tarih]
+```
+
+### 7c. MVA beyan taslağı
+
+Dönem bittikten sonra kullanıcı "MVA hazırla" dediğinde:
+1. Dönem gelirlerini listele (BAP/BAG/BAB ayrı)
+2. Vergiye tabi tutarları hesapla
+3. Non-Union OSS'e tabi AB satışları ayrı işaretle
+4. Taslak beyan tablosunu göster
+5. **Altinn'e göndermez** — kullanıcı ve/veya muhasebeci görev alır
+
+### 7d. Müşteri kaydı
+
+| Mülk | Ne kaydedilir |
+|---|---|
+| BAB-02 | Pilot görüşme talebi, şirket, temas kişisi, proje tipi, durum (ilk görüşme/teklif/pilot/aktif) |
+| BAP-01 | Lisans talebi, amaç, mülk, tier, durum |
+| BAG-03 | Sergi/etkinlik kaydı, sanatçı, katılımcı, durum |
+
+Pipeline dosyası formatı netleşmeden taslak format Markdown tablosu olarak çıkar;
+kullanıcı onayladıktan sonra hedef dosyaya işlenir.
+
+---
+
+## 8. Sınırlar — bu beceri neyi yapmaz
+
+- **Canlı Stripe, DNS, Altinn, Render işlemi yapmaz.** Taslak hazırlar, göndermez.
+- **Vergi/hukuk tavsiyesi vermez.** MVA eşikleri, OSS kuralları ve forskuddsskatt
+  taksitleri referans olarak verilir; muhasebeci/regnskapsfører teyidi gerekir.
+- **Org.nr'siz resmi belge üretmez.** Taslağa ⚠️ işareti koyar.
+- **Bir mülkün şartını diğerine uygulamaz.**
+- **"Pipeline dosyası"nı tahmin etmez** — hangi sistemde tutulduğunu bilmeden
+  kayıt ekleyemez.
