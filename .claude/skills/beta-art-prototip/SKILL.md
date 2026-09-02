@@ -109,6 +109,17 @@ davranış onayı…) ek bir betikle gerçek tıklamayla sına — seçicilerde
 
 Kural: bir düzeltme "yapıldı" değil, "test şunu gösterdi" diye raporlanır.
 
+**Vercel yayını — HER teslimde, kullanıcı talimatı (02.09.2026):** DRIVE: PASS
+sonrası bundle'lar `prototyper/`e kopyalanır (`one-site.html`, `galleri.html`),
+commit + push edilir, sonra aynı dağıtım yeniden tetiklenir: Vercel MCP
+`deploy_to_vercel` — proje **beta-art-prototip**, takım
+`team_xNtowH7U0jXQrI53DFJFzH2o`, target production, tek dosya `vercel.json`
+(depodaki dağıtımın aynısı: dalı klonlar, `prototyper/`den `dist/`e kopyalar).
+Canlı adres: **beta-art-prototip.vercel.app** (`/` = one-site,
+`/galleri.html` = galleri). Doğrulama `web_fetch_vercel_url` ile (vercel.app
+bu konteynerden doğrudan açılamaz); kullanıcıya URL + güncel ekran
+görüntüsüyle raporlanır.
+
 Not: Playwright depo kökünden import edilemez (`ERR_MODULE_NOT_FOUND`);
 sürücü bunu `createRequire('/opt/node22/lib/node_modules/')` ile çözer —
 kendi betiğinde aynı deseni kullan.
