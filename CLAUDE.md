@@ -3,6 +3,11 @@
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
+## Kullanıcı tercihleri
+
+- **Her yanıtın başına kullanıcının adını yaz: BETUL** — bu talimat tüm oturumlar
+  için geçerlidir; istisna yok.
+
 ## Proje nedir
 
 QBLOGG, şirketlere içerik hattı satan bir stüdyonun tanıtım + blog sitesidir:
