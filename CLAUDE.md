@@ -230,6 +230,14 @@ değil önce gelir.
 (02.09.2026): istisnasız, her mesajın ilk kelimesi "Betul"dur. Bu kural
 oturumlar arasında geçerlidir; yeni oturum bu dosyayı okuduğu anda uygular.
 
+**NaviarCare'de her değişiklik canlıya gider ve gösterilir.** Kullanıcı
+talimatı (02.09.2026, "bunu her seferinde yap"): `naviar/care/` altında bir
+iş bittiğinde (1) dal push edilir, (2) `naviar/vercel-care.json` tarifi
+`deploy_to_vercel` ile **`naviarcare`** projesine (takım BET - ART) üretim
+olarak gönderilir, (3) canlı adres `naviarcare-bet-art.vercel.app`
+`web_fetch_vercel_url` ile doğrulanır, (4) `run-naviar-care` ile alınan
+görüntüler kullanıcıya gönderilir. Sorulmadan yapılır; atlanmaz.
+
 ## Kullanıcıya iş devrederken
 
 Kullanıcının kendi yapması gereken bir adım varsa (izin verme, DNS, panel ayarı,
