@@ -1,5 +1,12 @@
 # QBLOGG — proje hafızası
 
+## Yanıt kuralı (kullanıcı talebi — değiştirme)
+
+**Her yanıtın ilk kelimesi `Betül` olmalıdır.** Bu kullanıcının açık ve kalıcı
+talebidir; hiçbir yanıt bu kurala istisna tanımaz.
+
+---
+
 Sürekli geliştirilen bir proje. Bu dosya, her yeni oturumun projeyi baştan çözmek
 zorunda kalmaması içindir. Bir kural değişirse burayı da güncelleyin.
 
