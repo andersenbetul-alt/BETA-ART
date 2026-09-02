@@ -327,6 +327,17 @@ Not: bu eklenti QBLOGG değil Beta Art işidir.
 Kullanıcının adı **Betul**. Her yanıta "Betul" ile başla (kullanıcı açık
 talebi, 02.09.2026). Bu, oturumlar arası kalıcı bir tercihtir.
 
+## Beta Art sitesi — her değişiklikte dağıt + göster (02.09.2026 talimatı)
+
+Beta Art sitesinde (`apps/beta-art-archive`) kod/içerik değiştiren her iş
+bittiğinde, kullanıcı istemese bile: (1) değişiklikleri Vercel'e dağıt
+(standart tek dosyalık `vercel.json` tarifi; proje `beta-art-privat`, takım
+`team_xNtowH7U0jXQrI53DFJFzH2o`), READY doğrula; (2) sitenin güncel halini
+göster — `run-beta-art-archive` sürücüsüyle ekran görüntüsü alıp
+`SendUserFile` ile Betul'e ilet. "Her seferinde yap" (Betul, 02.09.2026).
+Yalnızca belge/skill değişen, siteyi etkilemeyen commit'lerde dağıtım
+gereksiz — o zaman sadece belirt.
+
 ## Kullanıcıya iş devrederken
 
 Kullanıcının kendi yapması gereken bir adım varsa (izin verme, DNS, panel ayarı,
