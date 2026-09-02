@@ -1,0 +1,36 @@
+{
+  "eval_id": 1,
+  "run": "with_skill",
+  "expectations": [
+    {
+      "text": "Does NOT recommend #D4AF37/gold as headline text color on white/light background",
+      "passed": true,
+      "evidence": "Substituted Midnight Navy (#0A1628) bold-on-white for the headline; gold restricted to a thin accent role."
+    },
+    {
+      "text": "Cites a contrast/accessibility reason for avoiding gold-on-white",
+      "passed": true,
+      "evidence": "Cited measured 2.10:1 contrast vs WCAG AA 4.5:1 requirement."
+    },
+    {
+      "text": "Recommends navy or another compliant color instead",
+      "passed": true,
+      "evidence": "Used Midnight Navy #0A1628 for headline emphasis."
+    },
+    {
+      "text": "Does NOT assert the tagline is official/decided",
+      "passed": true,
+      "evidence": "Explicitly declined to call it 'the official tagline'."
+    },
+    {
+      "text": "States the tagline is still undecided/open",
+      "passed": true,
+      "evidence": "Cited NAVIAR-LOGO-KARAR.md §6 item 7 listing five undecided candidates."
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 5,
+    "total": 5
+  }
+}

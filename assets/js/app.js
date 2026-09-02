@@ -8,6 +8,9 @@
   var FALLBACK = 'en';
   var LS_LANG = 'qb_lang';
   var LS_THEME = 'qb_theme';
+  var LS_EDITOR = 'qb_editor_mode';
+  var SS_SEEN = 'qb_seen';
+  var MAX_SEEN = 20;
 
   /* Kapak rampası navy–teal aralığında kalır: markanın dışına çıkan renk yok.
      Beyaz ikon her uçta en az 4,76:1 kontrast görür (ölçüldü). */
@@ -54,6 +57,72 @@
   }
   function param(name) {
     return new URLSearchParams(window.location.search).get(name);
+  }
+
+  /* ---------- öneri sinyali (oturum-bazlı, kişisel veri değil) ----------
+     Bu sekmede görüntülenen yazı slug'ları sessionStorage'da tutulur; hiçbir
+     yere gönderilmez, sekme kapanınca silinir. gizlilik.html'e açıklanmalı.
+     Düzenleyici modu (?qb_editor=1, kalıcı bir tercih — qb_lang/qb_theme ile
+     aynı kategoride) açıkken tamamen no-op: kendi trafiğimiz sinyale karışmaz. */
+  (function initEditorMode() {
+    var flag = param('qb_editor');
+    if (flag === '1' || flag === '0') {
+      try { localStorage.setItem(LS_EDITOR, flag); } catch (e) { /* gizli mod */ }
+    }
+  })();
+  function isEditorMode() {
+    try { return localStorage.getItem(LS_EDITOR) === '1'; } catch (e) { return false; }
+  }
+  function readSeen() {
+    if (isEditorMode()) return [];
+    try {
+      var raw = sessionStorage.getItem(SS_SEEN);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) { return []; }
+  }
+  function recordSeen(slug) {
+    if (isEditorMode() || !slug) return;
+    try {
+      var seen = readSeen().filter(function (s) { return s !== slug; });
+      seen.push(slug);
+      if (seen.length > MAX_SEEN) seen = seen.slice(seen.length - MAX_SEEN);
+      sessionStorage.setItem(SS_SEEN, JSON.stringify(seen));
+    } catch (e) { /* gizli mod / kota */ }
+  }
+  // En son görüntülenen kategori en yüksek ağırlığı taşır (üstel azalma).
+  function categoryAffinity() {
+    var seen = readSeen(), weights = {}, w = 1;
+    for (var i = seen.length - 1; i >= 0; i--) {
+      var post = POSTS.filter(function (p) { return p.slug === seen[i]; })[0];
+      if (post) weights[post.category] = (weights[post.category] || 0) + w;
+      w *= 0.7;
+    }
+    return weights;
+  }
+  function recencyBoost(dateStr) {
+    var days = (Date.now() - new Date(dateStr).getTime()) / 86400000;
+    return Math.max(0, 1 - days / 365);
+  }
+  // Sinyal yoksa (ilk ziyaret) bugünkü deterministik kategori-eşleşmesine
+  // sessizce düşer — davranış aynı kalır, regresyon yok.
+  function scoredRelated(post, limit) {
+    var affinity = categoryAffinity();
+    var candidates = sorted().filter(function (p) { return p.slug !== post.slug; });
+    if (!Object.keys(affinity).length) {
+      var related = candidates.filter(function (p) { return p.category === post.category; }).slice(0, limit);
+      if (related.length < limit) {
+        related = related.concat(candidates.filter(function (p) {
+          return related.indexOf(p) === -1;
+        }).slice(0, limit - related.length));
+      }
+      return related;
+    }
+    var seen = readSeen();
+    return candidates.map(function (p) {
+      var score = 2.0 * (affinity[p.category] || 0) + 0.3 * recencyBoost(p.date);
+      if (seen.indexOf(p.slug) > -1) score -= 999;
+      return { p: p, score: score };
+    }).sort(function (a, b) { return b.score - a.score; }).slice(0, limit).map(function (x) { return x.p; });
   }
 
   /* ---------- dil ---------- */
@@ -470,16 +539,12 @@
         '<p class="center"><a class="btn btn--ghost" href="blog.html">' + esc(t('posts.back')) + '</a></p>';
       return;
     }
+    recordSeen(post.slug);
     var c = ACCENTS[post.accent] || ACCENTS[1];
     var blocks = pick(post.b) || [];
     var body = blocks.map(blockHTML).join('');
     var toc = tocHTML(blocks);
-    var related = sorted().filter(function (p) { return p.slug !== post.slug && p.category === post.category; }).slice(0, 2);
-    if (related.length < 2) {
-      related = related.concat(sorted().filter(function (p) {
-        return p.slug !== post.slug && related.indexOf(p) === -1;
-      }).slice(0, 2 - related.length));
-    }
+    var related = scoredRelated(post, 2);
     document.title = pick(post.t) + ' — QBLOGG';
     var metaDesc = $('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', pick(post.e));

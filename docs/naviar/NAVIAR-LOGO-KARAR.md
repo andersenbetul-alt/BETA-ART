@@ -245,6 +245,30 @@ P8'in bütün şartları aynen geçerli. Ek olarak:
    çelişki üretir. Clear space için de aynı durum: M2 "altın bar genişliği",
    M1 "lockup ≥ 0,30H". Tek kural yazılmalı.
 
+**Doğrulama (25.08.2026):** `brand/naviar/build.py` bugün yeniden çalıştırılıp
+çıktısı depodaki `descriptors/naviar-care-PENDING-APPROVAL.svg` ile bayt bayt
+karşılaştırıldı — fark yok. Yani "P8'in bütün şartları aynen geçerli" cümlesinin
+işaret ettiği 4 düzeltmeden ikisi CARE için üretim tarafında zaten karşılanmış:
+altın oranı %14,0 (spec %12–16), descriptor cap yüksekliği %27 (spec %24–30),
+descriptor rengi beyaz zeminde lacivert (`#0A1628`, altın değil). Yan çizgi
+sorunu (P8 madde 4) `build.py`'nin descriptor üretiminde hiç yok, dolayısıyla
+CARE'de de yok. CONSULT→CONSULTING adlandırma sorunu (P8 madde 2) CARE'e
+uygulanmıyor. **Kalan açık kalemler yalnız yukarıdaki 1–5 numaralı CARE'e özgü
+onay/hukuk maddeleridir**, artı sistem geneli diyagonal açı sapması (bkz. §4,
+"Karar bekliyor" — CARE'e özgü değil, tüm monogram ailesini etkiliyor, bu
+belgenin M1 Stop Condition'ı gereği onaysız değiştirilmedi).
+
+**Hizmet tanımı geldi (25.08.2026, aynı gün):** kullanıcı NAVIAR CARE'i
+"yaşlılar, aileler ve bakım ihtiyacı" için "güvenli yardımcı ve bakım
+koordinasyonu" — doğrulanmış bağımsız sağlayıcıları eşleştiren bir pazar
+yeri modeli olarak tanımladı, B2B/B2G kanalları dahil. Bu, madde 2 (sınıf
+44 taraması) ve madde 4'ü (sektörel mevzuat) artık yanıtlanabilir kılıyor —
+tam analiz, kaynaklarıyla, `docs/naviar/NAVIAR-CARE-HIZMET-TARAMA.md`'de.
+Özet: sınıf tarafı 44'ten çok 45(+42/35)'e kayıyor ama kesinleşmedi; mevzuat
+tarafı B2C pazar yeri mi B2G sözleşmeli sağlayıcı mı kanalına göre ayrışıyor,
+tek cevap yok. Madde 1 (iş onayı) ve madde 3 (ayırt edicilik) bu belgeyle
+değişmedi, hâlâ açık.
+
 ---
 
 ## 4. Ölçülen bulgular
@@ -341,12 +365,20 @@ inhisari hak doğurmaz.
 4. **Master NAVIAR'ı üret** (descriptor'suz). Sistem bunsuz yayına alınamaz.
 5. **P8/P9'un 4 düzeltmesini uygula**; descriptor'ü beyaz zeminde lacivert yap
    (kontrast bulgusu), boyunu %24–30'a çek, CONSULT→CONSULTING kararını ver.
+   *(CARE tarafı — 25.08.2026: renk ve boy `build.py` çıktısında doğrulandı,
+   bkz. §3 P9 doğrulama notu. CONSULT→CONSULTING kararı CARE'e uygulanmıyor.)*
 6. **CARE için iş onayı al**, mimariye resmen ekle, sınıf 44'ü tarama kapsamına
-   dahil et.
+   dahil et. *(Bu madde hâlâ açık — tasarım tarafı tamam, onay/hukuk taraf
+   bekliyor; sınıf tarafında 44 yerine 45/42/35 ağırlıklı bir okuma öne
+   çıktı, bkz. docs/naviar/NAVIAR-CARE-HIZMET-TARAMA.md §2.)*
 7. **Tek tagline seç.** Dolaşımda dört satır var: "Intelligence. Strategy.
    Impact." / "Clarity in complex systems." / "Insight. Strategy. Impact." /
-   "Organizational Intelligence Systems." M1 önerisi: *Clarity in complex
-   systems.* Ve tagline master lockup'ın **dışında** kalır.
+   "Organizational Intelligence Systems." *(25.08.2026: CARE tarafından
+   beşinci bir aday geldi — "İnsanların ihtiyaç duyduğu anda, doğru kişiye,
+   doğru bilgiye ve güvenilir hizmete ulaşmasını sağlayan bir yaşam ve
+   hizmet ekosistemi." Karar hâlâ verilmedi, liste büyüdü.)*
+   M1 önerisi: *Clarity in complex systems.* Ve tagline master lockup'ın
+   **dışında** kalır.
 8. **Minimum ölçü ve clear space kurallarını tek tabloda birleştir**
    (M1 ile M2 arasındaki farkı kapat).
 9. **Profesyonel marka temizliği başlat.** 1–8 arası maddeler bunu beklemeden

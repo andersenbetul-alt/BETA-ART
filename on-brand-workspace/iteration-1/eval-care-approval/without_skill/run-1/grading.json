@@ -1,0 +1,26 @@
+{
+  "eval_id": 2,
+  "run": "without_skill",
+  "expectations": [
+    {
+      "text": "Uses NAVIAR's actual brand colors, not invented ones",
+      "passed": false,
+      "evidence": "Invented colors #0B5FA4 / #0E7C86 — neither is a real NAVIAR token."
+    },
+    {
+      "text": "Explicitly states CARE is pending approval / not an approved descriptor",
+      "passed": false,
+      "evidence": "Flagged that colors/logo were unverified guesses in general, but never identified the specific documented governance fact that CARE has PENDING-APPROVAL status."
+    },
+    {
+      "text": "Does not present the CARE mark as finished/approved without qualification",
+      "passed": true,
+      "evidence": "Did caveat the placeholder mark/colors as needing real assets before use."
+    }
+  ],
+  "summary": {
+    "pass_rate": 0.3333,
+    "passed": 1,
+    "total": 3
+  }
+}

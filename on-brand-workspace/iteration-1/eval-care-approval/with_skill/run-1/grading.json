@@ -1,0 +1,26 @@
+{
+  "eval_id": 2,
+  "run": "with_skill",
+  "expectations": [
+    {
+      "text": "Uses NAVIAR's actual brand colors, not invented ones",
+      "passed": true,
+      "evidence": "Used navy #0A1628, off-white #F5F6F8, graphite #1E1E1E, gold #D4AF37 as structural accent only."
+    },
+    {
+      "text": "Explicitly states CARE is pending approval / not an approved descriptor",
+      "passed": true,
+      "evidence": "Visible 'Taslak — onay bekliyor' tag plus response text naming both open gates (business approval, trademark screening)."
+    },
+    {
+      "text": "Does not present the CARE mark as finished/approved without qualification",
+      "passed": true,
+      "evidence": "Footnote states the asset is not cleared for external distribution."
+    }
+  ],
+  "summary": {
+    "pass_rate": 1.0,
+    "passed": 3,
+    "total": 3
+  }
+}

@@ -314,3 +314,101 @@ yeniden ölçülmesi gerektiğini işaret eder.
 geçen sürenin uzunluğuyla ters orantılı güven taşır — yakın tarihli bir
 not bile, kaynak o zamandan beri değiştiyse yeniden ölçülmeli.
 
+## 2026-08-26 — NAVIAR CARE + Figma design-system-rules oturumu
+
+### Observation 14: Yeni sayfa eklendiğinde tekrarlanan-iskelet belgeleri senkron kalmıyor
+
+**Status:** RESOLVED (01.09.2026, PR #18 birleştirmesinde) — main'de ayrı bir
+oturum aynı boşluğu bağımsız olarak bulup CLAUDE.md madde 6'yı ("sekiz
+dosyada tekrar eder") ve `qblogg-sayfa-iskeleti` becerisini eklemiş; bu
+belge de aynı birleştirmede güncellendi. Aşağıdaki bulgu artık tarihsel
+kayıt, açık iş değil.
+**Date:** 2026-08-26
+**Session context:** Figma design-system-rules komutu için docs/tasarim-sistemi.md
+yeniden ölçülürken bulundu
+**Skill:** qblogg-operasyon
+**Type:** internal
+**Phase/Area:** Yeni sayfa/iskelet bakımı
+
+**Issue:** `kalite.html` ve `ornek.html`, 22.08.2026 ölçümünden sonra eklenmiş
+ve ikisi de altı diğer sayfayla aynı `.site-header`/altbilgi iskeletini
+taşıyor — ama CLAUDE.md'nin "sayfa iskeleti altı dosyada tekrar eder" listesi
+ve `docs/tasarim-sistemi.md`'nin sayı/dosya listesi ikisini de atlamış. Aradan
+dört gün geçmiş, `npm run check` yeşil kalmış (çiftlenen id/script yakalıyor,
+eksik menü bağlantısını veya belge listesini yakalamıyor — bu zaten CLAUDE.md'de
+bilinen bir sınır). İki ayrı belge aynı sebepten aynı şekilde eskimiş.
+
+**Suggested improvement:** qblogg-operasyon'a "yeni sayfa ekleme" maddesi
+eklensin: iskelet taşıyan bir HTML dosyası eklendiğinde, aynı commit'te
+CLAUDE.md'nin "Sayfa iskeleti ... dosyada tekrar eder" cümlesi ve
+`docs/tasarim-sistemi.md` §2/§7'deki sayı/liste birlikte güncellenir. İkisi
+tek bir grep ile doğrulanabilir: `ls *.html | wc -l` ve `grep -c site-header
+*.html` sonucu belgelerdeki sayıyla karşılaştırılır.
+
+**Principle:** Kod büyüdükçe onu tarif eden belge sayısı da büyürse (burada
+ikisi), her biri ayrı ayrı eskiyebilir — "kaynaktan doğrula" ilkesi (kesişen
+ilke #1) yalnız yazarken değil, var olan bir belgeyi yeniden kullanırken de
+uygulanmalı; bir belgenin "resmi kılavuz" olması onu güncel yapmaz.
+
+### Observation 15: Kullanıcı, yapılandırılmış bir soruyu yanıtladıktan hemen sonra serbest metinle çelişen bilgi verdi
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** NAVIAR CARE hizmet tanımı toplanırken
+**Skill:** Genel çalışma pratiği (yeni ilke adayı — kesişen olabilir)
+**Type:** internal
+**Phase/Area:** Belirsiz/çelişkili girdi toplama
+
+**Issue:** AskUserQuestion ile "sağlık/bakım dışı, kurumsal danışmanlık"
+seçildi; aynı tur içinde art arda gelen serbest metin mesajları ("yaşlılar,
+aileler ve bakım ihtiyacı", "güvenli yardımcı ve bakım koordinasyonu") bunun
+tam tersini söyledi. Sessizce biri seçilip diğeri atlanabilirdi; onun yerine
+çelişki açıkça kullanıcıya bildirildi ve en spesifik/en son gelen bilgi esas
+alındı, gerekçesiyle birlikte belgeye de not düşüldü.
+
+**Suggested improvement:** Yapılandırılmış soru (AskUserQuestion/seçenek)
+cevabı ile onu hemen izleyen serbest metin çelişirse: (1) çelişkiyi sessizce
+çözme, (2) hangisinin esas alındığını ve neden olduğunu hem kullanıcıya hem
+üretilen belgeye yaz, (3) daha spesifik ve daha sonra gelen bilgiyi tercih et
+ama bunu "kesin" değil "şimdilik esas alınan" olarak işaretle.
+
+**Principle:** Hızlı ve parçalı gelen kullanıcı girdisinde (özellikle çoklu
+mid-turn mesaj), en son mesaj otomatik olarak "düzeltme" sayılmamalı —
+çelişki bir gözlem olarak kayda geçmeli, çünkü aksi hâlde hangi bilginin
+esas alındığı belgenin okuyucusuna kaybolur.
+
+## 2026-08-26 (devam) — NAVIAR Care pilot uygulaması oturumu
+
+### Observation 16: xlsx skill'in recalc.py'si de bu ortamda LibreOffice'e bağımlı olduğu için çalışmıyor
+
+**Status:** OPEN
+**Date:** 2026-08-26
+**Session context:** NAVIAR Care birim ekonomisi ve haftalık P&L
+xlsx dosyaları üretilirken
+**Skill:** xlsx (sistem becerisi — gerekirse xlsx-extras'a)
+**Type:** internal
+**Phase/Area:** Doğrulama
+
+**Issue:** `scripts/recalc.py`, 165 saniyeye kadar denenen timeout'larda
+bile "LibreOffice timed out" hatası verdi — gözlem 3'te docx için tespit
+edilen "LibreOffice bu konteynerde çalışmıyor" bulgusunun xlsx/openpyxl
+iş akışı için de geçerli olduğunu doğruluyor (aynı kök neden, farklı
+skill). Formüller bu yüzden gerçek bir hesap makinesiyle (LibreOffice)
+değil, formüllerle birebir aynı mantığı taşıyan bağımsız bir Python
+hesabıyla doğrulandı — ve bu doğrulama bir yerde gerçek bir hata da
+yakaladı (saatlik maliyet sabitini yanlış türetmiştim, 214 kr yerine
+321,2 kr olmalıydı).
+
+**Suggested improvement:** xlsx skill'ine (ya da bir xlsx-extras
+tamamlayıcısına) bu ortam için not düşülsün: recalc.py çalışmıyorsa,
+formülle aynı mantığı taşıyan bağımsız bir Python hesabıyla çapraz
+kontrol yapılmalı ve bu doğrulamanın "gerçek Excel/LibreOffice yeniden
+hesaplaması değil, mantık doğrulaması" olduğu teslim edilen dosyanın
+notlarında açıkça belirtilmeli.
+
+**Principle:** Bir doğrulama aracı (recalc.py, pandoc, soffice...) ortamda
+çalışmıyorsa doğrulama atlanmaz — en yakın alternatif kurulur ve neyin
+doğrulanamadığı dürüstçe söylenir (gözlem 3'ün ilkesinin ikinci, bağımsız
+örneği — artık bir "kalıp" sayılabilir: bu ortamda LibreOffice'e dayanan
+HİÇBİR araç güvenilir çalışmıyor, yalnız docx değil).
+

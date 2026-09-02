@@ -323,6 +323,34 @@ pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapıs
 kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
 kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
 anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+## 25.08.2026 — NAVIAR CARE: tasarım düzeltmeleri doğrulandı, karar belgesi güncellendi
+
+`brand/naviar/build.py` yeniden çalıştırılıp çıktısı depodaki
+`naviar-care-PENDING-APPROVAL.svg` ile bayt bayt karşılaştırıldı — fark yok.
+P8/P9 için istenen 4 düzeltmeden ikisi (altın oranı %14,0, descriptor cap
+%27) CARE için üretim tarafında zaten karşılanmış; yan çizgi sorunu hiç yok;
+CONSULT→CONSULTING kararı CARE'e uygulanmıyor. `docs/naviar/NAVIAR-LOGO-KARAR.md`
+§3 (P9) ve §6 (madde 5) bu doğrulamayla güncellendi. CARE için açık kalan tek
+şey tasarım değil: iş onayı, sınıf 44 taraması, ayırt edicilik uyarısı,
+sektörel mevzuat kontrolü, doküman birleştirme (KARAR §3 P9, madde 1–5) —
+artı sistem geneli diyagonal açı sapması (kullanıcı onayı bekliyor, CARE'e
+özgü değil).
+
+## 25.08.2026 (devam) — NAVIAR CARE: hizmet tanımı geldi, sınıf/mevzuat notu yazıldı
+
+Kullanıcı oturum içinde parça parça hizmet tanımını verdi: yaşlı/aile bakım
+koordinasyonu, doğrulanmış bağımsız sağlayıcılarla pazar yeri modeli,
+B2B/B2G gelir kanalları. Bu bilgiyle `docs/naviar/NAVIAR-CARE-HIZMET-TARAMA.md`
+yazıldı: Nice sınıf tarama planı (44'ten çok 45/42/35'e kayan ama
+kesinleşmemiş bir okuma) ve Norveç sektörel mevzuat notu (politiattest
+kapsamı, helse- og omsorgstjenesteloven §12-7/12-8, helsepersonelloven §13
+pazarlama kısıtı — hepsi arama özetinden, resmî sayfalar bu ortamda engelli,
+"elle teyit" notuyla). Açık kalan ve uydurulmayan tek soru: B2C pazar yeri
+kanalı ile B2G belediye-sözleşmeli kanalı farklı mevzuata tabi olabilir,
+hangisinin ne zaman geçerli olduğu netleşmedi. `NAVIAR-LOGO-KARAR.md` P9 ve
+§6 madde 6-7 bu bulgularla çapraz referanslandı; beşinci bir tagline adayı
+("yaşam ve hizmet ekosistemi") da kayda geçti. İş onayı (P9 madde 1) hâlâ
+kullanıcının kararı bekliyor.
 
 ## 25.08.2026 (gece) — Beşinci yön teklifi değerlendirildi: B2C affiliate/karşılaştırma medyası
 
@@ -456,6 +484,72 @@ modeli) fikri bilinçli olarak uygulanmadı — QBLOGG'da hesap/UGC/moderasyon
 altyapısı yok, bu ayrı ve çok daha büyük bir kapı; kullanıcının asıl vardığı
 sonucun "gelişim/outcome metriği" olduğu değerlendirildi.
 
+## 26.08.2026 — docs/tasarim-sistemi.md yeniden ölçüldü (Figma MCP rules isteği)
+
+Figma design-system-rules komutu tetiklendi; bu iş için zaten
+`docs/tasarim-sistemi.md` vardı (22.08.2026'da yazılmış), yeniden yazmak
+yerine ölçüp güncelledim. Dört günde gerçek drift bulundu: sayfa iskeleti
+artık 6 değil 8 dosyada tekrar ediyor (`kalite.html` + `ornek.html` eklenmiş,
+`CLAUDE.md`'nin "altı dosya" listesi bunu yansıtmıyor — ayrı bir düzeltme
+gerektirir); ikon kaydı 11'den 15'e çıkmış (4 paylaşım glifi eklenmiş);
+i18n 209'dan 233 anahtara çıkmış; main.css 553'ten 629 satıra, 95'ten 117
+sınıfa çıkmış; medya sorgusu sayısı 5 değil 6 ve hepsi `max-width` değilmiş
+(bir `print`, bir `prefers-reduced-motion` sorgusu da var — önceki metin
+yanlıştı); `assets/img/` klasörü kaldırılmış. Figma koltuğu (`whoami`) hâlâ
+`View` — değişmedi. `npm run check` yeşil.
+
+## 26.08.2026 (devam) — NAVIAR Care pilot planı geldi, kritik iş modeli analizi yazıldı
+
+Kullanıcı tam bir "NAVIAR Care Pilot Implementation Plan" paylaştı (İngilizce,
+dış kaynaklı görünüyor — Arbeidstilsynet/Oslo kommune/Skatteetaten/Datatilsynet
+atıflı): iç Oslo'da (Grünerløkka, Sagene, St. Hanshaugen, Frogner) 3 tıbbi
+olmayan hizmetle (sosyal ziyaret, aktivite refakati, dijital destek) sınırlı,
+**istihdam** temelli (pazar yeri değil), insan-onaylı bir concierge pilotu.
+Bu, dün yazılan `NAVIAR-CARE-HIZMET-TARAMA.md`'nin "pazar yeri/eşleştirme"
+varsayımıyla doğrudan çelişiyor — çelişki sessizce çözülmedi, her iki belgeye
+de açık not düşüldü (bkz. o dosyanın başındaki güncelleme kutusu).
+
+Talep üzerine (kullanıcının paylaştığı 13 maddelik "AUTOPROMPT" iş modeli
+kritik analiz çerçevesi) `docs/naviar/NAVIAR-CARE-IS-MODELI-KRITIK-ANALIZ.md`
+yazıldı: müşteri/segment/rakip analizi, BMC, somut rakamlarla birim ekonomisi
+(AGA %14,1 Oslo, feriepenger %10,2, OTP %2 — hepsi arama özetinden, teyit
+edilmedi), MVA riski (hizmet kasıtlı olarak sağlık kapsamı dışı tasarlandığı
+için %25 tam oran varsayılmalı, muafiyet değil), doğrudan rakip bulgusu
+(SeniorSupport "Besøksvenn – Oslo" + "Følgetjenester", VilMer "Hverdagsvenn"
+— ikisi de Oslo'da aynı kategoriyi zaten sunuyor, "kategori sahipliği"
+iddiası kırılgan), 9 numaralı risk listesi ve 5 hızlı deney. Sonuç: plan
+zaten sağlam, yeniden yazılmadı — üstüne somut rakam ve rakip verisiyle
+eleştiri eklendi.
+
+## 26.08.2026 (devam 2) — NAVIAR Care pilotu uygulandı: docs/naviar/care-pilot/
+
+Kullanıcı planı "uygula" isteğiyle tekrar gönderdi (bir kopyası yanlışlıkla
+tekrar gelmişti, netleştirme soruldu). Onay üzerine 6 görevin tamamı
+`docs/naviar/care-pilot/` altında gerçek dosyalar olarak kuruldu (23 dosya):
+hizmet sınır matrisi, hukuk/muhasebe brief'i, karar günlüğü, yardımcı
+işe alım/el kitabı/olay SOP'u, talep kanıtlama (20 görüşme çerçevesi,
+satış senaryosu, kanal deneyi), MVP veri haritası + rıza modeli + kabul
+testleri, tek sayfalık MVP sitesi (`site/index.html`, Playwright ile
+render doğrulandı, 0 konsol hatası), haftalık pilot kartı + 12 haftalık
+ölçekleme kapısı, pilot-sonrası strateji şablonları.
+
+İki gerçek Excel dosyası (xlsx skill ile, openpyxl + gerçek formüller):
+`finance/pilot-unit-economics.xlsx` (90/120/180 dk ziyaret maliyet modeli,
+AGA/feriepenger/OTP/sigorta/MVA formülleriyle) ve `finance/weekly-cohort-
+p-and-l.xlsx`. Bu ortamda LibreOffice/`recalc.py` 165 saniyede bile
+zaman aşımına uğradı (gözlem 3'ün xlsx için doğrulanmış hâli, gözlem 11
+olarak kaydedildi) — formüller bağımsız Python hesabıyla doğrulandı; bu
+doğrulama gerçek bir hatayı da yakaladı (saatlik maliyet sabiti 214 kr
+değil 321,2 kr olmalıydı, düzeltildi).
+
+Ayrıca kullanıcı Norveççe bağımsız bir "tjenestevurdering" (hizmet
+değerlendirmesi) paylaştı — toplam puan 5,4/10, "Differensiering: Ubevist"
+bulgusu bu depodaki rakip analiziyle (SeniorSupport/VilMer) örtüşüyor.
+Bu, `decisions/tjenestevurdering-2026-08-26.md`'ye birebir kaydedildi ve
+kritik analiz belgesiyle çapraz referanslandı. `docs/naviar/care-pilot/
+README.md` okuma sırasını ve bilinen sınırları (LibreOffice, yer tutucu
+e-posta, doğrulanmamış Norveç rakamları) özetliyor.
+
 ## 30.08.2026 — "BUTUN PROJELERI BURAYA TASI": envanter çıkarıldı, gerçek gerilim ortaya çıktı
 
 Kullanıcı "her proje/dosya/tool burada birleşiyor" tespitini yaptı, ardından
@@ -486,3 +580,91 @@ cevabı bunu kapsasa da teknik olarak henüz mümkün değil.
 
 Gerçek dosya/geçmiş taşıma işlemi, yukarıdaki üç karar netleşmeden
 başlatılmadı.
+## 01.09.2026 — NAVIAR CARE gerçek iniş sayfası: Vercel'de canlı, WCAG denetlendi
+
+Ayrı bir React/Vite/Tailwind projesi (`web-artifacts-builder` altyapısıyla
+başlatıldı) NAVIAR CARE için marka kurallarına uygun bir iniş sayfası
+üretti — CARE descriptor'ı onaysız olduğu için hiç logo grafiği
+kullanmadı, yalnızca wordmark'ın kendi font stack'iyle tipografik ad.
+Önce Claude Artifact olarak yayınlandı, düzeltmeler (form `<label>`
+eksikliği, kanıtlanmamış "1 gün" performans iddiası) uygulandıktan sonra
+`mcp__Vercel__deploy_to_vercel` ile gerçek bir siteye dönüştürüldü:
+**naviar-care.vercel.app** (proje `naviar-care`, takım `bet-art`, Vite
+framework'ü Vercel tarafından otomatik algılandı).
+
+Font optimizasyonu: Poppins hiç yüklenmiyordu (sessizce sistem fontuna
+düşüyordu) — yalnızca kullanılan iki ağırlık (500/600), Latin+Latin-ext
+alt kümeleri self-host edildi (~27 KB, 4 dosya). İlk denemede ikili
+dosyaları base64 olarak elle taşırken bir karakter bozuldu (deploy
+reddedildi); bunun yerine build sırasında fontları indiren bir script
+(`scripts/fetch-fonts.mjs`) eklendi — daha güvenilir. Kaynak/lisans kaydı
+`public/fonts/KAYNAK.md`'de (Poppins SemiBold 4.004, © 2020 The Poppins
+Project Authors, SIL OFL 1.1 — fontun kendi `name` tablosundan okundu).
+
+Kullanıcı beş ayrı uyumluluk maddesi verdi (sağlık verisi asgariliği, AI
+çalışan hakkında otomatik karar vermemeli, insan kontrolü/RBAC/silme
+süresi/işlem kaydı, AI Act/Norveç KI-lov hazırlığı, WCAG). Denetim
+`docs/naviar/care-pilot/legal/ai-governance-and-accessibility.md`'ye
+yazıldı: ilk ikisi zaten `product/mvp-data-map.md` ve `operations/
+helper-selection-scorecard.md` tasarımıyla karşılanıyordu (doğrulandı,
+değişiklik gerekmedi); üçüncüsü henüz kurulmamış bir CRM için tasarım
+gereksinimi olarak `decisions/decision-log.md`'ye madde 13 eklendi;
+dördüncüsü web aramayla doğrulandı (Norveç KI-lov'u Stortinget'e sunma
+hedefi bahar 2027'ye ertelendi, kaynak regjeringen.no); beşincisi
+gerçek bir denetimle kapatıldı — `axe-core 4.13.0` ile WCAG 2.1/2.2 AA
+taraması 2 ihlal buldu (renk kontrastı 6 öğede, geçersiz `<dl>` yapısı),
+ikisi de düzeltildi (opaklık değerleri WCAG luminans formülüyle yeniden
+hesaplandı), yeniden dağıtıldı, ikinci tarama 0 ihlal verdi
+(`decisions/decision-log.md` madde 14).
+
+**Açık kalan:** iniş sayfasının React kaynağı henüz `BETA-ART` reposuna
+commit edilmedi — yalnızca Vercel'e doğrudan dosya yüklemesiyle yayında,
+git'e bağlı değil. `care-pilot/README.md`'ye bu ayrım not düşüldü (eski
+`site/index.html` MVP taslağıyla karıştırılmasın diye).
+
+## 02.09.2026 — Oturum-bazlı "sıradaki adım" önerisi: QBLOGG + NAVIAR CARE
+
+Kullanıcı her iki sitede de ziyaretçinin bir sonraki adımda ne görmek/
+almak istediğini tahmin eden bir sistem istedi ve "gerçek ML tabanlı"
+belirtti. Dürüstçe ayrıştırıldı: eğitim verisi (gerçek ziyaretçi
+davranışı, zaman içinde biriken) olmadan bir öğrenilmiş model kurmak
+var olmayan bir sofistikasyon iddia etmek olurdu (`CLAUDE.md`: "abartılı
+iddia bu işte en pahalı hatadır"). Plan iki aşamaya bölündü — Aşama 1
+şimdi kuruldu: gerçek, çalışan, içerik-tabanlı bir öneri motoru, oturum
+içi sinyallerle. Aşama 2 (kalıcı + rızalı + gerçek ML, backend gerektirir)
+kasıtlı olarak ertelendi, ayrı bir onay turu gerektiriyor.
+
+Kullanıcının netleştirmesi üzerine ("düzenleyicinin kendi trafiği
+sinyale karışmasın") her iki sitede de aynı desen: `?qb_editor=1` /
+`?naviar_editor=1` URL parametresi `localStorage`'a kalıcı bir mod
+bayrağı yazıyor (davranış verisi değil, `qb_lang`/`qb_theme` ile aynı
+kategori); bu bayrak açıkken sinyal toplama/okuma tamamen no-op.
+
+**QBLOGG** (`assets/js/app.js`): `sessionStorage['qb_seen']` — bu
+sekmede görüntülenen yazı slug'ları (en fazla 20). Kategori ilgisi
+üstel azalmayla ağırlıklandırılıyor (`weight *= 0.7`), tazelik hafif bir
+ikincil sinyal. `renderPost()`'taki "ilgili yazılar" artık bu skorla
+sıralanıyor; sinyal yoksa (ilk ziyaret) bugünkü deterministik kategori
+eşleşmesine sessizce düşülüyor — regresyon yok. `gizlilik.html`'e iki
+yeni madde eklendi (`qb_seen`, `qb_editor_mode`); `scripts/guvenlik.mjs`
+check 4 artık `sessionStorage.setItem`'ı da tarıyor (önceden yalnızca
+`localStorage.setItem` görüyordu — yeni oturum-bazlı anahtar eklenince
+denetim kör kalırdı, bu düzeltildi). `npm run check` ve `npm run
+guvenlik` yeşil (13 kontrol geçti, 0 yüksek, 0 orta).
+
+**NAVIAR CARE** (`naviar-care.vercel.app`, kaynak scratchpad'de):
+`IntersectionObserver` ile üç fokus alanı kartından (NAV, kommunale
+tjenester, digital veiledning) hangisinin ≥%50 görünür kaldığı
+`sessionStorage`'da ağırlıklı sayaç olarak tutuluyor. Bir alan belirgin
+biçimde öndeyse ("iki yakınının 1,3 katından fazla") iletişim
+bölümünde tek satırlık bir ipucu beliriyor: "Vi ser du er interessert i
+X — vil du starte samtalen der?". Değişiklik `mcp__Vercel__deploy_to_vercel`
+ile yeniden dağıtıldı (`dpl_8BQF4hLFuvCmSb9jwMv7Su21TFUw`, READY), canlı
+bundle'da yeni kod doğrulandı (`naviar_care_session_signal`,
+`naviar_editor_mode`, `IntersectionObserver` string'leri mevcut).
+`docs/naviar/care-pilot/product/mvp-data-map.md`'ye "veri asgariye
+indirilir" ilkesiyle uyumluluğu açıklayan bir bölüm eklendi.
+
+Her iki sinyal de aynı ilkede: anonim, yalnızca oturum boyunca,
+sunucuya hiç gönderilmiyor, sekme kapanınca kayboluyor — GDPR rızası
+gerektirmiyor çünkü kalıcı profil oluşturulmuyor.

@@ -85,15 +85,22 @@
         bu siteye bağlanır. Bize veri, ancak siz bir form doldurduğunuzda ulaşır.</p>
 
         <h2>Tarayıcınızda ne saklanıyor</h2>
-        <p>Üç şey, hepsi sizin cihazınızda kalır ve bize gönderilmez:</p>
+        <p>Beş şey, hepsi sizin cihazınızda kalır ve bize gönderilmez:</p>
         <ul>
           <li><code>qb_lang</code> — seçtiğiniz dil.</li>
           <li><code>qb_theme</code> — açık/koyu tema tercihiniz.</li>
           <li><code>qb_subs</code> — yalnızca bülten servisi henüz bağlı değilken, girdiğiniz e-posta
           adresinin geçici kopyası. Servis bağlandığında bu kayıt kullanılmıyor.</li>
+          <li><code>qb_seen</code> — bu sekmede okuduğunuz yazıların listesi; yalnızca "ilgili
+          yazılar" önerisini kategori ilginize göre sıralamak için kullanılır. Sekmeyi kapattığınızda
+          (sessionStorage) otomatik silinir, hiçbir yere gönderilmez.</li>
+          <li><code>qb_editor_mode</code> — yalnızca siteyi düzenleyenler için: açıkken yukarıdaki
+          <code>qb_seen</code> hiç yazılmaz, öneri her zaman varsayılan sıralamaya döner.</li>
         </ul>
-        <p>Bunlar çerez değil, tarayıcı deposudur (localStorage) ve tercih saklamak dışında bir işe
-        yaramaz. Tarayıcınızın site verilerini temizleyerek her an silebilirsiniz.</p>
+        <p>Bunlar çerez değil, tarayıcı deposudur (localStorage/sessionStorage) ve tercih saklamak
+        dışında bir işe yaramaz. Hiçbiri sunucumuza veya üçüncü bir tarafa gönderilmez — "ölçümleme"
+        bölümündeki "izleme aracı yok" ifadesiyle çelişmez, çünkü hiçbir veri cihazınızdan çıkmaz.
+        Tarayıcınızın site verilerini temizleyerek her an silebilirsiniz.</p>
 
         <h2>Formlar</h2>
         <h3>Brief ve yazar başvuru formu</h3>
@@ -151,10 +158,15 @@
         this site. We receive data only when you submit a form.</p>
 
         <h3>What is stored in your browser</h3>
-        <p>Three items, all kept on your device and never sent to us: <code>qb_lang</code> (your
-        language), <code>qb_theme</code> (light or dark), and <code>qb_subs</code> — a temporary copy
-        of the email you typed, used only while the newsletter service is not yet connected. These
-        are browser storage, not cookies, and clearing your site data removes them.</p>
+        <p>Five items, all kept on your device and never sent to us: <code>qb_lang</code> (your
+        language), <code>qb_theme</code> (light or dark), <code>qb_subs</code> — a temporary copy
+        of the email you typed, used only while the newsletter service is not yet connected;
+        <code>qb_seen</code> — the posts you've read in this tab, used only to rank the "related
+        posts" suggestion by your category interest (session storage — cleared automatically when
+        you close the tab, never sent anywhere); and <code>qb_editor_mode</code> — for site editors
+        only, disables <code>qb_seen</code> entirely so our own testing traffic never affects the
+        suggestion. These are browser storage, not cookies, and clearing your site data removes
+        them.</p>
 
         <h3>Forms</h3>
         <p>The brief and writer application forms are <strong>not submitted to a server</strong>.

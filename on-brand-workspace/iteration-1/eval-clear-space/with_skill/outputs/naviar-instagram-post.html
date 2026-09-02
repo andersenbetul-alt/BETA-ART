@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>NAVIAR — Instagram duyuru postu (marka uyumlu)</title>
+<style>
+  html,body{margin:0;background:#e9eaec;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+  .stage{display:flex;flex-direction:column;align-items:center;gap:18px;padding:40px 16px;}
+  .canvas{
+    position:relative;
+    width:1080px;height:1080px;
+    background:#0A1628; /* Midnight Navy */
+    overflow:hidden;
+    box-shadow:0 8px 40px rgba(0,0,0,.25);
+  }
+  .kicker{
+    position:absolute; top:96px; left:96px; right:220px;
+    color:#D4AF37; /* gold — small structural label, not a CTA / not body copy */
+    font-size:22px; letter-spacing:.28em; font-weight:600; text-transform:uppercase;
+  }
+  .headline{
+    position:absolute; top:150px; left:96px; right:140px;
+    color:#F5F6F8; /* Off White ink on dark ground */
+    font-size:76px; line-height:1.06; font-weight:700; letter-spacing:-.01em;
+  }
+  .subhead{
+    position:absolute; top:430px; left:96px; right:220px;
+    color:#F5F6F8; opacity:.78;
+    font-size:28px; line-height:1.5; font-weight:400; max-width:760px;
+  }
+  .rule{
+    position:absolute; top:498px; left:98px; width:64px; height:3px; background:#D4AF37;
+  }
+  .placeholder-note{
+    position:absolute; top:560px; left:96px; right:300px;
+    color:#F5F6F8; opacity:.55; font-size:19px; line-height:1.6; font-style:italic;
+  }
+  /* --- logo lockup, bottom-right corner --- */
+  .lockup-wrap{
+    position:absolute;
+    right:48px; bottom:48px;
+    width:300px; /* well above the 160px minimum full-lockup width */
+  }
+  .lockup-wrap svg{ display:block; width:100%; height:auto; }
+
+  /* Clear-space guide — for review only, not part of the delivered creative.
+     Toggle with the button below. Box = 0.30 × cap-height (≈12px at this size)
+     measured out from the lockup's bounding box. */
+  .clearspace-guide{
+    position:absolute;
+    right: calc(48px - 12px);
+    bottom: calc(48px - 12px);
+    width: calc(300px + 24px);
+    height: calc(57.8px + 24px);
+    border:1px dashed rgba(212,175,55,.9);
+    pointer-events:none;
+    display:none;
+  }
+  .canvas.show-guide .clearspace-guide{ display:block; }
+
+  .controls{ display:flex; gap:10px; align-items:center; font-size:14px; color:#0A1628;}
+  .controls button{
+    font:inherit; padding:8px 14px; border-radius:6px; border:1px solid #0A1628;
+    background:#F5F6F8; cursor:pointer;
+  }
+  .controls button[aria-pressed="true"]{ background:#0A1628; color:#F5F6F8; }
+  .caption{ max-width:640px; text-align:center; color:#333; font-size:14px; line-height:1.5; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="controls">
+    <button id="toggle" aria-pressed="false">Clear-space kılavuzunu göster</button>
+  </div>
+
+  <div class="canvas" id="canvas">
+    <div class="kicker">Duyuru</div>
+    <div class="headline">Yeni bir<br>şey geliyor.</div>
+    <div class="rule"></div>
+    <div class="subhead">Detaylar yakında. Yayın tarihi ve içerik NAVIAR ekibi tarafından paylaşılacak.</div>
+    <div class="placeholder-note">Metin yer tutucudur — gerçek duyuru başlığı ve tarihi eklenmeli. Bu görsel beş adaydan hiçbirini "resmi ton" olarak kullanmaz (bkz. NAVIAR-LOGO-KARAR.md §6.7).</div>
+
+    <div class="lockup-wrap">
+      <!-- NAVIAR master lockup, reverse (dark-ground) version — brand/naviar/master/naviar-lockup-horizontal-reverse.svg, unmodified -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 752.75 145.0" role="img" aria-label="NAVIAR">
+        <title>NAVIAR</title>
+        <rect x="0" y="0" width="752.75" height="145.0" fill="#0A1628"/>
+        <g transform="translate(0 0) scale(0.18)">
+          <path d="M0 0 H150.0 L610.0 626.97 V167.7 L760.0 428.7 V800.0 H610.0 L150.0 173.03 V800.0 H0 Z" fill="#F5F6F8"/>
+          <path d="M610.0 0 H760.0 V428.7 L610.0 167.7 Z" fill="#D4AF37"/>
+        </g>
+        <path d="M0 0 H15.0 L63.0 83.36 V0 H78.0 V100.0 H63.0 L15.0 16.64 V100.0 H0 Z" transform="translate(195.75 22.5)" fill="#F5F6F8" fill-rule="evenodd"/>
+        <path d="M41.0 0.0 L82.0 100.0 L65.79 100.0 L41.0 39.54 L16.21 100.0 L0 100.0 Z M27.69 72.0 H54.31 L60.46 87.0 H21.54 Z" transform="translate(303.75 22.5)" fill="#F5F6F8" fill-rule="evenodd"/>
+        <path d="M41.0 100.0 L82.0 0.0 L65.79 0.0 L41.0 60.46 L16.21 0.0 L0 0.0 Z" transform="translate(409.75 22.5)" fill="#F5F6F8" fill-rule="evenodd"/>
+        <path d="M0 0 H15.0 V100.0 H0 Z" transform="translate(523.75 22.5)" fill="#F5F6F8" fill-rule="evenodd"/>
+        <path d="M41.0 0.0 L82.0 100.0 L65.79 100.0 L41.0 39.54 L16.21 100.0 L0 100.0 Z M27.69 72.0 H54.31 L60.46 87.0 H21.54 Z" transform="translate(572.75 22.5)" fill="#F5F6F8" fill-rule="evenodd"/>
+        <path d="M0 0 H44.0 A25.0 25.0 0 0 1 44.0 50.0 L72.0 100.0 H54.0 L16.0 50.0 H15.0 V100.0 H0 Z M15.0 15.0 H44.0 A10.0 10.0 0 0 1 44.0 35.0 H15.0 Z" transform="translate(680.75 22.5)" fill="#F5F6F8" fill-rule="evenodd"/>
+      </svg>
+    </div>
+
+    <div class="clearspace-guide" title="0.30 × cap-height clear space"></div>
+  </div>
+
+  <p class="caption">1080×1080 · Midnight Navy #0A1628 zemin · Off White #F5F6F8 metin · Premium Gold #D4AF37 yalnız ince bir kural çizgisinde (yapısal aksan, taşıyıcı metin değil) · lockup 300px genişlik (min. 160px'in üzerinde) · lockup çevresinde ≥12px (0.30×cap-height) boş alan hiçbir metin/grafikle kesişmiyor.</p>
+</div>
+<script>
+document.getElementById('toggle').addEventListener('click', function(){
+  var c = document.getElementById('canvas');
+  var on = c.classList.toggle('show-guide');
+  this.setAttribute('aria-pressed', on);
+  this.textContent = on ? 'Clear-space kılavuzunu gizle' : 'Clear-space kılavuzunu göster';
+});
+</script>
+</body>
+</html>

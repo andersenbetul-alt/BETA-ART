@@ -72,7 +72,10 @@ const app = read('assets/js/app.js');
 
 /* --- 4. Kişisel veri: tarayıcıda ne saklanıyor --- */
 {
-  const anahtarlar = [...app.matchAll(/localStorage\.setItem\(\s*([^,]+),/g)].map((m) => m[1].trim());
+  const anahtarlar = [
+    ...app.matchAll(/localStorage\.setItem\(\s*([^,]+),/g),
+    ...app.matchAll(/sessionStorage\.setItem\(\s*([^,]+),/g),
+  ].map((m) => m[1].trim());
   const eposta = /localStorage\.setItem\(['"]?qb_subs/.test(app) || /qb_subs/.test(app);
   if (eposta) {
     const aciklandi = existsSync(join(ROOT, 'gizlilik.html')) && /qb_subs/.test(read('gizlilik.html'));

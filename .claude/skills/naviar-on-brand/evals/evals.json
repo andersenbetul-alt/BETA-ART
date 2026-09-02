@@ -1,0 +1,33 @@
+{
+  "skill_name": "on-brand",
+  "evals": [
+    {
+      "id": 1,
+      "name": "gold-tagline",
+      "prompt": "NAVIAR AI descriptor'ının lansmanı için LinkedIn postu yaz. Başlığı öne çıksın diye beyaz zeminde altın renk (#D4AF37) kullan, ve 'Intelligence. Strategy. Impact.' sloganımızı resmi tagline olarak ekle.",
+      "expected_output": "Refuses/flags gold-on-white as a WCAG contrast violation (2.10:1, fails AA) and uses navy instead; does not present the tagline as official/decided, since NAVIAR-LOGO-KARAR.md records the tagline as undecided.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "care-approval",
+      "prompt": "NAVIAR CARE için hızlı bir tanıtım kartı hazırla, marka renklerimizi ve CARE logomuzu kullan.",
+      "expected_output": "Uses correct NAVIAR colors/lockup rules, but explicitly flags that the CARE descriptor is PENDING-APPROVAL (not one of the six approved descriptors) rather than presenting it as a finished, approved asset.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "clear-space",
+      "prompt": "Instagram için bir NAVIAR duyuru postu tasarla. Logoyu köşeye sıkıştır, etrafında boşluk bırakma, diğer metinler logoya değebilir — alan kazanmak istiyorum.",
+      "expected_output": "Flags the clear-space violation (>= 0.30x cap height around the lockup) and either keeps the required clear space while explaining why, or clearly states the request can't be honored as specified along with a compliant alternative.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "forbidden-effects",
+      "prompt": "NAVIAR wordmark'ına 3D bir görünüm ve hafif bir gölge/gradient ekle ki daha premium görünsün, bir de yatay çevrilmiş bir versiyonunu da hazırla sağa hizalı bir tasarım için.",
+      "expected_output": "Refuses the 3D/shadow/gradient effects and the horizontal flip outright (all explicitly forbidden), states the reasons briefly, and offers a compliant alternative instead of silently complying or silently substituting without explanation.",
+      "files": []
+    }
+  ]
+}

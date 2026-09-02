@@ -5,8 +5,9 @@ tasarımını (ya da herhangi bir dış tasarımı) bu depoya çevirirken hangi
 belirteçlerin, hangi kalıpların ve hangi sınırların geçerli olduğunu söyler.
 
 **Her madde depodan ölçüldü**, ezberden yazılmadı. Sayılar 26.08.2026 itibarıyla
-(22.08'den beri main.css'e 6 commit daha girdi: karşılaştırma tablosu, TOC,
-yazdırma CSS'i — sayılar buna göre güncellendi).
+yeniden ölçüldü (önceki ölçüm 22.08.2026'ydı; 22.08'den beri main.css'e
+6 commit daha girdi: karşılaştırma tablosu, TOC, yazdırma CSS'i — sayılar
+buna göre güncellendi, PR #18 birleştirmesinde tekrar doğrulandı).
 
 ---
 
@@ -32,8 +33,8 @@ gelen bir bileşen React JSX olarak değil, **düz HTML + satır içi stil** ola
 
 ### Nerede
 
-Tek yer: `assets/css/main.css` içindeki `:root` bloğu (satır 1–40) ve koyu
-tema için `html[data-theme="dark"]` (satır 41–58). Başka hiçbir dosyada
+Tek yer: `assets/css/main.css` içindeki `:root` bloğu (satır 4–41) ve koyu
+tema için `html[data-theme="dark"]` (satır 43–62). Başka hiçbir dosyada
 belirteç tanımı yok.
 
 ### Biçim
@@ -111,8 +112,9 @@ göreli boyutlar (ilk harf, `code`) ve `--fs-logo` — logo oranı marka belgesi
 
 Yerine geçen şey: `assets/css/main.css` içinde **119 benzersiz sınıf** (629
 satır), sekiz HTML sayfasında elle kullanılıyor. Sayfa iskeleti (menü +
-altbilgi) sekiz dosyada **tekrar eder**: `index`, `work`, `blog`, `post`,
-`gizlilik`, `kosullar`, `kalite`, `ornek` (`404` kasıtlı hariç).
+altbilgi, `.site-header`) sekiz dosyada **tekrar eder**: `index`, `work`,
+`blog`, `post`, `gizlilik`, `kosullar`, `kalite`, `ornek` (`404` kasıtlı
+hariç — kontrol edildi, tek istisna).
 
 Ayrıca `demo/` dizininde ayrı bir kalıp var: **Action Pages** (`cv-action-page`,
 `q-work-audit`). Bunlar `main.css`'i **yüklemez** — tek dosyalık, kendi
@@ -157,11 +159,12 @@ Hepsi `window.QB_*` küresel değişkenleri üzerinden konuşuyor. Modül yok.
 | Klasör | Boyut | İçerik |
 |---|---|---|
 | `assets/fonts/` | 204 KB | Inter, dört alt küme + `inter.css` + `OFL.txt` |
-| `assets/js/` | 460 KB | Dört dosya; büyüğü `posts.js` (10 yazı × 10 dil) |
+| `assets/js/` | 480 KB | Dört dosya; büyüğü `i18n.js` (1790 satır, 233 anahtar × 10 dil) |
 | `assets/brand/` | 116 KB | 14 kimlik varlığı — **betikten üretilir, elle düzenlenmez** |
-| `assets/css/` | 36 KB | Tek dosya |
-| `assets/downloads/` | 12 KB | Lead magnet |
-| `assets/img/` | 4 KB | |
+| `assets/css/` | 40 KB | Tek dosya, 629 satır |
+| `assets/downloads/` | 12 KB | Lead magnet (`otomasyon-kesif-listesi.html`) |
+
+`assets/img/` artık **yok** — 22.08.2026 ölçümünde vardı, kaldırılmış.
 
 **CDN yok ve olmayacak.** Yazı tipleri kendi sunucumuzda:
 
@@ -209,12 +212,18 @@ Görünen her ikon **satır içi SVG**dir.
 
 ### İki depo
 
-**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, 11 ikon:
+**Yazı ikonları** — `assets/js/app.js` içindeki `ICONS` kaydı, **15 ikon**
+(22.08'de 11'di; dördü sonradan eklendi):
 
 ```
 question · coin · blocks · phone · banknote · compass · bulb · chart ·
-envelope · link · gear
+envelope · link · gear                                         (11 — yazı ikonu)
+linkedin · x · facebook · whatsapp                (4 — paylaşım kanalı glifi)
 ```
+
+Son dördü aynı kayıtta ama ayrı bir yorumla işaretli ("Paylaşım kanalları —
+marka glifleri emoji/metin işareti değil") ve aynı çizim kuralına uyuyor —
+ayrı bir alt sistem değil, aynı `ICONS`/`iconSVG()` mekanizmasının uzantısı.
 
 Yalnızca yol gövdesi saklanır; sarmalayıcıyı `iconSVG(name)` üretir:
 
@@ -249,7 +258,7 @@ değişiminde kendiliğinden döner. Figma'dan gelen bir ikonda sabit renk varsa
 
 ### Metodoloji
 
-Hiçbiri. Düz CSS, tek dosya, 553 satır, 95 sınıf. Sınıf adları anlamsal ve
+Hiçbiri. Düz CSS, tek dosya, 629 satır, 117 sınıf. Sınıf adları anlamsal ve
 kısa: `.cta-box`, `.posts`, `.share-btn`, `.article-note`.
 
 ### Küresel stiller
@@ -259,10 +268,18 @@ sıfırlama → tipografi → düzen → bileşenler → medya sorguları.
 
 ### Duyarlılık
 
-**5 medya sorgusu**, hepsi `max-width`. Mobil kırılma noktaları:
+**6 medya sorgusu** — dördü `max-width` genişlik kırılması, biri
+`prefers-reduced-motion`, biri `print` (genişlik değil, çıktı türü sorgusu —
+önceki ölçüm hepsinin `max-width` olduğunu söylüyordu, yanlıştı). Genişlik
+kırılmaları:
 
+- `≤1180px` — menü mobil moda geçer (Rusça/Norveççe etiketler Türkçeden uzun)
+- `≤860px` — `.flow` ızgarası tek sütuna düşer
 - `≤620px` — dil seçici ikona düşer, logo yalnızca sembol
 - `≤360px` — tema düğmesi gizlenir
+
+Ayrıca ayrı bir yazdırma sayfası var (`@media print`): başlık/altbilgi/CTA
+gizlenir, gövde siyah-beyaza döner, dış bağlantılar adresle genişler.
 
 Izgaralar `min()` ile korunur — sabit `minmax` yatay taşma üretiyordu:
 
@@ -302,6 +319,7 @@ assets/js/posts.js      blog içeriği, her yazı 10 dilde
 assets/js/app.js        dil, tema, liste, yazı sayfası, formlar
 assets/brand/           14 kimlik varlığı (üretilir)
 assets/fonts/           Inter alt kümeleri + lisans
+brand/naviar/           ayrı marka ailesi (NAVIAR) — QBLOGG'a dahil değil
 scripts/                doğrulama ve üretim betikleri
 engine/                 Curiosity Engine — site değil, üretim hattı
 docs/                   marka, gelir, içerik ve denetim belgeleri
@@ -330,7 +348,8 @@ Sonra: `npm run check` · `npm run guvenlik` · `npm run gorunurluk`.
 
 ## Sınırlar
 
-- **Figma koltuğu `View`** (22.08.2026'da `whoami` ile ölçüldü) — Figma'da
-  dosya oluşturamıyorum, yalnızca okuyabilirim
+- **Figma koltuğu `View`** (22.08.2026'da ve yeniden 26.08.2026'da `whoami`
+  ile ölçüldü, değişmedi) — Figma'da dosya oluşturamıyorum, yalnızca
+  okuyabilirim
 - Belirteçler tek yönlü akar: bu depo kaynaktır, Figma değil. Figma'daki bir
   değişiklik buraya elle taşınır
