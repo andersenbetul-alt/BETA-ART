@@ -321,7 +321,28 @@ uygulaması olarak dosyalıyor, Business ile ilgisi yok.
   DNS belgesi kendisi "planlı, yayınlanmadı" diyor, yani bu henüz karar
   değil.
 
-### Erişim sınırları (bu oturumdan doğrulanan platform kısıtları)
+#### Canlı dağıtım (02-03.09.2026, bu oturumda kuruldu)
+
+claude.ai artefaktı (`https://claude.ai/code/artifact/be610802-4a4b-4e2f-8430-6c2de0b61fcb`,
+davranış sistemi + font düzeltmesiyle güncel) taslak kalmaya devam
+ediyor, ama kullanıcı gerçek bir web adresi istedi. `bet-art` Vercel
+takımında (erişilebilir) **yeni** bir proje kuruldu: **`beta-art-business`**
+→ **https://beta-art-business-navy.vercel.app** (alias;
+`beta-art-business-bet-art.vercel.app` de çalışıyor). Vite+React,
+kaynak dosyalar `deploy_to_vercel` ile doğrudan yüklendi — bu depoya
+bağlı bir Git deposu yok, GitHub push'u tetiklemiyor.
+
+**Karıştırılmamalı:** bu, yukarıdaki "Açık sorular" madde 5'te geçen
+ve bu oturumdan **erişilemeyen** `project-hxi` takımındaki aynı adlı
+(`beta-art-business`) projeden tamamen farklı, ayrı bir proje —
+sadece isim çakışması var, ikisi arasında bilinen bir ilişki yok.
+
+**Standing kural (kullanıcı talimatı, 03.09.2026): "BUNU HER SEFERINDE
+YAP"** — Business artefaktında bundan sonra yapılan her güncelleme
+(claude.ai artefaktına publish) aynı oturumda `beta-art-business`
+Vercel projesine de `deploy_to_vercel` ile (kaynak dosyalar, hedef
+`production`) yansıtılmalı. Bu depoda otomatik tetiklenen bir CI/CD
+yok — her seferinde elle yapılan bir adım, unutulmamalı.
 - GitHub: bu oturum `andersenbetul-alt/beta-art` ile başladığı için
   başka hiçbir GitHub hesabından (`betulandersen-droid` dahil) depo
   eklenemiyor — "cross-tier adds are not supported" hatası, deponun
@@ -378,7 +399,7 @@ uygulaması olarak dosyalıyor, Business ile ilgisi yok.
 |---|---|---|
 | GitHub | `andersenbetul-alt` | bu depo (`beta-art` → QBLOGG) |
 | GitHub | `betulandersen-droid` | `eve-slack-agent` (naviar-consult + hxi-music'in bağlı olduğu repo), `naviar-care-1` |
-| Vercel | takım `bet-art` (`team_xNtowH7U0jXQrI53DFJFzH2o`) — **31.08.2026'da 19 projeye çıktığı görüldü** (önceki bilgi 4-5'ti) | qblogg (**not: `list_projects` bunun `betulandersen-droid/eve-slack-agent`'a bağlı olduğunu gösterdi — bu YANLIŞ ALARM, yetkili `get_project` sorgusu hiçbir Git bağlantısı olmadığını doğruladı, qblogg güvende), naviar-consult, naviar-care-1, naviar-care-2, naerhjelp-pilot-v2, naviar-paaroerende-pilot, hxi-music, hxi, hxi-final, hxi-final-2026, hxi-final-2026-permission-test, hxi-nordic-phonk, **beta-art, beta-art-privat, beta-art-archive, beta-art-review-v1, beta-art-master-web**, autopromt — bu takımdaki `beta-art*` projelerinin `project-hxi` takımındaki aynı-adlı projelerle ilişkisi doğrulanmadı (iki ayrı Vercel hesabında aynı isimler var, karıştırılmamalı) |
+| Vercel | takım `bet-art` (`team_xNtowH7U0jXQrI53DFJFzH2o`) — **31.08.2026'da 19 projeye çıktığı görüldü** (önceki bilgi 4-5'ti) | qblogg (**not: `list_projects` bunun `betulandersen-droid/eve-slack-agent`'a bağlı olduğunu gösterdi — bu YANLIŞ ALARM, yetkili `get_project` sorgusu hiçbir Git bağlantısı olmadığını doğruladı, qblogg güvende), naviar-consult, naviar-care-1, naviar-care-2, naerhjelp-pilot-v2, naviar-paaroerende-pilot, hxi-music, hxi, hxi-final, hxi-final-2026, hxi-final-2026-permission-test, hxi-nordic-phonk, **beta-art, beta-art-privat, beta-art-archive, beta-art-review-v1, beta-art-master-web**, autopromt — bu takımdaki `beta-art*` projelerinin `project-hxi` takımındaki aynı-adlı projelerle ilişkisi doğrulanmadı (iki ayrı Vercel hesabında aynı isimler var, karıştırılmamalı). **02-03.09.2026'da eklendi:** `betart-panosu`, `hxi-official-native-probe`, `hxi-artist-final-20260901-v2`, `hxi-web-final-20260901`, `hxi-web-final-20260901-alt`, `naviar-care-live`, `naviarcare`, ve **bu oturumda kurulan `beta-art-business`** (canlı: `beta-art-business-navy.vercel.app`, bkz. "Business (BAB-02) → Canlı dağıtım") |
 | Vercel | `andersenbetul-9635s-projects` (kişisel, bu oturumdan **erişilemiyor**) | `beta-art-contact1` (muhtemelen), `beta-id-verification` (muhtemelen) |
 | Vercel | takım/hesap `project-hxi` (bu oturumdan **erişilemiyor**, 30.08.2026 doğrulandı: `get_project` dört proje için de `403 Forbidden`) | **dört proje kesinleşti:** `beta-art-archive` (muhtemelen BAP-01 Private/`beta-art.com`), `beta-art-business` (muhtemelen BAB-02), `beta-art` (muhtemelen ana/gateway site), `beta-art-industry-archive` (muhtemelen BAG-03 ya da sektör-bazlı bir varyant) — hepsi `/settings/git`'e sahip yani GitHub reposuna bağlı, hangi repo(lar) olduğu bu oturumdan görülemiyor. **Bu liste büyümeye devam edebilir** — her yeni proje adını tek tek doğrulamak yerine, gerçek ilerleme için kullanıcının bağlı GitHub repo adını veya bu Vercel takımına erişimi paylaşması gerekiyor. |
 | Lovable | çalışma alanı "Betül's Lovable" (`92fe40bbf478c5479f16`) | human-lens-archive (Beta Art Archive, yayında), HXI Phonk Studio ×4 deneme, Hjemmehjelp Norge |
