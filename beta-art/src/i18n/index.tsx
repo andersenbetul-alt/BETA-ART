@@ -19,6 +19,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { HOME } from "./home";
 
 export type Dir = "ltr" | "rtl";
 export interface Locale {
@@ -408,6 +409,12 @@ const zh: Dict = {
 };
 
 const DICT: Record<string, Dict> = { en, no, tr, fr, de, es, pt, ar, ja, zh };
+
+// Merge the homepage dictionaries (src/i18n/home.*.ts) into the chrome dicts so
+// every string is reachable through the same t() lookup.
+for (const code of Object.keys(DICT)) {
+  if (HOME[code]) Object.assign(DICT[code], HOME[code]);
+}
 
 function normalize(code: string | undefined | null): string {
   if (!code) return FALLBACK;

@@ -7,6 +7,7 @@ import { LicenseRequestForm } from "@/components/LicenseRequestForm";
 import { ForYou } from "@/components/ForYou";
 import { canonicalUrl, robotsContent, siteConfig } from "@/config/site";
 import { plates, licenses, faqs } from "@/data/collection";
+import { useT } from "@/i18n";
 
 const TITLE = "Beta Art — Photography with Proof";
 const DESCRIPTION =
@@ -59,122 +60,60 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+// Content arrays hold i18n KEYS; values live in src/i18n/home.*.ts.
 const proofChain = [
-  ["01", "Human", "A named, accountable photographer makes the capture."],
-  ["02", "Camera", "Physical camera and capture metadata are recorded when available."],
-  ["03", "RAW", "The original RAW can be archived and fingerprinted before delivery."],
-  ["04", "Edit", "Permitted edits are disclosed instead of hidden behind a vague AI-free label."],
-  ["05", "Rights", "Copyright, consent and data-mining restrictions travel with the asset."],
-  ["06", "Licence", "The buyer receives a licence tied to the exact image and agreed use."],
+  ["01", "home.proof.1.t", "home.proof.1.d"],
+  ["02", "home.proof.2.t", "home.proof.2.d"],
+  ["03", "home.proof.3.t", "home.proof.3.d"],
+  ["04", "home.proof.4.t", "home.proof.4.d"],
+  ["05", "home.proof.5.t", "home.proof.5.d"],
+  ["06", "home.proof.6.t", "home.proof.6.d"],
+] as const;
+
+const passportRows = [
+  ["home.pass.r1.t", "home.pass.r1.d"],
+  ["home.pass.r2.t", "home.pass.r2.d"],
+  ["home.pass.r3.t", "home.pass.r3.d"],
+  ["home.pass.r4.t", "home.pass.r4.d"],
+  ["home.pass.r5.t", "home.pass.r5.d"],
+  ["home.pass.r6.t", "home.pass.r6.d"],
 ] as const;
 
 const series = [
-  {
-    roman: "I",
-    title: "Work",
-    note: "People at work — skill, repetition, concentration and the physical reality of making a living.",
-    use: "Editorial · corporate · campaigns",
-  },
-  {
-    roman: "II",
-    title: "Craft",
-    note: "Hands, tools and materials. Process rather than product; evidence of how something is actually made.",
-    use: "Design · publishing · brand stories",
-  },
-  {
-    roman: "III",
-    title: "Land and Light",
-    note: "Specific Norwegian places at specific moments, treated as records rather than generic scenery.",
-    use: "Travel · editorial · place branding",
-  },
-  {
-    roman: "IV",
-    title: "The Table",
-    note: "Food, preparation and shared meals — steam, flour, markets and people before the finished plate.",
-    use: "Food · hospitality · editorial",
-  },
-  {
-    roman: "V",
-    title: "Rooms",
-    note: "Nordic architecture and interiors seen as lived spaces, with attention to time, light and use.",
-    use: "Architecture · design · property",
-  },
-  {
-    roman: "VI",
-    title: "The Unseen",
-    note: "Places outside the familiar route: nearby, real and under-photographed rather than over-produced.",
-    use: "Destination · discovery · editorial",
-  },
-  {
-    roman: "VII",
-    title: "Weather",
-    note: "Weather meeting daily life and built environments — atmosphere recorded as an event, not an effect.",
-    use: "News · climate · editorial",
-  },
+  { roman: "I", t: "home.series.1.t", n: "home.series.1.n", u: "home.series.1.u" },
+  { roman: "II", t: "home.series.2.t", n: "home.series.2.n", u: "home.series.2.u" },
+  { roman: "III", t: "home.series.3.t", n: "home.series.3.n", u: "home.series.3.u" },
+  { roman: "IV", t: "home.series.4.t", n: "home.series.4.n", u: "home.series.4.u" },
+  { roman: "V", t: "home.series.5.t", n: "home.series.5.n", u: "home.series.5.u" },
+  { roman: "VI", t: "home.series.6.t", n: "home.series.6.n", u: "home.series.6.u" },
+  { roman: "VII", t: "home.series.7.t", n: "home.series.7.n", u: "home.series.7.u" },
 ] as const;
 
+// Brand-named layers keep their literal title; only "Commissioned work" is translated.
 const archiveLayers = [
-  {
-    title: "Beta Archive",
-    state: "Foundation",
-    body: "Curated human photography organised by series, catalogue record, provenance status and licence.",
-  },
-  {
-    title: "Beta Passport",
-    state: "Next layer",
-    body: "A readable record for creator, capture, RAW evidence, edit disclosure, rights and licence status.",
-  },
-  {
-    title: "Beta Vault",
-    state: "Next layer",
-    body: "Protected storage of original RAW evidence and cryptographic fingerprints without exposing valuable originals publicly.",
-  },
-  {
-    title: "Beta Verify",
-    state: "Planned",
-    body: "A verification interface for checking whether a delivered file matches a registered Beta Art record.",
-  },
-  {
-    title: "Beta Rights",
-    state: "Next layer",
-    body: "Human-readable licences supported by machine-readable rights and AI-training reservations where technically available.",
-  },
-  {
-    title: "Commissioned work",
-    state: "Planned",
-    body: "A client brief becomes a real-world shoot, delivered to the same provenance and licensing standard as the archive.",
-  },
+  { title: "Beta Archive", state: "home.plat.l1.s", body: "home.plat.l1.b" },
+  { title: "Beta Passport", state: "home.plat.l2.s", body: "home.plat.l2.b" },
+  { title: "Beta Vault", state: "home.plat.l3.s", body: "home.plat.l3.b" },
+  { title: "Beta Verify", state: "home.plat.l4.s", body: "home.plat.l4.b" },
+  { title: "Beta Rights", state: "home.plat.l5.s", body: "home.plat.l5.b" },
+  { titleKey: "home.plat.l6.t", state: "home.plat.l6.s", body: "home.plat.l6.b" },
 ] as const;
 
 const audiences = [
-  {
-    title: "Brands & agencies",
-    body: "Photography with documented origin, clearer rights and optional exclusivity for campaigns and commercial work.",
-    cta: "View licensing",
-    href: "#licensing",
-  },
-  {
-    title: "Editorial & institutions",
-    body: "Source transparency, provenance records and licensing documentation for publishing and institutional use.",
-    cta: "See the proof chain",
-    href: "#proof",
-  },
-  {
-    title: "Collectors & private use",
-    body: "License or collect human-made photography with a clearer record of origin than a conventional download.",
-    cta: "Explore the archive",
-    href: "#collection",
-  },
+  { t: "home.aud.1.t", b: "home.aud.1.b", cta: "home.aud.1.cta", href: "#licensing" },
+  { t: "home.aud.2.t", b: "home.aud.2.b", cta: "home.aud.2.cta", href: "#proof" },
+  { t: "home.aud.3.t", b: "home.aud.3.b", cta: "home.aud.3.cta", href: "#collection" },
 ] as const;
 
 function Home() {
+  const t = useT();
   return (
     <div className="min-h-screen bg-background text-foreground">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
       >
-        Skip to content
+        {t("ui.skip")}
       </a>
       <SiteHeader />
 
@@ -183,25 +122,21 @@ function Home() {
           <div className="mx-auto max-w-[92rem] px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-24 lg:pt-32">
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
               <div>
-                <p className="label">Verified human photography · provenance · licensing</p>
+                <p className="label">{t("home.hero.kicker")}</p>
                 <h1 className="display mt-6 text-[clamp(3rem,8vw,7rem)] leading-[0.92]">
-                  Photography
-                  <br />
-                  with proof.
+                  {t("home.hero.title")}
                 </h1>
                 <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                  Beta Art is a single-photographer archive built around evidence. The aim is to
-                  preserve the connection between maker, physical capture, original file, disclosed
-                  edits, rights and licence — so the photograph arrives with context, not just pixels.
+                  {t("home.hero.lead")}
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <a href="#collection" className="btn-ink focus-ring">Explore the archive</a>
-                  <a href="#proof" className="btn-outline-ink focus-ring">See how proof works</a>
+                  <a href="#collection" className="btn-ink focus-ring">{t("home.hero.cta1")}</a>
+                  <a href="#proof" className="btn-outline-ink focus-ring">{t("home.hero.cta2")}</a>
                 </div>
                 <div className="rule-top mt-10 grid gap-5 pt-6 sm:grid-cols-3">
-                  <div><p className="label">Human captured</p><p className="mt-2 text-sm text-muted-foreground">No synthetic imagery is offered as an archive plate.</p></div>
-                  <div><p className="label">Evidence stated</p><p className="mt-2 text-sm text-muted-foreground">Verified, pending and unknown are kept visibly distinct.</p></div>
-                  <div><p className="label">Direct licensing</p><p className="mt-2 text-sm text-muted-foreground">Rights are tied to the exact catalogue record.</p></div>
+                  <div><p className="label">{t("home.hero.f1.t")}</p><p className="mt-2 text-sm text-muted-foreground">{t("home.hero.f1.d")}</p></div>
+                  <div><p className="label">{t("home.hero.f2.t")}</p><p className="mt-2 text-sm text-muted-foreground">{t("home.hero.f2.d")}</p></div>
+                  <div><p className="label">{t("home.hero.f3.t")}</p><p className="mt-2 text-sm text-muted-foreground">{t("home.hero.f3.d")}</p></div>
                 </div>
               </div>
 
@@ -216,7 +151,7 @@ function Home() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <figcaption className="label mt-3">Development image — replace with verified archive original before launch</figcaption>
+                <figcaption className="label mt-3">{t("home.hero.caption")}</figcaption>
               </figure>
             </div>
           </div>
@@ -224,14 +159,12 @@ function Home() {
 
         <section className="border-b border-border" aria-labelledby="manifesto-title">
           <div className="mx-auto max-w-[72rem] px-5 py-20 text-center sm:px-8 sm:py-28">
-            <p className="label">A note from the archive</p>
+            <p className="label">{t("home.man.kicker")}</p>
             <h2 id="manifesto-title" className="display mt-6 text-[clamp(2rem,5vw,4.25rem)] leading-[1.05]">
-              In a world where an image can be generated in seconds, provenance becomes part of the work.
+              {t("home.man.title")}
             </h2>
             <p className="mx-auto mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Beta Art is designed to keep the record beside the photograph: who made it, what physical
-              capture evidence exists, what changed afterwards, which rights are cleared and how it may
-              be used. No unsupported claim is upgraded into a fact for the sake of marketing.
+              {t("home.man.body")}
             </p>
           </div>
         </section>
@@ -240,19 +173,18 @@ function Home() {
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
               <div>
-                <p className="label">The Beta proof chain</p>
-                <h2 id="proof-title" className="display mt-4 text-3xl sm:text-5xl">From shutter to licence</h2>
+                <p className="label">{t("home.proof.kicker")}</p>
+                <h2 id="proof-title" className="display mt-4 text-3xl sm:text-5xl">{t("home.proof.title")}</h2>
                 <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-                  Beta Art does not claim to prove that a scene is “true”. It documents provenance:
-                  what evidence exists, what has been checked and what is still unknown.
+                  {t("home.proof.body")}
                 </p>
               </div>
               <ol className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-                {proofChain.map(([index, title, body]) => (
+                {proofChain.map(([index, titleKey, bodyKey]) => (
                   <li key={index} className="bg-background p-6 sm:p-8">
                     <p className="label">{index}</p>
-                    <h3 className="display mt-4 text-2xl">{title}</h3>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{body}</p>
+                    <h3 className="display mt-4 text-2xl">{t(titleKey)}</h3>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t(bodyKey)}</p>
                   </li>
                 ))}
               </ol>
@@ -264,29 +196,20 @@ function Home() {
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
               <div>
-                <p className="label">Beta Passport · prototype</p>
-                <h2 id="passport-title" className="display mt-4 text-3xl sm:text-5xl">The record behind the photograph</h2>
+                <p className="label">{t("home.pass.kicker")}</p>
+                <h2 id="passport-title" className="display mt-4 text-3xl sm:text-5xl">{t("home.pass.title")}</h2>
                 <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
-                  The long-term verification product is not another AI detector. It is a readable
-                  provenance record showing the evidence attached to each image — without inventing
-                  certainty where evidence is missing.
+                  {t("home.pass.body")}
                 </p>
               </div>
               <div className="border border-border p-6 sm:p-8">
                 <div className="flex items-center justify-between gap-4 border-b border-border pb-5">
-                  <div><p className="label">Example passport</p><p className="display mt-2 text-2xl">BA-001 · First Light</p></div>
-                  <span className="label">Prototype</span>
+                  <div><p className="label">{t("home.pass.example")}</p><p className="display mt-2 text-2xl">BA-001 · First Light</p></div>
+                  <span className="label">{t("home.pass.proto")}</span>
                 </div>
                 <dl className="mt-6 grid gap-5 sm:grid-cols-2">
-                  {[
-                    ["Human capture", "Verification status"],
-                    ["RAW original", "Archive + fingerprint"],
-                    ["Capture record", "Camera · lens · date · place"],
-                    ["Edit disclosure", "What changed after capture"],
-                    ["Rights", "Copyright · consent · AI training"],
-                    ["Licence", "Buyer · scope · territory · term"],
-                  ].map(([term, detail]) => (
-                    <div key={term} className="rule-top pt-4"><dt className="label">{term}</dt><dd className="mt-2 text-sm text-muted-foreground">{detail}</dd></div>
+                  {passportRows.map(([termKey, detailKey]) => (
+                    <div key={termKey} className="rule-top pt-4"><dt className="label">{t(termKey)}</dt><dd className="mt-2 text-sm text-muted-foreground">{t(detailKey)}</dd></div>
                   ))}
                 </dl>
               </div>
@@ -298,24 +221,22 @@ function Home() {
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
               <div>
-                <p className="label">Editorial framework</p>
-                <h2 id="series-title" className="display mt-4 text-3xl sm:text-5xl">Series, not keywords.</h2>
+                <p className="label">{t("home.series.kicker")}</p>
+                <h2 id="series-title" className="display mt-4 text-3xl sm:text-5xl">{t("home.series.title")}</h2>
                 <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-                  The archive is being structured as bodies of work rather than a pile of stock tags.
-                  These seven series are the curatorial framework; only series backed by real verified
-                  plates will be presented as live collections.
+                  {t("home.series.body")}
                 </p>
               </div>
               <ol className="grid gap-px bg-border sm:grid-cols-2">
                 {series.map((item) => (
                   <li key={item.roman} className="bg-background p-6 sm:p-8">
                     <div className="flex items-baseline justify-between gap-4">
-                      <p className="label">Series {item.roman}</p>
-                      <p className="label">Framework</p>
+                      <p className="label">{t("home.series.label")} {item.roman}</p>
+                      <p className="label">{t("home.series.framework")}</p>
                     </div>
-                    <h3 className="display mt-4 text-2xl sm:text-3xl">{item.title}</h3>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.note}</p>
-                    <p className="label rule-top mt-6 pt-4">{item.use}</p>
+                    <h3 className="display mt-4 text-2xl sm:text-3xl">{t(item.t)}</h3>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t(item.n)}</p>
+                    <p className="label rule-top mt-6 pt-4">{t(item.u)}</p>
                   </li>
                 ))}
               </ol>
@@ -323,16 +244,15 @@ function Home() {
           </div>
         </section>
 
-        <ForYou heading="Pick up where you left off" />
+        <ForYou heading={t("home.foryou")} />
 
         <section id="collection" className="border-b border-border" aria-labelledby="collection-title">
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="max-w-3xl">
-              <p className="label">Current catalogue preview</p>
-              <h2 id="collection-title" className="display mt-4 text-3xl sm:text-5xl">Human photography, catalogue by catalogue</h2>
+              <p className="label">{t("home.col.kicker")}</p>
+              <h2 id="collection-title" className="display mt-4 text-3xl sm:text-5xl">{t("home.col.title")}</h2>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                Every plate carries an explicit verification status. Development placeholders remain
-                labelled until a real original and capture record are supplied.
+                {t("home.col.body")}
               </p>
             </div>
             <ul className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
@@ -348,7 +268,7 @@ function Home() {
                       </div>
                       <div className="mt-2 flex items-start justify-between gap-4">
                         <p className="text-sm text-muted-foreground">{plate.verification.status}</p>
-                        <p className="label text-foreground">from kr {plate.price}</p>
+                        <p className="label text-foreground">{t("home.col.from")} kr {plate.price}</p>
                       </div>
                     </Link>
                   </article>
@@ -360,16 +280,19 @@ function Home() {
 
         <section id="platform" className="border-b border-border" aria-labelledby="platform-title">
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
-            <p className="label">What the archive is becoming</p>
-            <h2 id="platform-title" className="display mt-4 max-w-3xl text-3xl sm:text-5xl">Keep the photograph first. Build trust around it.</h2>
+            <p className="label">{t("home.plat.kicker")}</p>
+            <h2 id="platform-title" className="display mt-4 max-w-3xl text-3xl sm:text-5xl">{t("home.plat.title")}</h2>
             <div className="mt-12 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-              {archiveLayers.map((item) => (
-                <article key={item.title} className="bg-background p-6 sm:p-8">
-                  <p className="label">{item.state}</p>
-                  <h3 className="display mt-4 text-2xl">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
-                </article>
-              ))}
+              {archiveLayers.map((item) => {
+                const title = "titleKey" in item ? t(item.titleKey) : item.title;
+                return (
+                  <article key={title} className="bg-background p-6 sm:p-8">
+                    <p className="label">{t(item.state)}</p>
+                    <h3 className="display mt-4 text-2xl">{title}</h3>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t(item.body)}</p>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -377,19 +300,12 @@ function Home() {
         <section id="rights" className="border-b border-border" aria-labelledby="rights-title">
           <div className="mx-auto grid max-w-[92rem] gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-16">
             <div>
-              <p className="label">Rights & AI use</p>
-              <h2 id="rights-title" className="display mt-4 text-3xl sm:text-5xl">Protect the image after it leaves the archive</h2>
+              <p className="label">{t("home.rights.kicker")}</p>
+              <h2 id="rights-title" className="display mt-4 text-3xl sm:text-5xl">{t("home.rights.title")}</h2>
             </div>
             <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
-              <p>
-                Beta Art’s direction is layered rights signalling: the written licence remains the
-                legal agreement, while IPTC/PLUS-compatible metadata, site-level reservations and
-                Content Credentials can add machine-readable context where implemented.
-              </p>
-              <p>
-                The goal is to make permitted use obvious, make AI-training restrictions explicit,
-                and preserve rights information as far as today’s open standards allow.
-              </p>
+              <p>{t("home.rights.p1")}</p>
+              <p>{t("home.rights.p2")}</p>
             </div>
           </div>
         </section>
@@ -397,11 +313,10 @@ function Home() {
         <section id="licensing" className="border-b border-border" aria-labelledby="licensing-title">
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
             <div className="max-w-3xl">
-              <p className="label">Licensing</p>
-              <h2 id="licensing-title" className="display mt-4 text-3xl sm:text-5xl">Clear rights for real use</h2>
+              <p className="label">{t("home.lic.kicker")}</p>
+              <h2 id="licensing-title" className="display mt-4 text-3xl sm:text-5xl">{t("home.lic.title")}</h2>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                Start simple, then move up to commercial, extended or exclusive rights. Final prices
-                and terms remain subject to the issued licence agreement.
+                {t("home.lic.body")}
               </p>
             </div>
             <ul className="mt-10 grid gap-px bg-border lg:grid-cols-4">
@@ -411,7 +326,7 @@ function Home() {
                   <h3 className="display mt-3 text-2xl">{license.name}</h3>
                   <p className="mt-3 font-medium">{license.price}</p>
                   <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{license.summary}</p>
-                  <a href="#request" className="link-underline focus-ring mt-8 self-start rounded-sm text-sm">Request terms</a>
+                  <a href="#request" className="link-underline focus-ring mt-8 self-start rounded-sm text-sm">{t("home.lic.request")}</a>
                 </li>
               ))}
             </ul>
@@ -421,14 +336,14 @@ function Home() {
 
         <section id="audiences" className="border-b border-border" aria-labelledby="audiences-title">
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-24">
-            <p className="label">Built for</p>
-            <h2 id="audiences-title" className="display mt-4 text-3xl sm:text-5xl">One archive, different rights needs</h2>
+            <p className="label">{t("home.aud.kicker")}</p>
+            <h2 id="audiences-title" className="display mt-4 text-3xl sm:text-5xl">{t("home.aud.title")}</h2>
             <div className="mt-12 grid gap-px bg-border lg:grid-cols-3">
               {audiences.map((item) => (
-                <article key={item.title} className="bg-background p-6 sm:p-8">
-                  <h3 className="display text-2xl">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
-                  <a href={item.href} className="link-underline focus-ring mt-8 inline-block rounded-sm text-sm">{item.cta}</a>
+                <article key={item.t} className="bg-background p-6 sm:p-8">
+                  <h3 className="display text-2xl">{t(item.t)}</h3>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t(item.b)}</p>
+                  <a href={item.href} className="link-underline focus-ring mt-8 inline-block rounded-sm text-sm">{t(item.cta)}</a>
                 </article>
               ))}
             </div>
@@ -438,17 +353,14 @@ function Home() {
         <section id="commissions" className="border-b border-border" aria-labelledby="commissions-title">
           <div className="mx-auto grid max-w-[92rem] gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-16">
             <div>
-              <p className="label">Planned · commissioned capture</p>
-              <h2 id="commissions-title" className="display mt-4 text-3xl sm:text-5xl">Need an image that does not exist yet?</h2>
+              <p className="label">{t("home.com.kicker")}</p>
+              <h2 id="commissions-title" className="display mt-4 text-3xl sm:text-5xl">{t("home.com.title")}</h2>
             </div>
             <div>
               <p className="text-base leading-relaxed text-muted-foreground">
-                A future commission service can take a client brief into the real world and deliver
-                new photographs to the same archival standard: capture evidence, releases where needed,
-                edit disclosure and a written licence. It remains a planned service until that workflow
-                is operational.
+                {t("home.com.body")}
               </p>
-              <a href="#request" className="btn-outline-ink focus-ring mt-8">Discuss a future commission</a>
+              <a href="#request" className="btn-outline-ink focus-ring mt-8">{t("home.com.cta")}</a>
             </div>
           </div>
         </section>
@@ -459,15 +371,13 @@ function Home() {
               <div className="plate-frame aspect-4/5">
                 <img src={makerImage} alt="Development placeholder for the Beta Art photographer portrait" width={1200} height={1500} loading="lazy" decoding="async" className="h-full w-full object-cover" />
               </div>
-              <figcaption className="label mt-3">Photographer portrait to be replaced with a confirmed brand asset</figcaption>
+              <figcaption className="label mt-3">{t("home.ph.caption")}</figcaption>
             </figure>
             <div className="lg:pt-6">
-              <p className="label">The maker</p>
-              <h2 id="photographer-title" className="display mt-4 text-3xl sm:text-5xl">A human archive starts with an accountable human.</h2>
+              <p className="label">{t("home.ph.kicker")}</p>
+              <h2 id="photographer-title" className="display mt-4 text-3xl sm:text-5xl">{t("home.ph.title")}</h2>
               <p className="mt-8 text-base leading-relaxed text-muted-foreground">
-                The final release will place the photographer’s own voice, portrait and manifesto here.
-                That material is a trust requirement, not decoration: provenance begins with knowing who
-                stands behind the record. Unconfirmed biography and credentials will never be invented.
+                {t("home.ph.body")}
               </p>
             </div>
           </div>
@@ -475,7 +385,7 @@ function Home() {
 
         <section id="faq" className="border-b border-border" aria-labelledby="faq-title">
           <div className="mx-auto grid max-w-[92rem] gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[18rem_1fr] lg:gap-16">
-            <div><p className="label">FAQ</p><h2 id="faq-title" className="display mt-4 text-3xl sm:text-4xl">Questions about Beta Art</h2></div>
+            <div><p className="label">{t("home.faq.kicker")}</p><h2 id="faq-title" className="display mt-4 text-3xl sm:text-4xl">{t("home.faq.title")}</h2></div>
             <dl className="grid gap-px bg-border">
               {faqs.map((f) => (
                 <div key={f.q} className="bg-background py-6 sm:py-8">
@@ -490,10 +400,10 @@ function Home() {
         <section aria-labelledby="final-title">
           <div className="mx-auto max-w-[92rem] px-5 py-20 sm:px-8 sm:py-28">
             <p className="label">Beta Art</p>
-            <h2 id="final-title" className="display mt-4 max-w-4xl text-[clamp(2.5rem,7vw,6rem)] leading-[0.95]">We do not guess what is real. We document where the photograph came from.</h2>
+            <h2 id="final-title" className="display mt-4 max-w-4xl text-[clamp(2.5rem,7vw,6rem)] leading-[0.95]">{t("home.final.title")}</h2>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href="#collection" className="btn-ink focus-ring">Explore the archive</a>
-              <Link to="/contact" className="btn-outline-ink focus-ring">Contact Beta Art</Link>
+              <a href="#collection" className="btn-ink focus-ring">{t("home.final.cta1")}</a>
+              <Link to="/contact" className="btn-outline-ink focus-ring">{t("home.final.cta2")}</Link>
             </div>
           </div>
         </section>
