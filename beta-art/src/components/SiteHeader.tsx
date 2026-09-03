@@ -1,20 +1,22 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useId, useState } from "react";
 import { siteConfig } from "@/config/site";
+import { LanguageSwitcher, useT } from "@/i18n";
 import { DevelopmentNotice } from "./DevelopmentNotice";
 
 export const primaryNav = [
-  { label: "Series", href: "/#series" },
-  { label: "Archive", href: "/#collection" },
-  { label: "Proof", href: "/#proof" },
-  { label: "Passport", href: "/#passport" },
-  { label: "Rights", href: "/#rights" },
-  { label: "Licensing", href: "/#licensing" },
+  { key: "nav.series", href: "/#series" },
+  { key: "nav.archive", href: "/#collection" },
+  { key: "nav.proof", href: "/#proof" },
+  { key: "nav.passport", href: "/#passport" },
+  { key: "nav.rights", href: "/#rights" },
+  { key: "nav.licensing", href: "/#licensing" },
 ];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const menuId = useId();
+  const t = useT();
 
   useEffect(() => {
     if (!open) return;
@@ -32,18 +34,20 @@ export function SiteHeader() {
         <div className="mx-auto grid max-w-[92rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 sm:px-8 lg:py-5">
           <Link to="/" className="min-w-0 rounded-sm focus-ring">
             <span className="display block truncate text-xl tracking-tight sm:text-2xl">{siteConfig.name}</span>
-            <span className="label hidden sm:block">{siteConfig.tagline}</span>
+            <span className="label hidden sm:block">{t("site.tagline")}</span>
           </Link>
 
-          <nav aria-label="Primary" className="shrink-0">
+          <nav aria-label="Primary" className="flex shrink-0 items-center gap-4">
             <ul className="hidden items-center gap-6 xl:flex">
               {primaryNav.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="label rounded-sm focus-ring hover:text-foreground">{item.label}</a>
+                  <a href={item.href} className="label rounded-sm focus-ring hover:text-foreground">{t(item.key)}</a>
                 </li>
               ))}
-              <li><Link to="/contact" className="label rounded-sm focus-ring hover:text-foreground">Contact</Link></li>
+              <li><Link to="/contact" className="label rounded-sm focus-ring hover:text-foreground">{t("nav.contact")}</Link></li>
             </ul>
+
+            <LanguageSwitcher className="shrink-0" />
 
             <button
               type="button"
@@ -52,7 +56,7 @@ export function SiteHeader() {
               aria-controls={menuId}
               className="label inline-flex items-center gap-2 rounded-sm border border-border px-3 py-2 text-foreground focus-ring xl:hidden"
             >
-              <span>{open ? "Close" : "Menu"}</span>
+              <span>{open ? t("ui.close") : t("ui.menu")}</span>
               <span aria-hidden="true">{open ? "×" : "≡"}</span>
             </button>
           </nav>
@@ -63,11 +67,11 @@ export function SiteHeader() {
             <ul className="mx-auto max-w-[92rem] px-5 py-4 sm:px-8">
               {primaryNav.map((item) => (
                 <li key={item.href} className="border-b border-border last:border-0">
-                  <a href={item.href} onClick={() => setOpen(false)} className="label block py-3 text-foreground focus-ring">{item.label}</a>
+                  <a href={item.href} onClick={() => setOpen(false)} className="label block py-3 text-foreground focus-ring">{t(item.key)}</a>
                 </li>
               ))}
               <li>
-                <Link to="/contact" onClick={() => setOpen(false)} className="label block py-3 text-foreground focus-ring">Contact</Link>
+                <Link to="/contact" onClick={() => setOpen(false)} className="label block py-3 text-foreground focus-ring">{t("nav.contact")}</Link>
               </li>
             </ul>
           </nav>
