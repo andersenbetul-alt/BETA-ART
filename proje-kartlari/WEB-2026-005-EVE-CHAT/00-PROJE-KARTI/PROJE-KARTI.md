@@ -1,0 +1,32 @@
+# WEB-2026-005 — Eve Chat Şablonu
+
+- **Proje numarası:** WEB-2026-005
+- **Resmî proje adı:** Eve Chat Şablonu
+- **Kısa açıklama:** Sohbet arayüzü şablonu — AI tabanlı chat widget/uygulama
+- **Temel amaç:** Yeniden kullanılabilir sohbet arayüzü şablonu sunmak
+- **Çözdüğü problem:** Sıfırdan sohbet arayüzü yazmak için tekrar eden çaba
+- **Hedef kullanıcılar:** İç kullanım (diğer projelere şablon)
+- **Proje sahibi:** Betul Andersen — andersen.betul@gmail.com
+- **Başlangıç tarihi:** 2026 (kesin tarih bilinmiyor)
+- **Son güncelleme:** 2026-08-30
+- **Güncel durum:** Beklemede (kullanım kararı bekleniyor)
+- **Güncel sürüm:** Bilinmiyor
+- **Son kararlı sürüm:** Bilgi bulunamadı — kullanıcı doğrulaması gerekli
+- **Canlı adres:** Yok
+- **Kod deposu:** `agents/eve-chat-template/` (BETA-ART monoreposu içinde)
+- **Aktif Git dalı:** `main` (monorepo ana dalı)
+- **Kullanılan teknolojiler:**
+  - Framework: Next.js
+  - Paket yöneticisi: pnpm
+  - UI kütüphanesi: shadcn/ui
+  - Platform: Vercel (potansiyel)
+- **Veri hassasiyet seviyesi:** Düşük (şablon — gerçek veri yok)
+- **İlgili projeler:**
+  - WEB-2026-004 (Eve Slack Ajanı — aynı Vercel/pnpm/shadcn altyapısı)
+- **Güncel öncelikler:**
+  1. Kullanım kararı ver: QBLOGG'a mı, NAVIAR'a mı, bağımsız ürün mü?
+- **Bilinen sorunlar:**
+  - Kullanım durumu belirsiz
+  - Aktif geliştirme yok
+- **Sonraki adım:** Kullanım kararı — proje bu şablondan mı büyümeli?
+- **Son doğrulama tarihi:** 2026-09-03
