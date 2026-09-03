@@ -1,14 +1,16 @@
 import { Link } from "@tanstack/react-router";
+import { useT } from "@/i18n";
 
 export type Crumb = { label: string; to?: string };
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
+  const t = useT();
   return (
     <nav aria-label="Breadcrumb" className="mb-8">
       <ol className="label flex flex-wrap items-center gap-2">
         <li>
           <Link to="/" className="focus-ring rounded-sm hover:text-foreground">
-            Home
+            {t("ui.crumb.home")}
           </Link>
         </li>
         {items.map((item, i) => (

@@ -7,7 +7,7 @@ import { ForYou } from "@/components/ForYou";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrustStrip } from "@/components/TrustStrip";
-import { canonicalUrl, PRICE_STATUS_NOTE, robotsContent, siteConfig } from "@/config/site";
+import { canonicalUrl, robotsContent, siteConfig } from "@/config/site";
 import { deliveryInfo, getPlate, licenses, orderingSteps } from "@/data/collection";
 import { recordView } from "@/lib/affinity";
 import { useT } from "@/i18n";
@@ -107,13 +107,13 @@ function PlateDetail() {
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
       >
-        Skip to content
+        {t("ui.skip")}
       </a>
       <SiteHeader />
 
       <main id="main">
         <div className="mx-auto max-w-[92rem] px-5 py-10 sm:px-8 sm:py-14">
-          <Breadcrumbs items={[{ label: "Collection", to: "/" }, { label: plate.title }]} />
+          <Breadcrumbs items={[{ label: t("ui.crumb.collection"), to: "/" }, { label: plate.title }]} />
 
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-16">
             <figure className="min-w-0">
@@ -128,7 +128,7 @@ function PlateDetail() {
                 />
               </div>
               <figcaption className="label mt-3">
-                Placeholder imagery — {t(VER_KEY[plate.verification.status] ?? plate.verification.status).toLowerCase()}
+                {t("ui.cap.placeholder")} — {t(VER_KEY[plate.verification.status] ?? plate.verification.status).toLowerCase()}
               </figcaption>
             </figure>
 
@@ -138,7 +138,7 @@ function PlateDetail() {
               <p className="label mt-4 text-foreground">
                 {t("home.col.from")} kr {plate.price} · {plate.currency}
               </p>
-              <p className="mt-1 text-xs text-muted-foreground">{PRICE_STATUS_NOTE}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{t("ui.detail.priceNote")}</p>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
                 {t("cat.plate.desc")}
               </p>
@@ -158,15 +158,14 @@ function PlateDetail() {
         <section className="border-t border-border" aria-labelledby="licence-options">
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-20">
             <h2 id="licence-options" className="display text-3xl sm:text-4xl">
-              Licensing options
+              {t("ui.detail.licHeading")}
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-              Choose the scope that matches your use. The summary below is plain English; the signed
-              agreement is the binding document.
+              {t("ui.detail.licIntro")}
             </p>
 
             <fieldset className="mt-10">
-              <legend className="label">Select a licence</legend>
+              <legend className="label">{t("ui.detail.selectLic")}</legend>
               <div className="mt-4 grid gap-px bg-border lg:grid-cols-4">
                 {licenses.map((l) => (
                   <label
@@ -189,7 +188,7 @@ function PlateDetail() {
                     <span className="label mt-2 block">{t(AUD_KEY[l.audience] ?? l.audience)}</span>
                     <span className="label mt-3 block text-foreground">{t(`cat.lic.${l.id}.price`)}</span>
                     <span className="mt-1 block text-xs text-muted-foreground">
-                      Draft price — indicative only
+                      {t("ui.detail.draftPrice")}
                     </span>
                     <span className="mt-4 block text-sm leading-relaxed text-muted-foreground">
                       {t(`cat.lic.${l.id}.summary`)}
@@ -201,7 +200,7 @@ function PlateDetail() {
 
             <div className="mt-10 grid gap-10 lg:grid-cols-2">
               <div>
-                <h3 className="display text-2xl">{t(`cat.lic.${active.id}.name`)} — what you may do</h3>
+                <h3 className="display text-2xl">{t(`cat.lic.${active.id}.name`)} — {t("ui.detail.mayDo")}</h3>
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                   {active.permitted.map((p, i) => (
                     <li key={p} className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
@@ -212,7 +211,7 @@ function PlateDetail() {
                     </li>
                   ))}
                 </ul>
-                <h3 className="display mt-8 text-2xl">Not included</h3>
+                <h3 className="display mt-8 text-2xl">{t("ui.detail.notIncluded")}</h3>
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                   {active.notPermitted.map((p, i) => (
                     <li key={p} className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
@@ -224,7 +223,7 @@ function PlateDetail() {
               </div>
 
               <div>
-                <h3 className="display text-2xl">Delivery</h3>
+                <h3 className="display text-2xl">{t("ui.detail.delivery")}</h3>
                 <dl className="rule-top mt-6 grid gap-4 pt-6">
                   {deliveryInfo.map((d, i) => (
                     <div
@@ -249,7 +248,7 @@ function PlateDetail() {
         <section className="border-t border-border" aria-labelledby="ordering-heading">
           <div className="mx-auto max-w-[92rem] px-5 py-16 sm:px-8 sm:py-20">
             <h2 id="ordering-heading" className="display text-3xl sm:text-4xl">
-              How ordering works
+              {t("ui.detail.orderHeading")}
             </h2>
             <ol className="mt-8 grid gap-px bg-border sm:grid-cols-3">
               {orderingSteps.map((step, i) => (
@@ -267,7 +266,7 @@ function PlateDetail() {
           </div>
         </section>
 
-        <ForYou exclude={plate.slug} heading="You may want to license next" />
+        <ForYou exclude={plate.slug} heading={t("ui.foryou.next")} />
       </main>
 
       <SiteFooter />

@@ -33,21 +33,22 @@ const empty: Fields = {
   notes: "",
 };
 
+/** Returns i18n keys (translated at render), not literal messages. */
 function validate(values: Fields) {
   const errors: Partial<Record<keyof Fields, string>> = {};
-  if (!values.plate) errors.plate = "Select a plate.";
-  if (!values.license) errors.license = "Select a licence type.";
-  if (!values.name.trim()) errors.name = "Enter your name.";
-  else if (values.name.trim().length > 100) errors.name = "Name must be under 100 characters.";
+  if (!values.plate) errors.plate = "ui.form.v.plate";
+  if (!values.license) errors.license = "ui.form.v.licence";
+  if (!values.name.trim()) errors.name = "ui.form.v.name";
+  else if (values.name.trim().length > 100) errors.name = "ui.form.v.nameLong";
   const email = values.email.trim();
-  if (!email) errors.email = "Enter your email address.";
+  if (!email) errors.email = "ui.form.v.email";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 255)
-    errors.email = "Enter a valid email address.";
-  if (values.company.length > 120) errors.company = "Company must be under 120 characters.";
-  if (!values.intendedUse.trim()) errors.intendedUse = "Describe how the image will be used.";
+    errors.email = "ui.form.v.emailBad";
+  if (values.company.length > 120) errors.company = "ui.form.v.company";
+  if (!values.intendedUse.trim()) errors.intendedUse = "ui.form.v.use";
   else if (values.intendedUse.trim().length > 1000)
-    errors.intendedUse = "Intended use must be under 1000 characters.";
-  if (values.notes.length > 1000) errors.notes = "Notes must be under 1000 characters.";
+    errors.intendedUse = "ui.form.v.useLong";
+  if (values.notes.length > 1000) errors.notes = "ui.form.v.notes";
   return errors;
 }
 
@@ -89,7 +90,7 @@ export function LicenseRequestForm({
   const err = (key: keyof Fields) =>
     errors[key] ? (
       <p id={`${uid}-${key}-error`} className="mt-2 text-xs text-destructive">
-        {errors[key]}
+        {t(errors[key]!)}
       </p>
     ) : null;
 
@@ -101,20 +102,18 @@ export function LicenseRequestForm({
   if (submitted) {
     return (
       <div id={id} className="border border-border p-6 sm:p-8" role="status" aria-live="polite">
-        <p className="label">Request recorded in this browser</p>
-        <h3 className="display mt-3 text-2xl">Your request has been prepared</h3>
+        <p className="label">{t("ui.form.rec.label")}</p>
+        <h3 className="display mt-3 text-2xl">{t("ui.form.rec.heading")}</h3>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-          Nothing has been sent yet. This site has no submission backend connected, so the details
-          you entered stay in this browser session only. Sending and delivery must be connected
-          before launch.
+          {t("ui.form.rec.body")}
         </p>
         <dl className="rule-top mt-6 grid gap-3 pt-6 text-sm">
           <div className="grid gap-1 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)] sm:gap-4">
-            <dt className="label">Plate</dt>
+            <dt className="label">{t("ui.form.rec.plate")}</dt>
             <dd>{values.plate}</dd>
           </div>
           <div className="grid gap-1 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)] sm:gap-4">
-            <dt className="label">Licence</dt>
+            <dt className="label">{t("ui.form.rec.licence")}</dt>
             <dd className="capitalize">{values.license}</dd>
           </div>
         </dl>
@@ -126,7 +125,7 @@ export function LicenseRequestForm({
           }}
           className="btn-outline-ink focus-ring mt-8"
         >
-          Start another request
+          {t("ui.form.rec.again")}
         </button>
       </div>
     );
@@ -134,20 +133,19 @@ export function LicenseRequestForm({
 
   return (
     <form id={id} noValidate onSubmit={onSubmit} className="border border-border p-6 sm:p-8">
-      <p className="label">Licence request</p>
-      <h3 className="display mt-3 text-2xl">Request terms for a plate</h3>
+      <p className="label">{t("ui.form.label")}</p>
+      <h3 className="display mt-3 text-2xl">{t("ui.form.heading")}</h3>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-        Front-end only for now — submission and delivery integration must be connected before
-        launch. Nothing you enter here is transmitted or stored.
+        {t("ui.form.intro")}
       </p>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor={`${uid}-plate`} className="label text-foreground">
-            Plate <span aria-hidden="true">*</span>
+            {t("ui.form.plate")} <span aria-hidden="true">*</span>
           </label>
           <select id={`${uid}-plate`} value={values.plate} onChange={set("plate")} required {...aria("plate")} className={fieldClass}>
-            <option value="">Select a plate</option>
+            <option value="">{t("ui.form.selectPlate")}</option>
             {plates.map((p) => (
               <option key={p.catalogue} value={p.catalogue}>
                 {p.catalogue} — {p.title}
@@ -159,10 +157,10 @@ export function LicenseRequestForm({
 
         <div>
           <label htmlFor={`${uid}-license`} className="label text-foreground">
-            Licence type <span aria-hidden="true">*</span>
+            {t("ui.form.licenceType")} <span aria-hidden="true">*</span>
           </label>
           <select id={`${uid}-license`} value={values.license} onChange={set("license")} required {...aria("license")} className={fieldClass}>
-            <option value="">Select a licence</option>
+            <option value="">{t("ui.form.selectLicence")}</option>
             {licenses.map((l) => (
               <option key={l.id} value={l.id}>
                 {t(`cat.lic.${l.id}.name`)}
@@ -174,7 +172,7 @@ export function LicenseRequestForm({
 
         <div>
           <label htmlFor={`${uid}-name`} className="label text-foreground">
-            Name <span aria-hidden="true">*</span>
+            {t("ui.form.name")} <span aria-hidden="true">*</span>
           </label>
           <input id={`${uid}-name`} value={values.name} onChange={set("name")} maxLength={100} required {...aria("name")} className={fieldClass} />
           {err("name")}
@@ -182,7 +180,7 @@ export function LicenseRequestForm({
 
         <div>
           <label htmlFor={`${uid}-email`} className="label text-foreground">
-            Email <span aria-hidden="true">*</span>
+            {t("ui.form.email")} <span aria-hidden="true">*</span>
           </label>
           <input id={`${uid}-email`} type="email" value={values.email} onChange={set("email")} maxLength={255} required {...aria("email")} className={fieldClass} />
           {err("email")}
@@ -190,7 +188,7 @@ export function LicenseRequestForm({
 
         <div>
           <label htmlFor={`${uid}-company`} className="label text-foreground">
-            Company <span className="normal-case tracking-normal">(optional)</span>
+            {t("ui.form.company")} <span className="normal-case tracking-normal">{t("ui.form.optional")}</span>
           </label>
           <input id={`${uid}-company`} value={values.company} onChange={set("company")} maxLength={120} {...aria("company")} className={fieldClass} />
           {err("company")}
@@ -198,21 +196,21 @@ export function LicenseRequestForm({
 
         <div>
           <label htmlFor={`${uid}-territory`} className="label text-foreground">
-            Territory <span className="normal-case tracking-normal">(optional)</span>
+            {t("ui.form.territory")} <span className="normal-case tracking-normal">{t("ui.form.optional")}</span>
           </label>
           <input id={`${uid}-territory`} value={values.territory} onChange={set("territory")} maxLength={120} className={fieldClass} />
         </div>
 
         <div>
           <label htmlFor={`${uid}-duration`} className="label text-foreground">
-            Duration <span className="normal-case tracking-normal">(optional)</span>
+            {t("ui.form.duration")} <span className="normal-case tracking-normal">{t("ui.form.optional")}</span>
           </label>
           <input id={`${uid}-duration`} value={values.duration} onChange={set("duration")} maxLength={120} className={fieldClass} />
         </div>
 
         <div className="sm:col-span-2">
           <label htmlFor={`${uid}-use`} className="label text-foreground">
-            Intended use <span aria-hidden="true">*</span>
+            {t("ui.form.use")} <span aria-hidden="true">*</span>
           </label>
           <textarea id={`${uid}-use`} value={values.intendedUse} onChange={set("intendedUse")} rows={4} maxLength={1000} required {...aria("intendedUse")} className={fieldClass} />
           {err("intendedUse")}
@@ -220,7 +218,7 @@ export function LicenseRequestForm({
 
         <div className="sm:col-span-2">
           <label htmlFor={`${uid}-notes`} className="label text-foreground">
-            Notes <span className="normal-case tracking-normal">(optional)</span>
+            {t("ui.form.notes")} <span className="normal-case tracking-normal">{t("ui.form.optional")}</span>
           </label>
           <textarea id={`${uid}-notes`} value={values.notes} onChange={set("notes")} rows={3} maxLength={1000} {...aria("notes")} className={fieldClass} />
           {err("notes")}
@@ -228,7 +226,7 @@ export function LicenseRequestForm({
       </div>
 
       <button type="submit" className="btn-ink focus-ring mt-8">
-        Prepare request
+        {t("ui.form.submit")}
       </button>
     </form>
   );

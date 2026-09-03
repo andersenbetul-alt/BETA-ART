@@ -13,3 +13,9 @@ export const VER_KEY: Record<string, string> = {
   "Not provided": "cat.ver.notprovided",
   "Available on licensing": "cat.ver.signed",
 };
+
+/** Placeholder catalogue values (verification + capture fields) → i18n keys. */
+export const VAL_KEY: Record<string, string> = {
+  ...VER_KEY,
+  "To be supplied": "ui.val.tbd",
+};

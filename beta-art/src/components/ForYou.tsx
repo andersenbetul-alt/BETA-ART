@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { plates } from "@/data/collection";
 import { topSlugs } from "@/lib/affinity";
+import { useT } from "@/i18n";
 
 /**
  * USER-side recommendation strip. Reads the on-device affinity list and
@@ -10,7 +11,8 @@ import { topSlugs } from "@/lib/affinity";
  * leaves the device (see src/lib/affinity.ts). Pass `exclude` on a plate
  * detail page so the current plate is not recommended back to itself.
  */
-export function ForYou({ exclude, heading = "Continue in the archive" }: { exclude?: string; heading?: string }) {
+export function ForYou({ exclude, heading }: { exclude?: string; heading?: string }) {
+  const t = useT();
   // Affinity lives in localStorage, so it is only known after mount — keep
   // SSR/first paint empty to avoid a hydration mismatch.
   const [slugs, setSlugs] = useState<string[]>([]);
@@ -29,7 +31,7 @@ export function ForYou({ exclude, heading = "Continue in the archive" }: { exclu
     <section className="border-t border-border" aria-labelledby="foryou-title">
       <div className="mx-auto max-w-[92rem] px-5 py-14 sm:px-8">
         <p className="label" id="foryou-title">
-          {heading}
+          {heading ?? t("ui.foryou.default")}
         </p>
         <ul className="mt-6 grid list-none grid-cols-2 gap-6 p-0 sm:grid-cols-4">
           {items.map((plate) => (
@@ -55,7 +57,7 @@ export function ForYou({ exclude, heading = "Continue in the archive" }: { exclu
           ))}
         </ul>
         <p className="mt-6 text-xs text-muted-foreground">
-          Based on what you opened here. Kept on your device only — nothing is sent or tracked.
+          {t("ui.foryou.note")}
         </p>
       </div>
     </section>
