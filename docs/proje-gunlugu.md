@@ -800,3 +800,42 @@ sonraki ana oturum turunda yapılacak (bu cron turunda Vercel MCP yok).
 **Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
 yöntemi (Vipps/Klarna/DNB kararı komisyon-ve-mva.md'de), beta-art.com
 alan adı, 3 orijinal foto, IG/LinkedIn hesapları — hepsi hâlâ kullanıcıda.
+
+## 03.09.2026 (akşam turu) — Sağlık + C2PA sertifika-yönetişimi araştırması
+
+**Sağlık:** `https://beta-art-privat-phi.vercel.app` bu cron turundan
+doğrulanamadı — ortamın egress proxy'si adresi engelledi (`EGRESS_BLOCKED`,
+beta-art.com'la aynı sınır). Bu bir **doğrulama sınırı**, "site çöktü"
+kanıtı değil; canlı durum ancak Vercel MCP'li ana oturum turunda teyit
+edilir. Kullanıcıya yanlış "site kapalı" uyarısı verilmedi.
+
+**Araştırma (yeni açı — bugünkü ilk turdaki C2PA kaydını tekrar etmez):**
+2026'da C2PA sertifika **yönetişimi** öne çıktı. Canon'un 11.05.2026
+Authenticity Imaging System'i sertifikaları **üretici tarafından merkezî**
+verip yönetiyor ve güvenilir zaman damgası ekliyor — yani provenance zinciri
+giderek donanım üreticisinin işlettiği bir hizmete bağlanıyor. Aynı yıl
+Nikon Z6 III'ün imzalama açığı yüzünden **tüm C2PA sertifikaları iptal
+edildi** ve hizmet erken 2026 itibarıyla geri gelmedi. OpenAI+Google ise
+C2PA'yı SynthID ile "çift katman" olarak birleştiriyor (kaynaklar:
+[c2paviewer.com — Canon AIS](https://c2paviewer.com/articles/canon-authenticity-imaging-system),
+[eyesift.com — C2PA 2026](https://www.eyesift.com/faq/c2pa-content-credentials-2026-cryptographic-provenance-adoption/),
+[c2paviewer.com — OpenAI/Google](https://c2paviewer.com/articles/openai-google-c2pa-synthid-2026)).
+**Beta Art için çıkarım:** Z6 III'ün toptan sertifika iptali, tek bir
+imzalama zincirine bel bağlamanın kırılganlığını kanıtlıyor. Beta Art'ın
+**üç yöntemli** doğrulaması (RAW arşivi → yakalama kaydı+C2PA → fotoğrafçı
+imzalı lisans) bu yüzden doğru kalıyor: C2PA katmanı iptal edilse bile RAW
+arşivi ve imzalı lisans bağımsız kanıt olarak durur. Bu, siteye yeni bir
+iddia eklemeyi gerektirmiyor — mevcut "redundant doğrulama" konumunu
+donanım dünyasındaki gerçek bir olayla destekliyor.
+
+**Geliştirme (bu tur):** Kod değişikliği yapılmadı. Küçük a11y adayı
+denetlendi — üç `<img>` (Home/PlateDetail/ForYou) zaten `alt={plate.title}`
+taşıyor; grep'in yakaladığı "alt'sız img" çok-satırlı etiket kaynaklı bir
+false positive'di. langContext `<html lang>` a11y düzeltmesi bu sabahki
+turda zaten yapılmıştı. Çalışan kodu/verbatim beta-art.com metnini gereksiz
+ellememek için zorlama değişiklik yapılmadı (cerrahi değişiklik ilkesi).
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn — hepsi hâlâ
+kullanıcıda. Ayrıca: v1.0.0 tag'i (ortam etiket push'ını engelledi, elle
+basılacak) ve `beta-art/` (WEB-2026-003) fiziksel taşıma onayı bekliyor.
