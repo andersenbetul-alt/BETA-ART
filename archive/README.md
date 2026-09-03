@@ -14,15 +14,15 @@ archive/
 │
 ├── WEB-2026-001-QBLOGG/        ✓ Tamamlandı (2026-09-03)
 ├── WEB-2026-002-HXI/           ✓ Tamamlandı (2026-09-03)
-├── WEB-2026-003-BETA-ART/      ○ Bekliyor
-├── WEB-2026-004-NAVIAR-CARE/   ○ Bekliyor
-├── WEB-2026-005-EVE-SLACK/     ○ Bekliyor
-├── WEB-2026-006-EVE-CHAT/      ○ Bekliyor
-├── WEB-2026-007-ENGINE/        ○ Bekliyor
-├── WEB-2026-008-DEMO/          ○ Bekliyor
-├── BRD-2026-001-NAVIAR-MARKA/  ○ Bekliyor
-├── BRD-2026-002-HXI-MARKA/     ○ Bekliyor
-└── BRD-2026-003-COBBAN-MARKA/  ○ Bekliyor
+├── WEB-2026-003-BETA-ART/      ✓ Tamamlandı (2026-09-03)
+├── WEB-2026-004-NAVIAR-CARE/   ✓ Tamamlandı (2026-09-03)
+├── WEB-2026-005-EVE-SLACK/     ✓ Tamamlandı (2026-09-03)
+├── WEB-2026-006-EVE-CHAT/      ✓ Tamamlandı (2026-09-03)
+├── WEB-2026-007-ENGINE/        ✓ Tamamlandı (2026-09-03)
+├── WEB-2026-008-DEMO/          ✓ Tamamlandı (2026-09-03)
+├── BRD-2026-001-NAVIAR-MARKA/  ✓ Tamamlandı (2026-09-03)
+├── BRD-2026-002-HXI-MARKA/     ✓ Tamamlandı (2026-09-03)
+└── BRD-2026-003-COBBAN-MARKA/  ✓ Tamamlandı (2026-09-03)
 ```
 
 ## Temel kurallar

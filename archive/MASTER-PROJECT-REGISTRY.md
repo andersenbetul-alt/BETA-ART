@@ -99,12 +99,12 @@ NAVIAR (004)
 |---|---|---|
 | WEB-2026-001 QBLOGG | ✓ Tamamlandı | 2026-09-03 |
 | WEB-2026-002 HXI | ✓ Tamamlandı | 2026-09-03 |
-| WEB-2026-003 Beta Art | ○ Bekliyor | — |
-| WEB-2026-004 NAVIAR | ○ Bekliyor | — |
-| WEB-2026-005 Eve Slack | ○ Bekliyor | — |
-| WEB-2026-006 Eve Chat | ○ Bekliyor | — |
-| WEB-2026-007 Curiosity Engine | ○ Bekliyor | — |
-| WEB-2026-008 Demo | ○ Bekliyor | — |
-| BRD-2026-001 NAVIAR Marka | ○ Bekliyor | — |
-| BRD-2026-002 HXI Marka | ○ Bekliyor | — |
-| BRD-2026-003 Cobban Marka | ○ Bekliyor | — |
+| WEB-2026-003 Beta Art | ✓ Tamamlandı | 2026-09-03 |
+| WEB-2026-004 NAVIAR | ✓ Tamamlandı | 2026-09-03 |
+| WEB-2026-005 Eve Slack | ✓ Tamamlandı | 2026-09-03 |
+| WEB-2026-006 Eve Chat | ✓ Tamamlandı | 2026-09-03 |
+| WEB-2026-007 Curiosity Engine | ✓ Tamamlandı | 2026-09-03 |
+| WEB-2026-008 Demo | ✓ Tamamlandı | 2026-09-03 |
+| BRD-2026-001 NAVIAR Marka | ✓ Tamamlandı | 2026-09-03 |
+| BRD-2026-002 HXI Marka | ✓ Tamamlandı | 2026-09-03 |
+| BRD-2026-003 Cobban Marka | ✓ Tamamlandı | 2026-09-03 |
