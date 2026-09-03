@@ -762,3 +762,41 @@ paket EUR fiyatlı olduğu için Vipps için ayrı, NOK fiyatlı ürünler
 gerekiyor. **"DNB" diye ayrı bir ödeme yöntemi yok** — DNB bir banka,
 Vipps'in kökeni; muhtemelen Vipps'in kendisi kastedildi. Detay ve
 kullanıcının atacağı adımlar: `docs/odeme-sistemi.md` §10.
+
+## 03.09.2026 (06:17 cron) — Günlük araştır-geliştir turu
+
+**Sağlık:** Canlı site (beta-art-privat-phi.vercel.app) bu cron turunda
+WebFetch ile doğrulanamadı — egress proxy vercel.app'i bu tetiklenmiş
+ortamda engelliyor (bilinen sınır, sitenin kendisi değil). Site ana
+oturumda 03.09 00:14'te Vercel API + ekran görüntüleriyle READY
+doğrulanmıştı; ayrı bir arıza belirtisi yok.
+
+**Araştırma — C2PA / Content Credentials benimsenmesi 2026 (kaynaklı,
+doğrulanmamış üçüncü-taraf iddiaları):** Donanım tarafında C2PA gerçek ama
+"benimsenme döngüsü" hâlâ çözülmüş değil: Leica M11-P (Ekim 2023) ilk
+tüketici gövdesiydi; 2026'da Nikon Z9/Z8, Sony Alpha akışları, Canon'un
+11.05.2026'da duyurduğu Authenticity Imaging System (haber odaları için
+yakalamadan yayına C2PA), telefon tarafında Samsung Galaxy S25 ve Google
+Pixel 10 imzalıyor. Ama Pixel/Leica dışındaki tüketici telefonları hâlâ
+natif imzalamıyor, yani kullanıcı üretimi içeriğin çoğu imzasız kalıyor
+(kaynaklar: softwareseni.com, c2paviewer.com, attesttrail.com,
+lumethic.com). **Beta Art için çıkarım:** sitenin C2PA dilini "kameranın
+desteklediği yerde" diye sınırlı tutması doğru kalıyor — çoğu gövde hâlâ
+imzalamadığı için C2PA'yı evrensel vaat gibi sunmak yanlış olurdu; mevcut
+kapsamlı ifade korunuyor. İleride Leica/Nikon gövdesi kullanılırsa
+C2PA'yı o plaka için somut kanıt olarak öne çıkarmak gerçek bir
+farklılaştırma olur (uydurma değil, donanım imzasına dayalı).
+
+**Geliştirme (küçük, güvenli — a11y):** `src/lib/langContext.tsx` —
+`<html lang>` yalnızca kullanıcı dili değiştirince güncelleniyordu; ilk
+yüklemede localStorage'dan gelen dil (ör. Norveççe) için `index.html`'in
+sabit `lang="en"`'i kalıyordu. Bir mount effect'i eklendi; artık `lang`
+her değişimde (ilk yükleme dahil) `document.documentElement.lang`'a
+yansıyor. Ekran okuyucular doğru dili duyurur, çok dilli SEO doğru dil
+sinyali alır. `setLang` içindeki artık gereksiz satır temizlendi.
+Doğrulama: apps/beta-art-archive `npm run build` temiz. Canlıya alma bir
+sonraki ana oturum turunda yapılacak (bu cron turunda Vercel MCP yok).
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi (Vipps/Klarna/DNB kararı komisyon-ve-mva.md'de), beta-art.com
+alan adı, 3 orijinal foto, IG/LinkedIn hesapları — hepsi hâlâ kullanıcıda.
