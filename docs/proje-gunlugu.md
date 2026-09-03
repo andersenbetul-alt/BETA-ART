@@ -756,3 +756,147 @@ tek-plaka satışı, Klarna'nın taksit/erteleme değer önerisiyle örtüşmüy
 — bu gözlem hipotez (`[H]`) olarak işaretlendi. Kod tabanında değişiklik
 yok; `LicenseRequestForm.tsx` zaten ödeme akışına bağlı değil, bu yüzden
 sağlayıcı seçimi henüz geri dönüşsüz bir adım değil.
+
+## 03.09.2026 — PR #13 merge: iki paralel oturumun çakışan işi uzlaştırıldı
+
+`main`, bu daldan bağımsız olarak ilerlemişti (aynı gün, `claude/qblogg-cbkoe8`
+dalından) — merge sırasında 5 gerçek çakışma çıktı (`assets/js/app.js`,
+`docs/proje-gunlugu.md`, `gizlilik.html`, `scripts/vercel-build.sh`,
+`vercel.json`). En önemlisi: **iki oturum da bağımsız olarak aynı özelliği
+kurmuş** — QBLOGG'un davranış temelli içerik önerisi sistemi. Benim
+sürümüm (`assets/js/ilgi.js`, `qb_ilgi` anahtarı, yalnızca post.html'de
+"Benzer yazılar") yalnızca kategori-eşleşmeli mantığı ağırlıklandırıyordu.
+`main`'in sürümü (`qb_interest` anahtarı, doğrudan `app.js` içinde) daha
+kapsamlıydı: aynı ağırlıklandırma **artı** blog.html'de yepyeni bir "Sizin
+için önerilen" şeridi, çip rozetlerinde yazı sayısı, öne çıkan kart
+vurgusu — ve 10 dilin hepsine `posts.recommended` çevirisi eklenmişti
+(benim sürümümde hiç yeni UI metni yoktu). Bu yüzden **`main`'in sürümü
+tutuldu, benimki (`ilgi.js` dosyası, 8 sayfadaki `<script>` etiketi,
+`gizlilik.html`'deki `qb_ilgi` maddesi, `guvenlik.mjs`'in ilgi.js taraması)
+kaldırıldı** — iki paralel sistemi birlikte tutmak yalnızca karışıklık ve
+bakım yükü eklerdi, "önce sadelik" ilkesine aykırı olurdu. Aşağıdaki
+02.09.2026 tarihli "Müşteri davranış/öneri sistemi" kaydı QBLOGG kısmı
+için artık **tarihsel** — o günün kararı doğruydu (özellik gerçekten
+QBLOGG'a eklendi), yalnızca hangi kod tabanının kazandığı bu merge'de
+belirlendi. Beta Art tarafı (Supabase, `co_viewed_plates`) hiç çakışmadı,
+olduğu gibi kaldı.
+
+İkinci örtüşme: **her iki oturum da bağımsız olarak DNB/Klarna/Vipps
+araştırdı** (benimki: `beta-art/docs/odeme-arastirmasi.md`, WebSearch
+özetleriyle; `main`'inki: `docs/odeme-sistemi.md` §10, Stripe'ın kendi
+belgelerinden). Bu bir çakışma değil — iki dosya farklı yollarda, ikisi
+de kalıyor — ama iki bağımsız araştırma **aynı ana sonuca vardı**: "DNB"
+diye ayrı bir ödeme yöntemi yok, muhtemelen Vipps kastediliyor. Bağımsız
+yakınsama, ek bir doğrulama sinyali olarak notlanıyor.
+
+Çakışan dosyalardan `vercel-build.sh`/`vercel.json`: `main`'in sürümü
+(iki dağıtım şeklini de ele alan) tutuldu, benim daha basit sürümüm
+(yalnızca kendinden-klonlayan) kaldırıldı — `main`'inki net bir üstünlük,
+kayıp yok.
+
+## 02.09.2026 — Sosyal medya kanalları: strateji + ilk gerçek içerik partisi
+
+Kullanıcı "BETA ART SOSIAL MEDIA KANALLARI GELISTIR" dedi. AskUserQuestion'da
+üç seçenek de (kanal stratejisi, gerçek içerik üretimi, sitedeki sosyal
+bağlantı altyapısını tamamlama) seçildi.
+
+- **Strateji + kurulum rehberi:** `docs/sosyal-medya-stratejisi.md`. Beş
+  kanal (`config.js`'deki `social` alanlarıyla birebir: LinkedIn, X, YouTube,
+  Substack — Medium yerine önerildi), öncelik sırası, adım adım hesap açma,
+  `config.js`'e bağlama talimatı, yayın ritmi önerisi.
+- **Gerçek içerik:** `qblogg-turev` becerisiyle en yeni yazıdan
+  (`ai-arac-yigini-maliyeti`) yedi türev üretildi —
+  `content/ai-arac-yigini-maliyeti/tr/`. Tüm rakamlar kaynak yazıdaki Zylo
+  verisiyle birebir eşleşiyor (otomatik çapraz kontrol yapıldı), emoji
+  taraması temiz.
+- **Sosyal bağlantı altyapısı:** kod tarafı zaten hazırdı (`applySocial()`),
+  yalnızca 02.09.2026'daki "profesyonellik" düzeltmesiyle boş başlık kusuru
+  giderildi (aşağıya bakın). Gerçek hesap adresleri kullanıcıdan bekleniyor
+  — doldurulmadan tamamlanamaz, bu rehberde adımlar var.
+
+Aynı gün, önce "WEB SAYFASINI PROFESYONELLESTIR" talebiyle site görsel/kod
+denetiminden geçirildi: (1) altbilgide hiç sosyal hesap yokken "Sosyal"
+başlığının boş göründüğü bulundu ve düzeltildi (8 sayfa + `app.js`), (2)
+öne çıkan blog kartının özet metninin bir CSS özgüllük çakışmasıyla ezildiği,
+koyu temada 1,4:1 karşıtlığa (WCAG AA eşiği 4,5:1) düştüğü bulundu ve
+düzeltildi (~6,7:1'e çıktı). PR #16'ya push edildi (`ad0ece0`).
+
+Ayrıca PR #16'nın CI'ı ayrı bir gerçek hatayla kırılmıştı: `vercel.json`
+`buildCommand`'ı 691 karaktere ulaşmış, Vercel'in 256 karakter şema
+sınırını aşıyordu. Mantık `scripts/vercel-build.sh`'a taşındı, `buildCommand`
+28 karaktere indi (`414bdf0`). Kalan CI kırmızısı kod hatası değil: altı
+Vercel projesi (`andersenbetul-9635's projects` takımı) aynı repodan aynı
+anda deploy tetikleyip günlük deploy limitine (`api-deployments-free-per-day`,
+>100) takıldı — hangi Vercel projesinin kanonik olacağı kararı hâlâ bekliyor.
+
+## 02.09.2026 — Davranış temelli içerik önerisi (yalnızca tarayıcıda)
+
+Kullanıcı "her web sayfasında müşterinin bir sonraki adımda ne görmek/almak
+isteyeceğini bulan bir sistem" istedi (Norveççe). Bu, sitenin "çatısız,
+sunucusuz" temel kuralıyla doğrudan gerilim taşıyordu — AskUserQuestion ile
+netleştirildi: **amaç** içerik önerisi (paket/CTA kişiselleştirme ve gerçek
+çapraz-ziyaretçi analiz/tahmin motoru seçilmedi), **veri kapsamı** yalnızca
+ziyaretçinin kendi tarayıcısı (sunucuya hiç gitmeyen, paylaşılmayan veri).
+
+Uygulama: `qb_interest` adlı yeni bir localStorage anahtarı, hangi kategoriyi
+kaç kez okuduğunu/seçtiğini sayıyor (`trackInterest`/`getInterest`,
+`app.js`). İki yüzey:
+
+- **post.html — "Benzer yazılar":** var olan kategori-eşleşmeli mantık,
+  geçmiş yoksa birebir eski davranışı veren bir puanlama ile genelleştirildi
+  (ilgi puanı × 10 + aynı kategori bonusu 5). Playwright ile doğrulandı:
+  dört "business" yazısı okuyan bir ziyaretçi, başka bir kategoriden yazı
+  okurken "Benzer yazılar"da Business yazıları görüyor.
+- **blog.html — "Sizin için önerilen":** yeni bir şerit, yalnızca varsayılan
+  görünümde (filtresiz/aramasız) ve yalnızca gerçek geçmiş varken görünüyor
+  — ilk ziyarette hiç render edilmiyor, boş kutu kalmıyor.
+
+`gizlilik.html` (TR+EN) yeni anahtarı üçüncü/dördüncü madde olarak açıkladı;
+`npm run guvenlik` ve `npm run check` yeşil. `posts.recommended` anahtarı
+10 dilin hepsine eklendi, Arapça RTL'de görsel olarak doğrulandı.
+
+## 02.09.2026 — "Web sayfasını düzenleyen kişi ve kullanıcılar için ayrı
+sistem": üç büyük karar netleşti, ilki (içerik paneli) kodlandı
+
+Kullanıcı "web sayfasını düzenleyen kişi ve kullanıcılar için ayrı sistem
+kuruyoruz" dedi. Bu, üç ayrı, kısmen zaten var olan büyük kararla
+kesişiyordu — körlemesine kodlamak yerine AskUserQuestion ile netleştirildi:
+
+1. **Üye sistemi (kullanıcılar):** mevcut planı (`docs/uye-sistemi.md`,
+   24.08.2026'dan beri iskelet hâlinde, Supabase yapılandırılmamış)
+   tamamlamaya karar verildi. Kurulum adımları kullanıcıya tekrar
+   sunuldu — bu oturumdan yapılabilecek bir şey yok, Supabase hesabı
+   kullanıcı adımı.
+2. **Yazar platformu (docs/yazar-platformu.md):** Model A (davetli/
+   küratörlü) onaylandı. Ama belgenin kendi §9'u (Action Pages önerisi)
+   yazar platformunu Action Pages'in SONRASINA koyuyordu — bu gerilim
+   çözülmeden inşaya başlanmadı, belgeye açıkça not düşüldü.
+3. **QBLOGG'un kendi içerik yöneticisi (editör/CMS):** "GitHub'a yazan
+   hafif panel" mimarisi onaylandı ve **kodlandı**: `panel/` — üçüncü
+   ayrı Vercel uygulaması, `uye/` deseninin devamı ama bağımlılıksız
+   (Supabase SDK bile yok, düz `fetch()` ile `api.github.com`). GitHub
+   PAT ile giriş, iki işlev: (a) `config.js`'i satır-bazlı yamalayıp
+   `main`'e karşı PR açan bir form, (b) yeni yazı fikrini GitHub Issue'ya
+   çeviren bir form (yazının kendisini üretmiyor — bilinçli, 10 dilli/
+   görünürlük-denetimli üretimin `qblogg-blog-yazisi` becerisine ait
+   kalması için).
+
+`patchConfig` mantığı Node'da gerçek `config.js`'e karşı doğrulandı
+(hedef alanlar doğru değişti, geri kalanı bayt bayt korundu). Panel arayüzü
+Playwright'ta hatasız render oluyor. **Doğrulanamayan tek şey:** panelin
+gerçek GitHub API çağrılarının tarayıcı CORS ön-denetiminden geçip
+geçmeyeceği — bu ortamın vekil sunucusu test için kullanılamadı (OPTIONS'a
+405 dönüyor, ama bu vekile mi GitHub'a mı ait belirsiz). Detay ve ilk-giriş
+doğrulama koşulu: `docs/icerik-paneli.md`.
+
+## 02.09.2026 — Vipps/Klarna araştırması (DNB düzeltmesi)
+
+Kullanıcı "Vipps, DNB, ödeme sistemi, Klarna" istedi. Araştırıldı
+(dashboard.stripe.com bu ortamdan erişilemiyor, Stripe'ın kendi genel
+belgelerinden alıntı): **Klarna** Stripe Payment Links'te ek kurulum
+gerektirmeden hazır. **Vipps** destekleniyor ama "private preview"
+aşamasında (erişim istenmeli) ve yalnızca NOK'ta çalışıyor — mevcut üç
+paket EUR fiyatlı olduğu için Vipps için ayrı, NOK fiyatlı ürünler
+gerekiyor. **"DNB" diye ayrı bir ödeme yöntemi yok** — DNB bir banka,
+Vipps'in kökeni; muhtemelen Vipps'in kendisi kastedildi. Detay ve
+kullanıcının atacağı adımlar: `docs/odeme-sistemi.md` §10.

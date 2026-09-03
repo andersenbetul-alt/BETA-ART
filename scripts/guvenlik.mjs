@@ -23,7 +23,7 @@ const ok = [];
 const kaydet = (seviye, alan, mesaj) => bulgular.push({ seviye, alan, mesaj });
 const gecti = (m) => ok.push(m);
 
-const app = read('assets/js/app.js') + '\n' + read('assets/js/ilgi.js');
+const app = read('assets/js/app.js');
 
 /* --- 1. XSS: innerHTML'e giden veri kaçırılıyor mu --- */
 {

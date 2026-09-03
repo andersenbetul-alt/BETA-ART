@@ -1,7 +1,19 @@
 # QBLOGG Yazar Platformu — değerlendirme ve v1 tasarımı
 
-**Durum: TASLAK — model ve öncelik kararı kullanıcıda (bkz. §8).**
-Tarih: 24.08.2026. İşaretler: [V] doğrulanmış · [H] hipotez · [D] dış iddia.
+**Durum (02.09.2026): MODEL KARARI VERİLDİ — Model A (davetli/küratörlü).**
+İnşa henüz başlamadı — bkz. aşağıdaki açık gerilim.
+Tarih: 24.08.2026 (ilk yazım). İşaretler: [V] doğrulanmış · [H] hipotez · [D] dış iddia.
+
+**02.09.2026 notu — açıkça çözülmemiş bir gerilim var:** kullanıcı bugün
+Model A'yı onayladı, ama bu belgenin kendi §9'u (aynı gün, 24.08 akşamı
+eklenmiş, daha sonraki ve daha ayrıntılı gerekçeli) "Action Pages"i
+haftanın en güçlü ticari fikri olarak önerip yazar platformunu **onun
+SONRASINA** koyuyordu ("Davetli yazar platformu, Action Pages müşteri
+tabanının üyelik/dağıtım katmanı olarak SONRA gelir"). Bugünkü onay
+yalnızca "hangi model" sorusuna cevaptı — "şimdi mi, Action Pages'den
+önce mi" sorusuna değil. İnşaya başlamadan bu sıralama kullanıcıyla
+netleştirilmeli; aksi hâlde belgenin kendi §2 uyarısı ("üçü aynı anda
+inşa edilirse hiçbiri kanıt eşiğine ulaşamaz") çiğnenmiş olur.
 
 ## 1. Fikir
 

@@ -18,7 +18,7 @@ install` ÇALIŞTIRMA.
 ## Çalıştır (ajan yolu — önce bunu kullan)
 
 ```bash
-# 6 kritik akışlı smoke test + ana sayfa görüntüsü (çıkış kodu 0/1):
+# 7 kritik akışlı smoke test + ana sayfa görüntüsü (çıkış kodu 0/1):
 node .claude/skills/run-qblogg/driver.mjs smoke /tmp/qblogg-run
 
 # Tek sayfanın tam ekran görüntüsü (reveal animasyonu sabitlenmiş):
@@ -56,6 +56,15 @@ uçtan uca sürüyor: görev seç, süre gir, gönder, sonuç kartında `mailto:
 CTA'sının oluştuğunu doğrula. Yeni bir Action Page eklersen aynı deseni
 smoke'a ekle; `vercel.json`'daki `buildCommand`a da dosya adlarını
 eklemeyi unutma, yoksa dağıtımda 404 verir.
+
+## panel/ — içerik paneli (ayrı uygulama, 02.09.2026 eklendi)
+
+`panel/index.html`: `uye/` ile aynı desen — ayrı, bağımlılıksız tek dosya,
+ana site derlemesine dahil değil. GitHub kişisel erişim jetonu (PAT) ile
+giriş yapıp `config.js`'e PR açan ve yeni yazı fikrini Issue'ya çeviren bir
+editör aracı (`docs/icerik-paneli.md`). Smoke test yalnızca giriş ekranının
+göründüğünü doğruluyor — gerçek bir PAT olmadan GitHub API çağrılarını
+sürmek mümkün değil (ve olmamalı, gerçek bir depoya yazar).
 
 ## Gotchas (hepsi bu konteynerde yaşandı)
 

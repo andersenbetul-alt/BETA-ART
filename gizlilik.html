@@ -91,9 +91,9 @@
           <li><code>qb_theme</code> — açık/koyu tema tercihiniz.</li>
           <li><code>qb_subs</code> — yalnızca bülten servisi henüz bağlı değilken, girdiğiniz e-posta
           adresinin geçici kopyası. Servis bağlandığında bu kayıt kullanılmıyor.</li>
-          <li><code>qb_ilgi</code> — hangi yazı kategorilerini gezdiğinizin (kimliksiz, yalnızca
-          kategori adı + zaman) kısa bir izi; "bunu da beğenebilirsiniz" önerisini kişiselleştirmek
-          için kullanılır, hiçbir yere gönderilmez.</li>
+          <li><code>qb_interest</code> — blogda hangi konu kategorilerine baktığınızın sayısı (ör.
+          "business: 3"). Yalnızca size "benzer yazılar" ve "sizin için önerilen" önerisini
+          göstermek için kullanılır; kimliğinizle ilişkilendirilmez, başka hiçbir yere gitmez.</li>
         </ul>
         <p>Bunlar çerez değil, tarayıcı deposudur (localStorage) ve tercih saklamak dışında bir işe
         yaramaz. Tarayıcınızın site verilerini temizleyerek her an silebilirsiniz.</p>
@@ -157,9 +157,9 @@
         <p>Four items, all kept on your device and never sent to us: <code>qb_lang</code> (your
         language), <code>qb_theme</code> (light or dark), <code>qb_subs</code> — a temporary copy
         of the email you typed, used only while the newsletter service is not yet connected — and
-        <code>qb_ilgi</code>, a short trail of which post categories you've browsed (no identity,
-        just category name + timestamp), used to personalize "you might also like" suggestions and
-        never sent anywhere. These are browser storage, not cookies, and clearing your site data
+        <code>qb_interest</code>, a count of which blog categories you've viewed, used only to show
+        you "related posts" and "recommended for you". It is never linked to your identity and never
+        leaves your device. These are browser storage, not cookies, and clearing your site data
         removes them.</p>
 
         <h3>Forms</h3>
@@ -213,7 +213,7 @@
           <li><a href="ornek.html" data-i18n="footer.sample">Örnek teslimat</a></li>
         </ul>
       </div>
-      <div>
+      <div id="footerSocial" hidden>
         <h3 data-i18n="footer.social">Sosyal</h3>
         <ul>
           <li hidden><a href="#" data-social="linkedin" rel="noopener" target="_blank">LinkedIn</a></li>
@@ -244,7 +244,6 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/posts.js"></script>
-<script src="assets/js/ilgi.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>
