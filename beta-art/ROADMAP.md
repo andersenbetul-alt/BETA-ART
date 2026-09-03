@@ -70,6 +70,7 @@ First Light, Into the Pines, Sea of Fog, Still Water, PALM, Blue Hour Grid, Nigh
 | 02.09.2026 | Lovable barındırılan uygulamada footer bağlantıları düzeltildi + yeniden yayın (`/terms` `/cookies` `/ai-policy` kaldırıldı; gerçek rotalara bağlandı) | Claude |
 | 02.09.2026 | Cihaz-içi öneri (`ForYou`) + editör panel notu: kullanıcı/editör ayrımı, uydurma istatistik yok — veri tarayıcıda kalır | Claude |
 | 02.09.2026 | Sosyal medya kanal stratejisi (`SOSYAL-MEDYA.md`): IG→Pinterest→LinkedIn, açılış kapıları | Claude |
+| 03.09.2026 | **10 dilli i18n temeli** (`src/i18n/`): HXI seti (en/no/tr/fr/de/es/pt/ar/ja/zh), SSR-güvenli sağlayıcı, dil değiştirici, Arapça RTL; chrome (header/footer/trust/dev-notice) 10 dilde. node-server derlemesi + Playwright ile doğrulandı. **Kalan: ana sayfa gövdesi + hukuk sayfaları** (hukuk metni insan onayından sonra) | Claude |
 
 ---
 
