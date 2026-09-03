@@ -38,6 +38,22 @@ ayırmak** bu belgenin işidir.
 satış, grafik, sosyal, kanıt-temizliği) yerinde ve doğrulama-yeşil. İlk kararlı
 sürüm etiketi için doğal aday.
 
+### v1.0.0 tag durumu (2026-09-03)
+
+Tag **yerelde oluşturuldu** (`v1.0.0` → `62a0743`) ama **uzağa gönderilemedi**:
+bu Claude Code oturumunun git proxy'si yalnız geliştirme dalına push izni
+veriyor, etiket ref'lerini reddediyor (`403`). Yerel tag uçucu olduğu için
+silindi. **Tag'in gerçekten basılması kullanıcı tarafında bir adım kaldı.**
+
+Elle basma (PR #7 merge olduktan sonra, `main` üzerinde önerilir):
+```bash
+git fetch origin
+git tag -a v1.0.0 62a0743 -m "Beta Art Privat v1.0.0 — ilk kararlı sürüm"
+git push origin v1.0.0
+```
+veya GitHub arayüzünden: Releases → "Draft a new release" → Tag `v1.0.0`,
+target commit `62a0743`. (Merge sonrası commit hâlâ geçmişte kalır, tag geçerli olur.)
+
 ## Dal standardı (madde 9 — bu proje için)
 
 - `main` — canlı/kararlı hedef (PR #7'nin base'i).
