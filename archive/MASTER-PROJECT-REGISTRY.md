@@ -98,7 +98,7 @@ NAVIAR (004)
 | Proje | Arşivleme durumu | Tarih |
 |---|---|---|
 | WEB-2026-001 QBLOGG | ✓ Tamamlandı | 2026-09-03 |
-| WEB-2026-002 HXI | ○ Bekliyor | — |
+| WEB-2026-002 HXI | ✓ Tamamlandı | 2026-09-03 |
 | WEB-2026-003 Beta Art | ○ Bekliyor | — |
 | WEB-2026-004 NAVIAR | ○ Bekliyor | — |
 | WEB-2026-005 Eve Slack | ○ Bekliyor | — |
