@@ -10,6 +10,8 @@ import { TrustStrip } from "@/components/TrustStrip";
 import { canonicalUrl, PRICE_STATUS_NOTE, robotsContent, siteConfig } from "@/config/site";
 import { deliveryInfo, getPlate, licenses, orderingSteps } from "@/data/collection";
 import { recordView } from "@/lib/affinity";
+import { useT } from "@/i18n";
+import { AUD_KEY, VER_KEY } from "@/i18n/cat";
 
 export const Route = createFileRoute("/plates/$slug")({
   loader: ({ params }) => {
@@ -90,6 +92,7 @@ function PlateNotFound() {
 
 function PlateDetail() {
   const { plate } = Route.useLoaderData();
+  const t = useT();
   const [selected, setSelected] = useState(licenses[0]!.id);
   const active = licenses.find((l) => l.id === selected)!;
 
@@ -125,7 +128,7 @@ function PlateDetail() {
                 />
               </div>
               <figcaption className="label mt-3">
-                Placeholder imagery — {plate.verification.status.toLowerCase()}
+                Placeholder imagery — {t(VER_KEY[plate.verification.status] ?? plate.verification.status).toLowerCase()}
               </figcaption>
             </figure>
 
@@ -133,11 +136,11 @@ function PlateDetail() {
               <p className="label">{plate.catalogue}</p>
               <h1 className="display mt-4 text-[clamp(2.25rem,6vw,4rem)]">{plate.title}</h1>
               <p className="label mt-4 text-foreground">
-                from kr {plate.price} · {plate.currency}
+                {t("home.col.from")} kr {plate.price} · {plate.currency}
               </p>
               <p className="mt-1 text-xs text-muted-foreground">{PRICE_STATUS_NOTE}</p>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                {plate.description}
+                {t("cat.plate.desc")}
               </p>
 
               <div className="mt-10">
@@ -181,15 +184,15 @@ function PlateDetail() {
                         onChange={() => setSelected(l.id)}
                         className="accent-accent"
                       />
-                      <span className="display text-xl">{l.name}</span>
+                      <span className="display text-xl">{t(`cat.lic.${l.id}.name`)}</span>
                     </span>
-                    <span className="label mt-2 block">{l.audience}</span>
-                    <span className="label mt-3 block text-foreground">{l.price}</span>
+                    <span className="label mt-2 block">{t(AUD_KEY[l.audience] ?? l.audience)}</span>
+                    <span className="label mt-3 block text-foreground">{t(`cat.lic.${l.id}.price`)}</span>
                     <span className="mt-1 block text-xs text-muted-foreground">
                       Draft price — indicative only
                     </span>
                     <span className="mt-4 block text-sm leading-relaxed text-muted-foreground">
-                      {l.summary}
+                      {t(`cat.lic.${l.id}.summary`)}
                     </span>
                   </label>
                 ))}
@@ -198,23 +201,23 @@ function PlateDetail() {
 
             <div className="mt-10 grid gap-10 lg:grid-cols-2">
               <div>
-                <h3 className="display text-2xl">{active.name} — what you may do</h3>
+                <h3 className="display text-2xl">{t(`cat.lic.${active.id}.name`)} — what you may do</h3>
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                  {active.permitted.map((p) => (
+                  {active.permitted.map((p, i) => (
                     <li key={p} className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
                       <span aria-hidden="true" className="text-accent">
                         +
                       </span>
-                      <span>{p}</span>
+                      <span>{t(`cat.lic.${active.id}.p${i + 1}`)}</span>
                     </li>
                   ))}
                 </ul>
                 <h3 className="display mt-8 text-2xl">Not included</h3>
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                  {active.notPermitted.map((p) => (
+                  {active.notPermitted.map((p, i) => (
                     <li key={p} className="grid grid-cols-[auto_minmax(0,1fr)] gap-3">
                       <span aria-hidden="true">—</span>
-                      <span>{p}</span>
+                      <span>{t(`cat.lic.${active.id}.n${i + 1}`)}</span>
                     </li>
                   ))}
                 </ul>
@@ -223,13 +226,13 @@ function PlateDetail() {
               <div>
                 <h3 className="display text-2xl">Delivery</h3>
                 <dl className="rule-top mt-6 grid gap-4 pt-6">
-                  {deliveryInfo.map((d) => (
+                  {deliveryInfo.map((d, i) => (
                     <div
                       key={d.term}
                       className="grid gap-1 sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] sm:gap-4"
                     >
-                      <dt className="label">{d.term}</dt>
-                      <dd className="text-sm text-muted-foreground">{d.detail}</dd>
+                      <dt className="label">{t(`cat.del.${i + 1}.t`)}</dt>
+                      <dd className="text-sm text-muted-foreground">{t(`cat.del.${i + 1}.d`)}</dd>
                     </div>
                   ))}
                 </dl>
@@ -249,11 +252,11 @@ function PlateDetail() {
               How ordering works
             </h2>
             <ol className="mt-8 grid gap-px bg-border sm:grid-cols-3">
-              {orderingSteps.map((step) => (
+              {orderingSteps.map((step, i) => (
                 <li key={step.index} className="bg-background p-6">
                   <p className="label">{step.index}</p>
-                  <h3 className="display mt-3 text-xl">{step.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+                  <h3 className="display mt-3 text-xl">{t(`cat.ord.${i + 1}.t`)}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t(`cat.ord.${i + 1}.b`)}</p>
                 </li>
               ))}
             </ol>

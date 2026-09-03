@@ -71,7 +71,8 @@ First Light, Into the Pines, Sea of Fog, Still Water, PALM, Blue Hour Grid, Nigh
 | 02.09.2026 | Cihaz-içi öneri (`ForYou`) + editör panel notu: kullanıcı/editör ayrımı, uydurma istatistik yok — veri tarayıcıda kalır | Claude |
 | 02.09.2026 | Sosyal medya kanal stratejisi (`SOSYAL-MEDYA.md`): IG→Pinterest→LinkedIn, açılış kapıları | Claude |
 | 03.09.2026 | **10 dilli i18n temeli** (`src/i18n/`): HXI seti (en/no/tr/fr/de/es/pt/ar/ja/zh), SSR-güvenli sağlayıcı, dil değiştirici, Arapça RTL; chrome (header/footer/trust/dev-notice) 10 dilde. node-server derlemesi + Playwright ile doğrulandı | Claude |
-| 03.09.2026 | **Ana sayfa gövdesi 10 dilde** (`src/i18n/home.*.ts`, 138 anahtar × 10 dil): hero, manifesto, kanıt zinciri, passport, seriler, koleksiyon, platform, haklar, lisanslama, kitleler, komisyon, fotoğrafçı, final CTA. Playwright ile TR/JA/AR gövde çevirisi + RTL doğrulandı. **Kalan: `data/collection.ts` (SSS/lisans/plaka verileri) çok dilli veri modeli + hukuk sayfaları** (hukuk metni insan onayından sonra) | Claude |
+| 03.09.2026 | **Ana sayfa gövdesi 10 dilde** (`src/i18n/home.*.ts`, 138 anahtar × 10 dil): hero, manifesto, kanıt zinciri, passport, seriler, koleksiyon, platform, haklar, lisanslama, kitleler, komisyon, fotoğrafçı, final CTA. Playwright ile TR/JA/AR gövde çevirisi + RTL doğrulandı | Claude |
+| 03.09.2026 | **Katalog verisi 10 dilde** (`src/i18n/catalog.*.ts`, 63 anahtar × 10 dil): SSS (6 S-C), lisanslar (Kişisel/Ticari/Genişletilmiş/Özel — ad, kitle, fiyat, özet, izin/kısıt listeleri), teslimat, sipariş adımları, plaka açıklaması + doğrulama durumları. Bağlandı: ana sayfa kartları, footer, lisans-koşulları, talep formu, plaka detay seçici. Playwright ile TR doğrulandı. **Kalan: ProvenancePanel/CaptureTable + plaka-detay bölüm başlıkları (provenance/sayfa chrome) + hukuk sayfaları** | Claude |
 
 ---
 

@@ -8,6 +8,7 @@ import { ForYou } from "@/components/ForYou";
 import { canonicalUrl, robotsContent, siteConfig } from "@/config/site";
 import { plates, licenses, faqs } from "@/data/collection";
 import { useT } from "@/i18n";
+import { AUD_KEY, VER_KEY } from "@/i18n/cat";
 
 const TITLE = "Beta Art — Photography with Proof";
 const DESCRIPTION =
@@ -267,7 +268,7 @@ function Home() {
                         <h3 className="display text-lg">{plate.title}</h3><span className="label">{plate.catalogue}</span>
                       </div>
                       <div className="mt-2 flex items-start justify-between gap-4">
-                        <p className="text-sm text-muted-foreground">{plate.verification.status}</p>
+                        <p className="text-sm text-muted-foreground">{t(VER_KEY[plate.verification.status] ?? plate.verification.status)}</p>
                         <p className="label text-foreground">{t("home.col.from")} kr {plate.price}</p>
                       </div>
                     </Link>
@@ -322,10 +323,10 @@ function Home() {
             <ul className="mt-10 grid gap-px bg-border lg:grid-cols-4">
               {licenses.map((license) => (
                 <li key={license.id} className="flex flex-col bg-background p-6 sm:p-8">
-                  <p className="label">{license.audience}</p>
-                  <h3 className="display mt-3 text-2xl">{license.name}</h3>
-                  <p className="mt-3 font-medium">{license.price}</p>
-                  <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{license.summary}</p>
+                  <p className="label">{t(AUD_KEY[license.audience] ?? license.audience)}</p>
+                  <h3 className="display mt-3 text-2xl">{t(`cat.lic.${license.id}.name`)}</h3>
+                  <p className="mt-3 font-medium">{t(`cat.lic.${license.id}.price`)}</p>
+                  <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{t(`cat.lic.${license.id}.summary`)}</p>
                   <a href="#request" className="link-underline focus-ring mt-8 self-start rounded-sm text-sm">{t("home.lic.request")}</a>
                 </li>
               ))}
@@ -387,10 +388,10 @@ function Home() {
           <div className="mx-auto grid max-w-[92rem] gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[18rem_1fr] lg:gap-16">
             <div><p className="label">{t("home.faq.kicker")}</p><h2 id="faq-title" className="display mt-4 text-3xl sm:text-4xl">{t("home.faq.title")}</h2></div>
             <dl className="grid gap-px bg-border">
-              {faqs.map((f) => (
+              {faqs.map((f, i) => (
                 <div key={f.q} className="bg-background py-6 sm:py-8">
-                  <dt className="display text-xl sm:text-2xl">{f.q}</dt>
-                  <dd className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">{f.a}</dd>
+                  <dt className="display text-xl sm:text-2xl">{t(`cat.faq.${i + 1}.q`)}</dt>
+                  <dd className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">{t(`cat.faq.${i + 1}.a`)}</dd>
                 </div>
               ))}
             </dl>

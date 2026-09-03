@@ -20,6 +20,7 @@ import {
   type ReactNode,
 } from "react";
 import { HOME } from "./home";
+import { CATALOG } from "./catalog";
 
 export type Dir = "ltr" | "rtl";
 export interface Locale {
@@ -414,6 +415,7 @@ const DICT: Record<string, Dict> = { en, no, tr, fr, de, es, pt, ar, ja, zh };
 // every string is reachable through the same t() lookup.
 for (const code of Object.keys(DICT)) {
   if (HOME[code]) Object.assign(DICT[code], HOME[code]);
+  if (CATALOG[code]) Object.assign(DICT[code], CATALOG[code]);
 }
 
 function normalize(code: string | undefined | null): string {

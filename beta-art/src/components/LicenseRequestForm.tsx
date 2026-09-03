@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
 import { licenses, plates, type Plate } from "@/data/collection";
+import { useT } from "@/i18n";
 
 /**
  * LAUNCH CHECKLIST — this form is FRONT-END ONLY.
@@ -63,6 +64,7 @@ export function LicenseRequestForm({
   id?: string;
 }) {
   const uid = useId();
+  const t = useT();
   const [values, setValues] = useState<Fields>({
     ...empty,
     plate: plate?.catalogue ?? "",
@@ -163,7 +165,7 @@ export function LicenseRequestForm({
             <option value="">Select a licence</option>
             {licenses.map((l) => (
               <option key={l.id} value={l.id}>
-                {l.name}
+                {t(`cat.lic.${l.id}.name`)}
               </option>
             ))}
           </select>

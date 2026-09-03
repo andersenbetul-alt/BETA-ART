@@ -43,7 +43,7 @@ export function SiteFooter() {
               {licenses.map((l) => (
                 <li key={l.id}>
                   <a href="/#licensing" className="link-underline focus-ring rounded-sm">
-                    {l.name}
+                    {t(`cat.lic.${l.id}.name`)}
                   </a>
                 </li>
               ))}

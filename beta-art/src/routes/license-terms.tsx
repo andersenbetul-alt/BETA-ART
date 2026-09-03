@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage, LegalSection } from "@/components/LegalPage";
 import { siteConfig } from "@/config/site";
 import { licenses } from "@/data/collection";
+import { useT } from "@/i18n";
 
 const TITLE = "License Terms & Terms of Use — Beta Art";
 const DESCRIPTION =
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/license-terms")({
 });
 
 function LicenseTerms() {
+  const t = useT();
   return (
     <LegalPage
       title="License Terms & Terms of Use"
@@ -49,7 +51,7 @@ function LicenseTerms() {
         <ul className="space-y-3">
           {licenses.map((license) => (
             <li key={license.id}>
-              <strong className="text-foreground">{license.name}</strong> — {license.summary}
+              <strong className="text-foreground">{t(`cat.lic.${license.id}.name`)}</strong> — {t(`cat.lic.${license.id}.summary`)}
             </li>
           ))}
         </ul>
