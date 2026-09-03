@@ -343,6 +343,18 @@ YAP"** — Business artefaktında bundan sonra yapılan her güncelleme
 Vercel projesine de `deploy_to_vercel` ile (kaynak dosyalar, hedef
 `production`) yansıtılmalı. Bu depoda otomatik tetiklenen bir CI/CD
 yok — her seferinde elle yapılan bir adım, unutulmamalı.
+
+**Düzeltilen bulgu (03.09.2026, `/mcp__Vercel__fix_recent_build` ile
+bulundu):** Deployment'ın kendisi `READY`, runtime hatası yok — ama
+proje `bet-art` takımının varsayılanı olarak **Vercel Authentication
+(SSO koruması)** ile açılmıştı (`ssoProtection.enabled: true`). Bu,
+takım dışından herhangi bir ziyaretçinin `.vercel.app` adresine
+girdiğinde Vercel giriş ekranıyla karşılaşması demek — "site açılmıyor"
+olarak görünür ama aslında build hatası değil, erişim ayarı. `update_
+project_deployment_protection` ile kapatıldı (`ssoProtection.enabled:
+false`). **Bu proje bir kez daha kurulursa (yeni bir `beta-art-*`
+Vercel projesi açılırsa) aynı kontrol tekrar yapılmalı** — takımın
+varsayılanı bu, tek seferlik bir hata değil.
 - GitHub: bu oturum `andersenbetul-alt/beta-art` ile başladığı için
   başka hiçbir GitHub hesabından (`betulandersen-droid` dahil) depo
   eklenemiyor — "cross-tier adds are not supported" hatası, deponun
