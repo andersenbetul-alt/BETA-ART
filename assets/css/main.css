@@ -315,6 +315,12 @@ p { margin: 0 0 1em; }
 
 /* min(): 320px sınıfı telefonlarda sabit taban sütunu kapsayıcıdan taşırıyordu. */
 .posts { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+
+/* "Senin için" cihaz-içi öneri bandı — geçmiş yoksa [hidden] ile hiç görünmez. */
+.foryou { margin-bottom: 34px; padding: 22px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg-soft); }
+.foryou-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin-bottom: 18px; }
+.foryou-head h2 { font-size: var(--fs-lg); margin: 0; }
+.foryou-head .muted { font-size: var(--fs-sm); margin: 0; }
 .post-card {
   display: flex; flex-direction: column; text-decoration: none; overflow: hidden; padding: 0;
 }

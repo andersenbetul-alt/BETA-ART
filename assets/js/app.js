@@ -397,6 +397,64 @@
     return POSTS.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
   }
 
+  /* ---------- cihaz-içi öneri ("Senin için") ----------
+     Ziyaretçinin açtığı yazılar tarayıcıda (localStorage qb_aff) sayılır; veri
+     cihazdan çıkmaz, sunucuya gitmez, kimlik taşımaz — tema/dil tercihiyle aynı
+     kategori. Okunan kategorilere göre HENÜZ okunmamış yazıları sıralar; geçmiş
+     yoksa hiçbir şey göstermez. HXI ve Beta Art'taki desenin QBLOGG karşılığı. */
+  var LS_AFF = 'qb_aff';
+  var AFF_CAP = 24; // sınırsız büyümesin
+  function affRead() {
+    try {
+      var o = JSON.parse(localStorage.getItem(LS_AFF) || '{}');
+      return o && typeof o === 'object' ? o : {};
+    } catch (e) { return {}; }
+  }
+  function recordView(slug) {
+    if (!slug) return;
+    try {
+      var m = affRead();
+      m[slug] = (m[slug] || 0) + 1;
+      var keys = Object.keys(m);
+      if (keys.length > AFF_CAP) {
+        keys.sort(function (a, b) { return m[b] - m[a]; });
+        var trimmed = {};
+        keys.slice(0, AFF_CAP).forEach(function (k) { trimmed[k] = m[k]; });
+        m = trimmed;
+      }
+      localStorage.setItem(LS_AFF, JSON.stringify(m));
+    } catch (e) { /* gizli mod / depo kapalı — özellik sessizce devre dışı */ }
+  }
+  function foryouPosts(limit) {
+    var m = affRead();
+    var seen = Object.keys(m).filter(function (k) { return m[k] > 0; });
+    if (!seen.length) return [];
+    var weight = {};
+    seen.forEach(function (slug) {
+      var p = POSTS.filter(function (x) { return x.slug === slug; })[0];
+      if (p) weight[p.category] = (weight[p.category] || 0) + m[slug];
+    });
+    return sorted()
+      .filter(function (p) { return seen.indexOf(p.slug) === -1 && (weight[p.category] || 0) > 0; })
+      .sort(function (a, b) {
+        var d = (weight[b.category] || 0) - (weight[a.category] || 0);
+        return d !== 0 ? d : (a.date < b.date ? 1 : -1);
+      })
+      .slice(0, limit || 3);
+  }
+  function renderForYou() {
+    var box = $('#foryou');
+    if (!box) return;
+    var list = foryouPosts(3);
+    if (!list.length) { box.hidden = true; box.innerHTML = ''; return; }
+    box.hidden = false;
+    box.innerHTML =
+      '<div class="foryou-head"><h2>' + esc(t('foryou.title')) + '</h2>' +
+      '<p class="muted">' + esc(t('foryou.note')) + '</p></div>' +
+      '<div class="posts">' + list.map(function (p) { return cardHTML(p, 3); }).join('') + '</div>';
+    revealInit();
+  }
+
   /* ---------- sayfa: ana sayfa ---------- */
   function renderHome() {
     var box = $('#latestPosts');
@@ -470,6 +528,7 @@
         '<p class="center"><a class="btn btn--ghost" href="blog.html">' + esc(t('posts.back')) + '</a></p>';
       return;
     }
+    recordView(post.slug); // cihaz-içi öneri sinyali — yalnız tarayıcıda
     var c = ACCENTS[post.accent] || ACCENTS[1];
     var blocks = pick(post.b) || [];
     var body = blocks.map(blockHTML).join('');
@@ -846,7 +905,7 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  function renderAll() { renderHome(); renderBlog(); renderPost(); renderSchema(); applySocial(); applyPayLinks(); }
+  function renderAll() { renderHome(); renderBlog(); renderForYou(); renderPost(); renderSchema(); applySocial(); applyPayLinks(); }
   window.QB_RENDER = renderAll; // tek dosyalık önizleme için dışa açıldı
 
   // Altbilgideki telif yılı. Daha önce her sayfada satır içi <script> ile
