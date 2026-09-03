@@ -12,7 +12,7 @@ Proje sahibi (hepsi): **Betul** (GitHub `andersenbetul-alt`).
 |---|---|---|---|---|---|---|---|---|---|
 | WEB-2026-001 | QBLOGG | İçerik stüdyosu tanıtım + çok dilli blog; brief formu doldurtmak | Yayında | etiket yok (HEAD `62a0743`) | 2026-09-03 | qblogg-smoky.vercel.app | `andersenbetul-alt/BETA-ART-PRIVAT` (kök) | Orta | Kart + git tag (v-öneri) |
 | WEB-2026-002 | Beta Art Privat | Doğrulanmış insan fotoğrafçılığı arşivi + doğrudan lisanslama | Yayında | etiket yok (HEAD `62a0743`) | 2026-09-03 | beta-art-privat-phi.vercel.app | aynı depo, `apps/beta-art-archive/` | **Yüksek** | PR #7 → merge; v1.0.0 tag öner |
-| WEB-2026-003 | Beta Art (Lovable/TanStack) | 002 ile aynı marka, ayrı/atıl kod tabanı | Beklemede | doğrulanamadı | 2026-08-30 | — | aynı depo, `beta-art/` | Düşük | ESKI-SURUMLER'e işaretle (silme) |
+| WEB-2026-003 | Beta Art (Lovable/TanStack) | 002 ile aynı marka, ayrı/atıl kod tabanı | Arşivlendi (belge düzeyi) | doğrulanamadı | 2026-08-30 | — | aynı depo, `beta-art/` | Düşük | Fiziksel `git mv` kullanıcı açık onayında (Vercel rootDirectory bağı) |
 | WEB-2026-004 | NAVIAR CARE | Norveç yaşlı bakım / pårørende koordinasyon platformu | Geliştirme | doğrulanamadı | 2026-08-30 | naviar-care-1-psi.vercel.app | `betulandersen-droid/naviar-care-1` (harici, erişilemedi) | Orta | Repo erişimi + transfer |
 | WEB-2026-005 | Eve Chat Template | Sohbet arayüzü şablonu (Vercel "eve") | Beklemede | değiştirilmemiş şablon | 2026-08-30 | — | aynı depo, `agents/eve-chat-template/` | Düşük | Kullanılacak mı? karar |
 | WEB-2026-006 | Eve Slack Agent | Slack botu (naviar-consult, hxi-music deploy) | Beklemede | değiştirilmemiş şablon | 2026-08-30 | — | aynı depo, `agents/eve-slack-agent/` | Düşük | Kullanılacak mı? karar |
@@ -45,8 +45,9 @@ eski sürüm, yeni sürüm preview'da bekliyor (naviar/README).
 
 **Bekleyen projeler:** WEB-2026-003, WEB-2026-005, WEB-2026-006.
 
-**Arşivlenen projeler:** henüz yok. (WEB-2026-003 "eski kopya" olarak
-işaretlenmeye aday — kullanıcı onayıyla.)
+**Arşivlenen projeler:** WEB-2026-003 (belge düzeyinde "Arşivlendi";
+fiziksel `git mv beta-art/ archive/…` kullanıcı açık onayı bekliyor —
+başıboş Vercel projesi `beta-art` bu klasörü rootDirectory olarak okuduğu için).
 
 **Eksik dokümantasyonu olan projeler:** WEB-2026-003/004/005/006 (ARCHIVE
 kartları henüz oluşturulmadı); WEB-2026-004 kaynak kodu bu oturumdan görülemiyor.
