@@ -3,6 +3,40 @@
 Projenin her aşaması ve yapılanlar bu dosyaya işlenir (kullanıcı talimatı,
 22.08.2026). Yeni bir aşama kapandığında buraya tarihle eklenir; ayrıntılı iş
 listesi `ROADMAP.md`'de, teknik kararların gerekçeleri `docs/` altındaki ilgili
+
+## 03.09.2026 — WEB projeleri arşivleme sistemi (AUTOPROMPT)
+
+**Kullanıcı talebi:** Tüm web projelerini tanımla, numaralandır, belgelenmiş kartlara
+al, karar geçmişini düzenle, ortak kod kütüphanesi oluştur, ana katalog hazırla.
+
+**Yapılanlar:**
+
+- `MASTER-PROJECT-REGISTRY.md`: 8 projenin (WEB-2026-001 ila 008) ana kataloğu.
+  Durum, sürüm, öncelik, sonraki adım, riskler, bağlantılar.
+
+- `proje-kartlari/WEB-2026-001-QBLOGG/` — tam dokümantasyon (9 bölüm):
+  - `00-PROJE-KARTI`: PROJE-KARTI, PROJE-OZETI, PROJE-DURUMU, BAGLANTILAR
+  - `05-ICERIK`: SAYFA-ENVANTERI (9 sayfa, her sayfanın rol, bölüm, bileşen kaydı)
+  - `06-KOD`: KOD-ENVANTERI (config.js, i18n.js, posts.js, app.js, behavior.js, main.css, betikler)
+  - `07-KARAR-VE-DEGISIKLIK-KAYITLARI`: KARAR-GUNLUGU (10 karar + gerekçe), DEGISIKLIK-GUNLUGU, SURUM-GECMISI
+  - `09-YAYIN-VE-OPERASYON`: DEPLOYMENT (Vercel buildCommand deseni, güncelleme yolu, CSP kuralı)
+  - `11-PROJE-RAPORLARI`: GUNCEL-DURUM-RAPORU
+
+- `proje-kartlari/WEB-2026-002 ila 008`: Özet PROJE-KARTI dosyaları.
+  002 NAVIAR CARE, 003 Beta Art, 004 Eve Slack, 005 Eve Chat,
+  006 QBLOGG Üye, 007 Curiosity Engine, 008 Demo.
+
+- `_arsiv/SHARED-WEB-LIBRARY/REGISTRY.md`: 7 ortak bileşen kaydı:
+  i18n sistemi, behavior.js, tasarım simgesi sistemi, RTL CSS kalıbı,
+  posts.js veri modeli, check.mjs doğrulama kalıbı, görünürlük kuralı.
+
+**Toplam:** 20 dosya, 1.349 satır dokümantasyon. Commit: `c2ad8ae`.
+
+**Güvenlik kuralları uygulandı:** API anahtarları, şifreler, .env içeriği,
+kişisel veriler belgede yer almadı. Doğrulanamayan bilgiler
+"Bilgi bulunamadı — kullanıcı doğrulaması gerekli" olarak işaretlendi.
+
+
 belgelerde durur. Bu dosya hikâyeyi anlatır: ne yapıldı, neden, ne durumda.
 
 ## 02.09.2026 — Müşteri davranış izleme ve kişiselleştirme sistemi
