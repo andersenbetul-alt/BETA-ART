@@ -5,7 +5,7 @@
  *   node .claude/skills/run-qblogg/driver.mjs smoke [çıktı-dizini]
  *   node .claude/skills/run-qblogg/driver.mjs shot <sayfa[?sorgu]> [çıktı-dizini]
  *
- * smoke: sunucuyu kendisi açar (8000 boşsa), 5 kritik akışı sürer, kapatır.
+ * smoke: sunucuyu kendisi açar (8000 boşsa), 7 kritik akışı sürer, kapatır.
  * shot : tek sayfanın tam ekran görüntüsü (reveal animasyonu sabitlenmiş).
  * Çıktılar varsayılan olarak <çıktı-dizini|/tmp/qblogg-run>/ altına .png yazar.
  *
@@ -85,6 +85,10 @@ if (KIP === 'shot') {
   await git(p, 'uye/index.html');
   kontrol('üye uygulaması (yapılandırmasızsa "Kurulum bekleniyor")',
     (await p.locator('#kurulum, #giris').count()) >= 1);
+
+  await git(p, 'panel/index.html');
+  kontrol('içerik paneli giriş ekranı (PAT formu)',
+    (await p.locator('#girisForm input#pat').count()) === 1);
 
   await git(p, 'demo/q-work-audit.html');
   await p.click('input[name="task"]');

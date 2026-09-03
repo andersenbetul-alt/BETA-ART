@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QBLOGG Panel — içerik yönetimi</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff; --bg-soft: #f6f7fb; --text: #14161c; --text-muted: #5b6172;
+    --border: #e4e7f0; --brand: #082C54; --brand-2: #00D8C2; --brand-2-ink: #0a7d72;
+    --danger: #b3261e; --radius: 16px; --radius-sm: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { color-scheme: dark; --bg: #0c0e14; --bg-soft: #12141c; --text: #eef0f6;
+      --text-muted: #9ea5b9; --border: #262a38; --brand: #eef0f6; --danger: #f28b82; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.6 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text); }
+  .wrap { max-width: 720px; margin-inline: auto; padding: 24px 20px 64px; }
+  header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding-block: 8px 24px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .04em;
+    color: var(--text); text-decoration: none; }
+  .logo svg { width: 28px; height: 28px; }
+  .card { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 24px; margin-block-end: 16px; }
+  h1 { font-size: 1.5rem; margin: 0 0 6px; }
+  h2 { font-size: 1.1rem; margin: 0 0 4px; }
+  h3 { font-size: .95rem; margin: 20px 0 4px; }
+  p.muted { color: var(--text-muted); margin-block-start: 0; }
+  label { display: block; font-size: .85rem; font-weight: 600; margin-block: 12px 6px; }
+  input, textarea, select {
+    width: 100%; padding: 11px 13px; border: 1px solid var(--border);
+    border-radius: var(--radius-sm); background: var(--bg); color: var(--text);
+    font: inherit; font-size: .95rem;
+  }
+  textarea { resize: vertical; min-height: 70px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  button { margin-block-start: 16px; padding: 12px 20px; border: 0; border-radius: 999px;
+    background: #082C54; color: #fff; font-size: 1rem; font-weight: 600; cursor: pointer;
+    touch-action: manipulation; }
+  button:disabled { opacity: .6; cursor: wait; }
+  button.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .msg { margin-block-start: 12px; font-size: .9rem; }
+  .msg.err { color: var(--danger); }
+  .msg.ok { color: var(--brand-2-ink); }
+  .tabs { display: flex; gap: 8px; margin-block-end: 16px; }
+  .tab { padding: 9px 16px; border-radius: 999px; border: 1px solid var(--border);
+    background: var(--bg); color: var(--text); font-size: .9rem; font-weight: 600; cursor: pointer; }
+  .tab[aria-selected="true"] { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .warn { border: 1px solid var(--danger); border-radius: var(--radius-sm); padding: 12px 14px;
+    font-size: .85rem; color: var(--danger); margin-block-end: 16px; }
+  a { color: var(--brand-2-ink); }
+  code { font-size: .85em; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="https://qblogg.com" translate="no">
+      <svg viewBox="100 100 800 800" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M500 100 Q900 100 900 500 Q900 900 500 900 Q100 900 100 500 Q100 100 500 100 Z M463 251 L537 251 Q742 251 742 456 L742 530 Q742 735 537 735 L463 735 Q258 735 258 530 L258 456 Q258 251 463 251 Z" fill="currentColor"/><path d="M610.2 539.5 L539.5 610.2 L817.7 888.4 L888.4 817.7 Z" fill="#00D8C2"/></svg>
+      QBLOGG PANEL</a>
+    <button class="ghost" id="cikis" hidden>Çıkış</button>
+  </header>
+
+  <!-- Giriş -->
+  <section class="card" id="giris">
+    <h1>İçerik paneli</h1>
+    <p class="muted">Bu panel GitHub'a doğrudan yazar — değişiklikler her zaman bir
+    Pull Request veya Issue olarak açılır, doğrudan <code>main</code>'e commit atmaz.
+    Giriş için bir GitHub kişisel erişim jetonu (PAT) gerekir.</p>
+    <div class="warn">
+      Yalnızca bu depoya kapsamlı, <strong>fine-grained</strong> bir jeton kullanın:
+      GitHub → Settings → Developer settings → Fine-grained tokens → Generate new.
+      Repository access: yalnızca <code>BETA-ART-PRIVAT</code>. Permissions:
+      <code>Contents: Read and write</code>, <code>Issues: Read and write</code>,
+      <code>Pull requests: Read and write</code>. Süre: kısa tutun (ör. 30-90 gün).
+      Jeton yalnızca bu sekmenin belleğinde tutulur (sessionStorage) — sekmeyi
+      kapatınca silinir, hiçbir sunucuya gönderilmez, GitHub API'sine gitmesi dışında.
+    </div>
+    <form id="girisForm">
+      <label for="pat">Kişisel erişim jetonu (PAT)</label>
+      <input id="pat" name="pat" type="password" autocomplete="off" spellcheck="false"
+             required placeholder="github_pat_...">
+      <button type="submit" id="girisBtn">Giriş yap</button>
+      <p class="msg" id="girisMsg" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- Panel -->
+  <section id="panel" hidden>
+    <div class="card">
+      <h1>Merhaba<span id="kullaniciAdi"></span></h1>
+      <p class="muted">Depo: <code id="repoAdi"></code> · dal: <code>main</code></p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" id="tabAyarlar" role="tab" aria-selected="true" type="button">Site ayarları</button>
+      <button class="tab" id="tabYazi" role="tab" aria-selected="false" type="button">Yeni yazı öner</button>
+    </div>
+
+    <!-- Site ayarları (config.js) -->
+    <section class="card" id="panelAyarlar">
+      <h2>assets/js/config.js</h2>
+      <p class="muted">Yalnızca doldurduğunuz alanlar değişir; dosyanın geri kalanı
+      (yorumlar dahil) aynen korunur. Gönder'e basınca <code>main</code>'e karşı bir
+      Pull Request açılır — doğrudan yayına girmez, sizin (ya da bir başkasının)
+      onayı gerekir.</p>
+      <p class="msg" id="ayarlarYukleniyor">Mevcut değerler yükleniyor…</p>
+      <form id="ayarlarForm" hidden>
+        <h3>Sosyal hesaplar</h3>
+        <div class="row2">
+          <div><label for="s_linkedin">LinkedIn</label><input id="s_linkedin" type="url" placeholder="https://linkedin.com/company/..."></div>
+          <div><label for="s_x">X</label><input id="s_x" type="url" placeholder="https://x.com/..."></div>
+        </div>
+        <div class="row2">
+          <div><label for="s_youtube">YouTube</label><input id="s_youtube" type="url" placeholder="https://youtube.com/@..."></div>
+          <div><label for="s_substack">Substack</label><input id="s_substack" type="url" placeholder="https://....substack.com"></div>
+        </div>
+        <label for="s_medium">Medium</label><input id="s_medium" type="url">
+
+        <h3>Diğer</h3>
+        <label for="c_mailTo">E-posta (mailTo)</label><input id="c_mailTo" type="email" required>
+        <label for="c_formEndpoint">Form servisi adresi (Formspree vb. — CSP güncellemesi gerektirir, boş bırakılabilir)</label>
+        <input id="c_formEndpoint" type="url">
+
+        <button type="submit" id="ayarlarGonder">Değişiklik öner (PR aç)</button>
+        <p class="msg" id="ayarlarMsg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- Yeni yazı öner (issue) -->
+    <section class="card" id="panelYazi" hidden>
+      <h2>Yeni yazı öner</h2>
+      <p class="muted">Bu form doğrudan yazı oluşturmaz — 10 dilde, kaynak zorunlu,
+      görünürlük denetiminden geçecek bir yazı yazmak <code>qblogg-blog-yazisi</code>
+      becerisiyle ayrı bir üretim adımı. Burada yalnızca konuyu ve gerekçesini
+      GitHub Issue olarak kayda geçiriyorsunuz.</p>
+      <form id="yaziForm">
+        <label for="y_baslik">Başlık (TR)</label><input id="y_baslik" required>
+        <label for="y_kategori">Kategori</label>
+        <select id="y_kategori" required>
+          <option value="ai">AI</option>
+          <option value="business">Business</option>
+          <option value="money">Make Money</option>
+          <option value="jobs">Future Jobs</option>
+          <option value="safety">AI Safety</option>
+        </select>
+        <label for="y_ozet">Tek cümlelik gerekçe — neden bu yazı, hangi okur için</label>
+        <textarea id="y_ozet" required></textarea>
+        <label for="y_kaynaklar">Bilinen kaynaklar (varsa — biri satır başına)</label>
+        <textarea id="y_kaynaklar" placeholder="https://..."></textarea>
+        <button type="submit" id="yaziGonder">Öneriyi gönder (issue aç)</button>
+        <p class="msg" id="yaziMsg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </section>
+</div>
+
+<script>
+(function () {
+  var GH = { owner: 'andersenbetul-alt', repo: 'BETA-ART-PRIVAT', base: 'main', configPath: 'assets/js/config.js' };
+  var API = 'https://api.github.com';
+  var el = function (id) { return document.getElementById(id); };
+  var PAT_KEY = 'panel_pat';
+
+  function gh(path, opts) {
+    opts = opts || {};
+    // Yalnızca gerekli başlıklar: her ikisi de (Authorization, JSON gövdeli
+    // istekte Content-Type) tarayıcıda önden CORS denetimi (preflight)
+    // tetikler — GitHub'ın API'si bunu destekliyor (dokümante edilmiş CORS
+    // desteği), ama gereksiz başlık eklemek (ör. X-GitHub-Api-Version)
+    // önden denetimin onaylaması gereken başlık listesini büyütmekten
+    // başka bir işe yaramıyor; bilinçli olarak dışarıda bırakıldı.
+    var headers = { 'Authorization': 'Bearer ' + sessionStorage.getItem(PAT_KEY), 'Accept': 'application/vnd.github+json' };
+    if (opts.body) headers['Content-Type'] = 'application/json';
+    headers = Object.assign(headers, opts.headers || {});
+    return fetch(API + path, Object.assign({}, opts, { headers: headers }))
+      .then(function (res) {
+        return res.json().then(function (body) {
+          if (!res.ok) throw new Error((body && body.message) || ('GitHub hatası: ' + res.status));
+          return body;
+        });
+      });
+  }
+
+  function b64encode(str) { return btoa(unescape(encodeURIComponent(str))); }
+  function b64decode(str) { return decodeURIComponent(escape(atob(str))); }
+
+  // config.js'i dosyanın geri kalanına dokunmadan, yalnız hedeflenen alanları
+  // değiştirerek güncelliyor — tam yeniden üretim değil, satır bazlı yama.
+  // Bu yüzden yorumlar/biçimlendirme her zaman korunur.
+  function patchConfig(text, v) {
+    function esc(s) { return String(s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
+    function setInBlock(blockKey, fieldKey, val) {
+      var blockRe = new RegExp('(' + blockKey + ':\\s*\\{)([^}]*)(\\})');
+      text = text.replace(blockRe, function (m, open, body, close) {
+        var fieldRe = new RegExp("(" + fieldKey + ":\\s*)'[^']*'");
+        if (fieldRe.test(body)) body = body.replace(fieldRe, "$1'" + esc(val) + "'");
+        return open + body + close;
+      });
+    }
+    function setTop(key, val) {
+      var re = new RegExp('(\\n\\s*' + key + ":\\s*)'[^']*'");
+      text = text.replace(re, "$1'" + esc(val) + "'");
+    }
+    setInBlock('social', 'linkedin', v.linkedin);
+    setInBlock('social', 'x', v.x);
+    setInBlock('social', 'youtube', v.youtube);
+    setInBlock('social', 'substack', v.substack);
+    setInBlock('social', 'medium', v.medium);
+    setTop('mailTo', v.mailTo);
+    setTop('formEndpoint', v.formEndpoint);
+    return text;
+  }
+
+  function readConfigValues(text) {
+    function inBlock(blockKey, fieldKey) {
+      var blockRe = new RegExp(blockKey + ':\\s*\\{([^}]*)\\}');
+      var bm = text.match(blockRe);
+      if (!bm) return '';
+      var fm = bm[1].match(new RegExp(fieldKey + ":\\s*'([^']*)'"));
+      return fm ? fm[1] : '';
+    }
+    function top(key) {
+      var m = text.match(new RegExp('\\n\\s*' + key + ":\\s*'([^']*)'"));
+      return m ? m[1] : '';
+    }
+    return {
+      linkedin: inBlock('social', 'linkedin'), x: inBlock('social', 'x'),
+      youtube: inBlock('social', 'youtube'), substack: inBlock('social', 'substack'),
+      medium: inBlock('social', 'medium'),
+      mailTo: top('mailTo'), formEndpoint: top('formEndpoint')
+    };
+  }
+
+  // Dal yoksa main'in ucundan yeni bir dal açar; varsa olduğu gibi kullanır.
+  function ensureBranch(name) {
+    return gh('/repos/' + GH.owner + '/' + GH.repo + '/git/ref/heads/' + name)
+      .then(function () { return name; })
+      .catch(function () {
+        return gh('/repos/' + GH.owner + '/' + GH.repo + '/git/ref/heads/' + GH.base)
+          .then(function (ref) {
+            return gh('/repos/' + GH.owner + '/' + GH.repo + '/git/refs', {
+              method: 'POST',
+              body: JSON.stringify({ ref: 'refs/heads/' + name, sha: ref.object.sha })
+            });
+          })
+          .then(function () { return name; });
+      });
+  }
+
+  function openPR(branch, title, body) {
+    return gh('/repos/' + GH.owner + '/' + GH.repo + '/pulls', {
+      method: 'POST',
+      body: JSON.stringify({ title: title, head: branch, base: GH.base, body: body })
+    }).catch(function (err) {
+      // Aynı dal için PR zaten açıksa GitHub 422 döner — kullanıcıya var olanı bulmasını söyle.
+      throw new Error('PR açılamadı (' + err.message + ') — dal zaten pushlanmış olabilir: ' +
+        'https://github.com/' + GH.owner + '/' + GH.repo + '/compare/' + GH.base + '...' + branch);
+    });
+  }
+
+  function goster(id) {
+    ['giris', 'panel'].forEach(function (s) { el(s).hidden = s !== id; });
+  }
+
+  // ---- Giriş ----
+  el('girisForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = el('girisBtn'), msg = el('girisMsg');
+    var token = el('pat').value.trim();
+    btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Doğrulanıyor…';
+    sessionStorage.setItem(PAT_KEY, token);
+    gh('/user').then(function (u) {
+      el('kullaniciAdi').textContent = ', ' + (u.login || '');
+      el('repoAdi').textContent = GH.owner + '/' + GH.repo;
+      goster('panel');
+      el('cikis').hidden = false;
+      yukleAyarlar();
+    }).catch(function (err) {
+      sessionStorage.removeItem(PAT_KEY);
+      msg.className = 'msg err'; msg.textContent = 'Giriş başarısız: ' + err.message;
+    }).finally(function () { btn.disabled = false; });
+  });
+
+  el('cikis').addEventListener('click', function () {
+    sessionStorage.removeItem(PAT_KEY);
+    location.reload();
+  });
+
+  // ---- Sekmeler ----
+  el('tabAyarlar').addEventListener('click', function () { secTab('ayarlar'); });
+  el('tabYazi').addEventListener('click', function () { secTab('yazi'); });
+  function secTab(hangi) {
+    el('tabAyarlar').setAttribute('aria-selected', String(hangi === 'ayarlar'));
+    el('tabYazi').setAttribute('aria-selected', String(hangi === 'yazi'));
+    el('panelAyarlar').hidden = hangi !== 'ayarlar';
+    el('panelYazi').hidden = hangi !== 'yazi';
+  }
+
+  // ---- Site ayarları ----
+  var configSha = null;
+  function yukleAyarlar() {
+    gh('/repos/' + GH.owner + '/' + GH.repo + '/contents/' + GH.configPath + '?ref=' + GH.base)
+      .then(function (file) {
+        configSha = file.sha;
+        var text = b64decode(file.content);
+        var v = readConfigValues(text);
+        el('s_linkedin').value = v.linkedin; el('s_x').value = v.x;
+        el('s_youtube').value = v.youtube; el('s_substack').value = v.substack;
+        el('s_medium').value = v.medium; el('c_mailTo').value = v.mailTo;
+        el('c_formEndpoint').value = v.formEndpoint;
+        el('ayarlarYukleniyor').hidden = true;
+        el('ayarlarForm').hidden = false;
+      })
+      .catch(function (err) {
+        el('ayarlarYukleniyor').textContent = 'Yüklenemedi: ' + err.message;
+      });
+  }
+
+  el('ayarlarForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = el('ayarlarGonder'), msg = el('ayarlarMsg');
+    btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Gönderiliyor…';
+    var v = {
+      linkedin: el('s_linkedin').value.trim(), x: el('s_x').value.trim(),
+      youtube: el('s_youtube').value.trim(), substack: el('s_substack').value.trim(),
+      medium: el('s_medium').value.trim(), mailTo: el('c_mailTo').value.trim(),
+      formEndpoint: el('c_formEndpoint').value.trim()
+    };
+    var branch = 'panel/config-' + Date.now();
+    ensureBranch(branch)
+      .then(function () {
+        return gh('/repos/' + GH.owner + '/' + GH.repo + '/contents/' + GH.configPath + '?ref=' + branch);
+      })
+      .then(function (file) {
+        var text = b64decode(file.content);
+        var yeni = patchConfig(text, v);
+        return gh('/repos/' + GH.owner + '/' + GH.repo + '/contents/' + GH.configPath, {
+          method: 'PUT',
+          body: JSON.stringify({
+            message: 'Panel: config.js güncelle',
+            content: b64encode(yeni), sha: file.sha, branch: branch
+          })
+        });
+      })
+      .then(function () {
+        return openPR(branch, 'Panel: site ayarlarını güncelle',
+          'İçerik panelinden gönderildi. `npm run check` ve `npm run guvenlik` merge öncesi çalıştırılmalı.');
+      })
+      .then(function (pr) {
+        msg.className = 'msg ok';
+        msg.innerHTML = '';
+        var a = document.createElement('a'); a.href = pr.html_url; a.target = '_blank';
+        a.rel = 'noopener'; a.textContent = 'PR açıldı — incelemek için tıklayın →';
+        msg.appendChild(a);
+      })
+      .catch(function (err) { msg.className = 'msg err'; msg.textContent = 'Başarısız: ' + err.message; })
+      .finally(function () { btn.disabled = false; });
+  });
+
+  // ---- Yeni yazı öner (issue) ----
+  el('yaziForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = el('yaziGonder'), msg = el('yaziMsg');
+    btn.disabled = true; msg.className = 'msg'; msg.textContent = 'Gönderiliyor…';
+    var baslik = el('y_baslik').value.trim();
+    var kategori = el('y_kategori').value;
+    var ozet = el('y_ozet').value.trim();
+    var kaynaklar = el('y_kaynaklar').value.trim();
+    var govde = '**Kategori:** ' + kategori + '\n\n**Gerekçe:** ' + ozet +
+      (kaynaklar ? '\n\n**Bilinen kaynaklar:**\n' + kaynaklar : '') +
+      '\n\n---\nİçerik panelinden gönderildi. Üretim: `qblogg-blog-yazisi` becerisi ' +
+      '(en az üç kaynak, orijinal katkı, görünürlük denetimi zorunlu).';
+    gh('/repos/' + GH.owner + '/' + GH.repo + '/issues', {
+      method: 'POST',
+      body: JSON.stringify({ title: 'Yeni yazı önerisi: ' + baslik, body: govde, labels: ['yeni-yazi-onerisi'] })
+    }).then(function (issue) {
+      msg.className = 'msg ok'; msg.innerHTML = '';
+      var a = document.createElement('a'); a.href = issue.html_url; a.target = '_blank';
+      a.rel = 'noopener'; a.textContent = 'Issue açıldı →';
+      msg.appendChild(a);
+      el('yaziForm').reset();
+    }).catch(function (err) {
+      msg.className = 'msg err'; msg.textContent = 'Başarısız: ' + err.message;
+    }).finally(function () { btn.disabled = false; });
+  });
+
+  // ---- Oturum devam ediyor mu? ----
+  if (sessionStorage.getItem(PAT_KEY)) {
+    gh('/user').then(function (u) {
+      el('kullaniciAdi').textContent = ', ' + (u.login || '');
+      el('repoAdi').textContent = GH.owner + '/' + GH.repo;
+      goster('panel'); el('cikis').hidden = false; yukleAyarlar();
+    }).catch(function () { sessionStorage.removeItem(PAT_KEY); goster('giris'); });
+  } else {
+    goster('giris');
+  }
+})();
+</script>
+</body>
+</html>

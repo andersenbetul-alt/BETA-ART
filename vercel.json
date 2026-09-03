@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "git clone --depth 1 --branch main https://github.com/andersenbetul-alt/BETA-ART-PRIVAT.git _src && bash \"$([ -f scripts/vercel-build.sh ] && echo scripts/vercel-build.sh || echo _src/scripts/vercel-build.sh)\"",
+  "buildCommand": "bash scripts/vercel-build.sh",
   "outputDirectory": "dist",
   "cleanUrls": false,
   "trailingSlash": false,
