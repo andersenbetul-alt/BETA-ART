@@ -49,6 +49,16 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
   if (!isLocale(locale)) notFound();
   const d = localeData[locale];
 
+  // Only releases with a verified track/album URL enter the schema (rule 8 —
+  // no fabricated data). Entries whose link resolves to the artist page are
+  // omitted rather than pointed at a generic URL.
+  const recordings = [
+    { name: 'help urself', url: 'https://open.spotify.com/album/06b4DfalAz3dIQ03bb0onI', year: '2022' },
+    { name: 'AURORA LOVE', url: 'https://open.spotify.com/track/5VjosjVlvJPfnttKebrJ6Q', year: '2025' },
+    { name: 'X-PIRATA', url: 'https://open.spotify.com/track/1zy2jcxgoURrOTfgdQkVsI', year: '2024' },
+    { name: 'Put you in a COFFIN!', url: 'https://open.spotify.com/track/2ilS7mn0Bd9O06gZqcNoDK', year: '2023' }
+  ];
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'MusicGroup',
@@ -65,7 +75,14 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
       'https://www.instagram.com/prod.hxi/',
       'https://www.youtube.com/@hximusic',
       'https://ncs.io/artist/1169/hxi'
-    ]
+    ],
+    track: recordings.map((r) => ({
+      '@type': 'MusicRecording',
+      name: r.name,
+      url: r.url,
+      datePublished: r.year,
+      byArtist: { '@id': `${siteUrl}/#artist` }
+    }))
   };
 
   return (

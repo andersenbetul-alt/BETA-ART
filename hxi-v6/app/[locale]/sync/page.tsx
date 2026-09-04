@@ -34,8 +34,31 @@ export default async function SyncPage({ params }: { params: Promise<{ locale: s
   const d = localeData[locale];
   const copy = d.syncPage;
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${siteUrl}/${locale}/sync/#webpage`,
+        url: `${siteUrl}/${locale}/sync/`,
+        name: copy.title,
+        description: copy.description,
+        inLanguage: d.hreflang,
+        about: { '@id': `${siteUrl}/#artist` }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'HXI', item: `${siteUrl}/${locale}/` },
+          { '@type': 'ListItem', position: 2, name: copy.heading, item: `${siteUrl}/${locale}/sync/` }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <a className="skip" href="#main">{d.skip}</a>
       <header className="nav privacy-nav">
         <Link className="brand" href={`/${locale}/`} aria-label="HXI"><b>X</b> HXI</Link>
