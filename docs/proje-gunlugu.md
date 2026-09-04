@@ -839,3 +839,39 @@ ellememek için zorlama değişiklik yapılmadı (cerrahi değişiklik ilkesi).
 yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn — hepsi hâlâ
 kullanıcıda. Ayrıca: v1.0.0 tag'i (ortam etiket push'ını engelledi, elle
 basılacak) ve `beta-art/` (WEB-2026-003) fiziksel taşıma onayı bekliyor.
+
+## 04.09.2026 (sabah turu) — Sağlık + rakip analizi (Stocksy / AI-free pazar yeri)
+
+**Sağlık:** Canlı site (`beta-art-privat-phi.vercel.app`) bu cron turundan yine
+`EGRESS_BLOCKED` — bu oturumda tekrar tekrar doğrulanan ortam sınırı, outage
+değil. Canlı teyit Vercel MCP'li ana turda yapılır; kullanıcıya yanlış "kapalı"
+uyarısı verilmedi.
+
+**Araştırma (yeni açı — rakip/pazar; önceki iki tur C2PA'ydı):** Beta Art'ın
+en yakın konum akranı **Stocksy United** incelendi. Stocksy AI üretimi içeriği
+**kabul etmiyor** (yalnız insan yapımı), el ile seçilmiş küresel sanatçı
+topluluğuyla çalışan bir **platform kooperatifi** (sanatçı-sahipli, Victoria/BC)
+ve sektör ortalamasının üstünde telif payı veriyor; lisanslama standart +
+genişletilmiş (kaynaklar:
+[Stocksy AI SSS](https://support.stocksy.com/hc/en-us/articles/8631710866708-Can-I-upload-AI-generated-content-to-Stocksy),
+[Stocksy United — Wikipedia](https://en.wikipedia.org/wiki/Stocksy_United)).
+**Beta Art için çıkarım:** "AI-free + insan sanatçı + adil pay" ekseninde
+Stocksy zaten güçlü; Beta Art'ın burada tek başına "AI yok" demesi
+farklılaştırma değil — pazar bunu Stocksy'de zaten buluyor. Beta Art'ın gerçek
+ayrımı **plaka-başı köken doğrulaması** (RAW arşivi + capture kaydı/C2PA +
+fotoğrafçı imzalı lisans): Stocksy içeriği küratörlüyor ama her görsel için
+bağımsız doğrulanabilir bir köken sertifikası **yayınlamıyor**. Yani mevcut
+komisyon belgesindeki Stocksy kıyası (%50/%75 vs Beta Art %70) doğru kalıyor,
+ama pazarlama mesajının merkezi "AI yok" değil "**kanıtlanabilir köken**"
+olmalı — bu, sitedeki mevcut 3-yöntem doğrulama vurgusuyla zaten örtüşüyor,
+yeni iddia gerektirmiyor. `komisyon-ve-mva.md`'deki Stocksy kıyası kaynağıyla
+teyit edildi; değişiklik gerekmiyor.
+
+**Geliştirme (bu tur):** Kod değişikliği yapılmadı — dünkü turda a11y/img
+denetimi temizdi, zorlama değişiklik cerrahi-değişiklik ilkesine aykırı olur.
+Bu tur belge (araştırma günlüğü) teslimi.
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn; ayrıca v1.0.0
+tag (ortam etiket push'ını engelledi, elle basılacak) ve `beta-art/`
+(WEB-2026-003) fiziksel taşıma onayı — hepsi hâlâ kullanıcıda.
