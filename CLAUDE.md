@@ -46,6 +46,12 @@ engine/             Curiosity Engine (site değil, üretim hattı)
   write.mjs         Araştırma → makale → SEO → gelir → kalite + görünürlük kapısı
 ```
 
+## Temel çalışma kuralı
+
+**QBLOGG dosyaları yalnızca bu repoda güncellenir.** Scratchpad, geçici dizin veya
+başka bir lokasyon kullanılmaz. Değişiklikler her zaman `/home/user/BETA-ART` altındaki
+ilgili dosyaya yapılır ve `claude/qblogg-dosyalari-mbnrbx` dalına commit edilir.
+
 ## Değişmez kurallar
 
 1. **Dil bütünlüğü.** Diller: tr, en, zh, hi, es, ar, fr, pt, ru, no. Yeni bir metin
