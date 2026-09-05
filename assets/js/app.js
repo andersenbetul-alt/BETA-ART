@@ -8,6 +8,21 @@
   var FALLBACK = 'en';
   var LS_LANG = 'qb_lang';
   var LS_THEME = 'qb_theme';
+  var LS_INTEREST = 'qb_interest';
+
+  /* Davranış temelli öneri: hangi kategoriyi kaç kez okuduğu/seçtiği
+     yalnızca ziyaretçinin kendi tarayıcısında (localStorage) sayılır —
+     sunucuya hiç gitmez, başka ziyaretçiyle paylaşılmaz. */
+  function getInterest() {
+    try { return JSON.parse(localStorage.getItem(LS_INTEREST) || '{}'); }
+    catch (e) { return {}; }
+  }
+  function trackInterest(category) {
+    if (!category) return;
+    var data = getInterest();
+    data[category] = (data[category] || 0) + 1;
+    try { localStorage.setItem(LS_INTEREST, JSON.stringify(data)); } catch (e) { /* yoksay */ }
+  }
 
   /* Kapak rampası navy–teal aralığında kalır: markanın dışına çıkan renk yok.
      Beyaz ikon her uçta en az 4,76:1 kontrast görür (ölçüldü). */
@@ -421,6 +436,25 @@
       }).join('');
     }
     var q = blogState.q.toLowerCase().trim();
+    // "Sizin için önerilen" şeridi: yalnızca varsayılan görünümde (filtresiz,
+    // aramasız — ziyaretçi zaten ne istediğini söylemişken öneri gereksiz) ve
+    // yalnızca gerçek bir okuma geçmişi varken görünür. Geçmiş yoksa şerit
+    // hiç render edilmez, boş bir kutu bırakmaz.
+    var rec = $('#recommended');
+    if (rec) {
+      var interest = getInterest();
+      var recPosts = blogState.cat === 'all' && !q
+        ? sorted().map(function (p) { return { p: p, score: interest[p.category] || 0 }; })
+            .filter(function (x) { return x.score > 0; })
+            .sort(function (a, b) { return b.score - a.score; })
+            .slice(0, 3).map(function (x) { return x.p; })
+        : [];
+      rec.hidden = !recPosts.length;
+      rec.innerHTML = recPosts.length
+        ? '<h2 class="recommended-title">' + esc(t('posts.recommended')) + '</h2><div class="posts">' +
+          recPosts.map(function (p) { return cardHTML(p, 2); }).join('') + '</div>'
+        : '';
+    }
     var list = sorted().filter(function (p) {
       if (blogState.cat !== 'all' && p.category !== blogState.cat) return false;
       if (!q) return true;
@@ -454,6 +488,7 @@
       var b = e.target.closest('button[data-cat]');
       if (!b) return;
       blogState.cat = b.dataset.cat;
+      if (blogState.cat !== 'all') trackInterest(blogState.cat);
       syncBlogUrl();
       renderBlog();
     });
@@ -481,12 +516,17 @@
     var blocks = pick(post.b) || [];
     var body = blocks.map(blockHTML).join('');
     var toc = tocHTML(blocks);
-    var related = sorted().filter(function (p) { return p.slug !== post.slug && p.category === post.category; }).slice(0, 2);
-    if (related.length < 2) {
-      related = related.concat(sorted().filter(function (p) {
-        return p.slug !== post.slug && related.indexOf(p) === -1;
-      }).slice(0, 2 - related.length));
-    }
+    // "Benzer yazılar" artık yalnızca kategori eşleşmesi değil, ziyaretçinin
+    // kendi okuma geçmişiyle (getInterest) ağırlıklandırılıyor. Geçmişi
+    // olmayan bir ziyaretçi için puanlama eski davranışla birebir aynı
+    // sonucu verir (yalnızca kategori eşleşmesi + tarih sırası) — bu yüzden
+    // ayrı bir "geçmiş yoksa" dalına gerek kalmadı.
+    var interest = getInterest();
+    var related = sorted().filter(function (p) { return p.slug !== post.slug; })
+      .map(function (p) { return { p: p, score: (interest[p.category] || 0) * 10 + (p.category === post.category ? 5 : 0) }; })
+      .sort(function (a, b) { return b.score - a.score; })
+      .slice(0, 2)
+      .map(function (x) { return x.p; });
     document.title = pick(post.t) + ' — QBLOGG';
     var metaDesc = $('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', pick(post.e));
@@ -522,6 +562,10 @@
       '<h2 style="margin-top:52px">' + esc(t('posts.related')) + '</h2>' +
       '<div class="posts">' + related.map(function (p) { return cardHTML(p, 3); }).join('') + '</div>';
 
+    // Bu okuma, bir SONRAKİ öneriyi etkilesin diye sayfa çizildikten sonra
+    // kaydediliyor — yukarıdaki related listesi yalnızca önceki geçmişe bakar.
+    trackInterest(post.category);
+
     var share = $('#shareBtn');
     if (share) share.addEventListener('click', function () {
       var url = window.location.href;
@@ -554,13 +598,17 @@
   }
 
   // Altbilgideki sosyal bağlantılar: adresi girilmemiş hesap gösterilmez.
+  // Hiçbir hesap girilmemişse "Sosyal" başlığı da boş kalmasın diye gizlenir.
   function applySocial() {
+    var any = false;
     $$('[data-social]').forEach(function (el) {
       var url = SOCIAL[el.getAttribute('data-social')];
       var li = el.closest('li') || el;
-      if (url) { el.href = url; li.hidden = false; }
+      if (url) { el.href = url; li.hidden = false; any = true; }
       else { li.hidden = true; }
     });
+    var wrap = document.getElementById('footerSocial');
+    if (wrap) wrap.hidden = !any;
   }
 
   // Paket kartlarındaki "Kartla öde" düğmesi: adresi config.js → payLinks'te

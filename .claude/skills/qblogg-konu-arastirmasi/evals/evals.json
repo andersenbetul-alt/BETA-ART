@@ -1,0 +1,44 @@
+{
+  "skill_name": "qblogg-konu-arastirmasi",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "QBLOGG için sağlık sektöründe dünyada en çok merak edilen konuları araştır, blog için somut yazı önerileri çıkar.",
+      "expected_output": "Sağlık alanında 3-5 kaynaklı aday konu, her biri gerçek kaynak (ad+URL+tarih) ve KOBİ/SaaS uyumu notuyla; uydurma rakam yok.",
+      "files": [],
+      "expectations": [
+        "En az 3 farklı aday konu/açı sunuyor",
+        "Her aday konu, adı geçen (kuruluş + tarih, mümkünse URL) gerçek bir kaynağa dayanıyor",
+        "Birincil/güçlü kaynaklı bulgularla ikincil/aktarım kaynaklı (belirsiz) bulguları açıkça ayırt ediyor",
+        "Her aday için QBLOGG kitlesine (KOBİ/SaaS) neden uyduğuna dair bir gerekçe var",
+        "Kaynaksız/atıfsız \"çıplak\" bir istatistik ya da yüzde sunmuyor"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Enerji ve petrol-gaz sektöründe en çok tartışılan/merak edilen konuları incele, QBLOGG blog için değerlendir.",
+      "expected_output": "Enerji/petrol-gaz alanında kaynaklı aday konular; kanıt gücü zayıf olanlar açıkça işaretli, en tartışmalı bulgu için deep-research önerisi.",
+      "files": [],
+      "expectations": [
+        "En az 3 farklı aday konu/açı sunuyor",
+        "Her aday konu, adı geçen (kuruluş + tarih, mümkünse URL) gerçek bir kaynağa dayanıyor",
+        "Birincil/güçlü kaynaklı bulgularla ikincil/aktarım kaynaklı (belirsiz) bulguları açıkça ayırt ediyor",
+        "Her aday için QBLOGG kitlesine (KOBİ/SaaS) neden uyduğuna dair bir gerekçe var",
+        "Kaynaksız/atıfsız \"çıplak\" bir istatistik ya da yüzde sunmuyor"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Yapay zeka güvenliği konusunda son zamanlarda en çok konuşulan gelişmeleri araştır.",
+      "expected_output": "AI safety alanında (QBLOGG'un zaten var olan bir kategorisi) kaynaklı, güncel aday konular; mevcut kategoriyle çakışma sorun değil.",
+      "files": [],
+      "expectations": [
+        "En az 3 farklı aday konu/açı sunuyor",
+        "Her aday konu, adı geçen (kuruluş + tarih, mümkünse URL) gerçek bir kaynağa dayanıyor",
+        "Birincil/güçlü kaynaklı bulgularla ikincil/aktarım kaynaklı (belirsiz) bulguları açıkça ayırt ediyor",
+        "Her aday için QBLOGG kitlesine (KOBİ/SaaS) neden uyduğuna dair bir gerekçe var",
+        "Kaynaksız/atıfsız \"çıplak\" bir istatistik ya da yüzde sunmuyor"
+      ]
+    }
+  ]
+}
