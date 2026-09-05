@@ -1362,4 +1362,222 @@ window.QB_POSTS = [
          'På salgssiden priser du dette som en pakke, ikke per time. Noe som «fire artikler + tjue LinkedIn-innlegg + ett nyhetsbrev i måneden» gjør budsjettering enkelt for kunden og flytter deg fra skribent til leverandør. Det er nettopp der de gjentakende inntektene kommer fra.']
   }
 }
+,
+{
+  slug: 'sykefravaer-flerspraklig-oppfolging',
+  category: 'jobs', date: '2026-09-05', accent: 2, icon: 'bulb',
+  orig: "Altı soruluk tarayıcı-yerel öz kontrol: hiçbir veri gönderilmez veya saklanmaz; süreç ve dil açısından iyileştirilmesi gereken tek nokta görünür hale gelir.",
+  src: [
+    {"t": "NAV – Slik følger du opp sykmeldte (4 uker og 7 uker frister)", "u": "https://www.nav.no/arbeidsgiver/sykmeldte"},
+    {"t": "NAV – Oppfølgingsplan — innhold og krav", "u": "https://www.nav.no/arbeidsgiver/oppfolgingsplan"},
+    {"t": "Arbeidstilsynet – Oppfølging av sykmeldte", "u": "https://www.arbeidstilsynet.no/hms/sykefravær/oppfolging-av-sykmeldte/"},
+    {"t": "Arbeidstilsynet – Generelle krav til opplæring (forståelig språk)", "u": "https://www.arbeidstilsynet.no/hms/opplaering/generelle-krav/"},
+    {"t": "Arbeidstilsynet – Organisatorisk arbeidsmiljø", "u": "https://www.arbeidstilsynet.no/hms/arbeidsmiljo/organisatorisk-arbeidsmiljo/"},
+    {"t": "NAV – Sykmelding (arbeidsgivereksemplar uten medisinske opplysninger)", "u": "https://www.nav.no/arbeidsgiver/sykmelding"},
+    {"t": "NAV – Tilskudd til ekspertbistand (vilkår og forhåndsgodkjenning)", "u": "https://www.nav.no/arbeidsgiver/ekspertbistand"}
+  ],
+  t: {
+    tr: "Anadili Norveççe olmayan çalışanın hastalık iznini yönetmek: yanlış anlaşılmadan takip",
+    en: "Following up sick leave when the employee's first language isn't Norwegian",
+    zh: "当患病员工的母语不是挪威语时：如何有效跟进病假",
+    hi: "जब बीमार कर्मचारी की मातृभाषा नॉर्वेजियन नहीं है: गलतफहमी के बिना अनुवर्ती कार्रवाई",
+    es: "Gestionar la baja médica cuando el idioma materno del empleado no es noruego",
+    ar: "متابعة إجازة المرض عندما لا تكون لغة الموظف الأم نرويجية",
+    fr: "Gérer le congé maladie quand la langue maternelle du salarié n'est pas le norvégien",
+    pt: "Acompanhar licença médica quando o idioma nativo do colaborador não é norueguês",
+    ru: "Сопровождение больничного, когда родной язык сотрудника — не норвежский",
+    no: "Når den sykmeldte har et annet førstespråk: oppfølging uten misforståelser"
+  },
+  e: {
+    tr: "Norveç'te hastalık izni takibi dil fark etmeksizin aynı kurallara tabi. Sorun hukuki değil, pratik: tarafların anahtar terimleri aynı şekilde anlaması.",
+    en: "Norwegian sick leave follow-up rules apply regardless of language. The challenge is practical, not legal: ensuring both sides understand deadlines, roles and agreed measures.",
+    zh: "挪威病假跟进规则与语言无关。挑战在于实践层面，而非法律层面：确保双方理解关键术语、截止日期和商定措施。",
+    hi: "नॉर्वे में बीमार छुट्टी के नियम भाषा की परवाह किए बिना समान रूप से लागू होते हैं। चुनौती व्यावहारिक है, कानूनी नहीं।",
+    es: "Las reglas de seguimiento de baja médica en Noruega se aplican independientemente del idioma. El desafío es práctico, no legal.",
+    ar: "تنطبق قواعد متابعة إجازة المرض في النرويج بصرف النظر عن اللغة. التحدي عملي وليس قانونياً.",
+    fr: "Les règles de suivi du congé maladie en Norvège s'appliquent quelle que soit la langue. Le défi est pratique, pas juridique.",
+    pt: "As regras de acompanhamento de licença médica na Noruega se aplicam independentemente do idioma. O desafio é prático, não jurídico.",
+    ru: "Правила сопровождения больничного в Норвегии одинаковы независимо от языка. Проблема практическая, не юридическая.",
+    no: "Norske regler for sykefraværsoppfølging gjelder uavhengig av språk. Utfordringen er praktisk, ikke juridisk."
+  },
+  b: {
+    tr: [
+      "Norveç'te hastalık izninin takibi, çalışanın anadili ne olursa olsun aynı kurallara tabidir. Değişen şey kurallar değil, tarafların bu kurallara dair aynı anlayışa sahip olması zorunluluğu. Bu rehber, dil farklılığını bir hukuki sorun olarak değil pratik bir risk olarak ele alıyor ve yöneticiye beş adımlı bir görüşme çerçevesi sunuyor.",
+      {"note": "Bu makale işverenler ve yöneticiler için genel bilgi içermektedir. Bireysel hukuki veya tıbbi danışmanlığın yerini tutmaz."},
+      {"h": "Kısa çıkarımlar"},
+      {"ul": [
+        "Takip süreleri dil fark etmeksizin değişmez: 4 hafta içinde yazılı plan, tam istirahatte genellikle 7 haftada diyalog toplantısı.",
+        "Gündem işlev ve uyarlamadır — teşhis değil. İşverenin aldığı istirahat belgesi tıbbi bilgi içermez.",
+        "Gerekli eğitimin çalışanın anlayacağı dilde verilmesi zorunluluğu Arbeidstilsynet kuralında yer almaktadır.",
+        "Anlaşıldı mı diye sormak yetmez; taraflardan kararları kendi sözleriyle özetlemesini isteyin.",
+        "Dil riski ciddi boyuta ulaşırsa — haklar, güvenlik veya tedavi planı etkilenebilecekse — nitelikli dil desteği değerlendirilebilir.",
+        "Dış destek gerekip gerekmediğini anlamak için altı soruluk öz kontrol bölümü makalenin sonundadır."
+      ]},
+      {"h": "Süreler değişmiyor"},
+      "**İşveren ve çalışan birlikte dört hafta içinde takip planı yapmalıdır.** Tam istirahat durumunda işveren normal olarak yedi hafta içinde birinci diyalog toplantısına çağırır; bu toplantı açıkça gereksizse muafiyet uygulanır. Kısmi istirahatte işveren, çalışan veya hekimden biri ihtiyaç duyduğunda toplantı yapılır.",
+      "Takip planı çalışma görevlerini, iş kapasitesini, olası uyarlamaları ve kararlaştırılan tedbirleri içermelidir. Çalışan takibe katılmakla yükümlüdür; ancak yalnızca iş işlevi hakkında bilgi vermek zorundadır. İşveren teşhisi konu etmemelidir.",
+      {"note": "Kaynaklar: NAV – Slik følger du opp sykmeldte; NAV – Oppfølgingsplan; Arbeidstilsynet – Oppfølging av sykmeldte. Kontrol tarihi: 5 Eylül 2026."},
+      {"h": "Dil ayrı bir hukuki rejim değil, pratik bir risk"},
+      "Kurallar aynıdır. Sorun şudur: taraflar **takip planı**, **uyarlama**, **iş kapasitesi** ve **diyalog toplantısı** gibi terimleri aynı şekilde anlıyor mu?",
+      "İşverenin e-posta göndermiş olması yeterli değildir; çalışan şunları anlamıyorsa:",
+      {"ul": [
+        "Toplantının neden yapıldığı",
+        "Ne katkı sunması beklendiği",
+        "İşverenin hangi bilgilere ihtiyacı olduğu — ve olmadığı",
+        "Hangi tedbirlerin önerildiği",
+        "Kimin ne yapacağı ve ne zaman yapacağı"
+      ]},
+      "Arbeidstilsynet gerekli eğitimin çalışanın anlayacağı dilde verilmesi gerektiğini vurgulamaktadır. Bu kural eğitim ve güvenlik kapsamındadır; her belgenin çevrilmesi zorunluluğu anlamına gelmez. Bununla birlikte, dil belirsizliğinin hakları, güvenliği veya tedavi planını etkileyebileceği durumlarda dil desteği değerlendirilmelidir.",
+      {"note": "Kaynaklar: Arbeidstilsynet – Generelle krav til opplæring; Arbeidstilsynet – Organisatorisk arbeidsmiljø. Kontrol tarihi: 5 Eylül 2026."},
+      {"h": "Beş adımlık görüşme yapısı"},
+      "**Adım 1: Toplantıdan önce amacı açıklayın.** Toplantının konusunu, katılımcıları, süresini, netleştirilecek konuları ve çalışanın bilgiyi başka bir dil biçiminde isteyip istemediğini belirten kısa bir davet gönderin. Dahili kısaltmalar ve uzun yasal atıflar kullanmayın.",
+      "**Adım 2: İşlev hakkında konuşun, teşhis hakkında değil.** Sorulabilecek sorular:",
+      {"ul": [
+        "Şu anda hangi görevler mümkün?",
+        "Hangi görevler zor ya da mümkün değil?",
+        "Çalışma saati, tempo, ekipman, çalışma yeri veya görev dağılımı ayarlanabilir mi?",
+        "Tedbirleri ne zaman gözden geçirmeliyiz?"
+      ]},
+      "İşverenin aldığı istirahat belgesi tıbbi bilgi içermez; bu, takibin temel ilkesiyle örtüşür: özel tıbbi ayrıntılar sorulmadan işte neyin işe yarayacağını bulun.",
+      {"note": "Kaynak: NAV – Sykmelding. Kontrol tarihi: 5 Eylül 2026."},
+      "**Adım 3: Tedbirleri somutlaştırın.** 'Gerektiğinde uyarlama' çok muğlak. Bunun yerine şunu yazın: '14 Eylülden itibaren çalışan A ve B görevleri üstleniyor, müşteri nöbeti yok. Yönetici 28 Eylülde yeni değerlendirme yapacak.' İyi bir plan; öneri, karar, sorumlu kişi ve tarihi birbirinden ayırır.",
+      "**Adım 4: Anlaşıldığını doğrulayın.** Yalnızca 'Anladın mı?' diye sormayın. Her iki taraftan da anlaşmayı kendi sözleriyle özetlemesini isteyin:",
+      {"ul": [
+        "Bir sonraki tedbir nedir?",
+        "Sorumluluk kimde?",
+        "Ne zaman takip yapacağız?",
+        "Tedbir işe yaramazsa ne yapacağız?"
+      ]},
+      "**Adım 5: Yalnızca gerekeni belgeleyin.** Takip planı işe dönüşü desteklemelidir. Teşhis, sağlık hakkındaki varsayımlar ve gereksiz ayrıntılardan kaçının. Planı yalnızca ilgili taraflarla ve onaylı kanallar aracılığıyla paylaşın.",
+      {"h": "Kendi durumunuzu kontrol edin"},
+      "Şu altı soruya evet ya da hayır cevabı verin:",
+      {"ul": [
+        "Her iki taraf da toplantının neden yapıldığını ve süreleri biliyor mu?",
+        "Plan teşhis değil, görev, işlev ve tedbirler üzerine mi kurulu?",
+        "Sorumluluk, tedbir ve tarih somut biçimde yazılı mı?",
+        "Bilgi göndermenin ötesinde anlaşıldığını doğruladınız mı?",
+        "Varsa farklı dil versiyonları içerik açısından uyumlu mu?",
+        "Tıkandığınızda kimi arayacağınızı biliyor musunuz?"
+      ]},
+      "Bir soruya hayır yanıtı verdiyseniz, ilk adım tam olarak o noktayı düzeltmek olabilir. Birden fazla hayır yanıtı, yinelenen devamsızlık, anlaşmazlık veya önemli bilgilerin yanlış anlaşılma riski, dış desteği daha uygun kılabilir.",
+      {"h": "Dış destek ne zaman gerekebilir"},
+      "**Süreç danışmanlığı** şu durumlarda ilgili olabilir: şirket takipte tıkandığında, tedbirler işe yaramadığında, rol dağılımı belirsizleştiğinde veya yönetici, İK, iş sağlığı hizmetleri ve diğer aktörlerin koordinasyonu gerektiğinde.",
+      "**Dil desteği** şu durumlarda ilgili olabilir: davetler, planlar veya İK metinleri farklı dillerde farklı mesaj verdiğinde ya da merkezi terimlerin doğru bağlamda çevrilip doğrulanması gerektiğinde.",
+      "**Birleşik değerlendirme** şu durumlarda ilgili olabilir: hem takip süreci hem çok dilli iletişim birbirini etkilediğinde. Hedef 'daha fazla metin' değil, tutarlı bir süreçtir.",
+      "NAV, uzun süreli veya sık sık hastalık izninin söz konusu olduğu ve olağan takip ile uyarlamanın denendiği durumlarda uzman yardımı için kaynak desteği sunmaktadır. Düzenin hem durum hem uzman için ayrı koşulları vardır ve NAV desteğin kullanılmadan önce başvuruyu onaylamalıdır.",
+      {"note": "Kaynak: NAV – Tilskudd til ekspertbistand. QBLOGG belirli bir şirketin veya sağlayıcının bu koşulları karşılayacağına dair güvence vermez. Kontrol tarihi: 5 Eylül 2026."},
+      {"h": "Editoryal kaynak tablosu"},
+      {"note": "Son faktür kontrolü: 5 Eylül 2026. Bu makaledeki tüm kurallar ve süreler NAV ve Arbeidstilsynet'in birincil yayınlarından alınmış ve kontrol edilmiştir. 'Toplantıdan önce amacı açıklayın' ve 'kendi sözlerinizle özetleyin' gibi öneriler QBLOGG'un pratik tavsiyeleridir; yasal zorunluluk olarak sunulmamaktadır."}
+    ],
+    en: [
+      "Norway's sick leave follow-up rules apply the same way regardless of the employee's first language. What changes is not the rules but the need for both parties to actually understand them in the same way. This guide treats language difference as a practical risk, not a legal problem, and gives managers a five-step conversation structure.",
+      {"note": "This article contains general information for employers and managers. It does not replace individual legal or medical advice."},
+      {"h": "Key takeaways"},
+      {"ul": [
+        "Deadlines don't change for language reasons: follow-up plan within 4 weeks, first dialogue meeting normally within 7 weeks for full sick leave.",
+        "The agenda is work function and adaptations — not diagnosis. The employer's copy of the sick note contains no medical information.",
+        "Arbeidstilsynet requires that necessary training be provided in a language the employee understands.",
+        "Asking 'did you understand?' is not enough — ask both parties to summarise the agreement in their own words.",
+        "If language risk is significant — rights, safety or a follow-up plan could be affected — qualified language support should be considered.",
+        "Use the six-question self-check at the end of this article to see whether external help is relevant."
+      ]},
+      {"h": "The deadlines don't change"},
+      "**Employer and employee must prepare a follow-up plan together, normally within four weeks.** For full sick leave, the employer normally calls a first dialogue meeting within seven weeks — with an exception when the meeting is clearly unnecessary. For partial sick leave, the meeting is held when the employer, employee, or treating physician believes it is needed.",
+      "The follow-up plan should describe work tasks, work capacity, possible adaptations, and agreed measures. The employee is required to participate in the follow-up but only needs to provide information about their work function. The employer must not make the diagnosis a topic.",
+      {"note": "Sources: NAV – Slik følger du opp sykmeldte; NAV – Oppfølgingsplan; Arbeidstilsynet – Oppfølging av sykmeldte. Checked: 5 September 2026."},
+      {"h": "Language is not a separate legal regime — but it is a practical risk"},
+      "The rules are the same. The question is whether both parties read the same meaning into words like **follow-up plan**, **adaptation**, **work capacity**, and **dialogue meeting**.",
+      "Sending an e-mail is not enough if the employee doesn't understand:",
+      {"ul": [
+        "Why the meeting is being held",
+        "What they are expected to contribute",
+        "What information the employer needs — and does not need",
+        "What measures have been proposed",
+        "Who does what, and by when"
+      ]},
+      "Arbeidstilsynet states that necessary training must be provided in a language the employee understands. This requirement covers training and safety; it does not automatically mean every document must be translated. As practical risk management, a manager should consider language support when a misunderstanding could affect health, safety, rights, or an agreed follow-up plan.",
+      {"note": "Sources: Arbeidstilsynet – Generelle krav til opplæring; Arbeidstilsynet – Organisatorisk arbeidsmiljø. Checked: 5 September 2026."},
+      {"h": "A five-step conversation structure"},
+      "**Step 1: Explain the purpose before the meeting.** Send a brief invitation stating the topic, participants, duration, what you will try to clarify, and whether the employee needs information in another language format. Avoid internal abbreviations and long statutory references.",
+      "**Step 2: Talk about function, not diagnosis.** Example questions:",
+      {"ul": [
+        "Which tasks are possible right now?",
+        "Which tasks are difficult or not possible?",
+        "Can working hours, pace, equipment, workplace or task distribution be adjusted?",
+        "When should we review the measures?"
+      ]},
+      "The employer's copy of the sick note contains no medical information. This fits the core principle of sick leave follow-up: find out what can work at the job without asking for private medical details.",
+      {"note": "Source: NAV – Sykmelding. Checked: 5 September 2026."},
+      "**Step 3: Write concrete measures.** 'Adapt as needed' is too vague. Instead write: 'From 14 September the employee works on tasks A and B, without customer duty. Manager will do a new review on 28 September.' A good plan separates proposal, decision, responsible person, and date.",
+      "**Step 4: Verify understanding.** Don't just ask 'did you understand?' Ask both parties to summarise the agreement in their own words:",
+      {"ul": [
+        "What is the next measure?",
+        "Who is responsible?",
+        "When do we follow up?",
+        "What do we do if the measure doesn't work?"
+      ]},
+      "This is a practical quality check, not a language test.",
+      "**Step 5: Document only what you need.** The follow-up plan should support return to work. Avoid diagnoses, health assumptions, and details that are not necessary for the workplace measures. Share the plan only with relevant parties through approved channels.",
+      {"h": "Check your own situation"},
+      "Answer yes or no to these six questions:",
+      {"ul": [
+        "Do both parties know why the meeting is being held and what the deadlines are?",
+        "Does the plan address tasks, function and measures — not diagnosis?",
+        "Are responsibility, measures and dates written concretely?",
+        "Have you verified understanding rather than just sending information?",
+        "If there are different language versions, are they consistent in content?",
+        "Do you know who to bring in if you get stuck?"
+      ]},
+      "If you answer no to one item, the first step may be to fix exactly that point. Multiple no-answers, repeated absence, disagreement, or risk that key information is misunderstood can make external help more relevant.",
+      {"h": "When external help may be relevant"},
+      "**A process track** may be relevant when the organisation is stuck in follow-up, cannot get measures to work, needs clearer role distribution, or must coordinate manager, HR, occupational health, and other actors.",
+      "**A language track** may be relevant when invitations, plans or HR texts carry different messages in different languages, or when central terms need to be translated and quality-checked in the right context.",
+      "**A combined assessment** may be relevant when the follow-up process itself and the multilingual communication affect each other. The goal is not 'more text' but one clear, consistent process.",
+      "NAV has a scheme for subsidising expert assistance when sick leave is prolonged or frequent and ordinary follow-up and adaptation have been tried. The scheme has its own conditions for both the situation and the expert, and NAV must approve the application before the assistance is used.",
+      {"note": "Source: NAV – Tilskudd til ekspertbistand. QBLOGG gives no guarantee that any specific company or provider will qualify. Checked: 5 September 2026."},
+      {"h": "Editorial source table"},
+      {"note": "Last fact-checked: 5 September 2026. All rules and deadlines in this article are taken from and checked against primary NAV and Arbeidstilsynet publications. Recommendations such as 'explain the purpose before the meeting' and 'ask both parties to summarise in their own words' are QBLOGG practice advice and are not presented as legal requirements."}
+    ],
+    zh: [
+      "挪威病假跟进规则与语言无关——员工首先必须制定一份随访计划（4周内），并在全病假7周内参加首次对话会议。规则不变；挑战在于确保双方理解关键术语、截止日期和商定措施。",
+      "雇主收到的病假证明不含医疗信息。工作能力而非诊断是讨论主题。Arbeidstilsynet要求必要的培训以员工能理解的语言进行。实用建议：在会议前解释目的，用问题确认理解而非仅询问「明白了吗」，并具体书写措施（日期、责任人、任务）。",
+      "如果语言不清可能影响权利、安全或随访计划，可以考虑语言支持。NAV提供专家援助补贴，但需满足条件并提前获得批准。使用文末的六问自查表评估是否需要外部帮助。"
+    ],
+    hi: [
+      "नॉर्वे में बीमार छुट्टी की निगरानी के नियम कर्मचारी की भाषा की परवाह किए बिना समान रूप से लागू होते हैं। 4 सप्ताह के भीतर अनुवर्ती योजना और पूर्ण बीमार छुट्टी के लिए सामान्यतः 7 सप्ताह के भीतर पहली संवाद बैठक आवश्यक है। नियोक्ता को प्राप्त बीमार प्रमाण पत्र में कोई चिकित्सा जानकारी नहीं होती — चर्चा काम की क्षमता पर होनी चाहिए, निदान पर नहीं।",
+      "Arbeidstilsynet के अनुसार आवश्यक प्रशिक्षण उस भाषा में दिया जाना चाहिए जिसे कर्मचारी समझता है। व्यावहारिक सलाह: बैठक से पहले उद्देश्य स्पष्ट करें, दोनों पक्षों से समझौते को अपने शब्दों में सारांशित करवाएं, और उपाय ठोस रूप में (तारीख, जिम्मेदार व्यक्ति, कार्य) लिखें।",
+      "अगर भाषा की अस्पष्टता अधिकारों या सुरक्षा को प्रभावित कर सकती है तो भाषा सहायता पर विचार करें। NAV विशेषज्ञ सहायता के लिए अनुदान प्रदान करता है, लेकिन इसके लिए शर्तें हैं और पहले से स्वीकृति आवश्यक है। लेख के अंत में छह-प्रश्न स्व-जांच का उपयोग करें।"
+    ],
+    es: [
+      "Las normas noruesas de seguimiento de baja médica se aplican igual independientemente del idioma: plan de seguimiento en 4 semanas y, en baja total, primera reunión de diálogo normalmente en 7 semanas. El parte de baja que recibe el empleador no contiene información médica — el foco es la capacidad laboral, no el diagnóstico.",
+      "Arbeidstilsynet exige que la formación necesaria se imparta en un idioma que el trabajador comprenda. Consejo práctico: explique el propósito antes de la reunión, pida a ambas partes que resuman el acuerdo con sus propias palabras y escriba las medidas de forma concreta (fecha, responsable, tarea).",
+      "Si la ambigüedad lingüística puede afectar derechos, seguridad o el plan de seguimiento, considere apoyo lingüístico cualificado. NAV dispone de una ayuda para asistencia de expertos con condiciones específicas y aprobación previa. Use la lista de seis preguntas al final del artículo para evaluar si necesita ayuda externa."
+    ],
+    ar: [
+      "تنطبق قواعد متابعة الإجازة المرضية النرويجية بالتساوي بصرف النظر عن اللغة: خطة متابعة في غضون 4 أسابيع وأول اجتماع حوار عادةً في غضون 7 أسابيع في حالة الغياب الكامل. لا تحتوي وثيقة الإجازة المرضية التي يتلقاها صاحب العمل على معلومات طبية — يجب أن يتمحور النقاش حول القدرة على العمل، لا التشخيص.",
+      "يشترط Arbeidstilsynet تقديم التدريب الضروري بلغة يفهمها الموظف. نصيحة عملية: اشرح الغرض قبل الاجتماع، واطلب من كلا الطرفين تلخيص الاتفاق بكلماتهما الخاصة، واكتب التدابير بشكل ملموس (التاريخ، الشخص المسؤول، المهمة).",
+      "إذا كان الغموض اللغوي قد يؤثر على الحقوق أو السلامة أو خطة المتابعة، فكر في دعم لغوي مؤهل. تقدم NAV إعانةً لمساعدة الخبراء بشروط محددة وموافقة مسبقة. استخدم قائمة الأسئلة الستة في نهاية المقالة."
+    ],
+    fr: [
+      "Les règles norvégiennes de suivi du congé maladie s'appliquent de la même façon quelle que soit la langue : plan de suivi dans les 4 semaines et, en cas d'arrêt total, première réunion de dialogue normalement dans les 7 semaines. Le volet que reçoit l'employeur ne contient pas d'informations médicales — le sujet est la capacité de travail, pas le diagnostic.",
+      "Arbeidstilsynet exige que la formation nécessaire soit dispensée dans une langue comprise par le salarié. Conseil pratique : expliquez l'objectif avant la réunion, demandez aux deux parties de résumer l'accord avec leurs propres mots et rédigez les mesures de façon concrète (date, responsable, tâche).",
+      "Si l'ambiguïté linguistique peut affecter des droits, la sécurité ou le plan de suivi, envisagez un soutien linguistique qualifié. NAV dispose d'une aide à l'assistance d'experts, soumise à des conditions et à une approbation préalable. Utilisez la liste de six questions en fin d'article pour évaluer si vous avez besoin d'une aide extérieure."
+    ],
+    pt: [
+      "As regras norueguesas de acompanhamento de licença médica aplicam-se igualmente independentemente do idioma: plano de acompanhamento em 4 semanas e, em afastamento total, primeira reunião de diálogo normalmente em 7 semanas. O atestado que o empregador recebe não contém informações médicas — o foco é a capacidade de trabalho, não o diagnóstico.",
+      "O Arbeidstilsynet exige que o treinamento necessário seja ministrado em um idioma que o colaborador compreenda. Conselho prático: explique o objetivo antes da reunião, peça a ambas as partes que resumam o acordo com suas próprias palavras e escreva as medidas de forma concreta (data, responsável, tarefa).",
+      "Se a ambiguidade linguística puder afetar direitos, segurança ou o plano de acompanhamento, considere suporte linguístico qualificado. O NAV oferece subsídio para assistência especializada com condições específicas e aprovação prévia. Use a lista de seis perguntas no final do artigo para avaliar se precisa de ajuda externa."
+    ],
+    ru: [
+      "Норвежские правила сопровождения больничного применяются одинаково независимо от языка: план сопровождения в течение 4 недель и при полном больничном — первое диалоговое совещание, как правило, в течение 7 недель. Копия больничного листа у работодателя не содержит медицинских сведений — обсуждается способность к работе, а не диагноз.",
+      "Arbeidstilsynet требует, чтобы необходимое обучение проводилось на языке, понятном работнику. Практический совет: объясните цель до встречи, попросите обе стороны изложить договорённости своими словами и фиксируйте меры конкретно (дата, ответственный, задача).",
+      "Если языковая неясность может повлиять на права, безопасность или план сопровождения — рассмотрите квалифицированную языковую поддержку. NAV предоставляет субсидию на экспертную помощь при особых условиях и предварительном одобрении. Воспользуйтесь контрольным списком из шести вопросов в конце статьи."
+    ],
+    no: [
+      "Norske regler for sykefraværsoppfølging gjelder uavhengig av språk: oppfølgingsplan innen 4 uker og, ved fullt fravær, normalt dialogmøte 1 innen 7 uker. Arbeidsgivereksemplaret av sykmeldingen inneholder ingen medisinske opplysninger — samtalen handler om arbeidsfunksjon og tilrettelegging, ikke diagnose.",
+      "Arbeidstilsynet krever at nødvendig opplæring gis på et språk arbeidstakeren forstår. Praktisk råd: forklar formålet før møtet, be begge parter oppsummere avtalen med egne ord, og skriv tiltakene konkret (dato, ansvarlig, oppgave). Dokumenter bare det som er nødvendig for tilbakeføringen.",
+      "Hvis språklig uklarhet kan påvirke rettigheter, sikkerhet eller oppfølgingsplanen, bør kvalifisert språkstøtte vurderes. NAV har en ordning for tilskudd til ekspertbistand med egne vilkår og krav om forhåndsgodkjenning. Bruk sjekklisten med seks spørsmål i slutten av artikkelen for å vurdere om ekstern hjelp er aktuelt."
+    ]
+  }
+}
 ];
