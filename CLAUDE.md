@@ -52,6 +52,16 @@ engine/             Curiosity Engine (site değil, üretim hattı)
 başka bir lokasyon kullanılmaz. Değişiklikler her zaman `/home/user/BETA-ART` altındaki
 ilgili dosyaya yapılır ve `claude/qblogg-dosyalari-mbnrbx` dalına commit edilir.
 
+**Tam kapasite kullanım.** Bu projede ve paylaşılan her projede Claude'un tüm
+güçlü yönleri etkin biçimde kullanılır (kullanıcı talebi, 05.09.2026):
+- **Tasarım ve arayüz:** Estetik olarak modern, kullanıcı deneyimi odaklı, temiz HTML/CSS/JS
+- **Bütünsel kavrayış:** Geniş bağlam penceresi ile projenin tamamını tek seferde görerek
+  tutarlı kararlar ver; refactoring veya yeni özellik eklerken projenin genel yapısını unutma
+- **Canlı önizleme:** Tasarım kararlarını Artifact ile görsel olarak doğrula; soyut
+  açıklamak yerine göster
+- **Mantıksal bütünlük:** Çok dosyalı değişikliklerde tutarsızlığa izin verme;
+  her değişiklik projenin geri kalanıyla uyumlu olmalı
+
 ## Değişmez kurallar
 
 1. **Dil bütünlüğü.** Diller: tr, en, zh, hi, es, ar, fr, pt, ru, no. Yeni bir metin
