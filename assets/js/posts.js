@@ -1580,4 +1580,199 @@ window.QB_POSTS = [
     ]
   }
 }
+,
+{
+  slug: 'norway-yeni-geldim-hangi-kurum',
+  category: 'norway', date: '2026-09-05', accent: 4, icon: 'globe',
+  orig: "16 kurum kategorisi, soruya göre doğru kapıyı bulan üç soruluk öneri tüneli; resmi Ny i Norge yönlendirmesi temel alınmıştır.",
+  src: [
+    {"t": "Ny i Norge – Officiell startguide (UDI/IMDi)", "u": "https://www.nyinorge.no/"},
+    {"t": "NAV – Hva kan NAV hjelpe deg med?", "u": "https://www.nav.no/"},
+    {"t": "Skatteetaten – D-nummer og folkeregistrering", "u": "https://www.skatteetaten.no/person/utenlandsk/"},
+    {"t": "UDI – Oppholdsregler", "u": "https://www.udi.no/"},
+    {"t": "Arbeidstilsynet – Arbeidstageres rettigheter", "u": "https://www.arbeidstilsynet.no/"},
+    {"t": "Helsenorge – Finn fastlege og helsetjenester", "u": "https://www.helsenorge.no/"},
+    {"t": "SUA – Service Centre for Foreign Workers", "u": "https://www.sua.no/"},
+    {"t": "Husleietvistutvalget – Krav og frister", "u": "https://www.htu.no/"},
+    {"t": "HK-dir – Godkjenning av utenlandsk utdanning", "u": "https://www.hkdir.no/"},
+    {"t": "ID-porten – Innlogging i offentlige tjenester", "u": "https://www.digdir.no/digdir/id-porten/864"}
+  ],
+  t: {
+    tr: "Norveç'e Yeni Geldim: Hangi Kurum Ne Yapar?",
+    en: "New to Norway: Which Institution Does What?",
+    zh: "初来挪威：哪个机构负责什么？",
+    hi: "नॉर्वे में नए हैं: कौन सा संस्थान क्या करता है?",
+    es: "Nuevo en Noruega: ¿Qué institución hace qué?",
+    ar: "وصلت حديثاً إلى النرويج: أي جهة تختص بماذا؟",
+    fr: "Nouveau en Norvège : quelle institution pour quoi ?",
+    pt: "Novo na Noruega: qual instituição faz o quê?",
+    ru: "Только приехал в Норвегию: какое ведомство за что отвечает?",
+    no: "Ny i Norge: hvilken etat gjør hva?"
+  },
+  e: {
+    tr: "Norveç'e yeni geldiğinizde onlarca kurumla muhatap olabilirsiniz. Bu rehber, hangi sorunuz için hangi kapıya gitmeniz gerektiğini — UDI'den Skatteetaten'e, fastlegeden Husleietvistutvalget'e — doğrulanmış kaynaklarla açıklıyor.",
+    en: "When you first arrive in Norway, you may face dozens of institutions. This guide explains — with verified sources — which door to knock on for each question: from UDI to Skatteetaten, from fastlege to Husleietvistutvalget.",
+    zh: "初到挪威，您可能需要面对数十个机构。本指南以经过核实的来源，说明每个问题该找哪扇门——从UDI到Skatteetaten，从家庭医生到租房纠纷委员会。",
+    hi: "नॉर्वे आने पर आप दर्जनों संस्थाओं का सामना कर सकते हैं। यह गाइड सत्यापित स्रोतों के साथ बताता है कि हर सवाल के लिए किस दरवाज़े पर जाएं: UDI से Skatteetaten तक, fastlege से किराया विवाद तक।",
+    es: "Al llegar a Noruega por primera vez puede encontrarse con docenas de instituciones. Esta guía explica, con fuentes verificadas, qué puerta tocar para cada pregunta: desde UDI hasta Skatteetaten, desde el médico de cabecera hasta el tribunal de alquiler.",
+    ar: "عند وصولك إلى النرويج لأول مرة، قد تواجه عشرات الجهات الحكومية. يشرح هذا الدليل — بمصادر موثّقة — أيّ باب تطرقه لكل سؤال: من UDI إلى Skatteetaten، ومن الطبيب الأسري إلى هيئة نزاعات الإيجار.",
+    fr: "À votre arrivée en Norvège, vous pouvez faire face à des dizaines d'institutions. Ce guide explique — avec des sources vérifiées — quelle porte frapper pour chaque question : de l'UDI à Skatteetaten, du médecin traitant au tribunal des loyers.",
+    pt: "Ao chegar pela primeira vez na Noruega, você pode se deparar com dezenas de instituições. Este guia explica — com fontes verificadas — qual porta bater para cada pergunta: da UDI ao Skatteetaten, do médico de família ao tribunal de arrendamento.",
+    ru: "Приехав в Норвегию впервые, вы можете столкнуться с десятками ведомств. Этот гид объясняет — со ссылками на проверенные источники — в какую дверь стучать по каждому вопросу: от UDI до Skatteetaten, от семейного врача до трибунала по аренде.",
+    no: "Når du er ny i Norge, kan du møte dusinvis av etater. Denne guiden forklarer — med bekreftede kilder — hvilken dør du skal banke på for hvert spørsmål: fra UDI til Skatteetaten, fra fastlegen til Husleietvistutvalget."
+  },
+  b: {
+    tr: [
+      "Norveç'e taşındığınızda karşınıza çıkan kurumların listesi bunaltıcı görünebilir. Ancak sistemin mantığı tutarlıdır: her sorunun doğru bir ilk adresi vardır. Bu rehber, en sık sorulan 16 kategoride başvurulacak kurumu, sormayı beklemeniz gereken belgeleri ve önce ücretsiz resmi seçeneği göstermeyi hedefliyor.",
+      {"note": "Bu rehber genel bilgi içermektedir. Göçmenlik durumu, çalışma hakkı ve vergi yükümlülükleri kişiden kişiye farklılık gösterir; bireysel hukuki danışmanlığın yerini tutmaz."},
+      {"h": "Doğru kapıyı bulmak: 3 soruluk rehber"},
+      "Hangi kuruma gitmeniz gerektiğini bulmak için kendinize şu üç soruyu sorun:",
+      {"ul": [
+        "**Norveç'e hangi amaçla geldiniz?** İş, aile birleşimi, öğrenci, AB/AEA vatandaşı, mülteci, turistken kalıcıya geçiş?",
+        "**AB/AEA vatandaşı mısınız?** Evet ise kayıt sistemi farklı çalışır; UDI yerine polis müdürlüğüne kayıt yapılır.",
+        "**Şu anda en acil ihtiyacınız ne?** Barınma, kimlik, sağlık, iş, okul, banka?"
+      ]},
+      "Bu üç sorunun cevabına göre aşağıdaki tabloda ilgili kategoriyi bulun.",
+      {"h": "16 kategori: hangi sorun, hangi kurum"},
+      {"ul": [
+        "**Oturum ve kayıt:** AB/AEA dışı için UDI + polis müdürlüğü; AB/AEA için polis müdürlüğü; iş arayan yabancılar için SUA (tek pencere: polis + Skatteetaten + Arbeidstilsynet + NAV)",
+        "**Kimlik ve vergi:** Skatteetaten — D-nummer (9 haneli, geçici), fødselsnummer (kalıcı), skattekort (vergi kartı). Folkeregisteret aynı kurumdur.",
+        "**Çalışma hayatı:** İşveren (sözleşme), Arbeidstilsynet (iş koşulları, denetim), NAV (hastalık izni, işsizlik, haklar)",
+        "**Yerel kamu hizmetleri:** Belediye (kommune) servicetorg — çöp, park, kütüphane, sosyal yardım ön bilgi",
+        "**Sağlık:** Fastlege (aile hekimi, randevuyla), legevakt (acil nöbetçi), Helsenorge (dijital sağlık portalı), hastane, eczane",
+        "**Acil durum:** 113 sağlık, 112 polis, 110 yangın, 116 117 nöbetçi hekim (acil olmayan gece çağrısı)",
+        "**Konut:** Ev sahibi (kira sözleşmesi), banka (depozito hesabı), Forbrukerrådet (tüketici hakları), Husleietvistutvalget (kira uyuşmazlıkları)",
+        "**Banka ve dijital erişim:** Banka (hesap açma), MinID (temel dijital kimlik), BankID (güçlü kimlik doğrulama), ID-porten (devlet dijital kapısı)",
+        "**Çocuklar:** Barnehage (kreş, 1–5 yaş, belediye kayıt), okul (grunnskole, zorunlu 6–16, belediye kayıt), SFO (okul öncesi-sonrası bakım), helsestasjon (çocuk sağlığı)",
+        "**Dil ve tercüman:** Voksenopplæring (yetişkin eğitimi, dil kursları), kütüphane (ücretsiz kaynaklar), tolketjeneste (devlet kademesinde tercüman hakkı — özellikle sağlık ve hukuk görüşmelerinde)",
+        "**Diploma ve meslek:** HK-dir — yabancı diplomaların tanınması; her meslek için ayrı otorite (hekimler: Helsedirektoratet; öğretmenler: Udir; mühendisler: çoğu durumda serbest)",
+        "**Ulaşım:** Entur (toplu taşıma bilet ve bilgi), yerel ulaşım şirketi (Ruter, Skyss vb.), Statens vegvesen (ehliyet ve araç işlemleri)",
+        "**Günlük yaşam:** Telefon/internet operatörü, Elvia/Tensio (elektrik dağıtım), sigorta şirketi, Posten (posta ve paket)",
+        "**Sosyal çevre:** Kütüphane (etkinlikler, dil kafeleri), Frivilligsentralen (gönüllü merkezi), spor kulüpleri, kilise/cami/topluluk dernekleri",
+        "**İş kurma:** Altinn (kayıt platformu), Brønnøysundregistrene (ENK veya AS tescili), Skatteetaten (MVA ve vergi)",
+        "**Konsolosluk işlemleri:** Kendi ülkesinin büyükelçiliği veya konsolosluğu — pasaport yenileme, apostil, vatan belgesi"
+      ]},
+      {"h": "Önce ücretsiz resmi yol"},
+      "Her kategoride önce devletin sunduğu ücretsiz yol gösterilmelidir. Sağlıkta Helsenorge ve fastlege, dil öğreniminde voksenopplæring, tercümanlıkta devlet kademesindeki hak, kira uyuşmazlığında Husleietvistutvalget — bunlar ücretsiz ya da düşük maliyetlidir.",
+      "Ücretli profesyonel desteğin ilgili olduğu iki durum vardır: (1) resmi kanalların çözemediği veya uzun süre aldığı karmaşık bireysel durumlar; (2) işveren tarafında, yabancı çalışanları işe alan şirketler için uyum ve çok dilli iletişim.",
+      {"h": "SUA: tek pencere sistemi"},
+      "**SUA (Service Centre for Foreign Workers)**, Norveç'e çalışmak için gelen yabancılara yönelik tek pencere hizmetidir. Polis müdürlüğü, Skatteetaten, Arbeidstilsynet ve NAV'ın temsilcilerini aynı çatı altında buluşturur. Oslo, Bergen, Stavanger ve Kirkenes'te fiziksel ofisi vardır; randevu sistemiyle çalışır. Gelirken işverenle imzalanmış sözleşme ve pasaport yanınızda olmalıdır.",
+      {"note": "Kaynak: SUA – Service Centre for Foreign Workers (sua.no). Kontrol tarihi: 5 Eylül 2026. Şehir adresleri, çalışma saatleri ve randevu koşulları değişebilir; güncel bilgi için sua.no'yu kontrol edin."},
+      {"h": "Dijital kimlik: MinID, BankID, ID-porten"},
+      "Norveç'te dijital devlet hizmetleri üç kimlik katmanıyla çalışır:",
+      {"ul": [
+        "**MinID:** Temel seviye, SMS doğrulama ile. NAV, Skatteetaten ve pek çok kamu servisi için yeterli. Fødselsnummer veya D-nummer gerektirir.",
+        "**BankID:** Güçlü kimlik doğrulama, bankalarla işbirliğiyle verilir. Kira sözleşmesi imzalama, vergi iadeleri, bazı sağlık portalı işlemleri için gerekebilir.",
+        "**ID-porten:** Tüm bu kimliklerin kullanıldığı devlet dijital kapısı. Helsenorge, Altinn ve NAV ID-porten üzerinden erişim sağlar."
+      ]},
+      "Önemli: BankID almak için Norveç bankasında hesap, hesap açmak için ise genellikle fiziksel kimlik (pasaport + adres belgesi veya D-nummer) gerekir. Bu döngüyü kırmak için bazı bankalar SUA'dan geçişi kolaylaştırıyor.",
+      {"note": "Kaynak: ID-porten – Digdir (digdir.no). Kontrol tarihi: 5 Eylül 2026."},
+      {"h": "Çocuklar için kayıt"},
+      "Çocuğunuzu ilk iki hafta içinde belediyeye bildirin. Barnehage (0–5 yaş) için ulusal bekleme listesi (nationalplass) uygulaması 2024'te genişledi; her belediye en az bir yer teklif etmekle yükümlüdür. Grunnskole (6–16 yaş) için belediyedeki okul müdürlüğüne başvurun; ikamet adresine göre okul atanır.",
+      "Helsestasjon (anne-çocuk sağlık merkezi) aşı takvimi, bebek gelişimi ve aile desteği için ücretsiz hizmet verir.",
+      {"note": "Kaynak: Ny i Norge – Barn og familie. Kontrol tarihi: 5 Eylül 2026. Barnehage kontenjan koşulları belediyeden belediyeye değişebilir."},
+      {"h": "Diploma tanıma"},
+      "Yabancı diplomanızın Norveç eşdeğerini öğrenmek için HK-dir'e başvurun. Bu değerlendirme ücretsiz ve bağlayıcı değildir — işverenin kararını etkilemez ama anlaşılmaz bir transkriptin önüne geçer. Düzenlenmiş mesleklerde (hekim, avukat, eczacı, öğretmen vb.) ise ilgili meslek otoritesinin onayı zorunludur.",
+      {"note": "Kaynak: HK-dir – Godkjenning av utenlandsk utdanning (hkdir.no). Kontrol tarihi: 5 Eylül 2026."},
+      {"h": "Bu serinin diğer yazıları"},
+      "Bu yazı 18 makaleden oluşan 'Norveç'e Yeni Geldim' dizisinin başlangıç rehberidir. Yakında çıkacak yazılar: D-nummer ve fødselsnummer farkı, güvenli kira sözleşmesi, ilk iş sözleşmesinde kontrol edilecek maddeler, BankID almanın yolları, ücretsiz dil kursları.",
+      {"note": "Son faktür kontrolü: 5 Eylül 2026. Bu makaledeki tüm kurumlar ve yönlendirmeler resmi kaynaklara dayanmaktadır. Şehir adresleri, randevu koşulları ve göç/vergi kuralları yayın öncesinde yeniden doğrulanmalıdır."}
+    ],
+    en: [
+      "When you move to Norway, the list of institutions you encounter can feel overwhelming. But the system has a consistent logic: every question has a correct first address. This guide aims to show you the right institution for each of 16 categories, the documents you should expect to need, and always the free official option first.",
+      {"note": "This guide contains general information. Immigration status, right to work and tax obligations differ from person to person and may not replace individual legal advice."},
+      {"h": "Finding the right door: a 3-question guide"},
+      "Ask yourself three questions to find the right institution:",
+      {"ul": [
+        "**Why did you come to Norway?** Work, family reunification, student, EU/EEA citizen, refugee, tourist transitioning to permanent?",
+        "**Are you an EU/EEA citizen?** If yes, the registration system works differently — you register at the police district, not UDI.",
+        "**What is your most urgent need right now?** Housing, identity, health, work, school, banking?"
+      ]},
+      "Based on your answers, find the relevant category in the table below.",
+      {"h": "16 categories: which problem, which institution"},
+      {"ul": [
+        "**Residence and registration:** Non-EU/EEA: UDI + police district; EU/EEA: police district; foreign workers: SUA (single window: police + Skatteetaten + Arbeidstilsynet + NAV)",
+        "**Identity and tax:** Skatteetaten — D-number (9-digit, temporary), fødselsnummer (permanent national ID), skattekort (tax card). Folkeregisteret is the same agency.",
+        "**Work:** Employer (contract), Arbeidstilsynet (working conditions, inspection), NAV (sick leave, unemployment, rights)",
+        "**Local services:** Municipal service desk (commune servicetorg) — waste, parks, library, social support pre-information",
+        "**Health:** Fastlege (GP, by appointment), legevakt (emergency walk-in after hours), Helsenorge (digital health portal), hospital, pharmacy",
+        "**Emergency:** 113 health, 112 police, 110 fire, 116 117 out-of-hours GP (non-emergency night calls)",
+        "**Housing:** Landlord (rental contract), bank (deposit account), Forbrukerrådet (consumer rights), Husleietvistutvalget (rental disputes)",
+        "**Banking and digital access:** Bank (account), MinID (basic digital ID), BankID (strong authentication), ID-porten (government digital gateway)",
+        "**Children:** Barnehage (kindergarten, age 1–5, register at municipality), school (grunnskole, mandatory 6–16, register at municipality), SFO (after-school care), helsestasjon (child health clinic)",
+        "**Language and interpreting:** Voksenopplæring (adult education, language courses), library (free resources), tolketjeneste (right to a government-funded interpreter — especially in health and legal contexts)",
+        "**Diploma and profession:** HK-dir — recognition of foreign qualifications; each profession has its own authority (doctors: Helsedirektoratet; teachers: Udir; engineers: usually unregulated)",
+        "**Transport:** Entur (public transit tickets and information), local transport company (Ruter, Skyss etc.), Statens vegvesen (driving licence and vehicle registration)",
+        "**Daily life:** Phone/internet provider, Elvia/Tensio (electricity distribution), insurance company, Posten (postal and parcel)",
+        "**Social life:** Library (events, language cafés), Frivilligsentralen (volunteer centre), sports clubs, church/mosque/community organisations",
+        "**Starting a business:** Altinn (registration platform), Brønnøysundregistrene (ENK or AS registration), Skatteetaten (VAT and tax)",
+        "**Consular matters:** Your own country's embassy or consulate — passport renewal, apostille, documents from your home country"
+      ]},
+      {"h": "Free official channels first"},
+      "In every category, the free government option should be shown first. In health: Helsenorge and fastlege. In language learning: voksenopplæring. In interpreting: the statutory right in government contexts. In rental disputes: Husleietvistutvalget. These are free or low-cost.",
+      "Paid professional support becomes relevant in two situations: (1) complex individual cases the official channels cannot resolve or that take too long; (2) on the employer side — companies hiring foreign workers who need compliance support and multilingual communication.",
+      {"h": "SUA: the single window for working immigrants"},
+      "**SUA (Service Centre for Foreign Workers)** is the one-stop service for people who come to Norway to work. It brings together representatives from the police, Skatteetaten, Arbeidstilsynet and NAV under one roof. Physical offices are in Oslo, Bergen, Stavanger and Kirkenes; it operates by appointment. Bring your signed employment contract and passport.",
+      {"note": "Source: SUA – Service Centre for Foreign Workers (sua.no). Checked: 5 September 2026. City addresses, opening hours and appointment requirements may change; check sua.no for current information."},
+      {"h": "Digital identity: MinID, BankID, ID-porten"},
+      "Norwegian digital government services run on three identity layers:",
+      {"ul": [
+        "**MinID:** Basic level, SMS verification. Sufficient for NAV, Skatteetaten and most public services. Requires fødselsnummer or D-number.",
+        "**BankID:** Strong authentication issued by banks. May be required for signing rental agreements, tax refunds, some health portal functions.",
+        "**ID-porten:** The government digital gateway where all these identities are used. Helsenorge, Altinn and NAV are accessed via ID-porten."
+      ]},
+      "Note: getting BankID typically requires a Norwegian bank account, and opening an account typically requires a physical ID (passport + address document or D-number). Some banks have streamlined entry via SUA to break this cycle.",
+      {"note": "Source: ID-porten – Digdir (digdir.no). Checked: 5 September 2026."},
+      {"h": "Registering children"},
+      "Notify your municipality within the first two weeks. For barnehage (ages 0–5), the national place guarantee was expanded in 2024 — every municipality must offer at least one place. For grunnskole (ages 6–16), apply at the municipal school administration; a school is assigned based on your home address. Helsestasjon (mother and child health centre) provides free services for the vaccination schedule, infant development and family support.",
+      {"note": "Source: Ny i Norge – Barn og familie. Checked: 5 September 2026. Barnehage capacity conditions vary by municipality."},
+      {"h": "Diploma recognition"},
+      "To find out the Norwegian equivalent of your foreign qualification, apply to HK-dir. This assessment is free and not binding — it does not override the employer's decision, but it removes the opacity of an untranslated transcript. For regulated professions (doctor, lawyer, pharmacist, teacher etc.) approval from the relevant professional authority is mandatory.",
+      {"note": "Source: HK-dir – Godkjenning av utenlandsk utdanning (hkdir.no). Checked: 5 September 2026."},
+      {"h": "More articles in this series"},
+      "This is the opening guide of the 18-article 'New to Norway' series. Coming soon: the difference between D-number and fødselsnummer, secure rental contracts, what to check in your first Norwegian employment contract, how to get BankID, and free language courses.",
+      {"note": "Last fact-checked: 5 September 2026. All institutions and directions in this article are based on official sources. City addresses, appointment requirements and immigration/tax rules should be verified again before publication."}
+    ],
+    zh: [
+      "初到挪威时，面对的机构清单可能令人不知所措。但系统有其内在逻辑：每个问题都有正确的第一个联系地址。本指南涵盖16个类别，并始终优先展示免费的官方渠道。",
+      "三个关键问题帮助您找到正确的机构：您来挪威的目的是什么（工作/家庭/学习/EU-EEA身份/难民）？您是否为欧盟/欧洲经济区公民（影响注册系统）？您目前最紧迫的需求是什么（住房/身份/医疗/工作/学校/银行）？",
+      "SUA（外国工人服务中心）为工作移民提供一站式服务，整合警察、税务局、劳动监察局和NAV。数字身份分三层：MinID（基础）、BankID（强认证）、ID-porten（政府门户）。所有机构信息以官方来源为准，于2026年9月5日核实。"
+    ],
+    hi: [
+      "नॉर्वे आने पर संस्थाओं की सूची भारी लग सकती है, लेकिन प्रणाली में एक तर्क है: हर सवाल का एक सही पहला पता है। यह गाइड 16 श्रेणियों में सही संस्था, आवश्यक दस्तावेज़ और हमेशा पहले मुफ्त सरकारी विकल्प दिखाती है।",
+      "तीन प्रश्न सही दरवाज़ा खोजने में मदद करते हैं: आप किस उद्देश्य से आए (काम/परिवार/पढ़ाई/EU-EEA/शरणार्थी)? क्या आप EU/EEA नागरिक हैं (पंजीकरण प्रणाली अलग है)? अभी सबसे ज़रूरी क्या है (आवास/पहचान/स्वास्थ्य/काम/स्कूल/बैंक)?",
+      "SUA (विदेशी कर्मचारी सेवा केंद्र) काम के लिए आने वाले लोगों के लिए एक-खिड़की सेवा है। डिजिटल पहचान के तीन स्तर हैं: MinID (बुनियादी), BankID (मज़बूत), ID-porten (सरकारी पोर्टल)। सभी जानकारी आधिकारिक स्रोतों से, 5 सितंबर 2026 को जाँची गई।"
+    ],
+    es: [
+      "Al llegar a Noruega, la lista de instituciones puede resultar abrumadora, pero el sistema tiene una lógica coherente: cada pregunta tiene una primera dirección correcta. Esta guía cubre 16 categorías y siempre muestra primero el canal oficial gratuito.",
+      "Tres preguntas clave ayudan a encontrar la puerta correcta: ¿con qué propósito vino a Noruega (trabajo/familia/estudios/ciudadano UE-EEE/refugiado)? ¿Es ciudadano de la UE/EEE (el sistema de registro es diferente)? ¿Cuál es su necesidad más urgente ahora (vivienda/identidad/salud/trabajo/escuela/banco)?",
+      "SUA (Centro de Servicios para Trabajadores Extranjeros) ofrece una ventanilla única para los inmigrantes laborales. La identidad digital tiene tres niveles: MinID (básico), BankID (autenticación fuerte), ID-porten (portal gubernamental). Toda la información proviene de fuentes oficiales verificadas el 5 de septiembre de 2026."
+    ],
+    ar: [
+      "عند وصولك إلى النرويج، قد تبدو قائمة الجهات الحكومية مرهقة، لكن النظام له منطق متسق: لكل سؤال عنوان أول صحيح. يغطي هذا الدليل 16 فئة ويعرض دائماً القناة الرسمية المجانية أولاً.",
+      "ثلاثة أسئلة تساعدك على إيجاد الباب الصحيح: ما الغرض من قدومك إلى النرويج (عمل/لمّ شمل/دراسة/مواطن الاتحاد الأوروبي/لاجئ)؟ هل أنت من مواطني الاتحاد الأوروبي/المنطقة الاقتصادية الأوروبية (نظام التسجيل مختلف)؟ ما أشد احتياجاتك إلحاحاً الآن (سكن/هوية/صحة/عمل/مدرسة/بنك)؟",
+      "SUA (مركز الخدمات للعمال الأجانب) يوفر نافذة موحدة للعمال المهاجرين. الهوية الرقمية ثلاثة مستويات: MinID (أساسي)، BankID (مصادقة قوية)، ID-porten (بوابة حكومية). جميع المعلومات مستقاة من مصادر رسمية تم التحقق منها في 5 سبتمبر 2026."
+    ],
+    fr: [
+      "À votre arrivée en Norvège, la liste des institutions peut sembler écrasante, mais le système a une logique cohérente : chaque question a une première adresse correcte. Ce guide couvre 16 catégories et présente toujours en premier le canal officiel gratuit.",
+      "Trois questions clés aident à trouver la bonne porte : dans quel but êtes-vous venu en Norvège (travail/regroupement familial/études/citoyen UE-EEE/réfugié) ? Êtes-vous citoyen de l'UE/EEE (le système d'enregistrement est différent) ? Quel est votre besoin le plus urgent maintenant (logement/identité/santé/travail/école/banque) ?",
+      "Le SUA (Centre de services pour les travailleurs étrangers) offre un guichet unique pour les immigrés économiques. L'identité numérique comporte trois niveaux : MinID (basique), BankID (authentification forte), ID-porten (portail gouvernemental). Toutes les informations proviennent de sources officielles vérifiées le 5 septembre 2026."
+    ],
+    pt: [
+      "Ao chegar à Noruega, a lista de instituições pode parecer esmagadora, mas o sistema tem uma lógica coerente: cada pergunta tem um primeiro endereço correto. Este guia cobre 16 categorias e sempre mostra primeiro o canal oficial gratuito.",
+      "Três perguntas-chave ajudam a encontrar a porta certa: com que propósito você veio à Noruega (trabalho/reunificação familiar/estudos/cidadão UE-EEE/refugiado)? Você é cidadão da UE/EEE (o sistema de registro é diferente)? Qual é a sua necessidade mais urgente agora (moradia/identidade/saúde/trabalho/escola/banco)?",
+      "O SUA (Centro de Serviços para Trabalhadores Estrangeiros) oferece atendimento em guichê único para imigrantes trabalhadores. A identidade digital tem três níveis: MinID (básico), BankID (autenticação forte), ID-porten (portal governamental). Todas as informações são de fontes oficiais verificadas em 5 de setembro de 2026."
+    ],
+    ru: [
+      "Приехав в Норвегию, вы можете столкнуться с огромным числом ведомств, но система имеет последовательную логику: у каждого вопроса есть правильный первый адрес. Этот гид охватывает 16 категорий и всегда показывает бесплатный официальный канал первым.",
+      "Три ключевых вопроса помогают найти правильную дверь: с какой целью вы приехали в Норвегию (работа/воссоединение семьи/учёба/гражданин ЕС-ЕЭЗ/беженец)? Вы гражданин ЕС/ЕЭЗ (система регистрации другая)? Что вам нужно срочнее всего прямо сейчас (жильё/документы/здоровье/работа/школа/банк)?",
+      "SUA (Сервисный центр для иностранных работников) предоставляет услуги по принципу одного окна. Цифровая идентификация имеет три уровня: MinID (базовый), BankID (сильная аутентификация), ID-porten (государственный портал). Вся информация взята из официальных источников, проверена 5 сентября 2026 г."
+    ],
+    no: [
+      "Når du er ny i Norge, kan listen over etater virke overveldende, men systemet har en konsekvent logikk: hvert spørsmål har en riktig første adresse. Denne guiden dekker 16 kategorier og viser alltid den gratis offisielle kanalen først.",
+      "Tre nøkkelspørsmål hjelper deg å finne riktig dør: hvorfor kom du til Norge (jobb/familiegjenforening/studie/EU-EØS-borger/flyktning)? Er du EU/EØS-borger (registreringssystemet er annerledes)? Hva er ditt mest presserende behov nå (bolig/identitet/helse/jobb/skole/bank)?",
+      "SUA (Servicesenteret for utenlandske arbeidstakere) gir en enkeltvinduservice for arbeidsinnvandrere. Digital identitet har tre nivåer: MinID (grunnleggende), BankID (sterk autentisering), ID-porten (statlig portal). All informasjon er hentet fra offisielle kilder, kontrollert 5. september 2026."
+    ]
+  }
+}
 ];

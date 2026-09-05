@@ -1673,7 +1673,8 @@ Object.assign(window.QB_I18N.tr, {
   'cat.business': 'İş Kurma', 'cat.business.d': 'Tek kişilik şirket ve yeni iş modelleri',
   'cat.life': 'Gelecek Hayat', 'cat.life.d': '2030–2040 insan hayatı',
   'cat.senior': '50+', 'cat.senior.d': '50+ yeni ekonomi',
-  'cat.safety': 'AI Güvenliği', 'cat.safety.d': 'Dolandırıcılık, gizlilik, doğrulama'
+  'cat.safety': 'AI Güvenliği', 'cat.safety.d': 'Dolandırıcılık, gizlilik, doğrulama',
+  'cat.norway': 'Norveç\'te Yaşam', 'cat.norway.d': 'Göç, kurumlar ve günlük hayat'
 });
 Object.assign(window.QB_I18N.en, {
   'cat.ai': 'AI', 'cat.ai.d': 'AI tools and agents',
@@ -1682,7 +1683,8 @@ Object.assign(window.QB_I18N.en, {
   'cat.business': 'Business', 'cat.business.d': 'One-person companies and new models',
   'cat.life': 'Future Life', 'cat.life.d': 'Human life in 2030–2040',
   'cat.senior': '50+', 'cat.senior.d': 'The 50+ economy',
-  'cat.safety': 'AI Safety', 'cat.safety.d': 'Scams, privacy, verification'
+  'cat.safety': 'AI Safety', 'cat.safety.d': 'Scams, privacy, verification',
+  'cat.norway': 'Life in Norway', 'cat.norway.d': 'Immigration, institutions and everyday life'
 });
 Object.assign(window.QB_I18N.zh, {
   'cat.ai': 'AI', 'cat.ai.d': 'AI 工具与智能体',
@@ -1691,7 +1693,8 @@ Object.assign(window.QB_I18N.zh, {
   'cat.business': '创业', 'cat.business.d': '一人公司与新商业模式',
   'cat.life': '未来生活', 'cat.life.d': '2030–2040 年的生活',
   'cat.senior': '50+', 'cat.senior.d': '50+ 新经济',
-  'cat.safety': 'AI 安全', 'cat.safety.d': '诈骗、隐私与核实'
+  'cat.safety': 'AI 安全', 'cat.safety.d': '诈骗、隐私与核实',
+  'cat.norway': '挪威生活', 'cat.norway.d': '移民、机构与日常生活'
 });
 Object.assign(window.QB_I18N.hi, {
   'cat.ai': 'AI', 'cat.ai.d': 'AI टूल्स और एजेंट',
@@ -1700,7 +1703,8 @@ Object.assign(window.QB_I18N.hi, {
   'cat.business': 'बिज़नेस', 'cat.business.d': 'एक-व्यक्ति कंपनी और नए मॉडल',
   'cat.life': 'भविष्य का जीवन', 'cat.life.d': '2030–2040 का जीवन',
   'cat.senior': '50+', 'cat.senior.d': '50+ की नई अर्थव्यवस्था',
-  'cat.safety': 'AI सुरक्षा', 'cat.safety.d': 'धोखाधड़ी, निजता, सत्यापन'
+  'cat.safety': 'AI सुरक्षा', 'cat.safety.d': 'धोखाधड़ी, निजता, सत्यापन',
+  'cat.norway': 'नॉर्वे में जीवन', 'cat.norway.d': 'आप्रवासन, संस्थान और दैनिक जीवन'
 });
 Object.assign(window.QB_I18N.es, {
   'cat.ai': 'IA', 'cat.ai.d': 'Herramientas y agentes de IA',
@@ -1709,7 +1713,8 @@ Object.assign(window.QB_I18N.es, {
   'cat.business': 'Negocios', 'cat.business.d': 'Empresas de una persona y nuevos modelos',
   'cat.life': 'Vida futura', 'cat.life.d': 'La vida entre 2030 y 2040',
   'cat.senior': '50+', 'cat.senior.d': 'La economía de los 50+',
-  'cat.safety': 'Seguridad IA', 'cat.safety.d': 'Estafas, privacidad, verificación'
+  'cat.safety': 'Seguridad IA', 'cat.safety.d': 'Estafas, privacidad, verificación',
+  'cat.norway': 'Vida en Noruega', 'cat.norway.d': 'Inmigración, instituciones y vida cotidiana'
 });
 Object.assign(window.QB_I18N.ar, {
   'cat.ai': 'الذكاء الاصطناعي', 'cat.ai.d': 'أدوات الذكاء الاصطناعي ووكلاؤه',
@@ -1718,7 +1723,8 @@ Object.assign(window.QB_I18N.ar, {
   'cat.business': 'ريادة الأعمال', 'cat.business.d': 'شركات الفرد الواحد ونماذج جديدة',
   'cat.life': 'حياة المستقبل', 'cat.life.d': 'الحياة بين 2030 و2040',
   'cat.senior': '+50', 'cat.senior.d': 'اقتصاد ما بعد الخمسين',
-  'cat.safety': 'أمان الذكاء الاصطناعي', 'cat.safety.d': 'الاحتيال والخصوصية والتحقق'
+  'cat.safety': 'أمان الذكاء الاصطناعي', 'cat.safety.d': 'الاحتيال والخصوصية والتحقق',
+  'cat.norway': 'الحياة في النرويج', 'cat.norway.d': 'الهجرة والمؤسسات والحياة اليومية'
 });
 Object.assign(window.QB_I18N.fr, {
   'cat.ai': 'IA', 'cat.ai.d': 'Outils et agents IA',
@@ -1727,7 +1733,8 @@ Object.assign(window.QB_I18N.fr, {
   'cat.business': 'Entreprendre', 'cat.business.d': 'Entreprises solo et nouveaux modèles',
   'cat.life': 'Vie future', 'cat.life.d': 'La vie en 2030–2040',
   'cat.senior': '50+', 'cat.senior.d': 'L’économie des 50 ans et plus',
-  'cat.safety': 'Sécurité IA', 'cat.safety.d': 'Arnaques, vie privée, vérification'
+  'cat.safety': 'Sécurité IA', 'cat.safety.d': 'Arnaques, vie privée, vérification',
+  'cat.norway': 'Vie en Norvège', 'cat.norway.d': 'Immigration, institutions et vie quotidienne'
 });
 Object.assign(window.QB_I18N.pt, {
   'cat.ai': 'IA', 'cat.ai.d': 'Ferramentas e agentes de IA',
@@ -1736,7 +1743,8 @@ Object.assign(window.QB_I18N.pt, {
   'cat.business': 'Negócios', 'cat.business.d': 'Empresas de uma pessoa e novos modelos',
   'cat.life': 'Vida futura', 'cat.life.d': 'A vida em 2030–2040',
   'cat.senior': '50+', 'cat.senior.d': 'A economia dos 50+',
-  'cat.safety': 'Segurança da IA', 'cat.safety.d': 'Golpes, privacidade, verificação'
+  'cat.safety': 'Segurança da IA', 'cat.safety.d': 'Golpes, privacidade, verificação',
+  'cat.norway': 'Vida na Noruega', 'cat.norway.d': 'Imigração, instituições e vida cotidiana'
 });
 Object.assign(window.QB_I18N.ru, {
   'cat.ai': 'ИИ', 'cat.ai.d': 'ИИ-инструменты и агенты',
@@ -1745,7 +1753,8 @@ Object.assign(window.QB_I18N.ru, {
   'cat.business': 'Бизнес', 'cat.business.d': 'Компании одного человека и новые модели',
   'cat.life': 'Будущая жизнь', 'cat.life.d': 'Жизнь в 2030–2040 годах',
   'cat.senior': '50+', 'cat.senior.d': 'Экономика 50+',
-  'cat.safety': 'Безопасность ИИ', 'cat.safety.d': 'Мошенничество, приватность, проверка'
+  'cat.safety': 'Безопасность ИИ', 'cat.safety.d': 'Мошенничество, приватность, проверка',
+  'cat.norway': 'Жизнь в Норвегии', 'cat.norway.d': 'Иммиграция, учреждения и повседневная жизнь'
 });
 Object.assign(window.QB_I18N.no, {
   'cat.ai': 'KI', 'cat.ai.d': 'KI-verktøy og agenter',
@@ -1754,7 +1763,8 @@ Object.assign(window.QB_I18N.no, {
   'cat.business': 'Business', 'cat.business.d': 'Enpersonsselskap og nye modeller',
   'cat.life': 'Framtidas liv', 'cat.life.d': 'Livet i 2030–2040',
   'cat.senior': '50+', 'cat.senior.d': '50+-økonomien',
-  'cat.safety': 'KI-sikkerhet', 'cat.safety.d': 'Svindel, personvern, verifisering'
+  'cat.safety': 'KI-sikkerhet', 'cat.safety.d': 'Svindel, personvern, verifisering',
+  'cat.norway': 'Livet i Norge', 'cat.norway.d': 'Innvandring, etater og hverdagsliv'
 });
 
 /* Bülten teklifi (lead magnet) */
