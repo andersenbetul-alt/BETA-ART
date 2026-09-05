@@ -103,7 +103,7 @@ window.QB_I18N.tr = {
   'posts.copied': 'Bağlantı kopyalandı',
   'posts.notFound': 'Bu yazı bulunamadı.',
   'cat.platform': 'Platformlar', 'cat.freelance': 'Freelance', 'cat.seo': 'SEO',
-  'cat.ai': 'Yapay zekâ', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Rehber',
+  'cat.ai': 'Yapay zekâ', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Rehber', 'cat.ekonomi': 'Ekonomi ve Finans', 'cat.geopolitik': 'Jeopolitik ve Politika', 'cat.liderlik': 'Liderlik ve İK',
   'cta.title': 'Bültene katıl',
   'cta.placeholder': 'E-posta adresin',
   'cta.button': 'Abone ol',
@@ -203,7 +203,7 @@ window.QB_I18N.en = {
   'posts.copied': 'Link copied',
   'posts.notFound': 'That post could not be found.',
   'cat.platform': 'Platforms', 'cat.freelance': 'Freelance', 'cat.seo': 'SEO',
-  'cat.ai': 'AI', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Guide',
+  'cat.ai': 'AI', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Guide', 'cat.ekonomi': 'Economy & Finance', 'cat.geopolitik': 'Geopolitics & Policy', 'cat.liderlik': 'Leadership & HR',
   'cta.title': 'Join the newsletter',
   'cta.placeholder': 'Your email address',
   'cta.button': 'Subscribe',
@@ -303,7 +303,7 @@ window.QB_I18N.zh = {
   'posts.copied': '链接已复制',
   'posts.notFound': '找不到这篇文章。',
   'cat.platform': '平台', 'cat.freelance': '自由职业', 'cat.seo': 'SEO',
-  'cat.ai': '人工智能', 'cat.newsletter': '邮件通讯', 'cat.guide': '指南',
+  'cat.ai': '人工智能', 'cat.newsletter': '邮件通讯', 'cat.guide': '指南', 'cat.ekonomi': '经济与金融', 'cat.geopolitik': '地缘政治与政策', 'cat.liderlik': '领导力与人力资源',
   'cta.title': '订阅通讯',
   'cta.placeholder': '你的邮箱地址',
   'cta.button': '订阅',
@@ -403,7 +403,7 @@ window.QB_I18N.hi = {
   'posts.copied': 'लिंक कॉपी हो गया',
   'posts.notFound': 'यह पोस्ट नहीं मिली।',
   'cat.platform': 'प्लेटफ़ॉर्म', 'cat.freelance': 'फ्रीलांस', 'cat.seo': 'SEO',
-  'cat.ai': 'एआई', 'cat.newsletter': 'न्यूज़लेटर', 'cat.guide': 'गाइड',
+  'cat.ai': 'एआई', 'cat.newsletter': 'न्यूज़लेटर', 'cat.guide': 'गाइड', 'cat.ekonomi': 'अर्थव्यवस्था और वित्त', 'cat.geopolitik': 'भू-राजनीति और नीति', 'cat.liderlik': 'नेतृत्व और एचआर',
   'cta.title': 'न्यूज़लेटर से जुड़ें',
   'cta.placeholder': 'आपका ईमेल पता',
   'cta.button': 'सब्सक्राइब करें',
@@ -503,7 +503,7 @@ window.QB_I18N.es = {
   'posts.copied': 'Enlace copiado',
   'posts.notFound': 'No se ha encontrado ese artículo.',
   'cat.platform': 'Plataformas', 'cat.freelance': 'Freelance', 'cat.seo': 'SEO',
-  'cat.ai': 'IA', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Guía',
+  'cat.ai': 'IA', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Guía', 'cat.ekonomi': 'Economía y Finanzas', 'cat.geopolitik': 'Geopolítica y Política', 'cat.liderlik': 'Liderazgo y RR. HH.',
   'cta.title': 'Únete al boletín',
   'cta.placeholder': 'Tu correo electrónico',
   'cta.button': 'Suscribirme',
@@ -603,7 +603,7 @@ window.QB_I18N.ar = {
   'posts.copied': 'تم نسخ الرابط',
   'posts.notFound': 'تعذّر العثور على هذا المقال.',
   'cat.platform': 'المنصات', 'cat.freelance': 'العمل الحر', 'cat.seo': 'تحسين محركات البحث',
-  'cat.ai': 'الذكاء الاصطناعي', 'cat.newsletter': 'النشرة البريدية', 'cat.guide': 'دليل',
+  'cat.ai': 'الذكاء الاصطناعي', 'cat.newsletter': 'النشرة البريدية', 'cat.guide': 'دليل', 'cat.ekonomi': 'الاقتصاد والمالية', 'cat.geopolitik': 'الجغرافيا السياسية والسياسات', 'cat.liderlik': 'القيادة والموارد البشرية',
   'cta.title': 'اشترك في النشرة',
   'cta.placeholder': 'بريدك الإلكتروني',
   'cta.button': 'اشترك',
@@ -703,7 +703,7 @@ window.QB_I18N.fr = {
   'posts.copied': 'Lien copié',
   'posts.notFound': 'Cet article est introuvable.',
   'cat.platform': 'Plateformes', 'cat.freelance': 'Freelance', 'cat.seo': 'SEO',
-  'cat.ai': 'IA', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Guide',
+  'cat.ai': 'IA', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Guide', 'cat.ekonomi': 'Économie et Finance', 'cat.geopolitik': 'Géopolitique et Politique', 'cat.liderlik': 'Leadership et RH',
   'cta.title': 'Rejoignez la newsletter',
   'cta.placeholder': 'Votre adresse e-mail',
   'cta.button': 'S’abonner',
@@ -803,7 +803,7 @@ window.QB_I18N.pt = {
   'posts.copied': 'Link copiado',
   'posts.notFound': 'Este texto não foi encontrado.',
   'cat.platform': 'Plataformas', 'cat.freelance': 'Freelance', 'cat.seo': 'SEO',
-  'cat.ai': 'IA', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Guia',
+  'cat.ai': 'IA', 'cat.newsletter': 'Newsletter', 'cat.guide': 'Guia', 'cat.ekonomi': 'Economia e Finanças', 'cat.geopolitik': 'Geopolítica e Política', 'cat.liderlik': 'Liderança e RH',
   'cta.title': 'Assine a newsletter',
   'cta.placeholder': 'Seu e-mail',
   'cta.button': 'Assinar',
@@ -903,7 +903,7 @@ window.QB_I18N.ru = {
   'posts.copied': 'Ссылка скопирована',
   'posts.notFound': 'Такая статья не найдена.',
   'cat.platform': 'Площадки', 'cat.freelance': 'Фриланс', 'cat.seo': 'SEO',
-  'cat.ai': 'ИИ', 'cat.newsletter': 'Рассылки', 'cat.guide': 'Руководство',
+  'cat.ai': 'ИИ', 'cat.newsletter': 'Рассылки', 'cat.guide': 'Руководство', 'cat.ekonomi': 'Экономика и финансы', 'cat.geopolitik': 'Геополитика и политика', 'cat.liderlik': 'Лидерство и HR',
   'cta.title': 'Подпишитесь на рассылку',
   'cta.placeholder': 'Ваш адрес почты',
   'cta.button': 'Подписаться',
@@ -1003,7 +1003,7 @@ window.QB_I18N.no = {
   'posts.copied': 'Lenken er kopiert',
   'posts.notFound': 'Fant ikke dette innlegget.',
   'cat.platform': 'Plattformer', 'cat.freelance': 'Frilans', 'cat.seo': 'SEO',
-  'cat.ai': 'KI', 'cat.newsletter': 'Nyhetsbrev', 'cat.guide': 'Guide',
+  'cat.ai': 'KI', 'cat.newsletter': 'Nyhetsbrev', 'cat.guide': 'Guide', 'cat.ekonomi': 'Økonomi og finans', 'cat.geopolitik': 'Geopolitikk og politikk', 'cat.liderlik': 'Ledelse og HR',
   'cta.title': 'Bli med i nyhetsbrevet',
   'cta.placeholder': 'E-postadressen din',
   'cta.button': 'Abonner',
@@ -1788,3 +1788,85 @@ Object.assign(window.QB_I18N.ru, {
 Object.assign(window.QB_I18N.no, {
   'cta.magnet': 'Abonner og få Sjekklisten for automatiseringsdiagnose — mål på én uke hvilken oppgave i bedriften som er verdt å automatisere.',
   'cta.download': '↓ Last ned sjekklisten' });
+
+/* Davranış motoru + sonraki adım sistemi (behavior.js) */
+Object.assign(window.QB_I18N.tr, {
+  'beh.recent': 'Son okunanlar', 'beh.clear': 'Temizle', 'beh.suggested': 'Size özel',
+  'ns.label': 'Sonraki adım',
+  'ns.s0': 'Keşfet', 'ns.s1': 'İncele', 'ns.s2': 'Değerlendir', 'ns.s3': 'Karar ver',
+  'ns.blog':     'Yazıları keşfedin',
+  'ns.discover': 'Örnek çalışmayı inceleyin',
+  'ns.quality':  'Kalite güvencesini görün',
+  'ns.packages': 'Paketleri karşılaştırın',
+  'ns.evaluate': 'Brief gönderin',
+  'ns.decide':   'Bugün başlayalım',
+  'ns.close':    'Kapat'
+});
+Object.assign(window.QB_I18N.en, {
+  'beh.recent': 'Recently read', 'beh.clear': 'Clear', 'beh.suggested': 'Suggested for you',
+  'ns.label': 'Next step',
+  'ns.s0': 'Discover', 'ns.s1': 'Explore', 'ns.s2': 'Evaluate', 'ns.s3': 'Decide',
+  'ns.blog':     'Explore the blog',
+  'ns.discover': 'See sample work',
+  'ns.quality':  'See quality assurance',
+  'ns.packages': 'Compare packages',
+  'ns.evaluate': 'Send a brief',
+  'ns.decide':   "Let's start today",
+  'ns.close':    'Close'
+});
+Object.assign(window.QB_I18N.zh, {
+  'beh.recent': '最近阅读', 'beh.clear': '清除', 'beh.suggested': '为您推荐',
+  'ns.label': '下一步',
+  'ns.s0': '探索', 'ns.s1': '了解', 'ns.s2': '评估', 'ns.s3': '决定',
+  'ns.blog':     '浏览博客', 'ns.discover': '查看示例作品', 'ns.quality': '查看质量保证',
+  'ns.packages': '比较套餐', 'ns.evaluate': '发送需求', 'ns.decide': '立即开始', 'ns.close': '关闭'
+});
+Object.assign(window.QB_I18N.hi, {
+  'beh.recent': 'हाल ही में पढ़ा', 'beh.clear': 'साफ़ करें', 'beh.suggested': 'आपके लिए सुझाव',
+  'ns.label': 'अगला कदम',
+  'ns.s0': 'खोजें', 'ns.s1': 'जानें', 'ns.s2': 'मूल्यांकन करें', 'ns.s3': 'निर्णय करें',
+  'ns.blog':     'ब्लॉग देखें', 'ns.discover': 'नमूना काम देखें', 'ns.quality': 'गुणवत्ता देखें',
+  'ns.packages': 'पैकेज तुलना करें', 'ns.evaluate': 'ब्रीफ भेजें', 'ns.decide': 'आज शुरू करें', 'ns.close': 'बंद करें'
+});
+Object.assign(window.QB_I18N.es, {
+  'beh.recent': 'Leídos recientemente', 'beh.clear': 'Borrar', 'beh.suggested': 'Recomendado para ti',
+  'ns.label': 'Siguiente paso',
+  'ns.s0': 'Descubrir', 'ns.s1': 'Explorar', 'ns.s2': 'Evaluar', 'ns.s3': 'Decidir',
+  'ns.blog':     'Explorar el blog', 'ns.discover': 'Ver trabajo de muestra', 'ns.quality': 'Ver garantía de calidad',
+  'ns.packages': 'Comparar paquetes', 'ns.evaluate': 'Enviar brief', 'ns.decide': 'Empecemos hoy', 'ns.close': 'Cerrar'
+});
+Object.assign(window.QB_I18N.ar, {
+  'beh.recent': 'المقروء مؤخراً', 'beh.clear': 'مسح', 'beh.suggested': 'مقترح لك',
+  'ns.label': 'الخطوة التالية',
+  'ns.s0': 'اكتشف', 'ns.s1': 'استكشف', 'ns.s2': 'قيّم', 'ns.s3': 'قرّر',
+  'ns.blog':     'استكشف المدونة', 'ns.discover': 'شاهد نماذج الأعمال', 'ns.quality': 'شاهد ضمان الجودة',
+  'ns.packages': 'قارن الباقات', 'ns.evaluate': 'أرسل ملخصاً', 'ns.decide': 'لنبدأ اليوم', 'ns.close': 'إغلاق'
+});
+Object.assign(window.QB_I18N.fr, {
+  'beh.recent': 'Lus récemment', 'beh.clear': 'Effacer', 'beh.suggested': 'Recommandé pour vous',
+  'ns.label': 'Prochaine étape',
+  'ns.s0': 'Découvrir', 'ns.s1': 'Explorer', 'ns.s2': 'Évaluer', 'ns.s3': 'Décider',
+  'ns.blog':     'Explorer le blog', 'ns.discover': 'Voir un exemple', 'ns.quality': 'Voir la qualité',
+  'ns.packages': 'Comparer les offres', 'ns.evaluate': 'Envoyer un brief', 'ns.decide': "Commençons aujourd'hui", 'ns.close': 'Fermer'
+});
+Object.assign(window.QB_I18N.pt, {
+  'beh.recent': 'Lidos recentemente', 'beh.clear': 'Limpar', 'beh.suggested': 'Sugerido para você',
+  'ns.label': 'Próximo passo',
+  'ns.s0': 'Descobrir', 'ns.s1': 'Explorar', 'ns.s2': 'Avaliar', 'ns.s3': 'Decidir',
+  'ns.blog':     'Explorar o blog', 'ns.discover': 'Ver exemplo de trabalho', 'ns.quality': 'Ver garantia de qualidade',
+  'ns.packages': 'Comparar pacotes', 'ns.evaluate': 'Enviar brief', 'ns.decide': 'Vamos começar hoje', 'ns.close': 'Fechar'
+});
+Object.assign(window.QB_I18N.ru, {
+  'beh.recent': 'Недавно прочитанное', 'beh.clear': 'Очистить', 'beh.suggested': 'Рекомендуем вам',
+  'ns.label': 'Следующий шаг',
+  'ns.s0': 'Откройте', 'ns.s1': 'Изучите', 'ns.s2': 'Оцените', 'ns.s3': 'Решите',
+  'ns.blog':     'Изучите блог', 'ns.discover': 'Посмотреть пример работы', 'ns.quality': 'Гарантия качества',
+  'ns.packages': 'Сравнить пакеты', 'ns.evaluate': 'Отправить бриф', 'ns.decide': 'Начнём сегодня', 'ns.close': 'Закрыть'
+});
+Object.assign(window.QB_I18N.no, {
+  'beh.recent': 'Nylig lest', 'beh.clear': 'Tøm', 'beh.suggested': 'Anbefalt for deg',
+  'ns.label': 'Neste steg',
+  'ns.s0': 'Utforsk', 'ns.s1': 'Undersøk', 'ns.s2': 'Vurder', 'ns.s3': 'Bestem',
+  'ns.blog':     'Utforsk bloggen', 'ns.discover': 'Se eksempelarbeid', 'ns.quality': 'Se kvalitetssikring',
+  'ns.packages': 'Sammenlign pakker', 'ns.evaluate': 'Send en brief', 'ns.decide': 'La oss starte i dag', 'ns.close': 'Lukk'
+});

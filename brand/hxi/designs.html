@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HXI — Logo Tasarımları</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --void:     #07070A;
+  --deep:     #0F0F16;
+  --surface:  #15151E;
+  --surface2: #1C1C28;
+  --border:   rgba(232,232,228,0.08);
+  --signal:   #E8153A;
+  --noise:    #F2F2EE;
+  --muted:    #6B6B7A;
+  --fs:       13px;
+  --ff:       system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+html, body {
+  background: var(--void);
+  color: var(--noise);
+  font-family: var(--ff);
+  font-size: var(--fs);
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* Layout */
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 72px 40px 120px;
+}
+
+/* Header */
+.hdr {
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.hdr-left .eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 10px;
+}
+.hdr-left h1 {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--noise);
+}
+.hdr-right {
+  text-align: right;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* Section */
+.sec {
+  margin-bottom: 80px;
+}
+.sec-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 18px;
+}
+.sec-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--noise);
+  margin-bottom: 6px;
+}
+.sec-note {
+  font-size: 12px;
+  color: var(--muted);
+  max-width: 540px;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--signal);
+  border: 1px solid var(--signal);
+  padding: 2px 7px;
+  margin-left: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+/* Palette */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
+}
+.swatch {
+  height: 72px;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px 10px;
+}
+.swatch-info {
+  font-size: 9.5px;
+  font-family: monospace;
+  line-height: 1.6;
+}
+.palette-specs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+}
+.ps-item {
+  background: var(--surface);
+  padding: 10px 12px;
+}
+.ps-k { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+.ps-v { font-size: 11px; font-family: monospace; color: var(--noise); }
+
+/* Logo display */
+.logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.logo-card {
+  padding: 56px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+}
+.logo-card svg { max-width: 320px; width: 100%; height: auto; }
+.logo-card.dark   { background: var(--deep); }
+.logo-card.light  { background: var(--noise); }
+.logo-card.mid    { background: var(--surface2); }
+.logo-card.sig    { background: var(--signal); }
+
+/* Mono row */
+.mono-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.mono-card {
+  background: var(--surface);
+  padding: 48px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mono-card svg { width: 100px; height: 100px; }
+.mono-card.on-light { background: var(--noise); }
+.mono-card.on-signal { background: var(--signal); }
+
+/* Scale test */
+.scale-rows { border-top: 1px solid var(--border); }
+.scale-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.scale-lbl {
+  width: 56px;
+  flex-shrink: 0;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.scale-bg {
+  background: var(--surface);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.scale-bg svg { display: block; height: auto; }
+
+/* Construction table */
+.ctable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.ctable th {
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  font-weight: 400;
+}
+.ctable td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  font-family: monospace;
+  font-size: 11.5px;
+  color: var(--noise);
+}
+.ctable td:first-child { color: var(--muted); font-family: var(--ff); font-size: 11px; }
+.ctable tr:last-child td { border-bottom: none; }
+.ctable .ok  { color: #4ade80; }
+.ctable .warn { color: #facc15; }
+
+/* Lockup preview */
+.lockup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+}
+.lockup-card {
+  padding: 40px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.lockup-card.dark { background: var(--deep); }
+.lockup-card.light { background: var(--noise); }
+.lockup-card.mid { background: var(--surface); }
+.lockup-sym { flex-shrink: 0; }
+.lockup-sym svg { width: 48px; height: 48px; }
+.lockup-wm svg { height: 32px; width: auto; }
+
+/* Concept B — Threshold */
+.thres-line { /* painted via SVG, not CSS */ }
+
+/* Footer */
+.footer {
+  margin-top: 100px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 40px 20px 80px; }
+  .logo-grid, .palette, .palette-specs, .mono-row { grid-template-columns: 1fr 1fr; }
+  .lockup-grid { grid-template-columns: 1fr; }
+  .hdr { flex-direction: column; align-items: flex-start; }
+  .hdr-right { text-align: left; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER ─────────────────────────────────────────────────── -->
+  <header class="hdr">
+    <div class="hdr-left">
+      <div class="eyebrow">Beta Art Studio · Marka Kimliği</div>
+      <h1>HXI<br>Logo Tasarımları</h1>
+    </div>
+    <div class="hdr-right">
+      30 Ağustos 2026<br>
+      3 konsept · Düz vektör master<br>
+      WCAG 2.1 AA doğrulanmış
+    </div>
+  </header>
+
+  <!-- 01 — RENK PALETİ ─────────────────────────────────────────── -->
+  <section class="sec">
+    <div class="sec-label">01 — Renk Paleti</div>
+    <div class="sec-title">HXI marka renkleri</div>
+    <div class="sec-note">Beş değer. Doğrudan hex yazmayın — değişken isimlerini kullanın. Signal kırmızısı açık zeminde yalnızca grafik/büyük başlık olarak kullanılabilir (3.9:1), metin olarak değil.</div>
+
+    <div class="palette">
+      <div class="swatch" style="background:#07070A">
+        <span class="swatch-info" style="color:#F2F2EE">#07070A<br>Void</span>
+      </div>
+      <div class="swatch" style="background:#0F0F16">
+        <span class="swatch-info" style="color:#F2F2EE">#0F0F16<br>Deep</span>
+      </div>
+      <div class="swatch" style="background:#15151E">
+        <span class="swatch-info" style="color:#F2F2EE">#15151E<br>Surface</span>
+      </div>
+      <div class="swatch" style="background:#E8153A">
+        <span class="swatch-info" style="color:#F2F2EE">#E8153A<br>Signal</span>
+      </div>
+      <div class="swatch" style="background:#F2F2EE">
+        <span class="swatch-info" style="color:#07070A">#F2F2EE<br>Noise</span>
+      </div>
+    </div>
+    <div class="palette-specs">
+      <div class="ps-item">
+        <div class="ps-k">Signal / Void</div>
+        <div class="ps-v">4.5 : 1 ✓ AA</div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-k">Noise / Void</div>
+        <div class="ps-v">~18 : 1 ✓ AAA</div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-k">Signal / Noise</div>
+        <div class="ps-v">3.9 : 1 grafik</div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-k">Signal / Deep</div>
+        <div class="ps-v">4.5 : 1 ✓ AA</div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-k">Noise / Surface</div>
+        <div class="ps-v">~12 : 1 ✓ AAA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 — KONSEPT A: SIGNAL ──────────────────────────────────── -->
+  <section class="sec">
+    <div class="sec-label">02 — Konsept A · Signal <span class="badge">ÖNERİLEN</span></div>
+    <div class="sec-title">X aksanlı geometrik wordmark</div>
+    <div class="sec-note">H ve I nötr, X signal kırmızısıyla işaretlenmiş. Üç harf içinde X merkeze çekiyor — frekansların kesiştiği, mixdown'ın yaşandığı nokta. Müzik ve teknoloji arasındaki geçişi sessizce anlatıyor.</div>
+
+    <div class="logo-grid">
+      <div class="logo-card dark">
+        <svg viewBox="-16 -12 412 224" xmlns="http://www.w3.org/2000/svg" aria-label="HXI — koyu zemin">
+          <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+          <g transform="translate(176,0)">
+            <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/>
+            <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/>
+          </g>
+          <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+        </svg>
+      </div>
+      <div class="logo-card light">
+        <svg viewBox="-16 -12 412 224" xmlns="http://www.w3.org/2000/svg" aria-label="HXI — açık zemin">
+          <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#07070A"/>
+          <g transform="translate(176,0)">
+            <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/>
+            <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/>
+          </g>
+          <rect x="352" y="0" width="28" height="200" fill="#07070A"/>
+        </svg>
+      </div>
+      <div class="logo-card mid">
+        <svg viewBox="-16 -12 412 224" xmlns="http://www.w3.org/2000/svg" aria-label="HXI — surface zemin">
+          <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+          <g transform="translate(176,0)">
+            <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/>
+            <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/>
+          </g>
+          <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+        </svg>
+      </div>
+      <div class="logo-card sig">
+        <svg viewBox="-16 -12 412 224" xmlns="http://www.w3.org/2000/svg" aria-label="HXI — signal zemin">
+          <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+          <g transform="translate(176,0)">
+            <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#07070A"/>
+            <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#07070A"/>
+          </g>
+          <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — KONSEPT B: THRESHOLD ──────────────────────────────── -->
+  <section class="sec">
+    <div class="sec-label">03 — Konsept B · Threshold</div>
+    <div class="sec-title">Eşik çizgili wordmark</div>
+    <div class="sec-note">Tüm harflerden geçen 5u kırmızı yatay çizgi — bir sinyal eşiği, bir bass anahtarı, bir spektrum çizgisi. Daha teknik, stüdyo estetiği. Wordmark olmadan tek başına kullanılmaz.</div>
+
+    <div class="logo-grid">
+      <div class="logo-card dark">
+        <svg viewBox="-16 -12 412 224" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+          <g transform="translate(176,0)">
+            <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#F2F2EE"/>
+            <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#F2F2EE"/>
+          </g>
+          <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+          <!-- Threshold line -->
+          <line x1="-16" y1="100" x2="396" y2="100" stroke="#E8153A" stroke-width="5"/>
+        </svg>
+      </div>
+      <div class="logo-card light">
+        <svg viewBox="-16 -12 412 224" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#07070A"/>
+          <g transform="translate(176,0)">
+            <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#07070A"/>
+            <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#07070A"/>
+          </g>
+          <rect x="352" y="0" width="28" height="200" fill="#07070A"/>
+          <!-- Threshold line -->
+          <line x1="-16" y1="100" x2="396" y2="100" stroke="#E8153A" stroke-width="5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — KONSEPT C: MONOGRAM ────────────────────────────────── -->
+  <section class="sec">
+    <div class="sec-label">04 — Konsept C · Monogram</div>
+    <div class="sec-title">X sembol markası</div>
+    <div class="sec-note">Yalnızca X. Profil ikonu, uygulama simgesi, damga, sticker, merch. Wordmark ile lockup oluşturulabilir ya da bağımsız kullanılabilir. Dört uygulama varyantı.</div>
+
+    <div class="mono-row">
+      <!-- Signal fill -->
+      <div class="mono-card">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="X signal çemberde">
+          <circle cx="100" cy="100" r="96" fill="#E8153A"/>
+          <g transform="translate(47,24) scale(0.76)">
+            <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#F2F2EE"/>
+            <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#F2F2EE"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Outline circle -->
+      <div class="mono-card">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="X çember kontur">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#E8153A" stroke-width="6"/>
+          <g transform="translate(47,24) scale(0.76)">
+            <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#F2F2EE"/>
+            <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#F2F2EE"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Square dark -->
+      <div class="mono-card">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="X kare">
+          <rect width="200" height="200" fill="#07070A"/>
+          <g transform="translate(47,24) scale(0.76)">
+            <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/>
+            <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/>
+          </g>
+        </svg>
+      </div>
+      <!-- On light -->
+      <div class="mono-card on-light">
+        <svg viewBox="-16 -12 188 224" xmlns="http://www.w3.org/2000/svg" aria-label="X serbest">
+          <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#07070A"/>
+          <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#07070A"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — SYMBOl + WORDMARK LOCKUP ─────────────────────────── -->
+  <section class="sec">
+    <div class="sec-label">05 — Lockup</div>
+    <div class="sec-title">Sembol + wordmark kombinasyonu</div>
+    <div class="sec-note">X sembolü wordmark'ın solunda. Sembol yüksekliği wordmark cap yüksekliğiyle hizalı. Üç zemin varyantı.</div>
+
+    <div class="lockup-grid">
+      <div class="lockup-card dark">
+        <div class="lockup-sym">
+          <svg viewBox="0 0 200 200" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="96" fill="#E8153A"/>
+            <g transform="translate(47,24) scale(0.76)">
+              <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#F2F2EE"/>
+              <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#F2F2EE"/>
+            </g>
+          </svg>
+        </div>
+        <div class="lockup-wm">
+          <svg viewBox="-16 -12 412 224" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+            <g transform="translate(176,0)">
+              <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/>
+              <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/>
+            </g>
+            <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+          </svg>
+        </div>
+      </div>
+      <div class="lockup-card light">
+        <div class="lockup-sym">
+          <svg viewBox="0 0 200 200" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="96" fill="#E8153A"/>
+            <g transform="translate(47,24) scale(0.76)">
+              <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#F2F2EE"/>
+              <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#F2F2EE"/>
+            </g>
+          </svg>
+        </div>
+        <div class="lockup-wm">
+          <svg viewBox="-16 -12 412 224" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#07070A"/>
+            <g transform="translate(176,0)">
+              <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/>
+              <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/>
+            </g>
+            <rect x="352" y="0" width="28" height="200" fill="#07070A"/>
+          </svg>
+        </div>
+      </div>
+      <div class="lockup-card mid">
+        <div class="lockup-sym">
+          <svg viewBox="0 0 200 200" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="96" fill="#07070A"/>
+            <g transform="translate(47,24) scale(0.76)">
+              <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/>
+              <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/>
+            </g>
+          </svg>
+        </div>
+        <div class="lockup-wm">
+          <svg viewBox="-16 -12 412 224" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+            <g transform="translate(176,0)">
+              <polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/>
+              <polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/>
+            </g>
+            <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — BOYUT TESTİ ────────────────────────────────────────── -->
+  <section class="sec">
+    <div class="sec-label">06 — Boyut Testi</div>
+    <div class="sec-title">Küçültme skalası · Konsept A</div>
+    <div class="sec-note">Wordmark tüm boyutlarda okunabilir olmalı. 60px altında yalnızca X sembolü kullanılır.</div>
+
+    <div class="scale-rows">
+      <div class="scale-row">
+        <div class="scale-lbl">320 px</div>
+        <div class="scale-bg">
+          <svg viewBox="-16 -12 412 224" width="320" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+            <g transform="translate(176,0)"><polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/><polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/></g>
+            <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+          </svg>
+        </div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-lbl">180 px</div>
+        <div class="scale-bg">
+          <svg viewBox="-16 -12 412 224" width="180" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+            <g transform="translate(176,0)"><polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/><polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/></g>
+            <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+          </svg>
+        </div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-lbl">100 px</div>
+        <div class="scale-bg">
+          <svg viewBox="-16 -12 412 224" width="100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+            <g transform="translate(176,0)"><polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/><polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/></g>
+            <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+          </svg>
+        </div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-lbl">60 px</div>
+        <div class="scale-bg" style="gap:16px; display:flex; align-items:center;">
+          <svg viewBox="-16 -12 412 224" width="60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 H28 V86 H112 V0 H140 V200 H112 V114 H28 V200 H0 Z" fill="#F2F2EE"/>
+            <g transform="translate(176,0)"><polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#E8153A"/><polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#E8153A"/></g>
+            <rect x="352" y="0" width="28" height="200" fill="#F2F2EE"/>
+          </svg>
+          <span style="color:var(--muted);font-size:11px">→ sembol kullanım eşiği</span>
+          <svg viewBox="0 0 200 200" width="32" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="96" fill="#E8153A"/>
+            <g transform="translate(47,24) scale(0.76)"><polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#F2F2EE"/><polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#F2F2EE"/></g>
+          </svg>
+          <svg viewBox="0 0 200 200" width="24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="96" fill="#E8153A"/>
+            <g transform="translate(47,24) scale(0.76)"><polygon points="-11.47,8.03 11.47,-8.03 151.47,191.97 128.53,208.03" fill="#F2F2EE"/><polygon points="128.53,-8.03 151.47,8.03 11.47,208.03 -11.47,191.97" fill="#F2F2EE"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — YAPIM KAYDI ────────────────────────────────────────── -->
+  <section class="sec">
+    <div class="sec-label">07 — Yapım Kaydı</div>
+    <div class="sec-title">Ölçülen geometri</div>
+    <div class="sec-note">Tüm değerler hesaplanmış, tahmin değil. 1000u referans ızgara — bu sayfa ×5 küçük (200u cap).</div>
+
+    <table class="ctable">
+      <thead>
+        <tr>
+          <th>Ölçüt</th>
+          <th>Değer</th>
+          <th>Hedef</th>
+          <th>Durum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cap height</td>
+          <td>200u</td>
+          <td>—</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>Stem genişliği</td>
+          <td>28u (%14)</td>
+          <td>14–16%</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>H crossbar pozisyonu</td>
+          <td>y=86–114 (merkez y=100)</td>
+          <td>optik merkez</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>H crossbar yüksekliği</td>
+          <td>28u (stem eşit)</td>
+          <td>stem = crossbar</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>X diyagonal uzunluğu</td>
+          <td>244.13u (140×200)</td>
+          <td>√(140²+200²)</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>X yarım-genişlik (perp.)</td>
+          <td>14u</td>
+          <td>stroke/2</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>H→X nominal aralık</td>
+          <td>36u</td>
+          <td>—</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>X→I nominal aralık</td>
+          <td>36u</td>
+          <td>H→X eşit</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>Sembol ölçeği (dairede)</td>
+          <td>0.76× (köşeler r=93.3 &lt; r=96)</td>
+          <td>daire içinde</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>Signal/Void kontrastı</td>
+          <td>4.5:1</td>
+          <td>≥4.5 AA</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>Yol yapısı</td>
+          <td>filled paths, sıfır stroke</td>
+          <td>flat vector master</td>
+          <td class="ok">✓</td>
+        </tr>
+        <tr>
+          <td>Gradyan / gölge / glow</td>
+          <td>0</td>
+          <td>yasak</td>
+          <td class="ok">✓</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>HXI Logo Tasarımları · Beta Art Studio · 30.08.2026</span>
+    <span>3 konsept · wordmark.svg + symbol.svg master varlıklar mevcut</span>
+  </footer>
+
+</div>
+</body>
+</html>

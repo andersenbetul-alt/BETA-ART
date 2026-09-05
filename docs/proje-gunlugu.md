@@ -254,3 +254,235 @@ ağacını değil depoyu dağıtır (gözlem #8). Push sonrası yeşil. Örnek t
 brief'i hazır (seed.sql, yayınlanmış yazıdan türetilmiş). Bekleyen: kullanıcı
 Supabase projesi + URL/anon anahtar.
 
+## 24.08.2026 (devam) — Yazar platformu fikri değerlendirildi (taslak)
+
+Kullanıcı yeni yön verdi: QBLOGG, insanların kendi bloglarını yayınlayıp
+kitaplarını tanıtabilecekleri bir platform olsun. Kod yazılmadan önce
+değerlendirme + v1 tasarımı `docs/yazar-platformu.md`'ye yazıldı: üç model
+seçeneği (öneri: davetli/küratörlü), mevcut Supabase üye sistemi üstüne
+şema genişlemesi (authors/books/author_posts + niyet temelli keşif —
+kullanıcının paylaştığı filtre kodu okur tarafının prototipi), gelir
+seçenekleri rakamsız [H], hukuk kapıları (tanıtım işareti, koşullar
+güncellemesi, avukat teyidi) ve eşikli pilot planı. Marka çelişkisi ve
+"bir haftada üçüncü yön" riski belgede açıkça kayıtlı. Model + öncelik
+kararı kullanıcıya soruldu; P0 inşası karar sonrası.
+## 24.08.2026 (gece) — Fikir seli tek çerçevede toplandı
+
+Aynı gün içinde dört yön geldi: yazar platformu (karar: davetli model,
+platform önce; şema yazıldı `uye/schema-platform.sql`), ad tartışması
+(QBOOK/QBLOOK — qbook.com dolu, qblook.com/.no müsait [V, GoDaddy]),
+Action Pages hizmet modeli ve SAYFA60 kitap keşif kanalı + çok-format
+merdiveni. Hepsi `docs/yazar-platformu.md`'ye işlendi (§8-10). Birleşik
+tez: ödeyen müşteri okur değil, içeriğini müşteriye dönüştürmek isteyen
+uzman/yazar. Önerilen sıra: önce TEK 30 günlük satış deneyi (3 ücretli
+pilot kapısı), kod ve video kanalı ödeme kanıtından sonra. Panel/keşif
+sayfalarının kodu bilinçli duraklatıldı; karar kullanıcıya soruldu.
+## 24.08.2026 (gece, devam) — İlk ticari deney seçildi: Action Pages pilotu
+
+Kullanıcı kararı (AskUserQuestion): 30 günlük tek deney = Action Pages.
+İlk teslimatlar üretildi: `demo/cv-action-page.html` (Norveççe satış
+demosu — 8 soru, belirlenimci puanlama, kişiye özel iyileştirme listesi,
+veri tarayıcıdan çıkmaz; Playwright ile uçtan uca doğrulandı: 8 soru,
+9/16 orta bant, 5 kişisel madde, eksik-cevap uyarısı, 0 konsol hatası)
+ve `docs/action-pages-teklif.md` (teklif, [H] test fiyatları, Norveççe
+ulaşım mesajı, kullanıcının adım adım satış görevleri). Demoyu yayına
+alma (main + Vercel) kullanıcı onayı bekliyor.
+## 24.08.2026 (gece, tescil) — Patentstyret + EUIPO başvuru hazırlığı tamamlandı
+
+Kullanıcı talimatıyla tescil hattı uçtan uca yeniden koşuldu: marka üretimi
+(15 varlık, bayt-bayt aynı — çalışma ağacında tek fark belge), tescil
+zarfı (4 JPEG + sicil önizleme ✓), zarf testleri 4/4, belge doğrulama
+56 ölçü ✓. Patentstyret tarafı arama özetleriyle dolduruldu (TIF/JPEG
+önerisi, Altinn kanalı, 3.800 NOK/sınıf — hepsi "elle teyit" notuyla;
+patentstyret.no/lovdata.no bu oturumda da EGRESS_BLOCKED). Nice sınıf
+taslağı (35+41, 42 isteğe bağlı), renk beyanı önerisi ve başvuru günü
+adımları docs/marka-tescili.md'ye işlendi. Yapılamayanlar dürüst listede:
+sicil ön araştırması (kullanıcı tarayıcısı), ek sınıf ücreti, vekil görüşü.
+Beceri arama denendi: npx skills tüm sorgularda boş (kontrol sorgusu dahil
+— kayıt defteri erişimi engelli, beceri yokluğu kanıtı değil).
+## 24.08.2026 (gece, denetim + standartlar) — Karma tur
+
+(1) Sezgisel denetim: rakip siteler (Outgrow/ScoreApp/Typeform) proxy
+engelli — canlı rakip ekranı alınamadı, dürüstçe kayıt edildi; kendi üç
+ekranımız (index, work, demo) 13 ölçütle gerçek görüntülerden puanlandı
+(docs/denetim/sezgisel-denetim-2026-08-24.md): en zayıf noktalar work
+bütçe alanının dolu açılması, demoda ilerleme göstergesi yokluğu.
+(2) NAVIAR "Logo Skills and Clearance Stack v1.0" depoya kopyalandı ve
+QBLOGG için benimsenen bölümleri (resmî arama adresleri, kanıt şablonu,
+durdurma koşulları) marka-tescili.md'ye işlendi; bu ortamda var olmayan
+becerilerin karşılıkları not edildi. (3) 20 rollük ekip listesi
+değerlendirildi → docs/ekip-modeli.md (roller işe alım değil denetim
+merceği; ilk işe alım ancak pilot gelirle). (4) IQ1000 "güven motoru"
+analizi is-modeli.md §14'e delta olarak işlendi — sıra kararı değişmedi.
+## 24.08.2026 (gece, test mimarisi) — Spec-driven Playwright standardı değerlendirildi
+
+Kullanıcının ilettiği üç katmanlı test mimarisi (specs/tests/agents +
+safety/) docs/test-mimarisi.md'de karara bağlandı: araç sorusunun cevabı
+Playwright (zaten standart); codegen bu konteynerde çalışmaz (etkileşimli
+pencere ister) — kullanıcı makinesinin aracı; ana site için spec altyapısı
+kurulmaz (sıfır bağımlılık, mevcut denetimler yeterli); asıl benimsenen
+kısım uye/ platformu için 6 maddelik RLS/safety spec listesi — Supabase
+anahtarları gelince Given/When/Then spec'leri + testleri yazılacak.
+
+## 25.08.2026 (gece) — Beşinci yön teklifi değerlendirildi: B2C affiliate/karşılaştırma medyası
+
+Kullanıcı dışarıdan gelen bir strateji belgesi paylaştı: QBLOGG'u Norveç
+odaklı B2C affiliate/karşılaştırma medyasına (review, "best X", "X vs Y")
+dönüştürme teklifi. Belgenin teknik durum tespiti yanlıştı ("repo'da yalnız
+.github var, Lovable/Vercel kurulmamış") — gerçekte site tam işleyen ve
+canlı. Ayrıca bu, bir haftada dördüncü yön teklifiydi (stüdyo → yazar
+platformu → Action Pages → bu). Kullanıcıya iki karar soruldu: (1) belge
+arşivlensin mi/pivot mı, (2) Action Pages pilotuyla ilişkisi. Kararlar:
+ciddi pivot teklifi olarak ele al + ikisini paralel yürüt.
+
+Action Pages doğrulaması: `qblogg` Vercel projesinin son production
+dağıtımı (`dpl_2s49SpZK31WFJYTnFfJxat7cTQUw`) zaten 973e48e commit'inden
+(demo dahil) yapılmış ve READY durumda — `web_fetch_vercel_url` ile
+`qblogg.vercel.app/demo/cv-action-page.html` içeriği doğrulandı (200,
+doğru CSP/noindex başlıkları). Ek push/redeploy gerekmedi; pilot fiilen
+yayında.
+
+Paralel iz: affiliate niş için "İçerik Fırsat Haritası" araştırması
+başlatıldı (yalnız araştırma, kod yok) — sonucu ayrı günlük kaydına
+işlenecek.
+
+## 25.08.2026 (gece, devam) — İçerik Fırsat Haritası tamamlandı + "gerçek fayda" ilkesi
+
+`docs/icerik-firsat-haritasi.md` teslim edildi: 92 aday konu, gerçek web
+araştırmasıyla doğrulanmış affiliate verisi (her iddia kaynaklı veya
+"doğrulanamadı" diye işaretli), ilk 20 gelir-odaklı küme. Kritik bulgu:
+Norveç'e özel "AI araçları" nişi zaten dolu (nordicaitools.com dahil 6
+rakip) — "boş alan" varsayımı çürüdü.
+
+Kullanıcıyla tartışma sonucu bir karar ilkesi benimsendi: **qBLOGG'un gücü
+"daha fazla içerik" değil, "insanların daha iyi karar vermesine ve
+gelişmesine yardım eden içerik" üretmektir.** Haritanın kendi verisi bunu
+destekliyor — "Yüksek fayda" işaretlenen beş kümenin (#11 AI Receptionist,
+#13 Norveç muhasebe yazılımı, #14 iş arayanlar için AI araçları, #16 ucuz
+AI yığını, #19 EU AI Act) dördünde affiliate geliri **yok**; komisyon veren
+şirketler kalabalık/kolay-kararlı ürünler (VPN, hosting), komisyon
+vermeyenler nişleşmiş/gerçekten kafası karışık okuyucunun olduğu alanlar.
+Harita bu ilkeyle güncellendi (§4.1): öncelik sırası gelire göre değil önce
+yüksek-fayda kümelerinden başlamalı, düşük-fayda/yüksek-rekabet kümeler
+yalnızca kapasite kalırsa ikincil dolgu.
+
+## 25.08.2026 (gece, kapanış) — Q vizyonu duraklatıldı, karar değişmedi
+
+Q — Human Growth Network fikri dokuz turda (çoğu kullanıcının başka AI
+araçlarından aldığı paralel çıktılar) gitgide büyüyerek geldi: vizyon →
+yatırımcı çerçevesi → yatırım kapıları/faz çizelgesi → org tasarımı →
+maaş/bütçe/finansman turları içeren "Q Master Plan v1.0". Her turun kendi
+sonucu aynıydı: "önce kanıt, sonra inşa." Kullanıcı açıkça "önce ucuz
+doğrulama" seçeneğini seçti (`docs/q-validate-materyalleri.md` teslim
+edildi: landing page taslağı + 20 kullanıcı + 10 uzman görüşme sorusu).
+
+Org şeması + maaş/bütçe tabloları içeren tur önce reddedildi — sıfır
+kullanıcı/gelirli bir kurgusal şirket için somut NOK rakamları yazmak
+`CLAUDE.md`'nin "uydurma yasak" ilkesini ihlal eder gerekçesiyle.
+
+Ardından kullanıcı dokuzuncu turun (tüm rakamları "hipotez" diye
+etiketleyen "Q Master Plan v1.0") **resmi referans belgesi** olmasını
+istedi: bundan sonra Q'yla ilgili ürün/işe alım/finans kararları bu
+belgedeki Gate 1-7 (Investment Gates) sırasına göre değerlendirilecek.
+Bu, dokuz turun kendi vardığı disiplinle tutarlı olduğu için kabul edildi
+ve `docs/q-master-plan.md`'ye yazıldı — iki şart korunarak: (1) her rakam
+belgenin kendi ifadesiyle hipotez, taahhüt değil; (2) bu belge QBLOGG'un
+şu anki canlı işini (B2B içerik-hattı stüdyosu) değiştirmiyor, yalnızca
+Q'ya dair gelecek teklifler için süzgeç.
+
+Dokuz tur boyunca hiçbir gerçek dünya eylemi (görüşme, landing page
+yayını) teyit edilmedi — yani Gate 1 hâlâ açık değil. Karar: enerji
+şimdilik zaten canlı olan iki deneye (Action Pages, `docs/icerik-firsat-
+haritasi.md` affiliate içeriği) döndürülüyor. Q'ya sonraki dönüş şartı:
+kullanıcı gerçek bir görüşme/landing page sonucu getirdiğinde.
+
+## 25.08.2026 (gece, son) — Dört red-team turu tek çekirdek karara indi
+
+v1.0'dan sonra üç tur daha geldi (hepsi daraltma yönünde, genişletme
+değil — bu önceki dokuz turdan farklı bir örüntü): v1.1 rekabet
+körlüğünü düzeltti (Growth Graph tek başına moat değil — LinkedIn/
+Coursera/Degreed zaten o alanda, doğrulanmamış), v1.2 kategoriyi
+"Applied Progress Platform"a daraltıp "Q Path"i "Q Sprint"e çevirdi
+(Workera/BetterUp/CoachHub rekabeti gerekçesiyle, doğrulanmamış), v1.3
+en atomik test edilebilir davranışı buldu ve karşılaştırma tablosuyla
+gerekçelendirdi (McKinsey/Microsoft atıfları doğrulanmamış).
+
+Kullanıcı son turu **çekirdek karar** olarak kilitledi:
+**1 Task → 1 Improvement → 1 Proof**, döngü Choose → Improve → Prove →
+Repeat, ilk MVP vaadi "Improve one real task at work." Bu,
+`docs/q-master-plan.md`'nin en üstüne en yüksek öncelikli bölüm olarak
+işlendi — belgenin geri kalanıyla çelişirse çekirdek kazanır.
+
+Durum değişmedi: **Gate 1 hâlâ açık değil**, hiçbir görüşme/landing page
+yayını teyit edilmedi. Ama artık test edilecek şey çok daha net —
+`docs/q-validate-materyalleri.md`'deki 20 soru, bu yeni çekirdeğe göre
+gözden geçirilmeyi hak ediyor (henüz yapılmadı, kullanıcıya soruldu).
+
+## 25.08.2026 (gece, kapanış — TRUTHMODE) — Yaklaşık 20 tur sonunda tam yakınsama
+
+Vizyon v1.0→v1.5'e ulaştı (bkz. `docs/q-master-plan.md`): killer behavior
+kilitlendi (1 Task → 1 Improvement → 1 Proof), moat Outcome+Trust Graph'a
+daraltıldı, B2C/B2B sırası çözüldü (outcome kanıtı B2C'den, ilk para
+B2B'den), üç gerçek Meta M&A iddiası doğrulandı/düzeltildi (Manus
+anlaşması 11.08.2026'da bozuldu, capex rakamı güncellendi). Paralel
+olarak `demo/q-work-audit.html` yazıldı, Playwright ile doğrulandı,
+depoya ve `vercel.json` dağıtım tarifine gömüldü — gerçek mailto CTA'sı
+ile 20 görüşme adayı bulmaya hazır.
+
+Kullanıcı son turda ("TRUTHMODE") dürüst bir öz-değerlendirme yaptı:
+Q bugün "yatırım yapılabilir şirket değil, iyi formüle edilmiş bir tez."
+Eksik liste: gerçek kullanıcı davranışı, retention verisi, ödeyen
+müşteri, outcome verification, benzersiz veri, çalışan recommendation
+engine, kanıtlanmış 10x üstünlük, network effect — hiçbiri yok. Q Talent,
+Passport, Marketplace, Community, API, global expansion, Meta acquisition
+konuları **donduruldu**. Tek kalan iş: 100 kullanıcı → 25-30 gerçek
+iyileşme → tekrar kullanım → ödeme testi → recommendation gerçekten
+iyileşiyor mu — bu sırayla, teoriyle değil.
+
+**Bu, oturumun başından beri savunulan pozisyonla tam örtüşüyor.** Kayıt
+altına alınacak yeni bir kavram yok; sıradaki tek ilerleme kaydı gerçek
+insanlarla temas olacak. Q konusu bu haliyle beklemede — bir sonraki not
+ancak gerçek bir görüşme/deneme sonucu geldiğinde düşülmeli.
+
+Kullanıcı bu ilkeyi Meta'nın dikkat-ekonomisi modeliyle karşılaştırarak
+netleştirdi: **"Sana ilgini çekecek şeyi bulayım" (Meta) değil, "Seni
+geliştirecek şeyi bulayım" (QBLOGG)** — temel metrik Dikkat/Engagement değil
+Gelişim/Outcome olmalı. Bu yeni bir karar değil, mevcut modelin adlandırılmış
+hali: sitenin zaten kurucu ilkesi ("işi trafik toplamak değil, brief formunu
+doldurtmaktır") bir outcome metriği; §4.1'deki gerçek fayda filtresi bunun
+B2C affiliate tarafındaki karşılığı. Üçü aynı ilkenin farklı yüzleri. Ayrıca
+tartışılan "insanları birbirine bağlayan platform" (Meta UGC/sosyal grafik
+modeli) fikri bilinçli olarak uygulanmadı — QBLOGG'da hesap/UGC/moderasyon
+altyapısı yok, bu ayrı ve çok daha büyük bir kapı; kullanıcının asıl vardığı
+sonucun "gelişim/outcome metriği" olduğu değerlendirildi.
+
+## 30.08.2026 — "BUTUN PROJELERI BURAYA TASI": envanter çıkarıldı, gerçek gerilim ortaya çıktı
+
+Kullanıcı "her proje/dosya/tool burada birleşiyor" tespitini yaptı, ardından
+açık talimat verdi: **"BUTUN PROJELERI BURAYA TASI."** AskUserQuestion ile
+kapsam ("hangi repolar 'hepsi'?") ve yöntem ("taşımak teknik olarak ne
+demek?") netleştirildi — kullanıcı ikisine de **"HEPSI"** yanıtını verdi.
+
+Körlemesine bir kod/geçmiş birleştirmesi yapmak yerine (geri döndürülemez bir
+işlem, uzlaştırma planı olmadan yapılmaz) önce gerçek envanter çıkarıldı:
+beş repo (`beta-art-archive`, `QBLOGG`, `qb`, `eve-slack-agent`,
+`eve-chat-template`) `andersenbetul-alt` hesabından klonlandı, `HEAD`
+doğrulandı, içerikleri gerçekten okundu. Sonuç `docs/proje-envanteri.md`.
+
+Bulgular: `QBLOGG` ve `qb` tamamen boş (taşınacak içerik yok);
+`eve-slack-agent`/`eve-chat-template` Vercel'in stok "eve" şablonları,
+hiç özelleştirilmemiş. Asıl bulgu `beta-art-archive`: bu **QBLOGG değil**,
+tamamen ayrı bir marka ve iş (fotoğraf lisanslama + inşaat dokümantasyon
+arşivi, Vite/React/Supabase/Lovable). Kendi yönetişim belgesi
+(`BETA_ART_MASTER.md`, kullanıcının 25.08.2026'da onayladığı) açıkça
+"ikinci bir Beta Art sitesi yaratma" diyor — yani "her şeyi buraya taşı"
+talimatı, kullanıcının kendi onayladığı başka bir kararla doğrudan çarpışıyor.
+Bu bir teknik engel değil, iki talimat arasındaki gerçek çelişki; körlemesine
+biri diğerini ezmeden kullanıcıya üç somut karar soruldu (belge sonunda).
+
+NAVIAR Care ve `betulandersen-droid` hesabı altındaki her şey hâlâ bu
+oturumdan erişilemez durumda (farklı GitHub hesabı, bağlanmadı) — "HEPSI"
+cevabı bunu kapsasa da teknik olarak henüz mümkün değil.
+
+Gerçek dosya/geçmiş taşıma işlemi, yukarıdaki üç karar netleşmeden
+başlatılmadı.

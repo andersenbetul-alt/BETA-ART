@@ -173,3 +173,29 @@ görüşmesi** işidir.
    bölüm mü, alt alan adı mı — teknik öneri: önce aynı site).
 5. Profesör davet paketinin hazırlanma emri.
 6. Hukuki teyit için avukat süreci ne zaman başlar.
+
+## 14. "Blog para makinesi değil, güven motoru" analizi (24.08.2026 eki)
+
+Kullanıcının ilettiği IQ1000 analizi bu belgenin mimarisiyle büyük ölçüde
+örtüşüyor (aynı katmanlar, aynı [H] fiyatlar); karar değiştirmiyor —
+Action Pages 30 günlük kapısı önde, Intelligence B0 kapısı (profesör
+anlaşmaları) geçilmeden buradaki hiçbir katman inşa edilmez. Yeni ve
+saklamaya değer parçalar:
+
+- **Üç seviyeli içerik modeli:** açık (keşif) → ücretsiz kayıtlı (güven;
+  haftalık özet + rapor) → ücretli (karar avantajı). B0–B2 ile birebir;
+  "ücretsiz içerik 'ne oldu', ücretli içerik 'benim için ne anlama
+  geliyor' sorusuna cevap verir" formülasyonu değer önerisi metnine girer.
+- **Haftalık yayın ritmi [H]:** Pzt Risk Radar · Çar Professor Brief ·
+  Cum Opportunity Signal · aylık kapalı toplantı · üç aylık senaryo ·
+  yıllık zirve. NOT: sıfır imzalı profesörle bu ritim vaat edilemez —
+  ritim, B0 eşiği (≥5 profesör) geçildikten sonra taahhüt edilir.
+- **E-posta satış akışı [H]:** rapor → üç analiz → değer anlatımı →
+  kapalı brifing daveti → başvuru → görüşme → yıllık üyelik. Lead
+  magnet deseni sitede zaten var; akış Buttondown üstüne kurulabilir.
+- **Kurumsal üyelik kalemi** 150–500k NOK/yıl [H] — §8'deki "lisanslama"
+  satırının fiyatlandırılmış hâli.
+- **Dürüstlük notları korunuyor:** %5–10 dönüşüm oranı sıradan yayınlar
+  içindir, 29k NOK üyeliğe uygulanmaz [D — Substack kaynaklı iddia,
+  doğrulanmadı]; 9,9M NOK tablosu brüt ciro hipotezidir, hedef değildir
+  (bu belgedeki 3,85M/10M uyarısıyla aynı statü).
