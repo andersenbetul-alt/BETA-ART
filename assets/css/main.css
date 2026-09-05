@@ -608,6 +608,111 @@ html[data-theme="dark"] .subscribe .btn { background: #f4f5fa; color: #12141c; }
 .magnet-link { margin-top: 4px; background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.5); color: #fff; }
 .magnet-link:hover { background: rgba(255,255,255,.26); }
 
+/* ---------- Okuma ilerleme çubuğu ---------- */
+.progress-bar {
+  position: fixed;
+  top: 66px;
+  inset-inline-start: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--brand), var(--brand-2));
+  z-index: 49;
+  pointer-events: none;
+  transition: width .08s linear;
+}
+
+/* ---------- Blog: öne çıkan yazı (hero kart) ---------- */
+.post-hero {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.post-hero:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: color-mix(in srgb, var(--brand) 28%, var(--border));
+}
+.post-hero-cover {
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  display: grid;
+  place-items: center;
+  color: #fff;
+  min-height: 260px;
+}
+.post-hero-cover svg { width: 72px; height: 72px; display: block; }
+.post-hero-body {
+  padding: 34px 38px;
+  display: flex;
+  flex-direction: column;
+}
+.post-hero-body h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin-bottom: .4em; }
+.post-hero-body > p { color: var(--text-muted); font-size: var(--fs-lg); flex: 1; margin-bottom: 16px; }
+@media (max-width: 680px) {
+  .post-hero { grid-template-columns: 1fr; }
+  .post-hero-cover { min-height: 140px; }
+  .post-hero-body { padding: 22px 22px 24px; }
+}
+
+/* ---------- Kategori chip sayacı ---------- */
+.chip-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--text-muted) 18%, transparent);
+  color: var(--text-muted);
+  border-radius: 999px;
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  padding: 1px 7px;
+  margin-inline-start: 5px;
+  min-width: 18px;
+}
+.chip[aria-pressed="true"] .chip-count {
+  background: rgba(255, 255, 255, .22);
+  color: var(--on-brand);
+}
+
+/* ---------- Yazı sayfası: kenar çubuğu düzeni ---------- */
+.article--with-sidebar { max-width: 980px; }
+.article-grid {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 48px;
+  align-items: start;
+}
+.article-grid .article-main-col { min-width: 0; }
+/* İnline TOC masaüstünde kenar çubuğuna taşınır */
+.article--with-sidebar .article-toc { display: none; }
+.article-toc-col {
+  position: sticky;
+  top: 90px;
+}
+.article-toc-sticky {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.article-toc-sticky h3 { font-size: var(--fs-base); margin: 0 0 .6em; font-weight: 700; }
+.article-toc-sticky ol {
+  margin: 0; padding-inline-start: 1.2em; display: grid; gap: .35em; font-size: var(--fs-md);
+}
+.article-toc-sticky a { color: var(--brand); font-weight: 600; text-decoration: none; }
+.article-toc-sticky a:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .article-grid { grid-template-columns: 1fr; }
+  .article-toc-col { display: none; }
+  .article--with-sidebar .article-toc { display: block; }
+  .article--with-sidebar { max-width: 720px; }
+}
+
 /* ---------- Yazdırma CSS'i ---------- */
 @media print {
   .site-header,
