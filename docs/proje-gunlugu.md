@@ -875,3 +875,45 @@ Bu tur belge (araştırma günlüğü) teslimi.
 yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn; ayrıca v1.0.0
 tag (ortam etiket push'ını engelledi, elle basılacak) ve `beta-art/`
 (WEB-2026-003) fiziksel taşıma onayı — hepsi hâlâ kullanıcıda.
+
+## 05.09.2026 (sabah turu) — Sağlık + düzenleyici rüzgâr (EU AI Act md. 50)
+
+**Sağlık:** Canlı site (`beta-art-privat-phi.vercel.app`) bu cron turundan yine
+`EGRESS_BLOCKED` — bu oturumda tekrar tekrar doğrulanan konteyner egress sınırı,
+outage değil. Canlı teyit Vercel MCP'li ana turda yapılır; kullanıcıya yanlış
+"kapalı" uyarısı verilmedi.
+
+**Araştırma (yeni açı — düzenleyici; önceki turlar C2PA + Stocksy'ydi):**
+AB Yapay Zekâ Yasası'nın (EU AI Act) **50. madde şeffaflık yükümlülükleri
+2 Ağustos 2026'da yürürlüğe girdi** (doğrulandı — birden çok bağımsız hukuk
+kaynağı ve AB Komisyonu tutarlı). Sentetik ses/görsel/video/metin üreten yapay
+zekâ sistemleri çıktıyı hem **makine-okunur biçimde işaretlemek** hem de
+**yapay zekâ üretimi olarak saptanabilir kılmak** zorunda; ihlalde ceza
+15 milyon € veya dünya cirosunun %3'üne kadar. Piyasada 2 Ağustos 2026 öncesi
+bulunan sistemlere makine-okunur işaretleme için 2 Aralık 2026'ya kadar süre
+tanındı (AI Omnibus, Mayıs 2026); 2 Ağustos öncesi üretilmiş içerik geriye
+dönük etiketlenmiyor. Kaynaklar:
+[Sidley — 2 Ağustos 2026 uyum](https://datamatters.sidley.com/2026/06/24/eu-ai-act-transparency-obligations-preparing-for-compliance-by-2-august-2026/),
+[Article 50 metni](https://artificialintelligenceact.eu/article/50/),
+[AB Komisyonu — şeffaflık kılavuzu](https://digital-strategy.ec.europa.eu/en/policies/guidelines-ai-transparency-obligations).
+**Beta Art için çıkarım:** Bu düzenleme, AI üretimi içeriği *zorunlu olarak
+etiketli/saptanabilir* hâle getirerek "doğrulanmış insan fotoğrafçılığı"
+konumlanmasının pazar değerini artıran bir arka plan. 04.09 turunun çıkarımıyla
+birleşince yön netleşiyor: Beta Art'ın mesajı "AI yok" (Stocksy bunu zaten
+karşılıyor) değil, **kanıtlanabilir köken** olmalı — ve C2PA'nın makine-okunur
+işaretlemesi md. 50(2) ile teknik olarak örtüşüyor, yani Beta Art'ın 3-yöntem
+doğrulama vurgusu düzenleyici çerçeveyle aynı dili konuşuyor. **Bu bir pazar/
+bağlam bulgusudur; Beta Art'ın kendi md. 50 uyumu hakkında bir iddia DEĞİLDİR**
+(site AI içerik üretmiyor, arşivliyor — yükümlülük üreticiye ait). Site
+metnine bu turda hiçbir doğrulanmamış "uyumlu/sertifikalı" ibaresi eklenmedi.
+
+**Geliştirme (bu tur):** Kod değişikliği yapılmadı. Güvenli küçük adaylar
+(JSON-LD, temel SEO meta, footer yasal-bağlantı düzeltmesi) kullanıcının açık
+onayına sunulmuş durumda — onaysız başlamak "cerrahi değişiklik/önce sadelik"
+ilkesine ve bekleyen karara aykırı olur. Bu tur belge (araştırma günlüğü)
+teslimi; siteyi etkilemiyor, dağıtım gereksiz.
+
+**Kullanıcı adımları (açık, üsteleme yok):** 4 yasal metin, Stripe ödeme
+yöntemi, beta-art.com alan adı, 3 orijinal foto, IG/LinkedIn; ayrıca v1.0.0
+tag (ortam etiket push'ını engelledi, elle basılacak) ve `beta-art/`
+(WEB-2026-003) fiziksel taşıma onayı — hepsi hâlâ kullanıcıda.
